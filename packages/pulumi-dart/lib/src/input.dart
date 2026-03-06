@@ -1,14 +1,22 @@
 import 'output.dart';
 
 Input<T>? _normalizeInputValue<T>(Object? value) {
-  return switch (value) {
-    null => null,
-    Input<T>() => value,
-    Input() => Input.fromOutput(value.toOutput().apply<T>((v) => v as T)),
-    Output() => Input.fromOutput(value.apply<T>((v) => v as T)),
-    T() => Input.fromValue(value),
-    _ => throw ArgumentError.value(value, 'value', 'Expected Input<$T> or $T'),
-  };
+  if (value == null) {
+    return null;
+  }
+  if (value is Input<T>) {
+    return value;
+  }
+  if (value is Input) {
+    return Input.fromOutput(value.toOutput().apply<T>((v) => v as T));
+  }
+  if (value is Output) {
+    return Input.fromOutput(value.apply<T>((v) => v as T));
+  }
+  if (value is T) {
+    return Input.fromValue(value as T);
+  }
+  throw ArgumentError.value(value, 'value', 'Expected Input<$T> or $T');
 }
 
 /// A map of serialized resource arguments keyed by Pulumi property name.

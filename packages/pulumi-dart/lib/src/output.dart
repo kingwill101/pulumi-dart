@@ -242,7 +242,7 @@ class Output<T> implements Input<T> {
 
   /// Creates an unknown output placeholder.
   static Output<T> createUnknown<T>([
-    FutureOr<T> Function()? _ignoredValueFactory,
+    FutureOr<T> Function()? ignoredValueFactory,
   ]) {
     return Output<T>(
       Future(() async {
