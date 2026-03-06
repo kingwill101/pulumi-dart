@@ -1,3 +1,5 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/large_resource_dart.dart
 [Oo]bj/

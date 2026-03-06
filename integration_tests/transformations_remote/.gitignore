@@ -1,3 +1,5 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/transformations_remote_dart.dart
 [Oo]bj/
