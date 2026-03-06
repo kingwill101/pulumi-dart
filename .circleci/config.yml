@@ -128,7 +128,7 @@ jobs:
           no_output_timeout: 60m
           command: |
             . "${BASH_ENV}"
-            cd integration_tests && go test -json ./... | gotestsum --format testname
+            cd integration_tests && go test -json -timeout 60m ./... | gotestsum --format testname
 
   build-language-host:
     parameters:

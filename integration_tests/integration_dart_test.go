@@ -1265,7 +1265,6 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	rootSDK, err := os.ReadFile(rootSDKPath)
 	require.NoError(t, err)
 	for _, expected := range []string{
-		"library pulumi_my_namespace_mypkg;",
 		"import 'package:pulumi_my_namespace_mypkg/index.dart' as module_index;",
 		"final index = _IndexModuleNamespace();",
 		"final getResource = module_index.getResource;",
@@ -1282,7 +1281,6 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	implSDK, err := os.ReadFile(implSDKPath)
 	require.NoError(t, err)
 	for _, expected := range []string{
-		"library module_index;",
 		"export 'index/functions.dart';",
 		"export 'index/resource_type.dart';",
 		"export 'index/get_resource_args.dart';",

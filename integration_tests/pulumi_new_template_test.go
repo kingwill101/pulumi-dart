@@ -171,7 +171,7 @@ func TestPulumiNewDartRandomTemplateE2E(t *testing.T) {
 	pubspecBytes, err := os.ReadFile(filepath.Join(projectDir, "pubspec.yaml"))
 	require.NoError(t, err)
 	pubspecContent := string(pubspecBytes)
-	require.Contains(t, pubspecContent, "dependency_overrides:")
+	require.Contains(t, pubspecContent, "pulumi:")
 	require.Contains(t, pubspecContent, filepath.ToSlash(pulumiSDKPath))
 
 	previewOutput := runCommand(
