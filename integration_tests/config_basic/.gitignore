@@ -1,5 +1,6 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/config_basic_dart.dart
 [Oo]bj/
-
 

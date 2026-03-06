@@ -1,5 +1,6 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/printf_dart.dart
 [Oo]bj/
-
 

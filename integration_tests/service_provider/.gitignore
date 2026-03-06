@@ -1,3 +1,5 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/service_provider_dart.dart
 [Oo]bj/

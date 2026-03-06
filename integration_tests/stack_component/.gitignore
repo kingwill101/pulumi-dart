@@ -1,5 +1,6 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/stack_component_dart.dart
 [Oo]bj/
-
 

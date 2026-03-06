@@ -27,6 +27,8 @@ x86/
 [Aa][Rr][Mm]64/
 bld/
 [Bb]in/
+!bin/
+!bin/about_dart.dart
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/

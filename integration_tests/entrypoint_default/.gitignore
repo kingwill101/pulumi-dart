@@ -1,5 +1,6 @@
 /.pulumi/
 [Bb]in/
+!bin/
+!bin/entrypoint_default_dart.dart
 [Oo]bj/
-
 
