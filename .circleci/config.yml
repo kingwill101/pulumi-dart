@@ -254,6 +254,10 @@ workflows:
           goos: linux
           goarch: amd64
           archive_format: tar.gz
+          requires:
+            - go-test
+            - dart-core
+            - integration-tests
           filters:
             tags:
               only: /.*/
@@ -262,6 +266,10 @@ workflows:
           goos: linux
           goarch: arm64
           archive_format: tar.gz
+          requires:
+            - go-test
+            - dart-core
+            - integration-tests
           filters:
             tags:
               only: /.*/
@@ -270,6 +278,10 @@ workflows:
           goos: darwin
           goarch: amd64
           archive_format: tar.gz
+          requires:
+            - go-test
+            - dart-core
+            - integration-tests
           filters:
             tags:
               only: /.*/
@@ -278,6 +290,10 @@ workflows:
           goos: darwin
           goarch: arm64
           archive_format: tar.gz
+          requires:
+            - go-test
+            - dart-core
+            - integration-tests
           filters:
             tags:
               only: /.*/
@@ -286,6 +302,10 @@ workflows:
           goos: windows
           goarch: amd64
           archive_format: zip
+          requires:
+            - go-test
+            - dart-core
+            - integration-tests
           filters:
             tags:
               only: /.*/
@@ -294,6 +314,10 @@ workflows:
           goos: windows
           goarch: arm64
           archive_format: zip
+          requires:
+            - go-test
+            - dart-core
+            - integration-tests
           filters:
             tags:
               only: /.*/
