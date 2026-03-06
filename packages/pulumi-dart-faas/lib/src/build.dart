@@ -1,5 +1,6 @@
 import 'package:pulumi/pulumi.dart' as pulumi;
 import 'package:pulumi_command/local.dart' as commandlocal;
+import 'package:path/path.dart' as p;
 
 /// Local Dart build settings that produce a deployable archive.
 class DartBuildArchiveArgs {
@@ -95,12 +96,8 @@ class DartBuildArchive extends pulumi.ComponentResource {
           final archiveFile = values.$1.$3;
           final os = values.$1.$4;
           final arch = values.$2;
-          final binaryDir = binaryPath.contains('/')
-              ? binaryPath.substring(0, binaryPath.lastIndexOf('/'))
-              : '.';
-          final stageDir = binaryDir.contains('/')
-              ? binaryDir.substring(0, binaryDir.lastIndexOf('/'))
-              : binaryDir;
+          final binaryDir = p.dirname(binaryPath);
+          final stageDir = p.dirname(binaryDir);
           return '''
 set -euo pipefail
 rm -rf "$stageDir" "$archiveFile"

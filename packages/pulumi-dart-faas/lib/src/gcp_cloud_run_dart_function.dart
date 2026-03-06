@@ -104,12 +104,15 @@ void validateGcpDartFunctionArgs(GcpDartFunctionArgs args) {
   }
 }
 
-dynamic _containerEnvsFromMap(pulumi.Input<Map<String, String>>? environment) {
+pulumi.Input<List<gcp.cloudrunv2.ServiceTemplateContainerEnv>>?
+_containerEnvsFromMap(
+  pulumi.Input<Map<String, String>>? environment,
+) {
   if (environment == null) {
     return null;
   }
 
-  return environment.toOutput().apply((values) {
+  return environment.toOutput().apply<List<gcp.cloudrunv2.ServiceTemplateContainerEnv>>((values) {
     return values.entries
         .map(
           (entry) => gcp.cloudrunv2.ServiceTemplateContainerEnv(

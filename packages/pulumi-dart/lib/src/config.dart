@@ -49,21 +49,16 @@ extension ConfigStringParsing on String? {
   ///
   /// Accepted values are `true`, `false`, `1`, and `0` (case-insensitive).
   bool? toBool() {
-    final value = this;
-    if (value == null) {
-      return null;
-    }
-
-    switch (value.toLowerCase()) {
+    return switch (this?.toLowerCase()) {
       case 'true':
       case '1':
-        return true;
+        true,
       case 'false':
       case '0':
-        return false;
+        false,
       default:
-        return null;
-    }
+        null,
+    };
   }
 }
 
@@ -119,10 +114,7 @@ mixin ConfigMixin {
       return configMap.map(
         (key, value) => MapEntry(_cleanKey(key), value.toString()),
       );
-    } catch (e) {
-      print(
-        'Error parsing config: $e',
-      ); // Consider using a proper logging mechanism
+    } catch (_) {
       return {};
     }
   }
@@ -136,10 +128,7 @@ mixin ConfigMixin {
     try {
       final secretKeysList = json.decode(secretKeysJson) as List<dynamic>;
       return secretKeysList.map((key) => _cleanKey(key.toString())).toSet();
-    } catch (e) {
-      print(
-        'Error parsing secret keys: $e',
-      ); // Consider using a proper logging mechanism
+    } catch (_) {
       return {};
     }
   }
@@ -243,19 +232,14 @@ class Config {
   bool? getBoolean(String key) {
     final fullKey = _fullKey(key);
     final value = get(key);
-    if (value == null) {
-      return null;
-    }
-    if (value == 'true') {
-      return true;
-    }
-    if (value == 'false') {
-      return false;
-    }
-
-    throw ConfigException(
-      "Configuration '$fullKey' value '$value' is not a valid boolean.",
-    );
+    return switch (value) {
+      null => null,
+      'true' => true,
+      'false' => false,
+      _ => throw ConfigException(
+          "Configuration '$fullKey' value '$value' is not a valid boolean.",
+        ),
+    };
   }
 
   /// Gets a required boolean config value.

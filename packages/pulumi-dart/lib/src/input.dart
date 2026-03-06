@@ -1,5 +1,16 @@
 import 'output.dart';
 
+Input<T>? _normalizeInputValue<T>(Object? value) {
+  return switch (value) {
+    null => null,
+    Input<T>() => value,
+    Input() => Input.fromOutput(value.toOutput().apply<T>((v) => v as T)),
+    Output() => Input.fromOutput(value.apply<T>((v) => v as T)),
+    T() => Input.fromValue(value),
+    _ => throw ArgumentError.value(value, 'value', 'Expected Input<$T> or $T'),
+  };
+}
+
 /// A map of serialized resource arguments keyed by Pulumi property name.
 typedef Inputs = Map<String, Input<dynamic>>;
 
@@ -57,21 +68,7 @@ abstract class Input<T> {
   /// Input<String> ensureInput(Object v) => Input.asInput<String>(v);
   /// ```
   static Input<T> asInput<T>(Object? value) {
-    if (value is Input<T>) {
-      return value;
-    }
-    if (value is Input) {
-      final input = value;
-      return Input.fromOutput(input.toOutput().apply<T>((v) => v as T));
-    }
-    if (value is Output) {
-      final output = value;
-      return Input.fromOutput(output.apply<T>((v) => v as T));
-    }
-    if (value is T) {
-      return Input.fromValue(value);
-    }
-    throw ArgumentError.value(value, 'value', 'Expected Input<$T> or $T');
+    return _normalizeInputValue<T>(value)!;
   }
 
   /// Convenience alias for [asInput].
@@ -86,28 +83,15 @@ abstract class Input<T> {
   ///
   /// Useful for optional resource arguments.
   static Input<T>? asOptionalInput<T>(Object? value) {
-    if (value == null) {
-      return null;
+    try {
+      return _normalizeInputValue<T>(value);
+    } on ArgumentError {
+      throw ArgumentError.value(
+        value,
+        'value',
+        'Expected Input<$T>, $T, or null',
+      );
     }
-    if (value is Input<T>) {
-      return value;
-    }
-    if (value is Input) {
-      final input = value;
-      return Input.fromOutput(input.toOutput().apply<T>((v) => v as T));
-    }
-    if (value is Output) {
-      final output = value;
-      return Input.fromOutput(output.apply<T>((v) => v as T));
-    }
-    if (value is T) {
-      return Input.fromValue(value as T);
-    }
-    throw ArgumentError.value(
-      value,
-      'value',
-      'Expected Input<$T>, $T, or null',
-    );
   }
 
   /// Maps the eventual value inside an [Input] while preserving dependencies.
