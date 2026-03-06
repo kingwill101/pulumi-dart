@@ -165,7 +165,9 @@ jobs:
             - ~/.pub-cache
       - run:
           name: Build pulumi-language-dart for integration tests
-          command: cd pulumi-language-dart && go build -o pulumi-language-dart .
+          command: |
+            . "${BASH_ENV}"
+            cd pulumi-language-dart && go install .
       - run:
           name: Run integration tests
           no_output_timeout: 60m
