@@ -1266,7 +1266,7 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	require.NoError(t, err)
 	for _, expected := range []string{
 		"import 'package:pulumi_my_namespace_mypkg/index.dart' as module_index;",
-		"final index = _IndexModuleNamespace();",
+		"final index = const _IndexModuleNamespace();",
 		"final getResource = module_index.getResource;",
 	} {
 		assert.Contains(t, string(rootSDK), expected)
@@ -1323,7 +1323,7 @@ func TestPackageAddNamespaceDart(t *testing.T) {
 	configPath := filepath.Join(e.CWD, "sdks", "my-namespace-mypkg", "lib", "src", "config", "config.dart")
 	configSource, err := os.ReadFile(configPath)
 	require.NoError(t, err)
-	assert.Contains(t, string(configSource), "final config = ")
+	assert.Contains(t, string(configSource), "const config = ")
 
 	e.RunCommand("dart", "test")
 }
