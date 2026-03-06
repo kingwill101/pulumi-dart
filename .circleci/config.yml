@@ -84,7 +84,7 @@ jobs:
           name: Install Pulumi CLI
           command: |
             set -euo pipefail
-            curl -fsSL https://get.pulumi.com | sh
+            curl -fsSL https://get.pulumi.com | sh -s -- --version v3.225.1
             echo 'export PATH="$HOME/.pulumi/bin:$PATH"' >> "${BASH_ENV}"
             . "${BASH_ENV}"
             pulumi version
