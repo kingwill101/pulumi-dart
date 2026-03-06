@@ -14,7 +14,7 @@ class RepositoryAssociationRepositoryBitbucket {
   /// [connectionArn] The Amazon Resource Name (ARN) of an AWS CodeStar Connections connection.
   /// [name] The name of the third party source repository.
   /// [owner] The username for the account that owns the repository.
-  RepositoryAssociationRepositoryBitbucket({
+  const RepositoryAssociationRepositoryBitbucket({
     required this.connectionArn,
     required this.name,
     required this.owner,

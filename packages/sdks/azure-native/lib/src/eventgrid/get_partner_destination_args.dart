@@ -15,7 +15,7 @@ class GetPartnerDestinationArgs {
   /// Creates a new [GetPartnerDestinationArgs].
   /// [partnerDestinationName] Name of the partner destination.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerDestinationArgs({
+  const GetPartnerDestinationArgs({
     required this.partnerDestinationName,
     required this.resourceGroupName,
   });

@@ -24,7 +24,7 @@ class GetGroupsArgs {
   /// [nameRegex] A regex string to filter results by Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [provisionType] The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
-  GetGroupsArgs({
+  const GetGroupsArgs({
     required this.directoryId,
     this.ids,
     this.nameRegex,

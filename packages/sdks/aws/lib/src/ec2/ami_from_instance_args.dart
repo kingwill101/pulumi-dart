@@ -43,7 +43,7 @@ class AmiFromInstanceArgs {
   /// [snapshotWithoutReboot] Boolean that overrides the behavior of stopping
   /// [sourceInstanceId] ID of the instance to use as the basis of the AMI.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AmiFromInstanceArgs({
+  const AmiFromInstanceArgs({
     this.deprecationTime,
     this.description,
     this.ebsBlockDevices,

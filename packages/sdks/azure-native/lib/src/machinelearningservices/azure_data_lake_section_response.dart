@@ -44,7 +44,7 @@ class AzureDataLakeSectionResponse {
   /// [subscriptionId] Subscription ID.
   /// [tenantId] The ID of the tenant the service principal/app belongs to.
   /// [thumbprint] The thumbprint of the certificate above.
-  AzureDataLakeSectionResponse({
+  const AzureDataLakeSectionResponse({
     this.authorityUrl,
     this.certificate,
     this.clientId,

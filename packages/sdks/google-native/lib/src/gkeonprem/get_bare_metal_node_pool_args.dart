@@ -19,7 +19,7 @@ class GetBareMetalNodePoolArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetBareMetalNodePoolArgs({
+  const GetBareMetalNodePoolArgs({
     required this.bareMetalClusterId,
     required this.bareMetalNodePoolId,
     required this.location,

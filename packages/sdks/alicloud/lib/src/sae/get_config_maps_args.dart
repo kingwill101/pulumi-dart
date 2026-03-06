@@ -21,7 +21,7 @@ class GetConfigMapsArgs {
   /// [nameRegex] A regex string to filter results by Config Map name.
   /// [namespaceId] The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConfigMapsArgs({
+  const GetConfigMapsArgs({
     this.ids,
     this.nameRegex,
     required this.namespaceId,

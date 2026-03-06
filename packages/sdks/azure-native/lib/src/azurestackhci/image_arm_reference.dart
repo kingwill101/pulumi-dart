@@ -9,7 +9,7 @@ class ImageArmReference {
 
   /// Creates a new [ImageArmReference].
   /// [id] The Azure Resource ID for an image resource used by the virtual machine instance.
-  ImageArmReference({
+  const ImageArmReference({
     this.id,
   });
 

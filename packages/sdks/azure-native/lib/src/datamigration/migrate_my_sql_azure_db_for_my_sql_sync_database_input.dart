@@ -24,7 +24,7 @@ class MigrateMySqlAzureDbForMySqlSyncDatabaseInput {
   /// [tableMap] Mapping of source to target tables
   /// [targetDatabaseName] Name of target database. Note: Target database will be truncated before starting migration.
   /// [targetSetting] Target settings to tune target endpoint migration behavior
-  MigrateMySqlAzureDbForMySqlSyncDatabaseInput({
+  const MigrateMySqlAzureDbForMySqlSyncDatabaseInput({
     this.migrationSetting,
     this.name,
     this.sourceSetting,

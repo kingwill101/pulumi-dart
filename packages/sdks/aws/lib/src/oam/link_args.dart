@@ -30,7 +30,7 @@ class LinkArgs {
   /// [resourceTypes] Types of data that the source account shares with the monitoring account.
   /// [sinkIdentifier] Identifier of the sink to use to create this link.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LinkArgs({
+  const LinkArgs({
     required this.labelTemplate,
     this.linkConfiguration,
     this.region,

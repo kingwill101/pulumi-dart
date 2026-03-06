@@ -13,7 +13,7 @@ class VmwareAdminClusterPlatformConfigBundle {
   /// Creates a new [VmwareAdminClusterPlatformConfigBundle].
   /// [statuses] ResourceStatus representing detailed cluster state.
   /// [version] The version of the bundle.
-  VmwareAdminClusterPlatformConfigBundle({
+  const VmwareAdminClusterPlatformConfigBundle({
     this.statuses,
     this.version,
   });

@@ -24,7 +24,7 @@ class SqlStoredProcedureState {
   /// [databaseName] The name of the Cosmos DB SQL Database to create the stored procedure within. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Cosmos DB SQL Stored Procedure. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB SQL Database is created. Changing this forces a new resource to be created.
-  SqlStoredProcedureState({
+  const SqlStoredProcedureState({
     this.accountName,
     this.body,
     this.containerName,

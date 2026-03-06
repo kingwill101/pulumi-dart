@@ -24,7 +24,7 @@ class ServiceCIDRPatch {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec is the desired state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   /// [status] status represents the current state of the ServiceCIDR. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  ServiceCIDRPatch({
+  const ServiceCIDRPatch({
     this.apiVersion,
     this.kind,
     this.metadata,

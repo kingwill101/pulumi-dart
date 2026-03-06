@@ -8,7 +8,7 @@ class DomainFeaturesHyperVVapic {
 
   /// Creates a new [DomainFeaturesHyperVVapic].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVVapic({
+  const DomainFeaturesHyperVVapic({
     this.state,
   });
 

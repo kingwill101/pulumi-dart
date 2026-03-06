@@ -103,7 +103,7 @@ class VmwareAdminClusterArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [proxy] Configuration for proxy.
   /// [vcenter] Specifies vCenter config for the admin cluster.
-  VmwareAdminClusterArgs({
+  const VmwareAdminClusterArgs({
     this.addonNode,
     this.annotations,
     this.antiAffinityGroups,

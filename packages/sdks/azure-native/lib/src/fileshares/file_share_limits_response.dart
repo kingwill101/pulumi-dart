@@ -36,7 +36,7 @@ class FileShareLimitsResponse {
   /// [minProvisionedIOPerSec] The minimum provisioned IOPS (Input/Output Operations Per Second) for a file share.
   /// [minProvisionedStorageGiB] The minimum provisioned storage in GiB for a file share.
   /// [minProvisionedThroughputMiBPerSec] The minimum provisioned throughput in MiB/s for a file share.
-  FileShareLimitsResponse({
+  const FileShareLimitsResponse({
     required this.maxFileSharePrivateEndpointConnections,
     required this.maxFileShareSnapshots,
     required this.maxFileShareSubnets,

@@ -10,7 +10,7 @@ class AuthenticationResponse {
 
   /// Creates a new [AuthenticationResponse].
   /// [symmetricKey] Symmetric key for authentication.
-  AuthenticationResponse({
+  const AuthenticationResponse({
     this.symmetricKey,
   });
 

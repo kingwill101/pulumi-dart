@@ -55,7 +55,7 @@ class MuteConfigState {
   /// [parent] Resource name of the new mute configs's parent. Its format is
   /// [type] The type of the mute config, which determines what type of mute state the config affects.
   /// [updateTime] Output only. The most recent time at which the mute config was
-  MuteConfigState({
+  const MuteConfigState({
     this.createTime,
     this.description,
     this.expiryTime,

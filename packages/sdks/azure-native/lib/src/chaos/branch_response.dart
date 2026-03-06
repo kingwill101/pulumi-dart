@@ -13,7 +13,7 @@ class BranchResponse {
   /// Creates a new [BranchResponse].
   /// [actions] List of actions.
   /// [name] String of the branch name.
-  BranchResponse({
+  const BranchResponse({
     required this.actions,
     required this.name,
   });

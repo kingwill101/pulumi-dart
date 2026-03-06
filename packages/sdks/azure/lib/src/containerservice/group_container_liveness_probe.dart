@@ -27,7 +27,7 @@ class GroupContainerLivenessProbe {
   /// [periodSeconds] How often (in seconds) to perform the probe. Changing this forces a new resource to be created.
   /// [successThreshold] Minimum consecutive successes for the probe to be considered successful after having failed. Changing this forces a new resource to be created.
   /// [timeoutSeconds] Number of seconds after which the probe times out. Changing this forces a new resource to be created.
-  GroupContainerLivenessProbe({
+  const GroupContainerLivenessProbe({
     this.execs,
     this.failureThreshold,
     this.httpGets,

@@ -65,7 +65,7 @@ class AiInstanceArgs {
   /// [sslEnabled] Enable or disable SSL. Valid values:
   /// [status] The status of the instance. Valid values: `Running`, `Stopped`.
   /// [storageConfigLists] A list of storage configurations. See `storage_config_list` below.
-  AiInstanceArgs({
+  const AiInstanceArgs({
     required this.appName,
     required this.appType,
     this.authConfigLists,

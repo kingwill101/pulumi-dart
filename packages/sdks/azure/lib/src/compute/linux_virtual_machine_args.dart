@@ -211,7 +211,7 @@ class LinuxVirtualMachineArgs {
   /// [vmAgentPlatformUpdatesEnabled] Specifies whether VMAgent Platform Updates is enabled. Defaults to `false`.
   /// [vtpmEnabled] Specifies whether vTPM should be enabled on the virtual machine. Changing this forces a new resource to be created.
   /// [zone] Specifies the Availability Zones in which this Linux Virtual Machine should be located. Changing this forces a new Linux Virtual Machine to be created.
-  LinuxVirtualMachineArgs({
+  const LinuxVirtualMachineArgs({
     this.additionalCapabilities,
     this.adminPassword,
     this.adminSshKeys,

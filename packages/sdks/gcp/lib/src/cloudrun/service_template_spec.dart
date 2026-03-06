@@ -43,7 +43,7 @@ class ServiceTemplateSpec {
   /// [servingState] (Output, Deprecated)
   /// [timeoutSeconds] TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
   /// [volumes] Volume represents a named volume in a container.
-  ServiceTemplateSpec({
+  const ServiceTemplateSpec({
     this.containerConcurrency,
     this.containers,
     this.nodeSelector,

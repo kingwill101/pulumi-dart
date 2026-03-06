@@ -14,7 +14,7 @@ class GetBudgetResourceGroupFilterNotDimension {
   /// [name] The name of this Consumption Budget.
   /// [operator] The operator used for comparison.
   /// [values] A list of values for the tag.
-  GetBudgetResourceGroupFilterNotDimension({
+  const GetBudgetResourceGroupFilterNotDimension({
     required this.name,
     required this.operator,
     required this.values,

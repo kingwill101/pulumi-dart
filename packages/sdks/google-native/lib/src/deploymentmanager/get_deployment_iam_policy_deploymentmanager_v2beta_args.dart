@@ -15,7 +15,7 @@ class GetDeploymentIamPolicyDeploymentmanagerV2betaArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetDeploymentIamPolicyDeploymentmanagerV2betaArgs({
+  const GetDeploymentIamPolicyDeploymentmanagerV2betaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

@@ -24,7 +24,7 @@ class GetEventConnectionResult {
   /// [name] Required.
   /// [region] Required.
   /// [secretArn] ARN of the secret created from the authorization parameters specified for the connection.
-  GetEventConnectionResult({
+  const GetEventConnectionResult({
     required this.arn,
     required this.authorizationType,
     required this.id,

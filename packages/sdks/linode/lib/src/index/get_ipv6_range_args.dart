@@ -12,7 +12,7 @@ class GetIpv6RangeArgs {
 
   /// Creates a new [GetIpv6RangeArgs].
   /// [range] The IPv6 range to retrieve information about.
-  GetIpv6RangeArgs({
+  const GetIpv6RangeArgs({
     required this.range,
   });
 

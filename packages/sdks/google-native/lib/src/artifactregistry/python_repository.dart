@@ -10,7 +10,7 @@ class PythonRepository {
 
   /// Creates a new [PythonRepository].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.
-  PythonRepository({
+  const PythonRepository({
     this.publicRepository,
   });
 

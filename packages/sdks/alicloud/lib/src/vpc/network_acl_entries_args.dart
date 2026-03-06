@@ -20,7 +20,7 @@ class NetworkAclEntriesArgs {
   /// [egresses] List of the egress entries of the network acl. The order of the egress entries determines the priority. See `egress` below.
   /// [ingresses] List of the ingress entries of the network acl. The order of the ingress entries determines the priority. See `ingress` below.
   /// [networkAclId] The id of the network acl, the field can't be changed.
-  NetworkAclEntriesArgs({
+  const NetworkAclEntriesArgs({
     this.egresses,
     this.ingresses,
     required this.networkAclId,

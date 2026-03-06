@@ -20,7 +20,7 @@ class GetHcVpnGatewayVpnInterface {
   /// [id] The numeric ID of this VPN gateway interface.
   /// [interconnectAttachment] URL of the interconnect attachment resource. When the value
   /// [ipAddress] The external IP address for this VPN gateway interface.
-  GetHcVpnGatewayVpnInterface({
+  const GetHcVpnGatewayVpnInterface({
     required this.id,
     required this.interconnectAttachment,
     required this.ipAddress,

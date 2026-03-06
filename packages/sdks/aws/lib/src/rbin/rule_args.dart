@@ -38,7 +38,7 @@ class RuleArgs {
   /// [resourceType] Resource type to be retained by the retention rule. Valid values are `EBS_SNAPSHOT` and `EC2_IMAGE`.
   /// [retentionPeriod] Information about the retention period for which the retention rule is to retain resources. See `retention_period` below.
   /// [tags] Optional.
-  RuleArgs({
+  const RuleArgs({
     this.description,
     this.excludeResourceTags,
     this.lockConfiguration,

@@ -14,7 +14,7 @@ class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject {
   /// [bucket] Bucket of the Cloud Storage object.
   /// [generationNumber] Generation number of the Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   /// [object_] Name of the Cloud Storage object.
-  PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject({
+  const PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject({
     required this.bucket,
     required this.generationNumber,
     required this.object_,

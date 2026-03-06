@@ -12,7 +12,7 @@ class Package {
   /// Creates a new [Package].
   /// [location] The resource to read the package from. The supported resource type is: Google Cloud Storage: storage.googleapis.com/{bucket} bucket.storage.googleapis.com/
   /// [name] The name of the package.
-  Package({
+  const Package({
     this.location,
     this.name,
   });

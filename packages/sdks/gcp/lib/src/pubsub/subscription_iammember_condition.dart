@@ -11,7 +11,7 @@ class SubscriptionIAMMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  SubscriptionIAMMemberCondition({
+  const SubscriptionIAMMemberCondition({
     this.description,
     required this.expression,
     required this.title,

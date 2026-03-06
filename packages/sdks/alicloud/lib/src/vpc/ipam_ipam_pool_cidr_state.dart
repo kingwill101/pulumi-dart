@@ -17,7 +17,7 @@ class IpamIpamPoolCidrState {
   /// [cidr] The CIDR address segment to be preset.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [status] The status of the resource
-  IpamIpamPoolCidrState({
+  const IpamIpamPoolCidrState({
     this.cidr,
     this.ipamPoolId,
     this.status,

@@ -13,7 +13,7 @@ class WireGroupWireWireProperty {
   /// Creates a new [WireGroupWireWireProperty].
   /// [bandwidthUnmetered] The unmetered bandwidth setting.
   /// [faultResponse] Response when a fault is detected in a pseudowire:
-  WireGroupWireWireProperty({
+  const WireGroupWireWireProperty({
     this.bandwidthUnmetered,
     this.faultResponse,
   });

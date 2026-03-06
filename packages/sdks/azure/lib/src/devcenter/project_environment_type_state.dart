@@ -32,7 +32,7 @@ class ProjectEnvironmentTypeState {
   /// [name] Specifies the name of this Dev Center Project Environment Type. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Project Environment Type.
   /// [userRoleAssignments] A `user_role_assignment` block as defined below.
-  ProjectEnvironmentTypeState({
+  const ProjectEnvironmentTypeState({
     this.creatorRoleAssignmentRoles,
     this.deploymentTargetId,
     this.devCenterProjectId,

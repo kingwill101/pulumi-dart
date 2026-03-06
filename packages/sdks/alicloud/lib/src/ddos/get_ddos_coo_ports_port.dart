@@ -23,7 +23,7 @@ class GetDdosCooPortsPort {
   /// [id] The ID of the Port.
   /// [instanceId] The DdosCoo instance ID.
   /// [realServers] List of source IP addresses.
-  GetDdosCooPortsPort({
+  const GetDdosCooPortsPort({
     required this.backendPort,
     required this.frontendPort,
     required this.frontendProtocol,

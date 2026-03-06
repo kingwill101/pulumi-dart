@@ -12,7 +12,7 @@ class GcsDataResponse {
   /// Creates a new [GcsDataResponse].
   /// [bucketName] Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
   /// [path] Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'. The root path value must meet [Object Name Requirements](/storage/docs/naming#objectnames).
-  GcsDataResponse({
+  const GcsDataResponse({
     required this.bucketName,
     required this.path,
   });

@@ -62,7 +62,7 @@ class GetSourceControlConfigurationResult {
   /// [sshKnownHostsContents] Base64-encoded known_hosts contents containing public SSH keys required to access private Git instances
   /// [systemData] Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSourceControlConfigurationResult({
+  const GetSourceControlConfigurationResult({
     required this.azureApiVersion,
     required this.complianceStatus,
     this.configurationProtectedSettings,

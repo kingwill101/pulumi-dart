@@ -9,7 +9,7 @@ class GetLogAnalyticExportRequestRateByIntervalResult {
 
   /// Creates a new [GetLogAnalyticExportRequestRateByIntervalResult].
   /// [properties] LogAnalyticsOutput
-  GetLogAnalyticExportRequestRateByIntervalResult({
+  const GetLogAnalyticExportRequestRateByIntervalResult({
     required this.properties,
   });
 

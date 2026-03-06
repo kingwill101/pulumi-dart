@@ -20,7 +20,7 @@ class GetNetworkArgs {
   /// [location] Location of the resource.
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
-  GetNetworkArgs({
+  const GetNetworkArgs({
     required this.location,
     required this.name,
     this.project,

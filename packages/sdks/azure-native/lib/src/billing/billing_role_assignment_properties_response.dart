@@ -96,7 +96,7 @@ class BillingRoleAssignmentPropertiesResponse {
   /// [scope] The scope at which the role was assigned.
   /// [userAuthenticationType] The authentication type of the user, whether Organization or MSA, of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
   /// [userEmailAddress] The email address of the user to whom the role was assigned. This is supported only for billing accounts with agreement type Enterprise Agreement.
-  BillingRoleAssignmentPropertiesResponse({
+  const BillingRoleAssignmentPropertiesResponse({
     required this.billingAccountDisplayName,
     required this.billingAccountId,
     required this.billingProfileDisplayName,

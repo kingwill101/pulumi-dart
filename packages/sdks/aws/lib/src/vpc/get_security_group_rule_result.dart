@@ -51,7 +51,7 @@ class GetSecurityGroupRuleResult {
   /// [securityGroupRuleId] Required.
   /// [tags] A map of tags assigned to the resource.
   /// [toPort] (Optional) The end of port range for the TCP and UDP protocols, or an ICMP/ICMPv6 code.
-  GetSecurityGroupRuleResult({
+  const GetSecurityGroupRuleResult({
     required this.arn,
     required this.cidrIpv4,
     required this.cidrIpv6,

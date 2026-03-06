@@ -34,7 +34,7 @@ class QueueArgs {
   /// [reservationPlanSettings] A detail pricing plan of the  reserved queue. See below.
   /// [status] A status of the queue. Valid values are `ACTIVE` or `RESERVED`. Default to `PAUSED`.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  QueueArgs({
+  const QueueArgs({
     this.concurrentJobs,
     this.description,
     this.name,

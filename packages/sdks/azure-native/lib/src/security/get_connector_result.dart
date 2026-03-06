@@ -25,7 +25,7 @@ class GetConnectorResult {
   /// [id] Resource Id
   /// [name] Resource name
   /// [type] Resource type
-  GetConnectorResult({
+  const GetConnectorResult({
     this.authenticationDetails,
     required this.azureApiVersion,
     this.hybridComputeSettings,

@@ -201,7 +201,7 @@ class ManagedKubernetesState {
   /// [workerRamRoleName] The RamRole Name attached to worker node.
   /// [workerVswitchIds] The vSwitches used by control plane. Modification after creation will not take effect. Please use `vswitch_ids` to managed control plane vSwitches, which supports modifying control plane vSwitches.
   /// [zoneIds] The IDs of the zone in which the cluster control plane is deployed. ACK automatically creates a VPC in the region and vSwitches in the specified zones. Only works for **Create** Operation. Do not specify this with `vswitch_ids` together.
-  ManagedKubernetesState({
+  const ManagedKubernetesState({
     this.addons,
     this.apiAudiences,
     this.auditLogConfig,

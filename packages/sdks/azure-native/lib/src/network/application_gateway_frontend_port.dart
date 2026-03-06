@@ -15,7 +15,7 @@ class ApplicationGatewayFrontendPort {
   /// [id] Resource ID.
   /// [name] Name of the frontend port that is unique within an Application Gateway.
   /// [port] Frontend port.
-  ApplicationGatewayFrontendPort({
+  const ApplicationGatewayFrontendPort({
     this.id,
     this.name,
     this.port,

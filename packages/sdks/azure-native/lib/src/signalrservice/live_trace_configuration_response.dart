@@ -17,7 +17,7 @@ class LiveTraceConfigurationResponse {
   /// Creates a new [LiveTraceConfigurationResponse].
   /// [categories] Gets or sets the list of category configurations.
   /// [enabled] Indicates whether or not enable live trace.
-  LiveTraceConfigurationResponse({
+  const LiveTraceConfigurationResponse({
     this.categories,
     this.enabled,
   });

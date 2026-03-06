@@ -15,7 +15,7 @@ class GetVpcCidrBlockAssociation {
   /// [associationId] Association ID for the IPv4 CIDR block.
   /// [cidrBlock] Cidr block of the desired VPC.
   /// [state] Current state of the desired VPC.
-  GetVpcCidrBlockAssociation({
+  const GetVpcCidrBlockAssociation({
     required this.associationId,
     required this.cidrBlock,
     required this.state,

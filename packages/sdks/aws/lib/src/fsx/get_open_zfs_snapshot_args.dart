@@ -29,7 +29,7 @@ class GetOpenZfsSnapshotArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotIds] Returns information on a specific snapshot_id.
   /// [tags] List of Tag values, with a maximum of 50 elements.
-  GetOpenZfsSnapshotArgs({
+  const GetOpenZfsSnapshotArgs({
     this.filters,
     this.mostRecent,
     this.name,

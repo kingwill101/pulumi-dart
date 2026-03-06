@@ -47,7 +47,7 @@ class GetAiIndexResult {
   /// [pulumiLabels] Required.
   /// [region] Required.
   /// [updateTime] Required.
-  GetAiIndexResult({
+  const GetAiIndexResult({
     required this.createTime,
     required this.deployedIndexes,
     required this.description,

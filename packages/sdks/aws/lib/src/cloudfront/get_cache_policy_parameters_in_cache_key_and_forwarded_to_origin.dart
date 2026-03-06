@@ -23,7 +23,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOrigin {
   /// [enableAcceptEncodingGzip] A flag that can affect whether the Accept-Encoding HTTP header is included in the cache key and included in requests that CloudFront sends to the origin.
   /// [headersConfigs] Object that determines whether any HTTP headers (and if so, which headers) are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Headers Config for more information.
   /// [queryStringsConfigs] Object that determines whether any URL query strings in viewer requests (and if so, which query strings) are included in the cache key and automatically included in requests that CloudFront sends to the origin. See Query String Config for more information.
-  GetCachePolicyParametersInCacheKeyAndForwardedToOrigin({
+  const GetCachePolicyParametersInCacheKeyAndForwardedToOrigin({
     required this.cookiesConfigs,
     required this.enableAcceptEncodingBrotli,
     required this.enableAcceptEncodingGzip,

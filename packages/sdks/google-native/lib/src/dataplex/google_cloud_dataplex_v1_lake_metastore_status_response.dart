@@ -18,7 +18,7 @@ class GoogleCloudDataplexV1LakeMetastoreStatusResponse {
   /// [message] Additional information about the current status.
   /// [state] Current state of association.
   /// [updateTime] Last update time of the metastore status of the lake.
-  GoogleCloudDataplexV1LakeMetastoreStatusResponse({
+  const GoogleCloudDataplexV1LakeMetastoreStatusResponse({
     required this.endpoint,
     required this.message,
     required this.state,

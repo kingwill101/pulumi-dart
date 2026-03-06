@@ -9,7 +9,7 @@ class MavenRepositoryResponse {
 
   /// Creates a new [MavenRepositoryResponse].
   /// [publicRepository] One of the publicly available Maven repositories supported by Artifact Registry.
-  MavenRepositoryResponse({
+  const MavenRepositoryResponse({
     required this.publicRepository,
   });
 

@@ -17,7 +17,7 @@ class GetControlArgs {
   /// [controlId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetControlArgs({
+  const GetControlArgs({
     required this.catalogId,
     required this.controlId,
     required this.location,

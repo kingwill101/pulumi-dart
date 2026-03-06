@@ -17,7 +17,7 @@ class GetWindowsFunctionAppAuthSettingsV2GoogleV2 {
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
   /// [loginScopes] The list of Login scopes that are requested as part of Microsoft Account authentication.
-  GetWindowsFunctionAppAuthSettingsV2GoogleV2({
+  const GetWindowsFunctionAppAuthSettingsV2GoogleV2({
     required this.allowedAudiences,
     required this.clientId,
     required this.clientSecretSettingName,

@@ -15,7 +15,7 @@ class GetElasticBeanstalkApplicationArgs {
   /// Creates a new [GetElasticBeanstalkApplicationArgs].
   /// [name] Name of ElasticBeanstalkApplication
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticBeanstalkApplicationArgs({
+  const GetElasticBeanstalkApplicationArgs({
     required this.name,
     required this.resourceGroupName,
   });

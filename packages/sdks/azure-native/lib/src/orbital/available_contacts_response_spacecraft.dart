@@ -9,7 +9,7 @@ class AvailableContactsResponseSpacecraft {
 
   /// Creates a new [AvailableContactsResponseSpacecraft].
   /// [id] Resource ID.
-  AvailableContactsResponseSpacecraft({
+  const AvailableContactsResponseSpacecraft({
     required this.id,
   });
 

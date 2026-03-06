@@ -24,7 +24,7 @@ class EventResponse {
   /// [message] The event message.
   /// [name] The event name.
   /// [type] The event type.
-  EventResponse({
+  const EventResponse({
     required this.count,
     required this.firstTimestamp,
     required this.lastTimestamp,

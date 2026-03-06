@@ -17,7 +17,7 @@ class ReservationShareSettings {
   /// [projectMaps] A map of project number and project config. This is only valid when shareType's value is SPECIFIC_PROJECTS.
   /// [projects] List of project IDs with which the reservation is shared.
   /// [shareType] Type of sharing for this shared-reservation
-  ReservationShareSettings({
+  const ReservationShareSettings({
     this.projectMaps,
     this.projects,
     this.shareType,

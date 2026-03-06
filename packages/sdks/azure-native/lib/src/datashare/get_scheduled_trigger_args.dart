@@ -21,7 +21,7 @@ class GetScheduledTriggerArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
   /// [triggerName] The name of the trigger.
-  GetScheduledTriggerArgs({
+  const GetScheduledTriggerArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.shareSubscriptionName,

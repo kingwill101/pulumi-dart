@@ -20,7 +20,7 @@ class TransitRouterRouteTablePropagationState {
   /// [status] The associating status of the network.
   /// [transitRouterAttachmentId] The ID the transit router attachment.
   /// [transitRouterRouteTableId] The ID of the transit router route table.
-  TransitRouterRouteTablePropagationState({
+  const TransitRouterRouteTablePropagationState({
     this.dryRun,
     this.status,
     this.transitRouterAttachmentId,

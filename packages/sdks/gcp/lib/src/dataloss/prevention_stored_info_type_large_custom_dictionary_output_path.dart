@@ -8,7 +8,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryOutputPath {
 
   /// Creates a new [PreventionStoredInfoTypeLargeCustomDictionaryOutputPath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  PreventionStoredInfoTypeLargeCustomDictionaryOutputPath({
+  const PreventionStoredInfoTypeLargeCustomDictionaryOutputPath({
     required this.path,
   });
 

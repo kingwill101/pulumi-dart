@@ -10,7 +10,7 @@ class WireGroupTopology {
 
   /// Creates a new [WireGroupTopology].
   /// [endpoints] Endpoints grouped by location, each mapping to interconnect configurations.
-  WireGroupTopology({
+  const WireGroupTopology({
     this.endpoints,
   });
 

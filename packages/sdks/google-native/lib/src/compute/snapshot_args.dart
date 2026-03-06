@@ -64,7 +64,7 @@ class SnapshotArgs {
   /// [sourceInstantSnapshot] The source instant snapshot used to create this snapshot. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instantSnapshots/instantSnapshot - projects/project/zones/zone/instantSnapshots/instantSnapshot - zones/zone/instantSnapshots/instantSnapshot
   /// [sourceInstantSnapshotEncryptionKey] Customer provided encryption key when creating Snapshot from Instant Snapshot.
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
-  SnapshotArgs({
+  const SnapshotArgs({
     this.chainName,
     this.description,
     this.enableConfidentialCompute,

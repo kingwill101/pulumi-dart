@@ -16,7 +16,7 @@ class StaticSiteIdentity {
   /// [principalId] (Optional) The Principal ID associated with this Managed Service Identity.
   /// [tenantId] Optional.
   /// [type] The Type of Managed Identity assigned to this Static Site resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  StaticSiteIdentity({
+  const StaticSiteIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

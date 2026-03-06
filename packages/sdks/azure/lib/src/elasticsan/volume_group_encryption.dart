@@ -20,7 +20,7 @@ class VolumeGroupEncryption {
   /// [keyVaultKeyId] The Key Vault key URI for Customer Managed Key encryption, which can be either a full URI or a versionless URI.
   /// [lastKeyRotationTimestamp] The timestamp of the last rotation of the Key Vault Key.
   /// [userAssignedIdentityId] The ID of the User Assigned Identity used by this Elastic SAN Volume Group.
-  VolumeGroupEncryption({
+  const VolumeGroupEncryption({
     this.currentVersionedKeyExpirationTimestamp,
     this.currentVersionedKeyId,
     required this.keyVaultKeyId,

@@ -13,7 +13,7 @@ class GetTableSchemaCompositePartitionKey {
   /// [enforcementInRecord] Required.
   /// [name] Name of the Timestream table.
   /// [type] Type of partition key.
-  GetTableSchemaCompositePartitionKey({
+  const GetTableSchemaCompositePartitionKey({
     required this.enforcementInRecord,
     required this.name,
     required this.type,

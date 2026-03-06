@@ -11,7 +11,7 @@ class CapacityProviderVpcConfig {
   /// Creates a new [CapacityProviderVpcConfig].
   /// [securityGroupIds] List of security group IDs for the VPC.
   /// [subnetIds] List of subnet IDs for the VPC.
-  CapacityProviderVpcConfig({
+  const CapacityProviderVpcConfig({
     required this.securityGroupIds,
     required this.subnetIds,
   });

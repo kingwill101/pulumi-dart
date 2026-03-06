@@ -21,7 +21,7 @@ class AppAttachmentArgs {
   /// [appId] The app that apply to the authorization.
   /// [groupId] The group that the api belongs to.
   /// [stageName] Stage that the app apply to access.
-  AppAttachmentArgs({
+  const AppAttachmentArgs({
     required this.apiId,
     required this.appId,
     required this.groupId,

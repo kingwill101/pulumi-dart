@@ -13,7 +13,7 @@ class GetSinksResult {
   /// [arns] Set of ARN of the Sinks.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetSinksResult({
+  const GetSinksResult({
     required this.arns,
     required this.id,
     required this.region,

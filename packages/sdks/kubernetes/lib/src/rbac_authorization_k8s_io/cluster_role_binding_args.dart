@@ -27,7 +27,7 @@ class ClusterRoleBindingArgs {
   /// [metadata] Standard object's metadata.
   /// [roleRef] RoleRef can only reference a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
   /// [subjects] Subjects holds references to the objects the role applies to.
-  ClusterRoleBindingArgs({
+  const ClusterRoleBindingArgs({
     this.apiVersion,
     this.kind,
     this.metadata,

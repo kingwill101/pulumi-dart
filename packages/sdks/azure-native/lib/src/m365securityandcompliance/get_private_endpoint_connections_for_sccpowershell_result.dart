@@ -32,7 +32,7 @@ class GetPrivateEndpointConnectionsForSCCPowershellResult {
   /// [provisioningState] The provisioning state of the private endpoint connection resource.
   /// [systemData] Required property for system data
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateEndpointConnectionsForSCCPowershellResult({
+  const GetPrivateEndpointConnectionsForSCCPowershellResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

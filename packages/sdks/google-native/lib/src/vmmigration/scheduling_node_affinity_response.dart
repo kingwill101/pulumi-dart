@@ -15,7 +15,7 @@ class SchedulingNodeAffinityResponse {
   /// [key] The label key of Node resource to reference.
   /// [operator] The operator to use for the node resources specified in the `values` parameter.
   /// [values] Corresponds to the label values of Node resource.
-  SchedulingNodeAffinityResponse({
+  const SchedulingNodeAffinityResponse({
     required this.key,
     required this.operator,
     required this.values,

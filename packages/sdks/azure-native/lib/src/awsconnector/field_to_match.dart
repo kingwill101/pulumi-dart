@@ -19,7 +19,7 @@ class FieldToMatch {
   /// [queryString] Inspect the query string. This is the part of a URL that appears after a ? character, if any.
   /// [singleHeader] Inspect a single header. Provide the name of the header to inspect, for example, User-Agent or Referer. This setting isn't case sensitive.
   /// [uriPath] Inspect the request URI path. This is the part of a web request that identifies a resource, for example, /images/daily-ad.jpg.
-  FieldToMatch({
+  const FieldToMatch({
     this.method,
     this.queryString,
     this.singleHeader,

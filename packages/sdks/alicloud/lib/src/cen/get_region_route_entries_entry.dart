@@ -20,7 +20,7 @@ class GetRegionRouteEntriesEntry {
   /// [nextHopRegionId] ID of the region where the next hop is located.
   /// [nextHopType] Type of the next hop.
   /// [type] Type of the route entry.
-  GetRegionRouteEntriesEntry({
+  const GetRegionRouteEntriesEntry({
     required this.cidrBlock,
     required this.nextHopId,
     required this.nextHopRegionId,

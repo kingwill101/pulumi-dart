@@ -16,7 +16,7 @@ class MetricMetricDescriptorLabel {
   /// [description] A human-readable description for the label.
   /// [key] The label key.
   /// [valueType] The type of data that can be assigned to the label.
-  MetricMetricDescriptorLabel({
+  const MetricMetricDescriptorLabel({
     this.description,
     required this.key,
     this.valueType,

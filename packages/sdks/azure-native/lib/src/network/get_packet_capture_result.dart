@@ -55,7 +55,7 @@ class GetPacketCaptureResult {
   /// [targetType] Target type of the resource provided.
   /// [timeLimitInSeconds] Maximum duration of the capture session in seconds.
   /// [totalBytesPerSession] Maximum size of the capture output.
-  GetPacketCaptureResult({
+  const GetPacketCaptureResult({
     required this.azureApiVersion,
     this.bytesToCapturePerPacket,
     this.captureSettings,

@@ -25,7 +25,7 @@ class GetListingIamPolicyArgs {
   /// [listingId] Used to find the parent resource to bind the IAM policy to
   /// [location] The name of the location this data exchange listing.
   /// [project] The ID of the project in which the resource belongs.
-  GetListingIamPolicyArgs({
+  const GetListingIamPolicyArgs({
     required this.dataExchangeId,
     required this.listingId,
     this.location,

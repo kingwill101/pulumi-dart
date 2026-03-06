@@ -25,7 +25,7 @@ class GetResourceTypesTypeHandlers {
   /// [gets] Query operation association information.
   /// [lists] List operation association information.
   /// [updates] Update operation association information.
-  GetResourceTypesTypeHandlers({
+  const GetResourceTypesTypeHandlers({
     required this.creates,
     required this.deletes,
     required this.gets,

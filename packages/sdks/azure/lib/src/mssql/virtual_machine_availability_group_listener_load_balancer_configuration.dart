@@ -22,7 +22,7 @@ class VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration {
   /// [probePort] The probe port of the listener. Changing this forces a new resource to be created.
   /// [sqlVirtualMachineIds] Specifies a list of SQL Virtual Machine IDs. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet to create the listener. Changing this forces a new resource to be created.
-  VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration({
+  const VirtualMachineAvailabilityGroupListenerLoadBalancerConfiguration({
     required this.loadBalancerId,
     required this.privateIpAddress,
     required this.probePort,

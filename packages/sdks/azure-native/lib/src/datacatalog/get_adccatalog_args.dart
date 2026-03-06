@@ -15,7 +15,7 @@ class GetADCCatalogArgs {
   /// Creates a new [GetADCCatalogArgs].
   /// [catalogName] The name of the data catalog in the specified subscription and resource group.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetADCCatalogArgs({
+  const GetADCCatalogArgs({
     required this.catalogName,
     required this.resourceGroupName,
   });

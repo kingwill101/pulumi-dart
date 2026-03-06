@@ -15,7 +15,7 @@ class GetPrometheusRuleGroupArgs {
   /// Creates a new [GetPrometheusRuleGroupArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleGroupName] The name of the rule group.
-  GetPrometheusRuleGroupArgs({
+  const GetPrometheusRuleGroupArgs({
     required this.resourceGroupName,
     required this.ruleGroupName,
   });

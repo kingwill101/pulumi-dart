@@ -21,7 +21,7 @@ class RequiredTrafficResponse {
   /// [ips] The ip list of required traffic
   /// [port] The port of required traffic
   /// [protocol] The protocol of required traffic
-  RequiredTrafficResponse({
+  const RequiredTrafficResponse({
     required this.direction,
     required this.fqdns,
     required this.ips,

@@ -64,7 +64,7 @@ class VpcEndpointArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointType] The VPC endpoint type, `Gateway`, `GatewayLoadBalancer`,`Interface`, `Resource` or `ServiceNetwork`. Defaults to `Gateway`.
   /// [vpcId] The ID of the VPC in which the endpoint will be used.
-  VpcEndpointArgs({
+  const VpcEndpointArgs({
     this.autoAccept,
     this.dnsOptions,
     this.ipAddressType,

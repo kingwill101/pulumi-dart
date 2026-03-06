@@ -123,7 +123,7 @@ class VolumeArgs {
   /// [throughputMibps] Optional. Custom Performance Total Throughput of the pool (in MiB/s).
   /// [tieringPolicy] Tiering policy for the volume.
   /// [unixPermissions] Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
-  VolumeArgs({
+  const VolumeArgs({
     this.backupConfig,
     this.blockDevices,
     this.cacheParameters,

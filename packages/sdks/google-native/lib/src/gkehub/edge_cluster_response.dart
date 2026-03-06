@@ -9,7 +9,7 @@ class EdgeClusterResponse {
 
   /// Creates a new [EdgeClusterResponse].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  EdgeClusterResponse({
+  const EdgeClusterResponse({
     required this.resourceLink,
   });
 

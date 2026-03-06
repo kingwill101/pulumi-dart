@@ -14,7 +14,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNode
   /// Creates a new [BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The labels assigned to nodes of this node pool.
   /// [nodeIp] (Optional)
-  BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig({
     this.labels,
     this.nodeIp,
   });

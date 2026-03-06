@@ -11,7 +11,7 @@ class ForwardingRuleServiceDirectoryRegistrations {
   /// Creates a new [ForwardingRuleServiceDirectoryRegistrations].
   /// [namespace] Service Directory namespace to register the forwarding rule under.
   /// [service] Service Directory service to register the forwarding rule under.
-  ForwardingRuleServiceDirectoryRegistrations({
+  const ForwardingRuleServiceDirectoryRegistrations({
     this.namespace,
     this.service,
   });

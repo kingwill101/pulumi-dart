@@ -20,7 +20,7 @@ class DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec {
   /// [sagemakerImageArn] The ARN of the SageMaker AI image that the image version belongs to.
   /// [sagemakerImageVersionAlias] The SageMaker AI Image Version Alias.
   /// [sagemakerImageVersionArn] The ARN of the image version created on the instance.
-  DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec({
+  const DomainDomainSettingsRStudioServerProDomainSettingsDefaultResourceSpec({
     this.instanceType,
     this.lifecycleConfigArn,
     this.sagemakerImageArn,

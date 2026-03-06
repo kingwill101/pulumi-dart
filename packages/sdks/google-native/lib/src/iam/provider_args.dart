@@ -45,7 +45,7 @@ class ProviderArgs {
   /// [saml] An SAML 2.0 identity provider.
   /// [workloadIdentityPoolId] Required.
   /// [workloadIdentityPoolProviderId] Required. The ID for the provider, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  ProviderArgs({
+  const ProviderArgs({
     this.attributeCondition,
     this.attributeMapping,
     this.aws,

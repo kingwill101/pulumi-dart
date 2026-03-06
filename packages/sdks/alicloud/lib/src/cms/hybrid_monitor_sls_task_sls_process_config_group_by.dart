@@ -11,7 +11,7 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
   /// Creates a new [HybridMonitorSlsTaskSlsProcessConfigGroupBy].
   /// [alias] The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
   /// [slsKeyName] The name of the key that is used to filter logs imported from Log Service.
-  HybridMonitorSlsTaskSlsProcessConfigGroupBy({
+  const HybridMonitorSlsTaskSlsProcessConfigGroupBy({
     this.alias,
     this.slsKeyName,
   });

@@ -30,7 +30,7 @@ class UserAssignedIdentityState {
   /// [resourceGroupName] Specifies the name of the Resource Group within which this User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
   /// [tags] A mapping of tags which should be assigned to the User Assigned Identity.
   /// [tenantId] The ID of the Tenant which the Identity belongs to.
-  UserAssignedIdentityState({
+  const UserAssignedIdentityState({
     this.clientId,
     this.isolationScope,
     this.location,

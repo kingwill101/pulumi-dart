@@ -10,7 +10,7 @@ class Tpu {
 
   /// Creates a new [Tpu].
   /// [nodeSpec] The TPU node(s) being requested.
-  Tpu({
+  const Tpu({
     this.nodeSpec,
   });
 

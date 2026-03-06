@@ -11,7 +11,7 @@ class InstanceFromTemplateServiceAccount {
   /// Creates a new [InstanceFromTemplateServiceAccount].
   /// [email] The service account e-mail address.
   /// [scopes] A list of service scopes.
-  InstanceFromTemplateServiceAccount({
+  const InstanceFromTemplateServiceAccount({
     this.email,
     required this.scopes,
   });

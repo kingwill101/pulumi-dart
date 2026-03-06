@@ -15,7 +15,7 @@ class MaintenanceScheduleResponse {
   /// [endTime] The end time of any upcoming scheduled maintenance for this instance.
   /// [scheduleDeadlineTime] The deadline that the maintenance schedule start time can not go beyond, including reschedule.
   /// [startTime] The start time of any upcoming scheduled maintenance for this instance.
-  MaintenanceScheduleResponse({
+  const MaintenanceScheduleResponse({
     required this.endTime,
     required this.scheduleDeadlineTime,
     required this.startTime,

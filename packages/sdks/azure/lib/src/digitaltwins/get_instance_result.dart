@@ -21,7 +21,7 @@ class GetInstanceResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Digital Twins instance.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.hostName,
     required this.id,
     required this.location,

@@ -39,7 +39,7 @@ class CapacityPoolArgs {
   /// [serviceLevel] The service level of the file system
   /// [size] Provisioned size of the pool (in bytes). Allowed values are in 1TiB chunks (value must be multiple of 1099511627776).
   /// [tags] Resource tags.
-  CapacityPoolArgs({
+  const CapacityPoolArgs({
     required this.accountName,
     this.coolAccess,
     this.encryptionType,

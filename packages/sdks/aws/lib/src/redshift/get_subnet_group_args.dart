@@ -18,7 +18,7 @@ class GetSubnetGroupArgs {
   /// [name] Name of the cluster subnet group for which information is requested.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags associated to the Subnet Group
-  GetSubnetGroupArgs({
+  const GetSubnetGroupArgs({
     required this.name,
     this.region,
     this.tags,

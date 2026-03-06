@@ -15,7 +15,7 @@ class AssistantCustomerPolicy {
   /// Creates a new [AssistantCustomerPolicy].
   /// [bannedPhrases] List of banned phrases.
   /// [modelArmorConfig] Model Armor configuration to be used for sanitizing user prompts and assistant responses.
-  AssistantCustomerPolicy({
+  const AssistantCustomerPolicy({
     this.bannedPhrases,
     this.modelArmorConfig,
   });

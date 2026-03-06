@@ -24,7 +24,7 @@ class ConsumerGroupArgs {
   /// [instanceId] ID of the ALIKAFKA Instance that owns the groups.
   /// [remark] The remark of the resource.
   /// [tags] A mapping of tags to assign to the resource.
-  ConsumerGroupArgs({
+  const ConsumerGroupArgs({
     required this.consumerId,
     this.description,
     required this.instanceId,

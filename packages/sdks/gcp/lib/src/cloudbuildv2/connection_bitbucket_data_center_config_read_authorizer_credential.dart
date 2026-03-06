@@ -12,7 +12,7 @@ class ConnectionBitbucketDataCenterConfigReadAuthorizerCredential {
   /// Creates a new [ConnectionBitbucketDataCenterConfigReadAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   /// [username] (Output)
-  ConnectionBitbucketDataCenterConfigReadAuthorizerCredential({
+  const ConnectionBitbucketDataCenterConfigReadAuthorizerCredential({
     required this.userTokenSecretVersion,
     this.username,
   });

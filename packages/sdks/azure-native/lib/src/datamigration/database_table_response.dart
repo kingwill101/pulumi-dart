@@ -12,7 +12,7 @@ class DatabaseTableResponse {
   /// Creates a new [DatabaseTableResponse].
   /// [hasRows] Indicates whether table is empty or not
   /// [name] Schema-qualified name of the table
-  DatabaseTableResponse({
+  const DatabaseTableResponse({
     required this.hasRows,
     required this.name,
   });

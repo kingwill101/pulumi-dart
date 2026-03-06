@@ -36,7 +36,7 @@ class StorageAccountResponse {
   /// [name] The name of the storage account.
   /// [resourceId] The resource ID of storage account, only to be specified for Azure Data Lake Storage Gen 2.
   /// [saskey] The shared access signature key.
-  StorageAccountResponse({
+  const StorageAccountResponse({
     this.container,
     this.enableSecureChannel,
     this.fileSystem,

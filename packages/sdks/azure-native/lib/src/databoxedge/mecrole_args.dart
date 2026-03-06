@@ -35,7 +35,7 @@ class MECRoleArgs {
   /// [resourceGroupName] The resource group name.
   /// [resourceUniqueId] Unique Id of the Resource.
   /// [roleStatus] Role status.
-  MECRoleArgs({
+  const MECRoleArgs({
     this.connectionString,
     this.controllerEndpoint,
     required this.deviceName,

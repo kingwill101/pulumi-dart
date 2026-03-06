@@ -23,7 +23,7 @@ class GetIntegrationRuntimeConnectionInfoResult {
   /// [publicKey] The public key for encrypting a credential when transferring the credential to the integration runtime.
   /// [serviceToken] The token generated in service. Callers use this token to authenticate to integration runtime.
   /// [version] The integration runtime version.
-  GetIntegrationRuntimeConnectionInfoResult({
+  const GetIntegrationRuntimeConnectionInfoResult({
     required this.hostServiceUri,
     required this.identityCertThumbprint,
     required this.isIdentityCertExprired,

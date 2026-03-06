@@ -17,7 +17,7 @@ class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguratio
   /// [logGroup] Name of the log group in Amazon CloudWatch Logs where you want to publish your logs.
   /// [logStreamNamePrefix] Prefix for the CloudWatch log stream name.
   /// [logTypes] Repeatable block defining log types to be delivered to CloudWatch.
-  WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration({
+  const WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguration({
     required this.enabled,
     this.logGroup,
     this.logStreamNamePrefix,

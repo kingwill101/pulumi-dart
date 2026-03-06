@@ -25,7 +25,7 @@ class CustomerEventArgs {
   /// [receivers] The notification event receivers.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  CustomerEventArgs({
+  const CustomerEventArgs({
     this.customerEventName,
     required this.eventName,
     required this.receivers,

@@ -25,7 +25,7 @@ class LogDeliveryConfigurationLogConfiguration {
   /// [firehoseConfiguration] Configuration for Kinesis Data Firehose delivery. See Firehose Configuration below.
   /// [logLevel] The log level to set for the event source. Valid values are `ERROR` and `INFO`.
   /// [s3Configuration] Configuration for S3 delivery. See S3 Configuration below.
-  LogDeliveryConfigurationLogConfiguration({
+  const LogDeliveryConfigurationLogConfiguration({
     this.cloudWatchLogsConfiguration,
     required this.eventSource,
     this.firehoseConfiguration,

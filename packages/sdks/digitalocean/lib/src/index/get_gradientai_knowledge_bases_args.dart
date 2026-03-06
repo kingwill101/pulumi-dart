@@ -15,7 +15,7 @@ class GetGradientaiKnowledgeBasesArgs {
   /// Creates a new [GetGradientaiKnowledgeBasesArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGradientaiKnowledgeBasesArgs({
+  const GetGradientaiKnowledgeBasesArgs({
     this.filters,
     this.sorts,
   });

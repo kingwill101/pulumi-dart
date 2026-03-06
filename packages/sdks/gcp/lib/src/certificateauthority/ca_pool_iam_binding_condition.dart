@@ -13,7 +13,7 @@ class CaPoolIamBindingCondition {
   /// [description] Optional.
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [title] A title for the expression, i.e. a short string describing its purpose.
-  CaPoolIamBindingCondition({
+  const CaPoolIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

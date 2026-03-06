@@ -8,7 +8,7 @@ class MigrateProjectResponseTags {
 
   /// Creates a new [MigrateProjectResponseTags].
   /// [additionalProperties] Optional.
-  MigrateProjectResponseTags({
+  const MigrateProjectResponseTags({
     this.additionalProperties,
   });
 

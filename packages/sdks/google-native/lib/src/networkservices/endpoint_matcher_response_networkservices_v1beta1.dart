@@ -10,7 +10,7 @@ class EndpointMatcherResponseNetworkservicesV1beta1 {
 
   /// Creates a new [EndpointMatcherResponseNetworkservicesV1beta1].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointMatcherResponseNetworkservicesV1beta1({
+  const EndpointMatcherResponseNetworkservicesV1beta1({
     required this.metadataLabelMatcher,
   });
 

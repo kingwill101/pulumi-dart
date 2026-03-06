@@ -41,7 +41,7 @@ class BackupScheduleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [retentionDuration] At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// [spec] Defines specifications of the backup schedule.
-  BackupScheduleState({
+  const BackupScheduleState({
     this.database,
     this.encryptionConfig,
     this.fullBackupSpec,

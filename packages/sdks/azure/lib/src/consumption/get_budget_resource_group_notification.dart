@@ -25,7 +25,7 @@ class GetBudgetResourceGroupNotification {
   /// [operator] The operator used for comparison.
   /// [threshold] Threshold value associated with the notification.
   /// [thresholdType] Required.
-  GetBudgetResourceGroupNotification({
+  const GetBudgetResourceGroupNotification({
     required this.contactEmails,
     required this.contactGroups,
     required this.contactRoles,

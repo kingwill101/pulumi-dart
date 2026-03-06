@@ -15,7 +15,7 @@ class UserPasswordResponse {
   /// [password] The initial password for the user.
   /// [passwordSet] Indicates if the initial_user.password field has been set.
   /// [user] The database username.
-  UserPasswordResponse({
+  const UserPasswordResponse({
     required this.password,
     required this.passwordSet,
     required this.user,

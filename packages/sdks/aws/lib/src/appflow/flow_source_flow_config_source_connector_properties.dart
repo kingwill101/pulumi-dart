@@ -69,7 +69,7 @@ class FlowSourceFlowConfigSourceConnectorProperties {
   /// [trendmicro] Operation to be performed on the provided Trend Micro source fields. Valid values are `PROJECTION`, `EQUAL_TO`, `ADDITION`, `MULTIPLICATION`, `DIVISION`, `SUBTRACTION`, `MASK_ALL`, `MASK_FIRST_N`, `MASK_LAST_N`, `VALIDATE_NON_NULL`, `VALIDATE_NON_ZERO`, `VALIDATE_NON_NEGATIVE`, `VALIDATE_NUMERIC`, and `NO_OP`.
   /// [veeva] Information that is required for querying Veeva. See Veeva Source Properties for more details.
   /// [zendesk] Information that is required for querying Zendesk. See Generic Source Properties for more details.
-  FlowSourceFlowConfigSourceConnectorProperties({
+  const FlowSourceFlowConfigSourceConnectorProperties({
     this.amplitude,
     this.customConnector,
     this.datadog,

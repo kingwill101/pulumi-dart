@@ -15,7 +15,7 @@ class GetInstanceArgs {
   /// [instanceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instanceId,
     required this.location,
     this.project,

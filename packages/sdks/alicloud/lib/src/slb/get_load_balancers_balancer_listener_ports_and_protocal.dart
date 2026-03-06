@@ -9,7 +9,7 @@ class GetLoadBalancersBalancerListenerPortsAndProtocal {
   /// Creates a new [GetLoadBalancersBalancerListenerPortsAndProtocal].
   /// [listenerPort] Required.
   /// [listenerProtocal] Required.
-  GetLoadBalancersBalancerListenerPortsAndProtocal({
+  const GetLoadBalancersBalancerListenerPortsAndProtocal({
     required this.listenerPort,
     required this.listenerProtocal,
   });

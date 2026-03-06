@@ -48,7 +48,7 @@ class VpcAttachmentAccepterState {
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   /// [vpcId] Identifier of EC2 VPC.
   /// [vpcOwnerId] Identifier of the AWS account that owns the EC2 VPC.
-  VpcAttachmentAccepterState({
+  const VpcAttachmentAccepterState({
     this.applianceModeSupport,
     this.dnsSupport,
     this.ipv6Support,

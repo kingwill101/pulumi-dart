@@ -14,7 +14,7 @@ class ApplicationGatewayGatewayIpConfiguration {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The Name of this Gateway IP Configuration.
   /// [subnetId] The ID of the Subnet which the Application Gateway should be connected to.
-  ApplicationGatewayGatewayIpConfiguration({
+  const ApplicationGatewayGatewayIpConfiguration({
     this.id,
     required this.name,
     required this.subnetId,

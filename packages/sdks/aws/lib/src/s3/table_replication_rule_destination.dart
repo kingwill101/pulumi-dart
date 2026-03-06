@@ -8,7 +8,7 @@ class TableReplicationRuleDestination {
 
   /// Creates a new [TableReplicationRuleDestination].
   /// [destinationTableBucketArn] ARN of destination table bucket to replicate source tables to.
-  TableReplicationRuleDestination({
+  const TableReplicationRuleDestination({
     required this.destinationTableBucketArn,
   });
 

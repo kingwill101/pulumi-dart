@@ -19,7 +19,7 @@ class GetEntityArgs {
   /// [entityTypeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEntityArgs({
+  const GetEntityArgs({
     required this.connectionId,
     required this.entityId,
     required this.entityTypeId,

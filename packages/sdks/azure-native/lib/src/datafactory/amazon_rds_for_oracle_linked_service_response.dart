@@ -79,7 +79,7 @@ class AmazonRdsForOracleLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [username] The AmazonRdsForOracle database username. Type: string. Only used for Version 2.0.
   /// [version] Version of the linked service.
-  AmazonRdsForOracleLinkedServiceResponse({
+  const AmazonRdsForOracleLinkedServiceResponse({
     this.annotations,
     this.authenticationType,
     this.connectVia,

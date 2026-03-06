@@ -22,7 +22,7 @@ class FacetOptions {
   /// [objectType] If object_type is set, only those objects of that type will be used to compute facets. If empty, then all objects will be used to compute facets.
   /// [operatorName] The name of the operator chosen for faceting. @see cloudsearch.SchemaPropertyOptions
   /// [sourceName] Source name to facet on. Format: datasources/{source_id} If empty, all data sources will be used.
-  FacetOptions({
+  const FacetOptions({
     this.integerFacetingOptions,
     this.numFacetBuckets,
     this.objectType,

@@ -15,7 +15,7 @@ class GetTopicArgs {
   /// Creates a new [GetTopicArgs].
   /// [name] The name of the EventGrid Topic resource.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Topic exists.
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.name,
     required this.resourceGroupName,
   });

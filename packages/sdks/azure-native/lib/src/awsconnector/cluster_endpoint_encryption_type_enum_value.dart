@@ -9,7 +9,7 @@ class ClusterEndpointEncryptionTypeEnumValue {
 
   /// Creates a new [ClusterEndpointEncryptionTypeEnumValue].
   /// [value] Property value
-  ClusterEndpointEncryptionTypeEnumValue({
+  const ClusterEndpointEncryptionTypeEnumValue({
     this.value,
   });
 

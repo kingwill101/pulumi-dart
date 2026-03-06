@@ -12,7 +12,7 @@ class SecureInputOutputPolicyResponse {
   /// Creates a new [SecureInputOutputPolicyResponse].
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.
   /// [secureOutput] When set to true, Output from activity is considered as secure and will not be logged to monitoring.
-  SecureInputOutputPolicyResponse({
+  const SecureInputOutputPolicyResponse({
     this.secureInput,
     this.secureOutput,
   });

@@ -35,7 +35,7 @@ class WebhookArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetAction] The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
   /// [targetPipeline] The name of the pipeline.
-  WebhookArgs({
+  const WebhookArgs({
     required this.authentication,
     this.authenticationConfiguration,
     required this.filters,

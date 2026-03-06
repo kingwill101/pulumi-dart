@@ -17,7 +17,7 @@ class WorkstationClusterCondition {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  WorkstationClusterCondition({
+  const WorkstationClusterCondition({
     this.code,
     this.details,
     this.message,

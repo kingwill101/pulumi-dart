@@ -24,7 +24,7 @@ class BucketAbacArgs {
   /// [bucket] General purpose bucket that you want to create the metadata configuration for.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BucketAbacArgs({
+  const BucketAbacArgs({
     required this.abacStatus,
     required this.bucket,
     this.expectedBucketOwner,

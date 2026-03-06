@@ -37,7 +37,7 @@ class GetExecutionWorkflowexecutionsV1betaResult {
   /// [state] Current state of the execution.
   /// [status] Status tracks the current steps and progress data of this execution.
   /// [workflowRevisionId] Revision of the workflow this execution is using.
-  GetExecutionWorkflowexecutionsV1betaResult({
+  const GetExecutionWorkflowexecutionsV1betaResult({
     required this.argument,
     required this.callLogLevel,
     required this.endTime,

@@ -13,7 +13,7 @@ class ProviderFeaturesVirtualMachineScaleSet {
   /// [reimageOnManualUpgrade] Optional.
   /// [rollInstancesWhenRequired] Optional.
   /// [scaleToZeroBeforeDeletion] Optional.
-  ProviderFeaturesVirtualMachineScaleSet({
+  const ProviderFeaturesVirtualMachineScaleSet({
     this.forceDelete,
     this.reimageOnManualUpgrade,
     this.rollInstancesWhenRequired,

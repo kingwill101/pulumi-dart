@@ -98,7 +98,7 @@ class SparkJobResponse {
   /// [services] List of JobEndpoints.
   /// [status] Status of the job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  SparkJobResponse({
+  const SparkJobResponse({
     this.archives,
     this.args,
     required this.codeId,

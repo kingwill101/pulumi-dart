@@ -65,7 +65,7 @@ class NamespaceArgs {
   /// [sku] Properties of sku resource
   /// [tags] Resource tags.
   /// [zoneRedundant] Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.alternateName,
     this.clusterArmId,
     this.disableLocalAuth,

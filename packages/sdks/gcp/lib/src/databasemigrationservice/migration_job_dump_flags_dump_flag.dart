@@ -11,7 +11,7 @@ class MigrationJobDumpFlagsDumpFlag {
   /// Creates a new [MigrationJobDumpFlagsDumpFlag].
   /// [name] The name of the flag
   /// [value] The vale of the flag
-  MigrationJobDumpFlagsDumpFlag({
+  const MigrationJobDumpFlagsDumpFlag({
     this.name,
     this.value,
   });

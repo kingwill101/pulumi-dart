@@ -8,7 +8,7 @@ class GetInstanceManagedServerCaCaCert {
 
   /// Creates a new [GetInstanceManagedServerCaCaCert].
   /// [certificates] The certificates that form the CA chain, from leaf to root order
-  GetInstanceManagedServerCaCaCert({
+  const GetInstanceManagedServerCaCaCert({
     required this.certificates,
   });
 

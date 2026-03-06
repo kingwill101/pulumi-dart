@@ -59,7 +59,7 @@ class RegionTargetHttpsProxyArgs {
   /// [sslCertificates] URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer. At least one SSL certificate must be specified. Currently, you may specify up to 15 SSL certificates. sslCertificates do not apply when the load balancing scheme is set to INTERNAL_SELF_MANAGED.
   /// [sslPolicy] URL of SslPolicy resource that will be associated with the TargetHttpsProxy resource. If not set, the TargetHttpsProxy resource has no SSL policy configured.
   /// [urlMap] A fully-qualified or valid partial URL to the UrlMap resource that defines the mapping from URL to the BackendService. For example, the following are all valid URLs for specifying a URL map: - https://www.googleapis.compute/v1/projects/project/global/urlMaps/ url-map - projects/project/global/urlMaps/url-map - global/urlMaps/url-map
-  RegionTargetHttpsProxyArgs({
+  const RegionTargetHttpsProxyArgs({
     this.authentication,
     this.authorization,
     this.authorizationPolicy,

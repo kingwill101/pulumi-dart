@@ -47,7 +47,7 @@ class CaPoolIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  CaPoolIamBindingArgs({
+  const CaPoolIamBindingArgs({
     required this.caPool,
     this.condition,
     this.location,

@@ -22,7 +22,7 @@ class ClusterResourceUsageExportConfig {
   /// [bigqueryDestination] Parameters for using BigQuery as the destination of resource usage export.
   /// [enableNetworkEgressMetering] Whether to enable network egress metering for this cluster. If enabled, a daemonset will be created
   /// [enableResourceConsumptionMetering] Whether to enable resource
-  ClusterResourceUsageExportConfig({
+  const ClusterResourceUsageExportConfig({
     required this.bigqueryDestination,
     this.enableNetworkEgressMetering,
     this.enableResourceConsumptionMetering,

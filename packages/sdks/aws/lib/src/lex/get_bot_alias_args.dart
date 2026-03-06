@@ -18,7 +18,7 @@ class GetBotAliasArgs {
   /// [botName] Name of the bot.
   /// [name] Name of the bot alias. The name is case sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBotAliasArgs({
+  const GetBotAliasArgs({
     required this.botName,
     required this.name,
     this.region,

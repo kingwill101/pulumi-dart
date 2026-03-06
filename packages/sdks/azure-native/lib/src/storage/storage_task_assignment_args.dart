@@ -22,7 +22,7 @@ class StorageTaskAssignmentArgs {
   /// [properties] Properties of the storage task assignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageTaskAssignmentName] The name of the storage task assignment within the specified resource group. Storage task assignment names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
-  StorageTaskAssignmentArgs({
+  const StorageTaskAssignmentArgs({
     required this.accountName,
     required this.properties,
     required this.resourceGroupName,

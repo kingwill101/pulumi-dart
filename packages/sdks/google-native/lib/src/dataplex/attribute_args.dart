@@ -41,7 +41,7 @@ class AttributeArgs {
   /// [parentId] Optional. The ID of the parent DataAttribute resource, should belong to the same data taxonomy. Circular dependency in parent chain is not valid. Maximum depth of the hierarchy allowed is 4. a -&gt; b -&gt; c -&gt; d -&gt; e, depth = 4
   /// [project] Optional.
   /// [resourceAccessSpec] Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
-  AttributeArgs({
+  const AttributeArgs({
     this.dataAccessSpec,
     required this.dataAttributeId,
     required this.dataTaxonomyId,

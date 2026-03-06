@@ -11,7 +11,7 @@ class JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationClo
   /// Creates a new [JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration].
   /// [logGroupName] The name of the log group for log publishing.
   /// [logStreamNamePrefix] The specified name prefix for log streams.
-  JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration({
+  const JobTemplateJobTemplateDataConfigurationOverridesMonitoringConfigurationCloudWatchMonitoringConfiguration({
     required this.logGroupName,
     this.logStreamNamePrefix,
   });

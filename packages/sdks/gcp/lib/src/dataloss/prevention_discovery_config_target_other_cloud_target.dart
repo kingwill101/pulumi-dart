@@ -28,7 +28,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTarget {
   /// [disabled] Disable profiling for resources that match this filter.
   /// [filter] Required. The resources that the discovery cadence applies to. The first target with a matching filter will be the one to apply to a resource.
   /// [generationCadence] How often and when to update profiles. New resources that match both the filter and conditions are scanned as quickly as possible depending on system capacity.
-  PreventionDiscoveryConfigTargetOtherCloudTarget({
+  const PreventionDiscoveryConfigTargetOtherCloudTarget({
     this.conditions,
     this.dataSourceType,
     this.disabled,

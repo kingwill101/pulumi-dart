@@ -19,7 +19,7 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings {
   /// [retries] The number of consecutive times that attempts to read a manifest or segment must fail before the input is considered unavailable.
   /// [retryInterval] The number of seconds between retries when an attempt to read a manifest or segment fails.
   /// [scte35Source] Optional.
-  ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings({
+  const ChannelInputAttachmentInputSettingsNetworkInputSettingsHlsInputSettings({
     this.bandwidth,
     this.bufferSegments,
     this.retries,

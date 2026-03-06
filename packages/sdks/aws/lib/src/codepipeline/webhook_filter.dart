@@ -11,7 +11,7 @@ class WebhookFilter {
   /// Creates a new [WebhookFilter].
   /// [jsonPath] The [JSON path](https://github.com/json-path/JsonPath) to filter on.
   /// [matchEquals] The value to match on (e.g., `refs/heads/{Branch}`). See [AWS docs](https://docs.aws.amazon.com/codepipeline/latest/APIReference/API_WebhookFilterRule.html) for details.
-  WebhookFilter({
+  const WebhookFilter({
     required this.jsonPath,
     required this.matchEquals,
   });

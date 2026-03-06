@@ -11,7 +11,7 @@ class InputVpc {
   /// Creates a new [InputVpc].
   /// [securityGroupIds] A list of up to 5 EC2 VPC security group IDs to attach to the Input.
   /// [subnetIds] A list of 2 VPC subnet IDs from the same VPC.
-  InputVpc({
+  const InputVpc({
     this.securityGroupIds,
     required this.subnetIds,
   });

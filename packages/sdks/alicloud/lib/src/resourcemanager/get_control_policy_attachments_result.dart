@@ -22,7 +22,7 @@ class GetControlPolicyAttachmentsResult {
   /// [outputFile] Optional.
   /// [policyType] Optional.
   /// [targetId] Required.
-  GetControlPolicyAttachmentsResult({
+  const GetControlPolicyAttachmentsResult({
     required this.attachments,
     required this.id,
     required this.ids,

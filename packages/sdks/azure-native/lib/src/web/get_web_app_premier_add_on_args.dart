@@ -18,7 +18,7 @@ class GetWebAppPremierAddOnArgs {
   /// [name] Name of the app.
   /// [premierAddOnName] Add-on name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppPremierAddOnArgs({
+  const GetWebAppPremierAddOnArgs({
     required this.name,
     required this.premierAddOnName,
     required this.resourceGroupName,

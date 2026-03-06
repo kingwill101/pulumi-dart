@@ -20,7 +20,7 @@ class GetAccessPackageCatalogRoleResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectId] The object ID of the role.
   /// [templateId] The object ID of the role.
-  GetAccessPackageCatalogRoleResult({
+  const GetAccessPackageCatalogRoleResult({
     required this.description,
     required this.displayName,
     required this.id,

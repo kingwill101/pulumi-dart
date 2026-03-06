@@ -53,7 +53,7 @@ class SoftwareUpdateConfigurationState {
   /// [target] A `target` blocks as defined below.
   /// [virtualMachineIds] Specifies a list of Azure Resource IDs of azure virtual machines.
   /// [windows] A `windows` block as defined below.
-  SoftwareUpdateConfigurationState({
+  const SoftwareUpdateConfigurationState({
     this.automationAccountId,
     this.duration,
     this.errorCode,

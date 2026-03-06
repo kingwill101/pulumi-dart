@@ -72,7 +72,7 @@ class LabelingJob {
   /// [secretsConfiguration] Configuration for secrets to be made available during runtime.
   /// [services] List of JobEndpoints.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  LabelingJob({
+  const LabelingJob({
     this.componentId,
     this.computeId,
     this.dataConfiguration,

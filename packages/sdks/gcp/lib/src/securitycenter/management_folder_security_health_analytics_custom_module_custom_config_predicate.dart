@@ -20,7 +20,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate {
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [location] String indicating the location of the expression for error reporting, e.g. a
   /// [title] Title for the expression, i.e. a short string describing its purpose. This can
-  ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate({
+  const ManagementFolderSecurityHealthAnalyticsCustomModuleCustomConfigPredicate({
     this.description,
     required this.expression,
     this.location,

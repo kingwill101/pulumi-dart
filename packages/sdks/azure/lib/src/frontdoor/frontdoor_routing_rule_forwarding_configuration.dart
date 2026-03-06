@@ -29,7 +29,7 @@ class FrontdoorRoutingRuleForwardingConfiguration {
   /// [cacheUseDynamicCompression] Whether to use dynamic compression when caching. Valid options are `true` or `false`. Defaults to `false`.
   /// [customForwardingPath] Path to use when constructing the request to forward to the backend. This functions as a URL Rewrite. Default behaviour preserves the URL path.
   /// [forwardingProtocol] Protocol to use when redirecting. Valid options are `HttpOnly`, `HttpsOnly`, or `MatchRequest`. Defaults to `HttpsOnly`.
-  FrontdoorRoutingRuleForwardingConfiguration({
+  const FrontdoorRoutingRuleForwardingConfiguration({
     required this.backendPoolName,
     this.cacheDuration,
     this.cacheEnabled,

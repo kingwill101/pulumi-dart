@@ -21,7 +21,7 @@ class OptionsResponseDeploymentmanagerV2beta {
   /// [inputMappings] The mappings that apply for requests.
   /// [validationOptions] Options for how to validate and process properties on a resource.
   /// [virtualProperties] Additional properties block described as a jsonSchema, these properties will never be part of the json payload, but they can be consumed by InputMappings, this must be a valid json schema draft-04. The properties specified here will be decouple in a different section. This schema will be merged to the schema validation, and properties here will be extracted From the payload and consumed explicitly by InputMappings. ex: field1: type: string field2: type: number
-  OptionsResponseDeploymentmanagerV2beta({
+  const OptionsResponseDeploymentmanagerV2beta({
     required this.asyncOptions,
     required this.inputMappings,
     required this.validationOptions,

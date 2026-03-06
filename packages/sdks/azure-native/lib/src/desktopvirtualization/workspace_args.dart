@@ -48,7 +48,7 @@ class WorkspaceArgs {
   /// [sku] Optional.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.applicationGroupReferences,
     this.description,
     this.friendlyName,

@@ -28,7 +28,7 @@ class PolicyState {
   /// [policyGroupName] The policy name.
   /// [resolutionHeight] The height of the resolution. Unit: Pixels.
   /// [resolutionWidth] The width of the resolution. Unit: Pixels.
-  PolicyState({
+  const PolicyState({
     this.cameraRedirect,
     this.clipboard,
     this.lockResolution,

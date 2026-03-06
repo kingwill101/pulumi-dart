@@ -8,7 +8,7 @@ class DatascanDataQualitySpecRuleRowConditionExpectation {
 
   /// Creates a new [DatascanDataQualitySpecRuleRowConditionExpectation].
   /// [sqlExpression] The SQL expression.
-  DatascanDataQualitySpecRuleRowConditionExpectation({
+  const DatascanDataQualitySpecRuleRowConditionExpectation({
     required this.sqlExpression,
   });
 

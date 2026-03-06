@@ -10,7 +10,7 @@ class SigningJobSignedObjectS3 {
   /// Creates a new [SigningJobSignedObjectS3].
   /// [bucket] Optional.
   /// [key] Key name of the object that contains your unsigned code.
-  SigningJobSignedObjectS3({
+  const SigningJobSignedObjectS3({
     this.bucket,
     this.key,
   });

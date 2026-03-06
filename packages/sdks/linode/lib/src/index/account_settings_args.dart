@@ -24,7 +24,7 @@ class AccountSettingsArgs {
   /// [longviewSubscription] The Longview Pro tier you are currently subscribed to. The value must be a [Longview Subscription](https://techdocs.akamai.com/linode-api/reference/get-longview-subscriptions) ID or null for Longview Free.
   /// [maintenancePolicy] The default maintenance policy for this account. Examples are `"linode/migrate"` and `"linode/power_off_on"`. Defaults to `"linode/migrate"`. (**Note: v4beta only.**)
   /// [networkHelper] Enables network helper across all users by default for new Linodes and Linode Configs.
-  AccountSettingsArgs({
+  const AccountSettingsArgs({
     this.backupsEnabled,
     this.interfacesForNewLinodes,
     this.longviewSubscription,

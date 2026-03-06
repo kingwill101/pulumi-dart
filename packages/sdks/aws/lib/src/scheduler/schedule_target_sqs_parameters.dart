@@ -8,7 +8,7 @@ class ScheduleTargetSqsParameters {
 
   /// Creates a new [ScheduleTargetSqsParameters].
   /// [messageGroupId] FIFO message group ID to use as the target.
-  ScheduleTargetSqsParameters({
+  const ScheduleTargetSqsParameters({
     this.messageGroupId,
   });
 

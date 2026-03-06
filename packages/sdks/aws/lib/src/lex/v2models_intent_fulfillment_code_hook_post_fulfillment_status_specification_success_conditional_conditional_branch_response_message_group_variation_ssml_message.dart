@@ -8,7 +8,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccess
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessConditionalConditionalBranchResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

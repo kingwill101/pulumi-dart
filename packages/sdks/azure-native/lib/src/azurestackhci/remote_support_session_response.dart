@@ -21,7 +21,7 @@ class RemoteSupportSessionResponse {
   /// [sessionId] Unique session Id.
   /// [sessionStartTime] The start time of the remote support session, in UTC.
   /// [transcriptLocation] The location where the session transcript is stored.
-  RemoteSupportSessionResponse({
+  const RemoteSupportSessionResponse({
     required this.accessLevel,
     required this.sessionEndTime,
     required this.sessionId,

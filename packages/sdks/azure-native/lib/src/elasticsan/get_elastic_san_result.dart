@@ -66,7 +66,7 @@ class GetElasticSanResult {
   /// [totalVolumeSizeGiB] Total size of the provisioned Volumes in GiB.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [volumeGroupCount] Total number of volume groups in this Elastic San appliance.
-  GetElasticSanResult({
+  const GetElasticSanResult({
     this.availabilityZones,
     required this.azureApiVersion,
     required this.baseSizeTiB,

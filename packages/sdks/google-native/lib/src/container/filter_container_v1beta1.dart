@@ -10,7 +10,7 @@ class FilterContainerV1beta1 {
 
   /// Creates a new [FilterContainerV1beta1].
   /// [eventType] Event types to allowlist.
-  FilterContainerV1beta1({
+  const FilterContainerV1beta1({
     this.eventType,
   });
 

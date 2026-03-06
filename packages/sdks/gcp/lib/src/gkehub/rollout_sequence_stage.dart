@@ -18,7 +18,7 @@ class RolloutSequenceStage {
   /// [clusterSelector] Filter to select a subset of clusters from the specified Fleet projects.
   /// [fleetProjects] List of Fleet projects to select the clusters from.
   /// [soakDuration] Soak time after upgrading all the clusters in the stage, specified in seconds.
-  RolloutSequenceStage({
+  const RolloutSequenceStage({
     this.clusterSelector,
     required this.fleetProjects,
     this.soakDuration,

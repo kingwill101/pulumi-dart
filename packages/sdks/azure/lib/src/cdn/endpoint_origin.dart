@@ -17,7 +17,7 @@ class EndpointOrigin {
   /// [httpPort] The HTTP port of the origin. Defaults to `80`. Changing this forces a new resource to be created.
   /// [httpsPort] The HTTPS port of the origin. Defaults to `443`. Changing this forces a new resource to be created.
   /// [name] The name of the origin. This is an arbitrary value. However, this value needs to be unique under the endpoint. Changing this forces a new resource to be created.
-  EndpointOrigin({
+  const EndpointOrigin({
     required this.hostName,
     this.httpPort,
     this.httpsPort,

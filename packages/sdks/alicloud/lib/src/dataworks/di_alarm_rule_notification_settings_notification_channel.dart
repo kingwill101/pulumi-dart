@@ -18,7 +18,7 @@ class DiAlarmRuleNotificationSettingsNotificationChannel {
   /// Creates a new [DiAlarmRuleNotificationSettingsNotificationChannel].
   /// [channels] Channel, optional enumeration value:
   /// [severity] Optional.
-  DiAlarmRuleNotificationSettingsNotificationChannel({
+  const DiAlarmRuleNotificationSettingsNotificationChannel({
     this.channels,
     this.severity,
   });

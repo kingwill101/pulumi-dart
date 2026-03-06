@@ -15,7 +15,7 @@ class ListGroundStationL2ConnectionsArgs {
   /// Creates a new [ListGroundStationL2ConnectionsArgs].
   /// [groundStationName] Ground Station name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListGroundStationL2ConnectionsArgs({
+  const ListGroundStationL2ConnectionsArgs({
     required this.groundStationName,
     required this.resourceGroupName,
   });

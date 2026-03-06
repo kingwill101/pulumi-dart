@@ -9,7 +9,7 @@ class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceA
 
   /// Creates a new [GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountResponse].
   /// [email] Email address of the service account.
-  GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountResponse({
+  const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountResponse({
     required this.email,
   });
 

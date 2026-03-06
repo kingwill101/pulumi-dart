@@ -15,7 +15,7 @@ class ListDatabaseAccountKeysArgs {
   /// Creates a new [ListDatabaseAccountKeysArgs].
   /// [accountName] Cosmos DB database account name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListDatabaseAccountKeysArgs({
+  const ListDatabaseAccountKeysArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

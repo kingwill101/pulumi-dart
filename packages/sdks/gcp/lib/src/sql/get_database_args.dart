@@ -18,7 +18,7 @@ class GetDatabaseArgs {
   /// [instance] The name of the Cloud SQL database instance in which the database belongs.
   /// [name] The name of the database.
   /// [project] The ID of the project in which the instance belongs.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.instance,
     required this.name,
     this.project,

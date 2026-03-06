@@ -10,7 +10,7 @@ class StorageClassAnalysisResponse {
 
   /// Creates a new [StorageClassAnalysisResponse].
   /// [dataExport] Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported. Specifies how data related to the storage class analysis for an Amazon S3 bucket should be exported.
-  StorageClassAnalysisResponse({
+  const StorageClassAnalysisResponse({
     this.dataExport,
   });
 

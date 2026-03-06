@@ -17,7 +17,7 @@ class ConnectToTargetAzureDbForPostgreSqlSyncTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Task input
   /// [taskType] Task type.
-  ConnectToTargetAzureDbForPostgreSqlSyncTaskProperties({
+  const ConnectToTargetAzureDbForPostgreSqlSyncTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

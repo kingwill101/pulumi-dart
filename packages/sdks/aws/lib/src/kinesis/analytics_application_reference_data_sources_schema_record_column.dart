@@ -14,7 +14,7 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn {
   /// [mapping] The Mapping reference to the data element.
   /// [name] Name of the column.
   /// [sqlType] The SQL Type of the column.
-  AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn({
+  const AnalyticsApplicationReferenceDataSourcesSchemaRecordColumn({
     this.mapping,
     required this.name,
     required this.sqlType,

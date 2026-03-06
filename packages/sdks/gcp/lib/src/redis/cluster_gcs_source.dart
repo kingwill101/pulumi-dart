@@ -8,7 +8,7 @@ class ClusterGcsSource {
 
   /// Creates a new [ClusterGcsSource].
   /// [uris] URIs of the GCS objects to import. Example: gs://bucket1/object1, gs://bucket2/folder2/object2
-  ClusterGcsSource({
+  const ClusterGcsSource({
     required this.uris,
   });
 

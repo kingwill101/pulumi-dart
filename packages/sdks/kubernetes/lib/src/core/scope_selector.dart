@@ -10,7 +10,7 @@ class ScopeSelector {
 
   /// Creates a new [ScopeSelector].
   /// [matchExpressions] A list of scope selector requirements by scope of the resources.
-  ScopeSelector({
+  const ScopeSelector({
     this.matchExpressions,
   });
 

@@ -17,7 +17,7 @@ class HttpRouteConfigResponse {
   /// [destination] Describes destination endpoint for routing traffic.
   /// [match] Describes a rule for http route matching.
   /// [name] http route name.
-  HttpRouteConfigResponse({
+  const HttpRouteConfigResponse({
     required this.destination,
     required this.match,
     required this.name,

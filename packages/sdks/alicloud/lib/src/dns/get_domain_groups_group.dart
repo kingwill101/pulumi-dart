@@ -9,7 +9,7 @@ class GetDomainGroupsGroup {
   /// Creates a new [GetDomainGroupsGroup].
   /// [groupId] Required.
   /// [groupName] Required.
-  GetDomainGroupsGroup({
+  const GetDomainGroupsGroup({
     required this.groupId,
     required this.groupName,
   });

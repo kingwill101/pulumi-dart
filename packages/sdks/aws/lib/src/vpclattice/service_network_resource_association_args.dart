@@ -29,7 +29,7 @@ class ServiceNetworkResourceAssociationArgs {
   /// [serviceNetworkIdentifier] Identifier of the Service Network to associate the Resource to.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ServiceNetworkResourceAssociationArgs({
+  const ServiceNetworkResourceAssociationArgs({
     this.privateDnsEnabled,
     this.region,
     required this.resourceConfigurationIdentifier,

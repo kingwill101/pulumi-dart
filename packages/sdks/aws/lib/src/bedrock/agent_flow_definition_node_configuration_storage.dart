@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationStorage {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationStorage].
   /// [serviceConfiguration] Optional.
-  AgentFlowDefinitionNodeConfigurationStorage({
+  const AgentFlowDefinitionNodeConfigurationStorage({
     this.serviceConfiguration,
   });
 

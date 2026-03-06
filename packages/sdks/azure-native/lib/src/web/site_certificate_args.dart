@@ -51,7 +51,7 @@ class SiteCertificateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverFarmId] Resource ID of the associated App Service plan.
   /// [tags] Resource tags.
-  SiteCertificateArgs({
+  const SiteCertificateArgs({
     this.canonicalName,
     this.certificateName,
     this.domainValidationMethod,

@@ -26,7 +26,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpoint,
     this.privateEndpointConnectionName,
     this.privateLinkServiceConnectionState,

@@ -18,7 +18,7 @@ class CertificateBindingArgs {
   /// [certificateId] The ID of the certificate to bind to the custom domain. Changing this forces a new App Service Certificate Binding to be created.
   /// [hostnameBindingId] The ID of the Custom Domain/Hostname Binding. Changing this forces a new App Service Certificate Binding to be created.
   /// [sslState] The type of certificate binding. Allowed values are `IpBasedEnabled` or `SniEnabled`. Changing this forces a new App Service Certificate Binding to be created.
-  CertificateBindingArgs({
+  const CertificateBindingArgs({
     required this.certificateId,
     required this.hostnameBindingId,
     required this.sslState,

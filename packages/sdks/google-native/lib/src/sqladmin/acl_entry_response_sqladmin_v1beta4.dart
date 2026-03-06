@@ -18,7 +18,7 @@ class AclEntryResponseSqladminV1beta4 {
   /// [kind] This is always `sql#aclEntry`.
   /// [name] Optional. A label to identify this entry.
   /// [value] The allowlisted value for the access control list.
-  AclEntryResponseSqladminV1beta4({
+  const AclEntryResponseSqladminV1beta4({
     required this.expirationTime,
     required this.kind,
     required this.name,

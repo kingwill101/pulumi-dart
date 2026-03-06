@@ -93,7 +93,7 @@ class ClusterState {
   /// [versionCode] The version code of MSE Cluster. You can keep the instance version up to date by setting the value to `LATEST` (Available since v1.257.0).
   /// [vpcId] The id of the VPC.
   /// [vswitchId] The id of VSwitch.
-  ClusterState({
+  const ClusterState({
     this.aclEntryLists,
     this.appVersion,
     this.clusterAliasName,

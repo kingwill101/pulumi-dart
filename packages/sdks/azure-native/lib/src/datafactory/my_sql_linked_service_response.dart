@@ -79,7 +79,7 @@ class MySqlLinkedServiceResponse {
   /// [useSystemTrustStore] Use system trust store for connection. Type: integer. 0: enable, 1: disable.
   /// [username] Username for authentication. Type: string.
   /// [version] Version of the linked service.
-  MySqlLinkedServiceResponse({
+  const MySqlLinkedServiceResponse({
     this.allowZeroDateTime,
     this.annotations,
     this.connectVia,

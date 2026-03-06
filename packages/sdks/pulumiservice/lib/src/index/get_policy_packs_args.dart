@@ -12,7 +12,7 @@ class GetPolicyPacksArgs {
 
   /// Creates a new [GetPolicyPacksArgs].
   /// [organizationName] The name of the Pulumi organization.
-  GetPolicyPacksArgs({
+  const GetPolicyPacksArgs({
     required this.organizationName,
   });
 

@@ -12,7 +12,7 @@ class CertificateTemplateResponse {
   /// Creates a new [CertificateTemplateResponse].
   /// [majorVersion] The Major version of the template. Example: 100.
   /// [minorVersion] The minor version of the template. Example: 12.
-  CertificateTemplateResponse({
+  const CertificateTemplateResponse({
     required this.majorVersion,
     required this.minorVersion,
   });

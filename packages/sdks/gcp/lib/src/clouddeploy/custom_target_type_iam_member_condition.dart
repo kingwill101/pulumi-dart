@@ -11,7 +11,7 @@ class CustomTargetTypeIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  CustomTargetTypeIamMemberCondition({
+  const CustomTargetTypeIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

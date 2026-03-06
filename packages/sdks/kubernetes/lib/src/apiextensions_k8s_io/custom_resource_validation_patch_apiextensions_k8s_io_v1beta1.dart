@@ -10,7 +10,7 @@ class CustomResourceValidationPatchApiextensionsK8sIoV1beta1 {
 
   /// Creates a new [CustomResourceValidationPatchApiextensionsK8sIoV1beta1].
   /// [openAPIV3Schema] openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-  CustomResourceValidationPatchApiextensionsK8sIoV1beta1({
+  const CustomResourceValidationPatchApiextensionsK8sIoV1beta1({
     this.openAPIV3Schema,
   });
 

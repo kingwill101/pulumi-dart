@@ -42,7 +42,7 @@ class GoogleCloudIntegrationsV1alphaCredential {
   /// [oidcToken] Google OIDC ID Token
   /// [serviceAccountCredentials] Service account credential
   /// [usernameAndPassword] Username and password credential
-  GoogleCloudIntegrationsV1alphaCredential({
+  const GoogleCloudIntegrationsV1alphaCredential({
     this.authToken,
     this.credentialType,
     this.jwt,

@@ -9,7 +9,7 @@ class ClusterInfo {
 
   /// Creates a new [ClusterInfo].
   /// [id] The resource id of cluster.
-  ClusterInfo({
+  const ClusterInfo({
     this.id,
   });
 

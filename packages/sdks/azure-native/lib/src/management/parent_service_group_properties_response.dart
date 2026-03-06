@@ -9,7 +9,7 @@ class ParentServiceGroupPropertiesResponse {
 
   /// Creates a new [ParentServiceGroupPropertiesResponse].
   /// [resourceId] The fully qualified ID of the parent serviceGroup.  For example, '/providers/Microsoft.Management/serviceGroups/TestServiceGroup'
-  ParentServiceGroupPropertiesResponse({
+  const ParentServiceGroupPropertiesResponse({
     this.resourceId,
   });
 

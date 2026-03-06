@@ -9,7 +9,7 @@ class ClassificationJobS3JobDefinitionBucketCriteriaExcludes {
 
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteriaExcludes].
   /// [ands] An array of conditions, one for each condition that determines which objects to include or exclude from the job. (documented below)
-  ClassificationJobS3JobDefinitionBucketCriteriaExcludes({
+  const ClassificationJobS3JobDefinitionBucketCriteriaExcludes({
     this.ands,
   });
 

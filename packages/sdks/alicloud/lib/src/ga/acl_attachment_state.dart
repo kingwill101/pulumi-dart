@@ -21,7 +21,7 @@ class AclAttachmentState {
   /// [dryRun] The dry run.
   /// [listenerId] The ID of the listener.
   /// [status] The status of the Acl Attachment.
-  AclAttachmentState({
+  const AclAttachmentState({
     this.aclId,
     this.aclType,
     this.dryRun,

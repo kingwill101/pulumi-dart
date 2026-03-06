@@ -18,7 +18,7 @@ class GetDnsResolverPolicyVirtualNetworkLinkArgs {
   /// [dnsResolverPolicyName] The name of the DNS resolver policy.
   /// [dnsResolverPolicyVirtualNetworkLinkName] The name of the DNS resolver policy virtual network link for the DNS resolver policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDnsResolverPolicyVirtualNetworkLinkArgs({
+  const GetDnsResolverPolicyVirtualNetworkLinkArgs({
     required this.dnsResolverPolicyName,
     required this.dnsResolverPolicyVirtualNetworkLinkName,
     required this.resourceGroupName,

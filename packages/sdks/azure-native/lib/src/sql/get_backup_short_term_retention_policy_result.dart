@@ -23,7 +23,7 @@ class GetBackupShortTermRetentionPolicyResult {
   /// [name] Resource name.
   /// [retentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [type] Resource type.
-  GetBackupShortTermRetentionPolicyResult({
+  const GetBackupShortTermRetentionPolicyResult({
     required this.azureApiVersion,
     this.diffBackupIntervalInHours,
     required this.id,

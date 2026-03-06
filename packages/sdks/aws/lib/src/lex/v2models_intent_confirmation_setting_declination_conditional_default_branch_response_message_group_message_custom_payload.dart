@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchRespon
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupMessageCustomPayload({
     required this.value,
   });
 

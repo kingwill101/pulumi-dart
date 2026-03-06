@@ -13,7 +13,7 @@ class OsProfile {
   /// Creates a new [OsProfile].
   /// [logonType] Determines how the service should be run. By default, this will be set to Service.
   /// [secretsManagementSettings] The secret management settings of the machines in the pool.
-  OsProfile({
+  const OsProfile({
     this.logonType,
     this.secretsManagementSettings,
   });

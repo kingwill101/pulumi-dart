@@ -76,7 +76,7 @@ class AppVersionSnapshotGuardrail {
   /// [modelSafeties] (Output)
   /// [name] (Output)
   /// [updateTime] (Output)
-  AppVersionSnapshotGuardrail({
+  const AppVersionSnapshotGuardrail({
     this.actions,
     this.codeCallbacks,
     this.contentFilters,

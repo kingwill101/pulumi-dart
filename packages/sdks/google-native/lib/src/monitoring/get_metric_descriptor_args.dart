@@ -13,7 +13,7 @@ class GetMetricDescriptorArgs {
   /// Creates a new [GetMetricDescriptorArgs].
   /// [metricDescriptorId] Required.
   /// [project] Optional.
-  GetMetricDescriptorArgs({
+  const GetMetricDescriptorArgs({
     required this.metricDescriptorId,
     this.project,
   });

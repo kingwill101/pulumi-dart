@@ -20,7 +20,7 @@ class CreditBreakdownItemResponse {
   /// [dimensions] Key-value pairs for additional parameters and metadata
   /// [endAt] End DateTime in UTC.
   /// [startAt] Start DateTime.
-  CreditBreakdownItemResponse({
+  const CreditBreakdownItemResponse({
     this.allocation,
     this.dimensions,
     this.endAt,

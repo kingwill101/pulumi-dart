@@ -8,7 +8,7 @@ class FlowMetadataCatalogConfig {
 
   /// Creates a new [FlowMetadataCatalogConfig].
   /// [glueDataCatalog] Optional.
-  FlowMetadataCatalogConfig({
+  const FlowMetadataCatalogConfig({
     this.glueDataCatalog,
   });
 

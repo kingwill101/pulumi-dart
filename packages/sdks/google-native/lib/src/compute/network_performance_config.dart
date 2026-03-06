@@ -11,7 +11,7 @@ class NetworkPerformanceConfig {
   /// Creates a new [NetworkPerformanceConfig].
   /// [externalIpEgressBandwidthTier] Optional.
   /// [totalEgressBandwidthTier] Optional.
-  NetworkPerformanceConfig({
+  const NetworkPerformanceConfig({
     this.externalIpEgressBandwidthTier,
     this.totalEgressBandwidthTier,
   });

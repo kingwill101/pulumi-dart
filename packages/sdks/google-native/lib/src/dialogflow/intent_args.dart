@@ -79,7 +79,7 @@ class IntentArgs {
   /// [resetContexts] Optional. Indicates whether to delete all contexts in the current session when this intent is matched.
   /// [trainingPhrases] Optional. The collection of examples that the agent is trained on.
   /// [webhookState] Optional. Indicates whether webhooks are enabled for the intent.
-  IntentArgs({
+  const IntentArgs({
     this.action,
     this.defaultResponsePlatforms,
     required this.displayName,

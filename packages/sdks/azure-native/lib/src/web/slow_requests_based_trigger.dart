@@ -18,7 +18,7 @@ class SlowRequestsBasedTrigger {
   /// [path] Request Path.
   /// [timeInterval] Time interval.
   /// [timeTaken] Time taken.
-  SlowRequestsBasedTrigger({
+  const SlowRequestsBasedTrigger({
     this.count,
     this.path,
     this.timeInterval,

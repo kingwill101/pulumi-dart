@@ -9,7 +9,7 @@ class DomainDevicesGraphicEglHeadless {
 
   /// Creates a new [DomainDevicesGraphicEglHeadless].
   /// [gl] Sets OpenGL configuration options for the headless EGL graphics display.
-  DomainDevicesGraphicEglHeadless({
+  const DomainDevicesGraphicEglHeadless({
     this.gl,
   });
 

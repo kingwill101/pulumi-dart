@@ -67,7 +67,7 @@ class GtmInstanceState {
   /// [smsNotificationCount] The quota of SMS notifications.
   /// [strategyMode] The type of the access policy. Valid values: `GEO`, `LATENCY`.
   /// [ttl] The global time to live. Valid values: `60`, `120`, `300`, `600`. Unit: second.
-  GtmInstanceState({
+  const GtmInstanceState({
     this.alertConfigs,
     this.alertGroups,
     this.cnameType,

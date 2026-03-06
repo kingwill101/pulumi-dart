@@ -14,7 +14,7 @@ class InstanceStatusSummary {
   /// Creates a new [InstanceStatusSummary].
   /// [details] &lt;p&gt;The system instance health or application instance health.&lt;/p&gt;
   /// [status] &lt;p&gt;The status.&lt;/p&gt;
-  InstanceStatusSummary({
+  const InstanceStatusSummary({
     this.details,
     this.status,
   });

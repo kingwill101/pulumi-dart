@@ -9,7 +9,7 @@ class Gen2StorageConfigurationOutputResponse {
 
   /// Creates a new [Gen2StorageConfigurationOutputResponse].
   /// [accountName] The name of the storage account that will hold the environment's Gen2 data.
-  Gen2StorageConfigurationOutputResponse({
+  const Gen2StorageConfigurationOutputResponse({
     required this.accountName,
   });
 

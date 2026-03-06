@@ -24,7 +24,7 @@ class GetGroupQuotaSubscriptionResult {
   /// [properties] Required.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGroupQuotaSubscriptionResult({
+  const GetGroupQuotaSubscriptionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

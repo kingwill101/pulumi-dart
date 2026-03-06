@@ -13,7 +13,7 @@ class OsSapConfigurationResponse {
   /// Creates a new [OsSapConfigurationResponse].
   /// [deployerVmPackages] The url and storage account ID where deployer VM packages are uploaded
   /// [sapFqdn] The FQDN to set for the SAP system
-  OsSapConfigurationResponse({
+  const OsSapConfigurationResponse({
     this.deployerVmPackages,
     this.sapFqdn,
   });

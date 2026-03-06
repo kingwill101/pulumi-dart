@@ -12,7 +12,7 @@ class ManagedZoneServiceDirectoryConfig {
   /// Creates a new [ManagedZoneServiceDirectoryConfig].
   /// [kind] Optional.
   /// [namespace] Contains information about the namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfig({
+  const ManagedZoneServiceDirectoryConfig({
     this.kind,
     this.namespace,
   });

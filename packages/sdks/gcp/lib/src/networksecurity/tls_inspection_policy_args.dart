@@ -44,7 +44,7 @@ class TlsInspectionPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tlsFeatureProfile] The selected Profile. If this is not set, then the default value is to allow the broadest set of clients and servers (\"PROFILE_COMPATIBLE\"). Setting this to more restrictive values may improve security, but may also prevent the TLS inspection proxy from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field.
   /// [trustConfig] A TrustConfig resource used when making a connection to the TLS server. This is a relative resource path following the form \"projects/{project}/locations/{location}/trustConfigs/{trust_config}\". This is necessary to intercept TLS connections to servers with certificates signed by a private CA or self-signed certificates. Trust config and the TLS inspection policy must be in the same region. Note that Secure Web Proxy does not yet honor this field.
-  TlsInspectionPolicyArgs({
+  const TlsInspectionPolicyArgs({
     required this.caPool,
     this.customTlsFeatures,
     this.description,

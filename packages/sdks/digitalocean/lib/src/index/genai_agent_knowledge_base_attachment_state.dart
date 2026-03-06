@@ -12,7 +12,7 @@ class GenaiAgentKnowledgeBaseAttachmentState {
   /// Creates a new [GenaiAgentKnowledgeBaseAttachmentState].
   /// [agentUuid] A unique identifier for an agent.
   /// [knowledgeBaseUuid] A unique identifier for a knowledge base.
-  GenaiAgentKnowledgeBaseAttachmentState({
+  const GenaiAgentKnowledgeBaseAttachmentState({
     this.agentUuid,
     this.knowledgeBaseUuid,
   });

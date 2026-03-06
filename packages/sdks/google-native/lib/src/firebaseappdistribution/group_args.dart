@@ -20,7 +20,7 @@ class GroupArgs {
   /// [groupId] Optional. The "alias" to use for the group, which will become the final component of the group's resource name. This value must be unique per project. The field is named `groupId` to comply with AIP guidance for user-specified IDs. This value should be 4-63 characters, and valid characters are `/a-z-/`. If not set, it will be generated based on the display name.
   /// [name] The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
   /// [project] Optional.
-  GroupArgs({
+  const GroupArgs({
     required this.displayName,
     this.groupId,
     this.name,

@@ -57,7 +57,7 @@ class DevEndpointArgs {
   /// [subnetId] The subnet ID for the new endpoint to use.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [workerType] The type of predefined worker that is allocated to this endpoint. Accepts a value of Standard, G.1X, or G.2X.
-  DevEndpointArgs({
+  const DevEndpointArgs({
     this.arguments,
     this.extraJarsS3Path,
     this.extraPythonLibsS3Path,

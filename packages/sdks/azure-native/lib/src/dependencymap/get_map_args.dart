@@ -15,7 +15,7 @@ class GetMapArgs {
   /// Creates a new [GetMapArgs].
   /// [mapName] Maps resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMapArgs({
+  const GetMapArgs({
     required this.mapName,
     required this.resourceGroupName,
   });

@@ -15,7 +15,7 @@ class ListMonitorApiKeysArgs {
   /// Creates a new [ListMonitorApiKeysArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListMonitorApiKeysArgs({
+  const ListMonitorApiKeysArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

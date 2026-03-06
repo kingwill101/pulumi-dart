@@ -23,7 +23,7 @@ class GetScriptArgs {
   /// [dagNodes] List of the nodes in the DAG. Defined below.
   /// [language] Programming language of the resulting code from the DAG. Defaults to `PYTHON`. Valid values are `PYTHON` and `SCALA`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetScriptArgs({
+  const GetScriptArgs({
     required this.dagEdges,
     required this.dagNodes,
     this.language,

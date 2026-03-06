@@ -15,7 +15,7 @@ class GetClustersClusterSoftwareInfo {
   /// [clusterType] Cluster type:
   /// [emrVer] E-MapReduce version number.
   /// [softwares] Service list.
-  GetClustersClusterSoftwareInfo({
+  const GetClustersClusterSoftwareInfo({
     required this.clusterType,
     required this.emrVer,
     required this.softwares,

@@ -18,7 +18,7 @@ class GetStaticSitePrivateEndpointConnectionArgs {
   /// [name] Name of the static site.
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetStaticSitePrivateEndpointConnectionArgs({
+  const GetStaticSitePrivateEndpointConnectionArgs({
     required this.name,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

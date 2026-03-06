@@ -13,7 +13,7 @@ class BrokerAuthenticatorMethodX509AttributesResponse {
   /// Creates a new [BrokerAuthenticatorMethodX509AttributesResponse].
   /// [keyVault] Keyvault x509 attributes secret properties.
   /// [secretName] Secret where x509 attributes are stored.
-  BrokerAuthenticatorMethodX509AttributesResponse({
+  const BrokerAuthenticatorMethodX509AttributesResponse({
     this.keyVault,
     this.secretName,
   });

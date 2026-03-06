@@ -24,7 +24,7 @@ class GetStackGroupsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetStackGroupsResult({
+  const GetStackGroupsResult({
     this.enableDetails,
     required this.groups,
     required this.id,

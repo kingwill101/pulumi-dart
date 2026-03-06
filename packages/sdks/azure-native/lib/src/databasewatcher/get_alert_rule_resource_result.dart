@@ -39,7 +39,7 @@ class GetAlertRuleResourceResult {
   /// [provisioningState] The provisioning state of the alert rule resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAlertRuleResourceResult({
+  const GetAlertRuleResourceResult({
     required this.alertRuleResourceId,
     required this.alertRuleTemplateId,
     required this.alertRuleTemplateVersion,

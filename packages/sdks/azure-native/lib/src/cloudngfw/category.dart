@@ -12,7 +12,7 @@ class Category {
   /// Creates a new [Category].
   /// [feeds] feed list
   /// [urlCustom] custom URL
-  Category({
+  const Category({
     required this.feeds,
     required this.urlCustom,
   });

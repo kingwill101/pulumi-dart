@@ -12,7 +12,7 @@ class GetAccessReviewScheduleDefinitionByIdArgs {
 
   /// Creates a new [GetAccessReviewScheduleDefinitionByIdArgs].
   /// [scheduleDefinitionId] The id of the access review schedule definition.
-  GetAccessReviewScheduleDefinitionByIdArgs({
+  const GetAccessReviewScheduleDefinitionByIdArgs({
     required this.scheduleDefinitionId,
   });
 

@@ -10,7 +10,7 @@ class ListKeyByAutomationAccountResult {
 
   /// Creates a new [ListKeyByAutomationAccountResult].
   /// [keys] Lists the automation keys.
-  ListKeyByAutomationAccountResult({
+  const ListKeyByAutomationAccountResult({
     this.keys,
   });
 

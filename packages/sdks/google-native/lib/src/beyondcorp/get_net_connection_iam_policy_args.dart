@@ -17,7 +17,7 @@ class GetNetConnectionIamPolicyArgs {
   /// [netConnectionId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetNetConnectionIamPolicyArgs({
+  const GetNetConnectionIamPolicyArgs({
     required this.location,
     required this.netConnectionId,
     this.optionsRequestedPolicyVersion,

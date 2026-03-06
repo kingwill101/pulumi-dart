@@ -27,7 +27,7 @@ class GetSnapshotsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [snapshotName] The name of the snapshot.
   /// [status] Status. Valid values: `accomplished`, `failed`, `progressing`.
-  GetSnapshotsArgs({
+  const GetSnapshotsArgs({
     this.fileSystemId,
     this.ids,
     this.nameRegex,

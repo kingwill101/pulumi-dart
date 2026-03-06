@@ -9,7 +9,7 @@ class ClusterBrokerNodeGroupInfoStorageInfo {
 
   /// Creates a new [ClusterBrokerNodeGroupInfoStorageInfo].
   /// [ebsStorageInfo] A block that contains EBS volume information. See storage_info ebs_storage_info Argument Reference below.
-  ClusterBrokerNodeGroupInfoStorageInfo({
+  const ClusterBrokerNodeGroupInfoStorageInfo({
     this.ebsStorageInfo,
   });
 

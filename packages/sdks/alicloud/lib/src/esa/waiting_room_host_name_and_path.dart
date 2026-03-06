@@ -14,7 +14,7 @@ class WaitingRoomHostNameAndPath {
   /// [domain] The domain name.
   /// [path] The path.
   /// [subdomain] The subdomain.
-  WaitingRoomHostNameAndPath({
+  const WaitingRoomHostNameAndPath({
     required this.domain,
     required this.path,
     required this.subdomain,

@@ -26,7 +26,7 @@ class AclState {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
   /// [tags] A mapping of tags to assign to the resource.
-  AclState({
+  const AclState({
     this.aclEntries,
     this.aclName,
     this.dryRun,

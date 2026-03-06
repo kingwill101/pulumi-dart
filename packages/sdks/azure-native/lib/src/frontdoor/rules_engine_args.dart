@@ -22,7 +22,7 @@ class RulesEngineArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [rules] A list of rules that define a particular Rules Engine Configuration.
   /// [rulesEngineName] Name of the Rules Engine which is unique within the Front Door.
-  RulesEngineArgs({
+  const RulesEngineArgs({
     required this.frontDoorName,
     required this.resourceGroupName,
     this.rules,

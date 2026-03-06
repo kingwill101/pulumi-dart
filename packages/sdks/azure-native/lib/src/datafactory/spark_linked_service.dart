@@ -73,7 +73,7 @@ class SparkLinkedService {
   /// [useSystemTrustStore] Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.
   /// [username] The user name that you use to access Spark Server.
   /// [version] Version of the linked service.
-  SparkLinkedService({
+  const SparkLinkedService({
     this.allowHostNameCNMismatch,
     this.allowSelfSignedServerCert,
     this.annotations,

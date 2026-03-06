@@ -17,7 +17,7 @@ class ServerlessKubernetesRrsaMetadata {
   /// [ramOidcProviderArn] The arn of OIDC provider that was registered in RAM.
   /// [ramOidcProviderName] The name of OIDC Provider that was registered in RAM.
   /// [rrsaOidcIssuerUrl] The issuer URL of RRSA OIDC Token.
-  ServerlessKubernetesRrsaMetadata({
+  const ServerlessKubernetesRrsaMetadata({
     this.enabled,
     this.ramOidcProviderArn,
     this.ramOidcProviderName,

@@ -10,7 +10,7 @@ class SubjectResponse {
   /// Creates a new [SubjectResponse].
   /// [digest] `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   /// [name] Required.
-  SubjectResponse({
+  const SubjectResponse({
     required this.digest,
     required this.name,
   });

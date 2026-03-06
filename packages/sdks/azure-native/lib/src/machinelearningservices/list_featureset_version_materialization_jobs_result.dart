@@ -13,7 +13,7 @@ class ListFeaturesetVersionMaterializationJobsResult {
   /// Creates a new [ListFeaturesetVersionMaterializationJobsResult].
   /// [nextLink] The link to the next page of FeaturesetJob objects. If null, there are no additional pages.
   /// [value] An array of objects of type FeaturesetJob.
-  ListFeaturesetVersionMaterializationJobsResult({
+  const ListFeaturesetVersionMaterializationJobsResult({
     this.nextLink,
     this.value,
   });

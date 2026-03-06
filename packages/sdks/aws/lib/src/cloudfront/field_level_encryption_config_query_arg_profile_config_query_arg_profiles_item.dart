@@ -10,7 +10,7 @@ class FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem {
   /// Creates a new [FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem].
   /// [profileId] Required.
   /// [queryArg] Query argument for field-level encryption query argument-profile mapping.
-  FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem({
+  const FieldLevelEncryptionConfigQueryArgProfileConfigQueryArgProfilesItem({
     required this.profileId,
     required this.queryArg,
   });

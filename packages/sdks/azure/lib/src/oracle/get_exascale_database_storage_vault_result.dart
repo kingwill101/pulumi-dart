@@ -50,7 +50,7 @@ class GetExascaleDatabaseStorageVaultResult {
   /// [timeZone] The time zone of the Exadata Database Storage Vault.
   /// [virtualMachineClusterCount] The number of Exadata virtual machine clusters used the Exadata Database Storage Vault.
   /// [zones] The Exadata Database Storage Vault Azure zones.
-  GetExascaleDatabaseStorageVaultResult({
+  const GetExascaleDatabaseStorageVaultResult({
     required this.additionalFlashCachePercentage,
     required this.description,
     required this.displayName,

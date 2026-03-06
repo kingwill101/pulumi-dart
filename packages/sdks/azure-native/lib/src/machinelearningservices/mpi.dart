@@ -13,7 +13,7 @@ class Mpi {
   /// Creates a new [Mpi].
   /// [distributionType] Enum to determine the job distribution type.
   /// [processCountPerInstance] Number of processes per MPI node.
-  Mpi({
+  const Mpi({
     required this.distributionType,
     this.processCountPerInstance,
   });

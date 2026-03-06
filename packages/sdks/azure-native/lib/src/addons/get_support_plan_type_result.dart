@@ -20,7 +20,7 @@ class GetSupportPlanTypeResult {
   /// [name] The name of the Canonical support plan, i.e. "essential", "standard" or "advanced".
   /// [provisioningState] The provisioning state of the resource.
   /// [type] Microsoft.Addons/supportProvider
-  GetSupportPlanTypeResult({
+  const GetSupportPlanTypeResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -20,7 +20,7 @@ class ServiceActionDefinition {
   /// [parameters] List of parameters in JSON format. For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]` or `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
   /// [type] Service action definition type. Valid value is `SSM_AUTOMATION`. Default is `SSM_AUTOMATION`.
   /// [version] SSM document version. For example, `1`.
-  ServiceActionDefinition({
+  const ServiceActionDefinition({
     this.assumeRole,
     required this.name,
     this.parameters,

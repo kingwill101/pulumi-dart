@@ -17,7 +17,7 @@ class AnalyticsWorkspaceIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the identity type of the Log Analytics Workspace. Possible values are `SystemAssigned` (where Azure will generate a Service Principal for you) and `UserAssigned` where you can specify the Service Principal IDs in the `identity_ids` field.
-  AnalyticsWorkspaceIdentity({
+  const AnalyticsWorkspaceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

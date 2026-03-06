@@ -17,7 +17,7 @@ class GetDirectoryRolesRole {
   /// [displayName] The display name of the directory role.
   /// [objectId] The object ID of the directory role.
   /// [templateId] The template ID of the directory role.
-  GetDirectoryRolesRole({
+  const GetDirectoryRolesRole({
     required this.description,
     required this.displayName,
     required this.objectId,

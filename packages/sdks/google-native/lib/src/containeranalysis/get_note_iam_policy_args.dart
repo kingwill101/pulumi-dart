@@ -13,7 +13,7 @@ class GetNoteIamPolicyArgs {
   /// Creates a new [GetNoteIamPolicyArgs].
   /// [noteId] Required.
   /// [project] Optional.
-  GetNoteIamPolicyArgs({
+  const GetNoteIamPolicyArgs({
     required this.noteId,
     this.project,
   });

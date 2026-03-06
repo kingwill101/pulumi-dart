@@ -30,7 +30,7 @@ class ManagedPrivateEndpointArgs {
   /// [privateLinkResourceRegion] The region of the resource to which the managed private endpoint is created.
   /// [requestMessage] The user request message.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ManagedPrivateEndpointArgs({
+  const ManagedPrivateEndpointArgs({
     required this.clusterName,
     required this.groupId,
     this.managedPrivateEndpointName,

@@ -17,7 +17,7 @@ class GetClusterAlloydbV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetClusterAlloydbV1betaArgs({
+  const GetClusterAlloydbV1betaArgs({
     required this.clusterId,
     required this.location,
     this.project,

@@ -75,7 +75,7 @@ class JobStatisticsResponse {
   /// [totalBytesProcessed] [Deprecated] Use the bytes processed in the query statistics instead.
   /// [totalSlotMs] Slot-milliseconds for the job.
   /// [transactionInfo] [Alpha] Information of the multi-statement transaction if this job is part of one.
-  JobStatisticsResponse({
+  const JobStatisticsResponse({
     required this.completionRatio,
     required this.copy,
     required this.creationTime,

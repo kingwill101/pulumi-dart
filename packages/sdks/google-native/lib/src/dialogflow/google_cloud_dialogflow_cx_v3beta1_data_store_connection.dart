@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3beta1DataStoreConnection {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1DataStoreConnection].
   /// [dataStore] The full name of the referenced data store. Formats: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}` `projects/{project}/locations/{location}/dataStores/{data_store}`
   /// [dataStoreType] The type of the connected data store.
-  GoogleCloudDialogflowCxV3beta1DataStoreConnection({
+  const GoogleCloudDialogflowCxV3beta1DataStoreConnection({
     this.dataStore,
     this.dataStoreType,
   });

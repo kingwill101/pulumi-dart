@@ -36,7 +36,7 @@ class VirtualMachineManagerServerArgs {
   /// [resourceGroupName] The name of the Resource Group where the System Center Virtual Machine Manager should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the System Center Virtual Machine Manager Server.
   /// [username] The username that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
-  VirtualMachineManagerServerArgs({
+  const VirtualMachineManagerServerArgs({
     required this.customLocationId,
     required this.fqdn,
     this.location,

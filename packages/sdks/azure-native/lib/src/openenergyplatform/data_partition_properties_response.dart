@@ -12,7 +12,7 @@ class DataPartitionPropertiesResponse {
   /// Creates a new [DataPartitionPropertiesResponse].
   /// [name] Name of the data partition
   /// [provisioningState] Name of the data partition
-  DataPartitionPropertiesResponse({
+  const DataPartitionPropertiesResponse({
     this.name,
     this.provisioningState,
   });

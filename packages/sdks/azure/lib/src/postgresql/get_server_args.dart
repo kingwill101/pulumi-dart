@@ -15,7 +15,7 @@ class GetServerArgs {
   /// Creates a new [GetServerArgs].
   /// [name] The name of the PostgreSQL Server.
   /// [resourceGroupName] Specifies the name of the Resource Group where the PostgreSQL Server exists.
-  GetServerArgs({
+  const GetServerArgs({
     required this.name,
     required this.resourceGroupName,
   });

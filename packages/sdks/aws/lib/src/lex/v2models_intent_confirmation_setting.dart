@@ -56,7 +56,7 @@ class V2modelsIntentConfirmationSetting {
   /// [failureNextStep] Configuration block for the next step to take in the conversation if the confirmation step fails. See `failure_next_step`.
   /// [failureResponse] Configuration block for message groups that Amazon Lex uses to respond the user input. See `failure_response`.
   /// [promptSpecification] Configuration block for prompting the user to confirm the intent. This question should have a yes or no answer. Amazon Lex uses this prompt to ensure that the user acknowledges that the intent is ready for fulfillment. See `prompt_specification`.
-  V2modelsIntentConfirmationSetting({
+  const V2modelsIntentConfirmationSetting({
     this.active,
     this.codeHook,
     this.confirmationConditional,

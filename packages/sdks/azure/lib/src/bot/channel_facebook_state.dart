@@ -25,7 +25,7 @@ class ChannelFacebookState {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [pages] One or more `page` blocks as defined below.
   /// [resourceGroupName] The name of the resource group where the Facebook Channel should be created. Changing this forces a new resource to be created.
-  ChannelFacebookState({
+  const ChannelFacebookState({
     this.botName,
     this.facebookApplicationId,
     this.facebookApplicationSecret,

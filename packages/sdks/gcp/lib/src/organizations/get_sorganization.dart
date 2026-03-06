@@ -20,7 +20,7 @@ class GetSOrganization {
   /// [lifecycleState] The Organization's current lifecycle state.
   /// [name] The resource name of the Organization in the form `organizations/{organization_id}`.
   /// [orgId] The Organization ID.
-  GetSOrganization({
+  const GetSOrganization({
     required this.directoryCustomerId,
     required this.displayName,
     required this.lifecycleState,

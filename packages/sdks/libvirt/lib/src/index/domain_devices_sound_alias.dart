@@ -8,7 +8,7 @@ class DomainDevicesSoundAlias {
 
   /// Creates a new [DomainDevicesSoundAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesSoundAlias({
+  const DomainDevicesSoundAlias({
     required this.name,
   });
 

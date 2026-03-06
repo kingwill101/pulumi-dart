@@ -70,7 +70,7 @@ class GetManagedInstanceResult {
   /// [tags] A mapping of tags assigned to the resource.
   /// [timezoneId] The TimeZone ID that the SQL Managed Instance is running in.
   /// [vcores] Number of cores that are assigned to the SQL Managed Instance.
-  GetManagedInstanceResult({
+  const GetManagedInstanceResult({
     required this.administratorLogin,
     required this.collation,
     required this.customerManagedKeyId,

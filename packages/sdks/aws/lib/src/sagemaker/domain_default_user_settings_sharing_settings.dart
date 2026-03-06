@@ -14,7 +14,7 @@ class DomainDefaultUserSettingsSharingSettings {
   /// [notebookOutputOption] Whether to include the notebook cell output when sharing the notebook. The default is `Disabled`. Valid values are `Allowed` and `Disabled`.
   /// [s3KmsKeyId] When `notebook_output_option` is Allowed, the AWS Key Management Service (KMS) encryption key ID used to encrypt the notebook cell output in the Amazon S3 bucket.
   /// [s3OutputPath] When `notebook_output_option` is Allowed, the Amazon S3 bucket used to save the notebook cell output.
-  DomainDefaultUserSettingsSharingSettings({
+  const DomainDefaultUserSettingsSharingSettings({
     this.notebookOutputOption,
     this.s3KmsKeyId,
     this.s3OutputPath,

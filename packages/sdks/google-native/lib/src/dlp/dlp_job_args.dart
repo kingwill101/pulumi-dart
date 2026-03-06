@@ -25,7 +25,7 @@ class DlpJobArgs {
   /// [location] Deprecated. This field has no effect.
   /// [project] Optional.
   /// [riskJob] A risk analysis job calculates re-identification risk metrics for a BigQuery table.
-  DlpJobArgs({
+  const DlpJobArgs({
     this.inspectJob,
     this.jobId,
     this.location,

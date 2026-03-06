@@ -25,7 +25,7 @@ class CacheToLocal {
   /// [forceCompression] Forcefully apply compression.
   /// [ignoreError] Ignore errors caused by failed cache exports.
   /// [mode] The cache mode to use. Defaults to `min`.
-  CacheToLocal({
+  const CacheToLocal({
     this.compression,
     this.compressionLevel,
     required this.dest,

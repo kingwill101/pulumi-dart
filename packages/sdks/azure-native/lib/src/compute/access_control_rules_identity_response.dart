@@ -21,7 +21,7 @@ class AccessControlRulesIdentityResponse {
   /// [name] The name of the identity.
   /// [processName] The process name of the executable.
   /// [userName] The username corresponding to this identity.
-  AccessControlRulesIdentityResponse({
+  const AccessControlRulesIdentityResponse({
     this.exePath,
     this.groupName,
     required this.name,

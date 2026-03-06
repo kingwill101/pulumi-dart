@@ -15,7 +15,7 @@ class GetAlertRuleArgs {
   /// Creates a new [GetAlertRuleArgs].
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace this Sentinel Alert Rule belongs to.
   /// [name] The name which should be used for this Sentinel Alert Rule.
-  GetAlertRuleArgs({
+  const GetAlertRuleArgs({
     required this.logAnalyticsWorkspaceId,
     required this.name,
   });

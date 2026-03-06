@@ -14,7 +14,7 @@ class AccessPointRootDirectoryCreationInfo {
   /// [ownerGid] POSIX group ID to apply to the `root_directory`.
   /// [ownerUid] POSIX user ID to apply to the `root_directory`.
   /// [permissions] POSIX permissions to apply to the RootDirectory, in the format of an octal number representing the file's mode bits.
-  AccessPointRootDirectoryCreationInfo({
+  const AccessPointRootDirectoryCreationInfo({
     required this.ownerGid,
     required this.ownerUid,
     required this.permissions,

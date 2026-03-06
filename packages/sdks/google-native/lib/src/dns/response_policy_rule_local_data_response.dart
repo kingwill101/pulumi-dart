@@ -9,7 +9,7 @@ class ResponsePolicyRuleLocalDataResponse {
 
   /// Creates a new [ResponsePolicyRuleLocalDataResponse].
   /// [localDatas] All resource record sets for this selector, one per resource record type. The name must match the dns_name.
-  ResponsePolicyRuleLocalDataResponse({
+  const ResponsePolicyRuleLocalDataResponse({
     required this.localDatas,
   });
 

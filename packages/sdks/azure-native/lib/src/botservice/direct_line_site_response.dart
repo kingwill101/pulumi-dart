@@ -63,7 +63,7 @@ class DirectLineSiteResponse {
   /// [siteName] Site name
   /// [tenantId] Tenant Id
   /// [trustedOrigins] List of Trusted Origin URLs for this site. This field is applicable only if isSecureSiteEnabled is True.
-  DirectLineSiteResponse({
+  const DirectLineSiteResponse({
     this.appId,
     this.eTag,
     this.isBlockUserUploadEnabled,

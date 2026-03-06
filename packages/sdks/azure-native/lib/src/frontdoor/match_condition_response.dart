@@ -24,7 +24,7 @@ class MatchConditionResponse {
   /// [operator] Comparison type to use for matching with the variable value.
   /// [selector] Match against a specific key from the QueryString, PostArgs, RequestHeader or Cookies variables. Default is null.
   /// [transforms] List of transforms.
-  MatchConditionResponse({
+  const MatchConditionResponse({
     required this.matchValue,
     required this.matchVariable,
     this.negateCondition,

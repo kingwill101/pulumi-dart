@@ -21,7 +21,7 @@ class PolicyArgs {
   /// [description] The description of the policy. The description must be 1 to 1,024 characters in length.
   /// [policyDocument] The content of the policy. The content must be 1 to 2,048 characters in length.
   /// [policyName] The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-  PolicyArgs({
+  const PolicyArgs({
     this.defaultVersion,
     this.description,
     required this.policyDocument,

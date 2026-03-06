@@ -12,7 +12,7 @@ class LayerResponse {
   /// Creates a new [LayerResponse].
   /// [arguments] The recovered arguments to the Dockerfile directive.
   /// [directive] The recovered Dockerfile directive used to construct this layer. See https://docs.docker.com/engine/reference/builder/ for more information.
-  LayerResponse({
+  const LayerResponse({
     required this.arguments,
     required this.directive,
   });

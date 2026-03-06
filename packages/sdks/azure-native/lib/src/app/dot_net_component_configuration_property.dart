@@ -12,7 +12,7 @@ class DotNetComponentConfigurationProperty {
   /// Creates a new [DotNetComponentConfigurationProperty].
   /// [propertyName] The name of the property
   /// [value] The value of the property
-  DotNetComponentConfigurationProperty({
+  const DotNetComponentConfigurationProperty({
     this.propertyName,
     this.value,
   });

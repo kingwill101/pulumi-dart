@@ -45,7 +45,7 @@ class GetWorkspaceResult {
   /// [tags] A mapping of tags to assign to the Databricks Workspace.
   /// [workspaceId] Unique ID of this Databricks Workspace in Databricks management plane.
   /// [workspaceUrl] URL this Databricks Workspace is accessible on.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.customParameters,
     required this.enhancedSecurityCompliances,
     required this.id,

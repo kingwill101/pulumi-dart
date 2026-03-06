@@ -8,7 +8,7 @@ class BatchOperationsJobDeleteObject {
 
   /// Creates a new [BatchOperationsJobDeleteObject].
   /// [permanentObjectDeletionEnabled] enable flag to permanently delete object and all object versions if versioning is enabled on bucket.
-  BatchOperationsJobDeleteObject({
+  const BatchOperationsJobDeleteObject({
     required this.permanentObjectDeletionEnabled,
   });
 

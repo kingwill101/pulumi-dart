@@ -15,7 +15,7 @@ class GetBucketArgs {
   /// [bucketId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBucketArgs({
+  const GetBucketArgs({
     required this.bucketId,
     required this.location,
     this.project,

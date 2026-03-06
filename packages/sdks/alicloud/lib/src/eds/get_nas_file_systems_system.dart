@@ -53,7 +53,7 @@ class GetNasFileSystemsSystem {
   /// [storageType] The storage type of nas file system.
   /// [supportAcl] Whether to support Acl.
   /// [zoneId] The zone id of nas file system.
-  GetNasFileSystemsSystem({
+  const GetNasFileSystemsSystem({
     required this.capacity,
     required this.createTime,
     required this.description,

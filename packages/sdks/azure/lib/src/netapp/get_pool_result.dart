@@ -32,7 +32,7 @@ class GetPoolResult {
   /// [resourceGroupName] Required.
   /// [serviceLevel] The service level of the file system.
   /// [sizeInTb] Provisioned size of the pool in TB.
-  GetPoolResult({
+  const GetPoolResult({
     required this.accountName,
     required this.coolAccessEnabled,
     required this.customThroughputMibps,

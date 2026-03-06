@@ -30,7 +30,7 @@ class GetSecurityProfileResult {
   /// [threatPreventionProfile] The threat prevention configuration for the SecurityProfile.
   /// [type] Immutable. The single ProfileType that the SecurityProfile resource configures.
   /// [updateTime] Last resource update timestamp.
-  GetSecurityProfileResult({
+  const GetSecurityProfileResult({
     required this.createTime,
     required this.description,
     required this.etag,

@@ -15,7 +15,7 @@ class GetJobRunV2Args {
   /// [jobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetJobRunV2Args({
+  const GetJobRunV2Args({
     required this.jobId,
     required this.location,
     this.project,

@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupVariationCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupVariationCustomPayload({
+  const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupVariationCustomPayload({
     required this.value,
   });
 

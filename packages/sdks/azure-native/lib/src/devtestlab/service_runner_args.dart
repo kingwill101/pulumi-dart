@@ -28,7 +28,7 @@ class ServiceRunnerArgs {
   /// [name] The name of the ServiceRunner
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The tags of the resource.
-  ServiceRunnerArgs({
+  const ServiceRunnerArgs({
     this.identity,
     required this.labName,
     this.location,

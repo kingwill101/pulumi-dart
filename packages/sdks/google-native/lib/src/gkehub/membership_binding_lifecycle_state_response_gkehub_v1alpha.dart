@@ -9,7 +9,7 @@ class MembershipBindingLifecycleStateResponseGkehubV1alpha {
 
   /// Creates a new [MembershipBindingLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the MembershipBinding resource.
-  MembershipBindingLifecycleStateResponseGkehubV1alpha({
+  const MembershipBindingLifecycleStateResponseGkehubV1alpha({
     required this.code,
   });
 

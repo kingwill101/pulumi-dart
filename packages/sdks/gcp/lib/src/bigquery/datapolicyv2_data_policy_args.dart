@@ -49,7 +49,7 @@ class Datapolicyv2DataPolicyArgs {
   /// [grantees] The list of IAM principals that have Fine Grained Access to the underlying
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
-  Datapolicyv2DataPolicyArgs({
+  const Datapolicyv2DataPolicyArgs({
     this.dataMaskingPolicy,
     required this.dataPolicyId,
     required this.dataPolicyType,

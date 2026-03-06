@@ -15,7 +15,7 @@ class RestoredLogs {
   /// [endRestoreTime] The timestamp to end the restore by (UTC).
   /// [sourceTable] The table to restore data from.
   /// [startRestoreTime] The timestamp to start the restore from (UTC).
-  RestoredLogs({
+  const RestoredLogs({
     this.endRestoreTime,
     this.sourceTable,
     this.startRestoreTime,

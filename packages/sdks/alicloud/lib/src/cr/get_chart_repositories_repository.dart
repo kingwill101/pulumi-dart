@@ -29,7 +29,7 @@ class GetChartRepositoriesRepository {
   /// [repoNamespaceName] The namespace to which the repository belongs.
   /// [repoType] The type of the repository. Valid values: `PUBLIC`,`PRIVATE`.
   /// [summary] The summary about the repository.
-  GetChartRepositoriesRepository({
+  const GetChartRepositoriesRepository({
     required this.chartRepositoryId,
     required this.createTime,
     required this.id,

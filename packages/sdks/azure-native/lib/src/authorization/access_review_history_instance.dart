@@ -24,7 +24,7 @@ class AccessReviewHistoryInstance {
   /// [reviewHistoryPeriodEndDateTime] Date time used when selecting review data, all reviews included in data end on or before this date. For use only with one-time/non-recurring reports.
   /// [reviewHistoryPeriodStartDateTime] Date time used when selecting review data, all reviews included in data start on or after this date. For use only with one-time/non-recurring reports.
   /// [runDateTime] Date time when the history data report is scheduled to be generated.
-  AccessReviewHistoryInstance({
+  const AccessReviewHistoryInstance({
     this.displayName,
     this.expiration,
     this.fulfilledDateTime,

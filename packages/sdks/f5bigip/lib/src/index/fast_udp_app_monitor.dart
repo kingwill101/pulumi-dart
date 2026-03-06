@@ -14,7 +14,7 @@ class FastUdpAppMonitor {
   /// [expectedResponse] The presence of this optional string is required in the response, if specified it confirms availability.
   /// [interval] Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
   /// [sendString] Optional data to be sent during each health check.
-  FastUdpAppMonitor({
+  const FastUdpAppMonitor({
     this.expectedResponse,
     this.interval,
     this.sendString,

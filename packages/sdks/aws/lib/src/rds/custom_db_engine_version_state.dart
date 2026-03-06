@@ -66,7 +66,7 @@ class CustomDbEngineVersionState {
   /// [status] The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  CustomDbEngineVersionState({
+  const CustomDbEngineVersionState({
     this.arn,
     this.createTime,
     this.databaseInstallationFilesS3BucketName,

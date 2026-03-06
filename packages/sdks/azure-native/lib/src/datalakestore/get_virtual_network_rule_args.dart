@@ -18,7 +18,7 @@ class GetVirtualNetworkRuleArgs {
   /// [accountName] The name of the Data Lake Store account.
   /// [resourceGroupName] The name of the Azure resource group.
   /// [virtualNetworkRuleName] The name of the virtual network rule to retrieve.
-  GetVirtualNetworkRuleArgs({
+  const GetVirtualNetworkRuleArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.virtualNetworkRuleName,

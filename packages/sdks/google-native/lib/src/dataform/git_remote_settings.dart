@@ -19,7 +19,7 @@ class GitRemoteSettings {
   /// [defaultBranch] The Git remote's default branch name.
   /// [sshAuthenticationConfig] Optional. Authentication fields for remote uris using SSH protocol.
   /// [url] The Git remote's URL.
-  GitRemoteSettings({
+  const GitRemoteSettings({
     this.authenticationTokenSecretVersion,
     required this.defaultBranch,
     this.sshAuthenticationConfig,

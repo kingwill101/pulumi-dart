@@ -10,7 +10,7 @@ class AzureResourceDetails {
 
   /// Creates a new [AzureResourceDetails].
   /// [source] The platform where the assessed resource resides
-  AzureResourceDetails({
+  const AzureResourceDetails({
     required this.source,
   });
 

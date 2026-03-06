@@ -10,7 +10,7 @@ class VolumePropertiesExportPolicy {
 
   /// Creates a new [VolumePropertiesExportPolicy].
   /// [rules] Export policy rule
-  VolumePropertiesExportPolicy({
+  const VolumePropertiesExportPolicy({
     this.rules,
   });
 

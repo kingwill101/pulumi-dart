@@ -10,7 +10,7 @@ class BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig {
 
   /// Creates a new [BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig].
   /// [enabled] Whether to enable multiple network interfaces for your pods.
-  BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig({
+  const BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig({
     this.enabled,
   });
 

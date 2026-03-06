@@ -13,7 +13,7 @@ class ImageSweepSettingsResponse {
   /// Creates a new [ImageSweepSettingsResponse].
   /// [earlyTermination] Type of early termination policy.
   /// [samplingAlgorithm] [Required] Type of the hyperparameter sampling algorithms.
-  ImageSweepSettingsResponse({
+  const ImageSweepSettingsResponse({
     this.earlyTermination,
     required this.samplingAlgorithm,
   });

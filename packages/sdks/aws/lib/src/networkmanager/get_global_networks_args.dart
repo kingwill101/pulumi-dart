@@ -12,7 +12,7 @@ class GetGlobalNetworksArgs {
 
   /// Creates a new [GetGlobalNetworksArgs].
   /// [tags] Restricts the list to the global networks with these tags.
-  GetGlobalNetworksArgs({
+  const GetGlobalNetworksArgs({
     this.tags,
   });
 

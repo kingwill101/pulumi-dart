@@ -28,7 +28,7 @@ class ApiHubInstanceConfig {
   /// [disableSearch] Optional. If true, the search will be disabled for the instance. The default value
   /// [encryptionType] Optional. Encryption type for the region. If the encryption type is CMEK, the
   /// [vertexLocation] Optional. The name of the Vertex AI location where the data store is stored.
-  ApiHubInstanceConfig({
+  const ApiHubInstanceConfig({
     this.cmekKeyName,
     this.disableSearch,
     this.encryptionType,

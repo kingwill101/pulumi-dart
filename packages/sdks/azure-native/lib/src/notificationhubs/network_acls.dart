@@ -14,7 +14,7 @@ class NetworkAcls {
   /// Creates a new [NetworkAcls].
   /// [ipRules] List of IP rules.
   /// [publicNetworkRule] A default (public Internet) network authorization rule, which contains rights if no other network rule matches.
-  NetworkAcls({
+  const NetworkAcls({
     this.ipRules,
     this.publicNetworkRule,
   });

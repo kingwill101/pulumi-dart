@@ -25,7 +25,7 @@ class GetEnvFeaturesResult {
   /// [nameRegex] Optional.
   /// [names] A list of ARMS Env Feature names.
   /// [outputFile] Optional.
-  GetEnvFeaturesResult({
+  const GetEnvFeaturesResult({
     required this.environmentId,
     required this.features,
     required this.id,

@@ -13,7 +13,7 @@ class AkriConnectorsTagResponse {
   /// Creates a new [AkriConnectorsTagResponse].
   /// [tag] The tag of the image.
   /// [tagDigestType] AkriConnectorsTagDigestType values.
-  AkriConnectorsTagResponse({
+  const AkriConnectorsTagResponse({
     required this.tag,
     required this.tagDigestType,
   });

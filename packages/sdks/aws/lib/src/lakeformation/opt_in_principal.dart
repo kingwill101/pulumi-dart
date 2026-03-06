@@ -7,7 +7,7 @@ class OptInPrincipal {
 
   /// Creates a new [OptInPrincipal].
   /// [dataLakePrincipalIdentifier] Required.
-  OptInPrincipal({
+  const OptInPrincipal({
     required this.dataLakePrincipalIdentifier,
   });
 

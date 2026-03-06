@@ -12,7 +12,7 @@ class RegistryInfoResponse {
   /// Creates a new [RegistryInfoResponse].
   /// [registryUrl] registry server Url.
   /// [registryUserName] registry username.
-  RegistryInfoResponse({
+  const RegistryInfoResponse({
     this.registryUrl,
     this.registryUserName,
   });

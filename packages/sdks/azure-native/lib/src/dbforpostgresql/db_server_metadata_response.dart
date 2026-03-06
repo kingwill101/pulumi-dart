@@ -19,7 +19,7 @@ class DbServerMetadataResponse {
   /// [sku] Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
   /// [storageMb] Storage size (in MB) for database server.
   /// [version] Major version of PostgreSQL database engine.
-  DbServerMetadataResponse({
+  const DbServerMetadataResponse({
     required this.location,
     this.sku,
     this.storageMb,

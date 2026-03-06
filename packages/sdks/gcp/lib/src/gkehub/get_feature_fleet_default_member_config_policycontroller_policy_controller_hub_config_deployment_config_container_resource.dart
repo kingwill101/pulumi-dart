@@ -13,7 +13,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource].
   /// [limits] Limits describes the maximum amount of compute resources allowed for use by the running container.
   /// [requests] Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource({
     required this.limits,
     required this.requests,
   });

@@ -12,7 +12,7 @@ class NodeConfig {
   /// Creates a new [NodeConfig].
   /// [maxNodeCount] Maximum number of nodes in the runtime nodes.
   /// [minNodeCount] Minimum number of nodes in the runtime nodes.
-  NodeConfig({
+  const NodeConfig({
     this.maxNodeCount,
     this.minNodeCount,
   });

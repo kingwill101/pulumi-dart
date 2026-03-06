@@ -17,7 +17,7 @@ class GetNodeGroupIamPolicyComputeV1Args {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetNodeGroupIamPolicyComputeV1Args({
+  const GetNodeGroupIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

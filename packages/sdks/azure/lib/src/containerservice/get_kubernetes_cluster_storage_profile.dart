@@ -17,7 +17,7 @@ class GetKubernetesClusterStorageProfile {
   /// [diskDriverEnabled] Is the Disk CSI driver enabled?
   /// [fileDriverEnabled] Is the File CSI driver enabled?
   /// [snapshotControllerEnabled] Is the Snapshot Controller enabled?
-  GetKubernetesClusterStorageProfile({
+  const GetKubernetesClusterStorageProfile({
     required this.blobDriverEnabled,
     required this.diskDriverEnabled,
     required this.fileDriverEnabled,

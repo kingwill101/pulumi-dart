@@ -35,7 +35,7 @@ class AiMetadataStoreVertexState {
   /// [region] The region of the Metadata Store. eg us-central1
   /// [states] State information of the MetadataStore.
   /// [updateTime] The timestamp of when the MetadataStore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiMetadataStoreVertexState({
+  const AiMetadataStoreVertexState({
     this.createTime,
     this.description,
     this.encryptionSpec,

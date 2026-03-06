@@ -14,7 +14,7 @@ class EnvironmentConfigResponse {
   /// Creates a new [EnvironmentConfigResponse].
   /// [executionConfig] Optional. Execution configuration for a workload.
   /// [peripheralsConfig] Optional. Peripherals configuration that workload has access to.
-  EnvironmentConfigResponse({
+  const EnvironmentConfigResponse({
     required this.executionConfig,
     required this.peripheralsConfig,
   });

@@ -18,7 +18,7 @@ class SigningCertificateState {
   /// [certificateId] The ID for the signing certificate.
   /// [status] The status you want to assign to the certificate. `Active` means that the certificate can be used for programmatic calls to Amazon Web Services `Inactive` means that the certificate cannot be used.
   /// [userName] The name of the user the signing certificate is for.
-  SigningCertificateState({
+  const SigningCertificateState({
     this.certificateBody,
     this.certificateId,
     this.status,

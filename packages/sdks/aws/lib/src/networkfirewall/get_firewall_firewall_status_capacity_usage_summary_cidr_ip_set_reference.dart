@@ -8,7 +8,7 @@ class GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference {
 
   /// Creates a new [GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference].
   /// [resolvedCidrCount] Total number of CIDR blocks used by the IP set references in a firewall.
-  GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference({
+  const GetFirewallFirewallStatusCapacityUsageSummaryCidrIpSetReference({
     required this.resolvedCidrCount,
   });
 

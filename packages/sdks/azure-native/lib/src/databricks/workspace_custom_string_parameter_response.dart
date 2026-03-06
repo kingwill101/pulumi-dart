@@ -12,7 +12,7 @@ class WorkspaceCustomStringParameterResponse {
   /// Creates a new [WorkspaceCustomStringParameterResponse].
   /// [type] The type of variable that this is
   /// [value] The value which should be used for this field.
-  WorkspaceCustomStringParameterResponse({
+  const WorkspaceCustomStringParameterResponse({
     required this.type,
     required this.value,
   });

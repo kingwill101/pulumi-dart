@@ -9,7 +9,7 @@ class GceConfidentialInstanceConfigWorkstationsV1beta {
 
   /// Creates a new [GceConfidentialInstanceConfigWorkstationsV1beta].
   /// [enableConfidentialCompute] Optional. Whether the instance has confidential compute enabled.
-  GceConfidentialInstanceConfigWorkstationsV1beta({
+  const GceConfidentialInstanceConfigWorkstationsV1beta({
     this.enableConfidentialCompute,
   });
 

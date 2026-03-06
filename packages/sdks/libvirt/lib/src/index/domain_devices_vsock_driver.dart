@@ -17,7 +17,7 @@ class DomainDevicesVsockDriver {
   /// [iommu] Controls whether IOMMU support is enabled for the vsock device driver.
   /// [packed] Determines if the driver supports packed queues for the vsock device.
   /// [pagePerVq] Configures the use of a page per Virtqueue (VQ) for the vsock device driver.
-  DomainDevicesVsockDriver({
+  const DomainDevicesVsockDriver({
     this.ats,
     this.iommu,
     this.packed,

@@ -19,7 +19,7 @@ class RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2 {
   /// [kind] Required.
   /// [primaryTargets] Endpoints that are health checked before making the routing decision. Unhealthy endpoints are omitted from the results. If all endpoints are unhealthy, we serve a response based on the backup_geo_targets.
   /// [trickleTraffic] When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
-  RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2({
+  const RRSetRoutingPolicyPrimaryBackupPolicyResponseDnsV1beta2({
     required this.backupGeoTargets,
     required this.kind,
     required this.primaryTargets,

@@ -9,7 +9,7 @@ class PyPiRepositoryConfig {
 
   /// Creates a new [PyPiRepositoryConfig].
   /// [pypiRepository] Optional. PyPi repository address
-  PyPiRepositoryConfig({
+  const PyPiRepositoryConfig({
     this.pypiRepository,
   });
 

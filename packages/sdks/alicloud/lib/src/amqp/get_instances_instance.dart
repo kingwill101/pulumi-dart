@@ -47,7 +47,7 @@ class GetInstancesInstance {
   /// [renewalStatus] Whether to renew an instance automatically or not. **Note:** `renewal_status` takes effect only if `enable_details` is set to `true`.
   /// [status] The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
   /// [supportEip] Indicates whether the instance supports elastic IP addresses (EIPs).
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.createTime,
     required this.expireTime,
     required this.id,

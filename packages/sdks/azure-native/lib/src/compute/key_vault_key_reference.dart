@@ -13,7 +13,7 @@ class KeyVaultKeyReference {
   /// Creates a new [KeyVaultKeyReference].
   /// [keyUrl] The URL referencing a key encryption key in Key Vault.
   /// [sourceVault] The relative URL of the Key Vault containing the key.
-  KeyVaultKeyReference({
+  const KeyVaultKeyReference({
     required this.keyUrl,
     required this.sourceVault,
   });

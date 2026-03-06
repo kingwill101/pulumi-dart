@@ -46,7 +46,7 @@ class HealthCheckHttpsHealthCheck {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to the
   /// [requestPath] The request path of the HTTPS health check request.
   /// [response] The bytes to match against the beginning of the response data. If left empty
-  HealthCheckHttpsHealthCheck({
+  const HealthCheckHttpsHealthCheck({
     this.host,
     this.port,
     this.portName,

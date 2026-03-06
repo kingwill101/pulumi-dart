@@ -70,7 +70,7 @@ class WorkflowArgs {
   /// [sourceContents] Workflow code to be executed. The size limit is 128KB.
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition
   /// [userEnvVars] User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
-  WorkflowArgs({
+  const WorkflowArgs({
     this.callLogLevel,
     this.cryptoKeyName,
     this.deletionProtection,

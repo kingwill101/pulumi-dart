@@ -16,7 +16,7 @@ class CostAllocationRuleProperties {
   /// [description] Description of a cost allocation rule.
   /// [details] Resource information for the cost allocation rule
   /// [status] Status of the rule
-  CostAllocationRuleProperties({
+  const CostAllocationRuleProperties({
     this.description,
     required this.details,
     required this.status,

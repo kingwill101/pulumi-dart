@@ -33,7 +33,7 @@ class VirtualNetworkApplianceIpConfigurationResponse {
   /// [privateIPAllocationMethod] The private IP address allocation method.
   /// [provisioningState] The provisioning state of the private link service IP configuration resource.
   /// [type] The resource type.
-  VirtualNetworkApplianceIpConfigurationResponse({
+  const VirtualNetworkApplianceIpConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

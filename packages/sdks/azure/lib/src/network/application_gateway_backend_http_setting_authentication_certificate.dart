@@ -11,7 +11,7 @@ class ApplicationGatewayBackendHttpSettingAuthenticationCertificate {
   /// Creates a new [ApplicationGatewayBackendHttpSettingAuthenticationCertificate].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The Name of the Authentication Certificate to use.
-  ApplicationGatewayBackendHttpSettingAuthenticationCertificate({
+  const ApplicationGatewayBackendHttpSettingAuthenticationCertificate({
     this.id,
     required this.name,
   });

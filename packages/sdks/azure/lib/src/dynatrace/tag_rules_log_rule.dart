@@ -18,7 +18,7 @@ class TagRulesLogRule {
   /// [sendActivityLogsEnabled] Send Activity logs. The default value is `false`.
   /// [sendAzureActiveDirectoryLogsEnabled] Send Azure Active Directory logs. The default value is `false`.
   /// [sendSubscriptionLogsEnabled] Send Subscription logs. The default value is `false`.
-  TagRulesLogRule({
+  const TagRulesLogRule({
     this.filteringTags,
     this.sendActivityLogsEnabled,
     this.sendAzureActiveDirectoryLogsEnabled,

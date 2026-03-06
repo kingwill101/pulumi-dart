@@ -37,7 +37,7 @@ class GetEntityResult {
   /// [servingApmApplicationId] The browser-specific ID of the backing APM entity. Only returned for Browser applications.
   /// [tags] Optional.
   /// [type] Required.
-  GetEntityResult({
+  const GetEntityResult({
     required this.accountId,
     required this.applicationId,
     required this.domain,

@@ -19,7 +19,7 @@ class GetDatasetDicomStoreIamPolicyHealthcareV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetDicomStoreIamPolicyHealthcareV1beta1Args({
+  const GetDatasetDicomStoreIamPolicyHealthcareV1beta1Args({
     required this.datasetId,
     required this.dicomStoreId,
     required this.location,

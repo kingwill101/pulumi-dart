@@ -16,7 +16,7 @@ class GooglePrivacyDlpV2NumericalStatsResultResponse {
   /// [maxValue] Maximum value appearing in the column.
   /// [minValue] Minimum value appearing in the column.
   /// [quantileValues] List of 99 values that partition the set of field values into 100 equal sized buckets.
-  GooglePrivacyDlpV2NumericalStatsResultResponse({
+  const GooglePrivacyDlpV2NumericalStatsResultResponse({
     required this.maxValue,
     required this.minValue,
     required this.quantileValues,

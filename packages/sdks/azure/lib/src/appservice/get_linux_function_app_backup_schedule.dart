@@ -23,7 +23,7 @@ class GetLinuxFunctionAppBackupSchedule {
   /// [lastExecutionTime] The time the backup was last attempted.
   /// [retentionPeriodDays] After how many days backups are deleted.
   /// [startTime] When the schedule starts working in RFC-3339 format.
-  GetLinuxFunctionAppBackupSchedule({
+  const GetLinuxFunctionAppBackupSchedule({
     required this.frequencyInterval,
     required this.frequencyUnit,
     required this.keepAtLeastOneBackup,

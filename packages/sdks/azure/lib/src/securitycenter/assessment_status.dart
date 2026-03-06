@@ -14,7 +14,7 @@ class AssessmentStatus {
   /// [cause] Specifies the cause of the assessment status.
   /// [code] Specifies the programmatic code of the assessment status. Possible values are `Healthy`, `Unhealthy` and `NotApplicable`.
   /// [description] Specifies the human readable description of the assessment status.
-  AssessmentStatus({
+  const AssessmentStatus({
     this.cause,
     required this.code,
     this.description,

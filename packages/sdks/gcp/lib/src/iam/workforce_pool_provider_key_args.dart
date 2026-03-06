@@ -30,7 +30,7 @@ class WorkforcePoolProviderKeyArgs {
   /// [providerId] The ID of the provider.
   /// [use] The purpose of the key.
   /// [workforcePoolId] The ID of the workforce pool.
-  WorkforcePoolProviderKeyArgs({
+  const WorkforcePoolProviderKeyArgs({
     required this.keyData,
     required this.keyId,
     required this.location,

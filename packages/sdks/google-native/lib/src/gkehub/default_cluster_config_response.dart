@@ -14,7 +14,7 @@ class DefaultClusterConfigResponse {
   /// Creates a new [DefaultClusterConfigResponse].
   /// [binaryAuthorizationConfig] Optional. Enable/Disable binary authorization features for the cluster.
   /// [securityPostureConfig] Enable/Disable Security Posture features for the cluster.
-  DefaultClusterConfigResponse({
+  const DefaultClusterConfigResponse({
     required this.binaryAuthorizationConfig,
     required this.securityPostureConfig,
   });

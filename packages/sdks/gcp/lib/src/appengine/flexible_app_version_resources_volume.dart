@@ -14,7 +14,7 @@ class FlexibleAppVersionResourcesVolume {
   /// [name] Unique name for the volume.
   /// [sizeGb] Volume size in gigabytes.
   /// [volumeType] Underlying volume type, e.g. 'tmpfs'.
-  FlexibleAppVersionResourcesVolume({
+  const FlexibleAppVersionResourcesVolume({
     required this.name,
     required this.sizeGb,
     required this.volumeType,

@@ -46,7 +46,7 @@ class GetDomainManagedidentitiesV1beta1Result {
   /// [statusMessage] Additional information about the current status of this domain, if available.
   /// [trusts] The current trusts associated with the domain.
   /// [updateTime] The last update time.
-  GetDomainManagedidentitiesV1beta1Result({
+  const GetDomainManagedidentitiesV1beta1Result({
     required this.admin,
     required this.auditLogsEnabled,
     required this.authorizedNetworks,

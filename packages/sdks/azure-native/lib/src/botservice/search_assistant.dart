@@ -16,7 +16,7 @@ class SearchAssistant {
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
-  SearchAssistant({
+  const SearchAssistant({
     required this.channelName,
     this.etag,
     this.location,

@@ -15,7 +15,7 @@ class GetCloudConnectorArgs {
   /// Creates a new [GetCloudConnectorArgs].
   /// [cloudConnectorName] The name of the cloud connector resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudConnectorArgs({
+  const GetCloudConnectorArgs({
     required this.cloudConnectorName,
     required this.resourceGroupName,
   });

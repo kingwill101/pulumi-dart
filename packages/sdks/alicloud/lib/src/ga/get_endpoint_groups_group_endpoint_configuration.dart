@@ -23,7 +23,7 @@ class GetEndpointGroupsGroupEndpointConfiguration {
   /// [probeProtocol] Probe Protocol.
   /// [type] The type of Endpoint N in the endpoint group.
   /// [weight] The weight of Endpoint N in the endpoint group.
-  GetEndpointGroupsGroupEndpointConfiguration({
+  const GetEndpointGroupsGroupEndpointConfiguration({
     required this.enableClientipPreservation,
     required this.endpoint,
     required this.probePort,

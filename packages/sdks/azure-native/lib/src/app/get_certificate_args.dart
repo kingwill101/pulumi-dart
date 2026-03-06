@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [certificateName] Name of the Certificate.
   /// [environmentName] Name of the Managed Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.certificateName,
     required this.environmentName,
     required this.resourceGroupName,

@@ -62,7 +62,7 @@ class DeviceSubRequestPatchResourceK8sIoV1beta1 {
   /// [name] Name can be used to reference this subrequest in the list of constraints or the list of configurations for the claim. References must use the format &lt;main request&gt;/&lt;subrequest&gt;.
   /// [selectors] Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this subrequest. All selectors must be satisfied for a device to be considered.
   /// [tolerations] If specified, the request's tolerations.
-  DeviceSubRequestPatchResourceK8sIoV1beta1({
+  const DeviceSubRequestPatchResourceK8sIoV1beta1({
     this.allocationMode,
     this.capacity,
     this.count,

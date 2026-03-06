@@ -24,7 +24,7 @@ class SecurityPartnerProviderState {
   /// [securityProviderName] The security provider name. Possible values are `ZScaler`, `IBoss` and `Checkpoint` is allowed. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Security Partner Provider.
   /// [virtualHubId] The ID of the Virtual Hub within which this Security Partner Provider should be created. Changing this forces a new resource to be created.
-  SecurityPartnerProviderState({
+  const SecurityPartnerProviderState({
     this.location,
     this.name,
     this.resourceGroupName,

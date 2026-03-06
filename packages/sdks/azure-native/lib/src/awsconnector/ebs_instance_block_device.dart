@@ -25,7 +25,7 @@ class EbsInstanceBlockDevice {
   /// [status] &lt;p&gt;The attachment state.&lt;/p&gt;
   /// [volumeId] &lt;p&gt;The ID of the EBS volume.&lt;/p&gt;
   /// [volumeOwnerId] &lt;p&gt;The ID of the Amazon Web Services account that owns the volume.&lt;/p&gt; &lt;p&gt;This parameter is returned only for volumes that are attached to Fargate tasks.&lt;/p&gt;
-  EbsInstanceBlockDevice({
+  const EbsInstanceBlockDevice({
     this.associatedResource,
     this.attachTime,
     this.deleteOnTermination,

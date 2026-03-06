@@ -44,7 +44,7 @@ class WindowsVirtualMachineScaleSetOsDisk {
   /// [securityEncryptionType] Encryption Type when the Virtual Machine Scale Set is Confidential VMSS. Possible values are `VMGuestStateOnly` and `DiskWithVMGuestState`. Changing this forces a new resource to be created.
   /// [storageAccountType] The Type of Storage Account which should back this the Internal OS Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS`, `Premium_LRS` and `Premium_ZRS`. Changing this forces a new resource to be created.
   /// [writeAcceleratorEnabled] Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
-  WindowsVirtualMachineScaleSetOsDisk({
+  const WindowsVirtualMachineScaleSetOsDisk({
     required this.caching,
     this.diffDiskSettings,
     this.diskEncryptionSetId,

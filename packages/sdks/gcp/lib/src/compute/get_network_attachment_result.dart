@@ -39,7 +39,7 @@ class GetNetworkAttachmentResult {
   /// [selfLink] Required.
   /// [selfLinkWithId] Required.
   /// [subnetworks] Required.
-  GetNetworkAttachmentResult({
+  const GetNetworkAttachmentResult({
     required this.connectionEndpoints,
     required this.connectionPreference,
     required this.creationTimestamp,

@@ -18,7 +18,7 @@ class GetFirewallRuleArgs {
   /// [firewallRuleName] The name of the mongo cluster firewall rule.
   /// [mongoClusterName] The name of the mongo cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFirewallRuleArgs({
+  const GetFirewallRuleArgs({
     required this.firewallRuleName,
     required this.mongoClusterName,
     required this.resourceGroupName,

@@ -41,7 +41,7 @@ class GetAddressesArgs {
   /// [filter] A filter expression that
   /// [project] The google project in which addresses are listed.
   /// [region] Region that should be considered to search addresses.
-  GetAddressesArgs({
+  const GetAddressesArgs({
     this.filter,
     this.project,
     this.region,

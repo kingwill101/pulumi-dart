@@ -9,7 +9,7 @@ class InternetIngressPublicIpsPropertiesResponse {
 
   /// Creates a new [InternetIngressPublicIpsPropertiesResponse].
   /// [id] Resource Uri of Public Ip
-  InternetIngressPublicIpsPropertiesResponse({
+  const InternetIngressPublicIpsPropertiesResponse({
     this.id,
   });
 

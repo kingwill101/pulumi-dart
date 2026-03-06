@@ -62,7 +62,7 @@ class GetTransitGatewayResult {
   /// [tags] Key-value tags for the EC2 Transit Gateway
   /// [transitGatewayCidrBlocks] The list of associated CIDR blocks
   /// [vpnEcmpSupport] Whether VPN Equal Cost Multipath Protocol support is enabled
-  GetTransitGatewayResult({
+  const GetTransitGatewayResult({
     required this.amazonSideAsn,
     required this.arn,
     required this.associationDefaultRouteTableId,

@@ -10,7 +10,7 @@ class AcceleratorSshSettingResponse {
 
   /// Creates a new [AcceleratorSshSettingResponse].
   /// [authType] The type of the auth setting.
-  AcceleratorSshSettingResponse({
+  const AcceleratorSshSettingResponse({
     required this.authType,
   });
 

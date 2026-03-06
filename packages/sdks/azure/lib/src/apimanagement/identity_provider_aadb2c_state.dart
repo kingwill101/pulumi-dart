@@ -42,7 +42,7 @@ class IdentityProviderAadb2cState {
   /// [signinPolicy] Signin Policy Name.
   /// [signinTenant] The tenant to use instead of Common when logging into Active Directory, usually your B2C tenant domain.
   /// [signupPolicy] Signup Policy Name.
-  IdentityProviderAadb2cState({
+  const IdentityProviderAadb2cState({
     this.allowedTenant,
     this.apiManagementName,
     this.authority,

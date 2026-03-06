@@ -15,7 +15,7 @@ class AzureSkuResponse {
   /// [capacity] The number of instances of the cluster.
   /// [name] SKU name.
   /// [size] SKU size.
-  AzureSkuResponse({
+  const AzureSkuResponse({
     this.capacity,
     required this.name,
     required this.size,

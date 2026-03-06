@@ -17,7 +17,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig {
   /// [emailPasswordEnforcementState] The reCAPTCHA config for email/password provider, containing the enforcement status. The email/password provider contains all related user flows protected by reCAPTCHA.
   /// [managedRules] The managed rules for authentication action based on reCAPTCHA scores. The rules are shared across providers for a given tenant project.
   /// [useAccountDefender] Whether to use the account defender for reCAPTCHA assessment. Defaults to `false`.
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig({
+  const GoogleCloudIdentitytoolkitAdminV2RecaptchaConfig({
     this.emailPasswordEnforcementState,
     this.managedRules,
     this.useAccountDefender,

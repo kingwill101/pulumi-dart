@@ -12,7 +12,7 @@ class SortOptions {
   /// Creates a new [SortOptions].
   /// [operatorName] The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
   /// [sortOrder] Ascending is the default sort order
-  SortOptions({
+  const SortOptions({
     this.operatorName,
     this.sortOrder,
   });

@@ -48,7 +48,7 @@ class ImageReferenceResponse {
   /// [sharedGalleryImageId] Specified the shared gallery image unique id for vm deployment. This can be
   /// [sku] The image SKU.
   /// [version] Specifies the version of the platform image or marketplace image used to create
-  ImageReferenceResponse({
+  const ImageReferenceResponse({
     this.communityGalleryImageId,
     required this.exactVersion,
     this.id,

@@ -22,7 +22,7 @@ class HelmReleasePropertiesDefinitionResponse {
   /// [installFailureCount] Number of times that the HelmRelease failed to install
   /// [lastRevisionApplied] The revision number of the last released object change
   /// [upgradeFailureCount] Number of times that the HelmRelease failed to upgrade
-  HelmReleasePropertiesDefinitionResponse({
+  const HelmReleasePropertiesDefinitionResponse({
     this.failureCount,
     this.helmChartRef,
     this.installFailureCount,

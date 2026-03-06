@@ -9,7 +9,7 @@ class TrustedTokenIssuerTrustedTokenIssuerConfiguration {
 
   /// Creates a new [TrustedTokenIssuerTrustedTokenIssuerConfiguration].
   /// [oidcJwtConfiguration] A block that describes the settings for a trusted token issuer that works with OpenID Connect (OIDC) by using JSON Web Tokens (JWT). See Documented below below.
-  TrustedTokenIssuerTrustedTokenIssuerConfiguration({
+  const TrustedTokenIssuerTrustedTokenIssuerConfiguration({
     required this.oidcJwtConfiguration,
   });
 

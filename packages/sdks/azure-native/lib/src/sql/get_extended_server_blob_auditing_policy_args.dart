@@ -18,7 +18,7 @@ class GetExtendedServerBlobAuditingPolicyArgs {
   /// [blobAuditingPolicyName] The name of the blob auditing policy.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetExtendedServerBlobAuditingPolicyArgs({
+  const GetExtendedServerBlobAuditingPolicyArgs({
     required this.blobAuditingPolicyName,
     required this.resourceGroupName,
     required this.serverName,

@@ -15,7 +15,7 @@ class GetStreamDatastreamV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [streamId] Required.
-  GetStreamDatastreamV1alpha1Args({
+  const GetStreamDatastreamV1alpha1Args({
     required this.location,
     this.project,
     required this.streamId,

@@ -11,7 +11,7 @@ class EnvironmentStorageConfigurationFsx {
   /// Creates a new [EnvironmentStorageConfigurationFsx].
   /// [fileSystemId] Id of the FSX filesystem to mount.
   /// [mountPoint] Path to mount the filesystem on, must start with `/m2/mount/`.
-  EnvironmentStorageConfigurationFsx({
+  const EnvironmentStorageConfigurationFsx({
     required this.fileSystemId,
     required this.mountPoint,
   });

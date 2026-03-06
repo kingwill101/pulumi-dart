@@ -66,7 +66,7 @@ class NetworkInterfaceResponse {
   /// [subinterfaces] SubInterfaces help enable L2 communication for the instance over subnetworks that support L2. Every network interface will get a default untagged (vlan not specified) subinterface. Users can specify additional tagged subinterfaces which are sub-fields to the Network Interface.
   /// [subnetwork] The URL of the Subnetwork resource for this instance. If the network resource is in legacy mode, do not specify this field. If the network is in auto subnet mode, specifying the subnetwork is optional. If the network is in custom subnet mode, specifying the subnetwork is required. If you specify this field, you can specify the subnetwork as a full or partial URL. For example, the following are all valid URLs: - https://www.googleapis.com/compute/v1/projects/project/regions/region /subnetworks/subnetwork - regions/region/subnetworks/subnetwork
   /// [vlan] VLAN tag of a VLAN based network interface, must be in range from 2 to 4094 inclusively. This field is mandatory if the parent network interface name is set.
-  NetworkInterfaceResponse({
+  const NetworkInterfaceResponse({
     required this.accessConfigs,
     required this.aliasIpRanges,
     required this.fingerprint,

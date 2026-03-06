@@ -9,7 +9,7 @@ class GetContactsRotationRecurrenceDailySetting {
   /// Creates a new [GetContactsRotationRecurrenceDailySetting].
   /// [hourOfDay] Required.
   /// [minuteOfHour] Required.
-  GetContactsRotationRecurrenceDailySetting({
+  const GetContactsRotationRecurrenceDailySetting({
     required this.hourOfDay,
     required this.minuteOfHour,
   });

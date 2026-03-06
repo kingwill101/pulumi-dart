@@ -11,7 +11,7 @@ class GetManagementServerArgs {
 
   /// Creates a new [GetManagementServerArgs].
   /// [location] Required.
-  GetManagementServerArgs({
+  const GetManagementServerArgs({
     required this.location,
   });
 

@@ -9,7 +9,7 @@ class IngestionDestinationDestinationConfigurationAuditLog {
 
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLog].
   /// [destination] Contains information about an audit log destination. Only one destination (Firehose Stream) or (S3 Bucket) can be specified.
-  IngestionDestinationDestinationConfigurationAuditLog({
+  const IngestionDestinationDestinationConfigurationAuditLog({
     required this.destination,
   });
 

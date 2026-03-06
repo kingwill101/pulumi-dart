@@ -9,7 +9,7 @@ class AppSvcNativeSettingsResponse {
 
   /// Creates a new [AppSvcNativeSettingsResponse].
   /// [isolationRequired] Gets or sets the isolation required.
-  AppSvcNativeSettingsResponse({
+  const AppSvcNativeSettingsResponse({
     required this.isolationRequired,
   });
 

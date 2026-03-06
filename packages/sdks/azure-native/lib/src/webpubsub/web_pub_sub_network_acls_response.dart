@@ -21,7 +21,7 @@ class WebPubSubNetworkACLsResponse {
   /// [ipRules] IP rules for filtering public traffic
   /// [privateEndpoints] ACLs for requests from private endpoints
   /// [publicNetwork] Network ACL
-  WebPubSubNetworkACLsResponse({
+  const WebPubSubNetworkACLsResponse({
     this.defaultAction,
     this.ipRules,
     this.privateEndpoints,

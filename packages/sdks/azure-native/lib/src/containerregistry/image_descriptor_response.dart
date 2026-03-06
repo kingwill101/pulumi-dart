@@ -18,7 +18,7 @@ class ImageDescriptorResponse {
   /// [registry] The registry login server.
   /// [repository] The repository name.
   /// [tag] The tag name.
-  ImageDescriptorResponse({
+  const ImageDescriptorResponse({
     this.digest,
     this.registry,
     this.repository,

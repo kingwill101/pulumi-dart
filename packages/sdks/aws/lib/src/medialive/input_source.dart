@@ -14,7 +14,7 @@ class InputSource {
   /// [passwordParam] The key used to extract the password from EC2 Parameter store.
   /// [url] The URL where the stream is pulled from.
   /// [username] The username for the input source.
-  InputSource({
+  const InputSource({
     required this.passwordParam,
     required this.url,
     required this.username,

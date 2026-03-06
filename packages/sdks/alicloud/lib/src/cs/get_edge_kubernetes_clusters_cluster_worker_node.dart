@@ -14,7 +14,7 @@ class GetEdgeKubernetesClustersClusterWorkerNode {
   /// [id] ID of the node.
   /// [name] Node name.
   /// [privateIp] The private IP address of node.
-  GetEdgeKubernetesClustersClusterWorkerNode({
+  const GetEdgeKubernetesClustersClusterWorkerNode({
     required this.id,
     required this.name,
     required this.privateIp,

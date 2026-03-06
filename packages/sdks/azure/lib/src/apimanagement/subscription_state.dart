@@ -43,7 +43,7 @@ class SubscriptionState {
   /// [state] The state of this Subscription. Possible values are `active`, `cancelled`, `expired`, `rejected`, `submitted` and `suspended`. Defaults to `submitted`.
   /// [subscriptionId] An Identifier which should used as the ID of this Subscription. If not specified a new Subscription ID will be generated. Changing this forces a new resource to be created.
   /// [userId] The ID of the User which should be assigned to this Subscription. Changing this forces a new resource to be created.
-  SubscriptionState({
+  const SubscriptionState({
     this.allowTracing,
     this.apiId,
     this.apiManagementName,

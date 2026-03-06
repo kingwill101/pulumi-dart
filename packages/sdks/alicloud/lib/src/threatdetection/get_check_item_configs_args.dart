@@ -27,7 +27,7 @@ class GetCheckItemConfigsArgs {
   /// [pageNumber] Current page number.
   /// [pageSize] Number of records per page.
   /// [taskSources] List of task sources.
-  GetCheckItemConfigsArgs({
+  const GetCheckItemConfigsArgs({
     this.ids,
     this.lang,
     this.outputFile,

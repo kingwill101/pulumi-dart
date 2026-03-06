@@ -9,7 +9,7 @@ class IPSetReference {
 
   /// Creates a new [IPSetReference].
   /// [referenceArn] A resource ARN.
-  IPSetReference({
+  const IPSetReference({
     this.referenceArn,
   });
 

@@ -50,7 +50,7 @@ class GetPrivateCloudResult {
   /// [uid] Required.
   /// [updateTime] Required.
   /// [vcenters] Required.
-  GetPrivateCloudResult({
+  const GetPrivateCloudResult({
     required this.createTime,
     required this.deleteTime,
     required this.deletionDelayHours,

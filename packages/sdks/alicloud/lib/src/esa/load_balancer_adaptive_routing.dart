@@ -8,7 +8,7 @@ class LoadBalancerAdaptiveRouting {
 
   /// Creates a new [LoadBalancerAdaptiveRouting].
   /// [failoverAcrossPools] Whether to failover across pools.
-  LoadBalancerAdaptiveRouting({
+  const LoadBalancerAdaptiveRouting({
     this.failoverAcrossPools,
   });
 

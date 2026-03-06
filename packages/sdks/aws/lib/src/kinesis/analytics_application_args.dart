@@ -46,7 +46,7 @@ class AnalyticsApplicationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [startApplication] Whether to start or stop the Kinesis Analytics Application. To start an application, an input with a defined `starting_position` must be configured.
   /// [tags] Key-value map of tags for the Kinesis Analytics Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AnalyticsApplicationArgs({
+  const AnalyticsApplicationArgs({
     this.cloudwatchLoggingOptions,
     this.code,
     this.description,

@@ -16,7 +16,7 @@ class GetAuthorityConfigX509ConfigAdditionalExtension {
   /// [critical] Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// [objectIds] Describes values that are relevant in a CA certificate.
   /// [value] The value of this X.509 extension. A base64-encoded string.
-  GetAuthorityConfigX509ConfigAdditionalExtension({
+  const GetAuthorityConfigX509ConfigAdditionalExtension({
     required this.critical,
     required this.objectIds,
     required this.value,

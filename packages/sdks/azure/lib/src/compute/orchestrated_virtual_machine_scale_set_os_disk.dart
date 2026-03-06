@@ -26,7 +26,7 @@ class OrchestratedVirtualMachineScaleSetOsDisk {
   /// [diskSizeGb] The Size of the Internal OS Disk in GB, if you wish to vary from the size used in the image this Virtual Machine Scale Set is sourced from.
   /// [storageAccountType] The Type of Storage Account which should back this the Internal OS Disk. Possible values include `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS`, `Premium_LRS` and `Premium_ZRS`. Changing this forces a new resource to be created.
   /// [writeAcceleratorEnabled] Specifies if Write Accelerator is enabled on the OS Disk. Defaults to `false`.
-  OrchestratedVirtualMachineScaleSetOsDisk({
+  const OrchestratedVirtualMachineScaleSetOsDisk({
     required this.caching,
     this.diffDiskSettings,
     this.diskEncryptionSetId,

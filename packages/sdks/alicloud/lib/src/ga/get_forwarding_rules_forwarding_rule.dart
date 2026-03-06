@@ -30,7 +30,7 @@ class GetForwardingRulesForwardingRule {
   /// [priority] Forwarding policy priority.
   /// [ruleActions] The IP protocol used by the GA instance.
   /// [ruleConditions] Forward action.
-  GetForwardingRulesForwardingRule({
+  const GetForwardingRulesForwardingRule({
     required this.forwardingRuleId,
     required this.forwardingRuleName,
     required this.forwardingRuleStatus,

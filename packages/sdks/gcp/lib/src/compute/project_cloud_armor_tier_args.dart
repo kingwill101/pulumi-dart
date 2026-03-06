@@ -17,7 +17,7 @@ class ProjectCloudArmorTierArgs {
   /// Creates a new [ProjectCloudArmorTierArgs].
   /// [cloudArmorTier] Managed protection tier to be set.
   /// [project] The ID of the project in which the resource belongs.
-  ProjectCloudArmorTierArgs({
+  const ProjectCloudArmorTierArgs({
     required this.cloudArmorTier,
     this.project,
   });

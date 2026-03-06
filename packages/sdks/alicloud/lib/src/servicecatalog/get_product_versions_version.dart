@@ -35,7 +35,7 @@ class GetProductVersionsVersion {
   /// [productVersionName] The name of the resource
   /// [templateType] Template Type
   /// [templateUrl] Template URL
-  GetProductVersionsVersion({
+  const GetProductVersionsVersion({
     required this.active,
     required this.createTime,
     required this.description,

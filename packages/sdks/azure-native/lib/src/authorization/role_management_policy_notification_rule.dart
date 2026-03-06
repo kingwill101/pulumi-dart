@@ -32,7 +32,7 @@ class RoleManagementPolicyNotificationRule {
   /// [recipientType] The recipient type.
   /// [ruleType] The type of rule
   /// [target] The target of the current rule.
-  RoleManagementPolicyNotificationRule({
+  const RoleManagementPolicyNotificationRule({
     this.id,
     this.isDefaultRecipientsEnabled,
     this.notificationLevel,

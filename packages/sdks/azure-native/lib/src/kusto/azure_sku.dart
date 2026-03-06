@@ -15,7 +15,7 @@ class AzureSku {
   /// [capacity] The number of instances of the cluster.
   /// [name] SKU name.
   /// [tier] SKU tier.
-  AzureSku({
+  const AzureSku({
     this.capacity,
     required this.name,
     required this.tier,

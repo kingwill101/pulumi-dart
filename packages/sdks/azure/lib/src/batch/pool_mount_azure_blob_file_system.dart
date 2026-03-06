@@ -26,7 +26,7 @@ class PoolMountAzureBlobFileSystem {
   /// [identityId] The ARM resource id of the user assigned identity. This property is mutually exclusive with both `account_key` and `sas_key`; exactly one must be specified.
   /// [relativeMountPath] The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
   /// [sasKey] The Azure Storage SAS token. This property is mutually exclusive with both `account_key` and `identity_id`; exactly one must be specified.
-  PoolMountAzureBlobFileSystem({
+  const PoolMountAzureBlobFileSystem({
     this.accountKey,
     required this.accountName,
     this.blobfuseOptions,

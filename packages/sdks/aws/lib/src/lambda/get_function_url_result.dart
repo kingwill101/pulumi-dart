@@ -40,7 +40,7 @@ class GetFunctionUrlResult {
   /// [qualifier] Optional.
   /// [region] Required.
   /// [urlId] Generated ID for the endpoint.
-  GetFunctionUrlResult({
+  const GetFunctionUrlResult({
     required this.authorizationType,
     required this.cors,
     required this.creationTime,

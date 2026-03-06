@@ -25,7 +25,7 @@ class TaskArgs {
   /// [properties] Custom task properties
   /// [serviceName] Name of the service
   /// [taskName] Name of the Task
-  TaskArgs({
+  const TaskArgs({
     required this.groupName,
     required this.projectName,
     this.properties,

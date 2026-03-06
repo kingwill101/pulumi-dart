@@ -23,7 +23,7 @@ class V3ProvisionConfigScheduledAction {
   /// [startTime] Policy effective time
   /// [target] Number of reserved target resources
   /// [timeZone] Time zone.
-  V3ProvisionConfigScheduledAction({
+  const V3ProvisionConfigScheduledAction({
     this.endTime,
     this.name,
     this.scheduleExpression,

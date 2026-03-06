@@ -20,7 +20,7 @@ class PipelineRetryPolicy {
   /// [maxAttempts] The maximum number of delivery attempts for any message. The value must
   /// [maxRetryDelay] The maximum amount of seconds to wait between retry attempts. The value
   /// [minRetryDelay] The minimum amount of seconds to wait between retry attempts. The value
-  PipelineRetryPolicy({
+  const PipelineRetryPolicy({
     this.maxAttempts,
     this.maxRetryDelay,
     this.minRetryDelay,

@@ -42,7 +42,7 @@ class GetEntitlementResult {
   /// [requesterJustificationConfigs] Required.
   /// [state] Required.
   /// [updateTime] Required.
-  GetEntitlementResult({
+  const GetEntitlementResult({
     required this.additionalNotificationTargets,
     required this.approvalWorkflows,
     required this.createTime,

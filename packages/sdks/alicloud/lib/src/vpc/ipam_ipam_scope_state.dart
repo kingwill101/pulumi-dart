@@ -38,7 +38,7 @@ class IpamIpamScopeState {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource.
   /// [tags] The tag of the resource.
-  IpamIpamScopeState({
+  const IpamIpamScopeState({
     this.createTime,
     this.ipamId,
     this.ipamScopeDescription,

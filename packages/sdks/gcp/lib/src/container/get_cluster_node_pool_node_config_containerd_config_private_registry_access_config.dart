@@ -12,7 +12,7 @@ class GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig {
   /// Creates a new [GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig].
   /// [certificateAuthorityDomainConfigs] Parameters for configuring CA certificate and domains.
   /// [enabled] Whether or not private registries are configured.
-  GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig({
+  const GetClusterNodePoolNodeConfigContainerdConfigPrivateRegistryAccessConfig({
     required this.certificateAuthorityDomainConfigs,
     required this.enabled,
   });

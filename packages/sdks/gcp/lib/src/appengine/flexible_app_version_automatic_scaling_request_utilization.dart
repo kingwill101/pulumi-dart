@@ -11,7 +11,7 @@ class FlexibleAppVersionAutomaticScalingRequestUtilization {
   /// Creates a new [FlexibleAppVersionAutomaticScalingRequestUtilization].
   /// [targetConcurrentRequests] Target number of concurrent requests.
   /// [targetRequestCountPerSecond] Target requests per second.
-  FlexibleAppVersionAutomaticScalingRequestUtilization({
+  const FlexibleAppVersionAutomaticScalingRequestUtilization({
     this.targetConcurrentRequests,
     this.targetRequestCountPerSecond,
   });

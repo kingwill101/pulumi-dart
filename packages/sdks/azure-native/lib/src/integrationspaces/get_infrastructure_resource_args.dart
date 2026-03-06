@@ -18,7 +18,7 @@ class GetInfrastructureResourceArgs {
   /// [infrastructureResourceName] The name of the infrastructure resource in the space.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
-  GetInfrastructureResourceArgs({
+  const GetInfrastructureResourceArgs({
     required this.infrastructureResourceName,
     required this.resourceGroupName,
     required this.spaceName,

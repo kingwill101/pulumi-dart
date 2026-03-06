@@ -13,7 +13,7 @@ class AccountPropertiesResponseAccountStatus {
   /// Creates a new [AccountPropertiesResponseAccountStatus].
   /// [accountProvisioningState] Gets the account status code.
   /// [errorDetails] Gets the account error details.
-  AccountPropertiesResponseAccountStatus({
+  const AccountPropertiesResponseAccountStatus({
     required this.accountProvisioningState,
     required this.errorDetails,
   });

@@ -23,7 +23,7 @@ class ComputeEngineDisksTargetDefaults {
   /// [targetProject] The full path of the resource of type TargetProject which represents the Compute Engine project in which to create the Persistent Disks.
   /// [vmTargetDefaults] Details of the VM migration target.
   /// [zone] The zone in which to create the Persistent Disks.
-  ComputeEngineDisksTargetDefaults({
+  const ComputeEngineDisksTargetDefaults({
     this.disks,
     this.disksTargetDefaults,
     this.targetProject,

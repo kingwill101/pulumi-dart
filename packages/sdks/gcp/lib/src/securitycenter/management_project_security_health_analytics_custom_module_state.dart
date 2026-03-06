@@ -46,7 +46,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleState {
   /// [name] The resource name of the custom module. Its format is "projects/{project}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time at which the custom module was last updated.
-  ManagementProjectSecurityHealthAnalyticsCustomModuleState({
+  const ManagementProjectSecurityHealthAnalyticsCustomModuleState({
     this.ancestorModule,
     this.customConfig,
     this.displayName,

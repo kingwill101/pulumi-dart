@@ -14,7 +14,7 @@ class SasDatastoreCredentials {
   /// Creates a new [SasDatastoreCredentials].
   /// [credentialsType] Enum to determine the datastore credentials type.
   /// [secrets] [Required] Storage container secrets.
-  SasDatastoreCredentials({
+  const SasDatastoreCredentials({
     required this.credentialsType,
     required this.secrets,
   });

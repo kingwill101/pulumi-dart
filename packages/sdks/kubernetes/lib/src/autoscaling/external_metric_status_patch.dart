@@ -14,7 +14,7 @@ class ExternalMetricStatusPatch {
   /// Creates a new [ExternalMetricStatusPatch].
   /// [current] current contains the current value for the given metric
   /// [metric] metric identifies the target metric by name and selector
-  ExternalMetricStatusPatch({
+  const ExternalMetricStatusPatch({
     this.current,
     this.metric,
   });

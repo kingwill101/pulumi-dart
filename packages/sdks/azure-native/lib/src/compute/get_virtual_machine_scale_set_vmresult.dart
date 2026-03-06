@@ -121,7 +121,7 @@ class GetVirtualMachineScaleSetVMResult {
   /// [userData] UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
   /// [vmId] Azure VM unique ID.
   /// [zones] The virtual machine zones.
-  GetVirtualMachineScaleSetVMResult({
+  const GetVirtualMachineScaleSetVMResult({
     this.additionalCapabilities,
     this.availabilitySet,
     required this.azureApiVersion,

@@ -15,7 +15,7 @@ class GetV2RuntimeVersionsResult {
   /// [project] Required.
   /// [versions] The list of runtime versions available for the given project and zone.
   /// [zone] Required.
-  GetV2RuntimeVersionsResult({
+  const GetV2RuntimeVersionsResult({
     required this.id,
     required this.project,
     required this.versions,

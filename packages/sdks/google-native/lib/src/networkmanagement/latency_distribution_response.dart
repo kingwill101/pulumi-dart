@@ -10,7 +10,7 @@ class LatencyDistributionResponse {
 
   /// Creates a new [LatencyDistributionResponse].
   /// [latencyPercentiles] Representative latency percentiles.
-  LatencyDistributionResponse({
+  const LatencyDistributionResponse({
     required this.latencyPercentiles,
   });
 

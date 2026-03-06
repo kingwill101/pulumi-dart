@@ -11,7 +11,7 @@ class FilterFilterCriteriaLambdaFunctionLastModifiedAt {
   /// Creates a new [FilterFilterCriteriaLambdaFunctionLastModifiedAt].
   /// [endInclusive] (Required) The end of the port range, inclusive.
   /// [startInclusive] (Optional) Start of the date range in RFC 3339 format, inclusive. Set the timezone to UTC.
-  FilterFilterCriteriaLambdaFunctionLastModifiedAt({
+  const FilterFilterCriteriaLambdaFunctionLastModifiedAt({
     this.endInclusive,
     this.startInclusive,
   });

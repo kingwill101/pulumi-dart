@@ -12,7 +12,7 @@ class DatasetCompressionResponse {
   /// Creates a new [DatasetCompressionResponse].
   /// [level] The dataset compression level. Type: string (or Expression with resultType string).
   /// [type] Type of dataset compression. Type: string (or Expression with resultType string).
-  DatasetCompressionResponse({
+  const DatasetCompressionResponse({
     this.level,
     required this.type,
   });

@@ -43,7 +43,7 @@ class GetBudgetArgs {
   /// Creates a new [GetBudgetArgs].
   /// [budgetName] Budget Name.
   /// [scope] The scope associated with budget operations.
-  GetBudgetArgs({
+  const GetBudgetArgs({
     required this.budgetName,
     required this.scope,
   });

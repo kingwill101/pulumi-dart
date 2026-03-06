@@ -29,7 +29,7 @@ class GetLifecycleHooksHook {
   /// [notificationArn] The Arn of notification target.
   /// [notificationMetadata] Additional information that you want to include when Auto Scaling sends a message to the notification target.
   /// [scalingGroupId] Scaling group id the lifecycle hooks belong to.
-  GetLifecycleHooksHook({
+  const GetLifecycleHooksHook({
     required this.defaultResult,
     required this.heartbeatTimeout,
     required this.id,

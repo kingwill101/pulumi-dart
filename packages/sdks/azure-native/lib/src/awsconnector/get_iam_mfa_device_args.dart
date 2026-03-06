@@ -15,7 +15,7 @@ class GetIamMfaDeviceArgs {
   /// Creates a new [GetIamMfaDeviceArgs].
   /// [name] Name of IamMFADevice
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamMfaDeviceArgs({
+  const GetIamMfaDeviceArgs({
     required this.name,
     required this.resourceGroupName,
   });

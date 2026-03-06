@@ -30,7 +30,7 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy 
   /// [id] The id of the Global Accelerator Custom Routing Endpoint Traffic Policy. It formats as `&lt;endpoint_id&gt;:&lt;custom_routing_endpoint_traffic_policy_id&gt;`.
   /// [listenerId] The ID of the listener to which the traffic policies belong.
   /// [portRanges] The port range of the traffic policy.
-  GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy({
+  const GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicy({
     required this.acceleratorId,
     required this.address,
     required this.customRoutingEndpointTrafficPolicyId,

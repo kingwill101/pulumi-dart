@@ -29,7 +29,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
   /// [imageVersion] The version of software inside the cluster. It must be one of the supported [Dataproc Versions](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported_dataproc_versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the ["preview" version](https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version.
   /// [optionalComponents] The set of components to activate on the cluster.
   /// [properties] The properties to set on daemon config files.
-  WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig({
     this.imageVersion,
     this.optionalComponents,
     this.properties,

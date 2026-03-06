@@ -152,7 +152,7 @@ class ScalingGroupArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
   /// [vswitchIds] List of virtual switch IDs in which the ecs instances to be launched.
-  ScalingGroupArgs({
+  const ScalingGroupArgs({
     this.albServerGroups,
     this.allocationStrategy,
     this.autoRebalance,

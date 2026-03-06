@@ -97,7 +97,7 @@ class KafkaClusterState {
   /// [tags] A map of Tags which should be assigned to this HDInsight Kafka Cluster.
   /// [tier] Specifies the Tier which should be used for this HDInsight Kafka Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   /// [tlsMinVersion] The minimal supported TLS version. Possible values are `1.0`, `1.1` or `1.2`. Changing this forces a new resource to be created.
-  KafkaClusterState({
+  const KafkaClusterState({
     this.clusterVersion,
     this.componentVersion,
     this.computeIsolation,

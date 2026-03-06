@@ -9,7 +9,7 @@ class ForwardingRuleRuleActionForwardGroupConfig {
 
   /// Creates a new [ForwardingRuleRuleActionForwardGroupConfig].
   /// [serverGroupTuples] The information about the endpoint group. See `server_group_tuples` below.
-  ForwardingRuleRuleActionForwardGroupConfig({
+  const ForwardingRuleRuleActionForwardGroupConfig({
     required this.serverGroupTuples,
   });
 

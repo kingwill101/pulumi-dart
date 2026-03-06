@@ -15,7 +15,7 @@ class CertificateInformationResponse {
   /// [expiry] Expiration date of the certificate. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
   /// [subject] Subject of the certificate.
   /// [thumbprint] Thumbprint of the certificate.
-  CertificateInformationResponse({
+  const CertificateInformationResponse({
     required this.expiry,
     required this.subject,
     required this.thumbprint,

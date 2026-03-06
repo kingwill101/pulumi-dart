@@ -28,7 +28,7 @@ class FlavorV2State {
   /// [flavorProfileId] The flavor_profile_id that the flavor
   /// [name] Name of the flavor. Changing this updates the existing
   /// [region] The region in which to obtain the V2 Networking client.
-  FlavorV2State({
+  const FlavorV2State({
     this.description,
     this.enabled,
     this.flavorProfileId,

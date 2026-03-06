@@ -9,7 +9,7 @@ class ApiManagementConfig {
 
   /// Creates a new [ApiManagementConfig].
   /// [id] APIM-Api Identifier.
-  ApiManagementConfig({
+  const ApiManagementConfig({
     this.id,
   });
 

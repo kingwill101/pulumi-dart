@@ -11,7 +11,7 @@ class ClusterStateInfoUpdateInfo {
   /// Creates a new [ClusterStateInfoUpdateInfo].
   /// [targetReplicaCount] Target number of replica nodes per shard.
   /// [targetShardCount] Target number of shards for redis cluster.
-  ClusterStateInfoUpdateInfo({
+  const ClusterStateInfoUpdateInfo({
     this.targetReplicaCount,
     this.targetShardCount,
   });

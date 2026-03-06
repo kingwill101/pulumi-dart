@@ -13,7 +13,7 @@ class FleetspaceProperties {
   /// Creates a new [FleetspaceProperties].
   /// [capacityMax] Maximum number of vCores database fleet manager is allowed to provision in the fleetspace.
   /// [mainPrincipal] Main Microsoft Entra ID principal that has admin access to all databases in the fleetspace.
-  FleetspaceProperties({
+  const FleetspaceProperties({
     this.capacityMax,
     this.mainPrincipal,
   });

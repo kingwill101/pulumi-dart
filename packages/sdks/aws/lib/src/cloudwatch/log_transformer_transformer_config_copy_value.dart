@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigCopyValue {
 
   /// Creates a new [LogTransformerTransformerConfigCopyValue].
   /// [entries] Objects containing the information about the values to copy to the log event. You must include at least one entry, and five at most. See `copy_value` `entry` below for details.
-  LogTransformerTransformerConfigCopyValue({
+  const LogTransformerTransformerConfigCopyValue({
     required this.entries,
   });
 

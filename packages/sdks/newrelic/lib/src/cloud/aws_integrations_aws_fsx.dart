@@ -11,7 +11,7 @@ class AwsIntegrationsAwsFsx {
   /// Creates a new [AwsIntegrationsAwsFsx].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsFsx({
+  const AwsIntegrationsAwsFsx({
     this.awsRegions,
     this.metricsPollingInterval,
   });

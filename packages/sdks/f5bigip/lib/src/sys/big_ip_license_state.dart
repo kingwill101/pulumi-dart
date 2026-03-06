@@ -12,7 +12,7 @@ class BigIpLicenseState {
   /// Creates a new [BigIpLicenseState].
   /// [command] Tmsh command to execute tmsh commands like install
   /// [registrationKey] A unique Key F5 provides for Licensing BIG-IP
-  BigIpLicenseState({
+  const BigIpLicenseState({
     this.command,
     this.registrationKey,
   });

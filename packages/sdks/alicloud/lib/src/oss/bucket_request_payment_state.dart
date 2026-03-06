@@ -12,7 +12,7 @@ class BucketRequestPaymentState {
   /// Creates a new [BucketRequestPaymentState].
   /// [bucket] The name of the bucket.
   /// [payer] The payer of the request and traffic fees.Valid values: BucketOwner: request and traffic fees are paid by the bucket owner. Requester: request and traffic fees are paid by the requester.
-  BucketRequestPaymentState({
+  const BucketRequestPaymentState({
     this.bucket,
     this.payer,
   });

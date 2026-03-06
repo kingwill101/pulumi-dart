@@ -17,7 +17,7 @@ class GetManagedInstanceAdministratorArgs {
   /// [administratorName] Required.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetManagedInstanceAdministratorArgs({
+  const GetManagedInstanceAdministratorArgs({
     required this.administratorName,
     required this.managedInstanceName,
     required this.resourceGroupName,

@@ -9,7 +9,7 @@ class AlertPolicyConditionConditionSqlBooleanTest {
 
   /// Creates a new [AlertPolicyConditionConditionSqlBooleanTest].
   /// [column] The name of the column containing the boolean value. If the value in a row is
-  AlertPolicyConditionConditionSqlBooleanTest({
+  const AlertPolicyConditionConditionSqlBooleanTest({
     required this.column,
   });
 

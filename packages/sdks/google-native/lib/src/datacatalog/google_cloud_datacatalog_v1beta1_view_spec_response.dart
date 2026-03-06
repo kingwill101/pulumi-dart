@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1beta1ViewSpecResponse].
   /// [viewQuery] The query that defines the table view.
-  GoogleCloudDatacatalogV1beta1ViewSpecResponse({
+  const GoogleCloudDatacatalogV1beta1ViewSpecResponse({
     required this.viewQuery,
   });
 

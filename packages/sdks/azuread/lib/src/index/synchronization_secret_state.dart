@@ -13,7 +13,7 @@ class SynchronizationSecretState {
   /// Creates a new [SynchronizationSecretState].
   /// [credentials] One or more `credential` blocks as documented below.
   /// [servicePrincipalId] The ID of the service principal for which this synchronization secrets should be stored. Changing this field forces a new resource to be created.
-  SynchronizationSecretState({
+  const SynchronizationSecretState({
     this.credentials,
     this.servicePrincipalId,
   });

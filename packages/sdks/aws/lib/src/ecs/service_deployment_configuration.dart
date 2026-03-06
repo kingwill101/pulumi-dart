@@ -23,7 +23,7 @@ class ServiceDeploymentConfiguration {
   /// [lifecycleHooks] Configuration block for lifecycle hooks that are invoked during deployments. See below.
   /// [linearConfiguration] Configuration block for linear deployment strategy. Required when `strategy` is set to `LINEAR`. See below.
   /// [strategy] Type of deployment strategy. Valid values: `ROLLING`, `BLUE_GREEN`, `LINEAR`, `CANARY`. Default: `ROLLING`.
-  ServiceDeploymentConfiguration({
+  const ServiceDeploymentConfiguration({
     this.bakeTimeInMinutes,
     this.canaryConfiguration,
     this.lifecycleHooks,

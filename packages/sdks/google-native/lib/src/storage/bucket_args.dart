@@ -139,7 +139,7 @@ class BucketArgs {
   /// [userProject] The project to be billed for this request.
   /// [versioning] The bucket's versioning configuration.
   /// [website] The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
-  BucketArgs({
+  const BucketArgs({
     this.acl,
     this.autoclass,
     this.billing,

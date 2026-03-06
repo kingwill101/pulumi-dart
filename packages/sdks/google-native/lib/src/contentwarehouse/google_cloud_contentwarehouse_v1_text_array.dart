@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1TextArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1TextArray].
   /// [values] List of text values.
-  GoogleCloudContentwarehouseV1TextArray({
+  const GoogleCloudContentwarehouseV1TextArray({
     this.values,
   });
 

@@ -12,7 +12,7 @@ class SanForCert {
   /// Creates a new [SanForCert].
   /// [dns] DNS SANs.
   /// [ip] IP address SANs.
-  SanForCert({
+  const SanForCert({
     required this.dns,
     required this.ip,
   });

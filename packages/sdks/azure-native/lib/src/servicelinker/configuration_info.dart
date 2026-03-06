@@ -29,7 +29,7 @@ class ConfigurationInfo {
   /// [customizedKeys] Optional. A dictionary of default key name and customized key name mapping. If not specified, default key name will be used for generate configurations
   /// [daprProperties] Indicates some additional properties for dapr client type
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
-  ConfigurationInfo({
+  const ConfigurationInfo({
     this.action,
     this.additionalConfigurations,
     this.additionalConnectionStringProperties,

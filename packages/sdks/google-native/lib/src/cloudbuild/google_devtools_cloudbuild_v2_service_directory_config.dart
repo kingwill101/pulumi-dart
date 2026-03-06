@@ -9,7 +9,7 @@ class GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
 
   /// Creates a new [GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig({
+  const GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig({
     required this.service,
   });
 

@@ -24,7 +24,7 @@ class GetAccountsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of account. Valid values: `CreateCancelled`, `CreateExpired`, `CreateFailed`, `CreateSuccess`, `CreateVerifying`, `InviteSuccess`, `PromoteCancelled`, `PromoteExpired`, `PromoteFailed`, `PromoteSuccess`, `PromoteVerifying`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetAccountsArgs({
+  const GetAccountsArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

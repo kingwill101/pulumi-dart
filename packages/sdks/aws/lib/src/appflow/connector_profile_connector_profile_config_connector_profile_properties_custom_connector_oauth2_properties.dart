@@ -12,7 +12,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConn
   /// [oauth2GrantType] Required.
   /// [tokenUrl] Required.
   /// [tokenUrlCustomProperties] Associates your token URL with a map of properties that you define. Use this parameter to provide any additional details that the connector requires to authenticate your request.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesCustomConnectorOauth2Properties({
     required this.oauth2GrantType,
     required this.tokenUrl,
     this.tokenUrlCustomProperties,

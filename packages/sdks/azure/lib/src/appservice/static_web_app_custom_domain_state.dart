@@ -22,7 +22,7 @@ class StaticWebAppCustomDomainState {
   /// [staticWebAppId] The ID of the Static Site. Changing this forces a new Static Site Custom Domain to be created.
   /// [validationToken] Token to be used with `dns-txt-token` validation.
   /// [validationType] One of `cname-delegation` or `dns-txt-token`. Changing this forces a new Static Site Custom Domain to be created.
-  StaticWebAppCustomDomainState({
+  const StaticWebAppCustomDomainState({
     this.domainName,
     this.staticWebAppId,
     this.validationToken,

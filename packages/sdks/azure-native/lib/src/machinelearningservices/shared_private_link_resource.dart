@@ -20,7 +20,7 @@ class SharedPrivateLinkResource {
   /// [privateLinkResourceId] The resource id that private link links to.
   /// [requestMessage] Request message.
   /// [status] Indicates whether the connection has been Approved/Rejected/Removed by the owner of the service.
-  SharedPrivateLinkResource({
+  const SharedPrivateLinkResource({
     this.groupId,
     this.name,
     this.privateLinkResourceId,

@@ -10,7 +10,7 @@ class MetadataComputeBeta {
 
   /// Creates a new [MetadataComputeBeta].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  MetadataComputeBeta({
+  const MetadataComputeBeta({
     this.items,
   });
 

@@ -13,7 +13,7 @@ class GetEvaluationJobArgs {
   /// Creates a new [GetEvaluationJobArgs].
   /// [evaluationJobId] Required.
   /// [project] Optional.
-  GetEvaluationJobArgs({
+  const GetEvaluationJobArgs({
     required this.evaluationJobId,
     this.project,
   });

@@ -12,7 +12,7 @@ class HealthStatusDetailResponse {
   /// Creates a new [HealthStatusDetailResponse].
   /// [code] An identifier for the issue.
   /// [message] A message describing the issue, intended to be suitable for display in a user interface
-  HealthStatusDetailResponse({
+  const HealthStatusDetailResponse({
     required this.code,
     required this.message,
   });

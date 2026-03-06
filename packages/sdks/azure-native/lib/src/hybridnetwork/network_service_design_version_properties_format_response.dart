@@ -27,7 +27,7 @@ class NetworkServiceDesignVersionPropertiesFormatResponse {
   /// [provisioningState] The provisioning state of the network service design version resource.
   /// [resourceElementTemplates] List of resource element template
   /// [versionState] The network service design version state.
-  NetworkServiceDesignVersionPropertiesFormatResponse({
+  const NetworkServiceDesignVersionPropertiesFormatResponse({
     this.configurationGroupSchemaReferences,
     this.description,
     this.nfvisFromSite,

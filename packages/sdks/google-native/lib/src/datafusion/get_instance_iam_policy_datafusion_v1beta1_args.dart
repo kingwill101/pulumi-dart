@@ -17,7 +17,7 @@ class GetInstanceIamPolicyDatafusionV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetInstanceIamPolicyDatafusionV1beta1Args({
+  const GetInstanceIamPolicyDatafusionV1beta1Args({
     required this.instanceId,
     required this.location,
     this.optionsRequestedPolicyVersion,

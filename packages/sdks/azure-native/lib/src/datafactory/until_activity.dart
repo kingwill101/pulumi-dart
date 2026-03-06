@@ -41,7 +41,7 @@ class UntilActivity {
   /// [timeout] Specifies the timeout for the activity to run. If there is no value specified, it takes the value of TimeSpan.FromDays(7) which is 1 week as default. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  UntilActivity({
+  const UntilActivity({
     required this.activities,
     this.dependsOn,
     this.description,

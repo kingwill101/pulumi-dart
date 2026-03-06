@@ -24,7 +24,7 @@ class FunctionAppHybridConnectionArgs {
   /// [port] The port to use for the endpoint
   /// [relayId] The ID of the Relay Hybrid Connection to use. Changing this forces a new resource to be created.
   /// [sendKeyName] The name of the Relay key with `Send` permission to use. Defaults to `RootManageSharedAccessKey`
-  FunctionAppHybridConnectionArgs({
+  const FunctionAppHybridConnectionArgs({
     required this.functionAppId,
     required this.hostname,
     required this.port,

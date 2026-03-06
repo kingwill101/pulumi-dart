@@ -11,7 +11,7 @@ class GetTagValueIamPolicyArgs {
 
   /// Creates a new [GetTagValueIamPolicyArgs].
   /// [tagValueId] Required.
-  GetTagValueIamPolicyArgs({
+  const GetTagValueIamPolicyArgs({
     required this.tagValueId,
   });
 

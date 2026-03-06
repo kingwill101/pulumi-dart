@@ -70,7 +70,7 @@ class PreRuleArgs {
   /// [ruleState] state of this rule
   /// [source] source address
   /// [tags] tag for rule
-  PreRuleArgs({
+  const PreRuleArgs({
     this.actionType,
     this.applications,
     this.auditComment,

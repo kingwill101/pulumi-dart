@@ -12,7 +12,7 @@ class X509CertificateName {
   /// Creates a new [X509CertificateName].
   /// [issuerCertificateThumbprint] Thumbprint for the Issuer of the Certificate.
   /// [name] Common Name of the Certificate.
-  X509CertificateName({
+  const X509CertificateName({
     this.issuerCertificateThumbprint,
     this.name,
   });

@@ -8,7 +8,7 @@ class DomainDevicesSoundAcpi {
 
   /// Creates a new [DomainDevicesSoundAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesSoundAcpi({
+  const DomainDevicesSoundAcpi({
     this.index,
   });
 

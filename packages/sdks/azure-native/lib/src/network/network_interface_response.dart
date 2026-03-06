@@ -108,7 +108,7 @@ class NetworkInterfaceResponse {
   /// [virtualMachine] The reference to a virtual machine.
   /// [vnetEncryptionSupported] Whether the virtual machine this nic is attached to supports encryption.
   /// [workloadType] WorkloadType of the NetworkInterface for BareMetal resources
-  NetworkInterfaceResponse({
+  const NetworkInterfaceResponse({
     this.auxiliaryMode,
     this.auxiliarySku,
     required this.defaultOutboundConnectivityEnabled,

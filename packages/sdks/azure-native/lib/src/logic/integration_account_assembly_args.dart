@@ -28,7 +28,7 @@ class IntegrationAccountAssemblyArgs {
   /// [properties] The assembly properties.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  IntegrationAccountAssemblyArgs({
+  const IntegrationAccountAssemblyArgs({
     this.assemblyArtifactName,
     required this.integrationAccountName,
     this.location,

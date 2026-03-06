@@ -15,7 +15,7 @@ class SolutionDetailsResponse {
   /// [assessmentCount] Gets or sets the count of assessments reported by the solution.
   /// [extendedDetails] Gets or sets the extended details reported by the solution.
   /// [groupCount] Gets or sets the count of groups reported by the solution.
-  SolutionDetailsResponse({
+  const SolutionDetailsResponse({
     this.assessmentCount,
     this.extendedDetails,
     this.groupCount,

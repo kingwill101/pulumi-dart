@@ -12,7 +12,7 @@ class TokenRequestPatch {
   /// Creates a new [TokenRequestPatch].
   /// [audience] audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
   /// [expirationSeconds] expirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec".
-  TokenRequestPatch({
+  const TokenRequestPatch({
     this.audience,
     this.expirationSeconds,
   });

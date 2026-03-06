@@ -15,7 +15,7 @@ class TargetResponse {
   /// [database] The action's database (Google Cloud project ID) .
   /// [name] The action's name, within `database` and `schema`.
   /// [schema] The action's schema (BigQuery dataset ID), within `database`.
-  TargetResponse({
+  const TargetResponse({
     required this.database,
     required this.name,
     required this.schema,

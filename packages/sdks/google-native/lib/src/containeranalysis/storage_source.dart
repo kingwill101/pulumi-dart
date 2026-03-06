@@ -15,7 +15,7 @@ class StorageSource {
   /// [bucket] Google Cloud Storage bucket containing source (see [Bucket Name Requirements] (https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// [generation] Google Cloud Storage generation for the object.
   /// [object_] Google Cloud Storage object containing source.
-  StorageSource({
+  const StorageSource({
     this.bucket,
     this.generation,
     this.object_,

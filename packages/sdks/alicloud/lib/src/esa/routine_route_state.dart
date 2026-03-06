@@ -37,7 +37,7 @@ class RoutineRouteState {
   /// [rule] The rule content.
   /// [sequence] Rule execution order.
   /// [siteId] Site Id
-  RoutineRouteState({
+  const RoutineRouteState({
     this.bypass,
     this.configId,
     this.fallback,

@@ -9,7 +9,7 @@ class LogsConfiguration {
 
   /// Creates a new [LogsConfiguration].
   /// [destinations] Open telemetry logs destinations
-  LogsConfiguration({
+  const LogsConfiguration({
     this.destinations,
   });
 

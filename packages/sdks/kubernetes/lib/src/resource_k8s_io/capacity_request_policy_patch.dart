@@ -32,7 +32,7 @@ class CapacityRequestPolicyPatch {
   /// [default_] Default specifies how much of this capacity is consumed by a request that does not contain an entry for it in DeviceRequest's Capacity.
   /// [validRange] ValidRange defines an acceptable quantity value range in consuming requests.
   /// [validValues] ValidValues defines a set of acceptable quantity values in consuming requests.
-  CapacityRequestPolicyPatch({
+  const CapacityRequestPolicyPatch({
     this.default_,
     this.validRange,
     this.validValues,

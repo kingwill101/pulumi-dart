@@ -10,7 +10,7 @@ class AccessDeterminationLogConfig {
 
   /// Creates a new [AccessDeterminationLogConfig].
   /// [logLevel] Optional. Controls the amount of detail to include as part of the audit logs.
-  AccessDeterminationLogConfig({
+  const AccessDeterminationLogConfig({
     this.logLevel,
   });
 

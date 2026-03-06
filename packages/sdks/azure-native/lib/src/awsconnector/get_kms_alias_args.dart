@@ -15,7 +15,7 @@ class GetKmsAliasArgs {
   /// Creates a new [GetKmsAliasArgs].
   /// [name] Name of KmsAlias
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetKmsAliasArgs({
+  const GetKmsAliasArgs({
     required this.name,
     required this.resourceGroupName,
   });

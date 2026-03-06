@@ -24,7 +24,7 @@ class EditingProjectArgs {
   /// [editingProjectName] The description of the online editing project.
   /// [timeline] The timeline of the online editing project, in JSON format. For more information about the structure, see [Timeline](https://www.alibabacloud.com/help/en/apsaravideo-for-vod/latest/basic-structures). If you do not specify this parameter, an empty timeline is created and the duration of the online editing project is zero.
   /// [title] The title of the online editing project.
-  EditingProjectArgs({
+  const EditingProjectArgs({
     this.coverUrl,
     this.division,
     this.editingProjectName,

@@ -11,7 +11,7 @@ class GetFrameworkControlInputParameter {
   /// Creates a new [GetFrameworkControlInputParameter].
   /// [name] Backup framework name.
   /// [value] Value of parameter, for example, hourly.
-  GetFrameworkControlInputParameter({
+  const GetFrameworkControlInputParameter({
     required this.name,
     required this.value,
   });

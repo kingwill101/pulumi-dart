@@ -19,7 +19,7 @@ class GetDebugSessionArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [revisionId] Required.
-  GetDebugSessionArgs({
+  const GetDebugSessionArgs({
     required this.apiId,
     required this.debugsessionId,
     required this.environmentId,

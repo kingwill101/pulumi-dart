@@ -29,7 +29,7 @@ class ContainerMount {
   /// [tmpfsOptions] Optional configuration for the tmpfs type.
   /// [type] The mount type
   /// [volumeOptions] Optional configuration for the volume type.
-  ContainerMount({
+  const ContainerMount({
     this.bindOptions,
     this.readOnly,
     this.source,

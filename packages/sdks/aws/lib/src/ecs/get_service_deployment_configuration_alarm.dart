@@ -14,7 +14,7 @@ class GetServiceDeploymentConfigurationAlarm {
   /// [alarmNames] List of CloudWatch alarm names
   /// [enable] Whether circuit breaker is enabled
   /// [rollback] Whether to rollback on failure
-  GetServiceDeploymentConfigurationAlarm({
+  const GetServiceDeploymentConfigurationAlarm({
     required this.alarmNames,
     required this.enable,
     required this.rollback,

@@ -11,7 +11,7 @@ class DatabaseClusterMaintenanceWindow {
   /// Creates a new [DatabaseClusterMaintenanceWindow].
   /// [day] The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
   /// [hour] The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
-  DatabaseClusterMaintenanceWindow({
+  const DatabaseClusterMaintenanceWindow({
     required this.day,
     required this.hour,
   });

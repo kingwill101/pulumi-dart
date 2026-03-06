@@ -21,7 +21,7 @@ class HostingVersionState {
   /// [name] The fully-qualified resource name for the version, in the format:
   /// [siteId] Required. The ID of the site in which to create this Version.
   /// [versionId] The ID for the version as in sites/SITE_ID/versions/VERSION_ID
-  HostingVersionState({
+  const HostingVersionState({
     this.config,
     this.name,
     this.siteId,

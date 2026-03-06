@@ -16,7 +16,7 @@ class PipelineScheduleInfo {
   /// [nextJobTime] (Output)
   /// [schedule] Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
   /// [timeZone] Timezone ID. This matches the timezone IDs used by the Cloud Scheduler API. If empty, UTC time is assumed.
-  PipelineScheduleInfo({
+  const PipelineScheduleInfo({
     this.nextJobTime,
     this.schedule,
     this.timeZone,

@@ -15,7 +15,7 @@ class GetLogsSubscriptionFilterArgs {
   /// Creates a new [GetLogsSubscriptionFilterArgs].
   /// [name] Name of LogsSubscriptionFilter
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLogsSubscriptionFilterArgs({
+  const GetLogsSubscriptionFilterArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -9,7 +9,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate {
 
   /// Creates a new [GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate].
   /// [servingConfigId] This has to be a valid ServingConfig identifier. For example, for a ServingConfig with full name: `projects/*/locations/global/catalogs/default_catalog/servingConfigs/my_candidate_config`, this would be `my_candidate_config`.
-  GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate({
+  const GoogleCloudRetailV2alphaModelPageOptimizationConfigCandidate({
     this.servingConfigId,
   });
 

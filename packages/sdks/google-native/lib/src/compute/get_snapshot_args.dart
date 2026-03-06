@@ -13,7 +13,7 @@ class GetSnapshotArgs {
   /// Creates a new [GetSnapshotArgs].
   /// [project] Optional.
   /// [snapshot] Required.
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     this.project,
     required this.snapshot,
   });

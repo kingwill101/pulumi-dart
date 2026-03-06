@@ -34,7 +34,7 @@ class EndpointPrivateServiceConnection {
   /// [privateIpAddress] (Required) The static IP address set by this configuration. It is recommended to use the private IP address exported in the `private_service_connection` block to obtain the address associated with the private endpoint.
   /// [requestMessage] A message passed to the owner of the remote resource when the private endpoint attempts to establish the connection to the remote resource. The provider allows a maximum request message length of `140` characters, however the request message maximum length is dependent on the service the private endpoint is connected to. Only valid if `is_manual_connection` is set to `true`.
   /// [subresourceNames] A list of subresource names which the Private Endpoint is able to connect to. `subresource_names` corresponds to `group_id`. Possible values are detailed in the product [documentation](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#private-link-resource) in the `Subresources` column. Changing this forces a new resource to be created.
-  EndpointPrivateServiceConnection({
+  const EndpointPrivateServiceConnection({
     required this.isManualConnection,
     required this.name,
     this.privateConnectionResourceAlias,

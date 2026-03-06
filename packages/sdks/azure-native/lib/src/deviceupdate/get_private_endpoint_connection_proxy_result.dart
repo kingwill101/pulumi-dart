@@ -34,7 +34,7 @@ class GetPrivateEndpointConnectionProxyResult {
   /// [status] Operation status.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateEndpointConnectionProxyResult({
+  const GetPrivateEndpointConnectionProxyResult({
     required this.azureApiVersion,
     required this.eTag,
     required this.id,

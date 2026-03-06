@@ -11,7 +11,7 @@ class BackendCredentialsAuthorization {
   /// Creates a new [BackendCredentialsAuthorization].
   /// [parameter] The authentication Parameter value.
   /// [scheme] The authentication Scheme name.
-  BackendCredentialsAuthorization({
+  const BackendCredentialsAuthorization({
     this.parameter,
     this.scheme,
   });

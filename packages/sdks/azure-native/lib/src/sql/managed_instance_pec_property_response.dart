@@ -13,7 +13,7 @@ class ManagedInstancePecPropertyResponse {
   /// Creates a new [ManagedInstancePecPropertyResponse].
   /// [id] Resource ID.
   /// [properties] Private endpoint connection properties
-  ManagedInstancePecPropertyResponse({
+  const ManagedInstancePecPropertyResponse({
     required this.id,
     required this.properties,
   });

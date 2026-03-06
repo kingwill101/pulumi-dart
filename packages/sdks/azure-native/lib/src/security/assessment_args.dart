@@ -34,7 +34,7 @@ class AssessmentArgs {
   /// [resourceDetails] Details of the resource that was assessed
   /// [resourceId] The identifier of the resource.
   /// [status] The result of the assessment
-  AssessmentArgs({
+  const AssessmentArgs({
     this.additionalData,
     this.assessmentName,
     this.metadata,

@@ -10,7 +10,7 @@ class NetworkProfile {
 
   /// Creates a new [NetworkProfile].
   /// [networkInterfaces] Gets or sets the list of network interfaces associated with the virtual machine.
-  NetworkProfile({
+  const NetworkProfile({
     this.networkInterfaces,
   });
 

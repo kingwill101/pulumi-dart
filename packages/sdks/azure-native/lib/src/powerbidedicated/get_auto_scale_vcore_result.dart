@@ -40,7 +40,7 @@ class GetAutoScaleVCoreResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAutoScaleVCoreResult({
+  const GetAutoScaleVCoreResult({
     required this.azureApiVersion,
     this.capacityLimit,
     this.capacityObjectId,

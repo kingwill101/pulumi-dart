@@ -38,7 +38,7 @@ class GetServerGroupsGroupHealthCheck {
   /// [healthyThreshold] The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy.
   /// [httpCheckMethod] The HTTP method that is used for health checks.
   /// [unhealthyThreshold] The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy.
-  GetServerGroupsGroupHealthCheck({
+  const GetServerGroupsGroupHealthCheck({
     required this.healthCheckConnectPort,
     required this.healthCheckConnectTimeout,
     required this.healthCheckDomain,

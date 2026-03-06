@@ -15,7 +15,7 @@ class GetRegistryArgs {
   /// Creates a new [GetRegistryArgs].
   /// [name] Name of the Glue Registry.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetRegistryArgs({
+  const GetRegistryArgs({
     required this.name,
     this.region,
   });

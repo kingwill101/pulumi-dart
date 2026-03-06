@@ -84,7 +84,7 @@ class OperationResponseDeploymentmanagerV2 {
   /// [user] User who requested the operation, for example: `user@example.com` or `alice_smith_identifier (global/workforcePools/example-com-us-employees)`.
   /// [warnings] If warning messages are generated during processing of the operation, this field will be populated.
   /// [zone] The URL of the zone where the operation resides. Only applicable when performing per-zone operations.
-  OperationResponseDeploymentmanagerV2({
+  const OperationResponseDeploymentmanagerV2({
     required this.clientOperationId,
     required this.creationTimestamp,
     required this.description,

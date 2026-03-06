@@ -15,7 +15,7 @@ class NodeAffinityResponse {
   /// [key] Key for NodeAffinity.
   /// [operator] Operator for NodeAffinity.
   /// [values] Values for NodeAffinity.
-  NodeAffinityResponse({
+  const NodeAffinityResponse({
     required this.key,
     required this.operator,
     required this.values,

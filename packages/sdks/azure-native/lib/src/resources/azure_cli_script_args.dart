@@ -68,7 +68,7 @@ class AzureCliScriptArgs {
   /// [supportingScriptUris] Supporting files for the external script.
   /// [tags] Resource tags.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
-  AzureCliScriptArgs({
+  const AzureCliScriptArgs({
     this.arguments,
     required this.azCliVersion,
     this.cleanupPreference,

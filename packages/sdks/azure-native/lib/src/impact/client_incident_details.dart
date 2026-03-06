@@ -12,7 +12,7 @@ class ClientIncidentDetails {
   /// Creates a new [ClientIncidentDetails].
   /// [clientIncidentId] Client incident id. ex : id of the incident created to investigate and address the impact if any.
   /// [clientIncidentSource] Client incident source. ex : source system name where the incident is created
-  ClientIncidentDetails({
+  const ClientIncidentDetails({
     this.clientIncidentId,
     this.clientIncidentSource,
   });

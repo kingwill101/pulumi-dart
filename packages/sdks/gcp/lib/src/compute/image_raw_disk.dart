@@ -22,7 +22,7 @@ class ImageRawDisk {
   /// [containerType] The format used to encode and transmit the block device, which
   /// [sha1] An optional SHA1 checksum of the disk image before unpackaging.
   /// [source] The full Google Cloud Storage URL where disk storage is stored
-  ImageRawDisk({
+  const ImageRawDisk({
     this.containerType,
     this.sha1,
     required this.source,

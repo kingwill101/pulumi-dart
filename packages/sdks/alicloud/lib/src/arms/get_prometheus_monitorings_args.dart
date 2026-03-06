@@ -27,7 +27,7 @@ class GetPrometheusMonitoringsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the monitoring configuration. Valid values: `run`, `stop`.
   /// [type] The type of the monitoring configuration. Valid values: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
-  GetPrometheusMonitoringsArgs({
+  const GetPrometheusMonitoringsArgs({
     required this.clusterId,
     this.ids,
     this.nameRegex,

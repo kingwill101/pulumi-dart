@@ -18,7 +18,7 @@ class DistributionOrderedCacheBehaviorForwardedValues {
   /// [headers] Headers, if any, that you want CloudFront to vary upon for this cache behavior. Specify `*` to include all headers.
   /// [queryString] Indicates whether you want CloudFront to forward query strings to the origin that is associated with this cache behavior.
   /// [queryStringCacheKeys] When specified, along with a value of `true` for `query_string`, all query strings are forwarded, however only the query string keys listed in this argument are cached. When omitted with a value of `true` for `query_string`, all query string keys are cached.
-  DistributionOrderedCacheBehaviorForwardedValues({
+  const DistributionOrderedCacheBehaviorForwardedValues({
     required this.cookies,
     this.headers,
     required this.queryString,

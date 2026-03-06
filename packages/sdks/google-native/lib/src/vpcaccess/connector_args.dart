@@ -44,7 +44,7 @@ class ConnectorArgs {
   /// [network] Name of a VPC network.
   /// [project] Optional.
   /// [subnet] The subnet in which to house the VPC Access Connector.
-  ConnectorArgs({
+  const ConnectorArgs({
     required this.connectorId,
     this.ipCidrRange,
     this.location,

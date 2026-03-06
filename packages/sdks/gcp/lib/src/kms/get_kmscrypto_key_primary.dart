@@ -12,7 +12,7 @@ class GetKMSCryptoKeyPrimary {
   /// Creates a new [GetKMSCryptoKeyPrimary].
   /// [name] The CryptoKey's name.
   /// [state] The current state of the CryptoKeyVersion.
-  GetKMSCryptoKeyPrimary({
+  const GetKMSCryptoKeyPrimary({
     required this.name,
     required this.state,
   });

@@ -19,7 +19,7 @@ class AppHostingDomainCustomDomainStatusIssue {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  AppHostingDomainCustomDomainStatusIssue({
+  const AppHostingDomainCustomDomainStatusIssue({
     this.code,
     this.details,
     this.message,

@@ -17,7 +17,7 @@ class CspmMonitorAwsOfferingResponse {
   /// [description] The offering description.
   /// [nativeCloudConnection] The native cloud connection configuration
   /// [offeringType] The type of the security offering.
-  CspmMonitorAwsOfferingResponse({
+  const CspmMonitorAwsOfferingResponse({
     required this.description,
     this.nativeCloudConnection,
     required this.offeringType,

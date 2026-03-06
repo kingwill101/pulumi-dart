@@ -12,7 +12,7 @@ class GoogleCloudMlV1DiskConfig {
   /// Creates a new [GoogleCloudMlV1DiskConfig].
   /// [bootDiskSizeGb] Size in GB of the boot disk (default is 100GB).
   /// [bootDiskType] Type of the boot disk (default is "pd-ssd"). Valid values: "pd-ssd" (Persistent Disk Solid State Drive) or "pd-standard" (Persistent Disk Hard Disk Drive).
-  GoogleCloudMlV1DiskConfig({
+  const GoogleCloudMlV1DiskConfig({
     this.bootDiskSizeGb,
     this.bootDiskType,
   });

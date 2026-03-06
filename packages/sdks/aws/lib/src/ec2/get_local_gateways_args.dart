@@ -23,7 +23,7 @@ class GetLocalGatewaysArgs {
   /// [filters] Custom filter block as described below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Mapping of tags, each pair of which must exactly match
-  GetLocalGatewaysArgs({
+  const GetLocalGatewaysArgs({
     this.filters,
     this.region,
     this.tags,

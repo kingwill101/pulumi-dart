@@ -27,7 +27,7 @@ class NfsExportResponse {
   /// [networkId] Network to use to publish the export.
   /// [noRootSquash] Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
   /// [permissions] Export permissions.
-  NfsExportResponse({
+  const NfsExportResponse({
     required this.allowDev,
     required this.allowSuid,
     required this.cidr,

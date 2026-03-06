@@ -92,7 +92,7 @@ class BigIqAs3Args {
   /// [bigiqUser] User name  of the BIG-IQ to which your targer BIG-IP is attached
   /// [ignoreMetadata] Set True if you want to ignore metadata changes during update. By default it is set to `true`
   /// [tenantList] Name of Tenant
-  BigIqAs3Args({
+  const BigIqAs3Args({
     required this.as3Json,
     required this.bigiqAddress,
     this.bigiqLoginRef,

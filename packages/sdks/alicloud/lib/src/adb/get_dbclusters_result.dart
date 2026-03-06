@@ -42,7 +42,7 @@ class GetDBClustersResult {
   /// [status] The status of the resource.
   /// [tags] The tags of the resource.
   /// [totalCount] Required.
-  GetDBClustersResult({
+  const GetDBClustersResult({
     required this.clusters,
     this.description,
     this.descriptionRegex,

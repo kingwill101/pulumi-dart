@@ -16,7 +16,7 @@ class ProactiveEngagementArgs {
   /// Creates a new [ProactiveEngagementArgs].
   /// [emergencyContacts] One or more emergency contacts. You must provide at least one phone number in the emergency contact list. See `emergency_contacts`.
   /// [enabled] Boolean value indicating if Proactive Engagement should be enabled or not.
-  ProactiveEngagementArgs({
+  const ProactiveEngagementArgs({
     required this.emergencyContacts,
     required this.enabled,
   });

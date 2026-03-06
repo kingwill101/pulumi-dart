@@ -77,7 +77,7 @@ class HttpsBasicConfigurationArgs {
   /// [tls11] Whether to enable TLS1.1. Default is enabled. Possible values:
   /// [tls12] Whether to enable TLS1.2. Default is enabled. Possible values:
   /// [tls13] Whether to enable TLS1.3. Default is enabled. Possible values:
-  HttpsBasicConfigurationArgs({
+  const HttpsBasicConfigurationArgs({
     this.ciphersuite,
     this.ciphersuiteGroup,
     this.http2,

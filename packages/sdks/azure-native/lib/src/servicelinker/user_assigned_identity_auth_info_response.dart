@@ -28,7 +28,7 @@ class UserAssignedIdentityAuthInfoResponse {
   /// [roles] Optional, this value specifies the Azure role to be assigned
   /// [subscriptionId] Subscription id for userAssignedIdentity.
   /// [userName] Username created in the database which is mapped to a user in AAD.
-  UserAssignedIdentityAuthInfoResponse({
+  const UserAssignedIdentityAuthInfoResponse({
     this.authMode,
     required this.authType,
     this.clientId,

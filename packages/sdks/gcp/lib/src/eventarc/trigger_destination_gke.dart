@@ -20,7 +20,7 @@ class TriggerDestinationGke {
   /// [namespace] Required. The namespace the GKE service is running in.
   /// [path] Optional. The relative path on the GKE service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
   /// [service] Required. Name of the GKE service.
-  TriggerDestinationGke({
+  const TriggerDestinationGke({
     required this.cluster,
     required this.location,
     required this.namespace,

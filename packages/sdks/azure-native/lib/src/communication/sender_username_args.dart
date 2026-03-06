@@ -27,7 +27,7 @@ class SenderUsernameArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [senderUsername] The valid sender Username.
   /// [username] A sender senderUsername to be used when sending emails.
-  SenderUsernameArgs({
+  const SenderUsernameArgs({
     this.displayName,
     required this.domainName,
     required this.emailServiceName,

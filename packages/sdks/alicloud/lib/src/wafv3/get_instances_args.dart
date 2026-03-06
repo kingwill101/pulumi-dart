@@ -15,7 +15,7 @@ class GetInstancesArgs {
   /// Creates a new [GetInstancesArgs].
   /// [ids] A list of WAF v3 instance IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.outputFile,
   });

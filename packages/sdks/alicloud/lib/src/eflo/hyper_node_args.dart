@@ -70,7 +70,7 @@ class HyperNodeArgs {
   /// [vpcId] The ID of the vpc to which the sub computing node
   /// [vswitchId] The ID of the vswitch to which the sub computing node
   /// [zoneId] The zone where the hyper compute node is located
-  HyperNodeArgs({
+  const HyperNodeArgs({
     this.clusterId,
     this.dataDisks,
     this.hostname,

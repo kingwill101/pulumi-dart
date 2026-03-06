@@ -10,7 +10,7 @@ class ElasticAccountProperties {
 
   /// Creates a new [ElasticAccountProperties].
   /// [encryption] Encryption settings
-  ElasticAccountProperties({
+  const ElasticAccountProperties({
     this.encryption,
   });
 

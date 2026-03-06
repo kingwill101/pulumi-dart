@@ -34,7 +34,7 @@ class StatefulSetStatusPatchAppsV1beta1 {
   /// [replicas] replicas is the number of Pods created by the StatefulSet controller.
   /// [updateRevision] updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
   /// [updatedReplicas] updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.
-  StatefulSetStatusPatchAppsV1beta1({
+  const StatefulSetStatusPatchAppsV1beta1({
     this.collisionCount,
     this.conditions,
     this.currentReplicas,

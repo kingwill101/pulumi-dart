@@ -15,7 +15,7 @@ class GetRegionSecurityPolicyComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [securityPolicy] Required.
-  GetRegionSecurityPolicyComputeV1Args({
+  const GetRegionSecurityPolicyComputeV1Args({
     this.project,
     required this.region,
     required this.securityPolicy,

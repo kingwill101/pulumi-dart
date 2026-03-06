@@ -20,7 +20,7 @@ class GroupInitialLifecycleHook {
   /// [notificationMetadata] Optional.
   /// [notificationTargetArn] Optional.
   /// [roleArn] Optional.
-  GroupInitialLifecycleHook({
+  const GroupInitialLifecycleHook({
     this.defaultResult,
     this.heartbeatTimeout,
     required this.lifecycleTransition,

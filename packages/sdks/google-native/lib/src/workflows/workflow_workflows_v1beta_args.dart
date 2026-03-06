@@ -31,7 +31,7 @@ class WorkflowWorkflowsV1betaArgs {
   /// [serviceAccount] The service account associated with the latest workflow version. This service account represents the identity of the workflow and determines what permissions the workflow has. Format: projects/{project}/serviceAccounts/{account} or {account} Using `-` as a wildcard for the `{project}` or not providing one at all will infer the project from the account. The `{account}` value can be the `email` address or the `unique_id` of the service account. If not provided, workflow will use the project's default service account. Modifying this field for an existing workflow results in a new workflow revision.
   /// [sourceContents] Workflow code to be executed. The size limit is 128KB.
   /// [workflowId] Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
-  WorkflowWorkflowsV1betaArgs({
+  const WorkflowWorkflowsV1betaArgs({
     this.description,
     this.labels,
     this.location,

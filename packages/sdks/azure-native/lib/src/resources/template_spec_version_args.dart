@@ -40,7 +40,7 @@ class TemplateSpecVersionArgs {
   /// [templateSpecName] Name of the Template Spec.
   /// [templateSpecVersion] The version of the Template Spec.
   /// [uiFormDefinition] The Azure Resource Manager template UI definition content.
-  TemplateSpecVersionArgs({
+  const TemplateSpecVersionArgs({
     this.description,
     this.linkedTemplates,
     this.location,

@@ -25,7 +25,7 @@ class S3AccessPointArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  S3AccessPointArgs({
+  const S3AccessPointArgs({
     this.location,
     this.name,
     this.properties,

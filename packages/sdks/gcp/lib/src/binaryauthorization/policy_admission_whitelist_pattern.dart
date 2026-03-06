@@ -11,7 +11,7 @@ class PolicyAdmissionWhitelistPattern {
 
   /// Creates a new [PolicyAdmissionWhitelistPattern].
   /// [namePattern] An image name pattern to whitelist, in the form
-  PolicyAdmissionWhitelistPattern({
+  const PolicyAdmissionWhitelistPattern({
     required this.namePattern,
   });
 

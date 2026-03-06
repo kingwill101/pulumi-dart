@@ -27,7 +27,7 @@ class BackendAddressPoolAddressState {
   /// [ipAddress] The Static IP Address which should be allocated to this Backend Address Pool.
   /// [name] The name which should be used for this Backend Address Pool Address. Changing this forces a new Backend Address Pool Address to be created.
   /// [virtualNetworkId] The ID of the Virtual Network within which the Backend Address Pool should exist.
-  BackendAddressPoolAddressState({
+  const BackendAddressPoolAddressState({
     this.backendAddressIpConfigurationId,
     this.backendAddressPoolId,
     this.inboundNatRulePortMappings,

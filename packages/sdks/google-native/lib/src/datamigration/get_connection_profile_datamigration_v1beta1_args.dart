@@ -15,7 +15,7 @@ class GetConnectionProfileDatamigrationV1beta1Args {
   /// [connectionProfileId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConnectionProfileDatamigrationV1beta1Args({
+  const GetConnectionProfileDatamigrationV1beta1Args({
     required this.connectionProfileId,
     required this.location,
     this.project,

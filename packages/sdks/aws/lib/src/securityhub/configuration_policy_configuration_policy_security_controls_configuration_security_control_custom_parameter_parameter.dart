@@ -43,7 +43,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
   /// [string_] The string `value` for a String-typed Security Hub Control Parameter.
   /// [stringList] The string list `value` for a StringList-typed Security Hub Control Parameter.
   /// [valueType] Identifies whether a control parameter uses a custom user-defined value or subscribes to the default Security Hub behavior. Valid values: `DEFAULT`, `CUSTOM`.
-  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter({
+  const ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameter({
     this.bool_,
     this.double_,
     this.enum_,

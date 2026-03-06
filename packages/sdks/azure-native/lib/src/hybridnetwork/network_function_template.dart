@@ -10,7 +10,7 @@ class NetworkFunctionTemplate {
 
   /// Creates a new [NetworkFunctionTemplate].
   /// [networkFunctionRoleConfigurations] An array of network function role definitions.
-  NetworkFunctionTemplate({
+  const NetworkFunctionTemplate({
     this.networkFunctionRoleConfigurations,
   });
 

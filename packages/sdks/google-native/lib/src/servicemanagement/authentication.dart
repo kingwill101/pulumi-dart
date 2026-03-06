@@ -14,7 +14,7 @@ class Authentication {
   /// Creates a new [Authentication].
   /// [providers] Defines a set of authentication providers that a service supports.
   /// [rules] A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  Authentication({
+  const Authentication({
     this.providers,
     this.rules,
   });

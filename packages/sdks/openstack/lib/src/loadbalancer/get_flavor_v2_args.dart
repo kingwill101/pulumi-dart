@@ -19,7 +19,7 @@ class GetFlavorV2Args {
   /// [flavorId] The ID of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   /// [name] The name of the flavor. Exactly one of `name`, `flavor_id` is required to be set.
   /// [region] The region in which to obtain the V2 Load Balancer client.
-  GetFlavorV2Args({
+  const GetFlavorV2Args({
     this.flavorId,
     this.name,
     this.region,

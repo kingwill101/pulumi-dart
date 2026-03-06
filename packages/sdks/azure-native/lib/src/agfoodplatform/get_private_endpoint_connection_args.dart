@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [privateEndpointConnectionName] Private endpoint connection name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.dataManagerForAgricultureResourceName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

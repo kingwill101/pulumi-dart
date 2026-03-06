@@ -61,7 +61,7 @@ class DomainDevicesTpmBackendExternalSource {
   /// [udp] Configures UDP settings for the random number generator backend.
   /// [unix] Configures UNIX domain socket settings for the random number generator backend.
   /// [vc] Configures a virtual console as a source for communication, enabling interaction with the guest.
-  DomainDevicesTpmBackendExternalSource({
+  const DomainDevicesTpmBackendExternalSource({
     this.dbus,
     this.dev,
     this.file,

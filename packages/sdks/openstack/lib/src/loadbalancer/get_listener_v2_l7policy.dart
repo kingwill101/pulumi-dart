@@ -7,7 +7,7 @@ class GetListenerV2L7policy {
 
   /// Creates a new [GetListenerV2L7policy].
   /// [id] Required.
-  GetListenerV2L7policy({
+  const GetListenerV2L7policy({
     required this.id,
   });
 

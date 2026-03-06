@@ -15,7 +15,7 @@ class GetApiApigatewayV1betaArgs {
   /// [apiId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetApiApigatewayV1betaArgs({
+  const GetApiApigatewayV1betaArgs({
     required this.apiId,
     required this.location,
     this.project,

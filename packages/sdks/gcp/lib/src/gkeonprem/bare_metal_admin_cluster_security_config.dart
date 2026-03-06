@@ -10,7 +10,7 @@ class BareMetalAdminClusterSecurityConfig {
 
   /// Creates a new [BareMetalAdminClusterSecurityConfig].
   /// [authorization] Configures user access to the Bare Metal User cluster.
-  BareMetalAdminClusterSecurityConfig({
+  const BareMetalAdminClusterSecurityConfig({
     this.authorization,
   });
 

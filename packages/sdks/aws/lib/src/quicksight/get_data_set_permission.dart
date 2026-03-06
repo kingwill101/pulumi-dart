@@ -9,7 +9,7 @@ class GetDataSetPermission {
   /// Creates a new [GetDataSetPermission].
   /// [actions] Required.
   /// [principal] Required.
-  GetDataSetPermission({
+  const GetDataSetPermission({
     required this.actions,
     required this.principal,
   });

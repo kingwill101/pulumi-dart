@@ -77,7 +77,7 @@ class GetNetworkInterfacesInterface {
   /// [vpcId] ID of the VPC that the ENI belongs to.
   /// [vswitchId] ID of the vSwitch that the ENI is linked to.
   /// [zoneId] ID of the availability zone that the ENI belongs to.
-  GetNetworkInterfacesInterface({
+  const GetNetworkInterfacesInterface({
     required this.associatedPublicIps,
     required this.creationTime,
     required this.description,

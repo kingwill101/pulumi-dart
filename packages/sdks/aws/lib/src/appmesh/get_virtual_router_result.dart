@@ -36,7 +36,7 @@ class GetVirtualRouterResult {
   /// [resourceOwner] Resource owner's AWS account ID.
   /// [specs] Virtual routers specification. See the `aws.appmesh.VirtualRouter` resource for details.
   /// [tags] Map of tags.
-  GetVirtualRouterResult({
+  const GetVirtualRouterResult({
     required this.arn,
     required this.createdDate,
     required this.id,

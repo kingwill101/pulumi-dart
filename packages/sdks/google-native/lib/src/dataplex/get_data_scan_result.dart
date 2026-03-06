@@ -60,7 +60,7 @@ class GetDataScanResult {
   /// [type] The type of DataScan.
   /// [uid] System generated globally unique ID for the scan. This ID will be different if the scan is deleted and re-created with the same name.
   /// [updateTime] The time when the scan was last updated.
-  GetDataScanResult({
+  const GetDataScanResult({
     required this.createTime,
     required this.data,
     required this.dataProfileResult,

@@ -17,7 +17,7 @@ class PoolDataDisk {
   /// [diskSizeGb] The initial disk size in GB when creating new data disk.
   /// [lun] The lun is used to uniquely identify each data disk. If attaching multiple disks, each should have a distinct lun. The value must be between 0 and 63, inclusive.
   /// [storageAccountType] The storage account type to be used for the data disk. Values are: Possible values are `Standard_LRS` - The data disk should use standard locally redundant storage. `Premium_LRS` - The data disk should use premium locally redundant storage. Defaults to `Standard_LRS`.
-  PoolDataDisk({
+  const PoolDataDisk({
     this.caching,
     required this.diskSizeGb,
     required this.lun,

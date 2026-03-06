@@ -40,7 +40,7 @@ class GoogleBigQueryV2ObjectDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The table name of the Google BigQuery. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  GoogleBigQueryV2ObjectDatasetResponse({
+  const GoogleBigQueryV2ObjectDatasetResponse({
     this.annotations,
     this.dataset,
     this.description,

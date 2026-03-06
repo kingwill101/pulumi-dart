@@ -13,7 +13,7 @@ class GetSshPublicKeyArgs {
   /// Creates a new [GetSshPublicKeyArgs].
   /// [sshPublicKeyId] Required.
   /// [userId] Required.
-  GetSshPublicKeyArgs({
+  const GetSshPublicKeyArgs({
     required this.sshPublicKeyId,
     required this.userId,
   });

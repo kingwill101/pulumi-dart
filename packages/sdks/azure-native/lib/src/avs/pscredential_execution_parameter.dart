@@ -19,7 +19,7 @@ class PSCredentialExecutionParameter {
   /// [password] password for login
   /// [type] script execution parameter type
   /// [username] username for login
-  PSCredentialExecutionParameter({
+  const PSCredentialExecutionParameter({
     required this.name,
     this.password,
     required this.type,

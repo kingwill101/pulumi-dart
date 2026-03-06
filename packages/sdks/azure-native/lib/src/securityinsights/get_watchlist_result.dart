@@ -91,7 +91,7 @@ class GetWatchlistResult {
   /// [watchlistAlias] The alias of the watchlist
   /// [watchlistId] The id (a Guid) of the watchlist
   /// [watchlistType] The type of the watchlist
-  GetWatchlistResult({
+  const GetWatchlistResult({
     required this.azureApiVersion,
     this.contentType,
     this.created,

@@ -11,7 +11,7 @@ class QuickConnectQuickConnectConfigQueueConfig {
   /// Creates a new [QuickConnectQuickConnectConfigQueueConfig].
   /// [contactFlowId] Specifies the identifier of the contact flow.
   /// [queueId] Specifies the identifier for the queue.
-  QuickConnectQuickConnectConfigQueueConfig({
+  const QuickConnectQuickConnectConfigQueueConfig({
     required this.contactFlowId,
     required this.queueId,
   });

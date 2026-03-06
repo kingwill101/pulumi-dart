@@ -22,7 +22,7 @@ class ConnectToSourcePostgreSqlSyncTaskOutputResponse {
   /// [sourceServerBrandVersion] Source server brand version
   /// [sourceServerVersion] Version of the source server
   /// [validationErrors] Validation errors associated with the task
-  ConnectToSourcePostgreSqlSyncTaskOutputResponse({
+  const ConnectToSourcePostgreSqlSyncTaskOutputResponse({
     required this.databases,
     required this.id,
     required this.sourceServerBrandVersion,

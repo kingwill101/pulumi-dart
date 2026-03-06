@@ -21,7 +21,7 @@ class GetApiReleaseArgs {
   /// [releaseId] Release identifier within an API. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetApiReleaseArgs({
+  const GetApiReleaseArgs({
     required this.apiId,
     required this.releaseId,
     required this.resourceGroupName,

@@ -8,7 +8,7 @@ class PeeringConnectionOptionsAccepter {
 
   /// Creates a new [PeeringConnectionOptionsAccepter].
   /// [allowRemoteVpcDnsResolution] Allow a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC.
-  PeeringConnectionOptionsAccepter({
+  const PeeringConnectionOptionsAccepter({
     this.allowRemoteVpcDnsResolution,
   });
 

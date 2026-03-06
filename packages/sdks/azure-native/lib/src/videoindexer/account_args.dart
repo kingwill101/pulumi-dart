@@ -32,7 +32,7 @@ class AccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageServices] The storage services details
   /// [tags] Resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.accountId,
     this.accountName,
     this.identity,

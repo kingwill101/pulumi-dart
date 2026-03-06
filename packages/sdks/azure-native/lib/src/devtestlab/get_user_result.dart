@@ -40,7 +40,7 @@ class GetUserResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  GetUserResult({
+  const GetUserResult({
     required this.azureApiVersion,
     required this.createdDate,
     required this.id,

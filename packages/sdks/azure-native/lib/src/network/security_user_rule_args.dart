@@ -46,7 +46,7 @@ class SecurityUserRuleArgs {
   /// [ruleName] The name of the rule.
   /// [sourcePortRanges] The source port ranges.
   /// [sources] The CIDR or source IP ranges.
-  SecurityUserRuleArgs({
+  const SecurityUserRuleArgs({
     required this.configurationName,
     this.description,
     this.destinationPortRanges,

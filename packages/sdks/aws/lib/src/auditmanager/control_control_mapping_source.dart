@@ -31,7 +31,7 @@ class ControlControlMappingSource {
   /// [sourceSetUpOption] The setup option for the data source. This option reflects if the evidence collection is automated or manual. Valid values are `System_Controls_Mapping` (automated) and `Procedural_Controls_Mapping` (manual).
   /// [sourceType] Type of data source for evidence collection. If `source_set_up_option` is manual, the only valid value is `MANUAL`. If `source_set_up_option` is automated, valid values are `AWS_Cloudtrail`, `AWS_Config`, `AWS_Security_Hub`, or `AWS_API_Call`.
   /// [troubleshootingText] Instructions for troubleshooting the control.
-  ControlControlMappingSource({
+  const ControlControlMappingSource({
     this.sourceDescription,
     this.sourceFrequency,
     this.sourceId,

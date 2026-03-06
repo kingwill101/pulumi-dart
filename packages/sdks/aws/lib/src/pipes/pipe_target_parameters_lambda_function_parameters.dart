@@ -8,7 +8,7 @@ class PipeTargetParametersLambdaFunctionParameters {
 
   /// Creates a new [PipeTargetParametersLambdaFunctionParameters].
   /// [invocationType] Specify whether to invoke the function synchronously or asynchronously. Valid Values: REQUEST_RESPONSE, FIRE_AND_FORGET.
-  PipeTargetParametersLambdaFunctionParameters({
+  const PipeTargetParametersLambdaFunctionParameters({
     required this.invocationType,
   });
 

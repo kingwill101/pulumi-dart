@@ -40,7 +40,7 @@ class GetEnterpriseProxyAccessesAccess {
   /// [userId] The user ID.
   /// [userName] User nickname.
   /// [userUid] User UID.
-  GetEnterpriseProxyAccessesAccess({
+  const GetEnterpriseProxyAccessesAccess({
     required this.accessId,
     required this.accessSecret,
     required this.createTime,

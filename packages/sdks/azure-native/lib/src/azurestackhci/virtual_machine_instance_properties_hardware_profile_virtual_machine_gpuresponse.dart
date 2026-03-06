@@ -15,7 +15,7 @@ class VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse {
   /// [assignmentType] GPU assignment type
   /// [gpuName] Name of the GPU
   /// [partitionSizeMB] Size of gpu partition in MB for GPU-P
-  VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse({
+  const VirtualMachineInstancePropertiesHardwareProfileVirtualMachineGPUResponse({
     required this.assignmentType,
     this.gpuName,
     this.partitionSizeMB,

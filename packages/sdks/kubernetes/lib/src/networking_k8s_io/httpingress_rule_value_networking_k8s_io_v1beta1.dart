@@ -10,7 +10,7 @@ class HTTPIngressRuleValueNetworkingK8sIoV1beta1 {
 
   /// Creates a new [HTTPIngressRuleValueNetworkingK8sIoV1beta1].
   /// [paths] A collection of paths that map requests to backends.
-  HTTPIngressRuleValueNetworkingK8sIoV1beta1({
+  const HTTPIngressRuleValueNetworkingK8sIoV1beta1({
     required this.paths,
   });
 

@@ -72,7 +72,7 @@ class InstanceState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] Instance status: `CREATING` or `READY`.
-  InstanceState({
+  const InstanceState({
     this.autoscalingConfig,
     this.config,
     this.defaultBackupScheduleType,

@@ -19,7 +19,7 @@ class MongoDbClusterInfoResponse {
   /// [supportsSharding] Whether the cluster supports sharded collections
   /// [type] The type of data source
   /// [version] The version of the data source in the form x.y.z (e.g. 3.6.7). Not used if Type is BlobContainer.
-  MongoDbClusterInfoResponse({
+  const MongoDbClusterInfoResponse({
     required this.databases,
     required this.supportsSharding,
     required this.type,

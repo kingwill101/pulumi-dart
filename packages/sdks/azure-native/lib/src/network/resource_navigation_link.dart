@@ -18,7 +18,7 @@ class ResourceNavigationLink {
   /// [link] Link to the external resource
   /// [linkedResourceType] Resource type of the linked resource.
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
-  ResourceNavigationLink({
+  const ResourceNavigationLink({
     this.id,
     this.link,
     this.linkedResourceType,

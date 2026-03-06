@@ -30,7 +30,7 @@ class IpsecPolicyResponse {
   /// [pfsGroup] The Pfs Group used in IKE Phase 2 for new child SA.
   /// [saDataSizeKilobytes] The IPSec Security Association (also called Quick Mode or Phase 2 SA) payload size in KB for a site to site VPN tunnel.
   /// [saLifeTimeSeconds] The IPSec Security Association (also called Quick Mode or Phase 2 SA) lifetime in seconds for a site to site VPN tunnel.
-  IpsecPolicyResponse({
+  const IpsecPolicyResponse({
     required this.dhGroup,
     required this.ikeEncryption,
     required this.ikeIntegrity,

@@ -15,7 +15,7 @@ class FunctionAppActiveSlotState {
   /// [lastSuccessfulSwap] The timestamp of the last successful swap with `Production`
   /// [overwriteNetworkConfig] The swap action should overwrite the Production slot's network configuration with the configuration from this slot. Defaults to `true`. Changing this forces a new resource to be created.
   /// [slotId] The ID of the Slot to swap with `Production`.
-  FunctionAppActiveSlotState({
+  const FunctionAppActiveSlotState({
     this.lastSuccessfulSwap,
     this.overwriteNetworkConfig,
     this.slotId,

@@ -11,7 +11,7 @@ class AlertRuleAnomalyDuplicateRequiredDataConnector {
   /// Creates a new [AlertRuleAnomalyDuplicateRequiredDataConnector].
   /// [connectorId] The ID of the required Data Connector.
   /// [dataTypes] A list of data types of the required Data Connector.
-  AlertRuleAnomalyDuplicateRequiredDataConnector({
+  const AlertRuleAnomalyDuplicateRequiredDataConnector({
     this.connectorId,
     this.dataTypes,
   });

@@ -17,7 +17,7 @@ class GetResourceTypesTypeInfo {
   /// [deliveryScope] Delivery Levelcenter (centralized deployment level)region (regional deployment level)zone (Availability zone deployment level).
   /// [description] Resource type description.
   /// [title] The resource type name.
-  GetResourceTypesTypeInfo({
+  const GetResourceTypesTypeInfo({
     required this.chargeType,
     required this.deliveryScope,
     required this.description,

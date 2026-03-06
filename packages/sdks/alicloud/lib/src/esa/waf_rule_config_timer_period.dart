@@ -11,7 +11,7 @@ class WafRuleConfigTimerPeriod {
   /// Creates a new [WafRuleConfigTimerPeriod].
   /// [end] End time in HH:mm:ss format
   /// [start] Start time in HH:mm:ss format
-  WafRuleConfigTimerPeriod({
+  const WafRuleConfigTimerPeriod({
     this.end,
     this.start,
   });

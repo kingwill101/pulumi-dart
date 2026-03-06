@@ -14,7 +14,7 @@ class GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference {
   /// [overrides] Required.
   /// [priority] Required.
   /// [resourceArn] Required.
-  GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference({
+  const GetFirewallPolicyFirewallPolicyStatefulRuleGroupReference({
     required this.deepThreatInspection,
     required this.overrides,
     required this.priority,

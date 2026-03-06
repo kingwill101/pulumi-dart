@@ -15,7 +15,7 @@ class CaPoolIssuancePolicyAllowedKeyType {
   /// Creates a new [CaPoolIssuancePolicyAllowedKeyType].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.
   /// [rsa] Describes an RSA key that may be used in a Certificate issued from a CaPool.
-  CaPoolIssuancePolicyAllowedKeyType({
+  const CaPoolIssuancePolicyAllowedKeyType({
     this.ellipticCurve,
     this.rsa,
   });

@@ -38,7 +38,7 @@ class MembershipArgs {
   /// [location] Location of the membership.
   /// [membershipId] The client-provided identifier of the membership.
   /// [project] The ID of the project in which the resource belongs.
-  MembershipArgs({
+  const MembershipArgs({
     this.authority,
     this.endpoint,
     this.labels,

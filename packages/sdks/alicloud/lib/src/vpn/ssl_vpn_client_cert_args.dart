@@ -15,7 +15,7 @@ class SslVpnClientCertArgs {
   /// Creates a new [SslVpnClientCertArgs].
   /// [name] The name of the client certificate.
   /// [sslVpnServerId] The ID of the SSL-VPN server.
-  SslVpnClientCertArgs({
+  const SslVpnClientCertArgs({
     this.name,
     required this.sslVpnServerId,
   });

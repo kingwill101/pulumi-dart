@@ -15,7 +15,7 @@ class GetInstancesArgs {
   /// Creates a new [GetInstancesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [paymentType] The payment type of the cloud firewall instance. Valid values: `PayAsYouGo`,`Subscription`.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.outputFile,
     this.paymentType,
   });

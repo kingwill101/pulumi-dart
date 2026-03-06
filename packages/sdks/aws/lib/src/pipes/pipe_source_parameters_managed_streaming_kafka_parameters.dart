@@ -24,7 +24,7 @@ class PipeSourceParametersManagedStreamingKafkaParameters {
   /// [maximumBatchingWindowInSeconds] The maximum length of a time to wait for events. Maximum value of 300.
   /// [startingPosition] The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
   /// [topicName] The name of the topic that the pipe will read from. Maximum length of 249.
-  PipeSourceParametersManagedStreamingKafkaParameters({
+  const PipeSourceParametersManagedStreamingKafkaParameters({
     this.batchSize,
     this.consumerGroupId,
     this.credentials,

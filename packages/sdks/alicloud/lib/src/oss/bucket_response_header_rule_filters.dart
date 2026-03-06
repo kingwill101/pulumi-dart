@@ -8,7 +8,7 @@ class BucketResponseHeaderRuleFilters {
 
   /// Creates a new [BucketResponseHeaderRuleFilters].
   /// [operations] The operation to which the rule applies.
-  BucketResponseHeaderRuleFilters({
+  const BucketResponseHeaderRuleFilters({
     this.operations,
   });
 

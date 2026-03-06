@@ -19,7 +19,7 @@ class LinuxOSConfigResponse {
   /// [sysctls] Sysctl settings for Linux agent nodes.
   /// [transparentHugePageDefrag] Whether the kernel should make aggressive use of memory compaction to make more hugepages available. Valid values are 'always', 'defer', 'defer+madvise', 'madvise' and 'never'. The default is 'madvise'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
   /// [transparentHugePageEnabled] Whether transparent hugepages are enabled. Valid values are 'always', 'madvise', and 'never'. The default is 'always'. For more information see [Transparent Hugepages](https://www.kernel.org/doc/html/latest/admin-guide/mm/transhuge.html#admin-guide-transhuge).
-  LinuxOSConfigResponse({
+  const LinuxOSConfigResponse({
     this.swapFileSizeMB,
     this.sysctls,
     this.transparentHugePageDefrag,

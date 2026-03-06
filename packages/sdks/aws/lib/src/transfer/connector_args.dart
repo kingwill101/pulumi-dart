@@ -39,7 +39,7 @@ class ConnectorArgs {
   /// [sftpConfig] Either SFTP or AS2 is configured.The parameters to configure for the connector object. Fields documented below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [url] The URL of the partners AS2 endpoint or SFTP endpoint. Required for AS2 connectors and service-managed SFTP connectors. Must be null when using VPC Lattice egress configuration.
-  ConnectorArgs({
+  const ConnectorArgs({
     required this.accessRole,
     this.as2Config,
     this.egressConfig,

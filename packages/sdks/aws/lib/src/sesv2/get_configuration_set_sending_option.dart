@@ -8,7 +8,7 @@ class GetConfigurationSetSendingOption {
 
   /// Creates a new [GetConfigurationSetSendingOption].
   /// [sendingEnabled] Specifies whether email sending is enabled.
-  GetConfigurationSetSendingOption({
+  const GetConfigurationSetSendingOption({
     required this.sendingEnabled,
   });
 

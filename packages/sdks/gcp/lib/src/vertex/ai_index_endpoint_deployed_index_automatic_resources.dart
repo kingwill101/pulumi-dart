@@ -13,7 +13,7 @@ class AiIndexEndpointDeployedIndexAutomaticResources {
   /// Creates a new [AiIndexEndpointDeployedIndexAutomaticResources].
   /// [maxReplicaCount] The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount. The max allowed replica count is 1000.
   /// [minReplicaCount] The minimum number of replicas this DeployedModel will be always deployed on. If minReplicaCount is not set, the default value is 2 (we don't provide SLA when minReplicaCount=1).
-  AiIndexEndpointDeployedIndexAutomaticResources({
+  const AiIndexEndpointDeployedIndexAutomaticResources({
     this.maxReplicaCount,
     this.minReplicaCount,
   });

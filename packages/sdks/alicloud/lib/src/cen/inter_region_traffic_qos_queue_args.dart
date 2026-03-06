@@ -27,7 +27,7 @@ class InterRegionTrafficQosQueueArgs {
   /// [interRegionTrafficQosQueueName] The name of the traffic scheduling policy.
   /// [remainBandwidthPercent] The percentage of cross-region bandwidth that the current queue can use.
   /// [trafficQosPolicyId] The ID of the traffic scheduling policy.
-  InterRegionTrafficQosQueueArgs({
+  const InterRegionTrafficQosQueueArgs({
     this.bandwidth,
     required this.dscps,
     this.interRegionTrafficQosQueueDescription,

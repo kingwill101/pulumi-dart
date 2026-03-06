@@ -15,7 +15,7 @@ class AkriConnectorsSecret {
   /// [secretAlias] The application-defined alias for the secret.
   /// [secretKey] The key in the secret to be mounted.
   /// [secretRef] The name of the secret to be mounted.
-  AkriConnectorsSecret({
+  const AkriConnectorsSecret({
     required this.secretAlias,
     required this.secretKey,
     required this.secretRef,

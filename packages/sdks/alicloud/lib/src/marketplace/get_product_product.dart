@@ -18,7 +18,7 @@ class GetProductProduct {
   /// [description] The description of the product.
   /// [name] The name of the product.
   /// [skuses] A list of one element containing sku attributes of an object. Each element contains the following attributes:
-  GetProductProduct({
+  const GetProductProduct({
     required this.code,
     required this.description,
     required this.name,

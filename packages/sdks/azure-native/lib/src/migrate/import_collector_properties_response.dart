@@ -11,7 +11,7 @@ class ImportCollectorPropertiesResponse {
   /// [createdTimestamp] Required.
   /// [discoverySiteId] Optional.
   /// [updatedTimestamp] Required.
-  ImportCollectorPropertiesResponse({
+  const ImportCollectorPropertiesResponse({
     required this.createdTimestamp,
     this.discoverySiteId,
     required this.updatedTimestamp,

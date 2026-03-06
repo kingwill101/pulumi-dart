@@ -9,7 +9,7 @@ class CacheTypeEnumValueResponse {
 
   /// Creates a new [CacheTypeEnumValueResponse].
   /// [value] Property value
-  CacheTypeEnumValueResponse({
+  const CacheTypeEnumValueResponse({
     this.value,
   });
 

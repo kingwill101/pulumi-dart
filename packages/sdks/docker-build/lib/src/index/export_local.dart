@@ -8,7 +8,7 @@ class ExportLocal {
 
   /// Creates a new [ExportLocal].
   /// [dest] Output path.
-  ExportLocal({
+  const ExportLocal({
     required this.dest,
   });
 

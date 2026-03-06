@@ -39,7 +39,7 @@ class V3CustomDomainArgs {
   /// [routeConfig] Route matching rule configuration See `route_config` below.
   /// [tlsConfig] TLS configuration information See `tls_config` below.
   /// [wafConfig] Web application firewall configuration information See `waf_config` below.
-  V3CustomDomainArgs({
+  const V3CustomDomainArgs({
     this.authConfig,
     this.certConfig,
     this.corsConfig,

@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageText {
 
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageText].
   /// [text] A collection of text responses.
-  GoogleCloudDialogflowCxV3ResponseMessageText({
+  const GoogleCloudDialogflowCxV3ResponseMessageText({
     required this.text,
   });
 

@@ -9,7 +9,7 @@ class FileCacheLustreConfigurationLogConfiguration {
   /// Creates a new [FileCacheLustreConfigurationLogConfiguration].
   /// [destination] Optional.
   /// [level] Optional.
-  FileCacheLustreConfigurationLogConfiguration({
+  const FileCacheLustreConfigurationLogConfiguration({
     this.destination,
     this.level,
   });

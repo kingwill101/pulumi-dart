@@ -11,7 +11,7 @@ class NamedValueValueFromKeyVault {
   /// Creates a new [NamedValueValueFromKeyVault].
   /// [identityClientId] The client ID of User Assigned Identity, for the API Management Service, which will be used to access the key vault secret. The System Assigned Identity will be used in absence.
   /// [secretId] The resource ID of the Key Vault Secret.
-  NamedValueValueFromKeyVault({
+  const NamedValueValueFromKeyVault({
     this.identityClientId,
     required this.secretId,
   });

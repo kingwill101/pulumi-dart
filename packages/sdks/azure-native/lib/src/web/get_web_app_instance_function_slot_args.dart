@@ -21,7 +21,7 @@ class GetWebAppInstanceFunctionSlotArgs {
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot.
-  GetWebAppInstanceFunctionSlotArgs({
+  const GetWebAppInstanceFunctionSlotArgs({
     required this.functionName,
     required this.name,
     required this.resourceGroupName,

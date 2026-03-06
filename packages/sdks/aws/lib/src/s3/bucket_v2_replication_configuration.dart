@@ -12,7 +12,7 @@ class BucketV2ReplicationConfiguration {
   /// Creates a new [BucketV2ReplicationConfiguration].
   /// [role] ARN of the IAM role for Amazon S3 to assume when replicating the objects.
   /// [rules] Specifies the rules managing the replication (documented below).
-  BucketV2ReplicationConfiguration({
+  const BucketV2ReplicationConfiguration({
     required this.role,
     required this.rules,
   });

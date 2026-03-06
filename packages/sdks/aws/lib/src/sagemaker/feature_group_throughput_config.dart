@@ -11,7 +11,7 @@ class FeatureGroupThroughputConfig {
   /// [provisionedReadCapacityUnits] Optional.
   /// [provisionedWriteCapacityUnits] Optional.
   /// [throughputMode] Optional.
-  FeatureGroupThroughputConfig({
+  const FeatureGroupThroughputConfig({
     this.provisionedReadCapacityUnits,
     this.provisionedWriteCapacityUnits,
     this.throughputMode,

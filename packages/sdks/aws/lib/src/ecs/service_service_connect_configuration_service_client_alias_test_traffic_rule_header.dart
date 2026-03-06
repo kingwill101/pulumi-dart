@@ -12,7 +12,7 @@ class ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader 
   /// Creates a new [ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader].
   /// [name] Name of the HTTP header to match.
   /// [value] Configuration block for header value matching criteria. See below.
-  ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader({
+  const ServiceServiceConnectConfigurationServiceClientAliasTestTrafficRuleHeader({
     required this.name,
     required this.value,
   });

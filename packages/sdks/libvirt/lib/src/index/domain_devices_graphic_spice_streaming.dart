@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceStreaming {
 
   /// Creates a new [DomainDevicesGraphicSpiceStreaming].
   /// [mode] Sets the operational mode for streaming data in the Spice graphical session.
-  DomainDevicesGraphicSpiceStreaming({
+  const DomainDevicesGraphicSpiceStreaming({
     required this.mode,
   });
 

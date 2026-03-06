@@ -14,7 +14,7 @@ class PipelineVpcOptions {
   /// [securityGroupIds] A list of security groups associated with the VPC endpoint.
   /// [subnetIds] A list of subnet IDs associated with the VPC endpoint.
   /// [vpcEndpointManagement] Whether you or Amazon OpenSearch Ingestion service create and manage the VPC endpoint configured for the pipeline. Valid values are `CUSTOMER` or `SERVICE`
-  PipelineVpcOptions({
+  const PipelineVpcOptions({
     this.securityGroupIds,
     required this.subnetIds,
     this.vpcEndpointManagement,

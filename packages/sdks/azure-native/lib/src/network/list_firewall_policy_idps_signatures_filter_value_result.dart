@@ -8,7 +8,7 @@ class ListFirewallPolicyIdpsSignaturesFilterValueResult {
 
   /// Creates a new [ListFirewallPolicyIdpsSignaturesFilterValueResult].
   /// [filterValues] Describes the possible values
-  ListFirewallPolicyIdpsSignaturesFilterValueResult({
+  const ListFirewallPolicyIdpsSignaturesFilterValueResult({
     this.filterValues,
   });
 

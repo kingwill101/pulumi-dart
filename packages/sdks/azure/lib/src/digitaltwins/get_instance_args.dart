@@ -15,7 +15,7 @@ class GetInstanceArgs {
   /// Creates a new [GetInstanceArgs].
   /// [name] The name of this Digital Twins instance.
   /// [resourceGroupName] The name of the Resource Group where the Digital Twins instance exists.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.name,
     required this.resourceGroupName,
   });

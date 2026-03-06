@@ -24,7 +24,7 @@ class AlertPolicyConditionConditionSqlDailyExecutionTime {
   /// [minutes] Minutes of an hour. Must be greater than or equal to 0 and
   /// [nanos] Fractions of seconds, in nanoseconds. Must be greater than or
   /// [seconds] Seconds of a minute. Must be greater than or equal to 0 and
-  AlertPolicyConditionConditionSqlDailyExecutionTime({
+  const AlertPolicyConditionConditionSqlDailyExecutionTime({
     this.hours,
     this.minutes,
     this.nanos,

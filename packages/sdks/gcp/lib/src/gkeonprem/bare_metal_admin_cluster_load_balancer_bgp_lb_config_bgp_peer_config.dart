@@ -15,7 +15,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig {
   /// [asn] (Optional)
   /// [controlPlaneNodes] The IP address of the control plane node that
   /// [ipAddress] (Optional)
-  BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfigBgpPeerConfig({
     this.asn,
     this.controlPlaneNodes,
     this.ipAddress,

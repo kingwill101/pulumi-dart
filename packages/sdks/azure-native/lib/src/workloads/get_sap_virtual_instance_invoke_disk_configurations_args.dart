@@ -30,7 +30,7 @@ class GetSapVirtualInstanceInvokeDiskConfigurationsArgs {
   /// [environment] Defines the environment type - Production/Non Production.
   /// [location] The name of the Azure region.
   /// [sapProduct] Defines the SAP Product type.
-  GetSapVirtualInstanceInvokeDiskConfigurationsArgs({
+  const GetSapVirtualInstanceInvokeDiskConfigurationsArgs({
     required this.appLocation,
     required this.databaseType,
     required this.dbVmSku,

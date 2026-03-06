@@ -32,7 +32,7 @@ class AadDiagnosticSettingArgs {
   /// [logAnalyticsWorkspaceId] Specifies the ID of a Log Analytics Workspace where Diagnostics Data should be sent.
   /// [name] The name which should be used for this Monitor Azure Active Directory Diagnostic Setting. Changing this forces a new Monitor Azure Active Directory Diagnostic Setting to be created.
   /// [storageAccountId] The ID of the Storage Account where logs should be sent. Changing this forces a new resource to be created.
-  AadDiagnosticSettingArgs({
+  const AadDiagnosticSettingArgs({
     this.enabledLogs,
     this.eventhubAuthorizationRuleId,
     this.eventhubName,

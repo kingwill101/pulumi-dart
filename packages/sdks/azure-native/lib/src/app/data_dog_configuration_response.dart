@@ -12,7 +12,7 @@ class DataDogConfigurationResponse {
   /// Creates a new [DataDogConfigurationResponse].
   /// [key] The data dog api key
   /// [site] The data dog site
-  DataDogConfigurationResponse({
+  const DataDogConfigurationResponse({
     this.key,
     this.site,
   });

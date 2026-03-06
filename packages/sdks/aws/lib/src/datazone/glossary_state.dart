@@ -25,7 +25,7 @@ class GlossaryState {
   /// [owningProjectIdentifier] ID of the project that owns business glossary. Must follow regex of ^[a-zA-Z0-9_-]{1,36}$.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Status of business glossary. Valid values are DISABLED and ENABLED.
-  GlossaryState({
+  const GlossaryState({
     this.description,
     this.domainIdentifier,
     this.name,

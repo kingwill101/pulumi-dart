@@ -8,7 +8,7 @@ class CapabilityConfigurationArgoCdNetworkAccess {
 
   /// Creates a new [CapabilityConfigurationArgoCdNetworkAccess].
   /// [vpceIds] VPC Endpoint IDs.
-  CapabilityConfigurationArgoCdNetworkAccess({
+  const CapabilityConfigurationArgoCdNetworkAccess({
     this.vpceIds,
   });
 

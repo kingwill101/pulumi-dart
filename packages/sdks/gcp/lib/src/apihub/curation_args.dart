@@ -41,7 +41,7 @@ class CurationArgs {
   /// [endpoint] The endpoint to be triggered for curation.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
-  CurationArgs({
+  const CurationArgs({
     required this.curationId,
     this.description,
     required this.displayName,

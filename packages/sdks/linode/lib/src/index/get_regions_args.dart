@@ -12,7 +12,7 @@ class GetRegionsArgs {
 
   /// Creates a new [GetRegionsArgs].
   /// [filters] Optional.
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.filters,
   });
 

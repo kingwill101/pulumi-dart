@@ -71,7 +71,7 @@ class JobState {
   /// [tags] Optional.
   /// [transformationQuery] Optional.
   /// [type] The type of the Stream Analytics Job. Possible values are `Cloud` and `Edge`. Defaults to `Cloud`. Changing this forces a new resource to be created.
-  JobState({
+  const JobState({
     this.compatibilityLevel,
     this.contentStoragePolicy,
     this.dataLocale,

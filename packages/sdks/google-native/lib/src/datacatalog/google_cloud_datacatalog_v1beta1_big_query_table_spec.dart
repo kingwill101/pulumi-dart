@@ -12,7 +12,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /// Creates a new [GoogleCloudDatacatalogV1beta1BigQueryTableSpec].
   /// [tableSpec] Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`.
   /// [viewSpec] Table view specification. This field should only be populated if `table_source_type` is `BIGQUERY_VIEW`.
-  GoogleCloudDatacatalogV1beta1BigQueryTableSpec({
+  const GoogleCloudDatacatalogV1beta1BigQueryTableSpec({
     this.tableSpec,
     this.viewSpec,
   });

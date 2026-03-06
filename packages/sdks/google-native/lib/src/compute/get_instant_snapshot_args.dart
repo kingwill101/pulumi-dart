@@ -15,7 +15,7 @@ class GetInstantSnapshotArgs {
   /// [instantSnapshot] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstantSnapshotArgs({
+  const GetInstantSnapshotArgs({
     required this.instantSnapshot,
     this.project,
     required this.zone,

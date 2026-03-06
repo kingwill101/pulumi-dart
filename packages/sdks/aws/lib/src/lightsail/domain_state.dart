@@ -17,7 +17,7 @@ class DomainState {
   /// [arn] ARN of the Lightsail domain.
   /// [domainName] Name of the Lightsail domain to manage.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainState({
+  const DomainState({
     this.arn,
     this.domainName,
     this.region,

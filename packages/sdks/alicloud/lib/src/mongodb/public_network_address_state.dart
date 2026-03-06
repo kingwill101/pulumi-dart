@@ -13,7 +13,7 @@ class PublicNetworkAddressState {
   /// Creates a new [PublicNetworkAddressState].
   /// [dbInstanceId] The instance ID.
   /// [replicaSets] Replica set instance information.
-  PublicNetworkAddressState({
+  const PublicNetworkAddressState({
     this.dbInstanceId,
     this.replicaSets,
   });

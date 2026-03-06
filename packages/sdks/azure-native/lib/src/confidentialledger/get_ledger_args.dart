@@ -15,7 +15,7 @@ class GetLedgerArgs {
   /// Creates a new [GetLedgerArgs].
   /// [ledgerName] Name of the Confidential Ledger
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLedgerArgs({
+  const GetLedgerArgs({
     required this.ledgerName,
     required this.resourceGroupName,
   });

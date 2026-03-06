@@ -19,7 +19,7 @@ class ResiliencyRecommendationComponentsResponse {
   /// [maxScore] Max score that the gateway can achieve if the specified recommendation is applied
   /// [name] Name of the Resiliency based Recommendation Component
   /// [recommendations] List of Gateway Resiliency based Recommendations
-  ResiliencyRecommendationComponentsResponse({
+  const ResiliencyRecommendationComponentsResponse({
     this.currentScore,
     this.maxScore,
     this.name,

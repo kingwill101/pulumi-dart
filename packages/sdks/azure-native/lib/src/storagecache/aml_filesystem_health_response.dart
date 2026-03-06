@@ -15,7 +15,7 @@ class AmlFilesystemHealthResponse {
   /// [state] List of AML file system health states.
   /// [statusCode] Server-defined error code for the AML file system health
   /// [statusDescription] Describes the health state.
-  AmlFilesystemHealthResponse({
+  const AmlFilesystemHealthResponse({
     this.state,
     this.statusCode,
     this.statusDescription,

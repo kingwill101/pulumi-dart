@@ -33,7 +33,7 @@ class DatabasePrincipalAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [role] Database principal role.
   /// [tenantId] The tenant id of the principal
-  DatabasePrincipalAssignmentArgs({
+  const DatabasePrincipalAssignmentArgs({
     required this.clusterName,
     required this.databaseName,
     this.principalAssignmentName,

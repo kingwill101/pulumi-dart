@@ -9,7 +9,7 @@ class DisallowedResponse {
 
   /// Creates a new [DisallowedResponse].
   /// [diskTypes] A list of disk types.
-  DisallowedResponse({
+  const DisallowedResponse({
     this.diskTypes,
   });
 

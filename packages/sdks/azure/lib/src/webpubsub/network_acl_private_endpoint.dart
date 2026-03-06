@@ -16,7 +16,7 @@ class NetworkAclPrivateEndpoint {
   /// [allowedRequestTypes] The allowed request types for the Private Endpoint Connection. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   /// [deniedRequestTypes] The denied request types for the Private Endpoint Connection. Possible values are `ClientConnection`, `ServerConnection`, `RESTAPI` and `Trace`.
   /// [id] The ID of the Private Endpoint which is based on the Web Pubsub service.
-  NetworkAclPrivateEndpoint({
+  const NetworkAclPrivateEndpoint({
     this.allowedRequestTypes,
     this.deniedRequestTypes,
     required this.id,

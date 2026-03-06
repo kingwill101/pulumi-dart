@@ -9,7 +9,7 @@ class BuildNoteResponse {
 
   /// Creates a new [BuildNoteResponse].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
-  BuildNoteResponse({
+  const BuildNoteResponse({
     required this.builderVersion,
   });
 

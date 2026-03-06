@@ -11,7 +11,7 @@ class FilterFilterCriteriaEcrImageTag {
   /// Creates a new [FilterFilterCriteriaEcrImageTag].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaEcrImageTag({
+  const FilterFilterCriteriaEcrImageTag({
     required this.comparison,
     required this.value,
   });

@@ -10,7 +10,7 @@ class EncryptionPropertiesResponse {
 
   /// Creates a new [EncryptionPropertiesResponse].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource.
-  EncryptionPropertiesResponse({
+  const EncryptionPropertiesResponse({
     this.customerManagedKeyEncryption,
   });
 

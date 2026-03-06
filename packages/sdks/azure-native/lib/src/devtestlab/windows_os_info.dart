@@ -9,7 +9,7 @@ class WindowsOsInfo {
 
   /// Creates a new [WindowsOsInfo].
   /// [windowsOsState] The state of the Windows OS (i.e. NonSysprepped, SysprepRequested, SysprepApplied).
-  WindowsOsInfo({
+  const WindowsOsInfo({
     this.windowsOsState,
   });
 

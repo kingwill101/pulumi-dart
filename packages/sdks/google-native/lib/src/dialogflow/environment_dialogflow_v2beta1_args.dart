@@ -30,7 +30,7 @@ class EnvironmentDialogflowV2beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   /// [textToSpeechSettings] Optional. Text to speech settings for this environment.
-  EnvironmentDialogflowV2beta1Args({
+  const EnvironmentDialogflowV2beta1Args({
     this.agentVersion,
     this.description,
     required this.environmentId,

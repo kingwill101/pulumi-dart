@@ -18,7 +18,7 @@ class RetentionVolumeResponse {
   /// [freeSpaceInBytes] The free space available in this volume.
   /// [thresholdPercentage] The threshold percentage.
   /// [volumeName] The volume name.
-  RetentionVolumeResponse({
+  const RetentionVolumeResponse({
     this.capacityInBytes,
     this.freeSpaceInBytes,
     this.thresholdPercentage,

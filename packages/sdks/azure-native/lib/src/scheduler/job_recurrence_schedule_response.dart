@@ -21,7 +21,7 @@ class JobRecurrenceScheduleResponse {
   /// [monthDays] Gets or sets the days of the month that the job should execute on. Must be between 1 and 31.
   /// [monthlyOccurrences] Gets or sets the occurrences of days within a month.
   /// [weekDays] Gets or sets the days of the week that the job should execute on.
-  JobRecurrenceScheduleResponse({
+  const JobRecurrenceScheduleResponse({
     this.hours,
     this.minutes,
     this.monthDays,

@@ -12,7 +12,7 @@ class GetDataCollectionRuleStreamDeclaration {
   /// Creates a new [GetDataCollectionRuleStreamDeclaration].
   /// [columns] One or more `column` blocks as defined above.
   /// [streamName] The name of the custom stream. This name should be unique across all `stream_declaration` blocks.
-  GetDataCollectionRuleStreamDeclaration({
+  const GetDataCollectionRuleStreamDeclaration({
     required this.columns,
     required this.streamName,
   });

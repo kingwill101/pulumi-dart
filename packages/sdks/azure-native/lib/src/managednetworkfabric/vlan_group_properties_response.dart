@@ -12,7 +12,7 @@ class VlanGroupPropertiesResponse {
   /// Creates a new [VlanGroupPropertiesResponse].
   /// [name] Vlan group name.
   /// [vlans] List of vlans.
-  VlanGroupPropertiesResponse({
+  const VlanGroupPropertiesResponse({
     this.name,
     this.vlans,
   });

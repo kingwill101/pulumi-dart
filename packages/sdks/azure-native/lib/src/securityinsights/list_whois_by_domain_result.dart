@@ -24,7 +24,7 @@ class ListWhoisByDomainResult {
   /// [parsedWhois] The whois record for a given domain
   /// [server] The hostname of this registrar's whois server
   /// [updated] The timestamp at which this record was last updated
-  ListWhoisByDomainResult({
+  const ListWhoisByDomainResult({
     this.created,
     this.domain,
     this.expires,

@@ -72,7 +72,7 @@ class GrafanaWorkspaceState {
   /// [resourceGroupId] The ID of the resource group
   /// [status] The status of the resource
   /// [tags] The tag of the resource
-  GrafanaWorkspaceState({
+  const GrafanaWorkspaceState({
     this.accountNumber,
     this.aliyunLang,
     this.autoRenew,

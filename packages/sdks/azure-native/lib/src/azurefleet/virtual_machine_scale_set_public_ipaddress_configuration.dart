@@ -20,7 +20,7 @@ class VirtualMachineScaleSetPublicIPAddressConfiguration {
   /// [name] The publicIP address configuration name.
   /// [properties] Describes a virtual machines scale set IP Configuration's PublicIPAddress
   /// [sku] Describes the public IP Sku. It can only be set with OrchestrationMode as
-  VirtualMachineScaleSetPublicIPAddressConfiguration({
+  const VirtualMachineScaleSetPublicIPAddressConfiguration({
     required this.name,
     this.properties,
     this.sku,

@@ -19,7 +19,7 @@ class MiSqlConnectionInfoResponse {
   /// [password] Password credential.
   /// [type] Type of connection info
   /// [userName] User name
-  MiSqlConnectionInfoResponse({
+  const MiSqlConnectionInfoResponse({
     required this.managedInstanceResourceId,
     this.password,
     required this.type,

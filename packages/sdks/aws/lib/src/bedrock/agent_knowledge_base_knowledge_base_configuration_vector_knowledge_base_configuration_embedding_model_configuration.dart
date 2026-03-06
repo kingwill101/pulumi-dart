@@ -9,7 +9,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration].
   /// [bedrockEmbeddingModelConfiguration] The vector configuration details on the Bedrock embeddings model.  See `bedrock_embedding_model_configuration` block for details.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurationEmbeddingModelConfiguration({
     this.bedrockEmbeddingModelConfiguration,
   });
 

@@ -8,7 +8,7 @@ class DomainFeaturesAsyncTeardown {
 
   /// Creates a new [DomainFeaturesAsyncTeardown].
   /// [enabled] Enables or disables the asynchronous teardown feature, which can reduce downtime during the shutdown of the virtual machine.
-  DomainFeaturesAsyncTeardown({
+  const DomainFeaturesAsyncTeardown({
     this.enabled,
   });
 

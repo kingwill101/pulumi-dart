@@ -55,7 +55,7 @@ class GetNetworksArgs {
   /// [vpcName] The name of the VPC.
   /// [vpcOwnerId] The owner ID of VPC.
   /// [vswitchId] Filter results by the specified vSwitch.
-  GetNetworksArgs({
+  const GetNetworksArgs({
     this.cidrBlock,
     this.dhcpOptionsSetId,
     this.dryRun,

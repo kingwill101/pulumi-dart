@@ -35,7 +35,7 @@ class GetProductResult {
   /// [subscriptionRequired] Is a Subscription required to access API's included in this Product?
   /// [subscriptionsLimit] The number of subscriptions a user can have to this Product at the same time.
   /// [terms] Any Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
-  GetProductResult({
+  const GetProductResult({
     required this.apiManagementName,
     required this.approvalRequired,
     required this.description,

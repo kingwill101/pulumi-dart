@@ -15,7 +15,7 @@ class ServiceTaskSpecResourcesReservation {
   /// [genericResources] User-defined resources can be either Integer resources (e.g, `SSD=3`) or String resources (e.g, GPU=UUID1)
   /// [memoryBytes] The amounf of memory in bytes the container allocates
   /// [nanoCpus] CPU shares in units of 1/1e9 (or 10^-9) of the CPU. Should be at least `1000000`
-  ServiceTaskSpecResourcesReservation({
+  const ServiceTaskSpecResourcesReservation({
     this.genericResources,
     this.memoryBytes,
     this.nanoCpus,

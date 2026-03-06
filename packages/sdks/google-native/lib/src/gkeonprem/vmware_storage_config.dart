@@ -9,7 +9,7 @@ class VmwareStorageConfig {
 
   /// Creates a new [VmwareStorageConfig].
   /// [vsphereCsiDisabled] Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.
-  VmwareStorageConfig({
+  const VmwareStorageConfig({
     this.vsphereCsiDisabled,
   });
 

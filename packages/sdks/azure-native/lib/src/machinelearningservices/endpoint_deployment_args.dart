@@ -24,7 +24,7 @@ class EndpointDeploymentArgs {
   /// [properties] Required.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  EndpointDeploymentArgs({
+  const EndpointDeploymentArgs({
     this.deploymentName,
     required this.endpointName,
     required this.properties,

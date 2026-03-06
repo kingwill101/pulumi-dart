@@ -23,7 +23,7 @@ class GetDropletArgs {
   /// [id] The ID of the Droplet
   /// [name] The name of the Droplet.
   /// [tag] A tag applied to the Droplet.
-  GetDropletArgs({
+  const GetDropletArgs({
     this.gpu,
     this.id,
     this.name,

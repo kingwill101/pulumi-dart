@@ -14,7 +14,7 @@ class PipelineContentConfigPermission {
   /// [accesses] The permission that you want to give to the AWS user that you specified in `content_config_permissions.grantee`. Valid values are `Read`, `ReadAcp`, `WriteAcp` or `FullControl`.
   /// [grantee] The AWS user or group that you want to have access to transcoded files and playlists.
   /// [granteeType] Specify the type of value that appears in the `content_config_permissions.grantee` object. Valid values are `Canonical`, `Email` or `Group`.
-  PipelineContentConfigPermission({
+  const PipelineContentConfigPermission({
     this.accesses,
     this.grantee,
     this.granteeType,

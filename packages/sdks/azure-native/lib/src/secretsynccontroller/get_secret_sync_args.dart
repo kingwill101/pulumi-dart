@@ -15,7 +15,7 @@ class GetSecretSyncArgs {
   /// Creates a new [GetSecretSyncArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretSyncName] The name of the SecretSync
-  GetSecretSyncArgs({
+  const GetSecretSyncArgs({
     required this.resourceGroupName,
     required this.secretSyncName,
   });

@@ -20,7 +20,7 @@ class ContainerVolume {
   /// [hostPath] The path on the host where the volume is coming from.
   /// [readOnly] If `true`, this volume will be readonly. Defaults to `false`.
   /// [volumeName] The name of the docker volume which should be mounted.
-  ContainerVolume({
+  const ContainerVolume({
     this.containerPath,
     this.fromContainer,
     this.hostPath,

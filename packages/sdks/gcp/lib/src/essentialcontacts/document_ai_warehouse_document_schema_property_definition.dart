@@ -63,7 +63,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinition {
   /// [schemaSources] The schema source information.
   /// [textTypeOptions] Text property.
   /// [timestampTypeOptions] Timestamp property. Not supported by CMEK compliant deployment.
-  DocumentAiWarehouseDocumentSchemaPropertyDefinition({
+  const DocumentAiWarehouseDocumentSchemaPropertyDefinition({
     this.dateTimeTypeOptions,
     this.displayName,
     this.enumTypeOptions,

@@ -26,7 +26,7 @@ class ManagedCertificateResponse {
   /// [issuanceConfig] Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/*/locations/*/certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa.
   /// [provisioningIssue] Information about issues with provisioning a Managed Certificate.
   /// [state] State of the managed certificate resource.
-  ManagedCertificateResponse({
+  const ManagedCertificateResponse({
     required this.authorizationAttemptInfo,
     required this.dnsAuthorizations,
     required this.domains,

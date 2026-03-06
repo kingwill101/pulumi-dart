@@ -11,7 +11,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig].
   /// [buckets] Set of buckets. Ranges must be non-overlapping.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig({
     required this.buckets,
   });
 

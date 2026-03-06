@@ -17,7 +17,7 @@ class GetJobIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The identity type of this Managed Service Identity.
-  GetJobIdentity({
+  const GetJobIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

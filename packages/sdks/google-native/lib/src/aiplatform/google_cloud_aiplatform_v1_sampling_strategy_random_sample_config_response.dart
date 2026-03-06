@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfigResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfigResponse].
   /// [sampleRate] Sample rate (0, 1]
-  GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfigResponse({
+  const GoogleCloudAiplatformV1SamplingStrategyRandomSampleConfigResponse({
     required this.sampleRate,
   });
 

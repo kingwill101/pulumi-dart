@@ -13,7 +13,7 @@ class GetDataSourceArgs {
   /// Creates a new [GetDataSourceArgs].
   /// [datasourceId] Required.
   /// [debugOptionsEnableDebugging] Optional.
-  GetDataSourceArgs({
+  const GetDataSourceArgs({
     required this.datasourceId,
     this.debugOptionsEnableDebugging,
   });

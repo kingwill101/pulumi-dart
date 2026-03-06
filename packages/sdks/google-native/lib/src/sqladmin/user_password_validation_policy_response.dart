@@ -22,7 +22,7 @@ class UserPasswordValidationPolicyResponse {
   /// [enablePasswordVerification] If true, the user must specify the current password before changing the password. This flag is supported only for MySQL.
   /// [passwordExpirationDuration] Expiration duration after password is updated.
   /// [status] Read-only password status.
-  UserPasswordValidationPolicyResponse({
+  const UserPasswordValidationPolicyResponse({
     required this.allowedFailedAttempts,
     required this.enableFailedAttemptsCheck,
     required this.enablePasswordVerification,

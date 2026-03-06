@@ -53,7 +53,7 @@ class HAVipState {
   /// [tags] The list of tags.
   /// [vpcId] The ID of the VPC to which the HAVIP belongs.
   /// [vswitchId] The vswitch_id of the HaVip, the field can't be changed.
-  HAVipState({
+  const HAVipState({
     this.associatedEipAddresses,
     this.associatedInstanceType,
     this.associatedInstances,

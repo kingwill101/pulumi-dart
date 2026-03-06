@@ -9,7 +9,7 @@ class LoggingVariantConfigResponse {
 
   /// Creates a new [LoggingVariantConfigResponse].
   /// [variant] Logging variant deployed on nodes.
-  LoggingVariantConfigResponse({
+  const LoggingVariantConfigResponse({
     required this.variant,
   });
 

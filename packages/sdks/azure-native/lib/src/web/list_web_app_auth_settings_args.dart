@@ -15,7 +15,7 @@ class ListWebAppAuthSettingsArgs {
   /// Creates a new [ListWebAppAuthSettingsArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppAuthSettingsArgs({
+  const ListWebAppAuthSettingsArgs({
     required this.name,
     required this.resourceGroupName,
   });

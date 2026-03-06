@@ -11,7 +11,7 @@ class RuleRetentionPeriod {
   /// Creates a new [RuleRetentionPeriod].
   /// [retentionPeriodUnit] Unit of time in which the retention period is measured. Currently, only DAYS is supported.
   /// [retentionPeriodValue] Period value for which the retention rule is to retain resources. The period is measured using the unit specified for RetentionPeriodUnit.
-  RuleRetentionPeriod({
+  const RuleRetentionPeriod({
     required this.retentionPeriodUnit,
     required this.retentionPeriodValue,
   });

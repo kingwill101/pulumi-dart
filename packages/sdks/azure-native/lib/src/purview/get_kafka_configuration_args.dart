@@ -18,7 +18,7 @@ class GetKafkaConfigurationArgs {
   /// [accountName] The name of the account.
   /// [kafkaConfigurationName] Name of kafka configuration.
   /// [resourceGroupName] The resource group name.
-  GetKafkaConfigurationArgs({
+  const GetKafkaConfigurationArgs({
     required this.accountName,
     required this.kafkaConfigurationName,
     required this.resourceGroupName,

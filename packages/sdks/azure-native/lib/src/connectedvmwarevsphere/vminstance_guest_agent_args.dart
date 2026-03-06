@@ -26,7 +26,7 @@ class VMInstanceGuestAgentArgs {
   /// [privateLinkScopeResourceId] The resource id of the private link scope this machine is assigned to, if any.
   /// [provisioningAction] Gets or sets the guest agent provisioning action.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
-  VMInstanceGuestAgentArgs({
+  const VMInstanceGuestAgentArgs({
     this.credentials,
     this.httpProxyConfig,
     this.privateLinkScopeResourceId,

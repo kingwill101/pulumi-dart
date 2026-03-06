@@ -26,7 +26,7 @@ class CustomActionTypeConfigurationProperty {
   /// [required] Whether the configuration property is a required value.
   /// [secret] Whether the configuration property is secret.
   /// [type] The type of the configuration property. Valid values: `String`, `Number`, `Boolean`
-  CustomActionTypeConfigurationProperty({
+  const CustomActionTypeConfigurationProperty({
     this.description,
     required this.key,
     required this.name,

@@ -15,7 +15,7 @@ class ReportSummaryHistogramChartDataBucketResponse {
   /// [count] Count of items in the bucket.
   /// [lowerBound] Lower bound - inclusive.
   /// [upperBound] Upper bound - exclusive.
-  ReportSummaryHistogramChartDataBucketResponse({
+  const ReportSummaryHistogramChartDataBucketResponse({
     required this.count,
     required this.lowerBound,
     required this.upperBound,

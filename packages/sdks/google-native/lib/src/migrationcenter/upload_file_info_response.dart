@@ -15,7 +15,7 @@ class UploadFileInfoResponse {
   /// [headers] The headers that were used to sign the URI.
   /// [signedUri] Upload URI for the file.
   /// [uriExpirationTime] Expiration time of the upload URI.
-  UploadFileInfoResponse({
+  const UploadFileInfoResponse({
     required this.headers,
     required this.signedUri,
     required this.uriExpirationTime,

@@ -11,7 +11,7 @@ class DataStoreAdvancedSiteSearchConfig {
   /// Creates a new [DataStoreAdvancedSiteSearchConfig].
   /// [disableAutomaticRefresh] If set true, automatic refresh is disabled for the DataStore.
   /// [disableInitialIndex] If set true, initial indexing is disabled for the DataStore.
-  DataStoreAdvancedSiteSearchConfig({
+  const DataStoreAdvancedSiteSearchConfig({
     this.disableAutomaticRefresh,
     this.disableInitialIndex,
   });

@@ -30,7 +30,7 @@ class GetPublicIpAddressPoolsArgs {
   /// [publicIpAddressPoolIds] The IDs of the Vpc Public IP address pools.
   /// [publicIpAddressPoolName] The name of the VPC Public IP address pool.
   /// [status] The status of the Vpc Public Ip Address Pool. Valid values: `Created`, `Deleting`, `Modifying`.
-  GetPublicIpAddressPoolsArgs({
+  const GetPublicIpAddressPoolsArgs({
     this.ids,
     this.isp,
     this.nameRegex,

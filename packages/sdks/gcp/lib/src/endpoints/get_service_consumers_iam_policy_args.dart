@@ -15,7 +15,7 @@ class GetServiceConsumersIamPolicyArgs {
   /// Creates a new [GetServiceConsumersIamPolicyArgs].
   /// [consumerProject] Used to find the parent resource to bind the IAM policy to
   /// [serviceName] The name of the service. Used to find the parent resource to bind the IAM policy to
-  GetServiceConsumersIamPolicyArgs({
+  const GetServiceConsumersIamPolicyArgs({
     required this.consumerProject,
     required this.serviceName,
   });

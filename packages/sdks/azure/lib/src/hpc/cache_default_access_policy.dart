@@ -9,7 +9,7 @@ class CacheDefaultAccessPolicy {
 
   /// Creates a new [CacheDefaultAccessPolicy].
   /// [accessRules] One or more `access_rule` blocks (up to three) as defined above.
-  CacheDefaultAccessPolicy({
+  const CacheDefaultAccessPolicy({
     required this.accessRules,
   });
 

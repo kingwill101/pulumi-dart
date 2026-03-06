@@ -49,7 +49,7 @@ class GetZonesZone {
   /// [updateTimestamp] The time when the DNS record was updated.
   /// [zoneId] The ID of the Zone.
   /// [zoneName] The Name of the Private Zone.
-  GetZonesZone({
+  const GetZonesZone({
     required this.bindVpcs,
     required this.createTimestamp,
     required this.creationTime,

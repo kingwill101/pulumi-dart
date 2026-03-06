@@ -24,7 +24,7 @@ class HuntCommentArgs {
   /// [message] The message for the comment
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  HuntCommentArgs({
+  const HuntCommentArgs({
     this.huntCommentId,
     required this.huntId,
     required this.message,

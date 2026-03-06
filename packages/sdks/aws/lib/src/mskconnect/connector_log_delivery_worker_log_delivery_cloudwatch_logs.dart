@@ -11,7 +11,7 @@ class ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs {
   /// Creates a new [ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs].
   /// [enabled] Whether log delivery to Amazon CloudWatch Logs is enabled.
   /// [logGroup] The name of the CloudWatch log group that is the destination for log delivery.
-  ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs({
+  const ConnectorLogDeliveryWorkerLogDeliveryCloudwatchLogs({
     required this.enabled,
     this.logGroup,
   });

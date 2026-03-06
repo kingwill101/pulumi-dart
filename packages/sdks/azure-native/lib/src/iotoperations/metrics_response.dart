@@ -9,7 +9,7 @@ class MetricsResponse {
 
   /// Creates a new [MetricsResponse].
   /// [prometheusPort] The prometheus port to expose the metrics.
-  MetricsResponse({
+  const MetricsResponse({
     this.prometheusPort,
   });
 

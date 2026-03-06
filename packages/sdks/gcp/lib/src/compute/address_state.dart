@@ -117,7 +117,7 @@ class AddressState {
   /// [selfLink] The URI of the created resource.
   /// [subnetwork] The URL of the subnetwork in which to reserve the address. If an IP
   /// [users] The URLs of the resources that are using this address.
-  AddressState({
+  const AddressState({
     this.address,
     this.addressType,
     this.creationTimestamp,

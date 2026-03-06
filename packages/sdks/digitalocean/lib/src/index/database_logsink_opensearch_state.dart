@@ -30,7 +30,7 @@ class DatabaseLogsinkOpensearchState {
   /// [logsinkId] The unique identifier for the logsink as returned by the DigitalOcean API.
   /// [name] Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
   /// [timeoutSeconds] Request timeout for log deliveries in seconds. Must be 1 or greater.
-  DatabaseLogsinkOpensearchState({
+  const DatabaseLogsinkOpensearchState({
     this.caCert,
     this.clusterId,
     this.endpoint,

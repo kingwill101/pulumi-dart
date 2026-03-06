@@ -13,7 +13,7 @@ class ListGitHubOwnerAvailableResult {
   /// Creates a new [ListGitHubOwnerAvailableResult].
   /// [nextLink] Gets or sets next link to scroll over the results.
   /// [value] Gets or sets list of resources.
-  ListGitHubOwnerAvailableResult({
+  const ListGitHubOwnerAvailableResult({
     this.nextLink,
     this.value,
   });

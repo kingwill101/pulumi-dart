@@ -11,7 +11,7 @@ class UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig {
   /// Creates a new [UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig].
   /// [fileSystemId] The ID of your Amazon EFS file system.
   /// [fileSystemPath] The path to the file system directory that is accessible in Amazon SageMaker AI Studio. Permitted users can access only this directory and below.
-  UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig({
+  const UserProfileUserSettingsCustomFileSystemConfigEfsFileSystemConfig({
     required this.fileSystemId,
     this.fileSystemPath,
   });

@@ -11,7 +11,7 @@ class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
   /// Creates a new [GetApplicationLoadBalancersBalancerListenerPortsAndProtocal].
   /// [listenerPort] The listener port.
   /// [listenerProtocal] The listener protoal.
-  GetApplicationLoadBalancersBalancerListenerPortsAndProtocal({
+  const GetApplicationLoadBalancersBalancerListenerPortsAndProtocal({
     required this.listenerPort,
     required this.listenerProtocal,
   });

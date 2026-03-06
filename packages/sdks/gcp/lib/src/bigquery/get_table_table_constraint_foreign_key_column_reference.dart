@@ -11,7 +11,7 @@ class GetTableTableConstraintForeignKeyColumnReference {
   /// Creates a new [GetTableTableConstraintForeignKeyColumnReference].
   /// [referencedColumn] The column in the primary key that are referenced by the referencingColumn.
   /// [referencingColumn] The column that composes the foreign key.
-  GetTableTableConstraintForeignKeyColumnReference({
+  const GetTableTableConstraintForeignKeyColumnReference({
     required this.referencedColumn,
     required this.referencingColumn,
   });

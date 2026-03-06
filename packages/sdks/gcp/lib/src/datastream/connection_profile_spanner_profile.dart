@@ -13,7 +13,7 @@ class ConnectionProfileSpannerProfile {
   /// Creates a new [ConnectionProfileSpannerProfile].
   /// [database] The full project and resource path for Spanner database. Format:
   /// [host] The regional Spanner endpoint. Format:
-  ConnectionProfileSpannerProfile({
+  const ConnectionProfileSpannerProfile({
     required this.database,
     this.host,
   });

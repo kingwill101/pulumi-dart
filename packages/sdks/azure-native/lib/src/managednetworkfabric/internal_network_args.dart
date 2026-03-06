@@ -68,7 +68,7 @@ class InternalNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [staticRouteConfiguration] Static Route Configuration properties.
   /// [vlanId] Vlan identifier. Example: 1001.
-  InternalNetworkArgs({
+  const InternalNetworkArgs({
     this.annotation,
     this.bgpConfiguration,
     this.connectedIPv4Subnets,

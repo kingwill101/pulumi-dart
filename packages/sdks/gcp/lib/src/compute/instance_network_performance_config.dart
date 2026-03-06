@@ -9,7 +9,7 @@ class InstanceNetworkPerformanceConfig {
 
   /// Creates a new [InstanceNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] The egress bandwidth tier to enable.
-  InstanceNetworkPerformanceConfig({
+  const InstanceNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

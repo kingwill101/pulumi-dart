@@ -29,7 +29,7 @@ class GetInstanceAttachmentsAttachment {
   /// [id] The ID of the CEN Instance Attachment.
   /// [instanceId] The ID of the CEN instance.
   /// [status] The status of the Cen Child Instance Attachment. Valid value: `Attaching`, `Attached` and `Aetaching`.
-  GetInstanceAttachmentsAttachment({
+  const GetInstanceAttachmentsAttachment({
     required this.childInstanceAttachTime,
     required this.childInstanceId,
     required this.childInstanceOwnerId,

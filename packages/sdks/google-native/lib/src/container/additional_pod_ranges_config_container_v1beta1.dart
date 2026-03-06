@@ -9,7 +9,7 @@ class AdditionalPodRangesConfigContainerV1beta1 {
 
   /// Creates a new [AdditionalPodRangesConfigContainerV1beta1].
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.
-  AdditionalPodRangesConfigContainerV1beta1({
+  const AdditionalPodRangesConfigContainerV1beta1({
     this.podRangeNames,
   });
 

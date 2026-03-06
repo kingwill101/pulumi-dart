@@ -11,7 +11,7 @@ class GetWindowsFunctionAppSiteCredential {
   /// Creates a new [GetWindowsFunctionAppSiteCredential].
   /// [name] The name of this Windows Function App.
   /// [password] The Site Credentials Password used for publishing.
-  GetWindowsFunctionAppSiteCredential({
+  const GetWindowsFunctionAppSiteCredential({
     required this.name,
     required this.password,
   });

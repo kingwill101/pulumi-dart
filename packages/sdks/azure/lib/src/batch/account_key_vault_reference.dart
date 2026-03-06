@@ -11,7 +11,7 @@ class AccountKeyVaultReference {
   /// Creates a new [AccountKeyVaultReference].
   /// [id] The Azure identifier of the Azure KeyVault to use.
   /// [url] The HTTPS URL of the Azure KeyVault to use.
-  AccountKeyVaultReference({
+  const AccountKeyVaultReference({
     required this.id,
     required this.url,
   });

@@ -25,7 +25,7 @@ class PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs {
   /// [peConnectionName] Private endpoint connection name.
   /// [properties] Properties of Connection state request.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionControllerPrivateEndpointConnectionArgs({
     this.eTag,
     required this.migrateProjectName,
     this.peConnectionName,

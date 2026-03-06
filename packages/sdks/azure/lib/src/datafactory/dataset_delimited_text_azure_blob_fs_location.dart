@@ -23,7 +23,7 @@ class DatasetDelimitedTextAzureBlobFsLocation {
   /// [fileSystem] The storage data lake gen2 file system on the Azure Blob Storage Account hosting the file.
   /// [filename] The filename of the file.
   /// [path] The folder path to the file.
-  DatasetDelimitedTextAzureBlobFsLocation({
+  const DatasetDelimitedTextAzureBlobFsLocation({
     this.dynamicFileSystemEnabled,
     this.dynamicFilenameEnabled,
     this.dynamicPathEnabled,

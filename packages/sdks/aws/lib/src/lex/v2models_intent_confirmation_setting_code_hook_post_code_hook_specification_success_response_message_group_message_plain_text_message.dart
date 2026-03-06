@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessR
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

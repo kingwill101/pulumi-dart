@@ -16,7 +16,7 @@ class GoogleCloudDataplexV1DataQualityDimensionResultResponse {
   /// [dimension] The dimension config specified in the DataQualitySpec, as is.
   /// [passed] Whether the dimension passed or failed.
   /// [score] The dimension-level data quality score for this data scan job if and only if the 'dimension' field is set.The score ranges between 0, 100 (up to two decimal points).
-  GoogleCloudDataplexV1DataQualityDimensionResultResponse({
+  const GoogleCloudDataplexV1DataQualityDimensionResultResponse({
     required this.dimension,
     required this.passed,
     required this.score,

@@ -37,7 +37,7 @@ class Db2ProviderInstanceProperties {
   /// [sapSid] Gets or sets the SAP System Identifier
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the DB2 Database.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  Db2ProviderInstanceProperties({
+  const Db2ProviderInstanceProperties({
     this.dbName,
     this.dbPassword,
     this.dbPasswordUri,

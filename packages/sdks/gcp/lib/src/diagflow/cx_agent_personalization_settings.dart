@@ -11,7 +11,7 @@ class CxAgentPersonalizationSettings {
 
   /// Creates a new [CxAgentPersonalizationSettings].
   /// [defaultEndUserMetadata] Default end user metadata, used when processing DetectIntent requests. Recommended to be filled as a template instead of hard-coded value, for example { "age": "$session.params.age" }.
-  CxAgentPersonalizationSettings({
+  const CxAgentPersonalizationSettings({
     this.defaultEndUserMetadata,
   });
 

@@ -17,7 +17,7 @@ class GetNotebookRuntimeTemplateIamPolicyArgs {
   /// [notebookRuntimeTemplateId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetNotebookRuntimeTemplateIamPolicyArgs({
+  const GetNotebookRuntimeTemplateIamPolicyArgs({
     required this.location,
     required this.notebookRuntimeTemplateId,
     this.optionsRequestedPolicyVersion,

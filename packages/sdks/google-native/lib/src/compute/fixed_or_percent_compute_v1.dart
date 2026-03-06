@@ -12,7 +12,7 @@ class FixedOrPercentComputeV1 {
   /// Creates a new [FixedOrPercentComputeV1].
   /// [fixed] Specifies a fixed number of VM instances. This must be a positive integer.
   /// [percent] Specifies a percentage of instances between 0 to 100%, inclusive. For example, specify 80 for 80%.
-  FixedOrPercentComputeV1({
+  const FixedOrPercentComputeV1({
     this.fixed,
     this.percent,
   });

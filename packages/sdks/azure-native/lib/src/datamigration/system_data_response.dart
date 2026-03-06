@@ -17,7 +17,7 @@ class SystemDataResponse {
   /// [lastModifiedAt] Optional.
   /// [lastModifiedBy] Optional.
   /// [lastModifiedByType] Optional.
-  SystemDataResponse({
+  const SystemDataResponse({
     this.createdAt,
     this.createdBy,
     this.createdByType,

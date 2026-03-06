@@ -8,7 +8,7 @@ class FunctionEphemeralStorage {
 
   /// Creates a new [FunctionEphemeralStorage].
   /// [size] Amount of ephemeral storage (`/tmp`) in MB. Valid between 512 MB and 10,240 MB (10 GB).
-  FunctionEphemeralStorage({
+  const FunctionEphemeralStorage({
     this.size,
   });
 

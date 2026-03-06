@@ -12,7 +12,7 @@ class GetShareAcl {
   /// Creates a new [GetShareAcl].
   /// [accessPolicies] An `access_policy` block as defined below.
   /// [id] The ID which should be used for this Shared Identifier.
-  GetShareAcl({
+  const GetShareAcl({
     required this.accessPolicies,
     required this.id,
   });

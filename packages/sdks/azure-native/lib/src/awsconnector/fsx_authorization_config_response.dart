@@ -12,7 +12,7 @@ class FSxAuthorizationConfigResponse {
   /// Creates a new [FSxAuthorizationConfigResponse].
   /// [credentialsParameter] Property credentialsParameter
   /// [domain] Property domain
-  FSxAuthorizationConfigResponse({
+  const FSxAuthorizationConfigResponse({
     this.credentialsParameter,
     this.domain,
   });

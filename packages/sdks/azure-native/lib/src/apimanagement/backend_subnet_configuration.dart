@@ -9,7 +9,7 @@ class BackendSubnetConfiguration {
 
   /// Creates a new [BackendSubnetConfiguration].
   /// [id] The ARM ID of the subnet in which the backend systems are hosted.
-  BackendSubnetConfiguration({
+  const BackendSubnetConfiguration({
     this.id,
   });
 

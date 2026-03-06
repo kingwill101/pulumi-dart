@@ -18,7 +18,7 @@ class GetSrvRecordArgs {
   /// [name] The name of the Private DNS SRV Record.
   /// [resourceGroupName] Specifies the resource group where the Private DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the Private DNS Zone where the resource exists.
-  GetSrvRecordArgs({
+  const GetSrvRecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

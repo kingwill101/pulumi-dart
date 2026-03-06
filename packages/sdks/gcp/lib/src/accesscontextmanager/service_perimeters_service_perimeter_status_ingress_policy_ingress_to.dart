@@ -26,7 +26,7 @@ class ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo {
   /// [operations] A list of `ApiOperations` the sources specified in corresponding `IngressFrom`
   /// [resources] A list of resources, currently only projects in the form
   /// [roles] A list of IAM roles that represent the set of operations that the sources
-  ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo({
+  const ServicePerimetersServicePerimeterStatusIngressPolicyIngressTo({
     this.operations,
     this.resources,
     this.roles,

@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailu
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureResponseMessageGroupMessageSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureResponseMessageGroupMessageSsmlMessage({
+  const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureResponseMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

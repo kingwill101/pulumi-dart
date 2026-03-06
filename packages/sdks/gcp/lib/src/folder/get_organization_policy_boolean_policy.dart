@@ -8,7 +8,7 @@ class GetOrganizationPolicyBooleanPolicy {
 
   /// Creates a new [GetOrganizationPolicyBooleanPolicy].
   /// [enforced] If true, then the Policy is enforced. If false, then any configuration is acceptable.
-  GetOrganizationPolicyBooleanPolicy({
+  const GetOrganizationPolicyBooleanPolicy({
     required this.enforced,
   });
 

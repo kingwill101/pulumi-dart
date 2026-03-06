@@ -32,7 +32,7 @@ class ZoneState {
   /// [primaryNameservers] Primary nameservers of the Zone. Forbidden when mode is primary and required when mode is secondary.
   /// [registrar] Registrar of the Zone.
   /// [ttl] Default Time To Live (TTL) of the Zone.
-  ZoneState({
+  const ZoneState({
     this.authoritativeNameservers,
     this.deleteProtection,
     this.labels,

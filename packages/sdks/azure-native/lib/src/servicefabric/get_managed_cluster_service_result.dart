@@ -31,7 +31,7 @@ class GetManagedClusterServiceResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Azure resource tags.
   /// [type] Azure resource type.
-  GetManagedClusterServiceResult({
+  const GetManagedClusterServiceResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

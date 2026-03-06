@@ -33,7 +33,7 @@ class GetTransitRouterVpnAttachmentsArgs {
   /// [tags] The tag of the resource.
   /// [transitRouterAttachmentId] The ID of the VPN attachment.
   /// [transitRouterId] The ID of the transit router.
-  GetTransitRouterVpnAttachmentsArgs({
+  const GetTransitRouterVpnAttachmentsArgs({
     this.cenId,
     this.ids,
     this.nameRegex,

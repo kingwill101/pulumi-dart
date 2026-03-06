@@ -15,7 +15,7 @@ class FilteringTagResponse {
   /// [action] Valid actions for a filtering tag.
   /// [name] The name (also known as the key) of the tag.
   /// [value] The value of the tag.
-  FilteringTagResponse({
+  const FilteringTagResponse({
     this.action,
     this.name,
     this.value,

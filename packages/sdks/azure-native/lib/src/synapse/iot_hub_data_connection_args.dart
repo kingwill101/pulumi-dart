@@ -52,7 +52,7 @@ class IotHubDataConnectionArgs {
   /// [sharedAccessPolicyName] The name of the share access policy
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [workspaceName] The name of the workspace.
-  IotHubDataConnectionArgs({
+  const IotHubDataConnectionArgs({
     required this.consumerGroup,
     this.dataConnectionName,
     this.dataFormat,

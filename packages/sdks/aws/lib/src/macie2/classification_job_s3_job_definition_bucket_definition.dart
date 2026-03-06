@@ -11,7 +11,7 @@ class ClassificationJobS3JobDefinitionBucketDefinition {
   /// Creates a new [ClassificationJobS3JobDefinitionBucketDefinition].
   /// [accountId] The unique identifier for the AWS account that owns the buckets.
   /// [buckets] An array that lists the names of the buckets.
-  ClassificationJobS3JobDefinitionBucketDefinition({
+  const ClassificationJobS3JobDefinitionBucketDefinition({
     required this.accountId,
     required this.buckets,
   });

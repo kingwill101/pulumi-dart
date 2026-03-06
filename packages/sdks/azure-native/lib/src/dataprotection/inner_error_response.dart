@@ -15,7 +15,7 @@ class InnerErrorResponse {
   /// [additionalInfo] Any Key value pairs that can be provided to the client for additional  verbose information.
   /// [code] Unique code for this error
   /// [embeddedInnerError] Child Inner Error, to allow Nesting.
-  InnerErrorResponse({
+  const InnerErrorResponse({
     this.additionalInfo,
     this.code,
     this.embeddedInnerError,

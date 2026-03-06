@@ -11,7 +11,7 @@ class VlanInterface {
   /// Creates a new [VlanInterface].
   /// [tagged] Specifies a list of tagged interfaces or trunks associated with this VLAN. Note that you can associate tagged interfaces or trunks with any number of VLANs.
   /// [vlanport] Physical or virtual port used for traffic
-  VlanInterface({
+  const VlanInterface({
     this.tagged,
     this.vlanport,
   });

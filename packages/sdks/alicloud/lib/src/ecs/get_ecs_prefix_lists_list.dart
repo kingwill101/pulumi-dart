@@ -32,7 +32,7 @@ class GetEcsPrefixListsList {
   /// [maxEntries] The maximum number of entries that the prefix list supports.
   /// [prefixListId] The ID of the prefix list.
   /// [prefixListName] The name of the prefix list.
-  GetEcsPrefixListsList({
+  const GetEcsPrefixListsList({
     required this.addressFamily,
     required this.associationCount,
     required this.createTime,

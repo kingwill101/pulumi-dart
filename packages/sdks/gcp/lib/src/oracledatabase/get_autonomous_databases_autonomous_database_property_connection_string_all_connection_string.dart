@@ -17,7 +17,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnect
   /// [high] The database service provides the highest level of resources to each SQL
   /// [low] The database service provides the least level of resources to each SQL
   /// [medium] The database service provides a lower level of resources to each SQL
-  GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnectionString({
+  const GetAutonomousDatabasesAutonomousDatabasePropertyConnectionStringAllConnectionString({
     required this.high,
     required this.low,
     required this.medium,

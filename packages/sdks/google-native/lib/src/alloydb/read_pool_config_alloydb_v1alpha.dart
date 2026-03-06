@@ -9,7 +9,7 @@ class ReadPoolConfigAlloydbV1alpha {
 
   /// Creates a new [ReadPoolConfigAlloydbV1alpha].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  ReadPoolConfigAlloydbV1alpha({
+  const ReadPoolConfigAlloydbV1alpha({
     this.nodeCount,
   });
 

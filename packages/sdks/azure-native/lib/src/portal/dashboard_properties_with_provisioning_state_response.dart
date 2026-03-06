@@ -16,7 +16,7 @@ class DashboardPropertiesWithProvisioningStateResponse {
   /// [lenses] The dashboard lenses.
   /// [metadata] The dashboard metadata.
   /// [provisioningState] The status of the last operation.
-  DashboardPropertiesWithProvisioningStateResponse({
+  const DashboardPropertiesWithProvisioningStateResponse({
     this.lenses,
     this.metadata,
     required this.provisioningState,

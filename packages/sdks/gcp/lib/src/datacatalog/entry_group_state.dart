@@ -26,7 +26,7 @@ class EntryGroupState {
   /// [name] The resource name of the entry group in URL format. Example: projects/{project}/locations/{location}/entryGroups/{entryGroupId}
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
-  EntryGroupState({
+  const EntryGroupState({
     this.description,
     this.displayName,
     this.entryGroupId,

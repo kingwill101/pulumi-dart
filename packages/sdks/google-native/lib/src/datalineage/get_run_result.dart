@@ -23,7 +23,7 @@ class GetRunResult {
   /// [name] Immutable. The resource name of the run. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. Can be specified or auto-assigned. {run} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
   /// [startTime] The timestamp of the start of the run.
   /// [state] The state of the run.
-  GetRunResult({
+  const GetRunResult({
     required this.attributes,
     required this.displayName,
     required this.endTime,

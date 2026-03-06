@@ -34,7 +34,7 @@ class GetLogtailConfigsResult {
   /// [outputFile] Optional.
   /// [projectName] Required.
   /// [size] Required.
-  GetLogtailConfigsResult({
+  const GetLogtailConfigsResult({
     required this.configs,
     required this.id,
     required this.ids,

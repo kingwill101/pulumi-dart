@@ -36,7 +36,7 @@ class ProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The pricing tier (defines Azure Front Door Standard or Premium or a CDN provider, feature list and rate) of the profile.
   /// [tags] Resource tags.
-  ProfileArgs({
+  const ProfileArgs({
     this.identity,
     this.location,
     this.logScrubbing,

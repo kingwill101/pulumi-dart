@@ -14,7 +14,7 @@ class GetInstanceAutomatedBackupConfig {
   /// Creates a new [GetInstanceAutomatedBackupConfig].
   /// [fixedFrequencySchedules] Trigger automated backups at a fixed frequency.
   /// [retention] How long to keep automated backups before the backups are deleted.
-  GetInstanceAutomatedBackupConfig({
+  const GetInstanceAutomatedBackupConfig({
     required this.fixedFrequencySchedules,
     required this.retention,
   });

@@ -57,7 +57,7 @@ class V2PolicyOrchestratorArgs {
   /// [policyOrchestratorId] Required. The logical identifier of the policy orchestrator, with the following
   /// [project] The ID of the project in which the resource belongs.
   /// [state] Optional. State of the orchestrator. Can be updated to change orchestrator behaviour.
-  V2PolicyOrchestratorArgs({
+  const V2PolicyOrchestratorArgs({
     required this.action,
     this.description,
     this.labels,

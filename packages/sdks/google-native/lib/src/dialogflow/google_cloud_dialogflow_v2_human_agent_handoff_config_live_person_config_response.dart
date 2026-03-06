@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse].
   /// [accountNumber] Account number of the LivePerson account to connect. This is the account number you input at the login page.
-  GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse({
+  const GoogleCloudDialogflowV2HumanAgentHandoffConfigLivePersonConfigResponse({
     required this.accountNumber,
   });
 

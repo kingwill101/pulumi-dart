@@ -10,7 +10,7 @@ class ClusterIpAllocationPolicyPodCidrOverprovisionConfig {
 
   /// Creates a new [ClusterIpAllocationPolicyPodCidrOverprovisionConfig].
   /// [disabled] Whether the cluster disables default in-node sNAT rules. In-node sNAT rules will be disabled when defaultSnatStatus is disabled.When disabled is set to false, default IP masquerade rules will be applied to the nodes to prevent sNAT on cluster internal traffic
-  ClusterIpAllocationPolicyPodCidrOverprovisionConfig({
+  const ClusterIpAllocationPolicyPodCidrOverprovisionConfig({
     required this.disabled,
   });
 

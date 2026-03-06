@@ -17,7 +17,7 @@ class GetFederationIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFederationIamPolicyArgs({
+  const GetFederationIamPolicyArgs({
     required this.federationId,
     required this.location,
     this.optionsRequestedPolicyVersion,

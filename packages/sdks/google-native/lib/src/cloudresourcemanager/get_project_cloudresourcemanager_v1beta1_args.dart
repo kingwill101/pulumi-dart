@@ -11,7 +11,7 @@ class GetProjectCloudresourcemanagerV1beta1Args {
 
   /// Creates a new [GetProjectCloudresourcemanagerV1beta1Args].
   /// [project] Optional.
-  GetProjectCloudresourcemanagerV1beta1Args({
+  const GetProjectCloudresourcemanagerV1beta1Args({
     this.project,
   });
 

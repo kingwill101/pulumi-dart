@@ -15,7 +15,7 @@ class CloudPhoneInstanceArgs {
   /// Creates a new [CloudPhoneInstanceArgs].
   /// [androidInstanceGroupId] The ID of the instance group to which the instance belongs
   /// [androidInstanceName] The instance name
-  CloudPhoneInstanceArgs({
+  const CloudPhoneInstanceArgs({
     this.androidInstanceGroupId,
     this.androidInstanceName,
   });

@@ -29,7 +29,7 @@ class GetDomainsDomain {
   /// [root] Whether the domain is a verified root domain (not a subdomain).
   /// [supportedServices] A list of capabilities / services supported by the domain. Possible values include `Email`, `Sharepoint`, `EmailInternalRelayOnly`, `OfficeCommunicationsOnline`, `SharePointDefaultDomain`, `FullRedelegation`, `SharePointPublic`, `OrgIdAuthentication`, `Yammer` and `Intune`.
   /// [verified] Whether the domain has completed domain ownership verification.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.adminManaged,
     required this.authenticationType,
     required this.default_,

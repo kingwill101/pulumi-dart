@@ -26,7 +26,7 @@ class GetEndpointAttachmentResult {
   /// [name] Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment}
   /// [serviceAttachment] The path of the service attachment
   /// [updateTime] Updated time.
-  GetEndpointAttachmentResult({
+  const GetEndpointAttachmentResult({
     required this.createTime,
     required this.description,
     required this.endpointIp,

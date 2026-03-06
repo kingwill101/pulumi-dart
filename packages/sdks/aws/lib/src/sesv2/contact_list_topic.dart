@@ -19,7 +19,7 @@ class ContactListTopic {
   /// [description] Description of what the topic is about, which the contact will see.
   /// [displayName] Name of the topic the contact will see.
   /// [topicName] Name of the topic.
-  ContactListTopic({
+  const ContactListTopic({
     required this.defaultSubscriptionStatus,
     this.description,
     required this.displayName,

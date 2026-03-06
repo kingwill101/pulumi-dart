@@ -16,7 +16,7 @@ class LogAnalyticsWorkspaceOnboardingState {
   /// Creates a new [LogAnalyticsWorkspaceOnboardingState].
   /// [customerManagedKeyEnabled] Specifies if the Workspace is using Customer managed key. Defaults to `false`. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the Workspace Id. Changing this forces the Log Analytics Workspace off the board and onboard again. Changing this forces a new resource to be created.
-  LogAnalyticsWorkspaceOnboardingState({
+  const LogAnalyticsWorkspaceOnboardingState({
     this.customerManagedKeyEnabled,
     this.workspaceId,
   });

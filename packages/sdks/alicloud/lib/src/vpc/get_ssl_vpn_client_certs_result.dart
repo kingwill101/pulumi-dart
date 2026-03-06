@@ -26,7 +26,7 @@ class GetSslVpnClientCertsResult {
   /// [names] A list of SSL-VPN client cert names.
   /// [outputFile] Optional.
   /// [sslVpnServerId] ID of the SSL-VPN Server.
-  GetSslVpnClientCertsResult({
+  const GetSslVpnClientCertsResult({
     required this.certs,
     required this.id,
     required this.ids,

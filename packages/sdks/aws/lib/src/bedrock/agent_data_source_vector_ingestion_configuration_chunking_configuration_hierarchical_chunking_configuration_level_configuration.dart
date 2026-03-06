@@ -8,7 +8,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration].
   /// [maxTokens] The maximum number of tokens that a chunk can contain in this layer.
-  AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfigurationLevelConfiguration({
     required this.maxTokens,
   });
 

@@ -22,7 +22,7 @@ class WorkloadNetworkDhcpArgs {
   /// [privateCloudName] Name of the private cloud
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  WorkloadNetworkDhcpArgs({
+  const WorkloadNetworkDhcpArgs({
     this.dhcpId,
     required this.privateCloudName,
     this.properties,

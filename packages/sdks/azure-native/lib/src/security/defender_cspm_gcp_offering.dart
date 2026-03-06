@@ -30,7 +30,7 @@ class DefenderCspmGcpOffering {
   /// [mdcContainersImageAssessment] The Microsoft Defender Container image assessment configuration
   /// [offeringType] The type of the security offering.
   /// [vmScanners] The Microsoft Defender for CSPM VM scanning configuration
-  DefenderCspmGcpOffering({
+  const DefenderCspmGcpOffering({
     this.ciemDiscovery,
     this.dataSensitivityDiscovery,
     this.mdcContainersAgentlessDiscoveryK8s,

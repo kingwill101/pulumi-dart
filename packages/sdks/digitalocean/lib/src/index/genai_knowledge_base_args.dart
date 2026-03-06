@@ -42,7 +42,7 @@ class GenaiKnowledgeBaseArgs {
   /// [region] Required.
   /// [tags] Optional.
   /// [vpcUuid] The unique identifier of the VPC to which the knowledge base belongs.
-  GenaiKnowledgeBaseArgs({
+  const GenaiKnowledgeBaseArgs({
     this.addedToAgentAt,
     this.databaseId,
     required this.datasources,

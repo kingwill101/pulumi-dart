@@ -12,7 +12,7 @@ class TagSettingsPropertiesResponse {
   /// Creates a new [TagSettingsPropertiesResponse].
   /// [filterOperator] Filter VMs by Any or All specified tags.
   /// [tags] Dictionary of tags with its list of values.
-  TagSettingsPropertiesResponse({
+  const TagSettingsPropertiesResponse({
     this.filterOperator,
     this.tags,
   });

@@ -25,7 +25,7 @@ class JobTargetGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   /// [targetGroupName] The name of the target group.
-  JobTargetGroupArgs({
+  const JobTargetGroupArgs({
     required this.jobAgentName,
     required this.members,
     required this.resourceGroupName,

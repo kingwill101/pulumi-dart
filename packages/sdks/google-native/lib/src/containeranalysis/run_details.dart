@@ -14,7 +14,7 @@ class RunDetails {
   /// [builder] Optional.
   /// [byproducts] Optional.
   /// [metadata] Optional.
-  RunDetails({
+  const RunDetails({
     this.builder,
     this.byproducts,
     this.metadata,

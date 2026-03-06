@@ -9,7 +9,7 @@ class VirtualClusterContainerProviderInfo {
 
   /// Creates a new [VirtualClusterContainerProviderInfo].
   /// [eksInfo] Nested list containing EKS-specific information about the cluster where the EMR Containers cluster is running
-  VirtualClusterContainerProviderInfo({
+  const VirtualClusterContainerProviderInfo({
     required this.eksInfo,
   });
 

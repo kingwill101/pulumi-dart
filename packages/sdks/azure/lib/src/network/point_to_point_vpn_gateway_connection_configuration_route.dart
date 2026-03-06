@@ -18,7 +18,7 @@ class PointToPointVpnGatewayConnectionConfigurationRoute {
   /// [inboundRouteMapId] The resource ID of the Route Map associated with this Routing Configuration for inbound learned routes.
   /// [outboundRouteMapId] The resource ID of the Route Map associated with this Routing Configuration for outbound advertised routes.
   /// [propagatedRouteTable] A `propagated_route_table` block as defined below.
-  PointToPointVpnGatewayConnectionConfigurationRoute({
+  const PointToPointVpnGatewayConnectionConfigurationRoute({
     required this.associatedRouteTableId,
     this.inboundRouteMapId,
     this.outboundRouteMapId,

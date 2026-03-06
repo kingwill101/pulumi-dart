@@ -9,7 +9,7 @@ class MaxPodsConstraintResponse {
 
   /// Creates a new [MaxPodsConstraintResponse].
   /// [maxPodsPerNode] Constraint enforced on the max num of pods per node.
-  MaxPodsConstraintResponse({
+  const MaxPodsConstraintResponse({
     required this.maxPodsPerNode,
   });
 

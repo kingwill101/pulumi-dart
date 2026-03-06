@@ -14,7 +14,7 @@ class MapperSourceConnectionsInfoResponse {
   /// Creates a new [MapperSourceConnectionsInfoResponse].
   /// [connection] Source connection details.
   /// [sourceEntities] List of source tables for a source connection.
-  MapperSourceConnectionsInfoResponse({
+  const MapperSourceConnectionsInfoResponse({
     this.connection,
     this.sourceEntities,
   });

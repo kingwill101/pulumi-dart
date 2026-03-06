@@ -67,7 +67,7 @@ class ConnectionArgs {
   /// [serviceAccount] Optional. Service account needed for runtime plane to access Google Cloud resources.
   /// [sslConfig] Optional. Ssl config of a connection
   /// [suspended] Optional. Suspended indicates if a user has suspended a connection or not.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.authConfig,
     this.configVariables,
     required this.connectionId,

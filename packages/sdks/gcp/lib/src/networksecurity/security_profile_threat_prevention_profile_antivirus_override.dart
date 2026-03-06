@@ -13,7 +13,7 @@ class SecurityProfileThreatPreventionProfileAntivirusOverride {
   /// Creates a new [SecurityProfileThreatPreventionProfileAntivirusOverride].
   /// [action] Threat action override. For some threat types, only a subset of actions applies.
   /// [protocol] Required protocol to match.
-  SecurityProfileThreatPreventionProfileAntivirusOverride({
+  const SecurityProfileThreatPreventionProfileAntivirusOverride({
     required this.action,
     required this.protocol,
   });

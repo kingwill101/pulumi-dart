@@ -28,7 +28,7 @@ class BucketLifecycleConfigurationV2Args {
   /// [rules] List of configuration blocks describing the rules managing the replication. See below.
   /// [timeouts] Optional.
   /// [transitionDefaultMinimumObjectSize] The default minimum object size behavior applied to the lifecycle configuration. Valid values: `all_storage_classes_128K` (default), `varies_by_storage_class`. To customize the minimum object size for any transition you can add a `filter` that specifies a custom `object_size_greater_than` or `object_size_less_than` value. Custom filters always take precedence over the default transition behavior.
-  BucketLifecycleConfigurationV2Args({
+  const BucketLifecycleConfigurationV2Args({
     required this.bucket,
     this.expectedBucketOwner,
     this.region,

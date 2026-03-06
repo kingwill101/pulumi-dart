@@ -20,7 +20,7 @@ class TrafficPolicyArgs {
   /// [comment] Comment for the traffic policy.
   /// [document] Policy document. This is a JSON formatted string. For more information about building Route53 traffic policy documents, see the [AWS Route53 Traffic Policy document format](https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html)
   /// [name] Name of the traffic policy.
-  TrafficPolicyArgs({
+  const TrafficPolicyArgs({
     this.comment,
     required this.document,
     this.name,

@@ -44,7 +44,7 @@ class ZoneState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcs] Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegation_set_id` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
   /// [zoneId] The Hosted Zone ID. This can be referenced by zone records.
-  ZoneState({
+  const ZoneState({
     this.arn,
     this.comment,
     this.delegationSetId,

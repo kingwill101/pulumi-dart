@@ -34,7 +34,7 @@ class GetApplicationGatewayWafConfiguration {
   /// [requestBodyCheck] Is Request Body Inspection enabled?
   /// [ruleSetType] The Type of the Rule Set used for this Web Application Firewall.
   /// [ruleSetVersion] The Version of the Rule Set used for this Web Application Firewall.
-  GetApplicationGatewayWafConfiguration({
+  const GetApplicationGatewayWafConfiguration({
     required this.disabledRuleGroups,
     required this.enabled,
     required this.exclusions,

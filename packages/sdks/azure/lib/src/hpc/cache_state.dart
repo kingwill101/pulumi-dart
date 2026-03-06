@@ -72,7 +72,7 @@ class CacheState {
   /// [skuName] The SKU of HPC Cache to use. Possible values are (ReadWrite) - `Standard_2G`, `Standard_4G` `Standard_8G` or (ReadOnly) - `Standard_L4_5G`, `Standard_L9G`, and `Standard_L16G`. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet for the HPC Cache. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the HPC Cache.
-  CacheState({
+  const CacheState({
     this.automaticallyRotateKeyToLatestEnabled,
     this.cacheSizeInGb,
     this.defaultAccessPolicy,

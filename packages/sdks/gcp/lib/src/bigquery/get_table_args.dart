@@ -19,7 +19,7 @@ class GetTableArgs {
   /// [datasetId] The dataset ID.
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] The table ID.
-  GetTableArgs({
+  const GetTableArgs({
     required this.datasetId,
     this.project,
     required this.tableId,

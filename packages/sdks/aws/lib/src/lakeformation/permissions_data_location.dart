@@ -13,7 +13,7 @@ class PermissionsDataLocation {
   /// Creates a new [PermissionsDataLocation].
   /// [arn] Amazon Resource Name (ARN) that uniquely identifies the data location resource.
   /// [catalogId] Identifier for the Data Catalog where the location is registered with Lake Formation. By default, it is the account ID of the caller.
-  PermissionsDataLocation({
+  const PermissionsDataLocation({
     required this.arn,
     this.catalogId,
   });

@@ -58,7 +58,7 @@ class BackendAddressPoolResponse {
   /// [tunnelInterfaces] An array of gateway load balancer tunnel interfaces.
   /// [type] Type of the resource.
   /// [virtualNetwork] A reference to a virtual network.
-  BackendAddressPoolResponse({
+  const BackendAddressPoolResponse({
     required this.backendIPConfigurations,
     this.drainPeriodInSeconds,
     required this.etag,

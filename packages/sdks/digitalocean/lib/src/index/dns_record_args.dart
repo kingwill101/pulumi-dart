@@ -39,7 +39,7 @@ class DnsRecordArgs {
   /// [type] The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
   /// [value] The value of the record.
   /// [weight] The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
-  DnsRecordArgs({
+  const DnsRecordArgs({
     required this.domain,
     this.flags,
     this.name,

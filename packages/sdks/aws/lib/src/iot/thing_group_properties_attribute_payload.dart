@@ -8,7 +8,7 @@ class ThingGroupPropertiesAttributePayload {
 
   /// Creates a new [ThingGroupPropertiesAttributePayload].
   /// [attributes] Key-value map.
-  ThingGroupPropertiesAttributePayload({
+  const ThingGroupPropertiesAttributePayload({
     this.attributes,
   });
 

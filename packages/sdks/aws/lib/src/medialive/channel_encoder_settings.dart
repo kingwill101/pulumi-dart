@@ -41,7 +41,7 @@ class ChannelEncoderSettings {
   /// [outputGroups] Output groups for the channel. See Output Groups for more details.
   /// [timecodeConfig] Contains settings used to acquire and adjust timecode information from inputs. See Timecode Config for more details.
   /// [videoDescriptions] Video Descriptions. See Video Descriptions for more details.
-  ChannelEncoderSettings({
+  const ChannelEncoderSettings({
     this.audioDescriptions,
     this.availBlanking,
     this.captionDescriptions,

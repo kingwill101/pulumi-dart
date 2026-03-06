@@ -54,7 +54,7 @@ class GatewayBlockVolumeArgs {
   /// [protocol] The Protocol. Valid values: `iSCSI`.
   /// [recovery] The recovery.
   /// [size] The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
-  GatewayBlockVolumeArgs({
+  const GatewayBlockVolumeArgs({
     this.cacheMode,
     this.chapEnabled,
     this.chapInPassword,

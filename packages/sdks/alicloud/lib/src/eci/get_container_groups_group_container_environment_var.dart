@@ -11,7 +11,7 @@ class GetContainerGroupsGroupContainerEnvironmentVar {
   /// Creates a new [GetContainerGroupsGroupContainerEnvironmentVar].
   /// [key] The name of the variable.
   /// [value] The value of the variable.
-  GetContainerGroupsGroupContainerEnvironmentVar({
+  const GetContainerGroupsGroupContainerEnvironmentVar({
     required this.key,
     required this.value,
   });

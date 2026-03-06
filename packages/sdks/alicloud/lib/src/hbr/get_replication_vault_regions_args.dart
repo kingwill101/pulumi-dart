@@ -12,7 +12,7 @@ class GetReplicationVaultRegionsArgs {
 
   /// Creates a new [GetReplicationVaultRegionsArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetReplicationVaultRegionsArgs({
+  const GetReplicationVaultRegionsArgs({
     this.outputFile,
   });
 

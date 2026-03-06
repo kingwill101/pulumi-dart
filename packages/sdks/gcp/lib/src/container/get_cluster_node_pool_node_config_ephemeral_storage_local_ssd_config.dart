@@ -11,7 +11,7 @@ class GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
   /// Creates a new [GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig].
   /// [dataCacheCount] Number of local SSDs to be utilized for GKE Data Cache. Uses NVMe interfaces.
   /// [localSsdCount] Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD must be 375 or 3000 GB in size, and all local SSDs must share the same size.
-  GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig({
+  const GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig({
     required this.dataCacheCount,
     required this.localSsdCount,
   });

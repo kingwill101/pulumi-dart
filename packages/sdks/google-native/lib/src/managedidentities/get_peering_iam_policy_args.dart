@@ -15,7 +15,7 @@ class GetPeeringIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [peeringId] Required.
   /// [project] Optional.
-  GetPeeringIamPolicyArgs({
+  const GetPeeringIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     required this.peeringId,
     this.project,

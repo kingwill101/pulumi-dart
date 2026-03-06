@@ -29,7 +29,7 @@ class VirtualMachineGroupWsfcDomainProfile {
   /// [sqlServiceAccountName] The account name under which SQL service will run on all participating SQL virtual machines in the cluster. Changing this forces a new resource to be created.
   /// [storageAccountPrimaryKey] The primary key of the Storage Account.
   /// [storageAccountUrl] The SAS URL to the Storage Container of the witness storage account. Changing this forces a new resource to be created.
-  VirtualMachineGroupWsfcDomainProfile({
+  const VirtualMachineGroupWsfcDomainProfile({
     this.clusterBootstrapAccountName,
     this.clusterOperatorAccountName,
     required this.clusterSubnetType,

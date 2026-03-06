@@ -35,7 +35,7 @@ class CaCertificateArgs {
   /// [registrationConfig] Information about the registration configuration. See below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [verificationCertificatePem] PEM encoded verification certificate containing the common name of a registration code. Review
-  CaCertificateArgs({
+  const CaCertificateArgs({
     required this.active,
     required this.allowAutoRegistration,
     required this.caCertificatePem,

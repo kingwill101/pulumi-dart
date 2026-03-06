@@ -12,7 +12,7 @@ class IotDpsSkuInfo {
   /// Creates a new [IotDpsSkuInfo].
   /// [capacity] The number of units to provision
   /// [name] Sku name.
-  IotDpsSkuInfo({
+  const IotDpsSkuInfo({
     this.capacity,
     this.name,
   });

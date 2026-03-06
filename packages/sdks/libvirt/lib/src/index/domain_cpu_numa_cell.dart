@@ -31,7 +31,7 @@ class DomainCpuNumaCell {
   /// [memAccess] Configures the memory access attributes related to the NUMA cell, defining access strategies.
   /// [memory] Specifies the total allocated memory for the NUMA cell, influencing resource management.
   /// [unit] Sets the unit of measure used for memory associated with the NUMA cell.
-  DomainCpuNumaCell({
+  const DomainCpuNumaCell({
     this.caches,
     this.cpus,
     this.discard,

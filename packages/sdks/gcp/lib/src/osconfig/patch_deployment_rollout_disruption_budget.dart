@@ -11,7 +11,7 @@ class PatchDeploymentRolloutDisruptionBudget {
   /// Creates a new [PatchDeploymentRolloutDisruptionBudget].
   /// [fixed] Specifies a fixed value.
   /// [percentage] Specifies the relative value defined as a percentage, which will be multiplied by a reference value.
-  PatchDeploymentRolloutDisruptionBudget({
+  const PatchDeploymentRolloutDisruptionBudget({
     this.fixed,
     this.percentage,
   });

@@ -11,7 +11,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3 {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3].
   /// [bucketOwnerAccountId] Account ID of the S3 bucket owner.
   /// [uri] S3 URI where the schema is stored.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaS3({
     this.bucketOwnerAccountId,
     this.uri,
   });

@@ -15,7 +15,7 @@ class GetVolumeArgs {
   /// Creates a new [GetVolumeArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume.
-  GetVolumeArgs({
+  const GetVolumeArgs({
     required this.resourceGroupName,
     required this.volumeName,
   });

@@ -8,7 +8,7 @@ class AuthzPolicyCustomProviderAuthzExtension {
 
   /// Creates a new [AuthzPolicyCustomProviderAuthzExtension].
   /// [resources] A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider.
-  AuthzPolicyCustomProviderAuthzExtension({
+  const AuthzPolicyCustomProviderAuthzExtension({
     required this.resources,
   });
 

@@ -15,7 +15,7 @@ class TargetBranchConfigurationResponse {
   /// Creates a new [TargetBranchConfigurationResponse].
   /// [annotateDefaultBranch] Configuration of PR Annotations on default branch.
   /// [branchNames] Gets or sets branches that should have annotations.
-  TargetBranchConfigurationResponse({
+  const TargetBranchConfigurationResponse({
     this.annotateDefaultBranch,
     this.branchNames,
   });

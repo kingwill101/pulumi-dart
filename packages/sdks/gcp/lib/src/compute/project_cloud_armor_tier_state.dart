@@ -14,7 +14,7 @@ class ProjectCloudArmorTierState {
   /// Creates a new [ProjectCloudArmorTierState].
   /// [cloudArmorTier] Managed protection tier to be set.
   /// [project] The ID of the project in which the resource belongs.
-  ProjectCloudArmorTierState({
+  const ProjectCloudArmorTierState({
     this.cloudArmorTier,
     this.project,
   });

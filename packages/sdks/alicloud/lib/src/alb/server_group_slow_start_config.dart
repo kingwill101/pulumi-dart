@@ -15,7 +15,7 @@ class ServerGroupSlowStartConfig {
   /// Creates a new [ServerGroupSlowStartConfig].
   /// [slowStartDuration] The duration of a slow start.
   /// [slowStartEnabled] Indicates whether slow starts are enabled. Valid values:
-  ServerGroupSlowStartConfig({
+  const ServerGroupSlowStartConfig({
     this.slowStartDuration,
     this.slowStartEnabled,
   });

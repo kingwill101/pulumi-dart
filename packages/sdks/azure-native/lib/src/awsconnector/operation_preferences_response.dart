@@ -24,7 +24,7 @@ class OperationPreferencesResponse {
   /// [maxConcurrentPercentage] Property maxConcurrentPercentage
   /// [regionConcurrencyType] The concurrency type of deploying StackSets operations in regions, could be in parallel or one region at a time
   /// [regionOrder] Property regionOrder
-  OperationPreferencesResponse({
+  const OperationPreferencesResponse({
     this.failureToleranceCount,
     this.failureTolerancePercentage,
     this.maxConcurrentCount,

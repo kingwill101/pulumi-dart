@@ -11,7 +11,7 @@ class VolumeAttachment {
   /// [device] Optional.
   /// [id] Optional.
   /// [instanceId] Optional.
-  VolumeAttachment({
+  const VolumeAttachment({
     this.device,
     this.id,
     this.instanceId,

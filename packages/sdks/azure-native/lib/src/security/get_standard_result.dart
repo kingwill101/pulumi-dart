@@ -53,7 +53,7 @@ class GetStandardResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] A list of key value pairs that describe the resource.
   /// [type] Resource type
-  GetStandardResult({
+  const GetStandardResult({
     required this.azureApiVersion,
     this.category,
     this.components,

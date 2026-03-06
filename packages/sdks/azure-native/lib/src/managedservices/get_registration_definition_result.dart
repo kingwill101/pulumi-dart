@@ -29,7 +29,7 @@ class GetRegistrationDefinitionResult {
   /// [properties] The properties of a registration definition.
   /// [systemData] The metadata for the registration assignment resource.
   /// [type] The type of the Azure resource (Microsoft.ManagedServices/registrationDefinitions).
-  GetRegistrationDefinitionResult({
+  const GetRegistrationDefinitionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

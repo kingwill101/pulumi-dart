@@ -18,7 +18,7 @@ class StageDetailsResponse {
   /// [stageName] Stage name.
   /// [stageStatus] Stage status.
   /// [startTime] Stage start time.
-  StageDetailsResponse({
+  const StageDetailsResponse({
     required this.displayName,
     required this.stageName,
     required this.stageStatus,

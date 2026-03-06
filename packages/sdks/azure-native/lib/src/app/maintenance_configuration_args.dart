@@ -22,7 +22,7 @@ class MaintenanceConfigurationArgs {
   /// [environmentName] The name of the Managed Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduledEntries] List of maintenance schedules for a managed environment.
-  MaintenanceConfigurationArgs({
+  const MaintenanceConfigurationArgs({
     this.configName,
     required this.environmentName,
     required this.resourceGroupName,

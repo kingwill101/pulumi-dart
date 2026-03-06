@@ -19,7 +19,7 @@ class GetImportCollectorResult {
   /// [name] Required.
   /// [properties] Required.
   /// [type] Required.
-  GetImportCollectorResult({
+  const GetImportCollectorResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

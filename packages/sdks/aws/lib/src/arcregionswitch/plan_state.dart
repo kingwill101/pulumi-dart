@@ -56,7 +56,7 @@ class PlanState {
   /// [timeouts] Optional.
   /// [triggers] Set of triggers that can initiate the plan execution. See Triggers below.
   /// [workflows] List of workflows that define the steps to execute. See Workflow below.
-  PlanState({
+  const PlanState({
     this.arn,
     this.associatedAlarms,
     this.description,

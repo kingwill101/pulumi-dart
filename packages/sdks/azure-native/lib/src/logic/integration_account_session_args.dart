@@ -27,7 +27,7 @@ class IntegrationAccountSessionArgs {
   /// [resourceGroupName] The resource group name.
   /// [sessionName] The integration account session name.
   /// [tags] The resource tags.
-  IntegrationAccountSessionArgs({
+  const IntegrationAccountSessionArgs({
     this.content,
     required this.integrationAccountName,
     this.location,

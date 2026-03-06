@@ -72,7 +72,7 @@ class QueueState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] Same as `id`: The URL for the created Amazon SQS queue.
   /// [visibilityTimeoutSeconds] Visibility timeout for the queue. An integer from 0 to 43200 (12 hours). The default for this attribute is 30. For more information about visibility timeout, see [AWS docs](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/AboutVT.html).
-  QueueState({
+  const QueueState({
     this.arn,
     this.contentBasedDeduplication,
     this.deduplicationScope,

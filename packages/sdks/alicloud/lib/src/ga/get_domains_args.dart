@@ -28,7 +28,7 @@ class GetDomainsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.acceleratorId,
     this.domain,
     this.ids,

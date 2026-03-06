@@ -15,7 +15,7 @@ class GetFutureReservationArgs {
   /// [futureReservation] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetFutureReservationArgs({
+  const GetFutureReservationArgs({
     required this.futureReservation,
     this.project,
     required this.zone,

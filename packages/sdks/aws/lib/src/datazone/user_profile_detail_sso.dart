@@ -11,7 +11,7 @@ class UserProfileDetailSso {
   /// [firstName] Required.
   /// [lastName] Required.
   /// [userName] Required.
-  UserProfileDetailSso({
+  const UserProfileDetailSso({
     required this.firstName,
     required this.lastName,
     required this.userName,

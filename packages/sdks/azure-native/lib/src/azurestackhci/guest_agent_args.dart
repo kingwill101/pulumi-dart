@@ -19,7 +19,7 @@ class GuestAgentArgs {
   /// [credentials] Username / Password Credentials to provision guest agent.
   /// [provisioningAction] The guest agent provisioning action.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GuestAgentArgs({
+  const GuestAgentArgs({
     this.credentials,
     this.provisioningAction,
     required this.resourceUri,

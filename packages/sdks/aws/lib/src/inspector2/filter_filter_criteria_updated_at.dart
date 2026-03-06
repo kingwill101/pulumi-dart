@@ -11,7 +11,7 @@ class FilterFilterCriteriaUpdatedAt {
   /// Creates a new [FilterFilterCriteriaUpdatedAt].
   /// [endInclusive] (Required) The end of the port range, inclusive.
   /// [startInclusive] (Optional) Start of the date range in RFC 3339 format, inclusive. Set the timezone to UTC.
-  FilterFilterCriteriaUpdatedAt({
+  const FilterFilterCriteriaUpdatedAt({
     this.endInclusive,
     this.startInclusive,
   });

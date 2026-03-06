@@ -9,7 +9,7 @@ class GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage {
   /// Creates a new [GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage].
   /// [revisionDatetime] Required.
   /// [version] Required.
-  GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage({
+  const GetDeploymentWebApplicationFirewallStatusThreatCampaignsPackage({
     required this.revisionDatetime,
     required this.version,
   });

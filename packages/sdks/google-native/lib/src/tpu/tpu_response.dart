@@ -10,7 +10,7 @@ class TpuResponse {
 
   /// Creates a new [TpuResponse].
   /// [nodeSpec] The TPU node(s) being requested.
-  TpuResponse({
+  const TpuResponse({
     required this.nodeSpec,
   });
 

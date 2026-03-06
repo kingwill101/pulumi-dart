@@ -80,7 +80,7 @@ class GetControlPoliciesPolicy {
   /// [sourceGroupCidrs] The CIDR blocks in the source address book.
   /// [sourceGroupType] The type of the source address book in the access control policy.
   /// [sourceType] The type of the source address in the access control policy.
-  GetControlPoliciesPolicy({
+  const GetControlPoliciesPolicy({
     required this.aclAction,
     required this.aclUuid,
     required this.applicationId,

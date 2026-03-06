@@ -11,7 +11,7 @@ class GetSecretsFilter {
   /// Creates a new [GetSecretsFilter].
   /// [name] Name of the filter field. Valid values can be found in the [Secrets Manager ListSecrets API Reference](https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_ListSecrets.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetSecretsFilter({
+  const GetSecretsFilter({
     required this.name,
     required this.values,
   });

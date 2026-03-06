@@ -8,7 +8,7 @@ class NodePoolNodeConfigGcfsConfig {
 
   /// Creates a new [NodePoolNodeConfigGcfsConfig].
   /// [enabled] Whether or not GCFS is enabled
-  NodePoolNodeConfigGcfsConfig({
+  const NodePoolNodeConfigGcfsConfig({
     required this.enabled,
   });
 

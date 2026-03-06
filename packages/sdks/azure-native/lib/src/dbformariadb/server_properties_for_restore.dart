@@ -33,7 +33,7 @@ class ServerPropertiesForRestore {
   /// [sslEnforcement] Enable ssl enforcement or not when connect to server.
   /// [storageProfile] Storage profile of a server.
   /// [version] Server version.
-  ServerPropertiesForRestore({
+  const ServerPropertiesForRestore({
     required this.createMode,
     this.minimalTlsVersion,
     this.publicNetworkAccess,

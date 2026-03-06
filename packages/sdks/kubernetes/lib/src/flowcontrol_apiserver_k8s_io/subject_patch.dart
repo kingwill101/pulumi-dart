@@ -21,7 +21,7 @@ class SubjectPatch {
   /// [kind] `kind` indicates which one of the other fields is non-empty. Required
   /// [serviceAccount] `serviceAccount` matches ServiceAccounts.
   /// [user] `user` matches based on username.
-  SubjectPatch({
+  const SubjectPatch({
     this.group,
     this.kind,
     this.serviceAccount,

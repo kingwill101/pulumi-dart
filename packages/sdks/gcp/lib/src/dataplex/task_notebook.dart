@@ -19,7 +19,7 @@ class TaskNotebook {
   /// [fileUris] Cloud Storage URIs of files to be placed in the working directory of each executor.
   /// [infrastructureSpec] Infrastructure specification for the execution.
   /// [notebook] Path to input notebook. This can be the Cloud Storage URI of the notebook file or the path to a Notebook Content. The execution args are accessible as environment variables (TASK_key=value).
-  TaskNotebook({
+  const TaskNotebook({
     this.archiveUris,
     this.fileUris,
     this.infrastructureSpec,

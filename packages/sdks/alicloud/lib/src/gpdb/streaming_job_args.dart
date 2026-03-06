@@ -92,7 +92,7 @@ class StreamingJobArgs {
   /// [tryRun] Specifies whether to test the real-time job. Valid values:
   /// [updateColumns] Update Field
   /// [writeMode] The write mode.
-  StreamingJobArgs({
+  const StreamingJobArgs({
     this.account,
     this.consistency,
     required this.dataSourceId,

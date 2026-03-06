@@ -18,7 +18,7 @@ class ServiceBindResponse {
   /// [customizedKeys] Customized keys for customizing injected values to the app
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  ServiceBindResponse({
+  const ServiceBindResponse({
     this.clientType,
     this.customizedKeys,
     this.name,

@@ -57,7 +57,7 @@ class GetEcsSnapshotsArgs {
   /// [tags] A mapping of tags to assign to the snapshot.
   /// [type] The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
   /// [usage] A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
-  GetEcsSnapshotsArgs({
+  const GetEcsSnapshotsArgs({
     this.category,
     this.dryRun,
     this.encrypted,

@@ -8,7 +8,7 @@ class ResourceIdResponse {
 
   /// Creates a new [ResourceIdResponse].
   /// [id] Required.
-  ResourceIdResponse({
+  const ResourceIdResponse({
     required this.id,
   });
 

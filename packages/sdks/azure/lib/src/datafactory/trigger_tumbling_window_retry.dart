@@ -11,7 +11,7 @@ class TriggerTumblingWindowRetry {
   /// Creates a new [TriggerTumblingWindowRetry].
   /// [count] The maximum retry attempts if the pipeline run failed.
   /// [interval] The Interval in seconds between each retry if the pipeline run failed. Defaults to `30`.
-  TriggerTumblingWindowRetry({
+  const TriggerTumblingWindowRetry({
     required this.count,
     this.interval,
   });

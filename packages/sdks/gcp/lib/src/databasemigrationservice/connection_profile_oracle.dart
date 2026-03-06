@@ -45,7 +45,7 @@ class ConnectionProfileOracle {
   /// [ssl] SSL configuration for the destination to connect to the source database.
   /// [staticServiceIpConnectivity] This object has no nested fields.
   /// [username] Required. The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-  ConnectionProfileOracle({
+  const ConnectionProfileOracle({
     required this.databaseService,
     this.forwardSshConnectivity,
     required this.host,

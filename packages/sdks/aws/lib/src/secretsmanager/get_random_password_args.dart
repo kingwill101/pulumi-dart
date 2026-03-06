@@ -36,7 +36,7 @@ class GetRandomPasswordArgs {
   /// [passwordLength] Length of the password.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requireEachIncludedType] Specifies whether to include at least one upper and lowercase letter, one number, and one punctuation.
-  GetRandomPasswordArgs({
+  const GetRandomPasswordArgs({
     this.excludeCharacters,
     this.excludeLowercase,
     this.excludeNumbers,

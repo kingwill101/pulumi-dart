@@ -14,7 +14,7 @@ class GetInstanceTypeInferenceAccelerator {
   /// [manufacturer] Required.
   /// [memorySize] Size of the instance memory, in MiB.
   /// [name] Required.
-  GetInstanceTypeInferenceAccelerator({
+  const GetInstanceTypeInferenceAccelerator({
     required this.count,
     required this.manufacturer,
     required this.memorySize,

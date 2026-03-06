@@ -34,7 +34,7 @@ class EbsBlockDeviceResponse {
   /// [throughput] &lt;p&gt;The throughput that the volume supports, in MiB/s.&lt;/p&gt; &lt;p&gt;This parameter is valid only for &lt;code&gt;gp3&lt;/code&gt; volumes.&lt;/p&gt; &lt;p&gt;Valid Range: Minimum value of 125. Maximum value of 1000.&lt;/p&gt;
   /// [volumeSize] &lt;p&gt;The size of the volume, in GiBs. You must specify either a snapshot ID or a volume size. If you specify a snapshot, the default is the snapshot size. You can specify a volume size that is equal to or larger than the snapshot size.&lt;/p&gt; &lt;p&gt;The following are the supported sizes for each volume type:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;gp2&lt;/code&gt; and &lt;code&gt;gp3&lt;/code&gt;: 1 - 16,384 GiB&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;io1&lt;/code&gt;: 4 - 16,384 GiB&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;io2&lt;/code&gt;: 4 - 65,536 GiB&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;st1&lt;/code&gt; and &lt;code&gt;sc1&lt;/code&gt;: 125 - 16,384 GiB&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;standard&lt;/code&gt;: 1 - 1024 GiB&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   /// [volumeType] &lt;p&gt;The volume type. For more information, see &lt;a href='https://docs.aws.amazon.com/ebs/latest/userguide/ebs-volume-types.html'&gt;Amazon EBS volume types&lt;/a&gt; in the &lt;i&gt;Amazon EBS User Guide&lt;/i&gt;.&lt;/p&gt;
-  EbsBlockDeviceResponse({
+  const EbsBlockDeviceResponse({
     this.deleteOnTermination,
     this.encrypted,
     this.iops,

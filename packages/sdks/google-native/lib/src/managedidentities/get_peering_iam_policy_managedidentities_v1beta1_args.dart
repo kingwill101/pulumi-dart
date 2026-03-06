@@ -15,7 +15,7 @@ class GetPeeringIamPolicyManagedidentitiesV1beta1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [peeringId] Required.
   /// [project] Optional.
-  GetPeeringIamPolicyManagedidentitiesV1beta1Args({
+  const GetPeeringIamPolicyManagedidentitiesV1beta1Args({
     this.optionsRequestedPolicyVersion,
     required this.peeringId,
     this.project,

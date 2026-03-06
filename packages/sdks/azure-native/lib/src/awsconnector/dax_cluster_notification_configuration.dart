@@ -12,7 +12,7 @@ class DaxClusterNotificationConfiguration {
   /// Creates a new [DaxClusterNotificationConfiguration].
   /// [topicArn] &lt;p&gt;The Amazon Resource Name (ARN) that identifies the topic. &lt;/p&gt;
   /// [topicStatus] &lt;p&gt;The current state of the topic. A value of “active” means that notifications will be sent to the topic. A value of “inactive” means that notifications will not be sent to the topic.&lt;/p&gt;
-  DaxClusterNotificationConfiguration({
+  const DaxClusterNotificationConfiguration({
     this.topicArn,
     this.topicStatus,
   });

@@ -12,7 +12,7 @@ class ClusterStatusEntityResponse {
   /// Creates a new [ClusterStatusEntityResponse].
   /// [cku] The number of Confluent Kafka Units
   /// [phase] The lifecycle phase of the cluster
-  ClusterStatusEntityResponse({
+  const ClusterStatusEntityResponse({
     this.cku,
     this.phase,
   });

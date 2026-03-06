@@ -41,7 +41,7 @@ class UserStoreState {
   /// [name] The unique full resource name of the user store. Values are of the format
   /// [project] The ID of the project in which the resource belongs.
   /// [userStoreId] The ID of the user store. Currently only accepts "default_user_store".
-  UserStoreState({
+  const UserStoreState({
     this.defaultLicenseConfig,
     this.enableExpiredLicenseAutoUpdate,
     this.enableLicenseAutoRegister,

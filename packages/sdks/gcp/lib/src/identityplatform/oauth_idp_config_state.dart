@@ -35,7 +35,7 @@ class OauthIdpConfigState {
   /// [name] The name of the OauthIdpConfig. Must start with `oidc.`.
   /// [project] The ID of the project in which the resource belongs.
   /// [responseType] The response type to request for in the OAuth authorization flow.
-  OauthIdpConfigState({
+  const OauthIdpConfigState({
     this.clientId,
     this.clientSecret,
     this.displayName,

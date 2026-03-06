@@ -15,7 +15,7 @@ class GetRoute53HostedZoneArgs {
   /// Creates a new [GetRoute53HostedZoneArgs].
   /// [name] Name of Route53HostedZone
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRoute53HostedZoneArgs({
+  const GetRoute53HostedZoneArgs({
     required this.name,
     required this.resourceGroupName,
   });

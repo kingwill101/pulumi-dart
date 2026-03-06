@@ -26,7 +26,7 @@ class GooglePrivacyDlpV2ExclusionRule {
   /// [excludeInfoTypes] Set of infoTypes for which findings would affect this rule.
   /// [matchingType] How the rule is applied, see MatchingType documentation for details.
   /// [regex] Regular expression which defines the rule.
-  GooglePrivacyDlpV2ExclusionRule({
+  const GooglePrivacyDlpV2ExclusionRule({
     this.dictionary,
     this.excludeByHotword,
     this.excludeInfoTypes,

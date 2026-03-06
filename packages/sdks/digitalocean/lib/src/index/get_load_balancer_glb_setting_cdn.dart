@@ -8,7 +8,7 @@ class GetLoadBalancerGlbSettingCdn {
 
   /// Creates a new [GetLoadBalancerGlbSettingCdn].
   /// [isEnabled] cache enable flag
-  GetLoadBalancerGlbSettingCdn({
+  const GetLoadBalancerGlbSettingCdn({
     required this.isEnabled,
   });
 

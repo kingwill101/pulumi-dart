@@ -24,7 +24,7 @@ class ClusterMaintenanceSchedule {
   /// [endTime] (Output)
   /// [scheduleDeadlineTime] (Output)
   /// [startTime] (Output)
-  ClusterMaintenanceSchedule({
+  const ClusterMaintenanceSchedule({
     this.endTime,
     this.scheduleDeadlineTime,
     this.startTime,

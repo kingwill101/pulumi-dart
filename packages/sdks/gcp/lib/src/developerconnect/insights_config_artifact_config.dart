@@ -21,7 +21,7 @@ class InsightsConfigArtifactConfig {
   /// [googleArtifactAnalysis] Google Artifact Analysis configurations.
   /// [googleArtifactRegistry] Google Artifact Registry configurations.
   /// [uri] The URI of the artifact that is deployed.
-  InsightsConfigArtifactConfig({
+  const InsightsConfigArtifactConfig({
     this.googleArtifactAnalysis,
     this.googleArtifactRegistry,
     this.uri,

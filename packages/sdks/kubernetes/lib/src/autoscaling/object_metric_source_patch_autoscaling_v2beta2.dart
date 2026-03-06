@@ -17,7 +17,7 @@ class ObjectMetricSourcePatchAutoscalingV2beta2 {
   /// [describedObject] Optional.
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  ObjectMetricSourcePatchAutoscalingV2beta2({
+  const ObjectMetricSourcePatchAutoscalingV2beta2({
     this.describedObject,
     this.metric,
     this.target,

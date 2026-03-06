@@ -15,7 +15,7 @@ class TrialAiplatformV1beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   /// [studyId] Required.
-  TrialAiplatformV1beta1Args({
+  const TrialAiplatformV1beta1Args({
     this.location,
     this.project,
     required this.studyId,

@@ -11,7 +11,7 @@ class InsightFiltersThreatIntelIndicatorLastObservedAtDateRange {
   /// Creates a new [InsightFiltersThreatIntelIndicatorLastObservedAtDateRange].
   /// [unit] A date range unit for the date filter. Valid values: `DAYS`.
   /// [value] A date range value for the date filter, provided as an Integer.
-  InsightFiltersThreatIntelIndicatorLastObservedAtDateRange({
+  const InsightFiltersThreatIntelIndicatorLastObservedAtDateRange({
     required this.unit,
     required this.value,
   });

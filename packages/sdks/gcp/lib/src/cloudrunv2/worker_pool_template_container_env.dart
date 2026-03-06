@@ -16,7 +16,7 @@ class WorkerPoolTemplateContainerEnv {
   /// [name] Name of the environment variable. Must be a C_IDENTIFIER, and may not exceed 32768 characters.
   /// [value] Literal value of the environment variable. Defaults to "" and the maximum allowed length is 32768 characters. Variable references are not supported in Cloud Run.
   /// [valueSource] Source for the environment variable's value.
-  WorkerPoolTemplateContainerEnv({
+  const WorkerPoolTemplateContainerEnv({
     required this.name,
     this.value,
     this.valueSource,

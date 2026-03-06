@@ -14,7 +14,7 @@ class ServiceLevelEventsValidEventsSelect {
   /// [attribute] The event attribute to use in the SELECT clause.
   /// [function] The function to use in the SELECT clause. Valid values are `COUNT`, `SUM`, `GET_FIELD`, and `GET_CDF_COUNT`.
   /// [threshold] Limit for values to be counter by `GET_CDF_COUNT` function.
-  ServiceLevelEventsValidEventsSelect({
+  const ServiceLevelEventsValidEventsSelect({
     this.attribute,
     required this.function,
     this.threshold,

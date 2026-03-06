@@ -47,7 +47,7 @@ class GetInstancesArgs {
   /// [status] The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
   /// [tags] Optional.
   /// [vswitchId] Used to retrieve instances belong to specified `vswitch` resources.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.availabilityZone,
     this.dbInstanceCategories,
     this.dbInstanceModes,

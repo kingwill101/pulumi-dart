@@ -24,7 +24,7 @@ class ResourceSetArgs {
   /// [resourceSetType] Type of the resources in the resource set.
   /// [resources] List of resources to add to this resource set. See below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  ResourceSetArgs({
+  const ResourceSetArgs({
     required this.resourceSetName,
     required this.resourceSetType,
     required this.resources,

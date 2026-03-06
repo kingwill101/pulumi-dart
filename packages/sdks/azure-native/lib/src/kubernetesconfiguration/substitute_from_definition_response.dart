@@ -15,7 +15,7 @@ class SubstituteFromDefinitionResponse {
   /// [kind] Define whether it is ConfigMap or Secret that holds the variables to be used in substitution.
   /// [name] Name of the ConfigMap/Secret that holds the variables to be used in substitution.
   /// [optional] Set to True to proceed without ConfigMap/Secret, if it is not present.
-  SubstituteFromDefinitionResponse({
+  const SubstituteFromDefinitionResponse({
     this.kind,
     this.name,
     this.optional,

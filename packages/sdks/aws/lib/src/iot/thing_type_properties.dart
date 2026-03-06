@@ -11,7 +11,7 @@ class ThingTypeProperties {
   /// Creates a new [ThingTypeProperties].
   /// [description] The description of the thing type.
   /// [searchableAttributes] A list of searchable thing attribute names.
-  ThingTypeProperties({
+  const ThingTypeProperties({
     this.description,
     this.searchableAttributes,
   });

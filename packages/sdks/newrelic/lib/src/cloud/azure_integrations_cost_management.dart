@@ -11,7 +11,7 @@ class AzureIntegrationsCostManagement {
   /// Creates a new [AzureIntegrationsCostManagement].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [tagKeys] Specify if additional cost data per tag should be collected. This field is case sensitive.
-  AzureIntegrationsCostManagement({
+  const AzureIntegrationsCostManagement({
     this.metricsPollingInterval,
     this.tagKeys,
   });

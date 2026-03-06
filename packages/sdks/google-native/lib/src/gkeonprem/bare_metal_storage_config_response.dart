@@ -14,7 +14,7 @@ class BareMetalStorageConfigResponse {
   /// Creates a new [BareMetalStorageConfigResponse].
   /// [lvpNodeMountsConfig] Specifies the config for local PersistentVolumes backed by mounted node disks. These disks need to be formatted and mounted by the user, which can be done before or after cluster creation.
   /// [lvpShareConfig] Specifies the config for local PersistentVolumes backed by subdirectories in a shared filesystem. These subdirectores are automatically created during cluster creation.
-  BareMetalStorageConfigResponse({
+  const BareMetalStorageConfigResponse({
     required this.lvpNodeMountsConfig,
     required this.lvpShareConfig,
   });

@@ -9,7 +9,7 @@ class DataCacheConfig {
 
   /// Creates a new [DataCacheConfig].
   /// [dataCacheEnabled] Optional. Whether data cache is enabled for the instance.
-  DataCacheConfig({
+  const DataCacheConfig({
     this.dataCacheEnabled,
   });
 

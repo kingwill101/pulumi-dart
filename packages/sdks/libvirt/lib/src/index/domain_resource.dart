@@ -12,7 +12,7 @@ class DomainResource {
   /// Creates a new [DomainResource].
   /// [fibreChannel] Configures the Fibre Channel resource settings for the domain.
   /// [partition] Defines the partition resource settings for the domain.
-  DomainResource({
+  const DomainResource({
     this.fibreChannel,
     this.partition,
   });

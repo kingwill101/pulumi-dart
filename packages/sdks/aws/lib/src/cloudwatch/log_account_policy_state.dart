@@ -24,7 +24,7 @@ class LogAccountPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] Currently defaults to and only accepts the value: `ALL`.
   /// [selectionCriteria] Criteria for applying a subscription filter policy to a selection of log groups. The only allowable criteria selector is `LogGroupName NOT IN []`.
-  LogAccountPolicyState({
+  const LogAccountPolicyState({
     this.policyDocument,
     this.policyName,
     this.policyType,

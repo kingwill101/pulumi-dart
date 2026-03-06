@@ -28,7 +28,7 @@ class GetEnvironmentResult {
   /// [state] The state of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
   /// [textToSpeechSettings] Optional. Text to speech settings for this environment.
   /// [updateTime] The last update time of this environment. This field is read-only, i.e., it cannot be set by create and update methods.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.agentVersion,
     required this.description,
     required this.fulfillment,

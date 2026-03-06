@@ -27,7 +27,7 @@ class SmtpUsernameArgs {
   /// [smtpUsername] The name of the SmtpUsernameResource.
   /// [tenantId] The tenant of the linked Entra Application.
   /// [username] The SMTP username. Could be free form or in the email address format.
-  SmtpUsernameArgs({
+  const SmtpUsernameArgs({
     required this.communicationServiceName,
     required this.entraApplicationId,
     required this.resourceGroupName,

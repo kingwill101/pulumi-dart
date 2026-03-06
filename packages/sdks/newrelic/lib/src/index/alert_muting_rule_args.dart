@@ -32,7 +32,7 @@ class AlertMutingRuleArgs {
   /// [enabled] Whether the MutingRule is enabled.
   /// [name] The name of the MutingRule.
   /// [schedule] Specify a schedule for enabling the MutingRule. See Schedule below for details
-  AlertMutingRuleArgs({
+  const AlertMutingRuleArgs({
     this.accountId,
     this.actionOnMutingRuleWindowEnded,
     required this.condition,

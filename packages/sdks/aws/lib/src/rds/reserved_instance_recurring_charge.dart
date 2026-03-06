@@ -9,7 +9,7 @@ class ReservedInstanceRecurringCharge {
   /// Creates a new [ReservedInstanceRecurringCharge].
   /// [recurringChargeAmount] Optional.
   /// [recurringChargeFrequency] Optional.
-  ReservedInstanceRecurringCharge({
+  const ReservedInstanceRecurringCharge({
     this.recurringChargeAmount,
     this.recurringChargeFrequency,
   });

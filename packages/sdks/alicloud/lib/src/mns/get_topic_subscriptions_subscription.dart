@@ -26,7 +26,7 @@ class GetTopicSubscriptionsSubscription {
   /// [notifyContentFormat] The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users.
   /// [notifyStrategy] The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails.
   /// [topicName] Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-  GetTopicSubscriptionsSubscription({
+  const GetTopicSubscriptionsSubscription({
     required this.endpoint,
     required this.filterTag,
     required this.id,

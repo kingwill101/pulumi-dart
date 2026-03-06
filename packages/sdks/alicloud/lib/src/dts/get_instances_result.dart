@@ -30,7 +30,7 @@ class GetInstancesResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [resourceGroupId] Resource Group ID.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

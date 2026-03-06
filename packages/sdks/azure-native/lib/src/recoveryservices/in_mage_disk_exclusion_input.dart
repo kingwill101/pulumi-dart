@@ -14,7 +14,7 @@ class InMageDiskExclusionInput {
   /// Creates a new [InMageDiskExclusionInput].
   /// [diskSignatureOptions] The guest disk signature based option for disk exclusion.
   /// [volumeOptions] The volume label based option for disk exclusion.
-  InMageDiskExclusionInput({
+  const InMageDiskExclusionInput({
     this.diskSignatureOptions,
     this.volumeOptions,
   });

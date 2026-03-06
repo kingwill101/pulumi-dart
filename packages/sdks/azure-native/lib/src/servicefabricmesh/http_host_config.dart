@@ -13,7 +13,7 @@ class HttpHostConfig {
   /// Creates a new [HttpHostConfig].
   /// [name] http hostname config name.
   /// [routes] Route information to use for routing. Routes are processed in the order they are specified. Specify routes that are more specific before routes that can handle general cases.
-  HttpHostConfig({
+  const HttpHostConfig({
     required this.name,
     required this.routes,
   });

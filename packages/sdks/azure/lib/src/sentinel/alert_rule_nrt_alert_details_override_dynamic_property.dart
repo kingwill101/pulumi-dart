@@ -11,7 +11,7 @@ class AlertRuleNrtAlertDetailsOverrideDynamicProperty {
   /// Creates a new [AlertRuleNrtAlertDetailsOverrideDynamicProperty].
   /// [name] The name of the dynamic property. Possible values are `AlertLink`, `ConfidenceLevel`, `ConfidenceScore`, `ExtendedLinks`, `ProductComponentName`, `ProductName`, `ProviderName`, `RemediationSteps`, `SubTechniques` and `Techniques`.
   /// [value] The value of the dynamic property. Pssible Values are `Caller`, `dcount_ResourceId` and `EventSubmissionTimestamp`.
-  AlertRuleNrtAlertDetailsOverrideDynamicProperty({
+  const AlertRuleNrtAlertDetailsOverrideDynamicProperty({
     required this.name,
     required this.value,
   });

@@ -38,7 +38,7 @@ class GetListenerRuleArgs {
   /// [priority] Priority of the Listener Rule within the Listener.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transforms] Block for transform to apply to requests that match this rule. Detailed below.
-  GetListenerRuleArgs({
+  const GetListenerRuleArgs({
     this.actions,
     this.arn,
     this.conditions,

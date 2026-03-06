@@ -58,7 +58,7 @@ class GetUsersUser {
   /// [userId] Identifier of the user in the Identity Store.
   /// [userName] User's user name value.
   /// [userType] User type.
-  GetUsersUser({
+  const GetUsersUser({
     required this.addresses,
     required this.displayName,
     required this.emails,

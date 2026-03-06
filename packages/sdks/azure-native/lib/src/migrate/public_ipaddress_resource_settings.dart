@@ -34,7 +34,7 @@ class PublicIPAddressResourceSettings {
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [zones] Gets or sets public IP zones.
-  PublicIPAddressResourceSettings({
+  const PublicIPAddressResourceSettings({
     this.domainNameLabel,
     this.fqdn,
     this.publicIpAllocationMethod,

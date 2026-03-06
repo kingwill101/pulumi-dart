@@ -8,7 +8,7 @@ class AgentcoreOauth2CredentialProviderClientSecretArn {
 
   /// Creates a new [AgentcoreOauth2CredentialProviderClientSecretArn].
   /// [secretArn] ARN of the secret in AWS Secrets Manager.
-  AgentcoreOauth2CredentialProviderClientSecretArn({
+  const AgentcoreOauth2CredentialProviderClientSecretArn({
     required this.secretArn,
   });
 

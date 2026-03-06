@@ -30,7 +30,7 @@ class GetEntityTypeResult {
   /// [name] Immutable. Name of the EntityType. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` The last part entity_type is assigned by the client. The entity_type can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z and underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given a featurestore.
   /// [offlineStorageTtlDays] Optional. Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than `offline_storage_ttl_days` since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
   /// [updateTime] Timestamp when this EntityType was most recently updated.
-  GetEntityTypeResult({
+  const GetEntityTypeResult({
     required this.createTime,
     required this.description,
     required this.etag,

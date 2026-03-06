@@ -12,7 +12,7 @@ class NetworkDnsHost {
   /// Creates a new [NetworkDnsHost].
   /// [hostnames] Configures the hostname settings for DNS, specifying how hosts within the network are identified.
   /// [ip] Sets the IP address of the host for DNS resolution.
-  NetworkDnsHost({
+  const NetworkDnsHost({
     this.hostnames,
     required this.ip,
   });

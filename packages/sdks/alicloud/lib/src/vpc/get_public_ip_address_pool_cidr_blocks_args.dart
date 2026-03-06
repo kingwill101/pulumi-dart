@@ -24,7 +24,7 @@ class GetPublicIpAddressPoolCidrBlocksArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [publicIpAddressPoolId] The ID of the Vpc Public IP address pool.
   /// [status] The status of the CIDR block in the Vpc Public IP address pool. Valid values: `Created`, `Modifying`, `Deleting`.
-  GetPublicIpAddressPoolCidrBlocksArgs({
+  const GetPublicIpAddressPoolCidrBlocksArgs({
     this.cidrBlock,
     this.ids,
     this.outputFile,

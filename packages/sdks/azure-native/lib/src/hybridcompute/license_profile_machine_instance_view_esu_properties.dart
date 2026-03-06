@@ -13,7 +13,7 @@ class LicenseProfileMachineInstanceViewEsuProperties {
   /// Creates a new [LicenseProfileMachineInstanceViewEsuProperties].
   /// [assignedLicense] The assigned license resource.
   /// [licenseAssignmentState] Describes the license assignment state (Assigned or NotAssigned).
-  LicenseProfileMachineInstanceViewEsuProperties({
+  const LicenseProfileMachineInstanceViewEsuProperties({
     this.assignedLicense,
     this.licenseAssignmentState,
   });

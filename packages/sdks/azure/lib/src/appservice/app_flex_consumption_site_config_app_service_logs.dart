@@ -13,7 +13,7 @@ class AppFlexConsumptionSiteConfigAppServiceLogs {
   /// Creates a new [AppFlexConsumptionSiteConfigAppServiceLogs].
   /// [diskQuotaMb] The amount of disk space to use for logs. Valid values are between `25` and `100`. Defaults to `35`.
   /// [retentionPeriodDays] The retention period for logs in days. Valid values are between `0` and `99999`.(never delete).
-  AppFlexConsumptionSiteConfigAppServiceLogs({
+  const AppFlexConsumptionSiteConfigAppServiceLogs({
     this.diskQuotaMb,
     this.retentionPeriodDays,
   });

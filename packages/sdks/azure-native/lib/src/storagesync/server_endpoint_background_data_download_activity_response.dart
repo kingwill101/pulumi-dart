@@ -18,7 +18,7 @@ class ServerEndpointBackgroundDataDownloadActivityResponse {
   /// [percentProgress] Progress percentage
   /// [startedTimestamp] Timestamp when the operation started
   /// [timestamp] Timestamp when properties were updated
-  ServerEndpointBackgroundDataDownloadActivityResponse({
+  const ServerEndpointBackgroundDataDownloadActivityResponse({
     required this.downloadedBytes,
     required this.percentProgress,
     required this.startedTimestamp,

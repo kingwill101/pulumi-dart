@@ -11,7 +11,7 @@ class GetManagedKubernetesClustersClusterLogConfig {
   /// Creates a new [GetManagedKubernetesClustersClusterLogConfig].
   /// [project] Log Service project name.
   /// [type] Type of collecting logs.
-  GetManagedKubernetesClustersClusterLogConfig({
+  const GetManagedKubernetesClustersClusterLogConfig({
     required this.project,
     required this.type,
   });

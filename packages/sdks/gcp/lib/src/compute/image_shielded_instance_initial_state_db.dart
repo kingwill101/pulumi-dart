@@ -12,7 +12,7 @@ class ImageShieldedInstanceInitialStateDb {
   /// Creates a new [ImageShieldedInstanceInitialStateDb].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  ImageShieldedInstanceInitialStateDb({
+  const ImageShieldedInstanceInitialStateDb({
     required this.content,
     this.fileType,
   });

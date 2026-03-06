@@ -17,7 +17,7 @@ class AiEndpointDeployedModelDedicatedResourceMachineSpec {
   /// [acceleratorCount] (Output)
   /// [acceleratorType] (Output)
   /// [machineType] (Output)
-  AiEndpointDeployedModelDedicatedResourceMachineSpec({
+  const AiEndpointDeployedModelDedicatedResourceMachineSpec({
     this.acceleratorCount,
     this.acceleratorType,
     this.machineType,

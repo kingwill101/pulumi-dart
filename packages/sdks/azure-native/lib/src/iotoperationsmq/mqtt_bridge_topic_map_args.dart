@@ -38,7 +38,7 @@ class MqttBridgeTopicMapArgs {
   /// [routes] The route details for MqttBridge connector.
   /// [tags] Resource tags.
   /// [topicMapName] Name of MQ mqttBridgeTopicMap resource
-  MqttBridgeTopicMapArgs({
+  const MqttBridgeTopicMapArgs({
     required this.extendedLocation,
     this.location,
     required this.mqName,

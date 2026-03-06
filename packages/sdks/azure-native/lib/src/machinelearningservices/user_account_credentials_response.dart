@@ -15,7 +15,7 @@ class UserAccountCredentialsResponse {
   /// [adminUserName] Name of the administrator user account which can be used to SSH to nodes.
   /// [adminUserPassword] Password of the administrator user account.
   /// [adminUserSshPublicKey] SSH public key of the administrator user account.
-  UserAccountCredentialsResponse({
+  const UserAccountCredentialsResponse({
     required this.adminUserName,
     this.adminUserPassword,
     this.adminUserSshPublicKey,

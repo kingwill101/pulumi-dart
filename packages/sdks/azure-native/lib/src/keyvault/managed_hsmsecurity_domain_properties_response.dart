@@ -12,7 +12,7 @@ class ManagedHSMSecurityDomainPropertiesResponse {
   /// Creates a new [ManagedHSMSecurityDomainPropertiesResponse].
   /// [activationStatus] Activation Status
   /// [activationStatusMessage] Activation Status Message.
-  ManagedHSMSecurityDomainPropertiesResponse({
+  const ManagedHSMSecurityDomainPropertiesResponse({
     required this.activationStatus,
     required this.activationStatusMessage,
   });

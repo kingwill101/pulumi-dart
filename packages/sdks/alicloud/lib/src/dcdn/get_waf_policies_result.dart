@@ -26,7 +26,7 @@ class GetWafPoliciesResult {
   /// [policies] A list of Dcdn Waf Policies. Each element contains the following attributes:
   /// [queryArgs] Optional.
   /// [status] The status of the resource.
-  GetWafPoliciesResult({
+  const GetWafPoliciesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

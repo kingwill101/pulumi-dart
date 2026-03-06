@@ -45,7 +45,7 @@ class UserSqladminV1beta4Args {
   /// [project] The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable. Can be omitted for *update* because it is already specified on the URL.
   /// [sqlserverUserDetails] Optional.
   /// [type] The user type. It determines the method to authenticate the user during login. The default is the database's built-in user type.
-  UserSqladminV1beta4Args({
+  const UserSqladminV1beta4Args({
     this.dualPasswordType,
     this.etag,
     this.host,

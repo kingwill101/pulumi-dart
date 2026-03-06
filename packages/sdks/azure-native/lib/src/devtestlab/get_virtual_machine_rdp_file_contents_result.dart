@@ -8,7 +8,7 @@ class GetVirtualMachineRdpFileContentsResult {
 
   /// Creates a new [GetVirtualMachineRdpFileContentsResult].
   /// [contents] The contents of the .rdp file
-  GetVirtualMachineRdpFileContentsResult({
+  const GetVirtualMachineRdpFileContentsResult({
     this.contents,
   });
 

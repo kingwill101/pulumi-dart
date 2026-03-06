@@ -30,7 +30,7 @@ class MigrationEntityGroupPropertiesResponse {
   /// [executionStatus] Migration Entity Group Status
   /// [migrationPath] Migration path
   /// [provisioningState] The status of the last operation.
-  MigrationEntityGroupPropertiesResponse({
+  const MigrationEntityGroupPropertiesResponse({
     required this.applicationDisplayName,
     required this.applicationId,
     this.associatedAssessmentId,

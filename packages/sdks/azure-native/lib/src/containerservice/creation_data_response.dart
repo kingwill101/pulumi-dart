@@ -9,7 +9,7 @@ class CreationDataResponse {
 
   /// Creates a new [CreationDataResponse].
   /// [sourceResourceId] This is the ARM ID of the source object to be used to create the target object.
-  CreationDataResponse({
+  const CreationDataResponse({
     this.sourceResourceId,
   });
 

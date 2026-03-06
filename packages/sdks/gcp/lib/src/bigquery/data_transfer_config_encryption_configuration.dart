@@ -8,7 +8,7 @@ class DataTransferConfigEncryptionConfiguration {
 
   /// Creates a new [DataTransferConfigEncryptionConfiguration].
   /// [kmsKeyName] The name of the KMS key used for encrypting BigQuery data.
-  DataTransferConfigEncryptionConfiguration({
+  const DataTransferConfigEncryptionConfiguration({
     required this.kmsKeyName,
   });
 

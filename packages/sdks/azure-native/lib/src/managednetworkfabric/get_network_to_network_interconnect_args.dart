@@ -18,7 +18,7 @@ class GetNetworkToNetworkInterconnectArgs {
   /// [networkFabricName] Name of the Network Fabric.
   /// [networkToNetworkInterconnectName] Name of the Network to Network Interconnect.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkToNetworkInterconnectArgs({
+  const GetNetworkToNetworkInterconnectArgs({
     required this.networkFabricName,
     required this.networkToNetworkInterconnectName,
     required this.resourceGroupName,

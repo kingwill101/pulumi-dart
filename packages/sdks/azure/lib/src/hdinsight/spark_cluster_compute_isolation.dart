@@ -11,7 +11,7 @@ class SparkClusterComputeIsolation {
   /// Creates a new [SparkClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
   /// [hostSku] The name of the host SKU.
-  SparkClusterComputeIsolation({
+  const SparkClusterComputeIsolation({
     this.computeIsolationEnabled,
     this.hostSku,
   });

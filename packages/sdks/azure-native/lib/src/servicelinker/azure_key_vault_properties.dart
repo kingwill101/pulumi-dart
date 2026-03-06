@@ -13,7 +13,7 @@ class AzureKeyVaultProperties {
   /// Creates a new [AzureKeyVaultProperties].
   /// [connectAsKubernetesCsiDriver] True if connect via Kubernetes CSI Driver.
   /// [type] The azure resource type.
-  AzureKeyVaultProperties({
+  const AzureKeyVaultProperties({
     this.connectAsKubernetesCsiDriver,
     required this.type,
   });

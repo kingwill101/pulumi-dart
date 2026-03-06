@@ -11,7 +11,7 @@ class ClusterSecretSyncConfigRotationConfig {
   /// Creates a new [ClusterSecretSyncConfigRotationConfig].
   /// [enabled] Enable the roation in Sync as K8s secret feature for this cluster.
   /// [rotationInterval] The interval between two consecutive rotations. Default rotation interval is 2 minutes.
-  ClusterSecretSyncConfigRotationConfig({
+  const ClusterSecretSyncConfigRotationConfig({
     required this.enabled,
     this.rotationInterval,
   });

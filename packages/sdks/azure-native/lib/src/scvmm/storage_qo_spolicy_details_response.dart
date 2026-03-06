@@ -12,7 +12,7 @@ class StorageQoSPolicyDetailsResponse {
   /// Creates a new [StorageQoSPolicyDetailsResponse].
   /// [id] The ID of the QoS policy.
   /// [name] The name of the policy.
-  StorageQoSPolicyDetailsResponse({
+  const StorageQoSPolicyDetailsResponse({
     this.id,
     this.name,
   });

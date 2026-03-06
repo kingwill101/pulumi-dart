@@ -8,7 +8,7 @@ class AppSpecWorkerLogDestinationLogtail {
 
   /// Creates a new [AppSpecWorkerLogDestinationLogtail].
   /// [token] Logtail token.
-  AppSpecWorkerLogDestinationLogtail({
+  const AppSpecWorkerLogDestinationLogtail({
     required this.token,
   });
 

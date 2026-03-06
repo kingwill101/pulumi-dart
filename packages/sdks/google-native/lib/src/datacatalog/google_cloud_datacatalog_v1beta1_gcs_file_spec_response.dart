@@ -16,7 +16,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpecResponse {
   /// [filePath] The full file path. Example: `gs://bucket_name/a/b.txt`.
   /// [gcsTimestamps] Timestamps about the Cloud Storage file.
   /// [sizeBytes] The size of the file, in bytes.
-  GoogleCloudDatacatalogV1beta1GcsFileSpecResponse({
+  const GoogleCloudDatacatalogV1beta1GcsFileSpecResponse({
     required this.filePath,
     required this.gcsTimestamps,
     required this.sizeBytes,

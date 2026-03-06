@@ -12,7 +12,7 @@ class TerminalSettings {
   /// Creates a new [TerminalSettings].
   /// [fontSize] Size of terminal font.
   /// [fontStyle] Style of terminal font.
-  TerminalSettings({
+  const TerminalSettings({
     this.fontSize,
     this.fontStyle,
   });

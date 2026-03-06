@@ -97,7 +97,7 @@ class GetPoolResult {
   /// [userAccounts] A `user_accounts` block that describes the list of user accounts to be created on each node in the pool.
   /// [vmSize] The size of the VM created in the Batch pool.
   /// [windows] A `windows` block that describes the Windows configuration in the pool.
-  GetPoolResult({
+  const GetPoolResult({
     required this.accountName,
     required this.autoScales,
     required this.certificates,

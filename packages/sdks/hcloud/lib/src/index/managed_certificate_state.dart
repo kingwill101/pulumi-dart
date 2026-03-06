@@ -34,7 +34,7 @@ class ManagedCertificateState {
   /// [notValidAfter] (string) Point in time when the Certificate stops being valid (in ISO-8601 format).
   /// [notValidBefore] (string) Point in time when the Certificate becomes valid (in ISO-8601 format).
   /// [type] Optional.
-  ManagedCertificateState({
+  const ManagedCertificateState({
     this.certificate,
     this.created,
     this.domainNames,

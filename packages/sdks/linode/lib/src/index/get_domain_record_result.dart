@@ -41,7 +41,7 @@ class GetDomainRecordResult {
   /// [ttlSec] The amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers.
   /// [type] The type of Record this is in the DNS system. See all record types [here](https://techdocs.akamai.com/linode-api/reference/get-domain-record).
   /// [weight] The relative weight of this Record. Higher values are preferred.
-  GetDomainRecordResult({
+  const GetDomainRecordResult({
     required this.domainId,
     this.id,
     this.name,

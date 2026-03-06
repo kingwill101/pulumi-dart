@@ -12,7 +12,7 @@ class ResourceRequestsResponse {
   /// Creates a new [ResourceRequestsResponse].
   /// [cpu] CPU request.
   /// [memory] Memory request.
-  ResourceRequestsResponse({
+  const ResourceRequestsResponse({
     required this.cpu,
     required this.memory,
   });

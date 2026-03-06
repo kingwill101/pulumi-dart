@@ -8,7 +8,7 @@ class GetRouteSpecGrpcRouteAction {
 
   /// Creates a new [GetRouteSpecGrpcRouteAction].
   /// [weightedTargets] Required.
-  GetRouteSpecGrpcRouteAction({
+  const GetRouteSpecGrpcRouteAction({
     required this.weightedTargets,
   });
 

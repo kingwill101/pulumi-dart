@@ -16,7 +16,7 @@ class ManagedRuleSet {
   /// [ruleGroupOverrides] Defines the rule group overrides to apply to the rule set.
   /// [ruleSetType] Defines the rule set type to use.
   /// [ruleSetVersion] Defines the version of the rule set to use.
-  ManagedRuleSet({
+  const ManagedRuleSet({
     this.ruleGroupOverrides,
     required this.ruleSetType,
     required this.ruleSetVersion,

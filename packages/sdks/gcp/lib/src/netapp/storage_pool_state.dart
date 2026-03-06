@@ -113,7 +113,7 @@ class StoragePoolState {
   /// [volumeCapacityGib] Size allocated to volumes in the storage pool (in GiB).
   /// [volumeCount] Number of volume in the storage pool.
   /// [zone] Specifies the active zone for regional Flex pools. `zone` and `replica_zone` values can be swapped to initiate a
-  StoragePoolState({
+  const StoragePoolState({
     this.activeDirectory,
     this.allowAutoTiering,
     this.availableThroughputMibps,

@@ -27,7 +27,7 @@ class AuthorizationRuleArgs {
   /// [description] A brief description of the authorization rule.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetNetworkCidr] The IPv4 or IPv6 address range, in CIDR notation, of the network to which the authorization rule applies.
-  AuthorizationRuleArgs({
+  const AuthorizationRuleArgs({
     this.accessGroupId,
     this.authorizeAllGroups,
     required this.clientVpnEndpointId,

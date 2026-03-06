@@ -18,7 +18,7 @@ class SapLandscapeMonitorMetricThresholds {
   /// [name] Gets or sets the name of the threshold.
   /// [red] Gets or sets the threshold value for Red.
   /// [yellow] Gets or sets the threshold value for Yellow.
-  SapLandscapeMonitorMetricThresholds({
+  const SapLandscapeMonitorMetricThresholds({
     this.green,
     this.name,
     this.red,

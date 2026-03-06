@@ -11,7 +11,7 @@ class WorkgroupConfigurationIdentityCenterConfiguration {
   /// Creates a new [WorkgroupConfigurationIdentityCenterConfiguration].
   /// [enableIdentityCenter] Specifies whether the workgroup is IAM Identity Center supported.
   /// [identityCenterInstanceArn] The IAM Identity Center instance ARN that the workgroup associates to.
-  WorkgroupConfigurationIdentityCenterConfiguration({
+  const WorkgroupConfigurationIdentityCenterConfiguration({
     this.enableIdentityCenter,
     this.identityCenterInstanceArn,
   });

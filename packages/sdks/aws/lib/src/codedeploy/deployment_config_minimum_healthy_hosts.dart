@@ -14,7 +14,7 @@ class DeploymentConfigMinimumHealthyHosts {
   /// Creates a new [DeploymentConfigMinimumHealthyHosts].
   /// [type] The type can either be `FLEET_PERCENT` or `HOST_COUNT`.
   /// [value] The value when the type is `FLEET_PERCENT` represents the minimum number of healthy instances as
-  DeploymentConfigMinimumHealthyHosts({
+  const DeploymentConfigMinimumHealthyHosts({
     this.type,
     this.value,
   });

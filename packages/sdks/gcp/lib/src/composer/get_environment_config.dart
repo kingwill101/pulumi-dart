@@ -78,7 +78,7 @@ class GetEnvironmentConfig {
   /// [webServerConfigs] The configuration settings for the Airflow web server App Engine instance. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   /// [webServerNetworkAccessControls] Network-level access control policy for the Airflow web server.
   /// [workloadsConfigs] The workloads configuration settings for the GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
-  GetEnvironmentConfig({
+  const GetEnvironmentConfig({
     required this.airflowUri,
     required this.dagGcsPrefix,
     required this.dataRetentionConfigs,

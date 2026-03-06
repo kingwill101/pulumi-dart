@@ -20,7 +20,7 @@ class DiffDiskSettings {
   /// Creates a new [DiffDiskSettings].
   /// [option] Specifies the ephemeral disk settings for operating system disk.
   /// [placement] Specifies the ephemeral disk placement for operating system disk. Possible
-  DiffDiskSettings({
+  const DiffDiskSettings({
     this.option,
     this.placement,
   });

@@ -54,7 +54,7 @@ class DbSystemArgs {
   /// [odbSubnet] The name of the OdbSubnet associated with the DbSystem for IP
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] The properties of a DbSystem.
-  DbSystemArgs({
+  const DbSystemArgs({
     required this.dbSystemId,
     this.deletionProtection,
     required this.displayName,

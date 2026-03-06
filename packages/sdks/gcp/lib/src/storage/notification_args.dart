@@ -32,7 +32,7 @@ class NotificationArgs {
   /// [objectNamePrefix] Specifies a prefix path filter for this notification config. Cloud Storage will only send notifications for objects in this bucket whose names begin with the specified prefix.
   /// [payloadFormat] The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Expects either the
-  NotificationArgs({
+  const NotificationArgs({
     required this.bucket,
     this.customAttributes,
     this.eventTypes,

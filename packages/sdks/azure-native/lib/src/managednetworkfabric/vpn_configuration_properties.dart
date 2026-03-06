@@ -20,7 +20,7 @@ class VpnConfigurationProperties {
   /// [optionAProperties] option A properties
   /// [optionBProperties] option B properties
   /// [peeringOption] Peering option list.
-  VpnConfigurationProperties({
+  const VpnConfigurationProperties({
     this.networkToNetworkInterconnectId,
     this.optionAProperties,
     this.optionBProperties,

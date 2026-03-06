@@ -18,7 +18,7 @@ class DiskUtilizationResponseAppengineV1beta {
   /// [targetReadOpsPerSecond] Target ops read per seconds.
   /// [targetWriteBytesPerSecond] Target bytes written per second.
   /// [targetWriteOpsPerSecond] Target ops written per second.
-  DiskUtilizationResponseAppengineV1beta({
+  const DiskUtilizationResponseAppengineV1beta({
     required this.targetReadBytesPerSecond,
     required this.targetReadOpsPerSecond,
     required this.targetWriteBytesPerSecond,

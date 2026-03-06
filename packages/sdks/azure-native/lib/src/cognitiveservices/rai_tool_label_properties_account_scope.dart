@@ -9,7 +9,7 @@ class RaiToolLabelPropertiesAccountScope {
 
   /// Creates a new [RaiToolLabelPropertiesAccountScope].
   /// [labelValues] Dictionary of label key-value pairs for the account scope.
-  RaiToolLabelPropertiesAccountScope({
+  const RaiToolLabelPropertiesAccountScope({
     this.labelValues,
   });
 

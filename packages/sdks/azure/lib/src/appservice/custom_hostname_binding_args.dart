@@ -28,7 +28,7 @@ class CustomHostnameBindingArgs {
   /// [resourceGroupName] The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
   /// [sslState] The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   /// [thumbprint] The SSL certificate thumbprint. Changing this forces a new resource to be created.
-  CustomHostnameBindingArgs({
+  const CustomHostnameBindingArgs({
     required this.appServiceName,
     required this.hostname,
     required this.resourceGroupName,

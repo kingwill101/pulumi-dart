@@ -25,7 +25,7 @@ class GetContainerRegistryResult {
   /// [properties] Properties of the container registry resource payload.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetContainerRegistryResult({
+  const GetContainerRegistryResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

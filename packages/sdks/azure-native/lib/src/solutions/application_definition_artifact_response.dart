@@ -15,7 +15,7 @@ class ApplicationDefinitionArtifactResponse {
   /// [name] The managed application definition artifact name.
   /// [type] The managed application definition artifact type.
   /// [uri] The managed application definition artifact blob uri.
-  ApplicationDefinitionArtifactResponse({
+  const ApplicationDefinitionArtifactResponse({
     required this.name,
     required this.type,
     required this.uri,

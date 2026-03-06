@@ -29,7 +29,7 @@ class ScopeArgs {
   /// [namespaceLabels] Scope-level cluster namespace labels. For the member clusters bound
   /// [project] The ID of the project in which the resource belongs.
   /// [scopeId] The client-provided identifier of the scope.
-  ScopeArgs({
+  const ScopeArgs({
     this.labels,
     this.namespaceLabels,
     this.project,

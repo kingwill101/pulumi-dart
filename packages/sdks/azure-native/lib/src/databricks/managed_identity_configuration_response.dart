@@ -15,7 +15,7 @@ class ManagedIdentityConfigurationResponse {
   /// [principalId] The objectId of the Managed Identity that is linked to the Managed Storage account.
   /// [tenantId] The tenant Id where the Managed Identity is created.
   /// [type] The type of Identity created. It can be either SystemAssigned or UserAssigned.
-  ManagedIdentityConfigurationResponse({
+  const ManagedIdentityConfigurationResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

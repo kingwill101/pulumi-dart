@@ -11,7 +11,7 @@ class SynchronizationSecretCredential {
   /// Creates a new [SynchronizationSecretCredential].
   /// [key] The key of the secret.
   /// [value] The value of the secret.
-  SynchronizationSecretCredential({
+  const SynchronizationSecretCredential({
     required this.key,
     required this.value,
   });

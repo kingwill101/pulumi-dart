@@ -34,7 +34,7 @@ class GetFunctionEventTrigger {
   /// [serviceAccountEmail] Optional. The email of the trigger's service account. The service account
   /// [trigger] Output only. The resource name of the Eventarc trigger.
   /// [triggerRegion] The region that the trigger will be in. The trigger will only receive
-  GetFunctionEventTrigger({
+  const GetFunctionEventTrigger({
     required this.eventFilters,
     required this.eventType,
     required this.pubsubTopic,

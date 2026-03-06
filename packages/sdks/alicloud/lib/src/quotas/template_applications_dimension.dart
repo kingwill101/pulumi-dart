@@ -11,7 +11,7 @@ class TemplateApplicationsDimension {
   /// Creates a new [TemplateApplicationsDimension].
   /// [key] Quota dimension Key.
   /// [value] Quota dimension Value.
-  TemplateApplicationsDimension({
+  const TemplateApplicationsDimension({
     this.key,
     this.value,
   });

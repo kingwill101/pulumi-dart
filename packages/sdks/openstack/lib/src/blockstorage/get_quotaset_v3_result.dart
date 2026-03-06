@@ -38,7 +38,7 @@ class GetQuotasetV3Result {
   /// [snapshots] The number of snapshots that are allowed.
   /// [volumeTypeQuota] Map with gigabytes_{volume_type}, snapshots_{volume_type}, volumes_{volume_type} for each volume type.
   /// [volumes] The number of volumes that are allowed.
-  GetQuotasetV3Result({
+  const GetQuotasetV3Result({
     required this.backupGigabytes,
     required this.backups,
     required this.gigabytes,

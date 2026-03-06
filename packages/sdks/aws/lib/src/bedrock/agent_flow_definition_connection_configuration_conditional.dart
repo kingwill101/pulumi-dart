@@ -7,7 +7,7 @@ class AgentFlowDefinitionConnectionConfigurationConditional {
 
   /// Creates a new [AgentFlowDefinitionConnectionConfigurationConditional].
   /// [condition] Required.
-  AgentFlowDefinitionConnectionConfigurationConditional({
+  const AgentFlowDefinitionConnectionConfigurationConditional({
     required this.condition,
   });
 

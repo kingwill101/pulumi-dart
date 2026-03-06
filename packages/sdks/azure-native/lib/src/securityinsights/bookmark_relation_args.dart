@@ -24,7 +24,7 @@ class BookmarkRelationArgs {
   /// [relationName] Relation Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  BookmarkRelationArgs({
+  const BookmarkRelationArgs({
     required this.bookmarkId,
     required this.relatedResourceId,
     this.relationName,

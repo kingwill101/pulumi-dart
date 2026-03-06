@@ -9,7 +9,7 @@ class FileDestinationResponse {
 
   /// Creates a new [FileDestinationResponse].
   /// [fileFormats] Destination of the view data. Currently only CSV format is supported.
-  FileDestinationResponse({
+  const FileDestinationResponse({
     this.fileFormats,
   });
 

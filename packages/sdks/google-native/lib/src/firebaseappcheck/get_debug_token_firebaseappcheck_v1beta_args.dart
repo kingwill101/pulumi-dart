@@ -15,7 +15,7 @@ class GetDebugTokenFirebaseappcheckV1betaArgs {
   /// [appId] Required.
   /// [debugTokenId] Required.
   /// [project] Optional.
-  GetDebugTokenFirebaseappcheckV1betaArgs({
+  const GetDebugTokenFirebaseappcheckV1betaArgs({
     required this.appId,
     required this.debugTokenId,
     this.project,

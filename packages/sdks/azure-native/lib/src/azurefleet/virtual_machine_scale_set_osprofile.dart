@@ -70,7 +70,7 @@ class VirtualMachineScaleSetOSProfile {
   /// [requireGuestProvisionSignal] Optional property which must either be set to True or omitted.
   /// [secrets] Specifies set of certificates that should be installed onto the virtual
   /// [windowsConfiguration] Specifies Windows operating system settings on the virtual machine.
-  VirtualMachineScaleSetOSProfile({
+  const VirtualMachineScaleSetOSProfile({
     this.adminPassword,
     this.adminUsername,
     this.allowExtensionOperations,

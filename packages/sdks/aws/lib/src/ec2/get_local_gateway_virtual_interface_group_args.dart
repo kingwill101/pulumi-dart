@@ -25,7 +25,7 @@ class GetLocalGatewayVirtualInterfaceGroupArgs {
   /// [localGatewayId] Identifier of EC2 Local Gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags, each pair of which must exactly match a pair on the desired local gateway route table.
-  GetLocalGatewayVirtualInterfaceGroupArgs({
+  const GetLocalGatewayVirtualInterfaceGroupArgs({
     this.filters,
     this.id,
     this.localGatewayId,

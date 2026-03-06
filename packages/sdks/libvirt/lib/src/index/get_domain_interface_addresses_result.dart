@@ -17,7 +17,7 @@ class GetDomainInterfaceAddressesResult {
   /// [id] Required.
   /// [interfaces] Required.
   /// [source] Source to query for IP addresses:
-  GetDomainInterfaceAddressesResult({
+  const GetDomainInterfaceAddressesResult({
     required this.domain,
     required this.id,
     required this.interfaces,

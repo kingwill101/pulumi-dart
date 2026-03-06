@@ -73,7 +73,7 @@ class GetReleaseResult {
   /// [targetRenders] Map from target ID to details of the render operation for that target.
   /// [targetSnapshots] Snapshot of the targets taken at release creation time.
   /// [uid] Unique identifier of the `Release`.
-  GetReleaseResult({
+  const GetReleaseResult({
     required this.abandoned,
     required this.annotations,
     required this.buildArtifacts,

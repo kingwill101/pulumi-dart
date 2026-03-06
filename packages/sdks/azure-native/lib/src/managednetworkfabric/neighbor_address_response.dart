@@ -12,7 +12,7 @@ class NeighborAddressResponse {
   /// Creates a new [NeighborAddressResponse].
   /// [address] IP Address.
   /// [configurationState] Configuration state of the resource.
-  NeighborAddressResponse({
+  const NeighborAddressResponse({
     this.address,
     required this.configurationState,
   });

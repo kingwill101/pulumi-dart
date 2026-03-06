@@ -22,7 +22,7 @@ class SecretPropertiesResponse {
   /// [secretUri] The URI to retrieve the current version of the secret.
   /// [secretUriWithVersion] The URI to retrieve the specific version of the secret.
   /// [value] The value of the secret. NOTE: 'value' will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets.
-  SecretPropertiesResponse({
+  const SecretPropertiesResponse({
     this.attributes,
     this.contentType,
     required this.secretUri,

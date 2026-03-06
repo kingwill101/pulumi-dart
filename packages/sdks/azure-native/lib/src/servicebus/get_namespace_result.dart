@@ -80,7 +80,7 @@ class GetNamespaceResult {
   /// [type] Resource type
   /// [updatedAt] The time the namespace was updated.
   /// [zoneRedundant] This property reflects if zone redundancy has been enabled for namespaces in regions that support availability zones.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     this.alternateName,
     required this.azureApiVersion,
     required this.createdAt,

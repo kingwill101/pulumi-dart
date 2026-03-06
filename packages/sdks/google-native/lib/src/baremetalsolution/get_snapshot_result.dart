@@ -20,7 +20,7 @@ class GetSnapshotResult {
   /// [name] The name of the snapshot.
   /// [storageVolume] The name of the volume which this snapshot belongs to.
   /// [type] The type of the snapshot which indicates whether it was scheduled or manual/ad-hoc.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.createTime,
     required this.description,
     required this.name,

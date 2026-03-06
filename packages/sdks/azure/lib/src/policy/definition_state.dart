@@ -38,7 +38,7 @@ class DefinitionState {
   /// [policyRule] The policy rule for the policy definition. This is a JSON string representing the rule that contains an if and a then block.
   /// [policyType] The policy type. Possible values are `BuiltIn`, `Custom`, `NotSpecified` and `Static`. Changing this forces a new resource to be created.
   /// [roleDefinitionIds] A list of role definition id extracted from `policy_rule` required for remediation.
-  DefinitionState({
+  const DefinitionState({
     this.description,
     this.displayName,
     this.managementGroupId,

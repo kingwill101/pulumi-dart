@@ -20,7 +20,7 @@ class GetDomainGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetDomainGroupsResult({
+  const GetDomainGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

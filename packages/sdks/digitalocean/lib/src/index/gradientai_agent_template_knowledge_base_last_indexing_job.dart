@@ -38,7 +38,7 @@ class GradientaiAgentTemplateKnowledgeBaseLastIndexingJob {
   /// [totalDatasources] Total number of datasources in the last indexing job
   /// [updatedAt] Timestamp when the last indexing job updated
   /// [uuid] UUID  of the last indexing job
-  GradientaiAgentTemplateKnowledgeBaseLastIndexingJob({
+  const GradientaiAgentTemplateKnowledgeBaseLastIndexingJob({
     this.completedDatasources,
     this.createdAt,
     this.dataSourceUuids,

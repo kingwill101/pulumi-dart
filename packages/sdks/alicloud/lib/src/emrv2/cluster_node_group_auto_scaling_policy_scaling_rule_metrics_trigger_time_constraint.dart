@@ -11,7 +11,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint {
   /// Creates a new [ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint].
   /// [endTime] The end time for this scaling rule specific metrics trigger.
   /// [startTime] The start time for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint({
+  const ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerTimeConstraint({
     this.endTime,
     this.startTime,
   });

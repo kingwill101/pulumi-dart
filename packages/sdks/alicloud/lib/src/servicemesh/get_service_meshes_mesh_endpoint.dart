@@ -17,7 +17,7 @@ class GetServiceMeshesMeshEndpoint {
   /// [intranetPilotEndpoint] The internal address of the Istio Pilot.
   /// [publicApiServerEndpoint] The public address of the API Server.
   /// [publicPilotEndpoint] The public address of the Istio Pilot.
-  GetServiceMeshesMeshEndpoint({
+  const GetServiceMeshesMeshEndpoint({
     required this.intranetApiServerEndpoint,
     required this.intranetPilotEndpoint,
     required this.publicApiServerEndpoint,

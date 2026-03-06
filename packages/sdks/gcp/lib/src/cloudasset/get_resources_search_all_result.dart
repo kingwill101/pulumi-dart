@@ -32,7 +32,7 @@ class GetResourcesSearchAllResult {
   /// [name] The full resource name. See [Resource Names](https://cloud.google.com/apis/design/resource_names#full_resource_name) for more information.
   /// [networkTags] Network tags associated with this resource.
   /// [project] The project that this resource belongs to, in the form of `projects/{project_number}`.
-  GetResourcesSearchAllResult({
+  const GetResourcesSearchAllResult({
     required this.additionalAttributes,
     required this.assetType,
     required this.description,

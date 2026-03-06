@@ -125,7 +125,7 @@ class DomainDevicesInterface {
   /// [virtualPort] Configures the parameters for the virtual port associated with the interface.
   /// [vlan] Configures VLAN settings for the virtual network interface.
   /// [waitForIp] Optional.
-  DomainDevicesInterface({
+  const DomainDevicesInterface({
     this.acpi,
     this.address,
     this.alias,

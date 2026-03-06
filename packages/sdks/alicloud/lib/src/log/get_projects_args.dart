@@ -21,7 +21,7 @@ class GetProjectsArgs {
   /// [nameRegex] A regex string to filter results by project name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of log project. Valid values `Normal` and `Disable`.
-  GetProjectsArgs({
+  const GetProjectsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

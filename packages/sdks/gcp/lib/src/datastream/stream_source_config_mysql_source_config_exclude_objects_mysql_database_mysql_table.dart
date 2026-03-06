@@ -13,7 +13,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable {
   /// Creates a new [StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable].
   /// [mysqlColumns] MySQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable({
+  const StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable({
     this.mysqlColumns,
     required this.table,
   });

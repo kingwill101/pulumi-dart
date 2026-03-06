@@ -81,7 +81,7 @@ class ListingArgs {
   /// [pubsubTopic] Pub/Sub topic source.
   /// [requestAccess] Email or URL of the request access of the listing. Subscribers can use this reference to request access.
   /// [restrictedExportConfig] If set, restricted export configuration will be propagated and enforced on the linked dataset.
-  ListingArgs({
+  const ListingArgs({
     this.allowOnlyMetadataSharing,
     this.bigqueryDataset,
     this.categories,

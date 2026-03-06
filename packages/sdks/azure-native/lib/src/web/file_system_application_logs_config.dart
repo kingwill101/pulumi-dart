@@ -10,7 +10,7 @@ class FileSystemApplicationLogsConfig {
 
   /// Creates a new [FileSystemApplicationLogsConfig].
   /// [level] Log level.
-  FileSystemApplicationLogsConfig({
+  const FileSystemApplicationLogsConfig({
     this.level,
   });
 

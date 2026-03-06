@@ -49,7 +49,7 @@ class ImageInstanceSegmentation {
   /// [trainingData] [Required] Training data input.
   /// [validationData] Validation data inputs.
   /// [validationDataSize] The fraction of training dataset that needs to be set aside for validation purpose.
-  ImageInstanceSegmentation({
+  const ImageInstanceSegmentation({
     required this.limitSettings,
     this.logVerbosity,
     this.modelSettings,

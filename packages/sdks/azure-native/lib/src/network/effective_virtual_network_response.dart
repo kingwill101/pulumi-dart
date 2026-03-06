@@ -15,7 +15,7 @@ class EffectiveVirtualNetworkResponse {
   /// [id] Effective vnet Id.
   /// [location] Location of vnet.
   /// [membershipType] Membership Type.
-  EffectiveVirtualNetworkResponse({
+  const EffectiveVirtualNetworkResponse({
     this.id,
     this.location,
     this.membershipType,

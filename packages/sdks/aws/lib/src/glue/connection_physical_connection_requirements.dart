@@ -14,7 +14,7 @@ class ConnectionPhysicalConnectionRequirements {
   /// [availabilityZone] The availability zone of the connection. This field is redundant and implied by `subnet_id`, but is currently an api requirement.
   /// [securityGroupIdLists] The security group ID list used by the connection.
   /// [subnetId] The subnet ID used by the connection.
-  ConnectionPhysicalConnectionRequirements({
+  const ConnectionPhysicalConnectionRequirements({
     this.availabilityZone,
     this.securityGroupIdLists,
     this.subnetId,

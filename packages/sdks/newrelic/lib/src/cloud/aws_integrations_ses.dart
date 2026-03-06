@@ -11,7 +11,7 @@ class AwsIntegrationsSes {
   /// Creates a new [AwsIntegrationsSes].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsSes({
+  const AwsIntegrationsSes({
     this.awsRegions,
     this.metricsPollingInterval,
   });

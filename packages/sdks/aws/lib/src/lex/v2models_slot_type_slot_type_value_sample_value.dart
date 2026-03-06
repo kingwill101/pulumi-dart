@@ -8,7 +8,7 @@ class V2modelsSlotTypeSlotTypeValueSampleValue {
 
   /// Creates a new [V2modelsSlotTypeSlotTypeValueSampleValue].
   /// [value] Value that can be used for a slot type.
-  V2modelsSlotTypeSlotTypeValueSampleValue({
+  const V2modelsSlotTypeSlotTypeValueSampleValue({
     required this.value,
   });
 

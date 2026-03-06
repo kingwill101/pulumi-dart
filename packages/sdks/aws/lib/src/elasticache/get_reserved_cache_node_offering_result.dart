@@ -24,7 +24,7 @@ class GetReservedCacheNodeOfferingResult {
   /// [offeringType] Required.
   /// [productDescription] Required.
   /// [region] Required.
-  GetReservedCacheNodeOfferingResult({
+  const GetReservedCacheNodeOfferingResult({
     required this.cacheNodeType,
     required this.duration,
     required this.fixedPrice,

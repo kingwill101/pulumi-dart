@@ -41,7 +41,7 @@ class AuthorizationRuleState {
   /// [secondaryAccessKey] The Secondary Access Key associated with this Authorization Rule.
   /// [secondaryConnectionString] The Secondary Connetion String associated with this Authorization Rule.
   /// [send] Does this Authorization Rule have Send access to the Notification Hub? Defaults to `false`.
-  AuthorizationRuleState({
+  const AuthorizationRuleState({
     this.listen,
     this.manage,
     this.name,

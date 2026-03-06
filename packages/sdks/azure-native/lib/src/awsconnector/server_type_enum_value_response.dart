@@ -9,7 +9,7 @@ class ServerTypeEnumValueResponse {
 
   /// Creates a new [ServerTypeEnumValueResponse].
   /// [value] Property value
-  ServerTypeEnumValueResponse({
+  const ServerTypeEnumValueResponse({
     this.value,
   });
 

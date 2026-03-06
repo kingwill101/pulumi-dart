@@ -16,7 +16,7 @@ class OrganizationConfigurationArgs {
   /// Creates a new [OrganizationConfigurationArgs].
   /// [autoEnable] Configuration block for auto enabling. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationConfigurationArgs({
+  const OrganizationConfigurationArgs({
     required this.autoEnable,
     this.region,
   });

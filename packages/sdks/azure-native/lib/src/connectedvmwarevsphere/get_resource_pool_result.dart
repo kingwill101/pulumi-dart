@@ -102,7 +102,7 @@ class GetResourcePoolResult {
   /// [type] Gets or sets the type of the resource.
   /// [uuid] Gets or sets a unique identifier for this resource.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this resource pool resides.
-  GetResourcePoolResult({
+  const GetResourcePoolResult({
     required this.azureApiVersion,
     required this.cpuCapacityMHz,
     required this.cpuLimitMHz,

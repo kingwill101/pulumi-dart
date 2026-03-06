@@ -71,7 +71,7 @@ class PolicyBasedRouteState {
   /// [updateTime] Time when the policy-based route was created.
   /// [virtualMachine] VM instances to which this policy-based route applies to.
   /// [warnings] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  PolicyBasedRouteState({
+  const PolicyBasedRouteState({
     this.createTime,
     this.description,
     this.effectiveLabels,

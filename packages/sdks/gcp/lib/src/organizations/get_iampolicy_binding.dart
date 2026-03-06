@@ -24,7 +24,7 @@ class GetIAMPolicyBinding {
   /// [condition] An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding. Structure is documented below.
   /// [members] An array of identities that will be granted the privilege in the `role`. For more details on format and restrictions see https://cloud.google.com/billing/reference/rest/v1/Policy#Binding
   /// [role] The role/permission that will be granted to the members.
-  GetIAMPolicyBinding({
+  const GetIAMPolicyBinding({
     this.condition,
     required this.members,
     required this.role,

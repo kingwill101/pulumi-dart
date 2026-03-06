@@ -16,7 +16,7 @@ class BastionHostIpConfiguration {
   /// [name] The name of the IP configuration. Changing this forces a new resource to be created.
   /// [publicIpAddressId] Reference to a Public IP Address to associate with this Bastion Host. Changing this forces a new resource to be created.
   /// [subnetId] Reference to a subnet in which this Bastion Host has been created. Changing this forces a new resource to be created.
-  BastionHostIpConfiguration({
+  const BastionHostIpConfiguration({
     required this.name,
     required this.publicIpAddressId,
     required this.subnetId,

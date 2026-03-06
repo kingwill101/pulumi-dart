@@ -8,7 +8,7 @@ class RecordLatencyRoutingPolicy {
 
   /// Creates a new [RecordLatencyRoutingPolicy].
   /// [region] An AWS region from which to measure latency. See http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html#routing-policy-latency
-  RecordLatencyRoutingPolicy({
+  const RecordLatencyRoutingPolicy({
     required this.region,
   });
 

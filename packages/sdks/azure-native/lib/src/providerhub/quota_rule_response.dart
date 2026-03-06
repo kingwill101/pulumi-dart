@@ -15,7 +15,7 @@ class QuotaRuleResponse {
   /// [locationRules] The location rules.
   /// [quotaPolicy] The quota policy.
   /// [requiredFeatures] The required features.
-  QuotaRuleResponse({
+  const QuotaRuleResponse({
     this.locationRules,
     this.quotaPolicy,
     this.requiredFeatures,

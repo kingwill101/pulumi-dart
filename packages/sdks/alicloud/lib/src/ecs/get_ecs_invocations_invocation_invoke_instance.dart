@@ -50,7 +50,7 @@ class GetEcsInvocationsInvocationInvokeInstance {
   /// [stopTime] The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
   /// [timed] Indicates whether the commands are to be automatically run.
   /// [updateTime] The time when the execution state was updated.
-  GetEcsInvocationsInvocationInvokeInstance({
+  const GetEcsInvocationsInvocationInvokeInstance({
     required this.creationTime,
     required this.dropped,
     required this.errorCode,

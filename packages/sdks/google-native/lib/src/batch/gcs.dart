@@ -9,7 +9,7 @@ class GCS {
 
   /// Creates a new [GCS].
   /// [remotePath] Remote path, either a bucket name or a subdirectory of a bucket, e.g.: bucket_name, bucket_name/subdirectory/
-  GCS({
+  const GCS({
     this.remotePath,
   });
 

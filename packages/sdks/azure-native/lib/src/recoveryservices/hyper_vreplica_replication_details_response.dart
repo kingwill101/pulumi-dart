@@ -34,7 +34,7 @@ class HyperVReplicaReplicationDetailsResponse {
   /// [vmNics] The PE Network details.
   /// [vmProtectionState] The protection state for the vm.
   /// [vmProtectionStateDescription] The protection state description for the vm.
-  HyperVReplicaReplicationDetailsResponse({
+  const HyperVReplicaReplicationDetailsResponse({
     this.initialReplicationDetails,
     required this.instanceType,
     this.lastReplicatedTime,

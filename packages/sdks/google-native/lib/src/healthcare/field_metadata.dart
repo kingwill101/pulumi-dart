@@ -13,7 +13,7 @@ class FieldMetadata {
   /// Creates a new [FieldMetadata].
   /// [action] Deidentify action for one field.
   /// [paths] List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml.
-  FieldMetadata({
+  const FieldMetadata({
     this.action,
     this.paths,
   });

@@ -10,7 +10,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRe
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern].
   /// [cloudStorageRegex] Regex for Cloud Storage.
-  PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollectionIncludeRegexesPattern({
     this.cloudStorageRegex,
   });
 

@@ -49,7 +49,7 @@ class CustomizableConnectorUiConfig {
   /// [permissions] The required Permissions for the connector.
   /// [publisher] Gets or sets the connector publisher name.
   /// [title] Gets or sets the connector blade title.
-  CustomizableConnectorUiConfig({
+  const CustomizableConnectorUiConfig({
     this.availability,
     required this.connectivityCriteria,
     required this.dataTypes,

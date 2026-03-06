@@ -21,7 +21,7 @@ class BudgetAmountSpecifiedAmount {
   /// [currencyCode] The 3-letter currency code defined in ISO 4217.
   /// [nanos] Number of nano (10^-9) units of the amount.
   /// [units] The whole units of the amount. For example if currencyCode
-  BudgetAmountSpecifiedAmount({
+  const BudgetAmountSpecifiedAmount({
     this.currencyCode,
     this.nanos,
     this.units,

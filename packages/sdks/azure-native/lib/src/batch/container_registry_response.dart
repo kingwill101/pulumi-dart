@@ -19,7 +19,7 @@ class ContainerRegistryResponse {
   /// [password] The password to log into the registry server.
   /// [registryServer] If omitted, the default is "docker.io".
   /// [userName] The user name to log into the registry server.
-  ContainerRegistryResponse({
+  const ContainerRegistryResponse({
     this.identityReference,
     this.password,
     this.registryServer,

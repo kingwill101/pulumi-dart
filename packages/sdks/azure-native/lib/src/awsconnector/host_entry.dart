@@ -12,7 +12,7 @@ class HostEntry {
   /// Creates a new [HostEntry].
   /// [hostname] The hostname to use in the ``/etc/hosts`` entry.
   /// [ipAddress] The IP address to use in the ``/etc/hosts`` entry.
-  HostEntry({
+  const HostEntry({
     this.hostname,
     this.ipAddress,
   });

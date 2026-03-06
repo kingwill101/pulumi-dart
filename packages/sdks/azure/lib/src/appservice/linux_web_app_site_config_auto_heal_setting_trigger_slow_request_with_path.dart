@@ -17,7 +17,7 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
   /// [interval] The time interval in the form `hh:mm:ss`.
   /// [path] The path for which this slow request rule applies.
   /// [timeTaken] The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
-  LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath({
+  const LinuxWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath({
     required this.count,
     required this.interval,
     this.path,

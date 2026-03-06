@@ -15,7 +15,7 @@ class DataDisk {
   /// [createOption] Specifies how the virtual machine should be created.
   /// [diskSizeGB] Specifies the size of an empty disk in gigabytes. This element can be used to overwrite the size of the disk in a virtual machine image.
   /// [name] The name of data disk.
-  DataDisk({
+  const DataDisk({
     this.createOption,
     this.diskSizeGB,
     this.name,

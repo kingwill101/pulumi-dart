@@ -14,7 +14,7 @@ class EncryptionImagesResponse {
   /// Creates a new [EncryptionImagesResponse].
   /// [dataDiskImages] A list of encryption specifications for data disk images.
   /// [osDiskImage] Contains encryption settings for an OS disk image.
-  EncryptionImagesResponse({
+  const EncryptionImagesResponse({
     this.dataDiskImages,
     this.osDiskImage,
   });

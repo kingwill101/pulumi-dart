@@ -13,7 +13,7 @@ class AddonHcxProperties {
   /// Creates a new [AddonHcxProperties].
   /// [addonType] Addon type
   /// [offer] The HCX offer, example VMware MaaS Cloud Provider (Enterprise)
-  AddonHcxProperties({
+  const AddonHcxProperties({
     required this.addonType,
     required this.offer,
   });

@@ -15,7 +15,7 @@ class GetStaticIpsArgs {
   /// Creates a new [GetStaticIpsArgs].
   /// [location] The location to list Datastream IPs for. For example: `us-east1`.
   /// [project] Project from which to list static IP addresses. Defaults to project declared in the provider.
-  GetStaticIpsArgs({
+  const GetStaticIpsArgs({
     required this.location,
     this.project,
   });

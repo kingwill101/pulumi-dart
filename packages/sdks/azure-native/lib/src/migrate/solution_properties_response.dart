@@ -29,7 +29,7 @@ class SolutionPropertiesResponse {
   /// [status] Gets or sets the current status of the solution.
   /// [summary] Gets or sets the summary of the solution.
   /// [tool] Gets or sets the tool being used in the solution.
-  SolutionPropertiesResponse({
+  const SolutionPropertiesResponse({
     this.cleanupState,
     this.details,
     this.goal,

@@ -49,7 +49,7 @@ class ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse {
   /// [tags] Tags associated with resource.
   /// [type] Type of resource e.g "Microsoft.Web/sites".
   /// [zones] Logical Availability Zones the service is hosted in
-  ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse({
+  const ResponseMessageEnvelopeRemotePrivateEndpointConnectionResponse({
     this.error,
     this.id,
     this.identity,

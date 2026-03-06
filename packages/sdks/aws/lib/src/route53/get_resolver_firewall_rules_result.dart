@@ -24,7 +24,7 @@ class GetResolverFirewallRulesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [priority] The priority of the rule in the rule group.
   /// [region] Required.
-  GetResolverFirewallRulesResult({
+  const GetResolverFirewallRulesResult({
     this.action,
     required this.firewallRuleGroupId,
     required this.firewallRules,

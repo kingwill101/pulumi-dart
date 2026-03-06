@@ -24,7 +24,7 @@ class X509CertificateDetailsResponse {
   /// [signatureAlgorithm] The algorithm used to sign the certificate.
   /// [startTime] The time the certificate becomes valid.
   /// [subject] The entity the certificate and public key belong to.
-  X509CertificateDetailsResponse({
+  const X509CertificateDetailsResponse({
     required this.expiryTime,
     required this.issuer,
     required this.publicKeyType,

@@ -12,7 +12,7 @@ class BareMetalParallelUpgradeConfigResponse {
   /// Creates a new [BareMetalParallelUpgradeConfigResponse].
   /// [concurrentNodes] The maximum number of nodes that can be upgraded at once.
   /// [minimumAvailableNodes] The minimum number of nodes that should be healthy and available during an upgrade. If set to the default value of 0, it is possible that none of the nodes will be available during an upgrade.
-  BareMetalParallelUpgradeConfigResponse({
+  const BareMetalParallelUpgradeConfigResponse({
     required this.concurrentNodes,
     required this.minimumAvailableNodes,
   });

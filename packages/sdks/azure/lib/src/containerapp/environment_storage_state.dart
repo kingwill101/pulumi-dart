@@ -27,7 +27,7 @@ class EnvironmentStorageState {
   /// [name] The name for this Container App Environment Storage. Changing this forces a new resource to be created.
   /// [nfsServerUrl] The NFS server to use for the Azure File Share, the format will be `yourstorageaccountname.file.core.windows.net`. Changing this forces a new resource to be created.
   /// [shareName] The name of the Azure Storage Share to use. Changing this forces a new resource to be created.
-  EnvironmentStorageState({
+  const EnvironmentStorageState({
     this.accessKey,
     this.accessMode,
     this.accountName,

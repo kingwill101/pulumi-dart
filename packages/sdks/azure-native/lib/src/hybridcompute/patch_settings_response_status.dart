@@ -13,7 +13,7 @@ class PatchSettingsResponseStatus {
   /// Creates a new [PatchSettingsResponseStatus].
   /// [error] The errors that were encountered during the hotpatch capability enrollment or disenrollment.
   /// [hotpatchEnablementStatus] Indicates the current status of the hotpatch being enabled or disabled.
-  PatchSettingsResponseStatus({
+  const PatchSettingsResponseStatus({
     required this.error,
     this.hotpatchEnablementStatus,
   });

@@ -15,7 +15,7 @@ class GetStorageClassArgs {
   /// Creates a new [GetStorageClassArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [storageClassName] The name of the the storage class
-  GetStorageClassArgs({
+  const GetStorageClassArgs({
     required this.resourceUri,
     required this.storageClassName,
   });

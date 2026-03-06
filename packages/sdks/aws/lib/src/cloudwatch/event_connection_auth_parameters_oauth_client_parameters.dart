@@ -11,7 +11,7 @@ class EventConnectionAuthParametersOauthClientParameters {
   /// Creates a new [EventConnectionAuthParametersOauthClientParameters].
   /// [clientId] The client ID for the credentials to use for authorization. Created and stored in AWS Secrets Manager.
   /// [clientSecret] The client secret for the credentials to use for authorization. Created and stored in AWS Secrets Manager.
-  EventConnectionAuthParametersOauthClientParameters({
+  const EventConnectionAuthParametersOauthClientParameters({
     required this.clientId,
     required this.clientSecret,
   });

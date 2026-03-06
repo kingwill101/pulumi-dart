@@ -13,7 +13,7 @@ class OSPolicyResourcePackageResourceRPM {
   /// Creates a new [OSPolicyResourcePackageResourceRPM].
   /// [pullDeps] Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
   /// [source] An rpm package.
-  OSPolicyResourcePackageResourceRPM({
+  const OSPolicyResourcePackageResourceRPM({
     this.pullDeps,
     required this.source,
   });

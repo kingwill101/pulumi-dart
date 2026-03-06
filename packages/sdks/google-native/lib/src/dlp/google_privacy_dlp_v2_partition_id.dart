@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2PartitionId {
   /// Creates a new [GooglePrivacyDlpV2PartitionId].
   /// [namespaceId] If not empty, the ID of the namespace to which the entities belong.
   /// [project] The ID of the project to which the entities belong.
-  GooglePrivacyDlpV2PartitionId({
+  const GooglePrivacyDlpV2PartitionId({
     this.namespaceId,
     this.project,
   });

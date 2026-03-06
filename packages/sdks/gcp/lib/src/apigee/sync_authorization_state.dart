@@ -19,7 +19,7 @@ class SyncAuthorizationState {
   /// [etag] Entity tag (ETag) used for optimistic concurrency control as a way to help prevent simultaneous updates from overwriting each other.
   /// [identities] Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:service-account-name`.
   /// [name] Name of the Apigee organization.
-  SyncAuthorizationState({
+  const SyncAuthorizationState({
     this.etag,
     this.identities,
     this.name,

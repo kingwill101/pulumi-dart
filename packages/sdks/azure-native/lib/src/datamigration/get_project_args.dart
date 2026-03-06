@@ -18,7 +18,7 @@ class GetProjectArgs {
   /// [groupName] Name of the resource group
   /// [projectName] Name of the project
   /// [serviceName] Name of the service
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.groupName,
     required this.projectName,
     required this.serviceName,

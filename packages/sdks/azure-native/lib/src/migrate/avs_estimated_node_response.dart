@@ -39,7 +39,7 @@ class AvsEstimatedNodeResponse {
   /// [totalCpu] Predicted total CPU cores across the set of nodes.
   /// [totalRam] Predicted total RAM used in GB.
   /// [totalStorage] Predicted total Storage used in GB.
-  AvsEstimatedNodeResponse({
+  const AvsEstimatedNodeResponse({
     this.cpuUtilization,
     this.fttRaidLevel,
     this.monthlyPrice,

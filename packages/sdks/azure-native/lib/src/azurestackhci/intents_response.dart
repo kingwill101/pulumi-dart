@@ -69,7 +69,7 @@ class IntentsResponse {
   /// [scope] Scope for host network intent.
   /// [trafficType] List of network traffic types. Only allowed values are 'Compute', 'Storage', 'Management'.
   /// [virtualSwitchConfigurationOverrides] Set virtualSwitch ConfigurationOverrides for cluster.
-  IntentsResponse({
+  const IntentsResponse({
     this.adapter,
     required this.adapterPropertyOverrides,
     required this.intentAdapters,

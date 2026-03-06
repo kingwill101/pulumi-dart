@@ -17,7 +17,7 @@ class GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath {
   /// [interval] The time interval in the form `hh:mm:ss`.
   /// [path] The path to which this rule status code applies.
   /// [timeTaken] (Required) The threshold of time passed to qualify as a Slow Request in `hh:mm:ss`.
-  GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath({
+  const GetWindowsWebAppSiteConfigAutoHealSettingTriggerSlowRequestWithPath({
     required this.count,
     required this.interval,
     required this.path,

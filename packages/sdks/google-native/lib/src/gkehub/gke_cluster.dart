@@ -9,7 +9,7 @@ class GkeCluster {
 
   /// Creates a new [GkeCluster].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
-  GkeCluster({
+  const GkeCluster({
     this.resourceLink,
   });
 

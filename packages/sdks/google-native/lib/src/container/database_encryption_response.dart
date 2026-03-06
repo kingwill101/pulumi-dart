@@ -12,7 +12,7 @@ class DatabaseEncryptionResponse {
   /// Creates a new [DatabaseEncryptionResponse].
   /// [keyName] Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
   /// [state] The desired state of etcd encryption.
-  DatabaseEncryptionResponse({
+  const DatabaseEncryptionResponse({
     required this.keyName,
     required this.state,
   });

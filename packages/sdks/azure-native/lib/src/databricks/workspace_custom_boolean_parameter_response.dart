@@ -12,7 +12,7 @@ class WorkspaceCustomBooleanParameterResponse {
   /// Creates a new [WorkspaceCustomBooleanParameterResponse].
   /// [type] The type of variable that this is
   /// [value] The value which should be used for this field.
-  WorkspaceCustomBooleanParameterResponse({
+  const WorkspaceCustomBooleanParameterResponse({
     required this.type,
     required this.value,
   });

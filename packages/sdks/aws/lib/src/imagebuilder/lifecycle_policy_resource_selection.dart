@@ -12,7 +12,7 @@ class LifecyclePolicyResourceSelection {
   /// Creates a new [LifecyclePolicyResourceSelection].
   /// [recipes] A list of recipe that are used as selection criteria for the output images that the lifecycle policy applies to. Detailed below.
   /// [tagMap] A list of tags that are used as selection criteria for the Image Builder image resources that the lifecycle policy applies to.
-  LifecyclePolicyResourceSelection({
+  const LifecyclePolicyResourceSelection({
     this.recipes,
     this.tagMap,
   });

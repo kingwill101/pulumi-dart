@@ -50,7 +50,7 @@ class QuotaApplicationArgs {
   /// [quotaActionCode] The ID of quota action.
   /// [quotaCategory] The quota type.
   /// [reason] The reason of the quota application.
-  QuotaApplicationArgs({
+  const QuotaApplicationArgs({
     this.auditMode,
     required this.desireValue,
     this.dimensions,

@@ -19,7 +19,7 @@ class MachineExtensionPropertiesResponseInstanceView {
   /// [status] Instance view status.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  MachineExtensionPropertiesResponseInstanceView({
+  const MachineExtensionPropertiesResponseInstanceView({
     required this.name,
     this.status,
     required this.type,

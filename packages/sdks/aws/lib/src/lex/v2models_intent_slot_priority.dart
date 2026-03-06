@@ -11,7 +11,7 @@ class V2modelsIntentSlotPriority {
   /// Creates a new [V2modelsIntentSlotPriority].
   /// [priority] Priority that Amazon Lex should apply to the slot.
   /// [slotId] Unique identifier of the slot.
-  V2modelsIntentSlotPriority({
+  const V2modelsIntentSlotPriority({
     required this.priority,
     required this.slotId,
   });

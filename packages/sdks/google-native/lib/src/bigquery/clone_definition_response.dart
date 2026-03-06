@@ -12,7 +12,7 @@ class CloneDefinitionResponse {
   /// Creates a new [CloneDefinitionResponse].
   /// [baseTableReference] [Required] Reference describing the ID of the table that was cloned.
   /// [cloneTime] [Required] The time at which the base table was cloned. This value is reported in the JSON response using RFC3339 format.
-  CloneDefinitionResponse({
+  const CloneDefinitionResponse({
     required this.baseTableReference,
     required this.cloneTime,
   });

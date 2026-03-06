@@ -14,7 +14,7 @@ class GetPolicyRule {
   /// [actions] Optional.
   /// [conditions] Optional.
   /// [name] Name of the policy which includes partion ( /partition/policy-name )
-  GetPolicyRule({
+  const GetPolicyRule({
     this.actions,
     this.conditions,
     required this.name,

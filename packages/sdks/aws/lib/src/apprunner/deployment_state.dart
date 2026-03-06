@@ -21,7 +21,7 @@ class DeploymentState {
   /// [serviceArn] The Amazon Resource Name (ARN) of the App Runner service to start the deployment for.
   /// [status] The current status of the App Runner service deployment.
   /// [timeouts] Optional.
-  DeploymentState({
+  const DeploymentState({
     this.operationId,
     this.region,
     this.serviceArn,

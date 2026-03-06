@@ -29,7 +29,7 @@ class FeatureGroupArgs {
   /// [labels] Optional. The labels with user-defined metadata to organize your FeatureGroup. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information on and examples of labels. No more than 64 user labels can be associated with one FeatureGroup(System labels are excluded)." System reserved label keys are prefixed with "aiplatform.googleapis.com/" and are immutable.
   /// [location] Optional.
   /// [project] Optional.
-  FeatureGroupArgs({
+  const FeatureGroupArgs({
     this.bigQuery,
     this.description,
     this.etag,

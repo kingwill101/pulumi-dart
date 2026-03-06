@@ -11,7 +11,7 @@ class GetImagePipelineSchedule {
   /// Creates a new [GetImagePipelineSchedule].
   /// [pipelineExecutionStartCondition] Condition when the pipeline should trigger a new image build.
   /// [scheduleExpression] Cron expression of how often the pipeline start condition is evaluated.
-  GetImagePipelineSchedule({
+  const GetImagePipelineSchedule({
     required this.pipelineExecutionStartCondition,
     required this.scheduleExpression,
   });

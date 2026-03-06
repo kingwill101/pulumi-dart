@@ -9,7 +9,7 @@ class ConnectionMonitorIcmpConfiguration {
 
   /// Creates a new [ConnectionMonitorIcmpConfiguration].
   /// [disableTraceRoute] Value indicating whether path evaluation with trace route should be disabled.
-  ConnectionMonitorIcmpConfiguration({
+  const ConnectionMonitorIcmpConfiguration({
     this.disableTraceRoute,
   });
 

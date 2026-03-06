@@ -31,7 +31,7 @@ class EnvironmentComposerV1beta1Args {
   /// [project] Optional.
   /// [state] The current state of the environment.
   /// [storageConfig] Optional. Storage configuration for this environment.
-  EnvironmentComposerV1beta1Args({
+  const EnvironmentComposerV1beta1Args({
     this.config,
     this.labels,
     this.location,

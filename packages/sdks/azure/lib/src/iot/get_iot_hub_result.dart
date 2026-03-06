@@ -22,7 +22,7 @@ class GetIotHubResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] Optional.
-  GetIotHubResult({
+  const GetIotHubResult({
     required this.hostname,
     required this.id,
     required this.identities,

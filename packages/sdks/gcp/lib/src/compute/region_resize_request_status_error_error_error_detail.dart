@@ -29,7 +29,7 @@ class RegionResizeRequestStatusErrorErrorErrorDetail {
   /// [helps] (Output)
   /// [localizedMessages] (Output)
   /// [quotaInfos] (Output)
-  RegionResizeRequestStatusErrorErrorErrorDetail({
+  const RegionResizeRequestStatusErrorErrorErrorDetail({
     this.errorInfos,
     this.helps,
     this.localizedMessages,

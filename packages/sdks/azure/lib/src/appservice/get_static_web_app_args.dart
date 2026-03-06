@@ -15,7 +15,7 @@ class GetStaticWebAppArgs {
   /// Creates a new [GetStaticWebAppArgs].
   /// [name] The name of this Static Web App.
   /// [resourceGroupName] The name of the Resource Group where the Static Web App exists.
-  GetStaticWebAppArgs({
+  const GetStaticWebAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

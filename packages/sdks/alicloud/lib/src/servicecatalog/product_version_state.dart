@@ -30,7 +30,7 @@ class ProductVersionState {
   /// [productVersionName] The name of the resource
   /// [templateType] Template Type
   /// [templateUrl] Template URL
-  ProductVersionState({
+  const ProductVersionState({
     this.active,
     this.createTime,
     this.description,

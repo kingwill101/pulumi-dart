@@ -33,7 +33,7 @@ class ManagedHsmArgs {
   /// [resourceGroupName] Name of the resource group that contains the managed HSM pool.
   /// [sku] SKU details
   /// [tags] Resource tags
-  ManagedHsmArgs({
+  const ManagedHsmArgs({
     this.identity,
     this.location,
     this.name,

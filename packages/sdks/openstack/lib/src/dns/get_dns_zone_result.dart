@@ -58,7 +58,7 @@ class GetDnsZoneResult {
   /// [type] See Argument Reference above.
   /// [updatedAt] The time the zone was last updated.
   /// [version] The version of the zone.
-  GetDnsZoneResult({
+  const GetDnsZoneResult({
     this.allProjects,
     required this.attributes,
     required this.createdAt,

@@ -10,7 +10,7 @@ class RepositoryRemoteRepositoryConfigUpstreamCredentials {
 
   /// Creates a new [RepositoryRemoteRepositoryConfigUpstreamCredentials].
   /// [usernamePasswordCredentials] Use username and password to access the remote repository.
-  RepositoryRemoteRepositoryConfigUpstreamCredentials({
+  const RepositoryRemoteRepositoryConfigUpstreamCredentials({
     this.usernamePasswordCredentials,
   });
 

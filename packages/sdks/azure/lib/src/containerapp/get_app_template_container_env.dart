@@ -14,7 +14,7 @@ class GetAppTemplateContainerEnv {
   /// [name] The name of the Container App.
   /// [secretName] The name of the secret that contains the value for this environment variable.
   /// [value] The HTTP Header value.
-  GetAppTemplateContainerEnv({
+  const GetAppTemplateContainerEnv({
     required this.name,
     required this.secretName,
     required this.value,

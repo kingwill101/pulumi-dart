@@ -11,7 +11,7 @@ class GetTopicPubsubV1beta1aArgs {
 
   /// Creates a new [GetTopicPubsubV1beta1aArgs].
   /// [topicId] Required.
-  GetTopicPubsubV1beta1aArgs({
+  const GetTopicPubsubV1beta1aArgs({
     required this.topicId,
   });
 

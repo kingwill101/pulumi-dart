@@ -15,7 +15,7 @@ class IotEventHubIngestionEndpointConfiguration {
   /// [consumerGroup] Consumer group of the event hub to connected to.
   /// [eventHubName] Event Hub name to connect to.
   /// [fullyQualifiedEventHubNamespace] Fully qualified namespace of the Event Hub to connect to.
-  IotEventHubIngestionEndpointConfiguration({
+  const IotEventHubIngestionEndpointConfiguration({
     this.consumerGroup,
     this.eventHubName,
     this.fullyQualifiedEventHubNamespace,

@@ -17,7 +17,7 @@ class GetPreRuleCountersArgs {
   /// [firewallName] Optional.
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Pre Rule priority
-  GetPreRuleCountersArgs({
+  const GetPreRuleCountersArgs({
     this.firewallName,
     required this.globalRulestackName,
     required this.priority,

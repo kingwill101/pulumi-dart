@@ -19,7 +19,7 @@ class ExpressRouteLink {
   /// [id] Resource ID.
   /// [macSecConfig] MacSec configuration.
   /// [name] Name of child port resource that is unique among child port resources of the parent.
-  ExpressRouteLink({
+  const ExpressRouteLink({
     this.adminState,
     this.id,
     this.macSecConfig,

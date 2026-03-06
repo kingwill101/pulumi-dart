@@ -32,7 +32,7 @@ class AwsEc2SecurityGroupProperties {
   /// [ownerId] &lt;p&gt;The Amazon Web Services account ID of the owner of the security group.&lt;/p&gt;
   /// [tags] &lt;p&gt;Any tags assigned to the security group.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID of the VPC for the security group.&lt;/p&gt;
-  AwsEc2SecurityGroupProperties({
+  const AwsEc2SecurityGroupProperties({
     this.description,
     this.groupId,
     this.groupName,

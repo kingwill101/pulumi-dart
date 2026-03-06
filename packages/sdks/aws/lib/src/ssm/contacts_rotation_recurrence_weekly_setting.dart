@@ -12,7 +12,7 @@ class ContactsRotationRecurrenceWeeklySetting {
   /// Creates a new [ContactsRotationRecurrenceWeeklySetting].
   /// [dayOfWeek] (Required) The day of the week when the shift coverage occurs.
   /// [handOffTime] (Required) The hand off time. See Hand Off Time for more details.
-  ContactsRotationRecurrenceWeeklySetting({
+  const ContactsRotationRecurrenceWeeklySetting({
     required this.dayOfWeek,
     this.handOffTime,
   });

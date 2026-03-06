@@ -20,7 +20,7 @@ class GetRouteEntriesEntryConflict {
   /// [instanceType] The type of the CEN child instance.
   /// [regionId] ID of the region where the conflicted route entry is located.
   /// [status] Reasons of exceptions.
-  GetRouteEntriesEntryConflict({
+  const GetRouteEntriesEntryConflict({
     required this.cidrBlock,
     required this.instanceId,
     required this.instanceType,

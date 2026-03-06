@@ -22,7 +22,7 @@ class GetHybridMonitorFcTasksResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [tasks] Required.
-  GetHybridMonitorFcTasksResult({
+  const GetHybridMonitorFcTasksResult({
     required this.id,
     required this.ids,
     this.namespace,

@@ -99,7 +99,7 @@ class AdditionalCustomerPropertiesResponse {
   /// [signupStatus] Customer resource signup status as boolean.
   /// [signupStatusCode] Customer resource signup status as integer code.
   /// [signupStatusText] Customer resource signup status as string text.
-  AdditionalCustomerPropertiesResponse({
+  const AdditionalCustomerPropertiesResponse({
     this.customerAsn,
     required this.customerAsnEstimatedEgressPeekGbps,
     this.customerEmail,

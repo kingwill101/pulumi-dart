@@ -21,7 +21,7 @@ class GetBgpNetworksArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [routerId] The ID of the router to which the route table belongs.
   /// [status] The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
-  GetBgpNetworksArgs({
+  const GetBgpNetworksArgs({
     this.ids,
     this.outputFile,
     this.routerId,

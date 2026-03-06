@@ -17,7 +17,7 @@ class GetReplicationSubnetGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicationSubnetGroupId] Name for the replication subnet group. This value is stored as a lowercase string. It must contain no more than 255 alphanumeric characters, periods, spaces, underscores, or hyphens and cannot be `default`.
   /// [tags] Optional.
-  GetReplicationSubnetGroupArgs({
+  const GetReplicationSubnetGroupArgs({
     this.region,
     required this.replicationSubnetGroupId,
     this.tags,

@@ -12,7 +12,7 @@ class DataflowEndpointAuthenticationSaslResponse {
   /// Creates a new [DataflowEndpointAuthenticationSaslResponse].
   /// [saslType] Type of SASL authentication. Can be PLAIN, SCRAM-SHA-256, or SCRAM-SHA-512.
   /// [secretRef] Token secret name.
-  DataflowEndpointAuthenticationSaslResponse({
+  const DataflowEndpointAuthenticationSaslResponse({
     required this.saslType,
     required this.secretRef,
   });

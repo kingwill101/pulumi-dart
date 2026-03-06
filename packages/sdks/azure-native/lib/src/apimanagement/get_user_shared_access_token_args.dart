@@ -25,7 +25,7 @@ class GetUserSharedAccessTokenArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
-  GetUserSharedAccessTokenArgs({
+  const GetUserSharedAccessTokenArgs({
     required this.expiry,
     required this.keyType,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambda {
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpLambda].
   /// [lambdaArn] ARN of the Lambda function to invoke.
   /// [toolSchema] Schema definition for the tool. See `tool_schema` below.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambda({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambda({
     required this.lambdaArn,
     required this.toolSchema,
   });

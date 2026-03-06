@@ -12,7 +12,7 @@ class DeploymentBatchResourceSetting {
   /// Creates a new [DeploymentBatchResourceSetting].
   /// [basicResourceSetting] Resource settings for basic mode See `basic_resource_setting` below.
   /// [maxSlot] Maximum number of slots
-  DeploymentBatchResourceSetting({
+  const DeploymentBatchResourceSetting({
     this.basicResourceSetting,
     this.maxSlot,
   });

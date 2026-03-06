@@ -28,7 +28,7 @@ class FrontdoorBackendPoolHealthProbe {
   /// [path] The path to use for the Health Probe. Default is `/`.
   /// [probeMethod] Specifies HTTP method the health probe uses when querying the backend pool instances. Possible values include: `GET` and `HEAD`. Defaults to `GET`.
   /// [protocol] Protocol scheme to use for the Health Probe. Possible values are `Http` and `Https`. Defaults to `Http`.
-  FrontdoorBackendPoolHealthProbe({
+  const FrontdoorBackendPoolHealthProbe({
     this.enabled,
     this.id,
     this.intervalInSeconds,

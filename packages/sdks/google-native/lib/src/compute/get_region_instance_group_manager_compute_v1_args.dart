@@ -15,7 +15,7 @@ class GetRegionInstanceGroupManagerComputeV1Args {
   /// [instanceGroupManager] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionInstanceGroupManagerComputeV1Args({
+  const GetRegionInstanceGroupManagerComputeV1Args({
     required this.instanceGroupManager,
     this.project,
     required this.region,

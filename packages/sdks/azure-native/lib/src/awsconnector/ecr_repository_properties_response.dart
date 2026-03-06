@@ -34,7 +34,7 @@ class EcrRepositoryPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EcrRepositoryPropertiesResponse({
+  const EcrRepositoryPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

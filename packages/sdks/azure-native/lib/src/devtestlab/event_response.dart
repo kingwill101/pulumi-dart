@@ -9,7 +9,7 @@ class EventResponse {
 
   /// Creates a new [EventResponse].
   /// [eventName] The event type for which this notification is enabled (i.e. AutoShutdown, Cost)
-  EventResponse({
+  const EventResponse({
     this.eventName,
   });
 

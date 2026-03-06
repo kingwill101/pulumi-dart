@@ -70,7 +70,7 @@ class PrivateLinkServiceResponse {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [visibility] The visibility list of the private link service.
-  PrivateLinkServiceResponse({
+  const PrivateLinkServiceResponse({
     this.accessMode,
     required this.alias,
     this.autoApproval,

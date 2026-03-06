@@ -11,7 +11,7 @@ class ScalingPlanApplicationSourceTagFilter {
   /// Creates a new [ScalingPlanApplicationSourceTagFilter].
   /// [key] Tag key.
   /// [values] Tag values.
-  ScalingPlanApplicationSourceTagFilter({
+  const ScalingPlanApplicationSourceTagFilter({
     required this.key,
     this.values,
   });

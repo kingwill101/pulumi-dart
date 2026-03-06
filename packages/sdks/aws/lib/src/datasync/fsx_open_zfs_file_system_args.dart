@@ -28,7 +28,7 @@ class FsxOpenZfsFileSystemArgs {
   /// [securityGroupArns] The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for openzfs file system.
   /// [subdirectory] Subdirectory to perform actions as source or destination. Must start with `/fsx`.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  FsxOpenZfsFileSystemArgs({
+  const FsxOpenZfsFileSystemArgs({
     required this.fsxFilesystemArn,
     required this.protocol,
     this.region,

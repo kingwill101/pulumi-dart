@@ -13,7 +13,7 @@ class GetVirtualNodeSpecListenerTl {
   /// [certificates] Required.
   /// [mode] Required.
   /// [validations] Required.
-  GetVirtualNodeSpecListenerTl({
+  const GetVirtualNodeSpecListenerTl({
     required this.certificates,
     required this.mode,
     required this.validations,

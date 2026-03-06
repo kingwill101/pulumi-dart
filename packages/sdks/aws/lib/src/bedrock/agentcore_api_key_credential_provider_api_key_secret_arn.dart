@@ -8,7 +8,7 @@ class AgentcoreApiKeyCredentialProviderApiKeySecretArn {
 
   /// Creates a new [AgentcoreApiKeyCredentialProviderApiKeySecretArn].
   /// [secretArn] ARN of the secret in AWS Secrets Manager.
-  AgentcoreApiKeyCredentialProviderApiKeySecretArn({
+  const AgentcoreApiKeyCredentialProviderApiKeySecretArn({
     required this.secretArn,
   });
 

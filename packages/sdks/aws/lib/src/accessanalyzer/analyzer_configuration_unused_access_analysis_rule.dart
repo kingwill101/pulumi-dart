@@ -9,7 +9,7 @@ class AnalyzerConfigurationUnusedAccessAnalysisRule {
 
   /// Creates a new [AnalyzerConfigurationUnusedAccessAnalysisRule].
   /// [exclusions] List of rules for the analyzer containing criteria to exclude from analysis. Entities that meet the rule criteria will not generate findings. See `exclusion` Block for details.
-  AnalyzerConfigurationUnusedAccessAnalysisRule({
+  const AnalyzerConfigurationUnusedAccessAnalysisRule({
     this.exclusions,
   });
 

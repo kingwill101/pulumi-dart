@@ -45,7 +45,7 @@ class VmwareVmDetailsResponseVmmigrationV1alpha1 {
   /// [powerState] The power state of the VM at the moment list was taken.
   /// [uuid] The unique identifier of the VM in vCenter.
   /// [vmId] The VM's id in the source (note that this is not the MigratingVm's id). This is the moref id of the VM.
-  VmwareVmDetailsResponseVmmigrationV1alpha1({
+  const VmwareVmDetailsResponseVmmigrationV1alpha1({
     required this.bootOption,
     required this.committedStorage,
     required this.committedStorageMb,

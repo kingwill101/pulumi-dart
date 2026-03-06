@@ -97,7 +97,7 @@ class ScalingPlanPersonalScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scalingPlanName] The name of the scaling plan.
   /// [scalingPlanScheduleName] The name of the ScalingPlanSchedule
-  ScalingPlanPersonalScheduleArgs({
+  const ScalingPlanPersonalScheduleArgs({
     this.daysOfWeek,
     this.offPeakActionOnDisconnect,
     this.offPeakActionOnLogoff,

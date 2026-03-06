@@ -49,7 +49,7 @@ class KeyVaultCertificatePropertiesResponse {
   /// [thumbprint] The thumbprint of certificate.
   /// [type] The type of the certificate source.
   /// [vaultUri] The vault uri of user key vault.
-  KeyVaultCertificatePropertiesResponse({
+  const KeyVaultCertificatePropertiesResponse({
     required this.activateDate,
     this.autoSync,
     this.certVersion,

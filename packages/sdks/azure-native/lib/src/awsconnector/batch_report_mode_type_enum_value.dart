@@ -9,7 +9,7 @@ class BatchReportModeTypeEnumValue {
 
   /// Creates a new [BatchReportModeTypeEnumValue].
   /// [value] Property value
-  BatchReportModeTypeEnumValue({
+  const BatchReportModeTypeEnumValue({
     this.value,
   });
 

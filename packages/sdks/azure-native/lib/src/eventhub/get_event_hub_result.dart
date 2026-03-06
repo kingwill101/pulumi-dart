@@ -53,7 +53,7 @@ class GetEventHubResult {
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   /// [updatedAt] The exact time the message was updated.
   /// [userMetadata] Gets and Sets Metadata of User.
-  GetEventHubResult({
+  const GetEventHubResult({
     required this.azureApiVersion,
     this.captureDescription,
     required this.createdAt,

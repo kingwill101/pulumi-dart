@@ -15,7 +15,7 @@ class DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s {
   /// [enabled] Is Microsoft Defender container agentless discovery enabled
   /// [serviceAccountEmailAddress] The service account email address in GCP for this feature
   /// [workloadIdentityProviderId] The workload identity provider id in GCP for this feature
-  DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s({
+  const DefenderCspmGcpOfferingMdcContainersAgentlessDiscoveryK8s({
     this.enabled,
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,

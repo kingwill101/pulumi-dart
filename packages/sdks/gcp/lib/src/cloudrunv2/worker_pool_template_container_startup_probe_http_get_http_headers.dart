@@ -11,7 +11,7 @@ class WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders {
   /// Creates a new [WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders].
   /// [port] Required. The header field name
   /// [value] Optional. The header field value
-  WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders({
+  const WorkerPoolTemplateContainerStartupProbeHttpGetHttpHeaders({
     required this.port,
     this.value,
   });

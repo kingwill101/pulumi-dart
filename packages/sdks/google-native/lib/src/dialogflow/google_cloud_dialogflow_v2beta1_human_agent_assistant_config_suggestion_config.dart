@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig {
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig].
   /// [featureConfigs] Configuration of different suggestion features. One feature can have only one config.
   /// [groupSuggestionResponses] If `group_suggestion_responses` is false, and there are multiple `feature_configs` in `event based suggestion` or StreamingAnalyzeContent, we will try to deliver suggestions to customers as soon as we get new suggestion. Different type of suggestions based on the same context will be in separate Pub/Sub event or `StreamingAnalyzeContentResponse`. If `group_suggestion_responses` set to true. All the suggestions to the same participant based on the same context will be grouped into a single Pub/Sub event or StreamingAnalyzeContentResponse.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig({
     this.featureConfigs,
     this.groupSuggestionResponses,
   });

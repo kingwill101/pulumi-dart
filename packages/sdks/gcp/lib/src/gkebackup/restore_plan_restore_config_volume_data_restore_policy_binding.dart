@@ -16,7 +16,7 @@ class RestorePlanRestoreConfigVolumeDataRestorePolicyBinding {
   /// Creates a new [RestorePlanRestoreConfigVolumeDataRestorePolicyBinding].
   /// [policy] Specifies the mechanism to be used to restore this volume data.
   /// [volumeType] The volume type, as determined by the PVC's
-  RestorePlanRestoreConfigVolumeDataRestorePolicyBinding({
+  const RestorePlanRestoreConfigVolumeDataRestorePolicyBinding({
     required this.policy,
     required this.volumeType,
   });

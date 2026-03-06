@@ -9,7 +9,7 @@ class LabVhdResponse {
 
   /// Creates a new [LabVhdResponse].
   /// [id] The URI to the VHD.
-  LabVhdResponse({
+  const LabVhdResponse({
     this.id,
   });
 

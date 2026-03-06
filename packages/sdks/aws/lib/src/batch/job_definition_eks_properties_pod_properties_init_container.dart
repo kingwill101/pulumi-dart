@@ -36,7 +36,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainer {
   /// [resources] Type and amount of resources to assign to a container. The supported resources include `memory`, `cpu`, and `nvidia.com/gpu`.
   /// [securityContext] Security context for a job. See `security_context` below.
   /// [volumeMounts] Volume mounts for the container.
-  JobDefinitionEksPropertiesPodPropertiesInitContainer({
+  const JobDefinitionEksPropertiesPodPropertiesInitContainer({
     this.args,
     this.commands,
     this.envs,

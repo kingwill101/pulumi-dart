@@ -22,7 +22,7 @@ class IAMPolicyArgs {
   /// Creates a new [IAMPolicyArgs].
   /// [orgId] The organization id of the target organization.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
-  IAMPolicyArgs({
+  const IAMPolicyArgs({
     required this.orgId,
     required this.policyData,
   });

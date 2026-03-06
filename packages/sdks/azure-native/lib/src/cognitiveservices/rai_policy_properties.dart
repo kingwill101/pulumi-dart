@@ -28,7 +28,7 @@ class RaiPolicyProperties {
   /// [customTopics] The list of custom rai topics.
   /// [mode] Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
   /// [safetyProviders] The list of Safety Providers.
-  RaiPolicyProperties({
+  const RaiPolicyProperties({
     this.basePolicyName,
     this.contentFilters,
     this.customBlocklists,

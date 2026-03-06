@@ -8,7 +8,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartRespo
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponseMessageGroupVariationPlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

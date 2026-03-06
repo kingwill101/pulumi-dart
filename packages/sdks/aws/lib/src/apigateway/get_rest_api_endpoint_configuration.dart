@@ -14,7 +14,7 @@ class GetRestApiEndpointConfiguration {
   /// [ipAddressType] The IP address types that can invoke an API (RestApi).
   /// [types] List of endpoint types.
   /// [vpcEndpointIds] Set of VPC Endpoint identifiers.
-  GetRestApiEndpointConfiguration({
+  const GetRestApiEndpointConfiguration({
     required this.ipAddressType,
     required this.types,
     required this.vpcEndpointIds,

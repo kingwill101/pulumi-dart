@@ -12,7 +12,7 @@ class HTTPHeader {
   /// Creates a new [HTTPHeader].
   /// [name] The header field name. This will be canonicalized upon output, so case-variant names will be understood as the same header.
   /// [value] The header field value
-  HTTPHeader({
+  const HTTPHeader({
     required this.name,
     required this.value,
   });

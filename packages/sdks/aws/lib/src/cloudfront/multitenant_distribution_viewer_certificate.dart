@@ -17,7 +17,7 @@ class MultitenantDistributionViewerCertificate {
   /// [cloudfrontDefaultCertificate] Whether to use the CloudFront default certificate. Cannot be used with `acm_certificate_arn`.
   /// [minimumProtocolVersion] Minimum version of the SSL protocol that you want CloudFront to use for HTTPS connections. Default: `TLSv1`.
   /// [sslSupportMethod] How you want CloudFront to serve HTTPS requests. Valid values are `sni-only` and `vip`. Required when `acm_certificate_arn` is specified.
-  MultitenantDistributionViewerCertificate({
+  const MultitenantDistributionViewerCertificate({
     this.acmCertificateArn,
     this.cloudfrontDefaultCertificate,
     this.minimumProtocolVersion,

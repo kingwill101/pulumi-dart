@@ -61,7 +61,7 @@ class GreenplumLinkedService {
   /// [type] Type of linked service.
   /// [username] Username for authentication. Type: string. Only used for V2.
   /// [version] Version of the linked service.
-  GreenplumLinkedService({
+  const GreenplumLinkedService({
     this.annotations,
     this.authenticationType,
     this.commandTimeout,

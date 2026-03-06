@@ -56,7 +56,7 @@ class RegionCompositeHealthCheckState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] URL of the region where the composite health check resides.
   /// [selfLinkWithId] Server-defined URL with id for the resource.
-  RegionCompositeHealthCheckState({
+  const RegionCompositeHealthCheckState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

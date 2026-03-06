@@ -21,7 +21,7 @@ class GetCostAllocationRuleResult {
   /// [name] Name of the rule. This is a read only value.
   /// [properties] Cost allocation rule properties
   /// [type] Resource type of the rule. This is a read only value of Microsoft.CostManagement/CostAllocationRule.
-  GetCostAllocationRuleResult({
+  const GetCostAllocationRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

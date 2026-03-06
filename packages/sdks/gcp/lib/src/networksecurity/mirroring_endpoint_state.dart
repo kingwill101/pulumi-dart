@@ -68,7 +68,7 @@ class MirroringEndpointState {
   /// [reconciling] The current state of the resource does not match the user's intended state,
   /// [state] The current state of the endpoint.
   /// [updateTime] The timestamp when the resource was most recently updated.
-  MirroringEndpointState({
+  const MirroringEndpointState({
     this.createTime,
     this.description,
     this.effectiveLabels,

@@ -22,7 +22,7 @@ class JobArgs {
   /// [jobBaseProperties] [Required] Additional attributes of the entity.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  JobArgs({
+  const JobArgs({
     this.id,
     required this.jobBaseProperties,
     required this.resourceGroupName,

@@ -10,7 +10,7 @@ class GetAppTemplateHttpScaleRuleAuthentication {
   /// Creates a new [GetAppTemplateHttpScaleRuleAuthentication].
   /// [secretName] The name of the secret that contains the value for this environment variable.
   /// [triggerParameter] Required.
-  GetAppTemplateHttpScaleRuleAuthentication({
+  const GetAppTemplateHttpScaleRuleAuthentication({
     required this.secretName,
     required this.triggerParameter,
   });

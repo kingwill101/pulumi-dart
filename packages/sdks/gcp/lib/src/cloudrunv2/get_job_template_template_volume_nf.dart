@@ -14,7 +14,7 @@ class GetJobTemplateTemplateVolumeNf {
   /// [path] Path that is exported by the NFS server.
   /// [readOnly] If true, mount this volume as read-only in all mounts.
   /// [server] Hostname or IP address of the NFS server.
-  GetJobTemplateTemplateVolumeNf({
+  const GetJobTemplateTemplateVolumeNf({
     required this.path,
     required this.readOnly,
     required this.server,

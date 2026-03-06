@@ -13,7 +13,7 @@ class GetConfigurationStoreIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] Required.
-  GetConfigurationStoreIdentity({
+  const GetConfigurationStoreIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -18,7 +18,7 @@ class NonResourcePolicyRulePatch {
   /// Creates a new [NonResourcePolicyRulePatch].
   /// [nonResourceURLs] `nonResourceURLs` is a set of url prefixes that a user should have access to and may not be empty. For example:
   /// [verbs] `verbs` is a list of matching verbs and may not be empty. "*" matches all verbs. If it is present, it must be the only entry. Required.
-  NonResourcePolicyRulePatch({
+  const NonResourcePolicyRulePatch({
     this.nonResourceURLs,
     this.verbs,
   });

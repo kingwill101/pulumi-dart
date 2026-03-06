@@ -28,7 +28,7 @@ class ZoneRrsetState {
   /// [ttl] Time To Live (TTL) of the Zone RRSet.
   /// [type] Type of the Zone RRSet.
   /// [zone] ID or Name of the parent Zone.
-  ZoneRrsetState({
+  const ZoneRrsetState({
     this.changeProtection,
     this.labels,
     this.name,

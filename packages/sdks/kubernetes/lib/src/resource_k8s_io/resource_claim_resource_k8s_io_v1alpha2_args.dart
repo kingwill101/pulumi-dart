@@ -23,7 +23,7 @@ class ResourceClaimResourceK8sIoV1alpha2Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object metadata
   /// [spec] Spec describes the desired attributes of a resource that then needs to be allocated. It can only be set once when creating the ResourceClaim.
-  ResourceClaimResourceK8sIoV1alpha2Args({
+  const ResourceClaimResourceK8sIoV1alpha2Args({
     this.apiVersion,
     this.kind,
     this.metadata,

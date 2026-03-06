@@ -32,7 +32,7 @@ class GetSecGroupArgs {
   /// [stateful] Whether the security group is stateful or not.
   /// [tags] The list of security group tags to filter.
   /// [tenantId] The owner of the security group.
-  GetSecGroupArgs({
+  const GetSecGroupArgs({
     this.description,
     this.name,
     this.region,

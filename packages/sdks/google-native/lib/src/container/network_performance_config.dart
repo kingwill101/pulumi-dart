@@ -10,7 +10,7 @@ class NetworkPerformanceConfig {
 
   /// Creates a new [NetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
-  NetworkPerformanceConfig({
+  const NetworkPerformanceConfig({
     this.totalEgressBandwidthTier,
   });
 

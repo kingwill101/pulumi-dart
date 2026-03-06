@@ -13,7 +13,7 @@ class IntComparisonFilter {
   /// Creates a new [IntComparisonFilter].
   /// [value] Integer compare value to be used
   /// [valueComparison] Relation between source value and compare value
-  IntComparisonFilter({
+  const IntComparisonFilter({
     required this.value,
     required this.valueComparison,
   });

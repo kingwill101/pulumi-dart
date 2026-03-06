@@ -15,7 +15,7 @@ class GetManagementConfigurationArgs {
   /// Creates a new [GetManagementConfigurationArgs].
   /// [managementConfigurationName] User Management Configuration Name.
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
-  GetManagementConfigurationArgs({
+  const GetManagementConfigurationArgs({
     required this.managementConfigurationName,
     required this.resourceGroupName,
   });

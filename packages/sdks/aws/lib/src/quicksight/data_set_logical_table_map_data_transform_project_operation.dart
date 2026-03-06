@@ -8,7 +8,7 @@ class DataSetLogicalTableMapDataTransformProjectOperation {
 
   /// Creates a new [DataSetLogicalTableMapDataTransformProjectOperation].
   /// [projectedColumns] Projected columns.
-  DataSetLogicalTableMapDataTransformProjectOperation({
+  const DataSetLogicalTableMapDataTransformProjectOperation({
     required this.projectedColumns,
   });
 

@@ -65,7 +65,7 @@ class DomainThrottleGroupsThrottleGroup {
   /// [writeIopsSec] Configures the total number of write input/output operations per second that the throttle group can perform.
   /// [writeIopsSecMax] Sets the maximum limit for write input/output operations per second for the throttle group, restricting performance.
   /// [writeIopsSecMaxLength] Defines the maximum length of write input/output operations per second for the throttle group, indicating the extent of its limits.
-  DomainThrottleGroupsThrottleGroup({
+  const DomainThrottleGroupsThrottleGroup({
     this.groupName,
     this.readBytesSec,
     this.readBytesSecMax,

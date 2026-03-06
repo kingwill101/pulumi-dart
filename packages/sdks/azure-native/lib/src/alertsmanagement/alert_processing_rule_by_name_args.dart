@@ -25,7 +25,7 @@ class AlertProcessingRuleByNameArgs {
   /// [properties] Alert processing rule properties.
   /// [resourceGroupName] Resource group name where the resource is created.
   /// [tags] Resource tags
-  AlertProcessingRuleByNameArgs({
+  const AlertProcessingRuleByNameArgs({
     this.alertProcessingRuleName,
     this.location,
     this.properties,

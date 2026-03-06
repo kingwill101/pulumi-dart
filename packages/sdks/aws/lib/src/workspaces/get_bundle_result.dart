@@ -35,7 +35,7 @@ class GetBundleResult {
   /// [region] Required.
   /// [rootStorages] The root volume. See supported fields below.
   /// [userStorages] The user storage. See supported fields below.
-  GetBundleResult({
+  const GetBundleResult({
     this.bundleId,
     required this.computeTypes,
     required this.description,

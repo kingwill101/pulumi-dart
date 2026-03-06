@@ -14,7 +14,7 @@ class TagTemplateFieldTypeEnumType {
 
   /// Creates a new [TagTemplateFieldTypeEnumType].
   /// [allowedValues] The set of allowed values for this enum. The display names of the
-  TagTemplateFieldTypeEnumType({
+  const TagTemplateFieldTypeEnumType({
     required this.allowedValues,
   });
 

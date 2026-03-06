@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2QuasiIdentifierFieldResponse {
   /// Creates a new [GooglePrivacyDlpV2QuasiIdentifierFieldResponse].
   /// [customTag] A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
   /// [field] Identifies the column.
-  GooglePrivacyDlpV2QuasiIdentifierFieldResponse({
+  const GooglePrivacyDlpV2QuasiIdentifierFieldResponse({
     required this.customTag,
     required this.field,
   });

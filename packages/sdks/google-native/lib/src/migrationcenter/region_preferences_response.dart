@@ -9,7 +9,7 @@ class RegionPreferencesResponse {
 
   /// Creates a new [RegionPreferencesResponse].
   /// [preferredRegions] A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
-  RegionPreferencesResponse({
+  const RegionPreferencesResponse({
     required this.preferredRegions,
   });
 

@@ -15,7 +15,7 @@ class SystemServiceResponse {
   /// [publicIpAddress] Public IP address
   /// [systemServiceType] The type of this system service.
   /// [version] The version for this type.
-  SystemServiceResponse({
+  const SystemServiceResponse({
     required this.publicIpAddress,
     required this.systemServiceType,
     required this.version,

@@ -18,7 +18,7 @@ class DefenderForDatabasesGcpOffering {
   /// [arcAutoProvisioning] The ARC autoprovisioning configuration
   /// [defenderForDatabasesArcAutoProvisioning] The native cloud connection configuration
   /// [offeringType] The type of the security offering.
-  DefenderForDatabasesGcpOffering({
+  const DefenderForDatabasesGcpOffering({
     this.arcAutoProvisioning,
     this.defenderForDatabasesArcAutoProvisioning,
     required this.offeringType,

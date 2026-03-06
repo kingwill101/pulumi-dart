@@ -24,7 +24,7 @@ class IdentityNotificationTopicArgs {
   /// [notificationType] The type of notifications that will be published to the specified Amazon SNS topic. Valid Values: `Bounce`, `Complaint` or `Delivery`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topicArn] The Amazon Resource Name (ARN) of the Amazon SNS topic. Can be set to `""` (an empty string) to disable publishing.
-  IdentityNotificationTopicArgs({
+  const IdentityNotificationTopicArgs({
     required this.identity,
     this.includeOriginalHeaders,
     required this.notificationType,

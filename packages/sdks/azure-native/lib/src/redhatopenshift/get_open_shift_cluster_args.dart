@@ -15,7 +15,7 @@ class GetOpenShiftClusterArgs {
   /// Creates a new [GetOpenShiftClusterArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
-  GetOpenShiftClusterArgs({
+  const GetOpenShiftClusterArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

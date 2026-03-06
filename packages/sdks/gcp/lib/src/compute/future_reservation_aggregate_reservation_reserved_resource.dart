@@ -10,7 +10,7 @@ class FutureReservationAggregateReservationReservedResource {
 
   /// Creates a new [FutureReservationAggregateReservationReservedResource].
   /// [accelerator] Properties of accelerator resources in this reservation.
-  FutureReservationAggregateReservationReservedResource({
+  const FutureReservationAggregateReservationReservedResource({
     this.accelerator,
   });
 

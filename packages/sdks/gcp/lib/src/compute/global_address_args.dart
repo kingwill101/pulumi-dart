@@ -64,7 +64,7 @@ class GlobalAddressArgs {
   /// [prefixLength] The prefix length of the IP range. If not present, it means the
   /// [project] The ID of the project in which the resource belongs.
   /// [purpose] The purpose of the resource. Possible values include:
-  GlobalAddressArgs({
+  const GlobalAddressArgs({
     this.address,
     this.addressType,
     this.description,

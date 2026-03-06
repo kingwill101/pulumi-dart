@@ -12,7 +12,7 @@ class InstanceAccessControlAttributesAttribute {
   /// Creates a new [InstanceAccessControlAttributesAttribute].
   /// [key] The name of the attribute associated with your identities in your identity source. This is used to map a specified attribute in your identity source with an attribute in AWS SSO.
   /// [values] The value used for mapping a specified attribute to an identity source. See AccessControlAttributeValue
-  InstanceAccessControlAttributesAttribute({
+  const InstanceAccessControlAttributesAttribute({
     required this.key,
     required this.values,
   });

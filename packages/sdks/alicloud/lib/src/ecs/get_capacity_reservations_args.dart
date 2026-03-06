@@ -38,7 +38,7 @@ class GetCapacityReservationsArgs {
   /// [resourceGroupId] The resource group id.
   /// [status] The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
   /// [tags] The tag of the resource.
-  GetCapacityReservationsArgs({
+  const GetCapacityReservationsArgs({
     this.capacityReservationIds,
     this.ids,
     this.instanceType,

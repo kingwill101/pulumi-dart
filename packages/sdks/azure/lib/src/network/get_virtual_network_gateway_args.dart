@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayArgs {
   /// Creates a new [GetVirtualNetworkGatewayArgs].
   /// [name] Specifies the name of the Virtual Network Gateway.
   /// [resourceGroupName] Specifies the name of the resource group the Virtual Network Gateway is located in.
-  GetVirtualNetworkGatewayArgs({
+  const GetVirtualNetworkGatewayArgs({
     required this.name,
     required this.resourceGroupName,
   });

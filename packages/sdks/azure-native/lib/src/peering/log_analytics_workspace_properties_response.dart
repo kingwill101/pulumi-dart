@@ -15,7 +15,7 @@ class LogAnalyticsWorkspacePropertiesResponse {
   /// [connectedAgents] The list of connected agents.
   /// [key] The Workspace Key.
   /// [workspaceID] The Workspace ID.
-  LogAnalyticsWorkspacePropertiesResponse({
+  const LogAnalyticsWorkspacePropertiesResponse({
     required this.connectedAgents,
     required this.key,
     required this.workspaceID,

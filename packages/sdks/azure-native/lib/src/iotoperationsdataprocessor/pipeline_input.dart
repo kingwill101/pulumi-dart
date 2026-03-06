@@ -15,7 +15,7 @@ class PipelineInput {
   /// [description] Description for stage.
   /// [next] Next stage in the pipeline.
   /// [type] ARM resource type.
-  PipelineInput({
+  const PipelineInput({
     this.description,
     required this.next,
     required this.type,

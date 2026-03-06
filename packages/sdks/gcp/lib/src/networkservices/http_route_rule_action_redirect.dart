@@ -26,7 +26,7 @@ class HttpRouteRuleActionRedirect {
   /// [prefixRewrite] Indicates that during redirection, the matched prefix (or path) should be swapped with this value.
   /// [responseCode] The HTTP Status code to use for the redirect.
   /// [stripQuery] If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request.
-  HttpRouteRuleActionRedirect({
+  const HttpRouteRuleActionRedirect({
     this.hostRedirect,
     this.httpsRedirect,
     this.pathRedirect,

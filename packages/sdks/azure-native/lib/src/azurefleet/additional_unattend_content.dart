@@ -26,7 +26,7 @@ class AdditionalUnattendContent {
   /// [content] Specifies the XML formatted content that is added to the unattend.xml file for
   /// [passName] The pass name. Currently, the only allowable value is OobeSystem.
   /// [settingName] Specifies the name of the setting to which the content applies. Possible values
-  AdditionalUnattendContent({
+  const AdditionalUnattendContent({
     this.componentName,
     this.content,
     this.passName,

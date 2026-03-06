@@ -9,7 +9,7 @@ class FileSourceInfoResponse {
 
   /// Creates a new [FileSourceInfoResponse].
   /// [shareId] File share ID.
-  FileSourceInfoResponse({
+  const FileSourceInfoResponse({
     required this.shareId,
   });
 

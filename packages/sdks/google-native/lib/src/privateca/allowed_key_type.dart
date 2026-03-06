@@ -14,7 +14,7 @@ class AllowedKeyType {
   /// Creates a new [AllowedKeyType].
   /// [ellipticCurve] Represents an allowed Elliptic Curve key type.
   /// [rsa] Represents an allowed RSA key type.
-  AllowedKeyType({
+  const AllowedKeyType({
     this.ellipticCurve,
     this.rsa,
   });

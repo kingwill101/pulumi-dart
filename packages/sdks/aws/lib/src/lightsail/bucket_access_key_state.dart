@@ -24,7 +24,7 @@ class BucketAccessKeyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretAccessKey] Secret access key used to sign requests. This attribute is not available for imported resources. Note that this will be written to the state file.
   /// [status] Status of the access key.
-  BucketAccessKeyState({
+  const BucketAccessKeyState({
     this.accessKeyId,
     this.bucketName,
     this.createdAt,

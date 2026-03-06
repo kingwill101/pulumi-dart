@@ -39,7 +39,7 @@ class MirroringDeploymentArgs {
   /// [mirroringDeploymentGroup] The deployment group that this deployment is a part of, for example:
   /// [mirroringDeploymentId] The ID to use for the new deployment, which will become the final
   /// [project] The ID of the project in which the resource belongs.
-  MirroringDeploymentArgs({
+  const MirroringDeploymentArgs({
     this.description,
     required this.forwardingRule,
     this.labels,

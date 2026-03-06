@@ -36,7 +36,7 @@ class GetCaCertificateResult {
   /// [provisioningState] Provisioning state of the CA Certificate resource.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetCaCertificateResult({
+  const GetCaCertificateResult({
     required this.azureApiVersion,
     this.description,
     this.encodedCertificate,

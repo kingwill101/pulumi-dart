@@ -31,7 +31,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   /// [organization] Numerical ID of the parent organization.
-  ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs({
+  const ManagementOrganizationSecurityHealthAnalyticsCustomModuleArgs({
     this.customConfig,
     this.displayName,
     this.enablementState,

@@ -11,7 +11,7 @@ class GetBucketReplicationConfigurationRuleSourceSelectionCriteria {
   /// Creates a new [GetBucketReplicationConfigurationRuleSourceSelectionCriteria].
   /// [replicaModifications] Required.
   /// [sseKmsEncryptedObjects] Required.
-  GetBucketReplicationConfigurationRuleSourceSelectionCriteria({
+  const GetBucketReplicationConfigurationRuleSourceSelectionCriteria({
     required this.replicaModifications,
     required this.sseKmsEncryptedObjects,
   });

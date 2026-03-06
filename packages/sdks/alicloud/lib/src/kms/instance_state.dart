@@ -85,7 +85,7 @@ class InstanceState {
   /// [vpcNum] The number of managed accesses. The maximum number of VPCs that can access this KMS instance. The attribute is valid when the attribute `payment_type` is `Subscription`.
   /// [vswitchIds] Instance bind vswitches
   /// [zoneIds] zone id
-  InstanceState({
+  const InstanceState({
     this.bindVpcs,
     this.caCertificateChainPem,
     this.createTime,

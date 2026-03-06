@@ -18,7 +18,7 @@ class SbomReferenceIntotoPredicateContaineranalysisV1alpha1 {
   /// [location] The location of the SBOM.
   /// [mimeType] The mime type of the SBOM.
   /// [referrerId] The person or system referring this predicate to the consumer.
-  SbomReferenceIntotoPredicateContaineranalysisV1alpha1({
+  const SbomReferenceIntotoPredicateContaineranalysisV1alpha1({
     this.digest,
     this.location,
     this.mimeType,

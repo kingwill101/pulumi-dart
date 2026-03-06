@@ -11,7 +11,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest].
   /// [authCode] The code provided by the connector when it has been authenticated via the connected app.
   /// [redirectUri] The URL to which the authentication server redirects the browser after authorization has been granted.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnectorOauth2OauthRequest({
     this.authCode,
     this.redirectUri,
   });

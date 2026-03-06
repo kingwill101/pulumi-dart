@@ -15,7 +15,7 @@ class ElasticPoolPerDatabaseSettings {
   /// [autoPauseDelay] Auto Pause Delay for per database within pool
   /// [maxCapacity] The maximum capacity any one database can consume.
   /// [minCapacity] The minimum capacity all databases are guaranteed.
-  ElasticPoolPerDatabaseSettings({
+  const ElasticPoolPerDatabaseSettings({
     this.autoPauseDelay,
     this.maxCapacity,
     this.minCapacity,

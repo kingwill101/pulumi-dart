@@ -22,7 +22,7 @@ class AclConfigArgs {
   /// [idpConfig] Identity provider config.
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
-  AclConfigArgs({
+  const AclConfigArgs({
     this.idpConfig,
     required this.location,
     this.project,

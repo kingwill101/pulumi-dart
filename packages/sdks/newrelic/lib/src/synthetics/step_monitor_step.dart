@@ -14,7 +14,7 @@ class StepMonitorStep {
   /// [ordinal] The position of the step within the script ranging from 0-100.
   /// [type] Name of the tag key. Valid values are `ASSERT_ELEMENT`, `ASSERT_MODAL`, `ASSERT_TEXT`, `ASSERT_TITLE`, `CLICK_ELEMENT`, `DISMISS_MODAL`, `DOUBLE_CLICK_ELEMENT`, `HOVER_ELEMENT`, `NAVIGATE`, `SECURE_TEXT_ENTRY`, `SELECT_ELEMENT`, `TEXT_ENTRY`.
   /// [values] The metadata values related to the step.
-  StepMonitorStep({
+  const StepMonitorStep({
     required this.ordinal,
     required this.type,
     this.values,

@@ -24,7 +24,7 @@ class DataConnectorAwsS3Args {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this AWS S3 Data Connector resides in. Changing this forces a new AWS S3 Data Connector to be created.
   /// [name] The name which should be used for this AWS S3 Data Connector. Changing this forces a new AWS S3 Data Connector to be created.
   /// [sqsUrls] Specifies a list of AWS SQS urls for the AWS S3 Data Connector.
-  DataConnectorAwsS3Args({
+  const DataConnectorAwsS3Args({
     required this.awsRoleArn,
     required this.destinationTable,
     required this.logAnalyticsWorkspaceId,

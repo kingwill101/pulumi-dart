@@ -44,7 +44,7 @@ class VirtualMachineScaleSetIPConfigurationProperties {
   /// [privateIPAddressVersion] Available from Api-Version 2017-03-30 onwards, it represents whether the
   /// [publicIPAddressConfiguration] The publicIPAddressConfiguration.
   /// [subnet] Specifies the identifier of the subnet.
-  VirtualMachineScaleSetIPConfigurationProperties({
+  const VirtualMachineScaleSetIPConfigurationProperties({
     this.applicationGatewayBackendAddressPools,
     this.applicationSecurityGroups,
     this.loadBalancerBackendAddressPools,

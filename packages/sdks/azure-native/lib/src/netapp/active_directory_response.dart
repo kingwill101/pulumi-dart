@@ -76,7 +76,7 @@ class ActiveDirectoryResponse {
   /// [status] Status of the Active Directory
   /// [statusDetails] Any details in regards to the Status of the Active Directory
   /// [username] A domain user account with permission to create machine accounts
-  ActiveDirectoryResponse({
+  const ActiveDirectoryResponse({
     this.activeDirectoryId,
     this.adName,
     this.administrators,

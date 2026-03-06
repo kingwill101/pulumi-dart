@@ -9,7 +9,7 @@ class IapTestServiceAccountInfo {
 
   /// Creates a new [IapTestServiceAccountInfo].
   /// [targetAudienceClientId] Describes OAuth2 client id of resources protected by Identity-Aware-Proxy (IAP).
-  IapTestServiceAccountInfo({
+  const IapTestServiceAccountInfo({
     required this.targetAudienceClientId,
   });
 

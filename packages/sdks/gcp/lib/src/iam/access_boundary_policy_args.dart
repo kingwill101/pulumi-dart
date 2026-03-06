@@ -23,7 +23,7 @@ class AccessBoundaryPolicyArgs {
   /// [name] The name of the policy.
   /// [parent] The attachment point is identified by its URL-encoded full resource name.
   /// [rules] Rules to be applied.
-  AccessBoundaryPolicyArgs({
+  const AccessBoundaryPolicyArgs({
     this.displayName,
     this.name,
     required this.parent,

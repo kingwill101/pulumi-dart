@@ -22,7 +22,7 @@ class AwsEuSovereignLinkAccountState {
   /// [arn] The Amazon Resource Name (ARN) of the IAM role.
   /// [metricCollectionMode] How metrics will be collected. Use `PUSH` for metric stream, `PULL` for API polling of the 3 services not supported by metric streams (Billing, CloudTrail and X-Ray), or `BOTH` for both methods. Defaults to `PUSH`, if not specified in the configuration.
   /// [name] The name/identifier of the AWS EU Sovereign - New Relic 'linked' account.
-  AwsEuSovereignLinkAccountState({
+  const AwsEuSovereignLinkAccountState({
     this.accountId,
     this.arn,
     this.metricCollectionMode,

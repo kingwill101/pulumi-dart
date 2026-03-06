@@ -12,7 +12,7 @@ class GetListenersListenerDefaultAction {
   /// Creates a new [GetListenersListenerDefaultAction].
   /// [forwardGroupConfigs] The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
   /// [type] Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
-  GetListenersListenerDefaultAction({
+  const GetListenersListenerDefaultAction({
     required this.forwardGroupConfigs,
     required this.type,
   });

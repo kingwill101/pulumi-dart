@@ -14,7 +14,7 @@ class GetLaunchTemplateBlockDeviceMapping {
   /// [ebs] Required.
   /// [noDevice] Required.
   /// [virtualName] Required.
-  GetLaunchTemplateBlockDeviceMapping({
+  const GetLaunchTemplateBlockDeviceMapping({
     required this.deviceName,
     required this.ebs,
     required this.noDevice,

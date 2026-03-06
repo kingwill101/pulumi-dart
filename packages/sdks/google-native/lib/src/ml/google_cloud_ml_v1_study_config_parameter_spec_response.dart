@@ -43,7 +43,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecResponse {
   /// [parentIntValues] Required.
   /// [scaleType] How the parameter should be scaled. Leave unset for categorical parameters.
   /// [type] The type of the parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecResponse({
+  const GoogleCloudMlV1StudyConfigParameterSpecResponse({
     required this.categoricalValueSpec,
     required this.childParameterSpecs,
     required this.discreteValueSpec,

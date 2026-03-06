@@ -39,7 +39,7 @@ class GetNotificationChannelResult {
   /// [type] Optional.
   /// [userLabels] User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field.
   /// [verificationStatus] Indicates whether this channel has been verified or not.
-  GetNotificationChannelResult({
+  const GetNotificationChannelResult({
     required this.description,
     this.displayName,
     required this.enabled,

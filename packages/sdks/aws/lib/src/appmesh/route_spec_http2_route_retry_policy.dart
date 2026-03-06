@@ -21,7 +21,7 @@ class RouteSpecHttp2RouteRetryPolicy {
   /// [maxRetries] Maximum number of retries.
   /// [perRetryTimeout] Per-retry timeout.
   /// [tcpRetryEvents] List of TCP retry events. The only valid value is `connection-error`.
-  RouteSpecHttp2RouteRetryPolicy({
+  const RouteSpecHttp2RouteRetryPolicy({
     this.httpRetryEvents,
     required this.maxRetries,
     required this.perRetryTimeout,

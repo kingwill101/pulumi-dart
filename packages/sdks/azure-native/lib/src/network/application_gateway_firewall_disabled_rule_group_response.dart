@@ -12,7 +12,7 @@ class ApplicationGatewayFirewallDisabledRuleGroupResponse {
   /// Creates a new [ApplicationGatewayFirewallDisabledRuleGroupResponse].
   /// [ruleGroupName] The name of the rule group that will be disabled.
   /// [rules] The list of rules that will be disabled. If null, all rules of the rule group will be disabled.
-  ApplicationGatewayFirewallDisabledRuleGroupResponse({
+  const ApplicationGatewayFirewallDisabledRuleGroupResponse({
     required this.ruleGroupName,
     this.rules,
   });

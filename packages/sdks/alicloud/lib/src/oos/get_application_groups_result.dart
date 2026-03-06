@@ -24,7 +24,7 @@ class GetApplicationGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetApplicationGroupsResult({
+  const GetApplicationGroupsResult({
     required this.applicationName,
     this.deployRegionId,
     required this.groups,

@@ -25,7 +25,7 @@ class Ec2SubnetArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Ec2SubnetArgs({
+  const Ec2SubnetArgs({
     this.location,
     this.name,
     this.properties,

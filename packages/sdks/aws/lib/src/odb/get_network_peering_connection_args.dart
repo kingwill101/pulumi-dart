@@ -17,7 +17,7 @@ class GetNetworkPeeringConnectionArgs {
   /// Creates a new [GetNetworkPeeringConnectionArgs].
   /// [id] The unique identifier of the ODB network peering connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNetworkPeeringConnectionArgs({
+  const GetNetworkPeeringConnectionArgs({
     required this.id,
     this.region,
   });

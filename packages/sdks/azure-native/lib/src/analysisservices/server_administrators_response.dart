@@ -9,7 +9,7 @@ class ServerAdministratorsResponse {
 
   /// Creates a new [ServerAdministratorsResponse].
   /// [members] An array of administrator user identities.
-  ServerAdministratorsResponse({
+  const ServerAdministratorsResponse({
     this.members,
   });
 

@@ -120,7 +120,7 @@ class WindowsWebAppSiteConfig {
   /// [websocketsEnabled] Should Web Sockets be enabled. Defaults to `false`.
   /// [windowsFxVersion] Optional.
   /// [workerCount] The number of Workers for this Windows App Service.
-  WindowsWebAppSiteConfig({
+  const WindowsWebAppSiteConfig({
     this.alwaysOn,
     this.apiDefinitionUrl,
     this.apiManagementApiId,

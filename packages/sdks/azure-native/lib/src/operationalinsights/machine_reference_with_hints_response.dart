@@ -25,7 +25,7 @@ class MachineReferenceWithHintsResponse {
   /// [name] Resource name.
   /// [osFamilyHint] Last known operating system family.
   /// [type] Resource type qualifier.
-  MachineReferenceWithHintsResponse({
+  const MachineReferenceWithHintsResponse({
     required this.displayNameHint,
     required this.id,
     required this.kind,

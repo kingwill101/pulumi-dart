@@ -14,7 +14,7 @@ class DomainCpuTuneIoThreadSched {
   /// [ioThreads] Specifies the number of IO threads to schedule, influencing concurrent IO operations for the domain's workloads.
   /// [priority] Sets the priority for IO thread scheduling, affecting their processing precedence relative to other tasks.
   /// [scheduler] Configures the specific scheduler type for IO threads, impacting how resources are allocated and handled.
-  DomainCpuTuneIoThreadSched({
+  const DomainCpuTuneIoThreadSched({
     required this.ioThreads,
     this.priority,
     this.scheduler,

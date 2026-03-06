@@ -16,7 +16,7 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSetting {
   /// [autoscaledRolloutPolicies] Autoscaled rollout policy for blue-green upgrade.
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   /// [standardRolloutPolicies] Standard rollout policy is the default policy for blue-green.
-  GetClusterNodePoolUpgradeSettingBlueGreenSetting({
+  const GetClusterNodePoolUpgradeSettingBlueGreenSetting({
     required this.autoscaledRolloutPolicies,
     required this.nodePoolSoakDuration,
     required this.standardRolloutPolicies,

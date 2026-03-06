@@ -21,7 +21,7 @@ class DaprMetadataResponse {
   /// [required] The value indicating whether the metadata is required or not
   /// [secretRef] The secret name where dapr could get value
   /// [value] Metadata property value.
-  DaprMetadataResponse({
+  const DaprMetadataResponse({
     this.description,
     this.name,
     this.required,

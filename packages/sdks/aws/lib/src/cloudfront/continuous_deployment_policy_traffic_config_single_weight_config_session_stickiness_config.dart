@@ -11,7 +11,7 @@ class ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickiness
   /// Creates a new [ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig].
   /// [idleTtl] The amount of time in seconds after which sessions will cease if no requests are received. Valid values are `300` - `3600` (5–60 minutes). The value must be less than or equal to `maximum_ttl`.
   /// [maximumTtl] The maximum amount of time in seconds to consider requests from the viewer as being part of the same session. Valid values are `300` - `3600` (5–60 minutes). The value must be greater than or equal to `idle_ttl`.
-  ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig({
+  const ContinuousDeploymentPolicyTrafficConfigSingleWeightConfigSessionStickinessConfig({
     required this.idleTtl,
     required this.maximumTtl,
   });

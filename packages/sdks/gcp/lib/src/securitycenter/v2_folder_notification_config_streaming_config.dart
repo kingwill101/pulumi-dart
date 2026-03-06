@@ -26,7 +26,7 @@ class V2FolderNotificationConfigStreamingConfig {
 
   /// Creates a new [V2FolderNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  V2FolderNotificationConfigStreamingConfig({
+  const V2FolderNotificationConfigStreamingConfig({
     required this.filter,
   });
 

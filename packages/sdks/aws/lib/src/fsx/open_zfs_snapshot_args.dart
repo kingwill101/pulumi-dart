@@ -21,7 +21,7 @@ class OpenZfsSnapshotArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the file system. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level. If you have set `copy_tags_to_backups` to true, and you specify one or more tags, no existing file system tags are copied from the file system to the backup.
   /// [volumeId] The ID of the volume to snapshot. This can be the root volume or a child volume.
-  OpenZfsSnapshotArgs({
+  const OpenZfsSnapshotArgs({
     this.name,
     this.region,
     this.tags,

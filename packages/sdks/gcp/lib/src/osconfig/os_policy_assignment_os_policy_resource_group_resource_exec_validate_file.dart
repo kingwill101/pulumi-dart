@@ -23,7 +23,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile {
   /// [gcs] A Cloud Storage object. Structure is
   /// [localPath] A local path within the VM to use.
   /// [remote] A generic remote file. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile({
     this.allowInsecure,
     this.gcs,
     this.localPath,

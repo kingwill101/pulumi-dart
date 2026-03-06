@@ -20,7 +20,7 @@ class GetBucketsBucket {
   /// [name] The name of the bucket.
   /// [selfLink] A url reference to the bucket.
   /// [storageClass] The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket.
-  GetBucketsBucket({
+  const GetBucketsBucket({
     required this.labels,
     required this.location,
     required this.name,

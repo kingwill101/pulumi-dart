@@ -15,7 +15,7 @@ class AwsIamMFADevicePropertiesResponse {
   /// [enableDate] &lt;p&gt;The date when the MFA device was enabled for the user.&lt;/p&gt;
   /// [serialNumber] &lt;p&gt;The serial number that uniquely identifies the MFA device. For virtual MFA devices, the serial number is the device ARN.&lt;/p&gt;
   /// [userName] &lt;p&gt;The user with whom the MFA device is associated.&lt;/p&gt;
-  AwsIamMFADevicePropertiesResponse({
+  const AwsIamMFADevicePropertiesResponse({
     this.enableDate,
     this.serialNumber,
     this.userName,

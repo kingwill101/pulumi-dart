@@ -25,7 +25,7 @@ class ConfigTemplateArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConfigTemplateArgs({
+  const ConfigTemplateArgs({
     this.configTemplateName,
     this.location,
     this.properties,

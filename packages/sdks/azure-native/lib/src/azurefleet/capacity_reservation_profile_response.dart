@@ -13,7 +13,7 @@ class CapacityReservationProfileResponse {
 
   /// Creates a new [CapacityReservationProfileResponse].
   /// [capacityReservationGroup] Specifies the capacity reservation group resource id that should be used for
-  CapacityReservationProfileResponse({
+  const CapacityReservationProfileResponse({
     this.capacityReservationGroup,
   });
 

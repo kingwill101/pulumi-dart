@@ -16,7 +16,7 @@ class ServerlessEndpoint {
   /// [authMode] [Required] Specifies the authentication mode for the Serverless endpoint.
   /// [contentSafety] Specifies the content safety options. If omitted, the default content safety settings will be configured
   /// [modelSettings] The model settings (model id) for the model being serviced on the ServerlessEndpoint.
-  ServerlessEndpoint({
+  const ServerlessEndpoint({
     required this.authMode,
     this.contentSafety,
     this.modelSettings,

@@ -12,7 +12,7 @@ class DomainDevicesDiskDriverIoThreadsIoThread {
   /// Creates a new [DomainDevicesDiskDriverIoThreadsIoThread].
   /// [id] Specifies the identifier for the I/O thread configuration.
   /// [queues] Sets the queues for the I/O thread to manage I/O requests.
-  DomainDevicesDiskDriverIoThreadsIoThread({
+  const DomainDevicesDiskDriverIoThreadsIoThread({
     this.id,
     this.queues,
   });

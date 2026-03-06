@@ -11,7 +11,7 @@ class ConfigurationFeatureTimewindowFilter {
   /// Creates a new [ConfigurationFeatureTimewindowFilter].
   /// [end] The latest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
   /// [start] The earliest timestamp the feature is enabled. The timestamp must be in RFC3339 format.
-  ConfigurationFeatureTimewindowFilter({
+  const ConfigurationFeatureTimewindowFilter({
     this.end,
     this.start,
   });

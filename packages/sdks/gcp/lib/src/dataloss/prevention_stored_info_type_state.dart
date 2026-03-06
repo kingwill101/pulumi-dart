@@ -42,7 +42,7 @@ class PreventionStoredInfoTypeState {
   /// [parent] The parent of the info type in any of the following formats:
   /// [regex] Regular expression which defines the rule.
   /// [storedInfoTypeId] The storedInfoType ID can contain uppercase and lowercase letters, numbers, and hyphens;
-  PreventionStoredInfoTypeState({
+  const PreventionStoredInfoTypeState({
     this.description,
     this.dictionary,
     this.displayName,

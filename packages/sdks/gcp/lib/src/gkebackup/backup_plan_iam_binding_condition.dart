@@ -11,7 +11,7 @@ class BackupPlanIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  BackupPlanIamBindingCondition({
+  const BackupPlanIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

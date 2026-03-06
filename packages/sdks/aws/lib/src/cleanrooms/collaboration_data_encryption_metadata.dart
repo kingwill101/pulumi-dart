@@ -17,7 +17,7 @@ class CollaborationDataEncryptionMetadata {
   /// [allowDuplicates] Whether Fingerprint columns can contain duplicate entries. This is a boolean field.
   /// [allowJoinsOnColumnsWithDifferentNames] Whether Fingerprint columns can be joined on any other Fingerprint column with a different name. This is a boolean field.
   /// [preserveNulls] Whether NULL values are to be copied as NULL to encrypted tables (true) or cryptographically processed (false).
-  CollaborationDataEncryptionMetadata({
+  const CollaborationDataEncryptionMetadata({
     required this.allowClearText,
     required this.allowDuplicates,
     required this.allowJoinsOnColumnsWithDifferentNames,

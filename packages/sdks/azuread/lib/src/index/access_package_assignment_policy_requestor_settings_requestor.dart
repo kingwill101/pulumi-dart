@@ -14,7 +14,7 @@ class AccessPackageAssignmentPolicyRequestorSettingsRequestor {
   /// [backup] For a user in an approval stage, this property indicates whether the user is a backup fallback approver
   /// [objectId] The object ID of the subject
   /// [subjectType] Type of users
-  AccessPackageAssignmentPolicyRequestorSettingsRequestor({
+  const AccessPackageAssignmentPolicyRequestorSettingsRequestor({
     this.backup,
     this.objectId,
     required this.subjectType,

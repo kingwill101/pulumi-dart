@@ -88,7 +88,7 @@ class GetDatabaseClusterResult {
   /// [urn] The uniform resource name of the database cluster.
   /// [user] Username for the cluster's default user.
   /// [version] Engine version used by the cluster (ex. `11` for PostgreSQL 11).
-  GetDatabaseClusterResult({
+  const GetDatabaseClusterResult({
     required this.database,
     required this.engine,
     required this.host,

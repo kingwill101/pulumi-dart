@@ -20,7 +20,7 @@ class ManagementPolicyRuleActionsVersion {
   /// [deleteAfterDaysSinceCreation] The age in days after creation to delete the blob version. Must be between `0` and `99999`. Defaults to `-1`.
   /// [tierToArchiveAfterDaysSinceLastTierChangeGreaterThan] The age in days after last tier change to the blobs to skip to be archived. Must be between `0` and `99999`. Defaults to `-1`.
   /// [tierToColdAfterDaysSinceCreationGreaterThan] The age in days after creation to cold storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  ManagementPolicyRuleActionsVersion({
+  const ManagementPolicyRuleActionsVersion({
     this.changeTierToArchiveAfterDaysSinceCreation,
     this.changeTierToCoolAfterDaysSinceCreation,
     this.deleteAfterDaysSinceCreation,

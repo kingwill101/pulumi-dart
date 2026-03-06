@@ -19,7 +19,7 @@ class ListenerRuleMatchHttpMatch {
   /// [headerMatches] The header matches.
   /// [method] The HTTP method type.
   /// [pathMatch] The path match.
-  ListenerRuleMatchHttpMatch({
+  const ListenerRuleMatchHttpMatch({
     this.headerMatches,
     this.method,
     this.pathMatch,

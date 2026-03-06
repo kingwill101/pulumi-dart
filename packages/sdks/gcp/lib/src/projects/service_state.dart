@@ -26,7 +26,7 @@ class ServiceState {
   /// [disableOnDestroy] Optional.
   /// [project] The project ID. If not provided, the provider project
   /// [service] The service to enable.
-  ServiceState({
+  const ServiceState({
     this.checkIfServiceHasUsageOnDestroy,
     this.disableDependentServices,
     this.disableOnDestroy,

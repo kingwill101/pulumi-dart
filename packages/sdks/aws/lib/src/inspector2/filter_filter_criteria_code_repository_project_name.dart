@@ -11,7 +11,7 @@ class FilterFilterCriteriaCodeRepositoryProjectName {
   /// Creates a new [FilterFilterCriteriaCodeRepositoryProjectName].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaCodeRepositoryProjectName({
+  const FilterFilterCriteriaCodeRepositoryProjectName({
     required this.comparison,
     required this.value,
   });

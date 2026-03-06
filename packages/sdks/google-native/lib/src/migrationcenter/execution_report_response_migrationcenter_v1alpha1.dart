@@ -20,7 +20,7 @@ class ExecutionReportResponseMigrationcenterV1alpha1 {
   /// [framesReported] Total number of asset frames reported for the import job.
   /// [jobErrors] List of job-level errors. Deprecated, use the job errors under execution_errors instead.
   /// [totalRowsCount] Total number of rows in the import job.
-  ExecutionReportResponseMigrationcenterV1alpha1({
+  const ExecutionReportResponseMigrationcenterV1alpha1({
     required this.executionErrors,
     required this.framesReported,
     required this.jobErrors,

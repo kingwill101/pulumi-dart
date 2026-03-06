@@ -21,7 +21,7 @@ class LifecyclePolicy {
   /// [transitionToArchive] The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
   /// [transitionToIA] The number of days after files were last accessed in primary storage (the Standard storage class) at which to move them to Infrequent Access (IA) storage. Metadata operations such as listing the contents of a directory don't count as file access events.
   /// [transitionToPrimaryStorageClass] Whether to move files back to primary (Standard) storage after they are accessed in IA or Archive storage. Metadata operations such as listing the contents of a directory don't count as file access events.
-  LifecyclePolicy({
+  const LifecyclePolicy({
     this.lifecyclePolicyText,
     this.registryId,
     this.transitionToArchive,

@@ -12,7 +12,7 @@ class PortResponse {
   /// Creates a new [PortResponse].
   /// [port] The port number.
   /// [protocol] The protocol associated with the port.
-  PortResponse({
+  const PortResponse({
     required this.port,
     this.protocol,
   });

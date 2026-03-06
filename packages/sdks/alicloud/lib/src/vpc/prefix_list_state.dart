@@ -44,7 +44,7 @@ class PrefixListState {
   /// [shareType] The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
   /// [status] Resource attribute fields that represent the status of the resource.
   /// [tags] The tags of PrefixList.
-  PrefixListState({
+  const PrefixListState({
     this.createTime,
     this.entrys,
     this.ipVersion,

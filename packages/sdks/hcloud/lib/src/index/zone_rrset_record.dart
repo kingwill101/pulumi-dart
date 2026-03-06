@@ -11,7 +11,7 @@ class ZoneRrsetRecord {
   /// Creates a new [ZoneRrsetRecord].
   /// [comment] Comment of the record.
   /// [value] Value of the record.
-  ZoneRrsetRecord({
+  const ZoneRrsetRecord({
     this.comment,
     required this.value,
   });

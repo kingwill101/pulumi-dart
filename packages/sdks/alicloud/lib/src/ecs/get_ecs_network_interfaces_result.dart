@@ -60,7 +60,7 @@ class GetEcsNetworkInterfacesResult {
   /// [type] The type of the ENI.
   /// [vpcId] The Vpc Id.
   /// [vswitchId] The vswitch id.
-  GetEcsNetworkInterfacesResult({
+  const GetEcsNetworkInterfacesResult({
     required this.id,
     required this.ids,
     this.instanceId,

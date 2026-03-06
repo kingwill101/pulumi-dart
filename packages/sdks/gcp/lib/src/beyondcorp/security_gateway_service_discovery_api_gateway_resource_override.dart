@@ -8,7 +8,7 @@ class SecurityGatewayServiceDiscoveryApiGatewayResourceOverride {
 
   /// Creates a new [SecurityGatewayServiceDiscoveryApiGatewayResourceOverride].
   /// [path] Contains uri path fragment where HTTP request is sent.
-  SecurityGatewayServiceDiscoveryApiGatewayResourceOverride({
+  const SecurityGatewayServiceDiscoveryApiGatewayResourceOverride({
     this.path,
   });
 

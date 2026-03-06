@@ -154,7 +154,7 @@ class DatabaseInstanceState {
   /// [serverCaCerts] Optional.
   /// [serviceAccountEmailAddress] The service account email address assigned to the
   /// [settings] The settings to use for the database. The
-  DatabaseInstanceState({
+  const DatabaseInstanceState({
     this.availableMaintenanceVersions,
     this.backupdrBackup,
     this.clone,

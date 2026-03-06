@@ -18,7 +18,7 @@ class GetTemplateSpecVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [templateSpecName] Name of the Template Spec.
   /// [templateSpecVersion] The version of the Template Spec.
-  GetTemplateSpecVersionArgs({
+  const GetTemplateSpecVersionArgs({
     required this.resourceGroupName,
     required this.templateSpecName,
     required this.templateSpecVersion,

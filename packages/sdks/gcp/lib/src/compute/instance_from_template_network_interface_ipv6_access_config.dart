@@ -24,7 +24,7 @@ class InstanceFromTemplateNetworkInterfaceIpv6AccessConfig {
   /// [networkTier] The service-level to be provided for IPv6 traffic when the subnet has an external subnet. Only PREMIUM tier is valid for IPv6
   /// [publicPtrDomainName] The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
   /// [securityPolicy] A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
-  InstanceFromTemplateNetworkInterfaceIpv6AccessConfig({
+  const InstanceFromTemplateNetworkInterfaceIpv6AccessConfig({
     this.externalIpv6,
     this.externalIpv6PrefixLength,
     this.name,

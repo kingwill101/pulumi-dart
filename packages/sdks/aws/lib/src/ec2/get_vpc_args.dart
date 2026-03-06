@@ -40,7 +40,7 @@ class GetVpcArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] Current state of the desired VPC.
   /// [tags] Map of tags, each pair of which must exactly match
-  GetVpcArgs({
+  const GetVpcArgs({
     this.cidrBlock,
     this.default_,
     this.dhcpOptionsId,

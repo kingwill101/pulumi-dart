@@ -12,7 +12,7 @@ class StorageSettingsResponse {
   /// Creates a new [StorageSettingsResponse].
   /// [costPerGbPerMonth] Cost per gigabyte per month.
   /// [maintainanceCostPercentageToAcquisitionCost] Maintenance cost percentage.
-  StorageSettingsResponse({
+  const StorageSettingsResponse({
     required this.costPerGbPerMonth,
     required this.maintainanceCostPercentageToAcquisitionCost,
   });

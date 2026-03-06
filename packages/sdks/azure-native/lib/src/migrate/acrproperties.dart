@@ -18,7 +18,7 @@ class ACRProperties {
   /// [resourceGroup] Gets or sets the resource group of the resource.
   /// [subscriptionId] Gets or sets the subscription id of the resource.
   /// [tenantId] Gets or sets the tenant id.
-  ACRProperties({
+  const ACRProperties({
     this.registryName,
     this.resourceGroup,
     this.subscriptionId,

@@ -13,7 +13,7 @@ class Build {
   /// Creates a new [Build].
   /// [builderVersion] Immutable. Version of the builder which produced this build.
   /// [signature] Signature of the build in occurrences pointing to this build note containing build details.
-  Build({
+  const Build({
     required this.builderVersion,
     this.signature,
   });

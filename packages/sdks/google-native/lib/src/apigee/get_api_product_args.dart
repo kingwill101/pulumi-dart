@@ -13,7 +13,7 @@ class GetApiProductArgs {
   /// Creates a new [GetApiProductArgs].
   /// [apiproductId] Required.
   /// [organizationId] Required.
-  GetApiProductArgs({
+  const GetApiProductArgs({
     required this.apiproductId,
     required this.organizationId,
   });

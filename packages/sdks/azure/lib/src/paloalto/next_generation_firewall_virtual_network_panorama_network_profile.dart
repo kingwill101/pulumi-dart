@@ -22,7 +22,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile {
   /// [publicIpAddresses] Optional.
   /// [trustedAddressRanges] Specifies a list of trusted ranges to use for the Network.
   /// [vnetConfiguration] A `vnet_configuration` block as defined below.
-  NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile({
+  const NextGenerationFirewallVirtualNetworkPanoramaNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
     required this.publicIpAddressIds,

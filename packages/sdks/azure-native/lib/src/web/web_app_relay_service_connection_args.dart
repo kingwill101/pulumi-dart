@@ -32,7 +32,7 @@ class WebAppRelayServiceConnectionArgs {
   /// [resourceConnectionString] Optional.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [resourceType] Optional.
-  WebAppRelayServiceConnectionArgs({
+  const WebAppRelayServiceConnectionArgs({
     this.biztalkUri,
     this.entityConnectionString,
     this.entityName,

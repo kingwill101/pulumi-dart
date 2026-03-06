@@ -21,7 +21,7 @@ class ExportDeliveryDestination {
   /// [rootFolderPath] The name of the directory where exports will be uploaded.
   /// [sasToken] A SAS token for the storage account. For a restricted set of Azure customers this together with storageAccount can be specified instead of resourceId. Note: the value returned by the API for this property will always be obfuscated. Returning this same obfuscated value will not result in the SAS token being updated. To update this value a new SAS token must be specified.
   /// [storageAccount] The storage account where exports will be uploaded. For a restricted set of Azure customers this together with sasToken can be specified instead of resourceId.
-  ExportDeliveryDestination({
+  const ExportDeliveryDestination({
     required this.container,
     this.resourceId,
     this.rootFolderPath,

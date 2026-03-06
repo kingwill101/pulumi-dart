@@ -9,7 +9,7 @@ class KeyPolicyResponse {
 
   /// Creates a new [KeyPolicyResponse].
   /// [keyExpirationPeriodInDays] The key expiration period in days.
-  KeyPolicyResponse({
+  const KeyPolicyResponse({
     required this.keyExpirationPeriodInDays,
   });
 

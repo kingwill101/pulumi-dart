@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply].
   /// [postbackData] Opaque payload that the Dialogflow receives in a user event when the user taps the suggested reply. This data will be also forwarded to webhook to allow performing custom business logic.
   /// [text] Suggested reply text.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply({
     this.postbackData,
     this.text,
   });

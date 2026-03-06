@@ -17,7 +17,7 @@ class DomainDevicesInterfacePortForwardRange {
   /// [exclude] Identifies any excluded ports from the forwarding range.
   /// [start] Sets the starting port number for the forwarding range.
   /// [to] Specifies the target port to which traffic is forwarded.
-  DomainDevicesInterfacePortForwardRange({
+  const DomainDevicesInterfacePortForwardRange({
     this.end,
     this.exclude,
     required this.start,

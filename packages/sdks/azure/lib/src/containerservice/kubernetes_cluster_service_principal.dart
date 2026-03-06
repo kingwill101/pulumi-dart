@@ -11,7 +11,7 @@ class KubernetesClusterServicePrincipal {
   /// Creates a new [KubernetesClusterServicePrincipal].
   /// [clientId] The Client ID for the Service Principal.
   /// [clientSecret] The Client Secret for the Service Principal.
-  KubernetesClusterServicePrincipal({
+  const KubernetesClusterServicePrincipal({
     required this.clientId,
     required this.clientSecret,
   });

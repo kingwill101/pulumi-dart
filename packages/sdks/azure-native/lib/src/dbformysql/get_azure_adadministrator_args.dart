@@ -18,7 +18,7 @@ class GetAzureADAdministratorArgs {
   /// [administratorName] The name of the Azure AD Administrator.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetAzureADAdministratorArgs({
+  const GetAzureADAdministratorArgs({
     required this.administratorName,
     required this.resourceGroupName,
     required this.serverName,

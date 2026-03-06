@@ -12,7 +12,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionVia {
   /// Creates a new [GetCoreNetworkPolicyDocumentSegmentActionVia].
   /// [networkFunctionGroups] A list of strings. The network function group to use for the service insertion action.
   /// [withEdgeOverrides] Any edge overrides and the preferred edge to use.
-  GetCoreNetworkPolicyDocumentSegmentActionVia({
+  const GetCoreNetworkPolicyDocumentSegmentActionVia({
     this.networkFunctionGroups,
     this.withEdgeOverrides,
   });

@@ -127,7 +127,7 @@ class MetastoreServiceState {
   /// [tier] The tier of the service.
   /// [uid] The globally unique resource identifier of the metastore service.
   /// [updateTime] Output only. The time when the metastore service was last updated.
-  MetastoreServiceState({
+  const MetastoreServiceState({
     this.artifactGcsUri,
     this.createTime,
     this.databaseType,

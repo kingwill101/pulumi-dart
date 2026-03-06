@@ -13,7 +13,7 @@ class BlobInventoryPolicyState {
   /// Creates a new [BlobInventoryPolicyState].
   /// [rules] One or more `rules` blocks as defined below.
   /// [storageAccountId] The ID of the storage account to apply this Blob Inventory Policy to. Changing this forces a new Storage Blob Inventory Policy to be created.
-  BlobInventoryPolicyState({
+  const BlobInventoryPolicyState({
     this.rules,
     this.storageAccountId,
   });

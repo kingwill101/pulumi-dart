@@ -11,7 +11,7 @@ class KafkaClusterExtension {
   /// Creates a new [KafkaClusterExtension].
   /// [logAnalyticsWorkspaceId] The workspace ID of the log analytics extension.
   /// [primaryKey] The workspace key of the log analytics extension.
-  KafkaClusterExtension({
+  const KafkaClusterExtension({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

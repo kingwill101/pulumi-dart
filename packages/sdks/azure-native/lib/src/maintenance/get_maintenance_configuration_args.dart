@@ -15,7 +15,7 @@ class GetMaintenanceConfigurationArgs {
   /// Creates a new [GetMaintenanceConfigurationArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the MaintenanceConfiguration
-  GetMaintenanceConfigurationArgs({
+  const GetMaintenanceConfigurationArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

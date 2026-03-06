@@ -12,7 +12,7 @@ class UserPropertyResponse {
   /// Creates a new [UserPropertyResponse].
   /// [name] User property name.
   /// [value] User property value. Type: string (or Expression with resultType string).
-  UserPropertyResponse({
+  const UserPropertyResponse({
     required this.name,
     required this.value,
   });

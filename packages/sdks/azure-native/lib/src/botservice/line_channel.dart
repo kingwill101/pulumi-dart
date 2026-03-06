@@ -20,7 +20,7 @@ class LineChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to line channel resource
-  LineChannel({
+  const LineChannel({
     required this.channelName,
     this.etag,
     this.location,

@@ -11,7 +11,7 @@ class TaskDefinitionDevice {
   /// [containerPath] Optional.
   /// [hostPath] Optional.
   /// [permissions] Optional.
-  TaskDefinitionDevice({
+  const TaskDefinitionDevice({
     this.containerPath,
     this.hostPath,
     this.permissions,

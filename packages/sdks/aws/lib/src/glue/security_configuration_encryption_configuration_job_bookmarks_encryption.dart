@@ -11,7 +11,7 @@ class SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption {
   /// Creates a new [SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption].
   /// [jobBookmarksEncryptionMode] Encryption mode to use for job bookmarks data. Valid values: `CSE-KMS`, `DISABLED`. Default value: `DISABLED`.
   /// [kmsKeyArn] Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-  SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption({
+  const SecurityConfigurationEncryptionConfigurationJobBookmarksEncryption({
     this.jobBookmarksEncryptionMode,
     this.kmsKeyArn,
   });

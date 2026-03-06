@@ -15,7 +15,7 @@ class GetReplayArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [replayId] Required.
-  GetReplayArgs({
+  const GetReplayArgs({
     required this.location,
     this.project,
     required this.replayId,

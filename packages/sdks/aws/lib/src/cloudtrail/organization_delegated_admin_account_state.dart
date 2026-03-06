@@ -21,7 +21,7 @@ class OrganizationDelegatedAdminAccountState {
   /// [email] The email address that is associated with the delegated administrator's AWS account.
   /// [name] The friendly name of the delegated administrator's account.
   /// [servicePrincipal] The AWS CloudTrail service principal name.
-  OrganizationDelegatedAdminAccountState({
+  const OrganizationDelegatedAdminAccountState({
     this.accountId,
     this.arn,
     this.email,

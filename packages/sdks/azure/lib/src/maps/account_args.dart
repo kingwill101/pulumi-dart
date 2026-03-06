@@ -41,7 +41,7 @@ class AccountArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Azure Maps Account should exist. Changing this forces a new resource to be created.
   /// [skuName] The SKU of the Azure Maps Account. Possible values are `S0`, `S1` and `G2`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Azure Maps Account.
-  AccountArgs({
+  const AccountArgs({
     this.cors,
     this.dataStores,
     this.identity,

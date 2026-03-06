@@ -9,7 +9,7 @@ class FsxOpenZfsFileSystemProtocol {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocol].
   /// [nfs] Represents the Network File System (NFS) protocol that DataSync uses to access your FSx for OpenZFS file system. See below.
-  FsxOpenZfsFileSystemProtocol({
+  const FsxOpenZfsFileSystemProtocol({
     required this.nfs,
   });
 

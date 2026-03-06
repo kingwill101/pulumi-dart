@@ -31,7 +31,7 @@ class GetEc2NetworkAclResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEc2NetworkAclResult({
+  const GetEc2NetworkAclResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -11,7 +11,7 @@ class SpringCloudAppPersistentDisk {
   /// Creates a new [SpringCloudAppPersistentDisk].
   /// [mountPath] Specifies the mount path of the persistent disk. Defaults to `/persistent`.
   /// [sizeInGb] Specifies the size of the persistent disk in GB. Possible values are between `0` and `50`.
-  SpringCloudAppPersistentDisk({
+  const SpringCloudAppPersistentDisk({
     this.mountPath,
     required this.sizeInGb,
   });

@@ -15,7 +15,7 @@ class GetEntitlementArgs {
   /// [accountId] Required.
   /// [customerId] Required.
   /// [entitlementId] Required.
-  GetEntitlementArgs({
+  const GetEntitlementArgs({
     required this.accountId,
     required this.customerId,
     required this.entitlementId,

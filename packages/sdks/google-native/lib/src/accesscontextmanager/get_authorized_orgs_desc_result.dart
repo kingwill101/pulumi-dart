@@ -20,7 +20,7 @@ class GetAuthorizedOrgsDescResult {
   /// [authorizationType] A granular control type for authorization levels. Valid value is `AUTHORIZATION_TYPE_TRUST`.
   /// [name] Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`.
   /// [orgs] The list of organization ids in this AuthorizedOrgsDesc. Format: `organizations/` Example: `organizations/123456`
-  GetAuthorizedOrgsDescResult({
+  const GetAuthorizedOrgsDescResult({
     required this.assetType,
     required this.authorizationDirection,
     required this.authorizationType,

@@ -12,7 +12,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementF
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchCookiesMatchPattern({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

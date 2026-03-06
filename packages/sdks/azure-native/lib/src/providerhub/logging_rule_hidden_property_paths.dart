@@ -12,7 +12,7 @@ class LoggingRuleHiddenPropertyPaths {
   /// Creates a new [LoggingRuleHiddenPropertyPaths].
   /// [hiddenPathsOnRequest] The hidden paths on request.
   /// [hiddenPathsOnResponse] The hidden paths on response.
-  LoggingRuleHiddenPropertyPaths({
+  const LoggingRuleHiddenPropertyPaths({
     this.hiddenPathsOnRequest,
     this.hiddenPathsOnResponse,
   });

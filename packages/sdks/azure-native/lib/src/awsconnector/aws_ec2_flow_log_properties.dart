@@ -47,7 +47,7 @@ class AwsEc2FlowLogProperties {
   /// [resourceType] The type of resource for which to create the flow log. For example, if you specified a VPC ID for the ResourceId property, specify VPC for this property.
   /// [tags] The tags to apply to the flow logs.
   /// [trafficType] The type of traffic to log. You can log traffic that the resource accepts or rejects, or all traffic.
-  AwsEc2FlowLogProperties({
+  const AwsEc2FlowLogProperties({
     this.deliverCrossAccountRole,
     this.deliverLogsPermissionArn,
     this.destinationOptions,

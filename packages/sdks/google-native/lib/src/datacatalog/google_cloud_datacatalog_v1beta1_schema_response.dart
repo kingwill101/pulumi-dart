@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1beta1SchemaResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1beta1SchemaResponse].
   /// [columns] Schema of columns. A maximum of 10,000 columns and sub-columns can be specified.
-  GoogleCloudDatacatalogV1beta1SchemaResponse({
+  const GoogleCloudDatacatalogV1beta1SchemaResponse({
     required this.columns,
   });
 

@@ -9,7 +9,7 @@ class ElasticBackupVaultPropertiesResponse {
 
   /// Creates a new [ElasticBackupVaultPropertiesResponse].
   /// [provisioningState] Azure lifecycle management.
-  ElasticBackupVaultPropertiesResponse({
+  const ElasticBackupVaultPropertiesResponse({
     required this.provisioningState,
   });
 

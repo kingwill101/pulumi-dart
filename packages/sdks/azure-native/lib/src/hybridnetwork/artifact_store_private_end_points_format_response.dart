@@ -10,7 +10,7 @@ class ArtifactStorePrivateEndPointsFormatResponse {
 
   /// Creates a new [ArtifactStorePrivateEndPointsFormatResponse].
   /// [manualPrivateEndPointConnections] list of private endpoints.
-  ArtifactStorePrivateEndPointsFormatResponse({
+  const ArtifactStorePrivateEndPointsFormatResponse({
     this.manualPrivateEndPointConnections,
   });
 

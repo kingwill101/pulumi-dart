@@ -13,7 +13,7 @@ class ContainerVersioningLegacy {
   /// Creates a new [ContainerVersioningLegacy].
   /// [location] Container in which versions will be stored.
   /// [type] Versioning type which can be `versions` or `history`
-  ContainerVersioningLegacy({
+  const ContainerVersioningLegacy({
     required this.location,
     required this.type,
   });

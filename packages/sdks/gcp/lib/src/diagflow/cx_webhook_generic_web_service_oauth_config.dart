@@ -26,7 +26,7 @@ class CxWebhookGenericWebServiceOauthConfig {
   /// [scopes] The OAuth scopes to grant.
   /// [secretVersionForClientSecret] The name of the SecretManager secret version resource storing the
   /// [tokenEndpoint] The token endpoint provided by the 3rd party platform to exchange an
-  CxWebhookGenericWebServiceOauthConfig({
+  const CxWebhookGenericWebServiceOauthConfig({
     required this.clientId,
     this.clientSecret,
     this.scopes,

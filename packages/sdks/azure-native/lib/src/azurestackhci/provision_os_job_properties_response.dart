@@ -40,7 +40,7 @@ class ProvisionOsJobPropertiesResponse {
   /// [reportedProperties] Reported Properties for Provision Os job
   /// [startTimeUtc] The UTC date and time at which the job started.
   /// [status] Status of Edge device job.
-  ProvisionOsJobPropertiesResponse({
+  const ProvisionOsJobPropertiesResponse({
     this.deploymentMode,
     required this.endTimeUtc,
     required this.error,

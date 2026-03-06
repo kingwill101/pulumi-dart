@@ -12,7 +12,7 @@ class RuntimeVirtualMachineVirtualMachineConfigContainerImage {
   /// Creates a new [RuntimeVirtualMachineVirtualMachineConfigContainerImage].
   /// [repository] The path to the container image repository.
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  RuntimeVirtualMachineVirtualMachineConfigContainerImage({
+  const RuntimeVirtualMachineVirtualMachineConfigContainerImage({
     required this.repository,
     this.tag,
   });

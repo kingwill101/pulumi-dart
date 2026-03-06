@@ -18,7 +18,7 @@ class GetEncryptionScopeArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [encryptionScopeName] The name of the encryptionScope associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEncryptionScopeArgs({
+  const GetEncryptionScopeArgs({
     required this.accountName,
     required this.encryptionScopeName,
     required this.resourceGroupName,

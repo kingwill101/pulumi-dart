@@ -38,7 +38,7 @@ class GetVirtualMachineScaleSetInstance {
   /// [publicIpAddresses] A list of the Public IP Addresses assigned to this Virtual Machine.
   /// [virtualMachineId] The unique ID of the virtual machine.
   /// [zone] The zones of the virtual machine.
-  GetVirtualMachineScaleSetInstance({
+  const GetVirtualMachineScaleSetInstance({
     required this.computerName,
     required this.instanceId,
     required this.latestModelApplied,

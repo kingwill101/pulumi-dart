@@ -15,7 +15,7 @@ class GetCommunicationsGatewayArgs {
   /// Creates a new [GetCommunicationsGatewayArgs].
   /// [communicationsGatewayName] Unique identifier for this deployment
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCommunicationsGatewayArgs({
+  const GetCommunicationsGatewayArgs({
     required this.communicationsGatewayName,
     required this.resourceGroupName,
   });

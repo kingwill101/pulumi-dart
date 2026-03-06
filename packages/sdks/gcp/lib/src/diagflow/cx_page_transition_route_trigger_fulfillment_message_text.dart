@@ -13,7 +13,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageText {
   /// Creates a new [CxPageTransitionRouteTriggerFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxPageTransitionRouteTriggerFulfillmentMessageText({
+  const CxPageTransitionRouteTriggerFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

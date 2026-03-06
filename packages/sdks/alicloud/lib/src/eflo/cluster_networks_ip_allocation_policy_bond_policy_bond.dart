@@ -11,7 +11,7 @@ class ClusterNetworksIpAllocationPolicyBondPolicyBond {
   /// Creates a new [ClusterNetworksIpAllocationPolicyBondPolicyBond].
   /// [name] The bond name
   /// [subnet] IP source cluster subnet
-  ClusterNetworksIpAllocationPolicyBondPolicyBond({
+  const ClusterNetworksIpAllocationPolicyBondPolicyBond({
     this.name,
     this.subnet,
   });

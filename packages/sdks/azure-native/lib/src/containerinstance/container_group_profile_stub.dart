@@ -25,7 +25,7 @@ class ContainerGroupProfileStub {
   /// [resource] A reference to the container group profile ARM resource hosted in ACI RP.
   /// [revision] The revision of the CG profile is an optional property. If customer does not to provide a revision then NGroups will pickup the latest revision of CGProfile.
   /// [storageProfile] Storage profile for storage related settings of a container group profile.
-  ContainerGroupProfileStub({
+  const ContainerGroupProfileStub({
     this.containerGroupProperties,
     this.networkProfile,
     this.resource,

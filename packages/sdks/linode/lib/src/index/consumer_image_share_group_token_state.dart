@@ -36,7 +36,7 @@ class ConsumerImageShareGroupTokenState {
   /// [tokenUuid] The UUID of the token.
   /// [updated] When the token was last updated.
   /// [validForSharegroupUuid] The UUID of the Image Share Group for which to create a token.
-  ConsumerImageShareGroupTokenState({
+  const ConsumerImageShareGroupTokenState({
     this.created,
     this.expiry,
     this.label,

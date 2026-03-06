@@ -15,7 +15,7 @@ class PartnerInfoResponse {
   /// [id] Resource identifier of the partner server.
   /// [location] Geo location of the partner server.
   /// [replicationRole] Replication role of the partner server.
-  PartnerInfoResponse({
+  const PartnerInfoResponse({
     required this.id,
     required this.location,
     required this.replicationRole,

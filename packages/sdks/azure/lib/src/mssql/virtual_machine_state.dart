@@ -61,7 +61,7 @@ class VirtualMachineState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualMachineId] The ID of the Virtual Machine. Changing this forces a new resource to be created.
   /// [wsfcDomainCredential] A `wsfc_domain_credential` block as defined below
-  VirtualMachineState({
+  const VirtualMachineState({
     this.assessment,
     this.autoBackup,
     this.autoPatching,

@@ -9,7 +9,7 @@ class GetBackendServiceDynamicForwarding {
 
   /// Creates a new [GetBackendServiceDynamicForwarding].
   /// [ipPortSelections] IP:PORT based dynamic forwarding configuration.
-  GetBackendServiceDynamicForwarding({
+  const GetBackendServiceDynamicForwarding({
     required this.ipPortSelections,
   });
 

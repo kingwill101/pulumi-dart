@@ -11,7 +11,7 @@ class GetAclsAcl {
   /// Creates a new [GetAclsAcl].
   /// [id] The ID of the ACL. For example "acl-xxx".
   /// [name] The name of the Acl.
-  GetAclsAcl({
+  const GetAclsAcl({
     required this.id,
     required this.name,
   });

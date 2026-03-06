@@ -11,7 +11,7 @@ class ServiceTaskSpecContainerSpecMountVolumeOptionsLabel {
   /// Creates a new [ServiceTaskSpecContainerSpecMountVolumeOptionsLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  ServiceTaskSpecContainerSpecMountVolumeOptionsLabel({
+  const ServiceTaskSpecContainerSpecMountVolumeOptionsLabel({
     required this.label,
     required this.value,
   });

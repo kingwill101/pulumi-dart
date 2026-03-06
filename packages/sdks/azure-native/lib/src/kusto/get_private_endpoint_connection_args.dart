@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [clusterName] The name of the Kusto cluster.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.clusterName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

@@ -29,7 +29,7 @@ class ConditionalAccessPolicyState {
   /// [objectId] The object ID of the policy
   /// [sessionControls] A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
   /// [state] Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-  ConditionalAccessPolicyState({
+  const ConditionalAccessPolicyState({
     this.conditions,
     this.displayName,
     this.grantControls,

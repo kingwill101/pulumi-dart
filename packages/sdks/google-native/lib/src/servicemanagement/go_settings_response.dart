@@ -10,7 +10,7 @@ class GoSettingsResponse {
 
   /// Creates a new [GoSettingsResponse].
   /// [common] Some settings.
-  GoSettingsResponse({
+  const GoSettingsResponse({
     required this.common,
   });
 

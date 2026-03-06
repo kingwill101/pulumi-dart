@@ -22,7 +22,7 @@ class GoogleCloudDataplexV1TaskTriggerSpec {
   /// [schedule] Optional. Cron schedule (https://en.wikipedia.org/wiki/Cron) for running tasks periodically. To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database. For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *. This field is required for RECURRING tasks.
   /// [startTime] Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING.
   /// [type] Immutable. Trigger type of the user-specified Task.
-  GoogleCloudDataplexV1TaskTriggerSpec({
+  const GoogleCloudDataplexV1TaskTriggerSpec({
     this.disabled,
     this.maxRetries,
     this.schedule,

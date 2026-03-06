@@ -23,7 +23,7 @@ class UserPermissionPermission {
   /// [roleName] The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
   /// [roleType] The role type. Valid Value: `custom`.
   /// [serviceMeshId] The service mesh id.
-  UserPermissionPermission({
+  const UserPermissionPermission({
     this.isCustom,
     this.isRamRole,
     this.roleName,

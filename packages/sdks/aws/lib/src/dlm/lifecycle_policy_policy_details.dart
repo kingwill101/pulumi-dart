@@ -55,7 +55,7 @@ class LifecyclePolicyPolicyDetails {
   /// [retainInterval] Specifies how long the policy should retain snapshots or AMIs before deleting them. valid values range from `2` to `14`. Default value is `7`.
   /// [schedules] See the `schedule` configuration block.
   /// [targetTags] A map of tag keys and their values. Any resources that match the `resource_types` and are tagged with _any_ of these tags will be targeted. Required when `policy_type` is `EBS_SNAPSHOT_MANAGEMENT` or `IMAGE_MANAGEMENT`. Must not be specified when `policy_type` is `EVENT_BASED_POLICY`.
-  LifecyclePolicyPolicyDetails({
+  const LifecyclePolicyPolicyDetails({
     this.action,
     this.copyTags,
     this.createInterval,

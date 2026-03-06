@@ -162,7 +162,7 @@ class GetManagedClusterResult {
   /// [useCustomVnet] For new clusters, this parameter indicates that it uses Bring your own VNet, but the subnet is specified at node type level; and for such clusters, the subnetId property is required for node types.
   /// [zonalResiliency] Indicates if the cluster has zone resiliency.
   /// [zonalUpdateMode] Indicates the update mode for Cross Az clusters.
-  GetManagedClusterResult({
+  const GetManagedClusterResult({
     this.addonFeatures,
     this.adminPassword,
     required this.adminUserName,

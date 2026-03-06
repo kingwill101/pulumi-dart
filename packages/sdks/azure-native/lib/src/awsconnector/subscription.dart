@@ -12,7 +12,7 @@ class Subscription {
   /// Creates a new [Subscription].
   /// [endpoint] The endpoint that receives notifications from the SNS topic. The endpoint value depends on the protocol that you specify. For more information, see the ``Endpoint`` parameter of the ``Subscribe`` action in the *API Reference*.
   /// [protocol] The subscription's protocol. For more information, see the ``Protocol`` parameter of the ``Subscribe`` action in the *API Reference*.
-  Subscription({
+  const Subscription({
     this.endpoint,
     this.protocol,
   });

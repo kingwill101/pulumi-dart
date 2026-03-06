@@ -24,7 +24,7 @@ class ConnectorMappingFormatResponse {
   /// [formatType] The type mapping format.
   /// [quoteCharacter] Quote character, used to indicate enquoted fields.
   /// [quoteEscapeCharacter] Escape character for quotes, can be the same as the quoteCharacter.
-  ConnectorMappingFormatResponse({
+  const ConnectorMappingFormatResponse({
     this.acceptLanguage,
     this.arraySeparator,
     this.columnDelimiter,

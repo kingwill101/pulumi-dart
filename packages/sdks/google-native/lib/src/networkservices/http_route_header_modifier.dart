@@ -15,7 +15,7 @@ class HttpRouteHeaderModifier {
   /// [add] Add the headers with given map where key is the name of the header, value is the value of the header.
   /// [remove] Remove headers (matching by header names) specified in the list.
   /// [set] Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-  HttpRouteHeaderModifier({
+  const HttpRouteHeaderModifier({
     this.add,
     this.remove,
     this.set,

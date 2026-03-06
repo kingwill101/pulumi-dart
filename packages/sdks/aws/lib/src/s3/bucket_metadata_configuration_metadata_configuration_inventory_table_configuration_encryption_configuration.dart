@@ -11,7 +11,7 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration].
   /// [kmsKeyArn] KMS key ARN when `sse_algorithm` is `aws:kms`.
   /// [sseAlgorithm] Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
-  BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration({
+  const BucketMetadataConfigurationMetadataConfigurationInventoryTableConfigurationEncryptionConfiguration({
     this.kmsKeyArn,
     required this.sseAlgorithm,
   });

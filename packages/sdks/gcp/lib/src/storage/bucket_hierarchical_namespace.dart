@@ -8,7 +8,7 @@ class BucketHierarchicalNamespace {
 
   /// Creates a new [BucketHierarchicalNamespace].
   /// [enabled] Enables hierarchical namespace for the bucket.
-  BucketHierarchicalNamespace({
+  const BucketHierarchicalNamespace({
     required this.enabled,
   });
 

@@ -75,7 +75,7 @@ class CxFlowState {
   /// [parent] The agent to create a flow for.
   /// [transitionRouteGroups] A flow's transition route group serve two purposes:
   /// [transitionRoutes] A flow's transition routes serve two purposes:
-  CxFlowState({
+  const CxFlowState({
     this.advancedSettings,
     this.description,
     this.displayName,

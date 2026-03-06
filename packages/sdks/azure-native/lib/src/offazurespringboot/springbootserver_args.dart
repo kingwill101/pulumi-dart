@@ -22,7 +22,7 @@ class SpringbootserverArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The springbootsites name.
   /// [springbootserversName] The springbootservers name.
-  SpringbootserverArgs({
+  const SpringbootserverArgs({
     this.properties,
     required this.resourceGroupName,
     required this.siteName,

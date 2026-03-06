@@ -9,7 +9,7 @@ class TagState {
 
   /// Creates a new [TagState].
   /// [tagName] The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
-  TagState({
+  const TagState({
     this.tagName,
   });
 

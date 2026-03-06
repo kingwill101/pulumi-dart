@@ -43,7 +43,7 @@ class KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse {
   /// [timeInterval] Time Interval
   /// [topics] Kafka topics list
   /// [topicsDir] Kafka topics directory
-  KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse({
+  const KafkaAzureSynapseAnalyticsSinkConnectorInfoResponse({
     this.apiKey,
     this.apiSecret,
     this.authType,

@@ -8,7 +8,7 @@ class DomainDevicesDiskBackingStoreSourceVhostUserDbus {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceVhostUserDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesDiskBackingStoreSourceVhostUserDbus({
+  const DomainDevicesDiskBackingStoreSourceVhostUserDbus({
     this.channel,
   });
 

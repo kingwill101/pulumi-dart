@@ -10,7 +10,7 @@ class CmekConfigSingleRegionKey {
 
   /// Creates a new [CmekConfigSingleRegionKey].
   /// [kmsKey] Single-regional kms key resource name which will be used to encrypt
-  CmekConfigSingleRegionKey({
+  const CmekConfigSingleRegionKey({
     required this.kmsKey,
   });
 

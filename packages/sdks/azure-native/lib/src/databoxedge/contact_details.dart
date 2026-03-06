@@ -18,7 +18,7 @@ class ContactDetails {
   /// [contactPerson] The contact person name.
   /// [emailList] The email list.
   /// [phone] The phone number.
-  ContactDetails({
+  const ContactDetails({
     required this.companyName,
     required this.contactPerson,
     required this.emailList,

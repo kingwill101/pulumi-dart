@@ -23,7 +23,7 @@ class GetPricesPriceModuleDetail {
   /// [moduleName] Pricing Module Name.
   /// [originalCost] Original Price.
   /// [priceType] Price Type.
-  GetPricesPriceModuleDetail({
+  const GetPricesPriceModuleDetail({
     required this.costAfterDiscount,
     required this.invoiceDiscount,
     required this.moduleCode,

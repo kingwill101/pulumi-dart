@@ -16,7 +16,7 @@ class GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse {
   /// [snapshotDeidentifyTemplate] Snapshot of the state of the `DeidentifyTemplate` from the Deidentify action at the time this job was run.
   /// [snapshotImageRedactTemplate] Snapshot of the state of the image transformation `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
   /// [snapshotStructuredDeidentifyTemplate] Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run.
-  GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse({
+  const GooglePrivacyDlpV2RequestedDeidentifyOptionsResponse({
     required this.snapshotDeidentifyTemplate,
     required this.snapshotImageRedactTemplate,
     required this.snapshotStructuredDeidentifyTemplate,

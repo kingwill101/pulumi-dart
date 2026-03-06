@@ -11,7 +11,7 @@ class GetInternetGatewayAttachment {
   /// Creates a new [GetInternetGatewayAttachment].
   /// [state] Current state of the attachment between the gateway and the VPC. Present only if a VPC is attached
   /// [vpcId] ID of an attached VPC.
-  GetInternetGatewayAttachment({
+  const GetInternetGatewayAttachment({
     required this.state,
     required this.vpcId,
   });

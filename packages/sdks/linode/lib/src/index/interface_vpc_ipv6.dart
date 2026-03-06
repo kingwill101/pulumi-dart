@@ -24,7 +24,7 @@ class InterfaceVpcIpv6 {
   /// [isPublic] Indicates whether the IPv6 configuration profile interface is public. (Default `false`)
   /// [ranges] Defines additional IPv6 network ranges.
   /// [slaacs] Defines IPv6 SLAAC address ranges. An address is automatically generated from the assigned /64 prefix using the Linode’s MAC address, just like on public IPv6 interfaces. Router advertisements (RA) are sent to the Linode, so standard SLAAC configuration works without any changes.
-  InterfaceVpcIpv6({
+  const InterfaceVpcIpv6({
     this.assignedRanges,
     this.assignedSlaacs,
     this.isPublic,

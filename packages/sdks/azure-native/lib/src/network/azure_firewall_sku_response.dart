@@ -12,7 +12,7 @@ class AzureFirewallSkuResponse {
   /// Creates a new [AzureFirewallSkuResponse].
   /// [name] Name of an Azure Firewall SKU.
   /// [tier] Tier of an Azure Firewall.
-  AzureFirewallSkuResponse({
+  const AzureFirewallSkuResponse({
     this.name,
     this.tier,
   });

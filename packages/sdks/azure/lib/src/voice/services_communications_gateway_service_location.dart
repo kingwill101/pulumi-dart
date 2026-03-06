@@ -22,7 +22,7 @@ class ServicesCommunicationsGatewayServiceLocation {
   /// [esrpAddresses] IP address to use to contact the ESRP from this region.
   /// [location] Specifies the region in which the resources needed for Teams Calling will be deployed.
   /// [operatorAddresses] IP address to use to contact the operator network from this region.
-  ServicesCommunicationsGatewayServiceLocation({
+  const ServicesCommunicationsGatewayServiceLocation({
     this.allowedMediaSourceAddressPrefixes,
     this.allowedSignalingSourceAddressPrefixes,
     this.esrpAddresses,

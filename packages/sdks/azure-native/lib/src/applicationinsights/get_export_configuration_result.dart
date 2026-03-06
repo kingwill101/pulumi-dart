@@ -65,7 +65,7 @@ class GetExportConfigurationResult {
   /// [resourceGroup] The resource group of the Application Insights component.
   /// [storageName] The name of the destination storage account.
   /// [subscriptionId] The subscription of the Application Insights component.
-  GetExportConfigurationResult({
+  const GetExportConfigurationResult({
     required this.applicationName,
     required this.azureApiVersion,
     required this.containerName,

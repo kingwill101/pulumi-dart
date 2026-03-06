@@ -19,7 +19,7 @@ class DbLevelValidationStatusResponse {
   /// [endedOn] End time of a database level validation.
   /// [startedOn] Start time of a database level validation.
   /// [summary] Summary of database level validations.
-  DbLevelValidationStatusResponse({
+  const DbLevelValidationStatusResponse({
     this.databaseName,
     this.endedOn,
     this.startedOn,

@@ -31,7 +31,7 @@ class OutboundRule {
   /// [idleTimeoutInMinutes] The timeout for the TCP idle connection.
   /// [name] The name of the resource that is unique within the set of outbound rules used by the load balancer. This name can be used to access the resource.
   /// [protocol] The protocol for the outbound rule in load balancer.
-  OutboundRule({
+  const OutboundRule({
     this.allocatedOutboundPorts,
     required this.backendAddressPool,
     this.enableTcpReset,

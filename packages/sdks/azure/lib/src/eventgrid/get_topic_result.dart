@@ -25,7 +25,7 @@ class GetTopicResult {
   /// [resourceGroupName] Required.
   /// [secondaryAccessKey] The Secondary Shared Access Key associated with the EventGrid Topic.
   /// [tags] Required.
-  GetTopicResult({
+  const GetTopicResult({
     required this.endpoint,
     required this.id,
     required this.location,

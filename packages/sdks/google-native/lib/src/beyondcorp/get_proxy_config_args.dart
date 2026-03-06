@@ -15,7 +15,7 @@ class GetProxyConfigArgs {
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
   /// [proxyConfigId] Required.
-  GetProxyConfigArgs({
+  const GetProxyConfigArgs({
     required this.organizationId,
     required this.partnerTenantId,
     required this.proxyConfigId,

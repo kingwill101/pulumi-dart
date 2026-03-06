@@ -44,7 +44,7 @@ class GetTemplateSpecVersionResult {
   /// [tags] Resource tags.
   /// [type] Type of this resource.
   /// [uiFormDefinition] The Azure Resource Manager template UI definition content.
-  GetTemplateSpecVersionResult({
+  const GetTemplateSpecVersionResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

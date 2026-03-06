@@ -9,7 +9,7 @@ class WeeklyScheduleResponseOsconfigV1beta {
 
   /// Creates a new [WeeklyScheduleResponseOsconfigV1beta].
   /// [dayOfWeek] Day of the week.
-  WeeklyScheduleResponseOsconfigV1beta({
+  const WeeklyScheduleResponseOsconfigV1beta({
     required this.dayOfWeek,
   });
 

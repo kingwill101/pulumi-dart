@@ -9,7 +9,7 @@ class RuntimeResponseDotnet {
 
   /// Creates a new [RuntimeResponseDotnet].
   /// [autoConfigureDataProtection] Auto configure the ASP.NET Core Data Protection feature
-  RuntimeResponseDotnet({
+  const RuntimeResponseDotnet({
     this.autoConfigureDataProtection,
   });
 

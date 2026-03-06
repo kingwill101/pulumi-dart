@@ -33,7 +33,7 @@ class GetSecurityUserConfigurationResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetSecurityUserConfigurationResult({
+  const GetSecurityUserConfigurationResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

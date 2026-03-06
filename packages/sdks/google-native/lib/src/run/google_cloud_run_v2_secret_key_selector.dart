@@ -12,7 +12,7 @@ class GoogleCloudRunV2SecretKeySelector {
   /// Creates a new [GoogleCloudRunV2SecretKeySelector].
   /// [secret] The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
   /// [version] The Cloud Secret Manager secret version. Can be 'latest' for the latest version, an integer for a specific version, or a version alias.
-  GoogleCloudRunV2SecretKeySelector({
+  const GoogleCloudRunV2SecretKeySelector({
     required this.secret,
     this.version,
   });

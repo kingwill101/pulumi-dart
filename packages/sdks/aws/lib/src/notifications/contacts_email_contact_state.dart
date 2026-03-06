@@ -28,7 +28,7 @@ class ContactsEmailContactState {
   /// [name] Name of the email contact. Must be between 1 and 64 characters and can contain alphanumeric
   /// [tags] Map of tags to assign to the resource. If configured with a provider
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider
-  ContactsEmailContactState({
+  const ContactsEmailContactState({
     this.arn,
     this.emailAddress,
     this.name,

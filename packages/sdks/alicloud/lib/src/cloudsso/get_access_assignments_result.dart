@@ -26,7 +26,7 @@ class GetAccessAssignmentsResult {
   /// [principalType] Optional.
   /// [targetId] Optional.
   /// [targetType] Optional.
-  GetAccessAssignmentsResult({
+  const GetAccessAssignmentsResult({
     this.accessConfigurationId,
     required this.assignments,
     required this.directoryId,

@@ -19,7 +19,7 @@ class DeviceTaintSelectorPatch {
   /// [device] If device is set, only devices with that name are selected. This field corresponds to slice.spec.devices[].name.
   /// [driver] If driver is set, only devices from that driver are selected. This fields corresponds to slice.spec.driver.
   /// [pool] If pool is set, only devices in that pool are selected.
-  DeviceTaintSelectorPatch({
+  const DeviceTaintSelectorPatch({
     this.device,
     this.driver,
     this.pool,

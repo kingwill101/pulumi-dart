@@ -18,7 +18,7 @@ class GetVirtualNetworkGatewayAdvertisedRoutesArgs {
   /// [peer] The IP address of the peer.
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayAdvertisedRoutesArgs({
+  const GetVirtualNetworkGatewayAdvertisedRoutesArgs({
     required this.peer,
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,

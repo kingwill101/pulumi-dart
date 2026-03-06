@@ -15,7 +15,7 @@ class GroupArgs {
   /// Creates a new [GroupArgs].
   /// [groupId] GroupId.
   /// [groupName] GroupName.
-  GroupArgs({
+  const GroupArgs({
     this.groupId,
     this.groupName,
   });

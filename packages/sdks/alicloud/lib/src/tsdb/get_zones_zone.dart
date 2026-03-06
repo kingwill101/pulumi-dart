@@ -14,7 +14,7 @@ class GetZonesZone {
   /// [id] The ID of zone.
   /// [localName] The local name.
   /// [zoneId] The zone ID.
-  GetZonesZone({
+  const GetZonesZone({
     required this.id,
     required this.localName,
     required this.zoneId,

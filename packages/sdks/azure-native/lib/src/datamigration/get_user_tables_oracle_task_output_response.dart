@@ -17,7 +17,7 @@ class GetUserTablesOracleTaskOutputResponse {
   /// [schemaName] The schema this result is for
   /// [tables] List of valid tables found for this schema
   /// [validationErrors] Validation errors associated with the task
-  GetUserTablesOracleTaskOutputResponse({
+  const GetUserTablesOracleTaskOutputResponse({
     required this.schemaName,
     required this.tables,
     required this.validationErrors,

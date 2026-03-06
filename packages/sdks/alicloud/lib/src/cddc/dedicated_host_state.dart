@@ -54,7 +54,7 @@ class DedicatedHostState {
   /// [usedTime] The subscription duration of the host. Valid values:
   /// [vswitchId] The ID of the vSwitch to which the host is connected.
   /// [zoneId] The ID of the zone.
-  DedicatedHostState({
+  const DedicatedHostState({
     this.allocationStatus,
     this.autoRenew,
     this.dedicatedHostGroupId,

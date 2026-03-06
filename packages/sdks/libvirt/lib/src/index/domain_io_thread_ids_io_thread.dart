@@ -18,7 +18,7 @@ class DomainIoThreadIDsIoThread {
   /// [poll] Configures whether polling is enabled for a specific I/O thread.
   /// [poolMax] Configures the maximum number of I/O threads for the domain.
   /// [poolMin] Configures the minimum number of I/O threads for the domain.
-  DomainIoThreadIDsIoThread({
+  const DomainIoThreadIDsIoThread({
     this.id,
     this.poll,
     this.poolMax,

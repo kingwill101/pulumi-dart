@@ -12,7 +12,7 @@ class Endpoint {
   /// Creates a new [Endpoint].
   /// [endpoint] The endpoint URL
   /// [name] The name of the endpoint
-  Endpoint({
+  const Endpoint({
     this.endpoint,
     this.name,
   });

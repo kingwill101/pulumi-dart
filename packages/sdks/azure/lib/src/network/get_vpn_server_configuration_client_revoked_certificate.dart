@@ -11,7 +11,7 @@ class GetVpnServerConfigurationClientRevokedCertificate {
   /// Creates a new [GetVpnServerConfigurationClientRevokedCertificate].
   /// [name] The Name of the VPN Server Configuration.
   /// [thumbprint] The Thumbprint of the Certificate.
-  GetVpnServerConfigurationClientRevokedCertificate({
+  const GetVpnServerConfigurationClientRevokedCertificate({
     required this.name,
     required this.thumbprint,
   });

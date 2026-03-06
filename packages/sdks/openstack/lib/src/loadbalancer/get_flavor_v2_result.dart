@@ -25,7 +25,7 @@ class GetFlavorV2Result {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the flavor.
   /// [region] Required.
-  GetFlavorV2Result({
+  const GetFlavorV2Result({
     required this.description,
     required this.enabled,
     required this.flavorId,

@@ -28,7 +28,7 @@ class ArtifactStoreArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ArtifactStoreArgs({
+  const ArtifactStoreArgs({
     this.artifactStoreName,
     this.location,
     this.properties,

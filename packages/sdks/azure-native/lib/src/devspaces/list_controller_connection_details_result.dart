@@ -10,7 +10,7 @@ class ListControllerConnectionDetailsResult {
 
   /// Creates a new [ListControllerConnectionDetailsResult].
   /// [connectionDetailsList] List of Azure Dev Spaces Controller connection details.
-  ListControllerConnectionDetailsResult({
+  const ListControllerConnectionDetailsResult({
     this.connectionDetailsList,
   });
 

@@ -8,7 +8,7 @@ class GcpIntegrationsFireBaseStorage {
 
   /// Creates a new [GcpIntegrationsFireBaseStorage].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsFireBaseStorage({
+  const GcpIntegrationsFireBaseStorage({
     this.metricsPollingInterval,
   });
 

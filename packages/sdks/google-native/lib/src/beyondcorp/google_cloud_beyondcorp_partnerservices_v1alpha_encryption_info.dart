@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo {
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo].
   /// [encryptionSaEmail] Optional. Service Account for encryption key.
   /// [jwk] Optional. JWK in string.
-  GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaEncryptionInfo({
     this.encryptionSaEmail,
     this.jwk,
   });

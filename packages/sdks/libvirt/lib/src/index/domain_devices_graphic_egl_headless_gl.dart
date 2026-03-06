@@ -8,7 +8,7 @@ class DomainDevicesGraphicEglHeadlessGl {
 
   /// Creates a new [DomainDevicesGraphicEglHeadlessGl].
   /// [renderNode] Specifies the render node for the headless EGL graphics OpenGL settings.
-  DomainDevicesGraphicEglHeadlessGl({
+  const DomainDevicesGraphicEglHeadlessGl({
     this.renderNode,
   });
 

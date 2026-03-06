@@ -31,7 +31,7 @@ class GetSnapshotArgs {
   /// [restorableByUserIds] One or more AWS accounts IDs that can create volumes from the snapshot.
   /// [snapshotIds] Returns information on a specific snapshot_id.
   /// [tags] Map of tags for the resource.
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     this.filters,
     this.mostRecent,
     this.owners,

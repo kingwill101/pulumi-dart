@@ -34,7 +34,7 @@ class AScriptArgs {
   /// [listenerId] Listener ID of script attribution
   /// [position] Script execution location.
   /// [scriptContent] AScript script content.
-  AScriptArgs({
+  const AScriptArgs({
     required this.ascriptName,
     this.dryRun,
     this.enabled,

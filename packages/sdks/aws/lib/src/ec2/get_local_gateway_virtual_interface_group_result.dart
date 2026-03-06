@@ -20,7 +20,7 @@ class GetLocalGatewayVirtualInterfaceGroupResult {
   /// [localGatewayVirtualInterfaceIds] Set of EC2 Local Gateway Virtual Interface identifiers.
   /// [region] Required.
   /// [tags] Required.
-  GetLocalGatewayVirtualInterfaceGroupResult({
+  const GetLocalGatewayVirtualInterfaceGroupResult({
     this.filters,
     required this.id,
     required this.localGatewayId,

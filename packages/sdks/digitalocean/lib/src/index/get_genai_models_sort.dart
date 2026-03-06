@@ -9,7 +9,7 @@ class GetGenaiModelsSort {
   /// Creates a new [GetGenaiModelsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiModelsSort({
+  const GetGenaiModelsSort({
     this.direction,
     required this.key,
   });

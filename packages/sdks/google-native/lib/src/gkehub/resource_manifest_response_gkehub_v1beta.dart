@@ -12,7 +12,7 @@ class ResourceManifestResponseGkehubV1beta {
   /// Creates a new [ResourceManifestResponseGkehubV1beta].
   /// [clusterScoped] Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
   /// [manifest] YAML manifest of the resource.
-  ResourceManifestResponseGkehubV1beta({
+  const ResourceManifestResponseGkehubV1beta({
     required this.clusterScoped,
     required this.manifest,
   });

@@ -15,7 +15,7 @@ class NetworkAddress {
   /// [address] IPv4 address to be assigned to the server.
   /// [existingNetworkId] Name of the existing network to use.
   /// [networkId] Id of the network to use, within the same ProvisioningConfig request.
-  NetworkAddress({
+  const NetworkAddress({
     this.address,
     this.existingNetworkId,
     this.networkId,

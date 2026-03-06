@@ -22,7 +22,7 @@ class ApiArgs {
   /// [detectMd5hash] Optional.
   /// [name] The ID of the API proxy.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
-  ApiArgs({
+  const ApiArgs({
     required this.configBundle,
     this.detectMd5hash,
     this.name,

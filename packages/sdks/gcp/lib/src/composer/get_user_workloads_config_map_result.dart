@@ -20,7 +20,7 @@ class GetUserWorkloadsConfigMapResult {
   /// [name] Required.
   /// [project] Optional.
   /// [region] Optional.
-  GetUserWorkloadsConfigMapResult({
+  const GetUserWorkloadsConfigMapResult({
     required this.data,
     required this.environment,
     required this.id,

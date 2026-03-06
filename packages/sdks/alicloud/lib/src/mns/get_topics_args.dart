@@ -15,7 +15,7 @@ class GetTopicsArgs {
   /// Creates a new [GetTopicsArgs].
   /// [namePrefix] A string to filter resulting topics by their name prefixs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetTopicsArgs({
+  const GetTopicsArgs({
     this.namePrefix,
     this.outputFile,
   });

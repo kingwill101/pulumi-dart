@@ -130,7 +130,7 @@ class ClusterState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitEncryptionEnabled] Enable encryption in-transit. Supported with Memcached versions `1.6.12` and later, Valkey `7.2` and later, Redis OSS versions `3.2.6`, `4.0.10` and later, running in a VPC. See the [ElastiCache in-transit encryption documentation](https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/in-transit-encryption.html#in-transit-encryption-constraints) for more details.
-  ClusterState({
+  const ClusterState({
     this.applyImmediately,
     this.arn,
     this.autoMinorVersionUpgrade,

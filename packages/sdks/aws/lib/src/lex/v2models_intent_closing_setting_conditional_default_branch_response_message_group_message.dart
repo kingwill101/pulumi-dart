@@ -21,7 +21,7 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMe
   /// [imageResponseCard] Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
   /// [plainTextMessage] Configuration block for a message in plain text format. See `plain_text_message`.
   /// [ssmlMessage] Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
-  V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage({
+  const V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupMessage({
     this.customPayload,
     this.imageResponseCard,
     this.plainTextMessage,

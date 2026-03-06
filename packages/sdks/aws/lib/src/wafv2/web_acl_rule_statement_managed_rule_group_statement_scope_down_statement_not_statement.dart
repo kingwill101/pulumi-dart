@@ -9,7 +9,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement].
   /// [statements] The statements to combine.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementNotStatement({
     required this.statements,
   });
 

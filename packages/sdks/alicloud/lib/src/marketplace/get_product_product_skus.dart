@@ -19,7 +19,7 @@ class GetProductProductSkus {
   /// [packageVersions] The list of package version details of this product sku, Each element contains the following attributes:
   /// [skuCode] The sku code of this product sku.
   /// [skuName] The sku name of this product sku.
-  GetProductProductSkus({
+  const GetProductProductSkus({
     required this.images,
     required this.packageVersions,
     required this.skuCode,

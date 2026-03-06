@@ -21,7 +21,7 @@ class GetCatalogDevBoxDefinitionErrorDetailsArgs {
   /// [devBoxDefinitionName] The name of the Dev Box definition.
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCatalogDevBoxDefinitionErrorDetailsArgs({
+  const GetCatalogDevBoxDefinitionErrorDetailsArgs({
     required this.catalogName,
     required this.devBoxDefinitionName,
     required this.devCenterName,

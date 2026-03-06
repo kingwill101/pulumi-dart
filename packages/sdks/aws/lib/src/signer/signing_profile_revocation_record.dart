@@ -14,7 +14,7 @@ class SigningProfileRevocationRecord {
   /// [revocationEffectiveFrom] The time when revocation becomes effective.
   /// [revokedAt] The time when the signing profile was revoked.
   /// [revokedBy] The identity of the revoker.
-  SigningProfileRevocationRecord({
+  const SigningProfileRevocationRecord({
     this.revocationEffectiveFrom,
     this.revokedAt,
     this.revokedBy,

@@ -15,7 +15,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSet {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSet].
   /// [infoTypes] List of infoTypes this rule set is applied to.
   /// [rules] Set of rules to be applied to infoTypes. The rules are applied in order.
-  PreventionJobTriggerInspectJobInspectConfigRuleSet({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSet({
     this.infoTypes,
     required this.rules,
   });

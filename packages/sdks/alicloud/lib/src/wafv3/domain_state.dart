@@ -37,7 +37,7 @@ class DomainState {
   /// [resourceManagerResourceGroupId] The ID of the Alibaba Cloud resource group.
   /// [status] The status of the domain name.
   /// [tags] The tags. You can specify up to 20 tags.
-  DomainState({
+  const DomainState({
     this.accessType,
     this.cname,
     this.domain,

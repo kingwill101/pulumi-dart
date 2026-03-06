@@ -13,7 +13,7 @@ class SecretResponse {
   /// Creates a new [SecretResponse].
   /// [encryptedSecret] Encrypted (using device public key) secret value.
   /// [keyVaultId] Id of the Key-Vault where secret is stored (ex: secrets/AuthClientSecret/82ef4346187a4033a10d629cde07d740).
-  SecretResponse({
+  const SecretResponse({
     this.encryptedSecret,
     this.keyVaultId,
   });

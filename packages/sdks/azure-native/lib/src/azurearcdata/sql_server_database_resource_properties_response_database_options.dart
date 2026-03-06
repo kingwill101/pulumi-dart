@@ -22,7 +22,7 @@ class SqlServerDatabaseResourcePropertiesResponseDatabaseOptions {
   /// [isMemoryOptimizationEnabled] Optional.
   /// [isRemoteDataArchiveEnabled] Optional.
   /// [isTrustworthyOn] Optional.
-  SqlServerDatabaseResourcePropertiesResponseDatabaseOptions({
+  const SqlServerDatabaseResourcePropertiesResponseDatabaseOptions({
     this.isAutoCloseOn,
     this.isAutoCreateStatsOn,
     this.isAutoShrinkOn,

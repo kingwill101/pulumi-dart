@@ -22,7 +22,7 @@ class VirtualNetworkGatewayIPConfiguration {
   /// [privateIPAllocationMethod] The private IP address allocation method.
   /// [publicIPAddress] The reference to the public IP resource.
   /// [subnet] The reference to the subnet resource.
-  VirtualNetworkGatewayIPConfiguration({
+  const VirtualNetworkGatewayIPConfiguration({
     this.id,
     this.name,
     this.privateIPAllocationMethod,

@@ -12,7 +12,7 @@ class UserAssignedIdentityResponse {
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Client App Id associated with this identity.
   /// [principalId] Azure Active Directory principal ID associated with this Identity.
-  UserAssignedIdentityResponse({
+  const UserAssignedIdentityResponse({
     required this.clientId,
     required this.principalId,
   });

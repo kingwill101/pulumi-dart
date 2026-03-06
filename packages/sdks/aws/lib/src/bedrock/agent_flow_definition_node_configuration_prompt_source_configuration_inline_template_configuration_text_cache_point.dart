@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint].
   /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationTextCachePoint({
     required this.type,
   });
 

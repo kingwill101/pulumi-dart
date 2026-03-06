@@ -14,7 +14,7 @@ class BareMetalMachineDrainStatusResponse {
   /// Creates a new [BareMetalMachineDrainStatusResponse].
   /// [drainedMachines] The list of drained machines.
   /// [drainingMachines] The list of draning machines.
-  BareMetalMachineDrainStatusResponse({
+  const BareMetalMachineDrainStatusResponse({
     required this.drainedMachines,
     required this.drainingMachines,
   });

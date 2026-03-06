@@ -12,7 +12,7 @@ class RestrictedExportConfigAnalyticshubV1beta1 {
   /// Creates a new [RestrictedExportConfigAnalyticshubV1beta1].
   /// [enabled] Optional. If true, enable restricted export.
   /// [restrictQueryResult] Optional. If true, restrict export of query result derived from restricted linked dataset table.
-  RestrictedExportConfigAnalyticshubV1beta1({
+  const RestrictedExportConfigAnalyticshubV1beta1({
     this.enabled,
     this.restrictQueryResult,
   });

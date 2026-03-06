@@ -29,7 +29,7 @@ class GoogleCloudMlV1TrainingOutput {
   /// [isBuiltInAlgorithmJob] Whether this job is a built-in Algorithm job.
   /// [isHyperparameterTuningJob] Whether this job is a hyperparameter tuning job.
   /// [trials] Results for individual Hyperparameter trials. Only set for hyperparameter tuning jobs.
-  GoogleCloudMlV1TrainingOutput({
+  const GoogleCloudMlV1TrainingOutput({
     this.builtInAlgorithmOutput,
     this.completedTrialCount,
     this.consumedMLUnits,

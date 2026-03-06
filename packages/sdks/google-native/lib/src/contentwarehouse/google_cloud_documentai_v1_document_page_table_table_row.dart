@@ -10,7 +10,7 @@ class GoogleCloudDocumentaiV1DocumentPageTableTableRow {
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTableTableRow].
   /// [cells] Cells that make up this row.
-  GoogleCloudDocumentaiV1DocumentPageTableTableRow({
+  const GoogleCloudDocumentaiV1DocumentPageTableTableRow({
     this.cells,
   });
 

@@ -21,7 +21,7 @@ class SecretAttributesResponse {
   /// [expires] Expiry date in seconds since 1970-01-01T00:00:00Z.
   /// [notBefore] Not before date in seconds since 1970-01-01T00:00:00Z.
   /// [updated] Last updated time in seconds since 1970-01-01T00:00:00Z.
-  SecretAttributesResponse({
+  const SecretAttributesResponse({
     required this.created,
     this.enabled,
     this.expires,

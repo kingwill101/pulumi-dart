@@ -20,7 +20,7 @@ class InstanceConfigInterfaceIpv6 {
   /// [isPublic] If true, connections from the interface to IPv6 addresses outside the VPC, and connections from IPv6 addresses outside the VPC to the interface will be permitted. (Default: `false`)
   /// [ranges] A prefix to add to this interface, or `auto` for a new IPv6 prefix to be automatically allocated.
   /// [slaacs] An array of SLAAC prefixes to use for this interface.
-  InstanceConfigInterfaceIpv6({
+  const InstanceConfigInterfaceIpv6({
     this.isPublic,
     this.ranges,
     this.slaacs,

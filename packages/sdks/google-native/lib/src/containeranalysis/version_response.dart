@@ -24,7 +24,7 @@ class VersionResponse {
   /// [kind] Distinguishes between sentinel MIN/MAX versions and normal versions.
   /// [name] Required only when version kind is NORMAL. The main part of the version name.
   /// [revision] The iteration of the package build from the above version.
-  VersionResponse({
+  const VersionResponse({
     required this.epoch,
     required this.fullName,
     required this.inclusive,

@@ -15,7 +15,7 @@ class GetVendorSkusArgs {
   /// Creates a new [GetVendorSkusArgs].
   /// [skuName] The name of the sku.
   /// [vendorName] The name of the vendor.
-  GetVendorSkusArgs({
+  const GetVendorSkusArgs({
     required this.skuName,
     required this.vendorName,
   });

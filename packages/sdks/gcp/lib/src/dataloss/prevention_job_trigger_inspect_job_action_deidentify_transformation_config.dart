@@ -14,7 +14,7 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig {
   /// [deidentifyTemplate] If this template is specified, it will serve as the default de-identify template.
   /// [imageRedactTemplate] If this template is specified, it will serve as the de-identify template for images.
   /// [structuredDeidentifyTemplate] If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables.
-  PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig({
+  const PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig({
     this.deidentifyTemplate,
     this.imageRedactTemplate,
     this.structuredDeidentifyTemplate,

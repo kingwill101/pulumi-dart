@@ -11,7 +11,7 @@ class ReachabilityAnalysisRunProperties {
   /// Creates a new [ReachabilityAnalysisRunProperties].
   /// [description] Optional.
   /// [intentId] Id of the intent resource to run analysis on.
-  ReachabilityAnalysisRunProperties({
+  const ReachabilityAnalysisRunProperties({
     this.description,
     required this.intentId,
   });

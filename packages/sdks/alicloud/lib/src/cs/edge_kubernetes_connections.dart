@@ -17,7 +17,7 @@ class EdgeKubernetesConnections {
   /// [apiServerIntranet] API Server Intranet endpoint.
   /// [masterPublicIp] Master node SSH IP address.
   /// [serviceDomain] Service Access Domain.
-  EdgeKubernetesConnections({
+  const EdgeKubernetesConnections({
     this.apiServerInternet,
     this.apiServerIntranet,
     this.masterPublicIp,

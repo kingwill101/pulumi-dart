@@ -11,7 +11,7 @@ class GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError {
   /// Creates a new [GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError].
   /// [code] The status code, which should be an enum value of [google.rpc.Code].
   /// [message] A developer-facing error message.
-  GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError({
+  const GetBackupPlanAssociationsAssociationRulesConfigInfoLastBackupError({
     required this.code,
     required this.message,
   });

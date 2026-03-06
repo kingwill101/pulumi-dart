@@ -35,7 +35,7 @@ class QuotaV2Args {
   /// [zoneRecords] The maximum number of records in a zone.
   /// [zoneRecordsets] The maximum number of recordsets in a zone.
   /// [zones] The maximum number of zones that can be created.
-  QuotaV2Args({
+  const QuotaV2Args({
     this.apiExportSize,
     required this.projectId,
     this.recordsetRecords,

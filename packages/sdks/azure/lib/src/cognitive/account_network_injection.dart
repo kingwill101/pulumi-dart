@@ -13,7 +13,7 @@ class AccountNetworkInjection {
   /// Creates a new [AccountNetworkInjection].
   /// [scenario] Specifies what features network injection applies to. The only possible value is `agent`.
   /// [subnetId] The ID of the subnet which the Agent Client is injected into.
-  AccountNetworkInjection({
+  const AccountNetworkInjection({
     required this.scenario,
     required this.subnetId,
   });

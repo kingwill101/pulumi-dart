@@ -23,7 +23,7 @@ class ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod {
   /// [nodefsAvailable] Defines grace period for the nodefs.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   /// [nodefsInodesFree] Defines grace period for the nodefs.inodesFree soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
   /// [pidAvailable] Defines grace period for the pid.available soft eviction threshold. The value must be a positive duration string no more than `"5m"`.
-  ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod({
+  const ClusterNodeConfigKubeletConfigEvictionSoftGracePeriod({
     this.imagefsAvailable,
     this.imagefsInodesFree,
     this.memoryAvailable,

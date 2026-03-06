@@ -12,7 +12,7 @@ class DefaultPatchBaselineArgs {
 
   /// Creates a new [DefaultPatchBaselineArgs].
   /// [patchBaselineName] The name of the patch baseline.
-  DefaultPatchBaselineArgs({
+  const DefaultPatchBaselineArgs({
     required this.patchBaselineName,
   });
 

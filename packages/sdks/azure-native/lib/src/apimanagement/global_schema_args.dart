@@ -27,7 +27,7 @@ class GlobalSchemaArgs {
   /// [schemaType] Schema Type. Immutable.
   /// [serviceName] The name of the API Management service.
   /// [value] Json-encoded string for non json-based schema.
-  GlobalSchemaArgs({
+  const GlobalSchemaArgs({
     this.description,
     required this.resourceGroupName,
     this.schemaId,

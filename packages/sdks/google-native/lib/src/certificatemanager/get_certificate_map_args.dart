@@ -15,7 +15,7 @@ class GetCertificateMapArgs {
   /// [certificateMapId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCertificateMapArgs({
+  const GetCertificateMapArgs({
     required this.certificateMapId,
     required this.location,
     this.project,

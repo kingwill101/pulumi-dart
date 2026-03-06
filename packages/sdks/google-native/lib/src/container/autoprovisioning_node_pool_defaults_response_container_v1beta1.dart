@@ -42,7 +42,7 @@ class AutoprovisioningNodePoolDefaultsResponseContainerV1beta1 {
   /// [serviceAccount] The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
   /// [shieldedInstanceConfig] Shielded Instance options.
   /// [upgradeSettings] Upgrade settings control disruption and speed of the upgrade.
-  AutoprovisioningNodePoolDefaultsResponseContainerV1beta1({
+  const AutoprovisioningNodePoolDefaultsResponseContainerV1beta1({
     required this.bootDiskKmsKey,
     required this.diskSizeGb,
     required this.diskType,

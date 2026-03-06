@@ -30,7 +30,7 @@ class GetHanaBackupPlansArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [vaultId] The id of the vault.
-  GetHanaBackupPlansArgs({
+  const GetHanaBackupPlansArgs({
     required this.clusterId,
     this.databaseName,
     this.ids,

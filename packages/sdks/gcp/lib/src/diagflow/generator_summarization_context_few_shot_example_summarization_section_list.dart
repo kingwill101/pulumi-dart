@@ -10,7 +10,7 @@ class GeneratorSummarizationContextFewShotExampleSummarizationSectionList {
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleSummarizationSectionList].
   /// [summarizationSections] Optional. Summarization sections.
-  GeneratorSummarizationContextFewShotExampleSummarizationSectionList({
+  const GeneratorSummarizationContextFewShotExampleSummarizationSectionList({
     this.summarizationSections,
   });
 

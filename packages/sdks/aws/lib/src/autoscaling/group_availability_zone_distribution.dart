@@ -8,7 +8,7 @@ class GroupAvailabilityZoneDistribution {
 
   /// Creates a new [GroupAvailabilityZoneDistribution].
   /// [capacityDistributionStrategy] The strategy to use for distributing capacity across the Availability Zones. Valid values are `balanced-only` and `balanced-best-effort`. Default is `balanced-best-effort`.
-  GroupAvailabilityZoneDistribution({
+  const GroupAvailabilityZoneDistribution({
     this.capacityDistributionStrategy,
   });
 

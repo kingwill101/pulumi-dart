@@ -17,7 +17,7 @@ class TopicRuleErrorActionCloudwatchAlarm {
   /// [roleArn] The IAM role ARN that allows access to the CloudWatch alarm.
   /// [stateReason] The reason for the alarm change.
   /// [stateValue] The value of the alarm state. Acceptable values are: OK, ALARM, INSUFFICIENT_DATA.
-  TopicRuleErrorActionCloudwatchAlarm({
+  const TopicRuleErrorActionCloudwatchAlarm({
     required this.alarmName,
     required this.roleArn,
     required this.stateReason,

@@ -15,7 +15,7 @@ class GetInsightsArgs {
   /// Creates a new [GetInsightsArgs].
   /// [name] Specifies the name of the Application Insights component.
   /// [resourceGroupName] Specifies the name of the resource group the Application Insights component is located in.
-  GetInsightsArgs({
+  const GetInsightsArgs({
     required this.name,
     required this.resourceGroupName,
   });

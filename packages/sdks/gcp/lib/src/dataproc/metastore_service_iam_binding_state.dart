@@ -45,7 +45,7 @@ class MetastoreServiceIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
-  MetastoreServiceIamBindingState({
+  const MetastoreServiceIamBindingState({
     this.condition,
     this.etag,
     this.location,

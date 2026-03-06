@@ -16,7 +16,7 @@ class WidgetConfigHomepageSettingShortcut {
   /// [destinationUri] Destination URL of shortcut.
   /// [icon] Icon URL of shortcut.
   /// [title] Title of the shortcut.
-  WidgetConfigHomepageSettingShortcut({
+  const WidgetConfigHomepageSettingShortcut({
     this.destinationUri,
     this.icon,
     this.title,

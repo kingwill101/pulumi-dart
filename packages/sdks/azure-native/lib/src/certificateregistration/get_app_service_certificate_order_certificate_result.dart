@@ -35,7 +35,7 @@ class GetAppServiceCertificateOrderCertificateResult {
   /// [provisioningState] Status of the Key Vault secret.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetAppServiceCertificateOrderCertificateResult({
+  const GetAppServiceCertificateOrderCertificateResult({
     required this.azureApiVersion,
     required this.id,
     this.keyVaultId,

@@ -11,7 +11,7 @@ class FirewallPolicyIntrusionDetectionSignatureOverride {
   /// Creates a new [FirewallPolicyIntrusionDetectionSignatureOverride].
   /// [id] 12-digit number (id) which identifies your signature.
   /// [state] state can be any of `Off`, `Alert` or `Deny`.
-  FirewallPolicyIntrusionDetectionSignatureOverride({
+  const FirewallPolicyIntrusionDetectionSignatureOverride({
     this.id,
     this.state,
   });

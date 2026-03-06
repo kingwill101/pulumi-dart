@@ -12,7 +12,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
   /// Creates a new [GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter].
   /// [filters] The conditions that are used to filter logs imported from Log Service.
   /// [relation] The relationship between multiple filter conditions.
-  GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter({
+  const GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter({
     required this.filters,
     required this.relation,
   });

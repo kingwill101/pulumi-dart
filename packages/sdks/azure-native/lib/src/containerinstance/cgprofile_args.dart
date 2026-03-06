@@ -88,7 +88,7 @@ class CGProfileArgs {
   /// [useKrypton] Gets or sets Krypton use property.
   /// [volumes] The list of volumes that can be mounted by containers in this container group.
   /// [zones] The zones for the container group.
-  CGProfileArgs({
+  const CGProfileArgs({
     this.confidentialComputeProperties,
     this.containerGroupProfileName,
     required this.containers,

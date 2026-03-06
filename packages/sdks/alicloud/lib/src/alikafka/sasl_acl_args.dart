@@ -61,7 +61,7 @@ class SaslAclArgs {
   /// [host] The host of the acl.
   /// [instanceId] The instance ID.
   /// [username] The user name.
-  SaslAclArgs({
+  const SaslAclArgs({
     required this.aclOperationType,
     this.aclOperationTypes,
     this.aclPermissionType,

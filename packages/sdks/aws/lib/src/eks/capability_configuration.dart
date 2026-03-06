@@ -9,7 +9,7 @@ class CapabilityConfiguration {
 
   /// Creates a new [CapabilityConfiguration].
   /// [argoCd] ArgoCD configuration. See `argo_cd` below.
-  CapabilityConfiguration({
+  const CapabilityConfiguration({
     this.argoCd,
   });
 

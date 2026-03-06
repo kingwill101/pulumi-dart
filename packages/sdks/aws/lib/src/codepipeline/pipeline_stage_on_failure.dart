@@ -16,7 +16,7 @@ class PipelineStageOnFailure {
   /// [condition] The conditions that are failure conditions. Defined as a `condition` block below.
   /// [result] The conditions that are configured as failure conditions. Possible values are `ROLLBACK`,  `FAIL`, `RETRY` and `SKIP`.
   /// [retryConfiguration] The retry configuration specifies automatic retry for a failed stage, along with the configured retry mode. Defined as a `retry_configuration` block below.
-  PipelineStageOnFailure({
+  const PipelineStageOnFailure({
     this.condition,
     this.result,
     this.retryConfiguration,

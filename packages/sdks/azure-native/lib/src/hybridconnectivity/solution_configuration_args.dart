@@ -21,7 +21,7 @@ class SolutionConfigurationArgs {
   /// [solutionConfiguration] Represent Solution Configuration Resource.
   /// [solutionSettings] Solution settings
   /// [solutionType] The type of the solution
-  SolutionConfigurationArgs({
+  const SolutionConfigurationArgs({
     required this.resourceUri,
     this.solutionConfiguration,
     this.solutionSettings,

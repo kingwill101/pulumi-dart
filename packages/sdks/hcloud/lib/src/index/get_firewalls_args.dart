@@ -15,7 +15,7 @@ class GetFirewallsArgs {
   /// Creates a new [GetFirewallsArgs].
   /// [mostRecent] Sorts list by date.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetFirewallsArgs({
+  const GetFirewallsArgs({
     this.mostRecent,
     this.withSelector,
   });

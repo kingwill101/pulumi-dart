@@ -15,7 +15,7 @@ class GetMedtechServiceArgs {
   /// Creates a new [GetMedtechServiceArgs].
   /// [name] The name of the Healthcare Med Tech Service.
   /// [workspaceId] The id of the Healthcare Workspace in which the Healthcare Med Tech Service exists.
-  GetMedtechServiceArgs({
+  const GetMedtechServiceArgs({
     required this.name,
     required this.workspaceId,
   });

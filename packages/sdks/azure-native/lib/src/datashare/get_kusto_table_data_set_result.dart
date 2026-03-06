@@ -41,7 +41,7 @@ class GetKustoTableDataSetResult {
   /// [systemData] System Data of the Azure resource.
   /// [tableLevelSharingProperties] Table level sharing properties for kusto database
   /// [type] Type of the azure resource
-  GetKustoTableDataSetResult({
+  const GetKustoTableDataSetResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.id,

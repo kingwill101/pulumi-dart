@@ -22,7 +22,7 @@ class NotificationEndpointGrpcSettings {
   /// [payloadName] Optional. If specified, this field is used to populate the "name" field in gRPC requests.
   /// [resendInterval] Optional. This field is used to configure how often to send a full update of all non-healthy backends. If unspecified, full updates are not sent. If specified, must be in the range between 600 seconds to 3600 seconds. Nanos are disallowed. Can only be set for regional notification endpoints.
   /// [retryDurationSec] How much time (in seconds) is spent attempting notification retries until a successful response is received. Default is 30s. Limit is 20m (1200s). Must be a positive number.
-  NotificationEndpointGrpcSettings({
+  const NotificationEndpointGrpcSettings({
     this.authority,
     this.endpoint,
     this.payloadName,

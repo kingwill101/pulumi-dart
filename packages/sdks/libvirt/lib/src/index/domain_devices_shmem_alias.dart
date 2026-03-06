@@ -8,7 +8,7 @@ class DomainDevicesShmemAlias {
 
   /// Creates a new [DomainDevicesShmemAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesShmemAlias({
+  const DomainDevicesShmemAlias({
     required this.name,
   });
 

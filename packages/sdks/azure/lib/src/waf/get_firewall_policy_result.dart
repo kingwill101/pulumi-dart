@@ -16,7 +16,7 @@ class GetFirewallPolicyResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] Optional.
-  GetFirewallPolicyResult({
+  const GetFirewallPolicyResult({
     required this.id,
     required this.location,
     required this.name,

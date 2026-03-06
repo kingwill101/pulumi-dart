@@ -9,7 +9,7 @@ class SkuResourceProperties {
 
   /// Creates a new [SkuResourceProperties].
   /// [skuSettings] The sku settings.
-  SkuResourceProperties({
+  const SkuResourceProperties({
     required this.skuSettings,
   });
 

@@ -46,7 +46,7 @@ class MongoClusterProperties {
   /// [serverVersion] The Mongo DB server version. Defaults to the latest available version if not specified.
   /// [sharding] The sharding properties of the mongo cluster.
   /// [storage] The storage properties of the mongo cluster.
-  MongoClusterProperties({
+  const MongoClusterProperties({
     this.administrator,
     this.compute,
     this.createMode,

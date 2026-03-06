@@ -12,7 +12,7 @@ class LanguageCodePairResponseTranslateV3beta1 {
   /// Creates a new [LanguageCodePairResponseTranslateV3beta1].
   /// [sourceLanguageCode] The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
   /// [targetLanguageCode] The BCP-47 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code.
-  LanguageCodePairResponseTranslateV3beta1({
+  const LanguageCodePairResponseTranslateV3beta1({
     required this.sourceLanguageCode,
     required this.targetLanguageCode,
   });

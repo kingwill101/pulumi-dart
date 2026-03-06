@@ -17,7 +17,7 @@ class GroupImageRegistryCredential {
   /// [server] The address to use to connect to the registry without protocol ("https"/"http"). For example: "myacr.acr.io". Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The identity ID for the private registry. Changing this forces a new resource to be created.
   /// [username] The username with which to connect to the registry. Changing this forces a new resource to be created.
-  GroupImageRegistryCredential({
+  const GroupImageRegistryCredential({
     this.password,
     required this.server,
     this.userAssignedIdentityId,

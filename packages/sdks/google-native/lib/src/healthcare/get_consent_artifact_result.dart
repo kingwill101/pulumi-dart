@@ -32,7 +32,7 @@ class GetConsentArtifactResult {
   /// [userId] User's UUID provided by the client.
   /// [userSignature] Optional. User's signature.
   /// [witnessSignature] Optional. A signature from a witness.
-  GetConsentArtifactResult({
+  const GetConsentArtifactResult({
     required this.consentContentScreenshots,
     required this.consentContentVersion,
     required this.guardianSignature,

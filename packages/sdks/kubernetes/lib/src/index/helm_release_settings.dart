@@ -21,7 +21,7 @@ class HelmReleaseSettings {
   /// [registryConfigPath] The path to the registry config file.
   /// [repositoryCache] The path to the directory containing cached repository indexes.
   /// [repositoryConfigPath] The path to the file containing repository names and URLs.
-  HelmReleaseSettings({
+  const HelmReleaseSettings({
     this.driver,
     this.pluginsPath,
     this.registryConfigPath,

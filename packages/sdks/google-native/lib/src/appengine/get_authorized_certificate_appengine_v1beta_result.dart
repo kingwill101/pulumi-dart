@@ -31,7 +31,7 @@ class GetAuthorizedCertificateAppengineV1betaResult {
   /// [managedCertificate] Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.
   /// [name] Full path to the AuthorizedCertificate resource in the API. Example: apps/myapp/authorizedCertificates/12345.
   /// [visibleDomainMappings] The full paths to user visible Domain Mapping resources that have this certificate mapped. Example: apps/myapp/domainMappings/example.com.This may not represent the full list of mapped domain mappings if the user does not have VIEWER permissions on all of the applications that have this certificate mapped. See domain_mappings_count for a complete count.Only returned by GET or LIST requests when specifically requested by the view=FULL_CERTIFICATE option.
-  GetAuthorizedCertificateAppengineV1betaResult({
+  const GetAuthorizedCertificateAppengineV1betaResult({
     required this.certificateRawData,
     required this.displayName,
     required this.domainMappingsCount,

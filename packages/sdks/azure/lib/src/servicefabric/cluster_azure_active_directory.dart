@@ -14,7 +14,7 @@ class ClusterAzureActiveDirectory {
   /// [clientApplicationId] The Azure Active Directory Client ID which should be used for the Client Application.
   /// [clusterApplicationId] The Azure Active Directory Cluster Application ID.
   /// [tenantId] The Azure Active Directory Tenant ID.
-  ClusterAzureActiveDirectory({
+  const ClusterAzureActiveDirectory({
     required this.clientApplicationId,
     required this.clusterApplicationId,
     required this.tenantId,

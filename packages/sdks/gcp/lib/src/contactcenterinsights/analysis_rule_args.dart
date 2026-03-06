@@ -41,7 +41,7 @@ class AnalysisRuleArgs {
   /// [displayName] Display Name of the analysis rule.
   /// [location] Location of the resource.
   /// [project] The ID of the project in which the resource belongs.
-  AnalysisRuleArgs({
+  const AnalysisRuleArgs({
     this.active,
     this.analysisPercentage,
     this.annotatorSelector,

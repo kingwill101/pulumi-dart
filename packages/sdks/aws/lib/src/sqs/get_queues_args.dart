@@ -15,7 +15,7 @@ class GetQueuesArgs {
   /// Creates a new [GetQueuesArgs].
   /// [queueNamePrefix] A string to use for filtering the list results. Only those queues whose name begins with the specified string are returned. Queue URLs and names are case-sensitive.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetQueuesArgs({
+  const GetQueuesArgs({
     this.queueNamePrefix,
     this.region,
   });

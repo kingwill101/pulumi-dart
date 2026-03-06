@@ -110,7 +110,7 @@ class GetInstanceResult {
   /// [uid] Required.
   /// [updateTime] Required.
   /// [zoneDistributionConfigs] Required.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.authorizationMode,
     required this.automatedBackupConfigs,
     required this.availableMaintenanceVersions,

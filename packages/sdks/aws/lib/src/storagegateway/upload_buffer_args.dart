@@ -21,7 +21,7 @@ class UploadBufferArgs {
   /// [diskPath] Local disk path. For example, `/dev/nvme1n1`.
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  UploadBufferArgs({
+  const UploadBufferArgs({
     this.diskId,
     this.diskPath,
     required this.gatewayArn,

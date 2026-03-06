@@ -33,7 +33,7 @@ class GetConversationModelResult {
   /// [name] ConversationModel resource name. Format: `projects//conversationModels/`
   /// [smartReplyModelMetadata] Metadata for smart reply models.
   /// [state] State of the model. A model can only serve prediction requests after it gets deployed.
-  GetConversationModelResult({
+  const GetConversationModelResult({
     required this.articleSuggestionModelMetadata,
     required this.createTime,
     required this.datasets,

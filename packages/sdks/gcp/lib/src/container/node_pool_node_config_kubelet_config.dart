@@ -70,7 +70,7 @@ class NodePoolNodeConfigKubeletConfig {
   /// [podPidsLimit] Controls the maximum number of processes allowed to run in a pod.
   /// [singleProcessOomKill] Defines whether to enable single process OOM killer.
   /// [topologyManager] Configuration for the Topology Manager on the node. The Topology Manager aligns CPU, memory, and device resources on a node to optimize performance, especially for NUMA-aware workloads, by ensuring resource co-location.
-  NodePoolNodeConfigKubeletConfig({
+  const NodePoolNodeConfigKubeletConfig({
     this.allowedUnsafeSysctls,
     this.containerLogMaxFiles,
     this.containerLogMaxSize,

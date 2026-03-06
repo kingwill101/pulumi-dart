@@ -8,7 +8,7 @@ class ContentSafety {
 
   /// Creates a new [ContentSafety].
   /// [contentSafetyStatus] [Required] Specifies the status of content safety.
-  ContentSafety({
+  const ContentSafety({
     required this.contentSafetyStatus,
   });
 

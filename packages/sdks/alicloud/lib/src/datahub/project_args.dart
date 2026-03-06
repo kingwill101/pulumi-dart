@@ -15,7 +15,7 @@ class ProjectArgs {
   /// Creates a new [ProjectArgs].
   /// [comment] Comment of the datahub project. It cannot be longer than 255 characters.
   /// [name] The name of the datahub project. Its length is limited to 3-32 and only characters such as letters, digits and '_' are allowed. It is case-insensitive.
-  ProjectArgs({
+  const ProjectArgs({
     this.comment,
     this.name,
   });

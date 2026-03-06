@@ -63,7 +63,7 @@ class PodCertificateRequestSpec {
   /// [serviceAccountUID] serviceAccountUID is the UID of the service account the pod is running as.
   /// [signerName] signerName indicates the requested signer.
   /// [unverifiedUserAnnotations] unverifiedUserAnnotations allow pod authors to pass additional information to the signer implementation.  Kubernetes does not restrict or validate this metadata in any way.
-  PodCertificateRequestSpec({
+  const PodCertificateRequestSpec({
     this.maxExpirationSeconds,
     required this.nodeName,
     required this.nodeUID,

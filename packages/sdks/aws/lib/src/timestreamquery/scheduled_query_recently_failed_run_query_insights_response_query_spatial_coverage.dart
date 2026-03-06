@@ -9,7 +9,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage {
 
   /// Creates a new [ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
-  ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage({
+  const ScheduledQueryRecentlyFailedRunQueryInsightsResponseQuerySpatialCoverage({
     this.maxes,
   });
 

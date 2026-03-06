@@ -11,7 +11,7 @@ class AppHostingTrafficCurrentSplit {
   /// Creates a new [AppHostingTrafficCurrentSplit].
   /// [build] The build that traffic is being routed to.
   /// [percent] The percentage of traffic to send to the build. Currently must be 100 or 0.
-  AppHostingTrafficCurrentSplit({
+  const AppHostingTrafficCurrentSplit({
     this.build,
     this.percent,
   });

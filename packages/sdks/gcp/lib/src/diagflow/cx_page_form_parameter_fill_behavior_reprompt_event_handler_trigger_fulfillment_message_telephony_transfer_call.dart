@@ -8,7 +8,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in E.164 format.
-  CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall({
+  const CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageTelephonyTransferCall({
     required this.phoneNumber,
   });
 

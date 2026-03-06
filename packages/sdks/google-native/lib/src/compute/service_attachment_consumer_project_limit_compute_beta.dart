@@ -14,7 +14,7 @@ class ServiceAttachmentConsumerProjectLimitComputeBeta {
   /// [connectionLimit] The value of the limit to set.
   /// [networkUrl] The network URL for the network to set the limit for.
   /// [projectIdOrNum] The project id or number for the project to set the limit for.
-  ServiceAttachmentConsumerProjectLimitComputeBeta({
+  const ServiceAttachmentConsumerProjectLimitComputeBeta({
     this.connectionLimit,
     this.networkUrl,
     this.projectIdOrNum,

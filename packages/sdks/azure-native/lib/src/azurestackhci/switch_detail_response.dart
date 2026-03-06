@@ -16,7 +16,7 @@ class SwitchDetailResponse {
   /// [extensions] This represents extensions installed on virtualSwitch.
   /// [switchName] The name of the switch.
   /// [switchType] The type of the switch. e.g. external, internal.
-  SwitchDetailResponse({
+  const SwitchDetailResponse({
     required this.extensions,
     required this.switchName,
     required this.switchType,

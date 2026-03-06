@@ -15,7 +15,7 @@ class ListIotHubResourceKeysArgs {
   /// Creates a new [ListIotHubResourceKeysArgs].
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  ListIotHubResourceKeysArgs({
+  const ListIotHubResourceKeysArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

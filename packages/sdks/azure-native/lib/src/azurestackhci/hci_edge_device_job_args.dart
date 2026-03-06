@@ -26,7 +26,7 @@ class HciEdgeDeviceJobArgs {
   /// [kind] Edge device kind.
   /// [properties] HCI Edge device job properties
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  HciEdgeDeviceJobArgs({
+  const HciEdgeDeviceJobArgs({
     required this.edgeDeviceName,
     this.jobsName,
     required this.kind,

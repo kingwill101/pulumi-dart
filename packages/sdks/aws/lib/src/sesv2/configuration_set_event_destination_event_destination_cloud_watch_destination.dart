@@ -9,7 +9,7 @@ class ConfigurationSetEventDestinationEventDestinationCloudWatchDestination {
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationCloudWatchDestination].
   /// [dimensionConfigurations] An array of objects that define the dimensions to use when you send email events to Amazon CloudWatch. See `dimension_configuration` Block for details.
-  ConfigurationSetEventDestinationEventDestinationCloudWatchDestination({
+  const ConfigurationSetEventDestinationEventDestinationCloudWatchDestination({
     required this.dimensionConfigurations,
   });
 

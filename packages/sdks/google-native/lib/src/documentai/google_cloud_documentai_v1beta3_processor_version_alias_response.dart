@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse {
   /// Creates a new [GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse].
   /// [alias] The alias in the form of `processor_version` resource name.
   /// [processorVersion] The resource name of aliased processor version.
-  GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse({
+  const GoogleCloudDocumentaiV1beta3ProcessorVersionAliasResponse({
     required this.alias,
     required this.processorVersion,
   });

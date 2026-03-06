@@ -117,7 +117,7 @@ class RunArgs {
   /// [interpreter] The program and arguments to run the command.
   /// [logging] If the command's stdout and stderr should be logged. This doesn't affect the capturing of
   /// [stdin] Pass a string to the command's process as standard in
-  RunArgs({
+  const RunArgs({
     this.addPreviousOutputInEnv,
     this.archivePaths,
     this.assetPaths,

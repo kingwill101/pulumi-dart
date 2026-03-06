@@ -10,7 +10,7 @@ class WorkloadConfig {
 
   /// Creates a new [WorkloadConfig].
   /// [auditMode] Sets which mode of auditing should be used for the cluster's workloads.
-  WorkloadConfig({
+  const WorkloadConfig({
     this.auditMode,
   });
 

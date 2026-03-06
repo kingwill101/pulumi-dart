@@ -31,7 +31,7 @@ class CloudFormationStackSetProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudFormationStackSetProperties({
+  const CloudFormationStackSetProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

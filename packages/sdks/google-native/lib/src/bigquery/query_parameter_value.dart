@@ -14,7 +14,7 @@ class QueryParameterValue {
   /// [arrayValues] [Optional] The array values, if this is an array type.
   /// [structValues] [Optional] The struct field values, in order of the struct type's declaration.
   /// [value] [Optional] The value of this value, if a simple scalar type.
-  QueryParameterValue({
+  const QueryParameterValue({
     this.arrayValues,
     this.structValues,
     this.value,

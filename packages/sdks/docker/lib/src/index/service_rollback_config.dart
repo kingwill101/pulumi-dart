@@ -23,7 +23,7 @@ class ServiceRollbackConfig {
   /// [monitor] Duration after each task rollback to monitor for failure (ns|us|ms|s|m|h). Defaults to `5s`.
   /// [order] Rollback order: either 'stop-first' or 'start-first'. Defaults to `stop-first`.
   /// [parallelism] Maximum number of tasks to be rollbacked in one iteration. Defaults to `1`
-  ServiceRollbackConfig({
+  const ServiceRollbackConfig({
     this.delay,
     this.failureAction,
     this.maxFailureRatio,

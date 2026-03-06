@@ -59,7 +59,7 @@ class BuildStepResponse {
   /// [timing] Stores timing information for executing this build step.
   /// [volumes] List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
   /// [waitFor] The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
-  BuildStepResponse({
+  const BuildStepResponse({
     required this.allowExitCodes,
     required this.allowFailure,
     required this.args,

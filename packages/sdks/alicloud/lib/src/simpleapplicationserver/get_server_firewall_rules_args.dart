@@ -18,7 +18,7 @@ class GetServerFirewallRulesArgs {
   /// [ids] A list of Firewall Rule IDs.
   /// [instanceId] Alibaba Cloud simple application server instance ID.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetServerFirewallRulesArgs({
+  const GetServerFirewallRulesArgs({
     this.ids,
     required this.instanceId,
     this.outputFile,

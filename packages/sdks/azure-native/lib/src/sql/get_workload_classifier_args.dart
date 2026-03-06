@@ -24,7 +24,7 @@ class GetWorkloadClassifierArgs {
   /// [serverName] The name of the server.
   /// [workloadClassifierName] The name of the workload classifier.
   /// [workloadGroupName] The name of the workload group from which to receive the classifier from.
-  GetWorkloadClassifierArgs({
+  const GetWorkloadClassifierArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.serverName,

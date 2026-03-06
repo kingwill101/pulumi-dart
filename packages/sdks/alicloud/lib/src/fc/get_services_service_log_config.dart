@@ -11,7 +11,7 @@ class GetServicesServiceLogConfig {
   /// Creates a new [GetServicesServiceLogConfig].
   /// [logstore] Log Service store name.
   /// [project] Log Service project name.
-  GetServicesServiceLogConfig({
+  const GetServicesServiceLogConfig({
     required this.logstore,
     required this.project,
   });

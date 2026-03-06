@@ -30,7 +30,7 @@ class AwsEc2InstanceStatusProperties {
   /// [instanceStatus] &lt;p&gt;Reports impaired functionality that stems from issues internal to the instance, such as impaired reachability.&lt;/p&gt;
   /// [outpostArn] &lt;p&gt;The Amazon Resource Name (ARN) of the Outpost.&lt;/p&gt;
   /// [systemStatus] &lt;p&gt;Reports impaired functionality that stems from issues related to the systems that support an instance, such as hardware failures and network connectivity problems.&lt;/p&gt;
-  AwsEc2InstanceStatusProperties({
+  const AwsEc2InstanceStatusProperties({
     this.availabilityZone,
     this.events,
     this.instanceId,

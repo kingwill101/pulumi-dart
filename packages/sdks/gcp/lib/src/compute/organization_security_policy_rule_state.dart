@@ -48,7 +48,7 @@ class OrganizationSecurityPolicyRuleState {
   /// [priority] An integer indicating the priority of a rule in the list. The priority must be a value
   /// [targetResources] A list of network resource URLs to which this rule applies.
   /// [targetServiceAccounts] A list of service accounts indicating the sets of
-  OrganizationSecurityPolicyRuleState({
+  const OrganizationSecurityPolicyRuleState({
     this.action,
     this.description,
     this.direction,

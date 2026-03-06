@@ -15,7 +15,7 @@ class GetInstanceSpecificationsArgs {
   /// Creates a new [GetInstanceSpecificationsArgs].
   /// [ids] A list of Instance Specification IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstanceSpecificationsArgs({
+  const GetInstanceSpecificationsArgs({
     this.ids,
     this.outputFile,
   });

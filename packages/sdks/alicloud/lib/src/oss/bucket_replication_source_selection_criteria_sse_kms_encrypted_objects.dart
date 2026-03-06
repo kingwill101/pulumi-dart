@@ -8,7 +8,7 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
 
   /// Creates a new [BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects].
   /// [status] The status of the data replication task. Can be starting, doing and closing.
-  BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects({
+  const BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects({
     this.status,
   });
 

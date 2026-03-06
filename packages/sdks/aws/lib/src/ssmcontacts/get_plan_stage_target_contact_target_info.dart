@@ -10,7 +10,7 @@ class GetPlanStageTargetContactTargetInfo {
   /// Creates a new [GetPlanStageTargetContactTargetInfo].
   /// [contactId] The Amazon Resource Name (ARN) of the contact or escalation plan.
   /// [isEssential] Required.
-  GetPlanStageTargetContactTargetInfo({
+  const GetPlanStageTargetContactTargetInfo({
     required this.contactId,
     required this.isEssential,
   });

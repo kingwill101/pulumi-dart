@@ -21,7 +21,7 @@ class GetEcsBackupClientsArgs {
   /// [instanceIds] A list of ECS Instance IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
-  GetEcsBackupClientsArgs({
+  const GetEcsBackupClientsArgs({
     this.ids,
     this.instanceIds,
     this.outputFile,

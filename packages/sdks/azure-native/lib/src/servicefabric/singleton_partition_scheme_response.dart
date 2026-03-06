@@ -10,7 +10,7 @@ class SingletonPartitionSchemeResponse {
 
   /// Creates a new [SingletonPartitionSchemeResponse].
   /// [partitionScheme] Enumerates the ways that a service can be partitioned.
-  SingletonPartitionSchemeResponse({
+  const SingletonPartitionSchemeResponse({
     required this.partitionScheme,
   });
 

@@ -13,7 +13,7 @@ class LogSchedulePolicyResponse {
   /// Creates a new [LogSchedulePolicyResponse].
   /// [scheduleFrequencyInMins] Frequency of the log schedule operation of this policy in minutes.
   /// [schedulePolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
-  LogSchedulePolicyResponse({
+  const LogSchedulePolicyResponse({
     this.scheduleFrequencyInMins,
     required this.schedulePolicyType,
   });

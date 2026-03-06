@@ -11,7 +11,7 @@ class MxRecordRecord {
   /// Creates a new [MxRecordRecord].
   /// [exchange] The FQDN of the exchange to MX record points to.
   /// [preference] The preference of the MX record.
-  MxRecordRecord({
+  const MxRecordRecord({
     required this.exchange,
     required this.preference,
   });

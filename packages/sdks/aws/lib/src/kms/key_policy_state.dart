@@ -22,7 +22,7 @@ class KeyPolicyState {
   /// [keyId] The ID of the KMS Key to attach the policy.
   /// [policy] A valid policy JSON document. Although this is a key policy, not an IAM policy, an `aws.iam.getPolicyDocument`, in the form that designates a principal, can be used. For more information about building policy documents, see the AWS IAM Policy Document Guide.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  KeyPolicyState({
+  const KeyPolicyState({
     this.bypassPolicyLockoutSafetyCheck,
     this.keyId,
     this.policy,

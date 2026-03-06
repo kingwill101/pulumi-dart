@@ -15,7 +15,7 @@ class GetEdgeActionArgs {
   /// Creates a new [GetEdgeActionArgs].
   /// [edgeActionName] The name of the Edge Action
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEdgeActionArgs({
+  const GetEdgeActionArgs({
     required this.edgeActionName,
     required this.resourceGroupName,
   });

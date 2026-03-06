@@ -9,7 +9,7 @@ class TaskDefinitionEnvironmentFile {
   /// Creates a new [TaskDefinitionEnvironmentFile].
   /// [type] Optional.
   /// [value] Optional.
-  TaskDefinitionEnvironmentFile({
+  const TaskDefinitionEnvironmentFile({
     this.type,
     this.value,
   });

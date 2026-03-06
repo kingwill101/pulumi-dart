@@ -33,7 +33,7 @@ class InitContainerResponse {
   /// [name] Custom container name.
   /// [resources] Container resource requirements.
   /// [volumeMounts] Container volume mounts.
-  InitContainerResponse({
+  const InitContainerResponse({
     this.args,
     this.command,
     this.env,

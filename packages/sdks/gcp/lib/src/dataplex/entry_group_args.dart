@@ -31,7 +31,7 @@ class EntryGroupArgs {
   /// [labels] User-defined labels for the EntryGroup.
   /// [location] The location where entry group will be created in.
   /// [project] The ID of the project in which the resource belongs.
-  EntryGroupArgs({
+  const EntryGroupArgs({
     this.description,
     this.displayName,
     this.entryGroupId,

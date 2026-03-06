@@ -20,7 +20,7 @@ class GetPromptResult {
   /// [name] Required.
   /// [promptId] Identifier for the prompt.
   /// [region] Required.
-  GetPromptResult({
+  const GetPromptResult({
     required this.arn,
     required this.id,
     required this.instanceId,

@@ -7,7 +7,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessageP
 
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage].
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

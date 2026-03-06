@@ -12,7 +12,7 @@ class ServerSkuResponse {
   /// Creates a new [ServerSkuResponse].
   /// [name] Compute tier and size of the database server. This object is empty for an Azure Database for PostgreSQL single server.
   /// [tier] Tier of the compute assigned to a server.
-  ServerSkuResponse({
+  const ServerSkuResponse({
     this.name,
     this.tier,
   });

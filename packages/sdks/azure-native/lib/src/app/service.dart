@@ -9,7 +9,7 @@ class Service {
 
   /// Creates a new [Service].
   /// [type] Dev ContainerApp service type
-  Service({
+  const Service({
     required this.type,
   });
 

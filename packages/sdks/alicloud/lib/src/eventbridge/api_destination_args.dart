@@ -22,7 +22,7 @@ class ApiDestinationArgs {
   /// [connectionName] The name of the connection.
   /// [description] The description of the API destination.
   /// [httpApiParameters] The parameters that are configured for the API destination. See `http_api_parameters` below.
-  ApiDestinationArgs({
+  const ApiDestinationArgs({
     required this.apiDestinationName,
     required this.connectionName,
     this.description,

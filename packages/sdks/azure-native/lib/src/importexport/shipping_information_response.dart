@@ -33,7 +33,7 @@ class ShippingInformationResponse {
   /// [stateOrProvince] The state or province to use when returning the drives.
   /// [streetAddress1] The first line of the street address to use when returning the drives.
   /// [streetAddress2] The second line of the street address to use when returning the drives.
-  ShippingInformationResponse({
+  const ShippingInformationResponse({
     required this.additionalInformation,
     this.city,
     this.countryOrRegion,

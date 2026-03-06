@@ -12,7 +12,7 @@ class GetStorageBoxesArgs {
 
   /// Creates a new [GetStorageBoxesArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetStorageBoxesArgs({
+  const GetStorageBoxesArgs({
     this.withSelector,
   });
 

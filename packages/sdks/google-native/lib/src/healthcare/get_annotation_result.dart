@@ -27,7 +27,7 @@ class GetAnnotationResult {
   /// [name] Resource name of the Annotation, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}/annotations/{annotation_id}`.
   /// [resourceAnnotation] Annotations for resource. For example, classification tags.
   /// [textAnnotation] Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
-  GetAnnotationResult({
+  const GetAnnotationResult({
     required this.annotationSource,
     required this.customData,
     required this.imageAnnotation,

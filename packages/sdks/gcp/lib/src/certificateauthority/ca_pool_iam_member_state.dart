@@ -47,7 +47,7 @@ class CaPoolIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  CaPoolIamMemberState({
+  const CaPoolIamMemberState({
     this.caPool,
     this.condition,
     this.etag,

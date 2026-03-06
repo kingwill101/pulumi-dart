@@ -22,7 +22,7 @@ class GetChartNamespacesResult {
   /// [names] Required.
   /// [namespaces] Required.
   /// [outputFile] Optional.
-  GetChartNamespacesResult({
+  const GetChartNamespacesResult({
     required this.id,
     required this.ids,
     required this.instanceId,

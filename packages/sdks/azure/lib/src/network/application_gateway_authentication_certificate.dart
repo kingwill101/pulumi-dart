@@ -14,7 +14,7 @@ class ApplicationGatewayAuthenticationCertificate {
   /// [data] The contents of the Authentication Certificate which should be used.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The Name of the Authentication Certificate to use.
-  ApplicationGatewayAuthenticationCertificate({
+  const ApplicationGatewayAuthenticationCertificate({
     required this.data,
     this.id,
     required this.name,

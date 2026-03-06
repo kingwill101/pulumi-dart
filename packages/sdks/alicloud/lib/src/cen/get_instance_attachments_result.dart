@@ -30,7 +30,7 @@ class GetInstanceAttachmentsResult {
   /// [instanceId] The ID of the CEN instance.
   /// [outputFile] Optional.
   /// [status] The status of the network.
-  GetInstanceAttachmentsResult({
+  const GetInstanceAttachmentsResult({
     required this.attachments,
     this.childInstanceRegionId,
     this.childInstanceType,

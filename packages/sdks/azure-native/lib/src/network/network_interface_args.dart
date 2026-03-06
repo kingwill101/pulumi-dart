@@ -68,7 +68,7 @@ class NetworkInterfaceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [workloadType] WorkloadType of the NetworkInterface for BareMetal resources
-  NetworkInterfaceArgs({
+  const NetworkInterfaceArgs({
     this.auxiliaryMode,
     this.auxiliarySku,
     this.disableTcpStateTracking,

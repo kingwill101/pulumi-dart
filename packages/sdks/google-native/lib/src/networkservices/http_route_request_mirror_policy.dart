@@ -10,7 +10,7 @@ class HttpRouteRequestMirrorPolicy {
 
   /// Creates a new [HttpRouteRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to. The weight of the destination will be ignored.
-  HttpRouteRequestMirrorPolicy({
+  const HttpRouteRequestMirrorPolicy({
     this.destination,
   });
 

@@ -11,7 +11,7 @@ class ContainerGroupHostAlias {
   /// Creates a new [ContainerGroupHostAlias].
   /// [hostnames] The information about the host.
   /// [ip] The IP address of the host.
-  ContainerGroupHostAlias({
+  const ContainerGroupHostAlias({
     this.hostnames,
     this.ip,
   });

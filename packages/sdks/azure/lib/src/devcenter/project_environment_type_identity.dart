@@ -17,7 +17,7 @@ class ProjectEnvironmentTypeIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of identity used for this Dev Center Project Environment Type. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  ProjectEnvironmentTypeIdentity({
+  const ProjectEnvironmentTypeIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

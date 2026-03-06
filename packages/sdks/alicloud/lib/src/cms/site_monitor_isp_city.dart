@@ -14,7 +14,7 @@ class SiteMonitorIspCity {
   /// [city] The ID of the city.
   /// [isp] The ID of the carrier.
   /// [type] The network type of the detection point. Valid values: `IDC`, `LASTMILE`, and `MOBILE`.
-  SiteMonitorIspCity({
+  const SiteMonitorIspCity({
     this.city,
     this.isp,
     this.type,

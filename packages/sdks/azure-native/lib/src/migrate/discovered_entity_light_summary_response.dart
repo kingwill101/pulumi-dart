@@ -15,7 +15,7 @@ class DiscoveredEntityLightSummaryResponse {
   /// [numberOfMachines] Gets or sets the number of machines.
   /// [numberOfServers] Gets or sets the number of servers.
   /// [numberOfWebApps] Gets or sets the number of web apps.
-  DiscoveredEntityLightSummaryResponse({
+  const DiscoveredEntityLightSummaryResponse({
     required this.numberOfMachines,
     required this.numberOfServers,
     required this.numberOfWebApps,

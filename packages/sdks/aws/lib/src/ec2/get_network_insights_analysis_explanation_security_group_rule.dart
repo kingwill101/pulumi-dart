@@ -18,7 +18,7 @@ class GetNetworkInsightsAnalysisExplanationSecurityGroupRule {
   /// [prefixListId] Required.
   /// [protocol] Required.
   /// [securityGroupId] Required.
-  GetNetworkInsightsAnalysisExplanationSecurityGroupRule({
+  const GetNetworkInsightsAnalysisExplanationSecurityGroupRule({
     required this.cidr,
     required this.direction,
     required this.portRanges,

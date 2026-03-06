@@ -9,7 +9,7 @@ class ExpressGatewayServiceIngressPath {
   /// Creates a new [ExpressGatewayServiceIngressPath].
   /// [accessType] Required.
   /// [endpoint] Required.
-  ExpressGatewayServiceIngressPath({
+  const ExpressGatewayServiceIngressPath({
     required this.accessType,
     required this.endpoint,
   });

@@ -52,7 +52,7 @@ class EventSubscriptionArgs {
   /// [labels] List of user defined labels.
   /// [retryPolicy] The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   /// [scope] The identifier of the resource to which the event subscription needs to be created or updated. The scope can be a subscription, or a resource group, or a top level resource belonging to a resource provider namespace, or an EventGrid topic. For example, use '/subscriptions/{subscriptionId}/' for a subscription, '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}' for a resource group, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}' for a resource, and '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/topics/{topicName}' for an EventGrid topic.
-  EventSubscriptionArgs({
+  const EventSubscriptionArgs({
     this.deadLetterDestination,
     this.deadLetterWithResourceIdentity,
     this.deliveryWithResourceIdentity,

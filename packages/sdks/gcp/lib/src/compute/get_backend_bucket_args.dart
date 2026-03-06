@@ -18,7 +18,7 @@ class GetBackendBucketArgs {
   /// Creates a new [GetBackendBucketArgs].
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetBackendBucketArgs({
+  const GetBackendBucketArgs({
     required this.name,
     this.project,
   });

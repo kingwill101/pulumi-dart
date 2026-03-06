@@ -15,7 +15,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleComputeV1 {
   /// [dailySchedule] Optional.
   /// [hourlySchedule] Optional.
   /// [weeklySchedule] Optional.
-  ResourcePolicySnapshotSchedulePolicyScheduleComputeV1({
+  const ResourcePolicySnapshotSchedulePolicyScheduleComputeV1({
     this.dailySchedule,
     this.hourlySchedule,
     this.weeklySchedule,

@@ -18,7 +18,7 @@ class GetLinkArgs {
   /// [hubName] The name of the hub.
   /// [linkName] The name of the link.
   /// [resourceGroupName] The name of the resource group.
-  GetLinkArgs({
+  const GetLinkArgs({
     required this.hubName,
     required this.linkName,
     required this.resourceGroupName,

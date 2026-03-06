@@ -31,7 +31,7 @@ class StopSellOffersPlansNotificationsListPropertiesResponse {
   /// [plans] The list of removed plans notifications
   /// [publicContext] True if the offer has public plans
   /// [subscriptionsIds] The subscriptions related to private plans
-  StopSellOffersPlansNotificationsListPropertiesResponse({
+  const StopSellOffersPlansNotificationsListPropertiesResponse({
     required this.displayName,
     required this.icon,
     required this.isEntire,

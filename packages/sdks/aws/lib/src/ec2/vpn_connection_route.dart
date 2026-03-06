@@ -14,7 +14,7 @@ class VpnConnectionRoute {
   /// [destinationCidrBlock] The CIDR block associated with the local subnet of the customer data center.
   /// [source] Indicates how the routes were provided.
   /// [state] The current state of the static route.
-  VpnConnectionRoute({
+  const VpnConnectionRoute({
     this.destinationCidrBlock,
     this.source,
     this.state,

@@ -14,7 +14,7 @@ class GoogleCloudAiplatformV1beta1ExplanationSpec {
   /// Creates a new [GoogleCloudAiplatformV1beta1ExplanationSpec].
   /// [metadata] Optional. Metadata describing the Model's input and output for explanation.
   /// [parameters] Parameters that configure explaining of the Model's predictions.
-  GoogleCloudAiplatformV1beta1ExplanationSpec({
+  const GoogleCloudAiplatformV1beta1ExplanationSpec({
     this.metadata,
     required this.parameters,
   });

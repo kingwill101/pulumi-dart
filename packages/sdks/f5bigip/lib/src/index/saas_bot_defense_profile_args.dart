@@ -37,7 +37,7 @@ class SaasBotDefenseProfileArgs {
   /// [shapeProtectionPool] Specifies the web hostname to which API requests are made
   /// [sslProfile] Specifies a server-side SSL profile that is different from what the application pool uses
   /// [tenantId] Specifies the tenant ID, enter the value provided by F5 Support
-  SaasBotDefenseProfileArgs({
+  const SaasBotDefenseProfileArgs({
     required this.apiKey,
     required this.applicationId,
     this.defaultsFrom,

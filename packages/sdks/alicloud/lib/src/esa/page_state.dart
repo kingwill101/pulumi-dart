@@ -18,7 +18,7 @@ class PageState {
   /// [contentType] The Content-Type field in the HTTP header.
   /// [description] The description of the custom error page.
   /// [pageName] The name of the custom response page.
-  PageState({
+  const PageState({
     this.content,
     this.contentType,
     this.description,

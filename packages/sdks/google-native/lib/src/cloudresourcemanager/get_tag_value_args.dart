@@ -11,7 +11,7 @@ class GetTagValueArgs {
 
   /// Creates a new [GetTagValueArgs].
   /// [tagValueId] Required.
-  GetTagValueArgs({
+  const GetTagValueArgs({
     required this.tagValueId,
   });
 

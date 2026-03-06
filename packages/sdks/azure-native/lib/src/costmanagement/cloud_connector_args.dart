@@ -36,7 +36,7 @@ class CloudConnectorArgs {
   /// [kind] Connector kind (eg aws)
   /// [reportId] Identifying source report. (For AWS this is a CUR report name, defined with Daily and with Resources)
   /// [subscriptionId] Billing SubscriptionId
-  CloudConnectorArgs({
+  const CloudConnectorArgs({
     this.billingModel,
     this.connectorName,
     this.credentialsKey,

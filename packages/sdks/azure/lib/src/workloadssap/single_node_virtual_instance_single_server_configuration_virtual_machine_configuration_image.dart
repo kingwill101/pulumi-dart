@@ -17,7 +17,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurat
   /// [publisher] The publisher of the Image. Possible values are `RedHat` and `SUSE`. Changing this forces a new resource to be created.
   /// [sku] The SKU of the Image. Changing this forces a new resource to be created.
   /// [version] Specifies the version of the platform image or marketplace image used to create the virtual machine. Changing this forces a new resource to be created.
-  SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage({
+  const SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineConfigurationImage({
     required this.offer,
     required this.publisher,
     required this.sku,

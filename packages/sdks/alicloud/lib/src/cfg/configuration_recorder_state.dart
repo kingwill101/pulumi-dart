@@ -23,7 +23,7 @@ class ConfigurationRecorderState {
   /// [organizationMasterId] The ID of the Enterprise management account.
   /// [resourceTypes] A list of resource types to be monitored. [Resource types that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
   /// [status] Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
-  ConfigurationRecorderState({
+  const ConfigurationRecorderState({
     this.enterpriseEdition,
     this.organizationEnableStatus,
     this.organizationMasterId,

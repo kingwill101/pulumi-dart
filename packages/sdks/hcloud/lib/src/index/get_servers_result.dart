@@ -17,7 +17,7 @@ class GetServersResult {
   /// [servers] (list) List of all matching servers. See `data.hcloud_server` for schema.
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
-  GetServersResult({
+  const GetServersResult({
     required this.id,
     required this.servers,
     this.withSelector,

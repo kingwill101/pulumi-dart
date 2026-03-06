@@ -14,7 +14,7 @@ class FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig
   /// [capacityProviderArn] ARN of the Capacity Provider.
   /// [executionEnvironmentMemoryGibPerVcpu] Memory GiB per vCPU for the execution environment.
   /// [perExecutionEnvironmentMaxConcurrency] Maximum concurrency per execution environment.
-  FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig({
+  const FunctionCapacityProviderConfigLambdaManagedInstancesCapacityProviderConfig({
     required this.capacityProviderArn,
     this.executionEnvironmentMemoryGibPerVcpu,
     this.perExecutionEnvironmentMaxConcurrency,

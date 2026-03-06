@@ -18,7 +18,7 @@ class EditAtom {
   /// [inputs] List of Input.key values identifying files that should be used in this atom. The listed `inputs` must have the same timeline.
   /// [key] A unique key for this atom. Must be specified when using advanced mapping.
   /// [startTimeOffset] Start time in seconds for the atom, relative to the input file timeline. The default is `0s`.
-  EditAtom({
+  const EditAtom({
     this.endTimeOffset,
     this.inputs,
     this.key,

@@ -18,7 +18,7 @@ class ApplicationSnapshotArgs {
   /// [applicationName] The name of an existing  Kinesis Analytics v2 Application. Note that the application must be running for a snapshot to be created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snapshotName] The name of the application snapshot.
-  ApplicationSnapshotArgs({
+  const ApplicationSnapshotArgs({
     required this.applicationName,
     this.region,
     required this.snapshotName,

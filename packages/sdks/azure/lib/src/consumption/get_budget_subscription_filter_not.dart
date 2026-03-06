@@ -13,7 +13,7 @@ class GetBudgetSubscriptionFilterNot {
   /// Creates a new [GetBudgetSubscriptionFilterNot].
   /// [dimensions] A `dimension` block as defined above.
   /// [tags] A `tag` block as defined below.
-  GetBudgetSubscriptionFilterNot({
+  const GetBudgetSubscriptionFilterNot({
     required this.dimensions,
     required this.tags,
   });

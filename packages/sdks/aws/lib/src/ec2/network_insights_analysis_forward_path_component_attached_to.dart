@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisForwardPathComponentAttachedTo {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisForwardPathComponentAttachedTo({
+  const NetworkInsightsAnalysisForwardPathComponentAttachedTo({
     this.arn,
     this.id,
     this.name,

@@ -12,7 +12,7 @@ class ComponentStatusResponse {
   /// Creates a new [ComponentStatusResponse].
   /// [name] Component name
   /// [status] Component status
-  ComponentStatusResponse({
+  const ComponentStatusResponse({
     this.name,
     this.status,
   });

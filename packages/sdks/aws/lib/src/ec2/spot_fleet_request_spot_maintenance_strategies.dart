@@ -9,7 +9,7 @@ class SpotFleetRequestSpotMaintenanceStrategies {
 
   /// Creates a new [SpotFleetRequestSpotMaintenanceStrategies].
   /// [capacityRebalance] Nested argument containing the capacity rebalance for your fleet request. Defined below.
-  SpotFleetRequestSpotMaintenanceStrategies({
+  const SpotFleetRequestSpotMaintenanceStrategies({
     this.capacityRebalance,
   });
 

@@ -12,7 +12,7 @@ class GetInstanceNetworkingArgs {
 
   /// Creates a new [GetInstanceNetworkingArgs].
   /// [linodeId] The Linode instance's ID.
-  GetInstanceNetworkingArgs({
+  const GetInstanceNetworkingArgs({
     required this.linodeId,
   });
 

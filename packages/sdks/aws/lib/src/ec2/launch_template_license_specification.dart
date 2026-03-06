@@ -8,7 +8,7 @@ class LaunchTemplateLicenseSpecification {
 
   /// Creates a new [LaunchTemplateLicenseSpecification].
   /// [licenseConfigurationArn] ARN of the license configuration.
-  LaunchTemplateLicenseSpecification({
+  const LaunchTemplateLicenseSpecification({
     required this.licenseConfigurationArn,
   });
 

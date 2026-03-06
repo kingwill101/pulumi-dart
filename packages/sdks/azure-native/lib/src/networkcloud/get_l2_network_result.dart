@@ -64,7 +64,7 @@ class GetL2NetworkResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociatedIds] Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource ID(s), excluding any Hybrid AKS virtual machines, that are currently using this L2 network.
-  GetL2NetworkResult({
+  const GetL2NetworkResult({
     required this.associatedResourceIds,
     required this.azureApiVersion,
     required this.clusterId,

@@ -8,7 +8,7 @@ class AccountVdmAttributesDashboardAttributes {
 
   /// Creates a new [AccountVdmAttributesDashboardAttributes].
   /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection. Valid values: `ENABLED`, `DISABLED`.
-  AccountVdmAttributesDashboardAttributes({
+  const AccountVdmAttributesDashboardAttributes({
     this.engagementMetrics,
   });
 

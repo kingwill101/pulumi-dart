@@ -15,7 +15,7 @@ class GetServerlessVpcEndpointArgs {
   /// Creates a new [GetServerlessVpcEndpointArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] The unique identifier of the endpoint.
-  GetServerlessVpcEndpointArgs({
+  const GetServerlessVpcEndpointArgs({
     this.region,
     required this.vpcEndpointId,
   });

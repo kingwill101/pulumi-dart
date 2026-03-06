@@ -15,7 +15,7 @@ class AutoscaleTimeAndCapacityResponse {
   /// [maxInstanceCount] The maximum instance count of the cluster
   /// [minInstanceCount] The minimum instance count of the cluster
   /// [time] 24-hour time in the form xx:xx
-  AutoscaleTimeAndCapacityResponse({
+  const AutoscaleTimeAndCapacityResponse({
     this.maxInstanceCount,
     this.minInstanceCount,
     this.time,

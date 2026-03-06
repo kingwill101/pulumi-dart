@@ -18,7 +18,7 @@ class GetJavaComponentArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [name] Name of the Java Component.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetJavaComponentArgs({
+  const GetJavaComponentArgs({
     required this.environmentName,
     required this.name,
     required this.resourceGroupName,

@@ -31,7 +31,7 @@ class SQuotaAdjusterSettingsState {
   /// [inherited] Indicates whether the setting is inherited or explicitly specified.
   /// [inheritedFrom] The resource container from which the setting is inherited. This refers to the  nearest ancestor with enablement set (either ENABLED or DISABLED).
   /// [parent] The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-  SQuotaAdjusterSettingsState({
+  const SQuotaAdjusterSettingsState({
     this.effectiveContainer,
     this.effectiveEnablement,
     this.enablement,

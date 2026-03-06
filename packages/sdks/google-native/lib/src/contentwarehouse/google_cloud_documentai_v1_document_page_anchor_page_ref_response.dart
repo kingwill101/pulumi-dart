@@ -22,7 +22,7 @@ class GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse {
   /// [layoutId] Optional. Deprecated. Use PageRef.bounding_poly instead.
   /// [layoutType] Optional. The type of the layout element that is being referenced if any.
   /// [page] Index into the Document.pages element, for example using `Document.pages` to locate the related page element. This field is skipped when its value is the default `0`. See https://developers.google.com/protocol-buffers/docs/proto3#json.
-  GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse({
+  const GoogleCloudDocumentaiV1DocumentPageAnchorPageRefResponse({
     required this.boundingPoly,
     required this.confidence,
     required this.layoutId,

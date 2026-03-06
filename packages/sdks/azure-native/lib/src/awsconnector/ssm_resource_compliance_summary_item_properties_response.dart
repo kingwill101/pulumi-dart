@@ -34,7 +34,7 @@ class SsmResourceComplianceSummaryItemPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SsmResourceComplianceSummaryItemPropertiesResponse({
+  const SsmResourceComplianceSummaryItemPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

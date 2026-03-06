@@ -27,7 +27,7 @@ class AttestorBinaryauthorizationV1beta1Args {
   /// [name] The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   /// [project] Optional.
   /// [userOwnedDrydockNote] A Drydock ATTESTATION_AUTHORITY Note, created by the user.
-  AttestorBinaryauthorizationV1beta1Args({
+  const AttestorBinaryauthorizationV1beta1Args({
     required this.attestorId,
     this.description,
     this.etag,

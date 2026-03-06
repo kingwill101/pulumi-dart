@@ -8,7 +8,7 @@ class ListApmSecretKeysResult {
 
   /// Creates a new [ListApmSecretKeysResult].
   /// [value] Collection of the keys for the APM sensitive properties
-  ListApmSecretKeysResult({
+  const ListApmSecretKeysResult({
     this.value,
   });
 

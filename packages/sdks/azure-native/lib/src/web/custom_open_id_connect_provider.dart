@@ -17,7 +17,7 @@ class CustomOpenIdConnectProvider {
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the custom Open ID provider provider should not be enabled; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [login] The configuration settings of the login flow of the custom Open ID Connect provider.
   /// [registration] The configuration settings of the app registration for the custom Open ID Connect provider.
-  CustomOpenIdConnectProvider({
+  const CustomOpenIdConnectProvider({
     this.enabled,
     this.login,
     this.registration,

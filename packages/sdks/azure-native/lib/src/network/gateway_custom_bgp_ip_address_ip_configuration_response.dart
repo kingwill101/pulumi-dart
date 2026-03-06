@@ -12,7 +12,7 @@ class GatewayCustomBgpIpAddressIpConfigurationResponse {
   /// Creates a new [GatewayCustomBgpIpAddressIpConfigurationResponse].
   /// [customBgpIpAddress] The custom BgpPeeringAddress which belongs to IpconfigurationId.
   /// [ipConfigurationId] The IpconfigurationId of ipconfiguration which belongs to gateway.
-  GatewayCustomBgpIpAddressIpConfigurationResponse({
+  const GatewayCustomBgpIpAddressIpConfigurationResponse({
     required this.customBgpIpAddress,
     required this.ipConfigurationId,
   });

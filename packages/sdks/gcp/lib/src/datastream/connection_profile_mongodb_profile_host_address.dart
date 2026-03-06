@@ -11,7 +11,7 @@ class ConnectionProfileMongodbProfileHostAddress {
   /// Creates a new [ConnectionProfileMongodbProfileHostAddress].
   /// [hostname] Hostname for the connection.
   /// [port] Port for the connection.
-  ConnectionProfileMongodbProfileHostAddress({
+  const ConnectionProfileMongodbProfileHostAddress({
     required this.hostname,
     this.port,
   });

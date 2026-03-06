@@ -9,7 +9,7 @@ class SecurityProfileCustomInterceptProfile {
 
   /// Creates a new [SecurityProfileCustomInterceptProfile].
   /// [interceptEndpointGroup] The Intercept Endpoint Group to which matching traffic should be intercepted.
-  SecurityProfileCustomInterceptProfile({
+  const SecurityProfileCustomInterceptProfile({
     required this.interceptEndpointGroup,
   });
 

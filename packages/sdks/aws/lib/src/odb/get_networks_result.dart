@@ -15,7 +15,7 @@ class GetNetworksResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [odbNetworks] List of odb networks returns basic information about odb networks.
   /// [region] Required.
-  GetNetworksResult({
+  const GetNetworksResult({
     required this.id,
     required this.odbNetworks,
     required this.region,

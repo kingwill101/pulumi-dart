@@ -15,7 +15,7 @@ class GetAddressArgs {
   /// [address] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetAddressArgs({
+  const GetAddressArgs({
     required this.address,
     this.project,
     required this.region,

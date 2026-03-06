@@ -9,7 +9,7 @@ class AutomationRuleCriteriaSourceUrl {
   /// Creates a new [AutomationRuleCriteriaSourceUrl].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaSourceUrl({
+  const AutomationRuleCriteriaSourceUrl({
     required this.comparison,
     required this.value,
   });

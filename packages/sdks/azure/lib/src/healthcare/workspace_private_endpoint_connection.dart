@@ -11,7 +11,7 @@ class WorkspacePrivateEndpointConnection {
   /// Creates a new [WorkspacePrivateEndpointConnection].
   /// [id] The ID of the Healthcare Workspace.
   /// [name] Specifies the name of the Healthcare Workspace. Changing this forces a new Healthcare Workspace to be created.
-  WorkspacePrivateEndpointConnection({
+  const WorkspacePrivateEndpointConnection({
     this.id,
     this.name,
   });

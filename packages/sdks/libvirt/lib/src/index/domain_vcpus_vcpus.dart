@@ -17,7 +17,7 @@ class DomainVcpusVcpus {
   /// [hotpluggable] Configures whether the virtual CPU can be added or removed while the domain is running, allowing for dynamic resource management.
   /// [id] Identifies the virtual CPU by an integer ID, serving as a unique identifier within the domain configuration.
   /// [order] Sets the order of the virtual CPUs, determining the significance of each vCPU's placement in relation to others.
-  DomainVcpusVcpus({
+  const DomainVcpusVcpus({
     this.enabled,
     this.hotpluggable,
     this.id,

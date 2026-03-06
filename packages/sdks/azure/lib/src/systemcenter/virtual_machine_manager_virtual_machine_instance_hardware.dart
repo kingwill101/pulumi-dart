@@ -20,7 +20,7 @@ class VirtualMachineManagerVirtualMachineInstanceHardware {
   /// [dynamicMemoryMinInMb] The min dynamic memory for the Virtual Machine. Possible values are between `32` and `1048576`.
   /// [limitCpuForMigrationEnabled] Whether processor compatibility mode for live migration of Virtual Machines is enabled.
   /// [memoryInMb] The size of a Virtual Machine's memory. Possible values are between `32` and `1048576`.
-  VirtualMachineManagerVirtualMachineInstanceHardware({
+  const VirtualMachineManagerVirtualMachineInstanceHardware({
     this.cpuCount,
     this.dynamicMemoryMaxInMb,
     this.dynamicMemoryMinInMb,

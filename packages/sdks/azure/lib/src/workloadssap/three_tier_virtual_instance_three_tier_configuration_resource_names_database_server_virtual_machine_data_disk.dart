@@ -15,7 +15,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerV
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk].
   /// [names] A list of full names of Data Disks per Volume. Changing this forces a new resource to be created.
   /// [volumeName] The name of the Volume. Possible values are `default`, `hanaData`, `hanaLog`, `hanaShared` and `usrSap`. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesDatabaseServerVirtualMachineDataDisk({
     required this.names,
     required this.volumeName,
   });

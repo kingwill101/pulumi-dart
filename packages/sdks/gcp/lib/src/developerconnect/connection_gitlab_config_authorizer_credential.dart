@@ -14,7 +14,7 @@ class ConnectionGitlabConfigAuthorizerCredential {
   /// Creates a new [ConnectionGitlabConfigAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes
   /// [username] (Output)
-  ConnectionGitlabConfigAuthorizerCredential({
+  const ConnectionGitlabConfigAuthorizerCredential({
     required this.userTokenSecretVersion,
     this.username,
   });

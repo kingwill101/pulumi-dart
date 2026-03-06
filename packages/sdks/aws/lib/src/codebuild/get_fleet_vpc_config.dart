@@ -14,7 +14,7 @@ class GetFleetVpcConfig {
   /// [securityGroupIds] A list of one or more security groups IDs in your Amazon VPC.
   /// [subnets] A list of one or more subnet IDs in your Amazon VPC.
   /// [vpcId] The ID of the Amazon VPC.
-  GetFleetVpcConfig({
+  const GetFleetVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
     required this.vpcId,

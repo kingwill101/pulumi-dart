@@ -14,7 +14,7 @@ class WebhookScopeConfiguration {
   /// [domain] The domain of the GitHub Enterprise organization. Required if your project's source type is GITHUB_ENTERPRISE.
   /// [name] The name of either the enterprise or organization.
   /// [scope] The type of scope for a GitHub webhook. Valid values for this parameter are: `GITHUB_ORGANIZATION`, `GITHUB_GLOBAL`.
-  WebhookScopeConfiguration({
+  const WebhookScopeConfiguration({
     this.domain,
     required this.name,
     required this.scope,

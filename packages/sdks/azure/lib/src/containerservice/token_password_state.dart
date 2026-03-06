@@ -17,7 +17,7 @@ class TokenPasswordState {
   /// [containerRegistryTokenId] The ID of the Container Registry Token that this Container Registry Token Password resides in. Changing this forces a new Container Registry Token Password to be created.
   /// [password1] One `password` block as defined below.
   /// [password2] One `password` block as defined below.
-  TokenPasswordState({
+  const TokenPasswordState({
     this.containerRegistryTokenId,
     this.password1,
     this.password2,

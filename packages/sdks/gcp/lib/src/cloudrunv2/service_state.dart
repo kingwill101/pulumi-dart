@@ -169,7 +169,7 @@ class ServiceState {
   /// [updateTime] The last-modified time.
   /// [uri] (Output)
   /// [urls] All URLs serving traffic for this Service.
-  ServiceState({
+  const ServiceState({
     this.annotations,
     this.binaryAuthorization,
     this.buildConfig,

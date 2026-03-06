@@ -14,7 +14,7 @@ class GetDatabaseArgs {
   /// Creates a new [GetDatabaseArgs].
   /// [name] Required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.name,
     this.region,
   });

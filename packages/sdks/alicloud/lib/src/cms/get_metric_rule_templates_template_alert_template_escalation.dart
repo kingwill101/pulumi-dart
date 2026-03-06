@@ -17,7 +17,7 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
   /// [criticals] The condition for triggering critical-level alerts.
   /// [infos] The condition for triggering info-level alerts.
   /// [warns] The condition for triggering warn-level alerts.
-  GetMetricRuleTemplatesTemplateAlertTemplateEscalation({
+  const GetMetricRuleTemplatesTemplateAlertTemplateEscalation({
     required this.criticals,
     required this.infos,
     required this.warns,

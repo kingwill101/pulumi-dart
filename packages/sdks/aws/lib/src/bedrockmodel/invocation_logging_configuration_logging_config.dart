@@ -25,7 +25,7 @@ class InvocationLoggingConfigurationLoggingConfig {
   /// [s3Config] S3 configuration for storing log data. See `s3_config` Block for details.
   /// [textDataDeliveryEnabled] Set to include text data in the log delivery. Defaults to `true`.
   /// [videoDataDeliveryEnabled] Set to include text data in the log delivery. Defaults to `true`.
-  InvocationLoggingConfigurationLoggingConfig({
+  const InvocationLoggingConfigurationLoggingConfig({
     this.cloudwatchConfig,
     this.embeddingDataDeliveryEnabled,
     this.imageDataDeliveryEnabled,

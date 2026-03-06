@@ -11,7 +11,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds {
   /// Creates a new [ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
   /// [scaleOut] The utilization triggering the scale-out operation in percent.
-  ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds({
+  const ClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds({
     required this.scaleIn,
     required this.scaleOut,
   });

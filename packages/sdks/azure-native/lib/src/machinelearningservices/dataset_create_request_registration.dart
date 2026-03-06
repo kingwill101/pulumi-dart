@@ -14,7 +14,7 @@ class DatasetCreateRequestRegistration {
   /// [description] The description for the dataset.
   /// [name] The name of the dataset.
   /// [tags] Tags associated with the dataset.
-  DatasetCreateRequestRegistration({
+  const DatasetCreateRequestRegistration({
     this.description,
     this.name,
     this.tags,

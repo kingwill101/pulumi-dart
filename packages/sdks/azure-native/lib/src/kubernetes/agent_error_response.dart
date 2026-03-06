@@ -18,7 +18,7 @@ class AgentErrorResponse {
   /// [message] Agent error message.
   /// [severity] Severity of the error message.
   /// [time] The timestamp of error occured (UTC).
-  AgentErrorResponse({
+  const AgentErrorResponse({
     required this.component,
     required this.message,
     required this.severity,

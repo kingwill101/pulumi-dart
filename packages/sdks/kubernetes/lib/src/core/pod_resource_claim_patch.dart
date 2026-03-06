@@ -29,7 +29,7 @@ class PodResourceClaimPatch {
   /// [resourceClaimName] ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   /// [resourceClaimTemplateName] ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
   /// [source] Source describes where to find the ResourceClaim.
-  PodResourceClaimPatch({
+  const PodResourceClaimPatch({
     this.name,
     this.resourceClaimName,
     this.resourceClaimTemplateName,

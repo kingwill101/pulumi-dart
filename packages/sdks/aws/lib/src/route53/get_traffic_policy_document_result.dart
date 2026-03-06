@@ -26,7 +26,7 @@ class GetTrafficPolicyDocumentResult {
   /// [startEndpoint] Optional.
   /// [startRule] Optional.
   /// [version] Optional.
-  GetTrafficPolicyDocumentResult({
+  const GetTrafficPolicyDocumentResult({
     this.endpoints,
     required this.id,
     required this.json,

@@ -14,7 +14,7 @@ class FlowAccessControlConfigurationPolicyResponse {
   /// Creates a new [FlowAccessControlConfigurationPolicyResponse].
   /// [allowedCallerIpAddresses] The allowed caller IP address ranges.
   /// [openAuthenticationPolicies] The authentication policies for workflow.
-  FlowAccessControlConfigurationPolicyResponse({
+  const FlowAccessControlConfigurationPolicyResponse({
     this.allowedCallerIpAddresses,
     this.openAuthenticationPolicies,
   });

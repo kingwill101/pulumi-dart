@@ -19,7 +19,7 @@ class InsightsReportConfigFrequencyOptions {
   /// [endDate] The date to stop generating inventory reports. For example, {"day": 15, "month": 9, "year": 2022}.
   /// [frequency] The frequency in which inventory reports are generated. Values are DAILY or WEEKLY.
   /// [startDate] The date to start generating inventory reports. For example, {"day": 15, "month": 8, "year": 2022}.
-  InsightsReportConfigFrequencyOptions({
+  const InsightsReportConfigFrequencyOptions({
     required this.endDate,
     required this.frequency,
     required this.startDate,

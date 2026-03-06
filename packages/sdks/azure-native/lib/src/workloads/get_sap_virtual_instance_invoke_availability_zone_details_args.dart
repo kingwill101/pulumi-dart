@@ -21,7 +21,7 @@ class GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs {
   /// [databaseType] The database type. Eg: HANA, DB2, etc
   /// [location] The name of the Azure region.
   /// [sapProduct] Defines the SAP Product type.
-  GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs({
+  const GetSapVirtualInstanceInvokeAvailabilityZoneDetailsArgs({
     required this.appLocation,
     required this.databaseType,
     required this.location,

@@ -16,7 +16,7 @@ class GetGatewayRouteSpec {
   /// [http2Routes] Required.
   /// [httpRoutes] Required.
   /// [priority] Required.
-  GetGatewayRouteSpec({
+  const GetGatewayRouteSpec({
     required this.grpcRoutes,
     required this.http2Routes,
     required this.httpRoutes,

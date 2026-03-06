@@ -17,7 +17,7 @@ class HttpRouteRule {
   /// [description] Description of rule. Optional.
   /// [routes] Routing configuration that will allow matches on specific paths/headers.
   /// [targets] Targets- container apps, revisions, labels
-  HttpRouteRule({
+  const HttpRouteRule({
     this.description,
     this.routes,
     this.targets,

@@ -15,7 +15,7 @@ class GetIssueArgs {
   /// Creates a new [GetIssueArgs].
   /// [issueName] The name of the IssueResource
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetIssueArgs({
+  const GetIssueArgs({
     required this.issueName,
     required this.resourceUri,
   });

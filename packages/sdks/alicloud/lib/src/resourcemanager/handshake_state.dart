@@ -40,7 +40,7 @@ class HandshakeState {
   /// [status] The status of the invitation.
   /// [targetEntity] The ID or logon email address of the account that you want to invite.
   /// [targetType] The type of the invited account. Valid values:
-  HandshakeState({
+  const HandshakeState({
     this.createTime,
     this.expireTime,
     this.masterAccountId,

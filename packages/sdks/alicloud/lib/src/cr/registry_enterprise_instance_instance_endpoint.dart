@@ -15,7 +15,7 @@ class RegistryEnterpriseInstanceInstanceEndpoint {
   /// [domains] Domain List
   /// [enable] enable
   /// [endpointType] Network Access Endpoint Type
-  RegistryEnterpriseInstanceInstanceEndpoint({
+  const RegistryEnterpriseInstanceInstanceEndpoint({
     this.domains,
     this.enable,
     this.endpointType,

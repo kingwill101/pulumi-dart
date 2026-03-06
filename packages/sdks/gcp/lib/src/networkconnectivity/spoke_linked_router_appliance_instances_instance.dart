@@ -11,7 +11,7 @@ class SpokeLinkedRouterApplianceInstancesInstance {
   /// Creates a new [SpokeLinkedRouterApplianceInstancesInstance].
   /// [ipAddress] The IP address on the VM to use for peering.
   /// [virtualMachine] The URI of the virtual machine resource
-  SpokeLinkedRouterApplianceInstancesInstance({
+  const SpokeLinkedRouterApplianceInstancesInstance({
     required this.ipAddress,
     required this.virtualMachine,
   });

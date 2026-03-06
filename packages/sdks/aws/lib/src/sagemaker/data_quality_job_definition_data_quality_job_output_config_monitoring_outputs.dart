@@ -9,7 +9,7 @@ class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs {
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs].
   /// [s3Output] The Amazon S3 storage location where the results of a monitoring job are saved. Fields are documented below.
-  DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs({
+  const DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputs({
     required this.s3Output,
   });
 

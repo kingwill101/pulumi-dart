@@ -11,7 +11,7 @@ class UserImageGrant {
   /// Creates a new [UserImageGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserImageGrant({
+  const UserImageGrant({
     required this.id,
     required this.permissions,
   });

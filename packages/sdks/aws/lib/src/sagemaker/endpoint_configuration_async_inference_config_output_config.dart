@@ -18,7 +18,7 @@ class EndpointConfigurationAsyncInferenceConfigOutputConfig {
   /// [notificationConfig] Configuration for notifications of inference results for asynchronous inference.
   /// [s3FailurePath] S3 location to upload failure inference responses to.
   /// [s3OutputPath] S3 location to upload inference responses to.
-  EndpointConfigurationAsyncInferenceConfigOutputConfig({
+  const EndpointConfigurationAsyncInferenceConfigOutputConfig({
     this.kmsKeyId,
     this.notificationConfig,
     this.s3FailurePath,

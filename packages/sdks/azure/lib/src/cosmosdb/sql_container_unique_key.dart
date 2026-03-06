@@ -8,7 +8,7 @@ class SqlContainerUniqueKey {
 
   /// Creates a new [SqlContainerUniqueKey].
   /// [paths] A list of paths to use for this unique key. Changing this forces a new resource to be created.
-  SqlContainerUniqueKey({
+  const SqlContainerUniqueKey({
     required this.paths,
   });
 

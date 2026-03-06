@@ -12,7 +12,7 @@ class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
   /// Creates a new [GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig].
   /// [leafNodeEmbeddingCount] Number of embeddings on each leaf node. The default value is 1000 if not set.
   /// [leafNodesToSearchPercent] The default percentage of leaf nodes that any query may be searched. Must be in
-  GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig({
+  const GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig({
     required this.leafNodeEmbeddingCount,
     required this.leafNodesToSearchPercent,
   });

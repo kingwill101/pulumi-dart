@@ -18,7 +18,7 @@ class GetSqlSitesControllerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
   /// [sqlSiteName] SQL site name.
-  GetSqlSitesControllerArgs({
+  const GetSqlSitesControllerArgs({
     required this.resourceGroupName,
     required this.siteName,
     required this.sqlSiteName,

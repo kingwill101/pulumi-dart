@@ -15,7 +15,7 @@ class GetBucketReplicationConfigurationRuleFilter {
   /// [ands] Required.
   /// [prefix] The object key name prefix that identifies the subset of objects to which the rule applies.
   /// [tags] An unordered list of tags that identify a subset of objects to which the rule applies.
-  GetBucketReplicationConfigurationRuleFilter({
+  const GetBucketReplicationConfigurationRuleFilter({
     required this.ands,
     required this.prefix,
     required this.tags,

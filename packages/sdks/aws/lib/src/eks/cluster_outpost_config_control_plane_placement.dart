@@ -8,7 +8,7 @@ class ClusterOutpostConfigControlPlanePlacement {
 
   /// Creates a new [ClusterOutpostConfigControlPlanePlacement].
   /// [groupName] The name of the placement group for the Kubernetes control plane instances. This setting can't be changed after cluster creation.
-  ClusterOutpostConfigControlPlanePlacement({
+  const ClusterOutpostConfigControlPlanePlacement({
     required this.groupName,
   });
 

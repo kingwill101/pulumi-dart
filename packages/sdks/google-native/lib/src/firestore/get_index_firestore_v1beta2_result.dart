@@ -19,7 +19,7 @@ class GetIndexFirestoreV1beta2Result {
   /// [name] A server defined name for this index. The form of this name for composite indexes will be: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{composite_index_id}` For single field indexes, this field will be empty.
   /// [queryScope] Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index.
   /// [state] The serving state of the index.
-  GetIndexFirestoreV1beta2Result({
+  const GetIndexFirestoreV1beta2Result({
     required this.fields,
     required this.name,
     required this.queryScope,

@@ -49,7 +49,7 @@ class TransitVirtualInterfaceArgs {
   /// [sitelinkEnabled] Indicates whether to enable or disable SiteLink.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vlan] The VLAN ID.
-  TransitVirtualInterfaceArgs({
+  const TransitVirtualInterfaceArgs({
     required this.addressFamily,
     this.amazonAddress,
     required this.bgpAsn,

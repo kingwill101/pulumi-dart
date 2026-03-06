@@ -15,7 +15,7 @@ class GetLBRuleArgs {
   /// Creates a new [GetLBRuleArgs].
   /// [loadbalancerId] The ID of the Load Balancer Rule.
   /// [name] The name of this Load Balancer Rule.
-  GetLBRuleArgs({
+  const GetLBRuleArgs({
     required this.loadbalancerId,
     required this.name,
   });

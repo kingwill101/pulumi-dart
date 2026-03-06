@@ -85,7 +85,7 @@ class VirtualBorderRouterState {
   /// [vbrOwnerId] The account ID of the VBR instance owner. The default value is the logon Alibaba Cloud account ID.
   /// [virtualBorderRouterName] The name of the VBR instance.
   /// [vlanId] The VLAN ID of the VBR instance. Valid values: `0` to `2999`.
-  VirtualBorderRouterState({
+  const VirtualBorderRouterState({
     this.associatedPhysicalConnections,
     this.bandwidth,
     this.circuitCode,

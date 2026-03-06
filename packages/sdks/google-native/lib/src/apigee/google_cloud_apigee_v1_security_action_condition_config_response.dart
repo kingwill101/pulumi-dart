@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1SecurityActionConditionConfigResponse {
   /// Creates a new [GoogleCloudApigeeV1SecurityActionConditionConfigResponse].
   /// [botReasons] Optional. A list of Bot Reasons. Current options: Flooder, Brute Guessor, Static Content Scraper, OAuth Abuser, Robot Abuser, TorListRule, Advanced Anomaly Detection and Advanced API Scraper.
   /// [ipAddressRanges] Optional. A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
-  GoogleCloudApigeeV1SecurityActionConditionConfigResponse({
+  const GoogleCloudApigeeV1SecurityActionConditionConfigResponse({
     required this.botReasons,
     required this.ipAddressRanges,
   });

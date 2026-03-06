@@ -14,7 +14,7 @@ class NodeadmOptions {
   /// Creates a new [NodeadmOptions].
   /// [content] The actual content of the MIME document part, such as shell script code or nodeadm configuration. Must be compatible with the specified contentType.
   /// [contentType] The MIME type of the content. Examples are `text/x-shellscript; charset="us-ascii"` for shell scripts, and `application/node.eks.aws` nodeadm configuration.
-  NodeadmOptions({
+  const NodeadmOptions({
     required this.content,
     required this.contentType,
   });

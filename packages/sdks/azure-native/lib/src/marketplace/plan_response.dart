@@ -23,7 +23,7 @@ class PlanResponse {
   /// [planId] Text identifier for this plan
   /// [skuId] Identifier for this plan
   /// [stackType] Stack type (classic or arm)
-  PlanResponse({
+  const PlanResponse({
     this.accessibility,
     required this.altStackReference,
     required this.planDisplayName,

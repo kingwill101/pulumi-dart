@@ -25,7 +25,7 @@ class CephFSPersistentVolumeSourcePatch {
   /// [secretFile] secretFile is Optional: SecretFile is the path to key ring for User, default is /etc/ceph/user.secret More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
   /// [secretRef] secretRef is Optional: SecretRef is reference to the authentication secret for User, default is empty. More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
   /// [user] user is Optional: User is the rados user name, default is admin More info: https://examples.k8s.io/volumes/cephfs/README.md#how-to-use-it
-  CephFSPersistentVolumeSourcePatch({
+  const CephFSPersistentVolumeSourcePatch({
     this.monitors,
     this.path,
     this.readOnly,

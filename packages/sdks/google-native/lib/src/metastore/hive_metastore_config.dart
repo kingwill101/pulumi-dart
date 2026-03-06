@@ -23,7 +23,7 @@ class HiveMetastoreConfig {
   /// [endpointProtocol] The protocol to use for the metastore service endpoint. If unspecified, defaults to THRIFT.
   /// [kerberosConfig] Information used to configure the Hive metastore service as a service principal in a Kerberos realm. To disable Kerberos, use the UpdateService method and specify this field's path (hive_metastore_config.kerberos_config) in the request's update_mask while omitting this field from the request's service.
   /// [version] Immutable. The Hive metastore schema version.
-  HiveMetastoreConfig({
+  const HiveMetastoreConfig({
     this.auxiliaryVersions,
     this.configOverrides,
     this.endpointProtocol,

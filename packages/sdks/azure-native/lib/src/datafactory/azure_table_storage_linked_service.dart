@@ -50,7 +50,7 @@ class AzureTableStorageLinkedService {
   /// [serviceEndpoint] Table service endpoint of the Azure Table Storage resource. It is mutually exclusive with connectionString, sasUri property.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureTableStorageLinkedService({
+  const AzureTableStorageLinkedService({
     this.accountKey,
     this.annotations,
     this.connectVia,

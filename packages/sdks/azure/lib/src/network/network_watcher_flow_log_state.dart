@@ -45,7 +45,7 @@ class NetworkWatcherFlowLogState {
   /// [targetResourceId] The ID of the Resource for which to enable flow logs for.
   /// [trafficAnalytics] A `traffic_analytics` block as documented below.
   /// [version] The version (revision) of the flow log. Possible values are `1` and `2`. Defaults to `1`.
-  NetworkWatcherFlowLogState({
+  const NetworkWatcherFlowLogState({
     this.enabled,
     this.location,
     this.name,

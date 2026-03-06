@@ -54,7 +54,7 @@ class NodePoolInstancePattern {
   /// [memory] The memory size of the instance type, in GiB. Example value: 8.
   /// [minCpuCores] The minimum number of vCPU cores of the instance type. Example value: 4. MaxCpuCores cannot exceed 4 times of MinCpuCores.
   /// [minMemorySize] The minimum memory of the instance type. Unit: GiB, example value: 4,MaxMemoryCores does not support more than 4 times MinMemoryCores.
-  NodePoolInstancePattern({
+  const NodePoolInstancePattern({
     this.cores,
     this.cpuArchitectures,
     this.excludedInstanceTypes,

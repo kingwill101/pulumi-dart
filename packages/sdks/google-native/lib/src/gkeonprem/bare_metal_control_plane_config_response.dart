@@ -14,7 +14,7 @@ class BareMetalControlPlaneConfigResponse {
   /// Creates a new [BareMetalControlPlaneConfigResponse].
   /// [apiServerArgs] Customizes the default API server args. Only a subset of customized flags are supported. For the exact format, refer to the [API server documentation](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/).
   /// [controlPlaneNodePoolConfig] Configures the node pool running the control plane.
-  BareMetalControlPlaneConfigResponse({
+  const BareMetalControlPlaneConfigResponse({
     required this.apiServerArgs,
     required this.controlPlaneNodePoolConfig,
   });

@@ -14,7 +14,7 @@ class AzureOperatorNexusNetworkFunctionTemplateResponse {
   /// Creates a new [AzureOperatorNexusNetworkFunctionTemplateResponse].
   /// [networkFunctionApplications] Network function applications.
   /// [nfviType] The network function type.
-  AzureOperatorNexusNetworkFunctionTemplateResponse({
+  const AzureOperatorNexusNetworkFunctionTemplateResponse({
     this.networkFunctionApplications,
     required this.nfviType,
   });

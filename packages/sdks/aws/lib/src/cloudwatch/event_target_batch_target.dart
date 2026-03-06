@@ -17,7 +17,7 @@ class EventTargetBatchTarget {
   /// [jobAttempts] The number of times to attempt to retry, if the job fails. Valid values are 1 to 10.
   /// [jobDefinition] The ARN or name of the job definition to use if the event target is an AWS Batch job. This job definition must already exist.
   /// [jobName] The name to use for this execution of the job, if the target is an AWS Batch job.
-  EventTargetBatchTarget({
+  const EventTargetBatchTarget({
     this.arraySize,
     this.jobAttempts,
     required this.jobDefinition,

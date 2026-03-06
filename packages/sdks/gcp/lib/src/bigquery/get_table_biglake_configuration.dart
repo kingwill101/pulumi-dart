@@ -17,7 +17,7 @@ class GetTableBiglakeConfiguration {
   /// [fileFormat] The file format the data is stored in.
   /// [storageUri] The fully qualified location prefix of the external folder where table data is stored. The '*' wildcard character is not allowed. The URI should be in the format "gs://bucket/path_to_table/"
   /// [tableFormat] The table format the metadata only snapshots are stored in.
-  GetTableBiglakeConfiguration({
+  const GetTableBiglakeConfiguration({
     required this.connectionId,
     required this.fileFormat,
     required this.storageUri,

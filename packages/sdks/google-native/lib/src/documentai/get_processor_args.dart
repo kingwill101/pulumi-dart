@@ -15,7 +15,7 @@ class GetProcessorArgs {
   /// [location] Required.
   /// [processorId] Required.
   /// [project] Optional.
-  GetProcessorArgs({
+  const GetProcessorArgs({
     required this.location,
     required this.processorId,
     this.project,

@@ -15,7 +15,7 @@ class GetServerArgs {
   /// Creates a new [GetServerArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetServerArgs({
+  const GetServerArgs({
     required this.resourceGroupName,
     required this.serverName,
   });

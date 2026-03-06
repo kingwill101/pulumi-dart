@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams].
   /// [diskName] Optional. Specifies the disk name.
   /// [replicaZones] Optional. URL of the zone where the disk should be created.
-  RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams({
+  const RestoreWorkloadComputeInstanceRestorePropertiesDiskInitializeParams({
     this.diskName,
     this.replicaZones,
   });

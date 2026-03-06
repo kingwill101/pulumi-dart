@@ -12,7 +12,7 @@ class BaselineEbsBandwidthMbpsRequestResponse {
   /// Creates a new [BaselineEbsBandwidthMbpsRequestResponse].
   /// [max] The maximum value in Mbps.
   /// [min] The minimum value in Mbps.
-  BaselineEbsBandwidthMbpsRequestResponse({
+  const BaselineEbsBandwidthMbpsRequestResponse({
     this.max,
     this.min,
   });

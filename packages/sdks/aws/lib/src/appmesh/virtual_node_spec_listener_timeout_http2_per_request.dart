@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerTimeoutHttp2PerRequest {
   /// Creates a new [VirtualNodeSpecListenerTimeoutHttp2PerRequest].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  VirtualNodeSpecListenerTimeoutHttp2PerRequest({
+  const VirtualNodeSpecListenerTimeoutHttp2PerRequest({
     required this.unit,
     required this.value,
   });

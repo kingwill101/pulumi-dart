@@ -23,7 +23,7 @@ class GetStorageContainerArgs {
   /// [name] The name of the Container.
   /// [storageAccountId] The id of the Storage Account where the Container exists. This property will become Required in version 5.0 of the Provider.
   /// [storageAccountName] The name of the Storage Account where the Container exists. This property is deprecated in favour of `storage_account_id`.
-  GetStorageContainerArgs({
+  const GetStorageContainerArgs({
     this.metadata,
     required this.name,
     this.storageAccountId,

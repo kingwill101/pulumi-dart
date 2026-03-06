@@ -26,7 +26,7 @@ class VirtualMachineStorageConfiguration {
   /// [storageWorkloadType] The type of storage workload. Valid values include `GENERAL`, `OLTP`, or `DW`.
   /// [systemDbOnDataDiskEnabled] Specifies whether to set system databases (except tempDb) location to newly created data storage. Possible values are `true` and `false`. Defaults to `false`.
   /// [tempDbSettings] An `temp_db_settings` block as defined below.
-  VirtualMachineStorageConfiguration({
+  const VirtualMachineStorageConfiguration({
     this.dataSettings,
     required this.diskType,
     this.logSettings,

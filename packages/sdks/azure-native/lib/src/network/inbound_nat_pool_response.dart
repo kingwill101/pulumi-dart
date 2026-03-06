@@ -46,7 +46,7 @@ class InboundNatPoolResponse {
   /// [protocol] The reference to the transport protocol used by the inbound NAT pool.
   /// [provisioningState] The provisioning state of the inbound NAT pool resource.
   /// [type] Type of the resource.
-  InboundNatPoolResponse({
+  const InboundNatPoolResponse({
     required this.backendPort,
     this.enableFloatingIP,
     this.enableTcpReset,

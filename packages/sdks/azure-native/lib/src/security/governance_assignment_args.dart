@@ -39,7 +39,7 @@ class GovernanceAssignmentArgs {
   /// [remediationDueDate] The remediation due-date - after this date Secure Score will be affected (in case of  active grace-period)
   /// [remediationEta] The ETA (estimated time of arrival) for remediation (optional), see example
   /// [scope] The scope of the Governance assignments. Valid scopes are: subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
-  GovernanceAssignmentArgs({
+  const GovernanceAssignmentArgs({
     this.additionalData,
     required this.assessmentName,
     this.assignmentKey,

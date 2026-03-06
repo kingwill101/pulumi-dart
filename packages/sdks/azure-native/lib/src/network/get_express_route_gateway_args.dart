@@ -15,7 +15,7 @@ class GetExpressRouteGatewayArgs {
   /// Creates a new [GetExpressRouteGatewayArgs].
   /// [expressRouteGatewayName] The name of the ExpressRoute gateway.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRouteGatewayArgs({
+  const GetExpressRouteGatewayArgs({
     required this.expressRouteGatewayName,
     required this.resourceGroupName,
   });

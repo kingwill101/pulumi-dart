@@ -35,7 +35,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfigurationS3Configuration {
   /// [kmsKeyArn] Specifies the KMS key ARN the stream will use to encrypt data. If not set, no encryption will
   /// [prefix] The "YYYY/MM/DD/HH" time format prefix is automatically used for delivered S3 files. You can specify an extra prefix to be added in front of the time format prefix. Note that if the prefix ends with a slash, it appears as a folder in the S3 bucket
   /// [roleArn] The ARN of the AWS credentials.
-  FirehoseDeliveryStreamOpensearchserverlessConfigurationS3Configuration({
+  const FirehoseDeliveryStreamOpensearchserverlessConfigurationS3Configuration({
     required this.bucketArn,
     this.bufferingInterval,
     this.bufferingSize,

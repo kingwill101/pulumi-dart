@@ -39,7 +39,7 @@ class GetPrivateLinkScopeResult {
   /// [systemData] System data
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateLinkScopeResult({
+  const GetPrivateLinkScopeResult({
     required this.accessModeSettings,
     required this.azureApiVersion,
     required this.id,

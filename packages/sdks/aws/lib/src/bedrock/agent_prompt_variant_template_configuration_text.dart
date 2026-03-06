@@ -13,7 +13,7 @@ class AgentPromptVariantTemplateConfigurationText {
   /// [cachePoint] Optional.
   /// [inputVariables] Optional.
   /// [text] Required.
-  AgentPromptVariantTemplateConfigurationText({
+  const AgentPromptVariantTemplateConfigurationText({
     this.cachePoint,
     this.inputVariables,
     required this.text,

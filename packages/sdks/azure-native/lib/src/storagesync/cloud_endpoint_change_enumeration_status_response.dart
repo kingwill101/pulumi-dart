@@ -17,7 +17,7 @@ class CloudEndpointChangeEnumerationStatusResponse {
   /// [activity] Change enumeration activity
   /// [lastEnumerationStatus] Status of last completed change enumeration
   /// [lastUpdatedTimestamp] Last updated timestamp
-  CloudEndpointChangeEnumerationStatusResponse({
+  const CloudEndpointChangeEnumerationStatusResponse({
     required this.activity,
     required this.lastEnumerationStatus,
     required this.lastUpdatedTimestamp,

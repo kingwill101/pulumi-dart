@@ -15,7 +15,7 @@ class GetMetadataStoreArgs {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetMetadataStoreArgs({
+  const GetMetadataStoreArgs({
     required this.location,
     required this.metadataStoreId,
     this.project,

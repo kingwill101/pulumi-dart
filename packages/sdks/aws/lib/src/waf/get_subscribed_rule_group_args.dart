@@ -17,7 +17,7 @@ class GetSubscribedRuleGroupArgs {
   /// Creates a new [GetSubscribedRuleGroupArgs].
   /// [metricName] Name of the WAF rule group.
   /// [name] Name of the WAF rule group.
-  GetSubscribedRuleGroupArgs({
+  const GetSubscribedRuleGroupArgs({
     this.metricName,
     this.name,
   });

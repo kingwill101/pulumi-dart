@@ -22,7 +22,7 @@ class RulesEngineResponse {
   /// [resourceState] Resource status.
   /// [rules] A list of rules that define a particular Rules Engine Configuration.
   /// [type] Resource type.
-  RulesEngineResponse({
+  const RulesEngineResponse({
     required this.id,
     required this.name,
     required this.resourceState,

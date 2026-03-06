@@ -18,7 +18,7 @@ class GetChannelArgs {
   /// [channelName] The name of the Bot resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Bot resource.
-  GetChannelArgs({
+  const GetChannelArgs({
     required this.channelName,
     required this.resourceGroupName,
     required this.resourceName,

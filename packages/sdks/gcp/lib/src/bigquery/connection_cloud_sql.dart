@@ -24,7 +24,7 @@ class ConnectionCloudSql {
   /// [instanceId] Cloud SQL instance ID in the form project:location:instance.
   /// [serviceAccountId] (Output)
   /// [type] Type of the Cloud SQL database.
-  ConnectionCloudSql({
+  const ConnectionCloudSql({
     required this.credential,
     required this.database,
     required this.instanceId,

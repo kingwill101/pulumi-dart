@@ -13,7 +13,7 @@ class GetCatalogTablePartitionIndex {
   /// [indexName] Name of the partition index.
   /// [indexStatus] Required.
   /// [keys] Keys for the partition index.
-  GetCatalogTablePartitionIndex({
+  const GetCatalogTablePartitionIndex({
     required this.indexName,
     required this.indexStatus,
     required this.keys,

@@ -16,7 +16,7 @@ class EventSubscriptionDestinationResponse {
   /// [endpoint] OPTION 1: Hit an endpoint when we receive an event.
   /// [serviceAccount] Service account needed for runtime plane to trigger IP workflow.
   /// [type] type of the destination
-  EventSubscriptionDestinationResponse({
+  const EventSubscriptionDestinationResponse({
     required this.endpoint,
     required this.serviceAccount,
     required this.type,

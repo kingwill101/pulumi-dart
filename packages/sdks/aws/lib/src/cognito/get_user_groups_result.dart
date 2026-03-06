@@ -17,7 +17,7 @@ class GetUserGroupsResult {
   /// [id] User pool identifier.
   /// [region] Required.
   /// [userPoolId] Required.
-  GetUserGroupsResult({
+  const GetUserGroupsResult({
     required this.groups,
     required this.id,
     required this.region,

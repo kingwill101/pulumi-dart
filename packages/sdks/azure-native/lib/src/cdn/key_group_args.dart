@@ -22,7 +22,7 @@ class KeyGroupArgs {
   /// [keyReferences] Names of UrlSigningKey type secret objects
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  KeyGroupArgs({
+  const KeyGroupArgs({
     this.keyGroupName,
     this.keyReferences,
     required this.profileName,

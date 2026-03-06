@@ -24,7 +24,7 @@ class GoogleCloudRetailV2alphaPriceInfo {
   /// [price] Price of the product. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371). Schema.org property [Offer.price](https://schema.org/price).
   /// [priceEffectiveTime] The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
   /// [priceExpireTime] The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
-  GoogleCloudRetailV2alphaPriceInfo({
+  const GoogleCloudRetailV2alphaPriceInfo({
     this.cost,
     this.currencyCode,
     this.originalPrice,

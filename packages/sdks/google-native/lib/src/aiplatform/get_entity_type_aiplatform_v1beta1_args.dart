@@ -17,7 +17,7 @@ class GetEntityTypeAiplatformV1beta1Args {
   /// [featurestoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEntityTypeAiplatformV1beta1Args({
+  const GetEntityTypeAiplatformV1beta1Args({
     required this.entityTypeId,
     required this.featurestoreId,
     required this.location,

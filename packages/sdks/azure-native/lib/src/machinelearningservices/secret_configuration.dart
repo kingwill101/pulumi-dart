@@ -13,7 +13,7 @@ class SecretConfiguration {
   /// Creates a new [SecretConfiguration].
   /// [uri] Secret Uri.
   /// [workspaceSecretName] Name of secret in workspace key vault.
-  SecretConfiguration({
+  const SecretConfiguration({
     this.uri,
     this.workspaceSecretName,
   });

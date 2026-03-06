@@ -19,7 +19,7 @@ class GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args({
+  const GetDatasetConsentStoreIamPolicyHealthcareV1beta1Args({
     required this.consentStoreId,
     required this.datasetId,
     required this.location,

@@ -30,7 +30,7 @@ class MaccMilestone {
   /// [milestoneId] Globally unique identifier for the milestone. Format: {guid}
   /// [shortfall] Details of the shortfall associated with this milestone.
   /// [status] Represents the current status of the Milestone.
-  MaccMilestone({
+  const MaccMilestone({
     this.automaticShortfall,
     this.automaticShortfallSuppressReason,
     this.commitment,

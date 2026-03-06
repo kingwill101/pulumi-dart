@@ -9,7 +9,7 @@ class CloudProviderProfileResponseInfraStorageProfile {
 
   /// Creates a new [CloudProviderProfileResponseInfraStorageProfile].
   /// [storageSpaceIds] Reference to azure resource corresponding to the new HybridAKSStorage object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/storageSpaces/{storageSpaceName}
-  CloudProviderProfileResponseInfraStorageProfile({
+  const CloudProviderProfileResponseInfraStorageProfile({
     this.storageSpaceIds,
   });
 

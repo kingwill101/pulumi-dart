@@ -47,7 +47,7 @@ class AppSpecFunction {
   /// [name] The name of the component.
   /// [routes] An HTTP paths that should be routed to this component.
   /// [sourceDir] An optional path to the working directory to use for the build.
-  AppSpecFunction({
+  const AppSpecFunction({
     this.alerts,
     this.bitbucket,
     this.cors,

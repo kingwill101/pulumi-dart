@@ -46,7 +46,7 @@ class AmazonS3CompatibleReadSettingsResponse {
   /// [type] The read setting type.
   /// [wildcardFileName] Amazon S3 Compatible wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Amazon S3 Compatible wildcardFolderPath. Type: string (or Expression with resultType string).
-  AmazonS3CompatibleReadSettingsResponse({
+  const AmazonS3CompatibleReadSettingsResponse({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

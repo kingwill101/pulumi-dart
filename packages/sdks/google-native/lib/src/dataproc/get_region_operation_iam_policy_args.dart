@@ -15,7 +15,7 @@ class GetRegionOperationIamPolicyArgs {
   /// [operationId] Required.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionOperationIamPolicyArgs({
+  const GetRegionOperationIamPolicyArgs({
     required this.operationId,
     this.project,
     required this.regionId,

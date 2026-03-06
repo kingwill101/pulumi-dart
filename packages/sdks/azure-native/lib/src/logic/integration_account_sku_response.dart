@@ -9,7 +9,7 @@ class IntegrationAccountSkuResponse {
 
   /// Creates a new [IntegrationAccountSkuResponse].
   /// [name] The sku name.
-  IntegrationAccountSkuResponse({
+  const IntegrationAccountSkuResponse({
     required this.name,
   });
 

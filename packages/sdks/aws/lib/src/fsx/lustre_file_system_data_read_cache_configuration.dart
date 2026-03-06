@@ -11,7 +11,7 @@ class LustreFileSystemDataReadCacheConfiguration {
   /// Creates a new [LustreFileSystemDataReadCacheConfiguration].
   /// [size] Size of the file system's SSD read cache, in gibibytes (GiB). Required when the `sizing_mode` is `USER_PROVISIONED`.
   /// [sizingMode] Sizing mode for the cache. Valud values are `NO_CACHE`, `USER_PROVISIONED`, and `PROPORTIONAL_TO_THROUGHPUT_CAPACITY`.
-  LustreFileSystemDataReadCacheConfiguration({
+  const LustreFileSystemDataReadCacheConfiguration({
     this.size,
     required this.sizingMode,
   });

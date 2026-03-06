@@ -11,7 +11,7 @@ class OrganizationConformancePackInputParameter {
   /// Creates a new [OrganizationConformancePackInputParameter].
   /// [parameterName] The input key.
   /// [parameterValue] The input value.
-  OrganizationConformancePackInputParameter({
+  const OrganizationConformancePackInputParameter({
     required this.parameterName,
     required this.parameterValue,
   });

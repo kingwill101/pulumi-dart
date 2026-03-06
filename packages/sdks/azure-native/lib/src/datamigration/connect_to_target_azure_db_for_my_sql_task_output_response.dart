@@ -22,7 +22,7 @@ class ConnectToTargetAzureDbForMySqlTaskOutputResponse {
   /// [serverVersion] Version of the target server
   /// [targetServerBrandVersion] Target server brand version
   /// [validationErrors] Validation errors associated with the task
-  ConnectToTargetAzureDbForMySqlTaskOutputResponse({
+  const ConnectToTargetAzureDbForMySqlTaskOutputResponse({
     required this.databases,
     required this.id,
     required this.serverVersion,

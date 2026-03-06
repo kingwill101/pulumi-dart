@@ -26,7 +26,7 @@ class GetResourceArgs {
   /// [roleArn] ARN of the IAM Role to assume for operations.
   /// [typeName] CloudFormation resource type name. For example, `AWS::EC2::VPC`.
   /// [typeVersionId] Identifier of the CloudFormation resource type version.
-  GetResourceArgs({
+  const GetResourceArgs({
     required this.identifier,
     this.region,
     this.roleArn,

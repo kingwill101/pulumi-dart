@@ -24,7 +24,7 @@ class CorsRule {
   /// [exposedHeaders] One or more headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript ``XMLHttpRequest`` object).
   /// [id] A unique identifier for this rule. The value must be no more than 255 characters.
   /// [maxAge] The time in seconds that your browser is to cache the preflight response for the specified resource.
-  CorsRule({
+  const CorsRule({
     this.allowedHeaders,
     this.allowedMethods,
     this.allowedOrigins,

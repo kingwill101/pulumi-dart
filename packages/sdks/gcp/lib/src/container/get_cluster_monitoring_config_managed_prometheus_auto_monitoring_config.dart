@@ -8,7 +8,7 @@ class GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig {
 
   /// Creates a new [GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig].
   /// [scope] The scope of auto-monitoring.
-  GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig({
+  const GetClusterMonitoringConfigManagedPrometheusAutoMonitoringConfig({
     required this.scope,
   });
 

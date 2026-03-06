@@ -14,7 +14,7 @@ class GetServiceCapacityProviderStrategy {
   /// [base] Number of tasks using the specified capacity provider
   /// [capacityProvider] Name of the capacity provider
   /// [weight] Relative percentage of total tasks to launch
-  GetServiceCapacityProviderStrategy({
+  const GetServiceCapacityProviderStrategy({
     required this.base,
     required this.capacityProvider,
     required this.weight,

@@ -18,7 +18,7 @@ class GetFleetTierArgs {
   /// [fleetName] Name of the database fleet.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tierName] Name of the tier.
-  GetFleetTierArgs({
+  const GetFleetTierArgs({
     required this.fleetName,
     required this.resourceGroupName,
     required this.tierName,

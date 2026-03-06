@@ -33,7 +33,7 @@ class ApiOperationRequestQueryParameter {
   /// [type] The Type of this Query Parameter, such as a `string`.
   /// [typeName] The type name defined by the Schema.
   /// [values] One or more acceptable values for this Query Parameter.
-  ApiOperationRequestQueryParameter({
+  const ApiOperationRequestQueryParameter({
     this.defaultValue,
     this.description,
     this.examples,

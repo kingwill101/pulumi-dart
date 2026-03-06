@@ -27,7 +27,7 @@ class ScheduleTriggerResponse {
   /// [recurrence] Recurrence schedule configuration.
   /// [runtimeState] Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   /// [type] Trigger type.
-  ScheduleTriggerResponse({
+  const ScheduleTriggerResponse({
     this.annotations,
     this.description,
     this.pipelines,

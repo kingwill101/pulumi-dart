@@ -40,7 +40,7 @@ class HciMarketplaceGalleryImageArgs {
   /// [storagePathId] The ID of the Azure Stack HCI Storage Path used for this Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Virtual Hard Disk to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Marketplace Gallery Image.
   /// [version] The version of the Azure Stack HCI Marketplace Gallery Image. Changing this forces a new Azure Stack HCI Marketplace Gallery Image to be created.
-  HciMarketplaceGalleryImageArgs({
+  const HciMarketplaceGalleryImageArgs({
     required this.customLocationId,
     required this.hypervGeneration,
     required this.identifier,

@@ -12,7 +12,7 @@ class ResourceMoveDetailsResponse {
   /// Creates a new [ResourceMoveDetailsResponse].
   /// [operationInProgress] Denotes whether move operation is in progress
   /// [operationInProgressLockTimeoutInUTC] Denotes the timeout of the operation to finish
-  ResourceMoveDetailsResponse({
+  const ResourceMoveDetailsResponse({
     this.operationInProgress,
     this.operationInProgressLockTimeoutInUTC,
   });

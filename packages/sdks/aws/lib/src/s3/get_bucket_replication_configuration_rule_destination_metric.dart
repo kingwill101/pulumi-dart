@@ -10,7 +10,7 @@ class GetBucketReplicationConfigurationRuleDestinationMetric {
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetric].
   /// [eventThresholds] Required.
   /// [status] Required.
-  GetBucketReplicationConfigurationRuleDestinationMetric({
+  const GetBucketReplicationConfigurationRuleDestinationMetric({
     required this.eventThresholds,
     required this.status,
   });

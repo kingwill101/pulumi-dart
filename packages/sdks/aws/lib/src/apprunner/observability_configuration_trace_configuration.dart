@@ -8,7 +8,7 @@ class ObservabilityConfigurationTraceConfiguration {
 
   /// Creates a new [ObservabilityConfigurationTraceConfiguration].
   /// [vendor] Implementation provider chosen for tracing App Runner services. Valid values: `AWSXRAY`.
-  ObservabilityConfigurationTraceConfiguration({
+  const ObservabilityConfigurationTraceConfiguration({
     this.vendor,
   });
 

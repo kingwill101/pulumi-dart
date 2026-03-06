@@ -9,7 +9,7 @@ class GetPoolV2SessionPersistence {
   /// Creates a new [GetPoolV2SessionPersistence].
   /// [cookieName] Required.
   /// [type] Required.
-  GetPoolV2SessionPersistence({
+  const GetPoolV2SessionPersistence({
     required this.cookieName,
     required this.type,
   });

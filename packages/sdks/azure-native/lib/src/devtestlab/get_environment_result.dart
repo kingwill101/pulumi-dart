@@ -42,7 +42,7 @@ class GetEnvironmentResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     this.armTemplateDisplayName,
     required this.azureApiVersion,
     required this.createdByUser,

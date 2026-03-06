@@ -17,7 +17,7 @@ class GetPublicIpv4PoolPoolAddressRange {
   /// [availableAddressCount] Number of available addresses in the range.
   /// [firstAddress] First address in the range.
   /// [lastAddress] Last address in the range.
-  GetPublicIpv4PoolPoolAddressRange({
+  const GetPublicIpv4PoolPoolAddressRange({
     required this.addressCount,
     required this.availableAddressCount,
     required this.firstAddress,

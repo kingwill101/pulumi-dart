@@ -18,7 +18,7 @@ class GetExportPipelineArgs {
   /// [exportPipelineName] The name of the export pipeline.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetExportPipelineArgs({
+  const GetExportPipelineArgs({
     required this.exportPipelineName,
     required this.registryName,
     required this.resourceGroupName,

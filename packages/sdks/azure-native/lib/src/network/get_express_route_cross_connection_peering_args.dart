@@ -18,7 +18,7 @@ class GetExpressRouteCrossConnectionPeeringArgs {
   /// [crossConnectionName] The name of the ExpressRouteCrossConnection.
   /// [peeringName] The name of the peering.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRouteCrossConnectionPeeringArgs({
+  const GetExpressRouteCrossConnectionPeeringArgs({
     required this.crossConnectionName,
     required this.peeringName,
     required this.resourceGroupName,

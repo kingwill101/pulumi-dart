@@ -9,7 +9,7 @@ class RouterPeerCustomLearnedIpRange {
 
   /// Creates a new [RouterPeerCustomLearnedIpRange].
   /// [range] The IP range to learn. The value must be a
-  RouterPeerCustomLearnedIpRange({
+  const RouterPeerCustomLearnedIpRange({
     required this.range,
   });
 

@@ -77,7 +77,7 @@ class PublicIpArgs {
   /// [skuTier] The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] A collection containing the availability zone to allocate the Public IP in. Changing this forces a new resource to be created.
-  PublicIpArgs({
+  const PublicIpArgs({
     required this.allocationMethod,
     this.ddosProtectionMode,
     this.ddosProtectionPlanId,

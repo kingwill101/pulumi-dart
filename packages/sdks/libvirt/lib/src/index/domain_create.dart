@@ -17,7 +17,7 @@ class DomainCreate {
   /// [paused] Optional.
   /// [resetNvram] Optional.
   /// [validate] Optional.
-  DomainCreate({
+  const DomainCreate({
     this.autodestroy,
     this.bypassCache,
     this.forceBoot,

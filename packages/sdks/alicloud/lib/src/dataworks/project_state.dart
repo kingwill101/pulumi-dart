@@ -33,7 +33,7 @@ class ProjectState {
   /// [resourceGroupId] Aliyun Resource Group Id
   /// [status] Workspace Status
   /// [tags] Aliyun Resource Tag
-  ProjectState({
+  const ProjectState({
     this.description,
     this.devEnvironmentEnabled,
     this.devRoleDisabled,

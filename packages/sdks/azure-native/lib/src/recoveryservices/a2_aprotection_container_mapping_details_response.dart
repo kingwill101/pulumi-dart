@@ -25,7 +25,7 @@ class A2AProtectionContainerMappingDetailsResponse {
   /// [instanceType] Gets the class type. Overridden in derived classes.
   /// [jobScheduleName] The job schedule arm name.
   /// [scheduleName] The schedule arm name.
-  A2AProtectionContainerMappingDetailsResponse({
+  const A2AProtectionContainerMappingDetailsResponse({
     this.agentAutoUpdateStatus,
     this.automationAccountArmId,
     this.automationAccountAuthenticationType,

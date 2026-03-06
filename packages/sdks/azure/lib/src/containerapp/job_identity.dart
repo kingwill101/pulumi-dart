@@ -17,7 +17,7 @@ class JobIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The type of identity used for the Container App Job. Possible values are `SystemAssigned`, `UserAssigned` and `None`.
-  JobIdentity({
+  const JobIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

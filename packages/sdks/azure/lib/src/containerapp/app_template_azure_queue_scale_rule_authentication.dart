@@ -11,7 +11,7 @@ class AppTemplateAzureQueueScaleRuleAuthentication {
   /// Creates a new [AppTemplateAzureQueueScaleRuleAuthentication].
   /// [secretName] The name of the Container App Secret to use for this Scale Rule Authentication.
   /// [triggerParameter] The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
-  AppTemplateAzureQueueScaleRuleAuthentication({
+  const AppTemplateAzureQueueScaleRuleAuthentication({
     required this.secretName,
     required this.triggerParameter,
   });

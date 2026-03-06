@@ -30,7 +30,7 @@ class TargetGroupAttachmentArgs {
   /// [lambdaArn] ARN of a Lambda Function to attach to the Target Group. Exactly 1 of [instance], [instanceId], [lambda] or [lambdaArn] must be provided.
   /// [targetGroup] Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
   /// [targetGroupArn] ARN of the Target Group to attach to. Exactly one of [targetGroup] or [targetGroupArn] must be specified.
-  TargetGroupAttachmentArgs({
+  const TargetGroupAttachmentArgs({
     this.instance,
     this.instanceId,
     this.lambda,

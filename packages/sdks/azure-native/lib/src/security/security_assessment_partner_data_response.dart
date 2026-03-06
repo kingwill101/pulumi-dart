@@ -12,7 +12,7 @@ class SecurityAssessmentPartnerDataResponse {
   /// Creates a new [SecurityAssessmentPartnerDataResponse].
   /// [partnerName] Name of the company of the partner
   /// [secret] secret to authenticate the partner - write only
-  SecurityAssessmentPartnerDataResponse({
+  const SecurityAssessmentPartnerDataResponse({
     required this.partnerName,
     required this.secret,
   });

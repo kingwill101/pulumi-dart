@@ -11,7 +11,7 @@ class GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDis
   /// Creates a new [GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag].
   /// [key] The unique key of the resource manager tag to assign to disks. Keys must be in the format tagKeys/{tag_key_id}.
   /// [value] The value of the resource manager tag to assign to disks. Values must be in the format tagValues/456.
-  GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag({
+  const GetRegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelectionDiskResourceManagerTag({
     required this.key,
     required this.value,
   });

@@ -37,7 +37,7 @@ class BotAliasState {
   /// [lastUpdatedDate] The date that the bot alias was updated. When you create a resource, the creation date and the last updated date are the same.
   /// [name] The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BotAliasState({
+  const BotAliasState({
     this.arn,
     this.botName,
     this.botVersion,

@@ -41,7 +41,7 @@ class EnvironmentArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [title] Environment title.
   /// [workspaceName] The name of the workspace.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.customProperties,
     this.description,
     this.environmentName,

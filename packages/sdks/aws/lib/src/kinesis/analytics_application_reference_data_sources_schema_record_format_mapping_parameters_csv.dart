@@ -11,7 +11,7 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameter
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv].
   /// [recordColumnDelimiter] The Column Delimiter.
   /// [recordRowDelimiter] The Row Delimiter.
-  AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv({
+  const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersCsv({
     required this.recordColumnDelimiter,
     required this.recordRowDelimiter,
   });

@@ -8,7 +8,7 @@ class GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   /// Creates a new [GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] The policy for kernel module loading.
-  GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
+  const GetClusterNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
     required this.policy,
   });
 

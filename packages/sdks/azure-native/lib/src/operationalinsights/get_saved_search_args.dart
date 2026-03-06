@@ -18,7 +18,7 @@ class GetSavedSearchArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [savedSearchId] The id of the saved search.
   /// [workspaceName] The name of the workspace.
-  GetSavedSearchArgs({
+  const GetSavedSearchArgs({
     required this.resourceGroupName,
     required this.savedSearchId,
     required this.workspaceName,

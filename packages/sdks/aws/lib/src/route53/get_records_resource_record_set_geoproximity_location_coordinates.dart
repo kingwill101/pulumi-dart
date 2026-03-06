@@ -11,7 +11,7 @@ class GetRecordsResourceRecordSetGeoproximityLocationCoordinates {
   /// Creates a new [GetRecordsResourceRecordSetGeoproximityLocationCoordinates].
   /// [latitude] Latitude.
   /// [longitude] Longitude.
-  GetRecordsResourceRecordSetGeoproximityLocationCoordinates({
+  const GetRecordsResourceRecordSetGeoproximityLocationCoordinates({
     required this.latitude,
     required this.longitude,
   });

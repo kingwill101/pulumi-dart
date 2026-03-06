@@ -21,7 +21,7 @@ class ListGeodataByIpArgs {
   /// [ipAddress] The dotted-decimal or colon-separated string representation of the IP address
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  ListGeodataByIpArgs({
+  const ListGeodataByIpArgs({
     required this.enrichmentType,
     this.ipAddress,
     required this.resourceGroupName,

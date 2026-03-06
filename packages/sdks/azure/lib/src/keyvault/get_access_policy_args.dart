@@ -14,7 +14,7 @@ class GetAccessPolicyArgs {
 
   /// Creates a new [GetAccessPolicyArgs].
   /// [name] Specifies the name of the Management Template. Possible values are: `Key Management`,
-  GetAccessPolicyArgs({
+  const GetAccessPolicyArgs({
     required this.name,
   });
 

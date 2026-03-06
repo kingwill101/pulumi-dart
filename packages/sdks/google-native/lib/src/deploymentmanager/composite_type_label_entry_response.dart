@@ -12,7 +12,7 @@ class CompositeTypeLabelEntryResponse {
   /// Creates a new [CompositeTypeLabelEntryResponse].
   /// [key] Key of the label
   /// [value] Value of the label
-  CompositeTypeLabelEntryResponse({
+  const CompositeTypeLabelEntryResponse({
     required this.key,
     required this.value,
   });

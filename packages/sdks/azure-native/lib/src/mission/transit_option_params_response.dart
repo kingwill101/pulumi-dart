@@ -12,7 +12,7 @@ class TransitOptionParamsResponse {
   /// Creates a new [TransitOptionParamsResponse].
   /// [remoteVirtualNetworkId] Transit Option Params remoteVirtualNetworkId.
   /// [scaleUnits] Transit Option Params scaleUnits.
-  TransitOptionParamsResponse({
+  const TransitOptionParamsResponse({
     this.remoteVirtualNetworkId,
     this.scaleUnits,
   });

@@ -15,7 +15,7 @@ class GetServiceLbPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceLbPolicyId] Required.
-  GetServiceLbPolicyArgs({
+  const GetServiceLbPolicyArgs({
     required this.location,
     this.project,
     required this.serviceLbPolicyId,

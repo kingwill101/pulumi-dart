@@ -10,7 +10,7 @@ class JobSpec {
 
   /// Creates a new [JobSpec].
   /// [template] Optional. Describes the execution that will be created when running a job.
-  JobSpec({
+  const JobSpec({
     this.template,
   });
 

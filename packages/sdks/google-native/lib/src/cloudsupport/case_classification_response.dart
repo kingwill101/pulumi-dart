@@ -9,7 +9,7 @@ class CaseClassificationResponse {
 
   /// Creates a new [CaseClassificationResponse].
   /// [displayName] A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field.
-  CaseClassificationResponse({
+  const CaseClassificationResponse({
     required this.displayName,
   });
 

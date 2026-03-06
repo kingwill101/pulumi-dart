@@ -33,7 +33,7 @@ class GetBucketObjectsResult {
   /// [prefix] Optional.
   /// [region] Required.
   /// [startAfter] Optional.
-  GetBucketObjectsResult({
+  const GetBucketObjectsResult({
     required this.bucket,
     required this.commonPrefixes,
     this.delimiter,

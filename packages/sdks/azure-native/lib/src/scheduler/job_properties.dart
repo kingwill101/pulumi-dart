@@ -20,7 +20,7 @@ class JobProperties {
   /// [recurrence] Gets or sets the job recurrence.
   /// [startTime] Gets or sets the job start time.
   /// [state] Gets or set the job state.
-  JobProperties({
+  const JobProperties({
     this.action,
     this.recurrence,
     this.startTime,

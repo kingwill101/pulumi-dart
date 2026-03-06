@@ -37,7 +37,7 @@ class SignalRReplicaArgs {
   /// [resourceStopped] Stop or start the resource.  Default to "false".
   /// [sku] The billing information of the resource.
   /// [tags] Resource tags.
-  SignalRReplicaArgs({
+  const SignalRReplicaArgs({
     this.location,
     this.regionEndpointEnabled,
     this.replicaName,

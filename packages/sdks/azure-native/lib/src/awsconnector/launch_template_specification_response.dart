@@ -21,7 +21,7 @@ class LaunchTemplateSpecificationResponse {
   /// [launchTemplateName] The name of the launch template. You must specify the ``LaunchTemplateName`` or the ``LaunchTemplateID``, but not both.
   /// [name] Property name
   /// [version] Property version
-  LaunchTemplateSpecificationResponse({
+  const LaunchTemplateSpecificationResponse({
     this.id,
     this.launchTemplateId,
     this.launchTemplateName,

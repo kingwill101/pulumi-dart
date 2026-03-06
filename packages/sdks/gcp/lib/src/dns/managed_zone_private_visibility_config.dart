@@ -13,7 +13,7 @@ class ManagedZonePrivateVisibilityConfig {
   /// Creates a new [ManagedZonePrivateVisibilityConfig].
   /// [gkeClusters] The list of Google Kubernetes Engine clusters that can see this zone.
   /// [networks] Optional.
-  ManagedZonePrivateVisibilityConfig({
+  const ManagedZonePrivateVisibilityConfig({
     this.gkeClusters,
     this.networks,
   });

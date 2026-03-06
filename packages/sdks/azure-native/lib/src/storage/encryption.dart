@@ -24,7 +24,7 @@ class Encryption {
   /// [keyVaultProperties] Properties provided by key vault.
   /// [requireInfrastructureEncryption] A boolean indicating whether or not the service applies a secondary layer of encryption with platform managed keys for data at rest.
   /// [services] List of services which support encryption.
-  Encryption({
+  const Encryption({
     this.encryptionIdentity,
     this.keySource,
     this.keyVaultProperties,

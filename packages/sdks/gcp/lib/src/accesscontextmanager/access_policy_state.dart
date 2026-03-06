@@ -26,7 +26,7 @@ class AccessPolicyState {
   /// [scopes] Folder or project on which this policy is applicable.
   /// [title] Human readable title. Does not affect behavior.
   /// [updateTime] Time the AccessPolicy was updated in UTC.
-  AccessPolicyState({
+  const AccessPolicyState({
     this.createTime,
     this.name,
     this.parent,

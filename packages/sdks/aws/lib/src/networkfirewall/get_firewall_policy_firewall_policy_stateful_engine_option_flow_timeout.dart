@@ -7,7 +7,7 @@ class GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout {
 
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout].
   /// [tcpIdleTimeoutSeconds] Required.
-  GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout({
+  const GetFirewallPolicyFirewallPolicyStatefulEngineOptionFlowTimeout({
     required this.tcpIdleTimeoutSeconds,
   });
 

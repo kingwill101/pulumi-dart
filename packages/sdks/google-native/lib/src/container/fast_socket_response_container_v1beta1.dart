@@ -9,7 +9,7 @@ class FastSocketResponseContainerV1beta1 {
 
   /// Creates a new [FastSocketResponseContainerV1beta1].
   /// [enabled] Whether Fast Socket features are enabled in the node pool.
-  FastSocketResponseContainerV1beta1({
+  const FastSocketResponseContainerV1beta1({
     required this.enabled,
   });
 

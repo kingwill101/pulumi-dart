@@ -37,7 +37,7 @@ class WebAppVnetConnectionSlotArgs {
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
   /// [vnetName] Name of an existing Virtual Network.
   /// [vnetResourceId] The Virtual Network's resource ID.
-  WebAppVnetConnectionSlotArgs({
+  const WebAppVnetConnectionSlotArgs({
     this.certBlob,
     this.dnsServers,
     this.isSwift,

@@ -11,7 +11,7 @@ class ConnectionLockConfig {
   /// Creates a new [ConnectionLockConfig].
   /// [locked] Indicates whether or not the connection is locked.
   /// [reason] Describes why a connection is locked.
-  ConnectionLockConfig({
+  const ConnectionLockConfig({
     required this.locked,
     this.reason,
   });

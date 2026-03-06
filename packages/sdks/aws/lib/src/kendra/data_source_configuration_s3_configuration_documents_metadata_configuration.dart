@@ -8,7 +8,7 @@ class DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration {
 
   /// Creates a new [DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration].
   /// [s3Prefix] A prefix used to filter metadata configuration files in the AWS S3 bucket. The S3 bucket might contain multiple metadata files. Use `s3_prefix` to include only the desired metadata files.
-  DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration({
+  const DataSourceConfigurationS3ConfigurationDocumentsMetadataConfiguration({
     this.s3Prefix,
   });
 

@@ -56,7 +56,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// [rangeMatch] The header value must be an integer and its value must be in the range specified
   /// [regexMatch] The value of the header must match the regular expression specified in
   /// [suffixMatch] The value of the header must end with the contents of suffixMatch. Only one of
-  RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch({
+  const RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatch({
     this.exactMatch,
     required this.headerName,
     this.invertMatch,

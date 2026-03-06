@@ -13,7 +13,7 @@ class PropagationPolicy {
   /// Creates a new [PropagationPolicy].
   /// [placementProfile] The profile to be used for propagation via placement.
   /// [type] The type of the policy to be used. Default is Placement.
-  PropagationPolicy({
+  const PropagationPolicy({
     this.placementProfile,
     required this.type,
   });

@@ -12,7 +12,7 @@ class ElasticEncryptionConfigurationResponse {
   /// Creates a new [ElasticEncryptionConfigurationResponse].
   /// [elasticPoolEncryptionKeySource] Pool Encryption Key Source.
   /// [keyVaultPrivateEndpointResourceId] The resource ID of private endpoint for KeyVault. It must reside in the same VNET as the volume. Only applicable if encryptionKeySource = 'Microsoft.KeyVault'.
-  ElasticEncryptionConfigurationResponse({
+  const ElasticEncryptionConfigurationResponse({
     required this.elasticPoolEncryptionKeySource,
     required this.keyVaultPrivateEndpointResourceId,
   });

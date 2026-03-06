@@ -16,7 +16,7 @@ class ReportSummarySoleTenantFindingResponse {
   /// [allocatedAssetCount] Count of assets which are allocated
   /// [allocatedRegions] Set of regions in which the assets are allocated
   /// [nodeAllocations] Set of per-nodetype allocation records
-  ReportSummarySoleTenantFindingResponse({
+  const ReportSummarySoleTenantFindingResponse({
     required this.allocatedAssetCount,
     required this.allocatedRegions,
     required this.nodeAllocations,

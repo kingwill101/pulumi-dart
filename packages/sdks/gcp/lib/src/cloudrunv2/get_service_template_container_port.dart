@@ -11,7 +11,7 @@ class GetServiceTemplateContainerPort {
   /// Creates a new [GetServiceTemplateContainerPort].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 &lt; containerPort &lt; 65536.
   /// [name] The name of the Cloud Run v2 Service.
-  GetServiceTemplateContainerPort({
+  const GetServiceTemplateContainerPort({
     required this.containerPort,
     required this.name,
   });

@@ -18,7 +18,7 @@ class AgreementContent {
   /// [aS2] The AS2 agreement content.
   /// [edifact] The EDIFACT agreement content.
   /// [x12] The X12 agreement content.
-  AgreementContent({
+  const AgreementContent({
     this.aS2,
     this.edifact,
     this.x12,

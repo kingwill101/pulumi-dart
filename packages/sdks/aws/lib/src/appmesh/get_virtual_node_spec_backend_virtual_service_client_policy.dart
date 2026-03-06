@@ -8,7 +8,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicy {
 
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicy].
   /// [tls] Required.
-  GetVirtualNodeSpecBackendVirtualServiceClientPolicy({
+  const GetVirtualNodeSpecBackendVirtualServiceClientPolicy({
     required this.tls,
   });
 

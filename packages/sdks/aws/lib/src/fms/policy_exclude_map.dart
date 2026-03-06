@@ -13,7 +13,7 @@ class PolicyExcludeMap {
   /// Creates a new [PolicyExcludeMap].
   /// [accounts] A list of AWS Organization member Accounts that you want to include for this AWS FMS Policy.
   /// [orgunits] A list of IDs of the AWS Organizational Units that you want to include for this AWS FMS Policy. Specifying an OU is the equivalent of specifying all accounts in the OU and in any of its child OUs, including any child OUs and accounts that are added at a later time.
-  PolicyExcludeMap({
+  const PolicyExcludeMap({
     this.accounts,
     this.orgunits,
   });

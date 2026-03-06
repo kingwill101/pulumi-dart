@@ -35,7 +35,7 @@ class DeploymentArtifactArgs {
   /// [mimeType] A content type specifier for the artifact. Content type specifiers are Media Types (https://en.wikipedia.org/wiki/Media_type) with a possible "schema" parameter that specifies a schema for the stored information. Content types can specify compression. Currently only GZip compression is supported (indicated with "+gzip").
   /// [name] Resource name.
   /// [project] Optional.
-  DeploymentArtifactArgs({
+  const DeploymentArtifactArgs({
     this.annotations,
     required this.apiId,
     required this.artifactId,

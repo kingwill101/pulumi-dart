@@ -9,7 +9,7 @@ class RBACRoleBindingLifecycleStateResponseGkehubV1alpha {
 
   /// Creates a new [RBACRoleBindingLifecycleStateResponseGkehubV1alpha].
   /// [code] The current state of the rbacrolebinding resource.
-  RBACRoleBindingLifecycleStateResponseGkehubV1alpha({
+  const RBACRoleBindingLifecycleStateResponseGkehubV1alpha({
     required this.code,
   });
 

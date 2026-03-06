@@ -20,7 +20,7 @@ class ServiceCorsConfiguration {
   /// [allowedMethods] The methods to be allowed via CORS. Possible values are `DELETE`, `GET`, `HEAD`, `MERGE`, `POST`, `OPTIONS`, `PATCH` and `PUT`.
   /// [allowedOrigins] A set of origins to be allowed via CORS.
   /// [maxAgeInSeconds] The max age to be allowed via CORS.
-  ServiceCorsConfiguration({
+  const ServiceCorsConfiguration({
     this.allowCredentials,
     this.allowedHeaders,
     this.allowedMethods,

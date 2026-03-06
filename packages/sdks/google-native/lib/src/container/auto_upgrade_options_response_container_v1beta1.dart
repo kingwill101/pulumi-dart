@@ -12,7 +12,7 @@ class AutoUpgradeOptionsResponseContainerV1beta1 {
   /// Creates a new [AutoUpgradeOptionsResponseContainerV1beta1].
   /// [autoUpgradeStartTime] [Output only] This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
   /// [description] [Output only] This field is set when upgrades are about to commence with the description of the upgrade.
-  AutoUpgradeOptionsResponseContainerV1beta1({
+  const AutoUpgradeOptionsResponseContainerV1beta1({
     required this.autoUpgradeStartTime,
     required this.description,
   });

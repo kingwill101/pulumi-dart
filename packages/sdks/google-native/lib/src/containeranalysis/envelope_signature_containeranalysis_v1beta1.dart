@@ -9,7 +9,7 @@ class EnvelopeSignatureContaineranalysisV1beta1 {
   /// Creates a new [EnvelopeSignatureContaineranalysisV1beta1].
   /// [keyid] Optional.
   /// [sig] Optional.
-  EnvelopeSignatureContaineranalysisV1beta1({
+  const EnvelopeSignatureContaineranalysisV1beta1({
     this.keyid,
     this.sig,
   });

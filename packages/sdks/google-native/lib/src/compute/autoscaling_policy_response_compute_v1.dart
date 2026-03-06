@@ -36,7 +36,7 @@ class AutoscalingPolicyResponseComputeV1 {
   /// [mode] Defines the operating mode for this policy. The following modes are available: - OFF: Disables the autoscaler but maintains its configuration. - ONLY_SCALE_OUT: Restricts the autoscaler to add VM instances only. - ON: Enables all autoscaler activities according to its policy. For more information, see "Turning off or restricting an autoscaler"
   /// [scaleInControl] Required.
   /// [scalingSchedules] Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-  AutoscalingPolicyResponseComputeV1({
+  const AutoscalingPolicyResponseComputeV1({
     required this.coolDownPeriodSec,
     required this.cpuUtilization,
     required this.customMetricUtilizations,

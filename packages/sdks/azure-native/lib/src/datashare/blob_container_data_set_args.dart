@@ -37,7 +37,7 @@ class BlobContainerDataSetArgs {
   /// [shareName] The name of the share to add the data set to.
   /// [storageAccountName] Storage account name of the source data set
   /// [subscriptionId] Subscription id of storage account
-  BlobContainerDataSetArgs({
+  const BlobContainerDataSetArgs({
     required this.accountName,
     required this.containerName,
     this.dataSetName,

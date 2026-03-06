@@ -11,7 +11,7 @@ class V2modelsSlotValueElicitationSettingSlotResolutionSetting {
 
   /// Creates a new [V2modelsSlotValueElicitationSettingSlotResolutionSetting].
   /// [slotResolutionStrategy] Specifies whether assisted slot resolution is turned on for the slot or not.
-  V2modelsSlotValueElicitationSettingSlotResolutionSetting({
+  const V2modelsSlotValueElicitationSettingSlotResolutionSetting({
     required this.slotResolutionStrategy,
   });
 

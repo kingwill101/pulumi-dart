@@ -11,7 +11,7 @@ class TriggerSchedulePipeline {
   /// Creates a new [TriggerSchedulePipeline].
   /// [name] Reference pipeline name.
   /// [parameters] The pipeline parameters that the trigger will act upon.
-  TriggerSchedulePipeline({
+  const TriggerSchedulePipeline({
     required this.name,
     this.parameters,
   });

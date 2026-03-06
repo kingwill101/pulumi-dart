@@ -18,7 +18,7 @@ class GetAzureVersionsResult {
   /// [project] Optional.
   /// [supportedRegions] A list of Azure regions that are available for use with this project and GCP location.
   /// [validVersions] A list of versions available for use with this project and location.
-  GetAzureVersionsResult({
+  const GetAzureVersionsResult({
     required this.id,
     this.location,
     this.project,

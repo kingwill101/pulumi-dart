@@ -19,7 +19,7 @@ class LoggerEventhub {
   /// [endpointUri] The endpoint address of an EventHub Namespace. Required when `client_id` is set.
   /// [name] The name of an EventHub.
   /// [userAssignedIdentityClientId] The Client Id of the User Assigned Identity with the "Azure Event Hubs Data Sender" role to the target EventHub Namespace. Required when `endpoint_uri` is set. If not specified the System Assigned Identity will be used.
-  LoggerEventhub({
+  const LoggerEventhub({
     this.connectionString,
     this.endpointUri,
     required this.name,

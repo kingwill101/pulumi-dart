@@ -40,7 +40,7 @@ class AzureSqlMITableDataset {
   /// [table] The table name of the Azure SQL Managed Instance dataset. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  AzureSqlMITableDataset({
+  const AzureSqlMITableDataset({
     this.annotations,
     this.description,
     this.folder,

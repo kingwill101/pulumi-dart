@@ -16,7 +16,7 @@ class Scale {
   /// [maxReplicas] Optional. Maximum number of container replicas. Defaults to 10 if not set.
   /// [minReplicas] Optional. Minimum number of container replicas.
   /// [rules] Scaling rules.
-  Scale({
+  const Scale({
     this.maxReplicas,
     this.minReplicas,
     this.rules,

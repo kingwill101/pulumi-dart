@@ -15,7 +15,7 @@ class GetGatewaySecurityPolicyArgs {
   /// [gatewaySecurityPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGatewaySecurityPolicyArgs({
+  const GetGatewaySecurityPolicyArgs({
     required this.gatewaySecurityPolicyId,
     required this.location,
     this.project,

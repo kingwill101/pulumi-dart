@@ -13,7 +13,7 @@ class VirtualMachineBootDiagnostics {
   /// Creates a new [VirtualMachineBootDiagnostics].
   /// [enabled] Should Boot Diagnostics be enabled for this Virtual Machine?
   /// [storageUri] The Storage Account's Blob Endpoint which should hold the virtual machine's diagnostic files.
-  VirtualMachineBootDiagnostics({
+  const VirtualMachineBootDiagnostics({
     required this.enabled,
     required this.storageUri,
   });

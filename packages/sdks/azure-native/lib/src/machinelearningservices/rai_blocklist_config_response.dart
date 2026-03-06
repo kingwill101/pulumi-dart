@@ -12,7 +12,7 @@ class RaiBlocklistConfigResponse {
   /// Creates a new [RaiBlocklistConfigResponse].
   /// [blocking] If blocking would occur.
   /// [blocklistName] Name of ContentFilter.
-  RaiBlocklistConfigResponse({
+  const RaiBlocklistConfigResponse({
     this.blocking,
     this.blocklistName,
   });

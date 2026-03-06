@@ -9,7 +9,7 @@ class DataSetLogicalTableMapDataTransformCreateColumnsOperation {
 
   /// Creates a new [DataSetLogicalTableMapDataTransformCreateColumnsOperation].
   /// [columns] Calculated columns to create. See columns.
-  DataSetLogicalTableMapDataTransformCreateColumnsOperation({
+  const DataSetLogicalTableMapDataTransformCreateColumnsOperation({
     required this.columns,
   });
 

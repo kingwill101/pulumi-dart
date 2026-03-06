@@ -17,7 +17,7 @@ class DistributionOrigin {
   /// [protocolPolicy] Protocol that your Amazon Lightsail distribution uses when establishing a connection with your origin to pull content.
   /// [regionName] AWS Region name of the origin resource.
   /// [resourceType] Lightsail resource type (e.g., Distribution).
-  DistributionOrigin({
+  const DistributionOrigin({
     required this.name,
     this.protocolPolicy,
     required this.regionName,

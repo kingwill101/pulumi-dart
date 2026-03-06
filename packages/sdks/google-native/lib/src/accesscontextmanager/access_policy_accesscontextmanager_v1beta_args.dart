@@ -15,7 +15,7 @@ class AccessPolicyAccesscontextmanagerV1betaArgs {
   /// Creates a new [AccessPolicyAccesscontextmanagerV1betaArgs].
   /// [parent] The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
   /// [title] Human readable title. Does not affect behavior.
-  AccessPolicyAccesscontextmanagerV1betaArgs({
+  const AccessPolicyAccesscontextmanagerV1betaArgs({
     required this.parent,
     required this.title,
   });

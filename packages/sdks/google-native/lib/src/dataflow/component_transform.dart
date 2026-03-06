@@ -15,7 +15,7 @@ class ComponentTransform {
   /// [name] Dataflow service generated name for this source.
   /// [originalTransform] User name for the original user transform with which this transform is most closely associated.
   /// [userName] Human-readable name for this transform; may be user or system generated.
-  ComponentTransform({
+  const ComponentTransform({
     this.name,
     this.originalTransform,
     this.userName,

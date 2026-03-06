@@ -9,7 +9,7 @@ class PythonRepositoryResponse {
 
   /// Creates a new [PythonRepositoryResponse].
   /// [publicRepository] One of the publicly available Python repositories supported by Artifact Registry.
-  PythonRepositoryResponse({
+  const PythonRepositoryResponse({
     required this.publicRepository,
   });
 

@@ -11,7 +11,7 @@ class AiFeatureStoreEntityTypeIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AiFeatureStoreEntityTypeIamBindingCondition({
+  const AiFeatureStoreEntityTypeIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

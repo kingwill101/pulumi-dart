@@ -21,7 +21,7 @@ class HanaBackupClientArgs {
   /// [clientInfo] The installation information of the HBR clients.
   /// [useHttps] Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
   /// [vaultId] The ID of the backup vault.
-  HanaBackupClientArgs({
+  const HanaBackupClientArgs({
     this.alertSetting,
     this.clientInfo,
     this.useHttps,

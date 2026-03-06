@@ -12,7 +12,7 @@ class ContainerGroupContainerLivenessProbeHttpGet {
   /// [path] Optional.
   /// [port] Optional.
   /// [scheme] The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-  ContainerGroupContainerLivenessProbeHttpGet({
+  const ContainerGroupContainerLivenessProbeHttpGet({
     this.path,
     this.port,
     this.scheme,

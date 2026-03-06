@@ -19,7 +19,7 @@ class GetFeatureStoreFeatureAiplatformV1beta1Args {
   /// [featurestoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureStoreFeatureAiplatformV1beta1Args({
+  const GetFeatureStoreFeatureAiplatformV1beta1Args({
     required this.entityTypeId,
     required this.featureId,
     required this.featurestoreId,

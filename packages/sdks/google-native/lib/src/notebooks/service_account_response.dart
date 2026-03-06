@@ -12,7 +12,7 @@ class ServiceAccountResponse {
   /// Creates a new [ServiceAccountResponse].
   /// [email] Optional. Email address of the service account.
   /// [scopes] The list of scopes to be made available for this service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
-  ServiceAccountResponse({
+  const ServiceAccountResponse({
     required this.email,
     required this.scopes,
   });

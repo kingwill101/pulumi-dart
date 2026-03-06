@@ -12,7 +12,7 @@ class DefenderForServersGcpOfferingResponseMdeAutoProvisioning {
   /// Creates a new [DefenderForServersGcpOfferingResponseMdeAutoProvisioning].
   /// [configuration] configuration for Microsoft Defender for Endpoint autoprovisioning
   /// [enabled] Is Microsoft Defender for Endpoint auto provisioning enabled
-  DefenderForServersGcpOfferingResponseMdeAutoProvisioning({
+  const DefenderForServersGcpOfferingResponseMdeAutoProvisioning({
     this.configuration,
     this.enabled,
   });

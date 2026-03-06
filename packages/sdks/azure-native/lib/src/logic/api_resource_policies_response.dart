@@ -12,7 +12,7 @@ class ApiResourcePoliciesResponse {
   /// Creates a new [ApiResourcePoliciesResponse].
   /// [content] The API level only policies XML as embedded content.
   /// [contentLink] The content link to the policies.
-  ApiResourcePoliciesResponse({
+  const ApiResourcePoliciesResponse({
     this.content,
     this.contentLink,
   });

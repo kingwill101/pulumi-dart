@@ -22,7 +22,7 @@ class LifecycleHandlerPatch {
   /// [httpGet] HTTPGet specifies an HTTP GET request to perform.
   /// [sleep] Sleep represents a duration that the container should sleep.
   /// [tcpSocket] Deprecated. TCPSocket is NOT supported as a LifecycleHandler and kept for backward compatibility. There is no validation of this field and lifecycle hooks will fail at runtime when it is specified.
-  LifecycleHandlerPatch({
+  const LifecycleHandlerPatch({
     this.exec,
     this.httpGet,
     this.sleep,

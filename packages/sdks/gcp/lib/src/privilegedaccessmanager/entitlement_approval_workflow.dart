@@ -16,7 +16,7 @@ class EntitlementApprovalWorkflow {
 
   /// Creates a new [EntitlementApprovalWorkflow].
   /// [manualApprovals] A manual approval workflow where users who are designated as approvers need to call the ApproveGrant/DenyGrant APIs for an Grant.
-  EntitlementApprovalWorkflow({
+  const EntitlementApprovalWorkflow({
     required this.manualApprovals,
   });
 

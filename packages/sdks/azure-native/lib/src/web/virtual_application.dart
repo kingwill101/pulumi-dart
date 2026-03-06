@@ -19,7 +19,7 @@ class VirtualApplication {
   /// [preloadEnabled] &lt;code&gt;true&lt;/code&gt; if preloading is enabled; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [virtualDirectories] Virtual directories for virtual application.
   /// [virtualPath] Virtual path.
-  VirtualApplication({
+  const VirtualApplication({
     this.physicalPath,
     this.preloadEnabled,
     this.virtualDirectories,

@@ -11,7 +11,7 @@ class ResourceDeploymentScriptPowerShellStorageAccount {
   /// Creates a new [ResourceDeploymentScriptPowerShellStorageAccount].
   /// [key] Specifies the storage account access key.
   /// [name] Specifies the storage account name.
-  ResourceDeploymentScriptPowerShellStorageAccount({
+  const ResourceDeploymentScriptPowerShellStorageAccount({
     required this.key,
     required this.name,
   });

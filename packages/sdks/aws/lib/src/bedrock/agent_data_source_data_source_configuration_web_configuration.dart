@@ -11,7 +11,7 @@ class AgentDataSourceDataSourceConfigurationWebConfiguration {
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfiguration].
   /// [crawlerConfiguration] Optional.
   /// [sourceConfiguration] Optional.
-  AgentDataSourceDataSourceConfigurationWebConfiguration({
+  const AgentDataSourceDataSourceConfigurationWebConfiguration({
     this.crawlerConfiguration,
     this.sourceConfiguration,
   });

@@ -26,7 +26,7 @@ class WaitingRoomRuleArgs {
   /// [siteId] The site ID, which can be obtained by calling the ListSites API.
   /// [status] Rule switch. When adding global configuration, this parameter does not need to be set. Value range:
   /// [waitingRoomId] Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
-  WaitingRoomRuleArgs({
+  const WaitingRoomRuleArgs({
     required this.rule,
     required this.ruleName,
     required this.siteId,

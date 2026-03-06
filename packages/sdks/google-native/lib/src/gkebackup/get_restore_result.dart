@@ -57,7 +57,7 @@ class GetRestoreResult {
   /// [uid] Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
   /// [updateTime] The timestamp when this Restore resource was last updated.
   /// [volumesRestoredCount] Number of volumes restored during the restore execution.
-  GetRestoreResult({
+  const GetRestoreResult({
     required this.backup,
     required this.cluster,
     required this.completeTime,

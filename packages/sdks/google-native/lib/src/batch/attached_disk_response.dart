@@ -15,7 +15,7 @@ class AttachedDiskResponse {
   /// [deviceName] Device name that the guest operating system will see. It is used by Runnable.volumes field to mount disks. So please specify the device_name if you want Batch to help mount the disk, and it should match the device_name field in volumes.
   /// [existingDisk] Name of an existing PD.
   /// [newDisk] Required.
-  AttachedDiskResponse({
+  const AttachedDiskResponse({
     required this.deviceName,
     required this.existingDisk,
     required this.newDisk,

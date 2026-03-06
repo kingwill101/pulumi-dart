@@ -18,7 +18,7 @@ class GatewayConfigResponse {
   /// [gatewayType] Indicates whether the device is a gateway.
   /// [lastAccessedGatewayId] [Output only] The ID of the gateway the device accessed most recently.
   /// [lastAccessedGatewayTime] [Output only] The most recent time at which the device accessed the gateway specified in `last_accessed_gateway`.
-  GatewayConfigResponse({
+  const GatewayConfigResponse({
     required this.gatewayAuthMethod,
     required this.gatewayType,
     required this.lastAccessedGatewayId,

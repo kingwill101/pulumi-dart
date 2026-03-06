@@ -10,7 +10,7 @@ class OracleRdbmsResponse {
 
   /// Creates a new [OracleRdbmsResponse].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbmsResponse({
+  const OracleRdbmsResponse({
     required this.oracleSchemas,
   });
 

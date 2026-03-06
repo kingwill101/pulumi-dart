@@ -13,7 +13,7 @@ class GetTriggerBuildArtifactPythonPackage {
   /// Creates a new [GetTriggerBuildArtifactPythonPackage].
   /// [paths] Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
   /// [repository] Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
-  GetTriggerBuildArtifactPythonPackage({
+  const GetTriggerBuildArtifactPythonPackage({
     required this.paths,
     required this.repository,
   });

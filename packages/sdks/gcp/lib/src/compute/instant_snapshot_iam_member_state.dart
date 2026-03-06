@@ -45,7 +45,7 @@ class InstantSnapshotIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [zone] A reference to the zone where the disk is located. Used to find the parent resource to bind the IAM policy to. If not specified,
-  InstantSnapshotIamMemberState({
+  const InstantSnapshotIamMemberState({
     this.condition,
     this.etag,
     this.member,

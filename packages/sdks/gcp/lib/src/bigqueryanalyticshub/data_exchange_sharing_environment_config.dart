@@ -11,7 +11,7 @@ class DataExchangeSharingEnvironmentConfig {
   /// Creates a new [DataExchangeSharingEnvironmentConfig].
   /// [dcrExchangeConfig] Data Clean Room (DCR), used for privacy-safe and secured data sharing.
   /// [defaultExchangeConfig] Default Analytics Hub data exchange, used for secured data sharing.
-  DataExchangeSharingEnvironmentConfig({
+  const DataExchangeSharingEnvironmentConfig({
     this.dcrExchangeConfig,
     this.defaultExchangeConfig,
   });

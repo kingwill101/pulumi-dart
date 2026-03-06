@@ -12,7 +12,7 @@ class GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicR
   /// Creates a new [GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse].
   /// [repositoryBase] A common public repository base for Yum.
   /// [repositoryPath] A custom field to define a path to a specific repository from the base.
-  GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse({
+  const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepositoryResponse({
     required this.repositoryBase,
     required this.repositoryPath,
   });

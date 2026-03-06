@@ -51,7 +51,7 @@ class ProfileWebAccelerationArgs {
   /// [cacheUriPinneds] Configures a list of URIs to keep in the cache. The pinning process keeps URIs in cache when they would normally be evicted to make room for more active URIs.
   /// [defaultsFrom] Specifies the profile that you want to use as the parent profile. Your new profile inherits all settings and values from the parent profile specified.
   /// [name] Specifies the name of the web acceleration profile service ,name of Profile should be full path. Full path is the combination of the `partition + web acceleration profile name`,For example `/Common/sample-resource`.
-  ProfileWebAccelerationArgs({
+  const ProfileWebAccelerationArgs({
     this.cacheAgingRate,
     this.cacheClientCacheControlMode,
     this.cacheInsertAgeHeader,

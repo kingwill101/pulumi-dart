@@ -23,7 +23,7 @@ class CrawlerS3Target {
   /// [exclusions] A list of glob patterns used to exclude from the crawl.
   /// [path] The path to the Amazon S3 target.
   /// [sampleSize] Sets the number of files in each leaf folder to be crawled when crawling sample files in a dataset. If not set, all the files are crawled. A valid value is an integer between 1 and 249.
-  CrawlerS3Target({
+  const CrawlerS3Target({
     this.connectionName,
     this.dlqEventQueueArn,
     this.eventQueueArn,

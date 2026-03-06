@@ -18,7 +18,7 @@ class ServiceQuotaUsageMetric {
   /// [metricName] The name of the metric.
   /// [metricNamespace] The namespace of the metric.
   /// [metricStatisticRecommendation] The metric statistic that AWS recommend you use when determining quota usage.
-  ServiceQuotaUsageMetric({
+  const ServiceQuotaUsageMetric({
     this.metricDimensions,
     this.metricName,
     this.metricNamespace,

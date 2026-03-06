@@ -21,7 +21,7 @@ class RouteTablePropagationState {
   /// [resourceType] Type of the resource
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment.
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
-  RouteTablePropagationState({
+  const RouteTablePropagationState({
     this.region,
     this.resourceId,
     this.resourceType,

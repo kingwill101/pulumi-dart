@@ -8,7 +8,7 @@ class GetCodeSigningConfigPolicy {
 
   /// Creates a new [GetCodeSigningConfigPolicy].
   /// [untrustedArtifactOnDeployment] Code signing configuration policy for deployment validation failure. Valid values: `Warn`, `Enforce`.
-  GetCodeSigningConfigPolicy({
+  const GetCodeSigningConfigPolicy({
     required this.untrustedArtifactOnDeployment,
   });
 

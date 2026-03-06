@@ -8,7 +8,7 @@ class DomainDevicesGraphicRdpListenerSocket {
 
   /// Creates a new [DomainDevicesGraphicRdpListenerSocket].
   /// [socket] Defines the socket's attributes for listener configurations in the Spice protocol.
-  DomainDevicesGraphicRdpListenerSocket({
+  const DomainDevicesGraphicRdpListenerSocket({
     this.socket,
   });
 

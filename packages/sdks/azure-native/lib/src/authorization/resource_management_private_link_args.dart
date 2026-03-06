@@ -18,7 +18,7 @@ class ResourceManagementPrivateLinkArgs {
   /// [location] the region to create private link association.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rmplName] The name of the resource management private link.
-  ResourceManagementPrivateLinkArgs({
+  const ResourceManagementPrivateLinkArgs({
     this.location,
     required this.resourceGroupName,
     this.rmplName,

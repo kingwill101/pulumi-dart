@@ -32,7 +32,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecification {
   /// [predefinedMetricPairSpecification] Predefined metric pair specification that determines the appropriate scaling metric and load metric to use. See supported fields below.
   /// [predefinedScalingMetricSpecification] Predefined scaling metric specification. See supported fields below.
   /// [targetValue] Target utilization.
-  PolicyPredictiveScalingPolicyConfigurationMetricSpecification({
+  const PolicyPredictiveScalingPolicyConfigurationMetricSpecification({
     this.customizedCapacityMetricSpecification,
     this.customizedLoadMetricSpecification,
     this.customizedScalingMetricSpecification,

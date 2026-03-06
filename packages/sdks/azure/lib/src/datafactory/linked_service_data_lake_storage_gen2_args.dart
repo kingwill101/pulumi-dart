@@ -54,7 +54,7 @@ class LinkedServiceDataLakeStorageGen2Args {
   /// [tenant] The tenant id or name in which the service principal exists to authenticate against the Azure Data Lake Storage Gen2 account.
   /// [url] The endpoint for the Azure Data Lake Storage Gen2 service.
   /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Azure Data Lake Storage Gen2 account. Incompatible with `service_principal_id`, `service_principal_key`, `tenant` and `storage_account_key`.
-  LinkedServiceDataLakeStorageGen2Args({
+  const LinkedServiceDataLakeStorageGen2Args({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

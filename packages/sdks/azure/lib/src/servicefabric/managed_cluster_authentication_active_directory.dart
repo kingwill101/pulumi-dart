@@ -14,7 +14,7 @@ class ManagedClusterAuthenticationActiveDirectory {
   /// [clientApplicationId] The ID of the Client Application.
   /// [clusterApplicationId] The ID of the Cluster Application.
   /// [tenantId] The ID of the Tenant.
-  ManagedClusterAuthenticationActiveDirectory({
+  const ManagedClusterAuthenticationActiveDirectory({
     required this.clientApplicationId,
     required this.clusterApplicationId,
     required this.tenantId,

@@ -30,7 +30,7 @@ class BillingGroupState {
   /// [tags] Key-value mapping of resource tags
   /// [tagsAll] Optional.
   /// [version] The current version of the Billing Group record in the registry.
-  BillingGroupState({
+  const BillingGroupState({
     this.arn,
     this.metadatas,
     this.name,

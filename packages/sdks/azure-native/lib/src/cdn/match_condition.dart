@@ -24,7 +24,7 @@ class MatchCondition {
   /// [operator] Describes operator to be matched
   /// [selector] Selector can used to match a specific key for QueryString, Cookies, RequestHeader or PostArgs.
   /// [transforms] List of transforms.
-  MatchCondition({
+  const MatchCondition({
     required this.matchValue,
     required this.matchVariable,
     this.negateCondition,

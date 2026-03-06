@@ -10,7 +10,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchSta
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

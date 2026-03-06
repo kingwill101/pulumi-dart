@@ -22,7 +22,7 @@ class TableBucketReplicationArgs {
   /// [role] ARN referencing the IAM role assumed by S3 when replicating tables in this bucket.
   /// [rule] Replication rules. See Rule below for more details.
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this replication configuration.
-  TableBucketReplicationArgs({
+  const TableBucketReplicationArgs({
     this.region,
     required this.role,
     this.rule,

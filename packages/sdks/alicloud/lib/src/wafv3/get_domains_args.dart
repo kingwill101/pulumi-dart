@@ -31,7 +31,7 @@ class GetDomainsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.backend,
     this.domain,
     this.enableDetails,

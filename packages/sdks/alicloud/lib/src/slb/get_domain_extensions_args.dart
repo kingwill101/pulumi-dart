@@ -20,7 +20,7 @@ class GetDomainExtensionsArgs {
   /// [ids] IDs of the SLB domain extensions.
   /// [loadBalancerId] The ID of the SLB instance.
   /// [outputFile] Optional.
-  GetDomainExtensionsArgs({
+  const GetDomainExtensionsArgs({
     required this.frontendPort,
     this.ids,
     required this.loadBalancerId,

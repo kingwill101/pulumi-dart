@@ -9,7 +9,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryM
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib].
   /// [max] Optional.
   /// [min] Optional.
-  GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib({
+  const GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsMemoryMib({
     this.max,
     this.min,
   });

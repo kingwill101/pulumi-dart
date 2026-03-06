@@ -8,7 +8,7 @@ class CloudControlRuleCelExpressionResourceTypesValues {
 
   /// Creates a new [CloudControlRuleCelExpressionResourceTypesValues].
   /// [values] The strings in the list.
-  CloudControlRuleCelExpressionResourceTypesValues({
+  const CloudControlRuleCelExpressionResourceTypesValues({
     required this.values,
   });
 

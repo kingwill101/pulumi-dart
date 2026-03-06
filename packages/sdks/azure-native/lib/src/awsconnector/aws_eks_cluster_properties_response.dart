@@ -80,7 +80,7 @@ class AwsEksClusterPropertiesResponse {
   /// [status] &lt;p&gt;The current status of the cluster.&lt;/p&gt;
   /// [tags] &lt;p&gt;Metadata that assists with categorization and organization. Each tag consists of a key and an optional value. You define both. Tags don't propagate to any other cluster or Amazon Web Services resources.&lt;/p&gt;
   /// [version] &lt;p&gt;The Kubernetes server version for the cluster.&lt;/p&gt;
-  AwsEksClusterPropertiesResponse({
+  const AwsEksClusterPropertiesResponse({
     this.accessConfig,
     this.arn,
     this.certificateAuthority,

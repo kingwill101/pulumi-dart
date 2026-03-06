@@ -48,7 +48,7 @@ class CommandResponse {
   /// [restartAfter] Specifies whether to restart the VM after the command executed.
   /// [runAsInteractive] Specifies whether to run the command in interactive mode.
   /// [runElevated] Specifies whether to run the command as administrator.
-  CommandResponse({
+  const CommandResponse({
     required this.action,
     this.alwaysRun,
     this.applyUpdateBefore,

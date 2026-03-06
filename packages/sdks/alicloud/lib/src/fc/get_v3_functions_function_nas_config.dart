@@ -15,7 +15,7 @@ class GetV3FunctionsFunctionNasConfig {
   /// [groupId] Group ID.
   /// [mountPoints] OSS mount point list.
   /// [userId] Account ID.
-  GetV3FunctionsFunctionNasConfig({
+  const GetV3FunctionsFunctionNasConfig({
     required this.groupId,
     required this.mountPoints,
     required this.userId,

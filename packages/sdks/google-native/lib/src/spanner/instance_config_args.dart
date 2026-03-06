@@ -39,7 +39,7 @@ class InstanceConfigArgs {
   /// [project] Optional.
   /// [replicas] The geographic placement of nodes in this instance configuration and their replication properties.
   /// [validateOnly] An option to validate, but not actually execute, a request, and provide the same response.
-  InstanceConfigArgs({
+  const InstanceConfigArgs({
     this.baseConfig,
     this.displayName,
     this.etag,

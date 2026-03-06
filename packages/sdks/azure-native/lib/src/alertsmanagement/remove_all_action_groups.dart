@@ -10,7 +10,7 @@ class RemoveAllActionGroups {
 
   /// Creates a new [RemoveAllActionGroups].
   /// [actionType] Action that should be applied.
-  RemoveAllActionGroups({
+  const RemoveAllActionGroups({
     required this.actionType,
   });
 

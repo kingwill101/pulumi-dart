@@ -16,7 +16,7 @@ class ClusterConfig {
   /// [configValue] Custom configuration service config value, e.g. ’3’.
   /// [fileName] Custom configuration service file name, e.g. ’hdfs-site’.
   /// [serviceName] Required.
-  ClusterConfig({
+  const ClusterConfig({
     required this.configKey,
     required this.configValue,
     required this.fileName,

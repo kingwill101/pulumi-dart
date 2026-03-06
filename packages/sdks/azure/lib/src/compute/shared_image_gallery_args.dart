@@ -28,7 +28,7 @@ class SharedImageGalleryArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Shared Image Gallery. Changing this forces a new resource to be created.
   /// [sharing] A `sharing` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Shared Image Gallery.
-  SharedImageGalleryArgs({
+  const SharedImageGalleryArgs({
     this.description,
     this.location,
     this.name,

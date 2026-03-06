@@ -11,7 +11,7 @@ class DatabaseEncryptionConfiguration {
   /// Creates a new [DatabaseEncryptionConfiguration].
   /// [encryptionOption] Type of key; one of `SSE_S3`, `SSE_KMS`, `CSE_KMS`
   /// [kmsKey] KMS key ARN or ID; required for key types `SSE_KMS` and `CSE_KMS`.
-  DatabaseEncryptionConfiguration({
+  const DatabaseEncryptionConfiguration({
     required this.encryptionOption,
     this.kmsKey,
   });

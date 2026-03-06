@@ -11,7 +11,7 @@ class JobRecurrenceScheduleMonthlyOccurrenceResponse {
   /// Creates a new [JobRecurrenceScheduleMonthlyOccurrenceResponse].
   /// [day] Gets or sets the day. Must be one of monday, tuesday, wednesday, thursday, friday, saturday, sunday.
   /// [occurrence] Gets or sets the occurrence. Must be between -5 and 5.
-  JobRecurrenceScheduleMonthlyOccurrenceResponse({
+  const JobRecurrenceScheduleMonthlyOccurrenceResponse({
     this.day,
     this.occurrence,
   });

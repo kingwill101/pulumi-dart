@@ -9,7 +9,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset {
 
   /// Creates a new [StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset].
   /// [datasetId] Dataset ID in the format projects/{project}/datasets/{dataset_id} or
-  StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset({
+  const StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset({
     required this.datasetId,
   });
 

@@ -24,7 +24,7 @@ class GetAncestryResult {
   /// [parentId] The parent's id.
   /// [parentType] One of `"folder"` or `"organization"`.
   /// [project] Optional.
-  GetAncestryResult({
+  const GetAncestryResult({
     required this.ancestors,
     required this.id,
     required this.orgId,

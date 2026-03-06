@@ -20,7 +20,7 @@ class BucketNotificationQueue {
   /// [filterSuffix] Object key name suffix.
   /// [id] Unique identifier for each of the notification configurations.
   /// [queueArn] SQS queue ARN.
-  BucketNotificationQueue({
+  const BucketNotificationQueue({
     required this.events,
     this.filterPrefix,
     this.filterSuffix,

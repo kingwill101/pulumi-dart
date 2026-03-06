@@ -10,7 +10,7 @@ class PlacementV1ClusterResourcePlacementSpecResponse {
 
   /// Creates a new [PlacementV1ClusterResourcePlacementSpecResponse].
   /// [policy] Policy defines how to select member clusters to place the selected resources. If unspecified, all the joined member clusters are selected.
-  PlacementV1ClusterResourcePlacementSpecResponse({
+  const PlacementV1ClusterResourcePlacementSpecResponse({
     this.policy,
   });
 

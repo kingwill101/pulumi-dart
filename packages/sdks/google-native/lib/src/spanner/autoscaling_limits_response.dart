@@ -18,7 +18,7 @@ class AutoscalingLimitsResponse {
   /// [maxProcessingUnits] Maximum number of processing units allocated to the instance. If set, this number should be multiples of 1000 and be greater than or equal to min_processing_units.
   /// [minNodes] Minimum number of nodes allocated to the instance. If set, this number should be greater than or equal to 1.
   /// [minProcessingUnits] Minimum number of processing units allocated to the instance. If set, this number should be multiples of 1000.
-  AutoscalingLimitsResponse({
+  const AutoscalingLimitsResponse({
     required this.maxNodes,
     required this.maxProcessingUnits,
     required this.minNodes,

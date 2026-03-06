@@ -66,7 +66,7 @@ class ClientUserDefineRuleState {
   /// [registryContent] The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   /// [registryKey] The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   /// [type] The rule type. Value:
-  ClientUserDefineRuleState({
+  const ClientUserDefineRuleState({
     this.actionType,
     this.clientUserDefineRuleName,
     this.cmdline,

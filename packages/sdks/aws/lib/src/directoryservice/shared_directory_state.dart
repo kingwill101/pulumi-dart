@@ -27,7 +27,7 @@ class SharedDirectoryState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sharedDirectoryId] Identifier of the directory that is stored in the directory consumer account that corresponds to the shared directory in the owner account.
   /// [target] Identifier for the directory consumer account with whom the directory is to be shared. See below.
-  SharedDirectoryState({
+  const SharedDirectoryState({
     this.directoryId,
     this.method,
     this.notes,

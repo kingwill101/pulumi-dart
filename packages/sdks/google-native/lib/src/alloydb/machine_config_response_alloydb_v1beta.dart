@@ -9,7 +9,7 @@ class MachineConfigResponseAlloydbV1beta {
 
   /// Creates a new [MachineConfigResponseAlloydbV1beta].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfigResponseAlloydbV1beta({
+  const MachineConfigResponseAlloydbV1beta({
     required this.cpuCount,
   });
 

@@ -12,7 +12,7 @@ class CommitmentPeriod {
   /// Creates a new [CommitmentPeriod].
   /// [count] Commitment period commitment count.
   /// [tier] Commitment period commitment tier.
-  CommitmentPeriod({
+  const CommitmentPeriod({
     this.count,
     this.tier,
   });

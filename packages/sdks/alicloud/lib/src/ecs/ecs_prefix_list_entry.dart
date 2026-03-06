@@ -17,7 +17,7 @@ class EcsPrefixListEntry {
   /// Creates a new [EcsPrefixListEntry].
   /// [cidr] The CIDR block in entry. This parameter is empty by default.  Take note of the following items:
   /// [description] The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
-  EcsPrefixListEntry({
+  const EcsPrefixListEntry({
     this.cidr,
     this.description,
   });

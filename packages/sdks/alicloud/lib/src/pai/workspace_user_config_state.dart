@@ -18,7 +18,7 @@ class WorkspaceUserConfigState {
   /// [configKey] The key of the configuration.
   /// [configValue] The value of the configuration.
   /// [scope] The scope. Default value: `owner`. Valid values: `owner`, `subUser`.
-  WorkspaceUserConfigState({
+  const WorkspaceUserConfigState({
     this.categoryName,
     this.configKey,
     this.configValue,

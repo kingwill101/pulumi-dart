@@ -12,7 +12,7 @@ class RunCommandManagedIdentity {
   /// Creates a new [RunCommandManagedIdentity].
   /// [clientId] Client Id (GUID value) of the user-assigned managed identity. ObjectId should not be used if this is provided.
   /// [objectId] Object Id (GUID value) of the user-assigned managed identity. ClientId should not be used if this is provided.
-  RunCommandManagedIdentity({
+  const RunCommandManagedIdentity({
     this.clientId,
     this.objectId,
   });

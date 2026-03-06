@@ -39,7 +39,7 @@ class ResponsePlanArgs {
   /// [name] The name of the response plan.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The tags applied to the response plan.
-  ResponsePlanArgs({
+  const ResponsePlanArgs({
     this.action,
     this.chatChannels,
     this.displayName,

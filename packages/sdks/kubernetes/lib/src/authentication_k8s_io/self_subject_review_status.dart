@@ -10,7 +10,7 @@ class SelfSubjectReviewStatus {
 
   /// Creates a new [SelfSubjectReviewStatus].
   /// [userInfo] User attributes of the user making this request.
-  SelfSubjectReviewStatus({
+  const SelfSubjectReviewStatus({
     this.userInfo,
   });
 

@@ -159,7 +159,7 @@ class GetInstanceResult {
   /// [userData] SHA-1 hash of User Data supplied to the Instance.
   /// [userDataBase64] Base64 encoded contents of User Data supplied to the Instance. This attribute is only exported if `get_user_data` is true.
   /// [vpcSecurityGroupIds] Associated security groups in a non-default VPC.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.ami,
     required this.arn,
     required this.associatePublicIpAddress,

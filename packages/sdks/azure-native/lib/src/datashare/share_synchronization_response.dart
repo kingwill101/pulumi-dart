@@ -36,7 +36,7 @@ class ShareSynchronizationResponse {
   /// [status] Raw Status
   /// [synchronizationId] Synchronization id
   /// [synchronizationMode] Synchronization mode
-  ShareSynchronizationResponse({
+  const ShareSynchronizationResponse({
     this.consumerEmail,
     this.consumerName,
     this.consumerTenantName,

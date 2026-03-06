@@ -17,7 +17,7 @@ class DedicatedHostInstanceViewResponse {
   /// [assetId] Specifies the unique id of the dedicated physical machine on which the dedicated host resides.
   /// [availableCapacity] Unutilized capacity of the dedicated host.
   /// [statuses] The resource status information.
-  DedicatedHostInstanceViewResponse({
+  const DedicatedHostInstanceViewResponse({
     required this.assetId,
     this.availableCapacity,
     this.statuses,

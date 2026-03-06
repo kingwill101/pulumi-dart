@@ -14,7 +14,7 @@ class SecretsResponse {
   /// Creates a new [SecretsResponse].
   /// [inline] Secrets encrypted with KMS key and the associated secret environment variable.
   /// [secretManager] Secrets in Secret Manager and associated secret environment variable.
-  SecretsResponse({
+  const SecretsResponse({
     required this.inline,
     required this.secretManager,
   });

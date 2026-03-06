@@ -18,7 +18,7 @@ class GetProjectArgs {
   /// [name] Name of the database migration project.
   /// [resourceGroupName] Name of the resource group where resource belongs to.
   /// [serviceName] Name of the database migration service where resource belongs to.
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.name,
     required this.resourceGroupName,
     required this.serviceName,

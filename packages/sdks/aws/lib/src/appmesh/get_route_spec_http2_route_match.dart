@@ -22,7 +22,7 @@ class GetRouteSpecHttp2RouteMatch {
   /// [prefix] Required.
   /// [queryParameters] Required.
   /// [scheme] Required.
-  GetRouteSpecHttp2RouteMatch({
+  const GetRouteSpecHttp2RouteMatch({
     required this.headers,
     required this.method,
     required this.paths,

@@ -11,7 +11,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendCo
   /// Creates a new [NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig].
   /// [port] The port on which traffic will be received.
   /// [publicIpAddressId] The ID of the Public IP Address resource the traffic will be received on.
-  NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig({
+  const NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNatFrontendConfig({
     required this.port,
     required this.publicIpAddressId,
   });

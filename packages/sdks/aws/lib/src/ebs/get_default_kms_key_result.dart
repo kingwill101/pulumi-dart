@@ -13,7 +13,7 @@ class GetDefaultKmsKeyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyArn] ARN of the default KMS key uses to encrypt an EBS volume in this region when no key is specified in an API call that creates the volume and encryption by default is enabled.
   /// [region] Required.
-  GetDefaultKmsKeyResult({
+  const GetDefaultKmsKeyResult({
     required this.id,
     required this.keyArn,
     required this.region,

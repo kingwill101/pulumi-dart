@@ -13,7 +13,7 @@ class AzureFirstPartyManagedCertificateParameters {
   /// Creates a new [AzureFirstPartyManagedCertificateParameters].
   /// [subjectAlternativeNames] The list of SANs.
   /// [type] The type of the secret resource.
-  AzureFirstPartyManagedCertificateParameters({
+  const AzureFirstPartyManagedCertificateParameters({
     this.subjectAlternativeNames,
     required this.type,
   });

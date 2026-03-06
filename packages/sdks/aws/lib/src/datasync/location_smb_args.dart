@@ -37,7 +37,7 @@ class LocationSmbArgs {
   /// [subdirectory] Subdirectory to perform actions as source or destination. Should be exported by the NFS server.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [user] The user who can mount the share and has file and folder permissions in the SMB share.
-  LocationSmbArgs({
+  const LocationSmbArgs({
     required this.agentArns,
     this.domain,
     this.mountOptions,

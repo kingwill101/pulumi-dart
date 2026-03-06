@@ -17,7 +17,7 @@ class DataSourceParametersRedshift {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [port] The port to which to connect.
-  DataSourceParametersRedshift({
+  const DataSourceParametersRedshift({
     this.clusterId,
     required this.database,
     this.host,

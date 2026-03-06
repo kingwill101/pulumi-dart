@@ -11,7 +11,7 @@ class FirehoseDeliveryStreamKinesisSourceConfiguration {
   /// Creates a new [FirehoseDeliveryStreamKinesisSourceConfiguration].
   /// [kinesisStreamArn] The kinesis stream used as the source of the firehose delivery stream.
   /// [roleArn] The ARN of the role that provides access to the source Kinesis stream.
-  FirehoseDeliveryStreamKinesisSourceConfiguration({
+  const FirehoseDeliveryStreamKinesisSourceConfiguration({
     required this.kinesisStreamArn,
     required this.roleArn,
   });

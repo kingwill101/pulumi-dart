@@ -12,7 +12,7 @@ class GetVpcFirewallCensCenLocalVpcVpcCidrTableList {
   /// Creates a new [GetVpcFirewallCensCenLocalVpcVpcCidrTableList].
   /// [routeEntryLists] The list of route entries in the VPC.
   /// [routeTableId] The ID of the route table of the VPC.
-  GetVpcFirewallCensCenLocalVpcVpcCidrTableList({
+  const GetVpcFirewallCensCenLocalVpcVpcCidrTableList({
     required this.routeEntryLists,
     required this.routeTableId,
   });

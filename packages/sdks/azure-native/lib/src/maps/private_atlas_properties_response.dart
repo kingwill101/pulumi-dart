@@ -9,7 +9,7 @@ class PrivateAtlasPropertiesResponse {
 
   /// Creates a new [PrivateAtlasPropertiesResponse].
   /// [provisioningState] The state of the resource provisioning, terminal states: Succeeded, Failed, Canceled
-  PrivateAtlasPropertiesResponse({
+  const PrivateAtlasPropertiesResponse({
     this.provisioningState,
   });
 

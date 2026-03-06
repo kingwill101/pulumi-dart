@@ -53,7 +53,7 @@ class DomainState {
   /// [tags] Optional.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
-  DomainState({
+  const DomainState({
     this.arn,
     this.description,
     this.domainExecutionRole,

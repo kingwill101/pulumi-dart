@@ -8,7 +8,7 @@ class SeedNode {
 
   /// Creates a new [SeedNode].
   /// [ipAddress] IP address of this seed node.
-  SeedNode({
+  const SeedNode({
     this.ipAddress,
   });
 

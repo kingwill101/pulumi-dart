@@ -12,7 +12,7 @@ class ServiceStatusResponse {
   /// Creates a new [ServiceStatusResponse].
   /// [startupType] The behavior of the service when the Arc-enabled machine starts up.
   /// [status] The current status of the service.
-  ServiceStatusResponse({
+  const ServiceStatusResponse({
     this.startupType,
     this.status,
   });

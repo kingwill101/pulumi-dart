@@ -11,7 +11,7 @@ class MemberDetectorFeatureAdditionalConfiguration {
   /// Creates a new [MemberDetectorFeatureAdditionalConfiguration].
   /// [name] The name of the additional configuration. Valid values: `EKS_ADDON_MANAGEMENT`, `ECS_FARGATE_AGENT_MANAGEMENT`.
   /// [status] The status of the additional configuration. Valid values: `ENABLED`, `DISABLED`.
-  MemberDetectorFeatureAdditionalConfiguration({
+  const MemberDetectorFeatureAdditionalConfiguration({
     required this.name,
     required this.status,
   });

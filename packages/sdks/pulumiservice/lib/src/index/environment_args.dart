@@ -21,7 +21,7 @@ class EnvironmentArgs {
   /// [organization] Organization name.
   /// [project] Project name.
   /// [yaml] Environment's yaml file.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     required this.name,
     required this.organization,
     this.project,

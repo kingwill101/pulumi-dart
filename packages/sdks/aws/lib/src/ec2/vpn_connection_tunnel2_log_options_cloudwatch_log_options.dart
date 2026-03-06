@@ -23,7 +23,7 @@ class VpnConnectionTunnel2LogOptionsCloudwatchLogOptions {
   /// [logEnabled] Enable or disable VPN tunnel logging feature. The default is `false`.
   /// [logGroupArn] The Amazon Resource Name (ARN) of the CloudWatch log group to send logs to.
   /// [logOutputFormat] Set log format. Default format is json. Possible values are: `json` and `text`. The default is `json`.
-  VpnConnectionTunnel2LogOptionsCloudwatchLogOptions({
+  const VpnConnectionTunnel2LogOptionsCloudwatchLogOptions({
     this.bgpLogEnabled,
     this.bgpLogGroupArn,
     this.bgpLogOutputFormat,

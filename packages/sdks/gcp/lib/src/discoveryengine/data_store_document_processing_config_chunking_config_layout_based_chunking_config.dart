@@ -13,7 +13,7 @@ class DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig {
   /// Creates a new [DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig].
   /// [chunkSize] The token size limit for each chunk.
   /// [includeAncestorHeadings] Whether to include appending different levels of headings to chunks from the middle of the document to prevent context loss.
-  DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig({
+  const DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig({
     this.chunkSize,
     this.includeAncestorHeadings,
   });

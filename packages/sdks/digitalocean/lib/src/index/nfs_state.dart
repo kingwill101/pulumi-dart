@@ -34,7 +34,7 @@ class NfsState {
   /// [tags] Optional.
   /// [vpcId] The ID of the VPC where the NFS share will be created.
   /// [vpcIds] Optional.
-  NfsState({
+  const NfsState({
     this.host,
     this.mountPath,
     this.name,

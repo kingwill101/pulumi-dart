@@ -58,7 +58,7 @@ class GetSapDatabaseInstanceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmDetails] The list of virtual machines corresponding to the Database resource.
-  GetSapDatabaseInstanceResult({
+  const GetSapDatabaseInstanceResult({
     required this.azureApiVersion,
     required this.databaseSid,
     required this.databaseType,

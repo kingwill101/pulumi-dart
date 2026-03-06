@@ -13,7 +13,7 @@ class GetPeeringManagedidentitiesV1alpha1Args {
   /// Creates a new [GetPeeringManagedidentitiesV1alpha1Args].
   /// [peeringId] Required.
   /// [project] Optional.
-  GetPeeringManagedidentitiesV1alpha1Args({
+  const GetPeeringManagedidentitiesV1alpha1Args({
     required this.peeringId,
     this.project,
   });

@@ -21,7 +21,7 @@ class InventoryDestinationBucket {
   /// [encryption] Contains the type of server-side encryption to use to encrypt the inventory (documented below).
   /// [format] Specifies the output format of the inventory results. Can be `CSV`, [`ORC`](https://orc.apache.org/) or [`Parquet`](https://parquet.apache.org/).
   /// [prefix] Prefix that is prepended to all inventory results.
-  InventoryDestinationBucket({
+  const InventoryDestinationBucket({
     this.accountId,
     required this.bucketArn,
     this.encryption,

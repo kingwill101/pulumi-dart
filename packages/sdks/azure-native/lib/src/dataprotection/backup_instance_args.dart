@@ -25,7 +25,7 @@ class BackupInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Proxy Resource tags.
   /// [vaultName] The name of the backup vault.
-  BackupInstanceArgs({
+  const BackupInstanceArgs({
     this.backupInstanceName,
     this.properties,
     required this.resourceGroupName,

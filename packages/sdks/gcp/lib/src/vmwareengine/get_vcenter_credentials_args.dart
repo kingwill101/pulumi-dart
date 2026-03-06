@@ -12,7 +12,7 @@ class GetVcenterCredentialsArgs {
 
   /// Creates a new [GetVcenterCredentialsArgs].
   /// [parent] The resource name of the private cloud which contains the Vcenter.
-  GetVcenterCredentialsArgs({
+  const GetVcenterCredentialsArgs({
     required this.parent,
   });
 

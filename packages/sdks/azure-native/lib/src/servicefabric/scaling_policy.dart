@@ -14,7 +14,7 @@ class ScalingPolicy {
   /// Creates a new [ScalingPolicy].
   /// [scalingMechanism] Specifies the mechanism associated with this scaling policy
   /// [scalingTrigger] Specifies the trigger associated with this scaling policy.
-  ScalingPolicy({
+  const ScalingPolicy({
     required this.scalingMechanism,
     required this.scalingTrigger,
   });

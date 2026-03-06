@@ -8,7 +8,7 @@ class ConversationProfileLoggingConfig {
 
   /// Creates a new [ConversationProfileLoggingConfig].
   /// [enableStackdriverLogging] Whether to log conversation events
-  ConversationProfileLoggingConfig({
+  const ConversationProfileLoggingConfig({
     this.enableStackdriverLogging,
   });
 

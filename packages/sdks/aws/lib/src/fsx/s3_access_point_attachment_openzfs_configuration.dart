@@ -12,7 +12,7 @@ class S3AccessPointAttachmentOpenzfsConfiguration {
   /// Creates a new [S3AccessPointAttachmentOpenzfsConfiguration].
   /// [fileSystemIdentity] File system user identity to use for authorizing file read and write requests that are made using the S3 access point. See `file_system_identity` Block for details.
   /// [volumeId] ID of the FSx for OpenZFS volume to which the S3 access point is attached.
-  S3AccessPointAttachmentOpenzfsConfiguration({
+  const S3AccessPointAttachmentOpenzfsConfiguration({
     required this.fileSystemIdentity,
     required this.volumeId,
   });

@@ -28,7 +28,7 @@ class LakeAccountState {
   /// [accountType] The type of the account.
   /// [dbClusterId] The DBCluster ID.
   /// [status] The status of the resource.
-  LakeAccountState({
+  const LakeAccountState({
     this.accountDescription,
     this.accountName,
     this.accountPassword,

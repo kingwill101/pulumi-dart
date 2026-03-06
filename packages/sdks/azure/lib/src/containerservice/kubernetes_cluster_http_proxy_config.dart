@@ -21,7 +21,7 @@ class KubernetesClusterHttpProxyConfig {
   /// [httpsProxy] The proxy address to be used when communicating over HTTPS.
   /// [noProxies] The list of domains that will not use the proxy for communication.
   /// [trustedCa] The base64 encoded alternative CA certificate content in PEM format.
-  KubernetesClusterHttpProxyConfig({
+  const KubernetesClusterHttpProxyConfig({
     this.httpProxy,
     this.httpsProxy,
     this.noProxies,

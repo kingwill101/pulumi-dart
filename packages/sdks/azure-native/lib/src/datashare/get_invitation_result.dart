@@ -53,7 +53,7 @@ class GetInvitationResult {
   /// [type] Type of the azure resource
   /// [userEmail] Email of the user who created the resource
   /// [userName] Name of the user who created the resource
-  GetInvitationResult({
+  const GetInvitationResult({
     required this.azureApiVersion,
     this.expirationDate,
     required this.id,

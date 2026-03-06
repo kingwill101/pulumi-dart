@@ -40,7 +40,7 @@ class ListenerDefaultAction {
   /// [redirect] Configuration block for creating a redirect action. Required if `type` is `redirect`. See below.
   /// [targetGroupArn] ARN of the Target Group to which to route traffic. Specify only if `type` is `forward` and you want to route to a single target group. To route to one or more target groups, use a `forward` block instead. Can be specified with `forward` but ARNs must match.
   /// [type] Type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
-  ListenerDefaultAction({
+  const ListenerDefaultAction({
     this.authenticateCognito,
     this.authenticateOidc,
     this.fixedResponse,

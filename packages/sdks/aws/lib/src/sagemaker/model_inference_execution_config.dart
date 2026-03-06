@@ -8,7 +8,7 @@ class ModelInferenceExecutionConfig {
 
   /// Creates a new [ModelInferenceExecutionConfig].
   /// [mode] How containers in a multi-container are run. Allowed values are: `Serial` and `Direct`.
-  ModelInferenceExecutionConfig({
+  const ModelInferenceExecutionConfig({
     required this.mode,
   });
 

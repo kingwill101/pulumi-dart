@@ -12,7 +12,7 @@ class ResourceProviderManifestPropertiesDstsConfiguration {
   /// Creates a new [ResourceProviderManifestPropertiesDstsConfiguration].
   /// [serviceDnsName] This is a URI property.
   /// [serviceName] The service name.
-  ResourceProviderManifestPropertiesDstsConfiguration({
+  const ResourceProviderManifestPropertiesDstsConfiguration({
     this.serviceDnsName,
     required this.serviceName,
   });

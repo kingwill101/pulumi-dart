@@ -43,7 +43,7 @@ class GatewayState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the gateway for the API.
-  GatewayState({
+  const GatewayState({
     this.apiConfig,
     this.defaultHostname,
     this.displayName,

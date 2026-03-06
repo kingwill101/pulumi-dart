@@ -9,7 +9,7 @@ class ListWorkspaceNotebookKeysResult {
   /// Creates a new [ListWorkspaceNotebookKeysResult].
   /// [primaryAccessKey] Required.
   /// [secondaryAccessKey] Required.
-  ListWorkspaceNotebookKeysResult({
+  const ListWorkspaceNotebookKeysResult({
     required this.primaryAccessKey,
     required this.secondaryAccessKey,
   });

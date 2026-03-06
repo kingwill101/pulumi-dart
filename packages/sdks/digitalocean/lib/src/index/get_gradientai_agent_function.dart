@@ -35,7 +35,7 @@ class GetGradientaiAgentFunction {
   /// [updatedAt] Updated At timestamp for the Agent
   /// [url] Url of the Deployment
   /// [uuid] API Key value
-  GetGradientaiAgentFunction({
+  const GetGradientaiAgentFunction({
     this.apiKey,
     required this.createdAt,
     this.description,

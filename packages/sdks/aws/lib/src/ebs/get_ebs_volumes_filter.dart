@@ -141,7 +141,7 @@ class GetEbsVolumesFilter {
   /// Creates a new [GetEbsVolumesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetEbsVolumesFilter({
+  const GetEbsVolumesFilter({
     required this.name,
     required this.values,
   });

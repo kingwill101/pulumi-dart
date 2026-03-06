@@ -11,7 +11,7 @@ class TableGlobalSecondaryIndexKeySchema {
   /// Creates a new [TableGlobalSecondaryIndexKeySchema].
   /// [attributeName] Name of the attribute; must be defined as an attribute in the resource.
   /// [keyType] The type of key. Valid values are `HASH` (partition key) or `RANGE` (sort key). You can specify up to 4 attributes with `key_type = "HASH"` and up to 4 attributes with `key_type = "RANGE"`.
-  TableGlobalSecondaryIndexKeySchema({
+  const TableGlobalSecondaryIndexKeySchema({
     required this.attributeName,
     required this.keyType,
   });

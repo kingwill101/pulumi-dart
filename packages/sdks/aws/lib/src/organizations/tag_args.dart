@@ -18,7 +18,7 @@ class TagArgs {
   /// [key] Tag name.
   /// [resourceId] Id of the Organizations resource to tag.
   /// [value] Tag value.
-  TagArgs({
+  const TagArgs({
     required this.key,
     required this.resourceId,
     required this.value,

@@ -12,7 +12,7 @@ class StaticRoutePropertiesResponse {
   /// Creates a new [StaticRoutePropertiesResponse].
   /// [nextHop] List of next hop addresses.
   /// [prefix] Prefix of the route.
-  StaticRoutePropertiesResponse({
+  const StaticRoutePropertiesResponse({
     required this.nextHop,
     required this.prefix,
   });

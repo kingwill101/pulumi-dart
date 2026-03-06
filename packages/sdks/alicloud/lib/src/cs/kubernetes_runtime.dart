@@ -20,7 +20,7 @@ class KubernetesRuntime {
   /// Creates a new [KubernetesRuntime].
   /// [name] The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
   /// [version] The version of the runtime.
-  KubernetesRuntime({
+  const KubernetesRuntime({
     this.name,
     this.version,
   });

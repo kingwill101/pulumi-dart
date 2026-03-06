@@ -80,7 +80,7 @@ class TaskDefinitionArgs {
   /// [taskRoleArn] ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// [trackLatest] Whether should track latest `ACTIVE` task definition on AWS or the one created with the resource stored in state. Default is `false`. Useful in the event the task definition is modified outside of this resource.
   /// [volumes] Repeatable configuration block for volumes that containers in your task may use. Detailed below.
-  TaskDefinitionArgs({
+  const TaskDefinitionArgs({
     required this.containerDefinitions,
     this.cpu,
     this.enableFaultInjection,

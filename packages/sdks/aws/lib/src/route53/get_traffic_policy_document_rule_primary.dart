@@ -17,7 +17,7 @@ class GetTrafficPolicyDocumentRulePrimary {
   /// [evaluateTargetHealth] Indicates whether you want Amazon Route 53 to evaluate the health of the endpoint and route traffic only to healthy endpoints.
   /// [healthCheck] If you want to associate a health check with the endpoint or rule.
   /// [ruleReference] References to a rule.
-  GetTrafficPolicyDocumentRulePrimary({
+  const GetTrafficPolicyDocumentRulePrimary({
     this.endpointReference,
     this.evaluateTargetHealth,
     this.healthCheck,

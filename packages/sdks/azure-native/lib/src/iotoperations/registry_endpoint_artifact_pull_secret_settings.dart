@@ -9,7 +9,7 @@ class RegistryEndpointArtifactPullSecretSettings {
 
   /// Creates a new [RegistryEndpointArtifactPullSecretSettings].
   /// [secretRef] The name of the kubernetes secret that contains the artifact pull secret.
-  RegistryEndpointArtifactPullSecretSettings({
+  const RegistryEndpointArtifactPullSecretSettings({
     required this.secretRef,
   });
 

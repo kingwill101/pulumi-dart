@@ -9,7 +9,7 @@ class InsightFiltersFindingProviderFieldsType {
   /// Creates a new [InsightFiltersFindingProviderFieldsType].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersFindingProviderFieldsType({
+  const InsightFiltersFindingProviderFieldsType({
     required this.comparison,
     required this.value,
   });

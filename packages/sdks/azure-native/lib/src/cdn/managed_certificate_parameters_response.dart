@@ -16,7 +16,7 @@ class ManagedCertificateParametersResponse {
   /// [expirationDate] Certificate expiration date.
   /// [subject] Subject name in the certificate.
   /// [type] The type of the secret resource.
-  ManagedCertificateParametersResponse({
+  const ManagedCertificateParametersResponse({
     required this.expirationDate,
     required this.subject,
     required this.type,

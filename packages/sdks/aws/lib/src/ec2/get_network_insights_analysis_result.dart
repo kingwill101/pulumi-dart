@@ -58,7 +58,7 @@ class GetNetworkInsightsAnalysisResult {
   /// [statusMessage] Message to provide more context when the `status` is `failed`.
   /// [tags] Required.
   /// [warningMessage] Warning message.
-  GetNetworkInsightsAnalysisResult({
+  const GetNetworkInsightsAnalysisResult({
     required this.alternatePathHints,
     required this.arn,
     required this.explanations,

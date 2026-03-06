@@ -22,7 +22,7 @@ class ReportFilterResponse {
   /// [not] The logical "NOT" expression.
   /// [or] The logical "OR" expression. Must have at least 2 items.
   /// [tag] Has comparison expression for a tag
-  ReportFilterResponse({
+  const ReportFilterResponse({
     this.and,
     this.dimension,
     this.not,

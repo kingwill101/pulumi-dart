@@ -17,7 +17,7 @@ class ConnectionStatus {
   /// [description] An arbitrary description for the Connection.
   /// [state] (Output)
   /// [status] (Output)
-  ConnectionStatus({
+  const ConnectionStatus({
     this.description,
     this.state,
     this.status,

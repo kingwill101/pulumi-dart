@@ -11,7 +11,7 @@ class ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig {
   /// Creates a new [ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig].
   /// [header] Request header name to send to the staging distribution. The header must contain the prefix `aws-cf-cd-`.
   /// [value] Request header value.
-  ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig({
+  const ContinuousDeploymentPolicyTrafficConfigSingleHeaderConfig({
     required this.header,
     required this.value,
   });

@@ -10,7 +10,7 @@ class AggregationRuleRbacAuthorizationK8sIoV1alpha1 {
 
   /// Creates a new [AggregationRuleRbacAuthorizationK8sIoV1alpha1].
   /// [clusterRoleSelectors] ClusterRoleSelectors holds a list of selectors which will be used to find ClusterRoles and create the rules. If any of the selectors match, then the ClusterRole's permissions will be added
-  AggregationRuleRbacAuthorizationK8sIoV1alpha1({
+  const AggregationRuleRbacAuthorizationK8sIoV1alpha1({
     this.clusterRoleSelectors,
   });
 

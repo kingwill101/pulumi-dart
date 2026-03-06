@@ -11,7 +11,7 @@ class DataSetColumnLevelPermissionRule {
   /// Creates a new [DataSetColumnLevelPermissionRule].
   /// [columnNames] An array of column names.
   /// [principals] An array of ARNs for Amazon QuickSight users or groups.
-  DataSetColumnLevelPermissionRule({
+  const DataSetColumnLevelPermissionRule({
     this.columnNames,
     this.principals,
   });

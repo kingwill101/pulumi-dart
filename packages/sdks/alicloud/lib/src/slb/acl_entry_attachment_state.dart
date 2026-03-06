@@ -15,7 +15,7 @@ class AclEntryAttachmentState {
   /// [aclId] The ID of the Acl.
   /// [comment] The comment of the entry.
   /// [entry] The CIDR blocks.
-  AclEntryAttachmentState({
+  const AclEntryAttachmentState({
     this.aclId,
     this.comment,
     this.entry,

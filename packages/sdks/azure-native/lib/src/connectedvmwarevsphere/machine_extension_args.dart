@@ -48,7 +48,7 @@ class MachineExtensionArgs {
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
   /// [virtualMachineName] The name of the machine where the extension should be created or updated.
-  MachineExtensionArgs({
+  const MachineExtensionArgs({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.extensionName,

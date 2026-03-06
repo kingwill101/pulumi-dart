@@ -81,7 +81,7 @@ class GetInstanceResult {
   /// [state] The state of the instance.
   /// [updateTime] The time when the Looker instance was last updated.
   /// [userMetadata] User metadata.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.adminSettings,
     required this.consumerNetwork,
     required this.createTime,

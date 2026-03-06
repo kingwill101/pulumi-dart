@@ -41,7 +41,7 @@ class IngressArgs {
   /// [namespaceId] The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
   /// [rules] Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
   /// [slbId] SLB ID.
-  IngressArgs({
+  const IngressArgs({
     this.certId,
     this.certIds,
     this.defaultRule,

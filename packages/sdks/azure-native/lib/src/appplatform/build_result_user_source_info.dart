@@ -16,7 +16,7 @@ class BuildResultUserSourceInfo {
   /// [buildResultId] Resource id of an existing succeeded build result under the same Spring instance.
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  BuildResultUserSourceInfo({
+  const BuildResultUserSourceInfo({
     this.buildResultId,
     required this.type,
     this.version,

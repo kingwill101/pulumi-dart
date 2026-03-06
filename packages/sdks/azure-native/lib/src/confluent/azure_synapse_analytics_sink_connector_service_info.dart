@@ -22,7 +22,7 @@ class AzureSynapseAnalyticsSinkConnectorServiceInfo {
   /// [synapseSqlPassword] Azure Synapse SQL login details
   /// [synapseSqlServerName] Azure Synapse Analytics SQL Server Name
   /// [synapseSqlUser] Azure Synapse SQL login details
-  AzureSynapseAnalyticsSinkConnectorServiceInfo({
+  const AzureSynapseAnalyticsSinkConnectorServiceInfo({
     required this.connectorServiceType,
     this.synapseSqlDatabaseName,
     this.synapseSqlPassword,

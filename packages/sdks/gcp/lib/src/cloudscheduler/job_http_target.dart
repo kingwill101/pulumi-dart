@@ -33,7 +33,7 @@ class JobHttpTarget {
   /// [oauthToken] Contains information needed for generating an OAuth token.
   /// [oidcToken] Contains information needed for generating an OpenID Connect token.
   /// [uri] The full URI path that the request will be sent to.
-  JobHttpTarget({
+  const JobHttpTarget({
     this.body,
     this.headers,
     this.httpMethod,

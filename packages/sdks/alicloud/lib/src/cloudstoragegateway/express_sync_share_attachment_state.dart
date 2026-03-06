@@ -15,7 +15,7 @@ class ExpressSyncShareAttachmentState {
   /// [expressSyncId] The ID of the ExpressSync.
   /// [gatewayId] The ID of the Gateway.
   /// [shareName] The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
-  ExpressSyncShareAttachmentState({
+  const ExpressSyncShareAttachmentState({
     this.expressSyncId,
     this.gatewayId,
     this.shareName,

@@ -31,7 +31,7 @@ class VpnSiteLink {
   /// [name] The name which should be used for this VPN Site Link.
   /// [providerName] The name of the physical link at the VPN Site. Example: `ATT`, `Verizon`.
   /// [speedInMbps] The speed of the VPN device at the branch location in unit of mbps. Defaults to `0`.
-  VpnSiteLink({
+  const VpnSiteLink({
     this.bgp,
     this.fqdn,
     this.id,

@@ -14,7 +14,7 @@ class ServiceStatus {
   /// Creates a new [ServiceStatus].
   /// [conditions] Current service state
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer, if one is present.
-  ServiceStatus({
+  const ServiceStatus({
     this.conditions,
     this.loadBalancer,
   });

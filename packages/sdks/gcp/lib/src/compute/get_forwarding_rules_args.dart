@@ -17,7 +17,7 @@ class GetForwardingRulesArgs {
   /// Creates a new [GetForwardingRulesArgs].
   /// [project] The name of the project.
   /// [region] The region you want to get the forwarding rules from.
-  GetForwardingRulesArgs({
+  const GetForwardingRulesArgs({
     this.project,
     this.region,
   });

@@ -17,7 +17,7 @@ class GetLinuxFunctionAppIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Linux Function App.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Linux Function App.
   /// [type] The type of Managed Service Identity that is configured on this Linux Function App.
-  GetLinuxFunctionAppIdentity({
+  const GetLinuxFunctionAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

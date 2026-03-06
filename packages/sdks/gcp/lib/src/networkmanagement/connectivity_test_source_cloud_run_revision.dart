@@ -8,7 +8,7 @@ class ConnectivityTestSourceCloudRunRevision {
 
   /// Creates a new [ConnectivityTestSourceCloudRunRevision].
   /// [uri] A Cloud Run revision URI.
-  ConnectivityTestSourceCloudRunRevision({
+  const ConnectivityTestSourceCloudRunRevision({
     this.uri,
   });
 

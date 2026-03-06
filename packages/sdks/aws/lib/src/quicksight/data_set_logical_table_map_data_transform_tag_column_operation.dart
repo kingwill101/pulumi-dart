@@ -12,7 +12,7 @@ class DataSetLogicalTableMapDataTransformTagColumnOperation {
   /// Creates a new [DataSetLogicalTableMapDataTransformTagColumnOperation].
   /// [columnName] Column name.
   /// [tags] The dataset column tag, currently only used for geospatial type tagging. See tags.
-  DataSetLogicalTableMapDataTransformTagColumnOperation({
+  const DataSetLogicalTableMapDataTransformTagColumnOperation({
     required this.columnName,
     required this.tags,
   });

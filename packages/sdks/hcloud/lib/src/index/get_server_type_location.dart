@@ -20,7 +20,7 @@ class GetServerTypeLocation {
   /// [isDeprecated] Whether the Server Type is deprecated.
   /// [name] Name of the Location.
   /// [unavailableAfter] Date of the Server Type removal. After this date, the Server Type cannot be used anymore.
-  GetServerTypeLocation({
+  const GetServerTypeLocation({
     required this.deprecationAnnounced,
     required this.id,
     required this.isDeprecated,

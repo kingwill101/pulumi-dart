@@ -9,7 +9,7 @@ class GetGradientaiOpenaiApiKeysSort {
   /// Creates a new [GetGradientaiOpenaiApiKeysSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiOpenaiApiKeysSort({
+  const GetGradientaiOpenaiApiKeysSort({
     this.direction,
     required this.key,
   });

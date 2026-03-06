@@ -14,7 +14,7 @@ class CustomActivityReferenceObject {
   /// Creates a new [CustomActivityReferenceObject].
   /// [datasets] Dataset references.
   /// [linkedServices] Linked service references.
-  CustomActivityReferenceObject({
+  const CustomActivityReferenceObject({
     this.datasets,
     this.linkedServices,
   });

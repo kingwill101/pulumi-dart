@@ -13,7 +13,7 @@ class GetPeeringAttachmentFilter {
   /// Creates a new [GetPeeringAttachmentFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetPeeringAttachmentFilter({
+  const GetPeeringAttachmentFilter({
     required this.name,
     required this.values,
   });

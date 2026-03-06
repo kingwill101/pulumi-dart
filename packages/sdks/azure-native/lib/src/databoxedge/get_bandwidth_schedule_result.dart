@@ -33,7 +33,7 @@ class GetBandwidthScheduleResult {
   /// [stop] The stop time of the schedule in UTC.
   /// [systemData] Metadata pertaining to creation and last modification of BandwidthSchedule
   /// [type] The hierarchical type of the object.
-  GetBandwidthScheduleResult({
+  const GetBandwidthScheduleResult({
     required this.azureApiVersion,
     required this.days,
     required this.id,

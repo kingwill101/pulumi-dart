@@ -26,7 +26,7 @@ class InstanceEndpoint {
   /// [vpcId] VPC primary key.
   /// [vpcInstanceId] The vpc instance ID.
   /// [vswitchId] The ID of the virtual switch.
-  InstanceEndpoint({
+  const InstanceEndpoint({
     this.alternativeEndpoints,
     this.enabled,
     this.endpoint,

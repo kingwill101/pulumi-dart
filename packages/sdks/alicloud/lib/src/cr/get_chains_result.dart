@@ -32,7 +32,7 @@ class GetChainsResult {
   /// [outputFile] Optional.
   /// [repoName] Optional.
   /// [repoNamespaceName] Optional.
-  GetChainsResult({
+  const GetChainsResult({
     required this.chains,
     this.enableDetails,
     required this.id,

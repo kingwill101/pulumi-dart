@@ -9,7 +9,7 @@ class DockerRepositoryResponse {
 
   /// Creates a new [DockerRepositoryResponse].
   /// [publicRepository] One of the publicly available Docker repositories supported by Artifact Registry.
-  DockerRepositoryResponse({
+  const DockerRepositoryResponse({
     required this.publicRepository,
   });
 

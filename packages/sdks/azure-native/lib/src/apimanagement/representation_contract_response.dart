@@ -23,7 +23,7 @@ class RepresentationContractResponse {
   /// [formParameters] Collection of form parameters. Required if 'contentType' value is either 'application/x-www-form-urlencoded' or 'multipart/form-data'..
   /// [schemaId] Schema identifier. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
   /// [typeName] Type name defined by the schema. Applicable only if 'contentType' value is neither 'application/x-www-form-urlencoded' nor 'multipart/form-data'.
-  RepresentationContractResponse({
+  const RepresentationContractResponse({
     required this.contentType,
     this.examples,
     this.formParameters,

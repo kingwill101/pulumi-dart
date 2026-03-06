@@ -18,7 +18,7 @@ class GetVpcArgs {
   /// [id] The unique identifier of an existing VPC.
   /// [name] The name of an existing VPC.
   /// [region] The DigitalOcean region slug for the VPC's location.
-  GetVpcArgs({
+  const GetVpcArgs({
     this.id,
     this.name,
     this.region,

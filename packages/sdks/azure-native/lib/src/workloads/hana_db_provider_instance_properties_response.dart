@@ -43,7 +43,7 @@ class HanaDbProviderInstancePropertiesResponse {
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the DB.
   /// [sslHostNameInCertificate] Gets or sets the hostname(s) in the SSL certificate.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  HanaDbProviderInstancePropertiesResponse({
+  const HanaDbProviderInstancePropertiesResponse({
     this.dbName,
     this.dbPassword,
     this.dbPasswordUri,

@@ -29,7 +29,7 @@ class RemediationState {
   /// [remediationSourceType] Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
   /// [remediationTemplateId] Remediation template ID.
   /// [remediationType] Remediation type, valid values: `OOS`, `FC`.
-  RemediationState({
+  const RemediationState({
     this.configRuleId,
     this.invokeType,
     this.params,

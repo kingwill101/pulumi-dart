@@ -19,7 +19,7 @@ class CertSyncRecordResponse {
   /// [controls] The control records list to be synchronized.
   /// [ingestionStatus] Indicates the status of compliance process.
   /// [offerGuid] The offerGuid which mapping to the reports.
-  CertSyncRecordResponse({
+  const CertSyncRecordResponse({
     this.certificationStatus,
     this.controls,
     this.ingestionStatus,

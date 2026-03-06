@@ -26,7 +26,7 @@ class AKS {
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [properties] AKS properties
   /// [resourceId] ARM resource id of the underlying compute
-  AKS({
+  const AKS({
     this.computeLocation,
     required this.computeType,
     this.description,

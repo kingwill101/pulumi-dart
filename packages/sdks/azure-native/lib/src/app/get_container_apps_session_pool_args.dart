@@ -15,7 +15,7 @@ class GetContainerAppsSessionPoolArgs {
   /// Creates a new [GetContainerAppsSessionPoolArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sessionPoolName] Name of the session pool.
-  GetContainerAppsSessionPoolArgs({
+  const GetContainerAppsSessionPoolArgs({
     required this.resourceGroupName,
     required this.sessionPoolName,
   });

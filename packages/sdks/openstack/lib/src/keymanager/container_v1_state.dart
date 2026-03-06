@@ -49,7 +49,7 @@ class ContainerV1State {
   /// [status] The status of the container.
   /// [type] Used to indicate the type of container. Must be one of `generic`, `rsa` or `certificate`.
   /// [updatedAt] The date the container was last updated.
-  ContainerV1State({
+  const ContainerV1State({
     this.acl,
     this.consumers,
     this.containerRef,

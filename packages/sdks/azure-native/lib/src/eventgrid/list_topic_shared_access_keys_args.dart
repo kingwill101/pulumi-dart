@@ -15,7 +15,7 @@ class ListTopicSharedAccessKeysArgs {
   /// Creates a new [ListTopicSharedAccessKeysArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicName] Name of the topic.
-  ListTopicSharedAccessKeysArgs({
+  const ListTopicSharedAccessKeysArgs({
     required this.resourceGroupName,
     required this.topicName,
   });

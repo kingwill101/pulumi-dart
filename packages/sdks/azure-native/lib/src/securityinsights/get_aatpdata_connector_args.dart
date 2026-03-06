@@ -18,7 +18,7 @@ class GetAATPDataConnectorArgs {
   /// [dataConnectorId] Connector ID
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetAATPDataConnectorArgs({
+  const GetAATPDataConnectorArgs({
     required this.dataConnectorId,
     required this.resourceGroupName,
     required this.workspaceName,

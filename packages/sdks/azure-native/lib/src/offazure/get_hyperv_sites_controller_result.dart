@@ -52,7 +52,7 @@ class GetHypervSitesControllerResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHypervSitesControllerResult({
+  const GetHypervSitesControllerResult({
     this.agentDetails,
     this.applianceName,
     required this.azureApiVersion,

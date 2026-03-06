@@ -15,7 +15,7 @@ class GetADOOAuthInfoArgs {
   /// Creates a new [GetADOOAuthInfoArgs].
   /// [location] The name of the Azure region.
   /// [redirectUrl] The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
-  GetADOOAuthInfoArgs({
+  const GetADOOAuthInfoArgs({
     required this.location,
     this.redirectUrl,
   });

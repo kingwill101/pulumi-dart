@@ -25,7 +25,7 @@ class GarnetClusterArgs {
   /// [properties] Properties of a Garnet cache cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GarnetClusterArgs({
+  const GarnetClusterArgs({
     this.clusterName,
     this.location,
     this.properties,

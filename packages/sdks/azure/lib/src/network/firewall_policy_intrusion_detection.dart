@@ -19,7 +19,7 @@ class FirewallPolicyIntrusionDetection {
   /// [privateRanges] A list of Private IP address ranges to identify traffic direction. By default, only ranges defined by IANA RFC 1918 are considered private IP addresses.
   /// [signatureOverrides] One or more `signature_overrides` blocks as defined below.
   /// [trafficBypasses] One or more `traffic_bypass` blocks as defined below.
-  FirewallPolicyIntrusionDetection({
+  const FirewallPolicyIntrusionDetection({
     this.mode,
     this.privateRanges,
     this.signatureOverrides,

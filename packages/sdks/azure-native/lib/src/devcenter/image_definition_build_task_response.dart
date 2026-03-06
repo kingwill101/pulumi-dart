@@ -31,7 +31,7 @@ class ImageDefinitionBuildTaskResponse {
   /// [parameters] Parameters for the task.
   /// [startTime] Start time of the task.
   /// [status] The status of the task.
-  ImageDefinitionBuildTaskResponse({
+  const ImageDefinitionBuildTaskResponse({
     this.displayName,
     required this.endTime,
     required this.id,

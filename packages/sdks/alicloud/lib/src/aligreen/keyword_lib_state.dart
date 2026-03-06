@@ -33,7 +33,7 @@ class KeywordLibState {
   /// [libType] The category of the text library in each moderation scenario. Valid values: textKeyword: a text library against which terms in text are matched. similarText: a text library against which text patterns are matched. textKeyword: a text library against which terms extracted from images are matched. voiceText: a text library against which terms converted from audio are matched.
   /// [matchMode] The matching method. Valid values:fuzzy: fuzzy match precise: exact match
   /// [resourceType] The moderation scenario to which the text library applies. Valid values:TEXT: text anti-spam、IMAGE: ad violation detection、VOICE: audio anti-spam
-  KeywordLibState({
+  const KeywordLibState({
     this.bizTypes,
     this.category,
     this.enable,

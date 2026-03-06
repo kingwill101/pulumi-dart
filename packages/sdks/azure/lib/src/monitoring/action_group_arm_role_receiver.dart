@@ -14,7 +14,7 @@ class ActionGroupArmRoleReceiver {
   /// [name] The name of the ARM role receiver.
   /// [roleId] The arm role id.
   /// [useCommonAlertSchema] Enables or disables the common alert schema.
-  ActionGroupArmRoleReceiver({
+  const ActionGroupArmRoleReceiver({
     required this.name,
     required this.roleId,
     this.useCommonAlertSchema,

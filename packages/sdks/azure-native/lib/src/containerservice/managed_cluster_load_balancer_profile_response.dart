@@ -34,7 +34,7 @@ class ManagedClusterLoadBalancerProfileResponse {
   /// [managedOutboundIPs] Desired managed outbound IPs for the cluster load balancer.
   /// [outboundIPPrefixes] Desired outbound IP Prefix resources for the cluster load balancer.
   /// [outboundIPs] Desired outbound IP resources for the cluster load balancer.
-  ManagedClusterLoadBalancerProfileResponse({
+  const ManagedClusterLoadBalancerProfileResponse({
     this.allocatedOutboundPorts,
     this.backendPoolType,
     required this.effectiveOutboundIPs,

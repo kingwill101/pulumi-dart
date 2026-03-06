@@ -26,7 +26,7 @@ class GetBackupRunResult {
   /// [project] Required.
   /// [startTime] The time the backup operation actually started in UTC timezone in RFC 3339 format, for
   /// [status] The status of this run. Refer to [API reference](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/backupRuns#SqlBackupRunStatus) for possible status values.
-  GetBackupRunResult({
+  const GetBackupRunResult({
     required this.backupId,
     required this.id,
     required this.instance,

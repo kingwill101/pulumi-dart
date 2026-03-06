@@ -19,7 +19,7 @@ class TagValueArgs {
   /// [description] User-assigned description of the TagValue. Must not exceed 256 characters.
   /// [parent] Input only. The resource name of the new TagValue's parent. Must be of the form tagKeys/{tag_key_id}.
   /// [shortName] Input only. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey.
-  TagValueArgs({
+  const TagValueArgs({
     this.description,
     required this.parent,
     required this.shortName,

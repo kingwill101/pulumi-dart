@@ -86,7 +86,7 @@ class NetworkState {
   /// [uuid] Exposes the network's UUID as assigned by libvirt; this is read-only and computed, and uniquely identifies the virtual network on the host.
   /// [virtualPort] Configures virtual port profile information for this port group, enabling integration with external network switching or SDN systems.
   /// [vlan] Configures VLAN tagging behavior for this portgroup, allowing one or more VLAN tags to be applied to guest connections when the underlying network supports VLAN offload.
-  NetworkState({
+  const NetworkState({
     this.autostart,
     this.bandwidth,
     this.bridge,

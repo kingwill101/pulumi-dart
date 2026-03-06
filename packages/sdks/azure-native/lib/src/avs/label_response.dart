@@ -12,7 +12,7 @@ class LabelResponse {
   /// Creates a new [LabelResponse].
   /// [key] The key of the label.
   /// [value] The value of the label.
-  LabelResponse({
+  const LabelResponse({
     required this.key,
     required this.value,
   });

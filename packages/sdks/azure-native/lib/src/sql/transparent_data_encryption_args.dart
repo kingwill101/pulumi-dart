@@ -25,7 +25,7 @@ class TransparentDataEncryptionArgs {
   /// [serverName] The name of the server.
   /// [state] Specifies the state of the transparent data encryption.
   /// [tdeName] The name of the transparent data encryption configuration.
-  TransparentDataEncryptionArgs({
+  const TransparentDataEncryptionArgs({
     required this.databaseName,
     required this.resourceGroupName,
     required this.serverName,

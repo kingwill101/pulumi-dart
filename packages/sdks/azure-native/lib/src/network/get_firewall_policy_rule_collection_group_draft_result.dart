@@ -28,7 +28,7 @@ class GetFirewallPolicyRuleCollectionGroupDraftResult {
   /// [ruleCollections] Group of Firewall Policy rule collections.
   /// [size] A read-only string that represents the size of the FirewallPolicyRuleCollectionGroupProperties in MB. (ex 1.2MB)
   /// [type] Rule Group type.
-  GetFirewallPolicyRuleCollectionGroupDraftResult({
+  const GetFirewallPolicyRuleCollectionGroupDraftResult({
     required this.azureApiVersion,
     this.id,
     this.name,

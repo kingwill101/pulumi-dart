@@ -12,7 +12,7 @@ class DeploymentSettingsGitAuthSSHAuth {
   /// Creates a new [DeploymentSettingsGitAuthSSHAuth].
   /// [password] Optional password for SSH authentication.
   /// [sshPrivateKey] SSH private key.
-  DeploymentSettingsGitAuthSSHAuth({
+  const DeploymentSettingsGitAuthSSHAuth({
     this.password,
     required this.sshPrivateKey,
   });

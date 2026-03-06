@@ -12,7 +12,7 @@ class DefenderForServersGcpOfferingResponseDefenderForServers {
   /// Creates a new [DefenderForServersGcpOfferingResponseDefenderForServers].
   /// [serviceAccountEmailAddress] The service account email address in GCP for this feature
   /// [workloadIdentityProviderId] The workload identity provider id in GCP for this feature
-  DefenderForServersGcpOfferingResponseDefenderForServers({
+  const DefenderForServersGcpOfferingResponseDefenderForServers({
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,
   });

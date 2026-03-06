@@ -18,7 +18,7 @@ class GetEndpointsResult {
   /// [dbEndpointId] The endpoint ID.
   /// [endpoints] A list of PolarDB cluster endpoints. Each element contains the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetEndpointsResult({
+  const GetEndpointsResult({
     required this.dbClusterId,
     this.dbEndpointId,
     required this.endpoints,

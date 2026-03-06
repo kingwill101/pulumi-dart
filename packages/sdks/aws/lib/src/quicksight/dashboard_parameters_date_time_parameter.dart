@@ -10,7 +10,7 @@ class DashboardParametersDateTimeParameter {
   /// Creates a new [DashboardParametersDateTimeParameter].
   /// [name] Display name for the dashboard.
   /// [values] Required.
-  DashboardParametersDateTimeParameter({
+  const DashboardParametersDateTimeParameter({
     required this.name,
     required this.values,
   });

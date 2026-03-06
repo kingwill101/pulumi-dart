@@ -127,7 +127,7 @@ class FlexibleServerArgs {
   /// [tags] A mapping of tags which should be assigned to the PostgreSQL Flexible Server.
   /// [version] The version of PostgreSQL Flexible Server to use. Possible values are `11`,`12`, `13`, `14`, `15`, `16`, `17`, and `18`. Required when `create_mode` is `Default`.
   /// [zone] Specifies the Availability Zone in which the PostgreSQL Flexible Server should be located.
-  FlexibleServerArgs({
+  const FlexibleServerArgs({
     this.administratorLogin,
     this.administratorPassword,
     this.administratorPasswordWoVersion,

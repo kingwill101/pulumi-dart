@@ -21,7 +21,7 @@ class GetSnapshotResult {
   /// [poolName] Required.
   /// [resourceGroupName] Required.
   /// [volumeName] Required.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.accountName,
     required this.id,
     required this.location,

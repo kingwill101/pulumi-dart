@@ -19,7 +19,7 @@ class FileSystemHttpLogsConfig {
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.
   /// [retentionInDays] Retention in days.
   /// [retentionInMb] Maximum size in megabytes that http log files can use.
-  FileSystemHttpLogsConfig({
+  const FileSystemHttpLogsConfig({
     this.enabled,
     this.retentionInDays,
     this.retentionInMb,

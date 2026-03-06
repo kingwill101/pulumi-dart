@@ -27,7 +27,7 @@ class WorkspacePolicyArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Contents of the Policy as defined by the format.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspacePolicyArgs({
+  const WorkspacePolicyArgs({
     this.format,
     this.policyId,
     required this.resourceGroupName,

@@ -10,7 +10,7 @@ class InstanceEndpointConnection {
 
   /// Creates a new [InstanceEndpointConnection].
   /// [pscAutoConnection] Detailed information of a PSC connection that is created through service connectivity automation.
-  InstanceEndpointConnection({
+  const InstanceEndpointConnection({
     this.pscAutoConnection,
   });
 

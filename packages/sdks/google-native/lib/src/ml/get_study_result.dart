@@ -21,7 +21,7 @@ class GetStudyResult {
   /// [name] The name of a study.
   /// [state] The detailed state of a study.
   /// [studyConfig] Configuration of the study.
-  GetStudyResult({
+  const GetStudyResult({
     required this.createTime,
     required this.inactiveReason,
     required this.name,

@@ -11,7 +11,7 @@ class GetLkeClusterControlPlaneAclAddress {
   /// Creates a new [GetLkeClusterControlPlaneAclAddress].
   /// [ipv4s] A set of individual ipv4 addresses or CIDRs to ALLOW.
   /// [ipv6s] A set of individual ipv6 addresses or CIDRs to ALLOW.
-  GetLkeClusterControlPlaneAclAddress({
+  const GetLkeClusterControlPlaneAclAddress({
     required this.ipv4s,
     required this.ipv6s,
   });

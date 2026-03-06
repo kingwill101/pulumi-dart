@@ -8,7 +8,7 @@ class ObjectCopyOverrideProviderDefaultTags {
 
   /// Creates a new [ObjectCopyOverrideProviderDefaultTags].
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ObjectCopyOverrideProviderDefaultTags({
+  const ObjectCopyOverrideProviderDefaultTags({
     this.tags,
   });
 

@@ -12,7 +12,7 @@ class GetBackupPlanBackupRuleStandardScheduleBackupWindow {
   /// Creates a new [GetBackupPlanBackupRuleStandardScheduleBackupWindow].
   /// [endHourOfDay] The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
   /// [startHourOfDay] The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
-  GetBackupPlanBackupRuleStandardScheduleBackupWindow({
+  const GetBackupPlanBackupRuleStandardScheduleBackupWindow({
     required this.endHourOfDay,
     required this.startHourOfDay,
   });

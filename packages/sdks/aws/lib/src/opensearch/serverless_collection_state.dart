@@ -43,7 +43,7 @@ class ServerlessCollectionState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [type] Type of collection. One of `SEARCH`, `TIMESERIES`, or `VECTORSEARCH`. Defaults to `TIMESERIES`.
-  ServerlessCollectionState({
+  const ServerlessCollectionState({
     this.arn,
     this.collectionEndpoint,
     this.dashboardEndpoint,

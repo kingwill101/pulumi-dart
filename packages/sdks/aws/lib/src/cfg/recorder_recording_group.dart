@@ -22,7 +22,7 @@ class RecorderRecordingGroup {
   /// [includeGlobalResourceTypes] Specifies whether AWS Config includes all supported types of _global resources_ with the resources that it records. Requires `all_supported = true`. Conflicts with `resource_types`.
   /// [recordingStrategies] Recording Strategy. Detailed below.
   /// [resourceTypes] A list that specifies the types of AWS resources for which AWS Config records configuration changes (for example, `AWS::EC2::Instance` or `AWS::CloudTrail::Trail`). See [relevant part of AWS Docs](http://docs.aws.amazon.com/config/latest/APIReference/API_ResourceIdentifier.html#config-Type-ResourceIdentifier-resourceType) for available types. In order to use this attribute, `all_supported` must be set to false.
-  RecorderRecordingGroup({
+  const RecorderRecordingGroup({
     this.allSupported,
     this.exclusionByResourceTypes,
     this.includeGlobalResourceTypes,

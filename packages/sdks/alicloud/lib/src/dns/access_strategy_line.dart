@@ -8,7 +8,7 @@ class AccessStrategyLine {
 
   /// Creates a new [AccessStrategyLine].
   /// [lineCode] The line code of the source region.
-  AccessStrategyLine({
+  const AccessStrategyLine({
     this.lineCode,
   });
 

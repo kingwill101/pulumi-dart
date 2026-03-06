@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessag
 
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

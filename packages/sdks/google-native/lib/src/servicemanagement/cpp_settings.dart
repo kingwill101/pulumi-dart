@@ -10,7 +10,7 @@ class CppSettings {
 
   /// Creates a new [CppSettings].
   /// [common] Some settings.
-  CppSettings({
+  const CppSettings({
     this.common,
   });
 

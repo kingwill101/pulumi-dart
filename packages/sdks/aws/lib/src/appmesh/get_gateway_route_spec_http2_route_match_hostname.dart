@@ -9,7 +9,7 @@ class GetGatewayRouteSpecHttp2RouteMatchHostname {
   /// Creates a new [GetGatewayRouteSpecHttp2RouteMatchHostname].
   /// [exact] Required.
   /// [suffix] Required.
-  GetGatewayRouteSpecHttp2RouteMatchHostname({
+  const GetGatewayRouteSpecHttp2RouteMatchHostname({
     required this.exact,
     required this.suffix,
   });

@@ -17,7 +17,7 @@ class SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
   /// [clientId] The OAuth 2.0 client ID registered in the workforce identity
   /// [clientSecret] Input only. The OAuth 2.0 client secret created while registering
   /// [clientSecretSha256] Output only. SHA256 hash value for the client secret. This field
-  SettingsAccessSettingsWorkforceIdentitySettingsOauth2({
+  const SettingsAccessSettingsWorkforceIdentitySettingsOauth2({
     this.clientId,
     this.clientSecret,
     this.clientSecretSha256,

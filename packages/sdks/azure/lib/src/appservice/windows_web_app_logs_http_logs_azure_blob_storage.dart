@@ -13,7 +13,7 @@ class WindowsWebAppLogsHttpLogsAzureBlobStorage {
   /// Creates a new [WindowsWebAppLogsHttpLogsAzureBlobStorage].
   /// [retentionInDays] The time in days after which to remove blobs. A value of `0` means no retention.
   /// [sasUrl] SAS url to an Azure blob container with read/write/list/delete permissions.
-  WindowsWebAppLogsHttpLogsAzureBlobStorage({
+  const WindowsWebAppLogsHttpLogsAzureBlobStorage({
     this.retentionInDays,
     required this.sasUrl,
   });

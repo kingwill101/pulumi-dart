@@ -11,7 +11,7 @@ class ClusterNodeTypeApplicationPorts {
   /// Creates a new [ClusterNodeTypeApplicationPorts].
   /// [endPort] The end of the Application Port Range on this Node Type.
   /// [startPort] The start of the Application Port Range on this Node Type.
-  ClusterNodeTypeApplicationPorts({
+  const ClusterNodeTypeApplicationPorts({
     required this.endPort,
     required this.startPort,
   });

@@ -8,7 +8,7 @@ class MemcacheParametersMemcacheV1beta2 {
 
   /// Creates a new [MemcacheParametersMemcacheV1beta2].
   /// [params] User defined set of parameters to use in the memcached process.
-  MemcacheParametersMemcacheV1beta2({
+  const MemcacheParametersMemcacheV1beta2({
     this.params,
   });
 

@@ -13,7 +13,7 @@ class PostgresqlTableResponse {
   /// Creates a new [PostgresqlTableResponse].
   /// [postgresqlColumns] PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  PostgresqlTableResponse({
+  const PostgresqlTableResponse({
     required this.postgresqlColumns,
     required this.table,
   });

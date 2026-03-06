@@ -13,7 +13,7 @@ class DeidentifiedStoreDestination {
   /// Creates a new [DeidentifiedStoreDestination].
   /// [config] The configuration to use when de-identifying resources that are added to this store.
   /// [store] The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`.
-  DeidentifiedStoreDestination({
+  const DeidentifiedStoreDestination({
     this.config,
     this.store,
   });

@@ -12,7 +12,7 @@ class LLMMessageDiagnosticSettingsResponse {
   /// Creates a new [LLMMessageDiagnosticSettingsResponse].
   /// [maxSizeInBytes] Maximum size of message to logs in bytes. The default size is 32KB.
   /// [messages] Specifies which message should be logged. Currently there is only 'all' option.
-  LLMMessageDiagnosticSettingsResponse({
+  const LLMMessageDiagnosticSettingsResponse({
     this.maxSizeInBytes,
     this.messages,
   });

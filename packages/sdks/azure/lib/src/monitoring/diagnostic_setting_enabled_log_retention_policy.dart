@@ -9,7 +9,7 @@ class DiagnosticSettingEnabledLogRetentionPolicy {
   /// Creates a new [DiagnosticSettingEnabledLogRetentionPolicy].
   /// [days] Optional.
   /// [enabled] Required.
-  DiagnosticSettingEnabledLogRetentionPolicy({
+  const DiagnosticSettingEnabledLogRetentionPolicy({
     this.days,
     required this.enabled,
   });

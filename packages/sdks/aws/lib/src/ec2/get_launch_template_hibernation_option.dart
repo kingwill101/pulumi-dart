@@ -7,7 +7,7 @@ class GetLaunchTemplateHibernationOption {
 
   /// Creates a new [GetLaunchTemplateHibernationOption].
   /// [configured] Required.
-  GetLaunchTemplateHibernationOption({
+  const GetLaunchTemplateHibernationOption({
     required this.configured,
   });
 

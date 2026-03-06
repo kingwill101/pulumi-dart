@@ -14,7 +14,7 @@ class SecretRotationRotationRules {
   /// [automaticallyAfterDays] Specifies the number of days between automatic scheduled rotations of the secret. Either `automatically_after_days` or `schedule_expression` must be specified.
   /// [duration] The length of the rotation window in hours. For example, `3h` for a three hour window.
   /// [scheduleExpression] A `cron()` or `rate()` expression that defines the schedule for rotating your secret. Either `automatically_after_days` or `schedule_expression` must be specified.
-  SecretRotationRotationRules({
+  const SecretRotationRotationRules({
     this.automaticallyAfterDays,
     this.duration,
     this.scheduleExpression,

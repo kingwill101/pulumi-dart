@@ -19,7 +19,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesVeeva {
   /// [includeRenditions] Boolean value to include file renditions in Veeva document extract flow.
   /// [includeSourceFiles] Boolean value to include source files in Veeva document extract flow.
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesVeeva({
+  const FlowSourceFlowConfigSourceConnectorPropertiesVeeva({
     this.documentType,
     this.includeAllVersions,
     this.includeRenditions,

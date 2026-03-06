@@ -21,7 +21,7 @@ class GetIngressesArgs {
   /// [ids] A list of Ingress IDs.
   /// [namespaceId] The Id of Namespace.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetIngressesArgs({
+  const GetIngressesArgs({
     this.enableDetails,
     this.ids,
     required this.namespaceId,

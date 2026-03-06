@@ -18,7 +18,7 @@ class GetRegionalParameterArgs {
   /// [location] The location of the regional parameter. eg us-central1
   /// [parameterId] The name of the regional parameter.
   /// [project] The ID of the project in which the resource belongs.
-  GetRegionalParameterArgs({
+  const GetRegionalParameterArgs({
     required this.location,
     required this.parameterId,
     this.project,

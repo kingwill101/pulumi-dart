@@ -7,7 +7,7 @@ class GetEndpointClientRouteEnforcementOption {
 
   /// Creates a new [GetEndpointClientRouteEnforcementOption].
   /// [enforced] Required.
-  GetEndpointClientRouteEnforcementOption({
+  const GetEndpointClientRouteEnforcementOption({
     required this.enforced,
   });
 

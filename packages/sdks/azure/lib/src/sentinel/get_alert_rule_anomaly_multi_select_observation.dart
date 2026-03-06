@@ -17,7 +17,7 @@ class GetAlertRuleAnomalyMultiSelectObservation {
   /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   /// [supportedValues] A list of supported values of the single select observation.
   /// [values] A list of values of the single select observation.
-  GetAlertRuleAnomalyMultiSelectObservation({
+  const GetAlertRuleAnomalyMultiSelectObservation({
     required this.description,
     required this.name,
     required this.supportedValues,

@@ -11,7 +11,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration {
   /// Creates a new [ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration].
   /// [headerName] Header name of the header configuration.
   /// [headerValue] Header value of the header configuration. To delete a request header set this property to an empty string.
-  ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration({
+  const ApplicationGatewayRewriteRuleSetRewriteRuleRequestHeaderConfiguration({
     required this.headerName,
     required this.headerValue,
   });

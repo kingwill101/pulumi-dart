@@ -15,7 +15,7 @@ class GetTensorboardArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tensorboardId] Required.
-  GetTensorboardArgs({
+  const GetTensorboardArgs({
     required this.location,
     this.project,
     required this.tensorboardId,

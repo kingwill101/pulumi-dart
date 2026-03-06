@@ -42,7 +42,7 @@ class LocationFsxWindowsState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uri] The URL of the FSx for Windows location that was described.
   /// [user] The user who has the permissions to access files and folders in the FSx for Windows file system.
-  LocationFsxWindowsState({
+  const LocationFsxWindowsState({
     this.arn,
     this.creationTime,
     this.domain,

@@ -15,7 +15,7 @@ class GetSResult {
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [organizations] A list of all retrieved organizations. Structure is defined below.
-  GetSResult({
+  const GetSResult({
     this.filter,
     required this.id,
     required this.organizations,

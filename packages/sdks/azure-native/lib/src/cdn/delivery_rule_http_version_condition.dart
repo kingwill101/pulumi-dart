@@ -14,7 +14,7 @@ class DeliveryRuleHttpVersionCondition {
   /// Creates a new [DeliveryRuleHttpVersionCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleHttpVersionCondition({
+  const DeliveryRuleHttpVersionCondition({
     required this.name,
     required this.parameters,
   });

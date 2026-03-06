@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1StorageFormatJsonOptions {
 
   /// Creates a new [GoogleCloudDataplexV1StorageFormatJsonOptions].
   /// [encoding] Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified.
-  GoogleCloudDataplexV1StorageFormatJsonOptions({
+  const GoogleCloudDataplexV1StorageFormatJsonOptions({
     this.encoding,
   });
 

@@ -22,7 +22,7 @@ class PrometheusOsProviderInstancePropertiesResponse {
   /// [sapSid] Gets or sets the SAP System Identifier
   /// [sslCertificateUri] Gets or sets the blob URI to SSL certificate for the prometheus node exporter.
   /// [sslPreference] Gets or sets certificate preference if secure communication is enabled.
-  PrometheusOsProviderInstancePropertiesResponse({
+  const PrometheusOsProviderInstancePropertiesResponse({
     this.prometheusUrl,
     required this.providerType,
     this.sapSid,

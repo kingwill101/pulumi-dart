@@ -10,7 +10,7 @@ class ListManagedClusterUserCredentialsResult {
 
   /// Creates a new [ListManagedClusterUserCredentialsResult].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListManagedClusterUserCredentialsResult({
+  const ListManagedClusterUserCredentialsResult({
     required this.kubeconfigs,
   });
 

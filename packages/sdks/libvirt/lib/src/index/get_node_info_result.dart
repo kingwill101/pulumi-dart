@@ -29,7 +29,7 @@ class GetNodeInfoResult {
   /// [id] Internal identifier for this data source (hash of all values).
   /// [memoryTotalKb] Total memory available on the host in kilobytes.
   /// [numaNodes] Number of NUMA nodes on the host.
-  GetNodeInfoResult({
+  const GetNodeInfoResult({
     required this.cpuCoresPerSocket,
     required this.cpuCoresTotal,
     required this.cpuModel,

@@ -21,7 +21,7 @@ class AppVersionSnapshotAppDataStoreSettingEngine {
   /// Creates a new [AppVersionSnapshotAppDataStoreSettingEngine].
   /// [name] (Output)
   /// [type] (Output)
-  AppVersionSnapshotAppDataStoreSettingEngine({
+  const AppVersionSnapshotAppDataStoreSettingEngine({
     this.name,
     this.type,
   });

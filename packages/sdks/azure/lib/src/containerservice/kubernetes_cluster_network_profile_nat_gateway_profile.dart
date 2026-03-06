@@ -14,7 +14,7 @@ class KubernetesClusterNetworkProfileNatGatewayProfile {
   /// [effectiveOutboundIps] The outcome (resource IDs) of the specified arguments.
   /// [idleTimeoutInMinutes] Desired outbound flow idle timeout in minutes for the managed nat gateway. Must be between `4` and `120` inclusive. Defaults to `4`.
   /// [managedOutboundIpCount] Count of desired managed outbound IPs for the managed nat gateway. Must be between `1` and `16` inclusive.
-  KubernetesClusterNetworkProfileNatGatewayProfile({
+  const KubernetesClusterNetworkProfileNatGatewayProfile({
     this.effectiveOutboundIps,
     this.idleTimeoutInMinutes,
     this.managedOutboundIpCount,

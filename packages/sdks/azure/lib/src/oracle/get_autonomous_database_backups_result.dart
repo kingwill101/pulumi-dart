@@ -15,7 +15,7 @@ class GetAutonomousDatabaseBackupsResult {
   /// [autonomousDatabaseBackups] An `autonomous_database_backups` block as defined below.
   /// [autonomousDatabaseId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetAutonomousDatabaseBackupsResult({
+  const GetAutonomousDatabaseBackupsResult({
     required this.autonomousDatabaseBackups,
     required this.autonomousDatabaseId,
     required this.id,

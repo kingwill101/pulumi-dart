@@ -19,7 +19,7 @@ class GdcSparkApplicationSparkSqlApplicationConfig {
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryList] Represents a list of queries.
   /// [scriptVariables] Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
-  GdcSparkApplicationSparkSqlApplicationConfig({
+  const GdcSparkApplicationSparkSqlApplicationConfig({
     this.jarFileUris,
     this.queryFileUri,
     this.queryList,

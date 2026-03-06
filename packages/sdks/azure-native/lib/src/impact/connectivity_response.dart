@@ -19,7 +19,7 @@ class ConnectivityResponse {
   /// [protocol] Protocol used for the connection
   /// [source] Source from which the connection was attempted
   /// [target] target which connection was attempted
-  ConnectivityResponse({
+  const ConnectivityResponse({
     this.port,
     this.protocol,
     this.source,

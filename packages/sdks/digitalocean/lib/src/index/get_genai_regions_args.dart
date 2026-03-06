@@ -15,7 +15,7 @@ class GetGenaiRegionsArgs {
   /// Creates a new [GetGenaiRegionsArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGenaiRegionsArgs({
+  const GetGenaiRegionsArgs({
     this.filters,
     this.sorts,
   });

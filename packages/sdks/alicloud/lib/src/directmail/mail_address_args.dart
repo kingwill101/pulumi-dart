@@ -21,7 +21,7 @@ class MailAddressArgs {
   /// [password] Account password. The password must be length 10-20 string, contains numbers, uppercase letters, lowercase letters at the same time.
   /// [replyAddress] Return address.
   /// [sendtype] Account type. Valid values: `batch`, `trigger`.
-  MailAddressArgs({
+  const MailAddressArgs({
     required this.accountName,
     this.password,
     this.replyAddress,

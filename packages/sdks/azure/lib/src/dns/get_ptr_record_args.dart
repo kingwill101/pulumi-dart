@@ -18,7 +18,7 @@ class GetPtrRecordArgs {
   /// [name] The name of the DNS PTR Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetPtrRecordArgs({
+  const GetPtrRecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

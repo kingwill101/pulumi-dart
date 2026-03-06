@@ -71,7 +71,7 @@ class A2AReplicationProtectionClusterDetailsResponse {
   /// [recoveryExtendedLocation] The recovery Extended Location.
   /// [recoveryFabricLocation] The recovery fabric location.
   /// [rpoInSeconds] The last RPO value in seconds.
-  A2AReplicationProtectionClusterDetailsResponse({
+  const A2AReplicationProtectionClusterDetailsResponse({
     this.clusterManagementId,
     this.failoverRecoveryPointId,
     this.initialPrimaryExtendedLocation,

@@ -12,7 +12,7 @@ class SourceCreationData {
   /// Creates a new [SourceCreationData].
   /// [createSource] This enumerates the possible sources of a volume creation.
   /// [sourceId] Fully qualified resource ID for the resource. E.g. "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}"
-  SourceCreationData({
+  const SourceCreationData({
     this.createSource,
     this.sourceId,
   });

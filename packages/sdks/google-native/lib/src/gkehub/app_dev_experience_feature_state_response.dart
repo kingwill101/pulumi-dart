@@ -10,7 +10,7 @@ class AppDevExperienceFeatureStateResponse {
 
   /// Creates a new [AppDevExperienceFeatureStateResponse].
   /// [networkingInstallSucceeded] Status of subcomponent that detects configured Service Mesh resources.
-  AppDevExperienceFeatureStateResponse({
+  const AppDevExperienceFeatureStateResponse({
     required this.networkingInstallSucceeded,
   });
 

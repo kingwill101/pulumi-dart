@@ -33,7 +33,7 @@ class UserProvisioningArgs {
   /// [principalType] The ID of the CloudSSO user/group associated with the synchronization.
   /// [targetId] The ID of the destination associated with the synchronization.
   /// [targetType] The target type associated with the synchronization
-  UserProvisioningArgs({
+  const UserProvisioningArgs({
     required this.deletionStrategy,
     this.description,
     required this.directoryId,

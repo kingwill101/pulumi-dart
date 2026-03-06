@@ -13,7 +13,7 @@ class MoveResourceDependencyOverride {
   /// Creates a new [MoveResourceDependencyOverride].
   /// [id] Gets or sets the ARM ID of the dependent resource.
   /// [targetId] Gets or sets the resource ARM id of either the MoveResource or the resource ARM ID of
-  MoveResourceDependencyOverride({
+  const MoveResourceDependencyOverride({
     this.id,
     this.targetId,
   });

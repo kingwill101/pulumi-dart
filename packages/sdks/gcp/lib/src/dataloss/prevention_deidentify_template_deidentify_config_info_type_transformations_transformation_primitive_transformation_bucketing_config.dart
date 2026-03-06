@@ -11,7 +11,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig].
   /// [buckets] Set of buckets. Ranges must be non-overlapping.
-  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig({
+  const PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfig({
     this.buckets,
   });
 

@@ -46,7 +46,7 @@ class ProjectSource {
   /// [location] Location of the source code from git or s3.
   /// [reportBuildStatus] Whether to report the status of a build's start and finish to your source provider.
   /// [type] Type of repository that contains the source code to be built. Valid values: `BITBUCKET`,
-  ProjectSource({
+  const ProjectSource({
     this.auth,
     this.buildStatusConfig,
     this.buildspec,

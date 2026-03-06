@@ -11,7 +11,7 @@ class NetworkManagerRoutingRuleDestination {
   /// Creates a new [NetworkManagerRoutingRuleDestination].
   /// [address] The destination address.
   /// [type] The type of destination. Possible values are `AddressPrefix` and `ServiceTag`.
-  NetworkManagerRoutingRuleDestination({
+  const NetworkManagerRoutingRuleDestination({
     required this.address,
     required this.type,
   });

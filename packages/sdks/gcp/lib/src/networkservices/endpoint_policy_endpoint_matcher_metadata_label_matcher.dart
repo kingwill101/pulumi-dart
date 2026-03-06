@@ -14,7 +14,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcher {
   /// Creates a new [EndpointPolicyEndpointMatcherMetadataLabelMatcher].
   /// [metadataLabelMatchCriteria] Specifies how matching should be done.
   /// [metadataLabels] The list of label value pairs that must match labels in the provided metadata based on filterMatchCriteria
-  EndpointPolicyEndpointMatcherMetadataLabelMatcher({
+  const EndpointPolicyEndpointMatcherMetadataLabelMatcher({
     required this.metadataLabelMatchCriteria,
     this.metadataLabels,
   });

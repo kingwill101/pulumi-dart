@@ -12,7 +12,7 @@ class AnalyticsConfigurationStorageClassAnalysisDataExport {
   /// Creates a new [AnalyticsConfigurationStorageClassAnalysisDataExport].
   /// [destination] Specifies the destination for the exported analytics data (documented below).
   /// [outputSchemaVersion] Schema version of exported analytics data. Allowed values: `V_1`. Default value: `V_1`.
-  AnalyticsConfigurationStorageClassAnalysisDataExport({
+  const AnalyticsConfigurationStorageClassAnalysisDataExport({
     required this.destination,
     this.outputSchemaVersion,
   });

@@ -17,7 +17,7 @@ class GetMetadataImportMetastoreV1alphaArgs {
   /// [metadataImportId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetMetadataImportMetastoreV1alphaArgs({
+  const GetMetadataImportMetastoreV1alphaArgs({
     required this.location,
     required this.metadataImportId,
     this.project,

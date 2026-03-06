@@ -53,7 +53,7 @@ class GetSubnetPoolArgs {
   /// [region] The region in which to obtain the V2 Networking client.
   /// [shared] Whether this subnetpool is shared across all projects.
   /// [tags] The list of subnetpool tags to filter.
-  GetSubnetPoolArgs({
+  const GetSubnetPoolArgs({
     this.addressScopeId,
     this.defaultPrefixlen,
     this.defaultQuota,

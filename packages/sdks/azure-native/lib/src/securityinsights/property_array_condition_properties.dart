@@ -13,7 +13,7 @@ class PropertyArrayConditionProperties {
   /// Creates a new [PropertyArrayConditionProperties].
   /// [conditionProperties] Describes an automation rule condition on array properties.
   /// [conditionType] Expected value is 'PropertyArray'.
-  PropertyArrayConditionProperties({
+  const PropertyArrayConditionProperties({
     this.conditionProperties,
     required this.conditionType,
   });

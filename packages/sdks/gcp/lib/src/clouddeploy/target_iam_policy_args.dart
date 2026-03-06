@@ -17,7 +17,7 @@ class TargetIamPolicyArgs {
   /// [name] Optional.
   /// [policyData] Required.
   /// [project] Optional.
-  TargetIamPolicyArgs({
+  const TargetIamPolicyArgs({
     this.location,
     this.name,
     required this.policyData,

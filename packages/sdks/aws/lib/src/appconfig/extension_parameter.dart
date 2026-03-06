@@ -14,7 +14,7 @@ class ExtensionParameter {
   /// [description] Information about the parameter.
   /// [name] The parameter name.
   /// [required] Determines if a parameter value must be specified in the extension association.
-  ExtensionParameter({
+  const ExtensionParameter({
     this.description,
     required this.name,
     this.required,

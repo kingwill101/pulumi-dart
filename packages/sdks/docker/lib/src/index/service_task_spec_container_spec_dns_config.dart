@@ -14,7 +14,7 @@ class ServiceTaskSpecContainerSpecDnsConfig {
   /// [nameservers] The IP addresses of the name servers
   /// [options] A list of internal resolver variables to be modified (e.g., `debug`, `ndots:3`, etc.)
   /// [searches] A search list for host-name lookup
-  ServiceTaskSpecContainerSpecDnsConfig({
+  const ServiceTaskSpecContainerSpecDnsConfig({
     required this.nameservers,
     this.options,
     this.searches,

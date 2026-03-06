@@ -68,7 +68,7 @@ class GetWorkspaceResult {
   /// [status] Status of the Grafana workspace.
   /// [tags] Tags assigned to the resource
   /// [workspaceId] Required.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.accountAccessType,
     required this.arn,
     required this.authenticationProviders,

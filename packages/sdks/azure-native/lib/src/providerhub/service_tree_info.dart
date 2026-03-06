@@ -14,7 +14,7 @@ class ServiceTreeInfo {
   /// [componentId] The component id.
   /// [readiness] The readiness.
   /// [serviceId] The service id.
-  ServiceTreeInfo({
+  const ServiceTreeInfo({
     this.componentId,
     this.readiness,
     this.serviceId,

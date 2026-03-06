@@ -58,7 +58,7 @@ class InternalRangeArgs {
   /// [targetCidrRange] Optional. Can be set to narrow down or pick a different address space while searching for a free range. If not set, defaults to the "10.0.0.0/8" address space. This can be used to search in other rfc-1918 address spaces like "172.16.0.0/12" and "192.168.0.0/16" or non-rfc-1918 address spaces used in the VPC.
   /// [updateTime] Time when the internal range was updated.
   /// [usage] The type of usage set for this InternalRange.
-  InternalRangeArgs({
+  const InternalRangeArgs({
     this.createTime,
     this.description,
     this.internalRangeId,

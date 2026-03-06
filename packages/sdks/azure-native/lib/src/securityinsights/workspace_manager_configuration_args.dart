@@ -21,7 +21,7 @@ class WorkspaceManagerConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceManagerConfigurationName] The name of the workspace manager configuration
   /// [workspaceName] The name of the workspace.
-  WorkspaceManagerConfigurationArgs({
+  const WorkspaceManagerConfigurationArgs({
     required this.mode,
     required this.resourceGroupName,
     this.workspaceManagerConfigurationName,

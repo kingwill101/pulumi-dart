@@ -9,7 +9,7 @@ class ElasticVolumeSnapshotPropertiesResponse {
 
   /// Creates a new [ElasticVolumeSnapshotPropertiesResponse].
   /// [snapshotPolicyResourceId] Snapshot Policy ResourceId
-  ElasticVolumeSnapshotPropertiesResponse({
+  const ElasticVolumeSnapshotPropertiesResponse({
     this.snapshotPolicyResourceId,
   });
 

@@ -14,7 +14,7 @@ class StackSetInstanceStackInstanceSummary {
   /// [accountId] Target AWS Account ID to create a Stack based on the StackSet. Defaults to current account.
   /// [organizationalUnitId] Organizational unit ID in which the stack is deployed.
   /// [stackId] Stack identifier.
-  StackSetInstanceStackInstanceSummary({
+  const StackSetInstanceStackInstanceSummary({
     this.accountId,
     this.organizationalUnitId,
     this.stackId,

@@ -15,7 +15,7 @@ class DefenseRuleConfigWafBaseConfig {
   /// [ruleBatchOperationConfig] The batch operation on rules. If this parameter is not empty, the RuleDetail parameter must be empty. Valid values:
   /// [ruleDetails] The configuration of the Web core protection rules to be modified. See `rule_detail` below.
   /// [ruleType] The type of the rule. Valid values:
-  DefenseRuleConfigWafBaseConfig({
+  const DefenseRuleConfigWafBaseConfig({
     this.ruleBatchOperationConfig,
     this.ruleDetails,
     this.ruleType,

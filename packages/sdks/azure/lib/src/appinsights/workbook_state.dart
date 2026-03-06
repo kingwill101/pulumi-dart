@@ -42,7 +42,7 @@ class WorkbookState {
   /// [sourceId] Resource ID for a source resource. It should not contain any uppercase letters. Defaults to `azure monitor`.
   /// [storageContainerId] Specifies the Resource Manager ID of the Storage Container when bring your own storage is used. Changing this forces a new Workbook to be created.
   /// [tags] A mapping of tags which should be assigned to the Workbook.
-  WorkbookState({
+  const WorkbookState({
     this.category,
     this.dataJson,
     this.description,

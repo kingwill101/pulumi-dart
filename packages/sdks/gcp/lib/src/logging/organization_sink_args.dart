@@ -53,7 +53,7 @@ class OrganizationSinkArgs {
   /// [interceptChildren] Whether or not to intercept logs from child projects. If true, matching logs will not
   /// [name] The name of the logging sink.
   /// [orgId] The numeric ID of the organization to be exported to the sink.
-  OrganizationSinkArgs({
+  const OrganizationSinkArgs({
     this.bigqueryOptions,
     this.description,
     required this.destination,

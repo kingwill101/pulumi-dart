@@ -10,7 +10,7 @@ class EntitlementPrivilegedAccess {
 
   /// Creates a new [EntitlementPrivilegedAccess].
   /// [gcpIamAccess] GcpIamAccess represents IAM based access control on a GCP resource. Refer to https://cloud.google.com/iam/docs to understand more about IAM.
-  EntitlementPrivilegedAccess({
+  const EntitlementPrivilegedAccess({
     required this.gcpIamAccess,
   });
 

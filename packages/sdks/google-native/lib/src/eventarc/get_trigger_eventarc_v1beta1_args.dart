@@ -15,7 +15,7 @@ class GetTriggerEventarcV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [triggerId] Required.
-  GetTriggerEventarcV1beta1Args({
+  const GetTriggerEventarcV1beta1Args({
     required this.location,
     this.project,
     required this.triggerId,

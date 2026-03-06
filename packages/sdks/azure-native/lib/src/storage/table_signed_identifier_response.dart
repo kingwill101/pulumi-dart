@@ -13,7 +13,7 @@ class TableSignedIdentifierResponse {
   /// Creates a new [TableSignedIdentifierResponse].
   /// [accessPolicy] Access policy
   /// [id] unique-64-character-value of the stored access policy.
-  TableSignedIdentifierResponse({
+  const TableSignedIdentifierResponse({
     this.accessPolicy,
     required this.id,
   });

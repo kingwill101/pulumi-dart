@@ -21,7 +21,7 @@ class ToolsetOpenApiToolsetTlsConfigCaCert {
   /// Creates a new [ToolsetOpenApiToolsetTlsConfigCaCert].
   /// [cert] The allowed custom CA certificates (in DER format) for
   /// [displayName] The name of the allowed custom CA certificates. This
-  ToolsetOpenApiToolsetTlsConfigCaCert({
+  const ToolsetOpenApiToolsetTlsConfigCaCert({
     required this.cert,
     required this.displayName,
   });

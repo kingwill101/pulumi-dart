@@ -13,7 +13,7 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat {
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat].
   /// [mappingParameters] The Mapping Information for the record format.
   /// [recordFormatType] The type of Record Format. Can be `CSV` or `JSON`.
-  AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat({
+  const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormat({
     this.mappingParameters,
     this.recordFormatType,
   });

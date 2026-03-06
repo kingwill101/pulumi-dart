@@ -11,7 +11,7 @@ class InstanceFromMachineImageSchedulingNodeAffinity {
   /// [key] Required.
   /// [operator] Required.
   /// [values] Required.
-  InstanceFromMachineImageSchedulingNodeAffinity({
+  const InstanceFromMachineImageSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

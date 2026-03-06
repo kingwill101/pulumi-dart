@@ -11,7 +11,7 @@ class SqlContainerIndexingPolicySpatialIndex {
   /// Creates a new [SqlContainerIndexingPolicySpatialIndex].
   /// [path] Path for which the indexing behaviour applies to. According to the service design, all spatial types including `LineString`, `MultiPolygon`, `Point`, and `Polygon` will be applied to the path.
   /// [types] A set of spatial types of the path.
-  SqlContainerIndexingPolicySpatialIndex({
+  const SqlContainerIndexingPolicySpatialIndex({
     required this.path,
     this.types,
   });

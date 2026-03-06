@@ -23,7 +23,7 @@ class FunctionUrlCors {
   /// [allowOrigins] Origins that can access the function URL.
   /// [exposeHeaders] HTTP headers in your function response that you want to expose to origins that call the function URL.
   /// [maxAge] Maximum amount of time, in seconds, that web browsers can cache results of a preflight request. Maximum value is `86400`.
-  FunctionUrlCors({
+  const FunctionUrlCors({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

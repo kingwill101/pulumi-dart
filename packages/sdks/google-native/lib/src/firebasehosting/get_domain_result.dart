@@ -25,7 +25,7 @@ class GetDomainResult {
   /// [site] The site name of the association.
   /// [status] Additional status of the domain association.
   /// [updateTime] The time at which the domain was last updated.
-  GetDomainResult({
+  const GetDomainResult({
     required this.domainName,
     required this.domainRedirect,
     required this.provisioning,

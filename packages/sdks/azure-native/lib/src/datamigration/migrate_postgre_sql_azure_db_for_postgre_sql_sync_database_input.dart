@@ -25,7 +25,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput {
   /// [sourceSetting] Source settings to tune source endpoint migration behavior
   /// [targetDatabaseName] Name of target database. Note: Target database will be truncated before starting migration.
   /// [targetSetting] Target settings to tune target endpoint migration behavior
-  MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput({
+  const MigratePostgreSqlAzureDbForPostgreSqlSyncDatabaseInput({
     this.migrationSetting,
     this.name,
     this.selectedTables,

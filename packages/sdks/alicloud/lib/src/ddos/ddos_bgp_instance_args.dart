@@ -44,7 +44,7 @@ class DdosBgpInstanceArgs {
   /// [resourceGroupId] Resource Group ID
   /// [tags] The key of the tag that is added to the Anti-DDoS Origin instance.
   /// [type] The protection package type of the DDoS native protection instance. Default value: `Enterprise`. Valid values: `Enterprise`, `Professional`.
-  DdosBgpInstanceArgs({
+  const DdosBgpInstanceArgs({
     required this.bandwidth,
     this.baseBandwidth,
     this.instanceName,

@@ -11,7 +11,7 @@ class GetApplicationAttributeOperatorOwner {
   /// Creates a new [GetApplicationAttributeOperatorOwner].
   /// [displayName] Optional. Contact's name.
   /// [email] Required. Email address of the contacts.
-  GetApplicationAttributeOperatorOwner({
+  const GetApplicationAttributeOperatorOwner({
     required this.displayName,
     required this.email,
   });

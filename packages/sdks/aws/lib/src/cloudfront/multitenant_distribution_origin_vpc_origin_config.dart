@@ -14,7 +14,7 @@ class MultitenantDistributionOriginVpcOriginConfig {
   /// [originKeepaliveTimeout] Custom keep-alive timeout, in seconds. By default, CloudFront uses a default timeout. Default: 5.
   /// [originReadTimeout] Custom read timeout, in seconds. By default, CloudFront uses a default timeout. Default: 30.
   /// [vpcOriginId] ID of the VPC origin that you want CloudFront to route requests to.
-  MultitenantDistributionOriginVpcOriginConfig({
+  const MultitenantDistributionOriginVpcOriginConfig({
     this.originKeepaliveTimeout,
     this.originReadTimeout,
     required this.vpcOriginId,

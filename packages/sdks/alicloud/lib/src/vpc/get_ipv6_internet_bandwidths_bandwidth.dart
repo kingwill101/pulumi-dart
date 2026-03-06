@@ -29,7 +29,7 @@ class GetIpv6InternetBandwidthsBandwidth {
   /// [ipv6InternetBandwidthId] The ID of the Ipv6 Internet Bandwidth.
   /// [paymentType] The payment type of the resource.
   /// [status] The status of the resource. Valid values: `Normal`, `FinancialLocked` and `SecurityLocked`.
-  GetIpv6InternetBandwidthsBandwidth({
+  const GetIpv6InternetBandwidthsBandwidth({
     required this.bandwidth,
     required this.id,
     required this.internetChargeType,

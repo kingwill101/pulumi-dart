@@ -21,7 +21,7 @@ class ListLocalRulestackSecurityServicesArgs {
   /// [skip] Optional.
   /// [top] Optional.
   /// [type] Required.
-  ListLocalRulestackSecurityServicesArgs({
+  const ListLocalRulestackSecurityServicesArgs({
     required this.localRulestackName,
     required this.resourceGroupName,
     this.skip,

@@ -30,7 +30,7 @@ class AppVersionSnapshotAppLanguageSetting {
   /// [enableMultilingualSupport] (Output)
   /// [fallbackAction] (Output)
   /// [supportedLanguageCodes] (Output)
-  AppVersionSnapshotAppLanguageSetting({
+  const AppVersionSnapshotAppLanguageSetting({
     this.defaultLanguageCode,
     this.enableMultilingualSupport,
     this.fallbackAction,

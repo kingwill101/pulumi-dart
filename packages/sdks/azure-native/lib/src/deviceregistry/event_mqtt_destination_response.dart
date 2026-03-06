@@ -14,7 +14,7 @@ class EventMqttDestinationResponse {
   /// Creates a new [EventMqttDestinationResponse].
   /// [configuration] The MQTT destination configuration.
   /// [target] The set of supported event destinations for an asset.
-  EventMqttDestinationResponse({
+  const EventMqttDestinationResponse({
     required this.configuration,
     required this.target,
   });

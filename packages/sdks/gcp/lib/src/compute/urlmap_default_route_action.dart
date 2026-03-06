@@ -64,7 +64,7 @@ class URLMapDefaultRouteAction {
   /// [timeout] Specifies the timeout for the selected route. Timeout is computed from the time the request has been
   /// [urlRewrite] The spec to modify the URL of the request, prior to forwarding the request to the matched service.
   /// [weightedBackendServices] A list of weighted backend services to send traffic to when a route match occurs.
-  URLMapDefaultRouteAction({
+  const URLMapDefaultRouteAction({
     this.corsPolicy,
     this.faultInjectionPolicy,
     this.maxStreamDuration,

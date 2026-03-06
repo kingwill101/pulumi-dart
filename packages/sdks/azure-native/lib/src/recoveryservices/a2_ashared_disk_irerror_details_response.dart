@@ -21,7 +21,7 @@ class A2ASharedDiskIRErrorDetailsResponse {
   /// [errorMessage] The error message.
   /// [possibleCauses] The possible causes.
   /// [recommendedAction] The recommended action.
-  A2ASharedDiskIRErrorDetailsResponse({
+  const A2ASharedDiskIRErrorDetailsResponse({
     required this.errorCode,
     required this.errorCodeEnum,
     required this.errorMessage,

@@ -17,7 +17,7 @@ class ListenerDefaultActionJwtValidation {
   /// [additionalClaims] Repeatable configuration block for additional claims to validate.
   /// [issuer] Issuer of the JWT.
   /// [jwksEndpoint] JSON Web Key Set (JWKS) endpoint. This endpoint contains JSON Web Keys (JWK) that are used to validate signatures from the provider. This must be a full URL, including the HTTPS protocol, the domain, and the path.
-  ListenerDefaultActionJwtValidation({
+  const ListenerDefaultActionJwtValidation({
     this.additionalClaims,
     required this.issuer,
     required this.jwksEndpoint,

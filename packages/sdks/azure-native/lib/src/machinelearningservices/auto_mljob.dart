@@ -73,7 +73,7 @@ class AutoMLJob {
   /// [services] List of JobEndpoints.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [taskDetails] [Required] This represents scenario which can be one of Tables/NLP/Image
-  AutoMLJob({
+  const AutoMLJob({
     this.componentId,
     this.computeId,
     this.description,

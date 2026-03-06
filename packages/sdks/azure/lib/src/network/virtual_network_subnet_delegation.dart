@@ -12,7 +12,7 @@ class VirtualNetworkSubnetDelegation {
   /// Creates a new [VirtualNetworkSubnetDelegation].
   /// [name] A name for this delegation.
   /// [serviceDelegation] A `service_delegation` block as defined below.
-  VirtualNetworkSubnetDelegation({
+  const VirtualNetworkSubnetDelegation({
     required this.name,
     required this.serviceDelegation,
   });

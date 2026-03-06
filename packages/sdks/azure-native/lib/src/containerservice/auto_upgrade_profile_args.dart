@@ -34,7 +34,7 @@ class AutoUpgradeProfileArgs {
   /// [nodeImageSelection] The node image upgrade to be applied to the target clusters in auto upgrade.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateStrategyId] The resource id of the UpdateStrategy resource to reference. If not specified, the auto upgrade will run on all clusters which are members of the fleet.
-  AutoUpgradeProfileArgs({
+  const AutoUpgradeProfileArgs({
     this.autoUpgradeProfileName,
     required this.channel,
     this.disabled,

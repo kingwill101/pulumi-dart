@@ -8,7 +8,7 @@ class TransitRouterMulticastDomainOptions {
 
   /// Creates a new [TransitRouterMulticastDomainOptions].
   /// [igmpv2Support] Whether to enable IGMP function for multicast domain. Default value: `disable`. Valid values: `enable`, `disable`.
-  TransitRouterMulticastDomainOptions({
+  const TransitRouterMulticastDomainOptions({
     this.igmpv2Support,
   });
 

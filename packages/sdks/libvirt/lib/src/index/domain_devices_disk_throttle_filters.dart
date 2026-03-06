@@ -9,7 +9,7 @@ class DomainDevicesDiskThrottleFilters {
 
   /// Creates a new [DomainDevicesDiskThrottleFilters].
   /// [throttleFilters] Specifies individual throttle filter settings for the disk device.
-  DomainDevicesDiskThrottleFilters({
+  const DomainDevicesDiskThrottleFilters({
     this.throttleFilters,
   });
 

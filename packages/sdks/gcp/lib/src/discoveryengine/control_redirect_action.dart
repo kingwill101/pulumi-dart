@@ -8,7 +8,7 @@ class ControlRedirectAction {
 
   /// Creates a new [ControlRedirectAction].
   /// [redirectUri] The URI to redirect to.
-  ControlRedirectAction({
+  const ControlRedirectAction({
     required this.redirectUri,
   });
 

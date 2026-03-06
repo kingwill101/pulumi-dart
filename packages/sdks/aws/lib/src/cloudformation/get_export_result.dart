@@ -18,7 +18,7 @@ class GetExportResult {
   /// [name] Required.
   /// [region] Required.
   /// [value] Value from Cloudformation export identified by the export name found from [list-exports](http://docs.aws.amazon.com/cli/latest/reference/cloudformation/list-exports.html)
-  GetExportResult({
+  const GetExportResult({
     required this.exportingStackId,
     required this.id,
     required this.name,

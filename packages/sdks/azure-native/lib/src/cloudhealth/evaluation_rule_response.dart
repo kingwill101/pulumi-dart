@@ -17,7 +17,7 @@ class EvaluationRuleResponse {
   /// [degradedRule] Degraded rule with static threshold.
   /// [dynamicDetectionRule] Configure to use ML-based dynamic thresholds. When used, degradedRule and unhealthyRule must not be set.
   /// [unhealthyRule] Unhealthy rule with static threshold.
-  EvaluationRuleResponse({
+  const EvaluationRuleResponse({
     this.degradedRule,
     this.dynamicDetectionRule,
     this.unhealthyRule,

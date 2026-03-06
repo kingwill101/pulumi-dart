@@ -12,7 +12,7 @@ class WorkforceIdentityBasedManagementURIResponse {
   /// Creates a new [WorkforceIdentityBasedManagementURIResponse].
   /// [firstPartyManagementUri] First party Management URI for Google Identities.
   /// [thirdPartyManagementUri] Third party Management URI for External Identity Providers.
-  WorkforceIdentityBasedManagementURIResponse({
+  const WorkforceIdentityBasedManagementURIResponse({
     required this.firstPartyManagementUri,
     required this.thirdPartyManagementUri,
   });

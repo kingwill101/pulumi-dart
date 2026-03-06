@@ -21,7 +21,7 @@ class GetIntegrationRuntimeObjectMetadatumArgs {
   /// [integrationRuntimeName] The integration runtime name.
   /// [metadataPath] Metadata path.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationRuntimeObjectMetadatumArgs({
+  const GetIntegrationRuntimeObjectMetadatumArgs({
     required this.factoryName,
     required this.integrationRuntimeName,
     this.metadataPath,

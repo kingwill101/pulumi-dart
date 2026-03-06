@@ -16,7 +16,7 @@ class WorkloadStatusConfigAutomaticRule {
   /// [entityGuids] A list of entity GUIDs composing the rule. At least one of `entity_guids` or `nrql_query` must be defined.
   /// [nrqlQueries] A list of entity search queries used to retrieve the entities that compose the rule. See Nested nrql_query blocks below for details. At least one of `entity_guids` or `nrql_query` must be defined.
   /// [rollup] The input object used to represent a rollup strategy. See Nested rollup blocks below for details.
-  WorkloadStatusConfigAutomaticRule({
+  const WorkloadStatusConfigAutomaticRule({
     this.entityGuids,
     this.nrqlQueries,
     required this.rollup,

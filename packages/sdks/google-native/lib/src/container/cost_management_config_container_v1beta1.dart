@@ -9,7 +9,7 @@ class CostManagementConfigContainerV1beta1 {
 
   /// Creates a new [CostManagementConfigContainerV1beta1].
   /// [enabled] Whether the feature is enabled or not.
-  CostManagementConfigContainerV1beta1({
+  const CostManagementConfigContainerV1beta1({
     this.enabled,
   });
 

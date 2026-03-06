@@ -18,7 +18,7 @@ class NetworkInsightsAnalysisExplanationAclRule {
   /// [protocol] Optional.
   /// [ruleAction] Optional.
   /// [ruleNumber] Optional.
-  NetworkInsightsAnalysisExplanationAclRule({
+  const NetworkInsightsAnalysisExplanationAclRule({
     this.cidr,
     this.egress,
     this.portRanges,

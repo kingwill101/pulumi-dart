@@ -28,7 +28,7 @@ class KubernetesClusterIngressApplicationGateway {
   /// [ingressApplicationGatewayIdentities] An `ingress_application_gateway_identity` block is exported. The exported attributes are defined below.
   /// [subnetCidr] The subnet CIDR to be used to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
   /// [subnetId] The ID of the subnet on which to create an Application Gateway, which in turn will be integrated with the ingress controller of this Kubernetes Cluster. See [this](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-new) page for further details.
-  KubernetesClusterIngressApplicationGateway({
+  const KubernetesClusterIngressApplicationGateway({
     this.effectiveGatewayId,
     this.gatewayId,
     this.gatewayName,

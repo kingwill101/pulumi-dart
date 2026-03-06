@@ -18,7 +18,7 @@ class CognitoOptionsResponse {
   /// [identityPoolId] &lt;p&gt;The Amazon Cognito identity pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
   /// [roleArn] &lt;p&gt;The &lt;code&gt;AmazonOpenSearchServiceCognitoAccess&lt;/code&gt; role that allows OpenSearch Service to configure your user pool and identity pool.&lt;/p&gt;
   /// [userPoolId] &lt;p&gt;The Amazon Cognito user pool ID that you want OpenSearch Service to use for OpenSearch Dashboards authentication.&lt;/p&gt;
-  CognitoOptionsResponse({
+  const CognitoOptionsResponse({
     this.enabled,
     this.identityPoolId,
     this.roleArn,

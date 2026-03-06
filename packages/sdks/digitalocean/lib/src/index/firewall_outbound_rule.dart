@@ -37,7 +37,7 @@ class FirewallOutboundRule {
   /// [destinationTags] An array containing the names of Tags
   /// [portRange] The ports on which traffic will be allowed
   /// [protocol] The type of traffic to be allowed.
-  FirewallOutboundRule({
+  const FirewallOutboundRule({
     this.destinationAddresses,
     this.destinationDropletIds,
     this.destinationKubernetesIds,

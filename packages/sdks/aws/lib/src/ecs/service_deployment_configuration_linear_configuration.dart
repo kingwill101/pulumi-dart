@@ -11,7 +11,7 @@ class ServiceDeploymentConfigurationLinearConfiguration {
   /// Creates a new [ServiceDeploymentConfigurationLinearConfiguration].
   /// [stepBakeTimeInMinutes] Number of minutes to wait between each step during a linear deployment. Valid range: 0-1440 minutes.
   /// [stepPercent] Percentage of traffic to shift in each step during a linear deployment. Valid range: 3.0-100.0.
-  ServiceDeploymentConfigurationLinearConfiguration({
+  const ServiceDeploymentConfigurationLinearConfiguration({
     this.stepBakeTimeInMinutes,
     this.stepPercent,
   });

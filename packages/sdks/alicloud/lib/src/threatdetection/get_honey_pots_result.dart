@@ -31,7 +31,7 @@ class GetHoneyPotsResult {
   /// [nodeName] Optional.
   /// [outputFile] Optional.
   /// [pots] A list of Honey Pot Entries. Each element contains the following attributes:
-  GetHoneyPotsResult({
+  const GetHoneyPotsResult({
     this.honeypotId,
     this.honeypotName,
     required this.id,

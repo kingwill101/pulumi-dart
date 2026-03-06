@@ -11,7 +11,7 @@ class OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault {
   /// Creates a new [OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault].
   /// [secretUrl] The URL to the Key Vault Secret which stores the protected settings.
   /// [sourceVaultId] The ID of the source Key Vault.
-  OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault({
+  const OrchestratedVirtualMachineScaleSetExtensionProtectedSettingsFromKeyVault({
     required this.secretUrl,
     required this.sourceVaultId,
   });

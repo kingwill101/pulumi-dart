@@ -29,7 +29,7 @@ class GetServiceQueuesResult {
   /// [pageSize] Optional.
   /// [queueName] The name of the queue.
   /// [queues] A list of Queues. Each element contains the following attributes:
-  GetServiceQueuesResult({
+  const GetServiceQueuesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

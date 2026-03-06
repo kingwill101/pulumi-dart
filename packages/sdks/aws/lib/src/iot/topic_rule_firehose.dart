@@ -17,7 +17,7 @@ class TopicRuleFirehose {
   /// [deliveryStreamName] The delivery stream name.
   /// [roleArn] The IAM role ARN that grants access to the Amazon Kinesis Firehose stream.
   /// [separator] A character separator that is used to separate records written to the Firehose stream. Valid values are: '\n' (newline), '\t' (tab), '\r\n' (Windows newline), ',' (comma).
-  TopicRuleFirehose({
+  const TopicRuleFirehose({
     this.batchMode,
     required this.deliveryStreamName,
     required this.roleArn,

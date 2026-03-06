@@ -103,7 +103,7 @@ class ClusterState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [zookeeperConnectString] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   /// [zookeeperConnectStringTls] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
-  ClusterState({
+  const ClusterState({
     this.arn,
     this.bootstrapBrokers,
     this.bootstrapBrokersPublicSaslIam,

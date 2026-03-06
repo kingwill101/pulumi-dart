@@ -46,7 +46,7 @@ class GetScheduledTriggerResult {
   /// [triggerStatus] Gets the trigger state
   /// [type] Type of the azure resource
   /// [userName] Name of the user who created the trigger.
-  GetScheduledTriggerResult({
+  const GetScheduledTriggerResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

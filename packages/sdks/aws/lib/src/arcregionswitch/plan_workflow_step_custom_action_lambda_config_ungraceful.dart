@@ -8,7 +8,7 @@ class PlanWorkflowStepCustomActionLambdaConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepCustomActionLambdaConfigUngraceful].
   /// [behavior] Behavior when ungraceful. Valid values: `skip`.
-  PlanWorkflowStepCustomActionLambdaConfigUngraceful({
+  const PlanWorkflowStepCustomActionLambdaConfigUngraceful({
     required this.behavior,
   });
 

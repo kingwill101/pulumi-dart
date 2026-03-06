@@ -13,7 +13,7 @@ class PrivateEndpointConnectionProxyPropertiesResponse {
   /// Creates a new [PrivateEndpointConnectionProxyPropertiesResponse].
   /// [provisioningState] Gets or sets the provisioning state of the private endpoint connection proxy.
   /// [remotePrivateEndpoint] Represent remote private endpoint information for the private endpoint connection proxy.
-  PrivateEndpointConnectionProxyPropertiesResponse({
+  const PrivateEndpointConnectionProxyPropertiesResponse({
     required this.provisioningState,
     this.remotePrivateEndpoint,
   });

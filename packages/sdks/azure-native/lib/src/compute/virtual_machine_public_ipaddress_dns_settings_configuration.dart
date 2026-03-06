@@ -12,7 +12,7 @@ class VirtualMachinePublicIPAddressDnsSettingsConfiguration {
   /// Creates a new [VirtualMachinePublicIPAddressDnsSettingsConfiguration].
   /// [domainNameLabel] The Domain name label prefix of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the domain name label and vm network profile unique ID.
   /// [domainNameLabelScope] The Domain name label scope of the PublicIPAddress resources that will be created. The generated name label is the concatenation of the hashed domain name label with policy according to the domain name label scope and vm network profile unique ID.
-  VirtualMachinePublicIPAddressDnsSettingsConfiguration({
+  const VirtualMachinePublicIPAddressDnsSettingsConfiguration({
     required this.domainNameLabel,
     this.domainNameLabelScope,
   });

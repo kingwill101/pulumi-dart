@@ -27,7 +27,7 @@ class GetRegistryEnterpriseReposRepo {
   /// [repoType] The type of the Repository.
   /// [summary] The summary of the Repository.
   /// [tags] A list of image tags belong to this Repository. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
-  GetRegistryEnterpriseReposRepo({
+  const GetRegistryEnterpriseReposRepo({
     required this.id,
     required this.instanceId,
     required this.name,

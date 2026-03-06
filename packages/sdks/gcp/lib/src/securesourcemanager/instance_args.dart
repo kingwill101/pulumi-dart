@@ -49,7 +49,7 @@ class InstanceArgs {
   /// [privateConfig] Private settings for private instance.
   /// [project] The ID of the project in which the resource belongs.
   /// [workforceIdentityFederationConfig] Configuration for Workforce Identity Federation to support third party identity provider.
-  InstanceArgs({
+  const InstanceArgs({
     this.deletionPolicy,
     required this.instanceId,
     this.kmsKey,

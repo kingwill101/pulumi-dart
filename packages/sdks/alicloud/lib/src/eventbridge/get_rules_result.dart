@@ -26,7 +26,7 @@ class GetRulesResult {
   /// [ruleNamePrefix] Optional.
   /// [rules] Required.
   /// [status] Optional.
-  GetRulesResult({
+  const GetRulesResult({
     required this.eventBusName,
     required this.id,
     required this.ids,

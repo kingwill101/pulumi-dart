@@ -42,7 +42,7 @@ class GenaiKnowledgeBaseState {
   /// [region] Optional.
   /// [tags] Optional.
   /// [vpcUuid] The unique identifier of the VPC to which the knowledge base belongs.
-  GenaiKnowledgeBaseState({
+  const GenaiKnowledgeBaseState({
     this.addedToAgentAt,
     this.createdAt,
     this.databaseId,

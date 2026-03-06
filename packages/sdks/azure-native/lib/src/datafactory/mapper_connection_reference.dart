@@ -12,7 +12,7 @@ class MapperConnectionReference {
   /// Creates a new [MapperConnectionReference].
   /// [connectionName] Name of the connection
   /// [type] Type of connection via linked service or dataset.
-  MapperConnectionReference({
+  const MapperConnectionReference({
     this.connectionName,
     this.type,
   });

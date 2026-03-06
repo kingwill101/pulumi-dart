@@ -26,7 +26,7 @@ class DatabaseKafkaTopicArgs {
   /// [name] The name for the topic.
   /// [partitionCount] The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
   /// [replicationFactor] The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
-  DatabaseKafkaTopicArgs({
+  const DatabaseKafkaTopicArgs({
     required this.clusterId,
     this.configs,
     this.name,

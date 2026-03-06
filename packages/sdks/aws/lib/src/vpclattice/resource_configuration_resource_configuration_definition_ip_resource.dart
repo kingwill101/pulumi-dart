@@ -8,7 +8,7 @@ class ResourceConfigurationResourceConfigurationDefinitionIpResource {
 
   /// Creates a new [ResourceConfigurationResourceConfigurationDefinitionIpResource].
   /// [ipAddress] The IP Address of the Resource for this configuration.
-  ResourceConfigurationResourceConfigurationDefinitionIpResource({
+  const ResourceConfigurationResourceConfigurationDefinitionIpResource({
     required this.ipAddress,
   });
 

@@ -25,7 +25,7 @@ class SparkRJobDataprocV1beta2 {
   /// [loggingConfig] Optional. The runtime log config for job execution.
   /// [mainRFileUri] The HCFS URI of the main R file to use as the driver. Must be a .R file.
   /// [properties] Optional. A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-  SparkRJobDataprocV1beta2({
+  const SparkRJobDataprocV1beta2({
     this.archiveUris,
     this.args,
     this.fileUris,

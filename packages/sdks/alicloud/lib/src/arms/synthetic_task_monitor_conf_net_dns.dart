@@ -25,7 +25,7 @@ class SyntheticTaskMonitorConfNetDns {
   /// [queryMethod] DNS query method.
   /// [targetUrl] The target URL.
   /// [timeout] TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-  SyntheticTaskMonitorConfNetDns({
+  const SyntheticTaskMonitorConfNetDns({
     this.dnsServerIpType,
     this.nsServer,
     this.queryMethod,

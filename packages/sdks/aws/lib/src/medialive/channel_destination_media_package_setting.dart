@@ -8,7 +8,7 @@ class ChannelDestinationMediaPackageSetting {
 
   /// Creates a new [ChannelDestinationMediaPackageSetting].
   /// [channelId] ID of the channel in MediaPackage that is the destination for this output group.
-  ChannelDestinationMediaPackageSetting({
+  const ChannelDestinationMediaPackageSetting({
     required this.channelId,
   });
 

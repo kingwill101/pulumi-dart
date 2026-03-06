@@ -14,7 +14,7 @@ class RouterApplianceInstanceResponseNetworkconnectivityV1alpha1 {
   /// [ipAddress] The IP address of the network interface to use for peering.
   /// [networkInterface] Required.
   /// [virtualMachine] The URI of the virtual machine resource
-  RouterApplianceInstanceResponseNetworkconnectivityV1alpha1({
+  const RouterApplianceInstanceResponseNetworkconnectivityV1alpha1({
     required this.ipAddress,
     required this.networkInterface,
     required this.virtualMachine,

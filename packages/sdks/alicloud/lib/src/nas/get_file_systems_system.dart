@@ -51,7 +51,7 @@ class GetFileSystemsSystem {
   /// [regionId] ID of the region where the FileSystem is located.
   /// [storageType] The storage type of the file system.
   /// [zoneId] (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
-  GetFileSystemsSystem({
+  const GetFileSystemsSystem({
     required this.capacity,
     required this.createTime,
     required this.description,

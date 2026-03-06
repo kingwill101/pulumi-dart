@@ -15,7 +15,7 @@ class GetServiceRunV2Args {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceRunV2Args({
+  const GetServiceRunV2Args({
     required this.location,
     this.project,
     required this.serviceId,

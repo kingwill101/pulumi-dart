@@ -9,7 +9,7 @@ class CacheTypeEnumValue {
 
   /// Creates a new [CacheTypeEnumValue].
   /// [value] Property value
-  CacheTypeEnumValue({
+  const CacheTypeEnumValue({
     this.value,
   });
 

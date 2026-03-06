@@ -37,7 +37,7 @@ class ElasticSanArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] resource sku
   /// [tags] Resource tags.
-  ElasticSanArgs({
+  const ElasticSanArgs({
     this.availabilityZones,
     required this.baseSizeTiB,
     this.elasticSanName,

@@ -9,7 +9,7 @@ class NodeImageVersionResponse {
 
   /// Creates a new [NodeImageVersionResponse].
   /// [version] The image version to upgrade the nodes to (e.g., 'AKSUbuntu-1804gen2containerd-2022.12.13').
-  NodeImageVersionResponse({
+  const NodeImageVersionResponse({
     required this.version,
   });
 

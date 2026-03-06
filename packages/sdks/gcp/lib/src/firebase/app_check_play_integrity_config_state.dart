@@ -22,7 +22,7 @@ class AppCheckPlayIntegrityConfigState {
   /// [name] The relative resource name of the Play Integrity configuration object
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from Play Integrity artifacts will be valid.
-  AppCheckPlayIntegrityConfigState({
+  const AppCheckPlayIntegrityConfigState({
     this.appId,
     this.name,
     this.project,

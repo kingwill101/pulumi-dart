@@ -12,7 +12,7 @@ class DomainDevicesDiskAuth {
   /// Creates a new [DomainDevicesDiskAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.
   /// [username] Sets the username for iSCSI authentication.
-  DomainDevicesDiskAuth({
+  const DomainDevicesDiskAuth({
     this.secret,
     this.username,
   });

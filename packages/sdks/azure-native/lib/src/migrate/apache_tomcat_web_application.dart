@@ -54,7 +54,7 @@ class ApacheTomcatWebApplication {
   /// [requests] Resource Requirements.
   /// [webServerId] Gets or sets the web server id.
   /// [webServerName] Gets or sets the web server name.
-  ApacheTomcatWebApplication({
+  const ApacheTomcatWebApplication({
     this.applicationId,
     this.applicationName,
     this.applicationScratchPath,

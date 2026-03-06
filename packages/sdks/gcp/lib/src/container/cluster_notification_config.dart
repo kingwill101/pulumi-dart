@@ -9,7 +9,7 @@ class ClusterNotificationConfig {
 
   /// Creates a new [ClusterNotificationConfig].
   /// [pubsub] The pubsub config for the cluster's upgrade notifications.
-  ClusterNotificationConfig({
+  const ClusterNotificationConfig({
     required this.pubsub,
   });
 

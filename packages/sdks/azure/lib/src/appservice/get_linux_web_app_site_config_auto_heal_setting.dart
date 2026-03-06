@@ -13,7 +13,7 @@ class GetLinuxWebAppSiteConfigAutoHealSetting {
   /// Creates a new [GetLinuxWebAppSiteConfigAutoHealSetting].
   /// [actions] A `action` block as defined above.
   /// [triggers] A `trigger` block as defined below.
-  GetLinuxWebAppSiteConfigAutoHealSetting({
+  const GetLinuxWebAppSiteConfigAutoHealSetting({
     required this.actions,
     required this.triggers,
   });

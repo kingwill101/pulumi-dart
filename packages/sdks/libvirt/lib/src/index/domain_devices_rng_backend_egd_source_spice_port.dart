@@ -8,7 +8,7 @@ class DomainDevicesRngBackendEgdSourceSpicePort {
 
   /// Creates a new [DomainDevicesRngBackendEgdSourceSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesRngBackendEgdSourceSpicePort({
+  const DomainDevicesRngBackendEgdSourceSpicePort({
     required this.channel,
   });
 

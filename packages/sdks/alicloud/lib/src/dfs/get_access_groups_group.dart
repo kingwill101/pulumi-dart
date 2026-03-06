@@ -29,7 +29,7 @@ class GetAccessGroupsGroup {
   /// [mountPointCount] The Number of attached mountpoint.
   /// [networkType] The NetworkType of Access Group. Valid values: `VPC`.
   /// [ruleCount] The Number of access rule.
-  GetAccessGroupsGroup({
+  const GetAccessGroupsGroup({
     required this.accessGroupId,
     required this.accessGroupName,
     required this.createTime,

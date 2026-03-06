@@ -59,7 +59,7 @@ class GetBrokerListenerResult {
   /// [tags] Resource tags.
   /// [tls] Defines configuration of a TLS server certificate. NOTE Enum - Only one TLS Cert method is supported
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetBrokerListenerResult({
+  const GetBrokerListenerResult({
     this.authenticationEnabled,
     this.authorizationEnabled,
     required this.azureApiVersion,

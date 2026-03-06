@@ -13,7 +13,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] The identity type.
   /// [userAssignedIdentities] The user assigned identities associated with the resource.
-  Identity({
+  const Identity({
     this.type,
     this.userAssignedIdentities,
   });

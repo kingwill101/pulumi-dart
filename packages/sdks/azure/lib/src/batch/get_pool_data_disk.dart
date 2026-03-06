@@ -17,7 +17,7 @@ class GetPoolDataDisk {
   /// [diskSizeGb] The initial disk size in GB when creating new data disk.
   /// [lun] The lun is used to uniquely identify each data disk.
   /// [storageAccountType] The storage account type to be used for the data disk.
-  GetPoolDataDisk({
+  const GetPoolDataDisk({
     required this.caching,
     required this.diskSizeGb,
     required this.lun,

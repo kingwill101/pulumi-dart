@@ -13,7 +13,7 @@ class ListRemediationDeploymentsAtResourceResult {
   /// Creates a new [ListRemediationDeploymentsAtResourceResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] Array of deployments for the remediation.
-  ListRemediationDeploymentsAtResourceResult({
+  const ListRemediationDeploymentsAtResourceResult({
     required this.nextLink,
     required this.value,
   });

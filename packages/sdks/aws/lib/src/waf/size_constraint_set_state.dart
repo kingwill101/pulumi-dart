@@ -16,7 +16,7 @@ class SizeConstraintSetState {
   /// [arn] Amazon Resource Name (ARN).
   /// [name] Name or description of the Size Constraint Set.
   /// [sizeConstraints] Parts of web requests that you want to inspect the size of.
-  SizeConstraintSetState({
+  const SizeConstraintSetState({
     this.arn,
     this.name,
     this.sizeConstraints,

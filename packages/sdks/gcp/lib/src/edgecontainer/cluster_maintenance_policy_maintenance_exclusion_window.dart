@@ -12,7 +12,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionWindow {
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusionWindow].
   /// [endTime] The time that the window ends. The end time must take place after the
   /// [startTime] The time that the window first starts.
-  ClusterMaintenancePolicyMaintenanceExclusionWindow({
+  const ClusterMaintenancePolicyMaintenanceExclusionWindow({
     this.endTime,
     this.startTime,
   });

@@ -12,7 +12,7 @@ class SchematizedDataResponse {
   /// Creates a new [SchematizedDataResponse].
   /// [data] JSON output of the parser.
   /// [error] The error output of the parser.
-  SchematizedDataResponse({
+  const SchematizedDataResponse({
     required this.data,
     required this.error,
   });

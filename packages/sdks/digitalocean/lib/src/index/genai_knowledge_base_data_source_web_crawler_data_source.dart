@@ -19,7 +19,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
   /// [baseUrl] The base URL to crawl
   /// [crawlingOption] Options for specifying how URLs found on pages should be handled.
   /// [embedMedia] Whether to embed media content
-  GenaiKnowledgeBaseDataSourceWebCrawlerDataSource({
+  const GenaiKnowledgeBaseDataSourceWebCrawlerDataSource({
     this.baseUrl,
     this.crawlingOption,
     this.embedMedia,

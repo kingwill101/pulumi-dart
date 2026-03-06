@@ -8,7 +8,7 @@ class AwsClusterBinaryAuthorization {
 
   /// Creates a new [AwsClusterBinaryAuthorization].
   /// [evaluationMode] Mode of operation for Binary Authorization policy evaluation. Possible values: DISABLED, PROJECT_SINGLETON_POLICY_ENFORCE
-  AwsClusterBinaryAuthorization({
+  const AwsClusterBinaryAuthorization({
     this.evaluationMode,
   });
 

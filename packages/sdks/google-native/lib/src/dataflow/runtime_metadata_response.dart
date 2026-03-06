@@ -14,7 +14,7 @@ class RuntimeMetadataResponse {
   /// Creates a new [RuntimeMetadataResponse].
   /// [parameters] The parameters for the template.
   /// [sdkInfo] SDK Info for the template.
-  RuntimeMetadataResponse({
+  const RuntimeMetadataResponse({
     required this.parameters,
     required this.sdkInfo,
   });

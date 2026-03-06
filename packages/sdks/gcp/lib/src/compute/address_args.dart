@@ -100,7 +100,7 @@ class AddressArgs {
   /// [purpose] The purpose of this resource, which can be one of the following values.
   /// [region] The Region in which the created address should reside.
   /// [subnetwork] The URL of the subnetwork in which to reserve the address. If an IP
-  AddressArgs({
+  const AddressArgs({
     this.address,
     this.addressType,
     this.description,

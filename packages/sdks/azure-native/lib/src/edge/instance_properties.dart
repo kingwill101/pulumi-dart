@@ -22,7 +22,7 @@ class InstanceProperties {
   /// [solutionScope] Scope of instance
   /// [solutionVersionId] Solution version of instance
   /// [targetId] Target of instance
-  InstanceProperties({
+  const InstanceProperties({
     this.activeState,
     this.reconciliationPolicy,
     this.solutionScope,

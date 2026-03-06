@@ -50,7 +50,7 @@ class NetworkConfigContainerV1beta1 {
   /// [networkPerformanceConfig] Network bandwidth tier configuration.
   /// [privateIpv6GoogleAccess] The desired state of IPv6 connectivity to Google Services. By default, no private IPv6 access to or from Google Services (all access will be via IPv4)
   /// [serviceExternalIpsConfig] ServiceExternalIPsConfig specifies if services with externalIPs field are blocked or not.
-  NetworkConfigContainerV1beta1({
+  const NetworkConfigContainerV1beta1({
     this.datapathProvider,
     this.defaultSnatStatus,
     this.dnsConfig,

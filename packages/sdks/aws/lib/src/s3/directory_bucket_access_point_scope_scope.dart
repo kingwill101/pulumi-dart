@@ -13,7 +13,7 @@ class DirectoryBucketAccessPointScopeScope {
   /// Creates a new [DirectoryBucketAccessPointScopeScope].
   /// [permissions] You can specify a list of API operations as permissions for the access point.
   /// [prefixes] You can specify a list of prefixes, but the total length of characters of all prefixes must be less than 256 bytes.
-  DirectoryBucketAccessPointScopeScope({
+  const DirectoryBucketAccessPointScopeScope({
     this.permissions,
     this.prefixes,
   });

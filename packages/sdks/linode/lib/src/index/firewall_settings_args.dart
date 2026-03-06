@@ -13,7 +13,7 @@ class FirewallSettingsArgs {
 
   /// Creates a new [FirewallSettingsArgs].
   /// [defaultFirewallIds] A map of default firewall IDs for various interfaces.
-  FirewallSettingsArgs({
+  const FirewallSettingsArgs({
     this.defaultFirewallIds,
   });
 

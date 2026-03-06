@@ -97,7 +97,7 @@ class AssessmentPropertiesResponse {
   /// [timeRange] Time range of performance data used to recommend a size.
   /// [updatedTimestamp] Time when this project was last updated. Date-Time represented in ISO-8601 format.
   /// [vmUptime] Specify the duration for which the VMs are up in the on-premises environment.
-  AssessmentPropertiesResponse({
+  const AssessmentPropertiesResponse({
     required this.azureDiskType,
     required this.azureHybridUseBenefit,
     required this.azureLocation,

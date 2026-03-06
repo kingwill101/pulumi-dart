@@ -21,7 +21,7 @@ class GetIntegrationExportersArgs {
   /// [ids] A list of Integration Exporter IDs.
   /// [integrationType] The type of prometheus integration.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetIntegrationExportersArgs({
+  const GetIntegrationExportersArgs({
     required this.clusterId,
     this.ids,
     required this.integrationType,

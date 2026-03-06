@@ -42,7 +42,7 @@ class ApiOperationState {
   /// [responses] One or more `response` blocks as defined below.
   /// [templateParameters] One or more `template_parameter` blocks as defined below. Required if `url_template` contains one or more parameters.
   /// [urlTemplate] The relative URL Template identifying the target resource for this operation, which may include parameters.
-  ApiOperationState({
+  const ApiOperationState({
     this.apiManagementName,
     this.apiName,
     this.description,

@@ -9,7 +9,7 @@ class InsightFiltersResourceContainerImageId {
   /// Creates a new [InsightFiltersResourceContainerImageId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceContainerImageId({
+  const InsightFiltersResourceContainerImageId({
     required this.comparison,
     required this.value,
   });

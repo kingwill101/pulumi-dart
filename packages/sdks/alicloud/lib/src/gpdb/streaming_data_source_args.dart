@@ -29,7 +29,7 @@ class StreamingDataSourceArgs {
   /// [dataSourceType] Data Source Type
   /// [dbInstanceId] The instance ID.
   /// [serviceId] The real-time data service ID.
-  StreamingDataSourceArgs({
+  const StreamingDataSourceArgs({
     required this.dataSourceConfig,
     this.dataSourceDescription,
     required this.dataSourceName,

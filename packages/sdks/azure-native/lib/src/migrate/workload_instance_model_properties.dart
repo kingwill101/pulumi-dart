@@ -28,7 +28,7 @@ class WorkloadInstanceModelProperties {
   /// [name] Gets or sets the workload instance name.
   /// [sourceName] Gets or sets the source name.
   /// [sourcePlatform] Gets or sets the source platform.
-  WorkloadInstanceModelProperties({
+  const WorkloadInstanceModelProperties({
     this.customProperties,
     this.displayName,
     this.masterSiteName,

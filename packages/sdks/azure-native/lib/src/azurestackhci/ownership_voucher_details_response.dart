@@ -12,7 +12,7 @@ class OwnershipVoucherDetailsResponse {
   /// Creates a new [OwnershipVoucherDetailsResponse].
   /// [ownerKeyType] Owner key type
   /// [ownershipVoucher] Ownership voucher in base64 encoded format
-  OwnershipVoucherDetailsResponse({
+  const OwnershipVoucherDetailsResponse({
     required this.ownerKeyType,
     required this.ownershipVoucher,
   });

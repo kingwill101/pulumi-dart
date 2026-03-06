@@ -9,7 +9,7 @@ class ResourcePolicyVmMaintenancePolicyMaintenanceWindow {
 
   /// Creates a new [ResourcePolicyVmMaintenancePolicyMaintenanceWindow].
   /// [dailyMaintenanceWindow] Optional.
-  ResourcePolicyVmMaintenancePolicyMaintenanceWindow({
+  const ResourcePolicyVmMaintenancePolicyMaintenanceWindow({
     this.dailyMaintenanceWindow,
   });
 

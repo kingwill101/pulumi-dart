@@ -23,7 +23,7 @@ class ServiceHealthCheckConfiguration {
   /// [protocol] IP protocol that App Runner uses to perform health checks for your service. Valid values: `TCP`, `HTTP`. Defaults to `TCP`. If you set protocol to `HTTP`, App Runner sends health check requests to the HTTP path specified by `path`.
   /// [timeout] Time, in seconds, to wait for a health check response before deciding it failed. Defaults to 2. Minimum value of  1. Maximum value of 20.
   /// [unhealthyThreshold] Number of consecutive checks that must fail before App Runner decides that the service is unhealthy. Defaults to 5. Minimum value of  1. Maximum value of 20.
-  ServiceHealthCheckConfiguration({
+  const ServiceHealthCheckConfiguration({
     this.healthyThreshold,
     this.interval,
     this.path,

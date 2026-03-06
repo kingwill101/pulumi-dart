@@ -14,7 +14,7 @@ class GlobalForwardingRuleServiceDirectoryRegistrations {
   /// Creates a new [GlobalForwardingRuleServiceDirectoryRegistrations].
   /// [namespace] Service Directory namespace to register the forwarding rule under.
   /// [serviceDirectoryRegion] [Optional] Service Directory region to register this global forwarding rule under.
-  GlobalForwardingRuleServiceDirectoryRegistrations({
+  const GlobalForwardingRuleServiceDirectoryRegistrations({
     this.namespace,
     this.serviceDirectoryRegion,
   });

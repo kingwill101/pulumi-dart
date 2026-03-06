@@ -14,7 +14,7 @@ class FeatureGroupOfflineStoreConfigS3StorageConfig {
   /// [kmsKeyId] The AWS Key Management Service (KMS) key ID of the key used to encrypt any objects written into the OfflineStore S3 location.
   /// [resolvedOutputS3Uri] The S3 path where offline records are written.
   /// [s3Uri] The S3 URI, or location in Amazon S3, of OfflineStore.
-  FeatureGroupOfflineStoreConfigS3StorageConfig({
+  const FeatureGroupOfflineStoreConfigS3StorageConfig({
     this.kmsKeyId,
     this.resolvedOutputS3Uri,
     required this.s3Uri,

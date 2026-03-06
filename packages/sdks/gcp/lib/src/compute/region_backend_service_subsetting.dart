@@ -18,7 +18,7 @@ class RegionBackendServiceSubsetting {
   /// Creates a new [RegionBackendServiceSubsetting].
   /// [policy] The algorithm used for subsetting.
   /// [subsetSize] The number of backends per backend group assigned to each proxy instance or each service mesh client.
-  RegionBackendServiceSubsetting({
+  const RegionBackendServiceSubsetting({
     required this.policy,
     this.subsetSize,
   });

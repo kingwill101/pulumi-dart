@@ -14,7 +14,7 @@ class GetVirtualNodeSpecListenerTlCertificate {
   /// [acms] Required.
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualNodeSpecListenerTlCertificate({
+  const GetVirtualNodeSpecListenerTlCertificate({
     required this.acms,
     required this.files,
     required this.sds,

@@ -31,7 +31,7 @@ class HmacKeyState {
   /// [state] The state of the key. Can be set to one of ACTIVE, INACTIVE.
   /// [timeCreated] 'The creation time of the HMAC key in RFC 3339 format. '
   /// [updated] 'The last modification time of the HMAC key metadata in RFC 3339 format.'
-  HmacKeyState({
+  const HmacKeyState({
     this.accessId,
     this.project,
     this.secret,

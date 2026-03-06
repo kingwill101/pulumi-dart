@@ -18,7 +18,7 @@ class GetEnterpriseLogicDatabasesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] A list of Logic Database IDs.
   /// [outputFile] Optional.
-  GetEnterpriseLogicDatabasesResult({
+  const GetEnterpriseLogicDatabasesResult({
     required this.databases,
     required this.id,
     required this.ids,

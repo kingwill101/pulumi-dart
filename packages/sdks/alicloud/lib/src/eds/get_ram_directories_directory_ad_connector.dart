@@ -17,7 +17,7 @@ class GetRamDirectoriesDirectoryAdConnector {
   /// [connectorStatus] The status of connector.
   /// [networkInterfaceId] The ID of the network interface.
   /// [vswitchId] The ID of vSwitch.
-  GetRamDirectoriesDirectoryAdConnector({
+  const GetRamDirectoriesDirectoryAdConnector({
     required this.adConnectorAddress,
     required this.connectorStatus,
     required this.networkInterfaceId,

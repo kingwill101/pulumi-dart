@@ -21,7 +21,7 @@ class VirtualNetworkSubnetProperties {
   /// [natGateway] Nat Gateway attached to the subnet for non-vnet traffic.
   /// [networkSecurityGroup] Network Security Group attached to the subnet.
   /// [routeTable] RouteTable defining custom routes for the subnet.
-  VirtualNetworkSubnetProperties({
+  const VirtualNetworkSubnetProperties({
     required this.addressPrefix,
     this.natGateway,
     this.networkSecurityGroup,

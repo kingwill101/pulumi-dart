@@ -8,7 +8,7 @@ class NotificationChannelSns {
 
   /// Creates a new [NotificationChannelSns].
   /// [topicArn] Amazon Resource Name (ARN) of an Amazon Simple Notification Service topic.
-  NotificationChannelSns({
+  const NotificationChannelSns({
     required this.topicArn,
   });
 

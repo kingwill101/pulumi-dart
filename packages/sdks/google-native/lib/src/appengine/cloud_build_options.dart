@@ -12,7 +12,7 @@ class CloudBuildOptions {
   /// Creates a new [CloudBuildOptions].
   /// [appYamlPath] Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
   /// [cloudBuildTimeout] The Cloud Build timeout used as part of any dependent builds performed by version creation. Defaults to 10 minutes.
-  CloudBuildOptions({
+  const CloudBuildOptions({
     this.appYamlPath,
     this.cloudBuildTimeout,
   });

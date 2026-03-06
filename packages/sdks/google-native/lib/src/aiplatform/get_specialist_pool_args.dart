@@ -15,7 +15,7 @@ class GetSpecialistPoolArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [specialistPoolId] Required.
-  GetSpecialistPoolArgs({
+  const GetSpecialistPoolArgs({
     required this.location,
     this.project,
     required this.specialistPoolId,

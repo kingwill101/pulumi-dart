@@ -21,7 +21,7 @@ class TriggerScheduleSchedule {
   /// [hours] Hours of the day on which the trigger is scheduled.
   /// [minutes] Minutes of the hour on which the trigger is scheduled.
   /// [monthlies] A `monthly` block as documented below, which specifies the days of the month on which the trigger is scheduled. The value can be specified only with a monthly frequency.
-  TriggerScheduleSchedule({
+  const TriggerScheduleSchedule({
     this.daysOfMonths,
     this.daysOfWeeks,
     this.hours,

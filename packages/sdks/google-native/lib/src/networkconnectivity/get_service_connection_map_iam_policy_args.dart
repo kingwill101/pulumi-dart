@@ -17,7 +17,7 @@ class GetServiceConnectionMapIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceConnectionMapId] Required.
-  GetServiceConnectionMapIamPolicyArgs({
+  const GetServiceConnectionMapIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

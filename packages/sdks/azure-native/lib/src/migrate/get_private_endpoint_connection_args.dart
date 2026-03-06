@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] Unique name of a private endpoint connection within a project.
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.projectName,
     required this.resourceGroupName,

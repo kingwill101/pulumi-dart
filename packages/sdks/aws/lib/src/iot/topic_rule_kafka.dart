@@ -24,7 +24,7 @@ class TopicRuleKafka {
   /// [key] The Kafka message key.
   /// [partition] The Kafka message partition.
   /// [topic] The Kafka topic for messages to be sent to the Kafka broker.
-  TopicRuleKafka({
+  const TopicRuleKafka({
     required this.clientProperties,
     required this.destinationArn,
     this.headers,

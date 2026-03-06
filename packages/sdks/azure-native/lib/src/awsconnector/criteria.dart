@@ -13,7 +13,7 @@ class Criteria {
   /// Creates a new [Criteria].
   /// [regex] The S3 object key for the AllowList.
   /// [s3WordsList] The S3 location for the AllowList.
-  Criteria({
+  const Criteria({
     this.regex,
     this.s3WordsList,
   });

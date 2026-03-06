@@ -90,7 +90,7 @@ class SparkClusterArgs {
   /// [tier] Specifies the Tier which should be used for this HDInsight Spark Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   /// [tlsMinVersion] The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
   /// [zones] A list of Availability Zones which should be used for this HDInsight Spark Cluster. Changing this forces a new resource to be created.
-  SparkClusterArgs({
+  const SparkClusterArgs({
     required this.clusterVersion,
     required this.componentVersion,
     this.computeIsolation,

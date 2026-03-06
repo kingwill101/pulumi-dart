@@ -18,7 +18,7 @@ class GetMachineLearningDatastoreArgs {
   /// [datastoreName] The Datastore name.
   /// [resourceGroupName] Name of the resource group in which workspace is located.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetMachineLearningDatastoreArgs({
+  const GetMachineLearningDatastoreArgs({
     required this.datastoreName,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -41,7 +41,7 @@ class Gen2EnvironmentArgs {
   /// [tags] Key-value pairs of additional properties for the resource.
   /// [timeSeriesIdProperties] The list of event properties which will be used to define the environment's time series id.
   /// [warmStoreConfiguration] The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
-  Gen2EnvironmentArgs({
+  const Gen2EnvironmentArgs({
     this.environmentName,
     required this.kind,
     this.location,

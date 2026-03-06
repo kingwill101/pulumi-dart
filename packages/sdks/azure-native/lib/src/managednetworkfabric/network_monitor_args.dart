@@ -25,7 +25,7 @@ class NetworkMonitorArgs {
   /// [properties] The NetworkFabric Properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkMonitorArgs({
+  const NetworkMonitorArgs({
     this.location,
     this.networkMonitorName,
     required this.properties,

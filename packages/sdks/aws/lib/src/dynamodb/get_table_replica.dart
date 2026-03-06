@@ -9,7 +9,7 @@ class GetTableReplica {
   /// Creates a new [GetTableReplica].
   /// [kmsKeyArn] Required.
   /// [regionName] Required.
-  GetTableReplica({
+  const GetTableReplica({
     required this.kmsKeyArn,
     required this.regionName,
   });

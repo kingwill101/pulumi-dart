@@ -32,7 +32,7 @@ class URLMapTest {
   /// [host] Host portion of the URL.
   /// [path] Path portion of the URL.
   /// [service] The backend service or backend bucket link that should be matched by this test.
-  URLMapTest({
+  const URLMapTest({
     this.description,
     this.expectedOutputUrl,
     this.expectedRedirectResponseCode,

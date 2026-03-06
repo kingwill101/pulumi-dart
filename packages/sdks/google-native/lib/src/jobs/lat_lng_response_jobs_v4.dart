@@ -12,7 +12,7 @@ class LatLngResponseJobsV4 {
   /// Creates a new [LatLngResponseJobsV4].
   /// [latitude] The latitude in degrees. It must be in the range [-90.0, +90.0].
   /// [longitude] The longitude in degrees. It must be in the range [-180.0, +180.0].
-  LatLngResponseJobsV4({
+  const LatLngResponseJobsV4({
     required this.latitude,
     required this.longitude,
   });

@@ -18,7 +18,7 @@ class Authentication {
   /// [customAccount] Authentication using a custom account.
   /// [googleAccount] Authentication using a Google account.
   /// [iapCredential] Authentication using Identity-Aware-Proxy (IAP).
-  Authentication({
+  const Authentication({
     this.customAccount,
     this.googleAccount,
     this.iapCredential,

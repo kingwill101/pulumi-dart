@@ -27,7 +27,7 @@ class GetBackupJobsArgs {
   /// [sortDirection] The sort direction, sort results by ascending or descending order based on the value jobs id. Valid values: `ASCEND`, `DESCEND`.
   /// [sourceType] The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
   /// [status] The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
-  GetBackupJobsArgs({
+  const GetBackupJobsArgs({
     this.filters,
     this.ids,
     this.outputFile,

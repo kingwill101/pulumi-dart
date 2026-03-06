@@ -53,7 +53,7 @@ class GetMetadataActivity {
   /// [storeSettings] GetMetadata activity store settings.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  GetMetadataActivity({
+  const GetMetadataActivity({
     required this.dataset,
     this.dependsOn,
     this.description,

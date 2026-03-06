@@ -9,7 +9,7 @@ class ElasticProfileResponseContainerGroupNamingPolicy {
 
   /// Creates a new [ElasticProfileResponseContainerGroupNamingPolicy].
   /// [guidNamingPolicy] Optional.
-  ElasticProfileResponseContainerGroupNamingPolicy({
+  const ElasticProfileResponseContainerGroupNamingPolicy({
     this.guidNamingPolicy,
   });
 

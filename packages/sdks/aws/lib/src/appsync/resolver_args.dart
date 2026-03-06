@@ -55,7 +55,7 @@ class ResolverArgs {
   /// [runtime] Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
   /// [syncConfig] Describes a Sync configuration for a resolver. See Sync Config.
   /// [type] Type name from the schema defined in the GraphQL API.
-  ResolverArgs({
+  const ResolverArgs({
     required this.apiId,
     this.cachingConfig,
     this.code,

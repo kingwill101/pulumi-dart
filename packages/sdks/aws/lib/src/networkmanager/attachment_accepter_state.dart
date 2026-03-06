@@ -39,7 +39,7 @@ class AttachmentAccepterState {
   /// [resourceArn] Attachment resource ARN.
   /// [segmentName] Name of the segment attachment.
   /// [state] State of the attachment.
-  AttachmentAccepterState({
+  const AttachmentAccepterState({
     this.attachmentId,
     this.attachmentPolicyRuleNumber,
     this.attachmentType,

@@ -15,7 +15,7 @@ class ResourceLimitContainerV1beta1 {
   /// [maximum] Maximum amount of the resource in the cluster.
   /// [minimum] Minimum amount of the resource in the cluster.
   /// [resourceType] Resource name "cpu", "memory" or gpu-specific string.
-  ResourceLimitContainerV1beta1({
+  const ResourceLimitContainerV1beta1({
     this.maximum,
     this.minimum,
     this.resourceType,

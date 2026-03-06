@@ -12,7 +12,7 @@ class ClusterKeyResponse {
   /// Creates a new [ClusterKeyResponse].
   /// [name] Name of the Cosmos DB Cassandra table cluster key
   /// [orderBy] Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
-  ClusterKeyResponse({
+  const ClusterKeyResponse({
     this.name,
     this.orderBy,
   });

@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2ExcludeByHotword {
   /// Creates a new [GooglePrivacyDlpV2ExcludeByHotword].
   /// [hotwordRegex] Regular expression pattern defining what qualifies as a hotword.
   /// [proximity] Range of characters within which the entire hotword must reside. The total length of the window cannot exceed 1000 characters. The windowBefore property in proximity should be set to 1 if the hotword needs to be included in a column header.
-  GooglePrivacyDlpV2ExcludeByHotword({
+  const GooglePrivacyDlpV2ExcludeByHotword({
     this.hotwordRegex,
     this.proximity,
   });

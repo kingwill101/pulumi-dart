@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings].
   /// [githubSettings] GitHub settings.
-  GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings({
+  const GoogleCloudDialogflowCxV3beta1AgentGitIntegrationSettings({
     this.githubSettings,
   });
 

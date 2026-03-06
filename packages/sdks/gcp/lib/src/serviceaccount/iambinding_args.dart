@@ -32,7 +32,7 @@ class IAMBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
-  IAMBindingArgs({
+  const IAMBindingArgs({
     this.condition,
     required this.members,
     required this.role,

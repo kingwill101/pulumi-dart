@@ -34,7 +34,7 @@ class VirtualNetworkArgs {
   /// [uuid] Unique ID of the virtual network.
   /// [virtualNetworkName] Name of the VirtualNetwork.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     required this.extendedLocation,
     this.inventoryItemId,
     this.location,

@@ -13,7 +13,7 @@ class ModelStateResponse {
   /// Creates a new [ModelStateResponse].
   /// [published] Indicates if this model has been published.
   /// [validationError] Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models.
-  ModelStateResponse({
+  const ModelStateResponse({
     required this.published,
     required this.validationError,
   });

@@ -41,7 +41,7 @@ class GetWebAppPremierAddOnSlotResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [vendor] Premier add on Vendor.
-  GetWebAppPremierAddOnSlotResult({
+  const GetWebAppPremierAddOnSlotResult({
     required this.azureApiVersion,
     required this.id,
     this.kind,

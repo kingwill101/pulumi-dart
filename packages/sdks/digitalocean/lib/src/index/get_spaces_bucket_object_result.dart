@@ -58,7 +58,7 @@ class GetSpacesBucketObjectResult {
   /// [region] Required.
   /// [versionId] The latest version ID of the object returned.
   /// [websiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Spaces stores the value of this header in the object metadata.
-  GetSpacesBucketObjectResult({
+  const GetSpacesBucketObjectResult({
     required this.body,
     required this.bucket,
     required this.cacheControl,

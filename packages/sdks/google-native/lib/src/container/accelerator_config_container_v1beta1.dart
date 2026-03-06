@@ -26,7 +26,7 @@ class AcceleratorConfigContainerV1beta1 {
   /// [gpuPartitionSize] Size of partitions to create on the GPU. Valid values are described in the NVIDIA [mig user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
   /// [gpuSharingConfig] The configuration for GPU sharing options.
   /// [maxTimeSharedClientsPerGpu] The number of time-shared GPU resources to expose for each physical GPU.
-  AcceleratorConfigContainerV1beta1({
+  const AcceleratorConfigContainerV1beta1({
     this.acceleratorCount,
     this.acceleratorType,
     this.gpuDriverInstallationConfig,

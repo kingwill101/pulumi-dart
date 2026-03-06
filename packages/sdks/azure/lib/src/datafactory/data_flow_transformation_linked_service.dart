@@ -11,7 +11,7 @@ class DataFlowTransformationLinkedService {
   /// Creates a new [DataFlowTransformationLinkedService].
   /// [name] The name for the Data Factory Linked Service.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  DataFlowTransformationLinkedService({
+  const DataFlowTransformationLinkedService({
     required this.name,
     this.parameters,
   });

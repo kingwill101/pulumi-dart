@@ -11,7 +11,7 @@ class DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod {
   /// Creates a new [DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod].
   /// [end] The end time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of 0-86400000).
   /// [start] The start time of each day when the rule is effective. This is a millisecond-level timestamp relative to 00:00 of the day. The value must be in the range of [0-86400000).
-  DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod({
+  const DefenseRuleConfigTimeConfigWeekTimePeriodDayPeriod({
     this.end,
     this.start,
   });

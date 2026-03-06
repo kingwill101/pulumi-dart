@@ -37,7 +37,7 @@ class StoreIndexArgs {
   /// [logstore] The log store name to the query index belongs.
   /// [maxTextLen] The max text length.
   /// [project] The project name to the log store belongs.
-  StoreIndexArgs({
+  const StoreIndexArgs({
     this.fieldSearches,
     this.fullText,
     this.logReduce,

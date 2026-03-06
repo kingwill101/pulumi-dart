@@ -18,7 +18,7 @@ class GetServerlessEndpointStatusArgs {
   /// [name] Serverless Endpoint name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetServerlessEndpointStatusArgs({
+  const GetServerlessEndpointStatusArgs({
     required this.name,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -31,7 +31,7 @@ class CustomRolloutPropertiesSpecificationResponse {
   /// [releaseScopes] The list of ARM regions scoped for the release.
   /// [resourceTypeRegistrations] The resource type registrations.
   /// [skipReleaseScopeValidation] Whether release scope validation should be skipped.
-  CustomRolloutPropertiesSpecificationResponse({
+  const CustomRolloutPropertiesSpecificationResponse({
     this.autoProvisionConfig,
     this.canary,
     this.providerRegistration,

@@ -28,7 +28,7 @@ class CustomDomainAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] ARN of the App Runner service.
   /// [status] Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
-  CustomDomainAssociationState({
+  const CustomDomainAssociationState({
     this.certificateValidationRecords,
     this.dnsTarget,
     this.domainName,

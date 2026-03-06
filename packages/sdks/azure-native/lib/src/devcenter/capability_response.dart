@@ -12,7 +12,7 @@ class CapabilityResponse {
   /// Creates a new [CapabilityResponse].
   /// [name] Name of the capability.
   /// [value] Value of the capability.
-  CapabilityResponse({
+  const CapabilityResponse({
     required this.name,
     required this.value,
   });

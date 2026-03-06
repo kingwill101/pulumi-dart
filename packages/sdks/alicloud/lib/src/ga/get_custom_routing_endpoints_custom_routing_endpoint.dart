@@ -29,7 +29,7 @@ class GetCustomRoutingEndpointsCustomRoutingEndpoint {
   /// [listenerId] The ID of the custom routing listener.
   /// [trafficToEndpointPolicy] The access policy of traffic for the specified endpoint.
   /// [type] The backend service type of the endpoint.
-  GetCustomRoutingEndpointsCustomRoutingEndpoint({
+  const GetCustomRoutingEndpointsCustomRoutingEndpoint({
     required this.acceleratorId,
     required this.customRoutingEndpointId,
     required this.endpoint,

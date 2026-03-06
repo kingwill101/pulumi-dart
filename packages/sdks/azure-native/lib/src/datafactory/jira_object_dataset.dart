@@ -40,7 +40,7 @@ class JiraObjectDataset {
   /// [table] The table name of the Jira, applies only for Jira V2 dataset. Type: string (or Expression with resultType string).
   /// [tableName] This property is only supported in Jira V1 Dataset, please consider upgrading to V2 dataset.
   /// [type] Type of dataset.
-  JiraObjectDataset({
+  const JiraObjectDataset({
     this.annotations,
     this.description,
     this.folder,

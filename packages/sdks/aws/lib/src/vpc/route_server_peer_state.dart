@@ -51,7 +51,7 @@ class RouteServerPeerState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC containing the route server peer.
-  RouteServerPeerState({
+  const RouteServerPeerState({
     this.arn,
     this.bgpOptions,
     this.endpointEniAddress,

@@ -24,7 +24,7 @@ class GetBgpGroupsResult {
   /// [outputFile] Optional.
   /// [routerId] Optional.
   /// [status] Optional.
-  GetBgpGroupsResult({
+  const GetBgpGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

@@ -15,7 +15,7 @@ class GetMigrationServiceArgs {
   /// Creates a new [GetMigrationServiceArgs].
   /// [migrationServiceName] Name of the Migration Service.
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetMigrationServiceArgs({
+  const GetMigrationServiceArgs({
     required this.migrationServiceName,
     required this.resourceGroupName,
   });

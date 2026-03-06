@@ -28,7 +28,7 @@ class NamespaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   /// [tags] The tags to be persisted on the managed cluster namespace.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.location,
     this.namespaceName,
     this.properties,

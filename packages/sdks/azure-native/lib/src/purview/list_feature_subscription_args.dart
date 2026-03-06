@@ -15,7 +15,7 @@ class ListFeatureSubscriptionArgs {
   /// Creates a new [ListFeatureSubscriptionArgs].
   /// [features] Set of features
   /// [locations] Location of feature.
-  ListFeatureSubscriptionArgs({
+  const ListFeatureSubscriptionArgs({
     this.features,
     required this.locations,
   });

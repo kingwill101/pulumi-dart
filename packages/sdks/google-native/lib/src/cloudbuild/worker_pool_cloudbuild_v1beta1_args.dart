@@ -30,7 +30,7 @@ class WorkerPoolCloudbuildV1beta1Args {
   /// [project] Optional.
   /// [workerConfig] Worker configuration for the `WorkerPool`.
   /// [workerPoolId] Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
-  WorkerPoolCloudbuildV1beta1Args({
+  const WorkerPoolCloudbuildV1beta1Args({
     this.annotations,
     this.displayName,
     this.location,

@@ -37,7 +37,7 @@ class TrafficQosQueueState {
   /// [queueName] The name of the QoS queue.
   /// [queueType] QoS queue type, value:
   /// [status] The status of the resource
-  TrafficQosQueueState({
+  const TrafficQosQueueState({
     this.bandwidthPercent,
     this.qosId,
     this.queueDescription,

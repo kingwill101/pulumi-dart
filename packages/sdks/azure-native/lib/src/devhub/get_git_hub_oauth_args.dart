@@ -15,7 +15,7 @@ class GetGitHubOAuthArgs {
   /// Creates a new [GetGitHubOAuthArgs].
   /// [location] The name of Azure region.
   /// [redirectUrl] The URL the client will redirect to on successful authentication. If empty, no redirect will occur.
-  GetGitHubOAuthArgs({
+  const GetGitHubOAuthArgs({
     required this.location,
     this.redirectUrl,
   });

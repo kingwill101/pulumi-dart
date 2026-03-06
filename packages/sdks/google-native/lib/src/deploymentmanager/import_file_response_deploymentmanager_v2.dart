@@ -11,7 +11,7 @@ class ImportFileResponseDeploymentmanagerV2 {
   /// Creates a new [ImportFileResponseDeploymentmanagerV2].
   /// [content] The contents of the file.
   /// [name] The name of the file.
-  ImportFileResponseDeploymentmanagerV2({
+  const ImportFileResponseDeploymentmanagerV2({
     required this.content,
     required this.name,
   });

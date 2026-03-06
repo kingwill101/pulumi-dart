@@ -11,7 +11,7 @@ class FilterFilterCriteriaVendorSeverity {
   /// Creates a new [FilterFilterCriteriaVendorSeverity].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaVendorSeverity({
+  const FilterFilterCriteriaVendorSeverity({
     required this.comparison,
     required this.value,
   });

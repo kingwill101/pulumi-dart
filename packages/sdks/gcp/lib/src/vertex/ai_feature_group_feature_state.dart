@@ -43,7 +43,7 @@ class AiFeatureGroupFeatureState {
   /// [region] The region for the resource. It should be the same as the feature group's region.
   /// [updateTime] The timestamp of when the FeatureGroup was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// [versionColumnName] The name of the BigQuery Table/View column hosting data for this version. If no value is provided, will use featureId.
-  AiFeatureGroupFeatureState({
+  const AiFeatureGroupFeatureState({
     this.createTime,
     this.description,
     this.effectiveLabels,

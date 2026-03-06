@@ -34,7 +34,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
   /// [prefixRedirect] The prefix that replaces the prefixMatch specified in the routeRule, retaining the remaining portion of the URL before redirecting the request.
   /// [redirectResponseCode] The HTTP Status code to use for this RedirectAction.
   /// [stripQuery] If set to true, any accompanying query portion of the original URL is removed prior to redirecting the request. If set to false, the query portion of the original URL is retained.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect({
     this.hostRedirect,
     this.httpsRedirect,
     this.pathRedirect,

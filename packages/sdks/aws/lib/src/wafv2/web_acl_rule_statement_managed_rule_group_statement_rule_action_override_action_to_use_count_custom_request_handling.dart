@@ -9,7 +9,7 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseC
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandling({
+  const WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseCountCustomRequestHandling({
     required this.insertHeaders,
   });
 

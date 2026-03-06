@@ -24,7 +24,7 @@ class VpcOriginVpcOriginEndpointConfig {
   /// [name] The name of the CloudFront VPC origin endpoint configuration.
   /// [originProtocolPolicy] The origin protocol policy for the CloudFront VPC origin endpoint configuration.
   /// [originSslProtocols] A complex type that contains information about the SSL/TLS protocols that CloudFront can use when establishing an HTTPS connection with your origin.
-  VpcOriginVpcOriginEndpointConfig({
+  const VpcOriginVpcOriginEndpointConfig({
     required this.arn,
     required this.httpPort,
     required this.httpsPort,

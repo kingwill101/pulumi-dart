@@ -8,7 +8,7 @@ class QueueHttpTargetUriOverrideQueryOverride {
 
   /// Creates a new [QueueHttpTargetUriOverrideQueryOverride].
   /// [queryParams] The query parameters (e.g., qparam1=123&qparam2=456). Default is an empty string.
-  QueueHttpTargetUriOverrideQueryOverride({
+  const QueueHttpTargetUriOverrideQueryOverride({
     this.queryParams,
   });
 

@@ -11,7 +11,7 @@ class DefaultRolloutSpecificationHighTrafficResponse {
   /// Creates a new [DefaultRolloutSpecificationHighTrafficResponse].
   /// [regions] Optional.
   /// [waitDuration] The wait duration.
-  DefaultRolloutSpecificationHighTrafficResponse({
+  const DefaultRolloutSpecificationHighTrafficResponse({
     this.regions,
     this.waitDuration,
   });

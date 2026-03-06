@@ -8,7 +8,7 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailure {
 
   /// Creates a new [FunctionAsyncInvokeConfigDestinationConfigOnFailure].
   /// [destination] Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-  FunctionAsyncInvokeConfigDestinationConfigOnFailure({
+  const FunctionAsyncInvokeConfigDestinationConfigOnFailure({
     required this.destination,
   });
 

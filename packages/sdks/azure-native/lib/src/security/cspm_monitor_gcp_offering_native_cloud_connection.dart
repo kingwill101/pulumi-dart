@@ -12,7 +12,7 @@ class CspmMonitorGcpOfferingNativeCloudConnection {
   /// Creates a new [CspmMonitorGcpOfferingNativeCloudConnection].
   /// [serviceAccountEmailAddress] The service account email address in GCP for this offering
   /// [workloadIdentityProviderId] The GCP workload identity provider id for the offering
-  CspmMonitorGcpOfferingNativeCloudConnection({
+  const CspmMonitorGcpOfferingNativeCloudConnection({
     this.serviceAccountEmailAddress,
     this.workloadIdentityProviderId,
   });

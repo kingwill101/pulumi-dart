@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference {
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference].
   /// [datasetId] Dataset ID of the table.
   /// [tableId] Name of the table.
-  PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference({
+  const PreventionDiscoveryConfigTargetBigQueryTargetFilterTableReference({
     required this.datasetId,
     required this.tableId,
   });

@@ -9,7 +9,7 @@ class DomainSysInfoSmbiosMemory {
 
   /// Creates a new [DomainSysInfoSmbiosMemory].
   /// [entries] Sets individual entries for the memory information in the SMBIOS configuration.
-  DomainSysInfoSmbiosMemory({
+  const DomainSysInfoSmbiosMemory({
     this.entries,
   });
 

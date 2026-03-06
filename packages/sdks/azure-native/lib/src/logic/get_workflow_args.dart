@@ -15,7 +15,7 @@ class GetWorkflowArgs {
   /// Creates a new [GetWorkflowArgs].
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
-  GetWorkflowArgs({
+  const GetWorkflowArgs({
     required this.resourceGroupName,
     required this.workflowName,
   });

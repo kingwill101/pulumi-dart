@@ -25,7 +25,7 @@ class PrivateLinkScopeArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Arc PrivateLinkScope resource.
   /// [tags] Resource tags
-  PrivateLinkScopeArgs({
+  const PrivateLinkScopeArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

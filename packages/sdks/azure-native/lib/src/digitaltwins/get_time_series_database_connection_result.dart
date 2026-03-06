@@ -25,7 +25,7 @@ class GetTimeSeriesDatabaseConnectionResult {
   /// [properties] Properties of a specific time series database connection.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
-  GetTimeSeriesDatabaseConnectionResult({
+  const GetTimeSeriesDatabaseConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -16,7 +16,7 @@ class PreventionInspectTemplateInspectConfigLimits {
   /// [maxFindingsPerInfoTypes] Configuration of findings limit given for specified infoTypes.
   /// [maxFindingsPerItem] Max number of findings that will be returned for each item scanned. The maximum returned is 2000.
   /// [maxFindingsPerRequest] Max number of findings that will be returned per request/job. The maximum returned is 2000.
-  PreventionInspectTemplateInspectConfigLimits({
+  const PreventionInspectTemplateInspectConfigLimits({
     this.maxFindingsPerInfoTypes,
     required this.maxFindingsPerItem,
     required this.maxFindingsPerRequest,

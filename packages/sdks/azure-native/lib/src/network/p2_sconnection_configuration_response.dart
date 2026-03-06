@@ -37,7 +37,7 @@ class P2SConnectionConfigurationResponse {
   /// [provisioningState] The provisioning state of the P2SConnectionConfiguration resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [vpnClientAddressPool] The reference to the address space resource which represents Address space for P2S VpnClient.
-  P2SConnectionConfigurationResponse({
+  const P2SConnectionConfigurationResponse({
     required this.configurationPolicyGroupAssociations,
     this.enableInternetSecurity,
     required this.etag,

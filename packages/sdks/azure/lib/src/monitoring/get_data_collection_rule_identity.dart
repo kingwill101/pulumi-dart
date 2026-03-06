@@ -17,7 +17,7 @@ class GetDataCollectionRuleIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] cSpecifies the type of Managed Service Identity that should be configured on this Data Collection Rule. Possible values are `SystemAssigned` and `UserAssigned`.
-  GetDataCollectionRuleIdentity({
+  const GetDataCollectionRuleIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

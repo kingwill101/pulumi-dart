@@ -9,7 +9,7 @@ class ProviderFeaturesAppConfiguration {
   /// Creates a new [ProviderFeaturesAppConfiguration].
   /// [purgeSoftDeleteOnDestroy] Optional.
   /// [recoverSoftDeleted] Optional.
-  ProviderFeaturesAppConfiguration({
+  const ProviderFeaturesAppConfiguration({
     this.purgeSoftDeleteOnDestroy,
     this.recoverSoftDeleted,
   });

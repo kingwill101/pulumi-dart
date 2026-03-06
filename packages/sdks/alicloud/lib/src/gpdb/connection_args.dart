@@ -18,7 +18,7 @@ class ConnectionArgs {
   /// [connectionPrefix] Prefix of an Internet connection string. It must be checked for uniqueness. It may consist of lowercase letters, numbers, and underlines, and must start with a letter and have no more than 30 characters. Default to &lt;instance_id&gt; + '-tf'.
   /// [instanceId] The Id of instance that can run database.
   /// [port] Internet connection port. Valid value: [3200-3999]. Default to 3306.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.connectionPrefix,
     required this.instanceId,
     this.port,

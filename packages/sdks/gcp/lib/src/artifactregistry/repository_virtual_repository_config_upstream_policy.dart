@@ -15,7 +15,7 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicy {
   /// [id] The user-provided ID of the upstream policy.
   /// [priority] Entries with a greater priority value take precedence in the pull order.
   /// [repository] A reference to the repository resource, for example:
-  RepositoryVirtualRepositoryConfigUpstreamPolicy({
+  const RepositoryVirtualRepositoryConfigUpstreamPolicy({
     this.id,
     this.priority,
     this.repository,

@@ -26,7 +26,7 @@ class FlexibleAppVersionLivenessCheck {
   /// [path] The request path.
   /// [successThreshold] Number of consecutive successful checks required before considering the VM healthy. Default: 2.
   /// [timeout] Time before the check is considered failed. Default: "4s"
-  FlexibleAppVersionLivenessCheck({
+  const FlexibleAppVersionLivenessCheck({
     this.checkInterval,
     this.failureThreshold,
     this.host,

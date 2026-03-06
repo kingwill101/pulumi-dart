@@ -9,7 +9,7 @@ class WorkspaceConnectionAccessKey {
   /// Creates a new [WorkspaceConnectionAccessKey].
   /// [accessKeyId] Optional.
   /// [secretAccessKey] Optional.
-  WorkspaceConnectionAccessKey({
+  const WorkspaceConnectionAccessKey({
     this.accessKeyId,
     this.secretAccessKey,
   });

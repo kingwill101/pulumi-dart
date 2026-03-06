@@ -186,7 +186,7 @@ class GroupState {
   /// [waitForElbCapacity] Setting this will cause Pulumi to wait
   /// [warmPool] If this block is configured, add a [Warm Pool](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html)
   /// [warmPoolSize] Current size of the warm pool.
-  GroupState({
+  const GroupState({
     this.arn,
     this.availabilityZoneDistribution,
     this.availabilityZones,

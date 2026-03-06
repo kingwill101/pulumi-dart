@@ -18,7 +18,7 @@ class GetUserPoolsResult {
   /// [ids] Set of cognito user pool ids.
   /// [name] Required.
   /// [region] Required.
-  GetUserPoolsResult({
+  const GetUserPoolsResult({
     required this.arns,
     required this.id,
     required this.ids,

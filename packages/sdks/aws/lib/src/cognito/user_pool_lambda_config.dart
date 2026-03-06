@@ -50,7 +50,7 @@ class UserPoolLambdaConfig {
   /// [preTokenGenerationConfig] Allow to customize access tokens. See pre_token_configuration_type
   /// [userMigration] User migration Lambda config type.
   /// [verifyAuthChallengeResponse] Verifies the authentication challenge response.
-  UserPoolLambdaConfig({
+  const UserPoolLambdaConfig({
     this.createAuthChallenge,
     this.customEmailSender,
     this.customMessage,

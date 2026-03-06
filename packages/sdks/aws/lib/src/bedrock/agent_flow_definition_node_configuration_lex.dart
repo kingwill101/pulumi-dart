@@ -11,7 +11,7 @@ class AgentFlowDefinitionNodeConfigurationLex {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationLex].
   /// [botAliasArn] The Amazon Resource Name (ARN) of the Amazon Lex bot alias to invoke.
   /// [localeId] The Region to invoke the Amazon Lex bot in
-  AgentFlowDefinitionNodeConfigurationLex({
+  const AgentFlowDefinitionNodeConfigurationLex({
     required this.botAliasArn,
     required this.localeId,
   });

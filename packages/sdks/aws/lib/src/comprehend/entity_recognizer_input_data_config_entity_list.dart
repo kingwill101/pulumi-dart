@@ -8,7 +8,7 @@ class EntityRecognizerInputDataConfigEntityList {
 
   /// Creates a new [EntityRecognizerInputDataConfigEntityList].
   /// [s3Uri] Location of entity list.
-  EntityRecognizerInputDataConfigEntityList({
+  const EntityRecognizerInputDataConfigEntityList({
     required this.s3Uri,
   });
 

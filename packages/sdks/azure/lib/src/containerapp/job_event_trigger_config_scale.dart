@@ -18,7 +18,7 @@ class JobEventTriggerConfigScale {
   /// [minExecutions] Minimum number of job executions that are created for a trigger.
   /// [pollingIntervalInSeconds] Interval to check each event source in seconds.
   /// [rules] A `rules` block as defined below.
-  JobEventTriggerConfigScale({
+  const JobEventTriggerConfigScale({
     this.maxExecutions,
     this.minExecutions,
     this.pollingIntervalInSeconds,

@@ -14,7 +14,7 @@ class GetHostPoolRegistrationTokenResult {
   /// [expirationTime] Expiration time of registration token.
   /// [registrationTokenOperation] The type of resetting the token.
   /// [token] The registration token base64 encoded string.
-  GetHostPoolRegistrationTokenResult({
+  const GetHostPoolRegistrationTokenResult({
     this.expirationTime,
     this.registrationTokenOperation,
     this.token,

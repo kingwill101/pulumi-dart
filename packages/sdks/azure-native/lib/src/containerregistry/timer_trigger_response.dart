@@ -15,7 +15,7 @@ class TimerTriggerResponse {
   /// [name] The name of the trigger.
   /// [schedule] The CRON expression for the task schedule
   /// [status] The current status of trigger.
-  TimerTriggerResponse({
+  const TimerTriggerResponse({
     required this.name,
     required this.schedule,
     this.status,

@@ -14,7 +14,7 @@ class GetWindowsFunctionAppConnectionString {
   /// [name] The name of this Windows Function App.
   /// [type] The type of Managed Service Identity that is configured on this Windows Function App.
   /// [value] The connection string value.
-  GetWindowsFunctionAppConnectionString({
+  const GetWindowsFunctionAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

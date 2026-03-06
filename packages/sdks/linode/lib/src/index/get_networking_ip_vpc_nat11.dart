@@ -14,7 +14,7 @@ class GetNetworkingIpVpcNat11 {
   /// [address] The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
   /// [subnetId] The `id` of the VPC Subnet for this Interface.
   /// [vpcId] The `id` of the VPC configured for this Interface.
-  GetNetworkingIpVpcNat11({
+  const GetNetworkingIpVpcNat11({
     required this.address,
     required this.subnetId,
     required this.vpcId,

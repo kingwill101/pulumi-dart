@@ -8,7 +8,7 @@ class FirewallPolicyFirewallPolicyPolicyVariables {
 
   /// Creates a new [FirewallPolicyFirewallPolicyPolicyVariables].
   /// [ruleVariables] Optional.
-  FirewallPolicyFirewallPolicyPolicyVariables({
+  const FirewallPolicyFirewallPolicyPolicyVariables({
     this.ruleVariables,
   });
 

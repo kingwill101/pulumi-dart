@@ -11,7 +11,7 @@ class GetAppResourceUploadUrlResult {
   /// Creates a new [GetAppResourceUploadUrlResult].
   /// [relativePath] Source relative path
   /// [uploadUrl] Upload URL
-  GetAppResourceUploadUrlResult({
+  const GetAppResourceUploadUrlResult({
     this.relativePath,
     this.uploadUrl,
   });

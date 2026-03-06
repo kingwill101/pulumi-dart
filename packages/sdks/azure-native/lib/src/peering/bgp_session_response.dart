@@ -39,7 +39,7 @@ class BgpSessionResponse {
   /// [sessionPrefixV6] The IPv6 prefix that contains both ends' IPv6 addresses.
   /// [sessionStateV4] The state of the IPv4 session.
   /// [sessionStateV6] The state of the IPv6 session.
-  BgpSessionResponse({
+  const BgpSessionResponse({
     this.maxPrefixesAdvertisedV4,
     this.maxPrefixesAdvertisedV6,
     this.md5AuthenticationKey,

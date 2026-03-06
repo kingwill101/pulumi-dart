@@ -30,7 +30,7 @@ class ProfessionalServiceCreationProperties {
   /// [skuId] The plan id.
   /// [storeFront] The store front which initiates the purchase.
   /// [termUnit] The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  ProfessionalServiceCreationProperties({
+  const ProfessionalServiceCreationProperties({
     this.autoRenew,
     this.billingPeriod,
     this.offerId,

@@ -19,7 +19,7 @@ class ContentSource {
   /// [type] Gets or sets the content source type.
   /// [value] Gets or sets the value of the content. This is based on the content source type.
   /// [version] Gets or sets the version of the content.
-  ContentSource({
+  const ContentSource({
     this.hash,
     this.type,
     this.value,

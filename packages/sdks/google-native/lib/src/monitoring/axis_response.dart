@@ -12,7 +12,7 @@ class AxisResponse {
   /// Creates a new [AxisResponse].
   /// [label] The label of the axis.
   /// [scale] The axis scale. By default, a linear scale is used.
-  AxisResponse({
+  const AxisResponse({
     required this.label,
     required this.scale,
   });

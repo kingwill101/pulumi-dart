@@ -19,7 +19,7 @@ class LinuxFunctionAppSlotAuthSettingsV2GoogleV2 {
   /// [clientId] The OpenID Connect Client ID for the Google web application.
   /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for Google Login.
   /// [loginScopes] The list of OAuth 2.0 scopes that should be requested as part of Google Sign-In authentication.
-  LinuxFunctionAppSlotAuthSettingsV2GoogleV2({
+  const LinuxFunctionAppSlotAuthSettingsV2GoogleV2({
     this.allowedAudiences,
     required this.clientId,
     required this.clientSecretSettingName,

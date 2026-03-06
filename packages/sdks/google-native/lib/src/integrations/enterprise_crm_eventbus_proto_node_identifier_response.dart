@@ -12,7 +12,7 @@ class EnterpriseCrmEventbusProtoNodeIdentifierResponse {
   /// Creates a new [EnterpriseCrmEventbusProtoNodeIdentifierResponse].
   /// [elementIdentifier] Configuration of the edge.
   /// [elementType] Destination node where the edge ends. It can only be a task config.
-  EnterpriseCrmEventbusProtoNodeIdentifierResponse({
+  const EnterpriseCrmEventbusProtoNodeIdentifierResponse({
     required this.elementIdentifier,
     required this.elementType,
   });

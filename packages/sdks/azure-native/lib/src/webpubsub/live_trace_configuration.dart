@@ -17,7 +17,7 @@ class LiveTraceConfiguration {
   /// Creates a new [LiveTraceConfiguration].
   /// [categories] Gets or sets the list of category configurations.
   /// [enabled] Indicates whether or not enable live trace.
-  LiveTraceConfiguration({
+  const LiveTraceConfiguration({
     this.categories,
     this.enabled,
   });

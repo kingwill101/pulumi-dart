@@ -64,7 +64,7 @@ class ClusterV2State {
   /// [resourceGroupId] The ID of the resource group to which the cluster belongs.
   /// [securityGroupId] The security group ID.
   /// [sharedStorages] List of cluster shared storage configurations. See `shared_storages` below.
-  ClusterV2State({
+  const ClusterV2State({
     this.addons,
     this.clientVersion,
     this.clusterCategory,

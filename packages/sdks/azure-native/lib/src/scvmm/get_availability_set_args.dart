@@ -15,7 +15,7 @@ class GetAvailabilitySetArgs {
   /// Creates a new [GetAvailabilitySetArgs].
   /// [availabilitySetName] Name of the AvailabilitySet.
   /// [resourceGroupName] The name of the resource group.
-  GetAvailabilitySetArgs({
+  const GetAvailabilitySetArgs({
     required this.availabilitySetName,
     required this.resourceGroupName,
   });

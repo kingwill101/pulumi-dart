@@ -55,7 +55,7 @@ class Db2LinkedService {
   /// [type] Type of linked service.
   /// [username] Username for authentication. It is mutually exclusive with connectionString property. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  Db2LinkedService({
+  const Db2LinkedService({
     this.annotations,
     this.authenticationType,
     this.certificateCommonName,

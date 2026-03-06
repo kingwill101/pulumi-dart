@@ -18,7 +18,7 @@ class PutAliasRequestAdditionalProperties {
   /// [subscriptionOwnerId] Owner Id of the subscription
   /// [subscriptionTenantId] Tenant Id of the subscription
   /// [tags] Tags for the subscription
-  PutAliasRequestAdditionalProperties({
+  const PutAliasRequestAdditionalProperties({
     this.managementGroupId,
     this.subscriptionOwnerId,
     this.subscriptionTenantId,

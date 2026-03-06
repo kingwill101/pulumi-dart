@@ -73,7 +73,7 @@ class ClusterState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] The vswitch_id of dataCenter-1, can not empty.
   /// [zoneId] The Zone to launch the Cassandra cluster. If vswitch_id is not empty, this zone_id can be "" or consistent.
-  ClusterState({
+  const ClusterState({
     this.autoRenew,
     this.autoRenewPeriod,
     this.clusterName,

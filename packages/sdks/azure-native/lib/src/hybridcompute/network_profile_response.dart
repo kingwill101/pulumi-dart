@@ -10,7 +10,7 @@ class NetworkProfileResponse {
 
   /// Creates a new [NetworkProfileResponse].
   /// [networkInterfaces] The list of network interfaces.
-  NetworkProfileResponse({
+  const NetworkProfileResponse({
     this.networkInterfaces,
   });
 

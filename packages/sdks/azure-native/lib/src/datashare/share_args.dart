@@ -27,7 +27,7 @@ class ShareArgs {
   /// [shareKind] Share kind.
   /// [shareName] The name of the share.
   /// [terms] Share terms.
-  ShareArgs({
+  const ShareArgs({
     required this.accountName,
     this.description,
     required this.resourceGroupName,

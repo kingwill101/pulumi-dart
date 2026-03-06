@@ -34,7 +34,7 @@ class FileCacheDataRepositoryAssociation {
   /// [nfs] (Optional) See the `nfs` configuration block.
   /// [resourceArn] Optional.
   /// [tags] A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  FileCacheDataRepositoryAssociation({
+  const FileCacheDataRepositoryAssociation({
     this.associationId,
     required this.dataRepositoryPath,
     this.dataRepositorySubdirectories,

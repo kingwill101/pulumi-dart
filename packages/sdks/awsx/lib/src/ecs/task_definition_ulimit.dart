@@ -11,7 +11,7 @@ class TaskDefinitionUlimit {
   /// [hardLimit] Required.
   /// [name] Required.
   /// [softLimit] Required.
-  TaskDefinitionUlimit({
+  const TaskDefinitionUlimit({
     required this.hardLimit,
     required this.name,
     required this.softLimit,

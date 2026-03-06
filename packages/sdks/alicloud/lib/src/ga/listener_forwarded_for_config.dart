@@ -20,7 +20,7 @@ class ListenerForwardedForConfig {
   /// [forwardedForPortEnabled] Specifies whether to use the GA-X-Forward-Port header to retrieve the listener ports of the GA instance. Default value: `false`. Valid values:
   /// [forwardedForProtoEnabled] Specifies whether to use the GA-X-Forward-Proto header to retrieve the listener protocol of the GA instance. Default value: `false`. Valid values:
   /// [realIpEnabled] Specifies whether to use the X-Real-IP header to retrieve client IP addresses. Default value: `false`. Valid values:
-  ListenerForwardedForConfig({
+  const ListenerForwardedForConfig({
     this.forwardedForGaApEnabled,
     this.forwardedForGaIdEnabled,
     this.forwardedForPortEnabled,

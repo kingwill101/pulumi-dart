@@ -18,7 +18,7 @@ class GetProjectServiceResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] Optional.
   /// [service] Required.
-  GetProjectServiceResult({
+  const GetProjectServiceResult({
     required this.checkIfServiceHasUsageOnDestroy,
     required this.disableDependentServices,
     required this.disableOnDestroy,

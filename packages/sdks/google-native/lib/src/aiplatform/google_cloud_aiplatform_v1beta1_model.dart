@@ -52,7 +52,7 @@ class GoogleCloudAiplatformV1beta1Model {
   /// [predictSchemata] The schemata that describe formats of the Model's predictions and explanations as given and returned via PredictionService.Predict and PredictionService.Explain.
   /// [versionAliases] User provided version aliases so that a model version can be referenced via alias (i.e. `projects/{project}/locations/{location}/models/{model_id}@{version_alias}` instead of auto-generated version id (i.e. `projects/{project}/locations/{location}/models/{model_id}@{version_id})`. The format is a-z{0,126}[a-z0-9] to distinguish from version_id. A default version alias will be created for the first version of the model, and there must be exactly one default version alias for a model.
   /// [versionDescription] The description of this version.
-  GoogleCloudAiplatformV1beta1Model({
+  const GoogleCloudAiplatformV1beta1Model({
     this.artifactUri,
     this.containerSpec,
     this.description,

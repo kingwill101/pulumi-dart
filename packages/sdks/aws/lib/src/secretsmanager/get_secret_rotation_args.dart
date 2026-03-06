@@ -15,7 +15,7 @@ class GetSecretRotationArgs {
   /// Creates a new [GetSecretRotationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretId] Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
-  GetSecretRotationArgs({
+  const GetSecretRotationArgs({
     this.region,
     required this.secretId,
   });

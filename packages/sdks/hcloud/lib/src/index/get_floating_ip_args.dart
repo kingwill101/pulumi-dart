@@ -23,7 +23,7 @@ class GetFloatingIpArgs {
   /// [name] Name of the Floating IP.
   /// [selector] Optional.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetFloatingIpArgs({
+  const GetFloatingIpArgs({
     this.id,
     this.ipAddress,
     this.name,

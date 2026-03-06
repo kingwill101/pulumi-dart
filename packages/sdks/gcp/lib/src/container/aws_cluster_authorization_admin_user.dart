@@ -8,7 +8,7 @@ class AwsClusterAuthorizationAdminUser {
 
   /// Creates a new [AwsClusterAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  AwsClusterAuthorizationAdminUser({
+  const AwsClusterAuthorizationAdminUser({
     required this.username,
   });
 

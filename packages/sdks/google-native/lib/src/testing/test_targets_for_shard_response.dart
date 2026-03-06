@@ -9,7 +9,7 @@ class TestTargetsForShardResponse {
 
   /// Creates a new [TestTargetsForShardResponse].
   /// [testTargets] Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0.
-  TestTargetsForShardResponse({
+  const TestTargetsForShardResponse({
     required this.testTargets,
   });
 

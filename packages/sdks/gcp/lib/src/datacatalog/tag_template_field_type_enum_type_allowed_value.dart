@@ -8,7 +8,7 @@ class TagTemplateFieldTypeEnumTypeAllowedValue {
 
   /// Creates a new [TagTemplateFieldTypeEnumTypeAllowedValue].
   /// [displayName] The display name of the enum value.
-  TagTemplateFieldTypeEnumTypeAllowedValue({
+  const TagTemplateFieldTypeEnumTypeAllowedValue({
     required this.displayName,
   });
 

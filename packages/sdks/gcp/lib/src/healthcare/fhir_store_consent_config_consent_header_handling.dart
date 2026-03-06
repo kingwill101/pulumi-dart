@@ -10,7 +10,7 @@ class FhirStoreConsentConfigConsentHeaderHandling {
 
   /// Creates a new [FhirStoreConsentConfigConsentHeaderHandling].
   /// [profile] Specifies the default server behavior when the header is empty. If not specified, the ScopeProfile.PERMIT_EMPTY_SCOPE option is used.
-  FhirStoreConsentConfigConsentHeaderHandling({
+  const FhirStoreConsentConfigConsentHeaderHandling({
     this.profile,
   });
 

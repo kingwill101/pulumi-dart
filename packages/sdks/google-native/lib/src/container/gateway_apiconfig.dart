@@ -10,7 +10,7 @@ class GatewayAPIConfig {
 
   /// Creates a new [GatewayAPIConfig].
   /// [channel] The Gateway API release channel to use for Gateway API.
-  GatewayAPIConfig({
+  const GatewayAPIConfig({
     this.channel,
   });
 

@@ -36,7 +36,7 @@ class BackupPolicyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [weeklyBackupsToKeep] Weekly backups count to keep
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     required this.accountName,
     this.backupPolicyName,
     this.dailyBackupsToKeep,

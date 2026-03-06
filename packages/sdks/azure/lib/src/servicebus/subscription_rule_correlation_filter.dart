@@ -34,7 +34,7 @@ class SubscriptionRuleCorrelationFilter {
   /// [replyToSessionId] Session identifier to reply to.
   /// [sessionId] Session identifier.
   /// [to] Address to send to.
-  SubscriptionRuleCorrelationFilter({
+  const SubscriptionRuleCorrelationFilter({
     this.contentType,
     this.correlationId,
     this.label,

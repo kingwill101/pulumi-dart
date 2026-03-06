@@ -25,7 +25,7 @@ class GetV3TriggersResult {
   /// [names] A list of name of Triggers.
   /// [outputFile] Optional.
   /// [triggers] A list of Trigger Entries. Each element contains the following attributes:
-  GetV3TriggersResult({
+  const GetV3TriggersResult({
     required this.functionName,
     required this.id,
     required this.ids,

@@ -18,7 +18,7 @@ class GetVirtualNetworkArgs {
   /// [labName] Specifies the name of the Dev Test Lab.
   /// [name] Specifies the name of the Virtual Network.
   /// [resourceGroupName] Specifies the name of the resource group that contains the Virtual Network.
-  GetVirtualNetworkArgs({
+  const GetVirtualNetworkArgs({
     required this.labName,
     required this.name,
     required this.resourceGroupName,

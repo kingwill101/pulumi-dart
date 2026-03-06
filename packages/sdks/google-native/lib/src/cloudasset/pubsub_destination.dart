@@ -9,7 +9,7 @@ class PubsubDestination {
 
   /// Creates a new [PubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
-  PubsubDestination({
+  const PubsubDestination({
     this.topic,
   });
 

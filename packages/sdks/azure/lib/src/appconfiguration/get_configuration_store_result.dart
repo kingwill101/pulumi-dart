@@ -74,7 +74,7 @@ class GetConfigurationStoreResult {
   /// [sku] The name of the SKU used for this App Configuration.
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted.
   /// [tags] A mapping of tags assigned to the App Configuration.
-  GetConfigurationStoreResult({
+  const GetConfigurationStoreResult({
     required this.dataPlaneProxyAuthenticationMode,
     required this.dataPlaneProxyPrivateLinkDelegationEnabled,
     required this.encryptions,

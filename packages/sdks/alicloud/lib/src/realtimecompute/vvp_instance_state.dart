@@ -50,7 +50,7 @@ class VvpInstanceState {
   /// [vswitchIds] Virtual Switch ID.
   /// [vvpInstanceName] The name of the workspace.
   /// [zoneId] The zone ID of the resource.
-  VvpInstanceState({
+  const VvpInstanceState({
     this.createTime,
     this.duration,
     this.paymentType,

@@ -128,7 +128,7 @@ class WorkforcePoolProviderArgs {
   /// [saml] Represents a SAML identity provider.
   /// [scimUsage] Agentspace only. Specifies whether the workforce identity pool
   /// [workforcePoolId] The ID to use for the pool, which becomes the final component of the resource name.
-  WorkforcePoolProviderArgs({
+  const WorkforcePoolProviderArgs({
     this.attributeCondition,
     this.attributeMapping,
     this.description,

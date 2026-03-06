@@ -7,7 +7,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurit
 
   /// Creates a new [ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList].
   /// [values] Required.
-  ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList({
+  const ConfigurationPolicyConfigurationPolicySecurityControlsConfigurationSecurityControlCustomParameterParameterEnumList({
     required this.values,
   });
 

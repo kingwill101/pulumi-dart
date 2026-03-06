@@ -32,7 +32,7 @@ class CNameRecordArgs {
   /// [targetResourceId] The Azure resource id of the target object. Conflicts with `record`.
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Specifies the DNS Zone where the resource exists. Changing this forces a new resource to be created.
-  CNameRecordArgs({
+  const CNameRecordArgs({
     this.name,
     this.record,
     required this.resourceGroupName,

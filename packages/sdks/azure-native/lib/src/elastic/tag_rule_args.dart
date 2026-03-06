@@ -22,7 +22,7 @@ class TagRuleArgs {
   /// [properties] Properties of the monitoring tag rules.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleSetName] Tag Rule Set resource name
-  TagRuleArgs({
+  const TagRuleArgs({
     required this.monitorName,
     this.properties,
     required this.resourceGroupName,

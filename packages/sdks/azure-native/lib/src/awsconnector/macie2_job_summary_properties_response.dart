@@ -34,7 +34,7 @@ class Macie2JobSummaryPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Macie2JobSummaryPropertiesResponse({
+  const Macie2JobSummaryPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

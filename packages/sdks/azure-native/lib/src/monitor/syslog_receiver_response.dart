@@ -12,7 +12,7 @@ class SyslogReceiverResponse {
   /// Creates a new [SyslogReceiverResponse].
   /// [endpoint] Syslog receiver endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
   /// [protocol] Protocol to parse syslog messages. Default rfc3164
-  SyslogReceiverResponse({
+  const SyslogReceiverResponse({
     required this.endpoint,
     this.protocol,
   });

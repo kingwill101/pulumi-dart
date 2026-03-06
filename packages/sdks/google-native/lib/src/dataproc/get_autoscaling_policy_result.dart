@@ -21,7 +21,7 @@ class GetAutoscalingPolicyResult {
   /// [name] The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id}
   /// [secondaryWorkerConfig] Optional. Describes how the autoscaler will operate for secondary workers.
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
-  GetAutoscalingPolicyResult({
+  const GetAutoscalingPolicyResult({
     required this.basicAlgorithm,
     required this.labels,
     required this.name,

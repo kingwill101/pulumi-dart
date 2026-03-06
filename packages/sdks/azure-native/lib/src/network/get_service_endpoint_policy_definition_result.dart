@@ -32,7 +32,7 @@ class GetServiceEndpointPolicyDefinitionResult {
   /// [service] Service endpoint name.
   /// [serviceResources] A list of service resources.
   /// [type] The type of the resource.
-  GetServiceEndpointPolicyDefinitionResult({
+  const GetServiceEndpointPolicyDefinitionResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

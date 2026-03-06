@@ -13,7 +13,7 @@ class TopicsConfigurationResponse {
   /// Creates a new [TopicsConfigurationResponse].
   /// [customDomains] List of custom domain configurations for the namespace.
   /// [hostname] The hostname for the topics configuration. This is a read-only property.
-  TopicsConfigurationResponse({
+  const TopicsConfigurationResponse({
     this.customDomains,
     required this.hostname,
   });

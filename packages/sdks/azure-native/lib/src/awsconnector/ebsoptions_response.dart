@@ -22,7 +22,7 @@ class EBSOptionsResponse {
   /// [throughput] &lt;p&gt;Specifies the throughput (in MiB/s) of the EBS volumes attached to data nodes. Applicable only for the &lt;code&gt;gp3&lt;/code&gt; volume type.&lt;/p&gt;
   /// [volumeSize] &lt;p&gt;Specifies the size (in GiB) of EBS volumes attached to data nodes.&lt;/p&gt;
   /// [volumeType] &lt;p&gt;Specifies the type of EBS volumes attached to data nodes.&lt;/p&gt;
-  EBSOptionsResponse({
+  const EBSOptionsResponse({
     this.ebsEnabled,
     this.iops,
     this.throughput,

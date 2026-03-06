@@ -28,7 +28,7 @@ class EcsKeyPairArgs {
   /// [publicKey] The public key of the key pair.
   /// [resourceGroupId] The ID of the resource group to which to add the key pair.
   /// [tags] A mapping of tags to assign to the resource.
-  EcsKeyPairArgs({
+  const EcsKeyPairArgs({
     this.keyFile,
     this.keyName,
     this.keyNamePrefix,

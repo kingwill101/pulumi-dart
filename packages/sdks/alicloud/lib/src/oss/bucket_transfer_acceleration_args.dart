@@ -15,7 +15,7 @@ class BucketTransferAccelerationArgs {
   /// Creates a new [BucketTransferAccelerationArgs].
   /// [bucket] The name of the Bucket.
   /// [enabled] Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
-  BucketTransferAccelerationArgs({
+  const BucketTransferAccelerationArgs({
     required this.bucket,
     this.enabled,
   });

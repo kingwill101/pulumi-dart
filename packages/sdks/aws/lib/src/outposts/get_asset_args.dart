@@ -18,7 +18,7 @@ class GetAssetArgs {
   /// [arn] Outpost ARN.
   /// [assetId] ID of the asset.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAssetArgs({
+  const GetAssetArgs({
     required this.arn,
     required this.assetId,
     this.region,

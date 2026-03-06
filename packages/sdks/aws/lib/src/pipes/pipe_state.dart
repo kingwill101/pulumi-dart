@@ -63,7 +63,7 @@ class PipeState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [target] Target resource of the pipe (typically an ARN).
   /// [targetParameters] Parameters to configure a target for your pipe. Detailed below.
-  PipeState({
+  const PipeState({
     this.arn,
     this.description,
     this.desiredState,

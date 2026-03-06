@@ -20,7 +20,7 @@ class GetUserPoolEmailConfiguration {
   /// [from] - Email sender address.
   /// [replyToEmailAddress] - Reply-to email address.
   /// [sourceArn] - Source Amazon Resource Name (ARN) for emails.
-  GetUserPoolEmailConfiguration({
+  const GetUserPoolEmailConfiguration({
     required this.configurationSet,
     required this.emailSendingAccount,
     required this.from,

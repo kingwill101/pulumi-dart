@@ -17,7 +17,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfo {
   /// [prodTrafficRoute] Configuration block for the production traffic route (documented below).
   /// [targetGroups] Configuration blocks for a target group within a target group pair (documented below).
   /// [testTrafficRoute] Configuration block for the test traffic route (documented below).
-  DeploymentGroupLoadBalancerInfoTargetGroupPairInfo({
+  const DeploymentGroupLoadBalancerInfoTargetGroupPairInfo({
     required this.prodTrafficRoute,
     required this.targetGroups,
     this.testTrafficRoute,

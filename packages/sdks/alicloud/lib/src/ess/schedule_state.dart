@@ -32,7 +32,7 @@ class ScheduleState {
   /// [scheduledAction] Optional.
   /// [scheduledTaskName] Optional.
   /// [taskEnabled] Optional.
-  ScheduleState({
+  const ScheduleState({
     this.description,
     this.desiredCapacity,
     this.launchExpirationTime,

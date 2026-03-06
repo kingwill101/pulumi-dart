@@ -17,7 +17,7 @@ class CustomerManagedKeyDetailsResponse {
   /// [kekIdentity] Key encryption key
   /// [key] The key object of the workspace
   /// [status] The customer managed key status on the workspace
-  CustomerManagedKeyDetailsResponse({
+  const CustomerManagedKeyDetailsResponse({
     this.kekIdentity,
     this.key,
     required this.status,

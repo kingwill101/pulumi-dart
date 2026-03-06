@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake].
   /// [password] Required.
   /// [username] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSnowflake({
     required this.password,
     required this.username,
   });

@@ -35,7 +35,7 @@ class GetDesktopTypesType {
   /// [memorySize] The Memory size. Unit: MiB.
   /// [status] The status of the resource.
   /// [systemDiskSize] The size of the system disk. Unit: GiB.
-  GetDesktopTypesType({
+  const GetDesktopTypesType({
     required this.cpuCount,
     required this.dataDiskSize,
     required this.desktopTypeId,

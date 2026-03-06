@@ -41,7 +41,7 @@ class LifecyclePolicyPolicyDetailsSchedule {
   /// [shareRule] See the `share_rule` block. Max of 1 per schedule.
   /// [tagsToAdd] A map of tag keys and their values. DLM lifecycle policies will already tag the snapshot with the tags on the volume. This configuration adds extra tags on top of these.
   /// [variableTags] A map of tag keys and variable values, where the values are determined when the policy is executed. Only `$(instance-id)` or `$(timestamp)` are valid values. Can only be used when `resource_types` is `INSTANCE`.
-  LifecyclePolicyPolicyDetailsSchedule({
+  const LifecyclePolicyPolicyDetailsSchedule({
     this.archiveRule,
     this.copyTags,
     required this.createRule,

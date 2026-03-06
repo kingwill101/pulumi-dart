@@ -10,7 +10,7 @@ class NetworkParams {
 
   /// Creates a new [NetworkParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the network. Tag keys and values have the
-  NetworkParams({
+  const NetworkParams({
     this.resourceManagerTags,
   });
 

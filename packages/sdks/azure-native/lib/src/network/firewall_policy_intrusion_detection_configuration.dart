@@ -17,7 +17,7 @@ class FirewallPolicyIntrusionDetectionConfiguration {
   /// [bypassTrafficSettings] List of rules for traffic to bypass.
   /// [privateRanges] IDPS Private IP address ranges are used to identify traffic direction (i.e. inbound, outbound, etc.). By default, only ranges defined by IANA RFC 1918 are considered private IP addresses. To modify default ranges, specify your Private IP address ranges with this property
   /// [signatureOverrides] List of specific signatures states.
-  FirewallPolicyIntrusionDetectionConfiguration({
+  const FirewallPolicyIntrusionDetectionConfiguration({
     this.bypassTrafficSettings,
     this.privateRanges,
     this.signatureOverrides,

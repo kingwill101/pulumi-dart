@@ -38,7 +38,7 @@ class ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1alpha1 {
   /// [paramRef] ParamRef specifies the parameter resource used to configure the admission control policy. It should point to a resource of the type specified in ParamKind of the bound ValidatingAdmissionPolicy. If the policy specifies a ParamKind and the resource referred to by ParamRef does not exist, this binding is considered mis-configured and the FailurePolicy of the ValidatingAdmissionPolicy applied.
   /// [policyName] PolicyName references a ValidatingAdmissionPolicy name which the ValidatingAdmissionPolicyBinding binds to. If the referenced resource does not exist, this binding is considered invalid and will be ignored Required.
   /// [validationActions] validationActions declares how Validations of the referenced ValidatingAdmissionPolicy are enforced. If a validation evaluates to false it is always enforced according to these actions.
-  ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1alpha1({
+  const ValidatingAdmissionPolicyBindingSpecAdmissionregistrationK8sIoV1alpha1({
     this.matchResources,
     this.paramRef,
     this.policyName,

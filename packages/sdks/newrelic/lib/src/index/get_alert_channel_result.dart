@@ -22,7 +22,7 @@ class GetAlertChannelResult {
   /// [name] Required.
   /// [policyIds] A list of policy IDs associated with the alert channel.
   /// [type] Alert channel type, either: `email`, `opsgenie`, `pagerduty`, `slack`, `victorops`, or `webhook`.
-  GetAlertChannelResult({
+  const GetAlertChannelResult({
     required this.accountId,
     required this.config,
     required this.id,

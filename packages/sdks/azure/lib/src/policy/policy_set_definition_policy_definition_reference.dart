@@ -20,7 +20,7 @@ class PolicySetDefinitionPolicyDefinitionReference {
   /// [policyGroupNames] Specifies a list of Policy Definition Groups names that this Policy Definition Reference belongs to.
   /// [referenceId] A unique ID within this Policy Set Definition for this Policy Definition Reference.
   /// [version] The version of the Policy Definition to use.
-  PolicySetDefinitionPolicyDefinitionReference({
+  const PolicySetDefinitionPolicyDefinitionReference({
     this.parameterValues,
     required this.policyDefinitionId,
     this.policyGroupNames,

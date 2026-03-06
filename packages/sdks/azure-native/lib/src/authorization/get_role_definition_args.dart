@@ -15,7 +15,7 @@ class GetRoleDefinitionArgs {
   /// Creates a new [GetRoleDefinitionArgs].
   /// [roleDefinitionId] The ID of the role definition.
   /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  GetRoleDefinitionArgs({
+  const GetRoleDefinitionArgs({
     required this.roleDefinitionId,
     required this.scope,
   });

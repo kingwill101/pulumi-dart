@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1DataValidationActionResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1DataValidationActionResponse].
   /// [conditions] Map of (K, V) -&gt; (field, string condition to be evaluated on the field) E.g., ("age", "age &gt; 18 && age &lt; 60") entry triggers validation of field age with the given condition. Map entries will be ANDed during validation.
-  GoogleCloudContentwarehouseV1DataValidationActionResponse({
+  const GoogleCloudContentwarehouseV1DataValidationActionResponse({
     required this.conditions,
   });
 

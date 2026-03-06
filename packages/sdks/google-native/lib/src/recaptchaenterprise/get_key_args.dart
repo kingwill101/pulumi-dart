@@ -13,7 +13,7 @@ class GetKeyArgs {
   /// Creates a new [GetKeyArgs].
   /// [keyId] Required.
   /// [project] Optional.
-  GetKeyArgs({
+  const GetKeyArgs({
     required this.keyId,
     this.project,
   });

@@ -13,7 +13,7 @@ class ApiDiagnosticBackendRequestDataMasking {
   /// Creates a new [ApiDiagnosticBackendRequestDataMasking].
   /// [headers] A `headers` block as defined below.
   /// [queryParams] A `query_params` block as defined below.
-  ApiDiagnosticBackendRequestDataMasking({
+  const ApiDiagnosticBackendRequestDataMasking({
     this.headers,
     this.queryParams,
   });

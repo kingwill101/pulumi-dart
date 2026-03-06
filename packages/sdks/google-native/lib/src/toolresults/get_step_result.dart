@@ -59,7 +59,7 @@ class GetStepResult {
   /// [stepId] A unique identifier within a Execution for this Step. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response: always set - In create/update request: never set
   /// [testExecutionStep] An execution of a test runner.
   /// [toolExecutionStep] An execution of a tool (used for steps we don't explicitly support).
-  GetStepResult({
+  const GetStepResult({
     required this.completionTime,
     required this.creationTime,
     required this.description,

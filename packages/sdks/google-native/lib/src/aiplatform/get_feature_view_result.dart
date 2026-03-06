@@ -32,7 +32,7 @@ class GetFeatureViewResult {
   /// [name] Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}`
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// [updateTime] Timestamp when this FeatureView was last updated.
-  GetFeatureViewResult({
+  const GetFeatureViewResult({
     required this.bigQuerySource,
     required this.createTime,
     required this.etag,

@@ -23,7 +23,7 @@ class RdsInstanceCrossBackupPolicyArgs {
   /// [instanceId] The ID of the instance.
   /// [logBackupEnabled] The status of the cross-region log backup feature on the instance. Valid values:
   /// [retention] The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
-  RdsInstanceCrossBackupPolicyArgs({
+  const RdsInstanceCrossBackupPolicyArgs({
     required this.crossBackupRegion,
     required this.instanceId,
     this.logBackupEnabled,

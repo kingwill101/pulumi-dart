@@ -21,7 +21,7 @@ class ObjectACLState {
   /// [object_] The name of the object to apply the acl to.
   /// [predefinedAcl] The "canned" [predefined ACL](https://cloud.google.com/storage/docs/access-control#predefined-acl) to apply. Must be set if `role_entity` is not.
   /// [roleEntities] List of role/entity pairs in the form `ROLE:entity`. See [GCS Object ACL documentation](https://cloud.google.com/storage/docs/json_api/v1/objectAccessControls) for more details.
-  ObjectACLState({
+  const ObjectACLState({
     this.bucket,
     this.object_,
     this.predefinedAcl,

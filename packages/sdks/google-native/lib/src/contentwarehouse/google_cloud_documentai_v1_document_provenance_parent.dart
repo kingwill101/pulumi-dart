@@ -15,7 +15,7 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParent {
   /// [id] The id of the parent provenance.
   /// [index] The index of the parent item in the corresponding item list (eg. list of entities, properties within entities, etc.) in the parent revision.
   /// [revision] The index of the index into current revision's parent_ids list.
-  GoogleCloudDocumentaiV1DocumentProvenanceParent({
+  const GoogleCloudDocumentaiV1DocumentProvenanceParent({
     this.id,
     this.index,
     this.revision,

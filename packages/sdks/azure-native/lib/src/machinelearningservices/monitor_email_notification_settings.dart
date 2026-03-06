@@ -8,7 +8,7 @@ class MonitorEmailNotificationSettings {
 
   /// Creates a new [MonitorEmailNotificationSettings].
   /// [emails] The email recipient list which has a limitation of 499 characters in total.
-  MonitorEmailNotificationSettings({
+  const MonitorEmailNotificationSettings({
     this.emails,
   });
 

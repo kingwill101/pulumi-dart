@@ -11,7 +11,7 @@ class SparkResourceConfiguration {
   /// Creates a new [SparkResourceConfiguration].
   /// [instanceType] Optional type of VM used as supported by the compute target.
   /// [runtimeVersion] Version of spark runtime used for the job.
-  SparkResourceConfiguration({
+  const SparkResourceConfiguration({
     this.instanceType,
     this.runtimeVersion,
   });

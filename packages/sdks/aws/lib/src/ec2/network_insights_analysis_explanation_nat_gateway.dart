@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationNatGateway {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationNatGateway({
+  const NetworkInsightsAnalysisExplanationNatGateway({
     this.arn,
     this.id,
     this.name,

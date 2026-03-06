@@ -18,7 +18,7 @@ class KafkaRemoteBrokerAuthenticationTypes {
   /// [sasl] Sasl remote broker authentication method.
   /// [systemAssignedManagedIdentity] Managed identity remote broker authentication method.
   /// [x509] X509 remote broker authentication method.
-  KafkaRemoteBrokerAuthenticationTypes({
+  const KafkaRemoteBrokerAuthenticationTypes({
     this.sasl,
     this.systemAssignedManagedIdentity,
     this.x509,

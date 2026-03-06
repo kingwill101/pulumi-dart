@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
   /// [documentQuerySource] Query from knowledge base document. It is used by: SMART_REPLY, SMART_COMPOSE.
   /// [knowledgeBaseQuerySource] Query from knowledgebase. It is used by: ARTICLE_SUGGESTION, FAQ.
   /// [maxResults] Maximum number of results to return. Currently, if unset, defaults to 10. And the max number is 20.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
     this.dialogflowQuerySource,

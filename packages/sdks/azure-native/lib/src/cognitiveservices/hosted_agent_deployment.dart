@@ -39,7 +39,7 @@ class HostedAgentDeployment {
   /// [protocols] Gets or sets the supported protocol types and versions exposed by this deployment.
   /// [state] Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  HostedAgentDeployment({
+  const HostedAgentDeployment({
     this.agents,
     this.deploymentId,
     required this.deploymentType,

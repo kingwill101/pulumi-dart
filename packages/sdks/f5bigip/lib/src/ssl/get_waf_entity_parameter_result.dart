@@ -59,7 +59,7 @@ class GetWafEntityParameterResult {
   /// [type] Optional.
   /// [url] Optional.
   /// [valueType] Optional.
-  GetWafEntityParameterResult({
+  const GetWafEntityParameterResult({
     this.allowEmptyType,
     this.allowRepeatedParameterName,
     this.attackSignaturesCheck,

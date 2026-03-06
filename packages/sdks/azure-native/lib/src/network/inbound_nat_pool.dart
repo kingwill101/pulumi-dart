@@ -37,7 +37,7 @@ class InboundNatPool {
   /// [idleTimeoutInMinutes] The timeout for the TCP idle connection. The value can be set between 4 and 30 minutes. The default value is 4 minutes. This element is only used when the protocol is set to TCP.
   /// [name] The name of the resource that is unique within the set of inbound NAT pools used by the load balancer. This name can be used to access the resource.
   /// [protocol] The reference to the transport protocol used by the inbound NAT pool.
-  InboundNatPool({
+  const InboundNatPool({
     required this.backendPort,
     this.enableFloatingIP,
     this.enableTcpReset,

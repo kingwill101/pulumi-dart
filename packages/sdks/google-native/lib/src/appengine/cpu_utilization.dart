@@ -12,7 +12,7 @@ class CpuUtilization {
   /// Creates a new [CpuUtilization].
   /// [aggregationWindowLength] Period of time over which CPU utilization is calculated.
   /// [targetUtilization] Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
-  CpuUtilization({
+  const CpuUtilization({
     this.aggregationWindowLength,
     this.targetUtilization,
   });

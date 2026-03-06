@@ -14,7 +14,7 @@ class GetInstanceBackupsCurrentDisk {
   /// [filesystem] The filesystem of this disk.
   /// [label] The label of this disk.
   /// [size] The size of this disk.
-  GetInstanceBackupsCurrentDisk({
+  const GetInstanceBackupsCurrentDisk({
     required this.filesystem,
     required this.label,
     required this.size,

@@ -18,7 +18,7 @@ class GetWorkspaceConnectionArgs {
   /// [connectionName] Friendly name of the workspace connection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetWorkspaceConnectionArgs({
+  const GetWorkspaceConnectionArgs({
     required this.connectionName,
     required this.resourceGroupName,
     required this.workspaceName,

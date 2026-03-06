@@ -15,7 +15,7 @@ class GetParameterArgs {
   /// Creates a new [GetParameterArgs].
   /// [parameterId] The name of the parameter.
   /// [project] The ID of the project in which the resource belongs.
-  GetParameterArgs({
+  const GetParameterArgs({
     required this.parameterId,
     this.project,
   });

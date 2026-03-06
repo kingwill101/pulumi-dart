@@ -15,7 +15,7 @@ class GetDocumentIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDocumentIamPolicyArgs({
+  const GetDocumentIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

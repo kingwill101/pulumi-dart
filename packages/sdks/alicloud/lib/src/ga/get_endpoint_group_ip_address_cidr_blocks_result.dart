@@ -20,7 +20,7 @@ class GetEndpointGroupIpAddressCidrBlocksResult {
   /// [endpointGroupRegion] The region ID of the endpoint group.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
-  GetEndpointGroupIpAddressCidrBlocksResult({
+  const GetEndpointGroupIpAddressCidrBlocksResult({
     this.acceleratorId,
     required this.endpointGroupIpAddressCidrBlocks,
     required this.endpointGroupRegion,

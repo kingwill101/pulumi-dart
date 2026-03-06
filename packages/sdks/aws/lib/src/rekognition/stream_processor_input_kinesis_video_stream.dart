@@ -8,7 +8,7 @@ class StreamProcessorInputKinesisVideoStream {
 
   /// Creates a new [StreamProcessorInputKinesisVideoStream].
   /// [arn] ARN of the Kinesis video stream stream that streams the source video.
-  StreamProcessorInputKinesisVideoStream({
+  const StreamProcessorInputKinesisVideoStream({
     required this.arn,
   });
 

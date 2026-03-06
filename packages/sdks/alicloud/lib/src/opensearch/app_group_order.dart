@@ -14,7 +14,7 @@ class AppGroupOrder {
   /// [autoRenew] Whether to renew automatically. It only takes effect when the parameter payment_type takes the value `Subscription`.
   /// [duration] Order cycle. The minimum value is not less than 0.
   /// [pricingCycle] Order cycle unit. Valid values: `Year` and `Month`.
-  AppGroupOrder({
+  const AppGroupOrder({
     this.autoRenew,
     this.duration,
     this.pricingCycle,

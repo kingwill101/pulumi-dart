@@ -14,7 +14,7 @@ class LogtailConfigOutputDetail {
   /// [endpoint] The endpoint of the log project.
   /// [logstoreName] The name of the output target logstore.
   /// [region] Region
-  LogtailConfigOutputDetail({
+  const LogtailConfigOutputDetail({
     this.endpoint,
     this.logstoreName,
     this.region,

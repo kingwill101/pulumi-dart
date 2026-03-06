@@ -11,7 +11,7 @@ class ServiceMeshMeshConfigAudit {
   /// Creates a new [ServiceMeshMeshConfigAudit].
   /// [enabled] Enable CNI
   /// [project] The name of the SLS Project to which the control plane logs are collected.
-  ServiceMeshMeshConfigAudit({
+  const ServiceMeshMeshConfigAudit({
     this.enabled,
     this.project,
   });

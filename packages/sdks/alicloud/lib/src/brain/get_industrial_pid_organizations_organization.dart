@@ -20,7 +20,7 @@ class GetIndustrialPidOrganizationsOrganization {
   /// [pidOrganizationId] The organization id.
   /// [pidOrganizationLevel] The organization level.
   /// [pidOrganizationName] The organization name.
-  GetIndustrialPidOrganizationsOrganization({
+  const GetIndustrialPidOrganizationsOrganization({
     required this.id,
     required this.parentPidOrganizationId,
     required this.pidOrganizationId,

@@ -13,7 +13,7 @@ class OSDiskImageEncryptionResponse {
   /// Creates a new [OSDiskImageEncryptionResponse].
   /// [diskEncryptionSetId] A relative URI containing the resource ID of the disk encryption set.
   /// [securityProfile] This property specifies the security profile of an OS disk image.
-  OSDiskImageEncryptionResponse({
+  const OSDiskImageEncryptionResponse({
     this.diskEncryptionSetId,
     this.securityProfile,
   });

@@ -7,7 +7,7 @@ class BackendServiceUsedByComputeV1 {
 
   /// Creates a new [BackendServiceUsedByComputeV1].
   /// [reference] Optional.
-  BackendServiceUsedByComputeV1({
+  const BackendServiceUsedByComputeV1({
     this.reference,
   });
 

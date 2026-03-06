@@ -26,7 +26,7 @@ class GetServicePrincipalsArgs {
   /// [ignoreMissing] Ignore missing service principals and return all service principals that are found. The data source will still fail if no service principals are found. Defaults to false.
   /// [objectIds] The object IDs of the service principals.
   /// [returnAll] When `true`, the data source will return all service principals. Cannot be used with `ignore_missing`. Defaults to false.
-  GetServicePrincipalsArgs({
+  const GetServicePrincipalsArgs({
     this.clientIds,
     this.displayNames,
     this.ignoreMissing,

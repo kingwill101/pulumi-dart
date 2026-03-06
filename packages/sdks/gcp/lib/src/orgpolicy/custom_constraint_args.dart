@@ -34,7 +34,7 @@ class CustomConstraintArgs {
   /// [name] Immutable. The name of the custom constraint. This is unique within the organization.
   /// [parent] The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   /// [resourceTypes] Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
-  CustomConstraintArgs({
+  const CustomConstraintArgs({
     required this.actionType,
     required this.condition,
     this.description,

@@ -57,7 +57,7 @@ class GetGtmInstancesInstance {
   /// [resourceGroupId] The ID of the resource group.
   /// [strategyMode] The type of the access policy.
   /// [ttl] The global time to live.
-  GetGtmInstancesInstance({
+  const GetGtmInstancesInstance({
     required this.alertConfigs,
     required this.alertGroups,
     required this.cnameType,

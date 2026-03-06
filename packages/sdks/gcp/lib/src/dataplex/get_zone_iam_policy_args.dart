@@ -24,7 +24,7 @@ class GetZoneIamPolicyArgs {
   /// [lake] Used to find the parent resource to bind the IAM policy to
   /// [location] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
-  GetZoneIamPolicyArgs({
+  const GetZoneIamPolicyArgs({
     required this.dataplexZone,
     required this.lake,
     this.location,

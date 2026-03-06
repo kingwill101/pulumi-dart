@@ -56,7 +56,7 @@ class LinkedServiceAzureSqlDatabaseArgs {
   /// [servicePrincipalKey] The service principal key in which to authenticate against the Azure SQL Database. Required if `service_principal_id` is set.
   /// [tenantId] The tenant id or name in which to authenticate against the Azure SQL Database.
   /// [useManagedIdentity] Whether to use the Data Factory's managed identity to authenticate against the Azure SQL Database. Incompatible with `service_principal_id` and `service_principal_key`
-  LinkedServiceAzureSqlDatabaseArgs({
+  const LinkedServiceAzureSqlDatabaseArgs({
     this.additionalProperties,
     this.annotations,
     this.connectionString,

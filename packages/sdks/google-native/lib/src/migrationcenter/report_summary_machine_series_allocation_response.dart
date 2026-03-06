@@ -13,7 +13,7 @@ class ReportSummaryMachineSeriesAllocationResponse {
   /// Creates a new [ReportSummaryMachineSeriesAllocationResponse].
   /// [allocatedAssetCount] Count of assets allocated to this machine series.
   /// [machineSeries] The Machine Series (e.g. "E2", "N2")
-  ReportSummaryMachineSeriesAllocationResponse({
+  const ReportSummaryMachineSeriesAllocationResponse({
     required this.allocatedAssetCount,
     required this.machineSeries,
   });

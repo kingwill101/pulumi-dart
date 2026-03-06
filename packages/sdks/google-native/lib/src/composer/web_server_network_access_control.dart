@@ -10,7 +10,7 @@ class WebServerNetworkAccessControl {
 
   /// Creates a new [WebServerNetworkAccessControl].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.
-  WebServerNetworkAccessControl({
+  const WebServerNetworkAccessControl({
     this.allowedIpRanges,
   });
 

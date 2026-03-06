@@ -9,7 +9,7 @@ class MultitenantDistributionTenantConfig {
 
   /// Creates a new [MultitenantDistributionTenantConfig].
   /// [parameterDefinitions] One or more parameter definitions for the tenant configuration. See Parameter Definition below.
-  MultitenantDistributionTenantConfig({
+  const MultitenantDistributionTenantConfig({
     this.parameterDefinitions,
   });
 

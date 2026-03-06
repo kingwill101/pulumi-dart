@@ -19,7 +19,7 @@ class GetTagArtifactregistryV1beta1Args {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [tagId] Required.
-  GetTagArtifactregistryV1beta1Args({
+  const GetTagArtifactregistryV1beta1Args({
     required this.location,
     required this.packageId,
     this.project,

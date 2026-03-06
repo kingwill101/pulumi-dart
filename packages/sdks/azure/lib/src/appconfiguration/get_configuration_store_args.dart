@@ -15,7 +15,7 @@ class GetConfigurationStoreArgs {
   /// Creates a new [GetConfigurationStoreArgs].
   /// [name] The Name of this App Configuration.
   /// [resourceGroupName] The name of the Resource Group where the App Configuration exists.
-  GetConfigurationStoreArgs({
+  const GetConfigurationStoreArgs({
     required this.name,
     required this.resourceGroupName,
   });

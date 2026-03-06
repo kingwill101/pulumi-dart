@@ -10,7 +10,7 @@ class EnvironmentClientIpResolutionConfig {
 
   /// Creates a new [EnvironmentClientIpResolutionConfig].
   /// [headerIndexAlgorithm] Resolves the client ip based on a custom header.
-  EnvironmentClientIpResolutionConfig({
+  const EnvironmentClientIpResolutionConfig({
     this.headerIndexAlgorithm,
   });
 

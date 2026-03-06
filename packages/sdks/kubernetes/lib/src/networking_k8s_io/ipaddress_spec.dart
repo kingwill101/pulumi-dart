@@ -10,7 +10,7 @@ class IPAddressSpec {
 
   /// Creates a new [IPAddressSpec].
   /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
-  IPAddressSpec({
+  const IPAddressSpec({
     required this.parentRef,
   });
 

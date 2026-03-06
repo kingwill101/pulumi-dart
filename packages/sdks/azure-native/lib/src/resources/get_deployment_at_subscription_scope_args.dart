@@ -12,7 +12,7 @@ class GetDeploymentAtSubscriptionScopeArgs {
 
   /// Creates a new [GetDeploymentAtSubscriptionScopeArgs].
   /// [deploymentName] The name of the deployment.
-  GetDeploymentAtSubscriptionScopeArgs({
+  const GetDeploymentAtSubscriptionScopeArgs({
     required this.deploymentName,
   });
 

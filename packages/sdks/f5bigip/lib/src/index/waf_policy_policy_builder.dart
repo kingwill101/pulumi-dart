@@ -8,7 +8,7 @@ class WafPolicyPolicyBuilder {
 
   /// Creates a new [WafPolicyPolicyBuilder].
   /// [learningMode] learning mode setting for policy-builder, possible options: [`automatic`,`disabled`, `manual`]
-  WafPolicyPolicyBuilder({
+  const WafPolicyPolicyBuilder({
     this.learningMode,
   });
 

@@ -12,7 +12,7 @@ class GetFolderServiceAccountArgs {
 
   /// Creates a new [GetFolderServiceAccountArgs].
   /// [folderId] The folder ID the service account was created for.
-  GetFolderServiceAccountArgs({
+  const GetFolderServiceAccountArgs({
     required this.folderId,
   });
 

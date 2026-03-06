@@ -15,7 +15,7 @@ class GetAzureKeyVaultSecretProviderClassArgs {
   /// Creates a new [GetAzureKeyVaultSecretProviderClassArgs].
   /// [azureKeyVaultSecretProviderClassName] The name of the AzureKeyVaultSecretProviderClass
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAzureKeyVaultSecretProviderClassArgs({
+  const GetAzureKeyVaultSecretProviderClassArgs({
     required this.azureKeyVaultSecretProviderClassName,
     required this.resourceGroupName,
   });

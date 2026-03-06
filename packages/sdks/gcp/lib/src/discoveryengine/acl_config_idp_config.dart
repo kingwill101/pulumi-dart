@@ -14,7 +14,7 @@ class AclConfigIdpConfig {
   /// Creates a new [AclConfigIdpConfig].
   /// [externalIdpConfig] External third party identity provider config.
   /// [idpType] Identity provider type.
-  AclConfigIdpConfig({
+  const AclConfigIdpConfig({
     this.externalIdpConfig,
     this.idpType,
   });

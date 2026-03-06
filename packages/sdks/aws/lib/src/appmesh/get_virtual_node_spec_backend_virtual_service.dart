@@ -10,7 +10,7 @@ class GetVirtualNodeSpecBackendVirtualService {
   /// Creates a new [GetVirtualNodeSpecBackendVirtualService].
   /// [clientPolicies] Required.
   /// [virtualServiceName] Required.
-  GetVirtualNodeSpecBackendVirtualService({
+  const GetVirtualNodeSpecBackendVirtualService({
     required this.clientPolicies,
     required this.virtualServiceName,
   });

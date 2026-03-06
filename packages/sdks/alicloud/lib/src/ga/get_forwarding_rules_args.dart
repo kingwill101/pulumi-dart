@@ -24,7 +24,7 @@ class GetForwardingRulesArgs {
   /// [listenerId] The ID of the listener.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the acceleration region. Valid values: `active`, `configuring`.
-  GetForwardingRulesArgs({
+  const GetForwardingRulesArgs({
     required this.acceleratorId,
     this.ids,
     required this.listenerId,

@@ -28,7 +28,7 @@ class ScheduledPreloadJobArgs {
   /// [scheduledPreloadJobName] The task name.
   /// [siteId] The site ID.
   /// [urlList] A list of URLs to be preheated, which is used when uploading a preheated file in the text box mode.
-  ScheduledPreloadJobArgs({
+  const ScheduledPreloadJobArgs({
     required this.insertWay,
     this.ossUrl,
     required this.scheduledPreloadJobName,

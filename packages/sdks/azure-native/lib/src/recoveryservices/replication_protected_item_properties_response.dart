@@ -99,7 +99,7 @@ class ReplicationProtectedItemPropertiesResponse {
   /// [switchProviderStateDescription] The switch provider state description.
   /// [testFailoverState] The Test failover state.
   /// [testFailoverStateDescription] The Test failover state description.
-  ReplicationProtectedItemPropertiesResponse({
+  const ReplicationProtectedItemPropertiesResponse({
     this.activeLocation,
     this.allowedOperations,
     this.currentScenario,

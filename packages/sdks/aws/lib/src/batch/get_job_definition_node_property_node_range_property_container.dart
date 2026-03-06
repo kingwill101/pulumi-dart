@@ -77,7 +77,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainer {
   /// [ulimits] A list of ulimits to set in the container.
   /// [user] The user name to use inside the container.
   /// [volumes] A list of data volumes used in a job.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainer({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainer({
     required this.commands,
     required this.environments,
     required this.ephemeralStorages,

@@ -9,7 +9,7 @@ class WebhookFilterGroup {
 
   /// Creates a new [WebhookFilterGroup].
   /// [filters] A webhook filter for the group. See filter for details.
-  WebhookFilterGroup({
+  const WebhookFilterGroup({
     this.filters,
   });
 

@@ -18,7 +18,7 @@ class GetClusterNodePoolUpgradeSetting {
   /// [maxSurge] The number of additional nodes that can be added to the node pool during an upgrade. Increasing max_surge raises the number of nodes that can be upgraded simultaneously. Can be set to 0 or greater.
   /// [maxUnavailable] The number of nodes that can be simultaneously unavailable during an upgrade. Increasing max_unavailable raises the number of nodes that can be upgraded in parallel. Can be set to 0 or greater.
   /// [strategy] Update strategy for the given nodepool.
-  GetClusterNodePoolUpgradeSetting({
+  const GetClusterNodePoolUpgradeSetting({
     required this.blueGreenSettings,
     required this.maxSurge,
     required this.maxUnavailable,

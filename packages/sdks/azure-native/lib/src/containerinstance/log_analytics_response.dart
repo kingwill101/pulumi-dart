@@ -21,7 +21,7 @@ class LogAnalyticsResponse {
   /// [workspaceId] The workspace id for log analytics
   /// [workspaceKey] The workspace key for log analytics
   /// [workspaceResourceId] The workspace resource id for log analytics
-  LogAnalyticsResponse({
+  const LogAnalyticsResponse({
     this.logType,
     this.metadata,
     required this.workspaceId,

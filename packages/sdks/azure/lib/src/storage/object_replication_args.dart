@@ -19,7 +19,7 @@ class ObjectReplicationArgs {
   /// [destinationStorageAccountId] The ID of the destination storage account. Changing this forces a new Storage Object Replication to be created.
   /// [rules] One or more `rules` blocks as defined below.
   /// [sourceStorageAccountId] The ID of the source storage account. Changing this forces a new Storage Object Replication to be created.
-  ObjectReplicationArgs({
+  const ObjectReplicationArgs({
     required this.destinationStorageAccountId,
     required this.rules,
     required this.sourceStorageAccountId,

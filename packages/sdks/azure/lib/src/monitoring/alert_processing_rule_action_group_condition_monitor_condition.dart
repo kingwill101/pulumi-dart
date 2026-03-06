@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupConditionMonitorCondition {
   /// Creates a new [AlertProcessingRuleActionGroupConditionMonitorCondition].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   /// [values] Specifies a list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
-  AlertProcessingRuleActionGroupConditionMonitorCondition({
+  const AlertProcessingRuleActionGroupConditionMonitorCondition({
     required this.operator,
     required this.values,
   });

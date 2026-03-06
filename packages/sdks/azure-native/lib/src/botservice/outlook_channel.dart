@@ -16,7 +16,7 @@ class OutlookChannel {
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
-  OutlookChannel({
+  const OutlookChannel({
     required this.channelName,
     this.etag,
     this.location,

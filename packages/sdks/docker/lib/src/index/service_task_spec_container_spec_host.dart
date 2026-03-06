@@ -11,7 +11,7 @@ class ServiceTaskSpecContainerSpecHost {
   /// Creates a new [ServiceTaskSpecContainerSpecHost].
   /// [host] The name of the host
   /// [ip] The ip of the host
-  ServiceTaskSpecContainerSpecHost({
+  const ServiceTaskSpecContainerSpecHost({
     required this.host,
     required this.ip,
   });

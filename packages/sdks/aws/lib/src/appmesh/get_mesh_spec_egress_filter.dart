@@ -7,7 +7,7 @@ class GetMeshSpecEgressFilter {
 
   /// Creates a new [GetMeshSpecEgressFilter].
   /// [type] Required.
-  GetMeshSpecEgressFilter({
+  const GetMeshSpecEgressFilter({
     required this.type,
   });
 

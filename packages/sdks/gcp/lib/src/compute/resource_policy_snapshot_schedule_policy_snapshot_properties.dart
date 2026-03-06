@@ -20,7 +20,7 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
   /// [guestFlush] Whether to perform a 'guest aware' snapshot.
   /// [labels] A set of key-value pairs.
   /// [storageLocations] Cloud Storage bucket location to store the auto snapshot
-  ResourcePolicySnapshotSchedulePolicySnapshotProperties({
+  const ResourcePolicySnapshotSchedulePolicySnapshotProperties({
     this.chainName,
     this.guestFlush,
     this.labels,

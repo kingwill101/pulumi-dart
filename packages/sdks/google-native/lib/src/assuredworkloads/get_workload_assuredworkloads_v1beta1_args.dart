@@ -15,7 +15,7 @@ class GetWorkloadAssuredworkloadsV1beta1Args {
   /// [location] Required.
   /// [organizationId] Required.
   /// [workloadId] Required.
-  GetWorkloadAssuredworkloadsV1beta1Args({
+  const GetWorkloadAssuredworkloadsV1beta1Args({
     required this.location,
     required this.organizationId,
     required this.workloadId,

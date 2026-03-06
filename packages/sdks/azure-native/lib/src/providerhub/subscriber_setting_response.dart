@@ -9,7 +9,7 @@ class SubscriberSettingResponse {
 
   /// Creates a new [SubscriberSettingResponse].
   /// [filterRules] The filter rules.
-  SubscriberSettingResponse({
+  const SubscriberSettingResponse({
     this.filterRules,
   });
 

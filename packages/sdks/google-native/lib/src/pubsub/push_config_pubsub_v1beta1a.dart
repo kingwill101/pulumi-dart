@@ -9,7 +9,7 @@ class PushConfigPubsubV1beta1a {
 
   /// Creates a new [PushConfigPubsubV1beta1a].
   /// [pushEndpoint] A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
-  PushConfigPubsubV1beta1a({
+  const PushConfigPubsubV1beta1a({
     this.pushEndpoint,
   });
 

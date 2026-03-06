@@ -53,7 +53,7 @@ class V2OrganizationSccBigQueryExportsArgs {
   /// [location] location Id is provided by organization. If not provided, Use global as default.
   /// [name] The resource name of this export, in the format
   /// [organization] The organization whose Cloud Security Command Center the Big Query Export
-  V2OrganizationSccBigQueryExportsArgs({
+  const V2OrganizationSccBigQueryExportsArgs({
     required this.bigQueryExportId,
     this.dataset,
     this.description,

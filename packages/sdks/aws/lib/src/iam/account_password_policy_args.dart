@@ -36,7 +36,7 @@ class AccountPasswordPolicyArgs {
   /// [requireNumbers] Whether to require numbers for user passwords.
   /// [requireSymbols] Whether to require symbols for user passwords.
   /// [requireUppercaseCharacters] Whether to require uppercase characters for user passwords.
-  AccountPasswordPolicyArgs({
+  const AccountPasswordPolicyArgs({
     this.allowUsersToChangePassword,
     this.hardExpiry,
     this.maxPasswordAge,

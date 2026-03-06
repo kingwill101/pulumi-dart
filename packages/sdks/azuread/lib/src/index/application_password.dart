@@ -20,7 +20,7 @@ class ApplicationPassword {
   /// [keyId] (Required) The unique key ID for the generated password.
   /// [startDate] The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
   /// [value] (Required) The generated password for the application.
-  ApplicationPassword({
+  const ApplicationPassword({
     required this.displayName,
     this.endDate,
     this.keyId,

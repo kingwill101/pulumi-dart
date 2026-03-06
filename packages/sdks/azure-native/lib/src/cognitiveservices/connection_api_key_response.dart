@@ -8,7 +8,7 @@ class ConnectionApiKeyResponse {
 
   /// Creates a new [ConnectionApiKeyResponse].
   /// [key] Optional.
-  ConnectionApiKeyResponse({
+  const ConnectionApiKeyResponse({
     this.key,
   });
 

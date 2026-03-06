@@ -42,7 +42,7 @@ class ServerGroupServerAttachmentState {
   /// [status] The status of the resource
   /// [weight] The weight of the backend server. Valid values: `0` to `100`. Default value: `100`. If the weight of a backend server is set to `0`, no requests are forwarded to the backend server.
   /// [zoneId] The zone ID of the server.
-  ServerGroupServerAttachmentState({
+  const ServerGroupServerAttachmentState({
     this.description,
     this.port,
     this.serverGroupId,

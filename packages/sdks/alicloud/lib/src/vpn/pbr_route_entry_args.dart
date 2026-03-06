@@ -27,7 +27,7 @@ class PbrRouteEntryArgs {
   /// [routeSource] The source CIDR block of the policy-based route.
   /// [vpnGatewayId] The ID of the vpn gateway.
   /// [weight] The weight of the policy-based route. Valid values: 0 and 100.
-  PbrRouteEntryArgs({
+  const PbrRouteEntryArgs({
     required this.nextHop,
     required this.publishVpc,
     required this.routeDest,

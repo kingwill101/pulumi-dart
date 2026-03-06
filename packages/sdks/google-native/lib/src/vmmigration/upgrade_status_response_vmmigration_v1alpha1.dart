@@ -22,7 +22,7 @@ class UpgradeStatusResponseVmmigrationV1alpha1 {
   /// [startTime] The time the operation was started.
   /// [state] The state of the upgradeAppliance operation.
   /// [version] The version to upgrade to.
-  UpgradeStatusResponseVmmigrationV1alpha1({
+  const UpgradeStatusResponseVmmigrationV1alpha1({
     required this.error,
     required this.previousVersion,
     required this.startTime,

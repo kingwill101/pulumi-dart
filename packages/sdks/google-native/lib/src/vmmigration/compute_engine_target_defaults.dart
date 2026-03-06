@@ -62,7 +62,7 @@ class ComputeEngineTargetDefaults {
   /// [targetProject] The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
   /// [vmName] The name of the VM to create.
   /// [zone] The zone in which to create the VM.
-  ComputeEngineTargetDefaults({
+  const ComputeEngineTargetDefaults({
     this.additionalLicenses,
     this.computeScheduling,
     this.diskType,

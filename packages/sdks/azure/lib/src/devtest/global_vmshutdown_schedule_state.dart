@@ -28,7 +28,7 @@ class GlobalVMShutdownScheduleState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [timezone] The time zone ID (e.g. Pacific Standard time). Refer to this guide for a [full list of accepted time zone names](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
   /// [virtualMachineId] The resource ID of the target ARM-based Virtual Machine. Changing this forces a new resource to be created.
-  GlobalVMShutdownScheduleState({
+  const GlobalVMShutdownScheduleState({
     this.dailyRecurrenceTime,
     this.enabled,
     this.location,

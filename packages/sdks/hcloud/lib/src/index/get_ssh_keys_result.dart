@@ -15,7 +15,7 @@ class GetSshKeysResult {
   /// [id] The ID of this resource.
   /// [sshKeys] Required.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetSshKeysResult({
+  const GetSshKeysResult({
     this.id,
     required this.sshKeys,
     this.withSelector,

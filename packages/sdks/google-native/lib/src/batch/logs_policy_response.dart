@@ -15,7 +15,7 @@ class LogsPolicyResponse {
   /// [cloudLoggingOption] Optional. Additional settings for Cloud Logging. It will only take effect when the destination of LogsPolicy is set to CLOUD_LOGGING.
   /// [destination] Where logs should be saved.
   /// [logsPath] The path to which logs are saved when the destination = PATH. This can be a local file path on the VM, or under the mount point of a Persistent Disk or Filestore, or a Cloud Storage path.
-  LogsPolicyResponse({
+  const LogsPolicyResponse({
     required this.cloudLoggingOption,
     required this.destination,
     required this.logsPath,

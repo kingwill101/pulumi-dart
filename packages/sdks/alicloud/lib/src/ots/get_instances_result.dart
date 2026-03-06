@@ -26,7 +26,7 @@ class GetInstancesResult {
   /// [names] A list of instance names.
   /// [outputFile] Optional.
   /// [tags] The tags of the instance.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

@@ -29,7 +29,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskEntity {
   /// [stats] Deprecated - statistics from the Monarch query.
   /// [taskType] Defines the type of the task
   /// [uiConfig] UI configuration for this task Also associated with the METADATA mask.
-  EnterpriseCrmFrontendsEventbusProtoTaskEntity({
+  const EnterpriseCrmFrontendsEventbusProtoTaskEntity({
     this.disabledForVpcSc,
     this.metadata,
     this.paramSpecs,

@@ -27,7 +27,7 @@ class ServiceBindingIamBindingNetworkservicesV1beta1Args {
   /// [members] Identities that will be granted the privilege in role. Each entry can have one of the following values:
   /// [name] The name of the resource to manage IAM policies for.
   /// [role] The role that should be applied. Only one `IamBinding` can be used per role.
-  ServiceBindingIamBindingNetworkservicesV1beta1Args({
+  const ServiceBindingIamBindingNetworkservicesV1beta1Args({
     this.condition,
     required this.members,
     required this.name,

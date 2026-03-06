@@ -8,7 +8,7 @@ class AppSpecServiceAutoscalingMetricsCpu {
 
   /// Creates a new [AppSpecServiceAutoscalingMetricsCpu].
   /// [percent] The average target CPU utilization for the component.
-  AppSpecServiceAutoscalingMetricsCpu({
+  const AppSpecServiceAutoscalingMetricsCpu({
     required this.percent,
   });
 

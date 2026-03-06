@@ -7,7 +7,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings {
 
   /// Creates a new [DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings].
   /// [amazonBedrockRoleArn] Optional.
-  DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings({
+  const DomainDefaultUserSettingsCanvasAppSettingsGenerativeAiSettings({
     this.amazonBedrockRoleArn,
   });
 

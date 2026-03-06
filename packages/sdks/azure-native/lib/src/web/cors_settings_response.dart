@@ -15,7 +15,7 @@ class CorsSettingsResponse {
   /// Creates a new [CorsSettingsResponse].
   /// [allowedOrigins] Gets or sets the list of origins that should be allowed to make cross-origin
   /// [supportCredentials] Gets or sets whether CORS requests with credentials are allowed. See
-  CorsSettingsResponse({
+  const CorsSettingsResponse({
     this.allowedOrigins,
     this.supportCredentials,
   });

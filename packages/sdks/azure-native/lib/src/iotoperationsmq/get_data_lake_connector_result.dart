@@ -62,7 +62,7 @@ class GetDataLakeConnectorResult {
   /// [tags] Resource tags.
   /// [target] The protocol to use for connecting with Brokers. NOTE - Enum only storage is supported at at time.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDataLakeConnectorResult({
+  const GetDataLakeConnectorResult({
     required this.azureApiVersion,
     required this.databaseFormat,
     required this.extendedLocation,

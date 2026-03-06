@@ -18,7 +18,7 @@ class ExpressRouteLinkMacSecConfigResponse {
   /// [cipher] Mac security cipher.
   /// [cknSecretIdentifier] Keyvault Secret Identifier URL containing Mac security CKN key.
   /// [sciState] Sci mode enabled/disabled.
-  ExpressRouteLinkMacSecConfigResponse({
+  const ExpressRouteLinkMacSecConfigResponse({
     this.cakSecretIdentifier,
     this.cipher,
     this.cknSecretIdentifier,

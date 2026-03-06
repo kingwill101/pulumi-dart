@@ -15,7 +15,7 @@ class GetStudyAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [studyId] Required.
-  GetStudyAiplatformV1beta1Args({
+  const GetStudyAiplatformV1beta1Args({
     required this.location,
     this.project,
     required this.studyId,

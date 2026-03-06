@@ -14,7 +14,7 @@ class TargetSuspendedState {
   /// [dynamicScalingInSuspended] Whether scale in by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
   /// [dynamicScalingOutSuspended] Whether scale out by a target tracking scaling policy or a step scaling policy is suspended. Default is `false`.
   /// [scheduledScalingSuspended] Whether scheduled scaling is suspended. Default is `false`.
-  TargetSuspendedState({
+  const TargetSuspendedState({
     this.dynamicScalingInSuspended,
     this.dynamicScalingOutSuspended,
     this.scheduledScalingSuspended,

@@ -118,7 +118,7 @@ class RoleArgs {
   /// [statementTimeout] Defines [`statement_timeout`](https://www.postgresql.org/docs/current/runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT) setting for this role which allows to abort any statement that takes more than the specified amount of time.
   /// [superuser] Defines whether the role is a "superuser", and
   /// [validUntil] Defines the date and time after which the role's
-  RoleArgs({
+  const RoleArgs({
     this.assumeRole,
     this.bypassRowLevelSecurity,
     this.connectionLimit,

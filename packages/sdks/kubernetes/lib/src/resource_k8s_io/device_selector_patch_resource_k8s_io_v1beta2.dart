@@ -10,7 +10,7 @@ class DeviceSelectorPatchResourceK8sIoV1beta2 {
 
   /// Creates a new [DeviceSelectorPatchResourceK8sIoV1beta2].
   /// [cel] CEL contains a CEL expression for selecting a device.
-  DeviceSelectorPatchResourceK8sIoV1beta2({
+  const DeviceSelectorPatchResourceK8sIoV1beta2({
     this.cel,
   });
 

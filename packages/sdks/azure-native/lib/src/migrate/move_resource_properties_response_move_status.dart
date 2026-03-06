@@ -17,7 +17,7 @@ class MoveResourcePropertiesResponseMoveStatus {
   /// [errors] An error response from the azure resource mover service.
   /// [jobStatus] Defines the job status.
   /// [moveState] Defines the MoveResource states.
-  MoveResourcePropertiesResponseMoveStatus({
+  const MoveResourcePropertiesResponseMoveStatus({
     this.errors,
     this.jobStatus,
     required this.moveState,

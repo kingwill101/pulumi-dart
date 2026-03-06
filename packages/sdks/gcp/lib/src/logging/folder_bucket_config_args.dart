@@ -32,7 +32,7 @@ class FolderBucketConfigArgs {
   /// [indexConfigs] A list of indexed fields and related configuration data. Structure is documented below.
   /// [location] The location of the bucket.
   /// [retentionDays] Logs will be retained by default for this amount of time, after which they will automatically be deleted. The minimum retention period is 1 day. If this value is set to zero at bucket creation time, the default time of 30 days will be used. Bucket retention can not be increased on buckets outside of projects.
-  FolderBucketConfigArgs({
+  const FolderBucketConfigArgs({
     required this.bucketId,
     this.cmekSettings,
     this.description,

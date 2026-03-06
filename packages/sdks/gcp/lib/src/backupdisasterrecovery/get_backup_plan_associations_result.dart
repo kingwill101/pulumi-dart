@@ -20,7 +20,7 @@ class GetBackupPlanAssociationsResult {
   /// [location] Required.
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceType] Optional.
-  GetBackupPlanAssociationsResult({
+  const GetBackupPlanAssociationsResult({
     required this.associations,
     required this.id,
     required this.location,

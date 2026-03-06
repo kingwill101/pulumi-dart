@@ -46,7 +46,7 @@ class StudentArgs {
   /// [studentAlias] Student alias.
   /// [subscriptionAlias] Subscription alias
   /// [subscriptionInviteLastSentDate] subscription invite last sent date
-  StudentArgs({
+  const StudentArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     required this.budget,

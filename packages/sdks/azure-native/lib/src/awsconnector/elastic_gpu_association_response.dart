@@ -18,7 +18,7 @@ class ElasticGpuAssociationResponse {
   /// [elasticGpuAssociationState] &lt;p&gt;The state of the association between the instance and the Elastic Graphics accelerator.&lt;/p&gt;
   /// [elasticGpuAssociationTime] &lt;p&gt;The time the Elastic Graphics accelerator was associated with the instance.&lt;/p&gt;
   /// [elasticGpuId] &lt;p&gt;The ID of the Elastic Graphics accelerator.&lt;/p&gt;
-  ElasticGpuAssociationResponse({
+  const ElasticGpuAssociationResponse({
     this.elasticGpuAssociationId,
     this.elasticGpuAssociationState,
     this.elasticGpuAssociationTime,

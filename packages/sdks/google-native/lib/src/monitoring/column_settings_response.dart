@@ -12,7 +12,7 @@ class ColumnSettingsResponse {
   /// Creates a new [ColumnSettingsResponse].
   /// [column] The id of the column.
   /// [visible] Whether the column should be visible on page load.
-  ColumnSettingsResponse({
+  const ColumnSettingsResponse({
     required this.column,
     required this.visible,
   });

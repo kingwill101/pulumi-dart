@@ -28,7 +28,7 @@ class ProcessorDocumentaiV1beta3Args {
   /// [location] Optional.
   /// [project] Optional.
   /// [type] The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
-  ProcessorDocumentaiV1beta3Args({
+  const ProcessorDocumentaiV1beta3Args({
     this.createTime,
     this.defaultProcessorVersion,
     this.displayName,

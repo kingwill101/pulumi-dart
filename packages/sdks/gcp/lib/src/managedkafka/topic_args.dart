@@ -31,7 +31,7 @@ class TopicArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [replicationFactor] The number of replicas of each partition. A replication factor of 3 is recommended for high availability.
   /// [topicId] The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`.
-  TopicArgs({
+  const TopicArgs({
     required this.cluster,
     this.configs,
     required this.location,

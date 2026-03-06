@@ -12,7 +12,7 @@ class GoogleCloudMlV1StudyConfigMetricSpecResponse {
   /// Creates a new [GoogleCloudMlV1StudyConfigMetricSpecResponse].
   /// [goal] The optimization goal of the metric.
   /// [metric] The name of the metric.
-  GoogleCloudMlV1StudyConfigMetricSpecResponse({
+  const GoogleCloudMlV1StudyConfigMetricSpecResponse({
     required this.goal,
     required this.metric,
   });

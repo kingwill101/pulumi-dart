@@ -18,7 +18,7 @@ class GetZoneVirtualNetworkLinkArgs {
   /// [name] The name of the Private DNS Zone Virtual Network Link.
   /// [privateDnsZoneName] The name of the Private DNS zone (without a terminating dot).
   /// [resourceGroupName] Specifies the resource group where the Private DNS Zone exists.
-  GetZoneVirtualNetworkLinkArgs({
+  const GetZoneVirtualNetworkLinkArgs({
     required this.name,
     required this.privateDnsZoneName,
     required this.resourceGroupName,

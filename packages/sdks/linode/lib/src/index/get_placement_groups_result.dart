@@ -18,7 +18,7 @@ class GetPlacementGroupsResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [placementGroups] Required.
-  GetPlacementGroupsResult({
+  const GetPlacementGroupsResult({
     this.filters,
     required this.id,
     this.order,

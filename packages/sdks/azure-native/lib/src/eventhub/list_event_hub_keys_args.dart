@@ -21,7 +21,7 @@ class ListEventHubKeysArgs {
   /// [eventHubName] The Event Hub name
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  ListEventHubKeysArgs({
+  const ListEventHubKeysArgs({
     required this.authorizationRuleName,
     required this.eventHubName,
     required this.namespaceName,

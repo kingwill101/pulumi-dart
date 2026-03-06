@@ -33,7 +33,7 @@ class EventSubscriptionArgs {
   /// [sourceIds] Ids of sources to listen to. If you don't specify a value, notifications are provided for all sources.
   /// [sourceType] Type of source for events. Valid values: `replication-instance` or `replication-task`
   /// [tags] Map of resource tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  EventSubscriptionArgs({
+  const EventSubscriptionArgs({
     this.enabled,
     required this.eventCategories,
     this.name,

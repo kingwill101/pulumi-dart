@@ -13,7 +13,7 @@ class GetClusterRemoteNetworkConfig {
   /// Creates a new [GetClusterRemoteNetworkConfig].
   /// [remoteNodeNetworks] The networks that can contain hybrid nodes.
   /// [remotePodNetworks] The networks that can contain pods that run Kubernetes webhooks on hybrid nodes.
-  GetClusterRemoteNetworkConfig({
+  const GetClusterRemoteNetworkConfig({
     required this.remoteNodeNetworks,
     required this.remotePodNetworks,
   });

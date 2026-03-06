@@ -12,7 +12,7 @@ class BucketObjectRetention {
   /// Creates a new [BucketObjectRetention].
   /// [mode] The bucket's object retention mode, can only be Unlocked or Locked.
   /// [retainUntilTime] A time in RFC 3339 format until which object retention protects this object.
-  BucketObjectRetention({
+  const BucketObjectRetention({
     this.mode,
     this.retainUntilTime,
   });

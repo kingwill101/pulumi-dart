@@ -18,7 +18,7 @@ class GetAFDTargetGroupArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium which is unique within the resource group.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [targetGroupName] Name of the Target Group under the profile.
-  GetAFDTargetGroupArgs({
+  const GetAFDTargetGroupArgs({
     required this.profileName,
     required this.resourceGroupName,
     required this.targetGroupName,

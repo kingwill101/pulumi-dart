@@ -15,7 +15,7 @@ class ServiceDnsConfig {
   /// [dnsRecords] An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
   /// [namespaceId] The ID of the namespace to use for DNS configuration.
   /// [routingPolicy] The routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
-  ServiceDnsConfig({
+  const ServiceDnsConfig({
     required this.dnsRecords,
     required this.namespaceId,
     this.routingPolicy,

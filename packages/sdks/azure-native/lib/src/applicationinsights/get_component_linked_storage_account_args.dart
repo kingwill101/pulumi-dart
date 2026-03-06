@@ -18,7 +18,7 @@ class GetComponentLinkedStorageAccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
   /// [storageType] The type of the Application Insights component data source for the linked storage account.
-  GetComponentLinkedStorageAccountArgs({
+  const GetComponentLinkedStorageAccountArgs({
     required this.resourceGroupName,
     required this.resourceName,
     required this.storageType,

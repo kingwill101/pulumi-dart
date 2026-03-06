@@ -12,7 +12,7 @@ class DomainDevicesHostdevSubsysScsiHost {
   /// Creates a new [DomainDevicesHostdevSubsysScsiHost].
   /// [model] Sets the model attribute for the SCSI host device.
   /// [source] Specifies the source configuration for the SCSI host device.
-  DomainDevicesHostdevSubsysScsiHost({
+  const DomainDevicesHostdevSubsysScsiHost({
     this.model,
     this.source,
   });

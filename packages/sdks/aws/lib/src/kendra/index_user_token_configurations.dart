@@ -13,7 +13,7 @@ class IndexUserTokenConfigurations {
   /// Creates a new [IndexUserTokenConfigurations].
   /// [jsonTokenTypeConfiguration] A block that specifies the information about the JSON token type configuration. Detailed below.
   /// [jwtTokenTypeConfiguration] A block that specifies the information about the JWT token type configuration. Detailed below.
-  IndexUserTokenConfigurations({
+  const IndexUserTokenConfigurations({
     this.jsonTokenTypeConfiguration,
     this.jwtTokenTypeConfiguration,
   });

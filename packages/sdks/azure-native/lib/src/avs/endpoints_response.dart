@@ -24,7 +24,7 @@ class EndpointsResponse {
   /// [nsxtManagerIp] Endpoint IP for the NSX-T Data Center manager
   /// [vcenterIp] Endpoint IP for Virtual Center Server Appliance
   /// [vcsa] Endpoint FQDN for Virtual Center Server Appliance
-  EndpointsResponse({
+  const EndpointsResponse({
     required this.hcxCloudManager,
     required this.hcxCloudManagerIp,
     required this.nsxtManager,

@@ -32,7 +32,7 @@ class EndpointPatchDiscoveryK8sIoV1beta1 {
   /// [nodeName] nodeName represents the name of the Node hosting this endpoint. This can be used to determine endpoints local to a Node. This field can be enabled with the EndpointSliceNodeName feature gate.
   /// [targetRef] targetRef is a reference to a Kubernetes object that represents this endpoint.
   /// [topology] topology contains arbitrary topology information associated with the endpoint. These key/value pairs must conform with the label format. https://kubernetes.io/docs/concepts/overview/working-with-objects/labels Topology may include a maximum of 16 key/value pairs. This includes, but is not limited to the following well known keys: * kubernetes.io/hostname: the value indicates the hostname of the node
-  EndpointPatchDiscoveryK8sIoV1beta1({
+  const EndpointPatchDiscoveryK8sIoV1beta1({
     this.addresses,
     this.conditions,
     this.hostname,

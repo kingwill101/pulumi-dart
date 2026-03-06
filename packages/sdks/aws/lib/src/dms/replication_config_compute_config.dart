@@ -37,7 +37,7 @@ class ReplicationConfigComputeConfig {
   /// [preferredMaintenanceWindow] The weekly time range during which system maintenance can occur, in Universal Coordinated Time (UTC).
   /// [replicationSubnetGroupId] Specifies a subnet group identifier to associate with the DMS Serverless replication.
   /// [vpcSecurityGroupIds] Specifies the virtual private cloud (VPC) security group to use with the DMS Serverless replication. The VPC security group must work with the VPC containing the replication.
-  ReplicationConfigComputeConfig({
+  const ReplicationConfigComputeConfig({
     this.availabilityZone,
     this.dnsNameServers,
     this.kmsKeyId,

@@ -39,7 +39,7 @@ class SourceControlSlotState {
   /// [useManualIntegration] Should code be deployed manually. Set to `true` to disable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   /// [useMercurial] The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
   /// [usesGithubAction] Indicates if the Slot uses a GitHub action for deployment. This value is decoded by the service from the repository information supplied.
-  SourceControlSlotState({
+  const SourceControlSlotState({
     this.branch,
     this.githubActionConfiguration,
     this.repoUrl,

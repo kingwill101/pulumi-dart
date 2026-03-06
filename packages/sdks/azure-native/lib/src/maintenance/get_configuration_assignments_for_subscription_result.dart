@@ -34,7 +34,7 @@ class GetConfigurationAssignmentsForSubscriptionResult {
   /// [resourceId] The unique resourceId
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetConfigurationAssignmentsForSubscriptionResult({
+  const GetConfigurationAssignmentsForSubscriptionResult({
     required this.azureApiVersion,
     this.filter,
     required this.id,

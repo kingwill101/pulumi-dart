@@ -22,7 +22,7 @@ class StorageNetworksResponse {
   /// [storageAdapterIPInfo] List of Storage adapter physical nodes config to deploy AzureStackHCI Cluster.
   /// [storageVlanId] ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
   /// [vlanId] ID specified for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic.
-  StorageNetworksResponse({
+  const StorageNetworksResponse({
     required this.name,
     required this.networkAdapterName,
     required this.storageAdapterIPInfo,

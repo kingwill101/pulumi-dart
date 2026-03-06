@@ -12,7 +12,7 @@ class AgentPathResponse {
   /// Creates a new [AgentPathResponse].
   /// [path] The actual path value.
   /// [type] The type of the path.
-  AgentPathResponse({
+  const AgentPathResponse({
     required this.path,
     required this.type,
   });

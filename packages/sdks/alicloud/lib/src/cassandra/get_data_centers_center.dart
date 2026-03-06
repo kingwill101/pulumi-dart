@@ -52,7 +52,7 @@ class GetDataCentersCenter {
   /// [vpcId] VPC ID the dataCenter belongs to.
   /// [vswitchId] VSwitch ID the dataCenter belongs to.
   /// [zoneId] Zone ID the dataCenter belongs to.
-  GetDataCentersCenter({
+  const GetDataCentersCenter({
     required this.clusterId,
     required this.commodityInstance,
     required this.createdTime,

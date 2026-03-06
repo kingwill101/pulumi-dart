@@ -9,7 +9,7 @@ class ExperimentTemplateExperimentReportConfigurationOutputs {
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationOutputs].
   /// [s3Configuration] The data sources for the experiment report. See below.
-  ExperimentTemplateExperimentReportConfigurationOutputs({
+  const ExperimentTemplateExperimentReportConfigurationOutputs({
     this.s3Configuration,
   });
 

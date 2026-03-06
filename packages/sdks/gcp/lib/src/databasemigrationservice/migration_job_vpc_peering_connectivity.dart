@@ -8,7 +8,7 @@ class MigrationJobVpcPeeringConnectivity {
 
   /// Creates a new [MigrationJobVpcPeeringConnectivity].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
-  MigrationJobVpcPeeringConnectivity({
+  const MigrationJobVpcPeeringConnectivity({
     this.vpc,
   });
 

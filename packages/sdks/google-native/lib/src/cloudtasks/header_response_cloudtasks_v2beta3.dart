@@ -12,7 +12,7 @@ class HeaderResponseCloudtasksV2beta3 {
   /// Creates a new [HeaderResponseCloudtasksV2beta3].
   /// [key] The Key of the header.
   /// [value] The Value of the header.
-  HeaderResponseCloudtasksV2beta3({
+  const HeaderResponseCloudtasksV2beta3({
     required this.key,
     required this.value,
   });

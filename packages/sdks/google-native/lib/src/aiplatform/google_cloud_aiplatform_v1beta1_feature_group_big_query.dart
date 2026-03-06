@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1beta1FeatureGroupBigQuery {
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureGroupBigQuery].
   /// [bigQuerySource] Immutable. The BigQuery source URI that points to either a BigQuery Table or View.
   /// [entityIdColumns] Optional. Columns to construct entity_id / row keys. Currently only supports 1 entity_id_column. If not provided defaults to `entity_id`.
-  GoogleCloudAiplatformV1beta1FeatureGroupBigQuery({
+  const GoogleCloudAiplatformV1beta1FeatureGroupBigQuery({
     required this.bigQuerySource,
     this.entityIdColumns,
   });

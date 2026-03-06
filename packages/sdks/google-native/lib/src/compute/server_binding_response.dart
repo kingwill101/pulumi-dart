@@ -7,7 +7,7 @@ class ServerBindingResponse {
 
   /// Creates a new [ServerBindingResponse].
   /// [type] Required.
-  ServerBindingResponse({
+  const ServerBindingResponse({
     required this.type,
   });
 

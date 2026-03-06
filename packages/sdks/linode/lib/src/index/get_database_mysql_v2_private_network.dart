@@ -14,7 +14,7 @@ class GetDatabaseMysqlV2PrivateNetwork {
   /// [publicAccess] If true, clients outside of the VPC can connect to the database using a public IP address.
   /// [subnetId] The ID of the VPC subnet to restrict access to this database using.
   /// [vpcId] The ID of the virtual private cloud (VPC) to restrict access to this database using.
-  GetDatabaseMysqlV2PrivateNetwork({
+  const GetDatabaseMysqlV2PrivateNetwork({
     required this.publicAccess,
     required this.subnetId,
     required this.vpcId,

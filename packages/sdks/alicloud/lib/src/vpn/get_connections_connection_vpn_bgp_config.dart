@@ -26,7 +26,7 @@ class GetConnectionsConnectionVpnBgpConfig {
   /// [peerBgpIp] The BGP address on the other side.
   /// [status] The negotiation status of the BGP routing protocol. Valid values: `success`, `false`.
   /// [tunnelCidr] BGP Tunnel CIDR.
-  GetConnectionsConnectionVpnBgpConfig({
+  const GetConnectionsConnectionVpnBgpConfig({
     this.authKey,
     this.localAsn,
     this.localBgpIp,

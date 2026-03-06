@@ -13,7 +13,7 @@ class ClusterOpenMonitoringPrometheus {
   /// Creates a new [ClusterOpenMonitoringPrometheus].
   /// [jmxExporter] Configuration block for JMX Exporter. See open_monitoring prometheus jmx_exporter Argument Reference below.
   /// [nodeExporter] Configuration block for Node Exporter. See open_monitoring prometheus node_exporter Argument Reference below.
-  ClusterOpenMonitoringPrometheus({
+  const ClusterOpenMonitoringPrometheus({
     this.jmxExporter,
     this.nodeExporter,
   });

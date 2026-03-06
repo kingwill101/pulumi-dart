@@ -11,7 +11,7 @@ class InsightsConfigArtifactConfigGoogleArtifactRegistry {
   /// Creates a new [InsightsConfigArtifactConfigGoogleArtifactRegistry].
   /// [artifactRegistryPackage] The name of the artifact registry package.
   /// [projectId] The host project of Artifact Registry.
-  InsightsConfigArtifactConfigGoogleArtifactRegistry({
+  const InsightsConfigArtifactConfigGoogleArtifactRegistry({
     required this.artifactRegistryPackage,
     required this.projectId,
   });

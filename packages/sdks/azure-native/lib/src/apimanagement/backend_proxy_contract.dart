@@ -15,7 +15,7 @@ class BackendProxyContract {
   /// [password] Password to connect to the WebProxy Server
   /// [url] WebProxy Server AbsoluteUri property which includes the entire URI stored in the Uri instance, including all fragments and query strings.
   /// [username] Username to connect to the WebProxy server
-  BackendProxyContract({
+  const BackendProxyContract({
     this.password,
     required this.url,
     this.username,

@@ -15,7 +15,7 @@ class ResourceTypeRegistrationPropertiesResourceMovePolicy {
   /// [crossResourceGroupMoveEnabled] Whether cross resource group move is enabled.
   /// [crossSubscriptionMoveEnabled] Whether cross subscription move is enabled.
   /// [validationRequired] Whether validation is required.
-  ResourceTypeRegistrationPropertiesResourceMovePolicy({
+  const ResourceTypeRegistrationPropertiesResourceMovePolicy({
     this.crossResourceGroupMoveEnabled,
     this.crossSubscriptionMoveEnabled,
     this.validationRequired,

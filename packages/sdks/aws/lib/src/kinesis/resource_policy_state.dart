@@ -15,7 +15,7 @@ class ResourcePolicyState {
   /// [policy] The policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the data stream or consumer.
-  ResourcePolicyState({
+  const ResourcePolicyState({
     this.policy,
     this.region,
     this.resourceArn,

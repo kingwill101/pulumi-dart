@@ -94,7 +94,7 @@ class WorkstationConfigArgs {
   /// [runningTimeout] How long to wait before automatically stopping a workstation after it was started. A value of 0 indicates that workstations using this configuration should never time out from running duration. Must be greater than 0 and less than 24 hours if `encryption_key` is set. Defaults to 12 hours.
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] The ID to be assigned to the workstation cluster config.
-  WorkstationConfigArgs({
+  const WorkstationConfigArgs({
     this.allowedPorts,
     this.annotations,
     this.container,

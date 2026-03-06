@@ -11,7 +11,7 @@ class FormTypeImport {
   /// Creates a new [FormTypeImport].
   /// [name] Name of the form type. Must be the name of the structure in smithy document.
   /// [revision] Revision of the Form Type.
-  FormTypeImport({
+  const FormTypeImport({
     required this.name,
     required this.revision,
   });

@@ -17,7 +17,7 @@ class GetVersionArgs {
   /// [serviceId] Required.
   /// [versionId] Required.
   /// [view] Optional.
-  GetVersionArgs({
+  const GetVersionArgs({
     required this.appId,
     required this.serviceId,
     required this.versionId,

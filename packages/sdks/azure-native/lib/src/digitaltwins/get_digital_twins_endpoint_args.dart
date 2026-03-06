@@ -18,7 +18,7 @@ class GetDigitalTwinsEndpointArgs {
   /// [endpointName] Name of Endpoint Resource.
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
-  GetDigitalTwinsEndpointArgs({
+  const GetDigitalTwinsEndpointArgs({
     required this.endpointName,
     required this.resourceGroupName,
     required this.resourceName,

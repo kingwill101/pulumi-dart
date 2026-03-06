@@ -23,7 +23,7 @@ class GetCertificateAuthorityRevocationConfigurationCrlConfiguration {
   /// [expirationInDays] Number of days until a certificate expires.
   /// [s3BucketName] Name of the S3 bucket that contains the CRL.
   /// [s3ObjectAcl] Whether the CRL is publicly readable or privately held in the CRL Amazon S3 bucket.
-  GetCertificateAuthorityRevocationConfigurationCrlConfiguration({
+  const GetCertificateAuthorityRevocationConfigurationCrlConfiguration({
     required this.customCname,
     required this.customPath,
     required this.enabled,

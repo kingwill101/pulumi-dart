@@ -22,7 +22,7 @@ class NotificationChannelArgs {
   /// [filters] Filter configurations for the Amazon SNS notification topic. See the `filters` argument reference below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sns] SNS noficiation channel configurations. See the `sns` argument reference below.
-  NotificationChannelArgs({
+  const NotificationChannelArgs({
     this.filters,
     this.region,
     required this.sns,

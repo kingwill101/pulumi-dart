@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig].
   /// [file] Specifies a file for loading additional network configuration in the backing store source.
-  DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig({
+  const DomainDevicesDiskMirrorBackingStoreSourceNetworkConfig({
     required this.file,
   });
 

@@ -11,7 +11,7 @@ class PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment].
   /// [name] Name of the pipe. If omitted, the provider will assign a random, unique name. Conflicts with `name_prefix`.
   /// [value] Value of parameter to start execution of a SageMaker AI Model Building Pipeline. Maximum length of 1024.
-  PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment({
+  const PipeTargetParametersEcsTaskParametersOverridesContainerOverrideEnvironment({
     this.name,
     this.value,
   });

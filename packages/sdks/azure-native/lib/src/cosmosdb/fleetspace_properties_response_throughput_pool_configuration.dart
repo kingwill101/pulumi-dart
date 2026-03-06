@@ -12,7 +12,7 @@ class FleetspacePropertiesResponseThroughputPoolConfiguration {
   /// Creates a new [FleetspacePropertiesResponseThroughputPoolConfiguration].
   /// [maxThroughput] Maximum throughput for the pool.
   /// [minThroughput] Minimum throughput for the pool.
-  FleetspacePropertiesResponseThroughputPoolConfiguration({
+  const FleetspacePropertiesResponseThroughputPoolConfiguration({
     this.maxThroughput,
     this.minThroughput,
   });

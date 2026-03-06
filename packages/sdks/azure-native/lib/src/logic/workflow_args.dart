@@ -50,7 +50,7 @@ class WorkflowArgs {
   /// [state] The state.
   /// [tags] The resource tags.
   /// [workflowName] The workflow name.
-  WorkflowArgs({
+  const WorkflowArgs({
     this.accessControl,
     this.definition,
     this.endpointsConfiguration,

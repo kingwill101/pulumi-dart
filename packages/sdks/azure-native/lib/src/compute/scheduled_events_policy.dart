@@ -18,7 +18,7 @@ class ScheduledEventsPolicy {
   /// [scheduledEventsAdditionalPublishingTargets] The configuration parameters used while publishing scheduledEventsAdditionalPublishingTargets.
   /// [userInitiatedReboot] The configuration parameters used while creating userInitiatedReboot scheduled event setting creation.
   /// [userInitiatedRedeploy] The configuration parameters used while creating userInitiatedRedeploy scheduled event setting creation.
-  ScheduledEventsPolicy({
+  const ScheduledEventsPolicy({
     this.scheduledEventsAdditionalPublishingTargets,
     this.userInitiatedReboot,
     this.userInitiatedRedeploy,

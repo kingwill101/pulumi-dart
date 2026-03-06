@@ -36,7 +36,7 @@ class GetAzureADAdministratorResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tenantId] Tenant ID of the administrator.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAzureADAdministratorResult({
+  const GetAzureADAdministratorResult({
     this.administratorType,
     required this.azureApiVersion,
     required this.id,

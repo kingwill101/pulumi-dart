@@ -24,7 +24,7 @@ class GetSnapshotArgs {
   /// [poolName] The name of the NetApp Pool where the NetApp Volume exists.
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Snapshot exists.
   /// [volumeName] The name of the NetApp Volume where the NetApp Snapshot exists.
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     required this.accountName,
     required this.name,
     required this.poolName,

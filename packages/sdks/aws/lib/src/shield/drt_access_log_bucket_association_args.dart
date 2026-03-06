@@ -18,7 +18,7 @@ class DrtAccessLogBucketAssociationArgs {
   /// [logBucket] The Amazon S3 bucket that contains the logs that you want to share.
   /// [roleArnAssociationId] The ID of the Role Arn association used for allowing Shield DRT Access.
   /// [timeouts] Optional.
-  DrtAccessLogBucketAssociationArgs({
+  const DrtAccessLogBucketAssociationArgs({
     required this.logBucket,
     required this.roleArnAssociationId,
     this.timeouts,

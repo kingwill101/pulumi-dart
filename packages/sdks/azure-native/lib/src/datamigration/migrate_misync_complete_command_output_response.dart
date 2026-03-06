@@ -10,7 +10,7 @@ class MigrateMISyncCompleteCommandOutputResponse {
 
   /// Creates a new [MigrateMISyncCompleteCommandOutputResponse].
   /// [errors] List of errors that happened during the command execution
-  MigrateMISyncCompleteCommandOutputResponse({
+  const MigrateMISyncCompleteCommandOutputResponse({
     this.errors,
   });
 

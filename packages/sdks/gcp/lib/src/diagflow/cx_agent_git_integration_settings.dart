@@ -10,7 +10,7 @@ class CxAgentGitIntegrationSettings {
 
   /// Creates a new [CxAgentGitIntegrationSettings].
   /// [githubSettings] Settings of integration with GitHub.
-  CxAgentGitIntegrationSettings({
+  const CxAgentGitIntegrationSettings({
     this.githubSettings,
   });
 

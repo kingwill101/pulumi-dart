@@ -35,7 +35,7 @@ class DomainTrustState {
   /// [trustDirection] The trust direction, which decides if the current domain is trusted, trusting, or both.
   /// [trustHandshakeSecret] The trust secret used for the handshake with the target domain. This will not be stored.
   /// [trustType] The type of trust represented by the trust resource.
-  DomainTrustState({
+  const DomainTrustState({
     this.domain,
     this.project,
     this.selectiveAuthentication,

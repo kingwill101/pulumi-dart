@@ -28,7 +28,7 @@ class PasswordValidationPolicy {
   /// [minLength] Minimum number of characters allowed.
   /// [passwordChangeInterval] Minimum interval after which the password can be changed. This flag is only supported for PostgreSQL.
   /// [reuseInterval] Number of previous passwords that cannot be reused.
-  PasswordValidationPolicy({
+  const PasswordValidationPolicy({
     this.complexity,
     this.disallowCompromisedCredentials,
     this.disallowUsernameSubstring,

@@ -35,7 +35,7 @@ class NetworkManagedService {
   /// [serviceNetworkEndpoints] Required.
   /// [stsAccesses] Specifies the configuration for STS access from the ODB network.
   /// [zeroEtlAccesses] Specifies the configuration for Zero-ETL access from the ODB network.
-  NetworkManagedService({
+  const NetworkManagedService({
     required this.kmsAccesses,
     required this.managedS3BackupAccesses,
     required this.managedServiceIpv4Cidrs,

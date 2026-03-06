@@ -8,7 +8,7 @@ class GetClusterNetworkPerformanceConfig {
 
   /// Creates a new [GetClusterNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for NodePools in the cluster.
-  GetClusterNetworkPerformanceConfig({
+  const GetClusterNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

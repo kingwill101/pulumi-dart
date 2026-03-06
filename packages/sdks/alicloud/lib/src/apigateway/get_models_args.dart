@@ -28,7 +28,7 @@ class GetModelsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetModelsArgs({
+  const GetModelsArgs({
     required this.groupId,
     this.ids,
     this.modelName,

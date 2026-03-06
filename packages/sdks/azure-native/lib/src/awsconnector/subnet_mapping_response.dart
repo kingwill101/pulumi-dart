@@ -21,7 +21,7 @@ class SubnetMappingResponse {
   /// [ipAddressType] A IPAddressType
   /// [privateIPv4Address] [Network Load Balancers] The private IPv4 address for an internal load balancer.
   /// [subnetId] A SubnetId.
-  SubnetMappingResponse({
+  const SubnetMappingResponse({
     this.allocationId,
     this.iPv6Address,
     this.ipAddressType,

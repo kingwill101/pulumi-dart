@@ -21,7 +21,7 @@ class HostShareKeyArgs {
   /// [instanceId] The ID of the Bastion instance.
   /// [passPhrase] The password of the private key. The value is a Base64-encoded string.
   /// [privateKey] The private key. The value is a Base64-encoded string.
-  HostShareKeyArgs({
+  const HostShareKeyArgs({
     required this.hostShareKeyName,
     required this.instanceId,
     this.passPhrase,

@@ -9,7 +9,7 @@ class AnalyzerConfigurationInternalAccessAnalysisRule {
 
   /// Creates a new [AnalyzerConfigurationInternalAccessAnalysisRule].
   /// [inclusions] List of rules for the internal access analyzer containing criteria to include in analysis. Only resources that meet the rule criteria will generate findings. See `inclusion` Block for details.
-  AnalyzerConfigurationInternalAccessAnalysisRule({
+  const AnalyzerConfigurationInternalAccessAnalysisRule({
     this.inclusions,
   });
 

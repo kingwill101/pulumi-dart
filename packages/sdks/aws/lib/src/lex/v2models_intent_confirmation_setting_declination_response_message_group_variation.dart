@@ -21,7 +21,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariation 
   /// [imageResponseCard] Configuration block for a message that defines a response card that the client application can show to the user. See `image_response_card`.
   /// [plainTextMessage] Configuration block for a message in plain text format. See `plain_text_message`.
   /// [ssmlMessage] Configuration block for a message in Speech Synthesis Markup Language (SSML). See `ssml_message`.
-  V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariation({
+  const V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariation({
     this.customPayload,
     this.imageResponseCard,
     this.plainTextMessage,

@@ -21,7 +21,7 @@ class WebAppMetadataArgs {
   /// [name] Name of the app.
   /// [properties] Settings.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppMetadataArgs({
+  const WebAppMetadataArgs({
     this.kind,
     required this.name,
     this.properties,

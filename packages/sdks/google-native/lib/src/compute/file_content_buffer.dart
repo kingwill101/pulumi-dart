@@ -12,7 +12,7 @@ class FileContentBuffer {
   /// Creates a new [FileContentBuffer].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  FileContentBuffer({
+  const FileContentBuffer({
     this.content,
     this.fileType,
   });

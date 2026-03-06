@@ -10,7 +10,7 @@ class DSSEAttestationNoteResponseContaineranalysisV1alpha1 {
 
   /// Creates a new [DSSEAttestationNoteResponseContaineranalysisV1alpha1].
   /// [hint] DSSEHint hints at the purpose of the attestation authority.
-  DSSEAttestationNoteResponseContaineranalysisV1alpha1({
+  const DSSEAttestationNoteResponseContaineranalysisV1alpha1({
     required this.hint,
   });
 

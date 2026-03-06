@@ -13,7 +13,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule {
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule].
   /// [hoursInCycle] The number of hours between snapshots.
   /// [startTime] Time within the window to start the operations.
-  ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule({
+  const ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule({
     required this.hoursInCycle,
     required this.startTime,
   });

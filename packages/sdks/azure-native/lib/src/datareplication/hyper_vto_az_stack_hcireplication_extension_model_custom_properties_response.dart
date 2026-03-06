@@ -58,7 +58,7 @@ class HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse {
   /// [subscriptionId] Gets or sets the subscription.
   /// [targetGatewayServiceId] Gets or sets the gateway service Id of target.
   /// [targetStorageContainerName] Gets or sets the target storage container name.
-  HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse({
+  const HyperVToAzStackHCIReplicationExtensionModelCustomPropertiesResponse({
     required this.asrServiceUri,
     required this.azStackHciFabricArmId,
     required this.azStackHciSiteId,

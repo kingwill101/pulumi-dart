@@ -55,7 +55,7 @@ class IoMAMPolicyByNameArgs {
   /// [policyName] Unique name for the policy
   /// [tags] Resource Tags
   /// [touchId] Optional.
-  IoMAMPolicyByNameArgs({
+  const IoMAMPolicyByNameArgs({
     this.accessRecheckOfflineTimeout,
     this.accessRecheckOnlineTimeout,
     this.appSharingFromLevel,

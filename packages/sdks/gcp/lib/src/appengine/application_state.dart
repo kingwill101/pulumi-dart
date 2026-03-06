@@ -62,7 +62,7 @@ class ApplicationState {
   /// [servingStatus] The serving status of the app.
   /// [sslPolicy] A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
   /// [urlDispatchRules] A list of dispatch rule blocks. Each block has a `domain`, `path`, and `service` field.
-  ApplicationState({
+  const ApplicationState({
     this.appId,
     this.authDomain,
     this.codeBucket,

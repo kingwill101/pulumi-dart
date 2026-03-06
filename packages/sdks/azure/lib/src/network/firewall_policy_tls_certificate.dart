@@ -11,7 +11,7 @@ class FirewallPolicyTlsCertificate {
   /// Creates a new [FirewallPolicyTlsCertificate].
   /// [keyVaultSecretId] The Secret Identifier (URI) of the certificate stored in Azure Key Vault, either as a secret or certificate.
   /// [name] The name of the certificate.
-  FirewallPolicyTlsCertificate({
+  const FirewallPolicyTlsCertificate({
     required this.keyVaultSecretId,
     required this.name,
   });

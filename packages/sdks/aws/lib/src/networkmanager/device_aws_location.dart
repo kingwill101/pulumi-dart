@@ -11,7 +11,7 @@ class DeviceAwsLocation {
   /// Creates a new [DeviceAwsLocation].
   /// [subnetArn] ARN of the subnet that the device is located in.
   /// [zone] Zone that the device is located in. Specify the ID of an Availability Zone, Local Zone, Wavelength Zone, or an Outpost.
-  DeviceAwsLocation({
+  const DeviceAwsLocation({
     this.subnetArn,
     this.zone,
   });

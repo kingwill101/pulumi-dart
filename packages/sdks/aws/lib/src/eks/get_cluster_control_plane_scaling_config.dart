@@ -8,7 +8,7 @@ class GetClusterControlPlaneScalingConfig {
 
   /// Creates a new [GetClusterControlPlaneScalingConfig].
   /// [tier] The control plane scaling tier. Valid values are `standard`, `tier-xl`, `tier-2xl`, or `tier-4xl`.
-  GetClusterControlPlaneScalingConfig({
+  const GetClusterControlPlaneScalingConfig({
     required this.tier,
   });
 

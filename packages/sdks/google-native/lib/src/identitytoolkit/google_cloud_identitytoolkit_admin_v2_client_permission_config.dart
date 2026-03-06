@@ -10,7 +10,7 @@ class GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig].
   /// [permissions] Configuration related to restricting a user's ability to affect their account.
-  GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig({
+  const GoogleCloudIdentitytoolkitAdminV2ClientPermissionConfig({
     this.permissions,
   });
 

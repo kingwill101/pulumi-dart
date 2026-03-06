@@ -8,7 +8,7 @@ class GremlinGraphUniqueKey {
 
   /// Creates a new [GremlinGraphUniqueKey].
   /// [paths] A list of paths to use for this unique key. Changing this forces a new resource to be created.
-  GremlinGraphUniqueKey({
+  const GremlinGraphUniqueKey({
     required this.paths,
   });
 

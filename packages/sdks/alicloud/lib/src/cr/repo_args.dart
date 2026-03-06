@@ -24,7 +24,7 @@ class RepoArgs {
   /// [namespace] Name of container registry namespace where repository is located.
   /// [repoType] `PUBLIC` or `PRIVATE`, repo's visibility.
   /// [summary] The repository general information. It can contain 1 to 80 characters.
-  RepoArgs({
+  const RepoArgs({
     this.detail,
     this.name,
     required this.namespace,

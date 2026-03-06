@@ -8,7 +8,7 @@ class GcpIntegrationsFireBaseHosting {
 
   /// Creates a new [GcpIntegrationsFireBaseHosting].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsFireBaseHosting({
+  const GcpIntegrationsFireBaseHosting({
     this.metricsPollingInterval,
   });
 

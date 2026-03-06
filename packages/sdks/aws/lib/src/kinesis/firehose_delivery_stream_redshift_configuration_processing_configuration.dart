@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration {
   /// Creates a new [FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
   /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
-  FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration({
+  const FirehoseDeliveryStreamRedshiftConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,
   });

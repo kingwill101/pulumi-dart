@@ -14,7 +14,7 @@ class InstanceScratchDisk {
   /// [deviceName] Name with which the attached disk is accessible under /dev/disk/by-id/
   /// [interface] The disk interface to use for attaching this disk; either SCSI or NVME.
   /// [size] The size of the disk in gigabytes. One of 375 or 3000.
-  InstanceScratchDisk({
+  const InstanceScratchDisk({
     this.deviceName,
     required this.interface,
     this.size,

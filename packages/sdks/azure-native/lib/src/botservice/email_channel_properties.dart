@@ -21,7 +21,7 @@ class EmailChannelProperties {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [magicCode] The magic code for setting up the modern authentication.
   /// [password] The password for the email address. Value only returned through POST to the action Channel List API, otherwise empty.
-  EmailChannelProperties({
+  const EmailChannelProperties({
     this.authMethod,
     required this.emailAddress,
     required this.isEnabled,

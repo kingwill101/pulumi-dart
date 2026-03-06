@@ -32,7 +32,7 @@ class GetZonesResult {
   /// [multiZone] Optional.
   /// [outputFile] Optional.
   /// [zones] A list of availability zones. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     this.category,
     this.dbInstanceStorageType,
     this.engine,

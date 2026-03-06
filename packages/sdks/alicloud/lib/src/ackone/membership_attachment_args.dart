@@ -15,7 +15,7 @@ class MembershipAttachmentArgs {
   /// Creates a new [MembershipAttachmentArgs].
   /// [clusterId] The ID of the cluster to which the membership is being attached.
   /// [subClusterId] The ID of the member being attached to the cluster.
-  MembershipAttachmentArgs({
+  const MembershipAttachmentArgs({
     required this.clusterId,
     required this.subClusterId,
   });

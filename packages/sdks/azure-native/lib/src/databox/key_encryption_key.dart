@@ -19,7 +19,7 @@ class KeyEncryptionKey {
   /// [kekType] Type of encryption key used for key encryption.
   /// [kekUrl] Key encryption key. It is required in case of Customer managed KekType.
   /// [kekVaultResourceID] Kek vault resource id. It is required in case of Customer managed KekType.
-  KeyEncryptionKey({
+  const KeyEncryptionKey({
     this.identityProperties,
     required this.kekType,
     this.kekUrl,

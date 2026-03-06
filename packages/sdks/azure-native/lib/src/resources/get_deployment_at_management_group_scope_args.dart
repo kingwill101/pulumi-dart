@@ -15,7 +15,7 @@ class GetDeploymentAtManagementGroupScopeArgs {
   /// Creates a new [GetDeploymentAtManagementGroupScopeArgs].
   /// [deploymentName] The name of the deployment.
   /// [groupId] The management group ID.
-  GetDeploymentAtManagementGroupScopeArgs({
+  const GetDeploymentAtManagementGroupScopeArgs({
     required this.deploymentName,
     required this.groupId,
   });

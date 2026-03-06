@@ -36,7 +36,7 @@ class PlanState {
   /// [tags] Metadata that you can assign to help organize the plans you create. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-  PlanState({
+  const PlanState({
     this.advancedBackupSettings,
     this.arn,
     this.name,

@@ -22,7 +22,7 @@ class UserInfo {
   /// [emailAddress] Email of the user used by Elastic for contacting them if needed
   /// [firstName] First name of the user
   /// [lastName] Last name of the user
-  UserInfo({
+  const UserInfo({
     this.companyInfo,
     this.companyName,
     this.emailAddress,

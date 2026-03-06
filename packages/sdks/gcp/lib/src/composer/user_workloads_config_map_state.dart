@@ -23,7 +23,7 @@ class UserWorkloadsConfigMapState {
   /// [name] Name of the Kubernetes ConfigMap.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region for the environment.
-  UserWorkloadsConfigMapState({
+  const UserWorkloadsConfigMapState({
     this.data,
     this.environment,
     this.name,

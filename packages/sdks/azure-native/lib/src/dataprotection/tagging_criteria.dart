@@ -20,7 +20,7 @@ class TaggingCriteria {
   /// [isDefault] Specifies if tag is default.
   /// [tagInfo] Retention tag information
   /// [taggingPriority] Retention Tag priority.
-  TaggingCriteria({
+  const TaggingCriteria({
     this.criteria,
     required this.isDefault,
     required this.tagInfo,

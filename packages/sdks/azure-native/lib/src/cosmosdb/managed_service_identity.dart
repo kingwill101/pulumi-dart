@@ -13,7 +13,7 @@ class ManagedServiceIdentity {
   /// Creates a new [ManagedServiceIdentity].
   /// [type] The type of identity used for the resource. The type 'SystemAssigned,UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
   /// [userAssignedIdentities] The list of user identities associated with resource. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  ManagedServiceIdentity({
+  const ManagedServiceIdentity({
     this.type,
     this.userAssignedIdentities,
   });

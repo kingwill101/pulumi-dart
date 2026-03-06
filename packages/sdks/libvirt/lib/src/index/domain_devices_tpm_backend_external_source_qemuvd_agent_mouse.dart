@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse({
+  const DomainDevicesTpmBackendExternalSourceQemuvdAgentMouse({
     required this.mode,
   });
 

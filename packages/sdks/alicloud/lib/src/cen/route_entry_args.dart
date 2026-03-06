@@ -22,7 +22,7 @@ class RouteEntryArgs {
   /// [cidrBlock] The destination CIDR block of the route entry to publish.
   /// [instanceId] The ID of the CEN.
   /// [routeTableId] The route table of the attached VBR or VPC.
-  RouteEntryArgs({
+  const RouteEntryArgs({
     required this.cidrBlock,
     required this.instanceId,
     required this.routeTableId,

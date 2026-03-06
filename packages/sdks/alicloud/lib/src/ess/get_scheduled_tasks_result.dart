@@ -28,7 +28,7 @@ class GetScheduledTasksResult {
   /// [scheduledAction] The operation to be performed when a scheduled task is triggered.
   /// [scheduledTaskId] Optional.
   /// [tasks] A list of scheduled tasks. Each element contains the following attributes:
-  GetScheduledTasksResult({
+  const GetScheduledTasksResult({
     required this.id,
     required this.ids,
     this.nameRegex,

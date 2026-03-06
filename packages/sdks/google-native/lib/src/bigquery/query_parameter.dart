@@ -16,7 +16,7 @@ class QueryParameter {
   /// [name] [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
   /// [parameterType] [Required] The type of this parameter.
   /// [parameterValue] [Required] The value of this parameter.
-  QueryParameter({
+  const QueryParameter({
     this.name,
     this.parameterType,
     this.parameterValue,

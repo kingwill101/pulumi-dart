@@ -15,7 +15,7 @@ class GetClientArgs {
   /// Creates a new [GetClientArgs].
   /// [brand] The name of the brand.
   /// [clientId] The client_id of the brand.
-  GetClientArgs({
+  const GetClientArgs({
     required this.brand,
     required this.clientId,
   });

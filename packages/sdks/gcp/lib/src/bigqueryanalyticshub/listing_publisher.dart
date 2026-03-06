@@ -11,7 +11,7 @@ class ListingPublisher {
   /// Creates a new [ListingPublisher].
   /// [name] Name of the listing publisher.
   /// [primaryContact] Email or URL of the listing publisher.
-  ListingPublisher({
+  const ListingPublisher({
     required this.name,
     this.primaryContact,
   });

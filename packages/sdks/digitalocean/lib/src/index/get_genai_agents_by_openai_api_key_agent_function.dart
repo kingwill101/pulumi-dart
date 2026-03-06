@@ -35,7 +35,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentFunction {
   /// [updatedAt] Updated At timestamp for the Agent
   /// [url] Url of the Deployment
   /// [uuid] API Key value
-  GetGenaiAgentsByOpenaiApiKeyAgentFunction({
+  const GetGenaiAgentsByOpenaiApiKeyAgentFunction({
     this.apiKey,
     required this.createdAt,
     this.description,

@@ -24,7 +24,7 @@ class PartnerArgs {
   /// [databaseName] The name of the database that receives data from the partner.
   /// [partnerName] The name of the partner that is authorized to send data.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PartnerArgs({
+  const PartnerArgs({
     required this.accountId,
     required this.clusterIdentifier,
     required this.databaseName,

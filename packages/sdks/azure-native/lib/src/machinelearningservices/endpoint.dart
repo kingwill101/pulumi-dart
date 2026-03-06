@@ -21,7 +21,7 @@ class Endpoint {
   /// [protocol] Protocol over which communication will happen over this endpoint
   /// [published] Port over which the application is exposed from container.
   /// [target] Application port inside the container.
-  Endpoint({
+  const Endpoint({
     this.hostIp,
     this.name,
     this.protocol,

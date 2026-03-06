@@ -18,7 +18,7 @@ class GetPython2PackageArgs {
   /// [automationAccountName] The name of the automation account.
   /// [packageName] The python package name.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetPython2PackageArgs({
+  const GetPython2PackageArgs({
     required this.automationAccountName,
     required this.packageName,
     required this.resourceGroupName,

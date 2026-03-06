@@ -16,7 +16,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce {
   /// [idFieldNames] Optional.
   /// [object_] Required.
   /// [writeOperationType] Optional.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesSalesforce({
     this.dataTransferApi,
     this.errorHandlingConfig,
     this.idFieldNames,

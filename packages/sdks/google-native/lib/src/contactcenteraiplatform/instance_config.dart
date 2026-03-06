@@ -10,7 +10,7 @@ class InstanceConfig {
 
   /// Creates a new [InstanceConfig].
   /// [instanceSize] The instance size of this the instance configuration.
-  InstanceConfig({
+  const InstanceConfig({
     this.instanceSize,
   });
 

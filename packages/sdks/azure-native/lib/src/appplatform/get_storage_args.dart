@@ -18,7 +18,7 @@ class GetStorageArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   /// [storageName] The name of the storage resource.
-  GetStorageArgs({
+  const GetStorageArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.storageName,

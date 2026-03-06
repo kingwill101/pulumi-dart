@@ -20,7 +20,7 @@ class GetAlertRuleAnomalyArgs {
   /// [displayName] The display name of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace.
   /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
-  GetAlertRuleAnomalyArgs({
+  const GetAlertRuleAnomalyArgs({
     this.displayName,
     required this.logAnalyticsWorkspaceId,
     this.name,

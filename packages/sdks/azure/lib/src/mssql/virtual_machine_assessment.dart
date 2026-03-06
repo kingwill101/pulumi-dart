@@ -15,7 +15,7 @@ class VirtualMachineAssessment {
   /// [enabled] Should Assessment be enabled? Defaults to `true`.
   /// [runImmediately] Should Assessment be run immediately? Defaults to `false`.
   /// [schedule] An `schedule` block as defined below.
-  VirtualMachineAssessment({
+  const VirtualMachineAssessment({
     this.enabled,
     this.runImmediately,
     this.schedule,

@@ -8,7 +8,7 @@ class GetFeatureSpecMulticlusteringress {
 
   /// Creates a new [GetFeatureSpecMulticlusteringress].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
-  GetFeatureSpecMulticlusteringress({
+  const GetFeatureSpecMulticlusteringress({
     required this.configMembership,
   });
 

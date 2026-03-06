@@ -11,7 +11,7 @@ class GetMongoInstancesInstanceRestoreRange {
   /// [restoreBeginTime] Required.
   /// [restoreEndTime] Required.
   /// [restoreType] Required.
-  GetMongoInstancesInstanceRestoreRange({
+  const GetMongoInstancesInstanceRestoreRange({
     required this.restoreBeginTime,
     required this.restoreEndTime,
     required this.restoreType,

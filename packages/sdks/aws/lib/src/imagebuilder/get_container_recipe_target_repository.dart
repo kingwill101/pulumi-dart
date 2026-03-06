@@ -11,7 +11,7 @@ class GetContainerRecipeTargetRepository {
   /// Creates a new [GetContainerRecipeTargetRepository].
   /// [repositoryName] Name of the container repository where the output container image is stored. The name is prefixed by the repository location.
   /// [service] Service in which this image is registered.
-  GetContainerRecipeTargetRepository({
+  const GetContainerRecipeTargetRepository({
     required this.repositoryName,
     required this.service,
   });

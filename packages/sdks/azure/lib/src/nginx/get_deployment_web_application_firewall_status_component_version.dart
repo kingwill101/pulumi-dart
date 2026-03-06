@@ -9,7 +9,7 @@ class GetDeploymentWebApplicationFirewallStatusComponentVersion {
   /// Creates a new [GetDeploymentWebApplicationFirewallStatusComponentVersion].
   /// [wafEngineVersion] Required.
   /// [wafNginxVersion] Required.
-  GetDeploymentWebApplicationFirewallStatusComponentVersion({
+  const GetDeploymentWebApplicationFirewallStatusComponentVersion({
     required this.wafEngineVersion,
     required this.wafNginxVersion,
   });

@@ -16,7 +16,7 @@ class SelfDependencyTumblingWindowTriggerReference {
   /// [offset] Timespan applied to the start time of a tumbling window when evaluating dependency.
   /// [size] The size of the window when evaluating the dependency. If undefined the frequency of the tumbling window will be used.
   /// [type] The type of dependency reference.
-  SelfDependencyTumblingWindowTriggerReference({
+  const SelfDependencyTumblingWindowTriggerReference({
     required this.offset,
     this.size,
     required this.type,

@@ -11,7 +11,7 @@ class StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier {
   /// Creates a new [StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier].
   /// [schema] The schema name.
   /// [table] The table name.
-  StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier({
+  const StreamRuleSetObjectFilterSourceObjectIdentifierOracleIdentifier({
     required this.schema,
     required this.table,
   });

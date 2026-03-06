@@ -8,7 +8,7 @@ class GcpIntegrationsLoadBalancing {
 
   /// Creates a new [GcpIntegrationsLoadBalancing].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsLoadBalancing({
+  const GcpIntegrationsLoadBalancing({
     this.metricsPollingInterval,
   });
 

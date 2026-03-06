@@ -33,7 +33,7 @@ class SharedDiskReplicationItemPropertiesResponse {
   /// [replicationHealth] The consolidated protection health for the VM taking any issues with SRS as well as all the replication units associated with the VM's replication group into account. This is a string representation of the ProtectionHealth enumeration.
   /// [sharedDiskProviderSpecificDetails] The Replication provider custom settings.
   /// [testFailoverState] The tfo state of shared disk.
-  SharedDiskReplicationItemPropertiesResponse({
+  const SharedDiskReplicationItemPropertiesResponse({
     this.activeLocation,
     this.allowedOperations,
     this.currentScenario,

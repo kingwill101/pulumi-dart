@@ -15,7 +15,7 @@ class ListHypervSitesControllerHealthSummaryArgs {
   /// Creates a new [ListHypervSitesControllerHealthSummaryArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  ListHypervSitesControllerHealthSummaryArgs({
+  const ListHypervSitesControllerHealthSummaryArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

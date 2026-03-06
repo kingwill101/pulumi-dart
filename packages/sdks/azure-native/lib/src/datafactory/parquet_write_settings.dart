@@ -16,7 +16,7 @@ class ParquetWriteSettings {
   /// [fileNamePrefix] Specifies the file name pattern &lt;fileNamePrefix&gt;_&lt;fileIndex&gt;.&lt;fileExtension&gt; when copy from non-file based store without partitionOptions. Type: string (or Expression with resultType string).
   /// [maxRowsPerFile] Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
   /// [type] The write setting type.
-  ParquetWriteSettings({
+  const ParquetWriteSettings({
     this.fileNamePrefix,
     this.maxRowsPerFile,
     required this.type,

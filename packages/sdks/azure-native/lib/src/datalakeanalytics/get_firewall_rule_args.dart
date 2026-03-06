@@ -18,7 +18,7 @@ class GetFirewallRuleArgs {
   /// [accountName] The name of the Data Lake Analytics account.
   /// [firewallRuleName] The name of the firewall rule to retrieve.
   /// [resourceGroupName] The name of the Azure resource group.
-  GetFirewallRuleArgs({
+  const GetFirewallRuleArgs({
     required this.accountName,
     required this.firewallRuleName,
     required this.resourceGroupName,

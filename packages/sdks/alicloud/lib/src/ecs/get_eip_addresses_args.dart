@@ -62,7 +62,7 @@ class GetEipAddressesArgs {
   /// [segmentInstanceId] The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
   /// [status] The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEipAddressesArgs({
+  const GetEipAddressesArgs({
     this.addressName,
     this.associatedInstanceId,
     this.associatedInstanceType,

@@ -63,7 +63,7 @@ class RuntimeState {
   /// [softwareConfig] The config settings for software inside the runtime.
   /// [state] The state of this runtime.
   /// [virtualMachine] Use a Compute Engine VM image to start the managed notebook instance.
-  RuntimeState({
+  const RuntimeState({
     this.accessConfig,
     this.effectiveLabels,
     this.healthState,

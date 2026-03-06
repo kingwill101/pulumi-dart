@@ -23,7 +23,7 @@ class ProxyAuth {
   /// [iamAuth] Whether to require or disallow AWS Identity and Access Management (IAM) authentication for connections to the proxy. One of `DISABLED`, `REQUIRED`.
   /// [secretArn] The Amazon Resource Name (ARN) representing the secret that the proxy uses to authenticate to the RDS DB instance or Aurora DB cluster. These secrets are stored within Amazon Secrets Manager.
   /// [username] The name of the database user to which the proxy connects.
-  ProxyAuth({
+  const ProxyAuth({
     this.authScheme,
     this.clientPasswordAuthType,
     this.description,

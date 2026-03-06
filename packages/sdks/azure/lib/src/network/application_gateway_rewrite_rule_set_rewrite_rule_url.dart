@@ -19,7 +19,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRuleUrl {
   /// [path] The URL path to rewrite.
   /// [queryString] The query string to rewrite.
   /// [reroute] Whether the URL path map should be reevaluated after this rewrite has been applied. [More info on rewrite configuration](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers-url#rewrite-configuration)
-  ApplicationGatewayRewriteRuleSetRewriteRuleUrl({
+  const ApplicationGatewayRewriteRuleSetRewriteRuleUrl({
     this.components,
     this.path,
     this.queryString,

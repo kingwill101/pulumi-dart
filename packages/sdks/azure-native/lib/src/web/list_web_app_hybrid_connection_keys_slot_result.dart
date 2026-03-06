@@ -23,7 +23,7 @@ class ListWebAppHybridConnectionKeysSlotResult {
   /// [sendKeyName] The name of the send key.
   /// [sendKeyValue] The value of the send key.
   /// [type] Resource type.
-  ListWebAppHybridConnectionKeysSlotResult({
+  const ListWebAppHybridConnectionKeysSlotResult({
     required this.id,
     this.kind,
     required this.name,

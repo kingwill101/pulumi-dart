@@ -8,7 +8,7 @@ class DomainDevicesGraphicVncListenerAddress {
 
   /// Creates a new [DomainDevicesGraphicVncListenerAddress].
   /// [address] Sets the actual network address where the Spice listener will accept connections.
-  DomainDevicesGraphicVncListenerAddress({
+  const DomainDevicesGraphicVncListenerAddress({
     this.address,
   });
 

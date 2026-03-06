@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchRe
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

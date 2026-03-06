@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1TimestampValue {
   /// Creates a new [GoogleCloudContentwarehouseV1TimestampValue].
   /// [textValue] The string must represent a valid instant in UTC and is parsed using java.time.format.DateTimeFormatter.ISO_INSTANT. e.g. "2013-09-29T18:46:19Z"
   /// [timestampValue] Timestamp value
-  GoogleCloudContentwarehouseV1TimestampValue({
+  const GoogleCloudContentwarehouseV1TimestampValue({
     this.textValue,
     this.timestampValue,
   });

@@ -8,7 +8,7 @@ class UserPoolUsernameConfiguration {
 
   /// Creates a new [UserPoolUsernameConfiguration].
   /// [caseSensitive] Whether username case sensitivity will be applied for all users in the user pool through Cognito APIs.
-  UserPoolUsernameConfiguration({
+  const UserPoolUsernameConfiguration({
     this.caseSensitive,
   });
 

@@ -10,7 +10,7 @@ class GetGatewayRouteSpecGrpcRouteActionTarget {
   /// Creates a new [GetGatewayRouteSpecGrpcRouteActionTarget].
   /// [port] Required.
   /// [virtualServices] Required.
-  GetGatewayRouteSpecGrpcRouteActionTarget({
+  const GetGatewayRouteSpecGrpcRouteActionTarget({
     required this.port,
     required this.virtualServices,
   });

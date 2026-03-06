@@ -27,7 +27,7 @@ class GetAclsAcl {
   /// [relatedListeners] A list of listener are attached by the acl.  Each listener contains four sub-fields as `Listener Block` follows.
   /// [resourceGroupId] The Id of resource group which acl belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetAclsAcl({
+  const GetAclsAcl({
     required this.entryLists,
     required this.id,
     required this.ipVersion,

@@ -37,7 +37,7 @@ class JobExtract {
   /// [sourceModel] A reference to the model being exported.
   /// [sourceTable] A reference to the table being exported.
   /// [useAvroLogicalTypes] Whether to use logical types when extracting to AVRO format.
-  JobExtract({
+  const JobExtract({
     this.compression,
     this.destinationFormat,
     required this.destinationUris,

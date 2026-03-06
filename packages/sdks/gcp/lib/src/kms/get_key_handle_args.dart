@@ -23,7 +23,7 @@ class GetKeyHandleArgs {
   /// [location] The Google Cloud Platform location for the KeyHandle.
   /// [name] The KeyHandle's name.
   /// [project] The project in which the resource belongs. If it
-  GetKeyHandleArgs({
+  const GetKeyHandleArgs({
     required this.location,
     required this.name,
     this.project,

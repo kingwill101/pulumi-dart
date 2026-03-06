@@ -14,7 +14,7 @@ class RepositoryRemoteRepositoryConfigPythonRepository {
   /// Creates a new [RepositoryRemoteRepositoryConfigPythonRepository].
   /// [customRepository] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// [publicRepository] Address of the remote repository.
-  RepositoryRemoteRepositoryConfigPythonRepository({
+  const RepositoryRemoteRepositoryConfigPythonRepository({
     this.customRepository,
     this.publicRepository,
   });

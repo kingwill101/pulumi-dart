@@ -9,7 +9,7 @@ class ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChan
   /// Creates a new [ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel].
   /// [gain] Required.
   /// [inputChannel] Required.
-  ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel({
+  const ChannelEncoderSettingsAudioDescriptionRemixSettingsChannelMappingInputChannelLevel({
     required this.gain,
     required this.inputChannel,
   });

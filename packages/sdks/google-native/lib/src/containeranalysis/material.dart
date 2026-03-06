@@ -9,7 +9,7 @@ class Material {
   /// Creates a new [Material].
   /// [digest] Optional.
   /// [uri] Optional.
-  Material({
+  const Material({
     this.digest,
     this.uri,
   });

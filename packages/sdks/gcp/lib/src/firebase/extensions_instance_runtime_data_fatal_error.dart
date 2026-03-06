@@ -10,7 +10,7 @@ class ExtensionsInstanceRuntimeDataFatalError {
 
   /// Creates a new [ExtensionsInstanceRuntimeDataFatalError].
   /// [errorMessage] The error message. This is set by the extension developer to give
-  ExtensionsInstanceRuntimeDataFatalError({
+  const ExtensionsInstanceRuntimeDataFatalError({
     this.errorMessage,
   });
 

@@ -17,7 +17,7 @@ class CassandraKeyspaceGetPropertiesResponseResource {
   /// [id] Name of the Cosmos DB Cassandra keyspace
   /// [rid] A system generated property. A unique identifier.
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  CassandraKeyspaceGetPropertiesResponseResource({
+  const CassandraKeyspaceGetPropertiesResponseResource({
     required this.etag,
     required this.id,
     required this.rid,

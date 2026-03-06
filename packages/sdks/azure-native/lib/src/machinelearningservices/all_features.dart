@@ -8,7 +8,7 @@ class AllFeatures {
 
   /// Creates a new [AllFeatures].
   /// [filterType] Expected value is 'AllFeatures'.
-  AllFeatures({
+  const AllFeatures({
     required this.filterType,
   });
 

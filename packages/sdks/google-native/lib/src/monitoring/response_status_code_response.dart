@@ -12,7 +12,7 @@ class ResponseStatusCodeResponse {
   /// Creates a new [ResponseStatusCodeResponse].
   /// [statusClass] A class of status codes to accept.
   /// [statusValue] A status code to accept.
-  ResponseStatusCodeResponse({
+  const ResponseStatusCodeResponse({
     required this.statusClass,
     required this.statusValue,
   });

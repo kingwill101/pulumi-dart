@@ -12,7 +12,7 @@ class GovernanceRuleEmailNotificationResponse {
   /// Creates a new [GovernanceRuleEmailNotificationResponse].
   /// [disableManagerEmailNotification] Defines whether manager email notifications are disabled
   /// [disableOwnerEmailNotification] Defines whether owner email notifications are disabled
-  GovernanceRuleEmailNotificationResponse({
+  const GovernanceRuleEmailNotificationResponse({
     this.disableManagerEmailNotification,
     this.disableOwnerEmailNotification,
   });

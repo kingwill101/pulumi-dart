@@ -17,7 +17,7 @@ class DeploymentResourceProperties {
   /// [active] Indicates whether the Deployment is active
   /// [deploymentSettings] Deployment settings of the Deployment
   /// [source] Uploaded source information of the deployment.
-  DeploymentResourceProperties({
+  const DeploymentResourceProperties({
     this.active,
     this.deploymentSettings,
     this.source,

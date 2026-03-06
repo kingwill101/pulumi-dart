@@ -18,7 +18,7 @@ class GetOntapFileSystemArgs {
   /// [id] Identifier of the file system (e.g. `fs-12345678`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] The tags associated with the file system.
-  GetOntapFileSystemArgs({
+  const GetOntapFileSystemArgs({
     required this.id,
     this.region,
     this.tags,

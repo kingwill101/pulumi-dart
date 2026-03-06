@@ -10,7 +10,7 @@ class ListClusterLanguageExtensionsResult {
 
   /// Creates a new [ListClusterLanguageExtensionsResult].
   /// [value] The list of language extensions.
-  ListClusterLanguageExtensionsResult({
+  const ListClusterLanguageExtensionsResult({
     this.value,
   });
 

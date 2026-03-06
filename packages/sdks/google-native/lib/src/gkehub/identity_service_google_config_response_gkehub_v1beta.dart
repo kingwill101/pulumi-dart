@@ -9,7 +9,7 @@ class IdentityServiceGoogleConfigResponseGkehubV1beta {
 
   /// Creates a new [IdentityServiceGoogleConfigResponseGkehubV1beta].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
-  IdentityServiceGoogleConfigResponseGkehubV1beta({
+  const IdentityServiceGoogleConfigResponseGkehubV1beta({
     required this.disable,
   });
 

@@ -24,7 +24,7 @@ class GetReplicationNetworkMappingArgs {
   /// [networkName] Primary network name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  GetReplicationNetworkMappingArgs({
+  const GetReplicationNetworkMappingArgs({
     required this.fabricName,
     required this.networkMappingName,
     required this.networkName,

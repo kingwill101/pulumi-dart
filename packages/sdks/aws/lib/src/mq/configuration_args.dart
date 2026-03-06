@@ -35,7 +35,7 @@ class ConfigurationArgs {
   /// [name] Name of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ConfigurationArgs({
+  const ConfigurationArgs({
     this.authenticationStrategy,
     required this.data,
     this.description,

@@ -25,7 +25,7 @@ class DynamicSchemaVersionArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
-  DynamicSchemaVersionArgs({
+  const DynamicSchemaVersionArgs({
     required this.dynamicSchemaName,
     this.dynamicSchemaVersionName,
     this.properties,

@@ -17,7 +17,7 @@ class GetFindingIdsResult {
   /// [hasFindings] Indicates whether findings are present for the specified detector.
   /// [id] Required.
   /// [region] Required.
-  GetFindingIdsResult({
+  const GetFindingIdsResult({
     required this.detectorId,
     required this.findingIds,
     required this.hasFindings,

@@ -12,7 +12,7 @@ class MetricStreamStatisticsConfiguration {
   /// Creates a new [MetricStreamStatisticsConfiguration].
   /// [additionalStatistics] The additional statistics to stream for the metrics listed in `include_metrics`.
   /// [includeMetrics] An array that defines the metrics that are to have additional statistics streamed. See details below.
-  MetricStreamStatisticsConfiguration({
+  const MetricStreamStatisticsConfiguration({
     required this.additionalStatistics,
     required this.includeMetrics,
   });

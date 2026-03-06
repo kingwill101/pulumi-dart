@@ -32,7 +32,7 @@ class SsisPackageResponse {
   /// [projectId] Project id which contains package.
   /// [projectVersion] Project version which contains package.
   /// [type] The type of SSIS object metadata.
-  SsisPackageResponse({
+  const SsisPackageResponse({
     this.description,
     this.folderId,
     this.id,

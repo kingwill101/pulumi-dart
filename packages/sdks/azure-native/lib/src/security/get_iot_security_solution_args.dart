@@ -15,7 +15,7 @@ class GetIotSecuritySolutionArgs {
   /// Creates a new [GetIotSecuritySolutionArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [solutionName] The name of the IoT Security solution.
-  GetIotSecuritySolutionArgs({
+  const GetIotSecuritySolutionArgs({
     required this.resourceGroupName,
     required this.solutionName,
   });

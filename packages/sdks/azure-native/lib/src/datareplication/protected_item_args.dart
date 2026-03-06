@@ -22,7 +22,7 @@ class ProtectedItemArgs {
   /// [protectedItemName] The protected item name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  ProtectedItemArgs({
+  const ProtectedItemArgs({
     required this.properties,
     this.protectedItemName,
     required this.resourceGroupName,

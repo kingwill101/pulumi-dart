@@ -20,7 +20,7 @@ class GetDatabaseInstancePointInTimeRestoreContext {
   /// [pointInTime] The date and time to which you want to restore the instance.
   /// [preferredZone] Point-in-time recovery of an instance to the specified zone. If no zone is specified, then clone to the same primary zone as the source instance.
   /// [targetInstance] The name of the target instance to restore to.
-  GetDatabaseInstancePointInTimeRestoreContext({
+  const GetDatabaseInstancePointInTimeRestoreContext({
     required this.allocatedIpRange,
     required this.datasource,
     required this.pointInTime,

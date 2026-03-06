@@ -21,7 +21,7 @@ class ConnectionMonitorTestGroupResponse {
   /// [name] The name of the connection monitor test group.
   /// [sources] List of source endpoint names.
   /// [testConfigurations] List of test configuration names.
-  ConnectionMonitorTestGroupResponse({
+  const ConnectionMonitorTestGroupResponse({
     required this.destinations,
     this.disable,
     required this.name,

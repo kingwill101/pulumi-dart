@@ -48,7 +48,7 @@ class IdentityServiceOidcConfigResponseGkehubV1alpha {
   /// [scopes] Comma-separated list of identifiers.
   /// [userClaim] Claim in OIDC ID token that holds username.
   /// [userPrefix] Prefix to prepend to user name.
-  IdentityServiceOidcConfigResponseGkehubV1alpha({
+  const IdentityServiceOidcConfigResponseGkehubV1alpha({
     required this.certificateAuthorityData,
     required this.clientId,
     required this.clientSecret,

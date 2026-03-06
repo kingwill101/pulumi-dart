@@ -21,7 +21,7 @@ class GetDatabasePrincipalAssignmentArgs {
   /// [databaseName] The name of the database in the Kusto cluster.
   /// [principalAssignmentName] The name of the Kusto principalAssignment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDatabasePrincipalAssignmentArgs({
+  const GetDatabasePrincipalAssignmentArgs({
     required this.clusterName,
     required this.databaseName,
     required this.principalAssignmentName,

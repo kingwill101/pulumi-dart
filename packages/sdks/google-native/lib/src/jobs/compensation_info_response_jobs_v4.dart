@@ -17,7 +17,7 @@ class CompensationInfoResponseJobsV4 {
   /// [annualizedBaseCompensationRange] Annualized base compensation range. Computed as base compensation entry's CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
   /// [annualizedTotalCompensationRange] Annualized total compensation range. Computed as all compensation entries' CompensationEntry.amount times CompensationEntry.expected_units_per_year. See CompensationEntry for explanation on compensation annualization.
   /// [entries] Job compensation information. At most one entry can be of type CompensationInfo.CompensationType.BASE, which is referred as **base compensation entry** for the job.
-  CompensationInfoResponseJobsV4({
+  const CompensationInfoResponseJobsV4({
     required this.annualizedBaseCompensationRange,
     required this.annualizedTotalCompensationRange,
     required this.entries,

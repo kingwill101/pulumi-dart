@@ -21,7 +21,7 @@ class GetFlowsArgs {
   /// [limit] The number of resource queries.
   /// [nameRegex] A regex string to filter results by Flow name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetFlowsArgs({
+  const GetFlowsArgs({
     this.ids,
     this.limit,
     this.nameRegex,

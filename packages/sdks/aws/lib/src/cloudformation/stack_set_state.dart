@@ -63,7 +63,7 @@ class StackSetState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [templateBody] String containing the CloudFormation template body. Maximum size: 51,200 bytes. Conflicts with `template_url`.
   /// [templateUrl] String containing the location of a file containing the CloudFormation template body. The URL must point to a template that is located in an Amazon S3 bucket. Maximum location file size: 460,800 bytes. Conflicts with `template_body`.
-  StackSetState({
+  const StackSetState({
     this.administrationRoleArn,
     this.arn,
     this.autoDeployment,

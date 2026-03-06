@@ -25,7 +25,7 @@ class PartnerConfigurationArgs {
   /// [provisioningState] Provisioning state of the partner configuration.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
-  PartnerConfigurationArgs({
+  const PartnerConfigurationArgs({
     this.location,
     this.partnerAuthorization,
     this.provisioningState,

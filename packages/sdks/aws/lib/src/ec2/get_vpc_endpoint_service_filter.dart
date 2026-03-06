@@ -11,7 +11,7 @@ class GetVpcEndpointServiceFilter {
   /// Creates a new [GetVpcEndpointServiceFilter].
   /// [name] Name of the filter field. Valid values can be found in the [EC2 DescribeVpcEndpointServices API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeVpcEndpointServices.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetVpcEndpointServiceFilter({
+  const GetVpcEndpointServiceFilter({
     required this.name,
     required this.values,
   });

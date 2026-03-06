@@ -15,7 +15,7 @@ class AgentModelSettings {
   /// Creates a new [AgentModelSettings].
   /// [model] The LLM model that the agent should use.
   /// [temperature] If set, this temperature will be used for the LLM model. Temperature
-  AgentModelSettings({
+  const AgentModelSettings({
     this.model,
     this.temperature,
   });

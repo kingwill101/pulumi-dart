@@ -14,7 +14,7 @@ class FileSystemSizeInByte {
   /// [value] The latest known metered size (in bytes) of data stored in the file system.
   /// [valueInIa] The latest known metered size (in bytes) of data stored in the Infrequent Access storage class.
   /// [valueInStandard] The latest known metered size (in bytes) of data stored in the Standard storage class.
-  FileSystemSizeInByte({
+  const FileSystemSizeInByte({
     this.value,
     this.valueInIa,
     this.valueInStandard,

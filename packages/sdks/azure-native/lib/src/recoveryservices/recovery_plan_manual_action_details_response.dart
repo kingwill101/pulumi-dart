@@ -13,7 +13,7 @@ class RecoveryPlanManualActionDetailsResponse {
   /// Creates a new [RecoveryPlanManualActionDetailsResponse].
   /// [description] The manual action description.
   /// [instanceType] Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
-  RecoveryPlanManualActionDetailsResponse({
+  const RecoveryPlanManualActionDetailsResponse({
     this.description,
     required this.instanceType,
   });

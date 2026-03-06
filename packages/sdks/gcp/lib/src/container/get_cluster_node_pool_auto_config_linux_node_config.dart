@@ -12,7 +12,7 @@ class GetClusterNodePoolAutoConfigLinuxNodeConfig {
   /// Creates a new [GetClusterNodePoolAutoConfigLinuxNodeConfig].
   /// [cgroupMode] cgroupMode specifies the cgroup mode to be used on the node.
   /// [nodeKernelModuleLoadings] The settings for kernel module loading.
-  GetClusterNodePoolAutoConfigLinuxNodeConfig({
+  const GetClusterNodePoolAutoConfigLinuxNodeConfig({
     required this.cgroupMode,
     required this.nodeKernelModuleLoadings,
   });

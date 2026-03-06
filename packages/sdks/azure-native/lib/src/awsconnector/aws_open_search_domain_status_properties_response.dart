@@ -117,7 +117,7 @@ class AwsOpenSearchDomainStatusPropertiesResponse {
   /// [softwareUpdateOptions] &lt;p&gt;Service software update options for the domain.&lt;/p&gt;
   /// [upgradeProcessing] &lt;p&gt;The status of a domain version upgrade to a new version of OpenSearch or Elasticsearch. True if OpenSearch Service is in the process of a version upgrade. False if the configuration is active.&lt;/p&gt;
   /// [vpcOptions] &lt;p&gt;The VPC configuration for the domain.&lt;/p&gt;
-  AwsOpenSearchDomainStatusPropertiesResponse({
+  const AwsOpenSearchDomainStatusPropertiesResponse({
     this.accessPolicies,
     this.advancedOptions,
     this.advancedSecurityOptions,

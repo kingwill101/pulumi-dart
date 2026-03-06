@@ -30,7 +30,7 @@ class ApiToolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [toolId] Tool identifier within an API. Must be unique in the current API Management service instance.
-  ApiToolArgs({
+  const ApiToolArgs({
     required this.apiId,
     this.description,
     this.displayName,

@@ -36,7 +36,7 @@ class InvoiceUnitArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [taxInheritanceDisabled] Whether tax inheritance is disabled for this invoice unit.
   /// [timeouts] Optional.
-  InvoiceUnitArgs({
+  const InvoiceUnitArgs({
     this.description,
     required this.invoiceReceiver,
     this.name,

@@ -42,7 +42,7 @@ class AlertRuleAnomalyDuplicateArgs {
   /// [prioritizedExcludeObservations] A list of `prioritized_exclude_observation` blocks as defined below.
   /// [singleSelectObservations] A list of `single_select_observation` blocks as defined below.
   /// [thresholdObservations] A list of `threshold_observation` blocks as defined below.
-  AlertRuleAnomalyDuplicateArgs({
+  const AlertRuleAnomalyDuplicateArgs({
     required this.builtInRuleId,
     required this.displayName,
     required this.enabled,

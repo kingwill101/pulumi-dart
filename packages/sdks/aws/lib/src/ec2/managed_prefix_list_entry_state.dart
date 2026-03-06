@@ -18,7 +18,7 @@ class ManagedPrefixListEntryState {
   /// [description] Description of this entry. Please note that due to API limitations, updating only the description of an entry will require recreating the entry.
   /// [prefixListId] The ID of the prefix list.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ManagedPrefixListEntryState({
+  const ManagedPrefixListEntryState({
     this.cidr,
     this.description,
     this.prefixListId,

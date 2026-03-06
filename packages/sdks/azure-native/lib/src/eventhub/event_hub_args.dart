@@ -39,7 +39,7 @@ class EventHubArgs {
   /// [retentionDescription] Event Hub retention settings
   /// [status] Enumerates the possible values for the status of the Event Hub.
   /// [userMetadata] Gets and Sets Metadata of User.
-  EventHubArgs({
+  const EventHubArgs({
     this.captureDescription,
     this.eventHubName,
     this.messageRetentionInDays,

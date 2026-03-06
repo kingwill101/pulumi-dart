@@ -11,7 +11,7 @@ class RestorePlanRestoreConfigSelectedApplicationsNamespacedName {
   /// Creates a new [RestorePlanRestoreConfigSelectedApplicationsNamespacedName].
   /// [name] The name of a Kubernetes Resource.
   /// [namespace] The namespace of a Kubernetes Resource.
-  RestorePlanRestoreConfigSelectedApplicationsNamespacedName({
+  const RestorePlanRestoreConfigSelectedApplicationsNamespacedName({
     required this.name,
     required this.namespace,
   });

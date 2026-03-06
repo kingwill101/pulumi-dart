@@ -33,7 +33,7 @@ class ApiOperationRequestHeader {
   /// [type] The Type of this Header, such as a `string`.
   /// [typeName] The type name defined by the Schema.
   /// [values] One or more acceptable values for this Header.
-  ApiOperationRequestHeader({
+  const ApiOperationRequestHeader({
     this.defaultValue,
     this.description,
     this.examples,

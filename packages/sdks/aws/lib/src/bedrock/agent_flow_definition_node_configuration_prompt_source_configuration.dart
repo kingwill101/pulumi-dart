@@ -13,7 +13,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration].
   /// [inline] Contains configurations for a prompt that is defined inline. See Prompt Inline Configuration for more information.
   /// [resource] Contains configurations for a prompt from Prompt management. See Prompt Resource Configuration for more information.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfiguration({
     this.inline,
     this.resource,
   });

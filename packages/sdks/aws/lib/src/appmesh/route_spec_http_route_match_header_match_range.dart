@@ -11,7 +11,7 @@ class RouteSpecHttpRouteMatchHeaderMatchRange {
   /// Creates a new [RouteSpecHttpRouteMatchHeaderMatchRange].
   /// [end] End of the range.
   /// [start] Start of the range.
-  RouteSpecHttpRouteMatchHeaderMatchRange({
+  const RouteSpecHttpRouteMatchHeaderMatchRange({
     required this.end,
     required this.start,
   });

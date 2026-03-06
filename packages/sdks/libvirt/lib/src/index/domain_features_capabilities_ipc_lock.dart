@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesIpcLock {
 
   /// Creates a new [DomainFeaturesCapabilitiesIpcLock].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesIpcLock({
+  const DomainFeaturesCapabilitiesIpcLock({
     this.state,
   });
 

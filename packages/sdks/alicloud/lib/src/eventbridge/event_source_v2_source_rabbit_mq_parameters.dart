@@ -17,7 +17,7 @@ class EventSourceV2SourceRabbitMqParameters {
   /// [queueName] The name of the Queue of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
   /// [regionId] The region of the RabbitMQ instance.
   /// [virtualHostName] The name of the Vhost of the RabbitMQ instance. For more information, see Usage Restrictions (~~ 163289 ~~).
-  EventSourceV2SourceRabbitMqParameters({
+  const EventSourceV2SourceRabbitMqParameters({
     this.instanceId,
     this.queueName,
     this.regionId,

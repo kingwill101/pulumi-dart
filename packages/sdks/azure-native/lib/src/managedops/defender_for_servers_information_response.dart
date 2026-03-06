@@ -9,7 +9,7 @@ class DefenderForServersInformationResponse {
 
   /// Creates a new [DefenderForServersInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
-  DefenderForServersInformationResponse({
+  const DefenderForServersInformationResponse({
     required this.enablementStatus,
   });
 

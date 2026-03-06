@@ -35,7 +35,7 @@ class GetServiceTopicsTopic {
   /// [topicInnerUrl] The inner url of the topic.
   /// [topicName] The name of the topic.
   /// [topicUrl] The url of the topic.
-  GetServiceTopicsTopic({
+  const GetServiceTopicsTopic({
     required this.createTime,
     required this.id,
     required this.lastModifyTime,

@@ -17,7 +17,7 @@ class GetSiteResult {
   /// [id] Required.
   /// [name] Required.
   /// [region] Required.
-  GetSiteResult({
+  const GetSiteResult({
     required this.accountId,
     required this.description,
     required this.id,

@@ -15,7 +15,7 @@ class ScaleSettings {
   /// [maxNodeCount] Max number of nodes to use
   /// [minNodeCount] Min number of nodes to use
   /// [nodeIdleTimeBeforeScaleDown] Node Idle Time before scaling down amlCompute. This string needs to be in the RFC Format.
-  ScaleSettings({
+  const ScaleSettings({
     required this.maxNodeCount,
     this.minNodeCount,
     this.nodeIdleTimeBeforeScaleDown,

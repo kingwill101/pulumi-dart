@@ -19,7 +19,7 @@ class ImageTemplateVhdDistributorResponse {
   /// [runOutputName] The name to be used for the associated RunOutput.
   /// [type] Type of distribution.
   /// [uri] Optional Azure Storage URI for the distributed VHD blob. Omit to use the default (empty string) in which case VHD would be published to the storage account in the staging resource group.
-  ImageTemplateVhdDistributorResponse({
+  const ImageTemplateVhdDistributorResponse({
     this.artifactTags,
     required this.runOutputName,
     required this.type,

@@ -18,7 +18,7 @@ class GetLinkedServiceArgs {
   /// [factoryName] The factory name.
   /// [linkedServiceName] The linked service name.
   /// [resourceGroupName] The resource group name.
-  GetLinkedServiceArgs({
+  const GetLinkedServiceArgs({
     required this.factoryName,
     required this.linkedServiceName,
     required this.resourceGroupName,

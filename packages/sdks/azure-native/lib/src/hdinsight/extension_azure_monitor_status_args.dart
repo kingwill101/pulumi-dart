@@ -25,7 +25,7 @@ class ExtensionAzureMonitorStatusArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [selectedConfigurations] The selected configurations.
   /// [workspaceId] The Log Analytics workspace ID.
-  ExtensionAzureMonitorStatusArgs({
+  const ExtensionAzureMonitorStatusArgs({
     required this.clusterName,
     this.primaryKey,
     required this.resourceGroupName,

@@ -20,7 +20,7 @@ class GetResourceResult {
   /// [pathPart] Set to the path relative to the parent Resource.
   /// [region] Required.
   /// [restApiId] Required.
-  GetResourceResult({
+  const GetResourceResult({
     required this.id,
     required this.parentId,
     required this.path,

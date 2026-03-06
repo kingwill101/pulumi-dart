@@ -17,7 +17,7 @@ class GetAdConnectorOfficeSitesSiteLog {
   /// [message] The Log Details.
   /// [step] Log Information Corresponding to the Step.
   /// [timeStamp] Log Print Time.
-  GetAdConnectorOfficeSitesSiteLog({
+  const GetAdConnectorOfficeSitesSiteLog({
     required this.level,
     required this.message,
     required this.step,

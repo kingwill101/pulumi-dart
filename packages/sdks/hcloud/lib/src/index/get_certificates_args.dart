@@ -12,7 +12,7 @@ class GetCertificatesArgs {
 
   /// Creates a new [GetCertificatesArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetCertificatesArgs({
+  const GetCertificatesArgs({
     this.withSelector,
   });
 

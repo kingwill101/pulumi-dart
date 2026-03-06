@@ -12,7 +12,7 @@ class DataStoreInfoBase {
   /// Creates a new [DataStoreInfoBase].
   /// [dataStoreType] type of datastore; Operational/Vault/Archive
   /// [objectType] Type of Datasource object, used to initialize the right inherited type
-  DataStoreInfoBase({
+  const DataStoreInfoBase({
     required this.dataStoreType,
     required this.objectType,
   });

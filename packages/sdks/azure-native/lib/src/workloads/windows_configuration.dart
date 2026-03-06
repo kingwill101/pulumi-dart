@@ -10,7 +10,7 @@ class WindowsConfiguration {
 
   /// Creates a new [WindowsConfiguration].
   /// [osType] The OS Type
-  WindowsConfiguration({
+  const WindowsConfiguration({
     required this.osType,
   });
 

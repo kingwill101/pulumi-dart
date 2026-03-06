@@ -26,7 +26,7 @@ class AddressGroupV2State {
   /// [name] A name of the address group.
   /// [projectId] The owner of the address group. Required if admin
   /// [region] The region in which to obtain the V2 networking client.
-  AddressGroupV2State({
+  const AddressGroupV2State({
     this.addresses,
     this.description,
     this.name,

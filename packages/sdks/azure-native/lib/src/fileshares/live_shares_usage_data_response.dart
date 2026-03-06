@@ -9,7 +9,7 @@ class LiveSharesUsageDataResponse {
 
   /// Creates a new [LiveSharesUsageDataResponse].
   /// [fileShareCount] The number of active file shares.
-  LiveSharesUsageDataResponse({
+  const LiveSharesUsageDataResponse({
     required this.fileShareCount,
   });
 

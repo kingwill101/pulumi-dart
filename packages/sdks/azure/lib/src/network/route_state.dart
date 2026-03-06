@@ -24,7 +24,7 @@ class RouteState {
   /// [nextHopType] The type of Azure hop the packet should be sent to. Possible values are `VirtualNetworkGateway`, `VnetLocal`, `Internet`, `VirtualAppliance` and `None`.
   /// [resourceGroupName] The name of the resource group in which to create the route. Changing this forces a new resource to be created.
   /// [routeTableName] The name of the route table within which create the route. Changing this forces a new resource to be created.
-  RouteState({
+  const RouteState({
     this.addressPrefix,
     this.name,
     this.nextHopInIpAddress,

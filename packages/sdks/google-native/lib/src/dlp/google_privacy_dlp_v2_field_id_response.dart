@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2FieldIdResponse {
 
   /// Creates a new [GooglePrivacyDlpV2FieldIdResponse].
   /// [name] Name describing the field.
-  GooglePrivacyDlpV2FieldIdResponse({
+  const GooglePrivacyDlpV2FieldIdResponse({
     required this.name,
   });
 

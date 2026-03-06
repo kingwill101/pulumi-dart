@@ -37,7 +37,7 @@ class ApplicationApplicationConfiguration {
   /// [runConfiguration] Describes the starting properties for a Flink-based application.
   /// [sqlApplicationConfiguration] The configuration of a SQL-based application.
   /// [vpcConfiguration] The VPC configuration of a Flink-based application.
-  ApplicationApplicationConfiguration({
+  const ApplicationApplicationConfiguration({
     required this.applicationCodeConfiguration,
     this.applicationEncryptionConfiguration,
     this.applicationSnapshotConfiguration,

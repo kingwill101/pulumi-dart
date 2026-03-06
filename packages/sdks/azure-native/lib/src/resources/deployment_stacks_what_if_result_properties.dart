@@ -60,7 +60,7 @@ class DeploymentStacksWhatIfResultProperties {
   /// [template] The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
   /// [templateLink] The URI of the template. Use either the templateLink property or the template property, but not both.
   /// [validationLevel] The validation level of the deployment stack
-  DeploymentStacksWhatIfResultProperties({
+  const DeploymentStacksWhatIfResultProperties({
     required this.actionOnUnmanage,
     this.debugSetting,
     required this.denySettings,

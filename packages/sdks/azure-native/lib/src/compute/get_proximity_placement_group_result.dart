@@ -52,7 +52,7 @@ class GetProximityPlacementGroupResult {
   /// [virtualMachineScaleSets] A list of references to all virtual machine scale sets in the proximity placement group.
   /// [virtualMachines] A list of references to all virtual machines in the proximity placement group.
   /// [zones] The availability zones.
-  GetProximityPlacementGroupResult({
+  const GetProximityPlacementGroupResult({
     required this.availabilitySets,
     required this.azureApiVersion,
     this.colocationStatus,

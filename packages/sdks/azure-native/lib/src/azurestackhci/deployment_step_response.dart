@@ -30,7 +30,7 @@ class DeploymentStepResponse {
   /// [startTimeUtc] Start time of step.
   /// [status] Status of step. Allowed values are 'Error', 'Success', 'InProgress'
   /// [steps] List of nested steps of AzureStackHCI Cluster Deployment.
-  DeploymentStepResponse({
+  const DeploymentStepResponse({
     required this.description,
     required this.endTimeUtc,
     required this.exception,

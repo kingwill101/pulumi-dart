@@ -15,7 +15,7 @@ class GetAppProfileArgs {
   /// [appProfileId] Required.
   /// [instanceId] Required.
   /// [project] Optional.
-  GetAppProfileArgs({
+  const GetAppProfileArgs({
     required this.appProfileId,
     required this.instanceId,
     this.project,

@@ -17,7 +17,7 @@ class DomainVpcOptions {
   /// [securityGroupIds] List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used.
   /// [subnetIds] List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in.
   /// [vpcId] If the domain was created inside a VPC, the ID of the VPC.
-  DomainVpcOptions({
+  const DomainVpcOptions({
     this.availabilityZones,
     this.securityGroupIds,
     this.subnetIds,

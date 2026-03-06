@@ -67,7 +67,7 @@ class ServiceTemplateMetadata {
   /// [resourceVersion] (Output)
   /// [selfLink] (Output)
   /// [uid] (Output)
-  ServiceTemplateMetadata({
+  const ServiceTemplateMetadata({
     this.annotations,
     this.generation,
     this.labels,

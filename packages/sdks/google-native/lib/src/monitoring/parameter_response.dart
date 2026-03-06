@@ -12,7 +12,7 @@ class ParameterResponse {
   /// Creates a new [ParameterResponse].
   /// [doubleValue] A floating-point parameter value.
   /// [intValue] An integer parameter value.
-  ParameterResponse({
+  const ParameterResponse({
     required this.doubleValue,
     required this.intValue,
   });

@@ -49,7 +49,7 @@ class CertificateIssuanceConfigArgs {
   /// [name] A user-defined name of the certificate issuance config.
   /// [project] The ID of the project in which the resource belongs.
   /// [rotationWindowPercentage] It specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate.
-  CertificateIssuanceConfigArgs({
+  const CertificateIssuanceConfigArgs({
     required this.certificateAuthorityConfig,
     this.description,
     required this.keyAlgorithm,

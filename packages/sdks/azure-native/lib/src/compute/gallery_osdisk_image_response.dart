@@ -16,7 +16,7 @@ class GalleryOSDiskImageResponse {
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
   /// [sizeInGB] This property indicates the size of the VHD to be created.
   /// [source] The source for the disk image.
-  GalleryOSDiskImageResponse({
+  const GalleryOSDiskImageResponse({
     this.hostCaching,
     required this.sizeInGB,
     this.source,

@@ -32,7 +32,7 @@ class GetVolumeGroupResult {
   /// [provisioningState] Azure lifecycle management
   /// [type] Resource type
   /// [volumes] List of volumes from group
-  GetVolumeGroupResult({
+  const GetVolumeGroupResult({
     required this.azureApiVersion,
     this.groupMetaData,
     required this.id,

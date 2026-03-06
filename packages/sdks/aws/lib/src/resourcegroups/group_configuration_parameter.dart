@@ -11,7 +11,7 @@ class GroupConfigurationParameter {
   /// Creates a new [GroupConfigurationParameter].
   /// [name] The name of the group configuration parameter.
   /// [values] The value or values to be used for the specified parameter.
-  GroupConfigurationParameter({
+  const GroupConfigurationParameter({
     required this.name,
     required this.values,
   });

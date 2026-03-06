@@ -27,7 +27,7 @@ class DiJobJobSettings {
   /// [cycleScheduleSettings] Periodic scheduling settings See `cycle_schedule_settings` below.
   /// [ddlHandlingSettings] List of DDL processing settings for synchronization tasks See `ddl_handling_settings` below.
   /// [runtimeSettings] Run-time setting parameter list See `runtime_settings` below.
-  DiJobJobSettings({
+  const DiJobJobSettings({
     this.channelSettings,
     this.columnDataTypeSettings,
     this.cycleScheduleSettings,

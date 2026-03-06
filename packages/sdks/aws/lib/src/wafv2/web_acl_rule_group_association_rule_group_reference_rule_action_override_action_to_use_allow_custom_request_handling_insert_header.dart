@@ -11,7 +11,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseA
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllowCustomRequestHandlingInsertHeader].
   /// [name] Name of the header to insert.
   /// [value] Value of the header to insert.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllowCustomRequestHandlingInsertHeader({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllowCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

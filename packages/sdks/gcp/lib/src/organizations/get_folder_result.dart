@@ -40,7 +40,7 @@ class GetFolderResult {
   /// [name] The resource name of the Folder in the form `folders/{folder_id}`.
   /// [organization] If `lookup_organization` is enable, the resource name of the Organization that the folder belongs.
   /// [parent] The resource name of the parent Folder or Organization.
-  GetFolderResult({
+  const GetFolderResult({
     required this.configuredCapabilities,
     required this.createTime,
     required this.deletionProtection,

@@ -26,7 +26,7 @@ class QosBandwidthLimitRuleState {
   /// [maxKbps] The maximum kilobits per second of a QoS bandwidth limit rule. Changing this updates the
   /// [qosPolicyId] The QoS policy reference. Changing this creates a new QoS bandwidth limit rule.
   /// [region] The region in which to obtain the V2 Networking client.
-  QosBandwidthLimitRuleState({
+  const QosBandwidthLimitRuleState({
     this.direction,
     this.maxBurstKbps,
     this.maxKbps,

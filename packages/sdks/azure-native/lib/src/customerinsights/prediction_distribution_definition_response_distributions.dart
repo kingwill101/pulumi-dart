@@ -21,7 +21,7 @@ class PredictionDistributionDefinitionResponseDistributions {
   /// [positives] Number of positives.
   /// [positivesAboveThreshold] Number of positives above threshold.
   /// [scoreThreshold] Score threshold.
-  PredictionDistributionDefinitionResponseDistributions({
+  const PredictionDistributionDefinitionResponseDistributions({
     this.negatives,
     this.negativesAboveThreshold,
     this.positives,

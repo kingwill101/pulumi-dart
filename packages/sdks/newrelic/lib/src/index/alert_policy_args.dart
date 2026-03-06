@@ -24,7 +24,7 @@ class AlertPolicyArgs {
   /// [channelIds] **DEPRECATED** The `channel_ids` argument is deprecated and will be removed in the next major release of the provider. An array of channel IDs (integers) to assign to the policy. Adding or removing channel IDs from this array will result in a new alert policy resource being created and the old one being destroyed. Also note that channel IDs _cannot_ be imported via `pulumi import` (see Import for info).
   /// [incidentPreference] The rollup strategy for the policy, which can have one of the following values (the default value is `PER_POLICY`):
   /// [name] The name of the policy.
-  AlertPolicyArgs({
+  const AlertPolicyArgs({
     this.accountId,
     this.channelIds,
     this.incidentPreference,

@@ -14,7 +14,7 @@ class GoogleCloudDatacatalogV1DatabaseTableSpec {
   /// Creates a new [GoogleCloudDatacatalogV1DatabaseTableSpec].
   /// [databaseViewSpec] Spec what aplies to tables that are actually views. Not set for "real" tables.
   /// [type] Type of this table.
-  GoogleCloudDatacatalogV1DatabaseTableSpec({
+  const GoogleCloudDatacatalogV1DatabaseTableSpec({
     this.databaseViewSpec,
     this.type,
   });

@@ -12,7 +12,7 @@ class DelegatedAdministratorState {
   /// Creates a new [DelegatedAdministratorState].
   /// [accountId] The Alibaba Cloud account ID of the member in the resource directory.
   /// [servicePrincipal] The identifier of the trusted service.
-  DelegatedAdministratorState({
+  const DelegatedAdministratorState({
     this.accountId,
     this.servicePrincipal,
   });

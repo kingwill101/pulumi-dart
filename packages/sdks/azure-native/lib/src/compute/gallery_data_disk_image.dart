@@ -17,7 +17,7 @@ class GalleryDataDiskImage {
   /// [hostCaching] The host caching of the disk. Valid values are 'None', 'ReadOnly', and 'ReadWrite'
   /// [lun] This property specifies the logical unit number of the data disk. This value is used to identify data disks within the Virtual Machine and therefore must be unique for each data disk attached to the Virtual Machine.
   /// [source] The source for the disk image.
-  GalleryDataDiskImage({
+  const GalleryDataDiskImage({
     this.hostCaching,
     required this.lun,
     this.source,

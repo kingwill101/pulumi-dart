@@ -8,7 +8,7 @@ class ClusterRemoteNetworkConfigRemoteNodeNetworks {
 
   /// Creates a new [ClusterRemoteNetworkConfigRemoteNodeNetworks].
   /// [cidrs] List of network CIDRs that can contain hybrid nodes.
-  ClusterRemoteNetworkConfigRemoteNodeNetworks({
+  const ClusterRemoteNetworkConfigRemoteNodeNetworks({
     this.cidrs,
   });
 

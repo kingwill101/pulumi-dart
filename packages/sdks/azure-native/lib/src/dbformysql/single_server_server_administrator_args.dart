@@ -27,7 +27,7 @@ class SingleServerServerAdministratorArgs {
   /// [serverName] The name of the server.
   /// [sid] The server administrator Sid (Secure ID).
   /// [tenantId] The server Active Directory Administrator tenant id.
-  SingleServerServerAdministratorArgs({
+  const SingleServerServerAdministratorArgs({
     required this.administratorType,
     required this.login,
     required this.resourceGroupName,

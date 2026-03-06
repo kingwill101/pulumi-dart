@@ -9,7 +9,7 @@ class DatabaseProfileResponse {
 
   /// Creates a new [DatabaseProfileResponse].
   /// [cosmosId] Resource Id of Cosmos Resource
-  DatabaseProfileResponse({
+  const DatabaseProfileResponse({
     required this.cosmosId,
   });
 

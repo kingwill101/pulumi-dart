@@ -20,7 +20,7 @@ class ServiceMeshLoadBalancer {
   /// [pilotPublicEip] Indicates whether to use the IP address of a public network exposure Istio Pilot. **Note**: This field has been deprecated and is readonly as of 1.232.0. Use pilot_public_eip_id instead.
   /// [pilotPublicEipId] the EIP instance id of Pilot load balancer.
   /// [pilotPublicLoadbalancerId] The Instance ID of Pilot Load Balancer
-  ServiceMeshLoadBalancer({
+  const ServiceMeshLoadBalancer({
     this.apiServerLoadbalancerId,
     this.apiServerPublicEip,
     this.pilotPublicEip,

@@ -18,7 +18,7 @@ class GetBackendAddressPoolBackendAddress {
   /// [ipAddress] The Static IP address for this Load Balancer within the Virtual Network.
   /// [name] Specifies the name of the Backend Address Pool.
   /// [virtualNetworkId] The ID of the Virtual Network where the Backend Address of the Load Balancer exists.
-  GetBackendAddressPoolBackendAddress({
+  const GetBackendAddressPoolBackendAddress({
     required this.inboundNatRulePortMappings,
     required this.ipAddress,
     required this.name,

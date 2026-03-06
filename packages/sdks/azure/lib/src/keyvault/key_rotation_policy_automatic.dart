@@ -11,7 +11,7 @@ class KeyRotationPolicyAutomatic {
   /// Creates a new [KeyRotationPolicyAutomatic].
   /// [timeAfterCreation] Rotate automatically at a duration after create as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
   /// [timeBeforeExpiry] Rotate automatically at a duration before expiry as an [ISO 8601 duration](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  KeyRotationPolicyAutomatic({
+  const KeyRotationPolicyAutomatic({
     this.timeAfterCreation,
     this.timeBeforeExpiry,
   });

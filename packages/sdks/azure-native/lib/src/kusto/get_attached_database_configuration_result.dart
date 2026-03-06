@@ -45,7 +45,7 @@ class GetAttachedDatabaseConfigurationResult {
   /// [provisioningState] The provisioned state of the resource.
   /// [tableLevelSharingProperties] Table level sharing specifications
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAttachedDatabaseConfigurationResult({
+  const GetAttachedDatabaseConfigurationResult({
     required this.attachedDatabaseNames,
     required this.azureApiVersion,
     required this.clusterResourceId,

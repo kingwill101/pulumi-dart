@@ -15,7 +15,7 @@ class VaultPrivateLinkServiceConnectionStateResponse {
   /// [actionsRequired] Gets or sets actions required.
   /// [description] Gets or sets description.
   /// [status] Gets or sets the status.
-  VaultPrivateLinkServiceConnectionStateResponse({
+  const VaultPrivateLinkServiceConnectionStateResponse({
     required this.actionsRequired,
     required this.description,
     required this.status,

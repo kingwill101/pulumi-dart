@@ -25,7 +25,7 @@ class DatascanDataQualitySpecRuleStatisticRangeExpectation {
   /// [statistic] column statistics.
   /// [strictMaxEnabled] Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   /// [strictMinEnabled] Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
-  DatascanDataQualitySpecRuleStatisticRangeExpectation({
+  const DatascanDataQualitySpecRuleStatisticRangeExpectation({
     this.maxValue,
     this.minValue,
     required this.statistic,

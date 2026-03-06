@@ -26,7 +26,7 @@ class GetIpv6AddressesResult {
   /// [status] Optional.
   /// [vpcId] Optional.
   /// [vswitchId] Optional.
-  GetIpv6AddressesResult({
+  const GetIpv6AddressesResult({
     required this.addresses,
     this.associatedInstanceId,
     required this.id,

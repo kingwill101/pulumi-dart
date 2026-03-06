@@ -37,7 +37,7 @@ class GetInstanceTemplateResult {
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [sourceInstance] The source instance used to create the template. You can provide this as a partial or full URL to the resource. For example, the following are valid values: - https://www.googleapis.com/compute/v1/projects/project/zones/zone /instances/instance - projects/project/zones/zone/instances/instance
   /// [sourceInstanceParams] The source instance params to use to create this instance template.
-  GetInstanceTemplateResult({
+  const GetInstanceTemplateResult({
     required this.creationTimestamp,
     required this.description,
     required this.kind,

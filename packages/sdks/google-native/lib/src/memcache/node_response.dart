@@ -30,7 +30,7 @@ class NodeResponse {
   /// [port] The port number of the Memcached server on this node.
   /// [state] Current state of the Memcached node.
   /// [zone] Location (GCP Zone) for the Memcached node.
-  NodeResponse({
+  const NodeResponse({
     required this.host,
     required this.memcacheFullVersion,
     required this.memcacheVersion,

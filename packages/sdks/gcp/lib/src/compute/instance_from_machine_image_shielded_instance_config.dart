@@ -14,7 +14,7 @@ class InstanceFromMachineImageShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] Whether integrity monitoring is enabled for the instance.
   /// [enableSecureBoot] Whether secure boot is enabled for the instance.
   /// [enableVtpm] Whether the instance uses vTPM.
-  InstanceFromMachineImageShieldedInstanceConfig({
+  const InstanceFromMachineImageShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

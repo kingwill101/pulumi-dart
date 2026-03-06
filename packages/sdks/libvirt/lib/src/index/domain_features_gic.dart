@@ -8,7 +8,7 @@ class DomainFeaturesGic {
 
   /// Creates a new [DomainFeaturesGic].
   /// [version] Sets the version of the GIC feature supported by the domain.
-  DomainFeaturesGic({
+  const DomainFeaturesGic({
     this.version,
   });
 

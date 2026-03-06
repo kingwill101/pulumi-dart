@@ -39,7 +39,7 @@ class TestCaseDialogflowV3beta1Args {
   /// [tags] Tags are short descriptions that users may apply to test cases for organizational and filtering purposes. Each tag should start with "#" and has a limit of 30 characters.
   /// [testCaseConversationTurns] The conversation turns uttered when the test case was created, in chronological order. These include the canonical set of agent utterances that should occur when the agent is working properly.
   /// [testConfig] Config for the test case.
-  TestCaseDialogflowV3beta1Args({
+  const TestCaseDialogflowV3beta1Args({
     required this.agentId,
     required this.displayName,
     this.lastTestResult,

@@ -50,7 +50,7 @@ class VbrPconnAssociationState {
   /// [status] The status of the resource
   /// [vbrId] The ID of the VBR instance.
   /// [vlanId] VLAN ID of the VBR. Valid values: **0 to 2999**.
-  VbrPconnAssociationState({
+  const VbrPconnAssociationState({
     this.circuitCode,
     this.enableIpv6,
     this.localGatewayIp,

@@ -98,7 +98,7 @@ class InstanceState {
   /// [vswitchId] If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
   /// [zkConnAddrs] The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
   /// [zoneId] The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
-  InstanceState({
+  const InstanceState({
     this.account,
     this.autoRenew,
     this.coldStorageSize,

@@ -16,7 +16,7 @@ class TenantConfigurationArgs {
   /// Creates a new [TenantConfigurationArgs].
   /// [configurationName] The name of the Configuration
   /// [properties] The resource-specific properties for this resource.
-  TenantConfigurationArgs({
+  const TenantConfigurationArgs({
     this.configurationName,
     this.properties,
   });

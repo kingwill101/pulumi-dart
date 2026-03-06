@@ -18,7 +18,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval {
   /// [lowerBound] Lower bound of the interval.
   /// [ratio] The percent change between an experiment metric's value and the value for its control.
   /// [upperBound] Upper bound of the interval.
-  GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval({
+  const GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval({
     this.confidenceLevel,
     this.lowerBound,
     this.ratio,

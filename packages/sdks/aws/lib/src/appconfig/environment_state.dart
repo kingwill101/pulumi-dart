@@ -38,7 +38,7 @@ class EnvironmentState {
   /// [state] State of the environment. Possible values are `READY_FOR_DEPLOYMENT`, `DEPLOYING`, `ROLLING_BACK`
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  EnvironmentState({
+  const EnvironmentState({
     this.applicationId,
     this.arn,
     this.description,

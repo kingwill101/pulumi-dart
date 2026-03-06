@@ -35,7 +35,7 @@ class WebhookDialogflowV3beta1Args {
   /// [project] Optional.
   /// [serviceDirectory] Configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
   /// [timeout] Webhook execution timeout. Execution is considered failed if Dialogflow doesn't receive a response from webhook at the end of the timeout period. Defaults to 5 seconds, maximum allowed timeout is 30 seconds.
-  WebhookDialogflowV3beta1Args({
+  const WebhookDialogflowV3beta1Args({
     required this.agentId,
     this.disabled,
     required this.displayName,

@@ -15,7 +15,7 @@ class VirtualNetworkConfigurationResponse {
   /// [subnetResourceId] The full resource ID of a subnet in a virtual network to deploy the API Management service in.
   /// [subnetname] The name of the subnet.
   /// [vnetid] The virtual network ID. This is typically a GUID. Expect a null GUID by default.
-  VirtualNetworkConfigurationResponse({
+  const VirtualNetworkConfigurationResponse({
     this.subnetResourceId,
     required this.subnetname,
     required this.vnetid,

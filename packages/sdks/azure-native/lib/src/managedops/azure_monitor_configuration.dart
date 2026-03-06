@@ -9,7 +9,7 @@ class AzureMonitorConfiguration {
 
   /// Creates a new [AzureMonitorConfiguration].
   /// [azureMonitorWorkspaceId] Azure monitor workspace resource ID used by the service.
-  AzureMonitorConfiguration({
+  const AzureMonitorConfiguration({
     required this.azureMonitorWorkspaceId,
   });
 

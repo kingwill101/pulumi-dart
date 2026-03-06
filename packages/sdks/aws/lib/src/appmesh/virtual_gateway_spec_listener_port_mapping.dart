@@ -11,7 +11,7 @@ class VirtualGatewaySpecListenerPortMapping {
   /// Creates a new [VirtualGatewaySpecListenerPortMapping].
   /// [port] Port used for the port mapping.
   /// [protocol] Protocol used for the port mapping. Valid values are `http`, `http2`, `tcp` and `grpc`.
-  VirtualGatewaySpecListenerPortMapping({
+  const VirtualGatewaySpecListenerPortMapping({
     required this.port,
     required this.protocol,
   });

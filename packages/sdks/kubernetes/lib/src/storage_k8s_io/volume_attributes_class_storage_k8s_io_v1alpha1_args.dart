@@ -27,7 +27,7 @@ class VolumeAttributesClassStorageK8sIoV1alpha1Args {
   /// [kind] Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [parameters] parameters hold volume attributes defined by the CSI driver. These values are opaque to the Kubernetes and are passed directly to the CSI driver. The underlying storage provider supports changing these attributes on an existing volume, however the parameters field itself is immutable. To invoke a volume update, a new VolumeAttributesClass should be created with new parameters, and the PersistentVolumeClaim should be updated to reference the new VolumeAttributesClass.
-  VolumeAttributesClassStorageK8sIoV1alpha1Args({
+  const VolumeAttributesClassStorageK8sIoV1alpha1Args({
     this.apiVersion,
     required this.driverName,
     this.kind,

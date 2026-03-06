@@ -25,7 +25,7 @@ class EntryGroupArgs {
   /// [location] Optional.
   /// [name] The resource name of the entry group in URL format. Note: The entry group itself and its child resources might not be stored in the location specified in its name.
   /// [project] Optional.
-  EntryGroupArgs({
+  const EntryGroupArgs({
     this.description,
     this.displayName,
     required this.entryGroupId,

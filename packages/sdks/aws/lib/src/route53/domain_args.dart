@@ -61,7 +61,7 @@ class DomainArgs {
   /// [techPrivacy] Whether domain technical contact information is concealed from WHOIS queries. Default: `true`.
   /// [timeouts] Optional.
   /// [transferLock] Whether the domain is locked for transfer. Default: `true`.
-  DomainArgs({
+  const DomainArgs({
     required this.adminContact,
     this.adminPrivacy,
     this.autoRenew,

@@ -9,7 +9,7 @@ class AutomationRuleCriteriaGeneratorId {
   /// Creates a new [AutomationRuleCriteriaGeneratorId].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaGeneratorId({
+  const AutomationRuleCriteriaGeneratorId({
     required this.comparison,
     required this.value,
   });

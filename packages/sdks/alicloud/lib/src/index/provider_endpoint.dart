@@ -475,7 +475,7 @@ class ProviderEndpoint {
   /// [vs] Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom vs endpoints.
   /// [waf] Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf endpoints.
   /// [wafOpenapi] Use this to override the default endpoint URL constructed from the `region`. It's typically used to connect to custom waf_openapi endpoints.
-  ProviderEndpoint({
+  const ProviderEndpoint({
     this.acr,
     this.actiontrail,
     this.adb,

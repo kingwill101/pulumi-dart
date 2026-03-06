@@ -66,7 +66,7 @@ class GrafanaWorkspaceArgs {
   /// [pricingCycle] The billing cycle of the package year and Month. Value: Month (default): purchase by Month. Year: Purchased by Year.
   /// [resourceGroupId] The ID of the resource group
   /// [tags] The tag of the resource
-  GrafanaWorkspaceArgs({
+  const GrafanaWorkspaceArgs({
     this.accountNumber,
     this.aliyunLang,
     this.autoRenew,

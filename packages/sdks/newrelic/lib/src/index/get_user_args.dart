@@ -24,7 +24,7 @@ class GetUserArgs {
   /// [authenticationDomainId] The ID of the authentication domain the user to be searched for belongs to.
   /// [emailId] The email ID of the user to search for.
   /// [name] The name of the user to search for.
-  GetUserArgs({
+  const GetUserArgs({
     required this.authenticationDomainId,
     this.emailId,
     this.name,

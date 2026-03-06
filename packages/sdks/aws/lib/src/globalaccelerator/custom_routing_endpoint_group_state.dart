@@ -23,7 +23,7 @@ class CustomRoutingEndpointGroupState {
   /// [endpointConfigurations] The list of endpoint objects. Fields documented below.
   /// [endpointGroupRegion] The name of the AWS Region where the custom routing endpoint group is located.
   /// [listenerArn] The Amazon Resource Name (ARN) of the custom routing listener.
-  CustomRoutingEndpointGroupState({
+  const CustomRoutingEndpointGroupState({
     this.arn,
     this.destinationConfigurations,
     this.endpointConfigurations,

@@ -13,7 +13,7 @@ class ApiDeploymentParameterMetadataSetResponse {
   /// Creates a new [ApiDeploymentParameterMetadataSetResponse].
   /// [packageContentLink] The package content link parameter.
   /// [redisCacheConnectionString] The package content link parameter.
-  ApiDeploymentParameterMetadataSetResponse({
+  const ApiDeploymentParameterMetadataSetResponse({
     this.packageContentLink,
     this.redisCacheConnectionString,
   });

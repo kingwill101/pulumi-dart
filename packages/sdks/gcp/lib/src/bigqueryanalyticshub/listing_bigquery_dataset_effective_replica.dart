@@ -16,7 +16,7 @@ class ListingBigqueryDatasetEffectiveReplica {
   /// [location] The name of the location this data exchange listing.
   /// [primaryState] Output-only. Indicates that this replica is the primary replica.
   /// [replicaState] Output-only. Assigned by Analytics Hub based on real BigQuery replication state.
-  ListingBigqueryDatasetEffectiveReplica({
+  const ListingBigqueryDatasetEffectiveReplica({
     this.location,
     this.primaryState,
     this.replicaState,

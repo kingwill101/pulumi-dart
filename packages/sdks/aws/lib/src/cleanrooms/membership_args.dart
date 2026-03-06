@@ -28,7 +28,7 @@ class MembershipArgs {
   /// [queryLogStatus] An indicator as to whether query logging has been enabled or disabled for the membership.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key value pairs which tag the membership.
-  MembershipArgs({
+  const MembershipArgs({
     required this.collaborationId,
     this.defaultResultConfiguration,
     this.paymentConfiguration,

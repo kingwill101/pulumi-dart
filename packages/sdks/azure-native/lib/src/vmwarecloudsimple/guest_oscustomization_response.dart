@@ -21,7 +21,7 @@ class GuestOSCustomizationResponse {
   /// [password] Password for login
   /// [policyId] id of customization policy
   /// [username] Username for login
-  GuestOSCustomizationResponse({
+  const GuestOSCustomizationResponse({
     this.dnsServers,
     this.hostName,
     this.password,

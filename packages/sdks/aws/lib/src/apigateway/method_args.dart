@@ -48,7 +48,7 @@ class MethodArgs {
   /// [requestValidatorId] ID of a `aws.apigateway.RequestValidator`
   /// [resourceId] API resource ID
   /// [restApi] ID of the associated REST API
-  MethodArgs({
+  const MethodArgs({
     this.apiKeyRequired,
     required this.authorization,
     this.authorizationScopes,

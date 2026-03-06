@@ -92,7 +92,7 @@ class GetDomainsDomain {
   /// [status] The status of the domain name. Valid values:
   /// [tlDomainName] The primary domain name. **Note:** `tl_domain_name` takes effect only if `enable_details` is set to `true`.
   /// [tracefRecord] The CNAME verification record provided by the Direct Mail console. **Note:** `tracef_record` takes effect only if `enable_details` is set to `true`.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.cnameAuthStatus,
     required this.cnameConfirmStatus,
     required this.cnameRecord,

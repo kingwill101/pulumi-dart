@@ -27,7 +27,7 @@ class JobTargetResponse {
   /// [serverName] The target server name.
   /// [shardMapName] The target shard map.
   /// [type] The target type.
-  JobTargetResponse({
+  const JobTargetResponse({
     this.databaseName,
     this.elasticPoolName,
     this.membershipType,

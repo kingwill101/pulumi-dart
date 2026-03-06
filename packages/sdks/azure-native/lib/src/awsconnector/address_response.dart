@@ -9,7 +9,7 @@ class AddressResponse {
 
   /// Creates a new [AddressResponse].
   /// [addressDefinition] Property addressDefinition
-  AddressResponse({
+  const AddressResponse({
     this.addressDefinition,
   });
 

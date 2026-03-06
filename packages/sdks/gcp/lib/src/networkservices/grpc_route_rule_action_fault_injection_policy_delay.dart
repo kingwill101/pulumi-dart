@@ -11,7 +11,7 @@ class GrpcRouteRuleActionFaultInjectionPolicyDelay {
   /// Creates a new [GrpcRouteRuleActionFaultInjectionPolicyDelay].
   /// [fixedDelay] Specify a fixed delay before forwarding the request.
   /// [percentage] The percentage of traffic on which delay will be injected.
-  GrpcRouteRuleActionFaultInjectionPolicyDelay({
+  const GrpcRouteRuleActionFaultInjectionPolicyDelay({
     this.fixedDelay,
     this.percentage,
   });

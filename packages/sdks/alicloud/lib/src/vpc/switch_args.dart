@@ -42,7 +42,7 @@ class SwitchArgs {
   /// [vpcId] The VPC ID. **NOTE:** From version 1.233.0, if you do not set `is_default`, or set `is_default` to `false`, `vpc_id` is required.
   /// [vswitchName] The name of the VSwitch.
   /// [zoneId] The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
-  SwitchArgs({
+  const SwitchArgs({
     this.availabilityZone,
     this.cidrBlock,
     this.description,

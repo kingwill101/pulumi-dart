@@ -16,7 +16,7 @@ class ClusterClientAuthentication {
   /// [sasl] Configuration block for specifying SASL client authentication. See client_authentication sasl Argument Reference below.
   /// [tls] Configuration block for specifying TLS client authentication. See client_authentication tls Argument Reference below.
   /// [unauthenticated] Enables unauthenticated access.
-  ClusterClientAuthentication({
+  const ClusterClientAuthentication({
     this.sasl,
     this.tls,
     this.unauthenticated,

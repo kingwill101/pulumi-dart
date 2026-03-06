@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesKill {
 
   /// Creates a new [DomainFeaturesCapabilitiesKill].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesKill({
+  const DomainFeaturesCapabilitiesKill({
     this.state,
   });
 

@@ -47,7 +47,7 @@ class ProjectArgs {
   /// [status] The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
   /// [tags] The tag of the resource
   /// [threeTierModel] Indicates whether data storage by schema is supported. Valid values:
-  ProjectArgs({
+  const ProjectArgs({
     this.comment,
     this.defaultQuota,
     this.ipWhiteList,

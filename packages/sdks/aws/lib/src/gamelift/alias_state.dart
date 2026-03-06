@@ -28,7 +28,7 @@ class AliasState {
   /// [routingStrategy] Specifies the fleet and/or routing type to use for the alias.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  AliasState({
+  const AliasState({
     this.arn,
     this.description,
     this.name,

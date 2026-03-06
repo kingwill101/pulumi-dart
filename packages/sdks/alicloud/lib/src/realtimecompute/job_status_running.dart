@@ -11,7 +11,7 @@ class JobStatusRunning {
   /// Creates a new [JobStatusRunning].
   /// [observedFlinkJobRestarts] Number of job restarts
   /// [observedFlinkJobStatus] Flink job status
-  JobStatusRunning({
+  const JobStatusRunning({
     this.observedFlinkJobRestarts,
     this.observedFlinkJobStatus,
   });

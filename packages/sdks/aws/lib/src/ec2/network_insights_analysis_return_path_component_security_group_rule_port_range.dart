@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange {
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange({
+  const NetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange({
     this.from,
     this.to,
   });

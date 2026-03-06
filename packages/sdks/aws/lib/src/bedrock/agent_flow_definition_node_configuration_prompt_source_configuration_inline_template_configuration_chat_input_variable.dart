@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable].
   /// [name] The name of the variable.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatInputVariable({
     required this.name,
   });
 

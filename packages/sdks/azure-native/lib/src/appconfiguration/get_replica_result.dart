@@ -30,7 +30,7 @@ class GetReplicaResult {
   /// [provisioningState] The provisioning state of the replica.
   /// [systemData] Resource system metadata.
   /// [type] The type of the resource.
-  GetReplicaResult({
+  const GetReplicaResult({
     required this.azureApiVersion,
     required this.endpoint,
     required this.id,

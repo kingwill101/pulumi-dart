@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBan
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps].
   /// [max] Maximum.
   /// [min] Minimum.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkBandwidthGbps({
     this.max,
     this.min,
   });

@@ -38,7 +38,7 @@ class AuthorizationPolicyArgs {
   /// [name] Name of the AuthorizationPolicy resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken.
-  AuthorizationPolicyArgs({
+  const AuthorizationPolicyArgs({
     required this.action,
     this.description,
     this.labels,

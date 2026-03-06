@@ -15,7 +15,7 @@ class WorkspaceCompilationOverrides {
   /// [defaultDatabase] Optional. The default database (Google Cloud project ID).
   /// [schemaSuffix] Optional. The suffix that should be appended to all schema (BigQuery dataset ID) names.
   /// [tablePrefix] Optional. The prefix that should be prepended to all table names.
-  WorkspaceCompilationOverrides({
+  const WorkspaceCompilationOverrides({
     this.defaultDatabase,
     this.schemaSuffix,
     this.tablePrefix,

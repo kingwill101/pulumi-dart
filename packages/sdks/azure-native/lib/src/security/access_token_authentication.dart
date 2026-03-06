@@ -16,7 +16,7 @@ class AccessTokenAuthentication {
   /// [accessToken] The access token that will be used while authenticating with the onboarded environment
   /// [authenticationType] The authentication type
   /// [username] The user name that will be used while authenticating with the onboarded environment
-  AccessTokenAuthentication({
+  const AccessTokenAuthentication({
     this.accessToken,
     required this.authenticationType,
     this.username,

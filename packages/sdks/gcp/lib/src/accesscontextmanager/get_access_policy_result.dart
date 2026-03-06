@@ -18,7 +18,7 @@ class GetAccessPolicyResult {
   /// [parent] Required.
   /// [scopes] Optional.
   /// [title] Human readable title. Does not affect behavior.
-  GetAccessPolicyResult({
+  const GetAccessPolicyResult({
     required this.id,
     required this.name,
     required this.parent,

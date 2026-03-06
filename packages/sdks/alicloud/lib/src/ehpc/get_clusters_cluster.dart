@@ -108,7 +108,7 @@ class GetClustersCluster {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The available zone ID.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.accountType,
     required this.applications,
     required this.clientVersion,

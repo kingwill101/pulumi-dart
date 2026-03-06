@@ -11,7 +11,7 @@ class MongoCollectionSystemIndex {
   /// Creates a new [MongoCollectionSystemIndex].
   /// [keys] The list of system keys which are not settable for each Cosmos DB Mongo Collection.
   /// [unique] Identifies whether the table contains no duplicate values.
-  MongoCollectionSystemIndex({
+  const MongoCollectionSystemIndex({
     this.keys,
     this.unique,
   });

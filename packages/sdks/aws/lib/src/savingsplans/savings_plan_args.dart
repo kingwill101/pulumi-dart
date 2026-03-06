@@ -29,7 +29,7 @@ class SavingsPlanArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [upfrontPaymentAmount] The up-front payment amount.
-  SavingsPlanArgs({
+  const SavingsPlanArgs({
     required this.commitment,
     this.purchaseTime,
     required this.savingsPlanOfferingId,

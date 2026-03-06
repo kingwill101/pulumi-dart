@@ -11,7 +11,7 @@ class DirectoryMfaAuthenticationSettingInfo {
   /// Creates a new [DirectoryMfaAuthenticationSettingInfo].
   /// [mfaAuthenticationAdvanceSettings] Global MFA validation policy
   /// [operationForRiskLogin] MFA verification policy for abnormal logon.
-  DirectoryMfaAuthenticationSettingInfo({
+  const DirectoryMfaAuthenticationSettingInfo({
     this.mfaAuthenticationAdvanceSettings,
     this.operationForRiskLogin,
   });

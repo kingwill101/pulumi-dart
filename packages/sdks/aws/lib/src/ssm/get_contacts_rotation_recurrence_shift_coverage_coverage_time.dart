@@ -11,7 +11,7 @@ class GetContactsRotationRecurrenceShiftCoverageCoverageTime {
   /// Creates a new [GetContactsRotationRecurrenceShiftCoverageCoverageTime].
   /// [ends] Required.
   /// [starts] Required.
-  GetContactsRotationRecurrenceShiftCoverageCoverageTime({
+  const GetContactsRotationRecurrenceShiftCoverageCoverageTime({
     required this.ends,
     required this.starts,
   });

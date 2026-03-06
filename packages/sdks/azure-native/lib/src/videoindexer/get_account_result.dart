@@ -50,7 +50,7 @@ class GetAccountResult {
   /// [tenantId] The account's tenant id
   /// [totalSecondsIndexed] An integer representing the total seconds that have been indexed on the account
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAccountResult({
+  const GetAccountResult({
     this.accountId,
     required this.accountName,
     required this.azureApiVersion,

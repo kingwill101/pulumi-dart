@@ -11,7 +11,7 @@ class GetAuthScopeRole {
   /// Creates a new [GetAuthScopeRole].
   /// [roleId] The ID of the role.
   /// [roleName] The name of the role.
-  GetAuthScopeRole({
+  const GetAuthScopeRole({
     required this.roleId,
     required this.roleName,
   });

@@ -12,7 +12,7 @@ class OidcTokenResponseCloudtasksV2beta3 {
   /// Creates a new [OidcTokenResponseCloudtasksV2beta3].
   /// [audience] Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
   /// [serviceAccountEmail] [Service account email](https://cloud.google.com/iam/docs/service-accounts) to be used for generating OIDC token. The service account must be within the same project as the queue. The caller must have iam.serviceAccounts.actAs permission for the service account.
-  OidcTokenResponseCloudtasksV2beta3({
+  const OidcTokenResponseCloudtasksV2beta3({
     required this.audience,
     required this.serviceAccountEmail,
   });

@@ -30,7 +30,7 @@ class CapacityArgs {
   /// [resourceGroupName] The name of the Resource Group in which to create the Fabric Capacity. Changing this forces a new resource to be created.
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the Fabric Capacity.
-  CapacityArgs({
+  const CapacityArgs({
     this.administrationMembers,
     this.location,
     this.name,

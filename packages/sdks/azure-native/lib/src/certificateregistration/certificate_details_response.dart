@@ -33,7 +33,7 @@ class CertificateDetailsResponse {
   /// [subject] Certificate Subject.
   /// [thumbprint] Certificate Thumbprint.
   /// [version] Certificate Version.
-  CertificateDetailsResponse({
+  const CertificateDetailsResponse({
     required this.issuer,
     required this.notAfter,
     required this.notBefore,

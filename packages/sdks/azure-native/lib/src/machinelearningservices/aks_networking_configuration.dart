@@ -18,7 +18,7 @@ class AksNetworkingConfiguration {
   /// [dockerBridgeCidr] A CIDR notation IP range assigned to the Docker bridge network. It must not overlap with any Subnet IP ranges or the Kubernetes service address range.
   /// [serviceCidr] A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
   /// [subnetId] Virtual network subnet resource ID the compute nodes belong to
-  AksNetworkingConfiguration({
+  const AksNetworkingConfiguration({
     this.dnsServiceIP,
     this.dockerBridgeCidr,
     this.serviceCidr,

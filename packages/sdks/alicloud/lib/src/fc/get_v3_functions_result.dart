@@ -28,7 +28,7 @@ class GetV3FunctionsResult {
   /// [outputFile] Optional.
   /// [prefix] Optional.
   /// [resourceGroupId] Resource Group ID
-  GetV3FunctionsResult({
+  const GetV3FunctionsResult({
     required this.functions,
     required this.id,
     required this.ids,

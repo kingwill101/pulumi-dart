@@ -18,7 +18,7 @@ class ResourceOperationErrorResponse {
   /// [code] The code that corresponds to the type of operation failure
   /// [message] The operation failure message
   /// [timestamp] The datetime of when the error occured
-  ResourceOperationErrorResponse({
+  const ResourceOperationErrorResponse({
     this.action,
     this.code,
     this.message,

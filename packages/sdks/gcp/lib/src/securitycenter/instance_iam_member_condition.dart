@@ -12,7 +12,7 @@ class InstanceIamMemberCondition {
   /// [description] An optional description of the instance.
   /// [expression] Required.
   /// [title] Required.
-  InstanceIamMemberCondition({
+  const InstanceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

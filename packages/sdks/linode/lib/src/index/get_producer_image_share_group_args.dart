@@ -12,7 +12,7 @@ class GetProducerImageShareGroupArgs {
 
   /// Creates a new [GetProducerImageShareGroupArgs].
   /// [id] The ID of the Image Share Group.
-  GetProducerImageShareGroupArgs({
+  const GetProducerImageShareGroupArgs({
     required this.id,
   });
 

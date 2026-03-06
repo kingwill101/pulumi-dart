@@ -18,7 +18,7 @@ class GetServiceArgs {
   /// [location] The Azure Region where the Service is located.
   /// [name] Specifies the name of the Healthcare Service.
   /// [resourceGroupName] The name of the Resource Group in which the Healthcare Service exists.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.location,
     required this.name,
     required this.resourceGroupName,

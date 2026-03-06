@@ -9,7 +9,7 @@ class Multichannel {
 
   /// Creates a new [Multichannel].
   /// [enabled] Indicates whether multichannel is enabled
-  Multichannel({
+  const Multichannel({
     this.enabled,
   });
 

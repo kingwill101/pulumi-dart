@@ -17,7 +17,7 @@ class GetManagedFolderArgs {
   /// [ifMetagenerationMatch] Optional.
   /// [ifMetagenerationNotMatch] Optional.
   /// [managedFolder] Required.
-  GetManagedFolderArgs({
+  const GetManagedFolderArgs({
     required this.bucket,
     this.ifMetagenerationMatch,
     this.ifMetagenerationNotMatch,

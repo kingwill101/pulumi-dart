@@ -9,7 +9,7 @@ class LoadBalancerPolicyPolicyAttribute {
   /// Creates a new [LoadBalancerPolicyPolicyAttribute].
   /// [name] Optional.
   /// [value] Optional.
-  LoadBalancerPolicyPolicyAttribute({
+  const LoadBalancerPolicyPolicyAttribute({
     this.name,
     this.value,
   });

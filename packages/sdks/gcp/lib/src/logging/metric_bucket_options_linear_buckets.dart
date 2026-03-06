@@ -14,7 +14,7 @@ class MetricBucketOptionsLinearBuckets {
   /// [numFiniteBuckets] Must be greater than 0.
   /// [offset] Lower bound of the first bucket.
   /// [width] Must be greater than 0.
-  MetricBucketOptionsLinearBuckets({
+  const MetricBucketOptionsLinearBuckets({
     required this.numFiniteBuckets,
     required this.offset,
     required this.width,

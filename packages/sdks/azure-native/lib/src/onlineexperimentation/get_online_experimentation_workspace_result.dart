@@ -39,7 +39,7 @@ class GetOnlineExperimentationWorkspaceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetOnlineExperimentationWorkspaceResult({
+  const GetOnlineExperimentationWorkspaceResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

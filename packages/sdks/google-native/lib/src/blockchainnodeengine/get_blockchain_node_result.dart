@@ -34,7 +34,7 @@ class GetBlockchainNodeResult {
   /// [privateServiceConnectEnabled] Optional. When true, the node is only accessible via Private Service Connect; no public endpoints are exposed. Otherwise, the node is only accessible via public endpoints. See https://cloud.google.com/vpc/docs/private-service-connect.
   /// [state] A status representing the state of the node.
   /// [updateTime] The timestamp at which the blockchain node was last updated.
-  GetBlockchainNodeResult({
+  const GetBlockchainNodeResult({
     required this.blockchainType,
     required this.connectionInfo,
     required this.createTime,

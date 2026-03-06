@@ -24,7 +24,7 @@ class NatIpCidrState {
   /// [natIpCidrDescription] The description of the NAT CIDR block. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
   /// [natIpCidrName] The name of the NAT CIDR block. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter. It must start with a letter but cannot start with `http://` or `https://`.
   /// [status] The status of the CIDR block of the NAT gateway. Valid values: `Available`.
-  NatIpCidrState({
+  const NatIpCidrState({
     this.dryRun,
     this.natGatewayId,
     this.natIpCidr,

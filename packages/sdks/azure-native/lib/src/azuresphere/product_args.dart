@@ -21,7 +21,7 @@ class ProductArgs {
   /// [description] Description of the product
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ProductArgs({
+  const ProductArgs({
     required this.catalogName,
     this.description,
     this.productName,

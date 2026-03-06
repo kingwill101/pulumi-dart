@@ -11,7 +11,7 @@ class PolicyCustomRuleMatchConditionMatchVariable {
   /// Creates a new [PolicyCustomRuleMatchConditionMatchVariable].
   /// [selector] Describes field of the matchVariable collection
   /// [variableName] The name of the Match Variable. Possible values are `RemoteAddr`, `RequestMethod`, `QueryString`, `PostArgs`, `RequestUri`, `RequestHeaders`, `RequestBody` and `RequestCookies`.
-  PolicyCustomRuleMatchConditionMatchVariable({
+  const PolicyCustomRuleMatchConditionMatchVariable({
     this.selector,
     required this.variableName,
   });

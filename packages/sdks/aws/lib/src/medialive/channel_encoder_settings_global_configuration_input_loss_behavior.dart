@@ -16,7 +16,7 @@ class ChannelEncoderSettingsGlobalConfigurationInputLossBehavior {
   /// [inputLossImageSlate] Optional.
   /// [inputLossImageType] Optional.
   /// [repeatFrameMsec] Optional.
-  ChannelEncoderSettingsGlobalConfigurationInputLossBehavior({
+  const ChannelEncoderSettingsGlobalConfigurationInputLossBehavior({
     this.blackFrameMsec,
     this.inputLossImageColor,
     this.inputLossImageSlate,

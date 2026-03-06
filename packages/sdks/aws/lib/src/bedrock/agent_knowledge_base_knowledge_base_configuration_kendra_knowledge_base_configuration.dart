@@ -8,7 +8,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfigurati
 
   /// Creates a new [AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration].
   /// [kendraIndexArn] ARN of the Amazon Kendra index.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationKendraKnowledgeBaseConfiguration({
     required this.kendraIndexArn,
   });
 

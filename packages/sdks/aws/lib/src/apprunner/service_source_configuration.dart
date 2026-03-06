@@ -20,7 +20,7 @@ class ServiceSourceConfiguration {
   /// [autoDeploymentsEnabled] Whether continuous integration from the source repository is enabled for the App Runner service. If set to `true`, each repository change (source code commit or new image version) starts a deployment. Defaults to `true`.
   /// [codeRepository] Description of a source code repository. See Code Repository below for more details.
   /// [imageRepository] Description of a source image repository. See Image Repository below for more details.
-  ServiceSourceConfiguration({
+  const ServiceSourceConfiguration({
     this.authenticationConfiguration,
     this.autoDeploymentsEnabled,
     this.codeRepository,

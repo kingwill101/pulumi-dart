@@ -18,7 +18,7 @@ class GetUserArgs {
   /// [apiManagementName] The Name of the API Management Service in which this User exists.
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists.
   /// [userId] The Identifier for the User.
-  GetUserArgs({
+  const GetUserArgs({
     required this.apiManagementName,
     required this.resourceGroupName,
     required this.userId,

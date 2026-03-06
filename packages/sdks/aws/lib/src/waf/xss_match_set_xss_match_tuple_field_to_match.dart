@@ -15,7 +15,7 @@ class XssMatchSetXssMatchTupleFieldToMatch {
   /// Creates a new [XssMatchSetXssMatchTupleFieldToMatch].
   /// [data] When `type` is `HEADER`, enter the name of the header that you want to search, e.g., `User-Agent` or `Referer`.
   /// [type] The part of the web request that you want AWS WAF to search for a specified string.
-  XssMatchSetXssMatchTupleFieldToMatch({
+  const XssMatchSetXssMatchTupleFieldToMatch({
     this.data,
     required this.type,
   });

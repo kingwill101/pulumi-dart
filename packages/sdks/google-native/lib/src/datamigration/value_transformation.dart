@@ -42,7 +42,7 @@ class ValueTransformation {
   /// [isNull] Optional. Value is null
   /// [roundScale] Optional. Allows the data to change scale
   /// [valueList] Optional. Value is found in the specified list.
-  ValueTransformation({
+  const ValueTransformation({
     this.applyHash,
     this.assignMaxValue,
     this.assignMinValue,

@@ -24,7 +24,7 @@ class GetTemplateScratchesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
   /// [templateScratchType] The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
-  GetTemplateScratchesArgs({
+  const GetTemplateScratchesArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

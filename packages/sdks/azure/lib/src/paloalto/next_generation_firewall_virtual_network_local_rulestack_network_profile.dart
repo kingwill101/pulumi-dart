@@ -22,7 +22,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile {
   /// [publicIpAddresses] Optional.
   /// [trustedAddressRanges] Specifies a list of trusted ranges to use for the Network.
   /// [vnetConfiguration] A `vnet_configuration` block as defined below.
-  NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile({
+  const NextGenerationFirewallVirtualNetworkLocalRulestackNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
     required this.publicIpAddressIds,

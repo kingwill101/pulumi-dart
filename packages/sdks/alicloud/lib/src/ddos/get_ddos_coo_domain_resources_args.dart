@@ -21,7 +21,7 @@ class GetDdosCooDomainResourcesArgs {
   /// [instanceIds] A ID list of Ddoscoo instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [queryDomainPattern] Match the pattern.
-  GetDdosCooDomainResourcesArgs({
+  const GetDdosCooDomainResourcesArgs({
     this.ids,
     this.instanceIds,
     this.outputFile,

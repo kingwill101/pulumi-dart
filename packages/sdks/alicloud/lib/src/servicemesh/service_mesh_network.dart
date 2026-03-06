@@ -14,7 +14,7 @@ class ServiceMeshNetwork {
   /// [securityGroupId] Security group ID
   /// [vpcId] VPC ID
   /// [vswitcheList] Virtual Switch ID
-  ServiceMeshNetwork({
+  const ServiceMeshNetwork({
     this.securityGroupId,
     required this.vpcId,
     required this.vswitcheList,

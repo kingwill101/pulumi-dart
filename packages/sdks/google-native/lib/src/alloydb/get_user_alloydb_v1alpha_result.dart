@@ -17,7 +17,7 @@ class GetUserAlloydbV1alphaResult {
   /// [name] Name of the resource in the form of projects/{project}/locations/{location}/cluster/{cluster}/users/{user}.
   /// [password] Input only. Password for the user.
   /// [userType] Optional. Type of this user.
-  GetUserAlloydbV1alphaResult({
+  const GetUserAlloydbV1alphaResult({
     required this.databaseRoles,
     required this.name,
     required this.password,

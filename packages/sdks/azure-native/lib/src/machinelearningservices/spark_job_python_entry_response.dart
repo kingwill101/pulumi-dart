@@ -11,7 +11,7 @@ class SparkJobPythonEntryResponse {
   /// Creates a new [SparkJobPythonEntryResponse].
   /// [file] [Required] Relative python file path for job entry point.
   /// [sparkJobEntryType] Expected value is 'SparkJobPythonEntry'.
-  SparkJobPythonEntryResponse({
+  const SparkJobPythonEntryResponse({
     required this.file,
     required this.sparkJobEntryType,
   });

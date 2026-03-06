@@ -39,7 +39,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterface {
   /// [name] The Name which should be used for this Network Interface. Changing this forces a new resource to be created.
   /// [networkSecurityGroupId] The ID of a Network Security Group which should be assigned to this Network Interface.
   /// [primary] Is this the Primary IP Configuration? Possible values are `true` and `false`. Defaults to `false`.
-  OrchestratedVirtualMachineScaleSetNetworkInterface({
+  const OrchestratedVirtualMachineScaleSetNetworkInterface({
     this.auxiliaryMode,
     this.auxiliarySku,
     this.dnsServers,

@@ -13,7 +13,7 @@ class SensitiveDataDiscoveryPropertiesResponse {
   /// Creates a new [SensitiveDataDiscoveryPropertiesResponse].
   /// [isEnabled] Indicates whether Sensitive Data Discovery should be enabled.
   /// [operationStatus] Upon failure or partial success. Additional data describing Sensitive Data Discovery enable/disable operation.
-  SensitiveDataDiscoveryPropertiesResponse({
+  const SensitiveDataDiscoveryPropertiesResponse({
     this.isEnabled,
     required this.operationStatus,
   });

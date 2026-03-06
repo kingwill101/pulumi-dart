@@ -15,7 +15,7 @@ class GetAddressGroupArgs {
   /// [addressGroupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAddressGroupArgs({
+  const GetAddressGroupArgs({
     required this.addressGroupId,
     required this.location,
     this.project,

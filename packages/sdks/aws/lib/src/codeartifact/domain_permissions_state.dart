@@ -24,7 +24,7 @@ class DomainPermissionsState {
   /// [policyRevision] The current revision of the resource policy to be set. This revision is used for optimistic locking, which prevents others from overwriting your changes to the domain's resource policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The ARN of the resource associated with the resource policy.
-  DomainPermissionsState({
+  const DomainPermissionsState({
     this.domain,
     this.domainOwner,
     this.policyDocument,

@@ -9,7 +9,7 @@ class EncryptionConfigResponseAlloydbV1beta {
 
   /// Creates a new [EncryptionConfigResponseAlloydbV1beta].
   /// [kmsKeyName] The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME]
-  EncryptionConfigResponseAlloydbV1beta({
+  const EncryptionConfigResponseAlloydbV1beta({
     required this.kmsKeyName,
   });
 

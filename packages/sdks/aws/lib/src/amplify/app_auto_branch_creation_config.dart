@@ -35,7 +35,7 @@ class AppAutoBranchCreationConfig {
   /// [framework] Framework for the autocreated branch.
   /// [pullRequestEnvironmentName] Amplify environment name for the pull request.
   /// [stage] Describes the current stage for the autocreated branch. Valid values: `PRODUCTION`, `BETA`, `DEVELOPMENT`, `EXPERIMENTAL`, `PULL_REQUEST`.
-  AppAutoBranchCreationConfig({
+  const AppAutoBranchCreationConfig({
     this.basicAuthCredentials,
     this.buildSpec,
     this.enableAutoBuild,

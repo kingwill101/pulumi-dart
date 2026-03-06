@@ -34,7 +34,7 @@ class ElasticLoadBalancingV2ListenerPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ElasticLoadBalancingV2ListenerPropertiesResponse({
+  const ElasticLoadBalancingV2ListenerPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

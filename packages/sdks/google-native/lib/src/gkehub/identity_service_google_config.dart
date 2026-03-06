@@ -9,7 +9,7 @@ class IdentityServiceGoogleConfig {
 
   /// Creates a new [IdentityServiceGoogleConfig].
   /// [disable] Disable automatic configuration of Google Plugin on supported platforms.
-  IdentityServiceGoogleConfig({
+  const IdentityServiceGoogleConfig({
     this.disable,
   });
 

@@ -30,7 +30,7 @@ class MaintenanceConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   /// [timeInWeek] Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
-  MaintenanceConfigurationArgs({
+  const MaintenanceConfigurationArgs({
     this.configName,
     this.maintenanceWindow,
     this.notAllowedTime,

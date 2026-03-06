@@ -18,7 +18,7 @@ class GetBackupVaultResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] Required.
-  GetBackupVaultResult({
+  const GetBackupVaultResult({
     required this.accountName,
     required this.id,
     required this.location,

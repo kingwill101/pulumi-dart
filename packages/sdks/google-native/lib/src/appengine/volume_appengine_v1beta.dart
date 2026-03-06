@@ -15,7 +15,7 @@ class VolumeAppengineV1beta {
   /// [name] Unique name for the volume.
   /// [sizeGb] Volume size in gigabytes.
   /// [volumeType] Underlying volume type, e.g. 'tmpfs'.
-  VolumeAppengineV1beta({
+  const VolumeAppengineV1beta({
     this.name,
     this.sizeGb,
     this.volumeType,

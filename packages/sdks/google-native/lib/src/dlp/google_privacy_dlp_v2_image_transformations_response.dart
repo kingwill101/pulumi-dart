@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2ImageTransformationsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ImageTransformationsResponse].
   /// [transforms] Required.
-  GooglePrivacyDlpV2ImageTransformationsResponse({
+  const GooglePrivacyDlpV2ImageTransformationsResponse({
     required this.transforms,
   });
 

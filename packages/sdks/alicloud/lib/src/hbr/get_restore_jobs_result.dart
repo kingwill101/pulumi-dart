@@ -32,7 +32,7 @@ class GetRestoreJobsResult {
   /// [targetFileSystemIds] Optional.
   /// [targetInstanceIds] Optional.
   /// [vaultIds] Optional.
-  GetRestoreJobsResult({
+  const GetRestoreJobsResult({
     required this.id,
     required this.ids,
     required this.jobs,

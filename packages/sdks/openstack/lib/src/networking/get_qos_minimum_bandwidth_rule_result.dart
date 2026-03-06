@@ -19,7 +19,7 @@ class GetQosMinimumBandwidthRuleResult {
   /// [minKbps] See Argument Reference above.
   /// [qosPolicyId] See Argument Reference above.
   /// [region] See Argument Reference above.
-  GetQosMinimumBandwidthRuleResult({
+  const GetQosMinimumBandwidthRuleResult({
     required this.direction,
     required this.id,
     required this.minKbps,

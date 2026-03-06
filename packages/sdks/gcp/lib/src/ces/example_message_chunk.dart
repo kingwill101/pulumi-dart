@@ -33,7 +33,7 @@ class ExampleMessageChunk {
   /// [toolCall] Request for the client or the agent to execute the specified tool.
   /// [toolResponse] The execution result of a specific tool from the client or the agent.
   /// [updatedVariables] A struct represents variables that were updated in the conversation,
-  ExampleMessageChunk({
+  const ExampleMessageChunk({
     this.agentTransfer,
     this.image,
     this.text,

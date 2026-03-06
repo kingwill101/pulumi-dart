@@ -11,7 +11,7 @@ class FunctionSnapStart {
   /// Creates a new [FunctionSnapStart].
   /// [applyOn] When to apply snap start optimization. Valid value: `PublishedVersions`.
   /// [optimizationStatus] Optimization status of the snap start configuration. Valid values are `On` and `Off`.
-  FunctionSnapStart({
+  const FunctionSnapStart({
     required this.applyOn,
     this.optimizationStatus,
   });

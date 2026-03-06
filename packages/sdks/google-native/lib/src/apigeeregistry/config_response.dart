@@ -12,7 +12,7 @@ class ConfigResponse {
   /// Creates a new [ConfigResponse].
   /// [cmekKeyName] The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location.
   /// [location] The GCP location where the Instance resides.
-  ConfigResponse({
+  const ConfigResponse({
     required this.cmekKeyName,
     required this.location,
   });

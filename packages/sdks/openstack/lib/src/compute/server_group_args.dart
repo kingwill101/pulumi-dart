@@ -31,7 +31,7 @@ class ServerGroupArgs {
   /// [region] The region in which to obtain the V2 Compute client.
   /// [rules] The rules which are applied to specified `policy`. Currently,
   /// [valueSpecs] Map of additional options.
-  ServerGroupArgs({
+  const ServerGroupArgs({
     this.name,
     this.policies,
     this.region,

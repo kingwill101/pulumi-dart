@@ -19,7 +19,7 @@ class GlobalTableArgs {
   /// [name] The name of the global table. Must match underlying DynamoDB Table names in all regions.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [replicas] Underlying DynamoDB Table. At least 1 replica must be defined. See below.
-  GlobalTableArgs({
+  const GlobalTableArgs({
     this.name,
     this.region,
     required this.replicas,

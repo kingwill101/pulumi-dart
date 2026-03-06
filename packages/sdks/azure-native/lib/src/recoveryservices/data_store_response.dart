@@ -21,7 +21,7 @@ class DataStoreResponse {
   /// [symbolicName] The symbolic name of data store.
   /// [type] The type of data store.
   /// [uuid] The uuid of data store.
-  DataStoreResponse({
+  const DataStoreResponse({
     this.capacity,
     this.freeSpace,
     this.symbolicName,

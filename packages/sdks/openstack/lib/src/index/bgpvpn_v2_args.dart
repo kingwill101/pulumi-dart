@@ -52,7 +52,7 @@ class BgpvpnV2Args {
   /// [routeTargets] A list of Route Targets that will be both
   /// [type] The type of the BGP VPN (either `l2` or `l3`). Changing this
   /// [vni] The globally-assigned VXLAN VNI for the BGP VPN. Changing
-  BgpvpnV2Args({
+  const BgpvpnV2Args({
     this.exportTargets,
     this.importTargets,
     this.localPref,

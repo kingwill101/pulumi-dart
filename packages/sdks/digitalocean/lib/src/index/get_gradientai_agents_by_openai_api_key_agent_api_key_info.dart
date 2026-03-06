@@ -23,7 +23,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo {
   /// [name] Name of the API Key
   /// [secretKey] Updated At timestamp for the API Key
   /// [uuid] API Key value
-  GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo({
     required this.createdAt,
     this.createdBy,
     required this.deletedAt,

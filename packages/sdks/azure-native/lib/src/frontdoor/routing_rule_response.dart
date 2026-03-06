@@ -42,7 +42,7 @@ class RoutingRuleResponse {
   /// [rulesEngine] A reference to a specific Rules Engine Configuration to apply to this route.
   /// [type] Resource type.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for each routing rule (if applicable)
-  RoutingRuleResponse({
+  const RoutingRuleResponse({
     this.acceptedProtocols,
     this.enabledState,
     this.frontendEndpoints,

@@ -8,7 +8,7 @@ class DomainDevicesCryptoAlias {
 
   /// Creates a new [DomainDevicesCryptoAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesCryptoAlias({
+  const DomainDevicesCryptoAlias({
     required this.name,
   });
 

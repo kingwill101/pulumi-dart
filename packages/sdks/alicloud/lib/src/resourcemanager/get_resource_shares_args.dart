@@ -27,7 +27,7 @@ class GetResourceSharesArgs {
   /// [resourceShareName] The name of resource share.
   /// [resourceShareOwner] The owner of resource share, Valid values: `Self` and `OtherAccounts`.
   /// [status] The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
-  GetResourceSharesArgs({
+  const GetResourceSharesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -29,7 +29,7 @@ class GetScalingRulesResult {
   /// [rules] A list of scaling rules. Each element contains the following attributes:
   /// [scalingGroupId] ID of the scaling group.
   /// [type] Type of the scaling rule.
-  GetScalingRulesResult({
+  const GetScalingRulesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

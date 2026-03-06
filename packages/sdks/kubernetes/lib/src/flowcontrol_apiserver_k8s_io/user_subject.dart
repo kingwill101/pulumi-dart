@@ -9,7 +9,7 @@ class UserSubject {
 
   /// Creates a new [UserSubject].
   /// [name] `name` is the username that matches, or "*" to match all usernames. Required.
-  UserSubject({
+  const UserSubject({
     required this.name,
   });
 

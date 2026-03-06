@@ -27,7 +27,7 @@ class SchemaArgs {
   /// [schemaType] Schema Type. Immutable.
   /// [serviceName] The name of the API Management service.
   /// [value] Json-encoded string for non json-based schema.
-  SchemaArgs({
+  const SchemaArgs({
     this.description,
     required this.resourceGroupName,
     this.schemaId,

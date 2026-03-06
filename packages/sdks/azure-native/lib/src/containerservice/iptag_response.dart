@@ -12,7 +12,7 @@ class IPTagResponse {
   /// Creates a new [IPTagResponse].
   /// [ipTagType] The IP tag type. Example: RoutingPreference.
   /// [tag] The value of the IP tag associated with the public IP. Example: Internet.
-  IPTagResponse({
+  const IPTagResponse({
     this.ipTagType,
     this.tag,
   });

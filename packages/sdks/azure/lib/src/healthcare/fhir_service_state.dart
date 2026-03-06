@@ -52,7 +52,7 @@ class FhirServiceState {
   /// [resourceGroupName] Specifies the name of the Resource Group in which to create the Healthcare FHIR Service. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Healthcare FHIR Service.
   /// [workspaceId] Specifies the id of the Healthcare Workspace where the Healthcare FHIR Service should exist. Changing this forces a new Healthcare FHIR Service to be created.
-  FhirServiceState({
+  const FhirServiceState({
     this.accessPolicyObjectIds,
     this.authentication,
     this.configurationExportStorageAccountName,

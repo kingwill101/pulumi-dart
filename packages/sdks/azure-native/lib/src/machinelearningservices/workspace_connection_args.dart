@@ -21,7 +21,7 @@ class WorkspaceConnectionArgs {
   /// [properties] Required.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  WorkspaceConnectionArgs({
+  const WorkspaceConnectionArgs({
     this.connectionName,
     required this.properties,
     required this.resourceGroupName,

@@ -33,7 +33,7 @@ class GetWorkspaceNamedValueResult {
   /// [tags] Optional tags that when provided can be used to filter the NamedValue list.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
-  GetWorkspaceNamedValueResult({
+  const GetWorkspaceNamedValueResult({
     required this.azureApiVersion,
     required this.displayName,
     required this.id,

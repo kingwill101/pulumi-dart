@@ -36,7 +36,7 @@ class ClusterClusterConfigMasterConfig {
   /// [machineType] The name of a Google Compute Engine machine type
   /// [minCpuPlatform] The name of a minimum generation of CPU family
   /// [numInstances] Specifies the number of master nodes to create.
-  ClusterClusterConfigMasterConfig({
+  const ClusterClusterConfigMasterConfig({
     this.accelerators,
     this.diskConfig,
     this.imageUri,

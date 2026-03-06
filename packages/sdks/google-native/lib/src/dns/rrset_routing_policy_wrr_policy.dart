@@ -11,7 +11,7 @@ class RRSetRoutingPolicyWrrPolicy {
   /// Creates a new [RRSetRoutingPolicyWrrPolicy].
   /// [items] Optional.
   /// [kind] Optional.
-  RRSetRoutingPolicyWrrPolicy({
+  const RRSetRoutingPolicyWrrPolicy({
     this.items,
     this.kind,
   });

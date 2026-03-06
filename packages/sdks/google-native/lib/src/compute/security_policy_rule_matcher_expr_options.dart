@@ -9,7 +9,7 @@ class SecurityPolicyRuleMatcherExprOptions {
 
   /// Creates a new [SecurityPolicyRuleMatcherExprOptions].
   /// [recaptchaOptions] reCAPTCHA configuration options to be applied for the rule. If the rule does not evaluate reCAPTCHA tokens, this field will have no effect.
-  SecurityPolicyRuleMatcherExprOptions({
+  const SecurityPolicyRuleMatcherExprOptions({
     this.recaptchaOptions,
   });
 

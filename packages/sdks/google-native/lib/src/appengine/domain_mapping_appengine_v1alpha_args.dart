@@ -24,7 +24,7 @@ class DomainMappingAppengineV1alphaArgs {
   /// [noManagedCertificate] Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
   /// [overrideStrategy] Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  DomainMappingAppengineV1alphaArgs({
+  const DomainMappingAppengineV1alphaArgs({
     required this.appId,
     this.id,
     this.noManagedCertificate,

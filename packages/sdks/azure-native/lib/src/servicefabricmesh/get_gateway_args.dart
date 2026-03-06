@@ -15,7 +15,7 @@ class GetGatewayArgs {
   /// Creates a new [GetGatewayArgs].
   /// [gatewayResourceName] The identity of the gateway.
   /// [resourceGroupName] Azure resource group name
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.gatewayResourceName,
     required this.resourceGroupName,
   });

@@ -20,7 +20,7 @@ class GetOutboundFirewallRuleResult {
   /// [name] Resource name.
   /// [provisioningState] The state of the outbound rule.
   /// [type] Resource type.
-  GetOutboundFirewallRuleResult({
+  const GetOutboundFirewallRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

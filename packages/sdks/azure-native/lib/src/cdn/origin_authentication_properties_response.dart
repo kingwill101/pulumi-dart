@@ -16,7 +16,7 @@ class OriginAuthenticationPropertiesResponse {
   /// [scope] The scope used when requesting token from Microsoft Entra. For example, for Azure Blob Storage, scope could be "https://storage.azure.com/.default".
   /// [type] The type of the authentication for the origin.
   /// [userAssignedIdentity] The user assigned managed identity to use for the origin authentication if type is UserAssignedIdentity.
-  OriginAuthenticationPropertiesResponse({
+  const OriginAuthenticationPropertiesResponse({
     this.scope,
     this.type,
     this.userAssignedIdentity,

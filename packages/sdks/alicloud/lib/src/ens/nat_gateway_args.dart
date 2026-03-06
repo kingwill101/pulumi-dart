@@ -24,7 +24,7 @@ class NatGatewayArgs {
   /// [natName] The name of the NAT gateway. The length is 1 to 128 characters, but it cannot start with 'http:// 'or 'https.
   /// [networkId] The network ID.
   /// [vswitchId] The vSwitch ID.
-  NatGatewayArgs({
+  const NatGatewayArgs({
     required this.ensRegionId,
     this.instanceType,
     this.natName,

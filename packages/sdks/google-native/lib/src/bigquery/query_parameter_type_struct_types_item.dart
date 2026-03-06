@@ -15,7 +15,7 @@ class QueryParameterTypeStructTypesItem {
   /// [description] [Optional] Human-oriented description of the field.
   /// [name] [Optional] The name of this field.
   /// [type] [Required] The type of this field.
-  QueryParameterTypeStructTypesItem({
+  const QueryParameterTypeStructTypesItem({
     this.description,
     this.name,
     this.type,

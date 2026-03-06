@@ -26,7 +26,7 @@ class GetTransitRouterRouteTablePropagationsResult {
   /// [status] The status of the route learning correlation.
   /// [transitRouterAttachmentId] The ID of the network instance connection.
   /// [transitRouterRouteTableId] The ID of the route table of the Enterprise Edition transit router.
-  GetTransitRouterRouteTablePropagationsResult({
+  const GetTransitRouterRouteTablePropagationsResult({
     required this.id,
     required this.ids,
     this.outputFile,

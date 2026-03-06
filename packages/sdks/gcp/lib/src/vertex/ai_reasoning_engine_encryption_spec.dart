@@ -12,7 +12,7 @@ class AiReasoningEngineEncryptionSpec {
 
   /// Creates a new [AiReasoningEngineEncryptionSpec].
   /// [kmsKeyName] Required. The Cloud KMS resource identifier of the customer managed
-  AiReasoningEngineEncryptionSpec({
+  const AiReasoningEngineEncryptionSpec({
     required this.kmsKeyName,
   });
 

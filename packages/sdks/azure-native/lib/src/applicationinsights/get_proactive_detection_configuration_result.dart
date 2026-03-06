@@ -24,7 +24,7 @@ class GetProactiveDetectionConfigurationResult {
   /// [name] Azure resource name
   /// [properties] Properties that define a ProactiveDetection configuration.
   /// [type] Azure resource type
-  GetProactiveDetectionConfigurationResult({
+  const GetProactiveDetectionConfigurationResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

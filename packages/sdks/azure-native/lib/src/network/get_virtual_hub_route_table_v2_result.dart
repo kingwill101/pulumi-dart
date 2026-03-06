@@ -28,7 +28,7 @@ class GetVirtualHubRouteTableV2Result {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the virtual hub route table v2 resource.
   /// [routes] List of all routes.
-  GetVirtualHubRouteTableV2Result({
+  const GetVirtualHubRouteTableV2Result({
     this.attachedConnections,
     required this.azureApiVersion,
     required this.etag,

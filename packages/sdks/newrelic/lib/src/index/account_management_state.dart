@@ -15,7 +15,7 @@ class AccountManagementState {
   /// [name] The name of the Account.
   /// [region] The region code of the account.  One of: `us01`, `eu01`.
   /// [status] Status of the account - active or canceled
-  AccountManagementState({
+  const AccountManagementState({
     this.name,
     this.region,
     this.status,

@@ -11,7 +11,7 @@ class RdsCloneDbInstanceParameter {
   /// Creates a new [RdsCloneDbInstanceParameter].
   /// [name] The parameters name.
   /// [value] The parameters value.
-  RdsCloneDbInstanceParameter({
+  const RdsCloneDbInstanceParameter({
     required this.name,
     required this.value,
   });

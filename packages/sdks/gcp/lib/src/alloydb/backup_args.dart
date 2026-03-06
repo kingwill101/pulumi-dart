@@ -50,7 +50,7 @@ class BackupArgs {
   /// [location] The location where the alloydb backup should reside.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The backup type, which suggests the trigger for the backup.
-  BackupArgs({
+  const BackupArgs({
     this.annotations,
     required this.backupId,
     required this.clusterName,

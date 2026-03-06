@@ -17,7 +17,7 @@ class ResizeRequestStatusErrorErrorErrorDetailErrorInfo {
   /// [domain] (Output)
   /// [metadatas] (Output)
   /// [reason] (Output)
-  ResizeRequestStatusErrorErrorErrorDetailErrorInfo({
+  const ResizeRequestStatusErrorErrorErrorDetailErrorInfo({
     this.domain,
     this.metadatas,
     this.reason,

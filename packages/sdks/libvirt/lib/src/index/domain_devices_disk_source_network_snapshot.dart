@@ -8,7 +8,7 @@ class DomainDevicesDiskSourceNetworkSnapshot {
 
   /// Creates a new [DomainDevicesDiskSourceNetworkSnapshot].
   /// [name] Configures the name attribute for the snapshot used in network storage operations.
-  DomainDevicesDiskSourceNetworkSnapshot({
+  const DomainDevicesDiskSourceNetworkSnapshot({
     required this.name,
   });
 

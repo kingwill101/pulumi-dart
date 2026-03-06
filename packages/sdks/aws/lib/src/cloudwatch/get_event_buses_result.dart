@@ -17,7 +17,7 @@ class GetEventBusesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [namePrefix] Optional.
   /// [region] Required.
-  GetEventBusesResult({
+  const GetEventBusesResult({
     required this.eventBuses,
     required this.id,
     this.namePrefix,

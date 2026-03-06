@@ -8,7 +8,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder {
 
   /// Creates a new [GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder].
   /// [id] Optional.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaBuilder({
     this.id,
   });
 

@@ -40,7 +40,7 @@ class AppTemplateInitContainer {
   /// [memory] The amount of memory to allocate to the container.
   /// [name] The name of the container
   /// [volumeMounts] A `volume_mounts` block as detailed below.
-  AppTemplateInitContainer({
+  const AppTemplateInitContainer({
     this.args,
     this.commands,
     this.cpu,

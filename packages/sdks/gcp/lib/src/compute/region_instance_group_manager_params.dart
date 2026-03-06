@@ -8,7 +8,7 @@ class RegionInstanceGroupManagerParams {
 
   /// Creates a new [RegionInstanceGroupManagerParams].
   /// [resourceManagerTags] Resource manager tags to bind to the managed instance group. The tags are key-value pairs. Keys must be in the format tagKeys/123 and values in the format tagValues/456. For more information, see [Manage tags for resources](https://cloud.google.com/compute/docs/tag-resources)
-  RegionInstanceGroupManagerParams({
+  const RegionInstanceGroupManagerParams({
     this.resourceManagerTags,
   });
 

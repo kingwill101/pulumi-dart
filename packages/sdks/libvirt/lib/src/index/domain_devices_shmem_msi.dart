@@ -14,7 +14,7 @@ class DomainDevicesShmemMsi {
   /// [enabled] Enables or disables MSI for the shared memory device, controlling interrupt generation.
   /// [ioEventFd] Configures the IO event file descriptor for MSI handling in the shared memory device.
   /// [vectors] Sets the number of IRQ vectors available for the MSI configuration of the shared memory device.
-  DomainDevicesShmemMsi({
+  const DomainDevicesShmemMsi({
     this.enabled,
     this.ioEventFd,
     this.vectors,

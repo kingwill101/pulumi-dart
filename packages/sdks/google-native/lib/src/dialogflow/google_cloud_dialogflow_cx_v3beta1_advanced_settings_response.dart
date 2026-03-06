@@ -18,7 +18,7 @@ class GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse {
   /// [audioExportGcsDestination] If present, incoming audio is exported by Dialogflow to the configured Google Cloud Storage destination. Exposed at the following levels: - Agent level - Flow level
   /// [dtmfSettings] Settings for DTMF. Exposed at the following levels: - Agent level - Flow level - Page level - Parameter level.
   /// [loggingSettings] Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels: - Agent level.
-  GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse({
+  const GoogleCloudDialogflowCxV3beta1AdvancedSettingsResponse({
     required this.audioExportGcsDestination,
     required this.dtmfSettings,
     required this.loggingSettings,

@@ -21,7 +21,7 @@ class EntryBigqueryTableSpec {
   /// [tableSourceType] (Output)
   /// [tableSpecs] (Output)
   /// [viewSpecs] (Output)
-  EntryBigqueryTableSpec({
+  const EntryBigqueryTableSpec({
     this.tableSourceType,
     this.tableSpecs,
     this.viewSpecs,

@@ -24,7 +24,7 @@ class InterconnectAttachmentL2Forwarding {
   /// [geneveHeader] GeneveHeader related configurations.
   /// [network] URL of the network to which this attachment belongs.
   /// [tunnelEndpointIpAddress] The tunnel endpoint IP address.
-  InterconnectAttachmentL2Forwarding({
+  const InterconnectAttachmentL2Forwarding({
     this.applianceMappings,
     this.defaultApplianceIpAddress,
     this.geneveHeader,

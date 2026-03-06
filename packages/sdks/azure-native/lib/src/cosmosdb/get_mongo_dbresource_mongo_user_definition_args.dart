@@ -18,7 +18,7 @@ class GetMongoDBResourceMongoUserDefinitionArgs {
   /// [accountName] Cosmos DB database account name.
   /// [mongoUserDefinitionId] The ID for the User Definition {dbName.userName}.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMongoDBResourceMongoUserDefinitionArgs({
+  const GetMongoDBResourceMongoUserDefinitionArgs({
     required this.accountName,
     required this.mongoUserDefinitionId,
     required this.resourceGroupName,

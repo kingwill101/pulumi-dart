@@ -10,7 +10,7 @@ class FirewallSettingsState {
 
   /// Creates a new [FirewallSettingsState].
   /// [defaultFirewallIds] A map of default firewall IDs for various interfaces.
-  FirewallSettingsState({
+  const FirewallSettingsState({
     this.defaultFirewallIds,
   });
 

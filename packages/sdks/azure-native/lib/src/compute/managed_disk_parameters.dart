@@ -20,7 +20,7 @@ class ManagedDiskParameters {
   /// [id] Resource Id
   /// [securityProfile] Specifies the security profile for the managed disk.
   /// [storageAccountType] Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-  ManagedDiskParameters({
+  const ManagedDiskParameters({
     this.diskEncryptionSet,
     this.id,
     this.securityProfile,

@@ -29,7 +29,7 @@ class GetChainsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [repoName] The name of CR Enterprise Edition repository.
   /// [repoNamespaceName] The name of CR Enterprise Edition namespace.
-  GetChainsArgs({
+  const GetChainsArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

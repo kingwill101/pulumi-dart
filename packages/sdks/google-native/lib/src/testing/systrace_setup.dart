@@ -8,7 +8,7 @@ class SystraceSetup {
 
   /// Creates a new [SystraceSetup].
   /// [durationSeconds] Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
-  SystraceSetup({
+  const SystraceSetup({
     this.durationSeconds,
   });
 

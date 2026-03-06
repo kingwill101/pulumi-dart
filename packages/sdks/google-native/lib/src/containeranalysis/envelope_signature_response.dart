@@ -9,7 +9,7 @@ class EnvelopeSignatureResponse {
   /// Creates a new [EnvelopeSignatureResponse].
   /// [keyid] Required.
   /// [sig] Required.
-  EnvelopeSignatureResponse({
+  const EnvelopeSignatureResponse({
     required this.keyid,
     required this.sig,
   });

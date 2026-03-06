@@ -11,7 +11,7 @@ class DomainCpuNumaCellCachSize {
   /// Creates a new [DomainCpuNumaCellCachSize].
   /// [unit] Indicates the unit of measurement for the cache size, such as bytes or megabytes.
   /// [value] Sets the actual value for the cache size as defined by the size unit.
-  DomainCpuNumaCellCachSize({
+  const DomainCpuNumaCellCachSize({
     required this.unit,
     required this.value,
   });

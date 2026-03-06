@@ -8,7 +8,7 @@ class GameServerGroupAutoScalingPolicyTargetTrackingConfiguration {
 
   /// Creates a new [GameServerGroupAutoScalingPolicyTargetTrackingConfiguration].
   /// [targetValue] Desired value to use with a game server group target-based scaling policy.
-  GameServerGroupAutoScalingPolicyTargetTrackingConfiguration({
+  const GameServerGroupAutoScalingPolicyTargetTrackingConfiguration({
     required this.targetValue,
   });
 

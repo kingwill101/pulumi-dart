@@ -17,7 +17,7 @@ class StandardAssignmentPropertiesAttestationData {
   /// [assignedAssessment] Component item with key as applied to this standard assignment over the given scope
   /// [complianceState] Attest category of this assignment
   /// [evidence] Array of links to attestation evidence
-  StandardAssignmentPropertiesAttestationData({
+  const StandardAssignmentPropertiesAttestationData({
     this.assignedAssessment,
     this.complianceState,
     this.evidence,

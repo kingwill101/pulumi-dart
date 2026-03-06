@@ -102,7 +102,7 @@ class ServiceSecurity {
   /// [tlsRsaWithAes256CbcShaCiphersEnabled] Should the `TLS_RSA_WITH_AES_256_CBC_SHA` cipher be enabled? Defaults to `false`.
   /// [tlsRsaWithAes256GcmSha384CiphersEnabled] Should the `TLS_RSA_WITH_AES_256_GCM_SHA384` cipher be enabled? Defaults to `false`.
   /// [tripleDesCiphersEnabled] Should the `TLS_RSA_WITH_3DES_EDE_CBC_SHA` cipher be enabled for alL TLS versions (1.0, 1.1 and 1.2)?
-  ServiceSecurity({
+  const ServiceSecurity({
     this.backendSsl30Enabled,
     this.backendTls10Enabled,
     this.backendTls11Enabled,

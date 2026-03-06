@@ -55,7 +55,7 @@ class FlowDestinationFlowConfigDestinationConnectorProperties {
   /// [snowflake] Properties that are required to query Snowflake. See Snowflake Destination Properties for more details.
   /// [upsolver] Properties that are required to query Upsolver. See Upsolver Destination Properties for more details.
   /// [zendesk] Properties that are required to query Zendesk. See Zendesk Destination Properties for more details.
-  FlowDestinationFlowConfigDestinationConnectorProperties({
+  const FlowDestinationFlowConfigDestinationConnectorProperties({
     this.customConnector,
     this.customerProfiles,
     this.eventBridge,

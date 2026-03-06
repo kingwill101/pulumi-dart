@@ -22,7 +22,7 @@ class AiEndpointIamMemberArgs {
   /// [member] Required.
   /// [project] Optional.
   /// [role] Required.
-  AiEndpointIamMemberArgs({
+  const AiEndpointIamMemberArgs({
     this.condition,
     required this.endpoint,
     this.location,

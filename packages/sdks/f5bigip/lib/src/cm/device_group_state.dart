@@ -37,7 +37,7 @@ class DeviceGroupState {
   /// [partition] Device administrative partition
   /// [saveOnAutoSync] Specifies whether the configuration should be saved upon auto-sync.
   /// [type] Specifies if the device-group will be used for failover or resource syncing
-  DeviceGroupState({
+  const DeviceGroupState({
     this.autoSync,
     this.description,
     this.devices,

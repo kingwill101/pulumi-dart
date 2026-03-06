@@ -15,7 +15,7 @@ class TargetAssessmentArmIdsResponse {
   /// [aks] ARM ID for Azure Kubernetes Service assessment.
   /// [azureAppService] ARM ID for Azure App Service assessment.
   /// [azureAppServiceContainer] ARM ID for Azure App Service Container assessment.
-  TargetAssessmentArmIdsResponse({
+  const TargetAssessmentArmIdsResponse({
     this.aks,
     this.azureAppService,
     this.azureAppServiceContainer,

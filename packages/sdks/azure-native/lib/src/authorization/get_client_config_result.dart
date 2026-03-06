@@ -17,7 +17,7 @@ class GetClientConfigResult {
   /// [objectId] Azure Object ID of the current user or service principal.
   /// [subscriptionId] Azure Subscription ID
   /// [tenantId] Azure Tenant ID
-  GetClientConfigResult({
+  const GetClientConfigResult({
     required this.clientId,
     required this.objectId,
     required this.subscriptionId,

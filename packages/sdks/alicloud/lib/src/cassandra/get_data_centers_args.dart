@@ -21,7 +21,7 @@ class GetDataCentersArgs {
   /// [ids] The list of Cassandra data center ids.
   /// [nameRegex] A regex string to apply to the cluster name.
   /// [outputFile] The name of file that can save the collection of data centers after running `pulumi preview`.
-  GetDataCentersArgs({
+  const GetDataCentersArgs({
     required this.clusterId,
     this.ids,
     this.nameRegex,

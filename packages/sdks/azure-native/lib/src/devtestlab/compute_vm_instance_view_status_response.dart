@@ -15,7 +15,7 @@ class ComputeVmInstanceViewStatusResponse {
   /// [code] Gets the status Code.
   /// [displayStatus] Gets the short localizable label for the status.
   /// [message] Gets the message associated with the status.
-  ComputeVmInstanceViewStatusResponse({
+  const ComputeVmInstanceViewStatusResponse({
     this.code,
     this.displayStatus,
     this.message,

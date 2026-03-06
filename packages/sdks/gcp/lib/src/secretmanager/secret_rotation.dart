@@ -13,7 +13,7 @@ class SecretRotation {
   /// Creates a new [SecretRotation].
   /// [nextRotationTime] Timestamp in UTC at which the Secret is scheduled to rotate.
   /// [rotationPeriod] The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years).
-  SecretRotation({
+  const SecretRotation({
     this.nextRotationTime,
     this.rotationPeriod,
   });

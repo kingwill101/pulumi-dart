@@ -46,7 +46,7 @@ class MulticastGroupRangeActivationArgs {
   /// [multicastGroupRange] The resource name of the global multicast group range for the
   /// [multicastGroupRangeActivationId] A unique name for the multicast group range activation.
   /// [project] The ID of the project in which the resource belongs.
-  MulticastGroupRangeActivationArgs({
+  const MulticastGroupRangeActivationArgs({
     this.description,
     this.labels,
     required this.location,

@@ -13,7 +13,7 @@ class SecureStringResponse {
   /// Creates a new [SecureStringResponse].
   /// [type] Type of the secret.
   /// [value] Value of secure string.
-  SecureStringResponse({
+  const SecureStringResponse({
     required this.type,
     required this.value,
   });

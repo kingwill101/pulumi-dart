@@ -17,7 +17,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime {
   /// [minutes] Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59.
   /// [nanos] Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999.
   /// [seconds] Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds.
-  DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime({
+  const DeployPolicyRuleRolloutRestrictionTimeWindowsWeeklyWindowEndTime({
     this.hours,
     this.minutes,
     this.nanos,

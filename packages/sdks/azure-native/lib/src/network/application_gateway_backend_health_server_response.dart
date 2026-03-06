@@ -19,7 +19,7 @@ class ApplicationGatewayBackendHealthServerResponse {
   /// [health] Health of backend server.
   /// [healthProbeLog] Health Probe Log.
   /// [ipConfiguration] Reference to IP configuration of backend server.
-  ApplicationGatewayBackendHealthServerResponse({
+  const ApplicationGatewayBackendHealthServerResponse({
     this.address,
     this.health,
     this.healthProbeLog,

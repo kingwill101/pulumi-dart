@@ -18,7 +18,7 @@ class ServiceReferenceAdmissionregistrationK8sIoV1beta1 {
   /// [namespace] `namespace` is the namespace of the service. Required
   /// [path] `path` is an optional URL path which will be sent in any request to this service.
   /// [port] If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
-  ServiceReferenceAdmissionregistrationK8sIoV1beta1({
+  const ServiceReferenceAdmissionregistrationK8sIoV1beta1({
     required this.name,
     required this.namespace,
     this.path,

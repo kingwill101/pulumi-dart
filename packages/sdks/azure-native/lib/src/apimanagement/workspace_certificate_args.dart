@@ -31,7 +31,7 @@ class WorkspaceCertificateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceCertificateArgs({
+  const WorkspaceCertificateArgs({
     this.certificateId,
     this.data,
     this.keyVault,

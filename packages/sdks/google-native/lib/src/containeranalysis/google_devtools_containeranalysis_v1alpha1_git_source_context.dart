@@ -12,7 +12,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext {
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext].
   /// [revisionId] Git commit hash.
   /// [url] Git repository URL.
-  GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext({
+  const GoogleDevtoolsContaineranalysisV1alpha1GitSourceContext({
     required this.revisionId,
     this.url,
   });

@@ -15,7 +15,7 @@ class MarketplaceResource {
   /// [plan] The plan id of the 3rd Party Artifact that is being procured.
   /// [product] The 3rd Party artifact that is being procured.
   /// [publisher] The publisher id of the 3rd Party Artifact that is being bought.
-  MarketplaceResource({
+  const MarketplaceResource({
     this.plan,
     this.product,
     this.publisher,

@@ -60,7 +60,7 @@ class GetWorkstationClusterWorkstationsV1betaResult {
   /// [subnetwork] Immutable. Name of the Compute Engine subnetwork in which instances associated with this workstation cluster will be created. Must be part of the subnetwork specified for this workstation cluster.
   /// [uid] A system-assigned unique identifier for this workstation cluster.
   /// [updateTime] Time when this workstation cluster was most recently updated.
-  GetWorkstationClusterWorkstationsV1betaResult({
+  const GetWorkstationClusterWorkstationsV1betaResult({
     required this.annotations,
     required this.conditions,
     required this.controlPlaneIp,

@@ -12,7 +12,7 @@ class SettingState {
   /// Creates a new [SettingState].
   /// [enabled] Boolean flag to enable/disable data access.
   /// [settingName] The setting to manage. Possible values are `MCAS` , `WDATP`, `WDATP_EXCLUDE_LINUX_PUBLIC_PREVIEW`, `WDATP_UNIFIED_SOLUTION` and `Sentinel`. Changing this forces a new resource to be created.
-  SettingState({
+  const SettingState({
     this.enabled,
     this.settingName,
   });

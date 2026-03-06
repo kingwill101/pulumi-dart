@@ -8,7 +8,7 @@ class GetResourceCollectionCloudformation {
 
   /// Creates a new [GetResourceCollectionCloudformation].
   /// [stackNames] Array of the names of the AWS CloudFormation stacks.
-  GetResourceCollectionCloudformation({
+  const GetResourceCollectionCloudformation({
     required this.stackNames,
   });
 

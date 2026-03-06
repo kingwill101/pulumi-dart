@@ -15,7 +15,7 @@ class GetCertificateArgs {
   /// Creates a new [GetCertificateArgs].
   /// [name] The name of the NGINX Certificate.
   /// [nginxDeploymentId] The ID of the NGINX Deployment that the certificate is associated with.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.name,
     required this.nginxDeploymentId,
   });

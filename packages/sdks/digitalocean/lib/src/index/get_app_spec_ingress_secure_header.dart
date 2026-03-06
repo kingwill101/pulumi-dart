@@ -11,7 +11,7 @@ class GetAppSpecIngressSecureHeader {
   /// Creates a new [GetAppSpecIngressSecureHeader].
   /// [key] The name of the environment variable.
   /// [value] The threshold for the type of the warning.
-  GetAppSpecIngressSecureHeader({
+  const GetAppSpecIngressSecureHeader({
     required this.key,
     required this.value,
   });

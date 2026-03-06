@@ -10,7 +10,7 @@ class AuthorizationLoggingOptions {
 
   /// Creates a new [AuthorizationLoggingOptions].
   /// [permissionType] This is deprecated and has no effect. Do not use.
-  AuthorizationLoggingOptions({
+  const AuthorizationLoggingOptions({
     this.permissionType,
   });
 

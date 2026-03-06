@@ -66,7 +66,7 @@ class SpringCloudServiceArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [trace] A `trace` block as defined below.
   /// [zoneRedundant] Whether zone redundancy is enabled for this Spring Cloud Service. Defaults to `false`.
-  SpringCloudServiceArgs({
+  const SpringCloudServiceArgs({
     this.buildAgentPoolSize,
     this.configServerGitSetting,
     this.containerRegistries,

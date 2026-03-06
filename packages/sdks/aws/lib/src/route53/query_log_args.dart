@@ -15,7 +15,7 @@ class QueryLogArgs {
   /// Creates a new [QueryLogArgs].
   /// [cloudwatchLogGroupArn] CloudWatch log group ARN to send query logs.
   /// [zoneId] Route53 hosted zone ID to enable query logs.
-  QueryLogArgs({
+  const QueryLogArgs({
     required this.cloudwatchLogGroupArn,
     required this.zoneId,
   });

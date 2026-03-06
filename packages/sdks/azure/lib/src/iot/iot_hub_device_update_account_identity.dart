@@ -19,7 +19,7 @@ class IotHubDeviceUpdateAccountIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this IoT Hub Device Update Account.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this IoT Hub Device Update Account.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this IoT Hub Device Update Account. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned` (to enable both).
-  IotHubDeviceUpdateAccountIdentity({
+  const IotHubDeviceUpdateAccountIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

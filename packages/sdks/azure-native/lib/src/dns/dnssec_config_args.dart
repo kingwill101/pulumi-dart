@@ -15,7 +15,7 @@ class DnssecConfigArgs {
   /// Creates a new [DnssecConfigArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
-  DnssecConfigArgs({
+  const DnssecConfigArgs({
     required this.resourceGroupName,
     required this.zoneName,
   });

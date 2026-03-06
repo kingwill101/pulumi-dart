@@ -9,7 +9,7 @@ class WebhookFilterTypeEnumValue {
 
   /// Creates a new [WebhookFilterTypeEnumValue].
   /// [value] Property value
-  WebhookFilterTypeEnumValue({
+  const WebhookFilterTypeEnumValue({
     this.value,
   });
 

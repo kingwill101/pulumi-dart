@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPi
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse].
   /// [runTime] The time that most recent monitoring pipelines that is related to this run.
   /// [status] The status of the most recent monitoring pipeline.
-  GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse({
+  const GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringJobLatestMonitoringPipelineMetadataResponse({
     required this.runTime,
     required this.status,
   });

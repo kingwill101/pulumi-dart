@@ -15,7 +15,7 @@ class GetStandardArgs {
   /// Creates a new [GetStandardArgs].
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [standardId] The Security Standard key - unique key for the standard type
-  GetStandardArgs({
+  const GetStandardArgs({
     required this.resourceGroupName,
     required this.standardId,
   });

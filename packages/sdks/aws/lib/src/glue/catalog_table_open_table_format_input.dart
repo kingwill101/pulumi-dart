@@ -9,7 +9,7 @@ class CatalogTableOpenTableFormatInput {
 
   /// Creates a new [CatalogTableOpenTableFormatInput].
   /// [icebergInput] Configuration block for iceberg table config. See `iceberg_input` below.
-  CatalogTableOpenTableFormatInput({
+  const CatalogTableOpenTableFormatInput({
     required this.icebergInput,
   });
 

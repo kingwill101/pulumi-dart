@@ -68,7 +68,7 @@ class EnvironmentArgs {
   /// [tier] Elastic Beanstalk Environment tier. Valid values are `Worker`
   /// [version] The name of the Elastic Beanstalk Application Version
   /// [waitForReadyTimeout] The maximum
-  EnvironmentArgs({
+  const EnvironmentArgs({
     required this.application,
     this.cnamePrefix,
     this.description,

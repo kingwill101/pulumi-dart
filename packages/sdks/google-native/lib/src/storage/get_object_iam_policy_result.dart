@@ -22,7 +22,7 @@ class GetObjectIamPolicyResult {
   /// [kind] The kind of item this is. For policies, this is always storage#policy. This field is ignored on input.
   /// [resourceId] The ID of the resource to which this policy belongs. Will be of the form projects/_/buckets/bucket for buckets, projects/_/buckets/bucket/objects/object for objects, and projects/_/buckets/bucket/managedFolders/managedFolder. A specific generation may be specified by appending #generationNumber to the end of the object name, e.g. projects/_/buckets/my-bucket/objects/data.txt#17. The current generation can be denoted with #0. This field is ignored on input.
   /// [version] The IAM policy format version.
-  GetObjectIamPolicyResult({
+  const GetObjectIamPolicyResult({
     required this.bindings,
     required this.etag,
     required this.kind,

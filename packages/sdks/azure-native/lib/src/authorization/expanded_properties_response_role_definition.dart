@@ -15,7 +15,7 @@ class ExpandedPropertiesResponseRoleDefinition {
   /// [displayName] Display name of the role definition
   /// [id] Id of the role definition
   /// [type] Type of the role definition
-  ExpandedPropertiesResponseRoleDefinition({
+  const ExpandedPropertiesResponseRoleDefinition({
     this.displayName,
     this.id,
     this.type,

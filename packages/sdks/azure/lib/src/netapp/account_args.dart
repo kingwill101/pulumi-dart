@@ -29,7 +29,7 @@ class AccountArgs {
   /// [name] The name of the NetApp Account. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the NetApp Account should be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountArgs({
+  const AccountArgs({
     this.activeDirectory,
     this.identity,
     this.location,

@@ -11,7 +11,7 @@ class DatabaseIdentity {
   /// Creates a new [DatabaseIdentity].
   /// [identityIds] Specifies a list of User Assigned Managed Identity IDs to be assigned to this SQL Database.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this SQL Database. Possible value is `UserAssigned`.
-  DatabaseIdentity({
+  const DatabaseIdentity({
     required this.identityIds,
     required this.type,
   });

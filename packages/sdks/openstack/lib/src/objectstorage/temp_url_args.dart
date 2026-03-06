@@ -43,7 +43,7 @@ class TempUrlArgs {
   /// [region] The region the tempurl is located in.
   /// [split] Split is the string on which to split the object URL.
   /// [ttl] The TTL, in seconds, for the URL. For how long it should
-  TempUrlArgs({
+  const TempUrlArgs({
     required this.container,
     this.digest,
     this.key,

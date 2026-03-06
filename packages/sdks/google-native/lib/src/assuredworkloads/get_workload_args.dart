@@ -15,7 +15,7 @@ class GetWorkloadArgs {
   /// [location] Required.
   /// [organizationId] Required.
   /// [workloadId] Required.
-  GetWorkloadArgs({
+  const GetWorkloadArgs({
     required this.location,
     required this.organizationId,
     required this.workloadId,

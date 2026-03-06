@@ -24,7 +24,7 @@ class ExtensionState {
   /// [name] The name of the extension.
   /// [schema] Sets the schema of an extension.
   /// [version] Sets the version number of the extension.
-  ExtensionState({
+  const ExtensionState({
     this.createCascade,
     this.database,
     this.dropCascade,

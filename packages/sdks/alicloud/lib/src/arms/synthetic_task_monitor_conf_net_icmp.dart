@@ -32,7 +32,7 @@ class SyntheticTaskMonitorConfNetIcmp {
   /// [tracertEnable] Whether to enable tracert. The default is true.
   /// [tracertNumMax] The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
   /// [tracertTimeout] The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
-  SyntheticTaskMonitorConfNetIcmp({
+  const SyntheticTaskMonitorConfNetIcmp({
     this.interval,
     this.packageNum,
     this.packageSize,

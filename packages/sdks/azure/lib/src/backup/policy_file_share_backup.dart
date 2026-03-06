@@ -19,7 +19,7 @@ class PolicyFileShareBackup {
   /// [frequency] Sets the backup frequency. Possible values are `Daily` and `Hourly`.
   /// [hourly] A `hourly` block defined as below. This is required when `frequency` is set to `Hourly`.
   /// [time] The time of day to perform the backup in 24-hour format. Times must be either on the hour or half hour (e.g. 12:00, 12:30, 13:00, etc.)
-  PolicyFileShareBackup({
+  const PolicyFileShareBackup({
     required this.frequency,
     this.hourly,
     this.time,

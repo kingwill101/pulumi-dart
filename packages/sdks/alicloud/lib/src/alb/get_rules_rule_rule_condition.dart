@@ -36,7 +36,7 @@ class GetRulesRuleRuleCondition {
   /// [queryStringConfigs] The configuration of the query string.
   /// [sourceIpConfigs] The Based on source IP traffic matching.
   /// [type] The type of the forwarding rule.
-  GetRulesRuleRuleCondition({
+  const GetRulesRuleRuleCondition({
     required this.cookieConfigs,
     required this.headerConfigs,
     required this.hostConfigs,

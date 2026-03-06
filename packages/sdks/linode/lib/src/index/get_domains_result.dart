@@ -19,7 +19,7 @@ class GetDomainsResult {
   /// [id] The unique ID of this Domain.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetDomainsResult({
+  const GetDomainsResult({
     required this.domains,
     this.filters,
     required this.id,

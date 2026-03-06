@@ -34,7 +34,7 @@ class GetNpmPackageResult {
   /// [tags] A list of all Tags attached to this package.
   /// [updateTime] The time the package was last updated.
   /// [version] The version of the NPM package.
-  GetNpmPackageResult({
+  const GetNpmPackageResult({
     required this.createTime,
     required this.id,
     required this.location,

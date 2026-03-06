@@ -51,7 +51,7 @@ class GalleryImageArgs {
   /// [sourceVirtualMachineId] Resource ID of the source virtual machine from whose OS disk the gallery image is created.
   /// [tags] Resource tags.
   /// [version] Specifies information about the gallery image version that you want to create or update.
-  GalleryImageArgs({
+  const GalleryImageArgs({
     this.cloudInitDataSource,
     this.containerId,
     this.extendedLocation,

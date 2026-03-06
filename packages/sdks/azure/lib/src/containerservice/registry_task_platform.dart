@@ -14,7 +14,7 @@ class RegistryTaskPlatform {
   /// [architecture] The OS architecture. Possible values are `amd64`, `x86`, `386`, `arm` and `arm64`.
   /// [os] The operating system type required for the task. Possible values are `Windows` and `Linux`.
   /// [variant] The variant of the CPU. Possible values are `v6`, `v7`, `v8`.
-  RegistryTaskPlatform({
+  const RegistryTaskPlatform({
     this.architecture,
     required this.os,
     this.variant,

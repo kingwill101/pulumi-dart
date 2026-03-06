@@ -14,7 +14,7 @@ class EncryptionConfig {
   /// Creates a new [EncryptionConfig].
   /// [keyVaultMetaInfo] The Key Vault information for connecting to user managed encryption keys.
   /// [type] The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
-  EncryptionConfig({
+  const EncryptionConfig({
     this.keyVaultMetaInfo,
     required this.type,
   });

@@ -24,7 +24,7 @@ class NetworkInterfaceIPConfigurationResponse {
   /// [ipAllocationMethod] IP address allocation method.
   /// [ipVersion] IP address version.
   /// [subnet] The value of the subnet.
-  NetworkInterfaceIPConfigurationResponse({
+  const NetworkInterfaceIPConfigurationResponse({
     this.dnsServers,
     this.gateway,
     this.ipAddress,

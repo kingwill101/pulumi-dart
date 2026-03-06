@@ -14,7 +14,7 @@ class MarketplacePlanResponse {
   /// [offerId] The identifying name of the Offer of the Marketplace Plan.
   /// [planId] The identifying name of the Plan of the Marketplace Plan.
   /// [publisherId] The identifying name of the Publisher of the Marketplace Plan.
-  MarketplacePlanResponse({
+  const MarketplacePlanResponse({
     required this.offerId,
     required this.planId,
     required this.publisherId,

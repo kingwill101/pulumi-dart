@@ -31,7 +31,7 @@ class MedicalVocabularyState {
   /// [tagsAll] Optional.
   /// [vocabularyFileUri] The Amazon S3 location (URI) of the text file that contains your custom medical vocabulary.
   /// [vocabularyName] The name of the Medical Vocabulary.
-  MedicalVocabularyState({
+  const MedicalVocabularyState({
     this.arn,
     this.downloadUri,
     this.languageCode,

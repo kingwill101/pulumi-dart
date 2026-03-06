@@ -47,7 +47,7 @@ class CapacityCommitmentState {
   /// [renewalPlan] The plan this capacity commitment is converted to after commitmentEndTime passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for some commitment plans.
   /// [slotCount] Number of slots in this commitment.
   /// [state] State of the commitment
-  CapacityCommitmentState({
+  const CapacityCommitmentState({
     this.capacityCommitmentId,
     this.commitmentEndTime,
     this.commitmentStartTime,

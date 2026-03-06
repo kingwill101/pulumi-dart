@@ -28,7 +28,7 @@ class ChainArgs {
   /// [instanceId] The ID of CR Enterprise Edition instance.
   /// [repoName] The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
   /// [repoNamespaceName] The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
-  ChainArgs({
+  const ChainArgs({
     this.chainConfigs,
     required this.chainName,
     this.description,

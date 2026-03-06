@@ -26,7 +26,7 @@ class ResourceArgs {
   /// [clusterName] Represents the name of the compute cluster, usually including the model number.
   /// [machineTypes] Generally refers to the type or instance type of a computing resource. See `machine_types` below.
   /// [userAccessParam] Used to define the access parameters for the user. See `user_access_param` below.
-  ResourceArgs({
+  const ResourceArgs({
     this.clusterDesc,
     required this.clusterId,
     required this.clusterName,

@@ -12,7 +12,7 @@ class WafRuleConfigActions {
   /// Creates a new [WafRuleConfigActions].
   /// [bypass] The skip configuration specified by the whitelist rule. See `bypass` below.
   /// [response] Optional.
-  WafRuleConfigActions({
+  const WafRuleConfigActions({
     this.bypass,
     this.response,
   });

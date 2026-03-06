@@ -17,7 +17,7 @@ class VirtualMachineScaleSetNetworkProfile {
   /// [healthProbe] A reference to a load balancer probe used to determine the health of an instance in the virtual machine scale set. The reference will be in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes/{probeName}'.
   /// [networkApiVersion] specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations for Virtual Machine Scale Set with orchestration mode 'Flexible'
   /// [networkInterfaceConfigurations] The list of network configurations.
-  VirtualMachineScaleSetNetworkProfile({
+  const VirtualMachineScaleSetNetworkProfile({
     this.healthProbe,
     this.networkApiVersion,
     this.networkInterfaceConfigurations,

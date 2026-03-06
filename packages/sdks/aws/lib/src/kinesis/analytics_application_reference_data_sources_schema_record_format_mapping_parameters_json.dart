@@ -8,7 +8,7 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameter
 
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson].
   /// [recordRowPath] Path to the top-level parent that contains the records.
-  AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson({
+  const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParametersJson({
     required this.recordRowPath,
   });
 

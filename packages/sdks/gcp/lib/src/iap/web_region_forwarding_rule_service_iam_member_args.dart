@@ -45,7 +45,7 @@ class WebRegionForwardingRuleServiceIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
-  WebRegionForwardingRuleServiceIamMemberArgs({
+  const WebRegionForwardingRuleServiceIamMemberArgs({
     this.condition,
     required this.forwardingRuleRegionServiceName,
     required this.member,

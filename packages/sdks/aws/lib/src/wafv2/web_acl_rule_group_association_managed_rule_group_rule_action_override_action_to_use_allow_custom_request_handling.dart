@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAll
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling].
   /// [insertHeaders] Headers to insert into the request. See below.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllowCustomRequestHandling({
     this.insertHeaders,
   });
 

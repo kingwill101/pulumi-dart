@@ -9,7 +9,7 @@ class ImmutableStorageWithVersioning {
 
   /// Creates a new [ImmutableStorageWithVersioning].
   /// [enabled] This is an immutable property, when set to true it enables object level immutability at the container level.
-  ImmutableStorageWithVersioning({
+  const ImmutableStorageWithVersioning({
     this.enabled,
   });
 

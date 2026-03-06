@@ -11,7 +11,7 @@ class AccountNetworkRulesPrivateLinkAccess {
   /// Creates a new [AccountNetworkRulesPrivateLinkAccess].
   /// [endpointResourceId] The ID of the Azure resource that should be allowed access to the target storage account.
   /// [endpointTenantId] The tenant id of the resource of the resource access rule to be granted access. Defaults to the current tenant id.
-  AccountNetworkRulesPrivateLinkAccess({
+  const AccountNetworkRulesPrivateLinkAccess({
     required this.endpointResourceId,
     this.endpointTenantId,
   });

@@ -61,7 +61,7 @@ class FlowLogResponse {
   /// [targetResourceGuid] Guid of network security group to which flow log will be applied.
   /// [targetResourceId] ID of network security group to which flow log will be applied.
   /// [type] Resource type.
-  FlowLogResponse({
+  const FlowLogResponse({
     this.enabled,
     this.enabledFilteringCriteria,
     required this.etag,

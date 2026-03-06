@@ -26,7 +26,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
   /// [retry] Number of retries for health check.
   /// [sip] SOURCE IP.
   /// [status] The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
-  GetGatewayVpnAttachmentsAttachmentHealthCheckConfig({
+  const GetGatewayVpnAttachmentsAttachmentHealthCheckConfig({
     required this.dip,
     required this.enable,
     required this.interval,

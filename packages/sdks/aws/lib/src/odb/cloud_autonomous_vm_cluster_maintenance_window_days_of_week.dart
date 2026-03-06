@@ -7,7 +7,7 @@ class CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek {
 
   /// Creates a new [CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek].
   /// [name] Required.
-  CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek({
+  const CloudAutonomousVmClusterMaintenanceWindowDaysOfWeek({
     required this.name,
   });
 

@@ -12,7 +12,7 @@ class ControlSyncRecordResponse {
   /// Creates a new [ControlSyncRecordResponse].
   /// [controlId] The Id of the control. e.g. "Operational_Security_10"
   /// [controlStatus] Control status synchronized from app compliance.
-  ControlSyncRecordResponse({
+  const ControlSyncRecordResponse({
     this.controlId,
     this.controlStatus,
   });

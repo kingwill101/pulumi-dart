@@ -12,7 +12,7 @@ class ParticipantPropertyReference {
   /// Creates a new [ParticipantPropertyReference].
   /// [sourcePropertyName] The source property that maps to the target property.
   /// [targetPropertyName] The target property that maps to the source property.
-  ParticipantPropertyReference({
+  const ParticipantPropertyReference({
     required this.sourcePropertyName,
     required this.targetPropertyName,
   });

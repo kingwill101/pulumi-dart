@@ -26,7 +26,7 @@ class SpringCloudGatewayCors {
   /// [credentialsAllowed] is user credentials are supported on cross-site requests?
   /// [exposedHeaders] HTTP response headers to expose for cross-site requests.
   /// [maxAgeSeconds] How long, in seconds, the response from a pre-flight request can be cached by clients.
-  SpringCloudGatewayCors({
+  const SpringCloudGatewayCors({
     this.allowedHeaders,
     this.allowedMethods,
     this.allowedOriginPatterns,

@@ -18,7 +18,7 @@ class GetGalleryImageArgs {
   /// [galleryImageName] The name of the gallery image definition to be retrieved.
   /// [galleryName] The name of the Shared Image Gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryImageArgs({
+  const GetGalleryImageArgs({
     required this.galleryImageName,
     required this.galleryName,
     required this.resourceGroupName,

@@ -31,7 +31,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [folder] Numerical ID of the parent folder.
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
-  ManagementFolderSecurityHealthAnalyticsCustomModuleArgs({
+  const ManagementFolderSecurityHealthAnalyticsCustomModuleArgs({
     this.customConfig,
     this.displayName,
     this.enablementState,

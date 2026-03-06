@@ -18,7 +18,7 @@ class GetWebPubSubSharedPrivateLinkResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource.
-  GetWebPubSubSharedPrivateLinkResourceArgs({
+  const GetWebPubSubSharedPrivateLinkResourceArgs({
     required this.resourceGroupName,
     required this.resourceName,
     required this.sharedPrivateLinkResourceName,

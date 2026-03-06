@@ -10,7 +10,7 @@ class TransferConfigurationResponseTransferAllDetails {
 
   /// Creates a new [TransferConfigurationResponseTransferAllDetails].
   /// [include] Details to transfer all data.
-  TransferConfigurationResponseTransferAllDetails({
+  const TransferConfigurationResponseTransferAllDetails({
     this.include,
   });
 

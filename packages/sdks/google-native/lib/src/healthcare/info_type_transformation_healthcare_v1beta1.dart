@@ -27,7 +27,7 @@ class InfoTypeTransformationHealthcareV1beta1 {
   /// [infoTypes] `InfoTypes` to apply this transformation to. If this is not specified, this transformation becomes the default transformation, and is used for any `info_type` that is not specified in another transformation.
   /// [redactConfig] Config for text redaction.
   /// [replaceWithInfoTypeConfig] Config for replace with InfoType.
-  InfoTypeTransformationHealthcareV1beta1({
+  const InfoTypeTransformationHealthcareV1beta1({
     this.characterMaskConfig,
     this.cryptoHashConfig,
     this.dateShiftConfig,

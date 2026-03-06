@@ -11,7 +11,7 @@ class LaunchConfigurationEphemeralBlockDevice {
   /// [deviceName] Required.
   /// [noDevice] Optional.
   /// [virtualName] Optional.
-  LaunchConfigurationEphemeralBlockDevice({
+  const LaunchConfigurationEphemeralBlockDevice({
     required this.deviceName,
     this.noDevice,
     this.virtualName,

@@ -14,7 +14,7 @@ class VPCRouteEntryRoutePublishTarget {
   /// [publishStatus] Route Publish Status
   /// [targetInstanceId] Route publish target instance id.
   /// [targetType] Route publish target type
-  VPCRouteEntryRoutePublishTarget({
+  const VPCRouteEntryRoutePublishTarget({
     this.publishStatus,
     this.targetInstanceId,
     required this.targetType,

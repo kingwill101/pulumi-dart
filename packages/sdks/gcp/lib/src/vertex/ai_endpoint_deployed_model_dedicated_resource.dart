@@ -25,7 +25,7 @@ class AiEndpointDeployedModelDedicatedResource {
   /// [machineSpecs] (Output)
   /// [maxReplicaCount] (Output)
   /// [minReplicaCount] (Output)
-  AiEndpointDeployedModelDedicatedResource({
+  const AiEndpointDeployedModelDedicatedResource({
     this.autoscalingMetricSpecs,
     this.machineSpecs,
     this.maxReplicaCount,

@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib].
   /// [max] Maximum.
   /// [min] Minimum.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsMemoryMib({
     this.max,
     this.min,
   });

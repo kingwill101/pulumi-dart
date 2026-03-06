@@ -9,7 +9,7 @@ class InsightFiltersThreatIntelIndicatorValue {
   /// Creates a new [InsightFiltersThreatIntelIndicatorValue].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersThreatIntelIndicatorValue({
+  const InsightFiltersThreatIntelIndicatorValue({
     required this.comparison,
     required this.value,
   });

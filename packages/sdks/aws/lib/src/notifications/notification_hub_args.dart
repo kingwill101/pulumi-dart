@@ -15,7 +15,7 @@ class NotificationHubArgs {
   /// Creates a new [NotificationHubArgs].
   /// [notificationHubRegion] Notification Hub region.
   /// [timeouts] Optional.
-  NotificationHubArgs({
+  const NotificationHubArgs({
     required this.notificationHubRegion,
     this.timeouts,
   });

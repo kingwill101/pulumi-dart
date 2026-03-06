@@ -36,7 +36,7 @@ class AwsIamPasswordPolicyPropertiesResponse {
   /// [requireNumbers] &lt;p&gt;Specifies whether IAM user passwords must contain at least one numeric character (0 to 9).&lt;/p&gt;
   /// [requireSymbols] &lt;p&gt;Specifies whether IAM user passwords must contain at least one of the following symbols:&lt;/p&gt; &lt;p&gt;! @ # $ % ^ &amp; * ( ) _ + - = [ ] { } | '&lt;/p&gt;
   /// [requireUppercaseCharacters] &lt;p&gt;Specifies whether IAM user passwords must contain at least one uppercase character (A to Z).&lt;/p&gt;
-  AwsIamPasswordPolicyPropertiesResponse({
+  const AwsIamPasswordPolicyPropertiesResponse({
     this.allowUsersToChangePassword,
     this.expirePasswords,
     this.hardExpiry,

@@ -30,7 +30,7 @@ class GetSAPDiskConfigurationsArgs {
   /// [environment] Defines the environment type - Production/Non Production.
   /// [location] The name of Azure region.
   /// [sapProduct] Defines the SAP Product type.
-  GetSAPDiskConfigurationsArgs({
+  const GetSAPDiskConfigurationsArgs({
     required this.appLocation,
     required this.databaseType,
     required this.dbVmSku,

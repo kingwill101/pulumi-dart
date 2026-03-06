@@ -11,7 +11,7 @@ class LegacyDisallowedConditionResponse {
   /// Creates a new [LegacyDisallowedConditionResponse].
   /// [disallowedLegacyOperations] The disallowed legacy operations.
   /// [feature] Feature string.
-  LegacyDisallowedConditionResponse({
+  const LegacyDisallowedConditionResponse({
     this.disallowedLegacyOperations,
     this.feature,
   });

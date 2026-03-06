@@ -9,7 +9,7 @@ class StatusTypeEnumValueResponse {
 
   /// Creates a new [StatusTypeEnumValueResponse].
   /// [value] Property value
-  StatusTypeEnumValueResponse({
+  const StatusTypeEnumValueResponse({
     this.value,
   });
 

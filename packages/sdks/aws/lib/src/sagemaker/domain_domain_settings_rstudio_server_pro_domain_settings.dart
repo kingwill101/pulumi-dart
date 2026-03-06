@@ -18,7 +18,7 @@ class DomainDomainSettingsRStudioServerProDomainSettings {
   /// [domainExecutionRoleArn] The ARN of the execution role for the RStudioServerPro Domain-level app.
   /// [rStudioConnectUrl] A URL pointing to an RStudio Connect server.
   /// [rStudioPackageManagerUrl] A URL pointing to an RStudio Package Manager server.
-  DomainDomainSettingsRStudioServerProDomainSettings({
+  const DomainDomainSettingsRStudioServerProDomainSettings({
     this.defaultResourceSpec,
     required this.domainExecutionRoleArn,
     this.rStudioConnectUrl,

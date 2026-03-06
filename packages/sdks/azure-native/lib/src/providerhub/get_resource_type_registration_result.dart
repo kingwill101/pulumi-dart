@@ -27,7 +27,7 @@ class GetResourceTypeRegistrationResult {
   /// [properties] Required.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetResourceTypeRegistrationResult({
+  const GetResourceTypeRegistrationResult({
     required this.azureApiVersion,
     required this.id,
     this.kind,

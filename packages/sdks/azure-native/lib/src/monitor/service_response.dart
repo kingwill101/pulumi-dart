@@ -14,7 +14,7 @@ class ServiceResponse {
   /// Creates a new [ServiceResponse].
   /// [persistence] Persistence options to all pipelines in the instance.
   /// [pipelines] Pipelines belonging to a given pipeline group.
-  ServiceResponse({
+  const ServiceResponse({
     this.persistence,
     required this.pipelines,
   });

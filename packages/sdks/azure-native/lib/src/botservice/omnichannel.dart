@@ -16,7 +16,7 @@ class Omnichannel {
   /// [channelName] The channel name
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
-  Omnichannel({
+  const Omnichannel({
     required this.channelName,
     this.etag,
     this.location,

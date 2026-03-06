@@ -10,7 +10,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSetting
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings].
   /// [h265PackagingType] Optional.
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsMsSmoothOutputSettings({
     this.h265PackagingType,
     this.nameModifier,
   });

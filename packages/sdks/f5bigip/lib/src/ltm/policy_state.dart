@@ -28,7 +28,7 @@ class PolicyState {
   /// [requires] Specifies the protocol
   /// [rules] List of Rules can be applied using the policy. Each rule is block type with following arguments.
   /// [strategy] Specifies the match strategy
-  PolicyState({
+  const PolicyState({
     this.controls,
     this.description,
     this.name,

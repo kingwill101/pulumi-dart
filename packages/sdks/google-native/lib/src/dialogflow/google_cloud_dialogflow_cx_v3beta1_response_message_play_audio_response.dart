@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse].
   /// [allowPlaybackInterruption] Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse({
+  const GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudioResponse({
     required this.allowPlaybackInterruption,
     required this.audioUri,
   });

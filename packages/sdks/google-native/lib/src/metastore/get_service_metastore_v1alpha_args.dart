@@ -15,7 +15,7 @@ class GetServiceMetastoreV1alphaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceMetastoreV1alphaArgs({
+  const GetServiceMetastoreV1alphaArgs({
     required this.location,
     this.project,
     required this.serviceId,

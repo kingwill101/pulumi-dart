@@ -9,7 +9,7 @@ class DashboardSourceEntity {
 
   /// Creates a new [DashboardSourceEntity].
   /// [sourceTemplate] The source template. See source_template.
-  DashboardSourceEntity({
+  const DashboardSourceEntity({
     this.sourceTemplate,
   });
 

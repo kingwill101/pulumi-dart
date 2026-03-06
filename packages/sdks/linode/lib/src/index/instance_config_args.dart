@@ -60,7 +60,7 @@ class InstanceConfigArgs {
   /// [rootDevice] The root device to boot. (default `/dev/sda`)
   /// [runLevel] Defines the state of your Linode after booting. (`default`, `single`, `binbash`)
   /// [virtMode] Controls the virtualization mode. (`paravirt`, `fullvirt`)
-  InstanceConfigArgs({
+  const InstanceConfigArgs({
     this.booted,
     this.comments,
     this.device,

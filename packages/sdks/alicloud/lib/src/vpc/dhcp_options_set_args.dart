@@ -47,7 +47,7 @@ class DhcpOptionsSetArgs {
   /// [leaseTime] The lease time of the IPv4 addresses for the DHCP options set.
   /// [resourceGroupId] The ID of the resource group to which the DHCP options set belongs.
   /// [tags] Tags of the current resource.
-  DhcpOptionsSetArgs({
+  const DhcpOptionsSetArgs({
     this.associateVpcs,
     this.dhcpOptionsSetDescription,
     this.dhcpOptionsSetName,

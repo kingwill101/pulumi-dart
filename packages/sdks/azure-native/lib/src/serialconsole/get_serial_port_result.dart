@@ -20,7 +20,7 @@ class GetSerialPortResult {
   /// [name] Resource name
   /// [state] Specifies whether the port is enabled for a serial console connection.
   /// [type] Resource type
-  GetSerialPortResult({
+  const GetSerialPortResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

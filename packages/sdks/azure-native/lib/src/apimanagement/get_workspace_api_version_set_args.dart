@@ -21,7 +21,7 @@ class GetWorkspaceApiVersionSetArgs {
   /// [serviceName] The name of the API Management service.
   /// [versionSetId] Api Version Set identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  GetWorkspaceApiVersionSetArgs({
+  const GetWorkspaceApiVersionSetArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.versionSetId,

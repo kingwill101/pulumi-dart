@@ -18,7 +18,7 @@ class GatewayServiceMesh {
   /// [httpRoute] Name of the Gateway API HTTPRoute.
   /// [routeUpdateWaitTime] Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
   /// [service] Name of the Kubernetes Service.
-  GatewayServiceMesh({
+  const GatewayServiceMesh({
     required this.deployment,
     required this.httpRoute,
     this.routeUpdateWaitTime,

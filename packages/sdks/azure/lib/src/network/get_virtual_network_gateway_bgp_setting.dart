@@ -17,7 +17,7 @@ class GetVirtualNetworkGatewayBgpSetting {
   /// [asn] The Autonomous System Number (ASN) to use as part of the BGP.
   /// [peerWeight] The weight added to routes which have been learned
   /// [peeringAddress] The BGP peer IP address of the virtual network
-  GetVirtualNetworkGatewayBgpSetting({
+  const GetVirtualNetworkGatewayBgpSetting({
     required this.asn,
     required this.peerWeight,
     required this.peeringAddress,

@@ -29,7 +29,7 @@ class GetResolutionLinesResult {
   /// [lines] A list of cloud resolution line. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [userClientIp] Optional.
-  GetResolutionLinesResult({
+  const GetResolutionLinesResult({
     this.domainName,
     required this.id,
     this.lang,

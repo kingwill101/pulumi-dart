@@ -21,7 +21,7 @@ class DeviceGroupArgs {
   /// [groupName] The GroupName of the device group.
   /// [iotInstanceId] The id of the Iot Instance.
   /// [superGroupId] The id of the SuperGroup.
-  DeviceGroupArgs({
+  const DeviceGroupArgs({
     this.groupDesc,
     required this.groupName,
     this.iotInstanceId,

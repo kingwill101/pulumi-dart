@@ -15,7 +15,7 @@ class AadProfileResponse {
   /// [adminGroupObjectIDs] The list of AAD group object IDs that will have admin role of the cluster.
   /// [enableAzureRBAC] Whether to enable Azure RBAC for Kubernetes authorization.
   /// [tenantID] The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  AadProfileResponse({
+  const AadProfileResponse({
     this.adminGroupObjectIDs,
     this.enableAzureRBAC,
     this.tenantID,

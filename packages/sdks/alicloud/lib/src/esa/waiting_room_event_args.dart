@@ -69,7 +69,7 @@ class WaitingRoomEventArgs {
   /// [waitingRoomEventName] Event name, custom event description.
   /// [waitingRoomId] Waiting room ID, used to identify a specific waiting room. It can be obtained by calling the [listwaitingroom](https://help.aliyun.com/document_detail/2850279.html) interface.
   /// [waitingRoomType] Waiting room type. The following types are supported:
-  WaitingRoomEventArgs({
+  const WaitingRoomEventArgs({
     this.customPageHtml,
     this.description,
     this.disableSessionRenewalEnable,

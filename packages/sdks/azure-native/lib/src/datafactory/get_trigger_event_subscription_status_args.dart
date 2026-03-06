@@ -18,7 +18,7 @@ class GetTriggerEventSubscriptionStatusArgs {
   /// [factoryName] The factory name.
   /// [resourceGroupName] The resource group name.
   /// [triggerName] The trigger name.
-  GetTriggerEventSubscriptionStatusArgs({
+  const GetTriggerEventSubscriptionStatusArgs({
     required this.factoryName,
     required this.resourceGroupName,
     required this.triggerName,

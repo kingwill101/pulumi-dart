@@ -220,7 +220,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpec {
   /// [predictRoute] HTTP path on the container to send prediction requests to. Vertex AI
   /// [sharedMemorySizeMb] The amount of the VM memory to reserve as the shared memory for the model
   /// [startupProbe] Probe describes a health check to be performed against a container to
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpec({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpec({
     this.args,
     this.commands,
     this.deploymentTimeout,

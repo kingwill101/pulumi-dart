@@ -8,7 +8,7 @@ class DomainDevicesSerialProtocol {
 
   /// Creates a new [DomainDevicesSerialProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesSerialProtocol({
+  const DomainDevicesSerialProtocol({
     required this.type,
   });
 

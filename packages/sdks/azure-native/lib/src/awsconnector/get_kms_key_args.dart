@@ -15,7 +15,7 @@ class GetKmsKeyArgs {
   /// Creates a new [GetKmsKeyArgs].
   /// [name] Name of KmsKey
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetKmsKeyArgs({
+  const GetKmsKeyArgs({
     required this.name,
     required this.resourceGroupName,
   });

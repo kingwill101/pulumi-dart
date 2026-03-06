@@ -12,7 +12,7 @@ class BillingDestinationResponse {
   /// Creates a new [BillingDestinationResponse].
   /// [metrics] Names of the metrics to report to this billing destination. Each name must be defined in Service.metrics section.
   /// [monitoredResource] The monitored resource type. The type must be defined in Service.monitored_resources section.
-  BillingDestinationResponse({
+  const BillingDestinationResponse({
     required this.metrics,
     required this.monitoredResource,
   });

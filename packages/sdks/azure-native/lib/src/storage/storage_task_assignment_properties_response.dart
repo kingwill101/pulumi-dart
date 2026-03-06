@@ -30,7 +30,7 @@ class StorageTaskAssignmentPropertiesResponse {
   /// [report] The storage task assignment report
   /// [runStatus] Run status of storage task assignment
   /// [taskId] Id of the corresponding storage task
-  StorageTaskAssignmentPropertiesResponse({
+  const StorageTaskAssignmentPropertiesResponse({
     required this.description,
     required this.enabled,
     required this.executionContext,

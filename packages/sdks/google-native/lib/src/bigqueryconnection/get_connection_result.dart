@@ -27,7 +27,7 @@ class GetConnectionResult {
   /// [hasCredential] True, if credential is configured for this connection.
   /// [lastModifiedTime] The last update timestamp of the connection.
   /// [name] The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.cloudSql,
     required this.creationTime,
     required this.description,

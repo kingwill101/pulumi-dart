@@ -18,7 +18,7 @@ class VpcBlockPublicAccessOptionsArgs {
   /// [internetGatewayBlockMode] Block mode. Needs to be one of `block-bidirectional`, `block-ingress`, `off`. If this resource is deleted, then this value will be set to `off` in the AWS account and region.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  VpcBlockPublicAccessOptionsArgs({
+  const VpcBlockPublicAccessOptionsArgs({
     required this.internetGatewayBlockMode,
     this.region,
     this.timeouts,

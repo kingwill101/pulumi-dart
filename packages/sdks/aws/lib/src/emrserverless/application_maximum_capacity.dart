@@ -14,7 +14,7 @@ class ApplicationMaximumCapacity {
   /// [cpu] The maximum allowed CPU for an application.
   /// [disk] The maximum allowed disk for an application.
   /// [memory] The maximum allowed resources for an application.
-  ApplicationMaximumCapacity({
+  const ApplicationMaximumCapacity({
     required this.cpu,
     this.disk,
     required this.memory,

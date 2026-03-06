@@ -10,7 +10,7 @@ class VirtualHubRouteTableResponse {
 
   /// Creates a new [VirtualHubRouteTableResponse].
   /// [routes] List of all routes.
-  VirtualHubRouteTableResponse({
+  const VirtualHubRouteTableResponse({
     this.routes,
   });
 

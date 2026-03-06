@@ -12,7 +12,7 @@ class AccessSelector {
   /// Creates a new [AccessSelector].
   /// [permissions] Optional. The permissions to appear in result.
   /// [roles] Optional. The roles to appear in result.
-  AccessSelector({
+  const AccessSelector({
     this.permissions,
     this.roles,
   });

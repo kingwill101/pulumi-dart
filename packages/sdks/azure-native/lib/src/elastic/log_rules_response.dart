@@ -19,7 +19,7 @@ class LogRulesResponse {
   /// [sendAadLogs] Flag specifying if AAD logs should be sent for the Monitor resource.
   /// [sendActivityLogs] Flag specifying if activity logs from Azure resources should be sent for the Monitor resource.
   /// [sendSubscriptionLogs] Flag specifying if subscription logs should be sent for the Monitor resource.
-  LogRulesResponse({
+  const LogRulesResponse({
     this.filteringTags,
     this.sendAadLogs,
     this.sendActivityLogs,

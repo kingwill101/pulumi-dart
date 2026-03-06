@@ -13,7 +13,7 @@ class GetNetworkAclsFilter {
   /// Creates a new [GetNetworkAclsFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetNetworkAclsFilter({
+  const GetNetworkAclsFilter({
     required this.name,
     required this.values,
   });

@@ -19,7 +19,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatCon
   /// [fileType] File type that Amazon AppFlow places in the Amazon S3 bucket. Valid values are `CSV`, `JSON`, and `PARQUET`.
   /// [prefixConfig] Determines the prefix that Amazon AppFlow applies to the folder name in the Amazon S3 bucket. You can name folders according to the flow frequency and date. See Prefix Config for more details.
   /// [preserveSourceDataTyping] Whether the data types from the source system need to be preserved (Only valid for `Parquet` file type)
-  FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesS3S3OutputFormatConfig({
     this.aggregationConfig,
     this.fileType,
     this.prefixConfig,

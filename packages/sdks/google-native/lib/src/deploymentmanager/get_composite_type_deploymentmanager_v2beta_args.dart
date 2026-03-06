@@ -13,7 +13,7 @@ class GetCompositeTypeDeploymentmanagerV2betaArgs {
   /// Creates a new [GetCompositeTypeDeploymentmanagerV2betaArgs].
   /// [compositeType] Required.
   /// [project] Optional.
-  GetCompositeTypeDeploymentmanagerV2betaArgs({
+  const GetCompositeTypeDeploymentmanagerV2betaArgs({
     required this.compositeType,
     this.project,
   });

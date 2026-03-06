@@ -30,7 +30,7 @@ class GetGuestUsageResult {
   /// [tags] Key-value pairs of additional resource provisioning properties.
   /// [tenantId] An identifier for the tenant for which the resource is being created
   /// [type] The type of the Guest Usages resource.
-  GetGuestUsageResult({
+  const GetGuestUsageResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

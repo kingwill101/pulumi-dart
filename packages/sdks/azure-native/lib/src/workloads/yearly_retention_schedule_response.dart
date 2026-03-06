@@ -27,7 +27,7 @@ class YearlyRetentionScheduleResponse {
   /// [retentionScheduleFormatType] Retention schedule format for yearly retention policy.
   /// [retentionScheduleWeekly] Weekly retention format for yearly retention policy.
   /// [retentionTimes] Retention times of retention policy.
-  YearlyRetentionScheduleResponse({
+  const YearlyRetentionScheduleResponse({
     this.monthsOfYear,
     this.retentionDuration,
     this.retentionScheduleDaily,

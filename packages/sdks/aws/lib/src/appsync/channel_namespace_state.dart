@@ -41,7 +41,7 @@ class ChannelNamespaceState {
   /// [subscribeAuthModes] Authorization modes to use for subscribing to messages on the channel namespace. This configuration overrides the default API authorization configuration. See Auth Modes below.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ChannelNamespaceState({
+  const ChannelNamespaceState({
     this.apiId,
     this.channelNamespaceArn,
     this.codeHandlers,

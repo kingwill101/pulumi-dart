@@ -46,7 +46,7 @@ class GetInstanceClassesResult {
   /// [sortedBy] Optional.
   /// [storageType] Optional.
   /// [zoneId] Required.
-  GetInstanceClassesResult({
+  const GetInstanceClassesResult({
     this.architecture,
     required this.classes,
     this.editionType,

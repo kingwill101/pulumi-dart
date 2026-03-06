@@ -37,7 +37,7 @@ class GetVirtualNetworkGatewayNatRuleResult {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the NAT Rule resource.
   /// [type] Resource type.
-  GetVirtualNetworkGatewayNatRuleResult({
+  const GetVirtualNetworkGatewayNatRuleResult({
     required this.azureApiVersion,
     required this.etag,
     this.externalMappings,

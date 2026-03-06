@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse].
   /// [description] A human readable description of the diff, showing the actual output vs expected output.
   /// [type] The type of diff.
-  GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse({
+  const GoogleCloudDialogflowCxV3beta1TestRunDifferenceResponse({
     required this.description,
     required this.type,
   });

@@ -24,7 +24,7 @@ class ConnectionCertificateState {
   /// [name] Specifies the name of the Connection. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Connection is created. Changing this forces a new resource to be created.
   /// [subscriptionId] The id of subscription where the automation certificate exists.
-  ConnectionCertificateState({
+  const ConnectionCertificateState({
     this.automationAccountName,
     this.automationCertificateName,
     this.description,

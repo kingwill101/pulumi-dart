@@ -33,7 +33,7 @@ class ProjectArgs {
   /// [projectName] The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] Tag.
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     this.name,
     this.policy,

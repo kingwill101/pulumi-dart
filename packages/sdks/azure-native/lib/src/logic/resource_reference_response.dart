@@ -15,7 +15,7 @@ class ResourceReferenceResponse {
   /// [id] The resource id.
   /// [name] Gets the resource name.
   /// [type] Gets the resource type.
-  ResourceReferenceResponse({
+  const ResourceReferenceResponse({
     this.id,
     required this.name,
     required this.type,

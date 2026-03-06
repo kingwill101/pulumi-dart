@@ -48,7 +48,7 @@ class ScheduleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [startTime] The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
   /// [state] Output only. The state of the schedule.
-  ScheduleState({
+  const ScheduleState({
     this.allowQueueing,
     this.createNotebookExecutionJobRequest,
     this.cron,

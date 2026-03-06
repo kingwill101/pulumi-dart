@@ -279,7 +279,7 @@ class ManagedKubernetesAddon {
   /// [disabled] It specifies whether to disable automatic installation.
   /// [name] This parameter specifies the name of the component.
   /// [version] It specifies the version of the component.
-  ManagedKubernetesAddon({
+  const ManagedKubernetesAddon({
     this.config,
     this.disabled,
     this.name,

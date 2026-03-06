@@ -14,7 +14,7 @@ class GetScriptDagNodeArg {
   /// [name] Name of the argument or property.
   /// [param] Boolean if the value is used as a parameter. Defaults to `false`.
   /// [value] Value of the argument or property.
-  GetScriptDagNodeArg({
+  const GetScriptDagNodeArg({
     required this.name,
     this.param,
     required this.value,

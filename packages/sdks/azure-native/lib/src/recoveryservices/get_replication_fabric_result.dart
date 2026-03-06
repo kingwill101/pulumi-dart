@@ -24,7 +24,7 @@ class GetReplicationFabricResult {
   /// [name] Resource Name
   /// [properties] Fabric related data.
   /// [type] Resource Type
-  GetReplicationFabricResult({
+  const GetReplicationFabricResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

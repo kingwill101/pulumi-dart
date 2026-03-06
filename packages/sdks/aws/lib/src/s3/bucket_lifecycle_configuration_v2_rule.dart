@@ -41,7 +41,7 @@ class BucketLifecycleConfigurationV2Rule {
   /// [prefix] **DEPRECATED** Use `filter` instead.
   /// [status] Whether the rule is currently being applied. Valid values: `Enabled` or `Disabled`.
   /// [transitions] Set of configuration blocks that specify when an Amazon S3 object transitions to a specified storage class. See below.
-  BucketLifecycleConfigurationV2Rule({
+  const BucketLifecycleConfigurationV2Rule({
     this.abortIncompleteMultipartUpload,
     this.expiration,
     this.filter,

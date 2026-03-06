@@ -11,7 +11,7 @@ class GetImagesImageId {
   /// Creates a new [GetImagesImageId].
   /// [imageDigest] Digest of the image manifest.
   /// [imageTag] Tag used for the image.
-  GetImagesImageId({
+  const GetImagesImageId({
     this.imageDigest,
     this.imageTag,
   });

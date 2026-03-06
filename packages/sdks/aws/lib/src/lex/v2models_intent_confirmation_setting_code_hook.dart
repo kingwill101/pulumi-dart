@@ -18,7 +18,7 @@ class V2modelsIntentConfirmationSettingCodeHook {
   /// [enableCodeHookInvocation] Whether a Lambda function should be invoked for the dialog.
   /// [invocationLabel] Label that indicates the dialog step from which the dialog code hook is happening.
   /// [postCodeHookSpecification] Configuration block that contains the responses and actions that Amazon Lex takes after the Lambda function is complete. See `post_code_hook_specification`.
-  V2modelsIntentConfirmationSettingCodeHook({
+  const V2modelsIntentConfirmationSettingCodeHook({
     required this.active,
     required this.enableCodeHookInvocation,
     this.invocationLabel,

@@ -12,7 +12,7 @@ class GetFoldersArgs {
 
   /// Creates a new [GetFoldersArgs].
   /// [parentId] A string parent as defined in the [REST API](https://docs.cloud.google.com/resource-manager/reference/rest/v3/folders/list#query-parameters).
-  GetFoldersArgs({
+  const GetFoldersArgs({
     required this.parentId,
   });
 

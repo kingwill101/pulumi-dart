@@ -11,7 +11,7 @@ class GetResolverZonesZone {
   /// Creates a new [GetResolverZonesZone].
   /// [status] The status of the Zone.
   /// [zoneId] The zone ID.
-  GetResolverZonesZone({
+  const GetResolverZonesZone({
     required this.status,
     required this.zoneId,
   });

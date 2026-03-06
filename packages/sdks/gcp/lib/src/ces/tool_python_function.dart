@@ -18,7 +18,7 @@ class ToolPythonFunction {
   /// [description] (Output)
   /// [name] The name of the Python function to execute. Must match a Python function
   /// [pythonCode] The Python code to execute for the tool.
-  ToolPythonFunction({
+  const ToolPythonFunction({
     this.description,
     this.name,
     this.pythonCode,

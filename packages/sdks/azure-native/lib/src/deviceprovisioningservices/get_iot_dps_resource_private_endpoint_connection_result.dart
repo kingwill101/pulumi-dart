@@ -25,7 +25,7 @@ class GetIotDpsResourcePrivateEndpointConnectionResult {
   /// [properties] The properties of a private endpoint connection
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
-  GetIotDpsResourcePrivateEndpointConnectionResult({
+  const GetIotDpsResourcePrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

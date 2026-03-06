@@ -20,7 +20,7 @@ class LifecyclePolicyRule {
   /// [description] A description of the rule.
   /// [rulePriority] The priority of the rule, must be unique within the policy.
   /// [selection] The selection criteria for the rule.
-  LifecyclePolicyRule({
+  const LifecyclePolicyRule({
     required this.action,
     this.description,
     required this.rulePriority,

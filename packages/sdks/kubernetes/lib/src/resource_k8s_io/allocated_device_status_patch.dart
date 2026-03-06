@@ -39,7 +39,7 @@ class AllocatedDeviceStatusPatch {
   /// [networkData] NetworkData contains network-related information specific to the device.
   /// [pool] This name together with the driver name and the device name field identify which device was allocated (`&lt;driver name&gt;/&lt;pool name&gt;/&lt;device name&gt;`).
   /// [shareID] ShareID uniquely identifies an individual allocation share of the device.
-  AllocatedDeviceStatusPatch({
+  const AllocatedDeviceStatusPatch({
     this.conditions,
     this.data,
     this.device,

@@ -19,7 +19,7 @@ class VpcEndpointArgs {
   /// [domainArn] Specifies the Amazon Resource Name (ARN) of the domain to create the endpoint for
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcOptions] Options to specify the subnets and security groups for the endpoint.
-  VpcEndpointArgs({
+  const VpcEndpointArgs({
     required this.domainArn,
     this.region,
     required this.vpcOptions,

@@ -15,7 +15,7 @@ class KvNamespaceState {
   /// [description] Namespace description information
   /// [namespace] Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
   /// [status] The status of the resource
-  KvNamespaceState({
+  const KvNamespaceState({
     this.description,
     this.namespace,
     this.status,

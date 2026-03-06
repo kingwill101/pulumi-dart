@@ -10,7 +10,7 @@ class DnsDelegationsProperties {
 
   /// Creates a new [DnsDelegationsProperties].
   /// [delegations] DNS Domains to delegate for the creation of DNS Zones by the Azure Communications Gateway
-  DnsDelegationsProperties({
+  const DnsDelegationsProperties({
     this.delegations,
   });
 

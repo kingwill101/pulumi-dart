@@ -37,7 +37,7 @@ class GetGuestPolicyResult {
   /// [packages] The software packages to be managed by this policy.
   /// [recipes] A list of Recipes to install on the VM instance.
   /// [updateTime] Last time this guest policy was updated.
-  GetGuestPolicyResult({
+  const GetGuestPolicyResult({
     required this.assignment,
     required this.createTime,
     required this.description,

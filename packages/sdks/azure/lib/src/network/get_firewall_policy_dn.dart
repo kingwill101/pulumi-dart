@@ -11,7 +11,7 @@ class GetFirewallPolicyDn {
   /// [networkRuleFqdnEnabled] Required.
   /// [proxyEnabled] Required.
   /// [servers] Required.
-  GetFirewallPolicyDn({
+  const GetFirewallPolicyDn({
     required this.networkRuleFqdnEnabled,
     required this.proxyEnabled,
     required this.servers,

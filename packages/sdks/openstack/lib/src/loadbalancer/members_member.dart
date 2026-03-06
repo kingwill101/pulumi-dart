@@ -43,7 +43,7 @@ class MembersMember {
   /// [protocolPort] The port on which to listen for client traffic.
   /// [subnetId] The subnet in which to access the member.
   /// [weight] A positive integer value that indicates the relative
-  MembersMember({
+  const MembersMember({
     required this.address,
     this.adminStateUp,
     this.backup,

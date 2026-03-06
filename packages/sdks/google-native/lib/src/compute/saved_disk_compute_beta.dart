@@ -9,7 +9,7 @@ class SavedDiskComputeBeta {
 
   /// Creates a new [SavedDiskComputeBeta].
   /// [sourceDisk] Specifies a URL of the disk attached to the source instance.
-  SavedDiskComputeBeta({
+  const SavedDiskComputeBeta({
     this.sourceDisk,
   });
 

@@ -18,7 +18,7 @@ class GetServiceRunnerArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the ServiceRunner
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetServiceRunnerArgs({
+  const GetServiceRunnerArgs({
     required this.labName,
     required this.name,
     required this.resourceGroupName,

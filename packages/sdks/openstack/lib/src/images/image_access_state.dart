@@ -31,7 +31,7 @@ class ImageAccessState {
   /// [schema] The member schema.
   /// [status] The member proposal status. Optional if admin wants to
   /// [updatedAt] The date the image access was last updated.
-  ImageAccessState({
+  const ImageAccessState({
     this.createdAt,
     this.imageId,
     this.memberId,

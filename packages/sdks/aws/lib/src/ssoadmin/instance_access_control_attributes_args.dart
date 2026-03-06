@@ -19,7 +19,7 @@ class InstanceAccessControlAttributesArgs {
   /// [attributes] See AccessControlAttribute for more details.
   /// [instanceArn] The Amazon Resource Name (ARN) of the SSO Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InstanceAccessControlAttributesArgs({
+  const InstanceAccessControlAttributesArgs({
     required this.attributes,
     required this.instanceArn,
     this.region,

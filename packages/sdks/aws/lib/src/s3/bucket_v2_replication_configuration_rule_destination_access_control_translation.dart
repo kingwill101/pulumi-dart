@@ -8,7 +8,7 @@ class BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation {
 
   /// Creates a new [BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation].
   /// [owner] Specifies the replica ownership. For default and valid values, see [PUT bucket replication](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutBucketReplication.html) in the Amazon S3 API Reference. The only valid value is `Destination`.
-  BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation({
+  const BucketV2ReplicationConfigurationRuleDestinationAccessControlTranslation({
     required this.owner,
   });
 

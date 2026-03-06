@@ -82,7 +82,7 @@ class SiteArgs {
   /// [tagName] Custom CacheTag name.
   /// [tags] Resource tags
   /// [versionManagement] Version management enabled. When true, version management is turned on for the table site.
-  SiteArgs({
+  const SiteArgs({
     this.accessType,
     this.addClientGeolocationHeader,
     this.addRealClientIpHeader,

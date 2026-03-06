@@ -11,7 +11,7 @@ class ProvisionedClustersResponseResponseExtendedLocation {
   /// Creates a new [ProvisionedClustersResponseResponseExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  ProvisionedClustersResponseResponseExtendedLocation({
+  const ProvisionedClustersResponseResponseExtendedLocation({
     this.name,
     this.type,
   });

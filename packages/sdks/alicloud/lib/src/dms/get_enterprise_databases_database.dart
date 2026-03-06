@@ -56,7 +56,7 @@ class GetEnterpriseDatabasesDatabase {
   /// [searchName] Library search name.
   /// [sid] Database SID.&gt; only Oracle Database Display.
   /// [state] Library status, value description:-**NORMAL**: NORMAL-**DISABLE**: Disabled-**OFFLINE**: OFFLINE-**NOT_EXIST**: does not exist
-  GetEnterpriseDatabasesDatabase({
+  const GetEnterpriseDatabasesDatabase({
     required this.catalogName,
     required this.databaseId,
     required this.dbType,

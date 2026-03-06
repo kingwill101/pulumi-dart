@@ -45,7 +45,7 @@ class ScheduleArgs {
   /// [maxRunCount] Maximum run count of the schedule. If specified, The schedule will be completed when either startedRunCount &gt;= maxRunCount or when endTime is reached. If not specified, new runs will keep getting scheduled until this Schedule is paused or deleted. Already scheduled runs will be allowed to complete. Unset if not specified.
   /// [project] The ID of the project in which the resource belongs.
   /// [startTime] The timestamp after which the first run can be scheduled. Defaults to the schedule creation time. Must be in the RFC 3339 (https://www.ietf.org/rfc/rfc3339.txt) format.
-  ScheduleArgs({
+  const ScheduleArgs({
     this.allowQueueing,
     required this.createNotebookExecutionJobRequest,
     required this.cron,

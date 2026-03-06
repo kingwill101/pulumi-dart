@@ -16,7 +16,7 @@ class GetDicomStoreIamPolicyResult {
   /// [etag] (Computed) The etag of the IAM policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  GetDicomStoreIamPolicyResult({
+  const GetDicomStoreIamPolicyResult({
     required this.dicomStoreId,
     required this.etag,
     required this.id,

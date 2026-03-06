@@ -30,7 +30,7 @@ class GetDdosBgpIpsArgs {
   /// [pageSize] Optional.
   /// [productName] The product name. Valid Value:`ECS`, `SLB`, `EIP`, `WAF`.
   /// [status] The current state of the IP address. Valid Value:
-  GetDdosBgpIpsArgs({
+  const GetDdosBgpIpsArgs({
     this.ids,
     required this.instanceId,
     this.outputFile,

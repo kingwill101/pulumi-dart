@@ -71,7 +71,7 @@ class GetContactResult {
   /// [txEndTime] Transmit end time of a contact (ISO 8601 UTC standard).
   /// [txStartTime] Transmit start time of a contact (ISO 8601 UTC standard).
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetContactResult({
+  const GetContactResult({
     required this.antennaConfiguration,
     required this.azureApiVersion,
     required this.contactProfile,

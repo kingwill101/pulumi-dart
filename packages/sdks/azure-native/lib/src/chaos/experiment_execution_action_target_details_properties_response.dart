@@ -22,7 +22,7 @@ class ExperimentExecutionActionTargetDetailsPropertiesResponse {
   /// [target] The target for the action.
   /// [targetCompletedTime] String that represents the completed date time.
   /// [targetFailedTime] String that represents the failed date time.
-  ExperimentExecutionActionTargetDetailsPropertiesResponse({
+  const ExperimentExecutionActionTargetDetailsPropertiesResponse({
     required this.error,
     required this.status,
     required this.target,

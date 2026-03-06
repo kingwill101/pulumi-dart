@@ -41,7 +41,7 @@ class AwsEcrImageDetailProperties {
   /// [lastRecordedPullTime] &lt;p&gt;The date and time, expressed in standard JavaScript date format, when Amazon ECR recorded the last image pull.&lt;/p&gt; &lt;note&gt; &lt;p&gt;Amazon ECR refreshes the last image pull timestamp at least once every 24 hours. For example, if you pull an image once a day then the &lt;code&gt;lastRecordedPullTime&lt;/code&gt; timestamp will indicate the exact time that the image was last pulled. However, if you pull an image once an hour, because Amazon ECR refreshes the &lt;code&gt;lastRecordedPullTime&lt;/code&gt; timestamp at least once every 24 hours, the result may not be the exact time that the image was last pulled.&lt;/p&gt; &lt;/note&gt;
   /// [registryId] &lt;p&gt;The Amazon Web Services account ID associated with the registry to which this image belongs.&lt;/p&gt;
   /// [repositoryName] &lt;p&gt;The name of the repository to which this image belongs.&lt;/p&gt;
-  AwsEcrImageDetailProperties({
+  const AwsEcrImageDetailProperties({
     this.artifactMediaType,
     this.imageDigest,
     this.imageManifestMediaType,

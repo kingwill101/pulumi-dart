@@ -84,7 +84,7 @@ class OrganizationsPolicyBindingState {
   /// [target] Target is the full resource name of the resource to which the policy will be bound. Immutable once set.
   /// [uid] Output only. The globally unique ID of the policy binding. Assigned when the policy binding is created.
   /// [updateTime] Output only. The time when the policy binding was most recently updated.
-  OrganizationsPolicyBindingState({
+  const OrganizationsPolicyBindingState({
     this.annotations,
     this.condition,
     this.createTime,

@@ -18,7 +18,7 @@ class ProducerImageShareGroupMemberArgs {
   /// [label] A label for the member.
   /// [sharegroupId] The ID of the Image Share Group to which the member will be added.
   /// [token] The token of the prospective member.
-  ProducerImageShareGroupMemberArgs({
+  const ProducerImageShareGroupMemberArgs({
     required this.label,
     required this.sharegroupId,
     required this.token,

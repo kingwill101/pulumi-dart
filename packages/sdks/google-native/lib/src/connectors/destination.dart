@@ -14,7 +14,7 @@ class Destination {
   /// [host] For publicly routable host.
   /// [port] The port is the target port number that is accepted by the destination.
   /// [serviceAttachment] PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
-  Destination({
+  const Destination({
     this.host,
     this.port,
     this.serviceAttachment,

@@ -8,7 +8,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccess
 
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponseMessageGroupVariationCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponseMessageGroupVariationCustomPayload({
+  const V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationSuccessResponseMessageGroupVariationCustomPayload({
     required this.value,
   });
 

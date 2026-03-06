@@ -167,7 +167,7 @@ class ReplicationGroupArgs {
   /// [transitEncryptionEnabled] Whether to enable encryption in transit.
   /// [transitEncryptionMode] A setting that enables clients to migrate to in-transit encryption with no downtime.
   /// [userGroupIds] User Group ID to associate with the replication group. Only a maximum of one (1) user group ID is valid. **NOTE:** This argument _is_ a set because the AWS specification allows for multiple IDs. However, in practice, AWS only allows a maximum size of one.
-  ReplicationGroupArgs({
+  const ReplicationGroupArgs({
     this.applyImmediately,
     this.atRestEncryptionEnabled,
     this.authToken,

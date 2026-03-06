@@ -36,7 +36,7 @@ class GetCustomRoutingPortMappingsCustomRoutingPortMapping {
   /// [protocols] The protocol of the backend service.
   /// [status] The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
   /// [vswitch] The ID of the endpoint (vSwitch).
-  GetCustomRoutingPortMappingsCustomRoutingPortMapping({
+  const GetCustomRoutingPortMappingsCustomRoutingPortMapping({
     required this.acceleratorId,
     required this.acceleratorPort,
     required this.destinationSocketAddresses,

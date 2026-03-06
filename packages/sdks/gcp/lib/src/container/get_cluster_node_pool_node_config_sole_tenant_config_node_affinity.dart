@@ -14,7 +14,7 @@ class GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity {
   /// [key] .
   /// [operator] .
   /// [values] .
-  GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity({
+  const GetClusterNodePoolNodeConfigSoleTenantConfigNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

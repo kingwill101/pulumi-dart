@@ -12,7 +12,7 @@ class ControllerServicesResponse {
   /// Creates a new [ControllerServicesResponse].
   /// [ipv4AddressSpaces] The IPv4 Address space is optional, if the value is not defined at the time of NFC creation, then the default value 10.0.0.0/19 is considered. The IPV4 address subnet is an optional attribute.
   /// [ipv6AddressSpaces] The IPv6 is not supported right now.
-  ControllerServicesResponse({
+  const ControllerServicesResponse({
     this.ipv4AddressSpaces,
     this.ipv6AddressSpaces,
   });

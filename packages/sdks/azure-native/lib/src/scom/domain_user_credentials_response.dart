@@ -15,7 +15,7 @@ class DomainUserCredentialsResponse {
   /// [keyVaultUrl] Key vault url to get the domain username and password
   /// [passwordSecret] Domain Password secret
   /// [userNameSecret] Domain user name secret
-  DomainUserCredentialsResponse({
+  const DomainUserCredentialsResponse({
     this.keyVaultUrl,
     this.passwordSecret,
     this.userNameSecret,

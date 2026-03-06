@@ -19,7 +19,7 @@ class VMwareNodePoolStatus {
   /// Creates a new [VMwareNodePoolStatus].
   /// [conditions] (Output)
   /// [errorMessage] (Output)
-  VMwareNodePoolStatus({
+  const VMwareNodePoolStatus({
     this.conditions,
     this.errorMessage,
   });

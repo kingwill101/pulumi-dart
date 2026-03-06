@@ -106,7 +106,7 @@ class GetFunctionResult {
   /// [versionId] Required.
   /// [vpcConnector] The VPC Network Connector that this cloud function can connect to.
   /// [vpcConnectorEgressSettings] The egress settings for the connector, controlling what traffic is diverted through it.
-  GetFunctionResult({
+  const GetFunctionResult({
     required this.automaticUpdatePolicies,
     required this.availableMemoryMb,
     required this.buildEnvironmentVariables,

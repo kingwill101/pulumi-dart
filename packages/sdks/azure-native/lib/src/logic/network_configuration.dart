@@ -17,7 +17,7 @@ class NetworkConfiguration {
   /// [accessEndpoint] The access endpoint.
   /// [subnets] The subnets.
   /// [virtualNetworkAddressSpace] Gets the virtual network address space.
-  NetworkConfiguration({
+  const NetworkConfiguration({
     this.accessEndpoint,
     this.subnets,
     this.virtualNetworkAddressSpace,

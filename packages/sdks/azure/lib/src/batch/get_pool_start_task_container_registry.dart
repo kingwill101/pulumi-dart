@@ -17,7 +17,7 @@ class GetPoolStartTaskContainerRegistry {
   /// [registryServer] The container registry URL. The default is "docker.io".
   /// [userAssignedIdentityId] The reference to the user assigned identity to use to access an Azure Container Registry instead of username and password.
   /// [userName] The user to use for authentication against the CIFS file system.
-  GetPoolStartTaskContainerRegistry({
+  const GetPoolStartTaskContainerRegistry({
     required this.password,
     required this.registryServer,
     required this.userAssignedIdentityId,

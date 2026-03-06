@@ -11,7 +11,7 @@ class KubernetesLabelResponse {
   /// Creates a new [KubernetesLabelResponse].
   /// [key] The name of the label or taint.
   /// [value] The value of the label or taint.
-  KubernetesLabelResponse({
+  const KubernetesLabelResponse({
     required this.key,
     required this.value,
   });

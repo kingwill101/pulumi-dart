@@ -21,7 +21,7 @@ class GetIotConnectorFhirDestinationArgs {
   /// [iotConnectorName] The name of IoT Connector resource.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetIotConnectorFhirDestinationArgs({
+  const GetIotConnectorFhirDestinationArgs({
     required this.fhirDestinationName,
     required this.iotConnectorName,
     required this.resourceGroupName,

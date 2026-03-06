@@ -11,7 +11,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidation {
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidation].
   /// [subjectAlternativeNames] Required.
   /// [trusts] Required.
-  GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidation({
+  const GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidation({
     required this.subjectAlternativeNames,
     required this.trusts,
   });

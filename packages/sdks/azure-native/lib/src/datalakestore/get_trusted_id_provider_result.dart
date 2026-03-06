@@ -20,7 +20,7 @@ class GetTrustedIdProviderResult {
   /// [idProvider] The URL of this trusted identity provider.
   /// [name] The resource name.
   /// [type] The resource type.
-  GetTrustedIdProviderResult({
+  const GetTrustedIdProviderResult({
     required this.azureApiVersion,
     required this.id,
     required this.idProvider,

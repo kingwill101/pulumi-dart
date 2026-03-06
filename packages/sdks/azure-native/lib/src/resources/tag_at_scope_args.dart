@@ -16,7 +16,7 @@ class TagAtScopeArgs {
   /// Creates a new [TagAtScopeArgs].
   /// [properties] The set of tags.
   /// [scope] The resource scope.
-  TagAtScopeArgs({
+  const TagAtScopeArgs({
     required this.properties,
     required this.scope,
   });

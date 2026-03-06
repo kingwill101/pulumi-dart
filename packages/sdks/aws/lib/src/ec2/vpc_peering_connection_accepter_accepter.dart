@@ -9,7 +9,7 @@ class VpcPeeringConnectionAccepterAccepter {
 
   /// Creates a new [VpcPeeringConnectionAccepterAccepter].
   /// [allowRemoteVpcDnsResolution] Indicates whether a local VPC can resolve public DNS hostnames to
-  VpcPeeringConnectionAccepterAccepter({
+  const VpcPeeringConnectionAccepterAccepter({
     this.allowRemoteVpcDnsResolution,
   });
 

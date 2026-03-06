@@ -13,7 +13,7 @@ class PublicKeyCredential {
   /// Creates a new [PublicKeyCredential].
   /// [format] The format of the key.
   /// [key] The key data.
-  PublicKeyCredential({
+  const PublicKeyCredential({
     this.format,
     this.key,
   });

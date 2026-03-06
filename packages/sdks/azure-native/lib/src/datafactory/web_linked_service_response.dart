@@ -31,7 +31,7 @@ class WebLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [typeProperties] Web linked service properties.
   /// [version] Version of the linked service.
-  WebLinkedServiceResponse({
+  const WebLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

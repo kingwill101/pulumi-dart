@@ -14,7 +14,7 @@ class VmwareAdminClusterLoadBalancerVipConfig {
   /// Creates a new [VmwareAdminClusterLoadBalancerVipConfig].
   /// [addonsVip] The VIP to configure the load balancer for add-ons.
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes
-  VmwareAdminClusterLoadBalancerVipConfig({
+  const VmwareAdminClusterLoadBalancerVipConfig({
     this.addonsVip,
     required this.controlPlaneVip,
   });

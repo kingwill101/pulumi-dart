@@ -8,7 +8,7 @@ class DomainOsNvRamSourceDir {
 
   /// Creates a new [DomainOsNvRamSourceDir].
   /// [dir] Defines the specific directory path for the backing store source configuration.
-  DomainOsNvRamSourceDir({
+  const DomainOsNvRamSourceDir({
     this.dir,
   });
 

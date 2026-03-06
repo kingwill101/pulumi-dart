@@ -13,7 +13,7 @@ class RoleEligibilityScheduleRequestPropertiesScheduleInfo {
   /// Creates a new [RoleEligibilityScheduleRequestPropertiesScheduleInfo].
   /// [expiration] Expiration of the role eligibility schedule
   /// [startDateTime] Start DateTime of the role eligibility schedule.
-  RoleEligibilityScheduleRequestPropertiesScheduleInfo({
+  const RoleEligibilityScheduleRequestPropertiesScheduleInfo({
     this.expiration,
     this.startDateTime,
   });

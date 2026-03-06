@@ -10,7 +10,7 @@ class ClusterUpgradeSettingsResponse {
 
   /// Creates a new [ClusterUpgradeSettingsResponse].
   /// [overrideSettings] Settings for overrides.
-  ClusterUpgradeSettingsResponse({
+  const ClusterUpgradeSettingsResponse({
     this.overrideSettings,
   });
 

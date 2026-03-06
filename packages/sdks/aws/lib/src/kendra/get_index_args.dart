@@ -18,7 +18,7 @@ class GetIndexArgs {
   /// [id] Returns information on a specific Index by id.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that helps organize the Indices you create.
-  GetIndexArgs({
+  const GetIndexArgs({
     required this.id,
     this.region,
     this.tags,

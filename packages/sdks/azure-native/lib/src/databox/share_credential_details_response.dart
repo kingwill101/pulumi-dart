@@ -21,7 +21,7 @@ class ShareCredentialDetailsResponse {
   /// [shareType] Type of the share.
   /// [supportedAccessProtocols] Access protocols supported on the device.
   /// [userName] User name for the share.
-  ShareCredentialDetailsResponse({
+  const ShareCredentialDetailsResponse({
     required this.password,
     required this.shareName,
     required this.shareType,

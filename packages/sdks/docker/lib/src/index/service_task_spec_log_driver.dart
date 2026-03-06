@@ -11,7 +11,7 @@ class ServiceTaskSpecLogDriver {
   /// Creates a new [ServiceTaskSpecLogDriver].
   /// [name] The logging driver to use
   /// [options] The options for the logging driver
-  ServiceTaskSpecLogDriver({
+  const ServiceTaskSpecLogDriver({
     required this.name,
     this.options,
   });

@@ -24,7 +24,7 @@ class InstanceGceSetupDataDisks {
   /// [diskSizeGb] Optional. The size of the disk in GB attached to this VM instance,
   /// [diskType] Optional. Input only. Indicates the type of the disk.
   /// [kmsKey] 'Optional. The KMS key used to encrypt the disks,
-  InstanceGceSetupDataDisks({
+  const InstanceGceSetupDataDisks({
     this.diskEncryption,
     this.diskSizeGb,
     this.diskType,

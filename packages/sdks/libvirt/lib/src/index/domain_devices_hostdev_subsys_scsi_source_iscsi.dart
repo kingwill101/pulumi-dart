@@ -20,7 +20,7 @@ class DomainDevicesHostdevSubsysScsiSourceIscsi {
   /// [hosts] Configures the iSCSI host settings for the device source.
   /// [initiator] Configures the iSCSI initiator settings for the device source.
   /// [name] Specifies the name for the iSCSI source configuration.
-  DomainDevicesHostdevSubsysScsiSourceIscsi({
+  const DomainDevicesHostdevSubsysScsiSourceIscsi({
     this.auth,
     this.hosts,
     this.initiator,

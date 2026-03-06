@@ -13,7 +13,7 @@ class DatabasePropertiesGeoReplication {
   /// Creates a new [DatabasePropertiesGeoReplication].
   /// [groupNickname] Name for the group of linked database resources
   /// [linkedDatabases] List of database resources to link with this database
-  DatabasePropertiesGeoReplication({
+  const DatabasePropertiesGeoReplication({
     this.groupNickname,
     this.linkedDatabases,
   });

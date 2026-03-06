@@ -26,7 +26,7 @@ class GetPoliciesPolicy {
   /// [policyName] The name of the policy.
   /// [policyType] The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
   /// [updateDate] The time when the policy was updated.
-  GetPoliciesPolicy({
+  const GetPoliciesPolicy({
     required this.attachmentCount,
     required this.defaultVersion,
     required this.description,

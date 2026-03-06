@@ -17,7 +17,7 @@ class GetDistributionConfigurationDistributionS3ExportConfiguration {
   /// [roleName] The name of the IAM role to use for exporting.
   /// [s3Bucket] The name of the S3 bucket to store the exported image in.
   /// [s3Prefix] The prefix for the exported image.
-  GetDistributionConfigurationDistributionS3ExportConfiguration({
+  const GetDistributionConfigurationDistributionS3ExportConfiguration({
     required this.diskImageFormat,
     required this.roleName,
     required this.s3Bucket,

@@ -8,7 +8,7 @@ class VirtualNodeSpecListenerConnectionPoolGrpc {
 
   /// Creates a new [VirtualNodeSpecListenerConnectionPoolGrpc].
   /// [maxRequests] Maximum number of inflight requests Envoy can concurrently support across hosts in upstream cluster. Minimum value of `1`.
-  VirtualNodeSpecListenerConnectionPoolGrpc({
+  const VirtualNodeSpecListenerConnectionPoolGrpc({
     required this.maxRequests,
   });
 

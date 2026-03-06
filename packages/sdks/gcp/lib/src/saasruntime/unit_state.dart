@@ -141,7 +141,7 @@ class UnitState {
   /// [unitId] The ID value for the new unit.
   /// [unitKind] Reference to the UnitKind this Unit belongs to. Immutable once set.
   /// [updateTime] The timestamp when the resource was last updated. Any
-  UnitState({
+  const UnitState({
     this.annotations,
     this.conditions,
     this.createTime,

@@ -36,7 +36,7 @@ class GetStorageBoxSubaccountResult {
   /// [storageBoxId] ID of the Storage Box.
   /// [username] Username of the Storage Box Subaccount.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
-  GetStorageBoxSubaccountResult({
+  const GetStorageBoxSubaccountResult({
     required this.accessSettings,
     required this.description,
     required this.homeDirectory,

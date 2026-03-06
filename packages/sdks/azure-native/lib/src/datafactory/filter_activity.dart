@@ -37,7 +37,7 @@ class FilterActivity {
   /// [state] Activity state. This is an optional property and if not provided, the state will be Active by default.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  FilterActivity({
+  const FilterActivity({
     required this.condition,
     this.dependsOn,
     this.description,

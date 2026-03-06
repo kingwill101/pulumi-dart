@@ -54,7 +54,7 @@ class MonitorAlertArgs {
   /// [type] The type of the alert.
   /// [value] The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
   /// [window] The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
-  MonitorAlertArgs({
+  const MonitorAlertArgs({
     required this.alerts,
     required this.compare,
     required this.description,

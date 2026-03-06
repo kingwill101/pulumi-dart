@@ -95,7 +95,7 @@ class GetEcsDisksArgs {
   /// [tags] A map of tags assigned to the disks.
   /// [type] Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
   /// [zoneId] ID of the free zone to which the disk belongs.
-  GetEcsDisksArgs({
+  const GetEcsDisksArgs({
     this.additionalAttributes,
     this.autoSnapshotPolicyId,
     this.availabilityZone,

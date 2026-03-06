@@ -29,7 +29,7 @@ class JobScheduleArgs {
   /// [jobId] The ID of the Elastic Job. Changing this forces a new Elastic Job Schedule to be created.
   /// [startTime] The start time of the schedule. Must be in RFC3339 format.
   /// [type] The type of schedule. Possible values are `Once` and `Recurring`.
-  JobScheduleArgs({
+  const JobScheduleArgs({
     this.enabled,
     this.endTime,
     this.interval,

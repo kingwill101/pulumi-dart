@@ -35,7 +35,7 @@ class Smtp {
   /// [skipVerify] Verify SSL for SMTP server. Default is false
   /// [startTLSPolicy] The StartTLSPolicy setting of the SMTP configuration
   /// [user] User of SMTP auth
-  Smtp({
+  const Smtp({
     this.enabled,
     this.fromAddress,
     this.fromName,

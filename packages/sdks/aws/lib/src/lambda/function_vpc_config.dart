@@ -17,7 +17,7 @@ class FunctionVpcConfig {
   /// [securityGroupIds] List of security group IDs associated with the Lambda function.
   /// [subnetIds] List of subnet IDs associated with the Lambda function.
   /// [vpcId] ID of the VPC.
-  FunctionVpcConfig({
+  const FunctionVpcConfig({
     this.ipv6AllowedForDualStack,
     required this.securityGroupIds,
     required this.subnetIds,

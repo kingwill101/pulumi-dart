@@ -26,7 +26,7 @@ class PrincipalPortfolioAssociationArgs {
   /// [principalArn] Principal ARN.
   /// [principalType] Principal type. Setting this argument empty (e.g., `principal_type = ""`) will result in an error. Valid values are `IAM` and `IAM_PATTERN`. Default is `IAM`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PrincipalPortfolioAssociationArgs({
+  const PrincipalPortfolioAssociationArgs({
     this.acceptLanguage,
     required this.portfolioId,
     required this.principalArn,

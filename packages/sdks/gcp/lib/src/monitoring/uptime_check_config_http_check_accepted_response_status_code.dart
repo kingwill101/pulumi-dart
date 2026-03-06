@@ -12,7 +12,7 @@ class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
   /// Creates a new [UptimeCheckConfigHttpCheckAcceptedResponseStatusCode].
   /// [statusClass] A class of status codes to accept.
   /// [statusValue] A status code to accept.
-  UptimeCheckConfigHttpCheckAcceptedResponseStatusCode({
+  const UptimeCheckConfigHttpCheckAcceptedResponseStatusCode({
     this.statusClass,
     this.statusValue,
   });

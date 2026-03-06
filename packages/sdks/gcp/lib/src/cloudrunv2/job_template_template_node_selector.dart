@@ -8,7 +8,7 @@ class JobTemplateTemplateNodeSelector {
 
   /// Creates a new [JobTemplateTemplateNodeSelector].
   /// [accelerator] The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/jobs/gpu for configuring GPU.
-  JobTemplateTemplateNodeSelector({
+  const JobTemplateTemplateNodeSelector({
     required this.accelerator,
   });
 

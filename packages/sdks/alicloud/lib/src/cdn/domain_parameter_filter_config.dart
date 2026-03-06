@@ -9,7 +9,7 @@ class DomainParameterFilterConfig {
   /// Creates a new [DomainParameterFilterConfig].
   /// [enable] Optional.
   /// [hashKeyArgs] Optional.
-  DomainParameterFilterConfig({
+  const DomainParameterFilterConfig({
     this.enable,
     this.hashKeyArgs,
   });

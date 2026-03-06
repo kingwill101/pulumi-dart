@@ -11,7 +11,7 @@ class Trigger {
   /// Creates a new [Trigger].
   /// [timeAfterCreate] The time duration after key creation to rotate the key. It only applies to rotate. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
   /// [timeBeforeExpiry] The time duration before key expiring to rotate or notify. It will be in ISO 8601 duration format. Eg: 'P90D', 'P1Y'.
-  Trigger({
+  const Trigger({
     this.timeAfterCreate,
     this.timeBeforeExpiry,
   });

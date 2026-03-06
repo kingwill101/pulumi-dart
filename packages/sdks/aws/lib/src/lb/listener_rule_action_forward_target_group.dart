@@ -11,7 +11,7 @@ class ListenerRuleActionForwardTargetGroup {
   /// Creates a new [ListenerRuleActionForwardTargetGroup].
   /// [arn] The Amazon Resource Name (ARN) of the target group.
   /// [weight] The weight. The range is 0 to 999.
-  ListenerRuleActionForwardTargetGroup({
+  const ListenerRuleActionForwardTargetGroup({
     required this.arn,
     this.weight,
   });

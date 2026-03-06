@@ -26,7 +26,7 @@ class GetRegionSecurityPolicyUserDefinedField {
   /// [name] The name of the Region Security Policy.
   /// [offset] Offset of the first byte of the field (in network byte order) relative to 'base'.
   /// [size] Size of the field in bytes. Valid values: 1-4.
-  GetRegionSecurityPolicyUserDefinedField({
+  const GetRegionSecurityPolicyUserDefinedField({
     required this.base,
     required this.mask,
     required this.name,

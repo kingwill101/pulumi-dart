@@ -13,7 +13,7 @@ class MasterAuthorizedNetworksConfigResponseComposerV1beta1 {
   /// Creates a new [MasterAuthorizedNetworksConfigResponseComposerV1beta1].
   /// [cidrBlocks] Up to 50 external networks that could access Kubernetes master through HTTPS.
   /// [enabled] Whether or not master authorized networks feature is enabled.
-  MasterAuthorizedNetworksConfigResponseComposerV1beta1({
+  const MasterAuthorizedNetworksConfigResponseComposerV1beta1({
     required this.cidrBlocks,
     required this.enabled,
   });

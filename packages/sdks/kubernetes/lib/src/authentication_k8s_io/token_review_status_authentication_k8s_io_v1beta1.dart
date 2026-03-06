@@ -19,7 +19,7 @@ class TokenReviewStatusAuthenticationK8sIoV1beta1 {
   /// [authenticated] Authenticated indicates that the token was associated with a known user.
   /// [error] Error indicates that the token couldn't be checked
   /// [user] User is the UserInfo associated with the provided token.
-  TokenReviewStatusAuthenticationK8sIoV1beta1({
+  const TokenReviewStatusAuthenticationK8sIoV1beta1({
     this.audiences,
     this.authenticated,
     this.error,

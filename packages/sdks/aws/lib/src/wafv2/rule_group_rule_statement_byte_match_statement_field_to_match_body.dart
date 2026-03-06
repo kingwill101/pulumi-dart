@@ -7,7 +7,7 @@ class RuleGroupRuleStatementByteMatchStatementFieldToMatchBody {
 
   /// Creates a new [RuleGroupRuleStatementByteMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementByteMatchStatementFieldToMatchBody({
+  const RuleGroupRuleStatementByteMatchStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

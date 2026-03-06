@@ -21,7 +21,7 @@ class NetworkProfileForSnapshotResponse {
   /// [networkPlugin] networkPlugin for managed cluster snapshot.
   /// [networkPluginMode] NetworkPluginMode for managed cluster snapshot.
   /// [networkPolicy] networkPolicy for managed cluster snapshot.
-  NetworkProfileForSnapshotResponse({
+  const NetworkProfileForSnapshotResponse({
     this.loadBalancerSku,
     this.networkMode,
     this.networkPlugin,

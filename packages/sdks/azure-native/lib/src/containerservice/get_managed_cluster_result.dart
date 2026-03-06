@@ -210,7 +210,7 @@ class GetManagedClusterResult {
   /// [upgradeSettings] Settings for upgrading a cluster.
   /// [windowsProfile] The profile for Windows VMs in the Managed Cluster.
   /// [workloadAutoScalerProfile] Workload Auto-scaler profile for the managed cluster.
-  GetManagedClusterResult({
+  const GetManagedClusterResult({
     this.aadProfile,
     this.addonProfiles,
     this.agentPoolProfiles,

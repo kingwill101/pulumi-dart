@@ -33,7 +33,7 @@ class GetTransitRouterVpcAttachmentsArgs {
   /// [transitRouterAttachmentId] The ID of the Transit Router VPC Attachment.
   /// [transitRouterId] The ID of the transit router.
   /// [vpcId] The ID of the VPC.
-  GetTransitRouterVpcAttachmentsArgs({
+  const GetTransitRouterVpcAttachmentsArgs({
     required this.cenId,
     this.ids,
     this.nameRegex,

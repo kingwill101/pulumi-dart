@@ -11,7 +11,7 @@ class GetZonesZone {
   /// Creates a new [GetZonesZone].
   /// [id] ID of the zone.
   /// [multiZoneIds] A list of zone ids in which the multi zone.
-  GetZonesZone({
+  const GetZonesZone({
     required this.id,
     required this.multiZoneIds,
   });

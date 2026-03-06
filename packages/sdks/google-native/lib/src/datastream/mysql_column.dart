@@ -33,7 +33,7 @@ class MysqlColumn {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  MysqlColumn({
+  const MysqlColumn({
     this.collation,
     this.column,
     this.dataType,

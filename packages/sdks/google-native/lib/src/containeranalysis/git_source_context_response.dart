@@ -12,7 +12,7 @@ class GitSourceContextResponse {
   /// Creates a new [GitSourceContextResponse].
   /// [revisionId] Git commit hash.
   /// [url] Git repository URL.
-  GitSourceContextResponse({
+  const GitSourceContextResponse({
     required this.revisionId,
     required this.url,
   });

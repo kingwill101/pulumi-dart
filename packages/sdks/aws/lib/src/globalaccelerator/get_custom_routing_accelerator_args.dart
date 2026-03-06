@@ -19,7 +19,7 @@ class GetCustomRoutingAcceleratorArgs {
   /// [arn] Full ARN of the custom routing accelerator.
   /// [name] Unique name of the custom routing accelerator.
   /// [tags] Optional.
-  GetCustomRoutingAcceleratorArgs({
+  const GetCustomRoutingAcceleratorArgs({
     this.arn,
     this.name,
     this.tags,

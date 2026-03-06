@@ -11,7 +11,7 @@ class DomainDevicesAudioDbus {
   /// Creates a new [DomainDevicesAudioDbus].
   /// [input] Configures the output settings for the D-Bus audio device.
   /// [output] Configures the output settings for the D-Bus audio device.
-  DomainDevicesAudioDbus({
+  const DomainDevicesAudioDbus({
     this.input,
     this.output,
   });

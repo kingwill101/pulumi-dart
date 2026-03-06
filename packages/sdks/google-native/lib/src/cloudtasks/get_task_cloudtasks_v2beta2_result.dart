@@ -33,7 +33,7 @@ class GetTaskCloudtasksV2beta2Result {
   /// [scheduleTime] The time when the task is scheduled to be attempted. For App Engine queues, this is when the task will be attempted or retried. For pull queues, this is the time when the task is available to be leased; if a task is currently leased, this is the time when the current lease expires, that is, the time that the task was leased plus the lease_duration. `schedule_time` will be truncated to the nearest microsecond.
   /// [status] The task status.
   /// [view] The view specifies which subset of the Task has been returned.
-  GetTaskCloudtasksV2beta2Result({
+  const GetTaskCloudtasksV2beta2Result({
     required this.appEngineHttpRequest,
     required this.createTime,
     required this.httpRequest,

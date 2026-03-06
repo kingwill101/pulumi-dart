@@ -23,7 +23,7 @@ class DiskAttachmentArgs {
   /// [instanceId] ID of the Instance to attach to.
   /// [keyPairName] Optional.
   /// [password] Optional.
-  DiskAttachmentArgs({
+  const DiskAttachmentArgs({
     this.bootable,
     this.deleteWithInstance,
     required this.diskId,

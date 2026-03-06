@@ -18,7 +18,7 @@ class SamlIdpConfigResponseCloudidentityV1beta1 {
   /// [entityId] The SAML **Entity ID** of the identity provider.
   /// [logoutRedirectUri] The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`.
   /// [singleSignOnServiceUri] The `SingleSignOnService` endpoint location (sign-in page URL) of the identity provider. This is the URL where the `AuthnRequest` will be sent. Must use `HTTPS`. Assumed to accept the `HTTP-Redirect` binding.
-  SamlIdpConfigResponseCloudidentityV1beta1({
+  const SamlIdpConfigResponseCloudidentityV1beta1({
     required this.changePasswordUri,
     required this.entityId,
     required this.logoutRedirectUri,

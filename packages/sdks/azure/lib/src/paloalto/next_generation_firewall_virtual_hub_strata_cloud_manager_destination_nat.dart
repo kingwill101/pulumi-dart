@@ -19,7 +19,7 @@ class NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat {
   /// [frontendConfig] One or more `frontend_config` block as defined below.
   /// [name] The name which should be used for this Destination NAT rule.
   /// [protocol] The protocol used for this Destination NAT. Possible values include `TCP` and `UDP`.
-  NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat({
+  const NextGenerationFirewallVirtualHubStrataCloudManagerDestinationNat({
     this.backendConfig,
     this.frontendConfig,
     required this.name,

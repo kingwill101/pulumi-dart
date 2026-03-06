@@ -11,7 +11,7 @@ class CustomTargetTypeIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  CustomTargetTypeIamBindingCondition({
+  const CustomTargetTypeIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -96,7 +96,7 @@ class InstanceArgs {
   /// [tags] A map of resource manager tags. Resource manager tag keys
   /// [tier] The service tier of the instance.
   /// [zone] (Optional, Deprecated)
-  InstanceArgs({
+  const InstanceArgs({
     this.deletionProtectionEnabled,
     this.deletionProtectionReason,
     this.description,

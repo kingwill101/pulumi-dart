@@ -15,7 +15,7 @@ class StackStorageConnector {
   /// [connectorType] Type of storage connector.
   /// [domains] Names of the domains for the account.
   /// [resourceIdentifier] ARN of the storage connector.
-  StackStorageConnector({
+  const StackStorageConnector({
     required this.connectorType,
     this.domains,
     this.resourceIdentifier,

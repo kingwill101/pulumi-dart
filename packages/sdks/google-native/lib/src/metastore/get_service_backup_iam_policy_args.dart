@@ -19,7 +19,7 @@ class GetServiceBackupIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetServiceBackupIamPolicyArgs({
+  const GetServiceBackupIamPolicyArgs({
     required this.backupId,
     required this.location,
     this.optionsRequestedPolicyVersion,

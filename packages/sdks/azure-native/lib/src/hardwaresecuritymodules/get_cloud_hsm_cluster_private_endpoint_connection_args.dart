@@ -18,7 +18,7 @@ class GetCloudHsmClusterPrivateEndpointConnectionArgs {
   /// [cloudHsmClusterName] The name of the Cloud HSM Cluster within the specified resource group. Cloud HSM Cluster names must be between 3 and 23 characters in length.
   /// [peConnectionName] Name of the private endpoint connection associated with the Cloud HSM Cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudHsmClusterPrivateEndpointConnectionArgs({
+  const GetCloudHsmClusterPrivateEndpointConnectionArgs({
     required this.cloudHsmClusterName,
     required this.peConnectionName,
     required this.resourceGroupName,

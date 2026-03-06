@@ -20,7 +20,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   /// [checkCertificateRevocationStatus] Check Certificate Revocation Status block. Detailed below.
   /// [scopes] Scope block. Detailed below.
   /// [serverCertificates] Server certificates to use for inbound SSL/TLS inspection. See [Using SSL/TLS certificates with TLS inspection configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/tls-inspection-certificate-requirements.html).
-  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration({
+  const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfiguration({
     this.certificateAuthorityArn,
     this.checkCertificateRevocationStatus,
     required this.scopes,

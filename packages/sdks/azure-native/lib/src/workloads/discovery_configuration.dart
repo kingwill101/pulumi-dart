@@ -16,7 +16,7 @@ class DiscoveryConfiguration {
   /// [centralServerVmId] The virtual machine ID of the Central Server.
   /// [configurationType] The configuration Type.
   /// [managedRgStorageAccountName] The custom storage account name for the storage account created by the service in the managed resource group created as part of VIS deployment.&lt;br&gt;&lt;br&gt;Refer to the storage account naming rules [here](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage).&lt;br&gt;&lt;br&gt;If not provided, the service will create the storage account with a random name.
-  DiscoveryConfiguration({
+  const DiscoveryConfiguration({
     this.centralServerVmId,
     required this.configurationType,
     this.managedRgStorageAccountName,

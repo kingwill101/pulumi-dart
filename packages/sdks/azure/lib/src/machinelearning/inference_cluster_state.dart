@@ -37,7 +37,7 @@ class InferenceClusterState {
   /// [name] The name which should be used for this Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
   /// [ssl] A `ssl` block as defined below. Changing this forces a new Machine Learning Inference Cluster to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Inference Cluster. Changing this forces a new Machine Learning Inference Cluster to be created.
-  InferenceClusterState({
+  const InferenceClusterState({
     this.clusterPurpose,
     this.description,
     this.identity,

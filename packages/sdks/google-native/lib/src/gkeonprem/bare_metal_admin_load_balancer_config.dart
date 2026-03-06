@@ -18,7 +18,7 @@ class BareMetalAdminLoadBalancerConfig {
   /// [manualLbConfig] Manually configured load balancers.
   /// [portConfig] Configures the ports that the load balancer will listen on.
   /// [vipConfig] The VIPs used by the load balancer.
-  BareMetalAdminLoadBalancerConfig({
+  const BareMetalAdminLoadBalancerConfig({
     this.manualLbConfig,
     this.portConfig,
     this.vipConfig,

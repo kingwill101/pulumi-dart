@@ -9,7 +9,7 @@ class ContributorInsightsSpecification {
 
   /// Creates a new [ContributorInsightsSpecification].
   /// [enabled] Indicates whether CloudWatch Contributor Insights are to be enabled (true) or disabled (false).
-  ContributorInsightsSpecification({
+  const ContributorInsightsSpecification({
     this.enabled,
   });
 

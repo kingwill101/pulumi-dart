@@ -18,7 +18,7 @@ class GetReplicationExtensionArgs {
   /// [replicationExtensionName] The replication extension name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  GetReplicationExtensionArgs({
+  const GetReplicationExtensionArgs({
     required this.replicationExtensionName,
     required this.resourceGroupName,
     required this.vaultName,

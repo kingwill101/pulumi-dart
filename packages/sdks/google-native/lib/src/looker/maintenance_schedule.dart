@@ -12,7 +12,7 @@ class MaintenanceSchedule {
   /// Creates a new [MaintenanceSchedule].
   /// [endTime] The scheduled end time for the maintenance.
   /// [startTime] The scheduled start time for the maintenance.
-  MaintenanceSchedule({
+  const MaintenanceSchedule({
     this.endTime,
     this.startTime,
   });

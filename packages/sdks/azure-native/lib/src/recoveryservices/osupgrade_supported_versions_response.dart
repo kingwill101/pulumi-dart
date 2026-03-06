@@ -12,7 +12,7 @@ class OSUpgradeSupportedVersionsResponse {
   /// Creates a new [OSUpgradeSupportedVersionsResponse].
   /// [supportedSourceOsVersion] The source OS version name.
   /// [supportedTargetOsVersions] The target OS version names.
-  OSUpgradeSupportedVersionsResponse({
+  const OSUpgradeSupportedVersionsResponse({
     required this.supportedSourceOsVersion,
     required this.supportedTargetOsVersions,
   });

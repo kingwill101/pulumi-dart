@@ -15,7 +15,7 @@ class GetResourcePolicyResult {
   /// [policy] JSON-encoded string representation of the applied resource policy.
   /// [region] Required.
   /// [resourceArn] Required.
-  GetResourcePolicyResult({
+  const GetResourcePolicyResult({
     required this.id,
     required this.policy,
     required this.region,

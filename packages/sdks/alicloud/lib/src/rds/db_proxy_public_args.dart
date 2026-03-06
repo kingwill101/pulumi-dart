@@ -24,7 +24,7 @@ class DbProxyPublicArgs {
   /// [dbProxyConnectionStringNetType] The network type of the new database proxy connection address,This resource defaults to Public.
   /// [dbProxyEndpointId] Database proxy connection address ID.
   /// [dbProxyNewConnectStringPort] The port for the new database proxy connection address is 3306 by default for MySQL and 5432 by default for PostgreSQL, which can be customized.
-  DbProxyPublicArgs({
+  const DbProxyPublicArgs({
     required this.connectionStringPrefix,
     required this.dbInstanceId,
     required this.dbProxyConnectionStringNetType,

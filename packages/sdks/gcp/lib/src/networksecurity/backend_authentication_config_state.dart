@@ -52,7 +52,7 @@ class BackendAuthenticationConfigState {
   /// [trustConfig] Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
   /// [updateTime] Time the BackendAuthenticationConfig was updated in UTC.
   /// [wellKnownRoots] Well known roots to use for server certificate validation. If set to NONE, the BackendService will only validate server certificates against roots specified in TrustConfig.
-  BackendAuthenticationConfigState({
+  const BackendAuthenticationConfigState({
     this.clientCertificate,
     this.createTime,
     this.description,

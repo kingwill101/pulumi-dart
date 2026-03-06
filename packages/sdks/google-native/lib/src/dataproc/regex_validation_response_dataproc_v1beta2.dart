@@ -9,7 +9,7 @@ class RegexValidationResponseDataprocV1beta2 {
 
   /// Creates a new [RegexValidationResponseDataprocV1beta2].
   /// [regexes] RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-  RegexValidationResponseDataprocV1beta2({
+  const RegexValidationResponseDataprocV1beta2({
     required this.regexes,
   });
 

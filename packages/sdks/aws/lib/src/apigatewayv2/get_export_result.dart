@@ -25,7 +25,7 @@ class GetExportResult {
   /// [region] Required.
   /// [specification] Required.
   /// [stageName] Optional.
-  GetExportResult({
+  const GetExportResult({
     required this.apiId,
     required this.body,
     this.exportVersion,

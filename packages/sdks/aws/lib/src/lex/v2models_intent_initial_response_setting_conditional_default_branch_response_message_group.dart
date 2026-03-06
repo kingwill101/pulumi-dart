@@ -13,7 +13,7 @@ class V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessag
   /// Creates a new [V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup].
   /// [message] Configuration block for the primary message that Amazon Lex should send to the user. See `message`.
   /// [variations] Configuration blocks for message variations to send to the user. When variations are defined, Amazon Lex chooses the primary message or one of the variations to send to the user. See `variation`.
-  V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup({
+  const V2modelsIntentInitialResponseSettingConditionalDefaultBranchResponseMessageGroup({
     this.message,
     this.variations,
   });

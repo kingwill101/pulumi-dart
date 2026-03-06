@@ -532,7 +532,7 @@ class KubernetesClusterArgs {
   /// [windowsProfile] A `windows_profile` block as defined below.
   /// [workloadAutoscalerProfile] A `workload_autoscaler_profile` block defined below.
   /// [workloadIdentityEnabled] Specifies whether Azure AD Workload Identity should be enabled for the Cluster. Defaults to `false`.
-  KubernetesClusterArgs({
+  const KubernetesClusterArgs({
     this.aciConnectorLinux,
     this.aiToolchainOperatorEnabled,
     this.apiServerAccessProfile,

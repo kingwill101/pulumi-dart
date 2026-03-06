@@ -12,7 +12,7 @@ class GetEnhancedNatAvailableZonesArgs {
 
   /// Creates a new [GetEnhancedNatAvailableZonesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnhancedNatAvailableZonesArgs({
+  const GetEnhancedNatAvailableZonesArgs({
     this.outputFile,
   });
 

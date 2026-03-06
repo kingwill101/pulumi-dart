@@ -17,7 +17,7 @@ class GetServerTlsPolicyIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serverTlsPolicyId] Required.
-  GetServerTlsPolicyIamPolicyArgs({
+  const GetServerTlsPolicyIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

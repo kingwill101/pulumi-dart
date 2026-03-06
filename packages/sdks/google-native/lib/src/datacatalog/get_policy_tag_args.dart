@@ -17,7 +17,7 @@ class GetPolicyTagArgs {
   /// [policyTagId] Required.
   /// [project] Optional.
   /// [taxonomyId] Required.
-  GetPolicyTagArgs({
+  const GetPolicyTagArgs({
     required this.location,
     required this.policyTagId,
     this.project,

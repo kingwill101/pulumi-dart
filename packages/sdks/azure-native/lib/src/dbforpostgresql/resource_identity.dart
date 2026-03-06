@@ -9,7 +9,7 @@ class ResourceIdentity {
 
   /// Creates a new [ResourceIdentity].
   /// [type] The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  ResourceIdentity({
+  const ResourceIdentity({
     this.type,
   });
 

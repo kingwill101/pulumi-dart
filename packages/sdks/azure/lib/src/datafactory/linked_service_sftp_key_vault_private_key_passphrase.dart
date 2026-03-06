@@ -11,7 +11,7 @@ class LinkedServiceSftpKeyVaultPrivateKeyPassphrase {
   /// Creates a new [LinkedServiceSftpKeyVaultPrivateKeyPassphrase].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the name of the secret containing the SSH private key passphrase.
-  LinkedServiceSftpKeyVaultPrivateKeyPassphrase({
+  const LinkedServiceSftpKeyVaultPrivateKeyPassphrase({
     required this.linkedServiceName,
     required this.secretName,
   });

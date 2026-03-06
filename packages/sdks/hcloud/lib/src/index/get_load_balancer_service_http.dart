@@ -20,7 +20,7 @@ class GetLoadBalancerServiceHttp {
   /// [cookieName] (string) Name of the cookie for sticky session.
   /// [redirectHttp] (string) Determine if all requests from port 80 should be redirected to port 443.
   /// [stickySessions] (string) Determine if sticky sessions are enabled or not.
-  GetLoadBalancerServiceHttp({
+  const GetLoadBalancerServiceHttp({
     required this.certificates,
     required this.cookieLifetime,
     required this.cookieName,

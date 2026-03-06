@@ -10,7 +10,7 @@ class SyntheticMonitorTargetResponse {
 
   /// Creates a new [SyntheticMonitorTargetResponse].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 instance.
-  SyntheticMonitorTargetResponse({
+  const SyntheticMonitorTargetResponse({
     required this.cloudFunctionV2,
   });
 

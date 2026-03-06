@@ -94,7 +94,7 @@ class MetricAlarmState {
   /// [thresholdMetricId] If this is an alarm based on an anomaly detection model, make this value match the ID of the ANOMALY_DETECTION_BAND function.
   /// [treatMissingData] Sets how this alarm is to handle missing data points. The following values are supported: `missing`, `ignore`, `breaching` and `notBreaching`. Defaults to `missing`.
   /// [unit] The unit for the alarm's associated metric.
-  MetricAlarmState({
+  const MetricAlarmState({
     this.actionsEnabled,
     this.alarmActions,
     this.alarmDescription,

@@ -16,7 +16,7 @@ class VMwareMigrateFabricModelCustomPropertiesResponse {
   /// [instanceType] Gets or sets the instance type.
   /// [migrationSolutionId] Gets or sets the ARM Id of the migration solution.
   /// [vmwareSiteId] Gets or sets the ARM Id of the VMware site.
-  VMwareMigrateFabricModelCustomPropertiesResponse({
+  const VMwareMigrateFabricModelCustomPropertiesResponse({
     required this.instanceType,
     required this.migrationSolutionId,
     required this.vmwareSiteId,

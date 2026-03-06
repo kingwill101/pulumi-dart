@@ -11,7 +11,7 @@ class ManagedZonePeeringConfigDnsV1beta2 {
   /// Creates a new [ManagedZonePeeringConfigDnsV1beta2].
   /// [kind] Optional.
   /// [targetNetwork] The network with which to peer.
-  ManagedZonePeeringConfigDnsV1beta2({
+  const ManagedZonePeeringConfigDnsV1beta2({
     this.kind,
     this.targetNetwork,
   });

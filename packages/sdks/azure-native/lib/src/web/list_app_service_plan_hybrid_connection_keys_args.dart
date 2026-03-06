@@ -21,7 +21,7 @@ class ListAppServicePlanHybridConnectionKeysArgs {
   /// [namespaceName] The name of the Service Bus namespace.
   /// [relayName] The name of the Service Bus relay.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListAppServicePlanHybridConnectionKeysArgs({
+  const ListAppServicePlanHybridConnectionKeysArgs({
     required this.name,
     required this.namespaceName,
     required this.relayName,

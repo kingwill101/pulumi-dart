@@ -42,7 +42,7 @@ class GetInstanceTypeResult {
   /// [regionPrices] Required.
   /// [transfer] The monthly outbound transfer amount, in MB.
   /// [vcpus] The number of VCPU cores this Linode Type offers.
-  GetInstanceTypeResult({
+  const GetInstanceTypeResult({
     required this.acceleratedDevices,
     required this.addons,
     required this.class_,

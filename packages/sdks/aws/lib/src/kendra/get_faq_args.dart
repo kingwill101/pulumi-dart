@@ -21,7 +21,7 @@ class GetFaqArgs {
   /// [indexId] Identifier of the index that contains the FAQ.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that helps organize the FAQs you create.
-  GetFaqArgs({
+  const GetFaqArgs({
     required this.faqId,
     required this.indexId,
     this.region,

@@ -13,7 +13,7 @@ class DataflowProfileProperties {
   /// Creates a new [DataflowProfileProperties].
   /// [diagnostics] Spec defines the desired identities of NBC diagnostics settings.
   /// [instanceCount] To manually scale the dataflow profile, specify the maximum number of instances you want to run.
-  DataflowProfileProperties({
+  const DataflowProfileProperties({
     this.diagnostics,
     this.instanceCount,
   });

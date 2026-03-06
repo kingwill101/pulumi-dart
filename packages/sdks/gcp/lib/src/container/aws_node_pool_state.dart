@@ -74,7 +74,7 @@ class AwsNodePoolState {
   /// [updateSettings] Optional. Update settings control the speed and disruption of the node pool update.
   /// [updateTime] Output only. The time at which this node pool was last updated.
   /// [version] The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
-  AwsNodePoolState({
+  const AwsNodePoolState({
     this.annotations,
     this.autoscaling,
     this.cluster,

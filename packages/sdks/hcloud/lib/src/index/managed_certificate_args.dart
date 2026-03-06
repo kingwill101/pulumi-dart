@@ -20,7 +20,7 @@ class ManagedCertificateArgs {
   /// [domainNames] Domain names for which a certificate
   /// [labels] User-defined labels (key-value pairs) the
   /// [name] Name of the Certificate.
-  ManagedCertificateArgs({
+  const ManagedCertificateArgs({
     required this.domainNames,
     this.labels,
     this.name,

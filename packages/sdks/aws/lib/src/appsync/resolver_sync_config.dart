@@ -15,7 +15,7 @@ class ResolverSyncConfig {
   /// [conflictDetection] Conflict Detection strategy to use. Valid values are `NONE` and `VERSION`.
   /// [conflictHandler] Conflict Resolution strategy to perform in the event of a conflict. Valid values are `NONE`, `OPTIMISTIC_CONCURRENCY`, `AUTOMERGE`, and `LAMBDA`.
   /// [lambdaConflictHandlerConfig] Lambda Conflict Handler Config when configuring `LAMBDA` as the Conflict Handler. See Lambda Conflict Handler Config.
-  ResolverSyncConfig({
+  const ResolverSyncConfig({
     this.conflictDetection,
     this.conflictHandler,
     this.lambdaConflictHandlerConfig,

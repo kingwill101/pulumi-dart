@@ -54,7 +54,7 @@ class GetRegionSecurityPolicyRule {
   /// [preview] If set to true, the specified action is not enforced.
   /// [priority] An integer indicating the priority of a rule in the list.
   /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
-  GetRegionSecurityPolicyRule({
+  const GetRegionSecurityPolicyRule({
     required this.action,
     required this.description,
     required this.matches,

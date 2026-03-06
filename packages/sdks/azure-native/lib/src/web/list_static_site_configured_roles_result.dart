@@ -20,7 +20,7 @@ class ListStaticSiteConfiguredRolesResult {
   /// [name] Resource Name.
   /// [properties] List of string resources.
   /// [type] Resource type.
-  ListStaticSiteConfiguredRolesResult({
+  const ListStaticSiteConfiguredRolesResult({
     required this.id,
     this.kind,
     required this.name,

@@ -20,7 +20,7 @@ class VirtualNodeSpecListenerOutlierDetection {
   /// [interval] Time interval between ejection sweep analysis.
   /// [maxEjectionPercent] Maximum percentage of hosts in load balancing pool for upstream service that can be ejected. Will eject at least one host regardless of the value.
   /// [maxServerErrors] Number of consecutive `5xx` errors required for ejection. Minimum value of `1`.
-  VirtualNodeSpecListenerOutlierDetection({
+  const VirtualNodeSpecListenerOutlierDetection({
     required this.baseEjectionDuration,
     required this.interval,
     required this.maxEjectionPercent,

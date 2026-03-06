@@ -13,7 +13,7 @@ class ListStaticSiteUsersResult {
   /// Creates a new [ListStaticSiteUsersResult].
   /// [nextLink] Link to next page of resources.
   /// [value] Collection of resources.
-  ListStaticSiteUsersResult({
+  const ListStaticSiteUsersResult({
     required this.nextLink,
     required this.value,
   });

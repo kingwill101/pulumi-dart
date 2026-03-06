@@ -15,7 +15,7 @@ class DeleteRetentionPolicy {
   /// [allowPermanentDelete] This property when set to true allows deletion of the soft deleted blob versions and snapshots. This property cannot be used blob restore policy. This property only applies to blob service and does not apply to containers or file share.
   /// [days] Indicates the number of days that the deleted item should be retained. The minimum specified value can be 1 and the maximum value can be 365.
   /// [enabled] Indicates whether DeleteRetentionPolicy is enabled.
-  DeleteRetentionPolicy({
+  const DeleteRetentionPolicy({
     this.allowPermanentDelete,
     this.days,
     this.enabled,

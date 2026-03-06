@@ -137,7 +137,7 @@ class SubnetworkArgs {
   /// [secondaryIpRanges] An array of configurations for secondary IP ranges for VM instances
   /// [sendSecondaryIpRangeIfEmpty] Controls the removal behavior of secondary_ip_range.
   /// [stackType] The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
-  SubnetworkArgs({
+  const SubnetworkArgs({
     this.allowSubnetCidrRoutesOverlap,
     this.description,
     this.externalIpv6Prefix,

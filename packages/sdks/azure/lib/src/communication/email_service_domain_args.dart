@@ -24,7 +24,7 @@ class EmailServiceDomainArgs {
   /// [name] The name of the Email Communication Service resource. If `domain_management` is `AzureManaged`, the name must be `AzureManagedDomain`. Changing this forces a new Email Communication Service to be created.
   /// [tags] A mapping of tags which should be assigned to the Email Communication Service.
   /// [userEngagementTrackingEnabled] Describes user engagement tracking is enabled or disabled. Defaults to `false`.
-  EmailServiceDomainArgs({
+  const EmailServiceDomainArgs({
     required this.domainManagement,
     required this.emailServiceId,
     this.name,

@@ -15,7 +15,7 @@ class GetRdsDbClusterArgs {
   /// Creates a new [GetRdsDbClusterArgs].
   /// [name] Name of RdsDBCluster
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRdsDbClusterArgs({
+  const GetRdsDbClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

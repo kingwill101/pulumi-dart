@@ -7,7 +7,7 @@ class ProviderFeaturesTemplateDeployment {
 
   /// Creates a new [ProviderFeaturesTemplateDeployment].
   /// [deleteNestedItemsDuringDeletion] Required.
-  ProviderFeaturesTemplateDeployment({
+  const ProviderFeaturesTemplateDeployment({
     required this.deleteNestedItemsDuringDeletion,
   });
 

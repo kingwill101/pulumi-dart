@@ -19,7 +19,7 @@ class BucketServerSideEncryptionConfigurationState {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rules] Set of server-side encryption configuration rules. See below. Currently, only a single rule is supported.
-  BucketServerSideEncryptionConfigurationState({
+  const BucketServerSideEncryptionConfigurationState({
     this.bucket,
     this.expectedBucketOwner,
     this.region,

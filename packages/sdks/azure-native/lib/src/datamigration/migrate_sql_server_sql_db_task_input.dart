@@ -29,7 +29,7 @@ class MigrateSqlServerSqlDbTaskInput {
   /// [startedOn] Date and time relative to UTC when the migration was started on
   /// [targetConnectionInfo] Information for connecting to target
   /// [validationOptions] Options for enabling various post migration validations. Available options,
-  MigrateSqlServerSqlDbTaskInput({
+  const MigrateSqlServerSqlDbTaskInput({
     this.encryptedKeyForSecureFields,
     required this.selectedDatabases,
     required this.sourceConnectionInfo,

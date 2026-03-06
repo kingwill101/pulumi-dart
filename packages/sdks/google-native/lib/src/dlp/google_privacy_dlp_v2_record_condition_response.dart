@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2RecordConditionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2RecordConditionResponse].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2RecordConditionResponse({
+  const GooglePrivacyDlpV2RecordConditionResponse({
     required this.expressions,
   });
 

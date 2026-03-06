@@ -17,7 +17,7 @@ class GetInstancesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] Set of instance IDs of the matched SSM managed instances.
   /// [region] Required.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.filters,
     required this.id,
     required this.ids,

@@ -41,7 +41,7 @@ class GetDomainsResult {
   /// [resourceGroupId] The ID of the resource group.
   /// [securityToken] Optional.
   /// [status] The status of DCDN Domain. Valid values: `online`, `offline`, `check_failed`, `checking`, `configure_failed`, `configuring`.
-  GetDomainsResult({
+  const GetDomainsResult({
     this.changeEndTime,
     this.changeStartTime,
     this.checkDomainShow,

@@ -9,7 +9,7 @@ class ConfigManagementPolicyControllerMonitoringResponseGkehubV1beta {
 
   /// Creates a new [ConfigManagementPolicyControllerMonitoringResponseGkehubV1beta].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  ConfigManagementPolicyControllerMonitoringResponseGkehubV1beta({
+  const ConfigManagementPolicyControllerMonitoringResponseGkehubV1beta({
     required this.backends,
   });
 

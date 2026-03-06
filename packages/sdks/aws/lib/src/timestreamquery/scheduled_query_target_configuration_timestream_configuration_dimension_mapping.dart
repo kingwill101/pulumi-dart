@@ -11,7 +11,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping {
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping].
   /// [dimensionValueType] Type for the dimension. Valid value: `VARCHAR`.
   /// [name] Column name from query result.
-  ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping({
+  const ScheduledQueryTargetConfigurationTimestreamConfigurationDimensionMapping({
     required this.dimensionValueType,
     required this.name,
   });

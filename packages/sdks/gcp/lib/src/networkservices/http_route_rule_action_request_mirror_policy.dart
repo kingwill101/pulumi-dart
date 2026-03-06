@@ -10,7 +10,7 @@ class HttpRouteRuleActionRequestMirrorPolicy {
 
   /// Creates a new [HttpRouteRuleActionRequestMirrorPolicy].
   /// [destination] The destination the requests will be mirrored to.
-  HttpRouteRuleActionRequestMirrorPolicy({
+  const HttpRouteRuleActionRequestMirrorPolicy({
     this.destination,
   });
 

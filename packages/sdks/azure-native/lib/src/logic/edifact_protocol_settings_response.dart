@@ -50,7 +50,7 @@ class EdifactProtocolSettingsResponse {
   /// [schemaReferences] The EDIFACT schema references.
   /// [validationOverrides] The EDIFACT validation override settings.
   /// [validationSettings] The EDIFACT validation settings.
-  EdifactProtocolSettingsResponse({
+  const EdifactProtocolSettingsResponse({
     required this.acknowledgementSettings,
     this.edifactDelimiterOverrides,
     this.envelopeOverrides,

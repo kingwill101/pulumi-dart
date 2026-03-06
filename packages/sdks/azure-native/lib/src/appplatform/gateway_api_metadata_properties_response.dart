@@ -21,7 +21,7 @@ class GatewayApiMetadataPropertiesResponse {
   /// [serverUrl] Base URL that API consumers will use to access APIs on the Gateway instance.
   /// [title] Title describing the context of the APIs available on the Gateway instance (default: `Spring Cloud Gateway for K8S`)
   /// [version] Version of APIs available on this Gateway instance (default: `unspecified`).
-  GatewayApiMetadataPropertiesResponse({
+  const GatewayApiMetadataPropertiesResponse({
     this.description,
     this.documentation,
     this.serverUrl,

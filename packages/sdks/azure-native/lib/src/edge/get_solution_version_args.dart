@@ -21,7 +21,7 @@ class GetSolutionVersionArgs {
   /// [solutionName] Name of the solution
   /// [solutionVersionName] Name of the solution version
   /// [targetName] Name of the target
-  GetSolutionVersionArgs({
+  const GetSolutionVersionArgs({
     required this.resourceGroupName,
     required this.solutionName,
     required this.solutionVersionName,

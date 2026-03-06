@@ -8,7 +8,7 @@ class GetThemeConfigurationSheetTileLayoutMargin {
 
   /// Creates a new [GetThemeConfigurationSheetTileLayoutMargin].
   /// [show] This Boolean value controls whether to display sheet margins.
-  GetThemeConfigurationSheetTileLayoutMargin({
+  const GetThemeConfigurationSheetTileLayoutMargin({
     required this.show,
   });
 

@@ -17,7 +17,7 @@ class FrameworkDeploymentCloudControlMetadata {
   /// Creates a new [FrameworkDeploymentCloudControlMetadata].
   /// [cloudControlDetails] CloudControlDetails contains the details of a CloudControl.
   /// [enforcementMode] Enforcement mode for the framework deployment.
-  FrameworkDeploymentCloudControlMetadata({
+  const FrameworkDeploymentCloudControlMetadata({
     required this.cloudControlDetails,
     required this.enforcementMode,
   });

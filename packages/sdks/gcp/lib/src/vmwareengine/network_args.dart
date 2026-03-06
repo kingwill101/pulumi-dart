@@ -26,7 +26,7 @@ class NetworkArgs {
   /// [name] The ID of the VMwareEngineNetwork.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] VMware Engine network type.
-  NetworkArgs({
+  const NetworkArgs({
     this.description,
     required this.location,
     this.name,

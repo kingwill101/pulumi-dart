@@ -21,7 +21,7 @@ class SubnetArgs {
   /// [ipCidrRange] The IP address range of the subnet in CIDR format.
   /// [name] The ID of the subnet. For userDefined subnets, this name should be in the format of "service-n",
   /// [parent] The resource name of the private cloud to create a new subnet in.
-  SubnetArgs({
+  const SubnetArgs({
     required this.ipCidrRange,
     this.name,
     required this.parent,

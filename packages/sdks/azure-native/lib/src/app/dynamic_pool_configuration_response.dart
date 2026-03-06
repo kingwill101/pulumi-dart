@@ -10,7 +10,7 @@ class DynamicPoolConfigurationResponse {
 
   /// Creates a new [DynamicPoolConfigurationResponse].
   /// [lifecycleConfiguration] The lifecycle configuration of a session in the dynamic session pool
-  DynamicPoolConfigurationResponse({
+  const DynamicPoolConfigurationResponse({
     this.lifecycleConfiguration,
   });
 

@@ -15,7 +15,7 @@ class GetRegionInstanceTemplateComputeBetaArgs {
   /// [instanceTemplate] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionInstanceTemplateComputeBetaArgs({
+  const GetRegionInstanceTemplateComputeBetaArgs({
     required this.instanceTemplate,
     this.project,
     required this.region,

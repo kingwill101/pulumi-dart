@@ -19,7 +19,7 @@ class ManagedNetworkPeeringPolicyProperties {
   /// [mesh] Gets or sets the mesh group IDs
   /// [spokes] Gets or sets the spokes group IDs
   /// [type] Gets or sets the connectivity type of a network structure policy
-  ManagedNetworkPeeringPolicyProperties({
+  const ManagedNetworkPeeringPolicyProperties({
     this.hub,
     this.mesh,
     this.spokes,

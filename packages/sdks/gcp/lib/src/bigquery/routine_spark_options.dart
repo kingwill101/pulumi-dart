@@ -41,7 +41,7 @@ class RoutineSparkOptions {
   /// [properties] Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
   /// [pyFileUris] Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
   /// [runtimeVersion] Runtime version. If not specified, the default runtime version is used.
-  RoutineSparkOptions({
+  const RoutineSparkOptions({
     this.archiveUris,
     this.connection,
     this.containerImage,

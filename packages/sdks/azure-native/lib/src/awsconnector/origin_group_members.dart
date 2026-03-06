@@ -13,7 +13,7 @@ class OriginGroupMembers {
   /// Creates a new [OriginGroupMembers].
   /// [items] Items (origins) in an origin group.
   /// [quantity] The number of origins in an origin group.
-  OriginGroupMembers({
+  const OriginGroupMembers({
     this.items,
     this.quantity,
   });

@@ -21,7 +21,7 @@ class UsagePlanKeyArgs {
   /// [keyType] Type of the API key resource. Currently, the valid key type is API_KEY.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [usagePlanId] Id of the usage plan resource representing to associate the key to.
-  UsagePlanKeyArgs({
+  const UsagePlanKeyArgs({
     required this.keyId,
     required this.keyType,
     this.region,

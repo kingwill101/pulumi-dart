@@ -8,7 +8,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall {
 
   /// Creates a new [CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in E.164 format.
-  CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall({
+  const CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall({
     required this.phoneNumber,
   });
 

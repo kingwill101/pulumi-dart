@@ -14,7 +14,7 @@ class FrontdoorRuleConditionsSslProtocolCondition {
   /// [matchValues] A list of one or more HTTP methods. Possible values are `TLSv1`, `TLSv1.1` and `TLSv1.2` logic.
   /// [negateCondition] If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   /// [operator] Possible value `Equal`. Defaults to `Equal`.
-  FrontdoorRuleConditionsSslProtocolCondition({
+  const FrontdoorRuleConditionsSslProtocolCondition({
     required this.matchValues,
     this.negateCondition,
     this.operator,

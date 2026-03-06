@@ -10,7 +10,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations {
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations].
   /// [transformations_] Transformation for each infoType. Cannot specify more than one for a given infoType.
-  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations({
+  const PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations({
     required this.transformations_,
   });
 

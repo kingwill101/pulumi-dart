@@ -16,7 +16,7 @@ class GetProjectServiceAccountArgs {
   /// Creates a new [GetProjectServiceAccountArgs].
   /// [project] The project the unique service account was created for. If it is not provided, the provider project is used.
   /// [userProject] The project the lookup originates from. This field is used if you are making the request
-  GetProjectServiceAccountArgs({
+  const GetProjectServiceAccountArgs({
     this.project,
     this.userProject,
   });

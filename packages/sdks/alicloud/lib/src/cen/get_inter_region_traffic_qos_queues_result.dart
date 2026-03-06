@@ -26,7 +26,7 @@ class GetInterRegionTrafficQosQueuesResult {
   /// [outputFile] Optional.
   /// [queues] A list of Inter Region Traffic Qos Queue Entries. Each element contains the following attributes:
   /// [trafficQosPolicyId] The ID of the traffic scheduling policy.
-  GetInterRegionTrafficQosQueuesResult({
+  const GetInterRegionTrafficQosQueuesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

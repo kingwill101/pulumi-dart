@@ -8,7 +8,7 @@ class ClusterContinuousBackupConfigEncryptionConfig {
 
   /// Creates a new [ClusterContinuousBackupConfigEncryptionConfig].
   /// [kmsKeyName] The fully-qualified resource name of the KMS key. Each Cloud KMS key is regionalized and has the following format: projects/[PROJECT]/locations/[REGION]/keyRings/[RING]/cryptoKeys/[KEY_NAME].
-  ClusterContinuousBackupConfigEncryptionConfig({
+  const ClusterContinuousBackupConfigEncryptionConfig({
     this.kmsKeyName,
   });
 

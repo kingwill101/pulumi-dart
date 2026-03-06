@@ -23,7 +23,7 @@ class GetInstancesInstanceParameter {
   /// [parameterDescription] The description of the parameter.
   /// [parameterName] The name of the parameter.
   /// [parameterValue] The default value of the parameter.
-  GetInstancesInstanceParameter({
+  const GetInstancesInstanceParameter({
     required this.checkingCode,
     required this.forceModify,
     required this.forceRestart,

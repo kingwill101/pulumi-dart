@@ -15,7 +15,7 @@ class InviteAccepterState {
   /// [invitationId] The ID of the invitation.
   /// [masterId] The account ID of the master Security Hub account whose invitation you're accepting.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InviteAccepterState({
+  const InviteAccepterState({
     this.invitationId,
     this.masterId,
     this.region,

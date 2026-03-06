@@ -18,7 +18,7 @@ class FirewallTransitGatewayAttachmentAccepterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [transitGatewayAttachmentId] The unique identifier of the transit gateway attachment to accept. This ID is returned in the response when creating a transit gateway-attached firewall.
-  FirewallTransitGatewayAttachmentAccepterArgs({
+  const FirewallTransitGatewayAttachmentAccepterArgs({
     this.region,
     this.timeouts,
     required this.transitGatewayAttachmentId,

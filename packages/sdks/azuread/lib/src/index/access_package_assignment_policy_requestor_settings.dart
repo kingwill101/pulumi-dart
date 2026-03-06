@@ -15,7 +15,7 @@ class AccessPackageAssignmentPolicyRequestorSettings {
   /// [requestors] A block specifying the users who are allowed to request on this policy, as documented below.
   /// [requestsAccepted] Whether to accept requests using this policy. When `false`, no new requests can be made using this policy.
   /// [scopeType] Specifies the scopes of the requestors. Valid values are `AllConfiguredConnectedOrganizationSubjects`, `AllExistingConnectedOrganizationSubjects`, `AllExistingDirectoryMemberUsers`, `AllExistingDirectorySubjects`, `AllExternalSubjects`, `NoSubjects`, `SpecificConnectedOrganizationSubjects`, or `SpecificDirectorySubjects`.
-  AccessPackageAssignmentPolicyRequestorSettings({
+  const AccessPackageAssignmentPolicyRequestorSettings({
     this.requestors,
     this.requestsAccepted,
     this.scopeType,

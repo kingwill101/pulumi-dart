@@ -15,7 +15,7 @@ class GetDeploymentIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetDeploymentIamPolicyArgs({
+  const GetDeploymentIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

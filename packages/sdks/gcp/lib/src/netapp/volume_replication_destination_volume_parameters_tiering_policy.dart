@@ -14,7 +14,7 @@ class VolumeReplicationDestinationVolumeParametersTieringPolicy {
   /// Creates a new [VolumeReplicationDestinationVolumeParametersTieringPolicy].
   /// [coolingThresholdDays] Optional. Time in days to mark the volume's data block as cold and make it eligible for tiering, can be range from 2-183.
   /// [tierAction] Optional. Flag indicating if the volume has tiering policy enable/pause. Default is PAUSED.
-  VolumeReplicationDestinationVolumeParametersTieringPolicy({
+  const VolumeReplicationDestinationVolumeParametersTieringPolicy({
     this.coolingThresholdDays,
     this.tierAction,
   });

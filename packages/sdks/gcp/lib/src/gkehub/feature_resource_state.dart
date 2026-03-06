@@ -14,7 +14,7 @@ class FeatureResourceState {
   /// Creates a new [FeatureResourceState].
   /// [hasResources] (Output)
   /// [state] (Output)
-  FeatureResourceState({
+  const FeatureResourceState({
     this.hasResources,
     this.state,
   });

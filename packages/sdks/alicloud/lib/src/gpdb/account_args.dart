@@ -34,7 +34,7 @@ class AccountArgs {
   /// [accountType] Account type. The value range is as follows:
   /// [databaseName] Database name, with the following restrictions:
   /// [dbInstanceId] The Adb pg instance ID.
-  AccountArgs({
+  const AccountArgs({
     this.accountDescription,
     required this.accountName,
     required this.accountPassword,

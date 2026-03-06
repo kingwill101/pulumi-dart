@@ -15,7 +15,7 @@ class FirewallRulePropertiesResponse {
   /// [endIpAddress] End IP address.
   /// [provisioningState] Provisioning state.
   /// [startIpAddress] Start IP address.
-  FirewallRulePropertiesResponse({
+  const FirewallRulePropertiesResponse({
     this.endIpAddress,
     required this.provisioningState,
     this.startIpAddress,

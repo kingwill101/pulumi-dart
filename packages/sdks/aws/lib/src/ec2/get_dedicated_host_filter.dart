@@ -11,7 +11,7 @@ class GetDedicatedHostFilter {
   /// Creates a new [GetDedicatedHostFilter].
   /// [name] Name of the field to filter by, as defined by [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeHosts.html).
   /// [values] Set of values that are accepted for the given field. A host will be selected if any one of the given values matches.
-  GetDedicatedHostFilter({
+  const GetDedicatedHostFilter({
     required this.name,
     required this.values,
   });

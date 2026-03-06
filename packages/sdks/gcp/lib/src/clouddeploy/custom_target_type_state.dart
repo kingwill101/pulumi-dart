@@ -58,7 +58,7 @@ class CustomTargetTypeState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Unique identifier of the `CustomTargetType`.
   /// [updateTime] Time at which the `CustomTargetType` was updated.
-  CustomTargetTypeState({
+  const CustomTargetTypeState({
     this.annotations,
     this.createTime,
     this.customActions,

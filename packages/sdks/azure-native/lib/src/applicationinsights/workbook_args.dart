@@ -49,7 +49,7 @@ class WorkbookArgs {
   /// [storageUri] The resourceId to the storage account when bring your own storage is used
   /// [tags] Resource tags.
   /// [version] Workbook schema version format, like 'Notebook/1.0', which should match the workbook in serializedData
-  WorkbookArgs({
+  const WorkbookArgs({
     required this.category,
     this.description,
     required this.displayName,

@@ -18,7 +18,7 @@ class GetRealTimeLogDeliveriesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetRealTimeLogDeliveriesResult({
+  const GetRealTimeLogDeliveriesResult({
     required this.deliveries,
     required this.domain,
     required this.id,

@@ -23,7 +23,7 @@ class TunnelQuotaTimerArgs {
   /// [nickname] The nickname of the exclusive Resource Group (Tunnel Quota) for the level - 1 data transmission service.
   /// [quotaTimers] Time-Sharing configuration
   /// [timeZone] Time zone, reference: Asia/Shanghai
-  TunnelQuotaTimerArgs({
+  const TunnelQuotaTimerArgs({
     required this.nickname,
     this.quotaTimers,
     this.timeZone,

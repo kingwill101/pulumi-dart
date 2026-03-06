@@ -19,7 +19,7 @@ class A2AContainerMappingInput {
   /// [automationAccountArmId] The automation account arm id.
   /// [automationAccountAuthenticationType] A value indicating the type authentication to use for automation Account.
   /// [instanceType] The class type.
-  A2AContainerMappingInput({
+  const A2AContainerMappingInput({
     this.agentAutoUpdateStatus,
     this.automationAccountArmId,
     this.automationAccountAuthenticationType,

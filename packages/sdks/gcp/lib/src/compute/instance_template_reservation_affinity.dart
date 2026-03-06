@@ -13,7 +13,7 @@ class InstanceTemplateReservationAffinity {
   /// Creates a new [InstanceTemplateReservationAffinity].
   /// [specificReservation] Specifies the label selector for the reservation to use..
   /// [type] The type of reservation from which this instance can consume resources.
-  InstanceTemplateReservationAffinity({
+  const InstanceTemplateReservationAffinity({
     this.specificReservation,
     required this.type,
   });

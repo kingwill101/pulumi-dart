@@ -37,7 +37,7 @@ class Subnet {
   /// [networkSecurityGroup] NetworkSecurityGroup - Network Security Group attached to the logical network.
   /// [routeTable] Route table resource.
   /// [vlan] Vlan to use for the subnet
-  Subnet({
+  const Subnet({
     this.addressPrefix,
     this.addressPrefixes,
     this.ipAllocationMethod,

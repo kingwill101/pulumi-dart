@@ -15,7 +15,7 @@ class GetWebAppDiagnosticLogsConfigurationArgs {
   /// Creates a new [GetWebAppDiagnosticLogsConfigurationArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppDiagnosticLogsConfigurationArgs({
+  const GetWebAppDiagnosticLogsConfigurationArgs({
     required this.name,
     required this.resourceGroupName,
   });

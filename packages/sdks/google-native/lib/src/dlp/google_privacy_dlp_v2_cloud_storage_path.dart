@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2CloudStoragePath {
 
   /// Creates a new [GooglePrivacyDlpV2CloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
-  GooglePrivacyDlpV2CloudStoragePath({
+  const GooglePrivacyDlpV2CloudStoragePath({
     this.path,
   });
 

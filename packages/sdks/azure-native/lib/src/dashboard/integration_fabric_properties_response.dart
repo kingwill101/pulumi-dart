@@ -17,7 +17,7 @@ class IntegrationFabricPropertiesResponse {
   /// [provisioningState] Provisioning state of the resource.
   /// [scenarios] A list of integration scenarios covered by this integration fabric
   /// [targetResourceId] The resource Id of the Azure resource being integrated with Azure Managed Grafana. E.g., an Azure Kubernetes Service cluster.
-  IntegrationFabricPropertiesResponse({
+  const IntegrationFabricPropertiesResponse({
     this.dataSourceResourceId,
     required this.provisioningState,
     this.scenarios,

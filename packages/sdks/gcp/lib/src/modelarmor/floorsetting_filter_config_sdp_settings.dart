@@ -15,7 +15,7 @@ class FloorsettingFilterConfigSdpSettings {
   /// Creates a new [FloorsettingFilterConfigSdpSettings].
   /// [advancedConfig] Sensitive Data Protection Advanced configuration.
   /// [basicConfig] Sensitive Data Protection basic configuration.
-  FloorsettingFilterConfigSdpSettings({
+  const FloorsettingFilterConfigSdpSettings({
     this.advancedConfig,
     this.basicConfig,
   });

@@ -92,7 +92,7 @@ class GetDomainServiceResult {
   /// [tenantId] Azure Active Directory Tenant Id
   /// [type] Resource type
   /// [version] Data Model Version
-  GetDomainServiceResult({
+  const GetDomainServiceResult({
     required this.azureApiVersion,
     this.configDiagnostics,
     required this.deploymentId,

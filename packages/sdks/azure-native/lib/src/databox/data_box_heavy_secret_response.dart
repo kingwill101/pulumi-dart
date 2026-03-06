@@ -23,7 +23,7 @@ class DataBoxHeavySecretResponse {
   /// [deviceSerialNumber] Serial number of the assigned device.
   /// [encodedValidationCertPubKey] The base 64 encoded public key to authenticate with the device
   /// [networkConfigurations] Network configuration of the appliance.
-  DataBoxHeavySecretResponse({
+  const DataBoxHeavySecretResponse({
     required this.accountCredentialDetails,
     required this.devicePassword,
     required this.deviceSerialNumber,

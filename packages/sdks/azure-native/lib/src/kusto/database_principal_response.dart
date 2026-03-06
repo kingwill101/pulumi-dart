@@ -27,7 +27,7 @@ class DatabasePrincipalResponse {
   /// [role] Database principal role.
   /// [tenantName] The tenant name of the principal
   /// [type] Database principal type.
-  DatabasePrincipalResponse({
+  const DatabasePrincipalResponse({
     this.appId,
     this.email,
     this.fqn,

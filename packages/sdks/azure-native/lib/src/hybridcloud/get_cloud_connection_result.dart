@@ -46,7 +46,7 @@ class GetCloudConnectionResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualHub] The virtualHub to which the cloud connection belongs.
-  GetCloudConnectionResult({
+  const GetCloudConnectionResult({
     required this.azureApiVersion,
     this.cloudConnector,
     required this.etag,

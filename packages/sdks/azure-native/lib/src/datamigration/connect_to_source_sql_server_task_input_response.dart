@@ -31,7 +31,7 @@ class ConnectToSourceSqlServerTaskInputResponse {
   /// [encryptedKeyForSecureFields] encrypted key for secure fields
   /// [sourceConnectionInfo] Connection information for Source SQL Server
   /// [validateSsisCatalogOnly] Flag for whether to validate SSIS catalog is reachable on the source server.
-  ConnectToSourceSqlServerTaskInputResponse({
+  const ConnectToSourceSqlServerTaskInputResponse({
     this.checkPermissionsGroup,
     this.collectAgentJobs,
     this.collectDatabases,

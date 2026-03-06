@@ -10,7 +10,7 @@ class WeeklySchedule {
 
   /// Creates a new [WeeklySchedule].
   /// [dayOfWeek] Day of the week.
-  WeeklySchedule({
+  const WeeklySchedule({
     required this.dayOfWeek,
   });
 

@@ -9,7 +9,7 @@ class AgentcoreGatewayInterceptorConfigurationInterceptor {
 
   /// Creates a new [AgentcoreGatewayInterceptorConfigurationInterceptor].
   /// [lambda] Lambda function configuration for the interceptor. See `lambda` below.
-  AgentcoreGatewayInterceptorConfigurationInterceptor({
+  const AgentcoreGatewayInterceptorConfigurationInterceptor({
     this.lambda,
   });
 

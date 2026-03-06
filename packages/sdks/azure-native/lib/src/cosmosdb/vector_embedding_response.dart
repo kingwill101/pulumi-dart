@@ -18,7 +18,7 @@ class VectorEmbeddingResponse {
   /// [dimensions] The number of dimensions in the vector.
   /// [distanceFunction] The distance function to use for distance calculation in between vectors.
   /// [path] The path to the vector field in the document.
-  VectorEmbeddingResponse({
+  const VectorEmbeddingResponse({
     required this.dataType,
     required this.dimensions,
     required this.distanceFunction,

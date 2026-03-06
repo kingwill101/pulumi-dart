@@ -13,7 +13,7 @@ class CompliantSummary {
   /// Creates a new [CompliantSummary].
   /// [compliantCount] &lt;p&gt;The total number of resources that are compliant.&lt;/p&gt;
   /// [severitySummary] &lt;p&gt;A summary of the compliance severity by compliance type.&lt;/p&gt;
-  CompliantSummary({
+  const CompliantSummary({
     this.compliantCount,
     this.severitySummary,
   });

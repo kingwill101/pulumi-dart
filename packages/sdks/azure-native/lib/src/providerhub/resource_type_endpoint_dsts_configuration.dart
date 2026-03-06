@@ -12,7 +12,7 @@ class ResourceTypeEndpointDstsConfiguration {
   /// Creates a new [ResourceTypeEndpointDstsConfiguration].
   /// [serviceDnsName] This is a URI property.
   /// [serviceName] The service name.
-  ResourceTypeEndpointDstsConfiguration({
+  const ResourceTypeEndpointDstsConfiguration({
     this.serviceDnsName,
     required this.serviceName,
   });

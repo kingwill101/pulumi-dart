@@ -39,7 +39,7 @@ class GetParametersParameter {
   /// [project] The ID of the project.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The time at which the parameter was updated.
-  GetParametersParameter({
+  const GetParametersParameter({
     required this.createTime,
     required this.effectiveLabels,
     required this.format,

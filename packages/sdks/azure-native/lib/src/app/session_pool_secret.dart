@@ -12,7 +12,7 @@ class SessionPoolSecret {
   /// Creates a new [SessionPoolSecret].
   /// [name] Secret Name.
   /// [value] Secret Value.
-  SessionPoolSecret({
+  const SessionPoolSecret({
     this.name,
     this.value,
   });

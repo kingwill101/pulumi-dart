@@ -11,7 +11,7 @@ class InstanceV2WhiteIpList {
   /// Creates a new [InstanceV2WhiteIpList].
   /// [groupName] Group Name
   /// [ipList] Whitelist information
-  InstanceV2WhiteIpList({
+  const InstanceV2WhiteIpList({
     required this.groupName,
     required this.ipList,
   });

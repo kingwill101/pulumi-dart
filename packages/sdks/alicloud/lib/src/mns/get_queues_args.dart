@@ -15,7 +15,7 @@ class GetQueuesArgs {
   /// Creates a new [GetQueuesArgs].
   /// [namePrefix] A string to filter resulting queues by their name prefixs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetQueuesArgs({
+  const GetQueuesArgs({
     this.namePrefix,
     this.outputFile,
   });

@@ -15,7 +15,7 @@ class GatewayRouteSetResponse {
   /// [details] List of different Route Sources
   /// [locations] List of different locations from where the routes are learned
   /// [name] Route Set name
-  GatewayRouteSetResponse({
+  const GatewayRouteSetResponse({
     this.details,
     this.locations,
     this.name,

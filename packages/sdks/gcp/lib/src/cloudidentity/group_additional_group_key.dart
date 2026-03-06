@@ -23,7 +23,7 @@ class GroupAdditionalGroupKey {
   /// Creates a new [GroupAdditionalGroupKey].
   /// [id] (Output)
   /// [namespace] (Output)
-  GroupAdditionalGroupKey({
+  const GroupAdditionalGroupKey({
     this.id,
     this.namespace,
   });

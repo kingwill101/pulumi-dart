@@ -39,7 +39,7 @@ class HybridConnectionAuthorizationRuleState {
   /// [secondaryConnectionString] The Secondary Connection String for the Azure Relay Hybrid Connection Authorization Rule.
   /// [secondaryKey] The Secondary Key for the Azure Relay Hybrid Connection Authorization Rule.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
-  HybridConnectionAuthorizationRuleState({
+  const HybridConnectionAuthorizationRuleState({
     this.hybridConnectionName,
     this.listen,
     this.manage,

@@ -15,7 +15,7 @@ class GetArgs {
   /// Creates a new [GetArgs].
   /// [name] The name of this Elastic SAN.
   /// [resourceGroupName] The name of the Resource Group where the Elastic SAN exists.
-  GetArgs({
+  const GetArgs({
     required this.name,
     required this.resourceGroupName,
   });

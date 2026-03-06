@@ -59,7 +59,7 @@ class InstanceV2State {
   /// [spec] The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
   /// [status] The status of Cloud Firewall Instance.
   /// [userStatus] The user status of Cloud Firewall Instance.
-  InstanceV2State({
+  const InstanceV2State({
     this.cfwLog,
     this.createTime,
     this.endTime,

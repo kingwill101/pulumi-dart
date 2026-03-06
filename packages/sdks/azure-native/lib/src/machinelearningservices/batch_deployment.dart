@@ -67,7 +67,7 @@ class BatchDeployment {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [resources] Indicates compute configuration for the job.
   /// [retrySettings] Retry Settings for the batch inference operation.
-  BatchDeployment({
+  const BatchDeployment({
     this.codeConfiguration,
     this.compute,
     this.deploymentConfiguration,

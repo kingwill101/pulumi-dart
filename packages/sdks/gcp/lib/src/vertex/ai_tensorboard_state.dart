@@ -52,7 +52,7 @@ class AiTensorboardState {
   /// [region] The region of the tensorboard. eg us-central1
   /// [runCount] The number of Runs stored in this Tensorboard.
   /// [updateTime] The timestamp of when the Tensorboard was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiTensorboardState({
+  const AiTensorboardState({
     this.blobStoragePathPrefix,
     this.createTime,
     this.description,

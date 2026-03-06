@@ -20,7 +20,7 @@ class BucketNotificationTopic {
   /// [filterSuffix] Object key name suffix.
   /// [id] Unique identifier for each of the notification configurations.
   /// [topicArn] SNS topic ARN.
-  BucketNotificationTopic({
+  const BucketNotificationTopic({
     required this.events,
     this.filterPrefix,
     this.filterSuffix,

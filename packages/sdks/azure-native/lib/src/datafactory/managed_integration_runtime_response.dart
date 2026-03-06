@@ -36,7 +36,7 @@ class ManagedIntegrationRuntimeResponse {
   /// [ssisProperties] SSIS properties for managed integration runtime.
   /// [state] Integration runtime state, only valid for managed dedicated integration runtime.
   /// [type] The type of integration runtime.
-  ManagedIntegrationRuntimeResponse({
+  const ManagedIntegrationRuntimeResponse({
     this.computeProperties,
     this.customerVirtualNetwork,
     this.description,

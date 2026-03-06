@@ -32,7 +32,7 @@ class RouterInterfaceArgs {
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router this interface belongs to. Changing
   /// [subnetId] ID of the subnet this interface connects to. Changing
-  RouterInterfaceArgs({
+  const RouterInterfaceArgs({
     this.forceDestroy,
     this.portId,
     this.region,

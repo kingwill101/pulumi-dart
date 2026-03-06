@@ -10,7 +10,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters {
 
   /// Creates a new [WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters].
   /// [filter] The filter used to request specific records from IdP. In case of attributes type as AZURE_AD_GROUPS_ID, it represents the
-  WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters({
+  const WorkforcePoolProviderExtraAttributesOauth2ClientQueryParameters({
     this.filter,
   });
 

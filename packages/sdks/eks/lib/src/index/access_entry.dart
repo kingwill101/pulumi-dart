@@ -30,7 +30,7 @@ class AccessEntry {
   /// [tags] The tags to apply to the AccessEntry.
   /// [type] The type of the new access entry. Valid values are STANDARD, FARGATE_LINUX, EC2_LINUX, and EC2_WINDOWS.
   /// [username] Defaults to the principalArn if the principal is a user, else defaults to assume-role/session-name.
-  AccessEntry({
+  const AccessEntry({
     this.accessPolicies,
     this.kubernetesGroups,
     required this.principalArn,

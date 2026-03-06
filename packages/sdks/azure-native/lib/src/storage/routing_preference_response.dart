@@ -15,7 +15,7 @@ class RoutingPreferenceResponse {
   /// [publishInternetEndpoints] A boolean flag which indicates whether internet routing storage endpoints are to be published
   /// [publishMicrosoftEndpoints] A boolean flag which indicates whether microsoft routing storage endpoints are to be published
   /// [routingChoice] Routing Choice defines the kind of network routing opted by the user.
-  RoutingPreferenceResponse({
+  const RoutingPreferenceResponse({
     this.publishInternetEndpoints,
     this.publishMicrosoftEndpoints,
     this.routingChoice,

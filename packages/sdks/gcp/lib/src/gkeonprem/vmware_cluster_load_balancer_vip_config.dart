@@ -13,7 +13,7 @@ class VMwareClusterLoadBalancerVipConfig {
   /// Creates a new [VMwareClusterLoadBalancerVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this cluster.
-  VMwareClusterLoadBalancerVipConfig({
+  const VMwareClusterLoadBalancerVipConfig({
     this.controlPlaneVip,
     this.ingressVip,
   });

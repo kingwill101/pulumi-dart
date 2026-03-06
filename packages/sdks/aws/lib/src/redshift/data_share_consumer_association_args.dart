@@ -29,7 +29,7 @@ class DataShareConsumerAssociationArgs {
   /// [consumerRegion] From a datashare consumer account, associates a datashare with all existing and future namespaces in the specified AWS Region. Conflicts with `associate_entire_account` and `consumer_arn`.
   /// [dataShareArn] Amazon Resource Name (ARN) of the datashare that the consumer is to use with the account or the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DataShareConsumerAssociationArgs({
+  const DataShareConsumerAssociationArgs({
     this.allowWrites,
     this.associateEntireAccount,
     this.consumerArn,

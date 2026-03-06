@@ -8,7 +8,7 @@ class BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control {
 
   /// Creates a new [BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control].
   /// [daysAfterInitiation] Number of days after which Amazon S3 aborts an incomplete multipart upload.
-  BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control({
+  const BucketLifecycleConfigurationRuleAbortIncompleteMultipartUploadS3Control({
     required this.daysAfterInitiation,
   });
 

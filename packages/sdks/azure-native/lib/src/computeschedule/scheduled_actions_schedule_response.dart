@@ -28,7 +28,7 @@ class ScheduledActionsScheduleResponse {
   /// [requestedWeekDays] The week days the scheduled action is supposed to run on
   /// [scheduledTime] The time the scheduled action is supposed to run on
   /// [timeZone] The timezone the scheduled time is specified on
-  ScheduledActionsScheduleResponse({
+  const ScheduledActionsScheduleResponse({
     this.deadlineType,
     this.executionParameters,
     required this.requestedDaysOfTheMonth,

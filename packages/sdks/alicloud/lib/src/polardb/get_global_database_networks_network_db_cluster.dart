@@ -14,7 +14,7 @@ class GetGlobalDatabaseNetworksNetworkDbCluster {
   /// [dbClusterId] The ID of the cluster.
   /// [regionId] The region ID of the cluster.
   /// [role] The role of the cluster.
-  GetGlobalDatabaseNetworksNetworkDbCluster({
+  const GetGlobalDatabaseNetworksNetworkDbCluster({
     required this.dbClusterId,
     required this.regionId,
     required this.role,

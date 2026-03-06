@@ -21,7 +21,7 @@ class SiteMonitorOptionJsonAssertion {
   /// [operator] Assertion comparison operator. Value:
   /// [target] Assertion matches the target numeric value or character of the comparison.
   /// [type] Optional.
-  SiteMonitorOptionJsonAssertion({
+  const SiteMonitorOptionJsonAssertion({
     this.operator,
     this.target,
     this.type,

@@ -53,7 +53,7 @@ class TargetPoolState {
   /// [securityPolicy] The resource URL for the security policy associated with this target pool.
   /// [selfLink] The URI of the created resource.
   /// [sessionAffinity] How to distribute load. Options are "NONE" (no
-  TargetPoolState({
+  const TargetPoolState({
     this.backupPool,
     this.description,
     this.failoverRatio,

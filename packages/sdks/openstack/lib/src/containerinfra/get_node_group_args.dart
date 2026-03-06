@@ -20,7 +20,7 @@ class GetNodeGroupArgs {
   /// [clusterId] The name of the OpenStack Magnum cluster.
   /// [name] The name of the node group.
   /// [region] The region in which to obtain the V1 Container Infra
-  GetNodeGroupArgs({
+  const GetNodeGroupArgs({
     required this.clusterId,
     this.name,
     this.region,

@@ -11,7 +11,7 @@ class FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn {
   /// Creates a new [FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn({
+  const FilterFilterCriteriaVulnerablePackageSourceLambdaLayerArn({
     required this.comparison,
     required this.value,
   });

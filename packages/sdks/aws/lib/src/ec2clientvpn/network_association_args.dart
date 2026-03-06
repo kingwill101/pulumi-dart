@@ -18,7 +18,7 @@ class NetworkAssociationArgs {
   /// [clientVpnEndpointId] The ID of the Client VPN endpoint.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of the subnet to associate with the Client VPN endpoint.
-  NetworkAssociationArgs({
+  const NetworkAssociationArgs({
     required this.clientVpnEndpointId,
     this.region,
     required this.subnetId,

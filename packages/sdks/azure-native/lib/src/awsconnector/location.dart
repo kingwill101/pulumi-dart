@@ -12,7 +12,7 @@ class Location {
   /// Creates a new [Location].
   /// [availabilityZone] The Availability Zone in which to create your instance. Use the following format: us-east-2a (case sensitive). Be sure to add the include Availability Zones parameter to your request.
   /// [regionName] The Region Name in which to create your instance.
-  Location({
+  const Location({
     this.availabilityZone,
     this.regionName,
   });

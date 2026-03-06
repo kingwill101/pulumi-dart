@@ -23,7 +23,7 @@ class InstanceArgs {
   /// [name] The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
   /// [project] Optional.
   /// [type] Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-  InstanceArgs({
+  const InstanceArgs({
     this.databaseId,
     this.location,
     this.name,

@@ -74,7 +74,7 @@ class GetServiceResult {
   /// [skuName] The SKU of the API Management Service consisting of the name and capacity, separated by an underscore.
   /// [tags] A mapping of tags assigned to the resource.
   /// [tenantAccesses] A `tenant_access` block as defined below.
-  GetServiceResult({
+  const GetServiceResult({
     required this.additionalLocations,
     required this.developerPortalUrl,
     required this.gatewayRegionalUrl,

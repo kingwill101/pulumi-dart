@@ -10,7 +10,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

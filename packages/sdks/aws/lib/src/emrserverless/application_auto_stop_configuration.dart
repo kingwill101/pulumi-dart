@@ -11,7 +11,7 @@ class ApplicationAutoStopConfiguration {
   /// Creates a new [ApplicationAutoStopConfiguration].
   /// [enabled] Enables the application to automatically stop after a certain amount of time being idle. Defaults to `true`.
   /// [idleTimeoutMinutes] The amount of idle time in minutes after which your application will automatically stop. Defaults to `15` minutes.
-  ApplicationAutoStopConfiguration({
+  const ApplicationAutoStopConfiguration({
     this.enabled,
     this.idleTimeoutMinutes,
   });

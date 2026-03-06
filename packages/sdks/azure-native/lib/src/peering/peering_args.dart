@@ -39,7 +39,7 @@ class PeeringArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [sku] The SKU that defines the tier and kind of the peering.
   /// [tags] The resource tags.
-  PeeringArgs({
+  const PeeringArgs({
     this.direct,
     this.exchange,
     required this.kind,

@@ -23,7 +23,7 @@ class GetMembershipBindingArgs {
   /// [membershipBindingId] The ID of the membership binding.
   /// [membershipId] The ID of the membership that this binding applies to.
   /// [project] The ID of the project in which the resource belongs.
-  GetMembershipBindingArgs({
+  const GetMembershipBindingArgs({
     required this.location,
     required this.membershipBindingId,
     required this.membershipId,

@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesi
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput].
   /// [resourceArn] The ARN of the destination Kinesis data stream to write to.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisStreamsOutput({
     required this.resourceArn,
   });
 

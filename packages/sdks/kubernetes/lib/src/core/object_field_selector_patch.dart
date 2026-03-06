@@ -12,7 +12,7 @@ class ObjectFieldSelectorPatch {
   /// Creates a new [ObjectFieldSelectorPatch].
   /// [apiVersion] Version of the schema the FieldPath is written in terms of, defaults to "v1".
   /// [fieldPath] Path of the field to select in the specified API version.
-  ObjectFieldSelectorPatch({
+  const ObjectFieldSelectorPatch({
     this.apiVersion,
     this.fieldPath,
   });

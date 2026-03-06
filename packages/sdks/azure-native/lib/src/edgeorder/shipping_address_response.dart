@@ -36,7 +36,7 @@ class ShippingAddressResponse {
   /// [streetAddress2] Street Address line 2.
   /// [streetAddress3] Street Address line 3.
   /// [zipExtendedCode] Extended Zip Code.
-  ShippingAddressResponse({
+  const ShippingAddressResponse({
     this.addressType,
     this.city,
     this.companyName,

@@ -14,7 +14,7 @@ class JobJobStorageAccount {
   /// [accountKey] The account key for the Azure storage account.
   /// [accountName] The name of the Azure storage account.
   /// [authenticationMode] The authentication mode of the storage account. Possible values are `ConnectionString` and `Msi`. Defaults to `ConnectionString`.
-  JobJobStorageAccount({
+  const JobJobStorageAccount({
     this.accountKey,
     required this.accountName,
     this.authenticationMode,

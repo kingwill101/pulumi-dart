@@ -41,7 +41,7 @@ class CVSS {
   /// [privilegesRequired] Optional.
   /// [scope] Optional.
   /// [userInteraction] Optional.
-  CVSS({
+  const CVSS({
     this.attackComplexity,
     this.attackVector,
     this.authentication,

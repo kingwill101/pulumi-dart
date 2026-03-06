@@ -26,7 +26,7 @@ class GetEcsInvocationsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetEcsInvocationsResult({
+  const GetEcsInvocationsResult({
     this.commandId,
     this.contentEncoding,
     required this.id,

@@ -28,7 +28,7 @@ class GetWorkflowInvocationResult {
   /// [resolvedCompilationResult] The resolved compilation result that was used to create this invocation. Will be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   /// [state] This workflow invocation's current state.
   /// [workflowConfig] Immutable. The name of the workflow config to invoke. Must be in the format `projects/*/locations/*/repositories/*/workflowConfigs/*`.
-  GetWorkflowInvocationResult({
+  const GetWorkflowInvocationResult({
     required this.compilationResult,
     required this.invocationConfig,
     required this.invocationTiming,

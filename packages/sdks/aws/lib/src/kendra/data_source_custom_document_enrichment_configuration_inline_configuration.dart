@@ -16,7 +16,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration {
   /// [condition] Configuration of the condition used for the target document attribute or metadata field when ingesting documents into Amazon Kendra. See condition.
   /// [documentContentDeletion] `TRUE` to delete content if the condition used for the target attribute is met.
   /// [target] Configuration of the target document attribute or metadata field when ingesting documents into Amazon Kendra. You can also include a value. Detailed below.
-  DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration({
+  const DataSourceCustomDocumentEnrichmentConfigurationInlineConfiguration({
     this.condition,
     this.documentContentDeletion,
     this.target,

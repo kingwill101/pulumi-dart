@@ -13,7 +13,7 @@ class WorkflowHealthResponse {
   /// Creates a new [WorkflowHealthResponse].
   /// [error] Gets or sets the workflow error.
   /// [state] Gets or sets the workflow health state.
-  WorkflowHealthResponse({
+  const WorkflowHealthResponse({
     this.error,
     required this.state,
   });

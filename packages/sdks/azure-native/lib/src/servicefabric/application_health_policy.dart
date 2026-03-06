@@ -22,7 +22,7 @@ class ApplicationHealthPolicy {
   /// [defaultServiceTypeHealthPolicy] The health policy used by default to evaluate the health of a service type.
   /// [maxPercentUnhealthyDeployedApplications] The maximum allowed percentage of unhealthy deployed applications. Allowed values are Byte values from zero to 100.
   /// [serviceTypeHealthPolicyMap] The map with service type health policy per service type name. The map is empty by default.
-  ApplicationHealthPolicy({
+  const ApplicationHealthPolicy({
     required this.considerWarningAsError,
     this.defaultServiceTypeHealthPolicy,
     required this.maxPercentUnhealthyDeployedApplications,

@@ -73,7 +73,7 @@ class RouterNatComputeV1 {
   /// [tcpTransitoryIdleTimeoutSec] Timeout (in seconds) for TCP transitory connections. Defaults to 30s if not set.
   /// [type] Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC.
   /// [udpIdleTimeoutSec] Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
-  RouterNatComputeV1({
+  const RouterNatComputeV1({
     this.autoNetworkTier,
     this.drainNatIps,
     this.enableDynamicPortAllocation,

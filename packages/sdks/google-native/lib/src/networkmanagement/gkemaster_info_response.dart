@@ -18,7 +18,7 @@ class GKEMasterInfoResponse {
   /// [clusterUri] URI of a GKE cluster.
   /// [externalIp] External IP address of a GKE cluster master.
   /// [internalIp] Internal IP address of a GKE cluster master.
-  GKEMasterInfoResponse({
+  const GKEMasterInfoResponse({
     required this.clusterNetworkUri,
     required this.clusterUri,
     required this.externalIp,

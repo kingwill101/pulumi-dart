@@ -12,7 +12,7 @@ class WafPolicyDomainAttachmentState {
   /// Creates a new [WafPolicyDomainAttachmentState].
   /// [domainName] Access the accelerated domain name of the specified protection policy.
   /// [policyId] The protection policy ID. Only one input is supported.
-  WafPolicyDomainAttachmentState({
+  const WafPolicyDomainAttachmentState({
     this.domainName,
     this.policyId,
   });

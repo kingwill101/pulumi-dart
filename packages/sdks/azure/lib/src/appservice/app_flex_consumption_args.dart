@@ -136,7 +136,7 @@ class AppFlexConsumptionArgs {
   /// [virtualNetworkSubnetId] The subnet id which will be used by this Function App for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   /// [webdeployPublishBasicAuthenticationEnabled] Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   /// [zipDeployFile] The local path and filename of the Zip packaged application to deploy to this Linux Function App.
-  AppFlexConsumptionArgs({
+  const AppFlexConsumptionArgs({
     this.alwaysReadies,
     this.appSettings,
     this.authSettings,

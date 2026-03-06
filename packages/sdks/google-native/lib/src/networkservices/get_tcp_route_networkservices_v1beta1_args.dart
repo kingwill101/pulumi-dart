@@ -15,7 +15,7 @@ class GetTcpRouteNetworkservicesV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [tcpRouteId] Required.
-  GetTcpRouteNetworkservicesV1beta1Args({
+  const GetTcpRouteNetworkservicesV1beta1Args({
     required this.location,
     this.project,
     required this.tcpRouteId,

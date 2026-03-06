@@ -38,7 +38,7 @@ class HybridConnectionState {
   /// [sendKeyValue] The value of the Service Bus Primary Access key.
   /// [serviceBusNamespace] The name of the Service Bus namespace.
   /// [serviceBusSuffix] The suffix for the service bus endpoint.
-  HybridConnectionState({
+  const HybridConnectionState({
     this.appServiceName,
     this.hostname,
     this.namespaceName,

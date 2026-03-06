@@ -12,7 +12,7 @@ class BackendAuthorizationHeaderCredentials {
   /// Creates a new [BackendAuthorizationHeaderCredentials].
   /// [parameter] Authentication Parameter value.
   /// [scheme] Authentication Scheme name.
-  BackendAuthorizationHeaderCredentials({
+  const BackendAuthorizationHeaderCredentials({
     required this.parameter,
     required this.scheme,
   });

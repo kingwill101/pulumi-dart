@@ -30,7 +30,7 @@ class GetDirectoryResult {
   /// [skuName] Billing SKU for the B2C tenant. See [official docs](https://aka.ms/b2cBilling) for more information.
   /// [tags] A mapping of tags assigned to the AAD B2C Directory.
   /// [tenantId] The Tenant ID for the AAD B2C tenant.
-  GetDirectoryResult({
+  const GetDirectoryResult({
     required this.billingType,
     required this.dataResidencyLocation,
     required this.domainName,

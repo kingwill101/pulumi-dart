@@ -18,7 +18,7 @@ class ApiOperationTagArgs {
   /// [apiOperationId] The ID of the API Management API Operation. Changing this forces a new API Management API Operation Tag to be created.
   /// [displayName] The display name of the API Management API Operation Tag.
   /// [name] The name which should be used for this API Management API Operation Tag. Changing this forces a new API Management API Operation Tag to be created. The name must be unique in the API Management Service.
-  ApiOperationTagArgs({
+  const ApiOperationTagArgs({
     required this.apiOperationId,
     required this.displayName,
     this.name,

@@ -18,7 +18,7 @@ class AccessPackageAssignmentPolicyApprovalSettings {
   /// [approvalRequiredForExtension] Whether an approval is required to grant extension. Same approval settings used to approve initial access will apply.
   /// [approvalStages] An `approval_stage` block specifying the process to obtain an approval, as documented below.
   /// [requestorJustificationRequired] Whether a requestor is required to provide a justification to request an access package. Justification is visible to approvers and the requestor.
-  AccessPackageAssignmentPolicyApprovalSettings({
+  const AccessPackageAssignmentPolicyApprovalSettings({
     this.approvalRequired,
     this.approvalRequiredForExtension,
     this.approvalStages,

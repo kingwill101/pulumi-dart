@@ -17,7 +17,7 @@ class WorkerPoolTemplateVpcAccess {
   /// [connector] VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number.
   /// [egress] Traffic VPC egress settings.
   /// [networkInterfaces] Direct VPC egress settings. Currently only single network interface is supported.
-  WorkerPoolTemplateVpcAccess({
+  const WorkerPoolTemplateVpcAccess({
     this.connector,
     this.egress,
     this.networkInterfaces,

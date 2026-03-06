@@ -43,7 +43,7 @@ class OssBackupPlanArgs {
   /// [retention] Backup retention days, the minimum is 1.
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// [vaultId] The ID of backup vault.
-  OssBackupPlanArgs({
+  const OssBackupPlanArgs({
     required this.backupType,
     required this.bucket,
     this.crossAccountRoleName,

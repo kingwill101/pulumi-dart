@@ -9,7 +9,7 @@ class TableFieldSchemaCategoriesResponse {
 
   /// Creates a new [TableFieldSchemaCategoriesResponse].
   /// [names] A list of category resource names. For example, "projects/1/taxonomies/2/categories/3". At most 5 categories are allowed.
-  TableFieldSchemaCategoriesResponse({
+  const TableFieldSchemaCategoriesResponse({
     required this.names,
   });
 

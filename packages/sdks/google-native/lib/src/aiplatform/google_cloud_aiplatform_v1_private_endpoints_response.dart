@@ -18,7 +18,7 @@ class GoogleCloudAiplatformV1PrivateEndpointsResponse {
   /// [healthHttpUri] Http(s) path to send health check requests.
   /// [predictHttpUri] Http(s) path to send prediction requests.
   /// [serviceAttachment] The name of the service attachment resource. Populated if private service connect is enabled.
-  GoogleCloudAiplatformV1PrivateEndpointsResponse({
+  const GoogleCloudAiplatformV1PrivateEndpointsResponse({
     required this.explainHttpUri,
     required this.healthHttpUri,
     required this.predictHttpUri,

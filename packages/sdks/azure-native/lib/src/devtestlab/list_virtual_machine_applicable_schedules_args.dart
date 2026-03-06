@@ -18,7 +18,7 @@ class ListVirtualMachineApplicableSchedulesArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the LabVirtualMachine
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListVirtualMachineApplicableSchedulesArgs({
+  const ListVirtualMachineApplicableSchedulesArgs({
     required this.labName,
     required this.name,
     required this.resourceGroupName,

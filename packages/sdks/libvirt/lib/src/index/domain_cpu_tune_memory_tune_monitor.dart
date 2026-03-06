@@ -11,7 +11,7 @@ class DomainCpuTuneMemoryTuneMonitor {
   /// Creates a new [DomainCpuTuneMemoryTuneMonitor].
   /// [level] Sets the monitoring level for memory tuning, which determines how detailed the monitoring information is.
   /// [vcpus] Specifies the number of virtual CPUs to monitor in the context of memory tuning, focusing resource analysis.
-  DomainCpuTuneMemoryTuneMonitor({
+  const DomainCpuTuneMemoryTuneMonitor({
     this.level,
     this.vcpus,
   });

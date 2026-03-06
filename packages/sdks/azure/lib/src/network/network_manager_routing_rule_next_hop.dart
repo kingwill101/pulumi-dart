@@ -11,7 +11,7 @@ class NetworkManagerRoutingRuleNextHop {
   /// Creates a new [NetworkManagerRoutingRuleNextHop].
   /// [address] The address of the next hop. This is required if the next hop type is `VirtualAppliance`.
   /// [type] The type of next hop. Possible values are `Internet`, `NoNextHop`, `VirtualAppliance`, `VirtualNetworkGateway` and `VnetLocal`.
-  NetworkManagerRoutingRuleNextHop({
+  const NetworkManagerRoutingRuleNextHop({
     this.address,
     required this.type,
   });

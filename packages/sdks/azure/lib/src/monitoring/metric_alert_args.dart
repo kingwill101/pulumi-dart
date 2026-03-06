@@ -71,7 +71,7 @@ class MetricAlertArgs {
   /// [targetResourceLocation] The location of the target resource.
   /// [targetResourceType] The resource type (e.g. `Microsoft.Compute/virtualMachines`) of the target resource.
   /// [windowSize] The period of time that is used to monitor alert activity, represented in ISO 8601 duration format. This value must be greater than `frequency`. Possible values are `PT1M`, `PT5M`, `PT15M`, `PT30M`, `PT1H`, `PT6H`, `PT12H` and `P1D`. Defaults to `PT5M`.
-  MetricAlertArgs({
+  const MetricAlertArgs({
     this.actions,
     this.applicationInsightsWebTestLocationAvailabilityCriteria,
     this.autoMitigate,

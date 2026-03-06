@@ -9,7 +9,7 @@ class CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration {
 
   /// Creates a new [CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration].
   /// [icebergConfiguration] The configuration for an Iceberg orphan file deletion optimizer.
-  CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration({
+  const CatalogTableOptimizerConfigurationOrphanFileDeletionConfiguration({
     this.icebergConfiguration,
   });
 

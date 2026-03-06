@@ -8,7 +8,7 @@ class ServiceSignIn {
 
   /// Creates a new [ServiceSignIn].
   /// [enabled] Should anonymous users be redirected to the sign in page?
-  ServiceSignIn({
+  const ServiceSignIn({
     required this.enabled,
   });
 

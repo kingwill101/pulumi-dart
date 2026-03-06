@@ -27,7 +27,7 @@ class ScheduleArgs {
   /// [flowName] The name of the flow bound to the time-based schedule you want to create.
   /// [payload] The trigger message of the time-based schedule to be created. It must be in JSON object format.
   /// [scheduleName] The name of the time-based schedule to be created.
-  ScheduleArgs({
+  const ScheduleArgs({
     required this.cronExpression,
     this.description,
     this.enable,

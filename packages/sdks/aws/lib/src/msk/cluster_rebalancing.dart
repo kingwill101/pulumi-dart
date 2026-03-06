@@ -10,7 +10,7 @@ class ClusterRebalancing {
 
   /// Creates a new [ClusterRebalancing].
   /// [status] The status of intelligent rebalancing. Valid values: `ACTIVE`, `PAUSED`. Default is `ACTIVE` for new Express-based clusters.
-  ClusterRebalancing({
+  const ClusterRebalancing({
     required this.status,
   });
 

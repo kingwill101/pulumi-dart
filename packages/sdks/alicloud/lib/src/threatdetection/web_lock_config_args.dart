@@ -36,7 +36,7 @@ class WebLockConfigArgs {
   /// [localBackupDir] The local backup path is used to protect the safe backup of the Directory.
   /// [mode] Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
   /// [uuid] Specify the UUID of the server to which you want to add a protection directory.&gt; You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
-  WebLockConfigArgs({
+  const WebLockConfigArgs({
     required this.defenceMode,
     required this.dir,
     this.exclusiveDir,

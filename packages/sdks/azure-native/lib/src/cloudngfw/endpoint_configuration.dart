@@ -13,7 +13,7 @@ class EndpointConfiguration {
   /// Creates a new [EndpointConfiguration].
   /// [address] Address Space
   /// [port] port ID
-  EndpointConfiguration({
+  const EndpointConfiguration({
     required this.address,
     required this.port,
   });

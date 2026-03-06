@@ -27,7 +27,7 @@ class GetRoleManagementPolicyActivationRule {
   /// [requireMultifactorAuthentication] (Boolean) Is multi-factor authentication required to create new assignments.
   /// [requireTicketInfo] (Boolean) Is ticket information required to create new assignments.
   /// [requiredConditionalAccessAuthenticationContext] (String) The Entra ID Conditional Access context that must be present for activation.
-  GetRoleManagementPolicyActivationRule({
+  const GetRoleManagementPolicyActivationRule({
     required this.approvalStages,
     required this.maximumDuration,
     required this.requireApproval,

@@ -8,7 +8,7 @@ class VirtualMachinePropertiesResponseNetworkInterfaces {
 
   /// Creates a new [VirtualMachinePropertiesResponseNetworkInterfaces].
   /// [id] ID - Resource Id of the network interface
-  VirtualMachinePropertiesResponseNetworkInterfaces({
+  const VirtualMachinePropertiesResponseNetworkInterfaces({
     this.id,
   });
 

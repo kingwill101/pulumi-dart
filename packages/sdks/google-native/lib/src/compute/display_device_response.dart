@@ -9,7 +9,7 @@ class DisplayDeviceResponse {
 
   /// Creates a new [DisplayDeviceResponse].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDeviceResponse({
+  const DisplayDeviceResponse({
     required this.enableDisplay,
   });
 

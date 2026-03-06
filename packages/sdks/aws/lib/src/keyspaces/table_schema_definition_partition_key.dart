@@ -8,7 +8,7 @@ class TableSchemaDefinitionPartitionKey {
 
   /// Creates a new [TableSchemaDefinitionPartitionKey].
   /// [name] The name of the partition key column.
-  TableSchemaDefinitionPartitionKey({
+  const TableSchemaDefinitionPartitionKey({
     required this.name,
   });
 

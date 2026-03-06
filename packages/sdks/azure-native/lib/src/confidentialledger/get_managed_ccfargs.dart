@@ -15,7 +15,7 @@ class GetManagedCCFArgs {
   /// Creates a new [GetManagedCCFArgs].
   /// [appName] Name of the Managed CCF
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedCCFArgs({
+  const GetManagedCCFArgs({
     required this.appName,
     required this.resourceGroupName,
   });

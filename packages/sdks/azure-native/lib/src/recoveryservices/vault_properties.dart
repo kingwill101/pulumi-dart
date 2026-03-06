@@ -32,7 +32,7 @@ class VaultProperties {
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [restoreSettings] Restore Settings of the vault
   /// [securitySettings] Security Settings of the vault
-  VaultProperties({
+  const VaultProperties({
     this.encryption,
     this.monitoringSettings,
     this.publicNetworkAccess,

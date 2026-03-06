@@ -14,7 +14,7 @@ class GetKnowledgeBaseDialogflowV2beta1Result {
   /// [displayName] The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
   /// [languageCode] Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, this is populated for all non en-us languages. If not populated, the default language en-us applies.
   /// [name] The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-  GetKnowledgeBaseDialogflowV2beta1Result({
+  const GetKnowledgeBaseDialogflowV2beta1Result({
     required this.displayName,
     required this.languageCode,
     required this.name,

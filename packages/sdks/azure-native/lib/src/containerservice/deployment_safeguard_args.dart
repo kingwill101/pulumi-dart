@@ -18,7 +18,7 @@ class DeploymentSafeguardArgs {
   /// [excludedNamespaces] User defined list of namespaces to exclude from Deployment Safeguards. Deployments in these namespaces will not be checked against any safeguards
   /// [level] The deployment safeguards level. Possible values are Warn and Enforce
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  DeploymentSafeguardArgs({
+  const DeploymentSafeguardArgs({
     this.excludedNamespaces,
     required this.level,
     required this.resourceUri,

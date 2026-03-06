@@ -13,7 +13,7 @@ class GetDashboardArgs {
   /// Creates a new [GetDashboardArgs].
   /// [dashboardId] Required.
   /// [project] Optional.
-  GetDashboardArgs({
+  const GetDashboardArgs({
     required this.dashboardId,
     this.project,
   });

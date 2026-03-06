@@ -14,7 +14,7 @@ class GetResourcesResourceTagMappingListComplianceDetail {
   /// [complianceStatus] Whether the resource is compliant.
   /// [keysWithNoncompliantValues] Required.
   /// [nonCompliantKeys] Required.
-  GetResourcesResourceTagMappingListComplianceDetail({
+  const GetResourcesResourceTagMappingListComplianceDetail({
     required this.complianceStatus,
     required this.keysWithNoncompliantValues,
     required this.nonCompliantKeys,

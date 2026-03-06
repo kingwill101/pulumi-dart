@@ -35,7 +35,7 @@ class GetIntegrationServiceEnvironmentResult {
   /// [sku] The sku.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationServiceEnvironmentResult({
+  const GetIntegrationServiceEnvironmentResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] The sku name.
   /// [tier] The sku tier.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
     this.tier,
   });

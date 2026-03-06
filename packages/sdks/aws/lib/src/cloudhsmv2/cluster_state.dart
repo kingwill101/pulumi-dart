@@ -43,7 +43,7 @@ class ClusterState {
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] The id of the VPC that the CloudHSM cluster resides in.
-  ClusterState({
+  const ClusterState({
     this.clusterCertificates,
     this.clusterId,
     this.clusterState,

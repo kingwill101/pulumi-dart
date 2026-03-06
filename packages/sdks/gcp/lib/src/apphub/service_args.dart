@@ -36,7 +36,7 @@ class ServiceArgs {
   /// [location] Part of `parent`.  Full resource name of a parent Application. Example: projects/{HOST_PROJECT_ID}/locations/{LOCATION}/applications/{APPLICATION_ID}
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceId] The Service identifier.
-  ServiceArgs({
+  const ServiceArgs({
     required this.applicationId,
     this.attributes,
     this.description,

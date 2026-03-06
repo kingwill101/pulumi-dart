@@ -44,7 +44,7 @@ class AspectTypeIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  AspectTypeIamMemberArgs({
+  const AspectTypeIamMemberArgs({
     required this.aspectTypeId,
     this.condition,
     this.location,

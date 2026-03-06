@@ -8,7 +8,7 @@ class GetClusterServiceExternalIpsConfig {
 
   /// Creates a new [GetClusterServiceExternalIpsConfig].
   /// [enabled] When enabled, services with external ips specified will be allowed.
-  GetClusterServiceExternalIpsConfig({
+  const GetClusterServiceExternalIpsConfig({
     required this.enabled,
   });
 

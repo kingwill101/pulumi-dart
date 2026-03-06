@@ -18,7 +18,7 @@ class TopicArgs {
   /// [loggingEnabled] Is logging enabled? true or false. Default value to false.
   /// [maximumMessageSize] This indicates the maximum length, in bytes, of any message body sent to the topic. Valid value range: 1024-65536, i.e., 1K to 64K. Default value to 65536.
   /// [name] Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-  TopicArgs({
+  const TopicArgs({
     this.loggingEnabled,
     this.maximumMessageSize,
     this.name,

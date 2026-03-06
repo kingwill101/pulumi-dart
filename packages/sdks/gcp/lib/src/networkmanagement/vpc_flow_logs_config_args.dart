@@ -70,7 +70,7 @@ class VpcFlowLogsConfigArgs {
   /// [subnet] Traffic will be logged from VMs within the subnetwork. Format: projects/{project_id}/regions/{region}/subnetworks/{name}
   /// [vpcFlowLogsConfigId] Required. ID of the `VpcFlowLogsConfig`.
   /// [vpnTunnel] Traffic will be logged from the VPN Tunnel. Format: projects/{project_id}/regions/{region}/vpnTunnels/{name}
-  VpcFlowLogsConfigArgs({
+  const VpcFlowLogsConfigArgs({
     this.aggregationInterval,
     this.description,
     this.filterExpr,

@@ -32,7 +32,7 @@ class GetStandardsControlAssociationsStandardsControlAssociation {
   /// [standardsControlTitle] Title of the standard.
   /// [updatedAt] Last time that a control's enablement status in a specified standard was updated.
   /// [updatedReason] Reason for updating a control's enablement status in a specified standard.
-  GetStandardsControlAssociationsStandardsControlAssociation({
+  const GetStandardsControlAssociationsStandardsControlAssociation({
     required this.associationStatus,
     required this.relatedRequirements,
     required this.securityControlArn,

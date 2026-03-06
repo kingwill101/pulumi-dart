@@ -8,7 +8,7 @@ class NetworkPerformanceConfigComputeV1 {
 
   /// Creates a new [NetworkPerformanceConfigComputeV1].
   /// [totalEgressBandwidthTier] Optional.
-  NetworkPerformanceConfigComputeV1({
+  const NetworkPerformanceConfigComputeV1({
     this.totalEgressBandwidthTier,
   });
 

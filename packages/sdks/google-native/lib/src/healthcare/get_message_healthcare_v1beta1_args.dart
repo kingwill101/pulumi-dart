@@ -21,7 +21,7 @@ class GetMessageHealthcareV1beta1Args {
   /// [messageId] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetMessageHealthcareV1beta1Args({
+  const GetMessageHealthcareV1beta1Args({
     required this.datasetId,
     required this.hl7V2StoreId,
     required this.location,

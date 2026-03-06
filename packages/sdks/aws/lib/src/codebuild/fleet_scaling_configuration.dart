@@ -17,7 +17,7 @@ class FleetScalingConfiguration {
   /// [maxCapacity] Maximum number of instances in the ﬂeet when auto-scaling.
   /// [scalingType] Scaling type for a compute fleet. Valid value: `TARGET_TRACKING_SCALING`.
   /// [targetTrackingScalingConfigs] Configuration block. Detailed below.
-  FleetScalingConfiguration({
+  const FleetScalingConfiguration({
     this.desiredCapacity,
     this.maxCapacity,
     this.scalingType,

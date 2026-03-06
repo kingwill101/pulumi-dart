@@ -9,7 +9,7 @@ class ShieldedInstanceIntegrityPolicyResponse {
 
   /// Creates a new [ShieldedInstanceIntegrityPolicyResponse].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  ShieldedInstanceIntegrityPolicyResponse({
+  const ShieldedInstanceIntegrityPolicyResponse({
     required this.updateAutoLearnPolicy,
   });
 

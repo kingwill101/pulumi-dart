@@ -14,7 +14,7 @@ class KubernetesClusterExtensionAksAssignedIdentity {
   /// [principalId] The principal ID of resource identity.
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
-  KubernetesClusterExtensionAksAssignedIdentity({
+  const KubernetesClusterExtensionAksAssignedIdentity({
     this.principalId,
     this.tenantId,
     this.type,

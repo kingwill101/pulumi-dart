@@ -11,7 +11,7 @@ class FleetDomainJoinInfo {
   /// Creates a new [FleetDomainJoinInfo].
   /// [directoryName] Fully qualified name of the directory (for example, corp.example.com).
   /// [organizationalUnitDistinguishedName] Distinguished name of the organizational unit for computer accounts.
-  FleetDomainJoinInfo({
+  const FleetDomainJoinInfo({
     this.directoryName,
     this.organizationalUnitDistinguishedName,
   });

@@ -26,7 +26,7 @@ class SubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1 {
   /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
   /// [uid] UID information about the requesting user.
   /// [user] User is the user you're testing for. If you specify "User" but not "Group", then is it interpreted as "What if User were not a member of any groups
-  SubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1({
+  const SubjectAccessReviewSpecPatchAuthorizationK8sIoV1beta1({
     this.extra,
     this.group,
     this.nonResourceAttributes,

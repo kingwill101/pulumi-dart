@@ -56,7 +56,7 @@ class GetOrderResult {
   /// [shippingAddress] The shipping address.
   /// [systemData] Metadata pertaining to creation and last modification of Order
   /// [type] The hierarchical type of the object.
-  GetOrderResult({
+  const GetOrderResult({
     required this.azureApiVersion,
     required this.contactInformation,
     required this.currentStatus,

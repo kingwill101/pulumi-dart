@@ -18,7 +18,7 @@ class TokenPasswordResponse {
   /// [expiry] The expiry datetime of the password.
   /// [name] The password name "password1" or "password2"
   /// [value] The password value.
-  TokenPasswordResponse({
+  const TokenPasswordResponse({
     this.creationTime,
     this.expiry,
     this.name,

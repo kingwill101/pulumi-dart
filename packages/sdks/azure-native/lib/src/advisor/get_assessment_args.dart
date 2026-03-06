@@ -12,7 +12,7 @@ class GetAssessmentArgs {
 
   /// Creates a new [GetAssessmentArgs].
   /// [assessmentName] Advisor assessment name.
-  GetAssessmentArgs({
+  const GetAssessmentArgs({
     required this.assessmentName,
   });
 

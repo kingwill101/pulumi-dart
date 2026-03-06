@@ -31,7 +31,7 @@ class WorkloadNetworkSegmentArgs {
   /// [revision] NSX revision number.
   /// [segmentId] The ID of the NSX Segment
   /// [subnet] Subnet which to connect segment to.
-  WorkloadNetworkSegmentArgs({
+  const WorkloadNetworkSegmentArgs({
     this.connectedGateway,
     this.displayName,
     required this.privateCloudName,

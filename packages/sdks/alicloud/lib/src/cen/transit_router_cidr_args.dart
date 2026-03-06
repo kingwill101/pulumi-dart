@@ -26,7 +26,7 @@ class TransitRouterCidrArgs {
   /// [publishCidrRoute] Specifies whether to allow the system to automatically add a route that points to the CIDR block to the route table of the transit router.
   /// [transitRouterCidrName] The new name of the transit router CIDR block.
   /// [transitRouterId] The ID of the transit router.
-  TransitRouterCidrArgs({
+  const TransitRouterCidrArgs({
     required this.cidr,
     this.description,
     this.publishCidrRoute,

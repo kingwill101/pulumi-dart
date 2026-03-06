@@ -20,7 +20,7 @@ class VoiceConnectorOriginationRoute {
   /// [priority] The priority associated with the host, with 1 being the highest priority. Higher priority hosts are attempted first.
   /// [protocol] The protocol to use for the origination route. Encryption-enabled Amazon Chime Voice Connectors use TCP protocol by default.
   /// [weight] The weight associated with the host. If hosts are equal in priority, calls are redistributed among them based on their relative weight.
-  VoiceConnectorOriginationRoute({
+  const VoiceConnectorOriginationRoute({
     required this.host,
     this.port,
     required this.priority,

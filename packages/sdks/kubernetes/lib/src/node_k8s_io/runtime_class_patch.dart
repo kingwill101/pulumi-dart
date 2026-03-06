@@ -28,7 +28,7 @@ class RuntimeClassPatch {
   /// [metadata] More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [overhead] overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see
   /// [scheduling] scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
-  RuntimeClassPatch({
+  const RuntimeClassPatch({
     this.apiVersion,
     this.handler,
     this.kind,

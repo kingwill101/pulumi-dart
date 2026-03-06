@@ -13,7 +13,7 @@ class AutomaticResourcePredictionsProfileResponse {
   /// Creates a new [AutomaticResourcePredictionsProfileResponse].
   /// [kind] Determines how the stand-by scheme should be provided.
   /// [predictionPreference] Determines the balance between cost and performance.
-  AutomaticResourcePredictionsProfileResponse({
+  const AutomaticResourcePredictionsProfileResponse({
     required this.kind,
     this.predictionPreference,
   });

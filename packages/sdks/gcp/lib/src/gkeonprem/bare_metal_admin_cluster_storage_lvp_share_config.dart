@@ -13,7 +13,7 @@ class BareMetalAdminClusterStorageLvpShareConfig {
   /// Creates a new [BareMetalAdminClusterStorageLvpShareConfig].
   /// [lvpConfig] Defines the machine path and storage class for the LVP Share.
   /// [sharedPathPvCount] The number of subdirectories to create under path.
-  BareMetalAdminClusterStorageLvpShareConfig({
+  const BareMetalAdminClusterStorageLvpShareConfig({
     required this.lvpConfig,
     this.sharedPathPvCount,
   });

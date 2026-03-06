@@ -30,7 +30,7 @@ class AllowedClientResponse {
   /// [nfsPath] The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
   /// [noRootSquash] Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
   /// [shareIp] The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
-  AllowedClientResponse({
+  const AllowedClientResponse({
     required this.allowDev,
     required this.allowSuid,
     required this.allowedClientsCidr,

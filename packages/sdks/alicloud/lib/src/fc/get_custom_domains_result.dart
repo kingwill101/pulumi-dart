@@ -23,7 +23,7 @@ class GetCustomDomainsResult {
   /// [nameRegex] Optional.
   /// [names] A list of custom domain names.
   /// [outputFile] Optional.
-  GetCustomDomainsResult({
+  const GetCustomDomainsResult({
     required this.domains,
     required this.id,
     required this.ids,

@@ -25,7 +25,7 @@ class GetClustersResult {
   /// [nameRegex] Optional.
   /// [names] A list of cluster names.
   /// [outputFile] Optional.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusters,
     required this.id,
     required this.ids,

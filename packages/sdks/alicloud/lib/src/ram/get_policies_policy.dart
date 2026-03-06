@@ -47,7 +47,7 @@ class GetPoliciesPolicy {
   /// [updateDate] The time when the policy was modified.
   /// [userName] The name of the RAM user.
   /// [versionId] (Available since v1.114.0) The ID of the default policy version. **Note:** `version_id` takes effect only if `enable_details` is set to `true`.
-  GetPoliciesPolicy({
+  const GetPoliciesPolicy({
     required this.attachmentCount,
     required this.createDate,
     required this.defaultVersion,

@@ -14,7 +14,7 @@ class HttpFaultInjectionComputeBeta {
   /// Creates a new [HttpFaultInjectionComputeBeta].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  HttpFaultInjectionComputeBeta({
+  const HttpFaultInjectionComputeBeta({
     this.abort,
     this.delay,
   });

@@ -12,7 +12,7 @@ class OneDashboardPageWidgetFunnelNullValue {
   /// Creates a new [OneDashboardPageWidgetFunnelNullValue].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesOverrides] (Optional) A Nested block which will take two string attributes `color` and `series_name`. This nested block is used to customize colors of individual.
-  OneDashboardPageWidgetFunnelNullValue({
+  const OneDashboardPageWidgetFunnelNullValue({
     this.nullValue,
     this.seriesOverrides,
   });

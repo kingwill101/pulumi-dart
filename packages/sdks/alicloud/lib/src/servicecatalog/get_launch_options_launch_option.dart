@@ -18,7 +18,7 @@ class GetLaunchOptionsLaunchOption {
   /// [id] ID of Service Catalog Launch Option.
   /// [portfolioId] Product mix ID.
   /// [portfolioName] Product portfolio name.
-  GetLaunchOptionsLaunchOption({
+  const GetLaunchOptionsLaunchOption({
     required this.constraintSummaries,
     required this.id,
     required this.portfolioId,

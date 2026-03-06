@@ -17,7 +17,7 @@ class ClusterLoggingInfoBrokerLogs {
   /// [cloudwatchLogs] Configuration block for Cloudwatch Logs settings. See logging_info broker_logs cloudwatch_logs Argument Reference below.
   /// [firehose] Configuration block for Kinesis Data Firehose settings. See logging_info broker_logs firehose Argument Reference below.
   /// [s3] Configuration block for S3 settings. See logging_info broker_logs s3 Argument Reference below.
-  ClusterLoggingInfoBrokerLogs({
+  const ClusterLoggingInfoBrokerLogs({
     this.cloudwatchLogs,
     this.firehose,
     this.s3,

@@ -9,7 +9,7 @@ class SubnetResponse {
 
   /// Creates a new [SubnetResponse].
   /// [id] Specifies ARM resource id of the subnet.
-  SubnetResponse({
+  const SubnetResponse({
     required this.id,
   });
 

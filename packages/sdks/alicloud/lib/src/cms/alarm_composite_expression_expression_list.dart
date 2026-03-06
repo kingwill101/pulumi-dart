@@ -19,7 +19,7 @@ class AlarmCompositeExpressionExpressionList {
   /// [period] The statistical period of the metric. Unit: seconds. Default value: `300`.
   /// [statistics] Field `statistics` has been removed from provider version 1.216.0. New field `escalations_critical.statistics` instead.
   /// [threshold] Field `threshold` has been removed from provider version 1.216.0. New field `escalations_critical.threshold` instead.
-  AlarmCompositeExpressionExpressionList({
+  const AlarmCompositeExpressionExpressionList({
     this.comparisonOperator,
     this.metricName,
     this.period,

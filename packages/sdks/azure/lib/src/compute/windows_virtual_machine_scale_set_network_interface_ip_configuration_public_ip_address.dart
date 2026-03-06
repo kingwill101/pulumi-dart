@@ -26,7 +26,7 @@ class WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddres
   /// [name] The Name of the Public IP Address Configuration.
   /// [publicIpPrefixId] The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
   /// [version] The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
-  WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
+  const WindowsVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
     this.domainNameLabel,
     this.idleTimeoutInMinutes,
     this.ipTags,

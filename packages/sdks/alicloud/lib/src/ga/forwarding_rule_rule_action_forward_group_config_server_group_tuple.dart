@@ -8,7 +8,7 @@ class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
 
   /// Creates a new [ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple].
   /// [endpointGroupId] The ID of the endpoint group.
-  ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple({
+  const ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple({
     required this.endpointGroupId,
   });
 

@@ -31,7 +31,7 @@ class BareMetalMachineConfigurationDataResponse {
   /// [machineName] The user-provided name for the bare metal machine created from this specification.
   /// [rackSlot] The slot the physical machine is in the rack based on the BOM configuration.
   /// [serialNumber] The serial number of the machine. Hardware suppliers may use an alternate value. For example, service tag.
-  BareMetalMachineConfigurationDataResponse({
+  const BareMetalMachineConfigurationDataResponse({
     required this.bmcConnectionString,
     required this.bmcCredentials,
     required this.bmcMacAddress,

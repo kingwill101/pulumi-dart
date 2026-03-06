@@ -14,7 +14,7 @@ class GetBudgetResourceGroupFilterDimension {
   /// [name] The name of this Consumption Budget.
   /// [operator] The operator used for comparison.
   /// [values] A list of values for the tag.
-  GetBudgetResourceGroupFilterDimension({
+  const GetBudgetResourceGroupFilterDimension({
     required this.name,
     required this.operator,
     required this.values,

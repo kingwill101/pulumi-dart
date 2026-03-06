@@ -8,7 +8,7 @@ class PscConfig {
 
   /// Creates a new [PscConfig].
   /// [network] The network where the IP address of the discovery endpoint will be reserved, in the form of projects/{network_project}/global/networks/{network_id}.
-  PscConfig({
+  const PscConfig({
     required this.network,
   });
 

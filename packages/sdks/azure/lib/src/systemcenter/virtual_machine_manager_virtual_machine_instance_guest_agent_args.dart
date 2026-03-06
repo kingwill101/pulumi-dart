@@ -21,7 +21,7 @@ class VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs {
   /// [provisioningAction] The provisioning action that is used to define the different types of operations for the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Possible values are `install`, `repair` and `uninstall`. Defaults to `install`. Changing this forces a new resource to be created.
   /// [scopedResourceId] The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance Guest Agent is stored. Changing this forces a new resource to be created.
   /// [username] The username that is used to connect to the System Center Virtual Machine Manager Virtual Machine Instance Guest Agent. Changing this forces a new resource to be created.
-  VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs({
+  const VirtualMachineManagerVirtualMachineInstanceGuestAgentArgs({
     required this.password,
     this.provisioningAction,
     required this.scopedResourceId,

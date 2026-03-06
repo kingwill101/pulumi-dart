@@ -11,7 +11,7 @@ class GetFunctionSourceRepository {
   /// Creates a new [GetFunctionSourceRepository].
   /// [deployedUrl] The URL pointing to the hosted repository where the function was defined at the time of deployment.
   /// [url] The URL pointing to the hosted repository where the function is defined.
-  GetFunctionSourceRepository({
+  const GetFunctionSourceRepository({
     required this.deployedUrl,
     required this.url,
   });

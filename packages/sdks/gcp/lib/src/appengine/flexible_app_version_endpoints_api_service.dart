@@ -25,7 +25,7 @@ class FlexibleAppVersionEndpointsApiService {
   /// [disableTraceSampling] Enable or disable trace sampling. By default, this is set to false for enabled.
   /// [name] Endpoints service name which is the name of the "service" resource in the Service Management API.
   /// [rolloutStrategy] Endpoints rollout strategy. If FIXED, configId must be specified. If MANAGED, configId must be omitted.
-  FlexibleAppVersionEndpointsApiService({
+  const FlexibleAppVersionEndpointsApiService({
     this.configId,
     this.disableTraceSampling,
     required this.name,

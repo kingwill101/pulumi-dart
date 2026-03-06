@@ -21,7 +21,7 @@ class GetInstanceMembersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetInstanceMembersArgs({
+  const GetInstanceMembersArgs({
     this.currentPage,
     this.ids,
     this.outputFile,

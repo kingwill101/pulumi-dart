@@ -15,7 +15,7 @@ class DomainOsNvRamSourceVhostUserFile {
   /// [append] Specifies if data should be appended to the file used as a source.
   /// [path] Sets the file path for the RNG source in the EGD backend.
   /// [secLabels] Configures security label settings for the file source in the EGD backend.
-  DomainOsNvRamSourceVhostUserFile({
+  const DomainOsNvRamSourceVhostUserFile({
     this.append,
     required this.path,
     this.secLabels,

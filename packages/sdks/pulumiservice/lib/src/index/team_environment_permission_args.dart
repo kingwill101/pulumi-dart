@@ -28,7 +28,7 @@ class TeamEnvironmentPermissionArgs {
   /// [permission] Which permission level to grant to the specified team.
   /// [project] Project name.
   /// [team] Team name.
-  TeamEnvironmentPermissionArgs({
+  const TeamEnvironmentPermissionArgs({
     required this.environment,
     this.maxOpenDuration,
     required this.organization,

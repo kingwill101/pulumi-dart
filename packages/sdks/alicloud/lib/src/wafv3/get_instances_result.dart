@@ -18,7 +18,7 @@ class GetInstancesResult {
   /// [ids] A list of Instance IDs.
   /// [instances] A list of Instance Entries. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

@@ -18,7 +18,7 @@ class EnvironmentMatrixResponse {
   /// [androidDeviceList] A list of Android devices; the test will be run only on the specified devices.
   /// [androidMatrix] A matrix of Android devices.
   /// [iosDeviceList] A list of iOS devices.
-  EnvironmentMatrixResponse({
+  const EnvironmentMatrixResponse({
     required this.androidDeviceList,
     required this.androidMatrix,
     required this.iosDeviceList,

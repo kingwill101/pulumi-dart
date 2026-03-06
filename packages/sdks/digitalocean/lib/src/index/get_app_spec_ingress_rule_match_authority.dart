@@ -8,7 +8,7 @@ class GetAppSpecIngressRuleMatchAuthority {
 
   /// Creates a new [GetAppSpecIngressRuleMatchAuthority].
   /// [exact] The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-  GetAppSpecIngressRuleMatchAuthority({
+  const GetAppSpecIngressRuleMatchAuthority({
     required this.exact,
   });
 

@@ -11,7 +11,7 @@ class NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment {
   /// Creates a new [NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment].
   /// [key] The enrichment key.
   /// [value] The enrichment value.
-  NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment({
+  const NamespaceTopicSpacesConfigurationDynamicRoutingEnrichment({
     required this.key,
     required this.value,
   });

@@ -8,7 +8,7 @@ class GetDistributionTenantCustomizationCertificate {
 
   /// Creates a new [GetDistributionTenantCustomizationCertificate].
   /// [arn] ARN (Amazon Resource Name) for the distribution tenant.
-  GetDistributionTenantCustomizationCertificate({
+  const GetDistributionTenantCustomizationCertificate({
     required this.arn,
   });
 

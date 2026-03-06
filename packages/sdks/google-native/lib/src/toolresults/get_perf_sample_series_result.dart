@@ -24,7 +24,7 @@ class GetPerfSampleSeriesResult {
   /// [project] The cloud project
   /// [sampleSeriesId] A sample series id
   /// [stepId] A tool results step ID.
-  GetPerfSampleSeriesResult({
+  const GetPerfSampleSeriesResult({
     required this.basicPerfSampleSeries,
     required this.executionId,
     required this.historyId,

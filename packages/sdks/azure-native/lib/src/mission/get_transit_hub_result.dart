@@ -40,7 +40,7 @@ class GetTransitHubResult {
   /// [tags] Resource tags.
   /// [transitOption] The TransitOption of the transitHub.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTransitHubResult({
+  const GetTransitHubResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

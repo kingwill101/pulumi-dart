@@ -8,7 +8,7 @@ class DomainFeaturesHyperVTlbFlushDirect {
 
   /// Creates a new [DomainFeaturesHyperVTlbFlushDirect].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVTlbFlushDirect({
+  const DomainFeaturesHyperVTlbFlushDirect({
     this.state,
   });
 

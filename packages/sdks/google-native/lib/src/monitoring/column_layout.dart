@@ -10,7 +10,7 @@ class ColumnLayout {
 
   /// Creates a new [ColumnLayout].
   /// [columns] The columns of content to display.
-  ColumnLayout({
+  const ColumnLayout({
     this.columns,
   });
 

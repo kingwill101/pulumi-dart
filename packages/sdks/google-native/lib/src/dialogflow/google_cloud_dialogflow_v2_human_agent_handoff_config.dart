@@ -14,7 +14,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfig {
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentHandoffConfig].
   /// [livePersonConfig] Uses LivePerson (https://www.liveperson.com).
   /// [salesforceLiveAgentConfig] Uses Salesforce Live Agent.
-  GoogleCloudDialogflowV2HumanAgentHandoffConfig({
+  const GoogleCloudDialogflowV2HumanAgentHandoffConfig({
     this.livePersonConfig,
     this.salesforceLiveAgentConfig,
   });

@@ -9,7 +9,7 @@ class GoogleCloudDatalabelingV1beta1PdfInstructionResponse {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1PdfInstructionResponse].
   /// [gcsFileUri] PDF file for the instruction. Only gcs path is allowed.
-  GoogleCloudDatalabelingV1beta1PdfInstructionResponse({
+  const GoogleCloudDatalabelingV1beta1PdfInstructionResponse({
     required this.gcsFileUri,
   });
 

@@ -27,7 +27,7 @@ class EnumResponse {
   /// [options] Protocol buffer options.
   /// [sourceContext] The source context.
   /// [syntax] The source syntax.
-  EnumResponse({
+  const EnumResponse({
     required this.edition,
     required this.enumvalue,
     required this.name,

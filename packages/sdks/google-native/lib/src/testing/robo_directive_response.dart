@@ -15,7 +15,7 @@ class RoboDirectiveResponse {
   /// [actionType] The type of action that Robo should perform on the specified element.
   /// [inputText] The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name.
   /// [resourceName] The android resource name of the target UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html
-  RoboDirectiveResponse({
+  const RoboDirectiveResponse({
     required this.actionType,
     required this.inputText,
     required this.resourceName,

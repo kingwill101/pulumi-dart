@@ -19,7 +19,7 @@ class RegionUrlMapHostRule {
   /// [description] An optional description of this HostRule. Provide this property
   /// [hosts] The list of host patterns to match. They must be valid
   /// [pathMatcher] The name of the PathMatcher to use to match the path portion of
-  RegionUrlMapHostRule({
+  const RegionUrlMapHostRule({
     this.description,
     required this.hosts,
     required this.pathMatcher,

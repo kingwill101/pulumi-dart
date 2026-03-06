@@ -29,7 +29,7 @@ class LoadBalancerPropertiesResponse {
   /// [probes] load balancer health probes
   /// [provisioningState] Provisioning state of the Load Balancer
   /// [status] observed state of the load balancer
-  LoadBalancerPropertiesResponse({
+  const LoadBalancerPropertiesResponse({
     this.backendAddressPools,
     required this.frontendIPConfigurations,
     this.loadBalancingRules,

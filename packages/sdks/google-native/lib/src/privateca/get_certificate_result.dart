@@ -50,7 +50,7 @@ class GetCertificateResult {
   /// [revocationDetails] Details regarding the revocation of this Certificate. This Certificate is considered revoked if and only if this field is present.
   /// [subjectMode] Immutable. Specifies how the Certificate's identity fields are to be decided. If this is omitted, the `DEFAULT` subject mode will be used.
   /// [updateTime] The time at which this Certificate was updated.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificateDescription,
     required this.certificateTemplate,
     required this.config,

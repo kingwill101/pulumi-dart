@@ -8,7 +8,7 @@ class GetMonitorGroupInstancesInstance {
 
   /// Creates a new [GetMonitorGroupInstancesInstance].
   /// [instances] Required.
-  GetMonitorGroupInstancesInstance({
+  const GetMonitorGroupInstancesInstance({
     required this.instances,
   });
 

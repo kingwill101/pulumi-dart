@@ -11,7 +11,7 @@ class ClusterNodeConfigSecondaryBootDisk {
   /// Creates a new [ClusterNodeConfigSecondaryBootDisk].
   /// [diskImage] Path to disk image to create the secondary boot disk from. After using the [gke-disk-image-builder](https://github.com/GoogleCloudPlatform/ai-on-gke/tree/main/tools/gke-disk-image-builder), this argument should be `global/images/DISK_IMAGE_NAME`.
   /// [mode] Mode for how the secondary boot disk is used. An example mode is `CONTAINER_IMAGE_CACHE`.
-  ClusterNodeConfigSecondaryBootDisk({
+  const ClusterNodeConfigSecondaryBootDisk({
     required this.diskImage,
     this.mode,
   });

@@ -17,7 +17,7 @@ class WeeklyRetentionSchedule {
   /// [daysOfTheWeek] List of days of week for weekly retention policy.
   /// [retentionDuration] Retention duration of retention Policy.
   /// [retentionTimes] Retention times of retention policy.
-  WeeklyRetentionSchedule({
+  const WeeklyRetentionSchedule({
     this.daysOfTheWeek,
     this.retentionDuration,
     this.retentionTimes,

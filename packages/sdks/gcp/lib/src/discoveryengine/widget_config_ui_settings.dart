@@ -53,7 +53,7 @@ class WidgetConfigUiSettings {
   /// [generativeAnswerConfig] Describes generative answer configuration.
   /// [interactionType] Describes widget (or web app) interaction type
   /// [resultDescriptionType] Controls whether result extract is display and how (snippet or extractive answer).
-  WidgetConfigUiSettings({
+  const WidgetConfigUiSettings({
     this.dataStoreUiConfigs,
     this.defaultSearchRequestOrderBy,
     this.disableUserEventsCollection,

@@ -22,7 +22,7 @@ class ChannelDirectLineArgs {
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Bot Channel. Changing this forces a new resource to be created.
   /// [sites] A site represents a client application that you want to connect to your bot. One or more `site` blocks as defined below.
-  ChannelDirectLineArgs({
+  const ChannelDirectLineArgs({
     required this.botName,
     this.location,
     required this.resourceGroupName,

@@ -20,7 +20,7 @@ class RecoveryGroupArgs {
   /// [cells] List of cell arns to add as nested fault domains within this recovery group
   /// [recoveryGroupName] A unique name describing the recovery group.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  RecoveryGroupArgs({
+  const RecoveryGroupArgs({
     this.cells,
     required this.recoveryGroupName,
     this.tags,

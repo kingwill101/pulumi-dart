@@ -12,7 +12,7 @@ class BucketReplicationConfigRuleDestinationMetrics {
   /// Creates a new [BucketReplicationConfigRuleDestinationMetrics].
   /// [eventThreshold] Configuration block that specifies the time threshold for emitting the `s3:Replication:OperationMissedThreshold` event. See below.
   /// [status] Status of the Destination Metrics. Either `"Enabled"` or `"Disabled"`.
-  BucketReplicationConfigRuleDestinationMetrics({
+  const BucketReplicationConfigRuleDestinationMetrics({
     this.eventThreshold,
     required this.status,
   });

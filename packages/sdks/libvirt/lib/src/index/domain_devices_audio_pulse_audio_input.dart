@@ -14,7 +14,7 @@ class DomainDevicesAudioPulseAudioInput {
   /// [latency] Sets the output latency for the PipeWire audio device.
   /// [name] Sets the name for the PipeWire audio output.
   /// [streamName] Sets the stream name for the PipeWire audio output.
-  DomainDevicesAudioPulseAudioInput({
+  const DomainDevicesAudioPulseAudioInput({
     this.latency,
     this.name,
     this.streamName,

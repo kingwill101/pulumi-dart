@@ -35,7 +35,7 @@ class VirtualNetworkTapArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [tapName] The name of the virtual network tap.
-  VirtualNetworkTapArgs({
+  const VirtualNetworkTapArgs({
     this.destinationLoadBalancerFrontEndIPConfiguration,
     this.destinationNetworkInterfaceIPConfiguration,
     this.destinationPort,

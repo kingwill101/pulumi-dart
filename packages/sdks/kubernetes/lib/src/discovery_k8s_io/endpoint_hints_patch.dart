@@ -14,7 +14,7 @@ class EndpointHintsPatch {
   /// Creates a new [EndpointHintsPatch].
   /// [forNodes] forNodes indicates the node(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.
   /// [forZones] forZones indicates the zone(s) this endpoint should be consumed by when using topology aware routing. May contain a maximum of 8 entries.
-  EndpointHintsPatch({
+  const EndpointHintsPatch({
     this.forNodes,
     this.forZones,
   });

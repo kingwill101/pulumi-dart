@@ -18,7 +18,7 @@ class GoogleCloudMlV1BuiltInAlgorithmOutput {
   /// [modelPath] The Cloud Storage path to the `model/` directory where the training job saves the trained model. Only set for successful jobs that don't use hyperparameter tuning.
   /// [pythonVersion] Python version on which the built-in algorithm was trained.
   /// [runtimeVersion] AI Platform runtime version on which the built-in algorithm was trained.
-  GoogleCloudMlV1BuiltInAlgorithmOutput({
+  const GoogleCloudMlV1BuiltInAlgorithmOutput({
     this.framework,
     this.modelPath,
     this.pythonVersion,

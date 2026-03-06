@@ -9,7 +9,7 @@ class LogsConfigStatusTypeEnumValueResponse {
 
   /// Creates a new [LogsConfigStatusTypeEnumValueResponse].
   /// [value] Property value
-  LogsConfigStatusTypeEnumValueResponse({
+  const LogsConfigStatusTypeEnumValueResponse({
     this.value,
   });
 

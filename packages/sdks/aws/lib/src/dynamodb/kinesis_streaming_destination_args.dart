@@ -21,7 +21,7 @@ class KinesisStreamingDestinationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [streamArn] The ARN for a Kinesis data stream. This must exist in the same account and region as the DynamoDB table.
   /// [tableName] The name of the DynamoDB table. There can only be one Kinesis streaming destination for a given DynamoDB table.
-  KinesisStreamingDestinationArgs({
+  const KinesisStreamingDestinationArgs({
     this.approximateCreationDateTimePrecision,
     this.region,
     required this.streamArn,

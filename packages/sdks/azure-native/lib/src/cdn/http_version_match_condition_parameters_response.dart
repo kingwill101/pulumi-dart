@@ -21,7 +21,7 @@ class HttpVersionMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleHttpVersionConditionParameters'.
-  HttpVersionMatchConditionParametersResponse({
+  const HttpVersionMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

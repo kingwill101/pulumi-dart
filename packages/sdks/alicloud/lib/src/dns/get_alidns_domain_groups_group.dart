@@ -17,7 +17,7 @@ class GetAlidnsDomainGroupsGroup {
   /// [groupId] Id of the domain group.
   /// [groupName] The name of the domain group.
   /// [id] Id of the instance.
-  GetAlidnsDomainGroupsGroup({
+  const GetAlidnsDomainGroupsGroup({
     required this.domainCount,
     required this.groupId,
     required this.groupName,

@@ -13,7 +13,7 @@ class GoogleCloudIntegrationsV1alphaParameterMapEntry {
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapEntry].
   /// [key] Key of the map entry.
   /// [value] Value of the map entry.
-  GoogleCloudIntegrationsV1alphaParameterMapEntry({
+  const GoogleCloudIntegrationsV1alphaParameterMapEntry({
     this.key,
     this.value,
   });

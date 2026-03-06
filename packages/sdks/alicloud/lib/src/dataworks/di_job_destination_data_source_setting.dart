@@ -8,7 +8,7 @@ class DiJobDestinationDataSourceSetting {
 
   /// Creates a new [DiJobDestinationDataSourceSetting].
   /// [dataSourceName] Destination data source name
-  DiJobDestinationDataSourceSetting({
+  const DiJobDestinationDataSourceSetting({
     this.dataSourceName,
   });
 

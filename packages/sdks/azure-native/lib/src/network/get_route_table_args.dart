@@ -18,7 +18,7 @@ class GetRouteTableArgs {
   /// [expand] Expands referenced resources.
   /// [resourceGroupName] The name of the resource group.
   /// [routeTableName] The name of the route table.
-  GetRouteTableArgs({
+  const GetRouteTableArgs({
     this.expand,
     required this.resourceGroupName,
     required this.routeTableName,

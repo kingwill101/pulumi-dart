@@ -18,7 +18,7 @@ class TaintPatch {
   /// [key] Required. The taint key to be applied to a node.
   /// [timeAdded] TimeAdded represents the time at which the taint was added.
   /// [value] The taint value corresponding to the taint key.
-  TaintPatch({
+  const TaintPatch({
     this.effect,
     this.key,
     this.timeAdded,

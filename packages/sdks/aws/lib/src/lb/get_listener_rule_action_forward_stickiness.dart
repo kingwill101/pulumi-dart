@@ -11,7 +11,7 @@ class GetListenerRuleActionForwardStickiness {
   /// Creates a new [GetListenerRuleActionForwardStickiness].
   /// [duration] The time period, in seconds, during which requests from a client should be routed to the same target group.
   /// [enabled] Indicates whether target group stickiness is enabled.
-  GetListenerRuleActionForwardStickiness({
+  const GetListenerRuleActionForwardStickiness({
     required this.duration,
     required this.enabled,
   });

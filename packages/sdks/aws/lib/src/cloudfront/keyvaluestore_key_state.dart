@@ -18,7 +18,7 @@ class KeyvaluestoreKeyState {
   /// [keyValueStoreArn] Amazon Resource Name (ARN) of the Key Value Store.
   /// [totalSizeInBytes] Total size of the Key Value Store in bytes.
   /// [value] Value to put.
-  KeyvaluestoreKeyState({
+  const KeyvaluestoreKeyState({
     this.key,
     this.keyValueStoreArn,
     this.totalSizeInBytes,

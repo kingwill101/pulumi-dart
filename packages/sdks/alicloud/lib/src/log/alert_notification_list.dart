@@ -20,7 +20,7 @@ class AlertNotificationList {
   /// [mobileLists] SMS sending mobile number.
   /// [serviceUri] Request address.
   /// [type] Notification type. support Email, SMS, DingTalk, MessageCenter.
-  AlertNotificationList({
+  const AlertNotificationList({
     required this.content,
     this.emailLists,
     this.mobileLists,

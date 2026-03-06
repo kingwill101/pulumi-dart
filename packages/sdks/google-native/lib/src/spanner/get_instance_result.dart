@@ -46,7 +46,7 @@ class GetInstanceResult {
   /// [processingUnits] The number of processing units allocated to this instance. At most one of processing_units or node_count should be present in the message. Users can set the processing_units field to specify the target number of processing units allocated to the instance. This may be zero in API responses for instances that are not yet in state `READY`. See [the documentation](https://cloud.google.com/spanner/docs/compute-capacity) for more information about nodes and processing units.
   /// [state] The current instance state. For CreateInstance, the state must be either omitted or set to `CREATING`. For UpdateInstance, the state must be either omitted or set to `READY`.
   /// [updateTime] The time at which the instance was most recently updated.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.autoscalingConfig,
     required this.config,
     required this.createTime,

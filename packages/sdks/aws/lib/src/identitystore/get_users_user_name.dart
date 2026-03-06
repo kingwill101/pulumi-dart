@@ -23,7 +23,7 @@ class GetUsersUserName {
   /// [honorificPrefix] Honorific prefix of the user.
   /// [honorificSuffix] Honorific suffix of the user.
   /// [middleName] Middle name of the user.
-  GetUsersUserName({
+  const GetUsersUserName({
     required this.familyName,
     required this.formatted,
     required this.givenName,

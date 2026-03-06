@@ -69,7 +69,7 @@ class V2FolderSccBigQueryExportState {
   /// [name] The resource name of this export, in the format
   /// [principal] The service account that needs permission to create table and upload data to the BigQuery dataset.
   /// [updateTime] The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
-  V2FolderSccBigQueryExportState({
+  const V2FolderSccBigQueryExportState({
     this.bigQueryExportId,
     this.createTime,
     this.dataset,

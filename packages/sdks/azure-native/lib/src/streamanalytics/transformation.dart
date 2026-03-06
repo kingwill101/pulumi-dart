@@ -18,7 +18,7 @@ class Transformation {
   /// [query] Specifies the query that will be run in the streaming job. You can learn more about the Stream Analytics Query Language (SAQL) here: https://msdn.microsoft.com/library/azure/dn834998 . Required on PUT (CreateOrReplace) requests.
   /// [streamingUnits] Specifies the number of streaming units that the streaming job uses.
   /// [validStreamingUnits] Specifies the valid streaming units a streaming job can scale to.
-  Transformation({
+  const Transformation({
     this.name,
     this.query,
     this.streamingUnits,

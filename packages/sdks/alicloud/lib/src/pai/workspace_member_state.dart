@@ -21,7 +21,7 @@ class WorkspaceMemberState {
   /// [roles] The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
   /// [userId] The ID of the User.
   /// [workspaceId] The ID of the Workspace.
-  WorkspaceMemberState({
+  const WorkspaceMemberState({
     this.createTime,
     this.memberId,
     this.roles,

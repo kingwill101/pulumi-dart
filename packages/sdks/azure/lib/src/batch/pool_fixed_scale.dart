@@ -17,7 +17,7 @@ class PoolFixedScale {
   /// [resizeTimeout] The timeout for resize operations. Defaults to `PT15M`.
   /// [targetDedicatedNodes] The number of nodes in the Batch pool. Defaults to `1`.
   /// [targetLowPriorityNodes] The number of low priority nodes in the Batch pool. Defaults to `0`.
-  PoolFixedScale({
+  const PoolFixedScale({
     this.nodeDeallocationMethod,
     this.resizeTimeout,
     this.targetDedicatedNodes,

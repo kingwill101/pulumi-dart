@@ -15,7 +15,7 @@ class GetDeidServiceArgs {
   /// Creates a new [GetDeidServiceArgs].
   /// [deidServiceName] The name of the deid service
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeidServiceArgs({
+  const GetDeidServiceArgs({
     required this.deidServiceName,
     required this.resourceGroupName,
   });

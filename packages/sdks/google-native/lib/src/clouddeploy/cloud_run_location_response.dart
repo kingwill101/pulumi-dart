@@ -9,7 +9,7 @@ class CloudRunLocationResponse {
 
   /// Creates a new [CloudRunLocationResponse].
   /// [location] The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`.
-  CloudRunLocationResponse({
+  const CloudRunLocationResponse({
     required this.location,
   });
 

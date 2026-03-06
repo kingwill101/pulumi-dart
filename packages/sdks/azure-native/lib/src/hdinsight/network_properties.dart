@@ -19,7 +19,7 @@ class NetworkProperties {
   /// [privateLink] Indicates whether or not private link is enabled.
   /// [publicIpTag] Gets or sets the IP tag for the public IPs created along with the HDInsight Clusters.
   /// [resourceProviderConnection] The direction for the resource provider connection.
-  NetworkProperties({
+  const NetworkProperties({
     this.outboundDependenciesManagedType,
     this.privateLink,
     this.publicIpTag,

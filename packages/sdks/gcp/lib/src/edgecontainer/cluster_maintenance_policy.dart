@@ -17,7 +17,7 @@ class ClusterMaintenancePolicy {
   /// Creates a new [ClusterMaintenancePolicy].
   /// [maintenanceExclusions] Exclusions to automatic maintenance. Non-emergency maintenance should not occur
   /// [window] Specifies the maintenance window in which maintenance may be performed.
-  ClusterMaintenancePolicy({
+  const ClusterMaintenancePolicy({
     this.maintenanceExclusions,
     required this.window,
   });

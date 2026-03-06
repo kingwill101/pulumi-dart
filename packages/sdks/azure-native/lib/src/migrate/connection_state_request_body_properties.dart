@@ -10,7 +10,7 @@ class ConnectionStateRequestBodyProperties {
 
   /// Creates a new [ConnectionStateRequestBodyProperties].
   /// [privateLinkServiceConnectionState] Private endpoint connection state.
-  ConnectionStateRequestBodyProperties({
+  const ConnectionStateRequestBodyProperties({
     this.privateLinkServiceConnectionState,
   });
 

@@ -21,7 +21,7 @@ class RoleManagementPolicyApprovalRule {
   /// [ruleType] The type of rule
   /// [setting] The approval setting
   /// [target] The target of the current rule.
-  RoleManagementPolicyApprovalRule({
+  const RoleManagementPolicyApprovalRule({
     this.id,
     required this.ruleType,
     this.setting,

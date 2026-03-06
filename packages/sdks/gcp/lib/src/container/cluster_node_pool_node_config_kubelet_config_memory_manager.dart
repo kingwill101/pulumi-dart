@@ -10,7 +10,7 @@ class ClusterNodePoolNodeConfigKubeletConfigMemoryManager {
 
   /// Creates a new [ClusterNodePoolNodeConfigKubeletConfigMemoryManager].
   /// [policy] The [Memory
-  ClusterNodePoolNodeConfigKubeletConfigMemoryManager({
+  const ClusterNodePoolNodeConfigKubeletConfigMemoryManager({
     this.policy,
   });
 

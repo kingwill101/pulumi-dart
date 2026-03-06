@@ -11,7 +11,7 @@ class CloudVmClusterIormConfigCacheDbPlan {
   /// [dbName] Required.
   /// [flashCacheLimit] Required.
   /// [share] Required.
-  CloudVmClusterIormConfigCacheDbPlan({
+  const CloudVmClusterIormConfigCacheDbPlan({
     required this.dbName,
     required this.flashCacheLimit,
     required this.share,

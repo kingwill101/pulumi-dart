@@ -15,7 +15,7 @@ class StaticStringRoutingEnrichmentResponse {
   /// [key] Static routing enrichment key.
   /// [value] String type routing enrichment value.
   /// [valueType] Static routing enrichment value type. For e.g. this property value can be 'String'.
-  StaticStringRoutingEnrichmentResponse({
+  const StaticStringRoutingEnrichmentResponse({
     this.key,
     this.value,
     required this.valueType,

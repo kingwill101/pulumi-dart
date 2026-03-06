@@ -21,7 +21,7 @@ class GetDataFlowsArgs {
   /// [ids] A list of Data Flow IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Data flow. Including: `Starting`, `Running`, `Updating`, `Deleting`, `Stopping`, `Stopped`, `Misconfigured`.
-  GetDataFlowsArgs({
+  const GetDataFlowsArgs({
     required this.fileSystemId,
     this.ids,
     this.outputFile,

@@ -8,7 +8,7 @@ class GetDataQualityRulesRuleTableConditionExpectation {
 
   /// Creates a new [GetDataQualityRulesRuleTableConditionExpectation].
   /// [sqlExpression] The SQL expression.
-  GetDataQualityRulesRuleTableConditionExpectation({
+  const GetDataQualityRulesRuleTableConditionExpectation({
     required this.sqlExpression,
   });
 

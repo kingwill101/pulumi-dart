@@ -18,7 +18,7 @@ class NotebookWorkspaceArgs {
   /// [accountName] Cosmos DB database account name.
   /// [notebookWorkspaceName] The name of the notebook workspace resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  NotebookWorkspaceArgs({
+  const NotebookWorkspaceArgs({
     required this.accountName,
     this.notebookWorkspaceName,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class RandomUuid4State {
   /// Creates a new [RandomUuid4State].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [result] The generated uuid presented in string format.
-  RandomUuid4State({
+  const RandomUuid4State({
     this.keepers,
     this.result,
   });

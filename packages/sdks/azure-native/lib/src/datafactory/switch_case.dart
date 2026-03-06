@@ -13,7 +13,7 @@ class SwitchCase {
   /// Creates a new [SwitchCase].
   /// [activities] List of activities to execute for satisfied case condition.
   /// [value] Expected value that satisfies the expression result of the 'on' property.
-  SwitchCase({
+  const SwitchCase({
     this.activities,
     this.value,
   });

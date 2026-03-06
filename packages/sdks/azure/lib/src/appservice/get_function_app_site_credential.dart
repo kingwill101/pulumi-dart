@@ -11,7 +11,7 @@ class GetFunctionAppSiteCredential {
   /// Creates a new [GetFunctionAppSiteCredential].
   /// [password] The password associated with the username, which can be used to publish to this App Service.
   /// [username] The username which can be used to publish to this App Service
-  GetFunctionAppSiteCredential({
+  const GetFunctionAppSiteCredential({
     required this.password,
     required this.username,
   });

@@ -19,7 +19,7 @@ class EndpointRdsOptions {
   /// [rdsDbProxyArn] Optional.
   /// [rdsEndpoint] Optional.
   /// [subnetIds] Optional.
-  EndpointRdsOptions({
+  const EndpointRdsOptions({
     this.port,
     this.protocol,
     this.rdsDbClusterArn,

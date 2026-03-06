@@ -15,7 +15,7 @@ class NodeTypeNatConfigResponse {
   /// [backendPort] The internal port for the NAT configuration.
   /// [frontendPortRangeEnd] The port range end for the external endpoint.
   /// [frontendPortRangeStart] The port range start for the external endpoint.
-  NodeTypeNatConfigResponse({
+  const NodeTypeNatConfigResponse({
     this.backendPort,
     this.frontendPortRangeEnd,
     this.frontendPortRangeStart,

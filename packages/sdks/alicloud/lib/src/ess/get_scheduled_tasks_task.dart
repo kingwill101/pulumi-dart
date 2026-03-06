@@ -38,7 +38,7 @@ class GetScheduledTasksTask {
   /// [recurrenceValue] Specifies how often a scheduled task recurs.
   /// [scheduledAction] The operation to be performed when a scheduled task is triggered.
   /// [taskEnabled] Required.
-  GetScheduledTasksTask({
+  const GetScheduledTasksTask({
     required this.description,
     required this.id,
     required this.launchExpirationTime,

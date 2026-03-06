@@ -16,7 +16,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTargetTa
   /// [longValue] A long integer value.
   /// [stringListValues] A list of strings.
   /// [stringValue] Optional.
-  DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTargetTargetDocumentAttributeValue({
+  const DataSourceCustomDocumentEnrichmentConfigurationInlineConfigurationTargetTargetDocumentAttributeValue({
     this.dateValue,
     this.longValue,
     this.stringListValues,

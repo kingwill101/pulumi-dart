@@ -18,7 +18,7 @@ class TldLegalAgreementResponse {
   /// [content] Agreement details.
   /// [title] Agreement title.
   /// [url] URL where a copy of the agreement details is hosted.
-  TldLegalAgreementResponse({
+  const TldLegalAgreementResponse({
     required this.agreementKey,
     required this.content,
     required this.title,

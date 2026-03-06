@@ -15,7 +15,7 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
   /// [containerTags] Set of tags that are attached to the container distribution configuration.
   /// [description] Description of the container distribution configuration.
   /// [targetRepositories] Set of destination repositories for the container distribution configuration.
-  GetDistributionConfigurationDistributionContainerDistributionConfiguration({
+  const GetDistributionConfigurationDistributionContainerDistributionConfiguration({
     required this.containerTags,
     required this.description,
     required this.targetRepositories,

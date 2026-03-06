@@ -13,7 +13,7 @@ class ServiceRegionPropertiesResponse {
   /// Creates a new [ServiceRegionPropertiesResponse].
   /// [name] The name of the region in which the resources needed for Teams Calling will be deployed.
   /// [primaryRegionProperties] The configuration used in this region as primary, and other regions as backup.
-  ServiceRegionPropertiesResponse({
+  const ServiceRegionPropertiesResponse({
     required this.name,
     required this.primaryRegionProperties,
   });

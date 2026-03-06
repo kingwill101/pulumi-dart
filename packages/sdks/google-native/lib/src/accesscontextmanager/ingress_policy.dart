@@ -14,7 +14,7 @@ class IngressPolicy {
   /// Creates a new [IngressPolicy].
   /// [ingressFrom] Defines the conditions on the source of a request causing this IngressPolicy to apply.
   /// [ingressTo] Defines the conditions on the ApiOperation and request destination that cause this IngressPolicy to apply.
-  IngressPolicy({
+  const IngressPolicy({
     this.ingressFrom,
     this.ingressTo,
   });

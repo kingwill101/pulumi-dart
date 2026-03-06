@@ -40,7 +40,7 @@ class V3LayerVersionState {
   /// [license] Layer License Agreement
   /// [public] Whether to expose the layer. Enumeration values: true, false. (Deprecated, please use acl instead)
   /// [version] The version of the layer
-  V3LayerVersionState({
+  const V3LayerVersionState({
     this.acl,
     this.code,
     this.codeSize,

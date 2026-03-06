@@ -19,7 +19,7 @@ class AutoStoragePropertiesResponse {
   /// [lastKeySync] The UTC time at which storage keys were last synchronized with the Batch account.
   /// [nodeIdentityReference] The identity referenced here must be assigned to pools which have compute nodes that need access to auto-storage.
   /// [storageAccountId] The resource ID of the storage account to be used for auto-storage account.
-  AutoStoragePropertiesResponse({
+  const AutoStoragePropertiesResponse({
     this.authenticationMode,
     required this.lastKeySync,
     this.nodeIdentityReference,

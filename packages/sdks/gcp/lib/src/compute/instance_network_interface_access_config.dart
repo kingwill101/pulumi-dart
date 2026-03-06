@@ -20,7 +20,7 @@ class InstanceNetworkInterfaceAccessConfig {
   /// [networkTier] The service-level to be provided for IPv6 traffic when the
   /// [publicPtrDomainName] The domain name to be used when creating DNSv6
   /// [securityPolicy] A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
-  InstanceNetworkInterfaceAccessConfig({
+  const InstanceNetworkInterfaceAccessConfig({
     this.natIp,
     this.networkTier,
     this.publicPtrDomainName,

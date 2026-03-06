@@ -14,7 +14,7 @@ class GrpcRouteRouteMatch {
   /// Creates a new [GrpcRouteRouteMatch].
   /// [headers] Optional. Specifies a collection of headers to match.
   /// [method] Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
-  GrpcRouteRouteMatch({
+  const GrpcRouteRouteMatch({
     this.headers,
     this.method,
   });

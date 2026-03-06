@@ -10,7 +10,7 @@ class RecordingConfigurationDestinationConfigurationS3 {
 
   /// Creates a new [RecordingConfigurationDestinationConfigurationS3].
   /// [bucketName] S3 bucket name where recorded videos will be stored.
-  RecordingConfigurationDestinationConfigurationS3({
+  const RecordingConfigurationDestinationConfigurationS3({
     required this.bucketName,
   });
 

@@ -18,7 +18,7 @@ class GetFirewallRuleArgs {
   /// [firewallRuleName] The name of the server firewall rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetFirewallRuleArgs({
+  const GetFirewallRuleArgs({
     required this.firewallRuleName,
     required this.resourceGroupName,
     required this.serverName,

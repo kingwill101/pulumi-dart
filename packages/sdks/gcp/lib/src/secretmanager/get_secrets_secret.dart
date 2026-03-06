@@ -67,7 +67,7 @@ class GetSecretsSecret {
   /// [ttl] The TTL for the Secret.
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] The version destroy ttl for the secret version.
-  GetSecretsSecret({
+  const GetSecretsSecret({
     required this.annotations,
     required this.createTime,
     required this.deletionProtection,

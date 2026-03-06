@@ -12,7 +12,7 @@ class MapperTableSchema {
   /// Creates a new [MapperTableSchema].
   /// [dataType] Data type of the column.
   /// [name] Name of the column.
-  MapperTableSchema({
+  const MapperTableSchema({
     this.dataType,
     this.name,
   });

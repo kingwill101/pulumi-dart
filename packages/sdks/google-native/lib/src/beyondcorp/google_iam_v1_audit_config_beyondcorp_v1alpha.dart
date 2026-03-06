@@ -13,7 +13,7 @@ class GoogleIamV1AuditConfigBeyondcorpV1alpha {
   /// Creates a new [GoogleIamV1AuditConfigBeyondcorpV1alpha].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  GoogleIamV1AuditConfigBeyondcorpV1alpha({
+  const GoogleIamV1AuditConfigBeyondcorpV1alpha({
     this.auditLogConfigs,
     this.service,
   });

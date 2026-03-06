@@ -13,7 +13,7 @@ class InboundNATRule {
   /// Creates a new [InboundNATRule].
   /// [name] name of the inbound nat rule
   /// [properties] properties of the inbound nat rule
-  InboundNATRule({
+  const InboundNATRule({
     required this.name,
     required this.properties,
   });

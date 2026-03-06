@@ -15,7 +15,7 @@ class ParentGroupInfoResponse {
   /// [displayName] The friendly name of the parent management group.
   /// [id] The fully qualified ID for the parent management group.  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
   /// [name] The name of the parent management group
-  ParentGroupInfoResponse({
+  const ParentGroupInfoResponse({
     this.displayName,
     this.id,
     this.name,

@@ -15,7 +15,7 @@ class GetStorageSpaceRetrieveArgs {
   /// Creates a new [GetStorageSpaceRetrieveArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageSpacesName] Parameter for the name of the storage object
-  GetStorageSpaceRetrieveArgs({
+  const GetStorageSpaceRetrieveArgs({
     required this.resourceGroupName,
     required this.storageSpacesName,
   });

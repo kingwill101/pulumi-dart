@@ -31,7 +31,7 @@ class ModuleArgs {
   /// [name] Sets name of the resource.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [tags] Sets the tags attached to the resource.
-  ModuleArgs({
+  const ModuleArgs({
     required this.automationAccountName,
     required this.contentLink,
     this.location,

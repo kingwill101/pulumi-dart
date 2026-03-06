@@ -16,7 +16,7 @@ class ListingSubscriptionLinkedDatasetMap {
   /// [linkedDataset] (Output)
   /// [listing] (Output)
   /// [resourceName] (Required) The identifier for this object. Format specified above.
-  ListingSubscriptionLinkedDatasetMap({
+  const ListingSubscriptionLinkedDatasetMap({
     this.linkedDataset,
     this.listing,
     required this.resourceName,

@@ -10,7 +10,7 @@ class TargetSiteFailureReason {
 
   /// Creates a new [TargetSiteFailureReason].
   /// [quotaFailure] Site verification state indicating the ownership and validity.
-  TargetSiteFailureReason({
+  const TargetSiteFailureReason({
     this.quotaFailure,
   });
 

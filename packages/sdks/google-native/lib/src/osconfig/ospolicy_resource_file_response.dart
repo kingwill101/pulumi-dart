@@ -20,7 +20,7 @@ class OSPolicyResourceFileResponse {
   /// [gcs] A Cloud Storage object.
   /// [localPath] A local path within the VM to use.
   /// [remote] A generic remote file.
-  OSPolicyResourceFileResponse({
+  const OSPolicyResourceFileResponse({
     required this.allowInsecure,
     required this.gcs,
     required this.localPath,

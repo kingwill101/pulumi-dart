@@ -9,7 +9,7 @@ class AwsS3BucketPolicyPropertiesResponse {
 
   /// Creates a new [AwsS3BucketPolicyPropertiesResponse].
   /// [policy] &lt;p&gt;The bucket policy as a JSON document.&lt;/p&gt;
-  AwsS3BucketPolicyPropertiesResponse({
+  const AwsS3BucketPolicyPropertiesResponse({
     this.policy,
   });
 

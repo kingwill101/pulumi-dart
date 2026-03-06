@@ -37,7 +37,7 @@ class InstanceConfigArgs {
   /// [name] A unique identifier for the instance configuration. Values are of the
   /// [project] The ID of the project in which the resource belongs.
   /// [replicas] The geographic placement of nodes in this instance configuration and their replication properties.
-  InstanceConfigArgs({
+  const InstanceConfigArgs({
     this.baseConfig,
     required this.displayName,
     this.labels,

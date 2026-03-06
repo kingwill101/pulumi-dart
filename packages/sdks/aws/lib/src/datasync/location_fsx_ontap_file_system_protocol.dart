@@ -13,7 +13,7 @@ class LocationFsxOntapFileSystemProtocol {
   /// Creates a new [LocationFsxOntapFileSystemProtocol].
   /// [nfs] Network File System (NFS) protocol that DataSync uses to access your FSx ONTAP file system. See NFS below.
   /// [smb] Server Message Block (SMB) protocol that DataSync uses to access your FSx ONTAP file system. See [SMB] (#smb) below.
-  LocationFsxOntapFileSystemProtocol({
+  const LocationFsxOntapFileSystemProtocol({
     this.nfs,
     this.smb,
   });

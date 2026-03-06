@@ -18,7 +18,7 @@ class GetKubernetesVersionArgs {
   /// [clusterType] The type of cluster. Its valid value are `Kubernetes` and `ManagedKubernetes`.
   /// [kubernetesVersion] The ACK released kubernetes version.
   /// [profile] The profile of cluster. Its valid value are `Default`, `Serverless`, `Edge` and `Acs`.
-  GetKubernetesVersionArgs({
+  const GetKubernetesVersionArgs({
     required this.clusterType,
     this.kubernetesVersion,
     this.profile,

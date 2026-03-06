@@ -12,7 +12,7 @@ class GetRegionsSort {
   /// Creates a new [GetRegionsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the regions by this key. This may be one of `slug`,
-  GetRegionsSort({
+  const GetRegionsSort({
     this.direction,
     required this.key,
   });

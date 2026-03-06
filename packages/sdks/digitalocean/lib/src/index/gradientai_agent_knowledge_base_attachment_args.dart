@@ -15,7 +15,7 @@ class GradientaiAgentKnowledgeBaseAttachmentArgs {
   /// Creates a new [GradientaiAgentKnowledgeBaseAttachmentArgs].
   /// [agentUuid] A unique identifier for an agent.
   /// [knowledgeBaseUuid] A unique identifier for a knowledge base.
-  GradientaiAgentKnowledgeBaseAttachmentArgs({
+  const GradientaiAgentKnowledgeBaseAttachmentArgs({
     required this.agentUuid,
     required this.knowledgeBaseUuid,
   });

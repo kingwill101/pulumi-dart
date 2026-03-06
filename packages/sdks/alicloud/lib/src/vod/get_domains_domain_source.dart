@@ -13,7 +13,7 @@ class GetDomainsDomainSource {
   /// [sourcePort] Required.
   /// [sourcePriority] Required.
   /// [sourceType] Required.
-  GetDomainsDomainSource({
+  const GetDomainsDomainSource({
     required this.sourceContent,
     required this.sourcePort,
     required this.sourcePriority,

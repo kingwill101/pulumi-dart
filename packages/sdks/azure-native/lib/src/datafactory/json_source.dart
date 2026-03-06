@@ -33,7 +33,7 @@ class JsonSource {
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [storeSettings] Json store settings.
   /// [type] Copy source type.
-  JsonSource({
+  const JsonSource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.formatSettings,

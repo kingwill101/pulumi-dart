@@ -42,7 +42,7 @@ class ServingConfigState {
   /// [redirectControlIds] The resource IDs of the redirect controls to be applied.
   /// [servingConfigId] 'The unique ID of the serving config. Currently only accepts "default_search".'
   /// [synonymsControlIds] The resource IDs of the synonyms controls to be applied.
-  ServingConfigState({
+  const ServingConfigState({
     this.boostControlIds,
     this.collectionId,
     this.engineId,

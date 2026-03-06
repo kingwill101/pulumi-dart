@@ -32,7 +32,7 @@ class GetGenaiKnowledgeBaseArgs {
   /// [tags] Optional.
   /// [userId] Optional.
   /// [uuid] Optional.
-  GetGenaiKnowledgeBaseArgs({
+  const GetGenaiKnowledgeBaseArgs({
     this.addedToAgentAt,
     this.databaseId,
     this.embeddingModelUuid,

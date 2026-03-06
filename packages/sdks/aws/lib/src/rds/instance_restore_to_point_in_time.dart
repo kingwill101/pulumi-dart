@@ -20,7 +20,7 @@ class InstanceRestoreToPointInTime {
   /// [sourceDbInstanceIdentifier] The identifier of the source DB instance from which to restore. Must match the identifier of an existing DB instance. Required if `source_db_instance_automated_backups_arn` or `source_dbi_resource_id` is not specified.
   /// [sourceDbiResourceId] The resource ID of the source DB instance from which to restore. Required if `source_db_instance_identifier` or `source_db_instance_automated_backups_arn` is not specified.
   /// [useLatestRestorableTime] A boolean value that indicates whether the DB instance is restored from the latest backup time. Defaults to `false`. Cannot be specified with `restore_time`.
-  InstanceRestoreToPointInTime({
+  const InstanceRestoreToPointInTime({
     this.restoreTime,
     this.sourceDbInstanceAutomatedBackupsArn,
     this.sourceDbInstanceIdentifier,

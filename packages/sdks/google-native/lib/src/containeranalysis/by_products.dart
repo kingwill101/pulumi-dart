@@ -8,7 +8,7 @@ class ByProducts {
 
   /// Creates a new [ByProducts].
   /// [customValues] Optional.
-  ByProducts({
+  const ByProducts({
     this.customValues,
   });
 

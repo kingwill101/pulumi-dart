@@ -8,7 +8,7 @@ class FunctionJavascriptUdaOutput {
 
   /// Creates a new [FunctionJavascriptUdaOutput].
   /// [type] The output data type from this JavaScript Function. Possible values include `any`, `array`, `bigint`, `datetime`, `float`, `nvarchar(max)` and `record`.
-  FunctionJavascriptUdaOutput({
+  const FunctionJavascriptUdaOutput({
     required this.type,
   });
 

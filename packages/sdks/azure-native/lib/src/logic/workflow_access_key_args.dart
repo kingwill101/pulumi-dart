@@ -27,7 +27,7 @@ class WorkflowAccessKeyArgs {
   /// [notBefore] Gets or sets the not-before time.
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
-  WorkflowAccessKeyArgs({
+  const WorkflowAccessKeyArgs({
     this.accessKeyName,
     this.id,
     this.notAfter,

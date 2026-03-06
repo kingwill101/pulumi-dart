@@ -14,7 +14,7 @@ class InstanceDesiredAutoCreatedEndpoint {
   /// Creates a new [InstanceDesiredAutoCreatedEndpoint].
   /// [network] (Output)
   /// [projectId] (Output)
-  InstanceDesiredAutoCreatedEndpoint({
+  const InstanceDesiredAutoCreatedEndpoint({
     required this.network,
     required this.projectId,
   });

@@ -32,7 +32,7 @@ class GetIstioCanonicalServiceResult {
   /// [serviceId] Required.
   /// [telemetries] Configuration for how to query telemetry on the Service. Structure is documented below.
   /// [userLabels] Required.
-  GetIstioCanonicalServiceResult({
+  const GetIstioCanonicalServiceResult({
     required this.canonicalService,
     required this.canonicalServiceNamespace,
     required this.displayName,

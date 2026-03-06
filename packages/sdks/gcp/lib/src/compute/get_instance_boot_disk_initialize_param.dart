@@ -49,7 +49,7 @@ class GetInstanceBootDiskInitializeParam {
   /// [sourceSnapshotEncryptionKeys] The encryption key used to decrypt the source snapshot.
   /// [storagePool] The URL of the storage pool in which the new disk is created
   /// [type] The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
-  GetInstanceBootDiskInitializeParam({
+  const GetInstanceBootDiskInitializeParam({
     required this.architecture,
     required this.enableConfidentialCompute,
     required this.image,

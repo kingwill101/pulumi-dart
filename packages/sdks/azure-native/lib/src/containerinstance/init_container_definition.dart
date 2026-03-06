@@ -27,7 +27,7 @@ class InitContainerDefinition {
   /// [name] The name for the init container.
   /// [securityContext] The container security properties.
   /// [volumeMounts] The volume mounts available to the init container.
-  InitContainerDefinition({
+  const InitContainerDefinition({
     this.command,
     this.environmentVariables,
     this.image,

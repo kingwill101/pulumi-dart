@@ -10,7 +10,7 @@ class FunctionsScaleAndConcurrencyTriggers {
 
   /// Creates a new [FunctionsScaleAndConcurrencyTriggers].
   /// [http] Scale and concurrency settings for the HTTP trigger.
-  FunctionsScaleAndConcurrencyTriggers({
+  const FunctionsScaleAndConcurrencyTriggers({
     this.http,
   });
 

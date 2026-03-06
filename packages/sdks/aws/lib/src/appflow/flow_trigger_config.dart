@@ -12,7 +12,7 @@ class FlowTriggerConfig {
   /// Creates a new [FlowTriggerConfig].
   /// [triggerProperties] Configuration details of a schedule-triggered flow as defined by the user. Currently, these settings only apply to the `Scheduled` trigger type. See Scheduled Trigger Properties for details.
   /// [triggerType] Type of flow trigger. Valid values are `Scheduled`, `Event`, and `OnDemand`.
-  FlowTriggerConfig({
+  const FlowTriggerConfig({
     this.triggerProperties,
     required this.triggerType,
   });

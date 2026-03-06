@@ -18,7 +18,7 @@ class DataStoreDocumentProcessingConfigDefaultParsingConfig {
   /// [digitalParsingConfig] Configurations applied to digital parser.
   /// [layoutParsingConfig] Configurations applied to layout parser.
   /// [ocrParsingConfig] Configurations applied to OCR parser. Currently it only applies to PDFs.
-  DataStoreDocumentProcessingConfigDefaultParsingConfig({
+  const DataStoreDocumentProcessingConfigDefaultParsingConfig({
     this.digitalParsingConfig,
     this.layoutParsingConfig,
     this.ocrParsingConfig,

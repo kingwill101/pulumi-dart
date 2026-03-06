@@ -41,7 +41,7 @@ class TopicAuthorizationRuleState {
   /// [secondaryKey] The Secondary Key for the ServiceBus Topic authorization Rule.
   /// [send] Grants send access to this this Authorization Rule. Defaults to `false`.
   /// [topicId] Specifies the ID of the ServiceBus Topic. Changing this forces a new resource to be created.
-  TopicAuthorizationRuleState({
+  const TopicAuthorizationRuleState({
     this.listen,
     this.manage,
     this.name,

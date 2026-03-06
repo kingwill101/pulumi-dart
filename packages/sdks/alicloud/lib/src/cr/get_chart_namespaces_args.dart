@@ -21,7 +21,7 @@ class GetChartNamespacesArgs {
   /// [instanceId] The ID of the Container Registry instance.
   /// [nameRegex] A regex string to filter results by name space name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetChartNamespacesArgs({
+  const GetChartNamespacesArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

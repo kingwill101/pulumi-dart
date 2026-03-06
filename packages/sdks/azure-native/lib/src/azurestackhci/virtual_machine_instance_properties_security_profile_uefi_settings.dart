@@ -9,7 +9,7 @@ class VirtualMachineInstancePropertiesSecurityProfileUefiSettings {
 
   /// Creates a new [VirtualMachineInstancePropertiesSecurityProfileUefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine instance.
-  VirtualMachineInstancePropertiesSecurityProfileUefiSettings({
+  const VirtualMachineInstancePropertiesSecurityProfileUefiSettings({
     this.secureBootEnabled,
   });
 

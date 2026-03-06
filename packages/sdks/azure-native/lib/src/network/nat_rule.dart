@@ -40,7 +40,7 @@ class NatRule {
   /// [translatedAddress] The translated address for this NAT rule.
   /// [translatedFqdn] The translated FQDN for this NAT rule.
   /// [translatedPort] The translated port for this NAT rule.
-  NatRule({
+  const NatRule({
     this.description,
     this.destinationAddresses,
     this.destinationPorts,

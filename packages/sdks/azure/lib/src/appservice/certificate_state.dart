@@ -61,7 +61,7 @@ class CertificateState {
   /// [subjectName] The subject name of the certificate.
   /// [tags] Optional.
   /// [thumbprint] The thumbprint for the certificate.
-  CertificateState({
+  const CertificateState({
     this.appServicePlanId,
     this.expirationDate,
     this.friendlyName,

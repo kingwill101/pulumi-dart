@@ -26,7 +26,7 @@ class GetPrivateZonesZone {
   /// [id] The ID of the private zone. It formats as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
   /// [privateZoneDnsServers] The DNS IP addresses of the PrivateZone service.
   /// [status] The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
-  GetPrivateZonesZone({
+  const GetPrivateZonesZone({
     required this.accessRegionId,
     required this.cenId,
     required this.hostRegionId,

@@ -24,7 +24,7 @@ class TransformationResponse {
   /// [flowlet] Flowlet Reference
   /// [linkedService] Linked service reference.
   /// [name] Transformation name.
-  TransformationResponse({
+  const TransformationResponse({
     this.dataset,
     this.description,
     this.flowlet,

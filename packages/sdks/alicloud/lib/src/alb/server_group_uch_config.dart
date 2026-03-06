@@ -11,7 +11,7 @@ class ServerGroupUchConfig {
   /// Creates a new [ServerGroupUchConfig].
   /// [type] The parameter type. Only QueryString can be filled.
   /// [value] Consistency hash parameter value
-  ServerGroupUchConfig({
+  const ServerGroupUchConfig({
     this.type,
     this.value,
   });

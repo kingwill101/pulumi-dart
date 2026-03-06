@@ -18,7 +18,7 @@ class ManagementPolicyActionResponse {
   /// [baseBlob] The management policy action for base blob
   /// [snapshot] The management policy action for snapshot
   /// [version] The management policy action for version
-  ManagementPolicyActionResponse({
+  const ManagementPolicyActionResponse({
     this.baseBlob,
     this.snapshot,
     this.version,

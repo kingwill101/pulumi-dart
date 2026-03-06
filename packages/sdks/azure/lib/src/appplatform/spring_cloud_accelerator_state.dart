@@ -12,7 +12,7 @@ class SpringCloudAcceleratorState {
   /// Creates a new [SpringCloudAcceleratorState].
   /// [name] The name which should be used for this Spring Cloud Accelerator. Changing this forces a new Spring Cloud Accelerator to be created. The only possible value is `default`.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Accelerator to be created.
-  SpringCloudAcceleratorState({
+  const SpringCloudAcceleratorState({
     this.name,
     this.springCloudServiceId,
   });

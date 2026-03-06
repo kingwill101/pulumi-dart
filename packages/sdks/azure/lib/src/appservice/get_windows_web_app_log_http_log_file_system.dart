@@ -11,7 +11,7 @@ class GetWindowsWebAppLogHttpLogFileSystem {
   /// Creates a new [GetWindowsWebAppLogHttpLogFileSystem].
   /// [retentionInDays] The retention period in days.
   /// [retentionInMb] The maximum size in megabytes that log files can use.
-  GetWindowsWebAppLogHttpLogFileSystem({
+  const GetWindowsWebAppLogHttpLogFileSystem({
     required this.retentionInDays,
     required this.retentionInMb,
   });

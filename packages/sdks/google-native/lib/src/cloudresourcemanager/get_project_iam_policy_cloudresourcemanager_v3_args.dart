@@ -11,7 +11,7 @@ class GetProjectIamPolicyCloudresourcemanagerV3Args {
 
   /// Creates a new [GetProjectIamPolicyCloudresourcemanagerV3Args].
   /// [project] Optional.
-  GetProjectIamPolicyCloudresourcemanagerV3Args({
+  const GetProjectIamPolicyCloudresourcemanagerV3Args({
     this.project,
   });
 

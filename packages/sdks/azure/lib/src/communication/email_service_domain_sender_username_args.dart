@@ -18,7 +18,7 @@ class EmailServiceDomainSenderUsernameArgs {
   /// [displayName] The display name for the Email Communication Service Domain Sender Username resource.
   /// [emailServiceDomainId] The ID of the Email Communication Service Domain resource. Changing this forces a new resource to be created.
   /// [name] The name of the Email Communication Service Domain Sender Username resource. Changing this forces a new resource to be created.
-  EmailServiceDomainSenderUsernameArgs({
+  const EmailServiceDomainSenderUsernameArgs({
     this.displayName,
     required this.emailServiceDomainId,
     this.name,

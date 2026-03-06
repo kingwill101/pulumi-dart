@@ -170,7 +170,7 @@ class ImageModelSettingsObjectDetectionResponse {
   /// [warmupCosineLRCycles] Value of cosine cycle when learning rate scheduler is 'warmup_cosine'. Must be a float in the range [0, 1].
   /// [warmupCosineLRWarmupEpochs] Value of warmup epochs when learning rate scheduler is 'warmup_cosine'. Must be a positive integer.
   /// [weightDecay] Value of weight decay when optimizer is 'sgd', 'adam', or 'adamw'. Must be a float in the range[0, 1].
-  ImageModelSettingsObjectDetectionResponse({
+  const ImageModelSettingsObjectDetectionResponse({
     this.advancedSettings,
     this.amsGradient,
     this.augmentations,

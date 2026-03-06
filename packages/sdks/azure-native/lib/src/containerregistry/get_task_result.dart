@@ -72,7 +72,7 @@ class GetTaskResult {
   /// [timeout] Run timeout in seconds.
   /// [trigger] The properties that describe all triggers for the task.
   /// [type] The type of the resource.
-  GetTaskResult({
+  const GetTaskResult({
     this.agentConfiguration,
     this.agentPoolName,
     required this.azureApiVersion,

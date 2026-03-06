@@ -24,7 +24,7 @@ class SystemDataResponse {
   /// [lastModifiedAt] The timestamp of resource modification (UTC).
   /// [lastModifiedBy] The identity that last modified the resource.
   /// [lastModifiedByType] The type of identity that last modified the resource.
-  SystemDataResponse({
+  const SystemDataResponse({
     this.createdAt,
     this.createdBy,
     this.createdByType,

@@ -23,7 +23,7 @@ class GetHcVpnGatewayArgs {
   /// [name] The name of the forwarding rule.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetHcVpnGatewayArgs({
+  const GetHcVpnGatewayArgs({
     required this.name,
     this.project,
     this.region,

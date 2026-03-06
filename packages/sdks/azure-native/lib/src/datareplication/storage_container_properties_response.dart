@@ -12,7 +12,7 @@ class StorageContainerPropertiesResponse {
   /// Creates a new [StorageContainerPropertiesResponse].
   /// [clusterSharedVolumePath] Gets or sets the ClusterSharedVolumePath.
   /// [name] Gets or sets the Name.
-  StorageContainerPropertiesResponse({
+  const StorageContainerPropertiesResponse({
     required this.clusterSharedVolumePath,
     required this.name,
   });

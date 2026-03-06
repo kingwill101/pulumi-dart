@@ -15,7 +15,7 @@ class GetIamCustomRoleArgs {
   /// Creates a new [GetIamCustomRoleArgs].
   /// [project] The project were the custom role has been created in. Defaults to the provider project configuration.
   /// [roleId] The role id that has been used for this role.
-  GetIamCustomRoleArgs({
+  const GetIamCustomRoleArgs({
     this.project,
     required this.roleId,
   });

@@ -42,7 +42,7 @@ class DicomServiceArgs {
   /// [storage] A `storage` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Healthcare DICOM Service.
   /// [workspaceId] Specifies the ID of the Healthcare Workspace where the Healthcare DICOM Service should exist. Changing this forces a new Healthcare DICOM Service to be created.
-  DicomServiceArgs({
+  const DicomServiceArgs({
     this.cors,
     this.dataPartitionsEnabled,
     this.encryptionKeyUrl,

@@ -23,7 +23,7 @@ class ProductProvisioningArtifactParameters {
   /// [templatePhysicalId] Template source as the physical ID of the resource that contains the template. Currently only supports CloudFormation stack ARN. Specify the physical ID as `arn:[partition]:cloudformation:[region]:[account ID]:stack/[stack name]/[resource ID]`.
   /// [templateUrl] Template source as URL of the CloudFormation template in Amazon S3.
   /// [type] Type of provisioning artifact. See [AWS Docs](https://docs.aws.amazon.com/servicecatalog/latest/dg/API_ProvisioningArtifactProperties.html) for valid list of values.
-  ProductProvisioningArtifactParameters({
+  const ProductProvisioningArtifactParameters({
     this.description,
     this.disableTemplateValidation,
     this.name,

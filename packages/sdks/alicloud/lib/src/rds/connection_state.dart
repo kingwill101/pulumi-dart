@@ -26,7 +26,7 @@ class ConnectionState {
   /// [instanceId] The Id of instance that can run database.
   /// [ipAddress] The ip address of connection string.
   /// [port] Internet connection port. Valid value: [1000-5999]. Default to 3306.
-  ConnectionState({
+  const ConnectionState({
     this.babelfishPort,
     this.connectionPrefix,
     this.connectionString,

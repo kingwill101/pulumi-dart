@@ -34,7 +34,7 @@ class GetEnvironmentResult {
   /// [storageConfig] Optional. Storage configuration for this environment.
   /// [updateTime] The time at which this environment was last modified.
   /// [uuid] The UUID (Universally Unique IDentifier) associated with this environment. This value is generated when the environment is created.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.config,
     required this.createTime,
     required this.labels,

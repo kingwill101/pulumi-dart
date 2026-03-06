@@ -10,7 +10,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyPro
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySetting].
   /// [keyProviderServer] Optional.
   /// [staticKeyValue] Required.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySetting({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsKeyProviderSettingsStaticKeySetting({
     this.keyProviderServer,
     required this.staticKeyValue,
   });

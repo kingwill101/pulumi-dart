@@ -17,7 +17,7 @@ class SpringCloudDevToolPortalSso {
   /// [clientSecret] Specifies the secret known only to the application and the authorization server.
   /// [metadataUrl] Specifies the URI of a JSON file with generic OIDC provider configuration.
   /// [scopes] Specifies a list of specific actions applications can be allowed to do on a user's behalf.
-  SpringCloudDevToolPortalSso({
+  const SpringCloudDevToolPortalSso({
     this.clientId,
     this.clientSecret,
     this.metadataUrl,

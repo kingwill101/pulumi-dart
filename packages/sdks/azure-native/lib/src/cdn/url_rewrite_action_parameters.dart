@@ -18,7 +18,7 @@ class UrlRewriteActionParameters {
   /// [preserveUnmatchedPath] Whether to preserve unmatched path. Default value is true.
   /// [sourcePattern] define a request URI pattern that identifies the type of requests that may be rewritten. If value is blank, all strings are matched.
   /// [typeName] Expected value is 'DeliveryRuleUrlRewriteActionParameters'.
-  UrlRewriteActionParameters({
+  const UrlRewriteActionParameters({
     required this.destination,
     this.preserveUnmatchedPath,
     required this.sourcePattern,

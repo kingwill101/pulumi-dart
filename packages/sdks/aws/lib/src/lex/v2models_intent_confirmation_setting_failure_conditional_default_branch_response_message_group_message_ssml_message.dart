@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMe
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage({
+  const V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

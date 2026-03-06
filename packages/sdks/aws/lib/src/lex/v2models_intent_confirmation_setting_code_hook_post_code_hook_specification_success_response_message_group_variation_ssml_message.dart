@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessR
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationSuccessResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

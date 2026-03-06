@@ -14,7 +14,7 @@ class GetAccountSASResourceTypes {
   /// [container] Should permission be granted to the container?
   /// [object_] Should permission be granted only to a specific object?
   /// [service] Should permission be granted to the entire service?
-  GetAccountSASResourceTypes({
+  const GetAccountSASResourceTypes({
     required this.container,
     required this.object_,
     required this.service,

@@ -76,7 +76,7 @@ class DataExchangeSubscriptionState {
   /// [state] Current state of the subscription.
   /// [subscriberContact] Email of the subscriber.
   /// [subscriptionId] Name of the subscription to create.
-  DataExchangeSubscriptionState({
+  const DataExchangeSubscriptionState({
     this.creationTime,
     this.dataExchange,
     this.dataExchangeId,

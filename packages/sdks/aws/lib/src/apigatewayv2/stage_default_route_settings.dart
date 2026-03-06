@@ -22,7 +22,7 @@ class StageDefaultRouteSettings {
   /// [loggingLevel] Logging level for the default route. Affects the log entries pushed to Amazon CloudWatch Logs.
   /// [throttlingBurstLimit] Throttling burst limit for the default route.
   /// [throttlingRateLimit] Throttling rate limit for the default route.
-  StageDefaultRouteSettings({
+  const StageDefaultRouteSettings({
     this.dataTraceEnabled,
     this.detailedMetricsEnabled,
     this.loggingLevel,

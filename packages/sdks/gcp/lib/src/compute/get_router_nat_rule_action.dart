@@ -26,7 +26,7 @@ class GetRouterNatRuleAction {
   /// [sourceNatActiveRanges] A list of URLs of the subnetworks used as source ranges for this NAT Rule.
   /// [sourceNatDrainIps] A list of URLs of the IP resources to be drained.
   /// [sourceNatDrainRanges] A list of URLs of subnetworks representing source ranges to be drained.
-  GetRouterNatRuleAction({
+  const GetRouterNatRuleAction({
     required this.sourceNatActiveIps,
     required this.sourceNatActiveRanges,
     required this.sourceNatDrainIps,

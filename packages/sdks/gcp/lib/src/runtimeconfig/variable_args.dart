@@ -31,7 +31,7 @@ class VariableArgs {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [text] or `value` - (Required) The content to associate with the variable.
   /// [value] Optional.
-  VariableArgs({
+  const VariableArgs({
     this.name,
     required this.parent,
     this.project,

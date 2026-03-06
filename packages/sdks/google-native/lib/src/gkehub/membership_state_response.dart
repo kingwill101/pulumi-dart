@@ -9,7 +9,7 @@ class MembershipStateResponse {
 
   /// Creates a new [MembershipStateResponse].
   /// [code] The current state of the Membership resource.
-  MembershipStateResponse({
+  const MembershipStateResponse({
     required this.code,
   });
 

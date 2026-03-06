@@ -36,7 +36,7 @@ class AKSSchemaResponseProperties {
   /// [loadBalancerType] Load Balancer Type
   /// [sslConfiguration] SSL configuration
   /// [systemServices] System services
-  AKSSchemaResponseProperties({
+  const AKSSchemaResponseProperties({
     this.agentCount,
     this.agentVmSize,
     this.aksNetworkingConfiguration,

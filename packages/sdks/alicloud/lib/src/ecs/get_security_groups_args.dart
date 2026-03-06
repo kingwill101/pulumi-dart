@@ -137,7 +137,7 @@ class GetSecurityGroupsArgs {
   /// [resourceGroupId] The Id of resource group which the security_group belongs.
   /// [tags] A map of tags assigned to the ECS instances. It must be in the format:
   /// [vpcId] Used to retrieve security groups that belong to the specified VPC ID.
-  GetSecurityGroupsArgs({
+  const GetSecurityGroupsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

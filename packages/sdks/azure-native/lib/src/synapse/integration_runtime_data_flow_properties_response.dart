@@ -15,7 +15,7 @@ class IntegrationRuntimeDataFlowPropertiesResponse {
   /// [computeType] Compute type of the cluster which will execute data flow job.
   /// [coreCount] Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272.
   /// [timeToLive] Time to live (in minutes) setting of the cluster which will execute data flow job.
-  IntegrationRuntimeDataFlowPropertiesResponse({
+  const IntegrationRuntimeDataFlowPropertiesResponse({
     this.computeType,
     this.coreCount,
     this.timeToLive,

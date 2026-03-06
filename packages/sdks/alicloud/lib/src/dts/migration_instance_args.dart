@@ -39,7 +39,7 @@ class MigrationInstanceArgs {
   /// [sourceEndpointRegion] The region of source instance.
   /// [syncArchitecture] The sync architecture. Valid values: `oneway`.
   /// [tags] A mapping of tags to assign to the resource.
-  MigrationInstanceArgs({
+  const MigrationInstanceArgs({
     this.computeUnit,
     this.databaseCount,
     required this.destinationEndpointEngineName,

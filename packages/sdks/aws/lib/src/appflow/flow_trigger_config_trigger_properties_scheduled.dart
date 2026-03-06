@@ -138,7 +138,7 @@ class FlowTriggerConfigTriggerPropertiesScheduled {
   /// [scheduleOffset] Optional offset that is added to the time interval for a schedule-triggered flow. Maximum value of 36000.
   /// [scheduleStartTime] Scheduled start time for a schedule-triggered flow. Must be a valid RFC3339 timestamp.
   /// [timezone] Time zone used when referring to the date and time of a scheduled-triggered flow, such as `America/New_York`.
-  FlowTriggerConfigTriggerPropertiesScheduled({
+  const FlowTriggerConfigTriggerPropertiesScheduled({
     this.dataPullMode,
     this.firstExecutionFrom,
     this.scheduleEndTime,

@@ -48,7 +48,7 @@ class ProjectSecondaryArtifact {
   /// [packaging] Type of build output artifact to create. If `type` is set to `CODEPIPELINE` or
   /// [path] Along with `namespace_type` and `name`, the pattern that AWS CodeBuild uses to name and store the
   /// [type] Build output artifact's type. Valid values `CODEPIPELINE`, `NO_ARTIFACTS`, and `S3`.
-  ProjectSecondaryArtifact({
+  const ProjectSecondaryArtifact({
     required this.artifactIdentifier,
     this.bucketOwnerAccess,
     this.encryptionDisabled,

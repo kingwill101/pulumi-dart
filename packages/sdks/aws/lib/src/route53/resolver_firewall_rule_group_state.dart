@@ -27,7 +27,7 @@ class ResolverFirewallRuleGroupState {
   /// [shareStatus] Whether the rule group is shared with other AWS accounts, or was shared with the current account by another AWS account. Sharing is configured through AWS Resource Access Manager (AWS RAM). Valid values: `NOT_SHARED`, `SHARED_BY_ME`, `SHARED_WITH_ME`
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ResolverFirewallRuleGroupState({
+  const ResolverFirewallRuleGroupState({
     this.arn,
     this.name,
     this.ownerId,

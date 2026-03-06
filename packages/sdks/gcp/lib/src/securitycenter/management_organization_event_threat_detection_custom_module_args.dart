@@ -29,7 +29,7 @@ class ManagementOrganizationEventThreatDetectionCustomModuleArgs {
   /// [location] Location ID of the parent organization. Only global is supported at the moment.
   /// [organization] Numerical ID of the parent organization.
   /// [type] Immutable. Type for the module. e.g. CONFIGURABLE_BAD_IP.
-  ManagementOrganizationEventThreatDetectionCustomModuleArgs({
+  const ManagementOrganizationEventThreatDetectionCustomModuleArgs({
     this.config,
     this.displayName,
     this.enablementState,

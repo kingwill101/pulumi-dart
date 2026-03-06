@@ -15,7 +15,7 @@ class VirtualApplianceSkuPropertiesResponse {
   /// [bundledScaleUnit] Virtual Appliance Scale Unit.
   /// [marketPlaceVersion] Virtual Appliance Version.
   /// [vendor] Virtual Appliance Vendor.
-  VirtualApplianceSkuPropertiesResponse({
+  const VirtualApplianceSkuPropertiesResponse({
     this.bundledScaleUnit,
     this.marketPlaceVersion,
     this.vendor,

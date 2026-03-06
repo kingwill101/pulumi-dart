@@ -22,7 +22,7 @@ class GetNamespacesResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetNamespacesResult({
+  const GetNamespacesResult({
     required this.id,
     required this.ids,
     this.keyword,

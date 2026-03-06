@@ -38,7 +38,7 @@ class GetResolverRuleResult {
   /// [shareStatus] Whether the rules is shared and, if so, whether the current account is sharing the rule with another account, or another account is sharing the rule with the current account.
   /// [tags] Map of tags assigned to the resolver rule.
   /// [targetIps] List of configurations for target IP addresses. Only applicable for `FORWARD` rules. See `target_ips` below for details.
-  GetResolverRuleResult({
+  const GetResolverRuleResult({
     required this.arn,
     required this.domainName,
     required this.id,

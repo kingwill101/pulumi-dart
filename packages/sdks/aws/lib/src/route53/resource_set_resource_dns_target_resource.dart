@@ -21,7 +21,7 @@ class ResourceSetResourceDnsTargetResource {
   /// [recordSetId] Route53 record set id to uniquely identify a record given a `domain_name` and a `record_type`.
   /// [recordType] Type of DNS Record of target resource.
   /// [targetResource] Target resource the R53 record specified with the above params points to.
-  ResourceSetResourceDnsTargetResource({
+  const ResourceSetResourceDnsTargetResource({
     required this.domainName,
     this.hostedZoneArn,
     this.recordSetId,

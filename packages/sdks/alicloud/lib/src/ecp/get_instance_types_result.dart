@@ -14,7 +14,7 @@ class GetInstanceTypesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceTypes] Required.
   /// [outputFile] Optional.
-  GetInstanceTypesResult({
+  const GetInstanceTypesResult({
     required this.id,
     required this.instanceTypes,
     this.outputFile,

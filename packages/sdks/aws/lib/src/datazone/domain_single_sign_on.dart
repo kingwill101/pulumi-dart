@@ -9,7 +9,7 @@ class DomainSingleSignOn {
   /// Creates a new [DomainSingleSignOn].
   /// [type] Optional.
   /// [userAssignment] Optional.
-  DomainSingleSignOn({
+  const DomainSingleSignOn({
     this.type,
     this.userAssignment,
   });

@@ -21,7 +21,7 @@ class Sku {
   /// [name] The name of the SKU, typically, a letter + Number code, e.g. P3.
   /// [size] Size of the particular SKU
   /// [tier] The tier or edition of the particular SKU, e.g. Basic, Premium.
-  Sku({
+  const Sku({
     this.capacity,
     this.family,
     required this.name,

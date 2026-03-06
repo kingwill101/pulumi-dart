@@ -25,7 +25,7 @@ class RuleArgs {
   /// [ruleName] The name of the resource.
   /// [type] The type of the rule. Valid values: `OUTBOUND`.
   /// [zoneName] The name of the forwarding zone.
-  RuleArgs({
+  const RuleArgs({
     required this.endpointId,
     required this.forwardIps,
     required this.ruleName,

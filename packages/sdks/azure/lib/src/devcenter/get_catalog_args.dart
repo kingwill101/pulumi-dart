@@ -15,7 +15,7 @@ class GetCatalogArgs {
   /// Creates a new [GetCatalogArgs].
   /// [devCenterId] Specifies the Dev Center Id within which this Dev Center Catalog should exist.
   /// [name] The name of this Dev Center Catalog.
-  GetCatalogArgs({
+  const GetCatalogArgs({
     required this.devCenterId,
     required this.name,
   });

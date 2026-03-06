@@ -15,7 +15,7 @@ class GetRecommendationsArgs {
   /// Creates a new [GetRecommendationsArgs].
   /// [filterByCategories] Specifies a list of categories in which the Advisor Recommendations will be listed. Possible values are `HighAvailability`, `Security`, `Performance`, `Cost` and `OperationalExcellence`.
   /// [filterByResourceGroups] Specifies a list of resource groups about which the Advisor Recommendations will be listed.
-  GetRecommendationsArgs({
+  const GetRecommendationsArgs({
     this.filterByCategories,
     this.filterByResourceGroups,
   });

@@ -9,7 +9,7 @@ class ListingSubscriptionCommercialInfoCloudMarketplace {
 
   /// Creates a new [ListingSubscriptionCommercialInfoCloudMarketplace].
   /// [order] (Output)
-  ListingSubscriptionCommercialInfoCloudMarketplace({
+  const ListingSubscriptionCommercialInfoCloudMarketplace({
     this.order,
   });
 

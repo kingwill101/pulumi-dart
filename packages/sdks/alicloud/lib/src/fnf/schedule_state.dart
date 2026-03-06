@@ -30,7 +30,7 @@ class ScheduleState {
   /// [payload] The trigger message of the time-based schedule to be created. It must be in JSON object format.
   /// [scheduleId] The ID of the time-based schedule.
   /// [scheduleName] The name of the time-based schedule to be created.
-  ScheduleState({
+  const ScheduleState({
     this.cronExpression,
     this.description,
     this.enable,

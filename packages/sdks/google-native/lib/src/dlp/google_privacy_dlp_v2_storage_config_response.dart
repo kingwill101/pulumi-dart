@@ -25,7 +25,7 @@ class GooglePrivacyDlpV2StorageConfigResponse {
   /// [datastoreOptions] Google Cloud Datastore options.
   /// [hybridOptions] Hybrid inspection options.
   /// [timespanConfig] Required.
-  GooglePrivacyDlpV2StorageConfigResponse({
+  const GooglePrivacyDlpV2StorageConfigResponse({
     required this.bigQueryOptions,
     required this.cloudStorageOptions,
     required this.datastoreOptions,

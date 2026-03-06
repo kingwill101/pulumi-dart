@@ -17,7 +17,7 @@ class GetInstanceTemplateNetworkInterfaceAliasIpRange {
   /// Creates a new [GetInstanceTemplateNetworkInterfaceAliasIpRange].
   /// [ipCidrRange] The IP CIDR range represented by this alias IP range. This IP CIDR range
   /// [subnetworkRangeName] The subnetwork secondary range name specifying
-  GetInstanceTemplateNetworkInterfaceAliasIpRange({
+  const GetInstanceTemplateNetworkInterfaceAliasIpRange({
     required this.ipCidrRange,
     required this.subnetworkRangeName,
   });

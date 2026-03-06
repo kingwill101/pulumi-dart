@@ -18,7 +18,7 @@ class GetMySQLServerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of Server
   /// [siteName] The name of Site
-  GetMySQLServerArgs({
+  const GetMySQLServerArgs({
     required this.resourceGroupName,
     required this.serverName,
     required this.siteName,

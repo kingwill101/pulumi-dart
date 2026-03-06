@@ -144,7 +144,7 @@ class InstanceArgs {
   /// [tags] A set of string tags for the instance. Changing this
   /// [userData] The user data to provide when launching the instance.
   /// [vendorOptions] Map of additional vendor-specific options.
-  InstanceArgs({
+  const InstanceArgs({
     this.adminPass,
     this.availabilityZone,
     this.availabilityZoneHints,

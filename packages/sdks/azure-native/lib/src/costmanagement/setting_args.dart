@@ -22,7 +22,7 @@ class SettingArgs {
   /// [scope] Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
   /// [settingName] Name of the setting. Allowed values: myscope
   /// [startOn] Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
-  SettingArgs({
+  const SettingArgs({
     this.cache,
     required this.scope,
     this.settingName,

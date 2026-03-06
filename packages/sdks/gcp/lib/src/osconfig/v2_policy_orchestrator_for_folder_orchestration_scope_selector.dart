@@ -15,7 +15,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelector {
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScopeSelector].
   /// [locationSelector] Selector containing locations in scope.
   /// [resourceHierarchySelector] Selector containing Cloud Resource Manager resource hierarchy nodes.
-  V2PolicyOrchestratorForFolderOrchestrationScopeSelector({
+  const V2PolicyOrchestratorForFolderOrchestrationScopeSelector({
     this.locationSelector,
     this.resourceHierarchySelector,
   });

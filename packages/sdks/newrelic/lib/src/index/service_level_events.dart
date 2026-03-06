@@ -21,7 +21,7 @@ class ServiceLevelEvents {
   /// [badEvents] The definition of the bad responses. If you define an SLI from valid and bad events, you must leave the good events argument empty.
   /// [goodEvents] The definition of good responses. If you define an SLI from valid and good events, you must leave the bad events argument empty.
   /// [validEvents] The definition of valid requests.
-  ServiceLevelEvents({
+  const ServiceLevelEvents({
     required this.accountId,
     this.badEvents,
     this.goodEvents,

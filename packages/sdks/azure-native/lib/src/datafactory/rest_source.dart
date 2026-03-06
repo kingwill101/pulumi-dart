@@ -43,7 +43,7 @@ class RestSource {
   /// [sourceRetryCount] Source retry count. Type: integer (or Expression with resultType integer).
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [type] Copy source type.
-  RestSource({
+  const RestSource({
     this.additionalColumns,
     this.additionalHeaders,
     this.disableMetricsCollection,

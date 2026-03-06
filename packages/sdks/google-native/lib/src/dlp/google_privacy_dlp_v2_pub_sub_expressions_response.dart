@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2PubSubExpressionsResponse {
   /// Creates a new [GooglePrivacyDlpV2PubSubExpressionsResponse].
   /// [conditions] Conditions to apply to the expression.
   /// [logicalOperator] The operator to apply to the collection of conditions.
-  GooglePrivacyDlpV2PubSubExpressionsResponse({
+  const GooglePrivacyDlpV2PubSubExpressionsResponse({
     required this.conditions,
     required this.logicalOperator,
   });

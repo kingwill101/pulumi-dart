@@ -53,7 +53,7 @@ class GetPipelineResult {
   /// [runDimensions] Dimensions emitted by Pipeline.
   /// [type] The resource type.
   /// [variables] List of variables for pipeline.
-  GetPipelineResult({
+  const GetPipelineResult({
     this.activities,
     this.annotations,
     required this.azureApiVersion,

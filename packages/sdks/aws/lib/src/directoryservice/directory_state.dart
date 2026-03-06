@@ -62,7 +62,7 @@ class DirectoryState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD` are accepted values). Defaults to `SimpleAD`.
   /// [vpcSettings] VPC related information about the directory. Fields documented below.
-  DirectoryState({
+  const DirectoryState({
     this.accessUrl,
     this.alias,
     this.connectSettings,

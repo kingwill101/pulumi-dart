@@ -100,7 +100,7 @@ class AppArgs {
   /// [rootAgent] The root agent is the entry point of the app.
   /// [timeZoneSettings] TimeZone settings of the app.
   /// [variableDeclarations] The declarations of the variables.
-  AppArgs({
+  const AppArgs({
     required this.appId,
     this.audioProcessingConfig,
     this.clientCertificateSettings,

@@ -64,7 +64,7 @@ class VMNicDetailsResponse {
   /// [tfoReuseExistingNic] A value indicating whether an existing NIC is allowed to be reused during test failover subject to availability.
   /// [tfoVMNetworkId] The network to be used by NIC during test failover.
   /// [vMNetworkName] VM network name.
-  VMNicDetailsResponse({
+  const VMNicDetailsResponse({
     this.enableAcceleratedNetworkingOnRecovery,
     this.enableAcceleratedNetworkingOnTfo,
     this.ipConfigs,

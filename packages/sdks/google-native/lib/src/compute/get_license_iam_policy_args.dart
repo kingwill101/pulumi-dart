@@ -15,7 +15,7 @@ class GetLicenseIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetLicenseIamPolicyArgs({
+  const GetLicenseIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

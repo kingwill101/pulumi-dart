@@ -10,7 +10,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
 
   /// Creates a new [ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput({
+  const ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutput({
     this.properties,
   });
 

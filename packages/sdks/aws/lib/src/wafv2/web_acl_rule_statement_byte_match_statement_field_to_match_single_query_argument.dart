@@ -8,7 +8,7 @@ class WebAclRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument {
 
   /// Creates a new [WebAclRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument({
+  const WebAclRuleStatementByteMatchStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

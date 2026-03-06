@@ -73,7 +73,7 @@ class DomainRedirect {
   /// [sniHost] The custom value of the SNI field. If you do not specify this parameter, the value of the `Host` header field is automatically used. In most cases, you do not need to specify a custom value for the SNI field. However, if you want WAF to use an SNI field whose value is different from the value of the Host header field in back-to-origin requests, you can specify a custom value for the SNI field.
   /// [writeTimeout] The timeout period of write connections. Unit: seconds. Valid values: 1 to 3600. Default value: 120.
   /// [xffProto] Specifies whether to use the X-Forward-For-Proto header field to pass the protocol used by WAF to forward requests to the origin server. Valid values:
-  DomainRedirect({
+  const DomainRedirect({
     this.backends,
     this.backupBackends,
     this.connectTimeout,

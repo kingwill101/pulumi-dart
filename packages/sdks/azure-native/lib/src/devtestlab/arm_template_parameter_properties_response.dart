@@ -12,7 +12,7 @@ class ArmTemplateParameterPropertiesResponse {
   /// Creates a new [ArmTemplateParameterPropertiesResponse].
   /// [name] The name of the template parameter.
   /// [value] The value of the template parameter.
-  ArmTemplateParameterPropertiesResponse({
+  const ArmTemplateParameterPropertiesResponse({
     this.name,
     this.value,
   });

@@ -11,7 +11,7 @@ class PipeTargetParametersSqsQueueParameters {
   /// Creates a new [PipeTargetParametersSqsQueueParameters].
   /// [messageDeduplicationId] This parameter applies only to FIFO (first-in-first-out) queues. The token used for deduplication of sent messages.
   /// [messageGroupId] The FIFO message group ID to use as the target.
-  PipeTargetParametersSqsQueueParameters({
+  const PipeTargetParametersSqsQueueParameters({
     this.messageDeduplicationId,
     this.messageGroupId,
   });

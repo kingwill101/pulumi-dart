@@ -15,7 +15,7 @@ class GetProxyArgs {
   /// Creates a new [GetProxyArgs].
   /// [name] Name of the DB proxy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetProxyArgs({
+  const GetProxyArgs({
     required this.name,
     this.region,
   });

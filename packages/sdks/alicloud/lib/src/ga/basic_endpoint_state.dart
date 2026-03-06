@@ -36,7 +36,7 @@ class BasicEndpointState {
   /// [endpointType] The type of the Basic Endpoint. Valid values: `ENI`, `SLB`, `ECS` and `NLB`.
   /// [endpointZoneId] The zone id of the Basic Endpoint.
   /// [status] The status of the Basic Endpoint.
-  BasicEndpointState({
+  const BasicEndpointState({
     this.acceleratorId,
     this.basicEndpointName,
     this.endpointAddress,

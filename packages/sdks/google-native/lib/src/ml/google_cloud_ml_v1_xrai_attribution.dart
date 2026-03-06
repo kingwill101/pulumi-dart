@@ -9,7 +9,7 @@ class GoogleCloudMlV1XraiAttribution {
 
   /// Creates a new [GoogleCloudMlV1XraiAttribution].
   /// [numIntegralSteps] Number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range.
-  GoogleCloudMlV1XraiAttribution({
+  const GoogleCloudMlV1XraiAttribution({
     this.numIntegralSteps,
   });
 

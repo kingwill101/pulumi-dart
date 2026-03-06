@@ -60,7 +60,7 @@ class ConnectorArgs {
   /// [serviceExecutionRoleArn] The Amazon Resource Name (ARN) of the IAM role used by the connector to access the Amazon Web Services resources that it needs. The types of resources depends on the logic of the connector. For example, a connector that has Amazon S3 as a destination must have permissions that allow it to write to the S3 destination bucket.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [workerConfiguration] Specifies which worker configuration to use with the connector. See `worker_configuration` Block for details.
-  ConnectorArgs({
+  const ConnectorArgs({
     required this.capacity,
     required this.connectorConfiguration,
     this.description,

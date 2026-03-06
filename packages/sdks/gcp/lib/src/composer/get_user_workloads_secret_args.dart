@@ -22,7 +22,7 @@ class GetUserWorkloadsSecretArgs {
   /// [name] Name of the Secret.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region of the environment.
-  GetUserWorkloadsSecretArgs({
+  const GetUserWorkloadsSecretArgs({
     required this.environment,
     required this.name,
     this.project,

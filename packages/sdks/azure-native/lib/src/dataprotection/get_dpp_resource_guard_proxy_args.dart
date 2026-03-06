@@ -18,7 +18,7 @@ class GetDppResourceGuardProxyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceGuardProxyName] name of the resource guard proxy
   /// [vaultName] The name of the backup vault.
-  GetDppResourceGuardProxyArgs({
+  const GetDppResourceGuardProxyArgs({
     required this.resourceGroupName,
     required this.resourceGuardProxyName,
     required this.vaultName,

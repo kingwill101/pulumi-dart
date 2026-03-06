@@ -16,7 +16,7 @@ class FeatureGroupFeatureDefinition {
   /// [collectionType] Optional.
   /// [featureName] The name of a feature. `feature_name` cannot be any of the following: `is_deleted`, `write_time`, `api_invocation_time`.
   /// [featureType] The value type of a feature. Valid values are `Integral`, `Fractional`, or `String`.
-  FeatureGroupFeatureDefinition({
+  const FeatureGroupFeatureDefinition({
     this.collectionConfig,
     this.collectionType,
     this.featureName,

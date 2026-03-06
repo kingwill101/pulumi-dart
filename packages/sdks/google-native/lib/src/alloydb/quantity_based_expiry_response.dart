@@ -12,7 +12,7 @@ class QuantityBasedExpiryResponse {
   /// Creates a new [QuantityBasedExpiryResponse].
   /// [retentionCount] The backup's position among its backups with the same source cluster and type, by descending chronological order create time(i.e. newest first).
   /// [totalRetentionCount] The length of the quantity-based queue, specified by the backup's retention policy.
-  QuantityBasedExpiryResponse({
+  const QuantityBasedExpiryResponse({
     required this.retentionCount,
     required this.totalRetentionCount,
   });

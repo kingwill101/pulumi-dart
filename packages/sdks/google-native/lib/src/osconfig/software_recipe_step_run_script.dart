@@ -16,7 +16,7 @@ class SoftwareRecipeStepRunScript {
   /// [allowedExitCodes] Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
   /// [interpreter] The script interpreter to use to run the script. If no interpreter is specified the script is executed directly, which likely only succeed for scripts with [shebang lines](https://en.wikipedia.org/wiki/Shebang_\(Unix\)).
   /// [script] The shell script to be executed.
-  SoftwareRecipeStepRunScript({
+  const SoftwareRecipeStepRunScript({
     this.allowedExitCodes,
     this.interpreter,
     required this.script,

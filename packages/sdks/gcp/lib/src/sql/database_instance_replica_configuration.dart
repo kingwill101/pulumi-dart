@@ -55,7 +55,7 @@ class DatabaseInstanceReplicaConfiguration {
   /// [sslCipher] Permissible ciphers for use in SSL encryption.
   /// [username] Username for replication connection.
   /// [verifyServerCertificate] True if the master's common name
-  DatabaseInstanceReplicaConfiguration({
+  const DatabaseInstanceReplicaConfiguration({
     this.caCertificate,
     this.cascadableReplica,
     this.clientCertificate,

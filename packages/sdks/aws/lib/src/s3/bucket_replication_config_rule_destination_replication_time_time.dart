@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleDestinationReplicationTimeTime {
 
   /// Creates a new [BucketReplicationConfigRuleDestinationReplicationTimeTime].
   /// [minutes] Time in minutes. Valid values: `15`.
-  BucketReplicationConfigRuleDestinationReplicationTimeTime({
+  const BucketReplicationConfigRuleDestinationReplicationTimeTime({
     required this.minutes,
   });
 

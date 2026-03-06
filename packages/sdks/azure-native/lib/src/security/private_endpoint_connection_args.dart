@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateLinkName] The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkName,
     required this.privateLinkServiceConnectionState,

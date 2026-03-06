@@ -48,7 +48,7 @@ class ExtensionArgs {
   /// [tags] A mapping of tags which should be assigned to the Hybrid Compute Machine Extension.
   /// [type] Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new Hybrid Compute Machine Extension to be created.
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  ExtensionArgs({
+  const ExtensionArgs({
     required this.arcMachineId,
     this.automaticUpgradeEnabled,
     this.forceUpdateTag,

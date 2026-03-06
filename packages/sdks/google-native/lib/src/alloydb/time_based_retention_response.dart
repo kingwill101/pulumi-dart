@@ -9,7 +9,7 @@ class TimeBasedRetentionResponse {
 
   /// Creates a new [TimeBasedRetentionResponse].
   /// [retentionPeriod] The retention period.
-  TimeBasedRetentionResponse({
+  const TimeBasedRetentionResponse({
     required this.retentionPeriod,
   });
 

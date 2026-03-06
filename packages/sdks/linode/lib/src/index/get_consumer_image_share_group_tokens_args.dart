@@ -19,7 +19,7 @@ class GetConsumerImageShareGroupTokensArgs {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [tokens] Optional.
-  GetConsumerImageShareGroupTokensArgs({
+  const GetConsumerImageShareGroupTokensArgs({
     this.filters,
     this.order,
     this.orderBy,

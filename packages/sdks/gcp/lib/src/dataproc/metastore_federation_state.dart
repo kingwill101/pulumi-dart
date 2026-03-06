@@ -66,7 +66,7 @@ class MetastoreFederationState {
   /// [uid] The globally unique resource identifier of the metastore federation.
   /// [updateTime] Output only. The time when the metastore federation was last updated.
   /// [version] The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
-  MetastoreFederationState({
+  const MetastoreFederationState({
     this.backendMetastores,
     this.createTime,
     this.deletionProtection,

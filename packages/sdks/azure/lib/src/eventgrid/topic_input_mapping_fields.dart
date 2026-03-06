@@ -23,7 +23,7 @@ class TopicInputMappingFields {
   /// [id] Specifies the id of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   /// [subject] Specifies the subject of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
   /// [topic] Specifies the topic of the EventGrid Event to associate with the domain. Changing this forces a new resource to be created.
-  TopicInputMappingFields({
+  const TopicInputMappingFields({
     this.dataVersion,
     this.eventTime,
     this.eventType,

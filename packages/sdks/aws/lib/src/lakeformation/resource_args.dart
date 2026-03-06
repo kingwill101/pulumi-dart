@@ -34,7 +34,7 @@ class ResourceArgs {
   /// [useServiceLinkedRole] Designates an AWS Identity and Access Management (IAM) service-linked role by registering this role with the Data Catalog.
   /// [withFederation] Whether or not the resource is a federated resource. Set to true when registering AWS Glue connections for federated catalog functionality.
   /// [withPrivilegedAccess] Boolean to grant the calling principal the permissions to perform all supported Lake Formation operations on the registered data location.
-  ResourceArgs({
+  const ResourceArgs({
     required this.arn,
     this.hybridAccessEnabled,
     this.region,

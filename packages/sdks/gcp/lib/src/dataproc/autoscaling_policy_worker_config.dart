@@ -25,7 +25,7 @@ class AutoscalingPolicyWorkerConfig {
   /// [maxInstances] Maximum number of instances for this group.
   /// [minInstances] Minimum number of instances for this group. Bounds: [2, maxInstances]. Defaults to 2.
   /// [weight] Weight for the instance group, which is used to determine the fraction of total workers
-  AutoscalingPolicyWorkerConfig({
+  const AutoscalingPolicyWorkerConfig({
     required this.maxInstances,
     this.minInstances,
     this.weight,

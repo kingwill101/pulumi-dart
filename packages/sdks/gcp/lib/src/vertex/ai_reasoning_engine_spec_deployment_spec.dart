@@ -49,7 +49,7 @@ class AiReasoningEngineSpecDeploymentSpec {
   /// [pscInterfaceConfig] Optional. Configuration for PSC-Interface.
   /// [resourceLimits] Optional. Resource limits for each container.
   /// [secretEnvs] Optional. Environment variables where the value is a secret in
-  AiReasoningEngineSpecDeploymentSpec({
+  const AiReasoningEngineSpecDeploymentSpec({
     this.containerConcurrency,
     this.envs,
     this.maxInstances,

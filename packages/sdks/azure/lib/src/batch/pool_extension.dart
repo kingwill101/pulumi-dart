@@ -34,7 +34,7 @@ class PoolExtension {
   /// [settingsJson] JSON formatted public settings for the extension, the value should be encoded with `jsonencode` function.
   /// [type] The type of the extensions.
   /// [typeHandlerVersion] The version of script handler.
-  PoolExtension({
+  const PoolExtension({
     this.autoUpgradeMinorVersion,
     this.automaticUpgradeEnabled,
     required this.name,

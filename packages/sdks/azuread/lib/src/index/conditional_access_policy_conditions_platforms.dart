@@ -11,7 +11,7 @@ class ConditionalAccessPolicyConditionsPlatforms {
   /// Creates a new [ConditionalAccessPolicyConditionsPlatforms].
   /// [excludedPlatforms] A list of platforms explicitly excluded from the policy. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
   /// [includedPlatforms] A list of platforms the policy applies to, unless explicitly excluded. Possible values are: `all`, `android`, `iOS`, `linux`, `macOS`, `windows`, `windowsPhone` or `unknownFutureValue`.
-  ConditionalAccessPolicyConditionsPlatforms({
+  const ConditionalAccessPolicyConditionsPlatforms({
     this.excludedPlatforms,
     required this.includedPlatforms,
   });

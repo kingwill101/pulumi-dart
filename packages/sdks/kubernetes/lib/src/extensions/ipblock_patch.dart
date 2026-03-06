@@ -12,7 +12,7 @@ class IPBlockPatch {
   /// Creates a new [IPBlockPatch].
   /// [cidr] CIDR is a string representing the IP Block Valid examples are "192.168.1.1/24"
   /// [except] Except is a slice of CIDRs that should not be included within an IP Block Valid examples are "192.168.1.1/24" Except values will be rejected if they are outside the CIDR range
-  IPBlockPatch({
+  const IPBlockPatch({
     this.cidr,
     this.except,
   });

@@ -26,7 +26,7 @@ class DataTransferServiceResourcePropertiesResponse {
   /// [locations] An array that contains all of the locations for the service.
   /// [serviceType] ServiceType for the service.
   /// [status] Describes the status of a service.
-  DataTransferServiceResourcePropertiesResponse({
+  const DataTransferServiceResourcePropertiesResponse({
     required this.creationTime,
     this.instanceCount,
     this.instanceSize,

@@ -18,7 +18,7 @@ class GetApplicationScalingRulesResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [rules] Required.
-  GetApplicationScalingRulesResult({
+  const GetApplicationScalingRulesResult({
     required this.appId,
     required this.id,
     required this.ids,

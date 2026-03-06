@@ -21,7 +21,7 @@ class BackupPolicyArgs {
   /// [dbClusterId] The id of the DBCluster.
   /// [preferredBackupPeriods] DBCluster Backup period. A list of DBCluster Backup period. Valid values: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"].
   /// [preferredBackupTime] DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     this.backupRetentionPeriod,
     required this.dbClusterId,
     required this.preferredBackupPeriods,

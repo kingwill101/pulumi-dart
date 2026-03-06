@@ -13,7 +13,7 @@ class GetOccurrenceContaineranalysisV1beta1Args {
   /// Creates a new [GetOccurrenceContaineranalysisV1beta1Args].
   /// [occurrenceId] Required.
   /// [project] Optional.
-  GetOccurrenceContaineranalysisV1beta1Args({
+  const GetOccurrenceContaineranalysisV1beta1Args({
     required this.occurrenceId,
     this.project,
   });

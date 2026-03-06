@@ -45,7 +45,7 @@ class GetImportJobMigrationcenterV1alpha1Result {
   /// [state] The state of the import job.
   /// [updateTime] The timestamp when the import job was last updated.
   /// [validationReport] The report with the validation results of the import job.
-  GetImportJobMigrationcenterV1alpha1Result({
+  const GetImportJobMigrationcenterV1alpha1Result({
     required this.assetSource,
     required this.completeTime,
     required this.createTime,

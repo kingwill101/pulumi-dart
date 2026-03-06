@@ -15,7 +15,7 @@ class GetPrivateLinkServicesForEDMUploadArgs {
   /// Creates a new [GetPrivateLinkServicesForEDMUploadArgs].
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  GetPrivateLinkServicesForEDMUploadArgs({
+  const GetPrivateLinkServicesForEDMUploadArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2IntentMessageImageResponse {
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageImageResponse].
   /// [accessibilityText] Optional. A text description of the image to be used for accessibility, e.g., screen readers.
   /// [imageUri] Optional. The public URI to an image file.
-  GoogleCloudDialogflowV2IntentMessageImageResponse({
+  const GoogleCloudDialogflowV2IntentMessageImageResponse({
     required this.accessibilityText,
     required this.imageUri,
   });

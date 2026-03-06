@@ -19,7 +19,7 @@ class GetKubernetesClusterAgentPoolProfileUpgradeSetting {
   /// [maxUnavailable] Required.
   /// [nodeSoakDurationInMinutes] The amount of time in minutes to wait after draining a node and before reimaging it and moving on to next node.
   /// [undrainableNodeBehavior] The action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`.
-  GetKubernetesClusterAgentPoolProfileUpgradeSetting({
+  const GetKubernetesClusterAgentPoolProfileUpgradeSetting({
     required this.drainTimeoutInMinutes,
     required this.maxSurge,
     required this.maxUnavailable,

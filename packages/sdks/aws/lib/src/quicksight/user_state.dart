@@ -41,7 +41,7 @@ class UserState {
   /// [userInvitationUrl] URL the user visits to complete registration and provide a password. Returned only for users with an identity type of `QUICKSIGHT`.
   /// [userName] Amazon QuickSight user name that you want to create for the user you are registering. Required only for users with an identity type of `QUICKSIGHT`.
   /// [userRole] Amazon QuickSight role for the user. Valid values: `READER`, `AUTHOR`, `ADMIN`, `READER_PRO`, `AUTHOR_PRO`, `ADMIN_PRO`, `RESTRICTED_AUTHOR`, `RESTRICTED_READER`.
-  UserState({
+  const UserState({
     this.arn,
     this.awsAccountId,
     this.email,

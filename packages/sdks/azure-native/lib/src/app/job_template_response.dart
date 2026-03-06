@@ -18,7 +18,7 @@ class JobTemplateResponse {
   /// [containers] List of container definitions for the Container App.
   /// [initContainers] List of specialized containers that run before app containers.
   /// [volumes] List of volume definitions for the Container App.
-  JobTemplateResponse({
+  const JobTemplateResponse({
     this.containers,
     this.initContainers,
     this.volumes,

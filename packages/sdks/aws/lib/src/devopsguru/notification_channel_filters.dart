@@ -11,7 +11,7 @@ class NotificationChannelFilters {
   /// Creates a new [NotificationChannelFilters].
   /// [messageTypes] Events to receive notifications for. Valid values are `NEW_INSIGHT`, `CLOSED_INSIGHT`, `NEW_ASSOCIATION`, `SEVERITY_UPGRADED`, and `NEW_RECOMMENDATION`.
   /// [severities] Severity levels to receive notifications for. Valid values are `LOW`, `MEDIUM`, and `HIGH`.
-  NotificationChannelFilters({
+  const NotificationChannelFilters({
     this.messageTypes,
     this.severities,
   });

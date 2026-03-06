@@ -41,7 +41,7 @@ class MemberState {
   /// [status] Current membership status of the member account.
   /// [updatedTime] Date and time, in UTC and extended RFC 3339 format, of the most recent change to the member account's status.
   /// [volumeUsageInBytes] Data volume in bytes per day for the member account.
-  MemberState({
+  const MemberState({
     this.accountId,
     this.administratorId,
     this.disableEmailNotification,

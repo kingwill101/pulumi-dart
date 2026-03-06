@@ -40,7 +40,7 @@ class InstanceRootBlockDevice {
   /// [volumeId] ID of the volume. For example, the ID can be accessed like this, `aws_instance.web.root_block_device.0.volume_id`.
   /// [volumeSize] Size of the volume in gibibytes (GiB).
   /// [volumeType] Type of volume. Valid values include `standard`, `gp2`, `gp3`, `io1`, `io2`, `sc1`, or `st1`. Defaults to the volume type that the AMI uses.
-  InstanceRootBlockDevice({
+  const InstanceRootBlockDevice({
     this.deleteOnTermination,
     this.deviceName,
     this.encrypted,

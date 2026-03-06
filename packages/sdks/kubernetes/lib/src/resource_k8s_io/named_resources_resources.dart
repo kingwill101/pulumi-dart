@@ -10,7 +10,7 @@ class NamedResourcesResources {
 
   /// Creates a new [NamedResourcesResources].
   /// [instances] The list of all individual resources instances currently available.
-  NamedResourcesResources({
+  const NamedResourcesResources({
     required this.instances,
   });
 

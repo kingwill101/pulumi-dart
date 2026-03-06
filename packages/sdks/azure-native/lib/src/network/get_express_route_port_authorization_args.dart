@@ -18,7 +18,7 @@ class GetExpressRoutePortAuthorizationArgs {
   /// [authorizationName] The name of the authorization.
   /// [expressRoutePortName] The name of the express route port.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRoutePortAuthorizationArgs({
+  const GetExpressRoutePortAuthorizationArgs({
     required this.authorizationName,
     required this.expressRoutePortName,
     required this.resourceGroupName,

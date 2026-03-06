@@ -21,7 +21,7 @@ class GetCatalogResult {
   /// [devCenterId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetCatalogResult({
+  const GetCatalogResult({
     required this.catalogAdogits,
     required this.catalogGithubs,
     required this.devCenterId,

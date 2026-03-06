@@ -32,7 +32,7 @@ class NodeMonitoringDataResponse {
   /// [nodeName] Name of the integration runtime node.
   /// [receivedBytes] Received bytes on the integration runtime node.
   /// [sentBytes] Sent bytes on the integration runtime node.
-  NodeMonitoringDataResponse({
+  const NodeMonitoringDataResponse({
     required this.additionalProperties,
     required this.availableMemoryInMB,
     required this.concurrentJobsLimit,

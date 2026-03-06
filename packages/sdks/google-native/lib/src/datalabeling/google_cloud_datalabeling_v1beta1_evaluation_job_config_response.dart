@@ -43,7 +43,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse {
   /// [imageClassificationConfig] Specify this field if your model version performs image classification or general classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
   /// [inputConfig] Rquired. Details for the sampled prediction input. Within this configuration, there are requirements for several fields: * `dataType` must be one of `IMAGE`, `TEXT`, or `GENERAL_DATA`. * `annotationType` must be one of `IMAGE_CLASSIFICATION_ANNOTATION`, `TEXT_CLASSIFICATION_ANNOTATION`, `GENERAL_CLASSIFICATION_ANNOTATION`, or `IMAGE_BOUNDING_BOX_ANNOTATION` (image object detection). * If your machine learning model performs classification, you must specify `classificationMetadata.isMultiLabel`. * You must specify `bigquerySource` (not `gcsSource`).
   /// [textClassificationConfig] Specify this field if your model version performs text classification. `annotationSpecSet` in this configuration must match EvaluationJob.annotationSpecSet. `allowMultiLabel` in this configuration must match `classificationMetadata.isMultiLabel` in input_config.
-  GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse({
+  const GoogleCloudDatalabelingV1beta1EvaluationJobConfigResponse({
     required this.bigqueryImportKeys,
     required this.boundingPolyConfig,
     required this.evaluationConfig,

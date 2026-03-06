@@ -10,7 +10,7 @@ class GetVirtualNetworkGatewayLearnedRoutesResult {
 
   /// Creates a new [GetVirtualNetworkGatewayLearnedRoutesResult].
   /// [value] List of gateway routes.
-  GetVirtualNetworkGatewayLearnedRoutesResult({
+  const GetVirtualNetworkGatewayLearnedRoutesResult({
     this.value,
   });
 

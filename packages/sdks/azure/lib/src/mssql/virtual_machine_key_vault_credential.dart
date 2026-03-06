@@ -17,7 +17,7 @@ class VirtualMachineKeyVaultCredential {
   /// [name] The credential name.
   /// [servicePrincipalName] The service principal name to access key vault. Changing this forces a new resource to be created.
   /// [servicePrincipalSecret] The service principal name secret to access key vault. Changing this forces a new resource to be created.
-  VirtualMachineKeyVaultCredential({
+  const VirtualMachineKeyVaultCredential({
     required this.keyVaultUrl,
     required this.name,
     required this.servicePrincipalName,

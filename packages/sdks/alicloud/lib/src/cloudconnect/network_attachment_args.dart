@@ -15,7 +15,7 @@ class NetworkAttachmentArgs {
   /// Creates a new [NetworkAttachmentArgs].
   /// [ccnId] The ID of the CCN instance.
   /// [sagId] The ID of the Smart Access Gateway instance.
-  NetworkAttachmentArgs({
+  const NetworkAttachmentArgs({
     required this.ccnId,
     required this.sagId,
   });

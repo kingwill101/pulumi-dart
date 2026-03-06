@@ -26,7 +26,7 @@ class UriOverrideResponseCloudtasksV2beta3 {
   /// [queryOverride] URI Query. When specified, replaces the query part of the task URI. Setting the query value to an empty string clears the URI query segment.
   /// [scheme] Scheme override. When specified, the task URI scheme is replaced by the provided value (HTTP or HTTPS).
   /// [uriOverrideEnforceMode] URI Override Enforce Mode When specified, determines the Target UriOverride mode. If not specified, it defaults to ALWAYS.
-  UriOverrideResponseCloudtasksV2beta3({
+  const UriOverrideResponseCloudtasksV2beta3({
     required this.host,
     required this.pathOverride,
     required this.port,

@@ -15,7 +15,7 @@ class IRuleArgs {
   /// Creates a new [IRuleArgs].
   /// [irule] Body of the iRule
   /// [name] Name of the iRule
-  IRuleArgs({
+  const IRuleArgs({
     required this.irule,
     required this.name,
   });

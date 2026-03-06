@@ -18,7 +18,7 @@ class GetSourceControlArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlId] Source control Id
   /// [workspaceName] The name of the workspace.
-  GetSourceControlArgs({
+  const GetSourceControlArgs({
     required this.resourceGroupName,
     required this.sourceControlId,
     required this.workspaceName,

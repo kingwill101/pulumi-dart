@@ -16,7 +16,7 @@ class ServerMigrationSpecificPropertiesResponse {
   /// [currentJobId] A type definition that refers the id to an Azure Resource Manager resource.
   /// [drApplianceInventoryId] A type definition that refers the id to an Azure Resource Manager resource.
   /// [instanceType] Migration Specific Properties Instance Types.
-  ServerMigrationSpecificPropertiesResponse({
+  const ServerMigrationSpecificPropertiesResponse({
     this.currentJobId,
     this.drApplianceInventoryId,
     required this.instanceType,

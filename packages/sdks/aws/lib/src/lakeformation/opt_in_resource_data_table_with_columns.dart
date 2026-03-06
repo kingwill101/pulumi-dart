@@ -21,7 +21,7 @@ class OptInResourceDataTableWithColumns {
   /// [columnWildcard] Wildcard specified by a ColumnWildcard object. At least one of ColumnNames or ColumnWildcard is required.
   /// [databaseName] The name of the database for the table. Unique to a Data Catalog. A database is a set of associated table definitions organized into a logical group. You can Grant and Revoke database privileges to a principal.
   /// [name] Name of the table.
-  OptInResourceDataTableWithColumns({
+  const OptInResourceDataTableWithColumns({
     this.catalogId,
     this.columnNames,
     this.columnWildcard,

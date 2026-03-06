@@ -9,7 +9,7 @@ class ChainChainConfigNodeNodeConfig {
 
   /// Creates a new [ChainChainConfigNodeNodeConfig].
   /// [denyPolicies] Blocking rules for scanning nodes in delivery chain nodes. See `deny_policy` below. **Note:** When `node_name` is `VULNERABILITY_SCANNING`, the parameters in `deny_policy` need to be filled in.
-  ChainChainConfigNodeNodeConfig({
+  const ChainChainConfigNodeNodeConfig({
     this.denyPolicies,
   });
 

@@ -39,7 +39,7 @@ class GetZonesResult {
   /// [outputFile] Optional.
   /// [spotStrategy] Optional.
   /// [zones] A list of availability zones. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     this.availableDiskCategory,
     this.availableInstanceType,
     this.availableResourceCreation,

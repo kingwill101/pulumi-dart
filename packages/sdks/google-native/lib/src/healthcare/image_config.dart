@@ -10,7 +10,7 @@ class ImageConfig {
 
   /// Creates a new [ImageConfig].
   /// [textRedactionMode] Determines how to redact text from image.
-  ImageConfig({
+  const ImageConfig({
     this.textRedactionMode,
   });
 

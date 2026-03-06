@@ -29,7 +29,7 @@ class GetApplicationGatewayFrontendIpConfiguration {
   /// [privateLinkConfigurationName] The name of the Private Link configuration in use by this Frontend IP Configuration.
   /// [publicIpAddressId] The ID of the Public IP Address which the Application Gateway will use.
   /// [subnetId] The ID of the subnet the private link configuration is connected to.
-  GetApplicationGatewayFrontendIpConfiguration({
+  const GetApplicationGatewayFrontendIpConfiguration({
     required this.id,
     required this.name,
     required this.privateIpAddress,

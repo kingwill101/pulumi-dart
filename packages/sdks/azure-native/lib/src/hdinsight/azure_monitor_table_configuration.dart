@@ -9,7 +9,7 @@ class AzureMonitorTableConfiguration {
 
   /// Creates a new [AzureMonitorTableConfiguration].
   /// [name] The name.
-  AzureMonitorTableConfiguration({
+  const AzureMonitorTableConfiguration({
     this.name,
   });
 

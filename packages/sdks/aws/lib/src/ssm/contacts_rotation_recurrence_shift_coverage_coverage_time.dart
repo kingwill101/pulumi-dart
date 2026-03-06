@@ -13,7 +13,7 @@ class ContactsRotationRecurrenceShiftCoverageCoverageTime {
   /// Creates a new [ContactsRotationRecurrenceShiftCoverageCoverageTime].
   /// [end] (Required) The end time of the on-call shift. See Hand Off Time for more details.
   /// [start] (Required) The start time of the on-call shift. See Hand Off Time for more details.
-  ContactsRotationRecurrenceShiftCoverageCoverageTime({
+  const ContactsRotationRecurrenceShiftCoverageCoverageTime({
     this.end,
     this.start,
   });

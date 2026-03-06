@@ -11,7 +11,7 @@ class GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig {
   /// Creates a new [GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig].
   /// [effectiveEdition] The 'StorageIntelligence' edition that is applicable for the resource.
   /// [intelligenceConfig] The Intelligence config resource that is applied for the target resource.
-  GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig({
+  const GetControlProjectIntelligenceConfigEffectiveIntelligenceConfig({
     required this.effectiveEdition,
     required this.intelligenceConfig,
   });

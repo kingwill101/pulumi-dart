@@ -18,7 +18,7 @@ class GetModelingArgs {
   /// [accountName] The name of the RecommendationsService Account resource.
   /// [modelingName] The name of the Modeling resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetModelingArgs({
+  const GetModelingArgs({
     required this.accountName,
     required this.modelingName,
     required this.resourceGroupName,

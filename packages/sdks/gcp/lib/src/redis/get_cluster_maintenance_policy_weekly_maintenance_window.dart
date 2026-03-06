@@ -27,7 +27,7 @@ class GetClusterMaintenancePolicyWeeklyMaintenanceWindow {
   /// [day] Required. The day of week that maintenance updates occur.
   /// [duration] Output only. Duration of the maintenance window.
   /// [startTimes] Required. Start time of the window in UTC time.
-  GetClusterMaintenancePolicyWeeklyMaintenanceWindow({
+  const GetClusterMaintenancePolicyWeeklyMaintenanceWindow({
     required this.day,
     required this.duration,
     required this.startTimes,

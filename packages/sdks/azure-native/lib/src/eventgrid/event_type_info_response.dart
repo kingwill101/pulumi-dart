@@ -15,7 +15,7 @@ class EventTypeInfoResponse {
   /// Creates a new [EventTypeInfoResponse].
   /// [inlineEventTypes] A collection of inline event types for the resource. The inline event type keys are of type string which represents the name of the event.
   /// [kind] The kind of event type used.
-  EventTypeInfoResponse({
+  const EventTypeInfoResponse({
     this.inlineEventTypes,
     this.kind,
   });

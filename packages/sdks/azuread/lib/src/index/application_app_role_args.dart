@@ -31,7 +31,7 @@ class ApplicationAppRoleArgs {
   /// [displayName] Display name for the app role that appears during app role assignment and in consent experiences.
   /// [roleId] The unique identifier of the app role. Must be a valid UUID. Changing this forces a new resource to be created.
   /// [value] The value that is used for the `roles` claim in ID tokens and OAuth 2.0 access tokens that are authenticating an assigned service or user principal.
-  ApplicationAppRoleArgs({
+  const ApplicationAppRoleArgs({
     required this.allowedMemberTypes,
     required this.applicationId,
     required this.description,

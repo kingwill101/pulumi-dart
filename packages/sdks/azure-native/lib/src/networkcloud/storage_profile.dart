@@ -12,7 +12,7 @@ class StorageProfile {
   /// Creates a new [StorageProfile].
   /// [osDisk] The disk to use with this virtual machine.
   /// [volumeAttachments] The resource IDs of volumes that are requested to be attached to the virtual machine.
-  StorageProfile({
+  const StorageProfile({
     required this.osDisk,
     this.volumeAttachments,
   });

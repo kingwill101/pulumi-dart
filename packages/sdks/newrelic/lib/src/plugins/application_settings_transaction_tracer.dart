@@ -22,7 +22,7 @@ class ApplicationSettingsTransactionTracer {
   /// [stackTraceThresholdValue] The response time threshold for collecting stack traces.
   /// [transactionThresholdType] The type of threshold for transactions. Valid values are `VALUE`,`APDEX_F`(4 times your apdex target)
   /// [transactionThresholdValue] The threshold value for transactions(in seconds).
-  ApplicationSettingsTransactionTracer({
+  const ApplicationSettingsTransactionTracer({
     this.explainQueryPlans,
     this.sql,
     this.stackTraceThresholdValue,

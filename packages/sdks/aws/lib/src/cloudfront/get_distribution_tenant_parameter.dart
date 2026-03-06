@@ -9,7 +9,7 @@ class GetDistributionTenantParameter {
   /// Creates a new [GetDistributionTenantParameter].
   /// [name] Required.
   /// [value] Required.
-  GetDistributionTenantParameter({
+  const GetDistributionTenantParameter({
     required this.name,
     required this.value,
   });

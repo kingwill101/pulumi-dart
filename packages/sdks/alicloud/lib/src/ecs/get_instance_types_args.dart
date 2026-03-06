@@ -68,7 +68,7 @@ class GetInstanceTypesArgs {
   /// [sortedBy] Sort mode, valid values: `CPU`, `Memory`, `Price`.
   /// [spotStrategy] Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
   /// [systemDiskCategory] Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`, `cloud_auto`.
-  GetInstanceTypesArgs({
+  const GetInstanceTypesArgs({
     this.availabilityZone,
     this.cpuCoreCount,
     this.eniAmount,

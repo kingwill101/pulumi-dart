@@ -15,7 +15,7 @@ class CapabilityArgs {
   /// Creates a new [CapabilityArgs].
   /// [capabilityType] The capability that should be applied to the Chaos Studio Target. For supported values please see this Chaos Studio [Fault Library](https://learn.microsoft.com/azure/chaos-studio/chaos-studio-fault-library). Changing this forces a new Chaos Studio Capability to be created.
   /// [chaosStudioTargetId] The Chaos Studio Target that the capability should be applied to. Changing this forces a new Chaos Studio Capability to be created.
-  CapabilityArgs({
+  const CapabilityArgs({
     required this.capabilityType,
     required this.chaosStudioTargetId,
   });

@@ -30,7 +30,7 @@ class GetActionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workflowId] The name of the logic app's workflow.
-  GetActionResult({
+  const GetActionResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

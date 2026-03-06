@@ -57,7 +57,7 @@ class SubscriptionPolicyAssignmentArgs {
   /// [policyDefinitionId] The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   /// [resourceSelectors] One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
   /// [subscriptionId] The ID of the Subscription where this Policy Assignment should be created. Changing this forces a new Policy Assignment to be created.
-  SubscriptionPolicyAssignmentArgs({
+  const SubscriptionPolicyAssignmentArgs({
     this.description,
     this.displayName,
     this.enforce,

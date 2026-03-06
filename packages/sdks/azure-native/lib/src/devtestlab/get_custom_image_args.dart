@@ -21,7 +21,7 @@ class GetCustomImageArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the CustomImage
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCustomImageArgs({
+  const GetCustomImageArgs({
     this.expand,
     required this.labName,
     required this.name,

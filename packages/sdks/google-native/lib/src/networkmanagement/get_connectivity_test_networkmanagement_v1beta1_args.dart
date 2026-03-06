@@ -13,7 +13,7 @@ class GetConnectivityTestNetworkmanagementV1beta1Args {
   /// Creates a new [GetConnectivityTestNetworkmanagementV1beta1Args].
   /// [connectivityTestId] Required.
   /// [project] Optional.
-  GetConnectivityTestNetworkmanagementV1beta1Args({
+  const GetConnectivityTestNetworkmanagementV1beta1Args({
     required this.connectivityTestId,
     this.project,
   });

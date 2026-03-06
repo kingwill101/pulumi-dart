@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField].
   /// [name] Name describing the field.
-  PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField({
+  const PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField({
     required this.name,
   });
 

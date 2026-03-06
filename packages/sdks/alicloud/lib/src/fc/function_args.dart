@@ -71,7 +71,7 @@ class FunctionArgs {
   /// [runtime] See [Runtimes][https://www.alibabacloud.com/help/zh/function-compute/latest/manage-functions#multiTask3514] for valid values.
   /// [service] The Function Compute service name.
   /// [timeout] The amount of time your function has to run in seconds.
-  FunctionArgs({
+  const FunctionArgs({
     this.caPort,
     this.codeChecksum,
     this.customContainerConfig,

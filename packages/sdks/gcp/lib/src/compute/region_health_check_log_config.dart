@@ -9,7 +9,7 @@ class RegionHealthCheckLogConfig {
 
   /// Creates a new [RegionHealthCheckLogConfig].
   /// [enable] Indicates whether or not to export logs. This is false by default,
-  RegionHealthCheckLogConfig({
+  const RegionHealthCheckLogConfig({
     this.enable,
   });
 

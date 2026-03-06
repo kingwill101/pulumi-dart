@@ -45,7 +45,7 @@ class GetGradientaiAgentTemplateKnowledgeBase {
   /// [updatedAt] Timestamp when the Knowledge Base was updated
   /// [userId] User ID of the Knowledge Base
   /// [uuid] UUID of the Knowledge Base
-  GetGradientaiAgentTemplateKnowledgeBase({
+  const GetGradientaiAgentTemplateKnowledgeBase({
     required this.addedToAgentAt,
     required this.createdAt,
     this.databaseId,

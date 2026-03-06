@@ -11,7 +11,7 @@ class ChannelEncoderSettingsNielsenConfiguration {
   /// Creates a new [ChannelEncoderSettingsNielsenConfiguration].
   /// [distributorId] Enter the Distributor ID assigned to your organization by Nielsen.
   /// [nielsenPcmToId3Tagging] Enables Nielsen PCM to ID3 tagging.
-  ChannelEncoderSettingsNielsenConfiguration({
+  const ChannelEncoderSettingsNielsenConfiguration({
     this.distributorId,
     this.nielsenPcmToId3Tagging,
   });

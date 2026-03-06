@@ -15,7 +15,7 @@ class GetEndpointConnectionArgs {
   /// Creates a new [GetEndpointConnectionArgs].
   /// [name] Specifies the Name of the private endpoint.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the private endpoint exists.
-  GetEndpointConnectionArgs({
+  const GetEndpointConnectionArgs({
     required this.name,
     required this.resourceGroupName,
   });

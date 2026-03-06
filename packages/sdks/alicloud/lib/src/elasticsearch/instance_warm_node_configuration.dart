@@ -20,7 +20,7 @@ class InstanceWarmNodeConfiguration {
   /// [diskEncryption] Elasticsearch cluster cold data node Disk encryption
   /// [diskType] Elasticsearch cluster cold data node disk type
   /// [spec] Elasticsearch cluster cold data node Disk Specification
-  InstanceWarmNodeConfiguration({
+  const InstanceWarmNodeConfiguration({
     this.amount,
     this.disk,
     this.diskEncryption,

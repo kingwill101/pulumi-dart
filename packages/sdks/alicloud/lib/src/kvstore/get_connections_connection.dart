@@ -36,7 +36,7 @@ class GetConnectionsConnection {
   /// [vpcId] The ID of the VPC where the instance is deployed.
   /// [vpcInstanceId] The ID of the instance. It is returned only when the value of the DBInstanceNetType parameter is 2 (indicating VPC).
   /// [vswitchId] The ID of the vSwitch.
-  GetConnectionsConnection({
+  const GetConnectionsConnection({
     required this.connectionString,
     required this.dbInstanceNetType,
     required this.expiredTime,

@@ -64,7 +64,7 @@ class DataSourceState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of data source repository. For an updated list of values, refer to [Valid Values for Type](https://docs.aws.amazon.com/kendra/latest/dg/API_CreateDataSource.html#Kendra-CreateDataSource-request-Type).
   /// [updatedAt] The Unix time stamp of when the Data Source was last updated.
-  DataSourceState({
+  const DataSourceState({
     this.arn,
     this.configuration,
     this.createdAt,

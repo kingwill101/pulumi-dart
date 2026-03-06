@@ -12,7 +12,7 @@ class PublicIPPrefixSku {
   /// Creates a new [PublicIPPrefixSku].
   /// [name] Name of a public IP prefix SKU.
   /// [tier] Tier of a public IP prefix SKU.
-  PublicIPPrefixSku({
+  const PublicIPPrefixSku({
     this.name,
     this.tier,
   });

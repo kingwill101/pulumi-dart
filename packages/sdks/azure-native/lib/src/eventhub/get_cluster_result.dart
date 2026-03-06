@@ -49,7 +49,7 @@ class GetClusterResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedAt] The UTC time when the Event Hubs Cluster was last updated.
-  GetClusterResult({
+  const GetClusterResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

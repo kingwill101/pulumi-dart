@@ -13,7 +13,7 @@ class CxToolVersionToolFunctionSpec {
   /// Creates a new [CxToolVersionToolFunctionSpec].
   /// [inputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the input of the function.
   /// [outputSchema] Optional. The JSON schema is encapsulated in a [google.protobuf.Struct](https://protobuf.dev/reference/protobuf/google.protobuf/#struct) to describe the output of the function.
-  CxToolVersionToolFunctionSpec({
+  const CxToolVersionToolFunctionSpec({
     this.inputSchema,
     this.outputSchema,
   });

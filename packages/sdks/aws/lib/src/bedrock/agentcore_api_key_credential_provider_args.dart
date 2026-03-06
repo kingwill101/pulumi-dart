@@ -31,7 +31,7 @@ class AgentcoreApiKeyCredentialProviderArgs {
   /// [apiKeyWoVersion] Used together with `api_key_wo` to trigger an update. Increment this value when an update to `api_key_wo` is required.
   /// [name] Name of the API Key credential provider. Forces replacement when changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AgentcoreApiKeyCredentialProviderArgs({
+  const AgentcoreApiKeyCredentialProviderArgs({
     this.apiKey,
     this.apiKeyWo,
     this.apiKeyWoVersion,

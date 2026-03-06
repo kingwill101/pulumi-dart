@@ -59,7 +59,7 @@ class InstanceState {
   /// [status] The status of the Instance. Valid values: `Running`, `Stopped`.
   /// [vncPassword] The VNC password of the instance. The password must be `6` characters in length and can contain only uppercase letters, lowercase letters, and digits.
   /// [vswitchId] The ID of the vSwitch.
-  InstanceState({
+  const InstanceState({
     this.autoPay,
     this.autoRenew,
     this.description,

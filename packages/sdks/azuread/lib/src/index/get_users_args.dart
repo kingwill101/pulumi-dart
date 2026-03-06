@@ -34,7 +34,7 @@ class GetUsersArgs {
   /// [objectIds] The object IDs of the users.
   /// [returnAll] When `true`, the data source will return all users. Cannot be used with `ignore_missing`. Defaults to `false`.
   /// [userPrincipalNames] The user principal names (UPNs) of the users.
-  GetUsersArgs({
+  const GetUsersArgs({
     this.employeeIds,
     this.ignoreMissing,
     this.mailNicknames,

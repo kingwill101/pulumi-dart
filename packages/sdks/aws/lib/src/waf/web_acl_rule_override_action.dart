@@ -8,7 +8,7 @@ class WebAclRuleOverrideAction {
 
   /// Creates a new [WebAclRuleOverrideAction].
   /// [type] valid values are: `NONE` or `COUNT`
-  WebAclRuleOverrideAction({
+  const WebAclRuleOverrideAction({
     required this.type,
   });
 

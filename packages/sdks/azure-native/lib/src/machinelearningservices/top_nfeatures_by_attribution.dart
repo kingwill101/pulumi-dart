@@ -11,7 +11,7 @@ class TopNFeaturesByAttribution {
   /// Creates a new [TopNFeaturesByAttribution].
   /// [filterType] Expected value is 'TopNByAttribution'.
   /// [top] The number of top features to include.
-  TopNFeaturesByAttribution({
+  const TopNFeaturesByAttribution({
     required this.filterType,
     this.top,
   });

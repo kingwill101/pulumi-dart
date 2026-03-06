@@ -77,7 +77,7 @@ class MulticastProducerAssociationNetworkservicesState {
   /// [states] (Output)
   /// [uniqueId] [Output only] The Google-generated UUID for the resource. This value is
   /// [updateTime] [Output only] The timestamp when the Multicast Producer Association was
-  MulticastProducerAssociationNetworkservicesState({
+  const MulticastProducerAssociationNetworkservicesState({
     this.createTime,
     this.description,
     this.effectiveLabels,

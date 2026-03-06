@@ -21,7 +21,7 @@ class GetTransitRouterMulticastDomainMembersArgs {
   /// [networkInterfaceId] The ID of the ENI.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  GetTransitRouterMulticastDomainMembersArgs({
+  const GetTransitRouterMulticastDomainMembersArgs({
     this.ids,
     this.networkInterfaceId,
     this.outputFile,

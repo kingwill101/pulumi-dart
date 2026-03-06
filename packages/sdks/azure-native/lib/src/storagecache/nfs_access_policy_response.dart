@@ -13,7 +13,7 @@ class NfsAccessPolicyResponse {
   /// Creates a new [NfsAccessPolicyResponse].
   /// [accessRules] The set of rules describing client accesses allowed under this policy.
   /// [name] Name identifying this policy. Access Policy names are not case sensitive.
-  NfsAccessPolicyResponse({
+  const NfsAccessPolicyResponse({
     required this.accessRules,
     required this.name,
   });

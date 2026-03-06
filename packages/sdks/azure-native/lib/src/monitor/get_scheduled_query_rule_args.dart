@@ -15,7 +15,7 @@ class GetScheduledQueryRuleArgs {
   /// Creates a new [GetScheduledQueryRuleArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] The name of the rule.
-  GetScheduledQueryRuleArgs({
+  const GetScheduledQueryRuleArgs({
     required this.resourceGroupName,
     required this.ruleName,
   });

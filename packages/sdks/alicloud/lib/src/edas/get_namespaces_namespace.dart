@@ -29,7 +29,7 @@ class GetNamespacesNamespace {
   /// [namespaceLogicalId] The ID of the namespace. **Note:** The ID cannot be changed after the namespace is created. The ID is in the format of `Physical region ID:Logical region identifier`.
   /// [namespaceName] The name of the namespace.
   /// [userId] The ID of the Alibaba Cloud account to which the namespace belongs.
-  GetNamespacesNamespace({
+  const GetNamespacesNamespace({
     required this.belongRegion,
     required this.debugEnable,
     required this.description,

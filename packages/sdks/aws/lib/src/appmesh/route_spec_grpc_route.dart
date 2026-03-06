@@ -21,7 +21,7 @@ class RouteSpecGrpcRoute {
   /// [match] Criteria for determining an gRPC request match.
   /// [retryPolicy] Retry policy.
   /// [timeout] Types of timeouts.
-  RouteSpecGrpcRoute({
+  const RouteSpecGrpcRoute({
     required this.action,
     this.match,
     this.retryPolicy,

@@ -10,7 +10,7 @@ class TCPSocketAction {
 
   /// Creates a new [TCPSocketAction].
   /// [type] The type of the action to take to perform the health check.
-  TCPSocketAction({
+  const TCPSocketAction({
     required this.type,
   });
 

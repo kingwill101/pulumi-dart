@@ -48,7 +48,7 @@ class LicenseConfigState {
   /// [startDate] The start date.
   /// [subscriptionTerm] Subscription term.
   /// [subscriptionTier] Subscription tier information for the license config.
-  LicenseConfigState({
+  const LicenseConfigState({
     this.autoRenew,
     this.endDate,
     this.freeTrial,

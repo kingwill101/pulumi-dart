@@ -30,7 +30,7 @@ class ReportArgs {
   /// [storageInfo] The information of 'bring your own storage' binding to the report
   /// [timeZone] Report collection trigger time's time zone, the available list can be obtained by executing "Get-TimeZone -ListAvailable" in PowerShell.
   /// [triggerTime] Report collection trigger time.
-  ReportArgs({
+  const ReportArgs({
     this.offerGuid,
     this.reportName,
     required this.resources,

@@ -63,7 +63,7 @@ class InstanceArgs {
   /// [publicIpEnabled] Whether public IP is enabled on the Looker instance.
   /// [reservedRange] Name of a reserved IP address range within the Instance.consumer_network, to be used for private services access connection. May or may not be specified in a create request.
   /// [userMetadata] User metadata.
-  InstanceArgs({
+  const InstanceArgs({
     this.adminSettings,
     this.consumerNetwork,
     this.customDomain,

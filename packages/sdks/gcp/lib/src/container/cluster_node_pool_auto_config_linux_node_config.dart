@@ -16,7 +16,7 @@ class ClusterNodePoolAutoConfigLinuxNodeConfig {
   /// Creates a new [ClusterNodePoolAutoConfigLinuxNodeConfig].
   /// [cgroupMode] Possible cgroup modes that can be used.
   /// [nodeKernelModuleLoading] Settings for kernel module loading. Structure is documented below.
-  ClusterNodePoolAutoConfigLinuxNodeConfig({
+  const ClusterNodePoolAutoConfigLinuxNodeConfig({
     this.cgroupMode,
     this.nodeKernelModuleLoading,
   });

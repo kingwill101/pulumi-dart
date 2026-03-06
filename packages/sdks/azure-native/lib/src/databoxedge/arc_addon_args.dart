@@ -34,7 +34,7 @@ class ArcAddonArgs {
   /// [resourceName] Arc resource Name
   /// [roleName] The role name.
   /// [subscriptionId] Arc resource subscription Id
-  ArcAddonArgs({
+  const ArcAddonArgs({
     this.addonName,
     required this.deviceName,
     required this.kind,

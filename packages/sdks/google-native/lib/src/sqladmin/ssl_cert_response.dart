@@ -33,7 +33,7 @@ class SslCertResponse {
   /// [kind] This is always `sql#sslCert`.
   /// [selfLink] The URI of this resource.
   /// [sha1Fingerprint] Sha1 Fingerprint.
-  SslCertResponse({
+  const SslCertResponse({
     required this.cert,
     required this.certSerialNumber,
     required this.commonName,

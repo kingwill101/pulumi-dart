@@ -86,7 +86,7 @@ class GetPackageResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationResults] The validation results. There's validation on package when it's created or updated.
   /// [version] Application version
-  GetPackageResult({
+  const GetPackageResult({
     required this.applicationName,
     required this.azureApiVersion,
     this.blobPath,

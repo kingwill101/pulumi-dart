@@ -55,7 +55,7 @@ class GameServerGroupArgs {
   /// [roleArn] ARN for an IAM role that allows Amazon GameLift to access your EC2 Auto Scaling groups.
   /// [tags] Key-value map of resource tags
   /// [vpcSubnets] A list of VPC subnets to use with instances in the game server group.
-  GameServerGroupArgs({
+  const GameServerGroupArgs({
     this.autoScalingPolicy,
     this.balancingStrategy,
     required this.gameServerGroupName,

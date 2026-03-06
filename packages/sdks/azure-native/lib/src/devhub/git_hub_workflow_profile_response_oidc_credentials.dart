@@ -12,7 +12,7 @@ class GitHubWorkflowProfileResponseOidcCredentials {
   /// Creates a new [GitHubWorkflowProfileResponseOidcCredentials].
   /// [azureClientId] Azure Application Client ID
   /// [azureTenantId] Azure Directory (tenant) ID
-  GitHubWorkflowProfileResponseOidcCredentials({
+  const GitHubWorkflowProfileResponseOidcCredentials({
     this.azureClientId,
     this.azureTenantId,
   });

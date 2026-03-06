@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse].
   /// [githubSettings] GitHub settings.
-  GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse({
+  const GoogleCloudDialogflowCxV3AgentGitIntegrationSettingsResponse({
     required this.githubSettings,
   });
 

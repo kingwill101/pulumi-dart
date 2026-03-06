@@ -31,7 +31,7 @@ class GenaiOpenaiApiKeyState {
   /// [name] A name for the API key.
   /// [updatedAt] When the API key was last updated.
   /// [uuid] The UUID of the API key.
-  GenaiOpenaiApiKeyState({
+  const GenaiOpenaiApiKeyState({
     this.apiKey,
     this.createdAt,
     this.createdBy,

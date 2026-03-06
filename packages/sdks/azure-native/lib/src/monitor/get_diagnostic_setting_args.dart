@@ -15,7 +15,7 @@ class GetDiagnosticSettingArgs {
   /// Creates a new [GetDiagnosticSettingArgs].
   /// [name] The name of the diagnostic setting.
   /// [resourceUri] The identifier of the resource.
-  GetDiagnosticSettingArgs({
+  const GetDiagnosticSettingArgs({
     required this.name,
     required this.resourceUri,
   });

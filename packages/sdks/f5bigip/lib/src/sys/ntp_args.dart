@@ -18,7 +18,7 @@ class NtpArgs {
   /// [description] User defined description.
   /// [servers] Specifies the time servers that the system uses to update the system time.
   /// [timezone] Specifies the time zone that you want to use for the system time.
-  NtpArgs({
+  const NtpArgs({
     required this.description,
     required this.servers,
     this.timezone,

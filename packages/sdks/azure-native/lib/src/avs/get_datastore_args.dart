@@ -21,7 +21,7 @@ class GetDatastoreArgs {
   /// [datastoreName] Name of the datastore
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDatastoreArgs({
+  const GetDatastoreArgs({
     required this.clusterName,
     required this.datastoreName,
     required this.privateCloudName,

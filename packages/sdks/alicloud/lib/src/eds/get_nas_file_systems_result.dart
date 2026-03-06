@@ -24,7 +24,7 @@ class GetNasFileSystemsResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [systems] Required.
-  GetNasFileSystemsResult({
+  const GetNasFileSystemsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

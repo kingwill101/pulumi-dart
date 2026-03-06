@@ -12,7 +12,7 @@ class RegistryPasswordResponse {
   /// Creates a new [RegistryPasswordResponse].
   /// [name] The password name.
   /// [value] The password value.
-  RegistryPasswordResponse({
+  const RegistryPasswordResponse({
     this.name,
     this.value,
   });

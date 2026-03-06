@@ -23,7 +23,7 @@ class FrontdoorFrontendEndpoint {
   /// [sessionAffinityEnabled] Whether to allow session affinity on this host. Valid options are `true` or `false` Defaults to `false`.
   /// [sessionAffinityTtlSeconds] The TTL to use in seconds for session affinity, if applicable. Defaults to `0`.
   /// [webApplicationFirewallPolicyLinkId] Defines the Web Application Firewall policy `ID` for each host.
-  FrontdoorFrontendEndpoint({
+  const FrontdoorFrontendEndpoint({
     required this.hostName,
     this.id,
     required this.name,

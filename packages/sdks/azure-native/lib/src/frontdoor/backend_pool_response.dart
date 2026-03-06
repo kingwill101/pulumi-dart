@@ -29,7 +29,7 @@ class BackendPoolResponse {
   /// [name] Resource name.
   /// [resourceState] Resource status.
   /// [type] Resource type.
-  BackendPoolResponse({
+  const BackendPoolResponse({
     this.backends,
     this.healthProbeSettings,
     this.id,

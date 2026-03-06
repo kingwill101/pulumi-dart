@@ -12,7 +12,7 @@ class ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1 {
   /// Creates a new [ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1].
   /// [free] Aggregate value which falls into the "Free" bucket.
   /// [used] Aggregate value which falls into the "Used" bucket.
-  ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1({
+  const ReportSummaryUtilizationChartDataResponseMigrationcenterV1alpha1({
     required this.free,
     required this.used,
   });

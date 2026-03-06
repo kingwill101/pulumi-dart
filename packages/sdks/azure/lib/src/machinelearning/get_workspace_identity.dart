@@ -17,7 +17,7 @@ class GetWorkspaceIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Identity assigned to this Machine Learning Workspace.
   /// [tenantId] The Tenant ID of the System Assigned Managed Identity assigned to this Machine Learning Workspace.
   /// [type] The Type of Managed Identity assigned to this Machine Learning Workspace.
-  GetWorkspaceIdentity({
+  const GetWorkspaceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

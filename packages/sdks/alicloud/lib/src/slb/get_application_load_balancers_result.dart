@@ -80,7 +80,7 @@ class GetApplicationLoadBalancersResult {
   /// [totalCount] Required.
   /// [vpcId] ID of the VPC the SLB belongs to.
   /// [vswitchId] ID of the vSwitch the SLB belongs to.
-  GetApplicationLoadBalancersResult({
+  const GetApplicationLoadBalancersResult({
     this.address,
     this.addressIpVersion,
     this.addressType,

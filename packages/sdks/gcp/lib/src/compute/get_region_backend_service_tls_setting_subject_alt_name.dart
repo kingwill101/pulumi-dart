@@ -11,7 +11,7 @@ class GetRegionBackendServiceTlsSettingSubjectAltName {
   /// Creates a new [GetRegionBackendServiceTlsSettingSubjectAltName].
   /// [dnsName] The SAN specified as a DNS Name.
   /// [uniformResourceIdentifier] The SAN specified as a URI.
-  GetRegionBackendServiceTlsSettingSubjectAltName({
+  const GetRegionBackendServiceTlsSettingSubjectAltName({
     required this.dnsName,
     required this.uniformResourceIdentifier,
   });

@@ -62,7 +62,7 @@ class NetworkInterfaceIPConfiguration {
   /// [subnet] Subnet bound to the IP configuration.
   /// [type] Resource type.
   /// [virtualNetworkTaps] The reference to Virtual Network Taps.
-  NetworkInterfaceIPConfiguration({
+  const NetworkInterfaceIPConfiguration({
     this.applicationGatewayBackendAddressPools,
     this.applicationSecurityGroups,
     this.gatewayLoadBalancer,

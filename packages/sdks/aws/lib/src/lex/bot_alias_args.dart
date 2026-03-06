@@ -28,7 +28,7 @@ class BotAliasArgs {
   /// [description] A description of the alias. Must be less than or equal to 200 characters in length.
   /// [name] The name of the alias. The name is not case sensitive. Must be less than or equal to 100 characters in length.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BotAliasArgs({
+  const BotAliasArgs({
     required this.botName,
     required this.botVersion,
     this.conversationLogs,

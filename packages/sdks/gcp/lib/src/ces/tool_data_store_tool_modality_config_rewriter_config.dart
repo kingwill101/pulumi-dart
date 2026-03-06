@@ -16,7 +16,7 @@ class ToolDataStoreToolModalityConfigRewriterConfig {
   /// [disabled] Whether the rewriter is disabled.
   /// [modelSettings] Model settings contains various configurations for the LLM model.
   /// [prompt] The prompt definition. If not set, default prompt will be used.
-  ToolDataStoreToolModalityConfigRewriterConfig({
+  const ToolDataStoreToolModalityConfigRewriterConfig({
     this.disabled,
     required this.modelSettings,
     this.prompt,

@@ -18,7 +18,7 @@ class GetLoggerArgs {
   /// [loggerId] Logger identifier. Must be unique in the API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetLoggerArgs({
+  const GetLoggerArgs({
     required this.loggerId,
     required this.resourceGroupName,
     required this.serviceName,

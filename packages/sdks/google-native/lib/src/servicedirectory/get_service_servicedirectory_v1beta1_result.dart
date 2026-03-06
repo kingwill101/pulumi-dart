@@ -25,7 +25,7 @@ class GetServiceServicedirectoryV1beta1Result {
   /// [name] Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`.
   /// [uid] A globally unique identifier (in UUID4 format) for this service.
   /// [updateTime] The timestamp when the service was last updated. Note: endpoints being created/deleted/updated within the service are not considered service updates for the purpose of this timestamp.
-  GetServiceServicedirectoryV1beta1Result({
+  const GetServiceServicedirectoryV1beta1Result({
     required this.createTime,
     required this.endpoints,
     required this.metadata,

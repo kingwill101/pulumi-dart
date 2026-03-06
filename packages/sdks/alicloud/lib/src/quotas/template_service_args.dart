@@ -13,7 +13,7 @@ class TemplateServiceArgs {
 
   /// Creates a new [TemplateServiceArgs].
   /// [serviceStatus] Status of the quota template. Valid values:
-  TemplateServiceArgs({
+  const TemplateServiceArgs({
     required this.serviceStatus,
   });
 

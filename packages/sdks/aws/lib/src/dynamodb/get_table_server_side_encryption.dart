@@ -9,7 +9,7 @@ class GetTableServerSideEncryption {
   /// Creates a new [GetTableServerSideEncryption].
   /// [enabled] Required.
   /// [kmsKeyArn] Required.
-  GetTableServerSideEncryption({
+  const GetTableServerSideEncryption({
     required this.enabled,
     required this.kmsKeyArn,
   });

@@ -10,7 +10,7 @@ class ReferenceListScopeInfo {
 
   /// Creates a new [ReferenceListScopeInfo].
   /// [referenceListScope] ReferenceListScope specifies the list of scope names of the reference list.
-  ReferenceListScopeInfo({
+  const ReferenceListScopeInfo({
     this.referenceListScope,
   });
 

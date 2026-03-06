@@ -18,7 +18,7 @@ class LogDestinationResponse {
   /// [eventHubConfigurations] Event Hub configurations
   /// [monitorConfigurations] Monitor Log configurations
   /// [storageConfigurations] Storage account configurations
-  LogDestinationResponse({
+  const LogDestinationResponse({
     this.eventHubConfigurations,
     this.monitorConfigurations,
     this.storageConfigurations,

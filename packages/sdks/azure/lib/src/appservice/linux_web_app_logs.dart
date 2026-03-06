@@ -19,7 +19,7 @@ class LinuxWebAppLogs {
   /// [detailedErrorMessages] Should detailed error messages be enabled?
   /// [failedRequestTracing] Should the failed request tracing be enabled?
   /// [httpLogs] An `http_logs` block as defined above.
-  LinuxWebAppLogs({
+  const LinuxWebAppLogs({
     this.applicationLogs,
     this.detailedErrorMessages,
     this.failedRequestTracing,

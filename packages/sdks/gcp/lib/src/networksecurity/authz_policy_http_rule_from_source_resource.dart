@@ -15,7 +15,7 @@ class AuthzPolicyHttpRuleFromSourceResource {
   /// Creates a new [AuthzPolicyHttpRuleFromSourceResource].
   /// [iamServiceAccount] An IAM service account to match against the source service account of the VM sending the request.
   /// [tagValueIdSet] A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
-  AuthzPolicyHttpRuleFromSourceResource({
+  const AuthzPolicyHttpRuleFromSourceResource({
     this.iamServiceAccount,
     this.tagValueIdSet,
   });

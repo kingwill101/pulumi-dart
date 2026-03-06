@@ -32,7 +32,7 @@ class JobScheduleArgs {
   /// [runOn] Name of a Hybrid Worker Group the Runbook will be executed on. Changing this forces a new resource to be created.
   /// [runbookName] The name of a Runbook to link to a Schedule. It needs to be in the same Automation Account as the Schedule and Job Schedule. Changing this forces a new resource to be created.
   /// [scheduleName] The name of the Schedule. Changing this forces a new resource to be created.
-  JobScheduleArgs({
+  const JobScheduleArgs({
     required this.automationAccountName,
     this.jobScheduleId,
     this.parameters,

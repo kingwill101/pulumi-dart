@@ -13,7 +13,7 @@ class GetUrlMapArgs {
   /// Creates a new [GetUrlMapArgs].
   /// [project] Optional.
   /// [urlMap] Required.
-  GetUrlMapArgs({
+  const GetUrlMapArgs({
     this.project,
     required this.urlMap,
   });

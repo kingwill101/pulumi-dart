@@ -11,7 +11,7 @@ class EventSubscriptionDeliveryIdentity {
   /// Creates a new [EventSubscriptionDeliveryIdentity].
   /// [type] Specifies the type of Managed Service Identity that is used for event delivery. Allowed value is `SystemAssigned`, `UserAssigned`.
   /// [userAssignedIdentity] The user identity associated with the resource.
-  EventSubscriptionDeliveryIdentity({
+  const EventSubscriptionDeliveryIdentity({
     required this.type,
     this.userAssignedIdentity,
   });

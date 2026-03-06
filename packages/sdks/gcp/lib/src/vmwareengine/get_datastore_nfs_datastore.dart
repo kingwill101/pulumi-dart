@@ -13,7 +13,7 @@ class GetDatastoreNfsDatastore {
   /// Creates a new [GetDatastoreNfsDatastore].
   /// [googleFileServices] Google service file service configuration
   /// [thirdPartyFileServices] Third party file service configuration
-  GetDatastoreNfsDatastore({
+  const GetDatastoreNfsDatastore({
     required this.googleFileServices,
     required this.thirdPartyFileServices,
   });

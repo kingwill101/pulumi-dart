@@ -53,7 +53,7 @@ class GetAutonomousDatabaseResult {
   /// [properties] Required.
   /// [pulumiLabels] Required.
   /// [sourceConfigs] Required.
-  GetAutonomousDatabaseResult({
+  const GetAutonomousDatabaseResult({
     required this.adminPassword,
     required this.autonomousDatabaseId,
     required this.cidr,

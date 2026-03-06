@@ -11,7 +11,7 @@ class ContainerServicePrivateRegistryAccessEcrImagePullerRole {
   /// Creates a new [ContainerServicePrivateRegistryAccessEcrImagePullerRole].
   /// [isActive] Whether to activate the role. Defaults to `false`.
   /// [principalArn] Principal ARN of the container service. The principal ARN can be used to create a trust relationship between your standard AWS account and your Lightsail container service.
-  ContainerServicePrivateRegistryAccessEcrImagePullerRole({
+  const ContainerServicePrivateRegistryAccessEcrImagePullerRole({
     this.isActive,
     this.principalArn,
   });

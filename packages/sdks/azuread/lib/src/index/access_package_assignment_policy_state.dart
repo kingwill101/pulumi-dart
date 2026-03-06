@@ -40,7 +40,7 @@ class AccessPackageAssignmentPolicyState {
   /// [extensionEnabled] Whether users will be able to request extension of their access to this package before their access expires.
   /// [questions] One or more `question` blocks for the requestor, as documented below.
   /// [requestorSettings] A `requestor_settings` block to configure the users who can request access, as documented below.
-  AccessPackageAssignmentPolicyState({
+  const AccessPackageAssignmentPolicyState({
     this.accessPackageId,
     this.approvalSettings,
     this.assignmentReviewSettings,

@@ -18,7 +18,7 @@ class GetAppResourceUploadUrlArgs {
   /// [appName] The name of the App resource.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetAppResourceUploadUrlArgs({
+  const GetAppResourceUploadUrlArgs({
     required this.appName,
     required this.resourceGroupName,
     required this.serviceName,

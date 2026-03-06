@@ -16,7 +16,7 @@ class GoogleCloudDatalabelingV1beta1ImageClassificationConfig {
   /// [allowMultiLabel] Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one image.
   /// [annotationSpecSet] Annotation spec set resource name.
   /// [answerAggregationType] Optional. The type of how to aggregate answers.
-  GoogleCloudDatalabelingV1beta1ImageClassificationConfig({
+  const GoogleCloudDatalabelingV1beta1ImageClassificationConfig({
     this.allowMultiLabel,
     required this.annotationSpecSet,
     this.answerAggregationType,

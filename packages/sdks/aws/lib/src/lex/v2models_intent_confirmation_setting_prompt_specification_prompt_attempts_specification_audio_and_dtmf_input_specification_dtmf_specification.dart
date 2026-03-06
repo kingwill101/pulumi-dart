@@ -17,7 +17,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   /// [endCharacter] DTMF character that immediately ends input. If the user does not press this character, the input ends after the end timeout.
   /// [endTimeoutMs] How long the bot should wait after the last DTMF character input before assuming that the input has concluded.
   /// [maxLength] Maximum number of DTMF digits allowed in an utterance.
-  V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification({
+  const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification({
     required this.deletionCharacter,
     required this.endCharacter,
     required this.endTimeoutMs,

@@ -13,7 +13,7 @@ class LinuxProfileProperties {
   /// Creates a new [LinuxProfileProperties].
   /// [adminUsername] AdminUsername - The administrator username to use for Linux VMs.
   /// [ssh] SSH - SSH configuration for Linux-based VMs running on Azure.
-  LinuxProfileProperties({
+  const LinuxProfileProperties({
     this.adminUsername,
     this.ssh,
   });

@@ -17,7 +17,7 @@ class GetVpcSubnetsArgs {
   /// Creates a new [GetVpcSubnetsArgs].
   /// [filters] Optional.
   /// [vpcId] The id of the parent VPC for the list of VPCs.
-  GetVpcSubnetsArgs({
+  const GetVpcSubnetsArgs({
     this.filters,
     required this.vpcId,
   });

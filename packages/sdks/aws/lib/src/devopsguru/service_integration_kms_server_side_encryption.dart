@@ -14,7 +14,7 @@ class ServiceIntegrationKmsServerSideEncryption {
   /// [kmsKeyId] KMS key ID. This value can be a key ID, key ARN, alias name, or alias ARN.
   /// [optInStatus] Specifies whether KMS integration is enabled. Valid values are `DISABLED` and `ENABLED`.
   /// [type] Type of KMS key used. Valid values are `CUSTOMER_MANAGED_KEY` and `AWS_OWNED_KMS_KEY`.
-  ServiceIntegrationKmsServerSideEncryption({
+  const ServiceIntegrationKmsServerSideEncryption({
     this.kmsKeyId,
     this.optInStatus,
     this.type,

@@ -16,7 +16,7 @@ class ServiceSourceConfigurationCodeRepositoryCodeConfiguration {
   /// Creates a new [ServiceSourceConfigurationCodeRepositoryCodeConfiguration].
   /// [codeConfigurationValues] Basic configuration for building and running the App Runner service. Use this parameter to quickly launch an App Runner service without providing an apprunner.yaml file in the source code repository (or ignoring the file if it exists). See Code Configuration Values below for more details.
   /// [configurationSource] Source of the App Runner configuration. Valid values: `REPOSITORY`, `API`. Values are interpreted as follows:
-  ServiceSourceConfigurationCodeRepositoryCodeConfiguration({
+  const ServiceSourceConfigurationCodeRepositoryCodeConfiguration({
     this.codeConfigurationValues,
     required this.configurationSource,
   });

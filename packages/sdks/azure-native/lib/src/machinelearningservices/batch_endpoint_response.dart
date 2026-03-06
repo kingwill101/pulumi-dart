@@ -28,7 +28,7 @@ class BatchEndpointResponse {
   /// [provisioningState] Provisioning state for the endpoint.
   /// [scoringUri] Endpoint URI.
   /// [swaggerUri] Endpoint Swagger URI.
-  BatchEndpointResponse({
+  const BatchEndpointResponse({
     required this.authMode,
     this.defaults,
     this.description,

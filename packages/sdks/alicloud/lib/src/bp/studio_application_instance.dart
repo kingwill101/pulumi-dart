@@ -14,7 +14,7 @@ class StudioApplicationInstance {
   /// [id] The id of the instance.
   /// [nodeName] The name of the instance.
   /// [nodeType] The type of the instance.
-  StudioApplicationInstance({
+  const StudioApplicationInstance({
     this.id,
     this.nodeName,
     this.nodeType,

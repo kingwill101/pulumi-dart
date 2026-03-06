@@ -35,7 +35,7 @@ class GetEcsStorageCapacityUnitsUnit {
   /// [status] The status of Storage Capacity Unit.
   /// [storageCapacityUnitId] The ID of Storage Capacity Unit.
   /// [storageCapacityUnitName] The name of the Storage Capacity Unit.
-  GetEcsStorageCapacityUnitsUnit({
+  const GetEcsStorageCapacityUnitsUnit({
     required this.allocationStatus,
     required this.capacity,
     required this.createTime,

@@ -63,7 +63,7 @@ class JobDataprocV1beta2Args {
   /// [sparkJob] Optional. Job is a Spark job.
   /// [sparkRJob] Optional. Job is a SparkR job.
   /// [sparkSqlJob] Optional. Job is a SparkSql job.
-  JobDataprocV1beta2Args({
+  const JobDataprocV1beta2Args({
     this.hadoopJob,
     this.hiveJob,
     this.labels,

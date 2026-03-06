@@ -23,7 +23,7 @@ class BucketWormState {
   /// [retentionPeriodInDays] The specified number of days to retain the Object.
   /// [status] The status of the compliance retention policy. Optional values:
   /// [wormId] The ID of the retention policy.
-  BucketWormState({
+  const BucketWormState({
     this.bucket,
     this.createTime,
     this.retentionPeriodInDays,

@@ -8,7 +8,7 @@ class ConfigurationSetEventDestinationEventDestinationSnsDestination {
 
   /// Creates a new [ConfigurationSetEventDestinationEventDestinationSnsDestination].
   /// [topicArn] The Amazon Resource Name (ARN) of the Amazon SNS topic to publish email events to.
-  ConfigurationSetEventDestinationEventDestinationSnsDestination({
+  const ConfigurationSetEventDestinationEventDestinationSnsDestination({
     required this.topicArn,
   });
 

@@ -9,7 +9,7 @@ class UserAssignedIdentityResponse {
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Optional.
   /// [principalId] Optional.
-  UserAssignedIdentityResponse({
+  const UserAssignedIdentityResponse({
     this.clientId,
     this.principalId,
   });

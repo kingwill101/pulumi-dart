@@ -19,7 +19,7 @@ class SchemaReferenceArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [schemaReferenceName] The name of the SchemaReference
-  SchemaReferenceArgs({
+  const SchemaReferenceArgs({
     this.properties,
     required this.resourceUri,
     this.schemaReferenceName,

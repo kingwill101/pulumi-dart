@@ -13,7 +13,7 @@ class GetOrganizationExclusionArgs {
   /// Creates a new [GetOrganizationExclusionArgs].
   /// [exclusionId] Required.
   /// [organizationId] Required.
-  GetOrganizationExclusionArgs({
+  const GetOrganizationExclusionArgs({
     required this.exclusionId,
     required this.organizationId,
   });

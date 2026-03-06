@@ -15,7 +15,7 @@ class GetTagTemplateIamPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tagTemplateId] Required.
-  GetTagTemplateIamPolicyArgs({
+  const GetTagTemplateIamPolicyArgs({
     required this.location,
     this.project,
     required this.tagTemplateId,

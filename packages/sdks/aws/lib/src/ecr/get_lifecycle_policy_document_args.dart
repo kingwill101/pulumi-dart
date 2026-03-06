@@ -12,7 +12,7 @@ class GetLifecyclePolicyDocumentArgs {
 
   /// Creates a new [GetLifecyclePolicyDocumentArgs].
   /// [rules] Required.
-  GetLifecyclePolicyDocumentArgs({
+  const GetLifecyclePolicyDocumentArgs({
     required this.rules,
   });
 

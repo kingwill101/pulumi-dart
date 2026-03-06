@@ -11,7 +11,7 @@ class InstanceServerlessConfig {
   /// Creates a new [InstanceServerlessConfig].
   /// [reservedPublishCapacity] The reserved capacity for publishing messages.
   /// [reservedSubscribeCapacity] The reserved capacity for subscribing to message.
-  InstanceServerlessConfig({
+  const InstanceServerlessConfig({
     this.reservedPublishCapacity,
     this.reservedSubscribeCapacity,
   });

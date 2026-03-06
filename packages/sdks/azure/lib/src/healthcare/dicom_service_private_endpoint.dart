@@ -11,7 +11,7 @@ class DicomServicePrivateEndpoint {
   /// Creates a new [DicomServicePrivateEndpoint].
   /// [id] The ID of the Healthcare DICOM Service.
   /// [name] Specifies the name of the Healthcare DICOM Service. Changing this forces a new Healthcare DICOM Service to be created.
-  DicomServicePrivateEndpoint({
+  const DicomServicePrivateEndpoint({
     this.id,
     this.name,
   });

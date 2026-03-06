@@ -32,7 +32,7 @@ class AzStackHCIFabricModelCustomPropertiesResponse {
   /// [instanceType] Gets or sets the instance type.
   /// [migrationHubUri] Gets or sets the migration hub Uri.
   /// [migrationSolutionId] Gets or sets the Migration solution ARM Id.
-  AzStackHCIFabricModelCustomPropertiesResponse({
+  const AzStackHCIFabricModelCustomPropertiesResponse({
     required this.applianceName,
     required this.azStackHciSiteId,
     required this.cluster,

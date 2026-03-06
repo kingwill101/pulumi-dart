@@ -13,7 +13,7 @@ class PolicyPropertiesResponse {
   /// Creates a new [PolicyPropertiesResponse].
   /// [friendlyName] The FriendlyName.
   /// [providerSpecificDetails] The ReplicationChannelSetting.
-  PolicyPropertiesResponse({
+  const PolicyPropertiesResponse({
     this.friendlyName,
     this.providerSpecificDetails,
   });

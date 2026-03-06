@@ -12,7 +12,7 @@ class AkriConnectorTemplatePersistentVolumeClaimResponse {
   /// Creates a new [AkriConnectorTemplatePersistentVolumeClaimResponse].
   /// [claimName] The name of the persistent volume claim.
   /// [mountPath] The mount path for the persistent volume claim.
-  AkriConnectorTemplatePersistentVolumeClaimResponse({
+  const AkriConnectorTemplatePersistentVolumeClaimResponse({
     required this.claimName,
     required this.mountPath,
   });

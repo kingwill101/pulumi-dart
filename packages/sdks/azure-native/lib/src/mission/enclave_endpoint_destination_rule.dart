@@ -18,7 +18,7 @@ class EnclaveEndpointDestinationRule {
   /// [endpointRuleName] Endpoint Rule Name.
   /// [ports] Port. Can include multiple ports separated by commas or a range indicated by a hyphen.
   /// [protocols] Protocols. Options specified by Endpoint Protocol Enum.
-  EnclaveEndpointDestinationRule({
+  const EnclaveEndpointDestinationRule({
     this.destination,
     this.endpointRuleName,
     this.ports,

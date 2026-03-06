@@ -11,7 +11,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatem
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement].
   /// [key] The string to match against.
   /// [scope] Specify whether you want to match using the label name or just the namespace. Valid values are `LABEL` or `NAMESPACE`.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementLabelMatchStatement({
     required this.key,
     required this.scope,
   });

@@ -14,7 +14,7 @@ class GetVpnServerConfigurationRadiusServer {
   /// [address] The Address of the Radius Server.
   /// [score] The Score of the Radius Server determines the priority of the server.
   /// [secret] The Secret used to communicate with the Radius Server.
-  GetVpnServerConfigurationRadiusServer({
+  const GetVpnServerConfigurationRadiusServer({
     required this.address,
     required this.score,
     required this.secret,

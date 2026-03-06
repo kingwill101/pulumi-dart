@@ -16,7 +16,7 @@ class GetTransitionRouteGroupDialogflowV3beta1Result {
   /// [displayName] The human-readable name of the transition route group, unique within the flow. The display name can be no longer than 30 characters.
   /// [name] The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` or `projects//locations//agents//transitionRouteGroups/` for agent-level groups.
   /// [transitionRoutes] Transition routes associated with the TransitionRouteGroup.
-  GetTransitionRouteGroupDialogflowV3beta1Result({
+  const GetTransitionRouteGroupDialogflowV3beta1Result({
     required this.displayName,
     required this.name,
     required this.transitionRoutes,

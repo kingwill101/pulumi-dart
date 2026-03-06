@@ -67,7 +67,7 @@ class SubscriptionArgs {
   /// [retryPolicy] Optional. A policy that specifies how Pub/Sub retries message delivery for this subscription. If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers. RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message.
   /// [subscriptionId] Required.
   /// [topic] The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`. The value of this field will be `_deleted-topic_` if the topic has been deleted.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.ackDeadlineSeconds,
     this.bigqueryConfig,
     this.cloudStorageConfig,

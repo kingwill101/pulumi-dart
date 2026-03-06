@@ -32,7 +32,7 @@ class IAMMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
-  IAMMemberArgs({
+  const IAMMemberArgs({
     this.condition,
     required this.member,
     required this.role,

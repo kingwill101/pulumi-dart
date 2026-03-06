@@ -7,7 +7,7 @@ class AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3 {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3].
   /// [bucketName] Required.
-  AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3({
+  const AgentFlowDefinitionNodeConfigurationRetrievalServiceConfigurationS3({
     required this.bucketName,
   });
 

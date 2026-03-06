@@ -7,7 +7,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload].
   /// [value] Required.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupMessageCustomPayload({
     required this.value,
   });
 

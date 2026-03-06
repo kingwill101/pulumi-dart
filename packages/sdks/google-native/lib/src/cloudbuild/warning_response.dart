@@ -12,7 +12,7 @@ class WarningResponse {
   /// Creates a new [WarningResponse].
   /// [priority] The priority for this warning.
   /// [text] Explanation of the warning generated.
-  WarningResponse({
+  const WarningResponse({
     required this.priority,
     required this.text,
   });

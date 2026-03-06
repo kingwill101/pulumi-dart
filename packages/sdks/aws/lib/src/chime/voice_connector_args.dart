@@ -26,7 +26,7 @@ class VoiceConnectorArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requireEncryption] When enabled, requires encryption for the Amazon Chime Voice Connector.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  VoiceConnectorArgs({
+  const VoiceConnectorArgs({
     this.awsRegion,
     this.name,
     this.region,

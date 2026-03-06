@@ -16,7 +16,7 @@ class MigrationStatusResponse {
   /// [currentSubStateDetails] Current migration sub state details.
   /// [error] Error message, if any, for the migration state.
   /// [state] State of migration.
-  MigrationStatusResponse({
+  const MigrationStatusResponse({
     required this.currentSubStateDetails,
     required this.error,
     required this.state,

@@ -13,7 +13,7 @@ class GetGcpUserAccessBindingArgs {
   /// Creates a new [GetGcpUserAccessBindingArgs].
   /// [gcpUserAccessBindingId] Required.
   /// [organizationId] Required.
-  GetGcpUserAccessBindingArgs({
+  const GetGcpUserAccessBindingArgs({
     required this.gcpUserAccessBindingId,
     required this.organizationId,
   });

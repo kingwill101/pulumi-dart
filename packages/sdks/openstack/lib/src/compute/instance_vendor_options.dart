@@ -16,7 +16,7 @@ class InstanceVendorOptions {
   /// Creates a new [InstanceVendorOptions].
   /// [detachPortsBeforeDestroy] Whether to try to detach all attached
   /// [ignoreResizeConfirmation] Boolean to control whether
-  InstanceVendorOptions({
+  const InstanceVendorOptions({
     this.detachPortsBeforeDestroy,
     this.ignoreResizeConfirmation,
   });

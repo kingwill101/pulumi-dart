@@ -11,7 +11,7 @@ class InterfacePublicIpv4Address {
   /// Creates a new [InterfacePublicIpv4Address].
   /// [address] The IPv4 address. Defaults to "auto" for automatic assignment.
   /// [primary] Whether this address is the primary address for the interface.
-  InterfacePublicIpv4Address({
+  const InterfacePublicIpv4Address({
     this.address,
     this.primary,
   });

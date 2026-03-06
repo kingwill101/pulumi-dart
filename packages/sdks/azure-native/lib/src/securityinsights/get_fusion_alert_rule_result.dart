@@ -52,7 +52,7 @@ class GetFusionAlertRuleResult {
   /// [tactics] The tactics of the alert rule
   /// [techniques] The techniques of the alert rule
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFusionAlertRuleResult({
+  const GetFusionAlertRuleResult({
     required this.alertRuleTemplateName,
     required this.azureApiVersion,
     required this.description,

@@ -12,7 +12,7 @@ class ActivityDependency {
   /// Creates a new [ActivityDependency].
   /// [activity] Activity name.
   /// [dependencyConditions] Match-Condition for the dependency.
-  ActivityDependency({
+  const ActivityDependency({
     required this.activity,
     required this.dependencyConditions,
   });

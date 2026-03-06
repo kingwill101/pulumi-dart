@@ -15,7 +15,7 @@ class GetBareMetalMachineArgs {
   /// Creates a new [GetBareMetalMachineArgs].
   /// [bareMetalMachineName] The name of the bare metal machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBareMetalMachineArgs({
+  const GetBareMetalMachineArgs({
     required this.bareMetalMachineName,
     required this.resourceGroupName,
   });

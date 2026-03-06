@@ -13,7 +13,7 @@ class DatastoreNfsDatastoreGoogleFileService {
   /// Creates a new [DatastoreNfsDatastoreGoogleFileService].
   /// [filestoreInstance] Google filestore instance resource name
   /// [netappVolume] Google netapp volume resource name
-  DatastoreNfsDatastoreGoogleFileService({
+  const DatastoreNfsDatastoreGoogleFileService({
     this.filestoreInstance,
     this.netappVolume,
   });

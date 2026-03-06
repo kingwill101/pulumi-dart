@@ -15,7 +15,7 @@ class GetInterconnectIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetInterconnectIamPolicyArgs({
+  const GetInterconnectIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

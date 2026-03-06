@@ -41,7 +41,7 @@ class AspectTypeArgs {
   /// [location] The location where aspect type will be created in.
   /// [metadataTemplate] MetadataTemplate of the Aspect.
   /// [project] The ID of the project in which the resource belongs.
-  AspectTypeArgs({
+  const AspectTypeArgs({
     this.aspectTypeId,
     this.dataClassification,
     this.description,

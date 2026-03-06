@@ -12,7 +12,7 @@ class GetVariablesArgs {
 
   /// Creates a new [GetVariablesArgs].
   /// [automationAccountId] The resource ID of the automation account.
-  GetVariablesArgs({
+  const GetVariablesArgs({
     required this.automationAccountId,
   });
 

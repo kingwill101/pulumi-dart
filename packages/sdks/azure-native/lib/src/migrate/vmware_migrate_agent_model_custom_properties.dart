@@ -16,7 +16,7 @@ class VMwareMigrateAgentModelCustomProperties {
   /// [fabricFriendlyName] Gets or sets the friendly name of the,of the MigrateAgent fabric.
   /// [instanceType] Gets or sets the instance type.
   /// [vmwareSiteId] Gets or sets the master Site Id of the Migrate Agent.
-  VMwareMigrateAgentModelCustomProperties({
+  const VMwareMigrateAgentModelCustomProperties({
     this.fabricFriendlyName,
     required this.instanceType,
     this.vmwareSiteId,

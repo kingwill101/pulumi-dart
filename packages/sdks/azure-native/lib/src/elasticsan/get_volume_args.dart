@@ -21,7 +21,7 @@ class GetVolumeArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeGroupName] The name of the VolumeGroup.
   /// [volumeName] The name of the Volume.
-  GetVolumeArgs({
+  const GetVolumeArgs({
     required this.elasticSanName,
     required this.resourceGroupName,
     required this.volumeGroupName,

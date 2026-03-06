@@ -61,7 +61,7 @@ class BuildArgs {
   /// [substitutions] Substitutions data for `Build` resource.
   /// [tags] Tags for annotation of a `Build`. These are not docker tags.
   /// [timeout] Amount of time that this build should be allowed to run, to second granularity. If this amount of time elapses, work on the build will cease and the build status will be `TIMEOUT`. `timeout` starts ticking from `startTime`. Default time is 60 minutes.
-  BuildArgs({
+  const BuildArgs({
     this.artifacts,
     this.availableSecrets,
     this.images,

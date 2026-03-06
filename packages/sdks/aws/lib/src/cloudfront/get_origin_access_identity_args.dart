@@ -12,7 +12,7 @@ class GetOriginAccessIdentityArgs {
 
   /// Creates a new [GetOriginAccessIdentityArgs].
   /// [id] The identifier for the origin access identity. For example: `E1ZAKK699EOLAL`.
-  GetOriginAccessIdentityArgs({
+  const GetOriginAccessIdentityArgs({
     required this.id,
   });
 

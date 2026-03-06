@@ -13,7 +13,7 @@ class GetNoteArgs {
   /// Creates a new [GetNoteArgs].
   /// [noteId] Required.
   /// [project] Optional.
-  GetNoteArgs({
+  const GetNoteArgs({
     required this.noteId,
     this.project,
   });

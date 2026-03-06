@@ -15,7 +15,7 @@ class GetInternalRangeArgs {
   /// [internalRangeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInternalRangeArgs({
+  const GetInternalRangeArgs({
     required this.internalRangeId,
     required this.location,
     this.project,

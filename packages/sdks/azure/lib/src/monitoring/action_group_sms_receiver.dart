@@ -14,7 +14,7 @@ class ActionGroupSmsReceiver {
   /// [countryCode] The country code of the SMS receiver.
   /// [name] The name of the SMS receiver. Names must be unique (case-insensitive) across all receivers within an action group.
   /// [phoneNumber] The phone number of the SMS receiver.
-  ActionGroupSmsReceiver({
+  const ActionGroupSmsReceiver({
     required this.countryCode,
     required this.name,
     required this.phoneNumber,

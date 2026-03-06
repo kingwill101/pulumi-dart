@@ -22,7 +22,7 @@ class GetDbInstancesResult {
   /// [instances] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetDbInstancesResult({
+  const GetDbInstancesResult({
     this.dbInstanceDescription,
     this.enableDetails,
     required this.id,

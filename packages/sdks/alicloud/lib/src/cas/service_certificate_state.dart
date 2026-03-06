@@ -39,7 +39,7 @@ class ServiceCertificateState {
   /// [signCert] The content of an SM signing certificate in PEM format.
   /// [signPrivateKey] The private key of an SM signing certificate in PEM format.
   /// [tags] The tag of the resource.
-  ServiceCertificateState({
+  const ServiceCertificateState({
     this.cert,
     this.certificateName,
     this.encryptCert,

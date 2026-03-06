@@ -94,7 +94,7 @@ class GetOccurrenceContaineranalysisV1alpha1Result {
   /// [updateTime] The time this `Occurrence` was last updated.
   /// [upgrade] Describes an upgrade.
   /// [vulnerabilityDetails] Details of a security vulnerability note.
-  GetOccurrenceContaineranalysisV1alpha1Result({
+  const GetOccurrenceContaineranalysisV1alpha1Result({
     required this.attestation,
     required this.buildDetails,
     required this.compliance,

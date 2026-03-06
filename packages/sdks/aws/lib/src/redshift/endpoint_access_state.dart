@@ -34,7 +34,7 @@ class EndpointAccessState {
   /// [subnetGroupName] The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint.
   /// [vpcEndpoints] The connection endpoint for connecting to an Amazon Redshift cluster through the proxy. See details below.
   /// [vpcSecurityGroupIds] The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
-  EndpointAccessState({
+  const EndpointAccessState({
     this.address,
     this.clusterIdentifier,
     this.endpointName,

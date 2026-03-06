@@ -27,7 +27,7 @@ class GetNodeArgs {
   /// [fullPath] Full path of the node (partition and name)
   /// [name] Name of the node.
   /// [partition] partition of the node.
-  GetNodeArgs({
+  const GetNodeArgs({
     this.address,
     this.description,
     this.fqdn,

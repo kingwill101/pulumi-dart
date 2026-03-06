@@ -22,7 +22,7 @@ class GetContainerRecipesResult {
   /// [names] Set of names of the matched Image Builder Container Recipes.
   /// [owner] Optional.
   /// [region] Required.
-  GetContainerRecipesResult({
+  const GetContainerRecipesResult({
     required this.arns,
     this.filters,
     required this.id,

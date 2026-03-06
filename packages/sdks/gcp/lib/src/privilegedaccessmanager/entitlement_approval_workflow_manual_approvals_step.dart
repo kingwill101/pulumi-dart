@@ -23,7 +23,7 @@ class EntitlementApprovalWorkflowManualApprovalsStep {
   /// [approverEmailRecipients] Optional. Additional email addresses to be notified when a grant is pending approval.
   /// [approvers] The potential set of approvers in this step. This list should contain at only one entry.
   /// [id] (Output, Beta)
-  EntitlementApprovalWorkflowManualApprovalsStep({
+  const EntitlementApprovalWorkflowManualApprovalsStep({
     this.approvalsNeeded,
     this.approverEmailRecipients,
     required this.approvers,

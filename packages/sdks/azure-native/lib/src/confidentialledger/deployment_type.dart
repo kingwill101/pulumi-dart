@@ -12,7 +12,7 @@ class DeploymentType {
   /// Creates a new [DeploymentType].
   /// [appSourceUri] Source Uri containing ManagedCCF code
   /// [languageRuntime] Unique name for the Managed CCF.
-  DeploymentType({
+  const DeploymentType({
     this.appSourceUri,
     this.languageRuntime,
   });

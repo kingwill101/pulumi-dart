@@ -18,7 +18,7 @@ class GetSmartDetectorAlertRuleArgs {
   /// [alertRuleName] The name of the alert rule.
   /// [expandDetector] Indicates if Smart Detector should be expanded.
   /// [resourceGroupName] The name of the resource group.
-  GetSmartDetectorAlertRuleArgs({
+  const GetSmartDetectorAlertRuleArgs({
     required this.alertRuleName,
     this.expandDetector,
     required this.resourceGroupName,

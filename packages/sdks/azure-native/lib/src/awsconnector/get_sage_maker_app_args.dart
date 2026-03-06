@@ -15,7 +15,7 @@ class GetSageMakerAppArgs {
   /// Creates a new [GetSageMakerAppArgs].
   /// [name] Name of SageMakerApp
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSageMakerAppArgs({
+  const GetSageMakerAppArgs({
     required this.name,
     required this.resourceGroupName,
   });

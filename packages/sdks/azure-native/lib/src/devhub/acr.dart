@@ -18,7 +18,7 @@ class ACR {
   /// [acrRepositoryName] ACR repository
   /// [acrResourceGroup] ACR resource group
   /// [acrSubscriptionId] ACR subscription id
-  ACR({
+  const ACR({
     this.acrRegistryName,
     this.acrRepositoryName,
     this.acrResourceGroup,

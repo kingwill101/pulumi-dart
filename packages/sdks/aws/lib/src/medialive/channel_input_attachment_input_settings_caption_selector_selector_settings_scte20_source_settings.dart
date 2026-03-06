@@ -9,7 +9,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20So
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings].
   /// [convert608To708] Optional.
   /// [source608ChannelNumber] Optional.
-  ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings({
+  const ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte20SourceSettings({
     this.convert608To708,
     this.source608ChannelNumber,
   });

@@ -10,7 +10,7 @@ class ReportComplianceStatusResponse {
 
   /// Creates a new [ReportComplianceStatusResponse].
   /// [m365] The Microsoft 365 certification name.
-  ReportComplianceStatusResponse({
+  const ReportComplianceStatusResponse({
     required this.m365,
   });
 

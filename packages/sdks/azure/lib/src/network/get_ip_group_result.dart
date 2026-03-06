@@ -21,7 +21,7 @@ class GetIpGroupResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the resource.
-  GetIpGroupResult({
+  const GetIpGroupResult({
     required this.cidrs,
     required this.id,
     required this.location,

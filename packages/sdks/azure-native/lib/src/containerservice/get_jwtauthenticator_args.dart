@@ -18,7 +18,7 @@ class GetJWTAuthenticatorArgs {
   /// [jwtAuthenticatorName] The name of the JWT authenticator.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetJWTAuthenticatorArgs({
+  const GetJWTAuthenticatorArgs({
     required this.jwtAuthenticatorName,
     required this.resourceGroupName,
     required this.resourceName,

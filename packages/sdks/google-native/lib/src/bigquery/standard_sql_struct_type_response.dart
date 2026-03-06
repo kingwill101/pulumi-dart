@@ -10,7 +10,7 @@ class StandardSqlStructTypeResponse {
 
   /// Creates a new [StandardSqlStructTypeResponse].
   /// [fields] Fields within the struct.
-  StandardSqlStructTypeResponse({
+  const StandardSqlStructTypeResponse({
     required this.fields,
   });
 

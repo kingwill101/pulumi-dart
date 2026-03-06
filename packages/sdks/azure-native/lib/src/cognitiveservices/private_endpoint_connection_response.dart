@@ -29,7 +29,7 @@ class PrivateEndpointConnectionResponse {
   /// [properties] Resource properties.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.etag,
     required this.id,
     this.location,

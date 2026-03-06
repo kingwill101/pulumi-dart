@@ -24,7 +24,7 @@ class ManagedIntegrationRuntimeOperationResultResponse {
   /// [result] The operation result.
   /// [startTime] The start time of the operation.
   /// [type] The operation type. Could be start or stop.
-  ManagedIntegrationRuntimeOperationResultResponse({
+  const ManagedIntegrationRuntimeOperationResultResponse({
     required this.activityId,
     required this.errorCode,
     required this.parameters,

@@ -79,7 +79,7 @@ class GetGatewayVpnAttachmentsAttachment {
   /// [tunnelOptionsSpecifications] Configure the tunnel.-You can configure parameters in the **tunnel_options_specification** array when you create a vpn attachment in dual-tunnel mode.-When creating a vpn attachment in dual-tunnel mode, you must add both tunnels for the vpn attachment to ensure that the vpn attachment has link redundancy. Only two tunnels can be added to a vpn attachment.
   /// [vpnAttachmentName] vpn attachment name
   /// [vpnConnectionId] The first ID of the resource
-  GetGatewayVpnAttachmentsAttachment({
+  const GetGatewayVpnAttachmentsAttachment({
     required this.attachType,
     required this.bgpConfigs,
     required this.connectionStatus,

@@ -17,7 +17,7 @@ class OriginGroupResponse {
   /// [failoverCriteria] A complex type that contains information about the failover criteria for an origin group. A complex data type that includes information about the failover criteria for an origin group, including the status codes for which CloudFront will failover from the primary origin to the second origin.
   /// [id] The origin group's ID.
   /// [members] A complex type that contains information about the origins in an origin group. A complex data type for the origins included in an origin group.
-  OriginGroupResponse({
+  const OriginGroupResponse({
     this.failoverCriteria,
     this.id,
     this.members,

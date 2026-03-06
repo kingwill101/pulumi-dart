@@ -9,7 +9,7 @@ class ReadPoolConfigResponseAlloydbV1beta {
 
   /// Creates a new [ReadPoolConfigResponseAlloydbV1beta].
   /// [nodeCount] Read capacity, i.e. number of nodes in a read pool instance.
-  ReadPoolConfigResponseAlloydbV1beta({
+  const ReadPoolConfigResponseAlloydbV1beta({
     required this.nodeCount,
   });
 

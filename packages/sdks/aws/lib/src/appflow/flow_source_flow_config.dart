@@ -22,7 +22,7 @@ class FlowSourceFlowConfig {
   /// [connectorType] Type of connector, such as Salesforce, Amplitude, and so on. Valid values are `Salesforce`, `Singular`, `Slack`, `Redshift`, `S3`, `Marketo`, `Googleanalytics`, `Zendesk`, `Servicenow`, `Datadog`, `Trendmicro`, `Snowflake`, `Dynatrace`, `Infornexus`, `Amplitude`, `Veeva`, `EventBridge`, `LookoutMetrics`, `Upsolver`, `Honeycode`, `CustomerProfiles`, `SAPOData`, and `CustomConnector`.
   /// [incrementalPullConfig] Defines the configuration for a scheduled incremental data pull. If a valid configuration is provided, the fields specified in the configuration are used when querying for the incremental data pull. See Incremental Pull Config for more details.
   /// [sourceConnectorProperties] Information that is required to query a particular source connector. See Source Connector Properties for details.
-  FlowSourceFlowConfig({
+  const FlowSourceFlowConfig({
     this.apiVersion,
     this.connectorProfileName,
     required this.connectorType,

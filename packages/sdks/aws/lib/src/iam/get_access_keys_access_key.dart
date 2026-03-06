@@ -14,7 +14,7 @@ class GetAccessKeysAccessKey {
   /// [accessKeyId] Access key ID.
   /// [createDate] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) that the access key was created.
   /// [status] Access key status. Possible values are `Active` and `Inactive`.
-  GetAccessKeysAccessKey({
+  const GetAccessKeysAccessKey({
     required this.accessKeyId,
     required this.createDate,
     required this.status,

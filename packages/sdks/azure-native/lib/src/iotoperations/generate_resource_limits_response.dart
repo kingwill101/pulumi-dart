@@ -9,7 +9,7 @@ class GenerateResourceLimitsResponse {
 
   /// Creates a new [GenerateResourceLimitsResponse].
   /// [cpu] The toggle to enable/disable cpu resource limits.
-  GenerateResourceLimitsResponse({
+  const GenerateResourceLimitsResponse({
     this.cpu,
   });
 

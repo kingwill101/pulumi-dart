@@ -32,7 +32,7 @@ class PolicyTagState {
   /// [name] Resource name of this policy tag, whose format is:
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag.
   /// [taxonomy] Taxonomy the policy tag is associated with
-  PolicyTagState({
+  const PolicyTagState({
     this.childPolicyTags,
     this.description,
     this.displayName,

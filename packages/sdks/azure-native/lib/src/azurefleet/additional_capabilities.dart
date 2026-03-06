@@ -13,7 +13,7 @@ class AdditionalCapabilities {
   /// Creates a new [AdditionalCapabilities].
   /// [hibernationEnabled] The flag that enables or disables hibernation capability on the VM.
   /// [ultraSSDEnabled] The flag that enables or disables a capability to have one or more managed data disks with UltraSSD_LRS storage account type on the VM or VMSS.
-  AdditionalCapabilities({
+  const AdditionalCapabilities({
     this.hibernationEnabled,
     this.ultraSSDEnabled,
   });

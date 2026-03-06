@@ -60,7 +60,7 @@ class GameServerGroupState {
   /// [tags] Key-value map of resource tags
   /// [tagsAll] Optional.
   /// [vpcSubnets] A list of VPC subnets to use with instances in the game server group.
-  GameServerGroupState({
+  const GameServerGroupState({
     this.arn,
     this.autoScalingGroupArn,
     this.autoScalingPolicy,

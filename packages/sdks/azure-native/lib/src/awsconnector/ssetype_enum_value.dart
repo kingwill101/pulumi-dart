@@ -9,7 +9,7 @@ class SSETypeEnumValue {
 
   /// Creates a new [SSETypeEnumValue].
   /// [value] Property value
-  SSETypeEnumValue({
+  const SSETypeEnumValue({
     this.value,
   });
 

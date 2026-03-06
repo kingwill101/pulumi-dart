@@ -44,7 +44,7 @@ class DatasetArgs {
   /// [tags] Resource tags.
   /// [timestamp] Path to an RFC3339 timestamp in the message. If no path is provided, the ingestion time of the record is used for time-based joins.
   /// [ttl] Time to live for individual records.
-  DatasetArgs({
+  const DatasetArgs({
     this.datasetName,
     this.description,
     required this.extendedLocation,

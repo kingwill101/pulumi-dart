@@ -12,7 +12,7 @@ class GalleryAppDefinition {
   /// Creates a new [GalleryAppDefinition].
   /// [isConsented] Whether the disclaimer of the gallery application is accepted.
   /// [skuId] The SKU id of the gallery application.
-  GalleryAppDefinition({
+  const GalleryAppDefinition({
     this.isConsented,
     required this.skuId,
   });

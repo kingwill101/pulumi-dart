@@ -11,7 +11,7 @@ class RefreshScheduleScheduleScheduleFrequencyRefreshOnDay {
   /// Creates a new [RefreshScheduleScheduleScheduleFrequencyRefreshOnDay].
   /// [dayOfMonth] The day of the month that you want to schedule refresh on.
   /// [dayOfWeek] The day of the week that you want to schedule a refresh on. Valid values are `SUNDAY`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY` and `SATURDAY`.
-  RefreshScheduleScheduleScheduleFrequencyRefreshOnDay({
+  const RefreshScheduleScheduleScheduleFrequencyRefreshOnDay({
     this.dayOfMonth,
     this.dayOfWeek,
   });

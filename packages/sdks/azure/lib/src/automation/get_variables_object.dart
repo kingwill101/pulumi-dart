@@ -19,7 +19,7 @@ class GetVariablesObject {
   /// [id] Required.
   /// [name] The name of the Automation Variable.
   /// [value] The value of the Automation Variable.
-  GetVariablesObject({
+  const GetVariablesObject({
     required this.description,
     required this.encrypted,
     required this.id,

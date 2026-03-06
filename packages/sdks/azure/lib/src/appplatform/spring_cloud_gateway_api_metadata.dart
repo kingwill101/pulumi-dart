@@ -20,7 +20,7 @@ class SpringCloudGatewayApiMetadata {
   /// [serverUrl] Base URL that API consumers will use to access APIs on the Gateway instance.
   /// [title] Specifies the title describing the context of the APIs available on the Gateway instance.
   /// [version] Specifies the version of APIs available on this Gateway instance.
-  SpringCloudGatewayApiMetadata({
+  const SpringCloudGatewayApiMetadata({
     this.description,
     this.documentationUrl,
     this.serverUrl,

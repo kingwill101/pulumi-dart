@@ -50,7 +50,7 @@ class NestServiceInstanceArgs {
   /// [specificationName] The name of the specification.
   /// [tags] A mapping of tags to assign to the resource.
   /// [templateName] The name of the template.
-  NestServiceInstanceArgs({
+  const NestServiceInstanceArgs({
     this.commodity,
     this.enableInstanceOps,
     this.enableUserPrometheus,

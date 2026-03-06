@@ -16,7 +16,7 @@ class VMwareClusterNetworkConfigStaticIpConfigIpBlock {
   /// [gateway] The network gateway used by the VMware User Cluster.
   /// [ips] The node's network configurations used by the VMware User Cluster.
   /// [netmask] The netmask used by the VMware User Cluster.
-  VMwareClusterNetworkConfigStaticIpConfigIpBlock({
+  const VMwareClusterNetworkConfigStaticIpConfigIpBlock({
     required this.gateway,
     required this.ips,
     required this.netmask,

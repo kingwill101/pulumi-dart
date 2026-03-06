@@ -16,7 +16,7 @@ class GetSaslUsersUser {
   /// [password] The password of the user.
   /// [type] (Available since v1.260.0) The type of the user.
   /// [username] The username of the user.
-  GetSaslUsersUser({
+  const GetSaslUsersUser({
     required this.id,
     required this.password,
     required this.type,

@@ -12,7 +12,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchCookiesMatchPattern({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

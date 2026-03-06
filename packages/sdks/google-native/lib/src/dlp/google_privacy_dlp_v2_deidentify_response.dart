@@ -20,7 +20,7 @@ class GooglePrivacyDlpV2DeidentifyResponse {
   /// [fileTypesToTransform] List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
   /// [transformationConfig] User specified deidentify templates and configs for structured, unstructured, and image files.
   /// [transformationDetailsStorageConfig] Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
-  GooglePrivacyDlpV2DeidentifyResponse({
+  const GooglePrivacyDlpV2DeidentifyResponse({
     required this.cloudStorageOutput,
     required this.fileTypesToTransform,
     required this.transformationConfig,

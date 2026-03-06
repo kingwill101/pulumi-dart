@@ -10,7 +10,7 @@ class ConfigurationProfileResourceProperties {
 
   /// Creates a new [ConfigurationProfileResourceProperties].
   /// [notifications] Settings of change notification configuration for a subscription.
-  ConfigurationProfileResourceProperties({
+  const ConfigurationProfileResourceProperties({
     this.notifications,
   });
 

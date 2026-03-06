@@ -39,7 +39,7 @@ class GetTunnelsTunnel {
   /// [tunnelRpo] The latest consumption time of the tunnel, unix time in nanosecond.
   /// [tunnelStage] The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
   /// [tunnelType] The type of the OTS tunnel, valid values: `BaseAndStream`, `BaseData`, `Stream`.
-  GetTunnelsTunnel({
+  const GetTunnelsTunnel({
     required this.channels,
     required this.createTime,
     required this.expired,

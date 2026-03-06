@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse {
   /// Creates a new [GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse].
   /// [failedJobs] The names of the previously failed CustomJob. The list includes the all attempts in chronological order.
   /// [job] The name of the CustomJob.
-  GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse({
+  const GoogleCloudAiplatformV1PipelineTaskExecutorDetailCustomJobDetailResponse({
     required this.failedJobs,
     required this.job,
   });

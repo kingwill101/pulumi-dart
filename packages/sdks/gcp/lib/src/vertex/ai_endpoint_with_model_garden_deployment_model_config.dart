@@ -29,7 +29,7 @@ class AiEndpointWithModelGardenDeploymentModelConfig {
   /// [huggingFaceAccessToken] The Hugging Face read access token used to access the model
   /// [huggingFaceCacheEnabled] If true, the model will deploy with a cached version instead of directly
   /// [modelDisplayName] The user-specified display name of the uploaded model. If not
-  AiEndpointWithModelGardenDeploymentModelConfig({
+  const AiEndpointWithModelGardenDeploymentModelConfig({
     this.acceptEula,
     this.containerSpec,
     this.huggingFaceAccessToken,

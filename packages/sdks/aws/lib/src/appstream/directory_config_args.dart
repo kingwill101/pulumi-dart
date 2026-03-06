@@ -26,7 +26,7 @@ class DirectoryConfigArgs {
   /// [organizationalUnitDistinguishedNames] Distinguished names of the organizational units for computer accounts.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceAccountCredentials] Configuration block for the name of the directory and organizational unit (OU) to use to join the directory config to a Microsoft Active Directory domain. See `service_account_credentials` below.
-  DirectoryConfigArgs({
+  const DirectoryConfigArgs({
     this.certificateBasedAuthProperties,
     required this.directoryName,
     required this.organizationalUnitDistinguishedNames,

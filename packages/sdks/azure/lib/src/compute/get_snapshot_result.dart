@@ -37,7 +37,7 @@ class GetSnapshotResult {
   /// [storageAccountId] The ID of an storage account.
   /// [timeCreated] Required.
   /// [trustedLaunchEnabled] Whether Trusted Launch is enabled for the Snapshot.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.creationOption,
     required this.diskSizeGb,
     required this.encryptionSettings,

@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesInforNexus {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesInforNexus].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesInforNexus({
+  const FlowSourceFlowConfigSourceConnectorPropertiesInforNexus({
     required this.object_,
   });
 

@@ -24,7 +24,7 @@ class GetTlsInspectCaCertificatesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Current page number.
   /// [pageSize] Number of records per page.
-  GetTlsInspectCaCertificatesArgs({
+  const GetTlsInspectCaCertificatesArgs({
     this.caCertId,
     this.ids,
     this.outputFile,

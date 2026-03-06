@@ -43,7 +43,7 @@ class GetOtsBackupPlansPlan {
   /// [sourceType] The type of the data source.
   /// [updatedTime] The update time of the backup plan. UNIX time in seconds.
   /// [vaultId] The ID of backup vault.
-  GetOtsBackupPlansPlan({
+  const GetOtsBackupPlansPlan({
     required this.backupType,
     required this.createdTime,
     required this.disabled,

@@ -19,7 +19,7 @@ class ReportConfigFilter {
   /// [dimensions] Has comparison expression for a dimension
   /// [or] The logical "OR" expression. Must have at least 2 items.
   /// [tags] Has comparison expression for a tag
-  ReportConfigFilter({
+  const ReportConfigFilter({
     this.and,
     this.dimensions,
     this.or,

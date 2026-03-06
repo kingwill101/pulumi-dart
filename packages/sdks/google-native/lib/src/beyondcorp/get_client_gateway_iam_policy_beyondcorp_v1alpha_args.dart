@@ -17,7 +17,7 @@ class GetClientGatewayIamPolicyBeyondcorpV1alphaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetClientGatewayIamPolicyBeyondcorpV1alphaArgs({
+  const GetClientGatewayIamPolicyBeyondcorpV1alphaArgs({
     required this.clientGatewayId,
     required this.location,
     this.optionsRequestedPolicyVersion,

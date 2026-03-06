@@ -26,7 +26,7 @@ class SubjectDescriptionResponse {
   /// [notBeforeTime] The time at which the certificate becomes valid.
   /// [subject] Contains distinguished name fields such as the common name, location and / organization.
   /// [subjectAltName] The subject alternative name fields.
-  SubjectDescriptionResponse({
+  const SubjectDescriptionResponse({
     required this.hexSerialNumber,
     required this.lifetime,
     required this.notAfterTime,

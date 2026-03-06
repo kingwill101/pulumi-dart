@@ -9,7 +9,7 @@ class GridSamplingAlgorithm {
 
   /// Creates a new [GridSamplingAlgorithm].
   /// [samplingAlgorithmType] Expected value is 'Grid'.
-  GridSamplingAlgorithm({
+  const GridSamplingAlgorithm({
     required this.samplingAlgorithmType,
   });
 

@@ -19,7 +19,7 @@ class InputMappingDeploymentmanagerV2beta {
   /// [location] The location where this mapping applies.
   /// [methodMatch] Regex to evaluate on method to decide if input applies.
   /// [value] A jsonPath expression to select an element.
-  InputMappingDeploymentmanagerV2beta({
+  const InputMappingDeploymentmanagerV2beta({
     this.fieldName,
     this.location,
     this.methodMatch,

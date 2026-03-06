@@ -22,7 +22,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
   /// [icon] Optional. Icon to display above media content.
   /// [largeImage] Optional. Image to display above media content.
   /// [name] Name of media card.
-  GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject({
+  const GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject({
     required this.contentUrl,
     this.description,
     this.icon,

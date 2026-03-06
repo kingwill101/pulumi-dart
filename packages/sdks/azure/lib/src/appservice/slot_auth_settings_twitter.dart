@@ -11,7 +11,7 @@ class SlotAuthSettingsTwitter {
   /// Creates a new [SlotAuthSettingsTwitter].
   /// [consumerKey] The consumer key of the Twitter app used for login
   /// [consumerSecret] The consumer secret of the Twitter app used for login.
-  SlotAuthSettingsTwitter({
+  const SlotAuthSettingsTwitter({
     required this.consumerKey,
     required this.consumerSecret,
   });

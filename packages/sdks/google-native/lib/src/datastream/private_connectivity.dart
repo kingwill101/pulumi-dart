@@ -9,7 +9,7 @@ class PrivateConnectivity {
 
   /// Creates a new [PrivateConnectivity].
   /// [privateConnection] A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
-  PrivateConnectivity({
+  const PrivateConnectivity({
     required this.privateConnection,
   });
 

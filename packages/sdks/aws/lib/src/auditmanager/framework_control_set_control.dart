@@ -8,7 +8,7 @@ class FrameworkControlSetControl {
 
   /// Creates a new [FrameworkControlSetControl].
   /// [id] Unique identifier of the control.
-  FrameworkControlSetControl({
+  const FrameworkControlSetControl({
     required this.id,
   });
 

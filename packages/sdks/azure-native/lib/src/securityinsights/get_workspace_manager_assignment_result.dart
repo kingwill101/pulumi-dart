@@ -38,7 +38,7 @@ class GetWorkspaceManagerAssignmentResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [targetResourceName] The resource name of the workspace manager group targeted by the workspace manager assignment
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceManagerAssignmentResult({
+  const GetWorkspaceManagerAssignmentResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

@@ -23,7 +23,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
   /// [maxPaddingBytes] The maximum amount of padding to apply. This is useful if you intend to copy the data from Amazon S3 to HDFS before querying. The default is `0`.
   /// [pageSizeBytes] The Parquet page size. Column chunks are divided into pages. A page is conceptually an indivisible unit (in terms of compression and encoding). The minimum value is 64 KiB and the default is 1 MiB.
   /// [writerVersion] Indicates the version of row format to output. The possible values are `V1` and `V2`. The default is `V1`.
-  FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe({
+  const FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationOutputFormatConfigurationSerializerParquetSerDe({
     this.blockSizeBytes,
     this.compression,
     this.enableDictionaryCompression,

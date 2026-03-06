@@ -17,7 +17,7 @@ class GetIpsecServersServerIpsecConfig {
   /// [ipsecEncAlg] IPsec encryption algorithm.
   /// [ipsecLifetime] IPsec survival time. Unit: seconds.
   /// [ipsecPfs] Diffie-Hellman key exchange algorithm.
-  GetIpsecServersServerIpsecConfig({
+  const GetIpsecServersServerIpsecConfig({
     required this.ipsecAuthAlg,
     required this.ipsecEncAlg,
     required this.ipsecLifetime,

@@ -18,7 +18,7 @@ class GetPlaintextResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyId] The globally unique ID of the CMK. It is the ID of the CMK used to decrypt ciphertext.
   /// [plaintext] The decrypted plaintext.
-  GetPlaintextResult({
+  const GetPlaintextResult({
     required this.ciphertextBlob,
     this.encryptionContext,
     required this.id,

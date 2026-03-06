@@ -18,7 +18,7 @@ class GetEnclaveEndpointArgs {
   /// [enclaveEndpointName] The name of the Enclave Endpoint Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
-  GetEnclaveEndpointArgs({
+  const GetEnclaveEndpointArgs({
     required this.enclaveEndpointName,
     required this.resourceGroupName,
     required this.virtualEnclaveName,

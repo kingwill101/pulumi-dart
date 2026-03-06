@@ -12,7 +12,7 @@ class BackendServiceLocalityLoadBalancingPolicyConfigComputeBeta {
   /// Creates a new [BackendServiceLocalityLoadBalancingPolicyConfigComputeBeta].
   /// [customPolicy] Optional.
   /// [policy] Optional.
-  BackendServiceLocalityLoadBalancingPolicyConfigComputeBeta({
+  const BackendServiceLocalityLoadBalancingPolicyConfigComputeBeta({
     this.customPolicy,
     this.policy,
   });

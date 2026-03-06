@@ -14,7 +14,7 @@ class GetMaintenancePoliciesResult {
   /// [filters] Optional.
   /// [id] Required.
   /// [maintenancePolicies] Required.
-  GetMaintenancePoliciesResult({
+  const GetMaintenancePoliciesResult({
     this.filters,
     required this.id,
     required this.maintenancePolicies,

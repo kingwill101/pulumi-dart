@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [name] The name of this EventHub Cluster.
   /// [resourceGroupName] The name of the Resource Group where the EventHub Cluster exists.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -28,7 +28,7 @@ class ApplicationGatewayRedirectConfiguration {
   /// [targetListenerId] Optional.
   /// [targetListenerName] The name of the listener to redirect to. Cannot be set if `target_url` is set.
   /// [targetUrl] The URL to redirect the request to. Cannot be set if `target_listener_name` is set.
-  ApplicationGatewayRedirectConfiguration({
+  const ApplicationGatewayRedirectConfiguration({
     this.id,
     this.includePath,
     this.includeQueryString,

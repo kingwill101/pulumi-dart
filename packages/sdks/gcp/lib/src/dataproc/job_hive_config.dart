@@ -25,7 +25,7 @@ class JobHiveConfig {
   /// [queryFileUri] HCFS URI of file containing Hive script to execute as the job.
   /// [queryLists] The list of Hive queries or statements to execute as part of the job.
   /// [scriptVariables] Mapping of query variable names to values (equivalent to the Hive command: `SET name="value";`).
-  JobHiveConfig({
+  const JobHiveConfig({
     this.continueOnFailure,
     this.jarFileUris,
     this.properties,

@@ -13,7 +13,7 @@ class GetIntegrationRuntimeObjectMetadatumResult {
   /// Creates a new [GetIntegrationRuntimeObjectMetadatumResult].
   /// [nextLink] The link to the next page of results, if any remaining results exist.
   /// [value] List of SSIS object metadata.
-  GetIntegrationRuntimeObjectMetadatumResult({
+  const GetIntegrationRuntimeObjectMetadatumResult({
     this.nextLink,
     this.value,
   });

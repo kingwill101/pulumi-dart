@@ -15,7 +15,7 @@ class BucketPublicAccessBlockArgs {
   /// Creates a new [BucketPublicAccessBlockArgs].
   /// [blockPublicAccess] Whether AlibabaCloud OSS should block public bucket policies and ACL for this bucket.
   /// [bucket] The name of the bucket.
-  BucketPublicAccessBlockArgs({
+  const BucketPublicAccessBlockArgs({
     required this.blockPublicAccess,
     required this.bucket,
   });

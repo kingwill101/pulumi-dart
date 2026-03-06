@@ -9,7 +9,7 @@ class DSSEHintResponse {
 
   /// Creates a new [DSSEHintResponse].
   /// [humanReadableName] The human readable name of this attestation authority, for example "cloudbuild-prod".
-  DSSEHintResponse({
+  const DSSEHintResponse({
     required this.humanReadableName,
   });
 

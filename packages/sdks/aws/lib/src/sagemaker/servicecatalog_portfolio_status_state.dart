@@ -12,7 +12,7 @@ class ServicecatalogPortfolioStatusState {
   /// Creates a new [ServicecatalogPortfolioStatusState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] Whether Service Catalog is enabled or disabled in SageMaker. Valid values are `Enabled` and `Disabled`.
-  ServicecatalogPortfolioStatusState({
+  const ServicecatalogPortfolioStatusState({
     this.region,
     this.status,
   });

@@ -8,7 +8,7 @@ class DomainDevicesSmartcardProtocol {
 
   /// Creates a new [DomainDevicesSmartcardProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesSmartcardProtocol({
+  const DomainDevicesSmartcardProtocol({
     required this.type,
   });
 

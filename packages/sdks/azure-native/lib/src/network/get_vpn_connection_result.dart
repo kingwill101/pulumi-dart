@@ -80,7 +80,7 @@ class GetVpnConnectionResult {
   /// [usePolicyBasedTrafficSelectors] Enable policy-based traffic selectors.
   /// [vpnConnectionProtocolType] Connection protocol used for this connection.
   /// [vpnLinkConnections] List of all vpn site link connections to the gateway.
-  GetVpnConnectionResult({
+  const GetVpnConnectionResult({
     required this.azureApiVersion,
     this.connectionBandwidth,
     required this.connectionStatus,

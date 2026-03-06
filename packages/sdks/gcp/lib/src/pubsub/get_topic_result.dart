@@ -37,7 +37,7 @@ class GetTopicResult {
   /// [pulumiLabels] Required.
   /// [schemaSettings] Required.
   /// [tags] Required.
-  GetTopicResult({
+  const GetTopicResult({
     required this.effectiveLabels,
     required this.id,
     required this.ingestionDataSourceSettings,

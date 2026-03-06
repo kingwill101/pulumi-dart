@@ -39,7 +39,7 @@ class CopyProgressDetailsResponse {
   /// [status] Status of the Copy activity (InProgress, Succeeded, Failed, Canceled).
   /// [tableName] Table Name
   /// [usedParallelCopies] The degree of parallelization.
-  CopyProgressDetailsResponse({
+  const CopyProgressDetailsResponse({
     required this.copyDuration,
     required this.copyStart,
     required this.copyThroughput,

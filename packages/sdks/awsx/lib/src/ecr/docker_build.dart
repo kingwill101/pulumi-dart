@@ -34,7 +34,7 @@ class DockerBuild {
   /// [imageTag] Custom image tag for the resulting docker image. If omitted a random string will be used
   /// [platform] The architecture of the platform you want to build this image for, e.g. `linux/arm64`.
   /// [target] The target of the dockerfile to build
-  DockerBuild({
+  const DockerBuild({
     this.args,
     this.builderVersion,
     this.cacheFrom,

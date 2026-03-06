@@ -34,7 +34,7 @@ class VirtualMachineTemplateArgs {
   /// [uuid] Unique ID of the virtual machine template.
   /// [virtualMachineTemplateName] Name of the VirtualMachineTemplate.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  VirtualMachineTemplateArgs({
+  const VirtualMachineTemplateArgs({
     required this.extendedLocation,
     this.inventoryItemId,
     this.location,

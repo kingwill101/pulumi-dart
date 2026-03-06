@@ -19,7 +19,7 @@ class GetApiDeploymentIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetApiDeploymentIamPolicyArgs({
+  const GetApiDeploymentIamPolicyArgs({
     required this.apiId,
     required this.deploymentId,
     required this.location,

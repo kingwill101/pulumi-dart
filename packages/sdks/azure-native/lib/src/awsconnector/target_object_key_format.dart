@@ -13,7 +13,7 @@ class TargetObjectKeyFormat {
   /// Creates a new [TargetObjectKeyFormat].
   /// [partitionedPrefix] Amazon S3 keys for log objects are partitioned in the following format:  ``[DestinationPrefix][SourceAccountId]/[SourceRegion]/[SourceBucket]/[YYYY]/[MM]/[DD]/[YYYY]-[MM]-[DD]-[hh]-[mm]-[ss]-[UniqueString]``  PartitionedPrefix defaults to EventTime delivery when server access logs are delivered.
   /// [simplePrefix] This format defaults the prefix to the given log file prefix for delivering server access log file.
-  TargetObjectKeyFormat({
+  const TargetObjectKeyFormat({
     this.partitionedPrefix,
     this.simplePrefix,
   });

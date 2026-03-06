@@ -16,7 +16,7 @@ class GetStandardIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Logic App Workflow.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Logic App Workflow.
   /// [type] The Type of Managed Identity assigned to this Logic App Workflow.
-  GetStandardIdentity({
+  const GetStandardIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

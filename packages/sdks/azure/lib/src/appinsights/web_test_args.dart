@@ -50,7 +50,7 @@ class WebTestArgs {
   /// [retryEnabled] Allow for retries should this WebTest fail.
   /// [tags] A mapping of tags to assign to the resource.
   /// [timeout] Seconds until this WebTest will timeout and fail. Default is `30`.
-  WebTestArgs({
+  const WebTestArgs({
     required this.applicationInsightsId,
     required this.configuration,
     this.description,

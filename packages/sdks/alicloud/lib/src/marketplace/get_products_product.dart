@@ -50,7 +50,7 @@ class GetProductsProduct {
   /// [tags] The tags of the product.
   /// [targetUrl] The detail page URL of the product.
   /// [warrantyDate] The warranty date of the product.
-  GetProductsProduct({
+  const GetProductsProduct({
     required this.categoryId,
     required this.code,
     required this.deliveryDate,

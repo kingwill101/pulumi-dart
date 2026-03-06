@@ -17,7 +17,7 @@ class TlsCertMethodResponse {
   /// [certManagerCertificateSpec] Option 1 - Automatic TLS server certificate management with cert-manager.
   /// [manual] Option 2 - Manual TLS server certificate management through a defined secret.
   /// [mode] Mode of TLS server certificate management.
-  TlsCertMethodResponse({
+  const TlsCertMethodResponse({
     this.certManagerCertificateSpec,
     this.manual,
     required this.mode,

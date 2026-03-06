@@ -9,7 +9,7 @@ class GoogleCloudRetailV2betaRuleIgnoreAction {
 
   /// Creates a new [GoogleCloudRetailV2betaRuleIgnoreAction].
   /// [ignoreTerms] Terms to ignore in the search query.
-  GoogleCloudRetailV2betaRuleIgnoreAction({
+  const GoogleCloudRetailV2betaRuleIgnoreAction({
     this.ignoreTerms,
   });
 

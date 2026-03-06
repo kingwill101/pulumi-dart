@@ -18,7 +18,7 @@ class GetBindingsArgs {
   /// [instanceId] Instance Id.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [virtualHostName] Virtualhost Name.
-  GetBindingsArgs({
+  const GetBindingsArgs({
     required this.instanceId,
     this.outputFile,
     required this.virtualHostName,

@@ -13,7 +13,7 @@ class OriginGroupOverrideActionParametersResponse {
   /// Creates a new [OriginGroupOverrideActionParametersResponse].
   /// [originGroup] defines the OriginGroup that would override the DefaultOriginGroup.
   /// [typeName] Expected value is 'DeliveryRuleOriginGroupOverrideActionParameters'.
-  OriginGroupOverrideActionParametersResponse({
+  const OriginGroupOverrideActionParametersResponse({
     required this.originGroup,
     required this.typeName,
   });

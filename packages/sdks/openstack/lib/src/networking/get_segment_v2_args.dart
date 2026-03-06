@@ -39,7 +39,7 @@ class GetSegmentV2Args {
   /// [revisionNumber] See Argument Reference above.
   /// [segmentId] The ID of the network segment
   /// [segmentationId] The segmentation ID of the network segment.
-  GetSegmentV2Args({
+  const GetSegmentV2Args({
     this.description,
     this.name,
     this.networkId,

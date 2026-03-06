@@ -8,7 +8,7 @@ class BillingGroupProperties {
 
   /// Creates a new [BillingGroupProperties].
   /// [description] A description of the Billing Group.
-  BillingGroupProperties({
+  const BillingGroupProperties({
     this.description,
   });
 

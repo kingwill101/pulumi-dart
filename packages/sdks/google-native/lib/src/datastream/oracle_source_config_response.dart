@@ -25,7 +25,7 @@ class OracleSourceConfigResponse {
   /// [maxConcurrentBackfillTasks] Maximum number of concurrent backfill tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
   /// [maxConcurrentCdcTasks] Maximum number of concurrent CDC tasks. The number should be non-negative. If not set (or set to 0), the system's default value is used.
   /// [streamLargeObjects] Stream large object values. NOTE: This feature is currently experimental.
-  OracleSourceConfigResponse({
+  const OracleSourceConfigResponse({
     required this.dropLargeObjects,
     required this.excludeObjects,
     required this.includeObjects,

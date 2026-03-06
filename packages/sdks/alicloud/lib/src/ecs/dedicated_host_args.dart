@@ -70,7 +70,7 @@ class DedicatedHostArgs {
   /// [saleCycle] The unit of the subscription period of the dedicated host.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the dedicated host. This parameter is empty by default. If you do not specify this parameter, the system automatically selects a zone.
-  DedicatedHostArgs({
+  const DedicatedHostArgs({
     this.actionOnMaintenance,
     this.autoPlacement,
     this.autoReleaseTime,

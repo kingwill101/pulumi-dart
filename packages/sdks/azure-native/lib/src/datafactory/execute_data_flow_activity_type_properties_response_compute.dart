@@ -12,7 +12,7 @@ class ExecuteDataFlowActivityTypePropertiesResponseCompute {
   /// Creates a new [ExecuteDataFlowActivityTypePropertiesResponseCompute].
   /// [computeType] Compute type of the cluster which will execute data flow job. Possible values include: 'General', 'MemoryOptimized', 'ComputeOptimized'. Type: string (or Expression with resultType string)
   /// [coreCount] Core count of the cluster which will execute data flow job. Supported values are: 8, 16, 32, 48, 80, 144 and 272. Type: integer (or Expression with resultType integer)
-  ExecuteDataFlowActivityTypePropertiesResponseCompute({
+  const ExecuteDataFlowActivityTypePropertiesResponseCompute({
     this.computeType,
     this.coreCount,
   });

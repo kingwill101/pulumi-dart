@@ -9,7 +9,7 @@ class MachineSeriesResponseMigrationcenterV1alpha1 {
 
   /// Creates a new [MachineSeriesResponseMigrationcenterV1alpha1].
   /// [code] Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
-  MachineSeriesResponseMigrationcenterV1alpha1({
+  const MachineSeriesResponseMigrationcenterV1alpha1({
     required this.code,
   });
 

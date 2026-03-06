@@ -8,7 +8,7 @@ class GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
 
   /// Creates a new [GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository].
   /// [uri] Specific uri to the registry, e.g. '"https://registry.npmjs.org"'
-  GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository({
+  const GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository({
     required this.uri,
   });
 

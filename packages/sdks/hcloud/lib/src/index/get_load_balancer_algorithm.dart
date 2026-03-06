@@ -8,7 +8,7 @@ class GetLoadBalancerAlgorithm {
 
   /// Creates a new [GetLoadBalancerAlgorithm].
   /// [type] (string) Type of the target. `server` or `label_selector`
-  GetLoadBalancerAlgorithm({
+  const GetLoadBalancerAlgorithm({
     required this.type,
   });
 

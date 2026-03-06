@@ -12,7 +12,7 @@ class GetServiceIamPolicyArgs {
 
   /// Creates a new [GetServiceIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
-  GetServiceIamPolicyArgs({
+  const GetServiceIamPolicyArgs({
     required this.name,
   });
 

@@ -47,7 +47,7 @@ class GetSnapshotClusterConfiguration {
   /// [subnetGroupName] Name of the subnet group used by the cluster.
   /// [topicArn] ARN of the SNS topic to which cluster notifications are sent.
   /// [vpcId] The VPC in which the cluster exists.
-  GetSnapshotClusterConfiguration({
+  const GetSnapshotClusterConfiguration({
     required this.description,
     required this.engine,
     required this.engineVersion,

@@ -29,7 +29,7 @@ class QuerySuggestionsBlockListArgs {
   /// [roleArn] IAM (Identity and Access Management) role used to access the block list text file in S3.
   /// [sourceS3Path] S3 path where your block list text file is located. See details below.
   /// [tags] Optional.
-  QuerySuggestionsBlockListArgs({
+  const QuerySuggestionsBlockListArgs({
     this.description,
     required this.indexId,
     this.name,

@@ -17,7 +17,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   /// [imageResponseCard] Optional.
   /// [plainTextMessage] Optional.
   /// [ssmlMessage] Optional.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationWaitingResponseMessageGroupVariation({
     this.customPayload,
     this.imageResponseCard,
     this.plainTextMessage,

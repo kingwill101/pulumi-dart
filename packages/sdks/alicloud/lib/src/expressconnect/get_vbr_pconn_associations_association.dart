@@ -44,7 +44,7 @@ class GetVbrPconnAssociationsAssociation {
   /// [status] The status of the resource
   /// [vbrId] The ID of the VBR instance.
   /// [vlanId] VLAN ID of the VBR.
-  GetVbrPconnAssociationsAssociation({
+  const GetVbrPconnAssociationsAssociation({
     required this.circuitCode,
     required this.enableIpv6,
     required this.id,

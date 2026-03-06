@@ -21,7 +21,7 @@ class SearchResults {
   /// [limit] Limit the search job to return up to specified number of rows.
   /// [query] Search job query.
   /// [startSearchTime] The timestamp to start the search from (UTC)
-  SearchResults({
+  const SearchResults({
     this.description,
     this.endSearchTime,
     this.limit,

@@ -18,7 +18,7 @@ class GetNetworkInsightsAnalysisExplanationAclRule {
   /// [protocol] Required.
   /// [ruleAction] Required.
   /// [ruleNumber] Required.
-  GetNetworkInsightsAnalysisExplanationAclRule({
+  const GetNetworkInsightsAnalysisExplanationAclRule({
     required this.cidr,
     required this.egress,
     required this.portRanges,

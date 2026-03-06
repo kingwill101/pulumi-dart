@@ -9,7 +9,7 @@ class InsightFiltersProcessPath {
   /// Creates a new [InsightFiltersProcessPath].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersProcessPath({
+  const InsightFiltersProcessPath({
     required this.comparison,
     required this.value,
   });

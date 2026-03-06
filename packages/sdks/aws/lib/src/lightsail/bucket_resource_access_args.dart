@@ -18,7 +18,7 @@ class BucketResourceAccessArgs {
   /// [bucketName] Name of the bucket to grant access to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceName] Name of the resource to grant bucket access.
-  BucketResourceAccessArgs({
+  const BucketResourceAccessArgs({
     required this.bucketName,
     this.region,
     required this.resourceName,

@@ -8,7 +8,7 @@ class GetTransitRouterVpnAttachmentsAttachmentZone {
 
   /// Creates a new [GetTransitRouterVpnAttachmentsAttachmentZone].
   /// [zoneId] The zone ID of the read-only instance.
-  GetTransitRouterVpnAttachmentsAttachmentZone({
+  const GetTransitRouterVpnAttachmentsAttachmentZone({
     required this.zoneId,
   });
 

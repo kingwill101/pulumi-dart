@@ -21,7 +21,7 @@ class ActiveDirectoryConnectorPropertiesResponse {
   /// [provisioningState] The provisioning state of the Active Directory connector resource.
   /// [spec] null
   /// [status] null
-  ActiveDirectoryConnectorPropertiesResponse({
+  const ActiveDirectoryConnectorPropertiesResponse({
     this.domainServiceAccountLoginInformation,
     required this.provisioningState,
     required this.spec,

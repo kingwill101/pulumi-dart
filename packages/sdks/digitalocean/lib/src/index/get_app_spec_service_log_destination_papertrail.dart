@@ -8,7 +8,7 @@ class GetAppSpecServiceLogDestinationPapertrail {
 
   /// Creates a new [GetAppSpecServiceLogDestinationPapertrail].
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
-  GetAppSpecServiceLogDestinationPapertrail({
+  const GetAppSpecServiceLogDestinationPapertrail({
     required this.endpoint,
   });
 

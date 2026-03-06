@@ -14,7 +14,7 @@ class KubernetesClusterApiServerAccessProfile {
   /// [authorizedIpRanges] Set of authorized IP ranges to allow access to API server, e.g. ["198.51.100.0/24"].
   /// [subnetId] The ID of the Subnet where the API server endpoint is delegated to.
   /// [virtualNetworkIntegrationEnabled] Whether to enable virtual network integration for the API Server. Defaults to `false`.
-  KubernetesClusterApiServerAccessProfile({
+  const KubernetesClusterApiServerAccessProfile({
     this.authorizedIpRanges,
     this.subnetId,
     this.virtualNetworkIntegrationEnabled,

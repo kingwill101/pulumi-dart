@@ -9,7 +9,7 @@ class LinkOrganization {
 
   /// Creates a new [LinkOrganization].
   /// [token] User auth token
-  LinkOrganization({
+  const LinkOrganization({
     required this.token,
   });
 

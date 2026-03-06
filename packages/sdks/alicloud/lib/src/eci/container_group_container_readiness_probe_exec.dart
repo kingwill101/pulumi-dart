@@ -7,7 +7,7 @@ class ContainerGroupContainerReadinessProbeExec {
 
   /// Creates a new [ContainerGroupContainerReadinessProbeExec].
   /// [commands] Optional.
-  ContainerGroupContainerReadinessProbeExec({
+  const ContainerGroupContainerReadinessProbeExec({
     this.commands,
   });
 

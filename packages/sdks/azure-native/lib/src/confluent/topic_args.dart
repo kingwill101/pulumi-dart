@@ -54,7 +54,7 @@ class TopicArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicId] Topic Id returned by Confluent
   /// [topicName] Confluent kafka or schema registry topic name
-  TopicArgs({
+  const TopicArgs({
     required this.clusterId,
     this.configs,
     required this.environmentId,

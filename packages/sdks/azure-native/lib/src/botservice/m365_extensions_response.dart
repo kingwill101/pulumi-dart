@@ -19,7 +19,7 @@ class M365ExtensionsResponse {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [provisioningState] Provisioning state of the resource
-  M365ExtensionsResponse({
+  const M365ExtensionsResponse({
     required this.channelName,
     this.etag,
     this.location,

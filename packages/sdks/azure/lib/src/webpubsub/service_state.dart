@@ -72,7 +72,7 @@ class ServiceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsClientCertEnabled] Whether to request client certificate during TLS handshake? Defaults to `false`.
   /// [version] Optional.
-  ServiceState({
+  const ServiceState({
     this.aadAuthEnabled,
     this.capacity,
     this.externalIp,

@@ -33,7 +33,7 @@ class GetListenerRuleCondition {
   /// [pathPatterns] Path patterns to compare against the request URL.
   /// [queryStrings] Query string parameters to match.
   /// [sourceIps] Contains a single attribute `values`, which contains a set of source IPs in CIDR notation.
-  GetListenerRuleCondition({
+  const GetListenerRuleCondition({
     this.hostHeaders,
     this.httpHeaders,
     this.httpRequestMethods,

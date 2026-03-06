@@ -38,7 +38,7 @@ class GetIntentResult {
   /// [parentIntentSignature] A unique identifier for the built-in intent to base this
   /// [region] Required.
   /// [version] Version of the bot.
-  GetIntentResult({
+  const GetIntentResult({
     required this.arn,
     required this.checksum,
     required this.createdDate,

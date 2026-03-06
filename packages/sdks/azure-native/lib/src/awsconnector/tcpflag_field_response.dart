@@ -12,7 +12,7 @@ class TCPFlagFieldResponse {
   /// Creates a new [TCPFlagFieldResponse].
   /// [flags] Property flags
   /// [masks] Property masks
-  TCPFlagFieldResponse({
+  const TCPFlagFieldResponse({
     this.flags,
     this.masks,
   });

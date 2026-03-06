@@ -19,7 +19,7 @@ class GalleryApplicationCustomActionResponse {
   /// [name] The name of the custom action.  Must be unique within the Gallery Application Version.
   /// [parameters] The parameters that this custom action uses
   /// [script] The script to run when executing this custom action.
-  GalleryApplicationCustomActionResponse({
+  const GalleryApplicationCustomActionResponse({
     this.description,
     required this.name,
     this.parameters,

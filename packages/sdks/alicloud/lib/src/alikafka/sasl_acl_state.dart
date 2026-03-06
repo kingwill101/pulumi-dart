@@ -58,7 +58,7 @@ class SaslAclState {
   /// [host] The host of the acl.
   /// [instanceId] The instance ID.
   /// [username] The user name.
-  SaslAclState({
+  const SaslAclState({
     this.aclOperationType,
     this.aclOperationTypes,
     this.aclPermissionType,

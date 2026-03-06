@@ -48,7 +48,7 @@ class VpcAttachmentState {
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   /// [vpcId] Identifier of EC2 VPC.
   /// [vpcOwnerId] Identifier of the AWS account that owns the EC2 VPC.
-  VpcAttachmentState({
+  const VpcAttachmentState({
     this.applianceModeSupport,
     this.arn,
     this.dnsSupport,

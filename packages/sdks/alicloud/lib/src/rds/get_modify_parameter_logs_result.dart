@@ -20,7 +20,7 @@ class GetModifyParameterLogsResult {
   /// [logs] Required.
   /// [outputFile] Optional.
   /// [startTime] Required.
-  GetModifyParameterLogsResult({
+  const GetModifyParameterLogsResult({
     required this.dbInstanceId,
     required this.endTime,
     required this.id,

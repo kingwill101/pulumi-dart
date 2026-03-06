@@ -17,7 +17,7 @@ class CustomerRepricingConfigArgs {
   /// [accountId] Required.
   /// [customerId] Required.
   /// [repricingConfig] The configuration for bill modifications made by a reseller before sending it to customers.
-  CustomerRepricingConfigArgs({
+  const CustomerRepricingConfigArgs({
     required this.accountId,
     required this.customerId,
     required this.repricingConfig,

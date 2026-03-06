@@ -12,7 +12,7 @@ class VaultPropertiesResponseRedundancySettings {
   /// Creates a new [VaultPropertiesResponseRedundancySettings].
   /// [crossRegionRestore] Flag to show if Cross Region Restore is enabled on the Vault or not
   /// [standardTierStorageRedundancy] The storage redundancy setting of a vault
-  VaultPropertiesResponseRedundancySettings({
+  const VaultPropertiesResponseRedundancySettings({
     this.crossRegionRestore,
     this.standardTierStorageRedundancy,
   });

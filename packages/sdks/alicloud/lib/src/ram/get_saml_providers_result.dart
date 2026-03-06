@@ -24,7 +24,7 @@ class GetSamlProvidersResult {
   /// [names] A list of SAML Provider names.
   /// [outputFile] Optional.
   /// [providers] A list of Ram Saml Providers. Each element contains the following attributes:
-  GetSamlProvidersResult({
+  const GetSamlProvidersResult({
     this.enableDetails,
     required this.id,
     required this.ids,

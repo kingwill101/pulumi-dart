@@ -21,7 +21,7 @@ class GetRegionalSecretsResult {
   /// [location] The location in which the resource belongs.
   /// [project] The ID of the project in which the resource belongs.
   /// [secrets] A list of regional secrets present in the specified location and matching the filter. Structure is defined below.
-  GetRegionalSecretsResult({
+  const GetRegionalSecretsResult({
     this.filter,
     required this.id,
     required this.location,

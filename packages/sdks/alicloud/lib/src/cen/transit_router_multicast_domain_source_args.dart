@@ -21,7 +21,7 @@ class TransitRouterMulticastDomainSourceArgs {
   /// [networkInterfaceId] ENI ID of the multicast source.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast source belongs.
   /// [vpcId] The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
-  TransitRouterMulticastDomainSourceArgs({
+  const TransitRouterMulticastDomainSourceArgs({
     required this.groupIpAddress,
     required this.networkInterfaceId,
     required this.transitRouterMulticastDomainId,

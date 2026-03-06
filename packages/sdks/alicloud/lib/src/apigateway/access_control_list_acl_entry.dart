@@ -11,7 +11,7 @@ class AccessControlListAclEntry {
   /// Creates a new [AccessControlListAclEntry].
   /// [aclEntryComment] The description of the ACL.
   /// [aclEntryIp] The entries that you want to add to the ACL. You can add CIDR blocks. Separate multiple CIDR blocks with commas (,).
-  AccessControlListAclEntry({
+  const AccessControlListAclEntry({
     this.aclEntryComment,
     this.aclEntryIp,
   });

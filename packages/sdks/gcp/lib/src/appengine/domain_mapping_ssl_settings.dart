@@ -26,7 +26,7 @@ class DomainMappingSslSettings {
   /// [certificateId] ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will
   /// [pendingManagedCertificateId] (Output)
   /// [sslManagementType] SSL management type for this domain. If `AUTOMATIC`, a managed certificate is automatically provisioned.
-  DomainMappingSslSettings({
+  const DomainMappingSslSettings({
     this.certificateId,
     this.pendingManagedCertificateId,
     required this.sslManagementType,

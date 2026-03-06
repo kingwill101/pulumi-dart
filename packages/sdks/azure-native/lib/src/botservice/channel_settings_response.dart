@@ -37,7 +37,7 @@ class ChannelSettingsResponse {
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [requireTermsAgreement] Whether customer needs to agree to new terms.
   /// [sites] The list of sites
-  ChannelSettingsResponse({
+  const ChannelSettingsResponse({
     this.botIconUrl,
     this.botId,
     this.channelDisplayName,

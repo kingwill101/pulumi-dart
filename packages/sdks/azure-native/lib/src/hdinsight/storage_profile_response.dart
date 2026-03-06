@@ -10,7 +10,7 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [storageaccounts] The list of storage accounts in the cluster.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     this.storageaccounts,
   });
 

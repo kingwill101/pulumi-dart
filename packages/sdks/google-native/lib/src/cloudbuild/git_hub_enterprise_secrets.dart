@@ -30,7 +30,7 @@ class GitHubEnterpriseSecrets {
   /// [privateKeyVersionName] The resource name for the private key secret version.
   /// [webhookSecretName] The resource name for the webhook secret in Secret Manager.
   /// [webhookSecretVersionName] The resource name for the webhook secret secret version in Secret Manager.
-  GitHubEnterpriseSecrets({
+  const GitHubEnterpriseSecrets({
     this.oauthClientIdName,
     this.oauthClientIdVersionName,
     this.oauthSecretName,

@@ -98,7 +98,7 @@ class JobArgs {
   /// [responsibilities] Optional. A description of job responsibilities. The use of this field is recommended as an alternative to using the more general description field. This field accepts and sanitizes HTML input, and also accepts bold, italic, ordered list, and unordered list markup tags. The maximum number of allowed characters is 10,000.
   /// [title] The title of the job, such as "Software Engineer" The maximum number of allowed characters is 500.
   /// [visibility] Deprecated. The job is only visible to the owner. The visibility of the job. Defaults to Visibility.ACCOUNT_ONLY if not specified.
-  JobArgs({
+  const JobArgs({
     this.addresses,
     required this.applicationInfo,
     required this.companyName,

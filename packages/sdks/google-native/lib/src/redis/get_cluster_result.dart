@@ -49,7 +49,7 @@ class GetClusterResult {
   /// [stateInfo] Additional information about the current state of the cluster.
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
   /// [uid] System assigned, unique identifier for the cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.authorizationMode,
     required this.createTime,
     required this.discoveryEndpoints,

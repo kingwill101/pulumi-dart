@@ -7,7 +7,7 @@ class ConnectionPersonalAccessToken {
 
   /// Creates a new [ConnectionPersonalAccessToken].
   /// [pat] Optional.
-  ConnectionPersonalAccessToken({
+  const ConnectionPersonalAccessToken({
     this.pat,
   });
 

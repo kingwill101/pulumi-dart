@@ -20,7 +20,7 @@ class DefaultRouteTableAssociationState {
   /// [timeouts] Optional.
   /// [transitGatewayId] ID of the Transit Gateway to change the default association route table on.
   /// [transitGatewayRouteTableId] ID of the Transit Gateway Route Table to be made the default association route table.
-  DefaultRouteTableAssociationState({
+  const DefaultRouteTableAssociationState({
     this.originalDefaultRouteTableId,
     this.region,
     this.timeouts,

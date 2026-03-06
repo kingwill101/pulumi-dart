@@ -10,7 +10,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
 
   /// Creates a new [InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides].
   /// [autoscalingLimits] A nested object resource.
-  InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides({
+  const InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides({
     required this.autoscalingLimits,
   });
 

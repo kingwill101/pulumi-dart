@@ -12,7 +12,7 @@ class LinuxVirtualMachineScaleSetSecret {
   /// Creates a new [LinuxVirtualMachineScaleSetSecret].
   /// [certificates] One or more `certificate` blocks as defined above.
   /// [keyVaultId] The ID of the Key Vault from which all Secrets should be sourced.
-  LinuxVirtualMachineScaleSetSecret({
+  const LinuxVirtualMachineScaleSetSecret({
     required this.certificates,
     required this.keyVaultId,
   });

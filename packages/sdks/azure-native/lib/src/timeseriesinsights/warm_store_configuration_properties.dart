@@ -9,7 +9,7 @@ class WarmStoreConfigurationProperties {
 
   /// Creates a new [WarmStoreConfigurationProperties].
   /// [dataRetention] ISO8601 timespan specifying the number of days the environment's events will be available for query from the warm store.
-  WarmStoreConfigurationProperties({
+  const WarmStoreConfigurationProperties({
     required this.dataRetention,
   });
 

@@ -24,7 +24,7 @@ class TagValueArgs {
   /// [name] Immutable. Resource name for TagValue in the format `tagValues/456`.
   /// [parent] Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
   /// [shortName] Immutable. User-assigned short name for TagValue. The short name should be unique for TagValues within the same parent TagKey. The short name must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
-  TagValueArgs({
+  const TagValueArgs({
     this.description,
     this.etag,
     this.name,

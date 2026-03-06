@@ -16,7 +16,7 @@ class FSxWindowsFileServerVolumeConfigurationResponse {
   /// [authorizationConfig] The authorization configuration details for the Amazon FSx for Windows File Server file system.
   /// [fileSystemId] The Amazon FSx for Windows File Server file system ID to use.
   /// [rootDirectory] The directory within the Amazon FSx for Windows File Server file system to mount as the root directory inside the host.
-  FSxWindowsFileServerVolumeConfigurationResponse({
+  const FSxWindowsFileServerVolumeConfigurationResponse({
     this.authorizationConfig,
     this.fileSystemId,
     this.rootDirectory,

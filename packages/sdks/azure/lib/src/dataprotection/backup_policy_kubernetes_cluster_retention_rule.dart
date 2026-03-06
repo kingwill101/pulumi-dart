@@ -19,7 +19,7 @@ class BackupPolicyKubernetesClusterRetentionRule {
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this retention rule. Changing this forces a new resource to be created.
   /// [priority] Specifies the priority of the rule. The priority number must be unique for each rule. The lower the priority number, the higher the priority of the rule. Changing this forces a new resource to be created.
-  BackupPolicyKubernetesClusterRetentionRule({
+  const BackupPolicyKubernetesClusterRetentionRule({
     required this.criteria,
     required this.lifeCycles,
     required this.name,

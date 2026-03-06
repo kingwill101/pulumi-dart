@@ -43,7 +43,7 @@ class UserProvisioningState {
   /// [targetType] The target type associated with the synchronization
   /// [userProvisioningId] The first ID of the resource
   /// [userProvisioningStatistics] User Provisioning statistics
-  UserProvisioningState({
+  const UserProvisioningState({
     this.createTime,
     this.deletionStrategy,
     this.description,

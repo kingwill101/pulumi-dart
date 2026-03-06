@@ -10,7 +10,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction {
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction].
   /// [eventAction] Required.
   /// [notify] Whether to send a notification.
-  RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction({
+  const RiskConfigurationAccountTakeoverRiskConfigurationActionsMediumAction({
     required this.eventAction,
     required this.notify,
   });

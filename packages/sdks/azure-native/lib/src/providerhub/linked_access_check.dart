@@ -20,7 +20,7 @@ class LinkedAccessCheck {
   /// [linkedActionVerb] The linked action verb.
   /// [linkedProperty] The linked property.
   /// [linkedType] The linked type.
-  LinkedAccessCheck({
+  const LinkedAccessCheck({
     this.actionName,
     this.linkedAction,
     this.linkedActionVerb,

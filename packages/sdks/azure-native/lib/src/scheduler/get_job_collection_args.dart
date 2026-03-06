@@ -15,7 +15,7 @@ class GetJobCollectionArgs {
   /// Creates a new [GetJobCollectionArgs].
   /// [jobCollectionName] The job collection name.
   /// [resourceGroupName] The resource group name.
-  GetJobCollectionArgs({
+  const GetJobCollectionArgs({
     required this.jobCollectionName,
     required this.resourceGroupName,
   });

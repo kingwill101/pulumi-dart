@@ -42,7 +42,7 @@ class GetInstanceClassesResult {
   /// [sortedBy] Optional.
   /// [storageType] Optional.
   /// [zoneId] Optional.
-  GetInstanceClassesResult({
+  const GetInstanceClassesResult({
     this.category,
     this.commodityCode,
     this.dbInstanceClass,

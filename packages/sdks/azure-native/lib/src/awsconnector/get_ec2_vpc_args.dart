@@ -15,7 +15,7 @@ class GetEc2VpcArgs {
   /// Creates a new [GetEc2VpcArgs].
   /// [name] Name of Ec2Vpc
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2VpcArgs({
+  const GetEc2VpcArgs({
     required this.name,
     required this.resourceGroupName,
   });

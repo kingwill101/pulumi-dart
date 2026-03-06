@@ -15,7 +15,7 @@ class ManagedRuleExclusion {
   /// [matchVariable] The variable type to be excluded.
   /// [selector] Selector value for which elements in the collection this exclusion applies to.
   /// [selectorMatchOperator] Comparison operator to apply to the selector when specifying which elements in the collection this exclusion applies to.
-  ManagedRuleExclusion({
+  const ManagedRuleExclusion({
     required this.matchVariable,
     required this.selector,
     required this.selectorMatchOperator,

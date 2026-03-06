@@ -8,7 +8,7 @@ class Environment {
 
   /// Creates a new [Environment].
   /// [customValues] Optional.
-  Environment({
+  const Environment({
     this.customValues,
   });
 

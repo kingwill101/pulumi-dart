@@ -9,7 +9,7 @@ class AclEntryList {
   /// Creates a new [AclEntryList].
   /// [comment] Optional.
   /// [entry] Optional.
-  AclEntryList({
+  const AclEntryList({
     this.comment,
     this.entry,
   });

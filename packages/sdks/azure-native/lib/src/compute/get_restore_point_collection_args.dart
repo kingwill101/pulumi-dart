@@ -18,7 +18,7 @@ class GetRestorePointCollectionArgs {
   /// [expand] The expand expression to apply on the operation. If expand=restorePoints, server will return all contained restore points in the restorePointCollection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [restorePointCollectionName] The name of the restore point collection.
-  GetRestorePointCollectionArgs({
+  const GetRestorePointCollectionArgs({
     this.expand,
     required this.resourceGroupName,
     required this.restorePointCollectionName,

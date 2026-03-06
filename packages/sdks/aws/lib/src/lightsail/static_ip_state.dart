@@ -23,7 +23,7 @@ class StaticIpState {
   /// [name] Name for the allocated static IP.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [supportCode] Support code for the static IP. Include this code in your email to support when you have questions about a static IP in Lightsail. This code enables our support team to look up your Lightsail information more easily.
-  StaticIpState({
+  const StaticIpState({
     this.arn,
     this.ipAddress,
     this.name,

@@ -8,7 +8,7 @@ class RuntimeTemplateEncryptionSpec {
 
   /// Creates a new [RuntimeTemplateEncryptionSpec].
   /// [kmsKeyName] The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
-  RuntimeTemplateEncryptionSpec({
+  const RuntimeTemplateEncryptionSpec({
     this.kmsKeyName,
   });
 

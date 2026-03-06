@@ -70,7 +70,7 @@ class ListingSubscriptionState {
   /// [state] Current state of the subscription.
   /// [subscriberContact] Email of the subscriber.
   /// [subscriptionId] The subscription id used to reference the subscription.
-  ListingSubscriptionState({
+  const ListingSubscriptionState({
     this.commercialInfos,
     this.creationTime,
     this.dataExchangeId,

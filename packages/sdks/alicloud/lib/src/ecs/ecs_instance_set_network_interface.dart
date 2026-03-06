@@ -20,7 +20,7 @@ class EcsInstanceSetNetworkInterface {
   /// [primaryIpAddress] The primary private IP address of ENI.
   /// [securityGroupId] The ID of the security group to which to assign secondary ENI.
   /// [vswitchId] The ID of the vSwitch to which to connect ENI.
-  EcsInstanceSetNetworkInterface({
+  const EcsInstanceSetNetworkInterface({
     this.description,
     this.networkInterfaceName,
     this.primaryIpAddress,

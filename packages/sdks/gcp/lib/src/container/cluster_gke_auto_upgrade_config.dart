@@ -10,7 +10,7 @@ class ClusterGkeAutoUpgradeConfig {
 
   /// Creates a new [ClusterGkeAutoUpgradeConfig].
   /// [patchMode] The selected patch mode.
-  ClusterGkeAutoUpgradeConfig({
+  const ClusterGkeAutoUpgradeConfig({
     required this.patchMode,
   });
 

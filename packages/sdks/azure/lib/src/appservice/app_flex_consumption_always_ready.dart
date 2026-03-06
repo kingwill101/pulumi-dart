@@ -11,7 +11,7 @@ class AppFlexConsumptionAlwaysReady {
   /// Creates a new [AppFlexConsumptionAlwaysReady].
   /// [instanceCount] The instance count of the `always_ready` of the Function App. The minimum number is `0`. The total number of `instance_count` should not exceed the `maximum_instance_count`.
   /// [name] The name of the `always_ready` of the Function App.
-  AppFlexConsumptionAlwaysReady({
+  const AppFlexConsumptionAlwaysReady({
     this.instanceCount,
     required this.name,
   });

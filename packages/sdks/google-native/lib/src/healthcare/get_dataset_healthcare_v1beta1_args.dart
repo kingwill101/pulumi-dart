@@ -15,7 +15,7 @@ class GetDatasetHealthcareV1beta1Args {
   /// [datasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDatasetHealthcareV1beta1Args({
+  const GetDatasetHealthcareV1beta1Args({
     required this.datasetId,
     required this.location,
     this.project,

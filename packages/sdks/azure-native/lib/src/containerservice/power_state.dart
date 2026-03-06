@@ -9,7 +9,7 @@ class PowerState {
 
   /// Creates a new [PowerState].
   /// [code] Tells whether the cluster is Running or Stopped
-  PowerState({
+  const PowerState({
     this.code,
   });
 

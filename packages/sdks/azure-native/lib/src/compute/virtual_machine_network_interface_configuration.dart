@@ -47,7 +47,7 @@ class VirtualMachineNetworkInterfaceConfiguration {
   /// [name] The network interface configuration name.
   /// [networkSecurityGroup] The network security group.
   /// [primary] Specifies the primary network interface in case the virtual machine has more than 1 network interface.
-  VirtualMachineNetworkInterfaceConfiguration({
+  const VirtualMachineNetworkInterfaceConfiguration({
     this.auxiliaryMode,
     this.auxiliarySku,
     this.deleteOption,

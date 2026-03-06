@@ -29,7 +29,7 @@ class ConnectorAs2Config {
   /// [messageSubject] Used as the subject HTTP header attribute in AS2 messages that are being sent with the connector.
   /// [partnerProfileId] The unique identifier for the AS2 partner profile.
   /// [signingAlgorithm] The algorithm that is used to sign AS2 messages sent with the connector. The valid values are SHA256 | SHA384 | SHA512 | SHA1 | NONE .
-  ConnectorAs2Config({
+  const ConnectorAs2Config({
     required this.compression,
     required this.encryptionAlgorithm,
     required this.localProfileId,

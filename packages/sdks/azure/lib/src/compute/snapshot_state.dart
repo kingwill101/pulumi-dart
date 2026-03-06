@@ -56,7 +56,7 @@ class SnapshotState {
   /// [storageAccountId] Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [trustedLaunchEnabled] Whether Trusted Launch is enabled for the Snapshot.
-  SnapshotState({
+  const SnapshotState({
     this.createOption,
     this.diskAccessId,
     this.diskSizeGb,

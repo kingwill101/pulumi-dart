@@ -12,7 +12,7 @@ class ConnectionMonitorSource {
   /// Creates a new [ConnectionMonitorSource].
   /// [port] The source port used by connection monitor.
   /// [resourceId] The ID of the resource used as the source by connection monitor.
-  ConnectionMonitorSource({
+  const ConnectionMonitorSource({
     this.port,
     required this.resourceId,
   });

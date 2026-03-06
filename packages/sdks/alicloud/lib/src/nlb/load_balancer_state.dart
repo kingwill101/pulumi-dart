@@ -99,7 +99,7 @@ class LoadBalancerState {
   /// [tags] List of labels.
   /// [vpcId] The ID of the VPC where the NLB instance is deployed.
   /// [zoneMappings] Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
-  LoadBalancerState({
+  const LoadBalancerState({
     this.addressIpVersion,
     this.addressType,
     this.bandwidthPackageId,

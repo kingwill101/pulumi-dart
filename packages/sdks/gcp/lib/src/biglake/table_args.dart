@@ -25,7 +25,7 @@ class TableArgs {
   /// [hiveOptions] Options of a Hive table.
   /// [name] Output only. The name of the Table. Format:
   /// [type] The database type.
-  TableArgs({
+  const TableArgs({
     this.database,
     this.hiveOptions,
     this.name,

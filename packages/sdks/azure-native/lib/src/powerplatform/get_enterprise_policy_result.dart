@@ -52,7 +52,7 @@ class GetEnterprisePolicyResult {
   /// [systemId] The internally assigned unique identifier of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEnterprisePolicyResult({
+  const GetEnterprisePolicyResult({
     required this.azureApiVersion,
     this.encryption,
     this.healthStatus,

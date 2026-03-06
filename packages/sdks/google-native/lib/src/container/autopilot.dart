@@ -13,7 +13,7 @@ class Autopilot {
   /// Creates a new [Autopilot].
   /// [enabled] Enable Autopilot
   /// [workloadPolicyConfig] Workload policy configuration for Autopilot.
-  Autopilot({
+  const Autopilot({
     this.enabled,
     this.workloadPolicyConfig,
   });

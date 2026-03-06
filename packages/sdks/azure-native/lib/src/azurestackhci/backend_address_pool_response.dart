@@ -13,7 +13,7 @@ class BackendAddressPoolResponse {
   /// Creates a new [BackendAddressPoolResponse].
   /// [name] name of the backend pool.
   /// [properties] properties for the backend pool
-  BackendAddressPoolResponse({
+  const BackendAddressPoolResponse({
     required this.name,
     required this.properties,
   });

@@ -30,7 +30,7 @@ class DatabaseBackupInfoResponse {
   /// [isCompressed] Whether the backup set is compressed
   /// [isDamaged] Database was damaged when backed up, but the backup operation was requested to continue despite errors.
   /// [position] Position of current database backup in the file.
-  DatabaseBackupInfoResponse({
+  const DatabaseBackupInfoResponse({
     required this.backupFiles,
     required this.backupFinishDate,
     required this.backupType,

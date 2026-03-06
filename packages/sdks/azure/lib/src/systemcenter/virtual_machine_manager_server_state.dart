@@ -33,7 +33,7 @@ class VirtualMachineManagerServerState {
   /// [resourceGroupName] The name of the Resource Group where the System Center Virtual Machine Manager should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the System Center Virtual Machine Manager Server.
   /// [username] The username that is used to connect to the System Center Virtual Machine Manager Server. Changing this forces a new resource to be created.
-  VirtualMachineManagerServerState({
+  const VirtualMachineManagerServerState({
     this.customLocationId,
     this.fqdn,
     this.location,

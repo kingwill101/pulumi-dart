@@ -18,7 +18,7 @@ class ExpressRouteCircuitAuthorization {
   /// [authorizationUseStatus] The authorization use status.
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
-  ExpressRouteCircuitAuthorization({
+  const ExpressRouteCircuitAuthorization({
     this.authorizationKey,
     this.authorizationUseStatus,
     this.id,

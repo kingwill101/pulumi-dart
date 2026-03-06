@@ -12,7 +12,7 @@ class ServerKeyState {
   /// Creates a new [ServerKeyState].
   /// [keyVaultKeyId] The URL to a Key Vault Key.
   /// [serverId] The ID of the PostgreSQL Server. Changing this forces a new resource to be created.
-  ServerKeyState({
+  const ServerKeyState({
     this.keyVaultKeyId,
     this.serverId,
   });

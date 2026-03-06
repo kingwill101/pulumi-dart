@@ -41,7 +41,7 @@ class QueueAuthorizationRuleState {
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
   /// [secondaryKey] The Secondary Key for the Authorization Rule.
   /// [send] Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
-  QueueAuthorizationRuleState({
+  const QueueAuthorizationRuleState({
     this.listen,
     this.manage,
     this.name,

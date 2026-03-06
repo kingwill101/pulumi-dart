@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters].
   /// [recordRowPath] The path to the top-level parent that contains the records.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersJsonMappingParameters({
     required this.recordRowPath,
   });
 

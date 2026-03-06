@@ -16,7 +16,7 @@ class DefaultRoleWithPolicy {
   /// [args] Args to use when creating the role and policies. Can't be specified if `roleArn` is used.
   /// [roleArn] ARN of existing role to use instead of creating a new role. Cannot be used in combination with `args` or `opts`.
   /// [skip] Skips creation of the role if set to `true`.
-  DefaultRoleWithPolicy({
+  const DefaultRoleWithPolicy({
     this.args,
     this.roleArn,
     this.skip,

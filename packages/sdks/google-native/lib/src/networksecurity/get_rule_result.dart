@@ -35,7 +35,7 @@ class GetRuleResult {
   /// [sessionMatcher] CEL expression for matching on session criteria.
   /// [tlsInspectionEnabled] Optional. Flag to enable TLS inspection of traffic matching on , can only be true if the parent GatewaySecurityPolicy references a TLSInspectionConfig.
   /// [updateTime] Time when the rule was updated.
-  GetRuleResult({
+  const GetRuleResult({
     required this.applicationMatcher,
     required this.basicProfile,
     required this.createTime,

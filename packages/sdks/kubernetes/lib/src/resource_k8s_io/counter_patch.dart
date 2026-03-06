@@ -9,7 +9,7 @@ class CounterPatch {
 
   /// Creates a new [CounterPatch].
   /// [value] Value defines how much of a certain device counter is available.
-  CounterPatch({
+  const CounterPatch({
     this.value,
   });
 

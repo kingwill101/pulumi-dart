@@ -13,7 +13,7 @@ class GetChainsChainChainConfig {
   /// Creates a new [GetChainsChainChainConfig].
   /// [nodes] Each node in the delivery chain.
   /// [routers] Execution sequence relationship between delivery chain nodes.
-  GetChainsChainChainConfig({
+  const GetChainsChainChainConfig({
     required this.nodes,
     required this.routers,
   });

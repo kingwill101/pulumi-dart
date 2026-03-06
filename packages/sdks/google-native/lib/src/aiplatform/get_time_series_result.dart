@@ -36,7 +36,7 @@ class GetTimeSeriesResult {
   /// [pluginName] Immutable. Name of the plugin this time series pertain to. Such as Scalar, Tensor, Blob
   /// [updateTime] Timestamp when this TensorboardTimeSeries was last updated.
   /// [valueType] Immutable. Type of TensorboardTimeSeries value.
-  GetTimeSeriesResult({
+  const GetTimeSeriesResult({
     required this.createTime,
     required this.description,
     required this.displayName,

@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesWakeAlarm {
 
   /// Creates a new [DomainFeaturesCapabilitiesWakeAlarm].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesWakeAlarm({
+  const DomainFeaturesCapabilitiesWakeAlarm({
     this.state,
   });
 

@@ -25,7 +25,7 @@ class UserAlarmConfigState {
   /// [lang] Optional.
   /// [notifyConfigs] Conflict with `contact_config`. The notification configuration. More details see `notify_config` below.
   /// [useDefaultContact] Optional.
-  UserAlarmConfigState({
+  const UserAlarmConfigState({
     this.alarmConfigs,
     this.alarmLang,
     this.contactConfigs,

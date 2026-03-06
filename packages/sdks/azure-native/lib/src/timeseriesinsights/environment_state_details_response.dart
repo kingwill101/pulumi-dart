@@ -12,7 +12,7 @@ class EnvironmentStateDetailsResponse {
   /// Creates a new [EnvironmentStateDetailsResponse].
   /// [code] Contains the code that represents the reason of an environment being in a particular state. Can be used to programmatically handle specific cases.
   /// [message] A message that describes the state in detail.
-  EnvironmentStateDetailsResponse({
+  const EnvironmentStateDetailsResponse({
     this.code,
     this.message,
   });

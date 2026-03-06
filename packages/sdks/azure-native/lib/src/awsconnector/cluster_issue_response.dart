@@ -16,7 +16,7 @@ class ClusterIssueResponse {
   /// [code] &lt;p&gt;The error code of the issue.&lt;/p&gt;
   /// [message] &lt;p&gt;A description of the issue.&lt;/p&gt;
   /// [resourceIds] &lt;p&gt;The resource IDs that the issue relates to.&lt;/p&gt;
-  ClusterIssueResponse({
+  const ClusterIssueResponse({
     this.code,
     this.message,
     this.resourceIds,

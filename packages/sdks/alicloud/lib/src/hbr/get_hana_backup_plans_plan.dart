@@ -37,7 +37,7 @@ class GetHanaBackupPlansPlan {
   /// [schedule] The backup policy.
   /// [status] The status of the resource.
   /// [vaultId] The ID of the backup vault.
-  GetHanaBackupPlansPlan({
+  const GetHanaBackupPlansPlan({
     required this.backupPrefix,
     required this.backupType,
     required this.clusterId,

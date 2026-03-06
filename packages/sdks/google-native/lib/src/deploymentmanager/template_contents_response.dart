@@ -22,7 +22,7 @@ class TemplateContentsResponse {
   /// [mainTemplate] The filename of the mainTemplate
   /// [schema] The contents of the template schema.
   /// [template] The contents of the main template file.
-  TemplateContentsResponse({
+  const TemplateContentsResponse({
     required this.imports,
     required this.interpreter,
     required this.mainTemplate,

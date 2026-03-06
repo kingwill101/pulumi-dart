@@ -12,7 +12,7 @@ class GetDomainArgs {
 
   /// Creates a new [GetDomainArgs].
   /// [name] The name of the domain.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.name,
   });
 

@@ -30,7 +30,7 @@ class SpringCloudApplicationInsightsApplicationPerformanceMonitoringState {
   /// [samplingPercentage] Specifies the percentage for fixed-percentage sampling.
   /// [samplingRequestsPerSecond] Specifies the number of requests per second for the rate-limited sampling.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
-  SpringCloudApplicationInsightsApplicationPerformanceMonitoringState({
+  const SpringCloudApplicationInsightsApplicationPerformanceMonitoringState({
     this.connectionString,
     this.globallyEnabled,
     this.name,

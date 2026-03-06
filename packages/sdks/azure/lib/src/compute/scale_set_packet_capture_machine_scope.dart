@@ -11,7 +11,7 @@ class ScaleSetPacketCaptureMachineScope {
   /// Creates a new [ScaleSetPacketCaptureMachineScope].
   /// [excludeInstanceIds] A list of Virtual Machine Scale Set instance IDs which should be excluded from running Packet Capture, e.g. `["0", "2"]`. Changing this forces a new resource to be created.
   /// [includeInstanceIds] A list of Virtual Machine Scale Set instance IDs which should be included for Packet Capture, e.g. `["1", "3"]`. Changing this forces a new resource to be created.
-  ScaleSetPacketCaptureMachineScope({
+  const ScaleSetPacketCaptureMachineScope({
     this.excludeInstanceIds,
     this.includeInstanceIds,
   });

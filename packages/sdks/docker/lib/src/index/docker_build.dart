@@ -35,7 +35,7 @@ class DockerBuild {
   /// [network] Set the networking mode for RUN instructions
   /// [platform] The architecture of the platform you want to build this image for, e.g. `linux/arm64`.
   /// [target] The target of the Dockerfile to build
-  DockerBuild({
+  const DockerBuild({
     this.addHosts,
     this.args,
     this.builderVersion,

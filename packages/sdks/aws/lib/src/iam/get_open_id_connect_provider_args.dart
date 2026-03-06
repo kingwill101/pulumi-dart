@@ -18,7 +18,7 @@ class GetOpenIdConnectProviderArgs {
   /// [arn] ARN of the OpenID Connect provider.
   /// [tags] Map of resource tags for the IAM OIDC provider.
   /// [url] URL of the OpenID Connect provider.
-  GetOpenIdConnectProviderArgs({
+  const GetOpenIdConnectProviderArgs({
     this.arn,
     this.tags,
     this.url,

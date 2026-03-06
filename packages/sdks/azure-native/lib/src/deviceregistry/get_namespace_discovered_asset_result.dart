@@ -115,7 +115,7 @@ class GetNamespaceDiscoveredAssetResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] An integer that is incremented each time the resource is modified.
-  GetNamespaceDiscoveredAssetResult({
+  const GetNamespaceDiscoveredAssetResult({
     this.assetTypeRefs,
     this.attributes,
     required this.azureApiVersion,

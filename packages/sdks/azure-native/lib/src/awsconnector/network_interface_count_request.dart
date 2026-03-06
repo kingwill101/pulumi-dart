@@ -12,7 +12,7 @@ class NetworkInterfaceCountRequest {
   /// Creates a new [NetworkInterfaceCountRequest].
   /// [max] The maximum number of network interfaces.
   /// [min] The minimum number of network interfaces.
-  NetworkInterfaceCountRequest({
+  const NetworkInterfaceCountRequest({
     this.max,
     this.min,
   });

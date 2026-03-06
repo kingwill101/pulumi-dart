@@ -76,7 +76,7 @@ class GetJobResult {
   /// [terminalConditions] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetJobResult({
+  const GetJobResult({
     required this.annotations,
     required this.binaryAuthorizations,
     required this.client,

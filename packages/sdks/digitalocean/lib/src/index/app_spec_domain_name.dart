@@ -20,7 +20,7 @@ class AppSpecDomainName {
   /// [type] The domain type, which can be one of the following:
   /// [wildcard] A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
   /// [zone] If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
-  AppSpecDomainName({
+  const AppSpecDomainName({
     required this.name,
     this.type,
     this.wildcard,

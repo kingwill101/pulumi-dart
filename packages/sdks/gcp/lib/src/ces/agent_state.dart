@@ -137,7 +137,7 @@ class AgentState {
   /// [tools] List of available tools for the agent.
   /// [toolsets] List of toolsets for the agent.
   /// [updateTime] Timestamp when the agent was last updated.
-  AgentState({
+  const AgentState({
     this.afterAgentCallbacks,
     this.afterModelCallbacks,
     this.afterToolCallbacks,

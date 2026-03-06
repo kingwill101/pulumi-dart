@@ -10,7 +10,7 @@ class PremiumMdtiDataConnectorDataTypesResponse {
 
   /// Creates a new [PremiumMdtiDataConnectorDataTypesResponse].
   /// [connector] Data type for Microsoft Defender for Threat Intelligence Premium data connector.
-  PremiumMdtiDataConnectorDataTypesResponse({
+  const PremiumMdtiDataConnectorDataTypesResponse({
     required this.connector,
   });
 

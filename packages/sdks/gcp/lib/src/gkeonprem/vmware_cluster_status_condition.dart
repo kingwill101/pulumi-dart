@@ -26,7 +26,7 @@ class VMwareClusterStatusCondition {
   /// [reason] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  VMwareClusterStatusCondition({
+  const VMwareClusterStatusCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

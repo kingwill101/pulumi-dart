@@ -18,7 +18,7 @@ class MqttDestinationConfiguration {
   /// [retain] When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
   /// [topic] The MQTT topic.
   /// [ttl] The MQTT TTL setting.
-  MqttDestinationConfiguration({
+  const MqttDestinationConfiguration({
     this.qos,
     this.retain,
     required this.topic,

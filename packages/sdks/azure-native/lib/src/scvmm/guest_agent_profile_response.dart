@@ -25,7 +25,7 @@ class GuestAgentProfileResponse {
   /// [lastStatusChange] The time of the last status change.
   /// [status] The status of the hybrid machine agent.
   /// [vmUuid] Specifies the VM's unique SMBIOS ID.
-  GuestAgentProfileResponse({
+  const GuestAgentProfileResponse({
     required this.agentVersion,
     this.clientPublicKey,
     required this.errorDetails,

@@ -18,7 +18,7 @@ class GetLoadBalancersBalancerZoneMapping {
   /// [status] The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
   /// [vswitchId] The ID of the vSwitch that corresponds to the zone.
   /// [zoneId] The zone ID of the resource.
-  GetLoadBalancersBalancerZoneMapping({
+  const GetLoadBalancersBalancerZoneMapping({
     required this.loadBalancerAddresses,
     required this.status,
     required this.vswitchId,

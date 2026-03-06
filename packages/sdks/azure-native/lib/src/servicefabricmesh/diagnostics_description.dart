@@ -16,7 +16,7 @@ class DiagnosticsDescription {
   /// [defaultSinkRefs] The sinks to be used if diagnostics is enabled. Sink choices can be overridden at the service and code package level.
   /// [enabled] Status of whether or not sinks are enabled.
   /// [sinks] List of supported sinks that can be referenced.
-  DiagnosticsDescription({
+  const DiagnosticsDescription({
     this.defaultSinkRefs,
     this.enabled,
     this.sinks,

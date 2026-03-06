@@ -10,7 +10,7 @@ class GetRegionBackendServiceParam {
 
   /// Creates a new [GetRegionBackendServiceParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the region backend service. Tag keys and values have the
-  GetRegionBackendServiceParam({
+  const GetRegionBackendServiceParam({
     required this.resourceManagerTags,
   });
 

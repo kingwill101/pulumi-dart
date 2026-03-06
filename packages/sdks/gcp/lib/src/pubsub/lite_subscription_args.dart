@@ -30,7 +30,7 @@ class LiteSubscriptionArgs {
   /// [region] The region of the pubsub lite topic.
   /// [topic] A reference to a Topic resource.
   /// [zone] The zone of the pubsub lite topic.
-  LiteSubscriptionArgs({
+  const LiteSubscriptionArgs({
     this.deliveryConfig,
     this.name,
     this.project,

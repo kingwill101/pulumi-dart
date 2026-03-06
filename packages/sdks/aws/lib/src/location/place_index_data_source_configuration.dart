@@ -8,7 +8,7 @@ class PlaceIndexDataSourceConfiguration {
 
   /// Creates a new [PlaceIndexDataSourceConfiguration].
   /// [intendedUse] Specifies how the results of an operation will be stored by the caller. Valid values: `SingleUse`, `Storage`. Default: `SingleUse`.
-  PlaceIndexDataSourceConfiguration({
+  const PlaceIndexDataSourceConfiguration({
     this.intendedUse,
   });
 

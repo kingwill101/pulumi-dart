@@ -17,7 +17,7 @@ class GetIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Dev Center.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Dev Center.
   /// [type] The type of Managed Service Identity that is configured on this Dev Center.
-  GetIdentity({
+  const GetIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -17,7 +17,7 @@ class DomainDevicesInputDriver {
   /// [iommu] Enables or disables the IOMMU feature for the input device driver.
   /// [packed] Configures whether the input device driver uses packed ring.
   /// [pagePerVq] Sets the page per virtual queue option for the input device driver.
-  DomainDevicesInputDriver({
+  const DomainDevicesInputDriver({
     this.ats,
     this.iommu,
     this.packed,

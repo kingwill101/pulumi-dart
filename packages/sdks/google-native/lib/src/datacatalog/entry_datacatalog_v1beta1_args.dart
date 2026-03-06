@@ -52,7 +52,7 @@ class EntryDatacatalogV1beta1Args {
   /// [type] The type of the entry. Only used for Entries with types in the EntryType enum.
   /// [userSpecifiedSystem] This field indicates the entry's source system that Data Catalog does not integrate with. `user_specified_system` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long.
   /// [userSpecifiedType] Entry type if it does not fit any of the input-allowed values listed in `EntryType` enum above. When creating an entry, users should check the enum values first, if nothing matches the entry to be created, then provide a custom value, for example "my_special_type". `user_specified_type` strings must begin with a letter or underscore and can only contain letters, numbers, and underscores; are case insensitive; must be at least 1 character and at most 64 characters long. Currently, only FILESET enum value is allowed. All other entries created through Data Catalog must use `user_specified_type`.
-  EntryDatacatalogV1beta1Args({
+  const EntryDatacatalogV1beta1Args({
     this.bigqueryDateShardedSpec,
     this.bigqueryTableSpec,
     this.description,

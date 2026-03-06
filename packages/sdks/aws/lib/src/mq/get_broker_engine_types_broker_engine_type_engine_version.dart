@@ -8,7 +8,7 @@ class GetBrokerEngineTypesBrokerEngineTypeEngineVersion {
 
   /// Creates a new [GetBrokerEngineTypesBrokerEngineTypeEngineVersion].
   /// [name] Name of the engine version.
-  GetBrokerEngineTypesBrokerEngineTypeEngineVersion({
+  const GetBrokerEngineTypesBrokerEngineTypeEngineVersion({
     required this.name,
   });
 

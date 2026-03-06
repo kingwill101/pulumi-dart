@@ -24,7 +24,7 @@ class GetHostShareKeysResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetHostShareKeysResult({
+  const GetHostShareKeysResult({
     this.enableDetails,
     required this.id,
     required this.ids,

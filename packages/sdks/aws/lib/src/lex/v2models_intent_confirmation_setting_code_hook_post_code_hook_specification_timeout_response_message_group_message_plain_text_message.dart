@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutR
 
   /// Creates a new [V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupMessagePlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupMessagePlainTextMessage({
+  const V2modelsIntentConfirmationSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupMessagePlainTextMessage({
     required this.value,
   });
 

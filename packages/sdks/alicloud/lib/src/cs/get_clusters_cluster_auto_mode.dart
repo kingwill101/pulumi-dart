@@ -8,7 +8,7 @@ class GetClustersClusterAutoMode {
 
   /// Creates a new [GetClustersClusterAutoMode].
   /// [enabled] Whether to enable cluster automatic upgrade.
-  GetClustersClusterAutoMode({
+  const GetClustersClusterAutoMode({
     required this.enabled,
   });
 

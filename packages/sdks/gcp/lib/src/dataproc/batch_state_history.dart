@@ -17,7 +17,7 @@ class BatchStateHistory {
   /// [state] (Output)
   /// [stateMessage] (Output)
   /// [stateStartTime] (Output)
-  BatchStateHistory({
+  const BatchStateHistory({
     this.state,
     this.stateMessage,
     this.stateStartTime,

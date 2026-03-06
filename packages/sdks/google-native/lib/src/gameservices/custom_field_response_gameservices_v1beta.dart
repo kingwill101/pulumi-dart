@@ -12,7 +12,7 @@ class CustomFieldResponseGameservicesV1beta {
   /// Creates a new [CustomFieldResponseGameservicesV1beta].
   /// [name] Name is the field name.
   /// [value] Value is the field value. It is important that in contrast to the CounterOptions.field, the value here is a constant that is not derived from the IAMContext.
-  CustomFieldResponseGameservicesV1beta({
+  const CustomFieldResponseGameservicesV1beta({
     required this.name,
     required this.value,
   });

@@ -33,7 +33,7 @@ class LoadBalancerRuleProperties {
   /// [loadDistribution] SessionPersistence: Default (5-tuple), SourceIP(2-tuple), sourceIPProtocol(3-tuple)
   /// [probe] Reference for the health probe for this connection
   /// [protocol] IP Protocol that the rule must load-balance
-  LoadBalancerRuleProperties({
+  const LoadBalancerRuleProperties({
     required this.backendAddressPool,
     required this.backendPort,
     required this.frontendIPConfiguration,

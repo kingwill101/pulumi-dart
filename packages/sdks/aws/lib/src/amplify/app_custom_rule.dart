@@ -17,7 +17,7 @@ class AppCustomRule {
   /// [source] Source pattern for a URL rewrite or redirect rule.
   /// [status] Status code for a URL rewrite or redirect rule. Valid values: `200`, `301`, `302`, `404`, `404-200`.
   /// [target] Target pattern for a URL rewrite or redirect rule.
-  AppCustomRule({
+  const AppCustomRule({
     this.condition,
     required this.source,
     this.status,

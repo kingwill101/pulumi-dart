@@ -15,7 +15,7 @@ class GetStaticIpsResult {
   /// [location] Required.
   /// [project] Optional.
   /// [staticIps] A list of static IP addresses that Datastream will connect from.
-  GetStaticIpsResult({
+  const GetStaticIpsResult({
     required this.id,
     required this.location,
     this.project,

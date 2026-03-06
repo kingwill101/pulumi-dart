@@ -35,7 +35,7 @@ class GetGatewaysGatewayGatewayInstance {
   /// [localIp] The Local IP ADDRESS of Gateway instance.
   /// [message] The prompt information of Gateway instance.
   /// [outputIp] The host of Gateway instance.
-  GetGatewaysGatewayGatewayInstance({
+  const GetGatewaysGatewayGatewayInstance({
     required this.connectEndpointType,
     required this.currentDaemonVersion,
     required this.currentVersion,

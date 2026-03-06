@@ -29,7 +29,7 @@ class GetManagementDnsZoneBindingResult {
   /// [updateTime] Last update time of this resource.
   /// [vmwareEngineNetwork] Network to bind is a VMware Engine network. Specify the name in the following form for VMware engine network: `projects/{project}/locations/global/vmwareEngineNetworks/{vmware_engine_network_id}`. `{project}` can either be a project number or a project ID.
   /// [vpcNetwork] Network to bind is a standard consumer VPC. Specify the name in the following form for consumer VPC network: `projects/{project}/global/networks/{network_id}`. `{project}` can either be a project number or a project ID.
-  GetManagementDnsZoneBindingResult({
+  const GetManagementDnsZoneBindingResult({
     required this.createTime,
     required this.description,
     required this.name,

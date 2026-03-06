@@ -10,7 +10,7 @@ class GoogleFirestoreAdminV1WeeklyRecurrence {
 
   /// Creates a new [GoogleFirestoreAdminV1WeeklyRecurrence].
   /// [day] The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed.
-  GoogleFirestoreAdminV1WeeklyRecurrence({
+  const GoogleFirestoreAdminV1WeeklyRecurrence({
     this.day,
   });
 

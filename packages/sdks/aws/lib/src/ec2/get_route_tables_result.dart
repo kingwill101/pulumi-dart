@@ -21,7 +21,7 @@ class GetRouteTablesResult {
   /// [region] Required.
   /// [tags] Required.
   /// [vpcId] Optional.
-  GetRouteTablesResult({
+  const GetRouteTablesResult({
     this.filters,
     required this.id,
     required this.ids,

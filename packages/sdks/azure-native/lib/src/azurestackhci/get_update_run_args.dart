@@ -21,7 +21,7 @@ class GetUpdateRunArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateName] The name of the Update
   /// [updateRunName] The name of the Update Run
-  GetUpdateRunArgs({
+  const GetUpdateRunArgs({
     required this.clusterName,
     required this.resourceGroupName,
     required this.updateName,

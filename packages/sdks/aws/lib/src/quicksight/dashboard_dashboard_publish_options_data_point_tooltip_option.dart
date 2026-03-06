@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsDataPointTooltipOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsDataPointTooltipOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsDataPointTooltipOption({
+  const DashboardDashboardPublishOptionsDataPointTooltipOption({
     this.availabilityStatus,
   });
 

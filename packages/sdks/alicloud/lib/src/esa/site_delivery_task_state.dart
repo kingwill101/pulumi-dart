@@ -61,7 +61,7 @@ class SiteDeliveryTaskState {
   /// [slsDelivery] SLS delivery configuration. See `sls_delivery` below.
   /// [status] Task status, value:
   /// [taskName] The task name.
-  SiteDeliveryTaskState({
+  const SiteDeliveryTaskState({
     this.businessType,
     this.dataCenter,
     this.deliveryType,

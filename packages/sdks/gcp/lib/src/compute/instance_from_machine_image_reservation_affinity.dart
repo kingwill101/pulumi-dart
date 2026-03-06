@@ -12,7 +12,7 @@ class InstanceFromMachineImageReservationAffinity {
   /// Creates a new [InstanceFromMachineImageReservationAffinity].
   /// [specificReservation] Specifies the label selector for the reservation to use.
   /// [type] The type of reservation from which this instance can consume resources.
-  InstanceFromMachineImageReservationAffinity({
+  const InstanceFromMachineImageReservationAffinity({
     this.specificReservation,
     required this.type,
   });

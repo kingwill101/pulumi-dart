@@ -16,7 +16,7 @@ class AzureMonitorSelectedConfigurations {
   /// [configurationVersion] The configuration version.
   /// [globalConfigurations] The global configurations of selected configurations.
   /// [tableList] The table list.
-  AzureMonitorSelectedConfigurations({
+  const AzureMonitorSelectedConfigurations({
     this.configurationVersion,
     this.globalConfigurations,
     this.tableList,

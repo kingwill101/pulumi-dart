@@ -18,7 +18,7 @@ class GetHostPoolScheduledAgentUpdate {
   /// [schedules] A `schedule` block as defined below.
   /// [timezone] The time zone in which the agent update schedule will apply.
   /// [useSessionHostTimezone] Specifies whether scheduled agent updates should be applied based on the timezone of the affected session host.
-  GetHostPoolScheduledAgentUpdate({
+  const GetHostPoolScheduledAgentUpdate({
     required this.enabled,
     required this.schedules,
     required this.timezone,

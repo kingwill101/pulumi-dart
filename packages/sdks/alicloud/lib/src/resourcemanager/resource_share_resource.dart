@@ -21,7 +21,7 @@ class ResourceShareResource {
   /// Creates a new [ResourceShareResource].
   /// [resourceId] The ID of the shared resource.
   /// [resourceType] Shared resource type.
-  ResourceShareResource({
+  const ResourceShareResource({
     this.resourceId,
     this.resourceType,
   });

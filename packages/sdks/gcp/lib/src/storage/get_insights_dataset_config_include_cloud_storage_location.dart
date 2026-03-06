@@ -8,7 +8,7 @@ class GetInsightsDatasetConfigIncludeCloudStorageLocation {
 
   /// Creates a new [GetInsightsDatasetConfigIncludeCloudStorageLocation].
   /// [locations] The list of cloud storage locations to include in the DatasetConfig.
-  GetInsightsDatasetConfigIncludeCloudStorageLocation({
+  const GetInsightsDatasetConfigIncludeCloudStorageLocation({
     required this.locations,
   });
 

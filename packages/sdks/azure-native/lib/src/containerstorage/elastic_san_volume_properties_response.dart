@@ -15,7 +15,7 @@ class ElasticSanVolumePropertiesResponse {
   /// [targetIqn] iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server"
   /// [targetPortalHostname] iSCSI Target Portal Host Name
   /// [targetPortalPort] iSCSI Target Portal Port
-  ElasticSanVolumePropertiesResponse({
+  const ElasticSanVolumePropertiesResponse({
     required this.targetIqn,
     required this.targetPortalHostname,
     required this.targetPortalPort,

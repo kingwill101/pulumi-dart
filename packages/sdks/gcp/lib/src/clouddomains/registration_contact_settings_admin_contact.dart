@@ -19,7 +19,7 @@ class RegistrationContactSettingsAdminContact {
   /// [faxNumber] Fax number of the contact in international format. For example, "+1-800-555-0123".
   /// [phoneNumber] Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
   /// [postalAddress] Required. Postal address of the contact.
-  RegistrationContactSettingsAdminContact({
+  const RegistrationContactSettingsAdminContact({
     required this.email,
     this.faxNumber,
     required this.phoneNumber,

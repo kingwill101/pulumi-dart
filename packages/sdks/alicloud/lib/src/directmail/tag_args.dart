@@ -12,7 +12,7 @@ class TagArgs {
 
   /// Creates a new [TagArgs].
   /// [tagName] The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
-  TagArgs({
+  const TagArgs({
     required this.tagName,
   });
 

@@ -15,7 +15,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperation {
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperation].
   /// [audit] Configures the detection of sensitive data.
   /// [deidentify] Configures the masking of sensitive data.
-  GetLogDataProtectionPolicyDocumentStatementOperation({
+  const GetLogDataProtectionPolicyDocumentStatementOperation({
     this.audit,
     this.deidentify,
   });

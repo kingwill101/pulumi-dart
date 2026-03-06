@@ -24,7 +24,7 @@ class PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig {
   /// [recordName] DNS record name.
   /// [recordSets] Configuration block for record sets. See Record Set below.
   /// [timeoutMinutes] Timeout in minutes.
-  PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig({
+  const PlanWorkflowStepParallelConfigStepRoute53HealthCheckConfig({
     this.crossAccountRole,
     this.externalId,
     required this.hostedZoneId,

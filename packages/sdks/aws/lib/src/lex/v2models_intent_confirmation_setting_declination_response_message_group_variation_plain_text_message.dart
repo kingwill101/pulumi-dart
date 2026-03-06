@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationP
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationPlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

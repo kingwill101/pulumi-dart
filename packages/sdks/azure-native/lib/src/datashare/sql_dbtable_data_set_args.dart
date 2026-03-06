@@ -37,7 +37,7 @@ class SqlDBTableDataSetArgs {
   /// [shareName] The name of the share to add the data set to.
   /// [sqlServerResourceId] Resource id of SQL server
   /// [tableName] SQL DB table name.
-  SqlDBTableDataSetArgs({
+  const SqlDBTableDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.databaseName,

@@ -14,7 +14,7 @@ class AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration {
   /// [indexArn] ARN of the S3 Vectors index. Conflicts with `index_name` and `vector_bucket_arn`.
   /// [indexName] Name of the S3 Vectors index. Must be specified with `vector_bucket_arn`. Conflicts with `index_arn`.
   /// [vectorBucketArn] ARN of the S3 Vectors vector bucket. Must be specified with `index_name`. Conflicts with `index_arn`.
-  AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationS3VectorsConfiguration({
     this.indexArn,
     this.indexName,
     this.vectorBucketArn,

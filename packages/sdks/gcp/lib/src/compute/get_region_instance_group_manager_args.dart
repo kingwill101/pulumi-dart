@@ -22,7 +22,7 @@ class GetRegionInstanceGroupManagerArgs {
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [region] Optional.
   /// [selfLink] The self link of the instance group. Either `name` or `self_link` must be provided.
-  GetRegionInstanceGroupManagerArgs({
+  const GetRegionInstanceGroupManagerArgs({
     this.name,
     this.project,
     this.region,

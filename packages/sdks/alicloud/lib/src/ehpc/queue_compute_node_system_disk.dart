@@ -14,7 +14,7 @@ class QueueComputeNodeSystemDisk {
   /// [category] Category
   /// [level] Level
   /// [size] Size
-  QueueComputeNodeSystemDisk({
+  const QueueComputeNodeSystemDisk({
     this.category,
     this.level,
     this.size,

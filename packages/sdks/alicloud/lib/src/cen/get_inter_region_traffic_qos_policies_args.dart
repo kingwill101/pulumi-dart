@@ -36,7 +36,7 @@ class GetInterRegionTrafficQosPoliciesArgs {
   /// [trafficQosPolicyName] The name of the QoS policy.
   /// [transitRouterAttachmentId] The ID of the inter-region connection.
   /// [transitRouterId] The ID of the transit router.
-  GetInterRegionTrafficQosPoliciesArgs({
+  const GetInterRegionTrafficQosPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

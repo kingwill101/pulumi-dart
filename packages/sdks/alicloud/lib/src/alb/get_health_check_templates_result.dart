@@ -24,7 +24,7 @@ class GetHealthCheckTemplatesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [templates] Required.
-  GetHealthCheckTemplatesResult({
+  const GetHealthCheckTemplatesResult({
     this.healthCheckTemplateIds,
     this.healthCheckTemplateName,
     required this.id,

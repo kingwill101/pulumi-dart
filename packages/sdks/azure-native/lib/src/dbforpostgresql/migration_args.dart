@@ -85,7 +85,7 @@ class MigrationArgs {
   /// [tags] Resource tags.
   /// [targetDbServerFullyQualifiedDomainName] Fully qualified domain name (FQDN) or IP address of the target server. This property is optional. When provided, the migration service will always use it to connect to the target server.
   /// [triggerCutover] Indicates if cutover must be triggered for the entire migration.
-  MigrationArgs({
+  const MigrationArgs({
     this.cancel,
     this.dbsToCancelMigrationOn,
     this.dbsToMigrate,

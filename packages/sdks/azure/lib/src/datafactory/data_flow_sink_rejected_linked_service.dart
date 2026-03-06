@@ -11,7 +11,7 @@ class DataFlowSinkRejectedLinkedService {
   /// Creates a new [DataFlowSinkRejectedLinkedService].
   /// [name] The name for the Data Factory Linked Service with schema.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  DataFlowSinkRejectedLinkedService({
+  const DataFlowSinkRejectedLinkedService({
     required this.name,
     this.parameters,
   });

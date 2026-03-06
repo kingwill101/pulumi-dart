@@ -12,7 +12,7 @@ class VMwareClusterLoadBalancerMetalLbConfig {
 
   /// Creates a new [VMwareClusterLoadBalancerMetalLbConfig].
   /// [addressPools] AddressPools is a list of non-overlapping IP pools used by load balancer
-  VMwareClusterLoadBalancerMetalLbConfig({
+  const VMwareClusterLoadBalancerMetalLbConfig({
     required this.addressPools,
   });
 

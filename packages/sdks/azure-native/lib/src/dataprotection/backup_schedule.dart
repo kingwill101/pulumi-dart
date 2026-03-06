@@ -45,7 +45,7 @@ class BackupSchedule {
   /// Creates a new [BackupSchedule].
   /// [repeatingTimeIntervals] Repeating time interval which supports the ISO 8601 format and unsupported or partially supported formats.
   /// [timeZone] Time Zone for a schedule.
-  BackupSchedule({
+  const BackupSchedule({
     required this.repeatingTimeIntervals,
     this.timeZone,
   });

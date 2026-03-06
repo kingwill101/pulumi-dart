@@ -18,7 +18,7 @@ class GetInsightsDatasetConfigArgs {
   /// [datasetConfigId] The user-defined ID of the DatasetConfig
   /// [location] The location of the Dataset Config.
   /// [project] The name of the GCP project in which dataset config exists. Can be configured through config as well.
-  GetInsightsDatasetConfigArgs({
+  const GetInsightsDatasetConfigArgs({
     required this.datasetConfigId,
     required this.location,
     this.project,

@@ -17,7 +17,7 @@ class GetBindingArgs {
   /// [location] Required.
   /// [membershipId] Required.
   /// [project] Optional.
-  GetBindingArgs({
+  const GetBindingArgs({
     required this.bindingId,
     required this.location,
     required this.membershipId,

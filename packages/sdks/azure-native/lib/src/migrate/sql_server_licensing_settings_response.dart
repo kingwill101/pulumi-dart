@@ -15,7 +15,7 @@ class SqlServerLicensingSettingsResponse {
   /// [licenseCost] Licence cost.
   /// [softwareAssuranceCost] Software assurance (SA) cost.
   /// [version] SQL Server version.
-  SqlServerLicensingSettingsResponse({
+  const SqlServerLicensingSettingsResponse({
     required this.licenseCost,
     required this.softwareAssuranceCost,
     required this.version,

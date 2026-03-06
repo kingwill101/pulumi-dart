@@ -25,7 +25,7 @@ class DefenseRuleConfigAccountIdentifier {
   /// [position] The field that stores the decoded account information.
   /// [priority] The priority of the current extraction configuration. Each traffic can match at most one extraction policy. Valid values: [0,20]. A smaller value indicates a higher priority. The priority value must be unique.
   /// [subKey] The characteristics of the statistical object. When the Target parameter is set to cookie, header, or queryarg, you must specify the corresponding information in the Subkey parameter.
-  DefenseRuleConfigAccountIdentifier({
+  const DefenseRuleConfigAccountIdentifier({
     this.decodeType,
     this.key,
     this.position,

@@ -25,7 +25,7 @@ class ManagedPrivateEndpointArgs {
   /// [subresourceName] Specifies the sub resource name which the Synapse Private Endpoint is able to connect to. Changing this forces a new resource to be created.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace on which to create the Managed Private Endpoint. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Private Link Enabled Remote Resource which this Synapse Private Endpoint should be connected to. Changing this forces a new resource to be created.
-  ManagedPrivateEndpointArgs({
+  const ManagedPrivateEndpointArgs({
     this.name,
     required this.subresourceName,
     required this.synapseWorkspaceId,

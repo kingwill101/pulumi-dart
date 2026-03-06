@@ -13,7 +13,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesS3 {
   /// [bucketName] Required.
   /// [bucketPrefix] Required.
   /// [s3InputFormatConfig] When you use Amazon S3 as the source, the configuration format that you provide the flow input data. See S3 Input Format Config for details.
-  FlowSourceFlowConfigSourceConnectorPropertiesS3({
+  const FlowSourceFlowConfigSourceConnectorPropertiesS3({
     required this.bucketName,
     required this.bucketPrefix,
     this.s3InputFormatConfig,

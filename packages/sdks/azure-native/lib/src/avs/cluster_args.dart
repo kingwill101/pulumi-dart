@@ -31,7 +31,7 @@ class ClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU (Stock Keeping Unit) assigned to this resource.
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterName,
     this.clusterSize,
     this.hosts,

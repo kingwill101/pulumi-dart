@@ -50,7 +50,7 @@ class TableArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  TableArgs({
+  const TableArgs({
     this.encryptionConfiguration,
     required this.format,
     this.maintenanceConfiguration,

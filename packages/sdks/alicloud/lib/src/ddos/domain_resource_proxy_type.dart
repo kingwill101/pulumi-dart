@@ -11,7 +11,7 @@ class DomainResourceProxyType {
   /// Creates a new [DomainResourceProxyType].
   /// [proxyPorts] The port numbers.
   /// [proxyType] The type of the protocol. Valid values:
-  DomainResourceProxyType({
+  const DomainResourceProxyType({
     required this.proxyPorts,
     this.proxyType,
   });

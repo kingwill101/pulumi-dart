@@ -29,7 +29,7 @@ class GetBucketReplicationConfigurationRule {
   /// [priority] Required.
   /// [sourceSelectionCriterias] Required.
   /// [status] Required.
-  GetBucketReplicationConfigurationRule({
+  const GetBucketReplicationConfigurationRule({
     required this.deleteMarkerReplications,
     required this.destinations,
     required this.existingObjectReplications,

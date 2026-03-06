@@ -19,7 +19,7 @@ class ProxyDefaultTargetGroupArgs {
   /// [connectionPoolConfig] The settings that determine the size and behavior of the connection pool for the target group.
   /// [dbProxyName] Name of the RDS DB Proxy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProxyDefaultTargetGroupArgs({
+  const ProxyDefaultTargetGroupArgs({
     this.connectionPoolConfig,
     required this.dbProxyName,
     this.region,

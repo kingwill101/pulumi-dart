@@ -9,7 +9,7 @@ class ServiceEndpointResourceProperties {
 
   /// Creates a new [ServiceEndpointResourceProperties].
   /// [preAllocatedCapacity] ServiceEndpoint pre-allocated capacity controls the maximum requests-per-second allowed for that endpoint. Only applicable when Account configuration is Capacity.
-  ServiceEndpointResourceProperties({
+  const ServiceEndpointResourceProperties({
     this.preAllocatedCapacity,
   });
 

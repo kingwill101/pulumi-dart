@@ -11,7 +11,7 @@ class GetZonesZoneInstanceType {
   /// Creates a new [GetZonesZoneInstanceType].
   /// [protocolType] File transfer protocol type. Valid values:
   /// [storageType] The storage type of the nas zones. Valid values:
-  GetZonesZoneInstanceType({
+  const GetZonesZoneInstanceType({
     required this.protocolType,
     required this.storageType,
   });

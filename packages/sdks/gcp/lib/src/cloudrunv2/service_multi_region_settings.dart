@@ -12,7 +12,7 @@ class ServiceMultiRegionSettings {
   /// Creates a new [ServiceMultiRegionSettings].
   /// [multiRegionId] (Output)
   /// [regions] The list of regions to deploy the multi-region Service.
-  ServiceMultiRegionSettings({
+  const ServiceMultiRegionSettings({
     this.multiRegionId,
     this.regions,
   });

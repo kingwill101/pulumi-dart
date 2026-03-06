@@ -11,7 +11,7 @@ class GameSessionQueuePlayerLatencyPolicy {
   /// Creates a new [GameSessionQueuePlayerLatencyPolicy].
   /// [maximumIndividualPlayerLatencyMilliseconds] Maximum latency value that is allowed for any player.
   /// [policyDurationSeconds] Length of time that the policy is enforced while placing a new game session. Absence of value for this attribute means that the policy is enforced until the queue times out.
-  GameSessionQueuePlayerLatencyPolicy({
+  const GameSessionQueuePlayerLatencyPolicy({
     required this.maximumIndividualPlayerLatencyMilliseconds,
     this.policyDurationSeconds,
   });

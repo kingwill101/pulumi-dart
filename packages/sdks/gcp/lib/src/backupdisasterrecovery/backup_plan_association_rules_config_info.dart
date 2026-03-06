@@ -19,7 +19,7 @@ class BackupPlanAssociationRulesConfigInfo {
   /// [lastBackupErrors] (Output)
   /// [lastBackupState] (Output)
   /// [ruleId] (Output)
-  BackupPlanAssociationRulesConfigInfo({
+  const BackupPlanAssociationRulesConfigInfo({
     this.lastBackupErrors,
     this.lastBackupState,
     this.ruleId,

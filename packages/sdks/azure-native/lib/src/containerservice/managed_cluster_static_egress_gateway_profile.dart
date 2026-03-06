@@ -9,7 +9,7 @@ class ManagedClusterStaticEgressGatewayProfile {
 
   /// Creates a new [ManagedClusterStaticEgressGatewayProfile].
   /// [enabled] Enable Static Egress Gateway addon. Indicates if Static Egress Gateway addon is enabled or not.
-  ManagedClusterStaticEgressGatewayProfile({
+  const ManagedClusterStaticEgressGatewayProfile({
     this.enabled,
   });
 

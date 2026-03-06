@@ -11,7 +11,7 @@ class GetEnhancedNatAvailableZonesZone {
   /// Creates a new [GetEnhancedNatAvailableZonesZone].
   /// [localName] Name of the available zone.
   /// [zoneId] The ID of the available zone.
-  GetEnhancedNatAvailableZonesZone({
+  const GetEnhancedNatAvailableZonesZone({
     required this.localName,
     required this.zoneId,
   });

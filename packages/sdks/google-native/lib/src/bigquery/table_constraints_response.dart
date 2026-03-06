@@ -13,7 +13,7 @@ class TableConstraintsResponse {
   /// Creates a new [TableConstraintsResponse].
   /// [foreignKeys] [Optional] The foreign keys of the tables.
   /// [primaryKey] [Optional] The primary key of the table.
-  TableConstraintsResponse({
+  const TableConstraintsResponse({
     required this.foreignKeys,
     required this.primaryKey,
   });

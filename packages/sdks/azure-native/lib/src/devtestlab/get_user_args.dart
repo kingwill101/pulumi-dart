@@ -21,7 +21,7 @@ class GetUserArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the User
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetUserArgs({
+  const GetUserArgs({
     this.expand,
     required this.labName,
     required this.name,

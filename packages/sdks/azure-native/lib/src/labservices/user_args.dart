@@ -24,7 +24,7 @@ class UserArgs {
   /// [labName] The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user that uniquely identifies it within containing lab. Used in resource URIs.
-  UserArgs({
+  const UserArgs({
     this.additionalUsageQuota,
     required this.email,
     required this.labName,

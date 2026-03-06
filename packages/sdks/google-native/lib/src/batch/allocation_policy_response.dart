@@ -29,7 +29,7 @@ class AllocationPolicyResponse {
   /// [network] The network policy. If you define an instance template in the InstancePolicyOrTemplate field, Batch will use the network settings in the instance template instead of this field.
   /// [placement] The placement policy.
   /// [serviceAccount] Service account that VMs will run as.
-  AllocationPolicyResponse({
+  const AllocationPolicyResponse({
     required this.instances,
     required this.labels,
     required this.location,

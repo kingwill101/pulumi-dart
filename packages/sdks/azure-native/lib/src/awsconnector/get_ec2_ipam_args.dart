@@ -15,7 +15,7 @@ class GetEc2IpamArgs {
   /// Creates a new [GetEc2IpamArgs].
   /// [name] Name of Ec2Ipam
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2IpamArgs({
+  const GetEc2IpamArgs({
     required this.name,
     required this.resourceGroupName,
   });

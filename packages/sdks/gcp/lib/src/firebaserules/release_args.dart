@@ -22,7 +22,7 @@ class ReleaseArgs {
   /// [name] Format: `projects/{project_id}/releases/{release_id}`\Firestore Rules Releases will **always** have the name 'cloud.firestore'
   /// [project] The project for the resource
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
-  ReleaseArgs({
+  const ReleaseArgs({
     this.name,
     this.project,
     required this.rulesetName,

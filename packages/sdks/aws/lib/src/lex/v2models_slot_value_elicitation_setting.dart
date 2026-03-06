@@ -31,7 +31,7 @@ class V2modelsSlotValueElicitationSetting {
   /// [slotConstraint] Whether the slot is required or optional. Valid values are `Required` or `Optional`.
   /// [slotResolutionSettings] Information about whether assisted slot resolution is turned on for the slot or not.
   /// [waitAndContinueSpecifications] Specifies the prompts that Amazon Lex uses while a bot is waiting for customer input.
-  V2modelsSlotValueElicitationSetting({
+  const V2modelsSlotValueElicitationSetting({
     this.defaultValueSpecifications,
     this.promptSpecification,
     this.sampleUtterances,

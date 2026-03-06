@@ -26,7 +26,7 @@ class VirtualMachineStorageConfigurationTempDbSettings {
   /// [logFileGrowthMb] The SQL Server default file size - This value defaults to `512`
   /// [logFileSizeMb] The SQL Server default file size - This value defaults to `256`
   /// [luns] A list of Logical Unit Numbers for the disks.
-  VirtualMachineStorageConfigurationTempDbSettings({
+  const VirtualMachineStorageConfigurationTempDbSettings({
     this.dataFileCount,
     this.dataFileGrowthInMb,
     this.dataFileSizeMb,

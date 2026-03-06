@@ -70,7 +70,7 @@ class ScalingPlanPooledScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scalingPlanName] The name of the scaling plan.
   /// [scalingPlanScheduleName] The name of the ScalingPlanSchedule
-  ScalingPlanPooledScheduleArgs({
+  const ScalingPlanPooledScheduleArgs({
     this.daysOfWeek,
     this.offPeakLoadBalancingAlgorithm,
     this.offPeakStartTime,

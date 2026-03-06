@@ -40,7 +40,7 @@ class ExpressRoutePortLink2 {
   /// [patchPanelId] The ID that maps from the Express Route Port Link to the patch panel port.
   /// [rackId] The ID that maps from the patch panel port to the rack.
   /// [routerName] The name of the Azure router associated with the Express Route Port Link.
-  ExpressRoutePortLink2({
+  const ExpressRoutePortLink2({
     this.adminEnabled,
     this.connectorType,
     this.id,

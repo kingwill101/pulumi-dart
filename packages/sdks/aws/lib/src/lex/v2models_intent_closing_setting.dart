@@ -20,7 +20,7 @@ class V2modelsIntentClosingSetting {
   /// [closingResponse] Configuration block for response that Amazon Lex sends to the user when the intent is complete. See `closing_response`.
   /// [conditional] Configuration block for list of conditional branches associated with the intent's closing response. These branches are executed when the `next_step` attribute is set to `EvalutateConditional`. See `conditional`.
   /// [nextStep] Next step that the bot executes after playing the intent's closing response. See `next_step`.
-  V2modelsIntentClosingSetting({
+  const V2modelsIntentClosingSetting({
     this.active,
     this.closingResponse,
     this.conditional,

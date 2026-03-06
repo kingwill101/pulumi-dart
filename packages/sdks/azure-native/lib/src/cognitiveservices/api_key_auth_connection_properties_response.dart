@@ -60,7 +60,7 @@ class ApiKeyAuthConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  ApiKeyAuthConnectionPropertiesResponse({
+  const ApiKeyAuthConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

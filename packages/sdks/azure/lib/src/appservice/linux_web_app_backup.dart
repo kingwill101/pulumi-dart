@@ -18,7 +18,7 @@ class LinuxWebAppBackup {
   /// [name] The name which should be used for this Backup.
   /// [schedule] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to the container.
-  LinuxWebAppBackup({
+  const LinuxWebAppBackup({
     this.enabled,
     required this.name,
     required this.schedule,

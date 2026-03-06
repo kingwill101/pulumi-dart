@@ -10,7 +10,7 @@ class PriceResponse {
   /// Creates a new [PriceResponse].
   /// [amount] Optional.
   /// [currencyCode] The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  PriceResponse({
+  const PriceResponse({
     this.amount,
     this.currencyCode,
   });

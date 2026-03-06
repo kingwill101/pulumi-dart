@@ -15,7 +15,7 @@ class ListVendorSkusCredentialArgs {
   /// Creates a new [ListVendorSkusCredentialArgs].
   /// [skuName] The name of the sku.
   /// [vendorName] The name of the vendor.
-  ListVendorSkusCredentialArgs({
+  const ListVendorSkusCredentialArgs({
     required this.skuName,
     required this.vendorName,
   });

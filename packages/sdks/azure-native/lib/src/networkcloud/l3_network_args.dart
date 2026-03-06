@@ -51,7 +51,7 @@ class L3NetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [vlan] The VLAN from the l3IsolationDomain that is used for this network.
-  L3NetworkArgs({
+  const L3NetworkArgs({
     required this.extendedLocation,
     this.hybridAksIpamEnabled,
     this.hybridAksPluginType,

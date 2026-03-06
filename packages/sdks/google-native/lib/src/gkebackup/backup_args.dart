@@ -30,7 +30,7 @@ class BackupArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [retainDays] Optional. The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
-  BackupArgs({
+  const BackupArgs({
     this.backupId,
     required this.backupPlanId,
     this.deleteLockDays,

@@ -38,7 +38,7 @@ class AppServicePlanRouteForVnetArgs {
   /// [routeType] The type of route this is:
   /// [startAddress] The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   /// [vnetName] Name of the Virtual Network.
-  AppServicePlanRouteForVnetArgs({
+  const AppServicePlanRouteForVnetArgs({
     this.endAddress,
     this.kind,
     required this.name,

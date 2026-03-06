@@ -21,7 +21,7 @@ class VaultLockState {
   /// [policy] JSON string containing the IAM policy to apply as the Glacier Vault Lock policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vaultName] The name of the Glacier Vault.
-  VaultLockState({
+  const VaultLockState({
     this.completeLock,
     this.ignoreDeletionError,
     this.policy,

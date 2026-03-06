@@ -39,7 +39,7 @@ class GetBotResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetBotResult({
+  const GetBotResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

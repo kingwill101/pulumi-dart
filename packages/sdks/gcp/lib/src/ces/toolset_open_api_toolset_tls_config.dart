@@ -11,7 +11,7 @@ class ToolsetOpenApiToolsetTlsConfig {
 
   /// Creates a new [ToolsetOpenApiToolsetTlsConfig].
   /// [caCerts] Specifies a list of allowed custom CA certificates for HTTPS
-  ToolsetOpenApiToolsetTlsConfig({
+  const ToolsetOpenApiToolsetTlsConfig({
     required this.caCerts,
   });
 

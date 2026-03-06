@@ -11,7 +11,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource].
   /// [bucketArn] The ARN of the S3 bucket.
   /// [fileKey] The object key name containing the reference data.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceS3ReferenceDataSource({
     required this.bucketArn,
     required this.fileKey,
   });

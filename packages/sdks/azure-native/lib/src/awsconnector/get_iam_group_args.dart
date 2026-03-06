@@ -15,7 +15,7 @@ class GetIamGroupArgs {
   /// Creates a new [GetIamGroupArgs].
   /// [name] Name of IamGroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamGroupArgs({
+  const GetIamGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

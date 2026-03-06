@@ -8,7 +8,7 @@ class DomainDevicesParallelAlias {
 
   /// Creates a new [DomainDevicesParallelAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesParallelAlias({
+  const DomainDevicesParallelAlias({
     required this.name,
   });
 

@@ -38,7 +38,7 @@ class ProviderFeaturesKeyVault {
   /// [recoverSoftDeletedKeyVaults] When enabled soft-deleted `azure.keyvault.KeyVault` resources will be restored, instead of creating new ones
   /// [recoverSoftDeletedKeys] When enabled soft-deleted `azure.keyvault.Key` resources will be restored, instead of creating new ones
   /// [recoverSoftDeletedSecrets] When enabled soft-deleted `azure.keyvault.Secret` resources will be restored, instead of creating new ones
-  ProviderFeaturesKeyVault({
+  const ProviderFeaturesKeyVault({
     this.purgeSoftDeleteOnDestroy,
     this.purgeSoftDeletedCertificatesOnDestroy,
     this.purgeSoftDeletedHardwareSecurityModuleKeysOnDestroy,

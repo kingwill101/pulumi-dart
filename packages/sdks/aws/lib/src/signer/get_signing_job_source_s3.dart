@@ -11,7 +11,7 @@ class GetSigningJobSourceS3 {
   /// [bucket] Required.
   /// [key] Required.
   /// [version] Required.
-  GetSigningJobSourceS3({
+  const GetSigningJobSourceS3({
     required this.bucket,
     required this.key,
     required this.version,

@@ -9,7 +9,7 @@ class SingleEntityRename {
 
   /// Creates a new [SingleEntityRename].
   /// [newName] The new name of the destination entity
-  SingleEntityRename({
+  const SingleEntityRename({
     required this.newName,
   });
 

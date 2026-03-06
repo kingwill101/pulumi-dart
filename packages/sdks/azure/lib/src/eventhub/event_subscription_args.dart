@@ -86,7 +86,7 @@ class EventSubscriptionArgs {
   /// [storageQueueEndpoint] A `storage_queue_endpoint` block as defined below.
   /// [subjectFilter] A `subject_filter` block as defined below.
   /// [webhookEndpoint] A `webhook_endpoint` block as defined below.
-  EventSubscriptionArgs({
+  const EventSubscriptionArgs({
     this.advancedFilter,
     this.advancedFilteringOnArraysEnabled,
     this.azureFunctionEndpoint,

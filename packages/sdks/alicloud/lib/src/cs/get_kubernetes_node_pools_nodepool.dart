@@ -206,7 +206,7 @@ class GetKubernetesNodePoolsNodepool {
   /// [unschedulable] Whether the node after expansion can be scheduled.
   /// [userData] Node custom data, base64-encoded.
   /// [vswitchIds] The vswitches used by node pool workers.
-  GetKubernetesNodePoolsNodepool({
+  const GetKubernetesNodePoolsNodepool({
     required this.autoRenew,
     required this.autoRenewPeriod,
     required this.cisEnabled,

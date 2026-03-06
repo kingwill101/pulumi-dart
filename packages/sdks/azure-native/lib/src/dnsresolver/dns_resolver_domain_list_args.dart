@@ -24,7 +24,7 @@ class DnsResolverDomainListArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DnsResolverDomainListArgs({
+  const DnsResolverDomainListArgs({
     this.dnsResolverDomainListName,
     required this.domains,
     this.location,

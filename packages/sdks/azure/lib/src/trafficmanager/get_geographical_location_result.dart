@@ -10,7 +10,7 @@ class GetGeographicalLocationResult {
   /// Creates a new [GetGeographicalLocationResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetGeographicalLocationResult({
+  const GetGeographicalLocationResult({
     required this.id,
     required this.name,
   });

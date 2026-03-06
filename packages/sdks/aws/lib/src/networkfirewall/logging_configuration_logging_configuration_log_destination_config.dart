@@ -17,7 +17,7 @@ class LoggingConfigurationLoggingConfigurationLogDestinationConfig {
   /// [logDestination] A map describing the logging destination for the chosen `log_destination_type`.
   /// [logDestinationType] The location to send logs to. Valid values: `S3`, `CloudWatchLogs`, `KinesisDataFirehose`.
   /// [logType] The type of log to send. Valid values: `ALERT` or `FLOW` or `TLS`. Alert logs report traffic that matches a `StatefulRule` with an action setting that sends a log message. Flow logs are standard network traffic flow logs.
-  LoggingConfigurationLoggingConfigurationLogDestinationConfig({
+  const LoggingConfigurationLoggingConfigurationLogDestinationConfig({
     required this.logDestination,
     required this.logDestinationType,
     required this.logType,

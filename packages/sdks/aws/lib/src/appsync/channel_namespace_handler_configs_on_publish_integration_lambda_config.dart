@@ -8,7 +8,7 @@ class ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig {
 
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig].
   /// [invokeType] Invocation type for a Lambda data source. Valid values: `REQUEST_RESPONSE`, `EVENT`.
-  ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig({
+  const ChannelNamespaceHandlerConfigsOnPublishIntegrationLambdaConfig({
     this.invokeType,
   });
 

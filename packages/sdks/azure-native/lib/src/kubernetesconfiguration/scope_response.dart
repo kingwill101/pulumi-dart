@@ -14,7 +14,7 @@ class ScopeResponse {
   /// Creates a new [ScopeResponse].
   /// [cluster] Specifies that the scope of the extension is Cluster
   /// [namespace] Specifies that the scope of the extension is Namespace
-  ScopeResponse({
+  const ScopeResponse({
     this.cluster,
     this.namespace,
   });

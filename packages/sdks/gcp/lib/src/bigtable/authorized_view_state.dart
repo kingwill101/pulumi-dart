@@ -27,7 +27,7 @@ class AuthorizedViewState {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [subsetView] An AuthorizedView permitting access to an explicit subset of a Table. Structure is documented below.
   /// [tableName] The name of the Bigtable table in which the authorized view belongs.
-  AuthorizedViewState({
+  const AuthorizedViewState({
     this.deletionProtection,
     this.instanceName,
     this.name,

@@ -36,7 +36,7 @@ class RepositoryWorkflowConfigArgs {
   /// [releaseConfig] The name of the release config whose releaseCompilationResult should be executed. Must be in the format projects/*/locations/*/repositories/*/releaseConfigs/*.
   /// [repository] A reference to the Dataform repository
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cronSchedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  RepositoryWorkflowConfigArgs({
+  const RepositoryWorkflowConfigArgs({
     this.cronSchedule,
     this.invocationConfig,
     this.name,

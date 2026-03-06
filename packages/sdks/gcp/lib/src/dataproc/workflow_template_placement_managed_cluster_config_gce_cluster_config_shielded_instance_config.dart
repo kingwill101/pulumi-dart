@@ -14,7 +14,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInsta
   /// [enableIntegrityMonitoring] Defines whether instances have [Integrity Monitoring](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#integrity-monitoring) enabled.
   /// [enableSecureBoot] Defines whether instances have [Secure Boot](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#secure-boot) enabled.
   /// [enableVtpm] Defines whether instances have the [vTPM](https://cloud.google.com/compute/shielded-vm/docs/shielded-vm#vtpm) enabled.
-  WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

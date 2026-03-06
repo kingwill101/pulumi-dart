@@ -17,7 +17,7 @@ class StorageSpacesPropertiesResponseVmwareStorageProfile {
   /// [datastore] Name of the datastore in VSphere
   /// [folder] Name of the folder in VSphere
   /// [resourcePool] Name of the resource pool in VSphere
-  StorageSpacesPropertiesResponseVmwareStorageProfile({
+  const StorageSpacesPropertiesResponseVmwareStorageProfile({
     this.datacenter,
     this.datastore,
     this.folder,

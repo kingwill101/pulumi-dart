@@ -18,7 +18,7 @@ class GoogleCloudIntegrationsV1alphaCloudSchedulerConfig {
   /// [errorMessage] Optional. When the job was deleted from Pantheon UI, error_message will be populated when Get/List integrations
   /// [location] The location where associated cloud scheduler job will be created
   /// [serviceAccountEmail] Service account used by Cloud Scheduler to trigger the integration at scheduled time
-  GoogleCloudIntegrationsV1alphaCloudSchedulerConfig({
+  const GoogleCloudIntegrationsV1alphaCloudSchedulerConfig({
     required this.cronTab,
     this.errorMessage,
     required this.location,

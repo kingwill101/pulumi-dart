@@ -12,7 +12,7 @@ class ResourceProviderManifestPropertiesRequestHeaderOptions {
   /// Creates a new [ResourceProviderManifestPropertiesRequestHeaderOptions].
   /// [optInHeaders] The opt in headers.
   /// [optOutHeaders] The opt out headers.
-  ResourceProviderManifestPropertiesRequestHeaderOptions({
+  const ResourceProviderManifestPropertiesRequestHeaderOptions({
     this.optInHeaders,
     this.optOutHeaders,
   });

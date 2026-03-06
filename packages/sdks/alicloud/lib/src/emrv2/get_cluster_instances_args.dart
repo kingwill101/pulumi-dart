@@ -36,7 +36,7 @@ class GetClusterInstancesArgs {
   /// [nodeGroupNames] The cluster node group names.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] A mapping of tags to assign to the resource.
-  GetClusterInstancesArgs({
+  const GetClusterInstancesArgs({
     this.clusterId,
     this.ids,
     this.instanceStates,

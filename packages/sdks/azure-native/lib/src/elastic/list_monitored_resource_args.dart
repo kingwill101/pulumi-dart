@@ -15,7 +15,7 @@ class ListMonitoredResourceArgs {
   /// Creates a new [ListMonitoredResourceArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListMonitoredResourceArgs({
+  const ListMonitoredResourceArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

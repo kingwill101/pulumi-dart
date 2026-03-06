@@ -12,7 +12,7 @@ class SnapshotSkuResponse {
   /// Creates a new [SnapshotSkuResponse].
   /// [name] The sku name.
   /// [tier] The sku tier.
-  SnapshotSkuResponse({
+  const SnapshotSkuResponse({
     this.name,
     required this.tier,
   });

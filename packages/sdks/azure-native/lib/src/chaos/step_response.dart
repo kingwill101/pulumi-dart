@@ -13,7 +13,7 @@ class StepResponse {
   /// Creates a new [StepResponse].
   /// [branches] List of branches.
   /// [name] String of the step name.
-  StepResponse({
+  const StepResponse({
     required this.branches,
     required this.name,
   });

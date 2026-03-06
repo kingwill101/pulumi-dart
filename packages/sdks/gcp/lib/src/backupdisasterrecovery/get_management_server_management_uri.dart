@@ -11,7 +11,7 @@ class GetManagementServerManagementUri {
   /// Creates a new [GetManagementServerManagementUri].
   /// [api] The management console api endpoint.
   /// [webUi] The management console webUi.
-  GetManagementServerManagementUri({
+  const GetManagementServerManagementUri({
     required this.api,
     required this.webUi,
   });

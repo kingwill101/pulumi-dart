@@ -15,7 +15,7 @@ class GetScopeArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [scopeId] Required.
-  GetScopeArgs({
+  const GetScopeArgs({
     required this.location,
     this.project,
     required this.scopeId,

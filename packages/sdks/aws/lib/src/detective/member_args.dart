@@ -27,7 +27,7 @@ class MemberArgs {
   /// [graphArn] ARN of the behavior graph to invite the member accounts to contribute their data to.
   /// [message] A custom message to include in the invitation. Amazon Detective adds this message to the standard content that it sends for an invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MemberArgs({
+  const MemberArgs({
     required this.accountId,
     this.disableEmailNotification,
     required this.emailAddress,

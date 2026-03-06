@@ -50,7 +50,7 @@ class GoogleApiSourceArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [loggingConfig] The configuration for Platform Telemetry logging for Eventarc Advanced
   /// [project] The ID of the project in which the resource belongs.
-  GoogleApiSourceArgs({
+  const GoogleApiSourceArgs({
     this.annotations,
     this.cryptoKeyName,
     required this.destination,

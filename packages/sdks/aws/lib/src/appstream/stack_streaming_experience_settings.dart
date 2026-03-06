@@ -9,7 +9,7 @@ class StackStreamingExperienceSettings {
 
   /// Creates a new [StackStreamingExperienceSettings].
   /// [preferredProtocol] The preferred protocol that you want to use while streaming your application.
-  StackStreamingExperienceSettings({
+  const StackStreamingExperienceSettings({
     this.preferredProtocol,
   });
 

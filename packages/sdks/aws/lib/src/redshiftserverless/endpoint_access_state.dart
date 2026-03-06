@@ -37,7 +37,7 @@ class EndpointAccessState {
   /// [vpcEndpoints] The VPC endpoint or the Redshift Serverless workgroup. See `VPC Endpoint` below.
   /// [vpcSecurityGroupIds] An array of security group IDs to associate with the workgroup.
   /// [workgroupName] The name of the workgroup.
-  EndpointAccessState({
+  const EndpointAccessState({
     this.address,
     this.arn,
     this.endpointName,

@@ -27,7 +27,7 @@ class GetExecutionsArgs {
   /// [nameRegex] A regex string to filter results by Execution name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
-  GetExecutionsArgs({
+  const GetExecutionsArgs({
     this.enableDetails,
     required this.flowName,
     this.ids,

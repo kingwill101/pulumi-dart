@@ -25,7 +25,7 @@ class SettingsArgs {
   /// [location] The region of the PAM settings resource.
   /// [parent] Format: projects/{project-id|project-number} or organizations/{organization-number} or folders/{folder-number}
   /// [serviceAccountApproverSettings] This controls the node-level settings for allowing service accounts as approvers.
-  SettingsArgs({
+  const SettingsArgs({
     this.emailNotificationSettings,
     required this.location,
     required this.parent,

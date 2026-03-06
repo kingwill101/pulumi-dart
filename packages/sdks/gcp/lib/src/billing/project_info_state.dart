@@ -15,7 +15,7 @@ class ProjectInfoState {
   /// Creates a new [ProjectInfoState].
   /// [billingAccount] The ID of the billing account associated with the project, if
   /// [project] The ID of the project in which the resource belongs.
-  ProjectInfoState({
+  const ProjectInfoState({
     this.billingAccount,
     this.project,
   });

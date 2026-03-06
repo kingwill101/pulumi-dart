@@ -17,7 +17,7 @@ class GetByoipPrefixResourcesAddress {
   /// [id] The unique identifier of the IP address allocation.
   /// [ipAddress] The IP address.
   /// [region] The region where the IP is allocated.
-  GetByoipPrefixResourcesAddress({
+  const GetByoipPrefixResourcesAddress({
     required this.assignedAt,
     required this.id,
     required this.ipAddress,

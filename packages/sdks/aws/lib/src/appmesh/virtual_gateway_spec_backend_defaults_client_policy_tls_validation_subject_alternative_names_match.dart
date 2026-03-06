@@ -8,7 +8,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternati
 
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch].
   /// [exacts] Values sent must match the specified values exactly.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch({
     required this.exacts,
   });
 

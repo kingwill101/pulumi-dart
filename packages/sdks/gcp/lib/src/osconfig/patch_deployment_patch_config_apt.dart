@@ -17,7 +17,7 @@ class PatchDeploymentPatchConfigApt {
   /// [excludes] List of packages to exclude from update. These packages will be excluded.
   /// [exclusivePackages] An exclusive list of packages to be updated. These are the only packages that will be updated.
   /// [type] By changing the type to DIST, the patching is performed using apt-get dist-upgrade instead.
-  PatchDeploymentPatchConfigApt({
+  const PatchDeploymentPatchConfigApt({
     this.excludes,
     this.exclusivePackages,
     this.type,

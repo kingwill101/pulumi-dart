@@ -22,7 +22,7 @@ class IdentityBindingArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  IdentityBindingArgs({
+  const IdentityBindingArgs({
     this.identityBindingName,
     this.properties,
     required this.resourceGroupName,

@@ -18,7 +18,7 @@ class GetResourcePolicyArgs {
   /// [name] The name of the Resource Policy.
   /// [project] Project from which to list the Resource Policy. Defaults to project declared in the provider.
   /// [region] Region where the Resource Policy resides.
-  GetResourcePolicyArgs({
+  const GetResourcePolicyArgs({
     required this.name,
     this.project,
     this.region,

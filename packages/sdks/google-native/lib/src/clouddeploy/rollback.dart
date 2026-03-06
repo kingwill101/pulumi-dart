@@ -9,7 +9,7 @@ class Rollback {
 
   /// Creates a new [Rollback].
   /// [destinationPhase] Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
-  Rollback({
+  const Rollback({
     this.destinationPhase,
   });
 

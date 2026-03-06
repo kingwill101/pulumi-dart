@@ -115,7 +115,7 @@ class GetPrivateCloudResult {
   /// [vcenterPassword] Optionally, set the vCenter admin password when the private cloud is created
   /// [virtualNetworkId] Azure resource ID of the virtual network
   /// [vmotionNetwork] Used for live migration of virtual machines
-  GetPrivateCloudResult({
+  const GetPrivateCloudResult({
     this.availability,
     required this.azureApiVersion,
     this.circuit,

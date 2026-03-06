@@ -25,7 +25,7 @@ class GoogleCloudDataplexV1StorageFormat {
   /// [iceberg] Optional. Additional information about iceberg tables.
   /// [json] Optional. Additional information about CSV formatted data.
   /// [mimeType] The mime type descriptor for the data. Must match the pattern {type}/{subtype}. Supported values: application/x-parquet application/x-avro application/x-orc application/x-tfrecord application/x-parquet+iceberg application/x-avro+iceberg application/x-orc+iceberg application/json application/{subtypes} text/csv text/ image/{image subtype} video/{video subtype} audio/{audio subtype}
-  GoogleCloudDataplexV1StorageFormat({
+  const GoogleCloudDataplexV1StorageFormat({
     this.compressionFormat,
     this.csv,
     this.iceberg,

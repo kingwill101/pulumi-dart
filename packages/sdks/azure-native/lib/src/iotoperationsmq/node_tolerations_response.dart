@@ -18,7 +18,7 @@ class NodeTolerationsResponse {
   /// [key] Toleration key.
   /// [operator] Toleration operator like 'Exists', 'Equal' etc.
   /// [value] Toleration Value.
-  NodeTolerationsResponse({
+  const NodeTolerationsResponse({
     required this.effect,
     required this.key,
     required this.operator,

@@ -11,7 +11,7 @@ class ContainerMountVolumeOptionsLabel {
   /// Creates a new [ContainerMountVolumeOptionsLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  ContainerMountVolumeOptionsLabel({
+  const ContainerMountVolumeOptionsLabel({
     required this.label,
     required this.value,
   });

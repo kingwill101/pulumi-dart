@@ -50,7 +50,7 @@ class AwsEc2AddressPropertiesResponse {
   /// [publicIp] &lt;p&gt;The Elastic IP address.&lt;/p&gt;
   /// [publicIpv4Pool] &lt;p&gt;The ID of an address pool.&lt;/p&gt;
   /// [tags] &lt;p&gt;Any tags assigned to the Elastic IP address.&lt;/p&gt;
-  AwsEc2AddressPropertiesResponse({
+  const AwsEc2AddressPropertiesResponse({
     this.allocationId,
     this.associationId,
     this.carrierIp,

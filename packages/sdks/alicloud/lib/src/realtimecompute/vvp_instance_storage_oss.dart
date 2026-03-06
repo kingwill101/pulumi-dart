@@ -8,7 +8,7 @@ class VvpInstanceStorageOss {
 
   /// Creates a new [VvpInstanceStorageOss].
   /// [bucket] OSS Bucket name.
-  VvpInstanceStorageOss({
+  const VvpInstanceStorageOss({
     required this.bucket,
   });
 

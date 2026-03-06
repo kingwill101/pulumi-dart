@@ -12,7 +12,7 @@ class VCpuCountRequest {
   /// Creates a new [VCpuCountRequest].
   /// [max] The maximum number of vCPUs.
   /// [min] The minimum number of vCPUs.
-  VCpuCountRequest({
+  const VCpuCountRequest({
     this.max,
     this.min,
   });

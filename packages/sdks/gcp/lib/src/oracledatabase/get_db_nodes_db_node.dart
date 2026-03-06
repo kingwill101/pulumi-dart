@@ -11,7 +11,7 @@ class GetDbNodesDbNode {
   /// Creates a new [GetDbNodesDbNode].
   /// [name] The dbnode name
   /// [properties] Required.
-  GetDbNodesDbNode({
+  const GetDbNodesDbNode({
     required this.name,
     required this.properties,
   });

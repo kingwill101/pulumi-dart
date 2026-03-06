@@ -14,7 +14,7 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSe
   /// Creates a new [ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector].
   /// [method] Value for `method` should be a valid method name for the corresponding
   /// [permission] Value for permission should be a valid Cloud IAM permission for the
-  ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector({
+  const ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperationMethodSelector({
     this.method,
     this.permission,
   });

@@ -9,7 +9,7 @@ class VMwareClusterStorage {
 
   /// Creates a new [VMwareClusterStorage].
   /// [vsphereCsiDisabled] Whether or not to deploy vSphere CSI components in the VMware User Cluster.
-  VMwareClusterStorage({
+  const VMwareClusterStorage({
     required this.vsphereCsiDisabled,
   });
 

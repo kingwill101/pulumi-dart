@@ -90,7 +90,7 @@ class IntentState {
   /// [sampleUtterances] An array of utterances (strings) that a user might say to signal
   /// [slots] An list of intent slots. At runtime, Amazon Lex elicits required slot values
   /// [version] The version of the bot.
-  IntentState({
+  const IntentState({
     this.arn,
     this.checksum,
     this.conclusionStatement,

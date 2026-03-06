@@ -156,7 +156,7 @@ class LaunchTemplateState {
   /// [updateDefaultVersion] Whether to update Default Version each update. Conflicts with `default_version`.
   /// [userData] The base64-encoded user data to provide when launching the instance.
   /// [vpcSecurityGroupIds] A list of security group IDs to associate with. Conflicts with `network_interfaces.security_groups`
-  LaunchTemplateState({
+  const LaunchTemplateState({
     this.arn,
     this.blockDeviceMappings,
     this.capacityReservationSpecification,

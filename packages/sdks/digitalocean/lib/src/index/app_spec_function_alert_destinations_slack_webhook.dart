@@ -11,7 +11,7 @@ class AppSpecFunctionAlertDestinationsSlackWebhook {
   /// Creates a new [AppSpecFunctionAlertDestinationsSlackWebhook].
   /// [channel] The Slack channel to send notifications to.
   /// [url] The Slack webhook URL.
-  AppSpecFunctionAlertDestinationsSlackWebhook({
+  const AppSpecFunctionAlertDestinationsSlackWebhook({
     required this.channel,
     required this.url,
   });

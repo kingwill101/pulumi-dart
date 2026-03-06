@@ -16,7 +16,7 @@ class VirtualNetworkSubnetStatusResponse {
   /// [errorCode] VirtualNetworkSubnet provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] Public IP provisioning status
-  VirtualNetworkSubnetStatusResponse({
+  const VirtualNetworkSubnetStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

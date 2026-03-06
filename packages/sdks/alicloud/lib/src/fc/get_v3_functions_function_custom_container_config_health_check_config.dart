@@ -23,7 +23,7 @@ class GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig {
   /// [periodSeconds] Health check cycle. The value range is 1~120. The default value is 3.
   /// [successThreshold] The threshold for the number of successful health checks. When the threshold is reached, the system considers that the health check is successful. The value range is 1~120. The default value is 1.
   /// [timeoutSeconds] Health check timeout. Value range 1~3. The default value is 1.
-  GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig({
+  const GetV3FunctionsFunctionCustomContainerConfigHealthCheckConfig({
     required this.failureThreshold,
     required this.httpGetUrl,
     required this.initialDelaySeconds,

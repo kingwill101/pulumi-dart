@@ -14,7 +14,7 @@ class GetOrganizationalUnitsChild {
   /// [arn] ARN of the organizational unit
   /// [id] Parent identifier of the organizational units.
   /// [name] Name of the organizational unit
-  GetOrganizationalUnitsChild({
+  const GetOrganizationalUnitsChild({
     required this.arn,
     required this.id,
     required this.name,

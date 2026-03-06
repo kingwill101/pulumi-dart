@@ -59,7 +59,7 @@ class BareMetalMachineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serialNumber] The serial number of the bare metal machine.
   /// [tags] Resource tags.
-  BareMetalMachineArgs({
+  const BareMetalMachineArgs({
     this.bareMetalMachineName,
     required this.bmcConnectionString,
     required this.bmcCredentials,

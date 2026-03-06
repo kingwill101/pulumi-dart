@@ -156,7 +156,7 @@ class AzureIntegrationsArgs {
   /// [virtualNetworks] for Azure Virtual networks. See Integration blocks below for details.
   /// [vms] Azure VMs. See Integration blocks below for details.
   /// [vpnGateway] Azure VPN Gateway. See Integration blocks below for details.
-  AzureIntegrationsArgs({
+  const AzureIntegrationsArgs({
     this.accountId,
     this.apiManagement,
     this.appGateway,

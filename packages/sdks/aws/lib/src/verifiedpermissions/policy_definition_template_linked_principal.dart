@@ -11,7 +11,7 @@ class PolicyDefinitionTemplateLinkedPrincipal {
   /// Creates a new [PolicyDefinitionTemplateLinkedPrincipal].
   /// [entityId] The entity ID of the principal.
   /// [entityType] The entity type of the principal.
-  PolicyDefinitionTemplateLinkedPrincipal({
+  const PolicyDefinitionTemplateLinkedPrincipal({
     required this.entityId,
     required this.entityType,
   });

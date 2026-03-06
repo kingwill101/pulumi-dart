@@ -12,7 +12,7 @@ class ResourceManifestResponse {
   /// Creates a new [ResourceManifestResponse].
   /// [clusterScoped] Whether the resource provided in the manifest is `cluster_scoped`. If unset, the manifest is assumed to be namespace scoped. This field is used for REST mapping when applying the resource in a cluster.
   /// [manifest] YAML manifest of the resource.
-  ResourceManifestResponse({
+  const ResourceManifestResponse({
     required this.clusterScoped,
     required this.manifest,
   });

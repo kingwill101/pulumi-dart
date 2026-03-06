@@ -10,7 +10,7 @@ class RuleResponse {
   /// Creates a new [RuleResponse].
   /// [type] Rule type
   /// [value] Optional.
-  RuleResponse({
+  const RuleResponse({
     this.type,
     this.value,
   });

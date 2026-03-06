@@ -8,7 +8,7 @@ class RestorePlanRestoreConfigExcludedNamespaces {
 
   /// Creates a new [RestorePlanRestoreConfigExcludedNamespaces].
   /// [namespaces] A list of Kubernetes Namespaces.
-  RestorePlanRestoreConfigExcludedNamespaces({
+  const RestorePlanRestoreConfigExcludedNamespaces({
     required this.namespaces,
   });
 

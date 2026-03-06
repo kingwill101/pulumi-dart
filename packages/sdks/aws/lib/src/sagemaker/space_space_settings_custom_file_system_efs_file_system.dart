@@ -8,7 +8,7 @@ class SpaceSpaceSettingsCustomFileSystemEfsFileSystem {
 
   /// Creates a new [SpaceSpaceSettingsCustomFileSystemEfsFileSystem].
   /// [fileSystemId] The ID of your Amazon EFS file system.
-  SpaceSpaceSettingsCustomFileSystemEfsFileSystem({
+  const SpaceSpaceSettingsCustomFileSystemEfsFileSystem({
     required this.fileSystemId,
   });
 

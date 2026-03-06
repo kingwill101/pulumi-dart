@@ -15,7 +15,7 @@ class GetDicomStoreIamPolicyArgs {
 
   /// Creates a new [GetDicomStoreIamPolicyArgs].
   /// [dicomStoreId] The DICOM store ID, in the form
-  GetDicomStoreIamPolicyArgs({
+  const GetDicomStoreIamPolicyArgs({
     required this.dicomStoreId,
   });
 

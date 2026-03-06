@@ -63,7 +63,7 @@ class ResourceGroupState {
   /// [updateTime] The time when the resource group was updated.
   /// [user] The database accounts that are associated with the resource group.
   /// [users] The database accounts with which to associate the resource group.
-  ResourceGroupState({
+  const ResourceGroupState({
     this.clusterMode,
     this.clusterSizeResource,
     this.connectionString,

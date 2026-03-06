@@ -23,7 +23,7 @@ class OsPolicyAssignmentOsPolicyResourceGroup {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroup].
   /// [inventoryFilters] List of inventory filters for the resource
   /// [resources] List of resources configured for this resource
-  OsPolicyAssignmentOsPolicyResourceGroup({
+  const OsPolicyAssignmentOsPolicyResourceGroup({
     this.inventoryFilters,
     required this.resources,
   });

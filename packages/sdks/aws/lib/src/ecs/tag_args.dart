@@ -21,7 +21,7 @@ class TagArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] Amazon Resource Name (ARN) of the ECS resource to tag.
   /// [value] Tag value.
-  TagArgs({
+  const TagArgs({
     required this.key,
     this.region,
     required this.resourceArn,

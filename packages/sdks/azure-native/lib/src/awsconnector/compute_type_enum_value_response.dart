@@ -9,7 +9,7 @@ class ComputeTypeEnumValueResponse {
 
   /// Creates a new [ComputeTypeEnumValueResponse].
   /// [value] Property value
-  ComputeTypeEnumValueResponse({
+  const ComputeTypeEnumValueResponse({
     this.value,
   });
 

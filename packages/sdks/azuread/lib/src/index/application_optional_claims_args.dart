@@ -26,7 +26,7 @@ class ApplicationOptionalClaimsArgs {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [idTokens] One or more `id_token` blocks as documented below.
   /// [saml2Tokens] One or more `saml2_token` blocks as documented below.
-  ApplicationOptionalClaimsArgs({
+  const ApplicationOptionalClaimsArgs({
     this.accessTokens,
     required this.applicationId,
     this.idTokens,

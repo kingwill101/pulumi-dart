@@ -43,7 +43,7 @@ class MonitorPropertiesResponse {
   /// [sourceCampaignName] Name of the marketing campaign.
   /// [subscriptionState] State of the Azure Subscription containing the monitor resource
   /// [version] Version of elastic of the monitor resource
-  MonitorPropertiesResponse({
+  const MonitorPropertiesResponse({
     this.elasticProperties,
     this.generateApiKey,
     required this.liftrResourceCategory,

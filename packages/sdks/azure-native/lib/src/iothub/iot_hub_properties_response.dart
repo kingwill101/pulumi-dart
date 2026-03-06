@@ -88,7 +88,7 @@ class IotHubPropertiesResponse {
   /// [routing] The routing related properties of the IoT hub. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging
   /// [state] The hub state.
   /// [storageEndpoints] The list of Azure Storage endpoints where you can upload files. Currently you can configure only one Azure Storage account and that MUST have its key as $default. Specifying more than one storage account causes an error to be thrown. Not specifying a value for this property when the enableFileUploadNotifications property is set to True, causes an error to be thrown.
-  IotHubPropertiesResponse({
+  const IotHubPropertiesResponse({
     this.allowedFqdnList,
     this.authorizationPolicies,
     this.cloudToDevice,

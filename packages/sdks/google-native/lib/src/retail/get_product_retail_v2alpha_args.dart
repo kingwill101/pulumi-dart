@@ -19,7 +19,7 @@ class GetProductRetailV2alphaArgs {
   /// [location] Required.
   /// [productId] Required.
   /// [project] Optional.
-  GetProductRetailV2alphaArgs({
+  const GetProductRetailV2alphaArgs({
     required this.branchId,
     required this.catalogId,
     required this.location,

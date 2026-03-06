@@ -18,7 +18,7 @@ class KubernetesReferenceResponse {
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
   /// [namespace] Namespace is the namespace of the resource being referenced. This field is required when the resource has a namespace.
-  KubernetesReferenceResponse({
+  const KubernetesReferenceResponse({
     this.apiGroup,
     required this.kind,
     required this.name,

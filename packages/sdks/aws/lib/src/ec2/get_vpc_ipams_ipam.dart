@@ -56,7 +56,7 @@ class GetVpcIpamsIpam {
   /// [state] Current state of the IPAM.
   /// [stateMessage] State message of the IPAM.
   /// [tier] IPAM Tier.
-  GetVpcIpamsIpam({
+  const GetVpcIpamsIpam({
     required this.arn,
     required this.defaultResourceDiscoveryAssociationId,
     required this.defaultResourceDiscoveryId,

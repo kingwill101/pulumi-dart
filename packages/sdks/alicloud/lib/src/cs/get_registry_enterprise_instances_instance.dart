@@ -41,7 +41,7 @@ class GetRegistryEnterpriseInstancesInstance {
   /// [specification] Specification of Container Registry Enterprise Edition instance.
   /// [tempUsername] The username that was used to log on to the registry.
   /// [vpcEndpoints] A list of domains for access on vpc network.
-  GetRegistryEnterpriseInstancesInstance({
+  const GetRegistryEnterpriseInstancesInstance({
     required this.authorizationToken,
     required this.id,
     required this.name,

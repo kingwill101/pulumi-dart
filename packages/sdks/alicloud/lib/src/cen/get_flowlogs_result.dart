@@ -60,7 +60,7 @@ class GetFlowlogsResult {
   /// [regionId] (Available since v1.236.0) Region Id.
   /// [status] The status of the flow log. Valid values:-**Active**: started.-**InActive**: not started.
   /// [transitRouterId] (Available since v1.236.0) Transit Router ID.
-  GetFlowlogsResult({
+  const GetFlowlogsResult({
     this.cenId,
     this.description,
     this.flowLogId,

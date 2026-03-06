@@ -12,7 +12,7 @@ class GetNamedLocationArgs {
 
   /// Creates a new [GetNamedLocationArgs].
   /// [displayName] Specifies the display named of the named location to look up.
-  GetNamedLocationArgs({
+  const GetNamedLocationArgs({
     required this.displayName,
   });
 

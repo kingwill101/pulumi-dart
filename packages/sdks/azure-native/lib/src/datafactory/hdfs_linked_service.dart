@@ -43,7 +43,7 @@ class HdfsLinkedService {
   /// [url] The URL of the HDFS service endpoint, e.g. http://myhostname:50070/webhdfs/v1 . Type: string (or Expression with resultType string).
   /// [userName] User name for Windows authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  HdfsLinkedService({
+  const HdfsLinkedService({
     this.annotations,
     this.authenticationType,
     this.connectVia,

@@ -18,7 +18,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageIma
   /// [imageUrl] URL of an image to display on the response card. The image URL must be publicly available so that the platform displaying the response card has access to the image.
   /// [subtitle] Subtitle to display on the response card. The format of the subtitle is determined by the platform displaying the response card.
   /// [title] Title to display on the response card. The format of the title is determined by the platform displaying the response card.
-  V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageImageResponseCard({
+  const V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageImageResponseCard({
     this.buttons,
     this.imageUrl,
     this.subtitle,

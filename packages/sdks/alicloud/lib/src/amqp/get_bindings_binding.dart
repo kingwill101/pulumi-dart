@@ -29,7 +29,7 @@ class GetBindingsBinding {
   /// [instanceId] Instance Id.
   /// [sourceExchange] The Source Exchange Name.
   /// [virtualHostName] Virtualhost Name.
-  GetBindingsBinding({
+  const GetBindingsBinding({
     required this.argument,
     required this.bindingKey,
     required this.bindingType,

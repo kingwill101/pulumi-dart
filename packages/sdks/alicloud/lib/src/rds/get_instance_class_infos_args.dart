@@ -39,7 +39,7 @@ class GetInstanceClassInfosArgs {
   /// [infos] A list of Rds available resource. Each element contains the following attributes:
   /// [orderType] FThe type of order that you want to query. Valid values:
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
-  GetInstanceClassInfosArgs({
+  const GetInstanceClassInfosArgs({
     required this.commodityCode,
     this.dbInstanceId,
     this.infos,

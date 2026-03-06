@@ -8,7 +8,7 @@ class InferenceProfileModel {
 
   /// Creates a new [InferenceProfileModel].
   /// [modelArn] The Amazon Resource Name (ARN) of the model.
-  InferenceProfileModel({
+  const InferenceProfileModel({
     required this.modelArn,
   });
 

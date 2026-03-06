@@ -19,7 +19,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfig {
   /// [gkeClusterConfig] The configuration for running the Dataproc cluster on GKE.
   /// [kubernetesNamespace] A namespace within the Kubernetes cluster to deploy into.
   /// [kubernetesSoftwareConfig] The software configuration for this Dataproc cluster running on Kubernetes.
-  ClusterVirtualClusterConfigKubernetesClusterConfig({
+  const ClusterVirtualClusterConfigKubernetesClusterConfig({
     required this.gkeClusterConfig,
     this.kubernetesNamespace,
     required this.kubernetesSoftwareConfig,

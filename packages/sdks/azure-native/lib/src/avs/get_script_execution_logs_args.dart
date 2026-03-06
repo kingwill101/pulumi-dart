@@ -18,7 +18,7 @@ class GetScriptExecutionLogsArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptExecutionName] Name of the script cmdlet.
-  GetScriptExecutionLogsArgs({
+  const GetScriptExecutionLogsArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
     required this.scriptExecutionName,

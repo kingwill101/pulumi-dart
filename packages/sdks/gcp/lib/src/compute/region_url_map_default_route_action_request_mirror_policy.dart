@@ -14,7 +14,7 @@ class RegionUrlMapDefaultRouteActionRequestMirrorPolicy {
   /// Creates a new [RegionUrlMapDefaultRouteActionRequestMirrorPolicy].
   /// [backendService] The full or partial URL to the RegionBackendService resource being mirrored to.
   /// [mirrorPercent] The percentage of requests to be mirrored to backendService.
-  RegionUrlMapDefaultRouteActionRequestMirrorPolicy({
+  const RegionUrlMapDefaultRouteActionRequestMirrorPolicy({
     this.backendService,
     this.mirrorPercent,
   });

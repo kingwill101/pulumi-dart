@@ -18,7 +18,7 @@ class StatusMessageResponse {
   /// [createdDateTime] Time in UTC at which the message was created.
   /// [level] Severity level of message.
   /// [message] A human-readable representation of the message code.
-  StatusMessageResponse({
+  const StatusMessageResponse({
     required this.code,
     required this.createdDateTime,
     required this.level,

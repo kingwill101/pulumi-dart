@@ -30,7 +30,7 @@ class ExpressRouteGatewayArgs {
   /// [scaleUnits] The number of scale units with which to provision the ExpressRoute gateway. Each scale unit is equal to 2Gbps, with support for up to 10 scale units (20Gbps).
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualHubId] The ID of a Virtual HUB within which the ExpressRoute gateway should be created. Changing this forces a new resource to be created.
-  ExpressRouteGatewayArgs({
+  const ExpressRouteGatewayArgs({
     this.allowNonVirtualWanTraffic,
     this.location,
     this.name,

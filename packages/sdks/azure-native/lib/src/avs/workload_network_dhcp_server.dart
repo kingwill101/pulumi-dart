@@ -22,7 +22,7 @@ class WorkloadNetworkDhcpServer {
   /// [leaseTime] DHCP Server Lease Time.
   /// [revision] NSX revision number.
   /// [serverAddress] DHCP Server Address.
-  WorkloadNetworkDhcpServer({
+  const WorkloadNetworkDhcpServer({
     required this.dhcpType,
     this.displayName,
     this.leaseTime,

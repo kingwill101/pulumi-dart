@@ -18,7 +18,7 @@ class GetTriggerArgs {
   /// [imageTemplateName] The name of the image Template
   /// [resourceGroupName] The name of the resource group.
   /// [triggerName] The name of the trigger
-  GetTriggerArgs({
+  const GetTriggerArgs({
     required this.imageTemplateName,
     required this.resourceGroupName,
     required this.triggerName,

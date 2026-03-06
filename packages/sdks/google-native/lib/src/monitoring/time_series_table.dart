@@ -18,7 +18,7 @@ class TimeSeriesTable {
   /// [columnSettings] Optional. The list of the persistent column settings for the table.
   /// [dataSets] The data displayed in this table.
   /// [metricVisualization] Optional. Store rendering strategy
-  TimeSeriesTable({
+  const TimeSeriesTable({
     this.columnSettings,
     required this.dataSets,
     this.metricVisualization,

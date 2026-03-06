@@ -31,7 +31,7 @@ class GetNestServiceInstancesResult {
   /// [serviceInstances] A list of Service Instances. Each element contains the following attributes:
   /// [status] The status of the Service Instance.
   /// [tags] The tag of the Service Instance.
-  GetNestServiceInstancesResult({
+  const GetNestServiceInstancesResult({
     this.filters,
     required this.id,
     required this.ids,

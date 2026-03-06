@@ -12,7 +12,7 @@ class PipelineTriggerAll {
   /// Creates a new [PipelineTriggerAll].
   /// [gitConfigurations] Provides the filter criteria and the source stage for the repository event that starts the pipeline. For more information, refer to the [AWS documentation](https://docs.aws.amazon.com/codepipeline/latest/userguide/pipelines-filter.html). A `git_configuration` block is documented below.
   /// [providerType] The source provider for the event. Possible value is `CodeStarSourceConnection`.
-  PipelineTriggerAll({
+  const PipelineTriggerAll({
     this.gitConfigurations,
     this.providerType,
   });

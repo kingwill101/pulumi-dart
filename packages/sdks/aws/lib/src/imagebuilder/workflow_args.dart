@@ -41,7 +41,7 @@ class WorkflowArgs {
   /// [type] Type of the workflow. Valid values: `BUILD`, `TEST`.
   /// [uri] S3 URI with data of the workflow. Exactly one of `data` and `uri` can be specified.
   /// [version] Version of the workflow.
-  WorkflowArgs({
+  const WorkflowArgs({
     this.changeDescription,
     this.data,
     this.description,

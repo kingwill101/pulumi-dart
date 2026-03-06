@@ -32,7 +32,7 @@ class SkuDescriptionResponse {
   /// [size] Size specifier of the resource SKU.
   /// [skuCapacity] Min, max, and default scale values of the SKU.
   /// [tier] Service tier of the resource SKU.
-  SkuDescriptionResponse({
+  const SkuDescriptionResponse({
     this.capabilities,
     this.capacity,
     this.family,

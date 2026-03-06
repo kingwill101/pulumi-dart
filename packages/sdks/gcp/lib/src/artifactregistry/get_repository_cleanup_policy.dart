@@ -19,7 +19,7 @@ class GetRepositoryCleanupPolicy {
   /// [conditions] Policy condition for matching versions.
   /// [id] Required.
   /// [mostRecentVersions] Policy condition for retaining a minimum number of versions. May only be
-  GetRepositoryCleanupPolicy({
+  const GetRepositoryCleanupPolicy({
     required this.action,
     required this.conditions,
     required this.id,

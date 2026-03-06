@@ -36,7 +36,7 @@ class SkypeChannelPropertiesResponse {
   /// [groupsMode] Group mode for Skype channel
   /// [incomingCallRoute] Incoming call route for Skype channel
   /// [isEnabled] Whether this channel is enabled for the bot
-  SkypeChannelPropertiesResponse({
+  const SkypeChannelPropertiesResponse({
     this.callingWebHook,
     this.enableCalling,
     this.enableGroups,

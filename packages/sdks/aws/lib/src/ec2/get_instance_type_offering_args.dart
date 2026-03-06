@@ -22,7 +22,7 @@ class GetInstanceTypeOfferingArgs {
   /// [locationType] Location type. Defaults to `region`. Valid values: `availability-zone`, `availability-zone-id`, and `region`.
   /// [preferredInstanceTypes] Ordered list of preferred EC2 Instance Types. The first match in this list will be returned. If no preferred matches are found and the original search returned more than one result, an error is returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetInstanceTypeOfferingArgs({
+  const GetInstanceTypeOfferingArgs({
     this.filters,
     this.locationType,
     this.preferredInstanceTypes,

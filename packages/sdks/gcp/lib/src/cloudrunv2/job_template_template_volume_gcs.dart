@@ -15,7 +15,7 @@ class JobTemplateTemplateVolumeGcs {
   /// [bucket] Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
   /// [mountOptions] A list of flags to pass to the gcsfuse command for configuring this volume.
   /// [readOnly] If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
-  JobTemplateTemplateVolumeGcs({
+  const JobTemplateTemplateVolumeGcs({
     required this.bucket,
     this.mountOptions,
     this.readOnly,

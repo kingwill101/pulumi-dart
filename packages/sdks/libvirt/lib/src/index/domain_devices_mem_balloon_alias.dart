@@ -8,7 +8,7 @@ class DomainDevicesMemBalloonAlias {
 
   /// Creates a new [DomainDevicesMemBalloonAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesMemBalloonAlias({
+  const DomainDevicesMemBalloonAlias({
     required this.name,
   });
 

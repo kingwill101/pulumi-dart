@@ -34,7 +34,7 @@ class RoutingServiceBusTopicEndpointProperties {
   /// [name] The name that identifies this endpoint. The name can only include alphanumeric characters, periods, underscores, hyphens and has a maximum length of 64 characters. The following names are reserved:  events, fileNotifications, $default. Endpoint names must be unique across endpoint types.  The name need not be the same as the actual topic name.
   /// [resourceGroup] The name of the resource group of the service bus topic endpoint.
   /// [subscriptionId] The subscription identifier of the service bus topic endpoint.
-  RoutingServiceBusTopicEndpointProperties({
+  const RoutingServiceBusTopicEndpointProperties({
     this.authenticationType,
     this.connectionString,
     this.endpointUri,

@@ -15,7 +15,7 @@ class GetFindingIdsArgs {
   /// Creates a new [GetFindingIdsArgs].
   /// [detectorId] ID of the GuardDuty detector.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetFindingIdsArgs({
+  const GetFindingIdsArgs({
     required this.detectorId,
     this.region,
   });

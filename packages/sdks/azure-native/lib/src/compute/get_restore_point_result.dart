@@ -46,7 +46,7 @@ class GetRestorePointResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [timeCreated] Gets the creation time of the restore point.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetRestorePointResult({
+  const GetRestorePointResult({
     required this.azureApiVersion,
     this.consistencyMode,
     this.excludeDisks,

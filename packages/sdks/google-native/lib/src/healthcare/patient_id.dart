@@ -12,7 +12,7 @@ class PatientId {
   /// Creates a new [PatientId].
   /// [type] ID type. For example, MRN or NHS.
   /// [value] The patient's unique identifier.
-  PatientId({
+  const PatientId({
     this.type,
     this.value,
   });

@@ -13,7 +13,7 @@ class ConnectionMonitorEndpointScopeResponse {
   /// Creates a new [ConnectionMonitorEndpointScopeResponse].
   /// [exclude] List of items which needs to be excluded from the endpoint scope.
   /// [include] List of items which needs to be included to the endpoint scope.
-  ConnectionMonitorEndpointScopeResponse({
+  const ConnectionMonitorEndpointScopeResponse({
     this.exclude,
     this.include,
   });

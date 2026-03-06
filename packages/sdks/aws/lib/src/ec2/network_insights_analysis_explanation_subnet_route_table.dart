@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationSubnetRouteTable {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationSubnetRouteTable({
+  const NetworkInsightsAnalysisExplanationSubnetRouteTable({
     this.arn,
     this.id,
     this.name,

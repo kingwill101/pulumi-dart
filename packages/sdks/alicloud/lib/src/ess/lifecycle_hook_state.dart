@@ -27,7 +27,7 @@ class LifecycleHookState {
   /// [notificationArn] The Arn of notification target.
   /// [notificationMetadata] Additional information that you want to include when Auto Scaling sends a message to the notification target.
   /// [scalingGroupId] The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
-  LifecycleHookState({
+  const LifecycleHookState({
     this.defaultResult,
     this.heartbeatTimeout,
     this.lifecycleTransition,

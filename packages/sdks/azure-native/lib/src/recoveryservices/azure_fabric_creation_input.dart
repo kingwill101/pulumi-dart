@@ -13,7 +13,7 @@ class AzureFabricCreationInput {
   /// Creates a new [AzureFabricCreationInput].
   /// [instanceType] Gets the class type.
   /// [location] The Location.
-  AzureFabricCreationInput({
+  const AzureFabricCreationInput({
     required this.instanceType,
     this.location,
   });

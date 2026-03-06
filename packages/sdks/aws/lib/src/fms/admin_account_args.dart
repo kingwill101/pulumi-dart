@@ -12,7 +12,7 @@ class AdminAccountArgs {
 
   /// Creates a new [AdminAccountArgs].
   /// [accountId] The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
-  AdminAccountArgs({
+  const AdminAccountArgs({
     this.accountId,
   });
 

@@ -12,7 +12,7 @@ class NfsUser {
   /// Creates a new [NfsUser].
   /// [groupId] The NFS user's GID
   /// [userId] The NFS user's UID
-  NfsUser({
+  const NfsUser({
     this.groupId,
     this.userId,
   });

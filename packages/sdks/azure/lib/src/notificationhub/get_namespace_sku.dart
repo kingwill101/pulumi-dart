@@ -8,7 +8,7 @@ class GetNamespaceSku {
 
   /// Creates a new [GetNamespaceSku].
   /// [name] Specifies the Name of the Notification Hub Namespace.
-  GetNamespaceSku({
+  const GetNamespaceSku({
     required this.name,
   });
 

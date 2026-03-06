@@ -19,7 +19,7 @@ class AccessReviewInstance {
   /// [endDateTime] The DateTime when the review instance is scheduled to end.
   /// [reviewers] This is the collection of reviewers.
   /// [startDateTime] The DateTime when the review instance is scheduled to be start.
-  AccessReviewInstance({
+  const AccessReviewInstance({
     this.backupReviewers,
     this.endDateTime,
     this.reviewers,

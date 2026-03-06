@@ -24,7 +24,7 @@ class GetAccessPointsArgs {
   /// [dataSourceId] Unique identifier for the access points data source.
   /// [dataSourceType] Type of the data source that the access points are attached to. To return all access points set this argument to `ALL`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAccessPointsArgs({
+  const GetAccessPointsArgs({
     this.accountId,
     this.bucket,
     this.dataSourceId,

@@ -23,7 +23,7 @@ class FirewallArgs {
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [name] Name of the Firewall.
   /// [rules] Configuration of a Rule from this Firewall.
-  FirewallArgs({
+  const FirewallArgs({
     this.applyTos,
     this.labels,
     this.name,

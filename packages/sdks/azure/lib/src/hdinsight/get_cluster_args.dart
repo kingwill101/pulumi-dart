@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [name] Specifies the name of this HDInsight Cluster.
   /// [resourceGroupName] Specifies the name of the Resource Group in which this HDInsight Cluster exists.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

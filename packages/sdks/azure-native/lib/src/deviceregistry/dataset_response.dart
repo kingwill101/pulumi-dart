@@ -20,7 +20,7 @@ class DatasetResponse {
   /// [datasetConfiguration] Stringified JSON that contains connector-specific JSON string that describes configuration for the specific dataset.
   /// [name] Name of the dataset.
   /// [topic] Object that describes the topic information for the specific dataset.
-  DatasetResponse({
+  const DatasetResponse({
     this.dataPoints,
     this.datasetConfiguration,
     required this.name,

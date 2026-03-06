@@ -14,7 +14,7 @@ class GetAppDapr {
   /// [appId] The Dapr Application Identifier.
   /// [appPort] The port which the application is listening on. This is the same as the `ingress` port.
   /// [appProtocol] The protocol for the app.
-  GetAppDapr({
+  const GetAppDapr({
     required this.appId,
     required this.appPort,
     required this.appProtocol,

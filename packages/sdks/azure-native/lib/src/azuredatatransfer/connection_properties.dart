@@ -43,7 +43,7 @@ class ConnectionProperties {
   /// [schemaUris] The schema URIs for this connection
   /// [schemas] The schemas for this connection
   /// [secondaryContacts] The secondary contacts for this connection request
-  ConnectionProperties({
+  const ConnectionProperties({
     this.direction,
     this.flowTypes,
     this.justification,

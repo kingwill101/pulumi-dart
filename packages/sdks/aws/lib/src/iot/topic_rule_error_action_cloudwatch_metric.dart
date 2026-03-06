@@ -23,7 +23,7 @@ class TopicRuleErrorActionCloudwatchMetric {
   /// [metricUnit] The metric unit (supported units can be found here: http://docs.aws.amazon.com/AmazonCloudWatch/latest/DeveloperGuide/cloudwatch_concepts.html#Unit)
   /// [metricValue] The CloudWatch metric value.
   /// [roleArn] The IAM role ARN that allows access to the CloudWatch metric.
-  TopicRuleErrorActionCloudwatchMetric({
+  const TopicRuleErrorActionCloudwatchMetric({
     required this.metricName,
     required this.metricNamespace,
     this.metricTimestamp,

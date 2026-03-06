@@ -9,7 +9,7 @@ class AdminAccountState {
 
   /// Creates a new [AdminAccountState].
   /// [accountId] The AWS account ID to associate with AWS Firewall Manager as the AWS Firewall Manager administrator account. This can be an AWS Organizations master account or a member account. Defaults to the current account. Must be configured to perform drift detection.
-  AdminAccountState({
+  const AdminAccountState({
     this.accountId,
   });
 

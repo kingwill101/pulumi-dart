@@ -22,7 +22,7 @@ class RuleArgs {
   /// [name] The name or description of the rule.
   /// [predicates] The objects to include in a rule (documented below).
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  RuleArgs({
+  const RuleArgs({
     required this.metricName,
     this.name,
     this.predicates,

@@ -24,7 +24,7 @@ class AudioMappingResponse {
   /// [inputKey] The Input.key that identifies the input file.
   /// [inputTrack] The zero-based index of the track in the input file.
   /// [outputChannel] The zero-based index of the channel in the output audio stream.
-  AudioMappingResponse({
+  const AudioMappingResponse({
     required this.atomKey,
     required this.gainDb,
     required this.inputChannel,

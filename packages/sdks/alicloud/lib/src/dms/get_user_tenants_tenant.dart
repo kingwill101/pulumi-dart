@@ -17,7 +17,7 @@ class GetUserTenantsTenant {
   /// [status] The status of the user tenant.
   /// [tenantName] The name of the user tenant.
   /// [tid] The user tenant id. Same as id.
-  GetUserTenantsTenant({
+  const GetUserTenantsTenant({
     required this.id,
     required this.status,
     required this.tenantName,

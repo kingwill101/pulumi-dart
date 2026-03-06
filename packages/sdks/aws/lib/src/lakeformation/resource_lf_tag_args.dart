@@ -38,7 +38,7 @@ class ResourceLfTagArgs {
   /// [table] Configuration block for a table resource. See Table for more details.
   /// [tableWithColumns] Configuration block for a table with columns resource. See Table With Columns for more details.
   /// [timeouts] Optional.
-  ResourceLfTagArgs({
+  const ResourceLfTagArgs({
     this.catalogId,
     this.database,
     required this.lfTag,

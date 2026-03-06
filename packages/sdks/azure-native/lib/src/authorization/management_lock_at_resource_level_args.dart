@@ -40,7 +40,7 @@ class ManagementLockAtResourceLevelArgs {
   /// [resourceName] The name of the resource to lock.
   /// [resourceProviderNamespace] The resource provider namespace of the resource to lock.
   /// [resourceType] The resource type of the resource to lock.
-  ManagementLockAtResourceLevelArgs({
+  const ManagementLockAtResourceLevelArgs({
     required this.apiVersion,
     required this.level,
     this.lockName,

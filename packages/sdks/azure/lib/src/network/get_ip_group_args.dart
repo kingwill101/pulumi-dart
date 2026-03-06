@@ -15,7 +15,7 @@ class GetIpGroupArgs {
   /// Creates a new [GetIpGroupArgs].
   /// [name] Specifies the Name of the IP Group.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the IP Group exists
-  GetIpGroupArgs({
+  const GetIpGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

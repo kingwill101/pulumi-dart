@@ -21,7 +21,7 @@ class AccessPolicyArgs {
   /// [cacheName] The name of the Redis cache.
   /// [permissions] Permissions for the access policy. Learn how to configure permissions at https://aka.ms/redis/AADPreRequisites
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AccessPolicyArgs({
+  const AccessPolicyArgs({
     this.accessPolicyName,
     required this.cacheName,
     required this.permissions,

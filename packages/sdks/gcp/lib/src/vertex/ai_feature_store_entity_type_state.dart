@@ -49,7 +49,7 @@ class AiFeatureStoreEntityTypeState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the EntityType.
   /// [updateTime] The timestamp of when the featurestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiFeatureStoreEntityTypeState({
+  const AiFeatureStoreEntityTypeState({
     this.createTime,
     this.description,
     this.effectiveLabels,

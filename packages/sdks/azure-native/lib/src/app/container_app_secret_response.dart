@@ -18,7 +18,7 @@ class ContainerAppSecretResponse {
   /// [keyVaultUrl] Azure Key Vault URL pointing to the secret referenced by the container app.
   /// [name] Secret Name.
   /// [value] Secret Value.
-  ContainerAppSecretResponse({
+  const ContainerAppSecretResponse({
     required this.identity,
     required this.keyVaultUrl,
     required this.name,

@@ -37,7 +37,7 @@ class TopicArgs {
   /// [remark] The description of the topic.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topic] The topic name.
-  TopicArgs({
+  const TopicArgs({
     this.compactTopic,
     this.configs,
     required this.instanceId,

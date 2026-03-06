@@ -47,7 +47,7 @@ class ReportSummaryGroupPreferenceSetFindingResponse {
   /// [monthlyCostTotal] Total monthly cost for this preference set.
   /// [soleTenantFinding] A set of findings that applies to Sole-Tenant machines in the input.
   /// [vmwareEngineFinding] A set of findings that applies to VMWare machines in the input.
-  ReportSummaryGroupPreferenceSetFindingResponse({
+  const ReportSummaryGroupPreferenceSetFindingResponse({
     required this.computeEngineFinding,
     required this.description,
     required this.displayName,

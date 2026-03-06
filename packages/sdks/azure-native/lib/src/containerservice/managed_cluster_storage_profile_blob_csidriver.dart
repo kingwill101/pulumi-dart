@@ -9,7 +9,7 @@ class ManagedClusterStorageProfileBlobCSIDriver {
 
   /// Creates a new [ManagedClusterStorageProfileBlobCSIDriver].
   /// [enabled] Whether to enable AzureBlob CSI Driver. The default value is false.
-  ManagedClusterStorageProfileBlobCSIDriver({
+  const ManagedClusterStorageProfileBlobCSIDriver({
     this.enabled,
   });
 

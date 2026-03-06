@@ -31,7 +31,7 @@ class ConfigManagementPolicyControllerGkehubV1beta {
   /// [mutationEnabled] Enable or disable mutation in policy controller. If true, mutation CRDs, webhook and controller deployment will be deployed to the cluster.
   /// [referentialRulesEnabled] Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
   /// [templateLibraryInstalled] Installs the default template library along with Policy Controller.
-  ConfigManagementPolicyControllerGkehubV1beta({
+  const ConfigManagementPolicyControllerGkehubV1beta({
     this.auditIntervalSeconds,
     this.enabled,
     this.exemptableNamespaces,

@@ -11,7 +11,7 @@ class ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxi
   /// Creates a new [ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis].
   /// [tableArn] ARN of the table which is queried with the largest time range.
   /// [value] Maximum duration in nanoseconds between the start and end of the query.
-  ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis({
+  const ScheduledQueryRecentlyFailedRunQueryInsightsResponseQueryTemporalRangeMaxis({
     this.tableArn,
     this.value,
   });

@@ -15,7 +15,7 @@ class AccountNetworkProfile {
   /// Creates a new [AccountNetworkProfile].
   /// [accountAccess] An `account_access` block as defined below.
   /// [nodeManagementAccess] A `node_management_access` block as defined below.
-  AccountNetworkProfile({
+  const AccountNetworkProfile({
     this.accountAccess,
     this.nodeManagementAccess,
   });

@@ -12,7 +12,7 @@ class LockConfigResponse {
   /// Creates a new [LockConfigResponse].
   /// [locked] Indicates whether or not the connection is locked.
   /// [reason] Describes why a connection is locked.
-  LockConfigResponse({
+  const LockConfigResponse({
     required this.locked,
     required this.reason,
   });

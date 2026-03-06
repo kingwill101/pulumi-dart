@@ -76,7 +76,7 @@ class GetDatasetResult {
   /// [selfLink] A URL that can be used to access the resource again. You can use this URL in Get or Update requests to the resource.
   /// [storageBillingModel] [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
   /// [tags] [Optional]The tags associated with this dataset. Tag keys are globally unique.
-  GetDatasetResult({
+  const GetDatasetResult({
     required this.access,
     required this.creationTime,
     required this.datasetReference,

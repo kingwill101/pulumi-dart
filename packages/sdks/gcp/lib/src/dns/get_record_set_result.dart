@@ -22,7 +22,7 @@ class GetRecordSetResult {
   /// [rrdatas] The string data for the records in this record set.
   /// [ttl] The time-to-live of this record set (seconds).
   /// [type] Required.
-  GetRecordSetResult({
+  const GetRecordSetResult({
     required this.id,
     required this.managedZone,
     required this.name,

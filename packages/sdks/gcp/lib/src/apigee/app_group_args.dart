@@ -34,7 +34,7 @@ class AppGroupArgs {
   /// [name] Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
   /// [orgId] The Apigee Organization associated with the Apigee app group,
   /// [status] Valid values are active or inactive. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as active or inactive.
-  AppGroupArgs({
+  const AppGroupArgs({
     this.attributes,
     this.channelId,
     this.channelUri,

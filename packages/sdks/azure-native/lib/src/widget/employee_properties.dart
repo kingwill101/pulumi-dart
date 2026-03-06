@@ -15,7 +15,7 @@ class EmployeeProperties {
   /// [age] Age of employee
   /// [city] City of employee
   /// [profile] Profile of employee
-  EmployeeProperties({
+  const EmployeeProperties({
     this.age,
     this.city,
     this.profile,

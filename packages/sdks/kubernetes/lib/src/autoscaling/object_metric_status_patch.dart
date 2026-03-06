@@ -18,7 +18,7 @@ class ObjectMetricStatusPatch {
   /// [current] current contains the current value for the given metric
   /// [describedObject] DescribedObject specifies the descriptions of a object,such as kind,name apiVersion
   /// [metric] metric identifies the target metric by name and selector
-  ObjectMetricStatusPatch({
+  const ObjectMetricStatusPatch({
     this.current,
     this.describedObject,
     this.metric,

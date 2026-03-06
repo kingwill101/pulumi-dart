@@ -16,7 +16,7 @@ class AssistantCustomerPolicyBannedPhrase {
   /// [ignoreDiacritics] If true, diacritical marks (e.g., accents, umlauts) are ignored when
   /// [matchType] Match type for the banned phrase.
   /// [phrase] The raw string content to be banned.
-  AssistantCustomerPolicyBannedPhrase({
+  const AssistantCustomerPolicyBannedPhrase({
     this.ignoreDiacritics,
     this.matchType,
     required this.phrase,

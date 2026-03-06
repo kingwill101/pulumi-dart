@@ -29,7 +29,7 @@ class GetNetworkSecurityPerimeterResult {
   /// [provisioningState] The provisioning state of the scope assignment resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkSecurityPerimeterResult({
+  const GetNetworkSecurityPerimeterResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

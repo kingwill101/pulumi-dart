@@ -12,7 +12,7 @@ class PrivateIPAddressResponse {
   /// Creates a new [PrivateIPAddressResponse].
   /// [ipAddress] Private IP address bound to the availability group listener.
   /// [subnetResourceId] Subnet used to include private IP.
-  PrivateIPAddressResponse({
+  const PrivateIPAddressResponse({
     this.ipAddress,
     this.subnetResourceId,
   });

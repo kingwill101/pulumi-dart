@@ -20,7 +20,7 @@ class GetHostGroupsGroup {
   /// [hostGroupName] Specify the New Host Group Name, Supports up to 128 Characters.
   /// [id] The ID of the Host Group.
   /// [instanceId] Specify the New Host Group Where the Bastion Host ID of.
-  GetHostGroupsGroup({
+  const GetHostGroupsGroup({
     required this.comment,
     required this.hostGroupId,
     required this.hostGroupName,

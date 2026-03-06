@@ -12,7 +12,7 @@ class Topic {
   /// Creates a new [Topic].
   /// [path] The topic path for messages published to an MQTT broker.
   /// [retain] When set to 'Keep', messages published to an MQTT broker will have the retain flag set. Default: 'Never'.
-  Topic({
+  const Topic({
     required this.path,
     this.retain,
   });

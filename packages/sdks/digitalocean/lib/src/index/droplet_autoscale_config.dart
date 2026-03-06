@@ -25,7 +25,7 @@ class DropletAutoscaleConfig {
   /// [targetCpuUtilization] The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
   /// [targetMemoryUtilization] The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale
   /// [targetNumberInstances] The static number of instances to maintain in the pool Droplet Autoscale pool. This
-  DropletAutoscaleConfig({
+  const DropletAutoscaleConfig({
     this.cooldownMinutes,
     this.maxInstances,
     this.minInstances,

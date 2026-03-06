@@ -14,7 +14,7 @@ class ClassificationJobScheduleFrequency {
   /// [dailySchedule] Specifies a daily recurrence pattern for running the job.
   /// [monthlySchedule] Specifies a monthly recurrence pattern for running the job.
   /// [weeklySchedule] Specifies a weekly recurrence pattern for running the job.
-  ClassificationJobScheduleFrequency({
+  const ClassificationJobScheduleFrequency({
     this.dailySchedule,
     this.monthlySchedule,
     this.weeklySchedule,

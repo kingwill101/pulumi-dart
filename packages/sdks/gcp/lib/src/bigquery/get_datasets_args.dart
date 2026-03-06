@@ -13,7 +13,7 @@ class GetDatasetsArgs {
 
   /// Creates a new [GetDatasetsArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetDatasetsArgs({
+  const GetDatasetsArgs({
     this.project,
   });
 

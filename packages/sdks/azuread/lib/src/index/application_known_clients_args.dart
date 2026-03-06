@@ -15,7 +15,7 @@ class ApplicationKnownClientsArgs {
   /// Creates a new [ApplicationKnownClientsArgs].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [knownClientIds] A set of client IDs for the known applications.
-  ApplicationKnownClientsArgs({
+  const ApplicationKnownClientsArgs({
     required this.applicationId,
     required this.knownClientIds,
   });

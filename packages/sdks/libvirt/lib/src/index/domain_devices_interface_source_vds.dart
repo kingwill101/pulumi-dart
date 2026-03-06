@@ -17,7 +17,7 @@ class DomainDevicesInterfaceSourceVds {
   /// [portGroupId] Defines the port group identifier for the vDS used by the network interface.
   /// [portId] Specifies the port ID within the vDS configuration for the network interface.
   /// [switchId] Configures the switch ID for the vDS associated with the network interface.
-  DomainDevicesInterfaceSourceVds({
+  const DomainDevicesInterfaceSourceVds({
     this.connectionId,
     this.portGroupId,
     this.portId,

@@ -8,7 +8,7 @@ class ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority {
 
   /// Creates a new [ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority].
   /// [awsPcaAuthorityArn] ARN of the `aws.acmpca.CertificateAuthority` used to create the TLS Certificates.
-  ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority({
+  const ServiceServiceConnectConfigurationServiceTlsIssuerCertAuthority({
     required this.awsPcaAuthorityArn,
   });
 

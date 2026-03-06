@@ -17,7 +17,7 @@ class DeploymentIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the identity type of the NGINX Deployment. Possible values are `SystemAssigned`, `UserAssigned` or `SystemAssigned, UserAssigned`.
-  DeploymentIdentity({
+  const DeploymentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

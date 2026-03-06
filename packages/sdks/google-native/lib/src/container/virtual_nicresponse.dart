@@ -9,7 +9,7 @@ class VirtualNICResponse {
 
   /// Creates a new [VirtualNICResponse].
   /// [enabled] Whether gVNIC features are enabled in the node pool.
-  VirtualNICResponse({
+  const VirtualNICResponse({
     required this.enabled,
   });
 

@@ -9,7 +9,7 @@ class DiskSkuResponse {
 
   /// Creates a new [DiskSkuResponse].
   /// [name] Defines the disk sku name.
-  DiskSkuResponse({
+  const DiskSkuResponse({
     this.name,
   });
 

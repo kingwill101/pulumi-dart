@@ -13,7 +13,7 @@ class GetAnnotationSpecSetArgs {
   /// Creates a new [GetAnnotationSpecSetArgs].
   /// [annotationSpecSetId] Required.
   /// [project] Optional.
-  GetAnnotationSpecSetArgs({
+  const GetAnnotationSpecSetArgs({
     required this.annotationSpecSetId,
     this.project,
   });

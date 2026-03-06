@@ -18,7 +18,7 @@ class TransitRouterRouteTableAssociationState {
   /// [status] The status of the resource
   /// [transitRouterAttachmentId] TransitRouterAttachmentId
   /// [transitRouterRouteTableId] TransitRouterRouteTableId
-  TransitRouterRouteTableAssociationState({
+  const TransitRouterRouteTableAssociationState({
     this.dryRun,
     this.status,
     this.transitRouterAttachmentId,

@@ -10,7 +10,7 @@ class StandardAppVersionManualScaling {
 
   /// Creates a new [StandardAppVersionManualScaling].
   /// [instances] Number of instances to assign to the service at the start.
-  StandardAppVersionManualScaling({
+  const StandardAppVersionManualScaling({
     required this.instances,
   });
 

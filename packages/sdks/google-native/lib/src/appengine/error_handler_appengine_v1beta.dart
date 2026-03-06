@@ -16,7 +16,7 @@ class ErrorHandlerAppengineV1beta {
   /// [errorCode] Error condition this handler applies to.
   /// [mimeType] MIME type of file. Defaults to text/html.
   /// [staticFile] Static file content to be served for this error.
-  ErrorHandlerAppengineV1beta({
+  const ErrorHandlerAppengineV1beta({
     this.errorCode,
     this.mimeType,
     this.staticFile,

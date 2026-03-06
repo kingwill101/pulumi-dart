@@ -38,7 +38,7 @@ class LakeArgs {
   /// [metastore] Optional. Settings to manage lake and Dataproc Metastore service instance association.
   /// [name] The name of the lake.
   /// [project] The project for the resource
-  LakeArgs({
+  const LakeArgs({
     this.description,
     this.displayName,
     this.labels,

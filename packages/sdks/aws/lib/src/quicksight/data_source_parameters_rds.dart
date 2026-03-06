@@ -11,7 +11,7 @@ class DataSourceParametersRds {
   /// Creates a new [DataSourceParametersRds].
   /// [database] The database to which to connect.
   /// [instanceId] The instance ID to which to connect.
-  DataSourceParametersRds({
+  const DataSourceParametersRds({
     required this.database,
     required this.instanceId,
   });

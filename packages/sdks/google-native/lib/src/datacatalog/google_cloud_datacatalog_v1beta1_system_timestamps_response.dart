@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1beta1SystemTimestampsResponse {
   /// [createTime] The creation time of the resource within the given system.
   /// [expireTime] The expiration time of the resource within the given system. Currently only apllicable to BigQuery resources.
   /// [updateTime] The last-modified time of the resource within the given system.
-  GoogleCloudDatacatalogV1beta1SystemTimestampsResponse({
+  const GoogleCloudDatacatalogV1beta1SystemTimestampsResponse({
     required this.createTime,
     required this.expireTime,
     required this.updateTime,

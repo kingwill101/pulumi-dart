@@ -18,7 +18,7 @@ class GetFabricArgs {
   /// [name] Specifies the name of the Site Recovery Replication Fabric.
   /// [recoveryVaultName] The name of the Recovery Services Vault that the Site Recovery Replication Fabric is associated witth.
   /// [resourceGroupName] The name of the resource group in which the associated Recovery Services Vault resides.
-  GetFabricArgs({
+  const GetFabricArgs({
     required this.name,
     required this.recoveryVaultName,
     required this.resourceGroupName,

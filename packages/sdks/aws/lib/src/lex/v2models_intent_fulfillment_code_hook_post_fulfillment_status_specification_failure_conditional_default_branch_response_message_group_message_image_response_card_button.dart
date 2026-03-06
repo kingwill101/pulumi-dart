@@ -11,7 +11,7 @@ class V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailure
   /// Creates a new [V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchResponseMessageGroupMessageImageResponseCardButton].
   /// [text] Text that appears on the button. Use this to tell the user what value is returned when they choose this button.
   /// [value] Value returned to Amazon Lex when the user chooses this button. This must be one of the slot values configured for the slot.
-  V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchResponseMessageGroupMessageImageResponseCardButton({
+  const V2modelsIntentFulfillmentCodeHookPostFulfillmentStatusSpecificationFailureConditionalDefaultBranchResponseMessageGroupMessageImageResponseCardButton({
     required this.text,
     required this.value,
   });

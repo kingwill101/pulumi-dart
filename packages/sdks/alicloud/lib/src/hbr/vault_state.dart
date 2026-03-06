@@ -46,7 +46,7 @@ class VaultState {
   /// [vaultStorageClass] The storage class of Vault. Valid values: `STANDARD`.
   /// [vaultType] The type of Vault. Valid values:
   /// [wormEnabled] Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
-  VaultState({
+  const VaultState({
     this.createTime,
     this.description,
     this.encryptType,

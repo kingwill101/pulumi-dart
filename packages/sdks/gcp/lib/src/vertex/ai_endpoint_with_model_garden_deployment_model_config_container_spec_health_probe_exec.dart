@@ -13,7 +13,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec].
   /// [commands] Command is the command line to execute inside the container, the working
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeExec({
     this.commands,
   });
 

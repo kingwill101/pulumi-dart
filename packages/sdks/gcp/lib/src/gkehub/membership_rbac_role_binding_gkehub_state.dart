@@ -50,7 +50,7 @@ class MembershipRbacRoleBindingGkehubState {
   /// [uid] Google-generated UUID for this resource.
   /// [updateTime] Time the RBAC Role Binding was updated in UTC.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
-  MembershipRbacRoleBindingGkehubState({
+  const MembershipRbacRoleBindingGkehubState({
     this.createTime,
     this.deleteTime,
     this.location,

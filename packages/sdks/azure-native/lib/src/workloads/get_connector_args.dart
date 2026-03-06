@@ -15,7 +15,7 @@ class GetConnectorArgs {
   /// Creates a new [GetConnectorArgs].
   /// [connectorName] The name of the connector resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorName,
     required this.resourceGroupName,
   });

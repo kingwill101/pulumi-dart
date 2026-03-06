@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeo
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupVariationPlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationTimeoutResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

@@ -32,7 +32,7 @@ class GetCachePolicyResult {
   /// [minTtl] Minimum amount of time, in seconds, that you want objects to stay in the CloudFront cache before CloudFront sends another request to the origin to see if the object has been updated.
   /// [name] Optional.
   /// [parametersInCacheKeyAndForwardedToOrigins] The HTTP headers, cookies, and URL query strings to include in the cache key. See Parameters In Cache Key And Forwarded To Origin for more information.
-  GetCachePolicyResult({
+  const GetCachePolicyResult({
     required this.arn,
     required this.comment,
     required this.defaultTtl,

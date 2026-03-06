@@ -64,7 +64,7 @@ class NetworkSecurityRuleState {
   /// [sourceApplicationSecurityGroupIds] A List of source Application Security Group IDs
   /// [sourcePortRange] Source Port or Range. Integer or range between `0` and `65535` or `*` to match any. This is required if `source_port_ranges` is not specified.
   /// [sourcePortRanges] List of source ports or port ranges. This is required if `source_port_range` is not specified.
-  NetworkSecurityRuleState({
+  const NetworkSecurityRuleState({
     this.access,
     this.description,
     this.destinationAddressPrefix,

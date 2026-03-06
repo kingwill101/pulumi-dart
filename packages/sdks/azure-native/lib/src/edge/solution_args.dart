@@ -22,7 +22,7 @@ class SolutionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
-  SolutionArgs({
+  const SolutionArgs({
     this.extendedLocation,
     required this.resourceGroupName,
     this.solutionName,

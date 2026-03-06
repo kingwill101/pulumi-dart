@@ -30,7 +30,7 @@ class DatabaseArgs {
   /// [dbInstanceId] Instance ID
   /// [description] Database Description
   /// [owner] Data Sheet owner
-  DatabaseArgs({
+  const DatabaseArgs({
     this.characterSetName,
     this.collate,
     this.ctype,

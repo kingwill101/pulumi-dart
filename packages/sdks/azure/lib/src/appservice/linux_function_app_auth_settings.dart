@@ -60,7 +60,7 @@ class LinuxFunctionAppAuthSettings {
   /// [tokenStoreEnabled] Should the Linux Web App durably store platform-specific security tokens that are obtained during login flows? Defaults to `false`.
   /// [twitter] A `twitter` block as defined below.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app. Possible values include: `RedirectToLoginPage`, `AllowAnonymous`.
-  LinuxFunctionAppAuthSettings({
+  const LinuxFunctionAppAuthSettings({
     this.activeDirectory,
     this.additionalLoginParameters,
     this.allowedExternalRedirectUrls,

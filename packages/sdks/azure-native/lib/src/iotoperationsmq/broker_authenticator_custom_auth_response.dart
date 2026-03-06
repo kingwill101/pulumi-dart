@@ -10,7 +10,7 @@ class BrokerAuthenticatorCustomAuthResponse {
 
   /// Creates a new [BrokerAuthenticatorCustomAuthResponse].
   /// [x509] X509 Custom Auth type details.
-  BrokerAuthenticatorCustomAuthResponse({
+  const BrokerAuthenticatorCustomAuthResponse({
     required this.x509,
   });
 

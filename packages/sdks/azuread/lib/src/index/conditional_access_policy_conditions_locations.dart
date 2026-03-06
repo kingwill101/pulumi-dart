@@ -11,7 +11,7 @@ class ConditionalAccessPolicyConditionsLocations {
   /// Creates a new [ConditionalAccessPolicyConditionsLocations].
   /// [excludedLocations] A list of location IDs excluded from scope of policy. Can also be set to `AllTrusted`.
   /// [includedLocations] A list of location IDs in scope of policy unless explicitly excluded. Can also be set to `All`, or `AllTrusted`.
-  ConditionalAccessPolicyConditionsLocations({
+  const ConditionalAccessPolicyConditionsLocations({
     this.excludedLocations,
     required this.includedLocations,
   });

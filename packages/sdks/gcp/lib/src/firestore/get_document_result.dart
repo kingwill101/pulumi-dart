@@ -26,7 +26,7 @@ class GetDocumentResult {
   /// [path] Required.
   /// [project] Optional.
   /// [updateTime] Required.
-  GetDocumentResult({
+  const GetDocumentResult({
     required this.collection,
     required this.createTime,
     required this.database,

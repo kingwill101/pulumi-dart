@@ -19,7 +19,7 @@ class InferenceClusterIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Machine Learning Inference Cluster.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Machine Learning Inference Cluster.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Machine Learning Inference Cluster. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both). Changing this forces a new resource to be created.
-  InferenceClusterIdentity({
+  const InferenceClusterIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

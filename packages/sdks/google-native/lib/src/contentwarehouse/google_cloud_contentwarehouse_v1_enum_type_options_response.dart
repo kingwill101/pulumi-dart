@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1EnumTypeOptionsResponse {
   /// Creates a new [GoogleCloudContentwarehouseV1EnumTypeOptionsResponse].
   /// [possibleValues] List of possible enum values.
   /// [validationCheckDisabled] Make sure the Enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-  GoogleCloudContentwarehouseV1EnumTypeOptionsResponse({
+  const GoogleCloudContentwarehouseV1EnumTypeOptionsResponse({
     required this.possibleValues,
     required this.validationCheckDisabled,
   });

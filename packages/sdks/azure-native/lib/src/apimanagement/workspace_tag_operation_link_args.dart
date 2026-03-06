@@ -27,7 +27,7 @@ class WorkspaceTagOperationLinkArgs {
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceTagOperationLinkArgs({
+  const WorkspaceTagOperationLinkArgs({
     required this.operationId,
     this.operationLinkId,
     required this.resourceGroupName,

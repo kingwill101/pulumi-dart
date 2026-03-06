@@ -9,7 +9,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordLis
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
-  PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList({
+  const PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList({
     required this.words,
   });
 

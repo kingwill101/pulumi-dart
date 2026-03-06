@@ -37,7 +37,7 @@ class GetGrpcRouteResult {
   /// [rules] A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
   /// [selfLink] Server-defined URL of this resource
   /// [updateTime] The timestamp when the resource was updated.
-  GetGrpcRouteResult({
+  const GetGrpcRouteResult({
     required this.createTime,
     required this.description,
     required this.gateways,

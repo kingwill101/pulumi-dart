@@ -28,7 +28,7 @@ class GetCnameRecordResult {
   /// [targetResourceId] Required.
   /// [ttl] The Time To Live (TTL) of the Private DNS record in seconds.
   /// [zoneName] Required.
-  GetCnameRecordResult({
+  const GetCnameRecordResult({
     required this.fqdn,
     required this.id,
     required this.name,

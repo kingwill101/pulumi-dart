@@ -65,7 +65,7 @@ class GetEnvironmentV3Result {
   /// [tags] A mapping of tags assigned to the v3 App Service Environment.
   /// [windowsOutboundIpAddresses] Outbound addresses of Windows based Apps in this App Service Environment V3.
   /// [zoneRedundant] Required.
-  GetEnvironmentV3Result({
+  const GetEnvironmentV3Result({
     required this.allowNewPrivateEndpointConnections,
     required this.clusterSettings,
     required this.dedicatedHostCount,

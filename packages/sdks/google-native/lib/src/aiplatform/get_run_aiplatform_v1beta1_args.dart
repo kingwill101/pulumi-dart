@@ -19,7 +19,7 @@ class GetRunAiplatformV1beta1Args {
   /// [project] Optional.
   /// [runId] Required.
   /// [tensorboardId] Required.
-  GetRunAiplatformV1beta1Args({
+  const GetRunAiplatformV1beta1Args({
     required this.experimentId,
     required this.location,
     this.project,

@@ -31,7 +31,7 @@ class AntiBruteForceRuleArgs {
   /// [protocolType] The types of protocols supported for interception by the brute force attack rule creation. See `protocol_type` below.
   /// [span] The maximum period of time during which failed logon attempts from an account can occur. Unit: minutes. Valid values:
   /// [uuidLists] The UUIDs of the servers to which you want to apply the defense rule.
-  AntiBruteForceRuleArgs({
+  const AntiBruteForceRuleArgs({
     required this.antiBruteForceRuleName,
     this.defaultRule,
     required this.failCount,

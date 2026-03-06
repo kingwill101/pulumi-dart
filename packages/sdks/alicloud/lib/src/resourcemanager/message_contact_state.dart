@@ -42,7 +42,7 @@ class MessageContactState {
   /// [phoneNumber] The mobile phone number of the contact.
   /// [status] The status of the contact.
   /// [title] The job title of the contact.Valid values:
-  MessageContactState({
+  const MessageContactState({
     this.createTime,
     this.emailAddress,
     this.messageContactName,

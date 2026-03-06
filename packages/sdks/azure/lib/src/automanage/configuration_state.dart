@@ -47,7 +47,7 @@ class ConfigurationState {
   /// [resourceGroupName] The name of the Resource Group where the Automanage Configuration should exist. Changing this forces a new Automanage Configuration to be created.
   /// [statusChangeAlertEnabled] Whether the status change alert is enabled. Defaults to `false`.
   /// [tags] Optional.
-  ConfigurationState({
+  const ConfigurationState({
     this.antimalware,
     this.automationAccountEnabled,
     this.azureSecurityBaseline,

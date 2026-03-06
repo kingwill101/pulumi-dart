@@ -9,7 +9,7 @@ class DiagnosticsLogs {
 
   /// Creates a new [DiagnosticsLogs].
   /// [level] The log level. Examples - 'debug', 'info', 'warn', 'error', 'trace'.
-  DiagnosticsLogs({
+  const DiagnosticsLogs({
     this.level,
   });
 

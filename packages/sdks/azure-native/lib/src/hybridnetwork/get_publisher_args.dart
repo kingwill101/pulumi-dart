@@ -15,7 +15,7 @@ class GetPublisherArgs {
   /// Creates a new [GetPublisherArgs].
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPublisherArgs({
+  const GetPublisherArgs({
     required this.publisherName,
     required this.resourceGroupName,
   });

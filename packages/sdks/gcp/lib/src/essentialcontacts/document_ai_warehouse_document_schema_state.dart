@@ -26,7 +26,7 @@ class DocumentAiWarehouseDocumentSchemaState {
   /// [name] The resource name of the document schema.
   /// [projectNumber] The unique identifier of the project.
   /// [propertyDefinitions] Defines the metadata for a schema property.
-  DocumentAiWarehouseDocumentSchemaState({
+  const DocumentAiWarehouseDocumentSchemaState({
     this.displayName,
     this.documentIsFolder,
     this.location,

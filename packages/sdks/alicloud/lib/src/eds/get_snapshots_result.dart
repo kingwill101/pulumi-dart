@@ -24,7 +24,7 @@ class GetSnapshotsResult {
   /// [outputFile] Optional.
   /// [snapshotId] Optional.
   /// [snapshots] Required.
-  GetSnapshotsResult({
+  const GetSnapshotsResult({
     this.desktopId,
     required this.id,
     required this.ids,

@@ -75,7 +75,7 @@ class AuthzExtensionArgs {
   /// [service] The reference to the service that runs the extension.
   /// [timeout] Specifies the timeout for each individual message on the stream. The timeout must be between 10-10000 milliseconds.
   /// [wireFormat] Specifies the communication protocol used by the callout extension
-  AuthzExtensionArgs({
+  const AuthzExtensionArgs({
     required this.authority,
     this.description,
     this.failOpen,

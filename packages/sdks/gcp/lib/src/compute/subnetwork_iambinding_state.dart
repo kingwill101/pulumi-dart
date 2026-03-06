@@ -46,7 +46,7 @@ class SubnetworkIAMBindingState {
   /// [region] The GCP region for this subnetwork.
   /// [role] The role that should be applied. Only one
   /// [subnetwork] Used to find the parent resource to bind the IAM policy to
-  SubnetworkIAMBindingState({
+  const SubnetworkIAMBindingState({
     this.condition,
     this.etag,
     this.members,

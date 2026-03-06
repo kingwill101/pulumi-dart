@@ -25,7 +25,7 @@ class NetworkSecurityGroupArgs {
   /// [networkSecurityGroupName] Name of the network security group
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkSecurityGroupArgs({
+  const NetworkSecurityGroupArgs({
     this.extendedLocation,
     this.location,
     this.networkSecurityGroupName,

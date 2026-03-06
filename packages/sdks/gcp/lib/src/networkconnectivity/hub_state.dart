@@ -56,7 +56,7 @@ class HubState {
   /// [state] Output only. The current lifecycle state of this hub.
   /// [uniqueId] Output only. The Google-generated UUID for the hub. This value is unique across all hub resources. If a hub is deleted and another with the same name is created, the new hub is assigned a different unique_id.
   /// [updateTime] Output only. The time the hub was last updated.
-  HubState({
+  const HubState({
     this.createTime,
     this.description,
     this.effectiveLabels,

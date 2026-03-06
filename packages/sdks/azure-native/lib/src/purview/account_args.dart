@@ -48,7 +48,7 @@ class AccountArgs {
   /// [sku] Gets or sets the Sku.
   /// [tags] Tags on the azure resource.
   /// [tenantEndpointState] Gets or sets the state of tenant endpoint.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.identity,
     this.ingestionStorage,

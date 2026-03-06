@@ -48,7 +48,7 @@ class GetV3TriggersTrigger {
   /// [triggerId] Trigger ID
   /// [triggerName] Trigger Name
   /// [triggerType] The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
-  GetV3TriggersTrigger({
+  const GetV3TriggersTrigger({
     required this.createTime,
     required this.description,
     required this.httpTrigger,

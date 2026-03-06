@@ -31,7 +31,7 @@ class RerunTumblingWindowTriggerResponse {
   /// [rerunConcurrency] The max number of parallel time windows (ready for execution) for which a rerun is triggered.
   /// [runtimeState] Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   /// [type] Trigger type.
-  RerunTumblingWindowTriggerResponse({
+  const RerunTumblingWindowTriggerResponse({
     this.annotations,
     this.description,
     required this.parentTrigger,

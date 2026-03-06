@@ -62,7 +62,7 @@ class NodeTemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where nodes using the node template will be created.
   /// [serverBinding] The server binding policy for nodes using this template. Determines
-  NodeTemplateArgs({
+  const NodeTemplateArgs({
     this.accelerators,
     this.cpuOvercommitType,
     this.description,

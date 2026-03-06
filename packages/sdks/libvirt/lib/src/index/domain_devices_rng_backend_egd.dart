@@ -13,7 +13,7 @@ class DomainDevicesRngBackendEgd {
   /// Creates a new [DomainDevicesRngBackendEgd].
   /// [protocol] Sets the protocol type for the EGD backend.
   /// [source] Defines the source settings for the EGD backend.
-  DomainDevicesRngBackendEgd({
+  const DomainDevicesRngBackendEgd({
     this.protocol,
     this.source,
   });

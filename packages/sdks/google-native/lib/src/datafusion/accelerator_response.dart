@@ -12,7 +12,7 @@ class AcceleratorResponse {
   /// Creates a new [AcceleratorResponse].
   /// [acceleratorType] The type of an accelator for a CDF instance.
   /// [state] The state of the accelerator.
-  AcceleratorResponse({
+  const AcceleratorResponse({
     required this.acceleratorType,
     required this.state,
   });

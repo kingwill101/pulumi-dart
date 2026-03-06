@@ -17,7 +17,7 @@ class SettingsAccessSettingsGcipSettings {
   /// Creates a new [SettingsAccessSettingsGcipSettings].
   /// [loginPageUri] Login page URI associated with the GCIP tenants. Typically, all resources within
   /// [tenantIds] GCIP tenant ids that are linked to the IAP resource. tenantIds could be a string
-  SettingsAccessSettingsGcipSettings({
+  const SettingsAccessSettingsGcipSettings({
     this.loginPageUri,
     this.tenantIds,
   });

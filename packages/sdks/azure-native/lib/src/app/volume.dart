@@ -22,7 +22,7 @@ class Volume {
   /// [secrets] List of secrets to be added in volume. If no secrets are provided, all secrets in collection will be added to volume.
   /// [storageName] Name of storage resource. No need to provide for EmptyDir and Secret.
   /// [storageType] Storage type for the volume. If not provided, use EmptyDir.
-  Volume({
+  const Volume({
     this.mountOptions,
     this.name,
     this.secrets,

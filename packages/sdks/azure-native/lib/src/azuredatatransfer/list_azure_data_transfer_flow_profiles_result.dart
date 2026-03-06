@@ -10,7 +10,7 @@ class ListAzureDataTransferFlowProfilesResult {
 
   /// Creates a new [ListAzureDataTransferFlowProfilesResult].
   /// [value] FlowProfileMetadata array.
-  ListAzureDataTransferFlowProfilesResult({
+  const ListAzureDataTransferFlowProfilesResult({
     this.value,
   });
 

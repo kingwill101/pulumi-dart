@@ -18,7 +18,7 @@ class StandardSchedulerSettings {
   /// [minInstances] Minimum number of instances to run for this version. Set to zero to disable min_instances configuration.
   /// [targetCpuUtilization] Target CPU utilization ratio to maintain when scaling.
   /// [targetThroughputUtilization] Target throughput utilization ratio to maintain when scaling
-  StandardSchedulerSettings({
+  const StandardSchedulerSettings({
     this.maxInstances,
     this.minInstances,
     this.targetCpuUtilization,

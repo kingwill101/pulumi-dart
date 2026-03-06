@@ -54,7 +54,7 @@ class AccountProperties {
   /// [restore] Optional.
   /// [restrictOutboundNetworkAccess] Optional.
   /// [userOwnedStorage] The storage accounts for this resource.
-  AccountProperties({
+  const AccountProperties({
     this.allowedFqdnList,
     this.amlWorkspace,
     this.apiProperties,

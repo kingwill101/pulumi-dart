@@ -10,7 +10,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertifi
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate].
   /// [url] The Secret URL of a Key Vault Certificate.
-  OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate({
+  const OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecretCertificate({
     required this.url,
   });
 

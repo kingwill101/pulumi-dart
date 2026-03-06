@@ -55,7 +55,7 @@ class JobTemplateConfig {
   /// [output] Location of output file(s) in a Cloud Storage bucket.
   /// [overlays] List of overlays on the output video, in descending Z-order.
   /// [pubsubDestination] Pub/Sub destination.
-  JobTemplateConfig({
+  const JobTemplateConfig({
     this.adBreaks,
     this.editLists,
     this.elementaryStreams,

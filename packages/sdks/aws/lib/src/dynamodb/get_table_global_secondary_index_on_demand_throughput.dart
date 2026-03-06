@@ -9,7 +9,7 @@ class GetTableGlobalSecondaryIndexOnDemandThroughput {
   /// Creates a new [GetTableGlobalSecondaryIndexOnDemandThroughput].
   /// [maxReadRequestUnits] Required.
   /// [maxWriteRequestUnits] Required.
-  GetTableGlobalSecondaryIndexOnDemandThroughput({
+  const GetTableGlobalSecondaryIndexOnDemandThroughput({
     required this.maxReadRequestUnits,
     required this.maxWriteRequestUnits,
   });

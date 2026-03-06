@@ -17,7 +17,7 @@ class GetNamespaceServiceIamPolicyArgs {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetNamespaceServiceIamPolicyArgs({
+  const GetNamespaceServiceIamPolicyArgs({
     required this.location,
     required this.namespaceId,
     this.project,

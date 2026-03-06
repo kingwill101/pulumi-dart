@@ -8,7 +8,7 @@ class GetControlOrganizationIntelligenceConfigTrialConfig {
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigTrialConfig].
   /// [expireTime] The time at which the trial expires.
-  GetControlOrganizationIntelligenceConfigTrialConfig({
+  const GetControlOrganizationIntelligenceConfigTrialConfig({
     required this.expireTime,
   });
 

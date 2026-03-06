@@ -32,7 +32,7 @@ class GetImageResult {
   /// [region] Required.
   /// [registryId] Required.
   /// [repositoryName] Required.
-  GetImageResult({
+  const GetImageResult({
     required this.id,
     required this.imageDigest,
     required this.imagePushedAt,

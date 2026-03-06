@@ -16,7 +16,7 @@ class AccessBoundaryPolicyRuleAccessBoundaryRule {
   /// [availabilityCondition] The availability condition further constrains the access allowed by the access boundary rule.
   /// [availablePermissions] A list of permissions that may be allowed for use on the specified resource.
   /// [availableResource] The full resource name of a Google Cloud resource entity.
-  AccessBoundaryPolicyRuleAccessBoundaryRule({
+  const AccessBoundaryPolicyRuleAccessBoundaryRule({
     this.availabilityCondition,
     this.availablePermissions,
     this.availableResource,

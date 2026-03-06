@@ -18,7 +18,7 @@ class RegionArgs {
   /// [accountId] The ID of the target account when managing member accounts. Will manage current user's account by default if omitted. To use this parameter, the caller must be an identity in the organization's management account or a delegated administrator account. The specified account ID must also be a member account in the same organization. The organization must have all features enabled, and the organization must have trusted access enabled for the Account Management service, and optionally a delegated admin account assigned.
   /// [enabled] Whether the region is enabled.
   /// [regionName] The region name to manage.
-  RegionArgs({
+  const RegionArgs({
     this.accountId,
     required this.enabled,
     required this.regionName,

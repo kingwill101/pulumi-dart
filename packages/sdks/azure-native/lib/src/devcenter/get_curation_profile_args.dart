@@ -18,7 +18,7 @@ class GetCurationProfileArgs {
   /// [curationProfileName] The name of the curation profile.
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCurationProfileArgs({
+  const GetCurationProfileArgs({
     required this.curationProfileName,
     required this.devCenterName,
     required this.resourceGroupName,

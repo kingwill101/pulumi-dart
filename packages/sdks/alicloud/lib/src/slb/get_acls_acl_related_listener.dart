@@ -13,7 +13,7 @@ class GetAclsAclRelatedListener {
   /// [frontendPort] Required.
   /// [loadBalancerId] Required.
   /// [protocol] Required.
-  GetAclsAclRelatedListener({
+  const GetAclsAclRelatedListener({
     required this.aclType,
     required this.frontendPort,
     required this.loadBalancerId,

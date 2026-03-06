@@ -42,7 +42,7 @@ class SecurityActionConditionConfig {
   /// [ipAddressRanges] A list of IP addresses. This could be either IPv4 or IPv6. Limited to 100 per action.
   /// [regionCodes] A list of countries/region codes to act on, e.g. US. This follows https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2.
   /// [userAgents] A list of user agents to deny. We look for exact matches. Limit 50 per action.
-  SecurityActionConditionConfig({
+  const SecurityActionConditionConfig({
     this.accessTokens,
     this.apiKeys,
     this.apiProducts,

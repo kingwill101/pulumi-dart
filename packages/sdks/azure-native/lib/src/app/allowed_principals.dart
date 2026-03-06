@@ -12,7 +12,7 @@ class AllowedPrincipals {
   /// Creates a new [AllowedPrincipals].
   /// [groups] The list of the allowed groups.
   /// [identities] The list of the allowed identities.
-  AllowedPrincipals({
+  const AllowedPrincipals({
     this.groups,
     this.identities,
   });

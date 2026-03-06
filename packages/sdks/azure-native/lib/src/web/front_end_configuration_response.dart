@@ -7,7 +7,7 @@ class FrontEndConfigurationResponse {
 
   /// Creates a new [FrontEndConfigurationResponse].
   /// [kind] Optional.
-  FrontEndConfigurationResponse({
+  const FrontEndConfigurationResponse({
     this.kind,
   });
 

@@ -28,7 +28,7 @@ class ReplicationProtectionContainerMappingArgs {
   /// [protectionContainerName] Protection container name.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationProtectionContainerMappingArgs({
+  const ReplicationProtectionContainerMappingArgs({
     required this.fabricName,
     this.mappingName,
     this.properties,

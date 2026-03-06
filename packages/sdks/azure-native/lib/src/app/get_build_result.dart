@@ -44,7 +44,7 @@ class GetBuildResult {
   /// [tokenEndpoint] Endpoint to use to retrieve an authentication token for log streaming and uploading source code.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uploadEndpoint] Endpoint to which the source code should be uploaded.
-  GetBuildResult({
+  const GetBuildResult({
     required this.azureApiVersion,
     required this.buildStatus,
     this.configuration,

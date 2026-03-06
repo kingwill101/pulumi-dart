@@ -28,7 +28,7 @@ class GetAccessGroupsResult {
   /// [orderType] Optional.
   /// [outputFile] Optional.
   /// [startOffset] Optional.
-  GetAccessGroupsResult({
+  const GetAccessGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

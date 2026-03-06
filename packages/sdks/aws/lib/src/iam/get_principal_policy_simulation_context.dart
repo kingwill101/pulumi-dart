@@ -18,7 +18,7 @@ class GetPrincipalPolicySimulationContext {
   /// [key] The context _condition key_ to set.
   /// [type] An IAM value type that determines how the policy simulator will interpret the strings given in `values`.
   /// [values] A set of one or more values for this context entry.
-  GetPrincipalPolicySimulationContext({
+  const GetPrincipalPolicySimulationContext({
     required this.key,
     required this.type,
     required this.values,

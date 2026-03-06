@@ -34,7 +34,7 @@ class GlobalNetworkEndpointGroupState {
   /// [networkEndpointType] Type of network endpoints in this network endpoint group.
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
-  GlobalNetworkEndpointGroupState({
+  const GlobalNetworkEndpointGroupState({
     this.defaultPort,
     this.description,
     this.name,

@@ -8,7 +8,7 @@ class GetClusterRestoreBackupSource {
 
   /// Creates a new [GetClusterRestoreBackupSource].
   /// [backupName] The name of the backup that this cluster is restored from.
-  GetClusterRestoreBackupSource({
+  const GetClusterRestoreBackupSource({
     required this.backupName,
   });
 

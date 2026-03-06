@@ -34,7 +34,7 @@ class GetProjectArgs {
   /// [parentId] The parent of this project.
   /// [projectId] The id of the project. Conflicts with any of the
   /// [region] The region in which to obtain the V3 Keystone client.
-  GetProjectArgs({
+  const GetProjectArgs({
     this.domainId,
     this.enabled,
     this.isDomain,

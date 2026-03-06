@@ -24,7 +24,7 @@ class LinkedSubscriptionArgs {
   /// [location] Location of the resource.
   /// [registrationResourceId] The identifier associated with the device registration.
   /// [resourceGroup] Name of the resource group.
-  LinkedSubscriptionArgs({
+  const LinkedSubscriptionArgs({
     required this.linkedSubscriptionId,
     this.linkedSubscriptionName,
     this.location,

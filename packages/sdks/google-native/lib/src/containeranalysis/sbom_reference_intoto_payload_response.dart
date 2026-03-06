@@ -20,7 +20,7 @@ class SbomReferenceIntotoPayloadResponse {
   /// [predicateType] URI identifying the type of the Predicate.
   /// [subject] Set of software artifacts that the attestation applies to. Each element represents a single software artifact.
   /// [type] Identifier for the schema of the Statement.
-  SbomReferenceIntotoPayloadResponse({
+  const SbomReferenceIntotoPayloadResponse({
     required this.predicate,
     required this.predicateType,
     required this.subject,

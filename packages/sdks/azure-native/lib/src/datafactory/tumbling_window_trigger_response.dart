@@ -49,7 +49,7 @@ class TumblingWindowTriggerResponse {
   /// [runtimeState] Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   /// [startTime] The start time for the time period for the trigger during which events are fired for windows that are ready. Only UTC time is currently supported.
   /// [type] Trigger type.
-  TumblingWindowTriggerResponse({
+  const TumblingWindowTriggerResponse({
     this.annotations,
     this.delay,
     this.dependsOn,

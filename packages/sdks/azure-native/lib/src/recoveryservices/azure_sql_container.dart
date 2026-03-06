@@ -28,7 +28,7 @@ class AzureSqlContainer {
   /// [healthStatus] Status of health of the container.
   /// [protectableObjectType] Type of the protectable object associated with this container
   /// [registrationStatus] Status of registration of the container with the Recovery Services Vault.
-  AzureSqlContainer({
+  const AzureSqlContainer({
     this.backupManagementType,
     required this.containerType,
     this.friendlyName,

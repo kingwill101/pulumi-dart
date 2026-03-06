@@ -27,7 +27,7 @@ class GetImageArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] ID of the Registry where the repository resides.
   /// [repositoryName] Name of the ECR Repository.
-  GetImageArgs({
+  const GetImageArgs({
     this.imageDigest,
     this.imageTag,
     this.mostRecent,

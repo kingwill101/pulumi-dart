@@ -13,7 +13,7 @@ class GetScanConfigWebsecurityscannerV1alphaArgs {
   /// Creates a new [GetScanConfigWebsecurityscannerV1alphaArgs].
   /// [project] Optional.
   /// [scanConfigId] Required.
-  GetScanConfigWebsecurityscannerV1alphaArgs({
+  const GetScanConfigWebsecurityscannerV1alphaArgs({
     this.project,
     required this.scanConfigId,
   });

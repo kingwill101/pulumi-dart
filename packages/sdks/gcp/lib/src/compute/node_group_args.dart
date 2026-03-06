@@ -54,7 +54,7 @@ class NodeGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [shareSettings] Share settings for the node group.
   /// [zone] Zone where this node group is located
-  NodeGroupArgs({
+  const NodeGroupArgs({
     this.autoscalingPolicy,
     this.description,
     this.initialSize,

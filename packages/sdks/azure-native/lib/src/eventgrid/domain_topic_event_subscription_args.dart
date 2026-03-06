@@ -58,7 +58,7 @@ class DomainTopicEventSubscriptionArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [retryPolicy] The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
   /// [topicName] Name of the domain topic.
-  DomainTopicEventSubscriptionArgs({
+  const DomainTopicEventSubscriptionArgs({
     this.deadLetterDestination,
     this.deadLetterWithResourceIdentity,
     this.deliveryWithResourceIdentity,

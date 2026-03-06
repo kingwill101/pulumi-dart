@@ -14,7 +14,7 @@ class GRPCAction {
   /// Creates a new [GRPCAction].
   /// [port] Port number of the gRPC service. Number must be in the range 1 to 65535.
   /// [service] Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md).
-  GRPCAction({
+  const GRPCAction({
     required this.port,
     this.service,
   });

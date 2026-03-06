@@ -18,7 +18,7 @@ class DataSetPhysicalTableMapCustomSql {
   /// [dataSourceArn] ARN of the data source.
   /// [name] Display name for the SQL query result.
   /// [sqlQuery] SQL query.
-  DataSetPhysicalTableMapCustomSql({
+  const DataSetPhysicalTableMapCustomSql({
     this.columns,
     required this.dataSourceArn,
     required this.name,

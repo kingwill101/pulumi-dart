@@ -18,7 +18,7 @@ class GetWebAppDomainOwnershipIdentifierArgs {
   /// [domainOwnershipIdentifierName] Name of domain ownership identifier.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppDomainOwnershipIdentifierArgs({
+  const GetWebAppDomainOwnershipIdentifierArgs({
     required this.domainOwnershipIdentifierName,
     required this.name,
     required this.resourceGroupName,

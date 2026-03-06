@@ -8,7 +8,7 @@ class InstanceMetadata {
 
   /// Creates a new [InstanceMetadata].
   /// [userData] The base64-encoded user-defined data exposed to this instance through the Linode Metadata service. Refer to the base64encode(...) function for information on encoding content for this field.
-  InstanceMetadata({
+  const InstanceMetadata({
     this.userData,
   });
 

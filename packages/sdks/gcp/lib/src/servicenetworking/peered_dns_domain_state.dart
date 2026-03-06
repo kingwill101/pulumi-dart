@@ -24,7 +24,7 @@ class PeeredDnsDomainState {
   /// [parent] an identifier for the resource with format `services/{{service}}/projects/{{project}}/global/networks/{{network}}`
   /// [project] The producer project number. If not provided, the provider project is used.
   /// [service] Private service connection between service and consumer network, defaults to `servicenetworking.googleapis.com`
-  PeeredDnsDomainState({
+  const PeeredDnsDomainState({
     this.dnsSuffix,
     this.name,
     this.network,

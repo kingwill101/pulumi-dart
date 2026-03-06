@@ -23,7 +23,7 @@ class RepositoryGitRemoteSettings {
   /// [sshAuthenticationConfig] Authentication fields for remote uris using SSH protocol.
   /// [tokenStatus] (Output)
   /// [url] The Git remote's URL.
-  RepositoryGitRemoteSettings({
+  const RepositoryGitRemoteSettings({
     this.authenticationTokenSecretVersion,
     required this.defaultBranch,
     this.sshAuthenticationConfig,

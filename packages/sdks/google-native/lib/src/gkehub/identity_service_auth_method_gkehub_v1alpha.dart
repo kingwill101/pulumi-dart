@@ -24,7 +24,7 @@ class IdentityServiceAuthMethodGkehubV1alpha {
   /// [name] Identifier for auth config.
   /// [oidcConfig] OIDC specific configuration.
   /// [proxy] Proxy server address to use for auth method.
-  IdentityServiceAuthMethodGkehubV1alpha({
+  const IdentityServiceAuthMethodGkehubV1alpha({
     this.azureadConfig,
     this.googleConfig,
     this.name,

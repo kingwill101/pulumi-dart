@@ -8,7 +8,7 @@ class AuthzPolicyCustomProviderCloudIap {
 
   /// Creates a new [AuthzPolicyCustomProviderCloudIap].
   /// [enabled] Enable Cloud IAP at the AuthzPolicy level.
-  AuthzPolicyCustomProviderCloudIap({
+  const AuthzPolicyCustomProviderCloudIap({
     required this.enabled,
   });
 

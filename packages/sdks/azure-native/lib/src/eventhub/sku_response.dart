@@ -15,7 +15,7 @@ class SkuResponse {
   /// [capacity] The Event Hubs throughput units for Basic or Standard tiers, where value should be 0 to 20 throughput units. The Event Hubs premium units for Premium tier, where value should be 0 to 10 premium units.
   /// [name] Name of this SKU.
   /// [tier] The billing tier of this particular SKU.
-  SkuResponse({
+  const SkuResponse({
     this.capacity,
     required this.name,
     this.tier,

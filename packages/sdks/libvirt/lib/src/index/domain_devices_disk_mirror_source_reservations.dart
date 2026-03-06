@@ -15,7 +15,7 @@ class DomainDevicesDiskMirrorSourceReservations {
   /// [enabled] Controls whether reservations are enabled for the network storage source.
   /// [managed] Specifies if the reservations are managed by a higher-level resource management layer.
   /// [source] Configures the source from which reservations are allocated for network storage.
-  DomainDevicesDiskMirrorSourceReservations({
+  const DomainDevicesDiskMirrorSourceReservations({
     this.enabled,
     this.managed,
     this.source,

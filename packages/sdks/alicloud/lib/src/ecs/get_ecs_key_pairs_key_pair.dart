@@ -27,7 +27,7 @@ class GetEcsKeyPairsKeyPair {
   /// [keyPairName] The name of the Key Pair.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEcsKeyPairsKeyPair({
+  const GetEcsKeyPairsKeyPair({
     required this.fingerPrint,
     required this.id,
     required this.instances,

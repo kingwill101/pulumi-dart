@@ -18,7 +18,7 @@ class GetBrokerEngineTypesResult {
   /// [engineType] Broker's engine type.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetBrokerEngineTypesResult({
+  const GetBrokerEngineTypesResult({
     required this.brokerEngineTypes,
     this.engineType,
     required this.id,

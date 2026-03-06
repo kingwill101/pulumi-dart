@@ -52,7 +52,7 @@ class ProfessionalServiceResourceResponseProperties {
   /// [storeFront] The store front which initiates the purchase.
   /// [term] The current Term object.
   /// [termUnit] The unit term eg P1M,P1Y,P2Y,P3Y meaning month,1year,2year,3year respectively
-  ProfessionalServiceResourceResponseProperties({
+  const ProfessionalServiceResourceResponseProperties({
     this.autoRenew,
     this.billingPeriod,
     required this.created,

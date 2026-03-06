@@ -24,7 +24,7 @@ class LfTagExpressionState {
   /// [expressions] A list of LF-Tag conditions (key-value pairs). See expression for more details.
   /// [name] Name of the LF-Tag Expression.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LfTagExpressionState({
+  const LfTagExpressionState({
     this.catalogId,
     this.description,
     this.expressions,

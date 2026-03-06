@@ -38,7 +38,7 @@ class EntryLinkState {
   /// [name] The relative resource name of the Entry Link, of the form:
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time when the Entry Link was last updated.
-  EntryLinkState({
+  const EntryLinkState({
     this.createTime,
     this.entryGroupId,
     this.entryLinkId,

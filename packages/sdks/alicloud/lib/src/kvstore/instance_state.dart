@@ -222,7 +222,7 @@ class InstanceState {
   /// [vpcAuthMode] Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
   /// [vswitchId] The ID of VSwitch.
   /// [zoneId] The ID of the zone.
-  InstanceState({
+  const InstanceState({
     this.autoRenew,
     this.autoRenewPeriod,
     this.autoUseCoupon,

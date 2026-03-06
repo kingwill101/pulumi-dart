@@ -9,7 +9,7 @@ class GetDataSetColumnLevelPermissionRule {
   /// Creates a new [GetDataSetColumnLevelPermissionRule].
   /// [columnNames] Required.
   /// [principals] Required.
-  GetDataSetColumnLevelPermissionRule({
+  const GetDataSetColumnLevelPermissionRule({
     required this.columnNames,
     required this.principals,
   });

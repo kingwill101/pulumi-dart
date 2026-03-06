@@ -45,7 +45,7 @@ class GetIotConnectorResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The resource type.
-  GetIotConnectorResult({
+  const GetIotConnectorResult({
     required this.azureApiVersion,
     this.deviceMapping,
     this.etag,

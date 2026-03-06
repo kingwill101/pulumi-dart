@@ -9,7 +9,7 @@ class ContainerGroupSecurityContextSysctl {
   /// Creates a new [ContainerGroupSecurityContextSysctl].
   /// [name] Optional.
   /// [value] Optional.
-  ContainerGroupSecurityContextSysctl({
+  const ContainerGroupSecurityContextSysctl({
     this.name,
     this.value,
   });

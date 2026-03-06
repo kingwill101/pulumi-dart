@@ -23,7 +23,7 @@ class GetResolverRulesResult {
   /// [resolverRuleIds] IDs of the matched resolver rules.
   /// [ruleType] Optional.
   /// [shareStatus] Optional.
-  GetResolverRulesResult({
+  const GetResolverRulesResult({
     required this.id,
     this.nameRegex,
     this.ownerId,

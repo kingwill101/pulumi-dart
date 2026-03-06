@@ -55,7 +55,7 @@ class VMwareCbtProtectedDiskDetailsResponse {
   /// [targetBlobUri] The uri of the target blob.
   /// [targetDiskName] The name for the target managed disk.
   /// [targetManagedDiskId] The ARM Id of the target managed disk.
-  VMwareCbtProtectedDiskDetailsResponse({
+  const VMwareCbtProtectedDiskDetailsResponse({
     required this.capacityInBytes,
     required this.diskEncryptionSetId,
     required this.diskId,

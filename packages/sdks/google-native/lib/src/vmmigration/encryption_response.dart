@@ -9,7 +9,7 @@ class EncryptionResponse {
 
   /// Creates a new [EncryptionResponse].
   /// [kmsKey] The name of the encryption key that is stored in Google Cloud KMS.
-  EncryptionResponse({
+  const EncryptionResponse({
     required this.kmsKey,
   });
 

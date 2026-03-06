@@ -33,7 +33,7 @@ class DeliveryChannelArgs {
   /// [deliveryChannelType] The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
   /// [description] The description of the delivery method.
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
-  DeliveryChannelArgs({
+  const DeliveryChannelArgs({
     required this.deliveryChannelAssumeRoleArn,
     this.deliveryChannelCondition,
     this.deliveryChannelName,

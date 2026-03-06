@@ -24,7 +24,7 @@ class GetClusterFleet {
   /// [membershipType] The type of the cluster's fleet membership.
   /// [preRegistered] Whether the cluster has been registered via the fleet API.
   /// [project] The project in which the resource belongs. If it
-  GetClusterFleet({
+  const GetClusterFleet({
     required this.membership,
     required this.membershipId,
     required this.membershipLocation,

@@ -53,7 +53,7 @@ class MSIXPackageArgs {
   /// [packageRelativePath] Relative Path to the package inside the image.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Package version found in the appxmanifest.xml.
-  MSIXPackageArgs({
+  const MSIXPackageArgs({
     this.displayName,
     required this.hostPoolName,
     this.imagePath,

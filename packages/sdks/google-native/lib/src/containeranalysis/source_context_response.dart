@@ -21,7 +21,7 @@ class SourceContextResponse {
   /// [gerrit] A SourceContext referring to a Gerrit project.
   /// [git] A SourceContext referring to any third party Git repo (e.g., GitHub).
   /// [labels] Labels with user defined metadata.
-  SourceContextResponse({
+  const SourceContextResponse({
     required this.cloudRepo,
     required this.gerrit,
     required this.git,

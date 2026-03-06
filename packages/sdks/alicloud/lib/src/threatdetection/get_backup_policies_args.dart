@@ -31,7 +31,7 @@ class GetBackupPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageSize] Optional.
   /// [status] The status of the anti-ransomware policy. Valid Value: `enabled`, `disabled`, `closed`.
-  GetBackupPoliciesArgs({
+  const GetBackupPoliciesArgs({
     this.currentPage,
     this.ids,
     this.machineRemark,

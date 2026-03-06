@@ -33,7 +33,7 @@ class MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse {
   /// [startedOn] Migration start time
   /// [targetServer] Target server name
   /// [targetServerVersion] Target server version
-  MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse({
+  const MigrateSqlServerSqlDbSyncTaskOutputMigrationLevelResponse({
     required this.databaseCount,
     required this.endedOn,
     required this.id,

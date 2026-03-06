@@ -38,7 +38,7 @@ class DefinitionArgs {
   /// [parameters] Parameters for the policy definition. This field is a JSON string that allows you to parameterize your policy definition. Reducing the number of parameters forces a new resource to be created.
   /// [policyRule] The policy rule for the policy definition. This is a JSON string representing the rule that contains an if and a then block.
   /// [policyType] The policy type. Possible values are `BuiltIn`, `Custom`, `NotSpecified` and `Static`. Changing this forces a new resource to be created.
-  DefinitionArgs({
+  const DefinitionArgs({
     this.description,
     required this.displayName,
     this.managementGroupId,

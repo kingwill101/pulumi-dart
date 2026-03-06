@@ -12,7 +12,7 @@ class DynamicGroupStatusResponseCloudidentityV1beta1 {
   /// Creates a new [DynamicGroupStatusResponseCloudidentityV1beta1].
   /// [status] Status of the dynamic group.
   /// [statusTime] The latest time at which the dynamic group is guaranteed to be in the given status. If status is `UP_TO_DATE`, the latest time at which the dynamic group was confirmed to be up-to-date. If status is `UPDATING_MEMBERSHIPS`, the time at which dynamic group was created.
-  DynamicGroupStatusResponseCloudidentityV1beta1({
+  const DynamicGroupStatusResponseCloudidentityV1beta1({
     required this.status,
     required this.statusTime,
   });

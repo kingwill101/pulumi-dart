@@ -11,7 +11,7 @@ class InterfaceVlan {
   /// Creates a new [InterfaceVlan].
   /// [ipamAddress] The VLAN interface's private IPv4 address in CIDR notation.
   /// [vlanLabel] The VLAN's unique label. Must be between 1 and 64 characters.
-  InterfaceVlan({
+  const InterfaceVlan({
     this.ipamAddress,
     required this.vlanLabel,
   });

@@ -25,7 +25,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPha
   /// [predeploy] Optional. Configuration for the predeploy job of this phase. If this is not configured, predeploy job will not be present for this phase.
   /// [profiles] Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
   /// [verify] Whether to run verify tests after the deployment.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig({
     required this.percentage,
     required this.phaseId,
     this.postdeploy,

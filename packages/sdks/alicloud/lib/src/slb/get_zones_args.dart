@@ -30,7 +30,7 @@ class GetZonesArgs {
   /// [masterZoneId] The primary zone.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [slaveZoneId] The secondary zone.
-  GetZonesArgs({
+  const GetZonesArgs({
     this.availableSlbAddressIpVersion,
     this.availableSlbAddressType,
     this.enableDetails,

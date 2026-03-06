@@ -26,7 +26,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData {
   /// [oauthProperties] The SAPOData OAuth properties required for OAuth type authentication.
   /// [portNumber] The port number of the SAPOData instance.
   /// [privateLinkServiceName] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoData({
     required this.applicationHostUrl,
     required this.applicationServicePath,
     required this.clientNumber,

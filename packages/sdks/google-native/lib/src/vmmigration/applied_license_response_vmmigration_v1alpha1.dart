@@ -12,7 +12,7 @@ class AppliedLicenseResponseVmmigrationV1alpha1 {
   /// Creates a new [AppliedLicenseResponseVmmigrationV1alpha1].
   /// [osLicense] The OS license returned from the adaptation module's report.
   /// [type] The license type that was used in OS adaptation.
-  AppliedLicenseResponseVmmigrationV1alpha1({
+  const AppliedLicenseResponseVmmigrationV1alpha1({
     required this.osLicense,
     required this.type,
   });

@@ -9,7 +9,7 @@ class MachineConfigResponse {
 
   /// Creates a new [MachineConfigResponse].
   /// [cpuCount] The number of CPU's in the VM instance.
-  MachineConfigResponse({
+  const MachineConfigResponse({
     required this.cpuCount,
   });
 

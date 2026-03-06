@@ -34,7 +34,7 @@ class BgpvpnPortAssociateV2State {
   /// [projectId] The ID of the project that owns the port
   /// [region] The region in which to obtain the V2 Networking client.
   /// [routes] A list of dictionaries containing the following keys:
-  BgpvpnPortAssociateV2State({
+  const BgpvpnPortAssociateV2State({
     this.advertiseFixedIps,
     this.bgpvpnId,
     this.portId,

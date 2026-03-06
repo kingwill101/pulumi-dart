@@ -17,7 +17,7 @@ class TopicRuleErrorActionIotEvents {
   /// [inputName] The name of the AWS IoT Events input.
   /// [messageId] Use this to ensure that only one input (message) with a given messageId is processed by an AWS IoT Events detector.
   /// [roleArn] The ARN of the IAM role that grants access.
-  TopicRuleErrorActionIotEvents({
+  const TopicRuleErrorActionIotEvents({
     this.batchMode,
     required this.inputName,
     this.messageId,

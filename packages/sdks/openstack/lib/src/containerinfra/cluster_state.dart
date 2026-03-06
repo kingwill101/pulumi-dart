@@ -105,7 +105,7 @@ class ClusterState {
   /// [stackId] Optional.
   /// [updatedAt] Optional.
   /// [userId] The user of the cluster. Required if admin wants to
-  ClusterState({
+  const ClusterState({
     this.apiAddress,
     this.clusterTemplateId,
     this.coeVersion,

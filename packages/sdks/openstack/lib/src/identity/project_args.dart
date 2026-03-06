@@ -40,7 +40,7 @@ class ProjectArgs {
   /// [parentId] The parent of this project. Changing this creates
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [tags] Tags for the project. Changing this updates the existing
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     this.domainId,
     this.enabled,

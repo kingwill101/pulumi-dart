@@ -11,7 +11,7 @@ class DeploymentConfigTrafficRoutingConfigTimeBasedCanary {
   /// Creates a new [DeploymentConfigTrafficRoutingConfigTimeBasedCanary].
   /// [interval] The number of minutes between the first and second traffic shifts of a `TimeBasedCanary` deployment.
   /// [percentage] The percentage of traffic to shift in the first increment of a `TimeBasedCanary` deployment.
-  DeploymentConfigTrafficRoutingConfigTimeBasedCanary({
+  const DeploymentConfigTrafficRoutingConfigTimeBasedCanary({
     this.interval,
     this.percentage,
   });

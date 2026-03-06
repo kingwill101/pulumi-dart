@@ -8,7 +8,7 @@ class AadConfiguration {
 
   /// Creates a new [AadConfiguration].
   /// [adminGroupObjectIds] The list of Azure Active Directory group object IDs that will have an administrative role on the Kubernetes cluster.
-  AadConfiguration({
+  const AadConfiguration({
     required this.adminGroupObjectIds,
   });
 

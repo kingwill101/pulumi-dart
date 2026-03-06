@@ -24,7 +24,7 @@ class Sku {
   /// [name] The SKU name.
   /// [size] The SKU size.
   /// [tier] The SKU tier.
-  Sku({
+  const Sku({
     this.capacity,
     this.family,
     this.model,

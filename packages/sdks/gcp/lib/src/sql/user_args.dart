@@ -60,7 +60,7 @@ class UserArgs {
   /// [passwordWoVersion] The version of the password_wo. For more info see [updating write-only attributes](https://www.terraform.io/docs/providers/google/guides/using_write_only_attributes.html#updating-write-only-attributes).
   /// [project] The ID of the project in which the resource belongs. If it
   /// [type] The user type. It determines the method to authenticate the
-  UserArgs({
+  const UserArgs({
     this.deletionPolicy,
     this.host,
     required this.instance,

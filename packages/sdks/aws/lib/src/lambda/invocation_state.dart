@@ -34,7 +34,7 @@ class InvocationState {
   /// [tenantId] Tenant Id to serve invocations from specified tenant.
   /// [terraformKey] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a re-invocation.
-  InvocationState({
+  const InvocationState({
     this.functionName,
     this.input,
     this.lifecycleScope,

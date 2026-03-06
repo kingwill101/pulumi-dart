@@ -33,7 +33,7 @@ class DefinitionState {
   /// [name] The name of the Lighthouse Definition. Changing this forces a new resource to be created.
   /// [plan] A `plan` block as defined below.
   /// [scope] The ID of the managed subscription. Changing this forces a new resource to be created.
-  DefinitionState({
+  const DefinitionState({
     this.authorizations,
     this.description,
     this.eligibleAuthorizations,

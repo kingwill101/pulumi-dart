@@ -13,7 +13,7 @@ class DefenderCspmGcpOfferingResponseVmScanners {
   /// Creates a new [DefenderCspmGcpOfferingResponseVmScanners].
   /// [configuration] Configuration for VM scanning
   /// [enabled] Is VM scanning enabled
-  DefenderCspmGcpOfferingResponseVmScanners({
+  const DefenderCspmGcpOfferingResponseVmScanners({
     this.configuration,
     this.enabled,
   });

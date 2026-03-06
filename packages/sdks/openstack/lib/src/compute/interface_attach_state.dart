@@ -26,7 +26,7 @@ class InterfaceAttachState {
   /// [networkId] The ID of the Network to attach to an Instance. A port will be created automatically.
   /// [portId] The ID of the Port to attach to an Instance.
   /// [region] The region in which to create the interface attachment.
-  InterfaceAttachState({
+  const InterfaceAttachState({
     this.fixedIp,
     this.instanceId,
     this.networkId,

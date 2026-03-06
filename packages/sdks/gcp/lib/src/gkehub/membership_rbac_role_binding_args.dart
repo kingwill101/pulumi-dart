@@ -33,7 +33,7 @@ class MembershipRbacRoleBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] Role to bind to the principal.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
-  MembershipRbacRoleBindingArgs({
+  const MembershipRbacRoleBindingArgs({
     required this.location,
     required this.membershipId,
     required this.membershipRbacRoleBindingId,

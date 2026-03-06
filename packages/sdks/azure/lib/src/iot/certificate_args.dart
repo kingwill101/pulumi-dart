@@ -24,7 +24,7 @@ class CertificateArgs {
   /// [isVerified] Is the certificate verified? Defaults to `false`.
   /// [name] Specifies the name of the IotHub Certificate resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group under which the IotHub Certificate resource has to be created. Changing this forces a new resource to be created.
-  CertificateArgs({
+  const CertificateArgs({
     required this.certificateContent,
     required this.iothubName,
     this.isVerified,

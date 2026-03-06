@@ -9,7 +9,7 @@ class DisplayDeviceResponseComputeV1 {
 
   /// Creates a new [DisplayDeviceResponseComputeV1].
   /// [enableDisplay] Defines whether the instance has Display enabled.
-  DisplayDeviceResponseComputeV1({
+  const DisplayDeviceResponseComputeV1({
     required this.enableDisplay,
   });
 

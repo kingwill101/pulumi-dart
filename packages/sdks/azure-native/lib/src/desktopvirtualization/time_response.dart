@@ -12,7 +12,7 @@ class TimeResponse {
   /// Creates a new [TimeResponse].
   /// [hour] The hour.
   /// [minute] The minute.
-  TimeResponse({
+  const TimeResponse({
     required this.hour,
     required this.minute,
   });

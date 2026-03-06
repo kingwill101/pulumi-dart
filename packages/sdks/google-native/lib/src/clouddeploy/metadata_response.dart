@@ -14,7 +14,7 @@ class MetadataResponse {
   /// Creates a new [MetadataResponse].
   /// [automation] AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout.
   /// [cloudRun] The name of the Cloud Run Service that is associated with a `Rollout`.
-  MetadataResponse({
+  const MetadataResponse({
     required this.automation,
     required this.cloudRun,
   });

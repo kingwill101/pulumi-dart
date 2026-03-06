@@ -50,7 +50,7 @@ class GetServiceQueuesQueue {
   /// [queueName] The name of the queue.
   /// [queueUrl] The url of the queue.
   /// [visibilityTimeout] The invisibility period for which the received message remains the Inactive state. Unit: seconds.
-  GetServiceQueuesQueue({
+  const GetServiceQueuesQueue({
     required this.activeMessages,
     required this.createTime,
     required this.delayMessages,

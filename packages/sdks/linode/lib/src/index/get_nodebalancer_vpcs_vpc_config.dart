@@ -22,7 +22,7 @@ class GetNodebalancerVpcsVpcConfig {
   /// [nodebalancerId] The ID of the NodeBalancer to list VPC configurations for.
   /// [subnetId] The ID of this configuration's VPC subnet.
   /// [vpcId] The ID of this configuration's VPC.
-  GetNodebalancerVpcsVpcConfig({
+  const GetNodebalancerVpcsVpcConfig({
     required this.id,
     required this.ipv4Range,
     required this.nodebalancerId,

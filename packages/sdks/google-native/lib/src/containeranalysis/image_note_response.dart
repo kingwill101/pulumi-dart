@@ -13,7 +13,7 @@ class ImageNoteResponse {
   /// Creates a new [ImageNoteResponse].
   /// [fingerprint] Immutable. The fingerprint of the base image.
   /// [resourceUrl] Immutable. The resource_url for the resource representing the basis of associated occurrence images.
-  ImageNoteResponse({
+  const ImageNoteResponse({
     required this.fingerprint,
     required this.resourceUrl,
   });

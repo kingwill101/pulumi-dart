@@ -26,7 +26,7 @@ class PartitionArgs {
   /// [project] Optional.
   /// [values] Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
   /// [zone] Optional.
-  PartitionArgs({
+  const PartitionArgs({
     required this.entityId,
     this.etag,
     required this.lakeId,

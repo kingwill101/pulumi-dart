@@ -21,7 +21,7 @@ class PolicyState {
   /// [policyDocument] The content of the policy. The content must be 1 to 2,048 characters in length.
   /// [policyName] The name of the policy. name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
   /// [policyType] The type of the policy. Valid values: `Custom`, `System`.
-  PolicyState({
+  const PolicyState({
     this.defaultVersion,
     this.description,
     this.policyDocument,

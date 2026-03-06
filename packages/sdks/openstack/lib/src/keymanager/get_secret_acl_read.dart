@@ -18,7 +18,7 @@ class GetSecretAclRead {
   /// [projectAccess] Whether the secret is accessible project wide.
   /// [updatedAt] The date the secret ACL was last updated.
   /// [users] The list of user IDs, which are allowed to access the secret, when
-  GetSecretAclRead({
+  const GetSecretAclRead({
     required this.createdAt,
     this.projectAccess,
     required this.updatedAt,

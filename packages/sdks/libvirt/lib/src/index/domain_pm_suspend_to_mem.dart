@@ -8,7 +8,7 @@ class DomainPmSuspendToMem {
 
   /// Creates a new [DomainPmSuspendToMem].
   /// [enabled] Specifies if the suspend to disk feature is enabled.
-  DomainPmSuspendToMem({
+  const DomainPmSuspendToMem({
     required this.enabled,
   });
 

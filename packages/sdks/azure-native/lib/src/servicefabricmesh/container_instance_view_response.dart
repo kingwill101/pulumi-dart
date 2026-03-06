@@ -20,7 +20,7 @@ class ContainerInstanceViewResponse {
   /// [events] The events of this container instance.
   /// [previousState] Previous container instance state.
   /// [restartCount] The number of times the container has been restarted.
-  ContainerInstanceViewResponse({
+  const ContainerInstanceViewResponse({
     this.currentState,
     this.events,
     this.previousState,

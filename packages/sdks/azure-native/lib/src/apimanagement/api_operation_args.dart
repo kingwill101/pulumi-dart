@@ -48,7 +48,7 @@ class ApiOperationArgs {
   /// [serviceName] The name of the API Management service.
   /// [templateParameters] Collection of URL template parameters.
   /// [urlTemplate] Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
-  ApiOperationArgs({
+  const ApiOperationArgs({
     required this.apiId,
     this.description,
     required this.displayName,

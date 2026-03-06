@@ -27,7 +27,7 @@ class IntegrationServiceEnvironmentPropertiesResponse {
   /// [networkConfiguration] The network configuration.
   /// [provisioningState] The provisioning state.
   /// [state] The integration service environment state.
-  IntegrationServiceEnvironmentPropertiesResponse({
+  const IntegrationServiceEnvironmentPropertiesResponse({
     this.encryptionConfiguration,
     this.endpointsConfiguration,
     this.integrationServiceEnvironmentId,

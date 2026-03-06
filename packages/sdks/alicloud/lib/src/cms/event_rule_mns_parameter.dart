@@ -20,7 +20,7 @@ class EventRuleMnsParameter {
   /// [queue] The name of the MNS queue.
   /// [region] The region where Message Service (MNS) is deployed.
   /// [topic] The MNS topic.
-  EventRuleMnsParameter({
+  const EventRuleMnsParameter({
     this.arn,
     this.mnsParametersId,
     this.queue,

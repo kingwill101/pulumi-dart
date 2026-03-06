@@ -18,7 +18,7 @@ class BackfillAllStrategyResponse {
   /// [mysqlExcludedObjects] MySQL data source objects to avoid backfilling.
   /// [oracleExcludedObjects] Oracle data source objects to avoid backfilling.
   /// [postgresqlExcludedObjects] PostgreSQL data source objects to avoid backfilling.
-  BackfillAllStrategyResponse({
+  const BackfillAllStrategyResponse({
     required this.mysqlExcludedObjects,
     required this.oracleExcludedObjects,
     required this.postgresqlExcludedObjects,

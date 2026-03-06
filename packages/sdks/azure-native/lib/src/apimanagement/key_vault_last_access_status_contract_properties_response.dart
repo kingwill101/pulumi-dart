@@ -15,7 +15,7 @@ class KeyVaultLastAccessStatusContractPropertiesResponse {
   /// [code] Last status code for sync and refresh of secret from key vault.
   /// [message] Details of the error else empty.
   /// [timeStampUtc] Last time secret was accessed. The date conforms to the following format: `yyyy-MM-ddTHH:mm:ssZ` as specified by the ISO 8601 standard.
-  KeyVaultLastAccessStatusContractPropertiesResponse({
+  const KeyVaultLastAccessStatusContractPropertiesResponse({
     this.code,
     this.message,
     this.timeStampUtc,

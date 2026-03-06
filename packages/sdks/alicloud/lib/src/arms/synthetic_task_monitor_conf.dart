@@ -33,7 +33,7 @@ class SyntheticTaskMonitorConf {
   /// [netTcp] The configuration parameters of TCP dial test. Required when TaskType is 2. See `net_tcp` below.
   /// [stream] Streaming Media Dial Test Configuration. See `stream` below.
   /// [website] Website speed measurement type task configuration. See `website` below.
-  SyntheticTaskMonitorConf({
+  const SyntheticTaskMonitorConf({
     this.apiHttp,
     this.fileDownload,
     this.netDns,

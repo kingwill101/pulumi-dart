@@ -27,7 +27,7 @@ class GetDatabaseResult {
   /// [name] Required.
   /// [region] Required.
   /// [tableCount] Total number of tables in the Timestream database.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.arn,
     required this.createdTime,
     required this.id,

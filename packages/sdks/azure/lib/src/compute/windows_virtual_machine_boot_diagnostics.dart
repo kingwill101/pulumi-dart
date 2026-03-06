@@ -10,7 +10,7 @@ class WindowsVirtualMachineBootDiagnostics {
 
   /// Creates a new [WindowsVirtualMachineBootDiagnostics].
   /// [storageAccountUri] The Primary/Secondary Endpoint for the Azure Storage Account which should be used to store Boot Diagnostics, including Console Output and Screenshots from the Hypervisor.
-  WindowsVirtualMachineBootDiagnostics({
+  const WindowsVirtualMachineBootDiagnostics({
     this.storageAccountUri,
   });
 

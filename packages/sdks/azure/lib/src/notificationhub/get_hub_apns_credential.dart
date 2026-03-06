@@ -20,7 +20,7 @@ class GetHubApnsCredential {
   /// [keyId] The Apple Push Notifications Service (APNS) Key.
   /// [teamId] The ID of the team the Token.
   /// [token] The Push Token associated with the Apple Developer Account.
-  GetHubApnsCredential({
+  const GetHubApnsCredential({
     required this.applicationMode,
     required this.bundleId,
     required this.keyId,

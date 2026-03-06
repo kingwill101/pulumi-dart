@@ -13,7 +13,7 @@ class KafkaRestPropertiesResponse {
   /// Creates a new [KafkaRestPropertiesResponse].
   /// [clientGroupInfo] The information of AAD security group.
   /// [configurationOverride] The configurations that need to be overriden.
-  KafkaRestPropertiesResponse({
+  const KafkaRestPropertiesResponse({
     this.clientGroupInfo,
     this.configurationOverride,
   });

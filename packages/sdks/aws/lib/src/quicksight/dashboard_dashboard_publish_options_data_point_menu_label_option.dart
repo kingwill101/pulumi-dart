@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsDataPointMenuLabelOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsDataPointMenuLabelOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsDataPointMenuLabelOption({
+  const DashboardDashboardPublishOptionsDataPointMenuLabelOption({
     this.availabilityStatus,
   });
 

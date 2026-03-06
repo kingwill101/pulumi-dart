@@ -13,7 +13,7 @@ class GetServiceConsumerIamPolicyArgs {
   /// Creates a new [GetServiceConsumerIamPolicyArgs].
   /// [consumerId] Required.
   /// [serviceId] Required.
-  GetServiceConsumerIamPolicyArgs({
+  const GetServiceConsumerIamPolicyArgs({
     required this.consumerId,
     required this.serviceId,
   });

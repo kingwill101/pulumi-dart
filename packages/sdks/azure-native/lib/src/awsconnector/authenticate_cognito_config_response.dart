@@ -30,7 +30,7 @@ class AuthenticateCognitoConfigResponse {
   /// [userPoolArn] The Amazon Resource Name (ARN) of the Amazon Cognito user pool.
   /// [userPoolClientId] The ID of the Amazon Cognito user pool client.
   /// [userPoolDomain] The domain prefix or fully-qualified domain name of the Amazon Cognito user pool.
-  AuthenticateCognitoConfigResponse({
+  const AuthenticateCognitoConfigResponse({
     this.authenticationRequestExtraParams,
     this.onUnauthenticatedRequest,
     this.scope,

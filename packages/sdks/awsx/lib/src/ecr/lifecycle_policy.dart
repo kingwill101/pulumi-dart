@@ -13,7 +13,7 @@ class LifecyclePolicy {
   /// Creates a new [LifecyclePolicy].
   /// [rules] Specifies the rules to determine how images should be retired from this repository. Rules are ordered from lowest priority to highest.  If there is a rule with a `selection` value of `any`, then it will have the highest priority.
   /// [skip] Skips creation of the policy if set to `true`.
-  LifecyclePolicy({
+  const LifecyclePolicy({
     this.rules,
     this.skip,
   });

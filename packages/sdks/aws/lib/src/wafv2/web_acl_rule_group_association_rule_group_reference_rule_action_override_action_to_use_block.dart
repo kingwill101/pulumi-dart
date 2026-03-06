@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseB
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock].
   /// [customResponse] Custom response for blocked requests. See below.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlock({
     this.customResponse,
   });
 

@@ -21,7 +21,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoo
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig].
   /// [labels] The map of Kubernetes labels (key/value pairs) to be applied to
   /// [nodeIp] The default IPv4 address for SSH access and Kubernetes node.
-  BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig({
+  const BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig({
     this.labels,
     this.nodeIp,
   });

@@ -19,7 +19,7 @@ class ListLocalRulestackPredefinedUrlCategoriesArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [skip] Optional.
   /// [top] Optional.
-  ListLocalRulestackPredefinedUrlCategoriesArgs({
+  const ListLocalRulestackPredefinedUrlCategoriesArgs({
     required this.localRulestackName,
     required this.resourceGroupName,
     this.skip,

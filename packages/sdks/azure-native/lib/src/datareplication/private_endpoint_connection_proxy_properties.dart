@@ -10,7 +10,7 @@ class PrivateEndpointConnectionProxyProperties {
 
   /// Creates a new [PrivateEndpointConnectionProxyProperties].
   /// [remotePrivateEndpoint] Represent remote private endpoint information for the private endpoint connection proxy.
-  PrivateEndpointConnectionProxyProperties({
+  const PrivateEndpointConnectionProxyProperties({
     this.remotePrivateEndpoint,
   });
 

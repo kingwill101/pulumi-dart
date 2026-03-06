@@ -24,7 +24,7 @@ class SelfIpArgs {
   /// [portLockdowns] Specifies the port lockdown, defaults to `Allow None` if not specified.
   /// [trafficGroup] Specifies the traffic group, defaults to `traffic-group-local-only` if not specified.
   /// [vlan] Specifies the VLAN for which you are setting a self IP address. This setting must be provided when a self IP is created.
-  SelfIpArgs({
+  const SelfIpArgs({
     required this.ip,
     required this.name,
     this.portLockdowns,

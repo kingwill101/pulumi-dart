@@ -35,7 +35,7 @@ class NotificationState {
   /// [payloadFormat] The desired content of the Payload. One of `"JSON_API_V1"` or `"NONE"`.
   /// [selfLink] The URI of the created resource.
   /// [topic] The Cloud PubSub topic to which this subscription publishes. Expects either the
-  NotificationState({
+  const NotificationState({
     this.bucket,
     this.customAttributes,
     this.eventTypes,

@@ -61,7 +61,7 @@ class SapOpenHubLinkedService {
   /// [type] Type of linked service.
   /// [userName] Username to access the SAP BW server where the open hub destination is located. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SapOpenHubLinkedService({
+  const SapOpenHubLinkedService({
     this.annotations,
     this.clientId,
     this.connectVia,

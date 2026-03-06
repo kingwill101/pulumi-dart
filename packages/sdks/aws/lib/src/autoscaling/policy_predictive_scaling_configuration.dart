@@ -21,7 +21,7 @@ class PolicyPredictiveScalingConfiguration {
   /// [metricSpecification] This structure includes the metrics and target utilization to use for predictive scaling.
   /// [mode] Predictive scaling mode. Valid values are `ForecastAndScale` and `ForecastOnly`. Default is `ForecastOnly`.
   /// [schedulingBufferTime] Amount of time, in seconds, by which the instance launch time can be advanced. Minimum is `0`.
-  PolicyPredictiveScalingConfiguration({
+  const PolicyPredictiveScalingConfiguration({
     this.maxCapacityBreachBehavior,
     this.maxCapacityBuffer,
     required this.metricSpecification,

@@ -23,7 +23,7 @@ class ApiCorsConfiguration {
   /// [allowOrigins] Set of allowed origins.
   /// [exposeHeaders] Set of exposed HTTP headers.
   /// [maxAge] Number of seconds that the browser should cache preflight request results.
-  ApiCorsConfiguration({
+  const ApiCorsConfiguration({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

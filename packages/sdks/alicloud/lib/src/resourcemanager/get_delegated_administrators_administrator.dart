@@ -17,7 +17,7 @@ class GetDelegatedAdministratorsAdministrator {
   /// [delegationEnabledTime] The time when the member was specified as a delegated administrator account.
   /// [id] The ID of the Delegated Administrator.
   /// [servicePrincipal] The identity of the trusted service.
-  GetDelegatedAdministratorsAdministrator({
+  const GetDelegatedAdministratorsAdministrator({
     required this.accountId,
     required this.delegationEnabledTime,
     required this.id,

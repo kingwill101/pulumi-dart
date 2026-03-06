@@ -24,7 +24,7 @@ class ListWebAppWorkflowsConnectionsSlotResult {
   /// [name] Gets the resource name.
   /// [properties] Additional workflow properties.
   /// [type] Gets the resource type.
-  ListWebAppWorkflowsConnectionsSlotResult({
+  const ListWebAppWorkflowsConnectionsSlotResult({
     required this.id,
     this.kind,
     this.location,

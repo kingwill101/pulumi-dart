@@ -39,7 +39,7 @@ class GetVpcFirewallsArgs {
   /// [vpcFirewallId] The ID of the VPC firewall instance.
   /// [vpcFirewallName] The name of the VPC firewall instance.
   /// [vpcId] The ID of the peer VPC instance.
-  GetVpcFirewallsArgs({
+  const GetVpcFirewallsArgs({
     this.ids,
     this.lang,
     this.memberUid,

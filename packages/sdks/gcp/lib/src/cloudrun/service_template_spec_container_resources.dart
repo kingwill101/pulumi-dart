@@ -21,7 +21,7 @@ class ServiceTemplateSpecContainerResources {
   /// Creates a new [ServiceTemplateSpecContainerResources].
   /// [limits] Limits describes the maximum amount of compute resources allowed.
   /// [requests] Requests describes the minimum amount of compute resources required.
-  ServiceTemplateSpecContainerResources({
+  const ServiceTemplateSpecContainerResources({
     this.limits,
     this.requests,
   });

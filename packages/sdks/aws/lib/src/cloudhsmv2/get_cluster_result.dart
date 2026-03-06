@@ -28,7 +28,7 @@ class GetClusterResult {
   /// [securityGroupId] ID of the security group associated with the CloudHSM cluster.
   /// [subnetIds] IDs of subnets in which cluster operates.
   /// [vpcId] ID of the VPC that the CloudHSM cluster resides in.
-  GetClusterResult({
+  const GetClusterResult({
     required this.clusterCertificates,
     required this.clusterId,
     required this.clusterState,

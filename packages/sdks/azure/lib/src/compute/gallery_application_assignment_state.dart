@@ -21,7 +21,7 @@ class GalleryApplicationAssignmentState {
   /// [order] Specifies the order in which the packages have to be installed. Possible values are between `0` and `2147483647`. Defaults to `0`.
   /// [tag] Specifies a passthrough value for more generic context. This field can be any valid `string` value. Changing this forces a new resource to be created.
   /// [virtualMachineId] The ID of the Virtual Machine. Changing this forces a new resource to be created.
-  GalleryApplicationAssignmentState({
+  const GalleryApplicationAssignmentState({
     this.configurationBlobUri,
     this.galleryApplicationVersionId,
     this.order,

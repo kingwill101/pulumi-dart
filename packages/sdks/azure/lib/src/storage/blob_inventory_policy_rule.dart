@@ -27,7 +27,7 @@ class BlobInventoryPolicyRule {
   /// [schemaFields] A list of fields to be included in the inventory. See the [Azure API reference](https://docs.microsoft.com/rest/api/storagerp/blob-inventory-policies/create-or-update#blobinventorypolicydefinition) for all the supported fields.
   /// [scope] The scope of the inventory for this rule. Possible values are `Blob` and `Container`.
   /// [storageContainerName] The storage container name to store the blob inventory files for this rule.
-  BlobInventoryPolicyRule({
+  const BlobInventoryPolicyRule({
     this.filter,
     required this.format,
     required this.name,

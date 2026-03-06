@@ -18,7 +18,7 @@ class GetNetworkServiceDesignGroupArgs {
   /// [networkServiceDesignGroupName] The name of the network service design group.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkServiceDesignGroupArgs({
+  const GetNetworkServiceDesignGroupArgs({
     required this.networkServiceDesignGroupName,
     required this.publisherName,
     required this.resourceGroupName,

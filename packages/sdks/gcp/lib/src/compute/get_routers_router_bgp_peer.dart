@@ -25,7 +25,7 @@ class GetRoutersRouterBgpPeer {
   /// [name] Required.
   /// [peerAsn] Required.
   /// [peerIpAddress] Required.
-  GetRoutersRouterBgpPeer({
+  const GetRoutersRouterBgpPeer({
     required this.advertiseMode,
     required this.advertisedRoutePriority,
     required this.enable,

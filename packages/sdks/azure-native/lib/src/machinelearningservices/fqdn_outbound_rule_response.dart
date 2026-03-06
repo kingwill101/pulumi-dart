@@ -23,7 +23,7 @@ class FqdnOutboundRuleResponse {
   /// [parentRuleNames] Required.
   /// [status] Type of a managed network Outbound Rule of a machine learning workspace.
   /// [type] Type of a managed network Outbound Rule of a machine learning workspace.
-  FqdnOutboundRuleResponse({
+  const FqdnOutboundRuleResponse({
     this.category,
     this.destination,
     required this.errorInformation,

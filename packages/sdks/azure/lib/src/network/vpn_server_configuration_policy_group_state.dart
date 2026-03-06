@@ -22,7 +22,7 @@ class VpnServerConfigurationPolicyGroupState {
   /// [policies] One or more `policy` blocks as documented below.
   /// [priority] The priority of this VPN Server Configuration Policy Group. Defaults to `0`.
   /// [vpnServerConfigurationId] The ID of the VPN Server Configuration that the VPN Server Configuration Policy Group belongs to. Changing this forces a new resource to be created.
-  VpnServerConfigurationPolicyGroupState({
+  const VpnServerConfigurationPolicyGroupState({
     this.isDefault,
     this.name,
     this.policies,

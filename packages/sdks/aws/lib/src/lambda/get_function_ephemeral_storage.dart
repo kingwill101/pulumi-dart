@@ -8,7 +8,7 @@ class GetFunctionEphemeralStorage {
 
   /// Creates a new [GetFunctionEphemeralStorage].
   /// [size] Size of the Lambda function ephemeral storage (`/tmp`) in MB.
-  GetFunctionEphemeralStorage({
+  const GetFunctionEphemeralStorage({
     required this.size,
   });
 

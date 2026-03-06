@@ -21,7 +21,7 @@ class UserDetailResponse {
   /// [firstName] First name
   /// [lastName] Last name
   /// [userPrincipalName] User principal name
-  UserDetailResponse({
+  const UserDetailResponse({
     this.aadEmail,
     required this.emailAddress,
     this.firstName,

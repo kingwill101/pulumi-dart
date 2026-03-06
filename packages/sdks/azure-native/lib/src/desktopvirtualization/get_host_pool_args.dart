@@ -15,7 +15,7 @@ class GetHostPoolArgs {
   /// Creates a new [GetHostPoolArgs].
   /// [hostPoolName] The name of the host pool within the specified resource group
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHostPoolArgs({
+  const GetHostPoolArgs({
     required this.hostPoolName,
     required this.resourceGroupName,
   });

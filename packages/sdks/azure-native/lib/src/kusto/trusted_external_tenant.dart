@@ -9,7 +9,7 @@ class TrustedExternalTenant {
 
   /// Creates a new [TrustedExternalTenant].
   /// [value] GUID representing an external tenant.
-  TrustedExternalTenant({
+  const TrustedExternalTenant({
     this.value,
   });
 

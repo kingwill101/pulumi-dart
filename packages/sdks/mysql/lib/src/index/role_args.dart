@@ -12,7 +12,7 @@ class RoleArgs {
 
   /// Creates a new [RoleArgs].
   /// [name] The name of the role.
-  RoleArgs({
+  const RoleArgs({
     this.name,
   });
 

@@ -15,7 +15,7 @@ class GetResourceManagementPrivateLinkArgs {
   /// Creates a new [GetResourceManagementPrivateLinkArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rmplName] The name of the resource management private link.
-  GetResourceManagementPrivateLinkArgs({
+  const GetResourceManagementPrivateLinkArgs({
     required this.resourceGroupName,
     required this.rmplName,
   });

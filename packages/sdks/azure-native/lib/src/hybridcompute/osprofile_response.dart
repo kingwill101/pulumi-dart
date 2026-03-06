@@ -17,7 +17,7 @@ class OSProfileResponse {
   /// [computerName] Specifies the host OS name of the hybrid machine.
   /// [linuxConfiguration] Specifies the linux configuration for update management.
   /// [windowsConfiguration] Specifies the windows configuration for update management.
-  OSProfileResponse({
+  const OSProfileResponse({
     required this.computerName,
     this.linuxConfiguration,
     this.windowsConfiguration,

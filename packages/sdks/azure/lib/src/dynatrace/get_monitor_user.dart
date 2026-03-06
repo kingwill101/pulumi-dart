@@ -20,7 +20,7 @@ class GetMonitorUser {
   /// [firstName] First name of the user.
   /// [lastName] Last name of the user.
   /// [phoneNumber] phone number of the user by Dynatrace for contacting them if needed.
-  GetMonitorUser({
+  const GetMonitorUser({
     required this.country,
     required this.email,
     required this.firstName,

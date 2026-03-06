@@ -20,7 +20,7 @@ class GetAiIndexArgs {
   /// [name] The name of the index.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the index.
-  GetAiIndexArgs({
+  const GetAiIndexArgs({
     required this.name,
     this.project,
     required this.region,

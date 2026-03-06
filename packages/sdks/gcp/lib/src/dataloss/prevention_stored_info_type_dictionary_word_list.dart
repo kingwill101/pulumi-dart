@@ -9,7 +9,7 @@ class PreventionStoredInfoTypeDictionaryWordList {
 
   /// Creates a new [PreventionStoredInfoTypeDictionaryWordList].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one
-  PreventionStoredInfoTypeDictionaryWordList({
+  const PreventionStoredInfoTypeDictionaryWordList({
     required this.words,
   });
 

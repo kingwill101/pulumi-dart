@@ -15,7 +15,7 @@ class GetInstanceComputeV1Args {
   /// [instance] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceComputeV1Args({
+  const GetInstanceComputeV1Args({
     required this.instance,
     this.project,
     required this.zone,

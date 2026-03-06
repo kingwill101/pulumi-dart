@@ -9,7 +9,7 @@ class NetworkPolicyConfig {
 
   /// Creates a new [NetworkPolicyConfig].
   /// [disabled] Whether NetworkPolicy is enabled for this cluster.
-  NetworkPolicyConfig({
+  const NetworkPolicyConfig({
     this.disabled,
   });
 

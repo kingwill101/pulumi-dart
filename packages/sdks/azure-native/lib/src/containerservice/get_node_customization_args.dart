@@ -15,7 +15,7 @@ class GetNodeCustomizationArgs {
   /// Creates a new [GetNodeCustomizationArgs].
   /// [nodeCustomizationName] The name of the Node Customization resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNodeCustomizationArgs({
+  const GetNodeCustomizationArgs({
     required this.nodeCustomizationName,
     required this.resourceGroupName,
   });

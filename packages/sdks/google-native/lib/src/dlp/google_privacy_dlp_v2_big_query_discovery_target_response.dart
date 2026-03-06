@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse {
   /// [conditions] In addition to matching the filter, these conditions must be true before a profile is generated.
   /// [disabled] Tables that match this filter will not have profiles created.
   /// [filter] The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table.
-  GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse({
+  const GooglePrivacyDlpV2BigQueryDiscoveryTargetResponse({
     required this.cadence,
     required this.conditions,
     required this.disabled,

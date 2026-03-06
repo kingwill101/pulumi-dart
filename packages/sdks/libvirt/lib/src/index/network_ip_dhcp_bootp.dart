@@ -11,7 +11,7 @@ class NetworkIpDhcpBootp {
   /// Creates a new [NetworkIpDhcpBootp].
   /// [file] Specifies a file used for BOOTP configurations.
   /// [server] Sets the server address for the BOOTP configuration.
-  NetworkIpDhcpBootp({
+  const NetworkIpDhcpBootp({
     this.file,
     this.server,
   });

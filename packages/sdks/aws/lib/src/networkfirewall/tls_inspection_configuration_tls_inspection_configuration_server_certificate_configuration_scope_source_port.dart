@@ -11,7 +11,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort].
   /// [fromPort] The lower limit of the port range. This must be less than or equal to the `to_port`.
   /// [toPort] The upper limit of the port range. This must be greater than or equal to the `from_port`.
-  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort({
+  const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationScopeSourcePort({
     required this.fromPort,
     required this.toPort,
   });

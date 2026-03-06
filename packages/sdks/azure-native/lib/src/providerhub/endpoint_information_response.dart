@@ -14,7 +14,7 @@ class EndpointInformationResponse {
   /// [endpoint] The endpoint.
   /// [endpointType] The endpoint type.
   /// [schemaVersion] The schema version.
-  EndpointInformationResponse({
+  const EndpointInformationResponse({
     this.endpoint,
     this.endpointType,
     this.schemaVersion,

@@ -27,7 +27,7 @@ class DomainDevicesVsock {
   /// [cid] Configures the connection identifier (CID) for the vsock device.
   /// [driver] Configures driver options for the vsock device.
   /// [model] Defines the model of the vsock device for the domain.
-  DomainDevicesVsock({
+  const DomainDevicesVsock({
     this.acpi,
     this.address,
     this.alias,

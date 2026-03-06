@@ -19,7 +19,7 @@ class SdkVersionResponse {
   /// [sdkSupportStatus] The support status for this SDK version.
   /// [version] The version of the SDK used to run the job.
   /// [versionDisplayName] A readable string describing the version of the SDK.
-  SdkVersionResponse({
+  const SdkVersionResponse({
     required this.bugs,
     required this.sdkSupportStatus,
     required this.version,

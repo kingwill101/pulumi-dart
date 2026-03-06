@@ -15,7 +15,7 @@ class GetStandbyContainerGroupPoolArgs {
   /// Creates a new [GetStandbyContainerGroupPoolArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standbyContainerGroupPoolName] Name of the standby container group pool
-  GetStandbyContainerGroupPoolArgs({
+  const GetStandbyContainerGroupPoolArgs({
     required this.resourceGroupName,
     required this.standbyContainerGroupPoolName,
   });

@@ -9,7 +9,7 @@ class DataDisksGroups {
 
   /// Creates a new [DataDisksGroups].
   /// [disksPerNode] The number of disks per node.
-  DataDisksGroups({
+  const DataDisksGroups({
     this.disksPerNode,
   });
 

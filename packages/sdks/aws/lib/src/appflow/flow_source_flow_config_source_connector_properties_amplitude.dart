@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesAmplitude {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesAmplitude].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesAmplitude({
+  const FlowSourceFlowConfigSourceConnectorPropertiesAmplitude({
     required this.object_,
   });
 

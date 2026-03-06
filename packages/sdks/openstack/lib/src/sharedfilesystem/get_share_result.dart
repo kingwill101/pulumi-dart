@@ -54,7 +54,7 @@ class GetShareResult {
   /// [size] The share size, in GBs.
   /// [snapshotId] See Argument Reference above.
   /// [status] See Argument Reference above.
-  GetShareResult({
+  const GetShareResult({
     required this.availabilityZone,
     required this.description,
     this.exportLocationPath,

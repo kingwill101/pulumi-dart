@@ -25,7 +25,7 @@ class PostgresInstancePropertiesResponse {
   /// [k8sRaw] The raw kubernetes information
   /// [lastUploadedDate] Last uploaded date from Kubernetes cluster. Defaults to current date time
   /// [provisioningState] The provisioning state of the Azure Arc-enabled PostgreSQL instance.
-  PostgresInstancePropertiesResponse({
+  const PostgresInstancePropertiesResponse({
     this.admin,
     this.basicLoginInformation,
     this.dataControllerId,

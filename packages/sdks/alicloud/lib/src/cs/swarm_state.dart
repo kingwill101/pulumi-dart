@@ -45,7 +45,7 @@ class SwarmState {
   /// [slbId] Optional.
   /// [vpcId] Optional.
   /// [vswitchId] Optional.
-  SwarmState({
+  const SwarmState({
     this.agentVersion,
     this.cidrBlock,
     this.diskCategory,

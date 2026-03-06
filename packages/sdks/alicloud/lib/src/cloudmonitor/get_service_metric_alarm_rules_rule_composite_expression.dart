@@ -21,7 +21,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpression {
   /// [expressionRaw] The trigger conditions that are created by using expressions.
   /// [level] The alert level.
   /// [times] The number of consecutive triggers.
-  GetServiceMetricAlarmRulesRuleCompositeExpression({
+  const GetServiceMetricAlarmRulesRuleCompositeExpression({
     required this.expressionListJoin,
     required this.expressionLists,
     required this.expressionRaw,

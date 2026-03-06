@@ -26,7 +26,7 @@ class GetServiceTagsResult {
   /// [locationFilter] Optional.
   /// [name] The name of this Service Tags block.
   /// [service] Required.
-  GetServiceTagsResult({
+  const GetServiceTagsResult({
     required this.addressPrefixes,
     required this.id,
     required this.ipv4Cidrs,

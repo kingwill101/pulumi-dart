@@ -35,7 +35,7 @@ class GetRouteResult {
   /// [nextHopType] The type of Azure hop the packet should be sent to.
   /// [provisioningState] The provisioning state of the route resource.
   /// [type] The type of the resource.
-  GetRouteResult({
+  const GetRouteResult({
     this.addressPrefix,
     required this.azureApiVersion,
     required this.etag,

@@ -10,7 +10,7 @@ class ErrorResponseResponse {
 
   /// Creates a new [ErrorResponseResponse].
   /// [error] The error object.
-  ErrorResponseResponse({
+  const ErrorResponseResponse({
     this.error,
   });
 

@@ -25,7 +25,7 @@ class HyperVMigrateFabricModelCustomPropertiesResponse {
   /// [instanceType] Gets or sets the instance type.
   /// [migrationHubUri] Gets or sets the migration hub Uri.
   /// [migrationSolutionId] Gets or sets the migration solution ARM Id.
-  HyperVMigrateFabricModelCustomPropertiesResponse({
+  const HyperVMigrateFabricModelCustomPropertiesResponse({
     required this.fabricContainerId,
     required this.fabricResourceId,
     required this.hyperVSiteId,

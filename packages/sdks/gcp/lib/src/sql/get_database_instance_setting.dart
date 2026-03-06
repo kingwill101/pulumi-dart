@@ -128,7 +128,7 @@ class GetDatabaseInstanceSetting {
   /// [timeZone] The time_zone to be used by the database engine (supported only for SQL Server), in SQL Server timezone format.
   /// [userLabels] A set of key/value user label pairs to assign to the instance.
   /// [version] Used to make sure changes to the settings block are atomic.
-  GetDatabaseInstanceSetting({
+  const GetDatabaseInstanceSetting({
     required this.activationPolicy,
     required this.activeDirectoryConfigs,
     required this.advancedMachineFeatures,

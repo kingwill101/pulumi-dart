@@ -10,7 +10,7 @@ class GrafeasV1beta1IntotoArtifact {
   /// Creates a new [GrafeasV1beta1IntotoArtifact].
   /// [hashes] Optional.
   /// [resourceUri] Optional.
-  GrafeasV1beta1IntotoArtifact({
+  const GrafeasV1beta1IntotoArtifact({
     this.hashes,
     this.resourceUri,
   });

@@ -21,7 +21,7 @@ class VmwareSourceDetailsResponseVmmigrationV1alpha1 {
   /// [thumbprint] The thumbprint representing the certificate for the vcenter.
   /// [username] The credentials username.
   /// [vcenterIp] The ip address of the vcenter this Source represents.
-  VmwareSourceDetailsResponseVmmigrationV1alpha1({
+  const VmwareSourceDetailsResponseVmmigrationV1alpha1({
     required this.password,
     required this.resolvedVcenterHost,
     required this.thumbprint,

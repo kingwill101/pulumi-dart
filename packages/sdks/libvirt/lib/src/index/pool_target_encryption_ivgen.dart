@@ -11,7 +11,7 @@ class PoolTargetEncryptionIvgen {
   /// Creates a new [PoolTargetEncryptionIvgen].
   /// [hash] Specifies the hashing algorithm used for the initialization vector generation.
   /// [name] Sets the name of the initialization vector generator for the encryption.
-  PoolTargetEncryptionIvgen({
+  const PoolTargetEncryptionIvgen({
     required this.hash,
     required this.name,
   });

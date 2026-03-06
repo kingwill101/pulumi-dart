@@ -26,7 +26,7 @@ class ReservedInstanceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [reservationId] Customer-specified identifier to track this reservation.
   /// [tags] Map of tags to assign to the DB reservation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ReservedInstanceArgs({
+  const ReservedInstanceArgs({
     this.instanceCount,
     required this.offeringId,
     this.region,

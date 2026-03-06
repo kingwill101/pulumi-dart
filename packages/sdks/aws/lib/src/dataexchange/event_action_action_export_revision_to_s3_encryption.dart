@@ -12,7 +12,7 @@ class EventActionActionExportRevisionToS3Encryption {
   /// Creates a new [EventActionActionExportRevisionToS3Encryption].
   /// [kmsKeyArn] ARN of the KMS key used for encryption.
   /// [type] Type of server-side encryption.
-  EventActionActionExportRevisionToS3Encryption({
+  const EventActionActionExportRevisionToS3Encryption({
     this.kmsKeyArn,
     this.type,
   });

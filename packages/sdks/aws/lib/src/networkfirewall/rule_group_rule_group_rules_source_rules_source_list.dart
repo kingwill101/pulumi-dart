@@ -14,7 +14,7 @@ class RuleGroupRuleGroupRulesSourceRulesSourceList {
   /// [generatedRulesType] String value to specify whether domains in the target list are allowed or denied access. Valid values: `ALLOWLIST`, `DENYLIST`.
   /// [targetTypes] Set of types of domain specifications that are provided in the `targets` argument. Valid values: `HTTP_HOST`, `TLS_SNI`.
   /// [targets] Set of domains that you want to inspect for in your traffic flows.
-  RuleGroupRuleGroupRulesSourceRulesSourceList({
+  const RuleGroupRuleGroupRulesSourceRulesSourceList({
     required this.generatedRulesType,
     required this.targetTypes,
     required this.targets,

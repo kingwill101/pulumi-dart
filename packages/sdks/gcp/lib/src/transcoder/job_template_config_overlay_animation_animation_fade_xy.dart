@@ -11,7 +11,7 @@ class JobTemplateConfigOverlayAnimationAnimationFadeXy {
   /// Creates a new [JobTemplateConfigOverlayAnimationAnimationFadeXy].
   /// [x] Normalized x coordinate.
   /// [y] Normalized y coordinate.
-  JobTemplateConfigOverlayAnimationAnimationFadeXy({
+  const JobTemplateConfigOverlayAnimationAnimationFadeXy({
     this.x,
     this.y,
   });

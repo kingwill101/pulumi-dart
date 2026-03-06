@@ -12,7 +12,7 @@ class WeeklyRetentionFormatResponse {
   /// Creates a new [WeeklyRetentionFormatResponse].
   /// [daysOfTheWeek] List of days of the week.
   /// [weeksOfTheMonth] List of weeks of month.
-  WeeklyRetentionFormatResponse({
+  const WeeklyRetentionFormatResponse({
     this.daysOfTheWeek,
     this.weeksOfTheMonth,
   });

@@ -15,7 +15,7 @@ class GetNodeTpuV1alpha1Args {
   /// [location] Required.
   /// [nodeId] Required.
   /// [project] Optional.
-  GetNodeTpuV1alpha1Args({
+  const GetNodeTpuV1alpha1Args({
     required this.location,
     required this.nodeId,
     this.project,

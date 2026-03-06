@@ -14,7 +14,7 @@ class GetResourcefileResult {
   /// [contentType] The HTTP Content-Type header value specifying the content type of the body.
   /// [data] The HTTP request/response body as raw binary.
   /// [extensions] Application specific response metadata. Must be set in the first response for streaming APIs.
-  GetResourcefileResult({
+  const GetResourcefileResult({
     required this.contentType,
     required this.data,
     required this.extensions,

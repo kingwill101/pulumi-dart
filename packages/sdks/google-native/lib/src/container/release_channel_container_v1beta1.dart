@@ -10,7 +10,7 @@ class ReleaseChannelContainerV1beta1 {
 
   /// Creates a new [ReleaseChannelContainerV1beta1].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannelContainerV1beta1({
+  const ReleaseChannelContainerV1beta1({
     this.channel,
   });
 

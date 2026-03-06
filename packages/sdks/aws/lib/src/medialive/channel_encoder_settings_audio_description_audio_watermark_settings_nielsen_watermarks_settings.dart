@@ -16,7 +16,7 @@ class ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWaterma
   /// [nielsenCbetSettings] Used to insert watermarks of type Nielsen CBET. See Nielsen CBET Settings for more details.
   /// [nielsenDistributionType] Distribution types to assign to the watermarks. Options are `PROGRAM_CONTENT` and `FINAL_DISTRIBUTOR`.
   /// [nielsenNaesIiNwSettings] Used to insert watermarks of type Nielsen NAES, II (N2) and Nielsen NAES VI (NW). See Nielsen NAES II NW Settings for more details.
-  ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings({
+  const ChannelEncoderSettingsAudioDescriptionAudioWatermarkSettingsNielsenWatermarksSettings({
     this.nielsenCbetSettings,
     this.nielsenDistributionType,
     this.nielsenNaesIiNwSettings,

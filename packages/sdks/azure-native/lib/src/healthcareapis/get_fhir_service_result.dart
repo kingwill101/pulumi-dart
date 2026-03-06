@@ -83,7 +83,7 @@ class GetFhirServiceResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The resource type.
-  GetFhirServiceResult({
+  const GetFhirServiceResult({
     this.acrConfiguration,
     this.authenticationConfiguration,
     required this.azureApiVersion,

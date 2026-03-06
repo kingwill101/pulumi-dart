@@ -12,7 +12,7 @@ class AuditLogConfigResponseDomainsV1alpha2 {
   /// Creates a new [AuditLogConfigResponseDomainsV1alpha2].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigResponseDomainsV1alpha2({
+  const AuditLogConfigResponseDomainsV1alpha2({
     required this.exemptedMembers,
     required this.logType,
   });

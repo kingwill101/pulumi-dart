@@ -11,7 +11,7 @@ class GetMachineTypesMachineTypeBundledLocalSsd {
   /// Creates a new [GetMachineTypesMachineTypeBundledLocalSsd].
   /// [defaultInterface] The default disk interface if the interface is not specified.
   /// [partitionCount] The number of partitions.
-  GetMachineTypesMachineTypeBundledLocalSsd({
+  const GetMachineTypesMachineTypeBundledLocalSsd({
     required this.defaultInterface,
     required this.partitionCount,
   });

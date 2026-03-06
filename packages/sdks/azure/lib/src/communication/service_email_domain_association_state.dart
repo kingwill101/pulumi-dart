@@ -12,7 +12,7 @@ class ServiceEmailDomainAssociationState {
   /// Creates a new [ServiceEmailDomainAssociationState].
   /// [communicationServiceId] The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
   /// [emailServiceDomainId] The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
-  ServiceEmailDomainAssociationState({
+  const ServiceEmailDomainAssociationState({
     this.communicationServiceId,
     this.emailServiceDomainId,
   });

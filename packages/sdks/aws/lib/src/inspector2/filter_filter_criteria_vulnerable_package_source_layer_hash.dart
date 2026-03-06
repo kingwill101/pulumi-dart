@@ -11,7 +11,7 @@ class FilterFilterCriteriaVulnerablePackageSourceLayerHash {
   /// Creates a new [FilterFilterCriteriaVulnerablePackageSourceLayerHash].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaVulnerablePackageSourceLayerHash({
+  const FilterFilterCriteriaVulnerablePackageSourceLayerHash({
     required this.comparison,
     required this.value,
   });

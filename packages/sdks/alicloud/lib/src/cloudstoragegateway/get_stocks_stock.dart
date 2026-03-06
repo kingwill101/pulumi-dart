@@ -11,7 +11,7 @@ class GetStocksStock {
   /// Creates a new [GetStocksStock].
   /// [availableGatewayClasses] A list of available gateway class in this Zone ID.
   /// [zoneId] The Zone ID.
-  GetStocksStock({
+  const GetStocksStock({
     required this.availableGatewayClasses,
     required this.zoneId,
   });

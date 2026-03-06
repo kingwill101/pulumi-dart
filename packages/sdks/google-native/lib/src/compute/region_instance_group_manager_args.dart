@@ -95,7 +95,7 @@ class RegionInstanceGroupManagerArgs {
   /// [targetSuspendedSize] The target number of suspended instances for this managed instance group. This number changes when you: - Suspend instance using the suspendInstances method or resume instances using the resumeInstances method. - Manually change the targetSuspendedSize using the update method.
   /// [updatePolicy] The update policy for this managed instance group.
   /// [versions] Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
-  RegionInstanceGroupManagerArgs({
+  const RegionInstanceGroupManagerArgs({
     this.allInstancesConfig,
     this.autoHealingPolicies,
     this.baseInstanceName,

@@ -27,7 +27,7 @@ class GetApiDefinitionArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [versionName] The name of the API version.
   /// [workspaceName] The name of the workspace.
-  GetApiDefinitionArgs({
+  const GetApiDefinitionArgs({
     required this.apiName,
     required this.definitionName,
     required this.resourceGroupName,

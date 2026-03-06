@@ -14,7 +14,7 @@ class GetServicesServiceVpcConfig {
   /// [securityGroupId] Associated security group ID.
   /// [vpcId] Associated VPC ID.
   /// [vswitchIds] Associated vSwitch IDs.
-  GetServicesServiceVpcConfig({
+  const GetServicesServiceVpcConfig({
     required this.securityGroupId,
     required this.vpcId,
     required this.vswitchIds,

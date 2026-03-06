@@ -10,7 +10,7 @@ class IngressLoadBalancerStatusPatch {
 
   /// Creates a new [IngressLoadBalancerStatusPatch].
   /// [ingress] ingress is a list containing ingress points for the load-balancer.
-  IngressLoadBalancerStatusPatch({
+  const IngressLoadBalancerStatusPatch({
     this.ingress,
   });
 

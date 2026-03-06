@@ -15,7 +15,7 @@ class OriginProtectionState {
   /// Creates a new [OriginProtectionState].
   /// [originConverge] The IP convergence status.
   /// [siteId] Site Id
-  OriginProtectionState({
+  const OriginProtectionState({
     this.originConverge,
     this.siteId,
   });

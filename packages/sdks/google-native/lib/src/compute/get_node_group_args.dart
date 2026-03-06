@@ -15,7 +15,7 @@ class GetNodeGroupArgs {
   /// [nodeGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetNodeGroupArgs({
+  const GetNodeGroupArgs({
     required this.nodeGroup,
     this.project,
     required this.zone,

@@ -10,7 +10,7 @@ class InterconnectGroupIntent {
 
   /// Creates a new [InterconnectGroupIntent].
   /// [topologyCapability] The reliability the user intends this group to be capable of, in terms
-  InterconnectGroupIntent({
+  const InterconnectGroupIntent({
     this.topologyCapability,
   });
 

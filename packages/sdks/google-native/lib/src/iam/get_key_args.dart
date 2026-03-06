@@ -17,7 +17,7 @@ class GetKeyArgs {
   /// [project] Optional.
   /// [publicKeyType] Optional.
   /// [serviceAccountId] Required.
-  GetKeyArgs({
+  const GetKeyArgs({
     required this.keyId,
     this.project,
     this.publicKeyType,

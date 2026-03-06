@@ -21,7 +21,7 @@ class AS2EnvelopeSettingsResponse {
   /// [messageContentType] The message content type.
   /// [suspendMessageOnFileNameGenerationError] The value indicating whether to suspend message on file name generation error.
   /// [transmitFileNameInMimeHeader] The value indicating whether to transmit file name in mime header.
-  AS2EnvelopeSettingsResponse({
+  const AS2EnvelopeSettingsResponse({
     required this.autogenerateFileName,
     required this.fileNameTemplate,
     required this.messageContentType,

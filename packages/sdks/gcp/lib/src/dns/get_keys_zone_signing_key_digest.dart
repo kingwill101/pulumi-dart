@@ -11,7 +11,7 @@ class GetKeysZoneSigningKeyDigest {
   /// Creates a new [GetKeysZoneSigningKeyDigest].
   /// [digest] The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
   /// [type] Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-  GetKeysZoneSigningKeyDigest({
+  const GetKeysZoneSigningKeyDigest({
     this.digest,
     this.type,
   });

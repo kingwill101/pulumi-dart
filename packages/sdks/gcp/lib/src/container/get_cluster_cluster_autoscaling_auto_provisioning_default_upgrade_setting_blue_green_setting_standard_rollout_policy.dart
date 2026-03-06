@@ -16,7 +16,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
   /// [batchNodeCount] Number of blue nodes to drain in a batch.
   /// [batchPercentage] Percentage of the bool pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
   /// [batchSoakDuration] Soak time after each batch gets drained.
-  GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy({
+  const GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy({
     required this.batchNodeCount,
     required this.batchPercentage,
     required this.batchSoakDuration,

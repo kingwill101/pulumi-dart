@@ -17,7 +17,7 @@ class GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader {
   /// [xFdHealthProbes] Should a Front Door Health Probe be expected?
   /// [xForwardedFors] A list of addresses for which matching is applied.
   /// [xForwardedHosts] A list of Hosts for which matching is applied.
-  GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader({
+  const GetLinuxFunctionAppSiteConfigScmIpRestrictionHeader({
     required this.xAzureFdids,
     required this.xFdHealthProbes,
     required this.xForwardedFors,

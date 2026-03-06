@@ -14,7 +14,7 @@ class JobScheduleTriggerConfig {
   /// [cronExpression] Cron formatted repeating schedule of a Cron Job.
   /// [parallelism] Number of parallel replicas of a job that can run at a given time.
   /// [replicaCompletionCount] Minimum number of successful replica completions before overall job completion.
-  JobScheduleTriggerConfig({
+  const JobScheduleTriggerConfig({
     required this.cronExpression,
     this.parallelism,
     this.replicaCompletionCount,

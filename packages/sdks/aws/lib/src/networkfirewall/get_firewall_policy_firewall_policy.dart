@@ -28,7 +28,7 @@ class GetFirewallPolicyFirewallPolicy {
   /// [statelessFragmentDefaultActions] Required.
   /// [statelessRuleGroupReferences] Required.
   /// [tlsInspectionConfigurationArn] Required.
-  GetFirewallPolicyFirewallPolicy({
+  const GetFirewallPolicyFirewallPolicy({
     required this.policyVariables,
     required this.statefulDefaultActions,
     required this.statefulEngineOptions,

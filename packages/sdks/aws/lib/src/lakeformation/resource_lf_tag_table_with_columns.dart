@@ -23,7 +23,7 @@ class ResourceLfTagTableWithColumns {
   /// [columnWildcard] Option to add column wildcard. See Column Wildcard for more details.
   /// [databaseName] Name of the database for the table with columns resource. Unique to the Data Catalog.
   /// [name] Name of the table resource.
-  ResourceLfTagTableWithColumns({
+  const ResourceLfTagTableWithColumns({
     this.catalogId,
     this.columnNames,
     this.columnWildcard,

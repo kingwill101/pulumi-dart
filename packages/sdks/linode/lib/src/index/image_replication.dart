@@ -11,7 +11,7 @@ class ImageReplication {
   /// Creates a new [ImageReplication].
   /// [region] The region of the image. See all regions [here](https://techdocs.akamai.com/linode-api/reference/get-regions).
   /// [status] The status of an image replica.
-  ImageReplication({
+  const ImageReplication({
     required this.region,
     required this.status,
   });

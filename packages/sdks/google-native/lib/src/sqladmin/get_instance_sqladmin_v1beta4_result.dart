@@ -139,7 +139,7 @@ class GetInstanceSqladminV1beta4Result {
   /// [state] The current serving state of the Cloud SQL instance.
   /// [suspensionReason] If the instance state is SUSPENDED, the reason for the suspension.
   /// [writeEndpoint] The dns name of the primary instance in a replication group.
-  GetInstanceSqladminV1beta4Result({
+  const GetInstanceSqladminV1beta4Result({
     required this.availableMaintenanceVersions,
     required this.backendType,
     required this.connectionName,

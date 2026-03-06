@@ -12,7 +12,7 @@ class LinuxVirtualMachineScaleSetSecretCertificate {
 
   /// Creates a new [LinuxVirtualMachineScaleSetSecretCertificate].
   /// [url] The Secret URL of a Key Vault Certificate.
-  LinuxVirtualMachineScaleSetSecretCertificate({
+  const LinuxVirtualMachineScaleSetSecretCertificate({
     required this.url,
   });
 

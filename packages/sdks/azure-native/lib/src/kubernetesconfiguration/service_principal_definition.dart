@@ -24,7 +24,7 @@ class ServicePrincipalDefinition {
   /// [clientId] The client Id for authenticating a Service Principal.
   /// [clientSecret] The client secret for authenticating a Service Principal
   /// [tenantId] The tenant Id for authenticating a Service Principal
-  ServicePrincipalDefinition({
+  const ServicePrincipalDefinition({
     this.clientCertificate,
     this.clientCertificatePassword,
     this.clientCertificateSendChain,

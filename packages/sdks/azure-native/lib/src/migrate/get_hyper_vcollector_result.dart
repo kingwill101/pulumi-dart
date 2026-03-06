@@ -19,7 +19,7 @@ class GetHyperVCollectorResult {
   /// [name] Required.
   /// [properties] Required.
   /// [type] Required.
-  GetHyperVCollectorResult({
+  const GetHyperVCollectorResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

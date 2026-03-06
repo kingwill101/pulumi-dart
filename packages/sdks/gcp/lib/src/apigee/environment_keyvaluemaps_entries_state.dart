@@ -16,7 +16,7 @@ class EnvironmentKeyvaluemapsEntriesState {
   /// [envKeyvaluemapId] The Apigee environment keyvalumaps Id associated with the Apigee environment,
   /// [name] Required. Resource URI that can be used to identify the scope of the key value map entries.
   /// [value] Required. Data or payload that is being retrieved and associated with the unique key.
-  EnvironmentKeyvaluemapsEntriesState({
+  const EnvironmentKeyvaluemapsEntriesState({
     this.envKeyvaluemapId,
     this.name,
     this.value,

@@ -10,7 +10,7 @@ class ManagedClusterLoadBalancerProfileOutboundIPPrefixes {
 
   /// Creates a new [ManagedClusterLoadBalancerProfileOutboundIPPrefixes].
   /// [publicIPPrefixes] A list of public IP prefix resources.
-  ManagedClusterLoadBalancerProfileOutboundIPPrefixes({
+  const ManagedClusterLoadBalancerProfileOutboundIPPrefixes({
     this.publicIPPrefixes,
   });
 

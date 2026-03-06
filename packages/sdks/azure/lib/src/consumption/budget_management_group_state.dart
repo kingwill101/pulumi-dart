@@ -33,7 +33,7 @@ class BudgetManagementGroupState {
   /// [notifications] One or more `notification` blocks as defined below.
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   /// [timePeriod] A `time_period` block as defined below.
-  BudgetManagementGroupState({
+  const BudgetManagementGroupState({
     this.amount,
     this.etag,
     this.filter,

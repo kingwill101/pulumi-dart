@@ -9,7 +9,7 @@ class ConfidentialComputeProperties {
 
   /// Creates a new [ConfidentialComputeProperties].
   /// [ccePolicy] The base64 encoded confidential compute enforcement policy
-  ConfidentialComputeProperties({
+  const ConfidentialComputeProperties({
     this.ccePolicy,
   });
 

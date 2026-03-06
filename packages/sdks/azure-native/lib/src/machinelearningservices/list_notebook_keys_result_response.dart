@@ -9,7 +9,7 @@ class ListNotebookKeysResultResponse {
   /// Creates a new [ListNotebookKeysResultResponse].
   /// [primaryAccessKey] Required.
   /// [secondaryAccessKey] Required.
-  ListNotebookKeysResultResponse({
+  const ListNotebookKeysResultResponse({
     required this.primaryAccessKey,
     required this.secondaryAccessKey,
   });

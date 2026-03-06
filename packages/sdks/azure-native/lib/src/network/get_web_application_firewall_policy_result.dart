@@ -60,7 +60,7 @@ class GetWebApplicationFirewallPolicyResult {
   /// [resourceState] Resource status of the policy.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetWebApplicationFirewallPolicyResult({
+  const GetWebApplicationFirewallPolicyResult({
     required this.applicationGatewayForContainers,
     required this.applicationGateways,
     required this.azureApiVersion,

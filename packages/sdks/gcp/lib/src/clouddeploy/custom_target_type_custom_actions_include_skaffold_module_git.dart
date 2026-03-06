@@ -14,7 +14,7 @@ class CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit {
   /// [path] Relative path from the repository root to the Skaffold file.
   /// [ref] Git ref the package should be cloned from.
   /// [repo] Git repository the package should be cloned from.
-  CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit({
+  const CustomTargetTypeCustomActionsIncludeSkaffoldModuleGit({
     this.path,
     this.ref,
     required this.repo,

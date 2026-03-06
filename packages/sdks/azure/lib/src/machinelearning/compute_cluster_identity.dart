@@ -19,7 +19,7 @@ class ComputeClusterIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Machine Learning Compute Cluster.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Machine Learning Compute Cluster.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Machine Learning Compute Cluster. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  ComputeClusterIdentity({
+  const ComputeClusterIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

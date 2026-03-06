@@ -12,7 +12,7 @@ class ConfigurationParameterResponse {
   /// Creates a new [ConfigurationParameterResponse].
   /// [name] Name of the configuration parameter.
   /// [value] Value of the configuration parameter.
-  ConfigurationParameterResponse({
+  const ConfigurationParameterResponse({
     this.name,
     this.value,
   });

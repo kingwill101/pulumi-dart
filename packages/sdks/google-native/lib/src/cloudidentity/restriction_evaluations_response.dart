@@ -10,7 +10,7 @@ class RestrictionEvaluationsResponse {
 
   /// Creates a new [RestrictionEvaluationsResponse].
   /// [memberRestrictionEvaluation] Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
-  RestrictionEvaluationsResponse({
+  const RestrictionEvaluationsResponse({
     required this.memberRestrictionEvaluation,
   });
 

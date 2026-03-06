@@ -16,7 +16,7 @@ class TargetGroupAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [target] The target.
   /// [targetGroupIdentifier] The ID or Amazon Resource Name (ARN) of the target group.
-  TargetGroupAttachmentState({
+  const TargetGroupAttachmentState({
     this.region,
     this.target,
     this.targetGroupIdentifier,

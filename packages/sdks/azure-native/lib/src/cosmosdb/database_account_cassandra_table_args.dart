@@ -28,7 +28,7 @@ class DatabaseAccountCassandraTableArgs {
   /// [resource] The standard JSON format of a Cassandra table
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
-  DatabaseAccountCassandraTableArgs({
+  const DatabaseAccountCassandraTableArgs({
     required this.accountName,
     required this.keyspaceName,
     required this.options,

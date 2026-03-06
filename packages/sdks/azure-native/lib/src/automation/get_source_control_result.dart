@@ -44,7 +44,7 @@ class GetSourceControlResult {
   /// [repoUrl] The repo url of the source control.
   /// [sourceType] The source type. Must be one of VsoGit, VsoTfvc, GitHub.
   /// [type] The type of the resource.
-  GetSourceControlResult({
+  const GetSourceControlResult({
     this.autoSync,
     required this.azureApiVersion,
     this.branch,

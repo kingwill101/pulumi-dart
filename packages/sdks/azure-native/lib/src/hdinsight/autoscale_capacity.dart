@@ -12,7 +12,7 @@ class AutoscaleCapacity {
   /// Creates a new [AutoscaleCapacity].
   /// [maxInstanceCount] The maximum instance count of the cluster
   /// [minInstanceCount] The minimum instance count of the cluster
-  AutoscaleCapacity({
+  const AutoscaleCapacity({
     this.maxInstanceCount,
     this.minInstanceCount,
   });

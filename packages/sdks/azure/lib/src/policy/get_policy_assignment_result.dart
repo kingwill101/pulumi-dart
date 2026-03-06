@@ -45,7 +45,7 @@ class GetPolicyAssignmentResult {
   /// [parameters] A JSON mapping of any Parameters for this Policy.
   /// [policyDefinitionId] The ID of the assigned Policy Definition.
   /// [scopeId] Required.
-  GetPolicyAssignmentResult({
+  const GetPolicyAssignmentResult({
     required this.description,
     required this.displayName,
     required this.enforce,

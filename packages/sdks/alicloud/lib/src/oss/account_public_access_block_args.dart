@@ -12,7 +12,7 @@ class AccountPublicAccessBlockArgs {
 
   /// Creates a new [AccountPublicAccessBlockArgs].
   /// [blockPublicAccess] Whether or not AlibabaCloud OSS should block public bucket policies for buckets in this account is enabled.
-  AccountPublicAccessBlockArgs({
+  const AccountPublicAccessBlockArgs({
     required this.blockPublicAccess,
   });
 

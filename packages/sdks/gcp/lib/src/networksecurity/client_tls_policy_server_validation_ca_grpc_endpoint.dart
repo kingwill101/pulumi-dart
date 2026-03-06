@@ -8,7 +8,7 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint {
 
   /// Creates a new [ClientTlsPolicyServerValidationCaGrpcEndpoint].
   /// [targetUri] The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
-  ClientTlsPolicyServerValidationCaGrpcEndpoint({
+  const ClientTlsPolicyServerValidationCaGrpcEndpoint({
     required this.targetUri,
   });
 

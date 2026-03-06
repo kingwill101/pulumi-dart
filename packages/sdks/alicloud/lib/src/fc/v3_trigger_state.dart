@@ -49,7 +49,7 @@ class V3TriggerState {
   /// [triggerId] (Available since v1.234.0) Trigger ID
   /// [triggerName] Trigger Name
   /// [triggerType] The type of the trigger. Currently, the supported types include oss, log, http, timer, tablestore, cdn_events, mns_topic and eventbridge.
-  V3TriggerState({
+  const V3TriggerState({
     this.createTime,
     this.description,
     this.functionName,

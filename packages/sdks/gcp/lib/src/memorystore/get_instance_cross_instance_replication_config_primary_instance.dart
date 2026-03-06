@@ -11,7 +11,7 @@ class GetInstanceCrossInstanceReplicationConfigPrimaryInstance {
   /// Creates a new [GetInstanceCrossInstanceReplicationConfigPrimaryInstance].
   /// [instance] The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instances/{instance-id}
   /// [uid] The unique id of the primary instance.
-  GetInstanceCrossInstanceReplicationConfigPrimaryInstance({
+  const GetInstanceCrossInstanceReplicationConfigPrimaryInstance({
     required this.instance,
     required this.uid,
   });

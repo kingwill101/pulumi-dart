@@ -8,7 +8,7 @@ class DomainDevicesFilesystemTarget {
 
   /// Creates a new [DomainDevicesFilesystemTarget].
   /// [dir] Configures the directory path for the target where the filesystem is mounted.
-  DomainDevicesFilesystemTarget({
+  const DomainDevicesFilesystemTarget({
     required this.dir,
   });
 

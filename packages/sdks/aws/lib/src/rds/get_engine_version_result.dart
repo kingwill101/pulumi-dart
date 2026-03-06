@@ -99,7 +99,7 @@ class GetEngineVersionResult {
   /// [version] Required.
   /// [versionActual] Complete engine version.
   /// [versionDescription] Description of the engine version.
-  GetEngineVersionResult({
+  const GetEngineVersionResult({
     required this.defaultCharacterSet,
     this.defaultOnly,
     required this.engine,

@@ -57,7 +57,7 @@ class ProfileRewriteArgs {
   /// [signingKey] Specifies a certificate to use for re-signing of signed Java applets after patching. (name should be in full path which is combination of partition and key name )
   /// [signingKeyPassword] Specifies a pass phrase to use for encrypting the private signing key. Since it's a sensitive entity idempotency will fail in the update call.
   /// [splitTunneling] Specifies the type of Client caching. Valid choices are: `true, false`
-  ProfileRewriteArgs({
+  const ProfileRewriteArgs({
     this.bypassLists,
     this.caFile,
     this.cacheType,

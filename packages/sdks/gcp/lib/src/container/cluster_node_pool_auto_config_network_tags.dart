@@ -8,7 +8,7 @@ class ClusterNodePoolAutoConfigNetworkTags {
 
   /// Creates a new [ClusterNodePoolAutoConfigNetworkTags].
   /// [tags] List of network tags applied to auto-provisioned node pools.
-  ClusterNodePoolAutoConfigNetworkTags({
+  const ClusterNodePoolAutoConfigNetworkTags({
     this.tags,
   });
 

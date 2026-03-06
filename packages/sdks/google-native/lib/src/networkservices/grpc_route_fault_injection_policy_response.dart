@@ -14,7 +14,7 @@ class GrpcRouteFaultInjectionPolicyResponse {
   /// Creates a new [GrpcRouteFaultInjectionPolicyResponse].
   /// [abort] The specification for aborting to client requests.
   /// [delay] The specification for injecting delay to client requests.
-  GrpcRouteFaultInjectionPolicyResponse({
+  const GrpcRouteFaultInjectionPolicyResponse({
     required this.abort,
     required this.delay,
   });

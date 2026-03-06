@@ -15,7 +15,7 @@ class AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThre
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold].
   /// [overallToolInvocationCorrectnessThreshold] (Output)
   /// [semanticSimilaritySuccessThreshold] (Output)
-  AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold({
+  const AppVersionSnapshotAppEvaluationMetricsThresholdGoldenEvaluationMetricsThresholdTurnLevelMetricsThreshold({
     this.overallToolInvocationCorrectnessThreshold,
     this.semanticSimilaritySuccessThreshold,
   });

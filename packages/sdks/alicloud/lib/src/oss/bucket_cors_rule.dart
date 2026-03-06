@@ -20,7 +20,7 @@ class BucketCorsRule {
   /// [allowedOrigins] Specifies which origins are allowed.
   /// [exposeHeaders] Specifies expose header in the response.
   /// [maxAgeSeconds] Specifies time in seconds that browser can cache the response for a preflight request.
-  BucketCorsRule({
+  const BucketCorsRule({
     this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

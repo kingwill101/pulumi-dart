@@ -33,7 +33,7 @@ class EipState {
   /// [isp] The Internet service provider. Valid value: `cmcc`, `unicom`, `telecom`.
   /// [paymentType] The billing method of the EIP. Valid value: `PayAsYouGo`.
   /// [status] The status of the EIP.
-  EipState({
+  const EipState({
     this.bandwidth,
     this.createTime,
     this.description,

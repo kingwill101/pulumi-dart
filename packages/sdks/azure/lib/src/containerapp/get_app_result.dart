@@ -65,7 +65,7 @@ class GetAppResult {
   /// [tags] A mapping of tags to assign to the Container App.
   /// [templates] A `template` block as detailed below.
   /// [workloadProfileName] The name of the Workload Profile in the Container App Environment in which this Container App is running.
-  GetAppResult({
+  const GetAppResult({
     required this.containerAppEnvironmentId,
     required this.customDomainVerificationId,
     required this.daprs,

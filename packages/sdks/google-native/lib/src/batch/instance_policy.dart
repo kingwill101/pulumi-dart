@@ -31,7 +31,7 @@ class InstancePolicy {
   /// [minCpuPlatform] The minimum CPU platform. See https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform.
   /// [provisioningModel] The provisioning model.
   /// [reservation] Optional. If specified, VMs will consume only the specified reservation. If not specified (default), VMs will consume any applicable reservation.
-  InstancePolicy({
+  const InstancePolicy({
     this.accelerators,
     this.bootDisk,
     this.disks,

@@ -63,7 +63,7 @@ class SecretArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionId] The version number of the initial version.
   /// [versionStages] The stage label that is used to mark the new version.
-  SecretArgs({
+  const SecretArgs({
     this.description,
     this.dkmsInstanceId,
     this.enableAutomaticRotation,

@@ -32,7 +32,7 @@ class AppMonitorAppMonitorConfiguration {
   /// [includedPages] If this app monitor is to collect data from only certain pages in your application, this structure lists those pages.
   /// [sessionSampleRate] Specifies the percentage of user sessions to use for RUM data collection. Choosing a higher percentage gives you more data but also incurs more costs. The number you specify is the percentage of user sessions that will be used. Default value is `0.1`.
   /// [telemetries] An array that lists the types of telemetry data that this app monitor is to collect. Valid values are `errors`, `performance`, and `http`.
-  AppMonitorAppMonitorConfiguration({
+  const AppMonitorAppMonitorConfiguration({
     this.allowCookies,
     this.enableXray,
     this.excludedPages,

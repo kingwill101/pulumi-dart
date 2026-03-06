@@ -24,7 +24,7 @@ class NetworkWatcherArgs {
   /// [networkWatcherName] The name of the network watcher.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NetworkWatcherArgs({
+  const NetworkWatcherArgs({
     this.id,
     this.location,
     this.networkWatcherName,

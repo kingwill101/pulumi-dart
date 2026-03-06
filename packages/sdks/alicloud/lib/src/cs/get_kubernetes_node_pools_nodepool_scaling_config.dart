@@ -26,7 +26,7 @@ class GetKubernetesNodePoolsNodepoolScalingConfig {
   /// [maxSize] Max number of instances in a auto scaling group, its valid value range [0~1000]. `max_size` has to be greater than `min_size`.
   /// [minSize] Min number of instances in a auto scaling group, its valid value range [0~1000].
   /// [type] Instance classification, not required. Vaild value: `cpu`, `gpu`, `gpushare` and `spot`. Default: `cpu`. The actual instance type is determined by `instance_types`.
-  GetKubernetesNodePoolsNodepoolScalingConfig({
+  const GetKubernetesNodePoolsNodepoolScalingConfig({
     required this.eipBandwidth,
     required this.eipInternetChargeType,
     required this.enable,

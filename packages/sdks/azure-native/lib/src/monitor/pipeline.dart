@@ -21,7 +21,7 @@ class Pipeline {
   /// [processors] Reference to processors configured for the pipeline.
   /// [receivers] Reference to receivers configured for the pipeline.
   /// [type] The type of pipeline
-  Pipeline({
+  const Pipeline({
     required this.exporters,
     required this.name,
     this.processors,

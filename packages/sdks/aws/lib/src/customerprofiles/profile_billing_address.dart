@@ -35,7 +35,7 @@ class ProfileBillingAddress {
   /// [postalCode] The postal code of a customer address.
   /// [province] The province in which a customer lives.
   /// [state] The state in which a customer lives.
-  ProfileBillingAddress({
+  const ProfileBillingAddress({
     this.address1,
     this.address2,
     this.address3,

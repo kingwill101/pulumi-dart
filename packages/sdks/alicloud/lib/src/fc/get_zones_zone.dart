@@ -8,7 +8,7 @@ class GetZonesZone {
 
   /// Creates a new [GetZonesZone].
   /// [id] ID of the zone.
-  GetZonesZone({
+  const GetZonesZone({
     required this.id,
   });
 

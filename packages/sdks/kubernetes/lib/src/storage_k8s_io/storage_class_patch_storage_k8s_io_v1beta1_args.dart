@@ -41,7 +41,7 @@ class StorageClassPatchStorageK8sIoV1beta1Args {
   /// [provisioner] Provisioner indicates the type of the provisioner.
   /// [reclaimPolicy] Dynamically provisioned PersistentVolumes of this storage class are created with this reclaimPolicy. Defaults to Delete.
   /// [volumeBindingMode] VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound.  When unset, VolumeBindingImmediate is used. This field is only honored by servers that enable the VolumeScheduling feature.
-  StorageClassPatchStorageK8sIoV1beta1Args({
+  const StorageClassPatchStorageK8sIoV1beta1Args({
     this.allowVolumeExpansion,
     this.allowedTopologies,
     this.apiVersion,

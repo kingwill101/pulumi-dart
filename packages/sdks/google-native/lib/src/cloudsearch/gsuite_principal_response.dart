@@ -14,7 +14,7 @@ class GSuitePrincipalResponse {
   /// [gsuiteDomain] This principal represents all users of the Google Workspace domain of the customer.
   /// [gsuiteGroupEmail] This principal references a Google Workspace group name.
   /// [gsuiteUserEmail] This principal references a Google Workspace user account.
-  GSuitePrincipalResponse({
+  const GSuitePrincipalResponse({
     required this.gsuiteDomain,
     required this.gsuiteGroupEmail,
     required this.gsuiteUserEmail,

@@ -45,7 +45,7 @@ class StateMachineArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tracingConfiguration] Selects whether AWS X-Ray tracing is enabled.
   /// [type] Determines whether a Standard or Express state machine is created. The default is `STANDARD`. You cannot update the type of a state machine once it has been created. Valid values: `STANDARD`, `EXPRESS`.
-  StateMachineArgs({
+  const StateMachineArgs({
     required this.definition,
     this.encryptionConfiguration,
     this.loggingConfiguration,

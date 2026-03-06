@@ -18,7 +18,7 @@ class ResourceTypeRegistrationPropertiesIdentityManagement {
   /// [applicationIds] The application ids.
   /// [delegationAppIds] The delegation app ids.
   /// [type] The type.
-  ResourceTypeRegistrationPropertiesIdentityManagement({
+  const ResourceTypeRegistrationPropertiesIdentityManagement({
     this.applicationId,
     this.applicationIds,
     this.delegationAppIds,

@@ -25,7 +25,7 @@ class ServiceV3Args {
   /// [name] The service name.
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [type] The service type.
-  ServiceV3Args({
+  const ServiceV3Args({
     this.description,
     this.enabled,
     this.name,

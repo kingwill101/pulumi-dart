@@ -40,7 +40,7 @@ class HypervSitesControllerArgs {
   /// [servicePrincipalIdentityDetails] Gets or sets the service principal identity details used by agent for
   /// [siteName] Site name
   /// [tags] Resource tags.
-  HypervSitesControllerArgs({
+  const HypervSitesControllerArgs({
     this.agentDetails,
     this.applianceName,
     this.discoverySolutionId,

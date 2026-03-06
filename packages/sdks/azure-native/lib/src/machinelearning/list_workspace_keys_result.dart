@@ -11,7 +11,7 @@ class ListWorkspaceKeysResult {
   /// Creates a new [ListWorkspaceKeysResult].
   /// [primaryToken] Primary authorization key for this workspace.
   /// [secondaryToken] Secondary authorization key for this workspace.
-  ListWorkspaceKeysResult({
+  const ListWorkspaceKeysResult({
     this.primaryToken,
     this.secondaryToken,
   });

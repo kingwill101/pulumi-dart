@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The private endpoint connection name.
   /// [properties] Core resource properties
   /// [resourceGroupName] The resource group name.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.factoryName,
     this.privateEndpointConnectionName,
     this.properties,

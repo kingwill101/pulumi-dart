@@ -29,7 +29,7 @@ class InstanceMaintenancePolicyWeeklyMaintenanceWindow {
   /// [day] The day of week that maintenance updates occur.
   /// [duration] (Output)
   /// [startTime] Start time of the window in UTC time.
-  InstanceMaintenancePolicyWeeklyMaintenanceWindow({
+  const InstanceMaintenancePolicyWeeklyMaintenanceWindow({
     required this.day,
     this.duration,
     required this.startTime,

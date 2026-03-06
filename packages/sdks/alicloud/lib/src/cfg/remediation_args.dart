@@ -29,7 +29,7 @@ class RemediationArgs {
   /// [remediationSourceType] Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
   /// [remediationTemplateId] Remediation template ID.
   /// [remediationType] Remediation type, valid values: `OOS`, `FC`.
-  RemediationArgs({
+  const RemediationArgs({
     required this.configRuleId,
     required this.invokeType,
     required this.params,

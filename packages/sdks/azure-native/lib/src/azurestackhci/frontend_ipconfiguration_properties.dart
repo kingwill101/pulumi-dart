@@ -20,7 +20,7 @@ class FrontendIPConfigurationProperties {
   /// [privateIPAllocationMethod] privateIPAllocationMethod - set to Static for requesting a specific IP
   /// [publicIPAddress] Public IP
   /// [subnet] subnet - the subnet from which to allocate the private IP
-  FrontendIPConfigurationProperties({
+  const FrontendIPConfigurationProperties({
     this.privateIPAddress,
     this.privateIPAllocationMethod,
     this.publicIPAddress,

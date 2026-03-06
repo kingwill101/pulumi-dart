@@ -38,7 +38,7 @@ class WebAppAuthSettingsV2Args {
   /// [name] Name of web app.
   /// [platform] The configuration settings of the platform of App Service Authentication/Authorization.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppAuthSettingsV2Args({
+  const WebAppAuthSettingsV2Args({
     this.globalValidation,
     this.httpSettings,
     this.identityProviders,

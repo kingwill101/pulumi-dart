@@ -9,7 +9,7 @@ class SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig {
 
   /// Creates a new [SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig].
   /// [userWorkloadAuthenticationType] Authentication type for the user workload running in containers.
-  SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig({
+  const SessionTemplateEnvironmentConfigExecutionConfigAuthenticationConfig({
     this.userWorkloadAuthenticationType,
   });
 

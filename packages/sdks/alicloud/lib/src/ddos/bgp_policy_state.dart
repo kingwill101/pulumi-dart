@@ -16,7 +16,7 @@ class BgpPolicyState {
   /// [content] Configuration Content See `content` below.
   /// [policyName] The name of the resource
   /// [type] Type
-  BgpPolicyState({
+  const BgpPolicyState({
     this.content,
     this.policyName,
     this.type,

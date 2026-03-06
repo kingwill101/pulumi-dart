@@ -9,7 +9,7 @@ class ListenerRuleActionForwardTargetGroup {
   /// Creates a new [ListenerRuleActionForwardTargetGroup].
   /// [targetGroupIdentifier] Required.
   /// [weight] Optional.
-  ListenerRuleActionForwardTargetGroup({
+  const ListenerRuleActionForwardTargetGroup({
     required this.targetGroupIdentifier,
     this.weight,
   });

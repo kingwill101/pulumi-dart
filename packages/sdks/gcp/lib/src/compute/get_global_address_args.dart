@@ -18,7 +18,7 @@ class GetGlobalAddressArgs {
   /// Creates a new [GetGlobalAddressArgs].
   /// [name] A unique name for the resource, required by GCE.
   /// [project] The project in which the resource belongs. If it
-  GetGlobalAddressArgs({
+  const GetGlobalAddressArgs({
     required this.name,
     this.project,
   });

@@ -11,7 +11,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCou
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader].
   /// [name] Name of the header to insert.
   /// [value] Value of the header to insert.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCountCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

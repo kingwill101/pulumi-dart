@@ -12,7 +12,7 @@ class CustomizableConnectionsConfig {
   /// Creates a new [CustomizableConnectionsConfig].
   /// [templateSpecName] Gets or sets the template name. The template includes ARM templates that can be created by the connector, usually it will be the dataConnectors ARM templates.
   /// [templateSpecVersion] Gets or sets the template version.
-  CustomizableConnectionsConfig({
+  const CustomizableConnectionsConfig({
     required this.templateSpecName,
     required this.templateSpecVersion,
   });

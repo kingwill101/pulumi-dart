@@ -19,7 +19,7 @@ class ConfigDiagnosticsValidatorResult {
   /// [replicaSetSubnetDisplayName] Replica set location and subnet name
   /// [status] Status for individual validator after running diagnostics.
   /// [validatorId] Validator identifier
-  ConfigDiagnosticsValidatorResult({
+  const ConfigDiagnosticsValidatorResult({
     this.issues,
     this.replicaSetSubnetDisplayName,
     this.status,

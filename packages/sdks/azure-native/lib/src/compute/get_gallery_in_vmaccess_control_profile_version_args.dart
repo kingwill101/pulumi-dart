@@ -21,7 +21,7 @@ class GetGalleryInVMAccessControlProfileVersionArgs {
   /// [inVMAccessControlProfileName] The name of the gallery inVMAccessControlProfile to be retrieved.
   /// [inVMAccessControlProfileVersionName] The name of the gallery inVMAccessControlProfile version to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryInVMAccessControlProfileVersionArgs({
+  const GetGalleryInVMAccessControlProfileVersionArgs({
     required this.galleryName,
     required this.inVMAccessControlProfileName,
     required this.inVMAccessControlProfileVersionName,

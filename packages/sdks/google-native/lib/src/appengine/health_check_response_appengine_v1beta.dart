@@ -27,7 +27,7 @@ class HealthCheckResponseAppengineV1beta {
   /// [restartThreshold] Number of consecutive failed health checks required before an instance is restarted.
   /// [timeout] Time before the health check is considered failed.
   /// [unhealthyThreshold] Number of consecutive failed health checks required before removing traffic.
-  HealthCheckResponseAppengineV1beta({
+  const HealthCheckResponseAppengineV1beta({
     required this.checkInterval,
     required this.disableHealthCheck,
     required this.healthyThreshold,

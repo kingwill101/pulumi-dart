@@ -18,7 +18,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigAddressPool {
   /// [avoidBuggyIps] If true, avoid using IPs ending in .0 or .255.
   /// [manualAssign] If true, prevent IP addresses from being automatically assigned.
   /// [pool] The name of the address pool.
-  BareMetalClusterLoadBalancerMetalLbConfigAddressPool({
+  const BareMetalClusterLoadBalancerMetalLbConfigAddressPool({
     required this.addresses,
     this.avoidBuggyIps,
     this.manualAssign,

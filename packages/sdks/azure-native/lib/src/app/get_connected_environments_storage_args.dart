@@ -18,7 +18,7 @@ class GetConnectedEnvironmentsStorageArgs {
   /// [connectedEnvironmentName] Name of the Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageName] Name of the storage.
-  GetConnectedEnvironmentsStorageArgs({
+  const GetConnectedEnvironmentsStorageArgs({
     required this.connectedEnvironmentName,
     required this.resourceGroupName,
     required this.storageName,

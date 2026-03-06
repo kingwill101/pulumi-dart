@@ -27,7 +27,7 @@ class UrlRedirectActionParametersResponse {
   /// [destinationProtocol] Protocol to use for the redirect. The default value is MatchRequest
   /// [redirectType] The redirect type the rule will use when redirecting traffic.
   /// [typeName] Expected value is 'DeliveryRuleUrlRedirectActionParameters'.
-  UrlRedirectActionParametersResponse({
+  const UrlRedirectActionParametersResponse({
     this.customFragment,
     this.customHostname,
     this.customPath,

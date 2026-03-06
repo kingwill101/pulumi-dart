@@ -25,7 +25,7 @@ class VirtualNodeSpec {
   /// [listeners] Listeners from which the virtual node is expected to receive inbound traffic.
   /// [logging] Inbound and outbound access logging information for the virtual node.
   /// [serviceDiscovery] Service discovery information for the virtual node.
-  VirtualNodeSpec({
+  const VirtualNodeSpec({
     this.backendDefaults,
     this.backends,
     this.listeners,

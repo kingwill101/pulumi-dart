@@ -17,7 +17,7 @@ class GetApplicationGatewaySslCertificate {
   /// [keyVaultSecretId] The Secret ID of (base-64 encoded unencrypted pfx) the `Secret` or `Certificate` object stored in Azure KeyVault.
   /// [name] The name of this Application Gateway.
   /// [publicCertData] The Public Certificate Data associated with the SSL Certificate.
-  GetApplicationGatewaySslCertificate({
+  const GetApplicationGatewaySslCertificate({
     required this.id,
     required this.keyVaultSecretId,
     required this.name,

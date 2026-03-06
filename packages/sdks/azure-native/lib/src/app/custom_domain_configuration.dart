@@ -19,7 +19,7 @@ class CustomDomainConfiguration {
   /// [certificatePassword] Certificate password
   /// [certificateValue] PFX or PEM blob
   /// [dnsSuffix] Dns suffix for the environment domain
-  CustomDomainConfiguration({
+  const CustomDomainConfiguration({
     this.certificateKeyVaultProperties,
     this.certificatePassword,
     this.certificateValue,

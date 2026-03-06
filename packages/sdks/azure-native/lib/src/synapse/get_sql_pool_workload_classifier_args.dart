@@ -24,7 +24,7 @@ class GetSqlPoolWorkloadClassifierArgs {
   /// [workloadClassifierName] The name of the workload classifier.
   /// [workloadGroupName] The name of the workload group.
   /// [workspaceName] The name of the workspace.
-  GetSqlPoolWorkloadClassifierArgs({
+  const GetSqlPoolWorkloadClassifierArgs({
     required this.resourceGroupName,
     required this.sqlPoolName,
     required this.workloadClassifierName,

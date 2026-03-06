@@ -21,7 +21,7 @@ class GetRestorePointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [restorePointCollectionName] The name of the restore point collection.
   /// [restorePointName] The name of the restore point.
-  GetRestorePointArgs({
+  const GetRestorePointArgs({
     this.expand,
     required this.resourceGroupName,
     required this.restorePointCollectionName,

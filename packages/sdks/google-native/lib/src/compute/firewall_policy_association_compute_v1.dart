@@ -11,7 +11,7 @@ class FirewallPolicyAssociationComputeV1 {
   /// Creates a new [FirewallPolicyAssociationComputeV1].
   /// [attachmentTarget] The target that the firewall policy is attached to.
   /// [name] The name for an association.
-  FirewallPolicyAssociationComputeV1({
+  const FirewallPolicyAssociationComputeV1({
     this.attachmentTarget,
     this.name,
   });

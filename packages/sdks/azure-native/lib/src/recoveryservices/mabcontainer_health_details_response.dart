@@ -18,7 +18,7 @@ class MABContainerHealthDetailsResponse {
   /// [message] Health Message
   /// [recommendations] Health Recommended Actions
   /// [title] Health Title
-  MABContainerHealthDetailsResponse({
+  const MABContainerHealthDetailsResponse({
     this.code,
     this.message,
     this.recommendations,

@@ -12,7 +12,7 @@ class ClusterNodePoolNodeConfigWorkloadMetadataConfig {
 
   /// Creates a new [ClusterNodePoolNodeConfigWorkloadMetadataConfig].
   /// [mode] How to expose the node metadata to the workload running on the node.
-  ClusterNodePoolNodeConfigWorkloadMetadataConfig({
+  const ClusterNodePoolNodeConfigWorkloadMetadataConfig({
     required this.mode,
   });
 

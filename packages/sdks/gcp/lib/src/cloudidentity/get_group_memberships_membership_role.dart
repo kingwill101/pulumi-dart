@@ -13,7 +13,7 @@ class GetGroupMembershipsMembershipRole {
   /// Creates a new [GetGroupMembershipsMembershipRole].
   /// [expiryDetails] The MembershipRole expiry details, only supported for MEMBER role.
   /// [name] The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
-  GetGroupMembershipsMembershipRole({
+  const GetGroupMembershipsMembershipRole({
     required this.expiryDetails,
     required this.name,
   });

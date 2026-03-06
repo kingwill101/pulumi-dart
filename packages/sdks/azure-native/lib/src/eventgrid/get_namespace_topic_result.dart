@@ -34,7 +34,7 @@ class GetNamespaceTopicResult {
   /// [publisherType] Publisher type of the namespace topic.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetNamespaceTopicResult({
+  const GetNamespaceTopicResult({
     required this.azureApiVersion,
     this.eventRetentionInDays,
     required this.id,

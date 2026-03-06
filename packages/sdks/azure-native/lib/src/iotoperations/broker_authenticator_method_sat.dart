@@ -9,7 +9,7 @@ class BrokerAuthenticatorMethodSat {
 
   /// Creates a new [BrokerAuthenticatorMethodSat].
   /// [audiences] List of allowed audience.
-  BrokerAuthenticatorMethodSat({
+  const BrokerAuthenticatorMethodSat({
     required this.audiences,
   });
 

@@ -14,7 +14,7 @@ class ScaleSetSku {
   /// [capacity] Specifies the number of virtual machines in the scale set.
   /// [name] Specifies the size of virtual machines in a scale set.
   /// [tier] Specifies the tier of virtual machines in a scale set. Possible values, `standard` or `basic`.
-  ScaleSetSku({
+  const ScaleSetSku({
     required this.capacity,
     required this.name,
     this.tier,

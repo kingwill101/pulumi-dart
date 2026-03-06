@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField {
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField].
   /// [name] Name describing the field excluded from scanning.
-  PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField({
+  const PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField({
     required this.name,
   });
 

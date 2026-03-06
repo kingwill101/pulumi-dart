@@ -23,7 +23,7 @@ class CodeToolsSettingEnabledTool {
   /// [handle] Handle used to invoke the tool.
   /// [tool] Link to the Tool
   /// [uriOverride] Overridden URI, if allowed by Tool.
-  CodeToolsSettingEnabledTool({
+  const CodeToolsSettingEnabledTool({
     this.accountConnector,
     this.configs,
     required this.handle,

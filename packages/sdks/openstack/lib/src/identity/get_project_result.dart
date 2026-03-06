@@ -35,7 +35,7 @@ class GetProjectResult {
   /// [projectId] See Argument Reference above.
   /// [region] See Argument Reference above.
   /// [tags] See Argument Reference above.
-  GetProjectResult({
+  const GetProjectResult({
     required this.description,
     required this.domainId,
     this.enabled,

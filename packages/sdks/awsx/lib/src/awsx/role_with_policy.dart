@@ -40,7 +40,7 @@ class RoleWithPolicy {
   /// [permissionsBoundary] ARN of the policy that is used to set the permissions boundary for the role.
   /// [policyArns] ARNs of the policies to attach to the created role.
   /// [tags] Key-value mapping of tags for the IAM role. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  RoleWithPolicy({
+  const RoleWithPolicy({
     this.description,
     this.forceDetachPolicies,
     this.inlinePolicies,

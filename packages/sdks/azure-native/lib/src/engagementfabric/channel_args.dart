@@ -27,7 +27,7 @@ class ChannelArgs {
   /// [channelType] The channel type
   /// [credentials] The channel credentials
   /// [resourceGroupName] Resource Group Name
-  ChannelArgs({
+  const ChannelArgs({
     required this.accountName,
     this.channelFunctions,
     this.channelName,

@@ -35,7 +35,7 @@ class RegistrationAssignmentPropertiesResponseProperties {
   /// [manageeTenantName] The name of the managed tenant.
   /// [provisioningState] The current provisioning state of the registration definition.
   /// [registrationDefinitionName] The name of the registration definition.
-  RegistrationAssignmentPropertiesResponseProperties({
+  const RegistrationAssignmentPropertiesResponseProperties({
     this.authorizations,
     this.description,
     this.eligibleAuthorizations,

@@ -30,7 +30,7 @@ class VirtualMachineScaleSetPublicIPAddressConfigurationProperties {
   /// [ipTags] The list of IP tags associated with the public IP address.
   /// [publicIPAddressVersion] Available from Api-Version 2019-07-01 onwards, it represents whether the
   /// [publicIPPrefix] The PublicIPPrefix from which to allocate publicIP addresses.
-  VirtualMachineScaleSetPublicIPAddressConfigurationProperties({
+  const VirtualMachineScaleSetPublicIPAddressConfigurationProperties({
     this.deleteOption,
     this.dnsSettings,
     this.idleTimeoutInMinutes,

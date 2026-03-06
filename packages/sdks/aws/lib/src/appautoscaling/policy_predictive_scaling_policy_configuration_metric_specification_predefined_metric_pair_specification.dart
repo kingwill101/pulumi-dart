@@ -11,7 +11,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMet
   /// Creates a new [PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMetricPairSpecification].
   /// [predefinedMetricType] Which metrics to use. There are two different types of metrics for each metric type: one is a load metric and one is a scaling metric.
   /// [resourceLabel] Label that uniquely identifies a specific target group from which to determine the total and average request count.
-  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMetricPairSpecification({
+  const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationPredefinedMetricPairSpecification({
     required this.predefinedMetricType,
     this.resourceLabel,
   });

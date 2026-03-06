@@ -15,7 +15,7 @@ class GetAppTemplateAzureQueueScaleRule {
   /// [name] The name of the Container App.
   /// [queueLength] Required.
   /// [queueName] Required.
-  GetAppTemplateAzureQueueScaleRule({
+  const GetAppTemplateAzureQueueScaleRule({
     required this.authentications,
     required this.name,
     required this.queueLength,

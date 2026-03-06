@@ -12,7 +12,7 @@ class EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse {
   /// Creates a new [EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse].
   /// [labelName] Label name presented as key in xDS Node Metadata.
   /// [labelValue] Label value presented as value corresponding to the above key, in xDS Node Metadata.
-  EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse({
+  const EndpointMatcherMetadataLabelMatcherMetadataLabelsResponse({
     required this.labelName,
     required this.labelValue,
   });

@@ -17,7 +17,7 @@ class GetBackendServiceConsistentHashHttpCooky {
   /// [name] The name of the Backend Service.
   /// [path] Path to set for the cookie.
   /// [ttls] Lifetime of the cookie.
-  GetBackendServiceConsistentHashHttpCooky({
+  const GetBackendServiceConsistentHashHttpCooky({
     required this.name,
     required this.path,
     required this.ttls,

@@ -21,7 +21,7 @@ class InstanceDesiredUserCreatedEndpointsState {
   /// [name] The name of the Memorystore instance these endpoints should be added to.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The name of the region of the Memorystore instance these endpoints should be added to.
-  InstanceDesiredUserCreatedEndpointsState({
+  const InstanceDesiredUserCreatedEndpointsState({
     this.desiredUserCreatedEndpoints,
     this.name,
     this.project,

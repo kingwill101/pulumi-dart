@@ -9,7 +9,7 @@ class SoleTenantNodeTypeResponse {
 
   /// Creates a new [SoleTenantNodeTypeResponse].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  SoleTenantNodeTypeResponse({
+  const SoleTenantNodeTypeResponse({
     required this.nodeName,
   });
 

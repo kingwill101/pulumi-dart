@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecListenerConnectionPoolHttp2 {
 
   /// Creates a new [GetVirtualGatewaySpecListenerConnectionPoolHttp2].
   /// [maxRequests] Required.
-  GetVirtualGatewaySpecListenerConnectionPoolHttp2({
+  const GetVirtualGatewaySpecListenerConnectionPoolHttp2({
     required this.maxRequests,
   });
 

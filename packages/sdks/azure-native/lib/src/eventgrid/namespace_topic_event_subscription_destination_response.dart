@@ -15,7 +15,7 @@ class NamespaceTopicEventSubscriptionDestinationResponse {
   /// Creates a new [NamespaceTopicEventSubscriptionDestinationResponse].
   /// [endpointType] Type of the endpoint for the event subscription destination.
   /// [resourceId] The Azure resource Id that represents the endpoint of the Event Grid Namespace Topic destination of an event subscription.
-  NamespaceTopicEventSubscriptionDestinationResponse({
+  const NamespaceTopicEventSubscriptionDestinationResponse({
     required this.endpointType,
     this.resourceId,
   });

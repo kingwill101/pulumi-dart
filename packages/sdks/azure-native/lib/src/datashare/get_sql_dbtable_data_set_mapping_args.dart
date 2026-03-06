@@ -21,7 +21,7 @@ class GetSqlDBTableDataSetMappingArgs {
   /// [dataSetMappingName] The name of the dataSetMapping.
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
-  GetSqlDBTableDataSetMappingArgs({
+  const GetSqlDBTableDataSetMappingArgs({
     required this.accountName,
     required this.dataSetMappingName,
     required this.resourceGroupName,

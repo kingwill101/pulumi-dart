@@ -58,7 +58,7 @@ class EcsBackupPlanState {
   /// [speedLimit] Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
   /// [updatePaths] Attribute update_paths has been deprecated in v1.139.0+, and you do not need to set it anymore.
   /// [vaultId] The ID of Backup vault.
-  EcsBackupPlanState({
+  const EcsBackupPlanState({
     this.backupType,
     this.crossAccountRoleName,
     this.crossAccountType,

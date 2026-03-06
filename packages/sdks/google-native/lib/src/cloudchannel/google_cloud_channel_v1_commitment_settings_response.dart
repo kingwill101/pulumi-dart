@@ -16,7 +16,7 @@ class GoogleCloudChannelV1CommitmentSettingsResponse {
   /// [endTime] Commitment end timestamp.
   /// [renewalSettings] Optional. Renewal settings applicable for a commitment-based Offer.
   /// [startTime] Commitment start timestamp.
-  GoogleCloudChannelV1CommitmentSettingsResponse({
+  const GoogleCloudChannelV1CommitmentSettingsResponse({
     required this.endTime,
     required this.renewalSettings,
     required this.startTime,

@@ -27,7 +27,7 @@ class GetMigrateAgentResult {
   /// [systemData] Required.
   /// [tags] Gets or sets the resource tags.
   /// [type] Gets or sets the type of the resource.
-  GetMigrateAgentResult({
+  const GetMigrateAgentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

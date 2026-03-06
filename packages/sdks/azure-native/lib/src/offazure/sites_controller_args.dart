@@ -37,7 +37,7 @@ class SitesControllerArgs {
   /// [servicePrincipalIdentityDetails] Gets or sets the service principal identity details used by agent for
   /// [siteName] Site name
   /// [tags] Resource tags.
-  SitesControllerArgs({
+  const SitesControllerArgs({
     this.agentDetails,
     this.applianceName,
     this.discoverySolutionId,

@@ -15,7 +15,7 @@ class ClusterConfigurationExecuteCommandConfiguration {
   /// [kmsKeyId] AWS Key Management Service key ID to encrypt the data between the local client and the container.
   /// [logConfiguration] Log configuration for the results of the execute command actions. Required when `logging` is `OVERRIDE`. See `log_configuration` Block for details.
   /// [logging] Log setting to use for redirecting logs for your execute command results. Valid values: `NONE`, `DEFAULT`, `OVERRIDE`.
-  ClusterConfigurationExecuteCommandConfiguration({
+  const ClusterConfigurationExecuteCommandConfiguration({
     this.kmsKeyId,
     this.logConfiguration,
     this.logging,

@@ -19,7 +19,7 @@ class BackendServerArgs {
   /// [backendServers] A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
   /// [deleteProtectionValidation] Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
   /// [loadBalancerId] ID of the load balancer.
-  BackendServerArgs({
+  const BackendServerArgs({
     this.backendServers,
     this.deleteProtectionValidation,
     required this.loadBalancerId,

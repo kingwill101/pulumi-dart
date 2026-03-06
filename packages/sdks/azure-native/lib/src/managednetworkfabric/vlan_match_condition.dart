@@ -15,7 +15,7 @@ class VlanMatchCondition {
   /// [innerVlans] List of inner vlans that need to be matched.
   /// [vlanGroupNames] List of vlan group names that need to be matched.
   /// [vlans] List of vlans that need to be matched.
-  VlanMatchCondition({
+  const VlanMatchCondition({
     this.innerVlans,
     this.vlanGroupNames,
     this.vlans,

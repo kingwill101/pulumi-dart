@@ -9,7 +9,7 @@ class LBBackendAddressPoolResourceSettings {
 
   /// Creates a new [LBBackendAddressPoolResourceSettings].
   /// [name] Gets or sets the backend address pool name.
-  LBBackendAddressPoolResourceSettings({
+  const LBBackendAddressPoolResourceSettings({
     this.name,
   });
 

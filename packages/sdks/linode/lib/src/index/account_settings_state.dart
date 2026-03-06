@@ -27,7 +27,7 @@ class AccountSettingsState {
   /// [managed] Enables monitoring for connectivity, response, and total request time.
   /// [networkHelper] Enables network helper across all users by default for new Linodes and Linode Configs.
   /// [objectStorage] A string describing the status of this account's Object Storage service enrollment.
-  AccountSettingsState({
+  const AccountSettingsState({
     this.backupsEnabled,
     this.interfacesForNewLinodes,
     this.longviewSubscription,

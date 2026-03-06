@@ -8,7 +8,7 @@ class ConfigFileResponse {
 
   /// Creates a new [ConfigFileResponse].
   /// [content] The contents of the file.
-  ConfigFileResponse({
+  const ConfigFileResponse({
     required this.content,
   });
 

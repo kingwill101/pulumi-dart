@@ -13,7 +13,7 @@ class TargetGroupTargetGroupHealth {
   /// Creates a new [TargetGroupTargetGroupHealth].
   /// [dnsFailover] Block to configure DNS Failover requirements. See DNS Failover below for details on attributes.
   /// [unhealthyStateRouting] Block to configure Unhealthy State Routing requirements. See Unhealthy State Routing below for details on attributes.
-  TargetGroupTargetGroupHealth({
+  const TargetGroupTargetGroupHealth({
     this.dnsFailover,
     this.unhealthyStateRouting,
   });

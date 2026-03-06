@@ -22,7 +22,7 @@ class GetStoresResult {
   /// [outputFile] Optional.
   /// [project] Required.
   /// [stores] Required.
-  GetStoresResult({
+  const GetStoresResult({
     required this.id,
     required this.ids,
     this.nameRegex,

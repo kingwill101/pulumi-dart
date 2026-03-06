@@ -29,7 +29,7 @@ class FrontdoorCustomDomainArgs {
   /// [hostName] The host name of the domain. The `host_name` field must be the FQDN of your domain(e.g. `contoso.fabrikam.com`). Changing this forces a new Front Door Custom Domain to be created.
   /// [name] The name which should be used for this Front Door Custom Domain. Possible values must be between 2 and 260 characters in length, must begin with a letter or number, end with a letter or number and contain only letters, numbers and hyphens. Changing this forces a new Front Door Custom Domain to be created.
   /// [tls] A `tls` block as defined below.
-  FrontdoorCustomDomainArgs({
+  const FrontdoorCustomDomainArgs({
     required this.cdnFrontdoorProfileId,
     this.dnsZoneId,
     required this.hostName,

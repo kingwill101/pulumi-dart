@@ -12,7 +12,7 @@ class GetDiagnosticCategoriesArgs {
 
   /// Creates a new [GetDiagnosticCategoriesArgs].
   /// [resourceId] The ID of an existing Resource which Monitor Diagnostics Categories should be retrieved for.
-  GetDiagnosticCategoriesArgs({
+  const GetDiagnosticCategoriesArgs({
     required this.resourceId,
   });
 

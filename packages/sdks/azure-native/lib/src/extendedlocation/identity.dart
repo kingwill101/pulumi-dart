@@ -9,7 +9,7 @@ class Identity {
 
   /// Creates a new [Identity].
   /// [type] The identity type.
-  Identity({
+  const Identity({
     this.type,
   });
 

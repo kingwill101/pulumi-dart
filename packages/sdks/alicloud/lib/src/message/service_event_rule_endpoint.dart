@@ -11,7 +11,7 @@ class ServiceEventRuleEndpoint {
   /// Creates a new [ServiceEventRuleEndpoint].
   /// [endpointType] Message receiving terminal endpoint type
   /// [endpointValue] Message Receiving Terminal Endpoint
-  ServiceEventRuleEndpoint({
+  const ServiceEventRuleEndpoint({
     this.endpointType,
     this.endpointValue,
   });

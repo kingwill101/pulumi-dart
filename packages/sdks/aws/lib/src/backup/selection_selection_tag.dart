@@ -14,7 +14,7 @@ class SelectionSelectionTag {
   /// [key] Key for the filter.
   /// [type] An operation, such as `STRINGEQUALS`, that is applied to the key-value pair used to filter resources in a selection.
   /// [value] Value for the filter.
-  SelectionSelectionTag({
+  const SelectionSelectionTag({
     required this.key,
     required this.type,
     required this.value,

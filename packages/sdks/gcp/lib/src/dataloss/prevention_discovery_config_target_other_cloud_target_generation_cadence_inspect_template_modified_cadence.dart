@@ -9,7 +9,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTem
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when the template is modified. Defaults to never.
-  PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadenceInspectTemplateModifiedCadence({
     this.frequency,
   });
 

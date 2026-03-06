@@ -33,7 +33,7 @@ class WorkforcePoolProviderKeyKeyData {
   /// [keySpec] The specifications for the key.
   /// [notAfterTime] (Output)
   /// [notBeforeTime] (Output)
-  WorkforcePoolProviderKeyKeyData({
+  const WorkforcePoolProviderKeyKeyData({
     this.format,
     this.key,
     required this.keySpec,

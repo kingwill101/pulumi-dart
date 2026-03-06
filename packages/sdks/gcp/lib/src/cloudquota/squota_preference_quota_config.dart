@@ -28,7 +28,7 @@ class SQuotaPreferenceQuotaConfig {
   /// [requestOrigin] (Output)
   /// [stateDetail] (Output)
   /// [traceId] (Output)
-  SQuotaPreferenceQuotaConfig({
+  const SQuotaPreferenceQuotaConfig({
     this.annotations,
     this.grantedValue,
     required this.preferredValue,

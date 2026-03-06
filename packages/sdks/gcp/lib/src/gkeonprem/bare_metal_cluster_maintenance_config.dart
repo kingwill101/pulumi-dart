@@ -11,7 +11,7 @@ class BareMetalClusterMaintenanceConfig {
 
   /// Creates a new [BareMetalClusterMaintenanceConfig].
   /// [maintenanceAddressCidrBlocks] All IPv4 address from these ranges will be placed into maintenance mode.
-  BareMetalClusterMaintenanceConfig({
+  const BareMetalClusterMaintenanceConfig({
     required this.maintenanceAddressCidrBlocks,
   });
 

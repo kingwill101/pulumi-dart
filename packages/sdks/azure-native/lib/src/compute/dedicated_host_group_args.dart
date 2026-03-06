@@ -34,7 +34,7 @@ class DedicatedHostGroupArgs {
   /// [supportAutomaticPlacement] Specifies whether virtual machines or virtual machine scale sets can be placed automatically on the dedicated host group. Automatic placement means resources are allocated on dedicated hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to 'false' when not provided. Minimum api-version: 2020-06-01.
   /// [tags] Resource tags.
   /// [zones] The availability zones.
-  DedicatedHostGroupArgs({
+  const DedicatedHostGroupArgs({
     this.additionalCapabilities,
     this.hostGroupName,
     this.location,

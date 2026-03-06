@@ -12,7 +12,7 @@ class BucketLifecycleRuleFilterNot {
   /// Creates a new [BucketLifecycleRuleFilterNot].
   /// [prefix] The prefix in the names of the objects to which the lifecycle rule does not apply.
   /// [tag] The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-  BucketLifecycleRuleFilterNot({
+  const BucketLifecycleRuleFilterNot({
     this.prefix,
     this.tag,
   });

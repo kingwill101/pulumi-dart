@@ -40,7 +40,7 @@ class DiscountCustomPriceMultiCurrency {
   /// [productFamilyName] Product family for which the discount is given. Validation: Optional
   /// [productId] Product ID for which the discount is given. Validation: Optional. No specific format, example: DZH318Z09V6F
   /// [skuId] ResourceSku for the given discount. Validation: Optional.
-  DiscountCustomPriceMultiCurrency({
+  const DiscountCustomPriceMultiCurrency({
     required this.applyDiscountOn,
     this.conditions,
     this.customPriceProperties,

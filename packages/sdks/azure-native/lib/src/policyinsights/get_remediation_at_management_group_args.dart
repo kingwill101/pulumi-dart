@@ -18,7 +18,7 @@ class GetRemediationAtManagementGroupArgs {
   /// [managementGroupId] Management group ID.
   /// [managementGroupsNamespace] The namespace for Microsoft Management RP; only "Microsoft.Management" is allowed.
   /// [remediationName] The name of the remediation.
-  GetRemediationAtManagementGroupArgs({
+  const GetRemediationAtManagementGroupArgs({
     required this.managementGroupId,
     required this.managementGroupsNamespace,
     required this.remediationName,

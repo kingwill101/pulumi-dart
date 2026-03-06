@@ -28,7 +28,7 @@ class GetResourcesArgs {
   /// [resourceArnLists] Specifies a list of ARNs of resources for which you want to retrieve tag data. Conflicts with `filter`.
   /// [resourceTypeFilters] Constraints on the resources that you want returned. The format of each resource type is `service:resourceType`. For example, specifying a resource type of `ec2` returns all Amazon EC2 resources (which includes EC2 instances). Specifying a resource type of `ec2:instance` returns only EC2 instances.
   /// [tagFilters] Specifies a list of Tag Filters (keys and values) to restrict the output to only those resources that have the specified tag and, if included, the specified value. See Tag Filter below. Conflicts with `resource_arn_list`.
-  GetResourcesArgs({
+  const GetResourcesArgs({
     this.excludeCompliantResources,
     this.includeComplianceDetails,
     this.region,

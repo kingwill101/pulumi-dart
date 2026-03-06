@@ -9,7 +9,7 @@ class MoboBrokerResourceResponse {
 
   /// Creates a new [MoboBrokerResourceResponse].
   /// [id] Resource Id of MoboBrokerResource
-  MoboBrokerResourceResponse({
+  const MoboBrokerResourceResponse({
     required this.id,
   });
 

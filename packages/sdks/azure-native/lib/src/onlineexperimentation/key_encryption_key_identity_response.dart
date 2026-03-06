@@ -15,7 +15,7 @@ class KeyEncryptionKeyIdentityResponse {
   /// [federatedClientId] application client identity to use for accessing key encryption key Url in a different tenant. Ex: f83c6b1b-4d34-47e4-bb34-9d83df58b540
   /// [identityType] The type of identity to use. Values can be systemAssignedIdentity, userAssignedIdentity, or delegatedResourceIdentity.
   /// [userAssignedIdentityResourceId] User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/fa5fc227-a624-475e-b696-cdd604c735bc/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId. Mutually exclusive with identityType systemAssignedIdentity.
-  KeyEncryptionKeyIdentityResponse({
+  const KeyEncryptionKeyIdentityResponse({
     this.federatedClientId,
     this.identityType,
     this.userAssignedIdentityResourceId,

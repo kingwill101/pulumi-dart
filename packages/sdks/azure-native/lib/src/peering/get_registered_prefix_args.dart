@@ -18,7 +18,7 @@ class GetRegisteredPrefixArgs {
   /// [peeringName] The name of the peering.
   /// [registeredPrefixName] The name of the registered prefix.
   /// [resourceGroupName] The name of the resource group.
-  GetRegisteredPrefixArgs({
+  const GetRegisteredPrefixArgs({
     required this.peeringName,
     required this.registeredPrefixName,
     required this.resourceGroupName,

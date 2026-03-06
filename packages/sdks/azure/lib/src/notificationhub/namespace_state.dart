@@ -36,7 +36,7 @@ class NamespaceState {
   /// [skuName] The name of the SKU to use for this Notification Hub Namespace. Possible values are `Free`, `Basic` or `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundancyEnabled] Is Zone Redundancy Enabled for the Notification Hub Namespace. Defaults to `false`. Changing this forces a new resource to be created.
-  NamespaceState({
+  const NamespaceState({
     this.enabled,
     this.location,
     this.name,

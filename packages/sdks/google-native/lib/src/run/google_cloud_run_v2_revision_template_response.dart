@@ -49,7 +49,7 @@ class GoogleCloudRunV2RevisionTemplateResponse {
   /// [timeout] Max allowed time for an instance to respond to a request.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccess] VPC Access configuration to use for this Revision. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
-  GoogleCloudRunV2RevisionTemplateResponse({
+  const GoogleCloudRunV2RevisionTemplateResponse({
     required this.annotations,
     required this.containers,
     required this.encryptionKey,

@@ -27,7 +27,7 @@ class ProviderRegistrationPropertiesProviderHubMetadataResponse {
   /// [providerAuthorizations] The provider authorizations.
   /// [regionalAsyncOperationResourceTypeName] The regional async operation resource type name.
   /// [thirdPartyProviderAuthorization] The third party provider authorization.
-  ProviderRegistrationPropertiesProviderHubMetadataResponse({
+  const ProviderRegistrationPropertiesProviderHubMetadataResponse({
     this.directRpRoleDefinitionId,
     this.globalAsyncOperationResourceTypeName,
     this.providerAuthentication,

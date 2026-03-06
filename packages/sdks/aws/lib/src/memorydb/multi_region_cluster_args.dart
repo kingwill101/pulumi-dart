@@ -46,7 +46,7 @@ class MultiRegionClusterArgs {
   /// [timeouts] Optional.
   /// [tlsEnabled] A flag to enable in-transit encryption on the cluster.
   /// [updateStrategy] Optional.
-  MultiRegionClusterArgs({
+  const MultiRegionClusterArgs({
     this.description,
     this.engine,
     this.engineVersion,

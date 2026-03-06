@@ -67,7 +67,7 @@ class AppServiceEnvironmentArgs {
   /// [userWhitelistedIpRanges] User added ip ranges to whitelist on ASE db
   /// [virtualNetwork] Description of the Virtual Network.
   /// [zoneRedundant] Whether or not this App Service Environment is zone-redundant.
-  AppServiceEnvironmentArgs({
+  const AppServiceEnvironmentArgs({
     this.clusterSettings,
     this.customDnsSuffixConfiguration,
     this.dedicatedHostCount,

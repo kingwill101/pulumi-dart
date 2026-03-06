@@ -21,7 +21,7 @@ class BgpIpArgs {
   /// [ip] The IP address that you want to add.
   /// [memberUid] The member to which the asset belongs.
   /// [resourceGroupId] Field `resource_group_id` has been deprecated from provider version 1.259.0.
-  BgpIpArgs({
+  const BgpIpArgs({
     required this.instanceId,
     required this.ip,
     this.memberUid,

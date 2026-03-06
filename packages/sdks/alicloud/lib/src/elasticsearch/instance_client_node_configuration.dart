@@ -17,7 +17,7 @@ class InstanceClientNodeConfiguration {
   /// [disk] Elasticsearch cluster coordinates node disk size
   /// [diskType] Elasticsearch cluster coordination node disk type
   /// [spec] Elasticsearch cluster coordination node specification
-  InstanceClientNodeConfiguration({
+  const InstanceClientNodeConfiguration({
     this.amount,
     this.disk,
     this.diskType,

@@ -48,7 +48,7 @@ class P2SVpnServerConfigurationPropertiesResponse {
   /// [radiusServerSecret] The radius secret property of the P2SVpnServerConfiguration resource for point to site client connection.
   /// [vpnClientIpsecPolicies] VpnClientIpsecPolicies for P2SVpnServerConfiguration.
   /// [vpnProtocols] VPN protocols for the P2SVpnServerConfiguration.
-  P2SVpnServerConfigurationPropertiesResponse({
+  const P2SVpnServerConfigurationPropertiesResponse({
     this.etag,
     this.name,
     required this.p2SVpnGateways,

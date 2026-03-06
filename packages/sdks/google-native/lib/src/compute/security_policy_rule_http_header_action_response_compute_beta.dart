@@ -9,7 +9,7 @@ class SecurityPolicyRuleHttpHeaderActionResponseComputeBeta {
 
   /// Creates a new [SecurityPolicyRuleHttpHeaderActionResponseComputeBeta].
   /// [requestHeadersToAdds] The list of request headers to add or overwrite if they're already present.
-  SecurityPolicyRuleHttpHeaderActionResponseComputeBeta({
+  const SecurityPolicyRuleHttpHeaderActionResponseComputeBeta({
     required this.requestHeadersToAdds,
   });
 

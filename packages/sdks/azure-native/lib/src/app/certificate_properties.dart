@@ -19,7 +19,7 @@ class CertificateProperties {
   /// [certificateType] The type of the certificate. Allowed values are `ServerSSLCertificate` and `ImagePullTrustedCA`
   /// [password] Certificate password.
   /// [value] PFX or PEM blob
-  CertificateProperties({
+  const CertificateProperties({
     this.certificateKeyVaultProperties,
     this.certificateType,
     this.password,

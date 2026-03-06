@@ -25,7 +25,7 @@ class AiFeatureStoreEntityTypeMonitoringConfig {
   /// [importFeaturesAnalysis] The config for ImportFeatures Analysis Based Feature Monitoring.
   /// [numericalThresholdConfig] Threshold for numerical features of anomaly detection. This is shared by all objectives of Featurestore Monitoring for numerical features (i.e. Features with type (Feature.ValueType) DOUBLE or INT64).
   /// [snapshotAnalysis] The config for Snapshot Analysis Based Feature Monitoring.
-  AiFeatureStoreEntityTypeMonitoringConfig({
+  const AiFeatureStoreEntityTypeMonitoringConfig({
     this.categoricalThresholdConfig,
     this.importFeaturesAnalysis,
     this.numericalThresholdConfig,

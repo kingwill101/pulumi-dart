@@ -35,7 +35,7 @@ class TlsRouteArgs {
   /// [project] Optional.
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied. If there are multiple rules then the action taken will be the first rule to match.
   /// [tlsRouteId] Required. Short name of the TlsRoute resource to be created.
-  TlsRouteArgs({
+  const TlsRouteArgs({
     this.description,
     this.gateways,
     this.labels,

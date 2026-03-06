@@ -21,7 +21,7 @@ class ConfigArgs {
   /// [description] Abnormal Alarm General Description of the Configuration Item.
   /// [lang] The language of the request and response. Valid values: `zh`,`en`.
   /// [value] The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
-  ConfigArgs({
+  const ConfigArgs({
     this.code,
     this.description,
     this.lang,

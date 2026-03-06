@@ -8,7 +8,7 @@ class GetContainerAcl {
 
   /// Creates a new [GetContainerAcl].
   /// [read] Required.
-  GetContainerAcl({
+  const GetContainerAcl({
     required this.read,
   });
 

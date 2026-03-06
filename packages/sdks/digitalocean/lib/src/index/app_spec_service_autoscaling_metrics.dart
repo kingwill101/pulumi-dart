@@ -9,7 +9,7 @@ class AppSpecServiceAutoscalingMetrics {
 
   /// Creates a new [AppSpecServiceAutoscalingMetrics].
   /// [cpu] Settings for scaling the component based on CPU utilization.
-  AppSpecServiceAutoscalingMetrics({
+  const AppSpecServiceAutoscalingMetrics({
     this.cpu,
   });
 

@@ -60,7 +60,7 @@ class GetDdosCooDomainResourcesResource {
   /// [sslCiphers] The type of the cipher suite.
   /// [sslProtocols] The version of the TLS protocol.
   /// [whiteLists] The IP addresses in the whitelist for the domain name.
-  GetDdosCooDomainResourcesResource({
+  const GetDdosCooDomainResourcesResource({
     required this.blackLists,
     required this.ccEnabled,
     required this.ccRuleEnabled,

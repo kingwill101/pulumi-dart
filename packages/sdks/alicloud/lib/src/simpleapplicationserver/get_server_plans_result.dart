@@ -28,7 +28,7 @@ class GetServerPlansResult {
   /// [outputFile] Optional.
   /// [plans] Required.
   /// [platform] Optional.
-  GetServerPlansResult({
+  const GetServerPlansResult({
     this.bandwidth,
     this.core,
     this.diskSize,

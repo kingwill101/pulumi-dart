@@ -41,7 +41,7 @@ class ScanRuleArgs {
   /// [scanScope] Scan scope
   /// [scanType] Scan type:
   /// [triggerType] Trigger type
-  ScanRuleArgs({
+  const ScanRuleArgs({
     required this.instanceId,
     this.namespaces,
     this.repoNames,

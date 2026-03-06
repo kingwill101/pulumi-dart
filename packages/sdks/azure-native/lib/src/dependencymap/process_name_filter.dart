@@ -12,7 +12,7 @@ class ProcessNameFilter {
   /// Creates a new [ProcessNameFilter].
   /// [operator] Operator for process name filter
   /// [processNames] List of process names on which the operator should be applied
-  ProcessNameFilter({
+  const ProcessNameFilter({
     required this.operator,
     required this.processNames,
   });

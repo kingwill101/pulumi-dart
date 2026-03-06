@@ -12,7 +12,7 @@ class CFNFeatureAdditionalConfigurationResponse {
   /// Creates a new [CFNFeatureAdditionalConfigurationResponse].
   /// [name] Property name
   /// [status] Property status
-  CFNFeatureAdditionalConfigurationResponse({
+  const CFNFeatureAdditionalConfigurationResponse({
     this.name,
     this.status,
   });

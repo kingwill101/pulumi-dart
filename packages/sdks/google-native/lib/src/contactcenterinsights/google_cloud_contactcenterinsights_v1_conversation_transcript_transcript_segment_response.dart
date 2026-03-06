@@ -37,7 +37,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentR
   /// [sentiment] The sentiment for this transcript segment.
   /// [text] The text of this segment.
   /// [words] A list of the word-specific information for each word in the segment.
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentResponse({
     required this.channelTag,
     required this.confidence,
     required this.dialogflowSegmentMetadata,

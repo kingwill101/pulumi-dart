@@ -17,7 +17,7 @@ class GetTokenResult {
   /// [token] The generated token for use in subsequent verification steps.
   /// [type] Required.
   /// [verificationMethod] Required.
-  GetTokenResult({
+  const GetTokenResult({
     required this.id,
     required this.identifier,
     required this.token,

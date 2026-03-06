@@ -25,7 +25,7 @@ class ObjectLambdaAccessPointState {
   /// [configuration] A configuration block containing details about the Object Lambda Access Point. See Configuration below for more details.
   /// [name] The name for this Object Lambda Access Point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ObjectLambdaAccessPointState({
+  const ObjectLambdaAccessPointState({
     this.accountId,
     this.alias,
     this.arn,

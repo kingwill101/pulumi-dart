@@ -39,7 +39,7 @@ class GetInstanceNetworkingIpv4Reserved {
   /// [subnetMask] The subnet mask.
   /// [type] The type of address this is.
   /// [vpcNat11] IPv4 address configured as a 1:1 NAT for this Interface.
-  GetInstanceNetworkingIpv4Reserved({
+  const GetInstanceNetworkingIpv4Reserved({
     required this.address,
     required this.gateway,
     required this.interfaceId,

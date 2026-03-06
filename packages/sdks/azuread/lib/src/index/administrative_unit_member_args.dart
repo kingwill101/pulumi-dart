@@ -17,7 +17,7 @@ class AdministrativeUnitMemberArgs {
   /// Creates a new [AdministrativeUnitMemberArgs].
   /// [administrativeUnitObjectId] The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the user or group you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
-  AdministrativeUnitMemberArgs({
+  const AdministrativeUnitMemberArgs({
     this.administrativeUnitObjectId,
     this.memberObjectId,
   });

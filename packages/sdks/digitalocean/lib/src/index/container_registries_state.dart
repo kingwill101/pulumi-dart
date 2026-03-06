@@ -20,7 +20,7 @@ class ContainerRegistriesState {
   /// [serverUrl] Optional.
   /// [storageUsageBytes] Optional.
   /// [subscriptionTierSlug] Optional.
-  ContainerRegistriesState({
+  const ContainerRegistriesState({
     this.createdAt,
     this.endpoint,
     this.name,

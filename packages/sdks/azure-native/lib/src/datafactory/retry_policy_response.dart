@@ -12,7 +12,7 @@ class RetryPolicyResponse {
   /// Creates a new [RetryPolicyResponse].
   /// [count] Maximum ordinary retry attempts. Default is 0. Type: integer (or Expression with resultType integer), minimum: 0.
   /// [intervalInSeconds] Interval between retries in seconds. Default is 30.
-  RetryPolicyResponse({
+  const RetryPolicyResponse({
     this.count,
     this.intervalInSeconds,
   });

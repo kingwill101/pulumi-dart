@@ -141,7 +141,7 @@ class NodeConfigResponseContainerV1beta1 {
   /// [taints] List of kubernetes taints to be applied to each node. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
   /// [windowsNodeConfig] Parameters that can be configured on Windows nodes.
   /// [workloadMetadataConfig] The workload metadata configuration for this node.
-  NodeConfigResponseContainerV1beta1({
+  const NodeConfigResponseContainerV1beta1({
     required this.accelerators,
     required this.advancedMachineFeatures,
     required this.bootDiskKmsKey,

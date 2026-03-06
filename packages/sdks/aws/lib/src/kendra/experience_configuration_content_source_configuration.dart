@@ -14,7 +14,7 @@ class ExperienceConfigurationContentSourceConfiguration {
   /// [dataSourceIds] The identifiers of the data sources you want to use for your Amazon Kendra experience. Maximum number of 100 items.
   /// [directPutContent] Whether to use documents you indexed directly using the `BatchPutDocument API`. Defaults to `false`.
   /// [faqIds] The identifier of the FAQs that you want to use for your Amazon Kendra experience. Maximum number of 100 items.
-  ExperienceConfigurationContentSourceConfiguration({
+  const ExperienceConfigurationContentSourceConfiguration({
     this.dataSourceIds,
     this.directPutContent,
     this.faqIds,

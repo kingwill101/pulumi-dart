@@ -14,7 +14,7 @@ class AgentcoreGatewayTargetCredentialProviderConfigurationOauth {
   /// [customParameters] Map of custom parameters to include in OAuth requests.
   /// [providerArn] ARN of the OIDC provider for OAuth authentication.
   /// [scopes] Set of OAuth scopes to request.
-  AgentcoreGatewayTargetCredentialProviderConfigurationOauth({
+  const AgentcoreGatewayTargetCredentialProviderConfigurationOauth({
     this.customParameters,
     required this.providerArn,
     required this.scopes,

@@ -18,7 +18,7 @@ class ListDnsForwardingRulesetByVirtualNetworkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [top] The maximum number of results to return. If not specified, returns up to 100 results.
   /// [virtualNetworkName] The name of the virtual network.
-  ListDnsForwardingRulesetByVirtualNetworkArgs({
+  const ListDnsForwardingRulesetByVirtualNetworkArgs({
     required this.resourceGroupName,
     this.top,
     required this.virtualNetworkName,

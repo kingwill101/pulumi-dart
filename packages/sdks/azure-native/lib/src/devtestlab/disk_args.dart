@@ -51,7 +51,7 @@ class DiskArgs {
   /// [storageAccountId] When backed by a blob, the storage account where the blob is.
   /// [tags] The tags of the resource.
   /// [userName] The name of the user profile.
-  DiskArgs({
+  const DiskArgs({
     this.diskBlobName,
     this.diskSizeGiB,
     this.diskType,

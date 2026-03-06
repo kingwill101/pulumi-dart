@@ -19,7 +19,7 @@ class VirtualMachineInstancePropertiesOsProfileLinuxConfiguration {
   /// [provisionVMAgent] Used to indicate whether Arc for Servers agent onboarding should be triggered during the virtual machine instance creation process.
   /// [provisionVMConfigAgent] Used to indicate whether the VM Config Agent should be installed during the virtual machine creation process.
   /// [ssh] Specifies the ssh key configuration for a Linux OS.
-  VirtualMachineInstancePropertiesOsProfileLinuxConfiguration({
+  const VirtualMachineInstancePropertiesOsProfileLinuxConfiguration({
     this.disablePasswordAuthentication,
     this.provisionVMAgent,
     this.provisionVMConfigAgent,

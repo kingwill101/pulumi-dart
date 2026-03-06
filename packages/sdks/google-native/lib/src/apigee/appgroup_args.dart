@@ -30,7 +30,7 @@ class AppgroupArgs {
   /// [name] Immutable. Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
   /// [organization] Immutable. the org the app group is created
   /// [organizationId] Required.
-  AppgroupArgs({
+  const AppgroupArgs({
     this.attributes,
     this.channelId,
     this.channelUri,

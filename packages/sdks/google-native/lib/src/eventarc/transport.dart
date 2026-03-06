@@ -10,7 +10,7 @@ class Transport {
 
   /// Creates a new [Transport].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
-  Transport({
+  const Transport({
     this.pubsub,
   });
 

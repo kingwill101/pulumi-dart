@@ -11,7 +11,7 @@ class SnapshotIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  SnapshotIamBindingCondition({
+  const SnapshotIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

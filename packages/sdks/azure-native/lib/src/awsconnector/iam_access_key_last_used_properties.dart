@@ -31,7 +31,7 @@ class IamAccessKeyLastUsedProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamAccessKeyLastUsedProperties({
+  const IamAccessKeyLastUsedProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

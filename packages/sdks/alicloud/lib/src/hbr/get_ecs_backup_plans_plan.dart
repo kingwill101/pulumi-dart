@@ -61,7 +61,7 @@ class GetEcsBackupPlansPlan {
   /// [speedLimit] Flow control. The format is: {start}|{end}|{bandwidth}. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
   /// [updatedTime] The update time of the backup plan. UNIX time in seconds.
   /// [vaultId] The ID of Backup vault.
-  GetEcsBackupPlansPlan({
+  const GetEcsBackupPlansPlan({
     required this.backupType,
     required this.createTime,
     required this.createdTime,

@@ -42,7 +42,7 @@ class DeepCreatedOrigin {
   /// [privateLinkLocation] The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
   /// [privateLinkResourceId] The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   /// [weight] Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
-  DeepCreatedOrigin({
+  const DeepCreatedOrigin({
     this.enabled,
     required this.hostName,
     this.httpPort,

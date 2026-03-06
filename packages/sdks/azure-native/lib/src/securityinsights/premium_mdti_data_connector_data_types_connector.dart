@@ -9,7 +9,7 @@ class PremiumMdtiDataConnectorDataTypesConnector {
 
   /// Creates a new [PremiumMdtiDataConnectorDataTypesConnector].
   /// [state] Describe whether this data type connection is enabled or not.
-  PremiumMdtiDataConnectorDataTypesConnector({
+  const PremiumMdtiDataConnectorDataTypesConnector({
     required this.state,
   });
 

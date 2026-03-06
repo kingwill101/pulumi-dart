@@ -23,7 +23,7 @@ class AccountResourceResponseProperties {
   /// [endpointAuthentications] The list of service endpoints authentication details.
   /// [provisioningState] The resource provisioning state.
   /// [reportsConnectionString] Connection string to write Accounts reports to.
-  AccountResourceResponseProperties({
+  const AccountResourceResponseProperties({
     this.configuration,
     this.cors,
     this.endpointAuthentications,

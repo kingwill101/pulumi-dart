@@ -15,7 +15,7 @@ class ToolDataStoreToolBoostSpec {
   /// Creates a new [ToolDataStoreToolBoostSpec].
   /// [dataStores] The Data Store where the boosting configuration is applied. Full resource
   /// [specs] A list of boosting specifications.
-  ToolDataStoreToolBoostSpec({
+  const ToolDataStoreToolBoostSpec({
     required this.dataStores,
     required this.specs,
   });

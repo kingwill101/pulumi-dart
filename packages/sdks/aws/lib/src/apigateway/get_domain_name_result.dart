@@ -61,7 +61,7 @@ class GetDomainNameResult {
   /// [regionalZoneId] Hosted zone ID that can be used to create a Route53 alias record for the regional endpoint.
   /// [securityPolicy] Security policy for the domain name.
   /// [tags] Key-value map of tags for the resource.
-  GetDomainNameResult({
+  const GetDomainNameResult({
     required this.arn,
     required this.certificateArn,
     required this.certificateName,

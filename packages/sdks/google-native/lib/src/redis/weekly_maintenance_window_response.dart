@@ -16,7 +16,7 @@ class WeeklyMaintenanceWindowResponse {
   /// [day] The day of week that maintenance updates occur.
   /// [duration] Duration of the maintenance window. The current window is fixed at 1 hour.
   /// [startTime] Start time of the window in UTC time.
-  WeeklyMaintenanceWindowResponse({
+  const WeeklyMaintenanceWindowResponse({
     required this.day,
     required this.duration,
     required this.startTime,

@@ -9,7 +9,7 @@ class Disk {
 
   /// Creates a new [Disk].
   /// [id] Unique Azure Resource ID of the Managed Disk.
-  Disk({
+  const Disk({
     required this.id,
   });
 

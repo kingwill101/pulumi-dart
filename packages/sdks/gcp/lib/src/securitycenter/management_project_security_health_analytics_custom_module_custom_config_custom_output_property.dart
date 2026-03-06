@@ -14,7 +14,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutp
   /// Creates a new [ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty].
   /// [name] Name of the property for the custom output.
   /// [valueExpression] The CEL expression for the custom output. A resource property can be specified
-  ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty({
+  const ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigCustomOutputProperty({
     this.name,
     this.valueExpression,
   });

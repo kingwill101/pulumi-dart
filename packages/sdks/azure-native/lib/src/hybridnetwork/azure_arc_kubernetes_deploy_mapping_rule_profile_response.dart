@@ -13,7 +13,7 @@ class AzureArcKubernetesDeployMappingRuleProfileResponse {
   /// Creates a new [AzureArcKubernetesDeployMappingRuleProfileResponse].
   /// [applicationEnablement] The application enablement.
   /// [helmMappingRuleProfile] The helm mapping rule profile.
-  AzureArcKubernetesDeployMappingRuleProfileResponse({
+  const AzureArcKubernetesDeployMappingRuleProfileResponse({
     this.applicationEnablement,
     this.helmMappingRuleProfile,
   });

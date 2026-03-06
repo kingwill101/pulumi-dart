@@ -12,7 +12,7 @@ class CapacityResponse {
   /// Creates a new [CapacityResponse].
   /// [publishMibPerSec] Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
   /// [subscribeMibPerSec] Subscribe throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 32.
-  CapacityResponse({
+  const CapacityResponse({
     required this.publishMibPerSec,
     required this.subscribeMibPerSec,
   });

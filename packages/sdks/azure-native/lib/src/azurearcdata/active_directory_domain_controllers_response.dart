@@ -13,7 +13,7 @@ class ActiveDirectoryDomainControllersResponse {
   /// Creates a new [ActiveDirectoryDomainControllersResponse].
   /// [primaryDomainController] Information about the Primary Domain Controller (PDC) in the AD domain.
   /// [secondaryDomainControllers] null
-  ActiveDirectoryDomainControllersResponse({
+  const ActiveDirectoryDomainControllersResponse({
     this.primaryDomainController,
     this.secondaryDomainControllers,
   });

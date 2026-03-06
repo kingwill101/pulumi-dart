@@ -11,7 +11,7 @@ class BucketWebsite {
   /// Creates a new [BucketWebsite].
   /// [errorDocument] An absolute path to the document to return in case of a 4XX error.
   /// [indexDocument] Alicloud OSS returns this index document when requests are made to the root domain or any of the subfolders.
-  BucketWebsite({
+  const BucketWebsite({
     this.errorDocument,
     required this.indexDocument,
   });

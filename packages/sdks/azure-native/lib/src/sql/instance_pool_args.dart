@@ -37,7 +37,7 @@ class InstancePoolArgs {
   /// [subnetId] Resource ID of the subnet to place this instance pool in.
   /// [tags] Resource tags.
   /// [vCores] Count of vCores belonging to this instance pool.
-  InstancePoolArgs({
+  const InstancePoolArgs({
     this.instancePoolName,
     required this.licenseType,
     this.location,

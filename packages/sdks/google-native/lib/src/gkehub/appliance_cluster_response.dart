@@ -9,7 +9,7 @@ class ApplianceClusterResponse {
 
   /// Creates a new [ApplianceClusterResponse].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
-  ApplianceClusterResponse({
+  const ApplianceClusterResponse({
     required this.resourceLink,
   });
 

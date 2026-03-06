@@ -9,7 +9,7 @@ class StatementParameter {
   /// Creates a new [StatementParameter].
   /// [name] Required.
   /// [value] Required.
-  StatementParameter({
+  const StatementParameter({
     required this.name,
     required this.value,
   });

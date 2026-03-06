@@ -38,7 +38,7 @@ class GetShardingNetworkPrivateAddressesAddress {
   /// [role] The role of the node.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The vSwitch ID of the VPC.
-  GetShardingNetworkPrivateAddressesAddress({
+  const GetShardingNetworkPrivateAddressesAddress({
     required this.dbInstanceId,
     required this.expiredTime,
     required this.ipAddress,

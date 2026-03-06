@@ -12,7 +12,7 @@ class Filter {
   /// Creates a new [Filter].
   /// [compositeFilter] Optional.
   /// [valueFilter] Optional.
-  Filter({
+  const Filter({
     this.compositeFilter,
     this.valueFilter,
   });

@@ -21,7 +21,7 @@ class SecretRotationStatusResponse {
   /// [rotationPeriodDays] The number of days a secret exists before rotations will be attempted.
   /// [secretArchiveReference] The reference to the secret in a key vault.
   /// [secretType] The type name used to identify the purpose of the secret.
-  SecretRotationStatusResponse({
+  const SecretRotationStatusResponse({
     required this.expirePeriodDays,
     required this.lastRotationTime,
     required this.rotationPeriodDays,

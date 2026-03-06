@@ -15,7 +15,7 @@ class GetRedisArgs {
   /// Creates a new [GetRedisArgs].
   /// [name] The name of the RedisResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRedisArgs({
+  const GetRedisArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -19,7 +19,7 @@ class AzureMonitorWorkspaceLogsApiConfigResponse {
   /// [dataCollectionRule] Data Collection Rule (DCR) immutable id.
   /// [schema] The schema mapping for incoming data.
   /// [stream] Stream name in destination. Azure Monitor stream is related to the destination table.
-  AzureMonitorWorkspaceLogsApiConfigResponse({
+  const AzureMonitorWorkspaceLogsApiConfigResponse({
     required this.dataCollectionEndpointUrl,
     required this.dataCollectionRule,
     required this.schema,

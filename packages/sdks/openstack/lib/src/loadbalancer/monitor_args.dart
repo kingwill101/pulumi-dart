@@ -78,7 +78,7 @@ class MonitorArgs {
   /// [timeout] Maximum number of seconds for a monitor to wait for a
   /// [type] The type of probe, which is PING, TCP, HTTP, HTTPS,
   /// [urlPath] Required for HTTP(S) types. URI path that will be
-  MonitorArgs({
+  const MonitorArgs({
     this.adminStateUp,
     required this.delay,
     this.domainName,

@@ -29,7 +29,7 @@ class ResizeRequestStatusErrorErrorErrorDetailQuotaInfo {
   /// [limitName] (Output)
   /// [metricName] (Output)
   /// [rolloutStatus] (Output)
-  ResizeRequestStatusErrorErrorErrorDetailQuotaInfo({
+  const ResizeRequestStatusErrorErrorErrorDetailQuotaInfo({
     this.dimensions,
     this.futureLimit,
     this.limit,

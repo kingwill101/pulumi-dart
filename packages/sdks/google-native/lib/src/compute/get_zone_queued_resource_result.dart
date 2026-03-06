@@ -41,7 +41,7 @@ class GetZoneQueuedResourceResult {
   /// [state] [Output only] High-level status of the request.
   /// [status] [Output only] Result of queuing and provisioning based on deferred capacity.
   /// [zone] URL of the zone where the resource resides. Only applicable for zonal resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetZoneQueuedResourceResult({
+  const GetZoneQueuedResourceResult({
     required this.bulkInsertInstanceResource,
     required this.creationTimestamp,
     required this.description,

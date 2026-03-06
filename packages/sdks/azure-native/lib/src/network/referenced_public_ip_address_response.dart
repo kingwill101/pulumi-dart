@@ -9,7 +9,7 @@ class ReferencedPublicIpAddressResponse {
 
   /// Creates a new [ReferencedPublicIpAddressResponse].
   /// [id] The PublicIPAddress Reference.
-  ReferencedPublicIpAddressResponse({
+  const ReferencedPublicIpAddressResponse({
     this.id,
   });
 

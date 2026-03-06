@@ -7,7 +7,7 @@ class GetOriginRequestPolicyCookiesConfigCookie {
 
   /// Creates a new [GetOriginRequestPolicyCookiesConfigCookie].
   /// [items] Required.
-  GetOriginRequestPolicyCookiesConfigCookie({
+  const GetOriginRequestPolicyCookiesConfigCookie({
     required this.items,
   });
 

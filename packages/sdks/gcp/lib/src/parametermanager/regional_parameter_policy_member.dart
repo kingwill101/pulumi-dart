@@ -18,7 +18,7 @@ class RegionalParameterPolicyMember {
   /// Creates a new [RegionalParameterPolicyMember].
   /// [iamPolicyNamePrincipal] (Output)
   /// [iamPolicyUidPrincipal] (Output)
-  RegionalParameterPolicyMember({
+  const RegionalParameterPolicyMember({
     this.iamPolicyNamePrincipal,
     this.iamPolicyUidPrincipal,
   });

@@ -17,7 +17,7 @@ class RRSetRoutingPolicy {
   /// [kind] Optional.
   /// [primaryBackup] Optional.
   /// [wrr] Optional.
-  RRSetRoutingPolicy({
+  const RRSetRoutingPolicy({
     this.geo,
     this.kind,
     this.primaryBackup,

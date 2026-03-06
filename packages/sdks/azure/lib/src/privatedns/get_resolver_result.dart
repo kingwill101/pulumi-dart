@@ -21,7 +21,7 @@ class GetResolverResult {
   /// [resourceGroupName] Required.
   /// [tags] The tags assigned to the Private DNS Resolver.
   /// [virtualNetworkId] The ID of the Virtual Network that is linked to the Private DNS Resolver.
-  GetResolverResult({
+  const GetResolverResult({
     required this.id,
     required this.location,
     required this.name,

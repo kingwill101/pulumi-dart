@@ -16,7 +16,7 @@ class GenericBlobSbsAuthModelResponse {
   /// [credentialsConfig] Credentials for service bus namespace, keyvault uri for access key
   /// [storageAccountCredentialsConfig] Credentials for storage account, keyvault uri for access key
   /// [type] Type of paging
-  GenericBlobSbsAuthModelResponse({
+  const GenericBlobSbsAuthModelResponse({
     this.credentialsConfig,
     this.storageAccountCredentialsConfig,
     required this.type,

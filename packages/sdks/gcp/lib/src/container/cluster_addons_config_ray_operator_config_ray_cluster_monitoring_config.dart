@@ -7,7 +7,7 @@ class ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig {
 
   /// Creates a new [ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig({
+  const ClusterAddonsConfigRayOperatorConfigRayClusterMonitoringConfig({
     required this.enabled,
   });
 

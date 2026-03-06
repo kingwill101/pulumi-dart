@@ -21,7 +21,7 @@ class Ipv6InternetBandwidthArgs {
   /// [internetChargeType] The metering method of the Internet bandwidth resources of the IPv6 gateway. Valid values: `PayByBandwidth`, `PayByTraffic`.
   /// [ipv6AddressId] The ID of the IPv6 address instance.
   /// [ipv6GatewayId] The ID of the IPv6 gateway to which the IPv6 address belongs.
-  Ipv6InternetBandwidthArgs({
+  const Ipv6InternetBandwidthArgs({
     required this.bandwidth,
     this.internetChargeType,
     required this.ipv6AddressId,

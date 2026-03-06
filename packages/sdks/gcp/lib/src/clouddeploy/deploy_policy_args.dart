@@ -45,7 +45,7 @@ class DeployPolicyArgs {
   /// [rules] Rules to apply. At least one rule must be present.
   /// [selectors] Selected resources to which the policy will be applied. At least one selector is required. If one selector matches the resource the policy applies. For example, if there are two selectors and the action being attempted matches one of them, the policy will apply to that action.
   /// [suspended] When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
-  DeployPolicyArgs({
+  const DeployPolicyArgs({
     this.annotations,
     this.description,
     this.labels,

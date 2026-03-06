@@ -17,7 +17,7 @@ class GetVmwareClusterArgs {
   /// [project] Optional.
   /// [view] Optional.
   /// [vmwareClusterId] Required.
-  GetVmwareClusterArgs({
+  const GetVmwareClusterArgs({
     required this.location,
     this.project,
     this.view,

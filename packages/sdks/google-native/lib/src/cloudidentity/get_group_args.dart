@@ -11,7 +11,7 @@ class GetGroupArgs {
 
   /// Creates a new [GetGroupArgs].
   /// [groupId] Required.
-  GetGroupArgs({
+  const GetGroupArgs({
     required this.groupId,
   });
 

@@ -14,7 +14,7 @@ class GetLogShipperArgs {
 
   /// Creates a new [GetLogShipperArgs].
   /// [enable] Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
-  GetLogShipperArgs({
+  const GetLogShipperArgs({
     this.enable,
   });
 

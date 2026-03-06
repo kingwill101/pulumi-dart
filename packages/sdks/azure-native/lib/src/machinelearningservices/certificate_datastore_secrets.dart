@@ -13,7 +13,7 @@ class CertificateDatastoreSecrets {
   /// Creates a new [CertificateDatastoreSecrets].
   /// [certificate] Service principal certificate.
   /// [secretsType] Enum to determine the datastore secrets type.
-  CertificateDatastoreSecrets({
+  const CertificateDatastoreSecrets({
     this.certificate,
     required this.secretsType,
   });

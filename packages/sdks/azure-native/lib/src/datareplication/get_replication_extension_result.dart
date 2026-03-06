@@ -24,7 +24,7 @@ class GetReplicationExtensionResult {
   /// [properties] Replication extension model properties.
   /// [systemData] Required.
   /// [type] Gets or sets the type of the resource.
-  GetReplicationExtensionResult({
+  const GetReplicationExtensionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

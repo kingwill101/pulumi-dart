@@ -10,7 +10,7 @@ class GlossaryTermTermRelations {
   /// Creates a new [GlossaryTermTermRelations].
   /// [classifies] String array that calssifies the term relations.
   /// [isAs] Optional.
-  GlossaryTermTermRelations({
+  const GlossaryTermTermRelations({
     this.classifies,
     this.isAs,
   });

@@ -12,7 +12,7 @@ class GetApplicationArgs {
 
   /// Creates a new [GetApplicationArgs].
   /// [name] The name of the application in New Relic.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.name,
   });
 

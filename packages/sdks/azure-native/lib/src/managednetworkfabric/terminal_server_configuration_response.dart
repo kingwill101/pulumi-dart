@@ -30,7 +30,7 @@ class TerminalServerConfigurationResponse {
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [serialNumber] Serial Number of Terminal server.
   /// [username] Username for the terminal server connection.
-  TerminalServerConfigurationResponse({
+  const TerminalServerConfigurationResponse({
     required this.networkDeviceId,
     required this.password,
     required this.primaryIpv4Prefix,

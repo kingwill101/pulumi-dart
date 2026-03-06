@@ -10,7 +10,7 @@ class ApplicationNotificationPolicyResponse {
 
   /// Creates a new [ApplicationNotificationPolicyResponse].
   /// [notificationEndpoints] The managed application notification endpoint.
-  ApplicationNotificationPolicyResponse({
+  const ApplicationNotificationPolicyResponse({
     required this.notificationEndpoints,
   });
 

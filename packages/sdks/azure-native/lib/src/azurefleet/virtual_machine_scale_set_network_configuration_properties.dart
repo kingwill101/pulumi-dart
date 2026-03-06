@@ -45,7 +45,7 @@ class VirtualMachineScaleSetNetworkConfigurationProperties {
   /// [ipConfigurations] Specifies the IP configurations of the network interface.
   /// [networkSecurityGroup] The network security group.
   /// [primary] Specifies the primary network interface in case the virtual machine has more
-  VirtualMachineScaleSetNetworkConfigurationProperties({
+  const VirtualMachineScaleSetNetworkConfigurationProperties({
     this.auxiliaryMode,
     this.auxiliarySku,
     this.deleteOption,

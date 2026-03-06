@@ -14,7 +14,7 @@ class UserHierarchyGroupHierarchyPathLevelFife {
   /// [arn] The Amazon Resource Name (ARN) of the hierarchy group.
   /// [id] The identifier of the hierarchy group.
   /// [name] The name of the user hierarchy group. Must not be more than 100 characters.
-  UserHierarchyGroupHierarchyPathLevelFife({
+  const UserHierarchyGroupHierarchyPathLevelFife({
     this.arn,
     this.id,
     this.name,

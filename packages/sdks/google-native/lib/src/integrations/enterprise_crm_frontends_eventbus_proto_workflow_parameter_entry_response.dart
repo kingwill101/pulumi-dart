@@ -49,7 +49,7 @@ class EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse {
   /// [producer] Required.
   /// [protoDefName] The name of the protobuf type if the parameter has a protobuf data type.
   /// [protoDefPath] If the data type is of type proto or proto array, this field needs to be populated with the fully qualified proto name. This message, for example, would be "enterprise.crm.frontends.eventbus.proto.WorkflowParameterEntry".
-  EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse({
+  const EnterpriseCrmFrontendsEventbusProtoWorkflowParameterEntryResponse({
     required this.attributes,
     required this.children,
     required this.dataType,

@@ -12,7 +12,7 @@ class PersistentDiskResponse {
   /// Creates a new [PersistentDiskResponse].
   /// [diskUri] The URI of the Persistent Disk.
   /// [sourceDiskNumber] The ordinal number of the source VM disk.
-  PersistentDiskResponse({
+  const PersistentDiskResponse({
     required this.diskUri,
     required this.sourceDiskNumber,
   });

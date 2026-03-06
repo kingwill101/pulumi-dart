@@ -12,7 +12,7 @@ class SecretArchiveSettingsResponse {
   /// Creates a new [SecretArchiveSettingsResponse].
   /// [associatedIdentity] The selection of the managed identity to use with this vault URI. The identity type must be either system assigned or user assigned.
   /// [vaultUri] The URI for the key vault used as the secret archive.
-  SecretArchiveSettingsResponse({
+  const SecretArchiveSettingsResponse({
     this.associatedIdentity,
     this.vaultUri,
   });

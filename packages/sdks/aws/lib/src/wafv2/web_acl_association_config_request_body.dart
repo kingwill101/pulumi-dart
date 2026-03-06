@@ -25,7 +25,7 @@ class WebAclAssociationConfigRequestBody {
   /// [cloudfront] Customizes the request body that your protected Amazon CloudFront distributions forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `cloudfront` below for details.
   /// [cognitoUserPool] Customizes the request body that your protected Amazon Cognito user pools forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `cognito_user_pool` below for details.
   /// [verifiedAccessInstance] Customizes the request body that your protected AWS Verfied Access instances forward to AWS WAF for inspection. Applicable only when `scope` is set to `REGIONAL`. See `verified_access_instance` below for details.
-  WebAclAssociationConfigRequestBody({
+  const WebAclAssociationConfigRequestBody({
     this.apiGateway,
     this.appRunnerService,
     this.cloudfront,

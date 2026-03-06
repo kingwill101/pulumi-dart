@@ -41,7 +41,7 @@ class IpsConfigArgs {
   /// [patchRules] Virtual patch switch. Value:
   /// [ruleClass] The IPS rule Group. Value:
   /// [runMode] IPS defense mode. Value:
-  IpsConfigArgs({
+  const IpsConfigArgs({
     this.basicRules,
     this.ctiRules,
     this.lang,

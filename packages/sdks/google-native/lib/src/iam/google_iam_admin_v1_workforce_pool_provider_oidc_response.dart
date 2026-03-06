@@ -23,7 +23,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcResponse {
   /// [issuerUri] The OIDC issuer URI. Must be a valid URI using the 'https' scheme.
   /// [jwksJson] OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] }
   /// [webSsoConfig] Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser.
-  GoogleIamAdminV1WorkforcePoolProviderOidcResponse({
+  const GoogleIamAdminV1WorkforcePoolProviderOidcResponse({
     required this.clientId,
     required this.clientSecret,
     required this.issuerUri,

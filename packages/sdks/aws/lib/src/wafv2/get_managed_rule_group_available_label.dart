@@ -8,7 +8,7 @@ class GetManagedRuleGroupAvailableLabel {
 
   /// Creates a new [GetManagedRuleGroupAvailableLabel].
   /// [name] Managed rule group name.
-  GetManagedRuleGroupAvailableLabel({
+  const GetManagedRuleGroupAvailableLabel({
     required this.name,
   });
 

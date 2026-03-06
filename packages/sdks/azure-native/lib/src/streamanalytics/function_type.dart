@@ -13,7 +13,7 @@ class FunctionType {
   /// Creates a new [FunctionType].
   /// [name] Resource name
   /// [properties] The properties that are associated with a function.
-  FunctionType({
+  const FunctionType({
     this.name,
     this.properties,
   });

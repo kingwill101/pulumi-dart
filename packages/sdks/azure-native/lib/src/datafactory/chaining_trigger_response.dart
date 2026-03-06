@@ -30,7 +30,7 @@ class ChainingTriggerResponse {
   /// [runDimension] Run Dimension property that needs to be emitted by upstream pipelines.
   /// [runtimeState] Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   /// [type] Trigger type.
-  ChainingTriggerResponse({
+  const ChainingTriggerResponse({
     this.annotations,
     required this.dependsOn,
     this.description,

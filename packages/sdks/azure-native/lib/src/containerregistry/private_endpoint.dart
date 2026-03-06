@@ -9,7 +9,7 @@ class PrivateEndpoint {
 
   /// Creates a new [PrivateEndpoint].
   /// [id] This is private endpoint resource created with Microsoft.Network resource provider.
-  PrivateEndpoint({
+  const PrivateEndpoint({
     this.id,
   });
 

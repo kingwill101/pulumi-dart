@@ -18,7 +18,7 @@ class IndividualOutcome {
   /// [outcomeSummary] Optional.
   /// [runDuration] How long it took for this step to run.
   /// [stepId] Optional.
-  IndividualOutcome({
+  const IndividualOutcome({
     this.multistepNumber,
     this.outcomeSummary,
     this.runDuration,

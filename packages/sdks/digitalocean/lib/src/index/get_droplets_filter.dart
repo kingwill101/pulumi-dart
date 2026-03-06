@@ -25,7 +25,7 @@ class GetDropletsFilter {
   /// [key] Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves Droplets
-  GetDropletsFilter({
+  const GetDropletsFilter({
     this.all,
     required this.key,
     this.matchBy,

@@ -12,7 +12,7 @@ class ErrorAction {
   /// Creates a new [ErrorAction].
   /// [maxToleratedFailures] Max tolerated failures
   /// [mode] Error action mode
-  ErrorAction({
+  const ErrorAction({
     this.maxToleratedFailures,
     this.mode,
   });

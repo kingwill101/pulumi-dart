@@ -24,7 +24,7 @@ class GetManagementAssociationResult {
   /// [name] Resource name.
   /// [properties] Properties for ManagementAssociation object supported by the OperationsManagement resource provider.
   /// [type] Resource type.
-  GetManagementAssociationResult({
+  const GetManagementAssociationResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

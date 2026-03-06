@@ -25,7 +25,7 @@ class CloudEdgeManagementRoleArgs {
   /// [name] The role name.
   /// [resourceGroupName] The resource group name.
   /// [roleStatus] Role status.
-  CloudEdgeManagementRoleArgs({
+  const CloudEdgeManagementRoleArgs({
     required this.deviceName,
     required this.kind,
     this.name,

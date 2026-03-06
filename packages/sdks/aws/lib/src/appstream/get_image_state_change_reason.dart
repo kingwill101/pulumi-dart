@@ -9,7 +9,7 @@ class GetImageStateChangeReason {
   /// Creates a new [GetImageStateChangeReason].
   /// [code] Required.
   /// [message] Required.
-  GetImageStateChangeReason({
+  const GetImageStateChangeReason({
     required this.code,
     required this.message,
   });

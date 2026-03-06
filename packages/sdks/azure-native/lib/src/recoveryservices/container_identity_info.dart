@@ -18,7 +18,7 @@ class ContainerIdentityInfo {
   /// [audience] Protection container identity - Audience
   /// [servicePrincipalClientId] Protection container identity - AAD Service Principal
   /// [uniqueName] Unique name of the container
-  ContainerIdentityInfo({
+  const ContainerIdentityInfo({
     this.aadTenantId,
     this.audience,
     this.servicePrincipalClientId,

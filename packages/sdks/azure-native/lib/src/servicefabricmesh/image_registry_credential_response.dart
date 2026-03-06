@@ -15,7 +15,7 @@ class ImageRegistryCredentialResponse {
   /// [password] The password for the private registry. The password is required for create or update operations, however it is not returned in the get or list operations.
   /// [server] Docker image registry server, without protocol such as `http` and `https`.
   /// [username] The username for the private registry.
-  ImageRegistryCredentialResponse({
+  const ImageRegistryCredentialResponse({
     this.password,
     required this.server,
     required this.username,

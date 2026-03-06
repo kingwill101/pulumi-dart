@@ -14,7 +14,7 @@ class GetObjectStorageEndpointsEndpoint {
   /// [endpointType] The type of `s3_endpoint` available to the active `user`. See [Endpoint types](https://techdocs.akamai.com/cloud-computing/docs/object-storage#endpoint-type) for more information.
   /// [region] The Akamai cloud computing region, represented by its slug value. The [list regions](https://techdocs.akamai.com/linode-api/reference/get-regions) API is available to see all regions available.
   /// [s3Endpoint] Your s3 endpoint URL, based on the `endpoint_type` and `region`. Output as null if you haven't assigned an endpoint for your user in this region with the specific endpoint type.
-  GetObjectStorageEndpointsEndpoint({
+  const GetObjectStorageEndpointsEndpoint({
     required this.endpointType,
     required this.region,
     required this.s3Endpoint,

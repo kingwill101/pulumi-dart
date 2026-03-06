@@ -36,7 +36,7 @@ class TransitRouterRouteEntryState {
   /// [transitRouterRouteEntryNextHopId] The ID of the transit router route entry next hop.
   /// [transitRouterRouteEntryNextHopType] The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
   /// [transitRouterRouteTableId] The ID of the transit router route table.
-  TransitRouterRouteEntryState({
+  const TransitRouterRouteEntryState({
     this.dryRun,
     this.status,
     this.transitRouterRouteEntryDescription,

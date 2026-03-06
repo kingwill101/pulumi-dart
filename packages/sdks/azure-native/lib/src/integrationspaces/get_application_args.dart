@@ -18,7 +18,7 @@ class GetApplicationArgs {
   /// [applicationName] The name of the Application
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.applicationName,
     required this.resourceGroupName,
     required this.spaceName,

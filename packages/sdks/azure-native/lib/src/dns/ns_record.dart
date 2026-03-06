@@ -9,7 +9,7 @@ class NsRecord {
 
   /// Creates a new [NsRecord].
   /// [nsdname] The name server name for this NS record.
-  NsRecord({
+  const NsRecord({
     this.nsdname,
   });
 

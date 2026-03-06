@@ -80,7 +80,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRule {
   /// [targetSecureTags] (Output)
   /// [targetServiceAccounts] (Output)
   /// [tlsInspect] (Output)
-  RegionNetworkFirewallPolicyWithRulesPredefinedRule({
+  const RegionNetworkFirewallPolicyWithRulesPredefinedRule({
     this.action,
     this.description,
     this.direction,

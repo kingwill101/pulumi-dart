@@ -9,7 +9,7 @@ class ScheduleTargetSagemakerPipelineParameters {
 
   /// Creates a new [ScheduleTargetSagemakerPipelineParameters].
   /// [pipelineParameters] Set of up to 200 parameter names and values to use when executing the SageMaker AI Model Building Pipeline. Detailed below.
-  ScheduleTargetSagemakerPipelineParameters({
+  const ScheduleTargetSagemakerPipelineParameters({
     this.pipelineParameters,
   });
 

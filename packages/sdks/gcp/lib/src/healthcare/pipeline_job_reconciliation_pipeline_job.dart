@@ -20,7 +20,7 @@ class PipelineJobReconciliationPipelineJob {
   /// [fhirStoreDestination] The harmonized FHIR store to write harmonized FHIR resources to,
   /// [matchingUriPrefix] Specifies the top level directory of the matching configs used
   /// [mergeConfig] Specifies the location of the reconciliation configuration.
-  PipelineJobReconciliationPipelineJob({
+  const PipelineJobReconciliationPipelineJob({
     this.fhirStoreDestination,
     required this.matchingUriPrefix,
     required this.mergeConfig,

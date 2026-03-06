@@ -9,7 +9,7 @@ class Uint128ResponseComputeBeta {
   /// Creates a new [Uint128ResponseComputeBeta].
   /// [high] Required.
   /// [low] Required.
-  Uint128ResponseComputeBeta({
+  const Uint128ResponseComputeBeta({
     required this.high,
     required this.low,
   });

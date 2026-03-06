@@ -15,7 +15,7 @@ class GetSubscriptionFeatureRegistrationArgs {
   /// Creates a new [GetSubscriptionFeatureRegistrationArgs].
   /// [featureName] The feature name.
   /// [providerNamespace] The provider namespace.
-  GetSubscriptionFeatureRegistrationArgs({
+  const GetSubscriptionFeatureRegistrationArgs({
     required this.featureName,
     required this.providerNamespace,
   });

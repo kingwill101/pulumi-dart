@@ -23,7 +23,7 @@ class FastHttpAppMonitor {
   /// [response] The presence of this string anywhere in the HTTP response implies availability.
   /// [sendString] Specify data to be sent during each health check for FAST-Generated Pool Monitor.
   /// [username] username for web access on FAST-Generated Pool Monitor.
-  FastHttpAppMonitor({
+  const FastHttpAppMonitor({
     this.interval,
     this.monitorAuth,
     this.password,

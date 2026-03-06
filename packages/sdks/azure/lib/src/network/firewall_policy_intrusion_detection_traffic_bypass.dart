@@ -29,7 +29,7 @@ class FirewallPolicyIntrusionDetectionTrafficBypass {
   /// [protocol] The protocols any of `ANY`, `TCP`, `ICMP`, `UDP` that shall be bypassed by intrusion detection.
   /// [sourceAddresses] Specifies a list of source addresses that shall be bypassed by intrusion detection.
   /// [sourceIpGroups] Specifies a list of source IP groups that shall be bypassed by intrusion detection.
-  FirewallPolicyIntrusionDetectionTrafficBypass({
+  const FirewallPolicyIntrusionDetectionTrafficBypass({
     this.description,
     this.destinationAddresses,
     this.destinationIpGroups,

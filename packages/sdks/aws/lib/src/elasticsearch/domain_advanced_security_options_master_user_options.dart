@@ -14,7 +14,7 @@ class DomainAdvancedSecurityOptionsMasterUserOptions {
   /// [masterUserArn] ARN for the main user. Only specify if `internal_user_database_enabled` is not set or set to `false`.
   /// [masterUserName] Main user's username, which is stored in the Amazon Elasticsearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
   /// [masterUserPassword] Main user's password, which is stored in the Amazon Elasticsearch Service domain's internal database. Only specify if `internal_user_database_enabled` is set to `true`.
-  DomainAdvancedSecurityOptionsMasterUserOptions({
+  const DomainAdvancedSecurityOptionsMasterUserOptions({
     this.masterUserArn,
     this.masterUserName,
     this.masterUserPassword,

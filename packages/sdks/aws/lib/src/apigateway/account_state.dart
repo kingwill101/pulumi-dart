@@ -22,7 +22,7 @@ class AccountState {
   /// [features] A list of features supported for the account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [throttleSettings] Account-Level throttle settings. See exported fields below.
-  AccountState({
+  const AccountState({
     this.apiKeyVersion,
     this.cloudwatchRoleArn,
     this.features,

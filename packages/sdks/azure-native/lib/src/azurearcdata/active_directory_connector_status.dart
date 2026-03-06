@@ -15,7 +15,7 @@ class ActiveDirectoryConnectorStatus {
   /// [lastUpdateTime] The time that the custom resource was last updated.
   /// [observedGeneration] The version of the replicaSet associated with the AD connector custom resource.
   /// [state] The state of the AD connector custom resource.
-  ActiveDirectoryConnectorStatus({
+  const ActiveDirectoryConnectorStatus({
     this.lastUpdateTime,
     this.observedGeneration,
     this.state,

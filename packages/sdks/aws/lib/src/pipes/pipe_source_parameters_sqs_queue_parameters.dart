@@ -11,7 +11,7 @@ class PipeSourceParametersSqsQueueParameters {
   /// Creates a new [PipeSourceParametersSqsQueueParameters].
   /// [batchSize] The maximum number of records to include in each batch. Maximum value of 10000.
   /// [maximumBatchingWindowInSeconds] The maximum length of a time to wait for events. Maximum value of 300.
-  PipeSourceParametersSqsQueueParameters({
+  const PipeSourceParametersSqsQueueParameters({
     this.batchSize,
     this.maximumBatchingWindowInSeconds,
   });

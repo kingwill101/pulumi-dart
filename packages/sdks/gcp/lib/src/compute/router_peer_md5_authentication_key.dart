@@ -16,7 +16,7 @@ class RouterPeerMd5AuthenticationKey {
   /// Creates a new [RouterPeerMd5AuthenticationKey].
   /// [key] Value of the key.
   /// [name] Name of this BGP peer. The name must be 1-63 characters long,
-  RouterPeerMd5AuthenticationKey({
+  const RouterPeerMd5AuthenticationKey({
     required this.key,
     required this.name,
   });

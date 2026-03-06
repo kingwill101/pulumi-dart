@@ -34,7 +34,7 @@ class DiscoveredContaineranalysisV1beta1 {
   /// [lastAnalysisTime] The last time continuous analysis was done for this resource. Deprecated, do not use.
   /// [lastScanTime] The last time this resource was scanned.
   /// [sbomStatus] The status of an SBOM generation.
-  DiscoveredContaineranalysisV1beta1({
+  const DiscoveredContaineranalysisV1beta1({
     this.analysisCompleted,
     this.analysisError,
     this.analysisStatus,

@@ -21,7 +21,7 @@ class ServiceStatusCondition {
   /// [reason] (Output)
   /// [status] (Output)
   /// [type] (Output)
-  ServiceStatusCondition({
+  const ServiceStatusCondition({
     this.message,
     this.reason,
     this.status,

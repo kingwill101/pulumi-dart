@@ -34,7 +34,7 @@ class ApiConnectionDefinitionProperties {
   /// [parameterValues] Dictionary of parameter values
   /// [statuses] Status of the connection
   /// [testLinks] Links to test the API connection
-  ApiConnectionDefinitionProperties({
+  const ApiConnectionDefinitionProperties({
     this.api,
     this.changedTime,
     this.createdTime,

@@ -62,7 +62,7 @@ class HDInsightMapReduceActivityResponse {
   /// [storageLinkedServices] Storage linked service references.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  HDInsightMapReduceActivityResponse({
+  const HDInsightMapReduceActivityResponse({
     this.arguments,
     required this.className,
     this.defines,

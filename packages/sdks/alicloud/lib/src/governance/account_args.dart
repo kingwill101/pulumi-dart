@@ -46,7 +46,7 @@ class AccountArgs {
   /// [displayName] The account display name.
   /// [folderId] The ID of the parent resource folder.
   /// [payerAccountId] The ID of the billing account. If you leave this parameter empty, the current account is used as the billing account.
-  AccountArgs({
+  const AccountArgs({
     this.accountId,
     this.accountNamePrefix,
     this.accountTags,

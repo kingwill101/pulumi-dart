@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementMemoryMib {
   /// Creates a new [GetLaunchTemplateInstanceRequirementMemoryMib].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementMemoryMib({
+  const GetLaunchTemplateInstanceRequirementMemoryMib({
     required this.max,
     required this.min,
   });

@@ -8,7 +8,7 @@ class UserProfileUserSettingsJupyterLabAppSettingsCodeRepository {
 
   /// Creates a new [UserProfileUserSettingsJupyterLabAppSettingsCodeRepository].
   /// [repositoryUrl] The URL of the Git repository.
-  UserProfileUserSettingsJupyterLabAppSettingsCodeRepository({
+  const UserProfileUserSettingsJupyterLabAppSettingsCodeRepository({
     required this.repositoryUrl,
   });
 

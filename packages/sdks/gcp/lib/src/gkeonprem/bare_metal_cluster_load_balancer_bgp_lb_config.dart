@@ -32,7 +32,7 @@ class BareMetalClusterLoadBalancerBgpLbConfig {
   /// [asn] BGP autonomous system number (ASN) of the cluster.
   /// [bgpPeerConfigs] The list of BGP peers that the cluster will connect to.
   /// [loadBalancerNodePoolConfig] Specifies the node pool running data plane load balancing. L2 connectivity
-  BareMetalClusterLoadBalancerBgpLbConfig({
+  const BareMetalClusterLoadBalancerBgpLbConfig({
     required this.addressPools,
     required this.asn,
     required this.bgpPeerConfigs,

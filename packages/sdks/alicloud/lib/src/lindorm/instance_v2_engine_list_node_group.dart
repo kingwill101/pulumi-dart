@@ -73,7 +73,7 @@ class InstanceV2EngineListNodeGroup {
   /// [resourceGroupName] Resource group name
   /// [specId] Spec Id
   /// [status] Node Status
-  InstanceV2EngineListNodeGroup({
+  const InstanceV2EngineListNodeGroup({
     this.category,
     this.cpuCoreCount,
     this.enableAttachLocalDisk,

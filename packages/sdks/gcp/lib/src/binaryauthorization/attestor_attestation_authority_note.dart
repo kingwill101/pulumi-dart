@@ -37,7 +37,7 @@ class AttestorAttestationAuthorityNote {
   /// [delegationServiceAccountEmail] (Output)
   /// [noteReference] The resource name of a ATTESTATION_AUTHORITY Note, created by the
   /// [publicKeys] Public keys that verify attestations signed by this attestor. This
-  AttestorAttestationAuthorityNote({
+  const AttestorAttestationAuthorityNote({
     this.delegationServiceAccountEmail,
     required this.noteReference,
     this.publicKeys,

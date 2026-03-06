@@ -48,7 +48,7 @@ class GetSensitivityLabelResult {
   /// [schemaName] The schema name.
   /// [tableName] The table name.
   /// [type] Resource type.
-  GetSensitivityLabelResult({
+  const GetSensitivityLabelResult({
     required this.azureApiVersion,
     this.clientClassificationSource,
     required this.columnName,

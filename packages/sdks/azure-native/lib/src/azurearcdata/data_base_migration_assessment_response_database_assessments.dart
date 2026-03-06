@@ -13,7 +13,7 @@ class DataBaseMigrationAssessmentResponseDatabaseAssessments {
   /// [featureId] Optional.
   /// [issueCategory] Optional.
   /// [moreInformation] Optional.
-  DataBaseMigrationAssessmentResponseDatabaseAssessments({
+  const DataBaseMigrationAssessmentResponseDatabaseAssessments({
     this.appliesToMigrationTargetPlatform,
     this.featureId,
     this.issueCategory,

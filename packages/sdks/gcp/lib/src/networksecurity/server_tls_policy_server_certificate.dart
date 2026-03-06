@@ -16,7 +16,7 @@ class ServerTlsPolicyServerCertificate {
   /// Creates a new [ServerTlsPolicyServerCertificate].
   /// [certificateProviderInstance] Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty.
   /// [grpcEndpoint] gRPC specific configuration to access the gRPC server to obtain the cert and private key.
-  ServerTlsPolicyServerCertificate({
+  const ServerTlsPolicyServerCertificate({
     this.certificateProviderInstance,
     this.grpcEndpoint,
   });

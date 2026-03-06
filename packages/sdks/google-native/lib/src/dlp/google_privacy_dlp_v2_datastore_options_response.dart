@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DatastoreOptionsResponse {
   /// Creates a new [GooglePrivacyDlpV2DatastoreOptionsResponse].
   /// [kind] The kind to process.
   /// [partitionId] A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty.
-  GooglePrivacyDlpV2DatastoreOptionsResponse({
+  const GooglePrivacyDlpV2DatastoreOptionsResponse({
     required this.kind,
     required this.partitionId,
   });

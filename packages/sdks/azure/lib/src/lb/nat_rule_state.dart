@@ -53,7 +53,7 @@ class NatRuleState {
   /// [protocol] The transport protocol for the external endpoint. Possible values are `Udp`, `Tcp` or `All`.
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [tcpResetEnabled] Is TCP Reset enabled for this Load Balancer Rule?
-  NatRuleState({
+  const NatRuleState({
     this.backendAddressPoolId,
     this.backendIpConfigurationId,
     this.backendPort,

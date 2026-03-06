@@ -15,7 +15,7 @@ class GetLogDataProtectionPolicyDocumentStatement {
   /// [dataIdentifiers] Set of at least 1 sensitive data identifiers that you want to mask. Read more in [Types of data that you can protect](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/protect-sensitive-log-data-types.html).
   /// [operation] Configures the data protection operation applied by this statement.
   /// [sid] Name of this statement.
-  GetLogDataProtectionPolicyDocumentStatement({
+  const GetLogDataProtectionPolicyDocumentStatement({
     required this.dataIdentifiers,
     required this.operation,
     this.sid,

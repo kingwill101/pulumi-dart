@@ -18,7 +18,7 @@ class GetCrossRegionsResult {
   /// [ids] A list of region IDs.
   /// [outputFile] Optional.
   /// [regions] The list of destination regions that support cross-region backup. Each element contains the following attributes:
-  GetCrossRegionsResult({
+  const GetCrossRegionsResult({
     required this.id,
     required this.ids,
     this.outputFile,

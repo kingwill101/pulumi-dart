@@ -20,7 +20,7 @@ class GetDomainEbsOption {
   /// [throughput] The throughput (in MiB/s) of the EBS volumes attached to data nodes.
   /// [volumeSize] The size of EBS volumes attached to data nodes (in GB).
   /// [volumeType] The type of EBS volumes attached to data nodes.
-  GetDomainEbsOption({
+  const GetDomainEbsOption({
     required this.ebsEnabled,
     required this.iops,
     required this.throughput,

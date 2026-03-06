@@ -8,7 +8,7 @@ class FirewallFirewallStatusTransitGatewayAttachmentSyncState {
 
   /// Creates a new [FirewallFirewallStatusTransitGatewayAttachmentSyncState].
   /// [attachmentId] The unique identifier of the transit gateway attachment.
-  FirewallFirewallStatusTransitGatewayAttachmentSyncState({
+  const FirewallFirewallStatusTransitGatewayAttachmentSyncState({
     this.attachmentId,
   });
 

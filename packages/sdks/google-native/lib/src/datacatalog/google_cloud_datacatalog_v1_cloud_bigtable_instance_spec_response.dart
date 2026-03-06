@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse].
   /// [cloudBigtableClusterSpecs] The list of clusters for the Instance.
-  GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse({
+  const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecResponse({
     required this.cloudBigtableClusterSpecs,
   });
 

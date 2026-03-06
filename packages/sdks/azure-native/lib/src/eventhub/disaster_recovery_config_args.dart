@@ -24,7 +24,7 @@ class DisasterRecoveryConfigArgs {
   /// [namespaceName] The Namespace name
   /// [partnerNamespace] ARM Id of the Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  DisasterRecoveryConfigArgs({
+  const DisasterRecoveryConfigArgs({
     this.alias,
     this.alternateName,
     required this.namespaceName,

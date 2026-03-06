@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseC
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling].
   /// [insertHeaders] Headers to insert into the request. See below.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseChallengeCustomRequestHandling({
     this.insertHeaders,
   });
 

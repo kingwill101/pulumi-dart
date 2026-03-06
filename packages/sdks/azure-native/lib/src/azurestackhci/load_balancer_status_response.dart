@@ -16,7 +16,7 @@ class LoadBalancerStatusResponse {
   /// [errorCode] LoadBalancer provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] virtual network provisioning status
-  LoadBalancerStatusResponse({
+  const LoadBalancerStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

@@ -15,7 +15,7 @@ class UserAssignedIdentity {
   /// [clientId] The client ID of the user assigned identity.
   /// [objectId] The object ID of the user assigned identity.
   /// [resourceId] The resource ID of the user assigned identity.
-  UserAssignedIdentity({
+  const UserAssignedIdentity({
     this.clientId,
     this.objectId,
     this.resourceId,

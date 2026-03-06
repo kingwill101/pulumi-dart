@@ -11,7 +11,7 @@ class PosturePolicySetPolicyComplianceStandard {
   /// Creates a new [PosturePolicySetPolicyComplianceStandard].
   /// [control] Mapping of security controls for the policy.
   /// [standard] Mapping of compliance standards for the policy.
-  PosturePolicySetPolicyComplianceStandard({
+  const PosturePolicySetPolicyComplianceStandard({
     this.control,
     this.standard,
   });

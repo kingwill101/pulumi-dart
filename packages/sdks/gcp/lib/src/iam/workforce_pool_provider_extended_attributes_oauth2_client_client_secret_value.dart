@@ -12,7 +12,7 @@ class WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue {
   /// Creates a new [WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue].
   /// [plainText] The plain text of the client secret value.
   /// [thumbprint] (Output)
-  WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue({
+  const WorkforcePoolProviderExtendedAttributesOauth2ClientClientSecretValue({
     required this.plainText,
     this.thumbprint,
   });

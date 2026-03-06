@@ -11,7 +11,7 @@ class MachineGroupGroupAttribute {
   /// Creates a new [MachineGroupGroupAttribute].
   /// [externalName] The identifier of the external management system on which the machine group depends. This parameter is empty by default.
   /// [groupTopic] The log topic of the machine group.
-  MachineGroupGroupAttribute({
+  const MachineGroupGroupAttribute({
     this.externalName,
     this.groupTopic,
   });

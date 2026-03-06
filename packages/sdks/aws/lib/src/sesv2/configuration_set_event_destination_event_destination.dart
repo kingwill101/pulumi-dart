@@ -31,7 +31,7 @@ class ConfigurationSetEventDestinationEventDestination {
   /// [matchingEventTypes] An array that specifies which events the Amazon SES API v2 should send to the destinations. Valid values: `SEND`, `REJECT`, `BOUNCE`, `COMPLAINT`, `DELIVERY`, `OPEN`, `CLICK`, `RENDERING_FAILURE`, `DELIVERY_DELAY`, `SUBSCRIPTION`.
   /// [pinpointDestination] An object that defines an Amazon Pinpoint project destination for email events. See `pinpoint_destination` Block for details.
   /// [snsDestination] An object that defines an Amazon SNS destination for email events. See `sns_destination` Block for details.
-  ConfigurationSetEventDestinationEventDestination({
+  const ConfigurationSetEventDestinationEventDestination({
     this.cloudWatchDestination,
     this.enabled,
     this.eventBridgeDestination,

@@ -14,7 +14,7 @@ class ApplicationConfigMapMountDescV2 {
   /// [configMapId] The ID of the ConfigMap.
   /// [key] The key.
   /// [mountPath] The mount path.
-  ApplicationConfigMapMountDescV2({
+  const ApplicationConfigMapMountDescV2({
     this.configMapId,
     this.key,
     this.mountPath,

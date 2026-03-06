@@ -12,7 +12,7 @@ class Hierarchy {
   /// Creates a new [Hierarchy].
   /// [description] Description of Hierarchy
   /// [name] Name of Hierarchy
-  Hierarchy({
+  const Hierarchy({
     required this.description,
     required this.name,
   });

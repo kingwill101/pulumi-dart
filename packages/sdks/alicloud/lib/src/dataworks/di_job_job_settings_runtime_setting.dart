@@ -27,7 +27,7 @@ class DiJobJobSettingsRuntimeSetting {
   /// Creates a new [DiJobJobSettingsRuntimeSetting].
   /// [name] Set name, optional ENUM value:
   /// [value] Runtime setting value
-  DiJobJobSettingsRuntimeSetting({
+  const DiJobJobSettingsRuntimeSetting({
     this.name,
     this.value,
   });

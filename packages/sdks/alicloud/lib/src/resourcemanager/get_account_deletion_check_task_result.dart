@@ -25,7 +25,7 @@ class GetAccountDeletionCheckTaskResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [notAllowReasons] The reasons why the member cannot be deleted. Each element contains the following attributes:
   /// [status] The status of the check.
-  GetAccountDeletionCheckTaskResult({
+  const GetAccountDeletionCheckTaskResult({
     required this.abandonAbleChecks,
     required this.accountId,
     required this.allowDelete,

@@ -24,7 +24,7 @@ class GetAuthorityArgs {
   /// [location] The location the certificate authority exists in.
   /// [pool] The name of the pool the certificate authority belongs to.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetAuthorityArgs({
+  const GetAuthorityArgs({
     this.certificateAuthorityId,
     this.location,
     this.pool,

@@ -8,7 +8,7 @@ class LoadBalancerGlbSettingsCdn {
 
   /// Creates a new [LoadBalancerGlbSettingsCdn].
   /// [isEnabled] Control flag to specify if caching is enabled.
-  LoadBalancerGlbSettingsCdn({
+  const LoadBalancerGlbSettingsCdn({
     this.isEnabled,
   });
 

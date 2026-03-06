@@ -16,7 +16,7 @@ class ClusterV2ManagerDirectoryService {
   /// Creates a new [ClusterV2ManagerDirectoryService].
   /// [type] The scheduler type. Valid values:
   /// [version] Optional.
-  ClusterV2ManagerDirectoryService({
+  const ClusterV2ManagerDirectoryService({
     this.type,
     this.version,
   });

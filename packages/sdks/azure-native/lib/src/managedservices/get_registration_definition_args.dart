@@ -15,7 +15,7 @@ class GetRegistrationDefinitionArgs {
   /// Creates a new [GetRegistrationDefinitionArgs].
   /// [registrationDefinitionId] The GUID of the registration definition.
   /// [scope] The scope of the resource.
-  GetRegistrationDefinitionArgs({
+  const GetRegistrationDefinitionArgs({
     required this.registrationDefinitionId,
     required this.scope,
   });

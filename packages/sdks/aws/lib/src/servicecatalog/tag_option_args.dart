@@ -23,7 +23,7 @@ class TagOptionArgs {
   /// [key] Tag option key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] Tag option value.
-  TagOptionArgs({
+  const TagOptionArgs({
     this.active,
     required this.key,
     this.region,

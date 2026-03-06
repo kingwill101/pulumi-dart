@@ -92,7 +92,7 @@ class ClusterArgs {
   /// [subnetGroupName] The name of the subnet group to be used for the cluster. Defaults to a subnet group consisting of default VPC subnets.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tlsEnabled] A flag to enable in-transit encryption on the cluster. When set to `false`, the `acl_name` must be `open-access`. Defaults to `true`.
-  ClusterArgs({
+  const ClusterArgs({
     required this.aclName,
     this.autoMinorVersionUpgrade,
     this.dataTiering,

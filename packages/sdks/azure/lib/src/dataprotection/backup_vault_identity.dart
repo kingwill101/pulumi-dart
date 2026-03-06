@@ -17,7 +17,7 @@ class BackupVaultIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Backup Vault.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Backup Vault.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Backup Vault. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  BackupVaultIdentity({
+  const BackupVaultIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

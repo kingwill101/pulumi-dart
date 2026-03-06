@@ -11,7 +11,7 @@ class IntegrationAccountPartnerBusinessIdentity {
   /// Creates a new [IntegrationAccountPartnerBusinessIdentity].
   /// [qualifier] The authenticating body that provides unique business identities to organizations.
   /// [value] The value that identifies the documents that your logic apps receive.
-  IntegrationAccountPartnerBusinessIdentity({
+  const IntegrationAccountPartnerBusinessIdentity({
     required this.qualifier,
     required this.value,
   });

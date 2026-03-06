@@ -59,7 +59,7 @@ class FirewallPolicyDraftArgs {
   /// [tags] Resource tags.
   /// [threatIntelMode] The operation mode for Threat Intelligence.
   /// [threatIntelWhitelist] ThreatIntel Whitelist for Firewall Policy.
-  FirewallPolicyDraftArgs({
+  const FirewallPolicyDraftArgs({
     this.basePolicy,
     this.dnsSettings,
     this.explicitProxy,

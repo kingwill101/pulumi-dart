@@ -26,7 +26,7 @@ class GetDomainsResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetDomainsResult({
+  const GetDomainsResult({
     this.domainSearchType,
     required this.domains,
     required this.id,

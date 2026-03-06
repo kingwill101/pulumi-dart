@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [accountName] The name of the Data Lake Analytics account.
   /// [resourceGroupName] The name of the Azure resource group.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

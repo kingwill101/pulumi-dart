@@ -64,7 +64,7 @@ class GetDatabaseMigrationsMongoToCosmosDbRUMongoResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [targetMongoConnection] Target Cosmos DB Mongo connection details.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDatabaseMigrationsMongoToCosmosDbRUMongoResult({
+  const GetDatabaseMigrationsMongoToCosmosDbRUMongoResult({
     required this.azureApiVersion,
     this.collectionList,
     required this.endedOn,

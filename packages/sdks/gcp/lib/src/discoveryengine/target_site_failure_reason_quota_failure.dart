@@ -9,7 +9,7 @@ class TargetSiteFailureReasonQuotaFailure {
 
   /// Creates a new [TargetSiteFailureReasonQuotaFailure].
   /// [totalRequiredQuota] This number is an estimation on how much total quota this project
-  TargetSiteFailureReasonQuotaFailure({
+  const TargetSiteFailureReasonQuotaFailure({
     this.totalRequiredQuota,
   });
 

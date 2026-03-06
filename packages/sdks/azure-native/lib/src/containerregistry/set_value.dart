@@ -15,7 +15,7 @@ class SetValue {
   /// [isSecret] Flag to indicate whether the value represents a secret or not.
   /// [name] The name of the overridable value.
   /// [value] The overridable value.
-  SetValue({
+  const SetValue({
     this.isSecret,
     required this.name,
     required this.value,

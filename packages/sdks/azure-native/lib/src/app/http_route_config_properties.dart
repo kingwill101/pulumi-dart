@@ -14,7 +14,7 @@ class HttpRouteConfigProperties {
   /// Creates a new [HttpRouteConfigProperties].
   /// [customDomains] Custom domain bindings for http Routes' hostnames.
   /// [rules] Routing Rules for http route resource.
-  HttpRouteConfigProperties({
+  const HttpRouteConfigProperties({
     this.customDomains,
     this.rules,
   });

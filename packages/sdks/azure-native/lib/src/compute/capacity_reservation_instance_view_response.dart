@@ -14,7 +14,7 @@ class CapacityReservationInstanceViewResponse {
   /// Creates a new [CapacityReservationInstanceViewResponse].
   /// [statuses] The resource status information.
   /// [utilizationInfo] Unutilized capacity of the capacity reservation.
-  CapacityReservationInstanceViewResponse({
+  const CapacityReservationInstanceViewResponse({
     this.statuses,
     this.utilizationInfo,
   });

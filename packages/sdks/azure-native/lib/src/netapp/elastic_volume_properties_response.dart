@@ -49,7 +49,7 @@ class ElasticVolumePropertiesResponse {
   /// [smbProperties] SMB Properties
   /// [snapshotDirectoryVisibility] Controls the visibility of the volume's read-only snapshot directory, which provides access to each of the volume's snapshots.
   /// [snapshotResourceId] Resource identifier used to identify the Elastic Snapshot.
-  ElasticVolumePropertiesResponse({
+  const ElasticVolumePropertiesResponse({
     required this.availabilityStatus,
     this.backupResourceId,
     this.dataProtection,

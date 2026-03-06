@@ -24,7 +24,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch {
   /// [prefixMatch] The value of the header must start with the contents of prefixMatch.
   /// [presentMatch] A header with the contents of headerName must exist. The match takes place whether or not the request's header has a value.
   /// [suffixMatch] The value of the header must end with the contents of suffixMatch.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch({
     this.exactMatch,
     required this.headerName,
     this.invertMatch,

@@ -14,7 +14,7 @@ class ServiceTaskSpecNetworksAdvanced {
   /// [aliases] The network aliases of the container in the specific network.
   /// [driverOpts] An array of driver options for the network, e.g. `opts1=value`
   /// [name] The name/id of the network.
-  ServiceTaskSpecNetworksAdvanced({
+  const ServiceTaskSpecNetworksAdvanced({
     this.aliases,
     this.driverOpts,
     required this.name,

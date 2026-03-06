@@ -13,7 +13,7 @@ class ResourceProviderRegistrationFeature {
   /// Creates a new [ResourceProviderRegistrationFeature].
   /// [name] Specifies the name of the feature to register.
   /// [registered] Should this feature be Registered or Unregistered?
-  ResourceProviderRegistrationFeature({
+  const ResourceProviderRegistrationFeature({
     required this.name,
     required this.registered,
   });

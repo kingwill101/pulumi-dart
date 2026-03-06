@@ -21,7 +21,7 @@ class VoiceConnectorLoggingArgs {
   /// [enableSipLogs] When true, enables SIP message logs for sending to Amazon CloudWatch Logs.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
-  VoiceConnectorLoggingArgs({
+  const VoiceConnectorLoggingArgs({
     this.enableMediaMetricLogs,
     this.enableSipLogs,
     this.region,

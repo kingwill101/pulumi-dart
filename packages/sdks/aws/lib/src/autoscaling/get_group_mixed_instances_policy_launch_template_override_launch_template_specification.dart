@@ -14,7 +14,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecificat
   /// [launchTemplateId] ID of the launch template.
   /// [launchTemplateName] Name of the launch template.
   /// [version] Template version.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification({
     required this.launchTemplateId,
     required this.launchTemplateName,
     required this.version,

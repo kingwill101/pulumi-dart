@@ -11,7 +11,7 @@ class ServiceQueryKey {
   /// Creates a new [ServiceQueryKey].
   /// [key] The value of this Query Key.
   /// [name] The Name which should be used for this Search Service. Changing this forces a new Search Service to be created.
-  ServiceQueryKey({
+  const ServiceQueryKey({
     this.key,
     this.name,
   });

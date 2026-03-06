@@ -20,7 +20,7 @@ class StorageBoxAccessSettings {
   /// [sshEnabled] Whether the SSH subsystem is enabled.
   /// [webdavEnabled] Whether the WebDAV subsystem is enabled.
   /// [zfsEnabled] Whether the ZFS snapshot folder is visible.
-  StorageBoxAccessSettings({
+  const StorageBoxAccessSettings({
     this.reachableExternally,
     this.sambaEnabled,
     this.sshEnabled,

@@ -15,7 +15,7 @@ class GetNasJobArgs {
   /// [location] Required.
   /// [nasJobId] Required.
   /// [project] Optional.
-  GetNasJobArgs({
+  const GetNasJobArgs({
     required this.location,
     required this.nasJobId,
     this.project,

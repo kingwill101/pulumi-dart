@@ -52,7 +52,7 @@ class SecuritySettingArgs {
   /// [redactionStrategy] Strategy that defines how we do redaction.
   /// [retentionStrategy] Specifies the retention behavior defined by SecuritySettings.RetentionStrategy.
   /// [retentionWindowDays] Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-  SecuritySettingArgs({
+  const SecuritySettingArgs({
     this.audioExportSettings,
     this.deidentifyTemplate,
     required this.displayName,

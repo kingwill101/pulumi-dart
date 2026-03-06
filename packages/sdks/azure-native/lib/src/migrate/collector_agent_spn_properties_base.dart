@@ -21,7 +21,7 @@ class CollectorAgentSpnPropertiesBase {
   /// [authority] Gets the AAD authority endpoint.
   /// [objectId] Gets the object id of the AAD application.
   /// [tenantId] Gets the tenant id of the AAD application.
-  CollectorAgentSpnPropertiesBase({
+  const CollectorAgentSpnPropertiesBase({
     this.applicationId,
     this.audience,
     this.authority,

@@ -9,7 +9,7 @@ class KubernetesClusterAmdGpuDevicePlugin {
 
   /// Creates a new [KubernetesClusterAmdGpuDevicePlugin].
   /// [enabled] Boolean flag whether the component should be enabled or not.
-  KubernetesClusterAmdGpuDevicePlugin({
+  const KubernetesClusterAmdGpuDevicePlugin({
     required this.enabled,
   });
 

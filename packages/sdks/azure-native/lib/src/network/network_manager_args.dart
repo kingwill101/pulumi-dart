@@ -34,7 +34,7 @@ class NetworkManagerArgs {
   /// [networkManagerScopes] Scope of Network Manager.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  NetworkManagerArgs({
+  const NetworkManagerArgs({
     this.description,
     this.id,
     this.location,

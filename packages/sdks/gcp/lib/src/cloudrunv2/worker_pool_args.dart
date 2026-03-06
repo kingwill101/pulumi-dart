@@ -79,7 +79,7 @@ class WorkerPoolArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [scaling] Scaling settings that apply to the worker pool.
   /// [template] The template used to create revisions for this WorkerPool.
-  WorkerPoolArgs({
+  const WorkerPoolArgs({
     this.annotations,
     this.binaryAuthorization,
     this.client,

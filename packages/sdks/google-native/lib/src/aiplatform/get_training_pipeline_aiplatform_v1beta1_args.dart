@@ -15,7 +15,7 @@ class GetTrainingPipelineAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [trainingPipelineId] Required.
-  GetTrainingPipelineAiplatformV1beta1Args({
+  const GetTrainingPipelineAiplatformV1beta1Args({
     required this.location,
     this.project,
     required this.trainingPipelineId,

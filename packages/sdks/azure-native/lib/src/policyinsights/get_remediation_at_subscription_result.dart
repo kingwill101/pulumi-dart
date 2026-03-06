@@ -63,7 +63,7 @@ class GetRemediationAtSubscriptionResult {
   /// [statusMessage] The remediation status message. Provides additional details regarding the state of the remediation.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the remediation.
-  GetRemediationAtSubscriptionResult({
+  const GetRemediationAtSubscriptionResult({
     required this.azureApiVersion,
     required this.correlationId,
     required this.createdOn,

@@ -30,7 +30,7 @@ class VirtualDisk {
   /// [diskType] Gets or sets the disk backing type.
   /// [name] Gets or sets the name of the virtual disk.
   /// [unitNumber] Gets or sets the unit number of the disk on the controller.
-  VirtualDisk({
+  const VirtualDisk({
     this.controllerKey,
     this.deviceKey,
     this.deviceName,

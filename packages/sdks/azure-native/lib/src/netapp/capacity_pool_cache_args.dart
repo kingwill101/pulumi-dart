@@ -34,7 +34,7 @@ class CapacityPoolCacheArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [zones] The availability zones.
-  CapacityPoolCacheArgs({
+  const CapacityPoolCacheArgs({
     required this.accountName,
     this.cacheName,
     this.location,

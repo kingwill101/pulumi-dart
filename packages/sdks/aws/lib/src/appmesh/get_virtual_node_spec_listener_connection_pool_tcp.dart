@@ -7,7 +7,7 @@ class GetVirtualNodeSpecListenerConnectionPoolTcp {
 
   /// Creates a new [GetVirtualNodeSpecListenerConnectionPoolTcp].
   /// [maxConnections] Required.
-  GetVirtualNodeSpecListenerConnectionPoolTcp({
+  const GetVirtualNodeSpecListenerConnectionPoolTcp({
     required this.maxConnections,
   });
 

@@ -18,7 +18,7 @@ class GetFirewallPolicyArgs {
   /// [expand] Expands referenced resources.
   /// [firewallPolicyName] The name of the Firewall Policy.
   /// [resourceGroupName] The name of the resource group.
-  GetFirewallPolicyArgs({
+  const GetFirewallPolicyArgs({
     this.expand,
     required this.firewallPolicyName,
     required this.resourceGroupName,

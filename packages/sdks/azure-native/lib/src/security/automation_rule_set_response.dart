@@ -9,7 +9,7 @@ class AutomationRuleSetResponse {
 
   /// Creates a new [AutomationRuleSetResponse].
   /// [rules] Optional.
-  AutomationRuleSetResponse({
+  const AutomationRuleSetResponse({
     this.rules,
   });
 

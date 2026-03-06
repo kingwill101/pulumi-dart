@@ -33,7 +33,7 @@ class GetAzureServiceDiscoveryResult {
   /// [type] Optional.
   /// [undetectableAction] Optional.
   /// [updateInterval] Optional.
-  GetAzureServiceDiscoveryResult({
+  const GetAzureServiceDiscoveryResult({
     this.addressRealm,
     required this.azureSdJson,
     this.credentialUpdate,

@@ -19,7 +19,7 @@ class AiReasoningEngineSpecPackageSpec {
   /// [pickleObjectGcsUri] Optional. The Cloud Storage URI of the pickled python object.
   /// [pythonVersion] Optional. The Python version. Currently support 3.8, 3.9, 3.10,
   /// [requirementsGcsUri] Optional. The Cloud Storage URI of the requirements.txtfile
-  AiReasoningEngineSpecPackageSpec({
+  const AiReasoningEngineSpecPackageSpec({
     this.dependencyFilesGcsUri,
     this.pickleObjectGcsUri,
     this.pythonVersion,

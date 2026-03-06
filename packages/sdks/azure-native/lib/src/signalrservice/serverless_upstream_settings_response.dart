@@ -10,7 +10,7 @@ class ServerlessUpstreamSettingsResponse {
 
   /// Creates a new [ServerlessUpstreamSettingsResponse].
   /// [templates] Gets or sets the list of Upstream URL templates. Order matters, and the first matching template takes effects.
-  ServerlessUpstreamSettingsResponse({
+  const ServerlessUpstreamSettingsResponse({
     this.templates,
   });
 

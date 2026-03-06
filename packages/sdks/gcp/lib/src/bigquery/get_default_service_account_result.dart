@@ -17,7 +17,7 @@ class GetDefaultServiceAccountResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [member] The Identity of the service account in the form `serviceAccount:{email}`. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [project] Required.
-  GetDefaultServiceAccountResult({
+  const GetDefaultServiceAccountResult({
     required this.email,
     required this.id,
     required this.member,

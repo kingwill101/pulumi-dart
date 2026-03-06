@@ -12,7 +12,7 @@ class AlertRuleScheduledIncident {
   /// Creates a new [AlertRuleScheduledIncident].
   /// [createIncidentEnabled] Whether to create an incident from alerts triggered by this Sentinel Scheduled Alert Rule?
   /// [grouping] A `grouping` block as defined below.
-  AlertRuleScheduledIncident({
+  const AlertRuleScheduledIncident({
     required this.createIncidentEnabled,
     required this.grouping,
   });

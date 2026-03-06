@@ -19,7 +19,7 @@ class GetLocalDiskResult {
   /// [gatewayArn] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetLocalDiskResult({
+  const GetLocalDiskResult({
     required this.diskId,
     required this.diskNode,
     required this.diskPath,

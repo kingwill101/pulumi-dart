@@ -15,7 +15,7 @@ class LogTransformerTransformerConfigAddKeysEntry {
   /// [key] Specifies the key with the value that will be converted to a different type.
   /// [overwriteIfExists] Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// [value] Specifies the value of the new entry to be added to the log event.
-  LogTransformerTransformerConfigAddKeysEntry({
+  const LogTransformerTransformerConfigAddKeysEntry({
     required this.key,
     this.overwriteIfExists,
     required this.value,

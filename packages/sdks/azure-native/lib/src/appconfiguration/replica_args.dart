@@ -21,7 +21,7 @@ class ReplicaArgs {
   /// [location] The location of the replica.
   /// [replicaName] The name of the replica.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  ReplicaArgs({
+  const ReplicaArgs({
     required this.configStoreName,
     this.location,
     this.replicaName,

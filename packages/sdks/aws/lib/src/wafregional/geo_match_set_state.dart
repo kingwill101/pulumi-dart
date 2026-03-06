@@ -16,7 +16,7 @@ class GeoMatchSetState {
   /// [geoMatchConstraints] The Geo Match Constraint objects which contain the country that you want AWS WAF to search for.
   /// [name] The name or description of the Geo Match Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GeoMatchSetState({
+  const GeoMatchSetState({
     this.geoMatchConstraints,
     this.name,
     this.region,

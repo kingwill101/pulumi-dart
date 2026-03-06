@@ -15,7 +15,7 @@ class GetDataSharesResult {
   /// [dataShares] An array of all data shares in the current region. See `data_shares` below.
   /// [id] AWS region.
   /// [region] Required.
-  GetDataSharesResult({
+  const GetDataSharesResult({
     required this.dataShares,
     required this.id,
     required this.region,

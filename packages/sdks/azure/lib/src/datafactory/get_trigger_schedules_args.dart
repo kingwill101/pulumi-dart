@@ -12,7 +12,7 @@ class GetTriggerSchedulesArgs {
 
   /// Creates a new [GetTriggerSchedulesArgs].
   /// [dataFactoryId] The ID of the Azure Data Factory to fetch trigger schedules from.
-  GetTriggerSchedulesArgs({
+  const GetTriggerSchedulesArgs({
     required this.dataFactoryId,
   });
 

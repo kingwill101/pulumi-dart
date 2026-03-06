@@ -10,7 +10,7 @@ class OrganizationCustomModuleCustomConfigCustomOutput {
 
   /// Creates a new [OrganizationCustomModuleCustomConfigCustomOutput].
   /// [properties] A list of custom output properties to add to the finding.
-  OrganizationCustomModuleCustomConfigCustomOutput({
+  const OrganizationCustomModuleCustomConfigCustomOutput({
     this.properties,
   });
 

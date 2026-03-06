@@ -46,7 +46,7 @@ class GetPublicAdvertisedPrefixComputeV1Result {
   /// [selfLink] Server-defined URL for the resource.
   /// [sharedSecret] The shared secret to be used for reverse DNS verification.
   /// [status] The status of the public advertised prefix. Possible values include: - `INITIAL`: RPKI validation is complete. - `PTR_CONFIGURED`: User has configured the PTR. - `VALIDATED`: Reverse DNS lookup is successful. - `REVERSE_DNS_LOOKUP_FAILED`: Reverse DNS lookup failed. - `PREFIX_CONFIGURATION_IN_PROGRESS`: The prefix is being configured. - `PREFIX_CONFIGURATION_COMPLETE`: The prefix is fully configured. - `PREFIX_REMOVAL_IN_PROGRESS`: The prefix is being removed.
-  GetPublicAdvertisedPrefixComputeV1Result({
+  const GetPublicAdvertisedPrefixComputeV1Result({
     required this.byoipApiVersion,
     required this.creationTimestamp,
     required this.description,

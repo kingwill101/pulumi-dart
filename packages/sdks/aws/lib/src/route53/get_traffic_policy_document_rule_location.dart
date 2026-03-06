@@ -29,7 +29,7 @@ class GetTrafficPolicyDocumentRuleLocation {
   /// [isDefault] Indicates whether this set of values represents the default location.
   /// [ruleReference] References to a rule.
   /// [subdivision] Value of a subdivision.
-  GetTrafficPolicyDocumentRuleLocation({
+  const GetTrafficPolicyDocumentRuleLocation({
     this.continent,
     this.country,
     this.endpointReference,

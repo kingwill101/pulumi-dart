@@ -30,7 +30,7 @@ class VirtualNetworkRuleArgs {
   /// [resourceGroupName] The name of the resource group where the PostgreSQL server resides. Changing this forces a new resource to be created.
   /// [serverName] The name of the SQL Server to which this PostgreSQL virtual network rule will be applied to. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet that the PostgreSQL server will be connected to.
-  VirtualNetworkRuleArgs({
+  const VirtualNetworkRuleArgs({
     this.ignoreMissingVnetServiceEndpoint,
     this.name,
     required this.resourceGroupName,

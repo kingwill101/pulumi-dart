@@ -13,7 +13,7 @@ class AppServiceLogsHttpLogs {
   /// Creates a new [AppServiceLogsHttpLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystem] A `file_system` block as defined below.
-  AppServiceLogsHttpLogs({
+  const AppServiceLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
   });

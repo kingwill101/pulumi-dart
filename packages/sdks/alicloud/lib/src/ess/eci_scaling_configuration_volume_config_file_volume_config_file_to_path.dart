@@ -14,7 +14,7 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
   /// [content] The content of the configuration file. Maximum size: 32 KB.
   /// [mode] The permissions on the ConfigFileVolume directory.
   /// [path] The relative file path.
-  EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath({
+  const EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath({
     this.content,
     this.mode,
     this.path,

@@ -13,7 +13,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   /// [audioSpecification] Optional.
   /// [dtmfSpecification] Optional.
   /// [startTimeoutMs] Required.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification({
     this.audioSpecification,
     this.dtmfSpecification,
     required this.startTimeoutMs,

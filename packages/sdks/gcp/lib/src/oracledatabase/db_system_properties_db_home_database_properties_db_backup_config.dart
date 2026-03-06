@@ -69,7 +69,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig {
   /// [backupDeletionPolicy] This defines when the backups will be deleted after Database termination.
   /// [backupDestinationDetails] Details of the database backup destinations.
   /// [retentionPeriodDays] The number of days an automatic backup is retained before being
-  DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig({
+  const DbSystemPropertiesDbHomeDatabasePropertiesDbBackupConfig({
     this.autoBackupEnabled,
     this.autoFullBackupDay,
     this.autoFullBackupWindow,

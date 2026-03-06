@@ -61,7 +61,7 @@ class GetDatasetResult {
   /// [resourceTags] Required.
   /// [selfLink] Required.
   /// [storageBillingModel] Required.
-  GetDatasetResult({
+  const GetDatasetResult({
     required this.accesses,
     required this.creationTime,
     required this.datasetId,

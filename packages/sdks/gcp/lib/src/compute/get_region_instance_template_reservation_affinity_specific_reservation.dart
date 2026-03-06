@@ -11,7 +11,7 @@ class GetRegionInstanceTemplateReservationAffinitySpecificReservation {
   /// Creates a new [GetRegionInstanceTemplateReservationAffinitySpecificReservation].
   /// [key] The key for the node affinity label.
   /// [values] Corresponds to the label values of a reservation resource.
-  GetRegionInstanceTemplateReservationAffinitySpecificReservation({
+  const GetRegionInstanceTemplateReservationAffinitySpecificReservation({
     required this.key,
     required this.values,
   });

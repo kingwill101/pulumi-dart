@@ -47,7 +47,7 @@ class GetHealthCheckTemplatesTemplate {
   /// [healthyThreshold] The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
   /// [id] The ID of the Health Check Template.
   /// [unhealthyThreshold] The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
-  GetHealthCheckTemplatesTemplate({
+  const GetHealthCheckTemplatesTemplate({
     required this.healthCheckCodes,
     required this.healthCheckConnectPort,
     required this.healthCheckHost,

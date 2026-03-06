@@ -21,7 +21,7 @@ class GetPrivateCloudArgs {
   /// [location] Location of the resource.
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetPrivateCloudArgs({
+  const GetPrivateCloudArgs({
     required this.location,
     required this.name,
     this.project,

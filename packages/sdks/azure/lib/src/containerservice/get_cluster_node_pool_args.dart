@@ -18,7 +18,7 @@ class GetClusterNodePoolArgs {
   /// [kubernetesClusterName] The Name of the Kubernetes Cluster where this Node Pool is located.
   /// [name] The name of this Kubernetes Cluster Node Pool.
   /// [resourceGroupName] The name of the Resource Group where the Kubernetes Cluster exists.
-  GetClusterNodePoolArgs({
+  const GetClusterNodePoolArgs({
     required this.kubernetesClusterName,
     required this.name,
     required this.resourceGroupName,

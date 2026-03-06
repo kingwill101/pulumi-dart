@@ -22,7 +22,7 @@ class VirtualMachineConfigurationAssignmentArgs {
   /// [location] The Azure location where the Policy Virtual Machine Configuration Assignment should exist. Changing this forces a new resource to be created.
   /// [name] The name of the Guest Configuration that will be assigned in this Guest Configuration Assignment. Changing this forces a new resource to be created.
   /// [virtualMachineId] The resource ID of the Policy Virtual Machine which this Guest Configuration Assignment should apply to. Changing this forces a new resource to be created.
-  VirtualMachineConfigurationAssignmentArgs({
+  const VirtualMachineConfigurationAssignmentArgs({
     required this.configuration,
     this.location,
     this.name,

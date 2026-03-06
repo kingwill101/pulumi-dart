@@ -14,7 +14,7 @@ class StoreIndexFullText {
   /// [caseSensitive] Whether the case sensitive. Default to false.
   /// [includeChinese] Whether includes the chinese. Default to false.
   /// [token] The string of several split words, like "\r", "#"
-  StoreIndexFullText({
+  const StoreIndexFullText({
     this.caseSensitive,
     this.includeChinese,
     this.token,

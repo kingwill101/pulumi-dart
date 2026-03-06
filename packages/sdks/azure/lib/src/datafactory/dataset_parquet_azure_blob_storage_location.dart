@@ -23,7 +23,7 @@ class DatasetParquetAzureBlobStorageLocation {
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [filename] The filename of the file on the Azure Blob Storage Account.
   /// [path] The folder path to the file on the Azure Blob Storage Account.
-  DatasetParquetAzureBlobStorageLocation({
+  const DatasetParquetAzureBlobStorageLocation({
     required this.container,
     this.dynamicContainerEnabled,
     this.dynamicFilenameEnabled,

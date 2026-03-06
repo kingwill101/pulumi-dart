@@ -14,7 +14,7 @@ class GetApplicationGatewayFrontendPort {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
   /// [port] Custom port which is used for probing the backend servers.
-  GetApplicationGatewayFrontendPort({
+  const GetApplicationGatewayFrontendPort({
     required this.id,
     required this.name,
     required this.port,

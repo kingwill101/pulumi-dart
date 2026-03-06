@@ -12,7 +12,7 @@ class HelpLinkResponseComputeBeta {
   /// Creates a new [HelpLinkResponseComputeBeta].
   /// [description] Describes what the link offers.
   /// [url] The URL of the link.
-  HelpLinkResponseComputeBeta({
+  const HelpLinkResponseComputeBeta({
     required this.description,
     required this.url,
   });

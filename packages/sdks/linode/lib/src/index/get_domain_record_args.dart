@@ -18,7 +18,7 @@ class GetDomainRecordArgs {
   /// [domainId] The associated domain's unique ID.
   /// [id] The unique ID of the Domain Record.
   /// [name] The name of the Record.
-  GetDomainRecordArgs({
+  const GetDomainRecordArgs({
     required this.domainId,
     this.id,
     this.name,

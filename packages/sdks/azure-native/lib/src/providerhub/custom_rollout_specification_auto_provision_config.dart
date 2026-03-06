@@ -10,7 +10,7 @@ class CustomRolloutSpecificationAutoProvisionConfig {
   /// Creates a new [CustomRolloutSpecificationAutoProvisionConfig].
   /// [resourceGraph] Optional.
   /// [storage] Optional.
-  CustomRolloutSpecificationAutoProvisionConfig({
+  const CustomRolloutSpecificationAutoProvisionConfig({
     this.resourceGraph,
     this.storage,
   });

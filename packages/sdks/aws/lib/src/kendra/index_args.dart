@@ -51,7 +51,7 @@ class IndexArgs {
   /// [userContextPolicy] The user context policy. Valid values are `ATTRIBUTE_FILTER` or `USER_TOKEN`. For more information, refer to [UserContextPolicy](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html#kendra-CreateIndex-request-UserContextPolicy). Defaults to `ATTRIBUTE_FILTER`.
   /// [userGroupResolutionConfiguration] A block that enables fetching access levels of groups and users from an AWS Single Sign-On identity source. To configure this, see [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/dg/API_UserGroupResolutionConfiguration.html). Detailed below.
   /// [userTokenConfigurations] A block that specifies the user token configuration. Detailed below.
-  IndexArgs({
+  const IndexArgs({
     this.capacityUnits,
     this.description,
     this.documentMetadataConfigurationUpdates,

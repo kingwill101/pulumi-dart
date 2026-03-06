@@ -14,7 +14,7 @@ class GetApplicationGatewayGatewayIpConfiguration {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
   /// [subnetId] The ID of the subnet the private link configuration is connected to.
-  GetApplicationGatewayGatewayIpConfiguration({
+  const GetApplicationGatewayGatewayIpConfiguration({
     required this.id,
     required this.name,
     required this.subnetId,

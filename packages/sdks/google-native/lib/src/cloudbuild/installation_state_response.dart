@@ -15,7 +15,7 @@ class InstallationStateResponse {
   /// [actionUri] Link to follow for next action. Empty string if the installation is already complete.
   /// [message] Message of what the user should do next to continue the installation. Empty string if the installation is already complete.
   /// [stage] Current step of the installation process.
-  InstallationStateResponse({
+  const InstallationStateResponse({
     required this.actionUri,
     required this.message,
     required this.stage,

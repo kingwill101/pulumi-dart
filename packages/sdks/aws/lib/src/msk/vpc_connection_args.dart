@@ -30,7 +30,7 @@ class VpcConnectionArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetClusterArn] The Amazon Resource Name (ARN) of the cluster.
   /// [vpcId] The VPC ID of the remote client.
-  VpcConnectionArgs({
+  const VpcConnectionArgs({
     required this.authentication,
     required this.clientSubnets,
     this.region,

@@ -12,7 +12,7 @@ class CassandraTableGetPropertiesResponseOptions {
   /// Creates a new [CassandraTableGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  CassandraTableGetPropertiesResponseOptions({
+  const CassandraTableGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

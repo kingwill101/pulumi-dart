@@ -56,7 +56,7 @@ class GetOuContainerResult {
   /// [tags] Resource tags
   /// [tenantId] Azure Active Directory tenant id
   /// [type] Resource type
-  GetOuContainerResult({
+  const GetOuContainerResult({
     this.accounts,
     required this.azureApiVersion,
     required this.containerId,

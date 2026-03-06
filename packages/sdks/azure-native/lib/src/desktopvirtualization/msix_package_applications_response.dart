@@ -27,7 +27,7 @@ class MsixPackageApplicationsResponse {
   /// [iconImageName] User friendly name.
   /// [rawIcon] the icon a 64 bit string as a byte array.
   /// [rawPng] the icon a 64 bit string as a byte array.
-  MsixPackageApplicationsResponse({
+  const MsixPackageApplicationsResponse({
     this.appId,
     this.appUserModelID,
     this.description,

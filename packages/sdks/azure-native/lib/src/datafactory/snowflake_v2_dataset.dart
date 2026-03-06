@@ -37,7 +37,7 @@ class SnowflakeV2Dataset {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The table name of the Snowflake database. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  SnowflakeV2Dataset({
+  const SnowflakeV2Dataset({
     this.annotations,
     this.description,
     this.folder,

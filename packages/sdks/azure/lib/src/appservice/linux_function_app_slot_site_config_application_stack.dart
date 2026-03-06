@@ -30,7 +30,7 @@ class LinuxFunctionAppSlotSiteConfigApplicationStack {
   /// [pythonVersion] The version of Python to use. Possible values are `3.14`, `3.13`, `3.12`, `3.11`, `3.10`, `3.9`, `3.8` and `3.7`.
   /// [useCustomRuntime] Should the Linux Function App use a custom runtime?
   /// [useDotnetIsolatedRuntime] Should the DotNet process use an isolated runtime. Defaults to `false`.
-  LinuxFunctionAppSlotSiteConfigApplicationStack({
+  const LinuxFunctionAppSlotSiteConfigApplicationStack({
     this.dockers,
     this.dotnetVersion,
     this.javaVersion,

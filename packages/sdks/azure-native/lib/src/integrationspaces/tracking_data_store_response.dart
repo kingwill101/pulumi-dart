@@ -18,7 +18,7 @@ class TrackingDataStoreResponse {
   /// [dataStoreResourceId] The data store resource id.
   /// [dataStoreUri] The data store URI.
   /// [databaseName] The database name.
-  TrackingDataStoreResponse({
+  const TrackingDataStoreResponse({
     this.dataStoreIngestionUri,
     this.dataStoreResourceId,
     this.dataStoreUri,

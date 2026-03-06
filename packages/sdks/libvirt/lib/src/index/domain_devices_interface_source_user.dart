@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceUser {
 
   /// Creates a new [DomainDevicesInterfaceSourceUser].
   /// [dev] Sets the device identifier for the user-managed network connection.
-  DomainDevicesInterfaceSourceUser({
+  const DomainDevicesInterfaceSourceUser({
     this.dev,
   });
 

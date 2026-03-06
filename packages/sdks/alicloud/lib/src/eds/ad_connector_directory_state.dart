@@ -45,7 +45,7 @@ class AdConnectorDirectoryState {
   /// [subDomainDnsAddresses] The Enterprise already has the DNS address of the AD subdomain. If `sub_domain_name` is set and this parameter is not set, the child Domain DNS is considered consistent with the parent domain.
   /// [subDomainName] The Enterprise already has a fully qualified domain name (FQDN) of an AD subdomain, with both a host name and a domain name.
   /// [vswitchIds] List of VSwitch IDs in the directory.
-  AdConnectorDirectoryState({
+  const AdConnectorDirectoryState({
     this.desktopAccessType,
     this.directoryName,
     this.dnsAddresses,

@@ -17,7 +17,7 @@ class PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet {
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet].
   /// [regexFileSet] The regex-filtered set of files to scan.
   /// [url] The Cloud Storage url of the file(s) to scan, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard
-  PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet({
+  const PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet({
     this.regexFileSet,
     this.url,
   });

@@ -18,7 +18,7 @@ class GetVpcIpamPoolsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipamPools] List of IPAM pools and their attributes. See below for details
   /// [region] Required.
-  GetVpcIpamPoolsResult({
+  const GetVpcIpamPoolsResult({
     this.filters,
     required this.id,
     required this.ipamPools,

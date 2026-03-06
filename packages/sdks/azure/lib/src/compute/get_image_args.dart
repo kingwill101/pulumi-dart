@@ -21,7 +21,7 @@ class GetImageArgs {
   /// [nameRegex] Regex pattern of the image to match.
   /// [resourceGroupName] The Name of the Resource Group where this Image exists.
   /// [sortDescending] By default when matching by regex, images are sorted by name in ascending order and the first match is chosen, to sort descending, set this flag.
-  GetImageArgs({
+  const GetImageArgs({
     this.name,
     this.nameRegex,
     required this.resourceGroupName,

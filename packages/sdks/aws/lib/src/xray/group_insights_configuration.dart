@@ -11,7 +11,7 @@ class GroupInsightsConfiguration {
   /// Creates a new [GroupInsightsConfiguration].
   /// [insightsEnabled] Specifies whether insights are enabled.
   /// [notificationsEnabled] Specifies whether insight notifications are enabled.
-  GroupInsightsConfiguration({
+  const GroupInsightsConfiguration({
     required this.insightsEnabled,
     this.notificationsEnabled,
   });

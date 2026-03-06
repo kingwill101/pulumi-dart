@@ -74,7 +74,7 @@ class GetDbSystemShapesDbSystemShape {
   /// [minimumStorageCount] The minimum number of Exadata storage servers available for the Exadata infrastructure.
   /// [runtimeMinimumCoreCount] The runtime minimum number of compute servers available for this shape.
   /// [shapeFamily] The family of the shape used for the DB system.
-  GetDbSystemShapesDbSystemShape({
+  const GetDbSystemShapesDbSystemShape({
     required this.areServerTypesSupported,
     required this.availableCoreCount,
     required this.availableCoreCountPerNode,

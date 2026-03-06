@@ -41,7 +41,7 @@ class GetChannelResult {
   /// [readinessState] The readiness state of the corresponding partner topic.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetChannelResult({
+  const GetChannelResult({
     required this.azureApiVersion,
     this.channelType,
     this.expirationTimeIfNotActivatedUtc,

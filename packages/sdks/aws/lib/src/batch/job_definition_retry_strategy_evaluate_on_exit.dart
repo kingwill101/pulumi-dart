@@ -17,7 +17,7 @@ class JobDefinitionRetryStrategyEvaluateOnExit {
   /// [onExitCode] Glob pattern to match against the decimal representation of the exit code returned for a job.
   /// [onReason] Glob pattern to match against the reason returned for a job.
   /// [onStatusReason] Glob pattern to match against the status reason returned for a job.
-  JobDefinitionRetryStrategyEvaluateOnExit({
+  const JobDefinitionRetryStrategyEvaluateOnExit({
     required this.action,
     this.onExitCode,
     this.onReason,

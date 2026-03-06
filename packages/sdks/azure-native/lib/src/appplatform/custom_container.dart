@@ -25,7 +25,7 @@ class CustomContainer {
   /// [imageRegistryCredential] Credential of the image registry
   /// [languageFramework] Language framework of the container image uploaded. Supported values: "springboot", "", null.
   /// [server] The name of the registry that contains the container image
-  CustomContainer({
+  const CustomContainer({
     this.args,
     this.command,
     this.containerImage,

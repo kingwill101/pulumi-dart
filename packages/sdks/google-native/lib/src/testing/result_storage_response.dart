@@ -21,7 +21,7 @@ class ResultStorageResponse {
   /// [resultsUrl] URL to the results in the Firebase Web Console.
   /// [toolResultsExecution] The tool results execution that results are written to.
   /// [toolResultsHistory] The tool results history that contains the tool results execution that results are written to. If not provided, the service will choose an appropriate value.
-  ResultStorageResponse({
+  const ResultStorageResponse({
     required this.googleCloudStorage,
     required this.resultsUrl,
     required this.toolResultsExecution,

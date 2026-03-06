@@ -18,7 +18,7 @@ class GroupQuotaArgs {
   /// [groupQuotaName] The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
   /// [managementGroupId] Management Group Id.
   /// [properties] Optional.
-  GroupQuotaArgs({
+  const GroupQuotaArgs({
     this.groupQuotaName,
     required this.managementGroupId,
     this.properties,

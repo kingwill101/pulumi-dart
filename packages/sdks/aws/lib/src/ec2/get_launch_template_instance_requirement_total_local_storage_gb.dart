@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementTotalLocalStorageGb {
   /// Creates a new [GetLaunchTemplateInstanceRequirementTotalLocalStorageGb].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementTotalLocalStorageGb({
+  const GetLaunchTemplateInstanceRequirementTotalLocalStorageGb({
     required this.max,
     required this.min,
   });

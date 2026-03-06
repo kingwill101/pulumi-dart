@@ -9,7 +9,7 @@ class InterconnectAttachmentPrivateInfoResponse {
 
   /// Creates a new [InterconnectAttachmentPrivateInfoResponse].
   /// [tag8021q] 802.1q encapsulation tag to be used for traffic between Google and the customer, going to and from this network and region.
-  InterconnectAttachmentPrivateInfoResponse({
+  const InterconnectAttachmentPrivateInfoResponse({
     required this.tag8021q,
   });
 

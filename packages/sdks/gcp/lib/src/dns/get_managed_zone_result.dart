@@ -28,7 +28,7 @@ class GetManagedZoneResult {
   /// [nameServers] The list of nameservers that will be authoritative for this
   /// [project] Optional.
   /// [visibility] The zone's visibility: public zones are exposed to the Internet,
-  GetManagedZoneResult({
+  const GetManagedZoneResult({
     required this.description,
     required this.dnsName,
     required this.id,

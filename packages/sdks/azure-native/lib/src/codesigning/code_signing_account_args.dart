@@ -25,7 +25,7 @@ class CodeSigningAccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] SKU of the trusted signing account.
   /// [tags] Resource tags.
-  CodeSigningAccountArgs({
+  const CodeSigningAccountArgs({
     this.accountName,
     this.location,
     required this.resourceGroupName,

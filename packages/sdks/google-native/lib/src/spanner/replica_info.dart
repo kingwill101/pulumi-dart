@@ -15,7 +15,7 @@ class ReplicaInfo {
   /// [defaultLeaderLocation] If true, this location is designated as the default leader location where leader replicas are placed. See the [region types documentation](https://cloud.google.com/spanner/docs/instances#region_types) for more details.
   /// [location] The location of the serving resources, e.g. "us-central1".
   /// [type] The type of replica.
-  ReplicaInfo({
+  const ReplicaInfo({
     this.defaultLeaderLocation,
     this.location,
     this.type,

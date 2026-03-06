@@ -8,7 +8,7 @@ class InstantSnapshotResourceStatusResponseComputeBeta {
 
   /// Creates a new [InstantSnapshotResourceStatusResponseComputeBeta].
   /// [storageSizeBytes] The storage size of this instant snapshot.
-  InstantSnapshotResourceStatusResponseComputeBeta({
+  const InstantSnapshotResourceStatusResponseComputeBeta({
     required this.storageSizeBytes,
   });
 

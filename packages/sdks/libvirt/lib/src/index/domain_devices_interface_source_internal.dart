@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceInternal {
 
   /// Creates a new [DomainDevicesInterfaceSourceInternal].
   /// [name] Sets the name of the internal network interface.
-  DomainDevicesInterfaceSourceInternal({
+  const DomainDevicesInterfaceSourceInternal({
     this.name,
   });
 

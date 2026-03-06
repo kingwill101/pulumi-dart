@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1ResourcesConsumedResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcesConsumedResponse].
   /// [replicaHours] The number of replica hours used. Note that many replicas may run in parallel, and additionally any given work may be queued for some time. Therefore this value is not strictly related to wall time.
-  GoogleCloudAiplatformV1beta1ResourcesConsumedResponse({
+  const GoogleCloudAiplatformV1beta1ResourcesConsumedResponse({
     required this.replicaHours,
   });
 

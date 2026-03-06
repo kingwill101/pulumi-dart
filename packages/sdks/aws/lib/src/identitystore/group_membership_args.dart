@@ -21,7 +21,7 @@ class GroupMembershipArgs {
   /// [identityStoreId] Identity Store ID associated with the Single Sign-On Instance.
   /// [memberId] The identifier for a user in the Identity Store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupMembershipArgs({
+  const GroupMembershipArgs({
     required this.groupId,
     required this.identityStoreId,
     required this.memberId,

@@ -36,7 +36,7 @@ class ApplicationProperties {
   /// [privateLinkConfigurations] The private link configurations.
   /// [sshEndpoints] The list of application SSH endpoints.
   /// [uninstallScriptActions] The list of uninstall script actions.
-  ApplicationProperties({
+  const ApplicationProperties({
     this.applicationType,
     this.computeProfile,
     this.errors,

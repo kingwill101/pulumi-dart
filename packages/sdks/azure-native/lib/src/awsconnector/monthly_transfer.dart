@@ -9,7 +9,7 @@ class MonthlyTransfer {
 
   /// Creates a new [MonthlyTransfer].
   /// [gbPerMonthAllocated] GbPerMonthAllocated of the Instance.
-  MonthlyTransfer({
+  const MonthlyTransfer({
     this.gbPerMonthAllocated,
   });
 

@@ -18,7 +18,7 @@ class GetConfigurationKeysArgs {
   /// [configurationStoreId] Specifies the id of the App Configuration.
   /// [key] The name of the App Configuration Keys to look up.
   /// [label] The label of the App Configuration Keys tp look up.
-  GetConfigurationKeysArgs({
+  const GetConfigurationKeysArgs({
     required this.configurationStoreId,
     this.key,
     this.label,

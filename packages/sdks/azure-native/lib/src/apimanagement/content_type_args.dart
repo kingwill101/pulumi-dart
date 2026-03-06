@@ -33,7 +33,7 @@ class ContentTypeArgs {
   /// [schema] Content type schema.
   /// [serviceName] The name of the API Management service.
   /// [version] Content type version.
-  ContentTypeArgs({
+  const ContentTypeArgs({
     this.contentTypeId,
     this.description,
     this.id,

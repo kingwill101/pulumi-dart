@@ -46,7 +46,7 @@ class AppConnectionArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the AppConnection.
   /// [type] The type of network connectivity used by the AppConnection. Refer
-  AppConnectionArgs({
+  const AppConnectionArgs({
     required this.applicationEndpoint,
     this.connectors,
     this.displayName,

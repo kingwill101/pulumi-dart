@@ -10,7 +10,7 @@ class NodeDaemonEndpointsPatch {
 
   /// Creates a new [NodeDaemonEndpointsPatch].
   /// [kubeletEndpoint] Endpoint on which Kubelet is listening.
-  NodeDaemonEndpointsPatch({
+  const NodeDaemonEndpointsPatch({
     this.kubeletEndpoint,
   });
 

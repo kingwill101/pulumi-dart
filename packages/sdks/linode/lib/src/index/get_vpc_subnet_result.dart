@@ -30,7 +30,7 @@ class GetVpcSubnetResult {
   /// [linodes] A list of Linodes added to this subnet.
   /// [updated] The date and time when the VPC Subnet was last updated.
   /// [vpcId] Required.
-  GetVpcSubnetResult({
+  const GetVpcSubnetResult({
     required this.created,
     required this.id,
     required this.ipv4,

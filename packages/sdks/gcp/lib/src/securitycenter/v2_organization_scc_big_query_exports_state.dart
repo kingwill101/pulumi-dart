@@ -67,7 +67,7 @@ class V2OrganizationSccBigQueryExportsState {
   /// [organization] The organization whose Cloud Security Command Center the Big Query Export
   /// [principal] The service account that needs permission to create table and upload data to the BigQuery dataset.
   /// [updateTime] The most recent time at which the BigQuery export was updated. This field is set by the server and will be ignored if provided on export creation or update.
-  V2OrganizationSccBigQueryExportsState({
+  const V2OrganizationSccBigQueryExportsState({
     this.bigQueryExportId,
     this.createTime,
     this.dataset,

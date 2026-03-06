@@ -12,7 +12,7 @@ class CredentialReferenceResponse {
   /// Creates a new [CredentialReferenceResponse].
   /// [referenceName] Reference credential name.
   /// [type] Credential reference type.
-  CredentialReferenceResponse({
+  const CredentialReferenceResponse({
     required this.referenceName,
     required this.type,
   });

@@ -54,7 +54,7 @@ class EdgeMachineNicDetailResponse {
   /// [subnetMask] Subnet Mask of NIC
   /// [switchName] The switch attached to the NIC, if any.
   /// [vlanId] The VLAN ID of the physical NIC.
-  EdgeMachineNicDetailResponse({
+  const EdgeMachineNicDetailResponse({
     required this.adapterName,
     required this.componentId,
     required this.defaultGateway,

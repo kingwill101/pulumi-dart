@@ -56,7 +56,7 @@ class ListGeodataByIpResult {
   /// [state] The state this IP address is located in
   /// [stateCode] The abbreviated name for the state this IP address is located in
   /// [stateConfidenceFactor] A numeric rating of confidence that the value in the 'state' field is correct on a scale of 0-100
-  ListGeodataByIpResult({
+  const ListGeodataByIpResult({
     this.asn,
     this.carrier,
     this.city,

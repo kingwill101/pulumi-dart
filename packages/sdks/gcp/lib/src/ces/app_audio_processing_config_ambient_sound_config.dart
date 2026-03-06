@@ -29,7 +29,7 @@ class AppAudioProcessingConfigAmbientSoundConfig {
   /// [gcsUri] Ambient noise as a mono-channel, 16kHz WAV file stored in [Cloud
   /// [prebuiltAmbientSound] Name of the prebuilt ambient sound.
   /// [volumeGainDb] Volume gain (in dB) of the normal native volume supported by
-  AppAudioProcessingConfigAmbientSoundConfig({
+  const AppAudioProcessingConfigAmbientSoundConfig({
     this.gcsUri,
     this.prebuiltAmbientSound,
     this.volumeGainDb,

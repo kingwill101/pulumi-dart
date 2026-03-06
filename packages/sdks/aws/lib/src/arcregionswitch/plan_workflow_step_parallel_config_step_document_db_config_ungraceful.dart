@@ -7,7 +7,7 @@ class PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful].
   /// [ungraceful] Required.
-  PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful({
+  const PlanWorkflowStepParallelConfigStepDocumentDbConfigUngraceful({
     required this.ungraceful,
   });
 

@@ -29,7 +29,7 @@ class GetAlertRuleTemplateScheduledTemplate {
   /// [tactics] A list of categories of attacks by which to classify the rule.
   /// [triggerOperator] The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
   /// [triggerThreshold] The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule Template.
-  GetAlertRuleTemplateScheduledTemplate({
+  const GetAlertRuleTemplateScheduledTemplate({
     required this.description,
     required this.query,
     required this.queryFrequency,

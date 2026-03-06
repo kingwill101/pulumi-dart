@@ -31,7 +31,7 @@ class LogsMetricFilterProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  LogsMetricFilterProperties({
+  const LogsMetricFilterProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

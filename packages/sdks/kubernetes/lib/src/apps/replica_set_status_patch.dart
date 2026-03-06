@@ -30,7 +30,7 @@ class ReplicaSetStatusPatch {
   /// [readyReplicas] The number of non-terminating pods targeted by this ReplicaSet with a Ready Condition.
   /// [replicas] Replicas is the most recently observed number of non-terminating pods. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset
   /// [terminatingReplicas] The number of terminating pods for this replica set. Terminating pods have a non-null .metadata.deletionTimestamp and have not yet reached the Failed or Succeeded .status.phase.
-  ReplicaSetStatusPatch({
+  const ReplicaSetStatusPatch({
     this.availableReplicas,
     this.conditions,
     this.fullyLabeledReplicas,

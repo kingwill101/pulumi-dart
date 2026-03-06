@@ -18,7 +18,7 @@ class GetWorkloadNetworkPortMirroringArgs {
   /// [portMirroringId] ID of the NSX port mirroring profile.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWorkloadNetworkPortMirroringArgs({
+  const GetWorkloadNetworkPortMirroringArgs({
     required this.portMirroringId,
     required this.privateCloudName,
     required this.resourceGroupName,

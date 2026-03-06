@@ -17,7 +17,7 @@ class GetEndpointMongodbSetting {
   /// [docsToInvestigate] Required.
   /// [extractDocId] Required.
   /// [nestingLevel] Required.
-  GetEndpointMongodbSetting({
+  const GetEndpointMongodbSetting({
     required this.authMechanism,
     required this.authSource,
     required this.authType,

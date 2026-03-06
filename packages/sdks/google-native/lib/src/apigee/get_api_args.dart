@@ -13,7 +13,7 @@ class GetApiArgs {
   /// Creates a new [GetApiArgs].
   /// [apiId] Required.
   /// [organizationId] Required.
-  GetApiArgs({
+  const GetApiArgs({
     required this.apiId,
     required this.organizationId,
   });

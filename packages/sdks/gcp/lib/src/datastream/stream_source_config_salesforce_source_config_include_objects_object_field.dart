@@ -8,7 +8,7 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField {
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField].
   /// [name] Field name.
-  StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField({
+  const StreamSourceConfigSalesforceSourceConfigIncludeObjectsObjectField({
     this.name,
   });
 

@@ -11,7 +11,7 @@ class DatasetCreateRequestTimeSeries {
   /// Creates a new [DatasetCreateRequestTimeSeries].
   /// [coarseGrainTimestamp] Column name to be used as CoarseGrainTimestamp. Can only be used if 'fineGrainTimestamp' is specified and cannot be same as 'fineGrainTimestamp'.
   /// [fineGrainTimestamp] Column name to be used as FineGrainTimestamp
-  DatasetCreateRequestTimeSeries({
+  const DatasetCreateRequestTimeSeries({
     this.coarseGrainTimestamp,
     this.fineGrainTimestamp,
   });

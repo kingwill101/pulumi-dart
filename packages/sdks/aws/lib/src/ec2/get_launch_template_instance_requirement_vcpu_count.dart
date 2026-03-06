@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementVcpuCount {
   /// Creates a new [GetLaunchTemplateInstanceRequirementVcpuCount].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementVcpuCount({
+  const GetLaunchTemplateInstanceRequirementVcpuCount({
     required this.max,
     required this.min,
   });

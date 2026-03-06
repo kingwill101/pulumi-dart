@@ -17,7 +17,7 @@ class OrganizationReplayPolicysimulatorV1betaArgs {
   /// [config] The configuration used for the `Replay`.
   /// [location] Optional.
   /// [organizationId] Required.
-  OrganizationReplayPolicysimulatorV1betaArgs({
+  const OrganizationReplayPolicysimulatorV1betaArgs({
     required this.config,
     this.location,
     required this.organizationId,

@@ -19,7 +19,7 @@ class ReportSummaryMachineFindingResponse {
   /// [allocatedDiskTypes] Set of disk types allocated to assets.
   /// [allocatedRegions] Set of regions in which the assets were allocated.
   /// [machineSeriesAllocations] Distribution of assets based on the Machine Series.
-  ReportSummaryMachineFindingResponse({
+  const ReportSummaryMachineFindingResponse({
     required this.allocatedAssetCount,
     required this.allocatedDiskTypes,
     required this.allocatedRegions,

@@ -10,7 +10,7 @@ class Filter {
 
   /// Creates a new [Filter].
   /// [eventType] Event types to allowlist.
-  Filter({
+  const Filter({
     this.eventType,
   });
 

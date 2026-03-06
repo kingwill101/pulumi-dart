@@ -8,7 +8,7 @@ class BucketLoggingTargetObjectKeyFormatPartitionedPrefix {
 
   /// Creates a new [BucketLoggingTargetObjectKeyFormatPartitionedPrefix].
   /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. Valid values: `EventTime`, `DeliveryTime`.
-  BucketLoggingTargetObjectKeyFormatPartitionedPrefix({
+  const BucketLoggingTargetObjectKeyFormatPartitionedPrefix({
     required this.partitionDateSource,
   });
 

@@ -10,7 +10,7 @@ class WinRMConfigurationResponse {
 
   /// Creates a new [WinRMConfigurationResponse].
   /// [listeners] The list of Windows Remote Management listeners
-  WinRMConfigurationResponse({
+  const WinRMConfigurationResponse({
     this.listeners,
   });
 

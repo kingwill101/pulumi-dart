@@ -45,7 +45,7 @@ class ElasticBackupPropertiesResponse {
   /// [snapshotCreationDate] The snapshot creation date of the backup
   /// [snapshotUsage] Manual backup using an already existing snapshot. This will always be CreateNewSnapshot for scheduled backups and UseExistingSnapshot/CreateNewSnapshot for manual backups
   /// [volumeSize] Specifies if the backup is for a large volume.
-  ElasticBackupPropertiesResponse({
+  const ElasticBackupPropertiesResponse({
     required this.backupType,
     required this.completionDate,
     required this.creationDate,

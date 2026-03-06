@@ -28,7 +28,7 @@ class ProcessorArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [type] The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
-  ProcessorArgs({
+  const ProcessorArgs({
     this.createTime,
     this.defaultProcessorVersion,
     this.displayName,

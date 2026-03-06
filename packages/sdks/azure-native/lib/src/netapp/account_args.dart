@@ -33,7 +33,7 @@ class AccountArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.activeDirectories,
     this.encryption,

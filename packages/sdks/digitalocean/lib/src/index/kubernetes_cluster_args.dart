@@ -83,7 +83,7 @@ class KubernetesClusterArgs {
   /// [tags] A list of tag names to be applied to the Kubernetes cluster.
   /// [version] The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
   /// [vpcUuid] The ID of the VPC where the Kubernetes cluster will be located.
-  KubernetesClusterArgs({
+  const KubernetesClusterArgs({
     this.amdGpuDeviceMetricsExporterPlugin,
     this.amdGpuDevicePlugin,
     this.autoUpgrade,

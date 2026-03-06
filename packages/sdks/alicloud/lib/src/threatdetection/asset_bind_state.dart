@@ -12,7 +12,7 @@ class AssetBindState {
   /// Creates a new [AssetBindState].
   /// [authVersion] Bind version.
   /// [uuid] The first ID of the resource
-  AssetBindState({
+  const AssetBindState({
     this.authVersion,
     this.uuid,
   });

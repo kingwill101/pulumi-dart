@@ -11,7 +11,7 @@ class GetFolderIamPolicyArgs {
 
   /// Creates a new [GetFolderIamPolicyArgs].
   /// [folderId] Required.
-  GetFolderIamPolicyArgs({
+  const GetFolderIamPolicyArgs({
     required this.folderId,
   });
 

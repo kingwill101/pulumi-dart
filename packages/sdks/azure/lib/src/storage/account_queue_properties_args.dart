@@ -30,7 +30,7 @@ class AccountQueuePropertiesArgs {
   /// [logging] A `logging` block as defined below.
   /// [minuteMetrics] A `minute_metrics` block as defined below.
   /// [storageAccountId] The ID of the Storage Account to set Queue Properties on. Changing this forces a new resource to be created.
-  AccountQueuePropertiesArgs({
+  const AccountQueuePropertiesArgs({
     this.corsRules,
     this.hourMetrics,
     this.logging,

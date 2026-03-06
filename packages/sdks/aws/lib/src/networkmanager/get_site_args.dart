@@ -18,7 +18,7 @@ class GetSiteArgs {
   /// [globalNetworkId] ID of the Global Network of the site to retrieve.
   /// [siteId] ID of the specific site to retrieve.
   /// [tags] Key-value tags for the Site.
-  GetSiteArgs({
+  const GetSiteArgs({
     required this.globalNetworkId,
     required this.siteId,
     this.tags,

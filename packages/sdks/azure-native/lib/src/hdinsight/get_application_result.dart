@@ -31,7 +31,7 @@ class GetApplicationResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] The tags for the application.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

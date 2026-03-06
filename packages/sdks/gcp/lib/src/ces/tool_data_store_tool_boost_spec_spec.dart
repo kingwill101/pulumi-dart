@@ -10,7 +10,7 @@ class ToolDataStoreToolBoostSpecSpec {
 
   /// Creates a new [ToolDataStoreToolBoostSpecSpec].
   /// [conditionBoostSpecs] A list of boosting specifications.
-  ToolDataStoreToolBoostSpecSpec({
+  const ToolDataStoreToolBoostSpecSpec({
     required this.conditionBoostSpecs,
   });
 

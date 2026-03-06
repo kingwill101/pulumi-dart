@@ -40,7 +40,7 @@ class GetLogAnalyticExportRequestRateByIntervalArgs {
   /// [intervalLength] Interval value in minutes used to create LogAnalytics call rate logs.
   /// [location] The name of Azure region.
   /// [toTime] To time of the query
-  GetLogAnalyticExportRequestRateByIntervalArgs({
+  const GetLogAnalyticExportRequestRateByIntervalArgs({
     required this.blobContainerSasUri,
     required this.fromTime,
     this.groupByClientApplicationId,

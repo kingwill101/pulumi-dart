@@ -54,7 +54,7 @@ class GroupPolicyAssignmentState {
   /// [parameters] A JSON mapping of any Parameters for this Policy.
   /// [policyDefinitionId] The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   /// [resourceSelectors] One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
-  GroupPolicyAssignmentState({
+  const GroupPolicyAssignmentState({
     this.description,
     this.displayName,
     this.enforce,

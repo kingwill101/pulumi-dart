@@ -15,7 +15,7 @@ class GetNetworkFabricTopologyResult {
   /// [configurationState] Gets the configuration state.
   /// [error] The error object.
   /// [url] URL for the details of the response.
-  GetNetworkFabricTopologyResult({
+  const GetNetworkFabricTopologyResult({
     required this.configurationState,
     this.error,
     this.url,

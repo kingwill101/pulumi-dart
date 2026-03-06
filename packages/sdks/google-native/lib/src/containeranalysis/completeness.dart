@@ -15,7 +15,7 @@ class Completeness {
   /// [arguments] If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
   /// [environment] If true, the builder claims that recipe.environment is claimed to be complete.
   /// [materials] If true, the builder claims that materials are complete, usually through some controls to prevent network access. Sometimes called "hermetic".
-  Completeness({
+  const Completeness({
     this.arguments,
     this.environment,
     this.materials,

@@ -36,7 +36,7 @@ class CapacityReservationGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
-  CapacityReservationGroupArgs({
+  const CapacityReservationGroupArgs({
     required this.capacityReservationGroupProperties,
     this.groupId,
     this.identity,

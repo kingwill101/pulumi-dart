@@ -14,7 +14,7 @@ class AgentAgentActionGroupApiSchema {
   /// Creates a new [AgentAgentActionGroupApiSchema].
   /// [payload] JSON or YAML-formatted payload defining the OpenAPI schema for the action group.
   /// [s3] Details about the S3 object containing the OpenAPI schema for the action group. See `s3` Block for details.
-  AgentAgentActionGroupApiSchema({
+  const AgentAgentActionGroupApiSchema({
     this.payload,
     this.s3,
   });

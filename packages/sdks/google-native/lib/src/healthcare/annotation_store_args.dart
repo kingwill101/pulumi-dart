@@ -24,7 +24,7 @@ class AnnotationStoreArgs {
   /// [location] Optional.
   /// [name] Resource name of the Annotation store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/annotationStores/{annotation_store_id}`.
   /// [project] Optional.
-  AnnotationStoreArgs({
+  const AnnotationStoreArgs({
     this.annotationStoreId,
     required this.datasetId,
     this.labels,

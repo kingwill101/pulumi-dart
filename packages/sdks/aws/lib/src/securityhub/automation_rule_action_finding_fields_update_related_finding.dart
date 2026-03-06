@@ -11,7 +11,7 @@ class AutomationRuleActionFindingFieldsUpdateRelatedFinding {
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateRelatedFinding].
   /// [id] The product-generated identifier for a related finding.
   /// [productArn] The ARN of the product that generated a related finding.
-  AutomationRuleActionFindingFieldsUpdateRelatedFinding({
+  const AutomationRuleActionFindingFieldsUpdateRelatedFinding({
     required this.id,
     required this.productArn,
   });

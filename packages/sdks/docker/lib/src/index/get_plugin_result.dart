@@ -26,7 +26,7 @@ class GetPluginResult {
   /// [id] The ID of the plugin, which has precedence over the `alias` of both are given
   /// [name] The plugin name. If the tag is omitted, `:latest` is complemented to the attribute value.
   /// [pluginReference] The Docker Plugin Reference
-  GetPluginResult({
+  const GetPluginResult({
     this.alias,
     required this.enabled,
     required this.envs,

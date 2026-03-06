@@ -15,7 +15,7 @@ class GetKubeEnvironmentArgs {
   /// Creates a new [GetKubeEnvironmentArgs].
   /// [name] Name of the Kubernetes Environment.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetKubeEnvironmentArgs({
+  const GetKubeEnvironmentArgs({
     required this.name,
     required this.resourceGroupName,
   });

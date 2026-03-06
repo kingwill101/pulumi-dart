@@ -17,7 +17,7 @@ class HostingVersionArgs {
   /// Creates a new [HostingVersionArgs].
   /// [config] The configuration for the behavior of the site. This configuration exists in the `firebase.json` file.
   /// [siteId] Required. The ID of the site in which to create this Version.
-  HostingVersionArgs({
+  const HostingVersionArgs({
     this.config,
     required this.siteId,
   });

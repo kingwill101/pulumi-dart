@@ -9,7 +9,7 @@ class EnclaveDefaultSettingsModel {
 
   /// Creates a new [EnclaveDefaultSettingsModel].
   /// [diagnosticDestination] Diagnostic Destination.
-  EnclaveDefaultSettingsModel({
+  const EnclaveDefaultSettingsModel({
     this.diagnosticDestination,
   });
 

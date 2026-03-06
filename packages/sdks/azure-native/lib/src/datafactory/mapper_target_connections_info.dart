@@ -21,7 +21,7 @@ class MapperTargetConnectionsInfo {
   /// [dataMapperMappings] List of table mappings.
   /// [relationships] List of relationship info among the tables.
   /// [targetEntities] List of source tables for a target connection.
-  MapperTargetConnectionsInfo({
+  const MapperTargetConnectionsInfo({
     this.connection,
     this.dataMapperMappings,
     this.relationships,

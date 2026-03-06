@@ -14,7 +14,7 @@ class DomainScalingParameters {
   /// [desiredInstanceType] The instance type that you want to preconfigure for your domain. See the [AWS documentation](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/API_ScalingParameters.html) for valid values.
   /// [desiredPartitionCount] The number of partitions you want to preconfigure for your domain. Only valid when you select `search.2xlarge` as the instance type.
   /// [desiredReplicationCount] The number of replicas you want to preconfigure for each index partition.
-  DomainScalingParameters({
+  const DomainScalingParameters({
     this.desiredInstanceType,
     this.desiredPartitionCount,
     this.desiredReplicationCount,

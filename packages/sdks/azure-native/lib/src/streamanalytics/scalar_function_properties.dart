@@ -21,7 +21,7 @@ class ScalarFunctionProperties {
   /// [inputs] Optional.
   /// [output] Describes the output of a function.
   /// [type] Indicates the type of function.
-  ScalarFunctionProperties({
+  const ScalarFunctionProperties({
     this.binding,
     this.inputs,
     this.output,

@@ -22,7 +22,7 @@ class ConnectionProfileCloudsql {
   /// [privateIp] (Output)
   /// [publicIp] (Output)
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  ConnectionProfileCloudsql({
+  const ConnectionProfileCloudsql({
     this.cloudSqlId,
     this.privateIp,
     this.publicIp,

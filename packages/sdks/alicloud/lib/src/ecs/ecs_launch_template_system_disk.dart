@@ -32,7 +32,7 @@ class EcsLaunchTemplateSystemDisk {
   /// [name] System disk name. The name is a string of 2 to 128 characters. It must begin with an English or a Chinese character. It can contain A-Z, a-z, Chinese characters, numbers, periods (.), colons (:), underscores (_), and hyphens (-).
   /// [performanceLevel] The performance level of the ESSD used as the system disk. Valid Values: `PL0`, `PL1`, `PL2`, and `PL3`. Default to: `PL0`.
   /// [size] Size of the system disk, measured in GB. Value range: [20, 500].
-  EcsLaunchTemplateSystemDisk({
+  const EcsLaunchTemplateSystemDisk({
     this.category,
     this.deleteWithInstance,
     this.description,

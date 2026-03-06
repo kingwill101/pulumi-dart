@@ -16,7 +16,7 @@ class StorageAccountDetails {
   /// [dataAccountType] Account Type of the data to be transferred.
   /// [sharePassword] Password for all the shares to be created on the device. Should not be passed for TransferType:ExportFromAzure jobs. If this is not passed, the service will generate password itself. This will not be returned in Get Call. Password Requirements :  Password must be minimum of 12 and maximum of 64 characters. Password must have at least one uppercase alphabet, one number and one special character. Password cannot have the following characters : IilLoO0 Password can have only alphabets, numbers and these characters : @#\-$%^!+=;:_()]+
   /// [storageAccountId] Storage Account Resource Id.
-  StorageAccountDetails({
+  const StorageAccountDetails({
     required this.dataAccountType,
     this.sharePassword,
     required this.storageAccountId,

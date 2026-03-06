@@ -18,7 +18,7 @@ class BaselineState {
   /// [baselineItems] List of baseline items.
   /// [baselineName] Baseline Name.
   /// [description] Baseline Description.
-  BaselineState({
+  const BaselineState({
     this.baselineItems,
     this.baselineName,
     this.description,

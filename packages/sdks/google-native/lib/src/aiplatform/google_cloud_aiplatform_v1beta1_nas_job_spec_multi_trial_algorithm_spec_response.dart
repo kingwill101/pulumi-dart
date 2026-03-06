@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponse {
   /// [multiTrialAlgorithm] The multi-trial Neural Architecture Search (NAS) algorithm type. Defaults to `REINFORCEMENT_LEARNING`.
   /// [searchTrialSpec] Spec for search trials.
   /// [trainTrialSpec] Spec for train trials. Top N [TrainTrialSpec.max_parallel_trial_count] search trials will be trained for every M [TrainTrialSpec.frequency] trials searched.
-  GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponse({
+  const GoogleCloudAiplatformV1beta1NasJobSpecMultiTrialAlgorithmSpecResponse({
     required this.metric,
     required this.multiTrialAlgorithm,
     required this.searchTrialSpec,

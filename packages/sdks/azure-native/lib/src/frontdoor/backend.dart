@@ -39,7 +39,7 @@ class Backend {
   /// [privateLinkLocation] The location of the Private Link resource. Required only if 'privateLinkResourceId' is populated
   /// [privateLinkResourceId] The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   /// [weight] Weight of this endpoint for load balancing purposes.
-  Backend({
+  const Backend({
     this.address,
     this.backendHostHeader,
     this.enabledState,

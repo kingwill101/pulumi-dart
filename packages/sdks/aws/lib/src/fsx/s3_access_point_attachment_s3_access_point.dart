@@ -12,7 +12,7 @@ class S3AccessPointAttachmentS3AccessPoint {
   /// Creates a new [S3AccessPointAttachmentS3AccessPoint].
   /// [policy] Access policy associated with the S3 access point configuration.
   /// [vpcConfiguration] Amazon S3 restricts access to the S3 access point to requests made from the specified VPC. See `vpc_configuration` Block for details.
-  S3AccessPointAttachmentS3AccessPoint({
+  const S3AccessPointAttachmentS3AccessPoint({
     this.policy,
     this.vpcConfiguration,
   });

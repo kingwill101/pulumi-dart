@@ -11,7 +11,7 @@ class AgentcoreTokenVaultCmkKmsConfiguration {
   /// Creates a new [AgentcoreTokenVaultCmkKmsConfiguration].
   /// [keyType] Type of KMS key. Valid values: `CustomerManagedKey`, `ServiceManagedKey`.
   /// [kmsKeyArn] ARN of the KMS key.
-  AgentcoreTokenVaultCmkKmsConfiguration({
+  const AgentcoreTokenVaultCmkKmsConfiguration({
     required this.keyType,
     this.kmsKeyArn,
   });

@@ -33,7 +33,7 @@ class GetAdministratorsMicrosoftEntraResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tenantId] Identifier of the tenant in which the Microsoft Entra principal exists.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAdministratorsMicrosoftEntraResult({
+  const GetAdministratorsMicrosoftEntraResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

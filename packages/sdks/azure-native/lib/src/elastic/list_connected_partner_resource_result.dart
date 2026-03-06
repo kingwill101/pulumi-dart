@@ -13,7 +13,7 @@ class ListConnectedPartnerResourceResult {
   /// Creates a new [ListConnectedPartnerResourceResult].
   /// [nextLink] Link to the next set of results, if any.
   /// [value] Results of a list operation.
-  ListConnectedPartnerResourceResult({
+  const ListConnectedPartnerResourceResult({
     this.nextLink,
     this.value,
   });

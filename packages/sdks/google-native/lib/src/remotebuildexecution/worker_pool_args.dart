@@ -36,7 +36,7 @@ class WorkerPoolArgs {
   /// [project] Optional.
   /// [workerConfig] Specifies the properties, such as machine type and disk size, used for creating workers in a worker pool.
   /// [workerCount] The desired number of workers in the worker pool. Must be a value between 0 and 15000.
-  WorkerPoolArgs({
+  const WorkerPoolArgs({
     this.autoscale,
     this.channel,
     required this.instanceId,

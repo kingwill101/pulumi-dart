@@ -18,7 +18,7 @@ class GetSandboxCustomImageArgs {
   /// [clusterName] The name of the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sandboxCustomImageName] The name of the sandbox custom image.
-  GetSandboxCustomImageArgs({
+  const GetSandboxCustomImageArgs({
     required this.clusterName,
     required this.resourceGroupName,
     required this.sandboxCustomImageName,

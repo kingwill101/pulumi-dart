@@ -9,7 +9,7 @@ class ConfigurationProfileAssignmentProperties {
 
   /// Creates a new [ConfigurationProfileAssignmentProperties].
   /// [configurationProfile] The Automanage configurationProfile ARM Resource URI.
-  ConfigurationProfileAssignmentProperties({
+  const ConfigurationProfileAssignmentProperties({
     this.configurationProfile,
   });
 

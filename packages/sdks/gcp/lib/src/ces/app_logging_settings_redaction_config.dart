@@ -21,7 +21,7 @@ class AppLoggingSettingsRedactionConfig {
   /// [deidentifyTemplate] [DLP](https://cloud.google.com/dlp/docs) deidentify template name to
   /// [enableRedaction] If true, redaction will be applied in various logging scenarios, including
   /// [inspectTemplate] [DLP](https://cloud.google.com/dlp/docs) inspect template name to configure
-  AppLoggingSettingsRedactionConfig({
+  const AppLoggingSettingsRedactionConfig({
     this.deidentifyTemplate,
     this.enableRedaction,
     this.inspectTemplate,

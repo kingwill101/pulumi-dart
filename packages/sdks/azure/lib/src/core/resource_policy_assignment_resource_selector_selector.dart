@@ -11,7 +11,7 @@ class ResourcePolicyAssignmentResourceSelectorSelector {
   /// [ins] Optional.
   /// [kind] Required.
   /// [notIns] Optional.
-  ResourcePolicyAssignmentResourceSelectorSelector({
+  const ResourcePolicyAssignmentResourceSelectorSelector({
     this.ins,
     required this.kind,
     this.notIns,

@@ -28,7 +28,7 @@ class QuickConnectArgs {
   /// [quickConnectConfig] A block that defines the configuration information for the Quick Connect: `quick_connect_type` and one of `phone_config`, `queue_config`, `user_config` . The Quick Connect Config block is documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Quick Connect. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  QuickConnectArgs({
+  const QuickConnectArgs({
     this.description,
     required this.instanceId,
     this.name,

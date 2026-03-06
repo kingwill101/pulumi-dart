@@ -18,7 +18,7 @@ class UserInGroupState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID of the user and group.
   /// [username] The username of the user to be added to the group.
-  UserInGroupState({
+  const UserInGroupState({
     this.groupName,
     this.region,
     this.userPoolId,

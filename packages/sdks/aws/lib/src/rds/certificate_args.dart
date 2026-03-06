@@ -15,7 +15,7 @@ class CertificateArgs {
   /// Creates a new [CertificateArgs].
   /// [certificateIdentifier] Certificate identifier. For example, `rds-ca-rsa4096-g1`. Refer to [AWS RDS (Relational Database) Certificate Identifier](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html#UsingWithRDS.SSL.CertificateIdentifier) for more information.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  CertificateArgs({
+  const CertificateArgs({
     required this.certificateIdentifier,
     this.region,
   });

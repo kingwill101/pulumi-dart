@@ -41,7 +41,7 @@ class ListBotConnectionWithSecretsResult {
   /// [tags] Contains resource tags defined as key/value pairs.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zones] Entity zones
-  ListBotConnectionWithSecretsResult({
+  const ListBotConnectionWithSecretsResult({
     this.etag,
     required this.id,
     this.kind,

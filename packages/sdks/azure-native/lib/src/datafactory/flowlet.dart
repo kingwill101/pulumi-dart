@@ -38,7 +38,7 @@ class Flowlet {
   /// [sources] List of sources in Flowlet.
   /// [transformations_] List of transformations in Flowlet.
   /// [type] Type of data flow.
-  Flowlet({
+  const Flowlet({
     this.annotations,
     this.description,
     this.folder,

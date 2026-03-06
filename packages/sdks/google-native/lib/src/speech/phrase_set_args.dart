@@ -26,7 +26,7 @@ class PhraseSetArgs {
   /// [phraseSetId] The ID to use for the phrase set, which will become the final component of the phrase set's resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
   /// [phrases] A list of word and phrases.
   /// [project] Optional.
-  PhraseSetArgs({
+  const PhraseSetArgs({
     this.boost,
     this.location,
     this.name,

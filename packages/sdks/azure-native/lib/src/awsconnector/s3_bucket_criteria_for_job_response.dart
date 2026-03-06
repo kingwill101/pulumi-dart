@@ -13,7 +13,7 @@ class S3BucketCriteriaForJobResponse {
   /// Creates a new [S3BucketCriteriaForJobResponse].
   /// [excludes] &lt;p&gt;The property- and tag-based conditions that determine which buckets to exclude from the job.&lt;/p&gt;
   /// [includes] &lt;p&gt;The property- and tag-based conditions that determine which buckets to include in the job.&lt;/p&gt;
-  S3BucketCriteriaForJobResponse({
+  const S3BucketCriteriaForJobResponse({
     this.excludes,
     this.includes,
   });

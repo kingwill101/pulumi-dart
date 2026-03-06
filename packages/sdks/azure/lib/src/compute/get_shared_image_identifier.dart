@@ -14,7 +14,7 @@ class GetSharedImageIdentifier {
   /// [offer] The Offer Name for this Shared Image.
   /// [publisher] (Optional) The Purchase Plan Publisher for this Gallery Image.
   /// [sku] The Name of the SKU for this Gallery Image.
-  GetSharedImageIdentifier({
+  const GetSharedImageIdentifier({
     required this.offer,
     required this.publisher,
     required this.sku,

@@ -13,7 +13,7 @@ class AkriConnectorsDigest {
   /// Creates a new [AkriConnectorsDigest].
   /// [digest] The digest of the image.
   /// [tagDigestType] AkriConnectorsTagDigestType values.
-  AkriConnectorsDigest({
+  const AkriConnectorsDigest({
     required this.digest,
     required this.tagDigestType,
   });

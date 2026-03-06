@@ -23,7 +23,7 @@ class GetDomainOwnershipIdentifierResult {
   /// [name] Resource Name.
   /// [ownershipId] Ownership Id.
   /// [type] Resource type.
-  GetDomainOwnershipIdentifierResult({
+  const GetDomainOwnershipIdentifierResult({
     required this.azureApiVersion,
     required this.id,
     this.kind,

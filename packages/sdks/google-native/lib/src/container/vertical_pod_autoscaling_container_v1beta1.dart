@@ -9,7 +9,7 @@ class VerticalPodAutoscalingContainerV1beta1 {
 
   /// Creates a new [VerticalPodAutoscalingContainerV1beta1].
   /// [enabled] Enables vertical pod autoscaling.
-  VerticalPodAutoscalingContainerV1beta1({
+  const VerticalPodAutoscalingContainerV1beta1({
     this.enabled,
   });
 

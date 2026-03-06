@@ -18,7 +18,7 @@ class FilterResponse {
   /// [ipProtocol] Optional. The IP protocol that this policy-based route applies to. Valid values are 'TCP', 'UDP', and 'ALL'. Default is 'ALL'.
   /// [protocolVersion] Internet protocol versions this policy-based route applies to. For this version, only IPV4 is supported.
   /// [srcRange] Optional. The source IP range of outgoing packets that this policy-based route applies to. Default is "0.0.0.0/0" if protocol version is IPv4.
-  FilterResponse({
+  const FilterResponse({
     required this.destRange,
     required this.ipProtocol,
     required this.protocolVersion,

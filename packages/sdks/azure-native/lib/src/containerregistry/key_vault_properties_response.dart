@@ -20,7 +20,7 @@ class KeyVaultPropertiesResponse {
   /// [keyRotationEnabled] Auto key rotation status for a CMK enabled registry.
   /// [lastKeyRotationTimestamp] Timestamp of the last successful key rotation.
   /// [versionedKeyIdentifier] The fully qualified key identifier that includes the version of the key that is actually used for encryption.
-  KeyVaultPropertiesResponse({
+  const KeyVaultPropertiesResponse({
     this.identity,
     this.keyIdentifier,
     required this.keyRotationEnabled,

@@ -26,7 +26,7 @@ class WebAclRuleStatementManagedRuleGroupStatement {
   /// [scopeDownStatement] Narrows the scope of the statement to matching web requests. This can be any nestable statement, and you can nest statements at any level below this scope-down statement. See `statement` above for details.
   /// [vendorName] Name of the managed rule group vendor.
   /// [version] Version of the managed rule group. You can set `Version_1.0` or `Version_1.1` etc. If you want to use the default version, do not set anything.
-  WebAclRuleStatementManagedRuleGroupStatement({
+  const WebAclRuleStatementManagedRuleGroupStatement({
     this.managedRuleGroupConfigs,
     required this.name,
     this.ruleActionOverrides,

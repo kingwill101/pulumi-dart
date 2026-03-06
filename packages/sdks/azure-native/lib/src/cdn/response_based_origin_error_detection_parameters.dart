@@ -17,7 +17,7 @@ class ResponseBasedOriginErrorDetectionParameters {
   /// [httpErrorRanges] The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
   /// [responseBasedDetectedErrorTypes] Type of response errors for real user requests for which origin will be deemed unhealthy
   /// [responseBasedFailoverThresholdPercentage] The percentage of failed requests in the sample where failover should trigger.
-  ResponseBasedOriginErrorDetectionParameters({
+  const ResponseBasedOriginErrorDetectionParameters({
     this.httpErrorRanges,
     this.responseBasedDetectedErrorTypes,
     this.responseBasedFailoverThresholdPercentage,

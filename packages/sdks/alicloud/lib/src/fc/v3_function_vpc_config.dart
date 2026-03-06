@@ -14,7 +14,7 @@ class V3FunctionVpcConfig {
   /// [securityGroupId] Security group ID
   /// [vpcId] VPC network ID
   /// [vswitchIds] Switch List
-  V3FunctionVpcConfig({
+  const V3FunctionVpcConfig({
     this.securityGroupId,
     this.vpcId,
     this.vswitchIds,

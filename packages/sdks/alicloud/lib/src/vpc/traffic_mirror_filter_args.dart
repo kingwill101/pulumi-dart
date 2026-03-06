@@ -34,7 +34,7 @@ class TrafficMirrorFilterArgs {
   /// [tags] The tags of this resource.
   /// [trafficMirrorFilterDescription] The description of the TrafficMirrorFilter.
   /// [trafficMirrorFilterName] The name of the TrafficMirrorFilter.
-  TrafficMirrorFilterArgs({
+  const TrafficMirrorFilterArgs({
     this.dryRun,
     this.egressRules,
     this.ingressRules,

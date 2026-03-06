@@ -16,7 +16,7 @@ class SubnetResourceSettingsResponse {
   /// [addressPrefix] Gets or sets address prefix for the subnet.
   /// [name] Gets or sets the Subnet name.
   /// [networkSecurityGroup] Defines reference to NSG.
-  SubnetResourceSettingsResponse({
+  const SubnetResourceSettingsResponse({
     this.addressPrefix,
     this.name,
     this.networkSecurityGroup,

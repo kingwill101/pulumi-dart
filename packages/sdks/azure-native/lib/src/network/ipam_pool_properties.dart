@@ -17,7 +17,7 @@ class IpamPoolProperties {
   /// [description] Optional.
   /// [displayName] String representing a friendly name for the resource.
   /// [parentPoolName] String representing parent IpamPool resource name. If empty the IpamPool will be a root pool.
-  IpamPoolProperties({
+  const IpamPoolProperties({
     required this.addressPrefixes,
     this.description,
     this.displayName,

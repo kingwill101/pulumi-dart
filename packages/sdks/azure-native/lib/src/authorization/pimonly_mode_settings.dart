@@ -16,7 +16,7 @@ class PIMOnlyModeSettings {
   /// [excludedAssignmentTypes] The list of excluded assignment types allowed.
   /// [excludes] The list of excluded entities that the rule does not apply to.
   /// [mode] Determines whether the setting is enabled, disabled or report only.
-  PIMOnlyModeSettings({
+  const PIMOnlyModeSettings({
     this.excludedAssignmentTypes,
     this.excludes,
     this.mode,

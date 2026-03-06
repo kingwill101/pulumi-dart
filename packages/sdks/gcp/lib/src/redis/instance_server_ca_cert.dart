@@ -25,7 +25,7 @@ class InstanceServerCaCert {
   /// [expireTime] (Output)
   /// [serialNumber] (Output)
   /// [sha1Fingerprint] (Output)
-  InstanceServerCaCert({
+  const InstanceServerCaCert({
     this.cert,
     this.createTime,
     this.expireTime,

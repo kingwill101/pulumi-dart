@@ -11,7 +11,7 @@ class FunctionAppSlotSiteCredential {
   /// Creates a new [FunctionAppSlotSiteCredential].
   /// [password] The password associated with the username, which can be used to publish to this App Service.
   /// [username] The username which can be used to publish to this App Service
-  FunctionAppSlotSiteCredential({
+  const FunctionAppSlotSiteCredential({
     this.password,
     this.username,
   });

@@ -25,7 +25,7 @@ class GetNetworkArgs {
   /// [mostRecent] Optional.
   /// [name] Name of the Network.
   /// [withSelector] Label Selector. For more information about possible values, visit the [Hetzner Cloud Documentation](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  GetNetworkArgs({
+  const GetNetworkArgs({
     this.id,
     this.ipRange,
     this.labels,

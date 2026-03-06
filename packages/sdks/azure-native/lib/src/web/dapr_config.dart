@@ -27,7 +27,7 @@ class DaprConfig {
   /// [httpMaxRequestSize] Increasing max size of request body http servers parameter in MB to handle uploading of big files. Default is 4 MB.
   /// [httpReadBufferSize] Dapr max size of http header read buffer in KB to handle when sending multi-KB headers. Default is 65KB.
   /// [logLevel] Sets the log level for the Dapr sidecar. Allowed values are debug, info, warn, error. Default is info.
-  DaprConfig({
+  const DaprConfig({
     this.appId,
     this.appPort,
     this.enableApiLogging,

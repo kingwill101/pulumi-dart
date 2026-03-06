@@ -64,7 +64,7 @@ class GetExpressRouteCrossConnectionPeeringResult {
   /// [sharedKey] The shared key.
   /// [state] The peering state.
   /// [vlanId] The VLAN ID.
-  GetExpressRouteCrossConnectionPeeringResult({
+  const GetExpressRouteCrossConnectionPeeringResult({
     required this.azureASN,
     required this.azureApiVersion,
     required this.etag,

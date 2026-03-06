@@ -45,7 +45,7 @@ class PolicyState {
   /// [description] A descriptive comment.
   /// [globalPolicyEvaluationMode] Controls the evaluation of a Google-maintained global admission policy
   /// [project] The ID of the project in which the resource belongs.
-  PolicyState({
+  const PolicyState({
     this.admissionWhitelistPatterns,
     this.clusterAdmissionRules,
     this.defaultAdmissionRule,

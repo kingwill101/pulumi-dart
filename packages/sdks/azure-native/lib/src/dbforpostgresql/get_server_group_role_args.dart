@@ -18,7 +18,7 @@ class GetServerGroupRoleArgs {
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [roleName] The name of the cluster role.
-  GetServerGroupRoleArgs({
+  const GetServerGroupRoleArgs({
     required this.clusterName,
     required this.resourceGroupName,
     required this.roleName,

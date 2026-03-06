@@ -25,7 +25,7 @@ class ScriptStatusResponse {
   /// [expirationTime] Time the deployment script resource will expire.
   /// [startTime] Start time of the script execution.
   /// [storageAccountId] Storage account resource Id.
-  ScriptStatusResponse({
+  const ScriptStatusResponse({
     required this.containerInstanceId,
     required this.endTime,
     this.error,

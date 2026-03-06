@@ -63,7 +63,7 @@ class SpokeArgs {
   /// [location] The location for the resource
   /// [name] Immutable. The name of the spoke. Spoke names must be unique.
   /// [project] The ID of the project in which the resource belongs.
-  SpokeArgs({
+  const SpokeArgs({
     this.description,
     this.gateway,
     this.group,

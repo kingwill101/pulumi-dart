@@ -8,7 +8,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups {
 
   /// Creates a new [ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups].
   /// [enabled] Whether writable cgroups are enabled.
-  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups({
+  const ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfigWritableCgroups({
     required this.enabled,
   });
 

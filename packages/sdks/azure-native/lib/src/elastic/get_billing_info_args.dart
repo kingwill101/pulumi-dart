@@ -15,7 +15,7 @@ class GetBillingInfoArgs {
   /// Creates a new [GetBillingInfoArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBillingInfoArgs({
+  const GetBillingInfoArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

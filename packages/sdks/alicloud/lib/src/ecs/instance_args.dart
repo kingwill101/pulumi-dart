@@ -316,7 +316,7 @@ class InstanceArgs {
   /// [volumeTags] A mapping of tags to assign to the devices created by the instance at launch time.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The virtual switch ID to launch in VPC. This parameter must be set unless you can create classic network instances. When it is changed, the instance will reboot to make the change take effect.
-  InstanceArgs({
+  const InstanceArgs({
     this.allocatePublicIp,
     this.autoReleaseTime,
     this.autoRenewPeriod,

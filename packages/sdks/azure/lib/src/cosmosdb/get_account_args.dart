@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [name] Specifies the name of the CosmosDB Account.
   /// [resourceGroupName] Specifies the name of the resource group in which the CosmosDB Account resides.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.name,
     required this.resourceGroupName,
   });

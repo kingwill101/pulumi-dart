@@ -8,7 +8,7 @@ class MetricBucketOptionsExplicitBuckets {
 
   /// Creates a new [MetricBucketOptionsExplicitBuckets].
   /// [bounds] The values must be monotonically increasing.
-  MetricBucketOptionsExplicitBuckets({
+  const MetricBucketOptionsExplicitBuckets({
     required this.bounds,
   });
 

@@ -44,7 +44,7 @@ class GetDataBackupsBackup {
   /// [dataType] The backup type. Value Description:-**DATA**: Full backup.-**RESTOREPOI**: Recoverable point.
   /// [dbInstanceId] The instance ID.
   /// [status] Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
-  GetDataBackupsBackup({
+  const GetDataBackupsBackup({
     required this.backupEndTime,
     required this.backupEndTimeLocal,
     required this.backupMethod,

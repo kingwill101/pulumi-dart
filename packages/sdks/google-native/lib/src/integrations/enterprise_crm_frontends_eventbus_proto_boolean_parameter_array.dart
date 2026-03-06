@@ -7,7 +7,7 @@ class EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray].
   /// [booleanValues] Optional.
-  EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray({
+  const EnterpriseCrmFrontendsEventbusProtoBooleanParameterArray({
     this.booleanValues,
   });
 

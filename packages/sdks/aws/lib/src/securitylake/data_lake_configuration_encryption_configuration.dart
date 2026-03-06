@@ -8,7 +8,7 @@ class DataLakeConfigurationEncryptionConfiguration {
 
   /// Creates a new [DataLakeConfigurationEncryptionConfiguration].
   /// [kmsKeyId] The id of KMS encryption key used by Amazon Security Lake to encrypt the Security Lake object.
-  DataLakeConfigurationEncryptionConfiguration({
+  const DataLakeConfigurationEncryptionConfiguration({
     required this.kmsKeyId,
   });
 

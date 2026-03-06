@@ -10,7 +10,7 @@ class PolicyControllerTemplateLibraryConfig {
 
   /// Creates a new [PolicyControllerTemplateLibraryConfig].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  PolicyControllerTemplateLibraryConfig({
+  const PolicyControllerTemplateLibraryConfig({
     this.installation,
   });
 

@@ -28,7 +28,7 @@ class PrivateDnsZoneGroupArgs {
   /// [privateDnsZoneGroupName] The name of the private dns zone group.
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group.
-  PrivateDnsZoneGroupArgs({
+  const PrivateDnsZoneGroupArgs({
     this.id,
     this.name,
     this.privateDnsZoneConfigs,

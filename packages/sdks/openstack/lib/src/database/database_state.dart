@@ -16,7 +16,7 @@ class DatabaseState {
   /// [instanceId] The ID for the database instance.
   /// [name] A unique name for the resource.
   /// [region] The region in which to create the database. Changing
-  DatabaseState({
+  const DatabaseState({
     this.instanceId,
     this.name,
     this.region,

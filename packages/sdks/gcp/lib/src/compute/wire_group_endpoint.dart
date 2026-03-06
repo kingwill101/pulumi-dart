@@ -12,7 +12,7 @@ class WireGroupEndpoint {
   /// Creates a new [WireGroupEndpoint].
   /// [endpoint] The identifier for this object. Format specified above.
   /// [interconnects] Structure is documented below.
-  WireGroupEndpoint({
+  const WireGroupEndpoint({
     required this.endpoint,
     this.interconnects,
   });

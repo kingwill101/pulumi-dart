@@ -52,7 +52,7 @@ class GetVolumeResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.attachedTo,
     required this.azureApiVersion,
     required this.detailedStatus,

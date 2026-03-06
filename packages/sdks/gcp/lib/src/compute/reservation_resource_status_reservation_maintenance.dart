@@ -39,7 +39,7 @@ class ReservationResourceStatusReservationMaintenance {
   /// [subblockInfraMaintenanceOngoingCount] (Output)
   /// [subblockInfraMaintenancePendingCount] (Output)
   /// [upcomingGroupMaintenances] (Output)
-  ReservationResourceStatusReservationMaintenance({
+  const ReservationResourceStatusReservationMaintenance({
     this.instanceMaintenanceOngoingCount,
     this.instanceMaintenancePendingCount,
     this.maintenanceOngoingCount,

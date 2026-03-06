@@ -10,7 +10,7 @@ class GetOriginRequestPolicyCookiesConfig {
   /// Creates a new [GetOriginRequestPolicyCookiesConfig].
   /// [cookieBehavior] Required.
   /// [cookies] Required.
-  GetOriginRequestPolicyCookiesConfig({
+  const GetOriginRequestPolicyCookiesConfig({
     required this.cookieBehavior,
     required this.cookies,
   });

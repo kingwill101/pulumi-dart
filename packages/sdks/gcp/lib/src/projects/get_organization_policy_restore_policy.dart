@@ -8,7 +8,7 @@ class GetOrganizationPolicyRestorePolicy {
 
   /// Creates a new [GetOrganizationPolicyRestorePolicy].
   /// [default_] May only be set to true. If set, then the default Policy is restored.
-  GetOrganizationPolicyRestorePolicy({
+  const GetOrganizationPolicyRestorePolicy({
     required this.default_,
   });
 

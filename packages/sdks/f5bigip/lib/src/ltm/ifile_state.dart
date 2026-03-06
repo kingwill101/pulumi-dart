@@ -21,7 +21,7 @@ class IfileState {
   /// [name] Name of the LTM iFile to be created on BIG-IP.
   /// [partition] Partition where the LTM iFile will be created. Defaults to `Common`.
   /// [subPath] Subdirectory within the partition for organizing iFiles.
-  IfileState({
+  const IfileState({
     this.fileName,
     this.fullPath,
     this.name,

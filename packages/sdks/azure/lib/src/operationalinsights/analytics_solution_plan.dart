@@ -16,7 +16,7 @@ class AnalyticsSolutionPlan {
   /// [product] The product name of the solution. For example `OMSGallery/Containers`. Changing this forces a new resource to be created.
   /// [promotionCode] A promotion code to be used with the solution. Changing this forces a new resource to be created.
   /// [publisher] The publisher of the solution. For example `Microsoft`. Changing this forces a new resource to be created.
-  AnalyticsSolutionPlan({
+  const AnalyticsSolutionPlan({
     this.name,
     required this.product,
     this.promotionCode,

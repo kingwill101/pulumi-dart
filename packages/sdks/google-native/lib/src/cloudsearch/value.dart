@@ -19,7 +19,7 @@ class Value {
   /// [integerValue] Optional.
   /// [stringValue] Optional.
   /// [timestampValue] Optional.
-  Value({
+  const Value({
     this.booleanValue,
     this.dateValue,
     this.doubleValue,

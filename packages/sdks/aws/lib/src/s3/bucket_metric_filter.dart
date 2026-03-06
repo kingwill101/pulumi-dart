@@ -14,7 +14,7 @@ class BucketMetricFilter {
   /// [accessPoint] S3 Access Point ARN for filtering (singular).
   /// [prefix] Object prefix for filtering (singular).
   /// [tags] Object tags for filtering (up to 10).
-  BucketMetricFilter({
+  const BucketMetricFilter({
     this.accessPoint,
     this.prefix,
     this.tags,

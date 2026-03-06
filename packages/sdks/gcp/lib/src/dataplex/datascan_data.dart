@@ -12,7 +12,7 @@ class DatascanData {
   /// Creates a new [DatascanData].
   /// [entity] The Dataplex entity that represents the data source(e.g. BigQuery table) for Datascan.
   /// [resource] The service-qualified full resource name of the cloud resource for a DataScan job to scan against. The field could be:
-  DatascanData({
+  const DatascanData({
     this.entity,
     this.resource,
   });

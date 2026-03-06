@@ -22,7 +22,7 @@ class GetOpenApiProductsResult {
   /// [names] A list of name of Products.
   /// [outputFile] Optional.
   /// [products] A list of Product Entries. Each element contains the following attributes:
-  GetOpenApiProductsResult({
+  const GetOpenApiProductsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

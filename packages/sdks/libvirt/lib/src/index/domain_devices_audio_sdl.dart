@@ -16,7 +16,7 @@ class DomainDevicesAudioSdl {
   /// [driver] Sets the driver for the SDL audio backend configuration.
   /// [input] Specifies the output settings for the SDL audio backend.
   /// [output] Specifies the output settings for the SDL audio backend.
-  DomainDevicesAudioSdl({
+  const DomainDevicesAudioSdl({
     this.driver,
     this.input,
     this.output,

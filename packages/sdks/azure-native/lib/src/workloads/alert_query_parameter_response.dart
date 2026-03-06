@@ -12,7 +12,7 @@ class AlertQueryParameterResponse {
   /// Creates a new [AlertQueryParameterResponse].
   /// [name] The name of the alert query parameter.
   /// [value] The value of the alert query parameter.
-  AlertQueryParameterResponse({
+  const AlertQueryParameterResponse({
     this.name,
     this.value,
   });

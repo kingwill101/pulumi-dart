@@ -18,7 +18,7 @@ class NetworkUtilizationResponseAppengineV1beta {
   /// [targetReceivedPacketsPerSecond] Target packets received per second.
   /// [targetSentBytesPerSecond] Target bytes sent per second.
   /// [targetSentPacketsPerSecond] Target packets sent per second.
-  NetworkUtilizationResponseAppengineV1beta({
+  const NetworkUtilizationResponseAppengineV1beta({
     required this.targetReceivedBytesPerSecond,
     required this.targetReceivedPacketsPerSecond,
     required this.targetSentBytesPerSecond,

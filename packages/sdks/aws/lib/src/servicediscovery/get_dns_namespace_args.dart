@@ -21,7 +21,7 @@ class GetDnsNamespaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags for the resource.
   /// [type] Type of the namespace. Allowed values are `DNS_PUBLIC` or `DNS_PRIVATE`.
-  GetDnsNamespaceArgs({
+  const GetDnsNamespaceArgs({
     required this.name,
     this.region,
     this.tags,

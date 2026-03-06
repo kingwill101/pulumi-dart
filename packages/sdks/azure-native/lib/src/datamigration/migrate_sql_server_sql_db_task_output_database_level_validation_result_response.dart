@@ -42,7 +42,7 @@ class MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse {
   /// [startedOn] Validation start time
   /// [status] Current status of validation at the database level
   /// [targetDatabaseName] Name of the target database
-  MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse({
+  const MigrateSqlServerSqlDbTaskOutputDatabaseLevelValidationResultResponse({
     required this.dataIntegrityValidationResult,
     required this.endedOn,
     required this.id,

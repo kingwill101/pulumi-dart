@@ -26,7 +26,7 @@ class GetDeviceResult {
   /// [resourceGroupName] Required.
   /// [skuName] The `sku_name` is comprised of two segments separated by a hyphen (e.g. `TEA_1Node_UPS_Heater-Standard`). The first segment of the `sku_name` defines the `name` of the SKU. The second segment defines the `tier` of the `sku_name`. For more information see the product documentation.
   /// [tags] A mapping of tags which should be assigned to the Databox Edge Device.
-  GetDeviceResult({
+  const GetDeviceResult({
     required this.deviceProperties,
     required this.id,
     required this.location,

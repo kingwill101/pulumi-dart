@@ -44,7 +44,7 @@ class SegmentV2State {
   /// [revisionNumber] The revision number of the segment.
   /// [segmentationId] A segmentation identifier. Changing is allowed
   /// [updatedAt] Last update timestamp (RFC3339 format).
-  SegmentV2State({
+  const SegmentV2State({
     this.createdAt,
     this.description,
     this.name,

@@ -74,7 +74,7 @@ class GetVolumeGroupSapHanaVolume {
   /// [volumePath] A unique file path for the volume.
   /// [volumeSpecName] Volume spec name.
   /// [zone] Specifies the Availability Zone in which the Volume is located.
-  GetVolumeGroupSapHanaVolume({
+  const GetVolumeGroupSapHanaVolume({
     required this.capacityPoolId,
     required this.dataProtectionReplications,
     required this.dataProtectionSnapshotPolicies,

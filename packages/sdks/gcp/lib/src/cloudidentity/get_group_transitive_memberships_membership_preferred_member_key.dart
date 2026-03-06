@@ -16,7 +16,7 @@ class GetGroupTransitiveMembershipsMembershipPreferredMemberKey {
   /// Creates a new [GetGroupTransitiveMembershipsMembershipPreferredMemberKey].
   /// [id] The ID of the entity. For Google-managed entities, the id is the email address of an existing
   /// [namespace] The namespace in which the entity exists.
-  GetGroupTransitiveMembershipsMembershipPreferredMemberKey({
+  const GetGroupTransitiveMembershipsMembershipPreferredMemberKey({
     required this.id,
     required this.namespace,
   });

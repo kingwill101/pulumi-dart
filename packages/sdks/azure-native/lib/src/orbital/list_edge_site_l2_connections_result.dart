@@ -13,7 +13,7 @@ class ListEdgeSiteL2ConnectionsResult {
   /// Creates a new [ListEdgeSiteL2ConnectionsResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] A list of Azure Resource IDs.
-  ListEdgeSiteL2ConnectionsResult({
+  const ListEdgeSiteL2ConnectionsResult({
     required this.nextLink,
     this.value,
   });

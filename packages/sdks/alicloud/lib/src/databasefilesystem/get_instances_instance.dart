@@ -57,7 +57,7 @@ class GetInstancesInstance {
   /// [size] The size Of the Database file system. Unit: GiB.
   /// [status] The status of the Database file system.
   /// [zoneId] The Zone ID of the Database file system.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.attachNodeNumber,
     required this.category,
     required this.createTime,

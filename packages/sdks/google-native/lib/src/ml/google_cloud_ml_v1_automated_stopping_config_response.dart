@@ -12,7 +12,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigResponse {
   /// Creates a new [GoogleCloudMlV1AutomatedStoppingConfigResponse].
   /// [decayCurveStoppingConfig] Required.
   /// [medianAutomatedStoppingConfig] Required.
-  GoogleCloudMlV1AutomatedStoppingConfigResponse({
+  const GoogleCloudMlV1AutomatedStoppingConfigResponse({
     required this.decayCurveStoppingConfig,
     required this.medianAutomatedStoppingConfig,
   });

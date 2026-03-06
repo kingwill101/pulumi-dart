@@ -32,7 +32,7 @@ class GetEngineNamespacesNamespace {
   /// [quota] The Quota of the Namespace.
   /// [serviceCount] The number of active services.
   /// [type] The type of the Namespace, the value is as follows:
-  GetEngineNamespacesNamespace({
+  const GetEngineNamespacesNamespace({
     required this.configCount,
     required this.id,
     required this.namespaceDesc,

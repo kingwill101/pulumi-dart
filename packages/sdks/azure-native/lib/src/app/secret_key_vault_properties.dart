@@ -12,7 +12,7 @@ class SecretKeyVaultProperties {
   /// Creates a new [SecretKeyVaultProperties].
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   /// [keyVaultUrl] URL pointing to the Azure Key Vault secret.
-  SecretKeyVaultProperties({
+  const SecretKeyVaultProperties({
     this.identity,
     this.keyVaultUrl,
   });

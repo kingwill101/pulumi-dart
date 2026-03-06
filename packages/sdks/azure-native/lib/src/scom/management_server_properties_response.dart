@@ -21,7 +21,7 @@ class ManagementServerPropertiesResponse {
   /// [serverName] Management server Name
   /// [serverRoles] Represent whether the Server is a Management Server and/or Web Console Server.
   /// [vmResId] Azure VM Resource Id of the Management server.
-  ManagementServerPropertiesResponse({
+  const ManagementServerPropertiesResponse({
     required this.fqdn,
     required this.healthState,
     required this.serverName,

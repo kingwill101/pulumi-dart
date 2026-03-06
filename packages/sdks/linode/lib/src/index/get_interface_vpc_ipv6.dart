@@ -16,7 +16,7 @@ class GetInterfaceVpcIpv6 {
   /// [isPublic] Indicates whether the IPv6 configuration on the Linode interface is public.
   /// [ranges] IPv6 ranges assigned to this VPC interface.
   /// [slaacs] IPv6 SLAAC address ranges.
-  GetInterfaceVpcIpv6({
+  const GetInterfaceVpcIpv6({
     required this.isPublic,
     required this.ranges,
     required this.slaacs,

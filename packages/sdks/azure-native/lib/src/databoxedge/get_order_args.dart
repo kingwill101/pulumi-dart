@@ -15,7 +15,7 @@ class GetOrderArgs {
   /// Creates a new [GetOrderArgs].
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
-  GetOrderArgs({
+  const GetOrderArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

@@ -18,7 +18,7 @@ class InstanceGroupManagerVersionResponse {
   /// [name] Name of the version. Unique among all versions in the scope of this managed instance group.
   /// [tag] Tag describing the version. Used to trigger rollout of a target version even if instance_template remains unchanged. Deprecated in favor of 'name'.
   /// [targetSize] Specifies the intended number of instances to be created from the instanceTemplate. The final number of instances created from the template will be equal to: - If expressed as a fixed number, the minimum of either targetSize.fixed or instanceGroupManager.targetSize is used. - if expressed as a percent, the targetSize would be (targetSize.percent/100 * InstanceGroupManager.targetSize) If there is a remainder, the number is rounded. If unset, this version will update any remaining instances not updated by another version. Read Starting a canary update for more information.
-  InstanceGroupManagerVersionResponse({
+  const InstanceGroupManagerVersionResponse({
     required this.instanceTemplate,
     required this.name,
     required this.tag,

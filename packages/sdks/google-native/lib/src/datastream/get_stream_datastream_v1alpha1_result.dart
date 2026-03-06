@@ -46,7 +46,7 @@ class GetStreamDatastreamV1alpha1Result {
   /// [sourceConfig] Source connection profile configuration.
   /// [state] The state of the stream.
   /// [updateTime] The last update time of the stream.
-  GetStreamDatastreamV1alpha1Result({
+  const GetStreamDatastreamV1alpha1Result({
     required this.backfillAll,
     required this.backfillNone,
     required this.createTime,

@@ -19,7 +19,7 @@ class ValueResponse {
   /// [integerValue] Required.
   /// [stringValue] Required.
   /// [timestampValue] Required.
-  ValueResponse({
+  const ValueResponse({
     required this.booleanValue,
     required this.dateValue,
     required this.doubleValue,

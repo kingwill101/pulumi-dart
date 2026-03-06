@@ -44,7 +44,7 @@ class NetworkPeeringArgs {
   /// [peerNetworkType] The type of the network to peer with the VMware Engine network.
   /// [project] The ID of the project in which the resource belongs.
   /// [vmwareEngineNetwork] The relative resource name of the VMware Engine network. Specify the name in the following form:
-  NetworkPeeringArgs({
+  const NetworkPeeringArgs({
     this.description,
     this.exportCustomRoutes,
     this.exportCustomRoutesWithPublicIp,

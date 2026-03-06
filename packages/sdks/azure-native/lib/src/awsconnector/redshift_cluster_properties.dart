@@ -31,7 +31,7 @@ class RedshiftClusterProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  RedshiftClusterProperties({
+  const RedshiftClusterProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

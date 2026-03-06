@@ -9,7 +9,7 @@ class SnapshotSku {
 
   /// Creates a new [SnapshotSku].
   /// [name] The sku name.
-  SnapshotSku({
+  const SnapshotSku({
     this.name,
   });
 

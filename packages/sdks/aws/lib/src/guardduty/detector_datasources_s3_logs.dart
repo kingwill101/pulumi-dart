@@ -9,7 +9,7 @@ class DetectorDatasourcesS3Logs {
 
   /// Creates a new [DetectorDatasourcesS3Logs].
   /// [enable] If true, enables [S3 protection](https://docs.aws.amazon.com/guardduty/latest/ug/s3-protection.html).
-  DetectorDatasourcesS3Logs({
+  const DetectorDatasourcesS3Logs({
     required this.enable,
   });
 

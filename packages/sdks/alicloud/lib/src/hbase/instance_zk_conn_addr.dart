@@ -14,7 +14,7 @@ class InstanceZkConnAddr {
   /// [connAddr] The Phoenix address.
   /// [connAddrPort] The number of the port over which Phoenix connects to the instance.
   /// [netType] The type of the network. Valid values:
-  InstanceZkConnAddr({
+  const InstanceZkConnAddr({
     this.connAddr,
     this.connAddrPort,
     this.netType,

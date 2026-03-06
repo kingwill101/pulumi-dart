@@ -14,7 +14,7 @@ class BuildDefinitionResponseContaineranalysisV1alpha1 {
   /// [externalParameters] Required.
   /// [internalParameters] Required.
   /// [resolvedDependencies] Required.
-  BuildDefinitionResponseContaineranalysisV1alpha1({
+  const BuildDefinitionResponseContaineranalysisV1alpha1({
     required this.buildType,
     required this.externalParameters,
     required this.internalParameters,

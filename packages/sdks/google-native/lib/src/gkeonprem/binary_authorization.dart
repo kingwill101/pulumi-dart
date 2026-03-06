@@ -10,7 +10,7 @@ class BinaryAuthorization {
 
   /// Creates a new [BinaryAuthorization].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  BinaryAuthorization({
+  const BinaryAuthorization({
     this.evaluationMode,
   });
 

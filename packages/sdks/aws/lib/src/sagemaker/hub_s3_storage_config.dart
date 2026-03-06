@@ -8,7 +8,7 @@ class HubS3StorageConfig {
 
   /// Creates a new [HubS3StorageConfig].
   /// [s3OutputPath] The Amazon S3 bucket prefix for hosting hub content.interface.
-  HubS3StorageConfig({
+  const HubS3StorageConfig({
     this.s3OutputPath,
   });
 

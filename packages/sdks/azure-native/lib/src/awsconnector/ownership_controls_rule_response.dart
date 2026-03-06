@@ -9,7 +9,7 @@ class OwnershipControlsRuleResponse {
 
   /// Creates a new [OwnershipControlsRuleResponse].
   /// [objectOwnership] Specifies an object ownership rule.
-  OwnershipControlsRuleResponse({
+  const OwnershipControlsRuleResponse({
     this.objectOwnership,
   });
 

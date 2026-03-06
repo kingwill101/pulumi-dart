@@ -24,7 +24,7 @@ class ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification {
   /// [caCertificate] PEM-encoded server root CA certificate.
   /// [clientCertificate] PEM-encoded certificate used by the source database to authenticate the
   /// [clientKey] PEM-encoded private key associated with the client certificate.
-  ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification({
+  const ConnectionProfilePostgresqlProfileSslConfigServerAndClientVerification({
     required this.caCertificate,
     required this.clientCertificate,
     required this.clientKey,

@@ -15,7 +15,7 @@ class GetFolderArgs {
   /// Creates a new [GetFolderArgs].
   /// [folder] The name of the Folder in the form `{folder_id}` or `folders/{folder_id}`.
   /// [lookupOrganization] `true` to find the organization that the folder belongs, `false` to avoid the lookup. It searches up the tree. (defaults to `false`)
-  GetFolderArgs({
+  const GetFolderArgs({
     required this.folder,
     this.lookupOrganization,
   });

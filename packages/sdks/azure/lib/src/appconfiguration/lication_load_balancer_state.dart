@@ -21,7 +21,7 @@ class LicationLoadBalancerState {
   /// [primaryConfigurationEndpoint] The primary configuration endpoints of the Application Gateway for Containers (ALB).
   /// [resourceGroupName] The name of Resource Group where the Application Gateway for Containers (ALB) should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers (ALB).
-  LicationLoadBalancerState({
+  const LicationLoadBalancerState({
     this.location,
     this.name,
     this.primaryConfigurationEndpoint,

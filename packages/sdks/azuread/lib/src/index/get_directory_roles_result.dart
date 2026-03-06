@@ -19,7 +19,7 @@ class GetDirectoryRolesResult {
   /// [objectIds] The object IDs of the roles.
   /// [roles] A list of users. Each `role` object provides the attributes documented below.
   /// [templateIds] The template IDs of the roles.
-  GetDirectoryRolesResult({
+  const GetDirectoryRolesResult({
     required this.id,
     required this.objectIds,
     required this.roles,

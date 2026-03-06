@@ -18,7 +18,7 @@ class ScaleActionResponse {
   /// [direction] the scale direction. Whether the scaling action increases or decreases the number of instances.
   /// [type] the type of action that should occur when the scale rule fires.
   /// [value] the number of instances that are involved in the scaling action. This value must be 1 or greater. The default value is 1.
-  ScaleActionResponse({
+  const ScaleActionResponse({
     required this.cooldown,
     required this.direction,
     required this.type,

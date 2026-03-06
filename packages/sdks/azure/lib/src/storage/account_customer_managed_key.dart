@@ -15,7 +15,7 @@ class AccountCustomerManagedKey {
   /// [keyVaultKeyId] The ID of the Key Vault Key, supplying a version-less key ID will enable auto-rotation of this key.
   /// [managedHsmKeyId] Optional.
   /// [userAssignedIdentityId] The ID of a user assigned identity.
-  AccountCustomerManagedKey({
+  const AccountCustomerManagedKey({
     this.keyVaultKeyId,
     this.managedHsmKeyId,
     required this.userAssignedIdentityId,

@@ -11,7 +11,7 @@ class VirtualMachineConfigurationAssignmentConfigurationParameter {
   /// Creates a new [VirtualMachineConfigurationAssignmentConfigurationParameter].
   /// [name] The name of the configuration parameter to check.
   /// [value] The value to check the configuration parameter with.
-  VirtualMachineConfigurationAssignmentConfigurationParameter({
+  const VirtualMachineConfigurationAssignmentConfigurationParameter({
     required this.name,
     required this.value,
   });

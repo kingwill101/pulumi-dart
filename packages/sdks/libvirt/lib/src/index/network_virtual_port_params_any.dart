@@ -23,7 +23,7 @@ class NetworkVirtualPortParamsAny {
   /// [profileId] Specifies the profile ID for the virtual port parameter.
   /// [typeId] Sets the type ID for the virtual port parameter.
   /// [typeIdVersion] Indicates the version of the type ID for the virtual port parameter.
-  NetworkVirtualPortParamsAny({
+  const NetworkVirtualPortParamsAny({
     this.instanceId,
     this.interfaceId,
     this.managerId,

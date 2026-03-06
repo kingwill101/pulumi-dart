@@ -11,7 +11,7 @@ class SlotLogsHttpLogsFileSystem {
   /// Creates a new [SlotLogsHttpLogsFileSystem].
   /// [retentionInDays] The number of days to retain logs for.
   /// [retentionInMb] The maximum size in megabytes that HTTP log files can use before being removed.
-  SlotLogsHttpLogsFileSystem({
+  const SlotLogsHttpLogsFileSystem({
     required this.retentionInDays,
     required this.retentionInMb,
   });

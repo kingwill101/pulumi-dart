@@ -23,7 +23,7 @@ class BrandArgs {
   /// [applicationTitle] Application name displayed on OAuth consent screen.
   /// [project] The ID of the project in which the resource belongs.
   /// [supportEmail] Support email displayed on the OAuth consent screen. Can be either a
-  BrandArgs({
+  const BrandArgs({
     required this.applicationTitle,
     this.project,
     required this.supportEmail,

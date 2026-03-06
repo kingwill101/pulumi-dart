@@ -8,7 +8,7 @@ class GuestPoliciesAssignmentGroupLabel {
 
   /// Creates a new [GuestPoliciesAssignmentGroupLabel].
   /// [labels] Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-  GuestPoliciesAssignmentGroupLabel({
+  const GuestPoliciesAssignmentGroupLabel({
     required this.labels,
   });
 

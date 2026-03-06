@@ -32,7 +32,7 @@ class AccessKeyAuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  AccessKeyAuthTypeWorkspaceConnectionProperties({
+  const AccessKeyAuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

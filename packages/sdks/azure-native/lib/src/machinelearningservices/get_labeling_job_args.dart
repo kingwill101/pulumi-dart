@@ -18,7 +18,7 @@ class GetLabelingJobArgs {
   /// [id] The name and identifier for the LabelingJob.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetLabelingJobArgs({
+  const GetLabelingJobArgs({
     required this.id,
     required this.resourceGroupName,
     required this.workspaceName,

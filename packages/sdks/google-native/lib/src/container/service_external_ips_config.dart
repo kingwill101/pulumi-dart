@@ -9,7 +9,7 @@ class ServiceExternalIPsConfig {
 
   /// Creates a new [ServiceExternalIPsConfig].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.
-  ServiceExternalIPsConfig({
+  const ServiceExternalIPsConfig({
     this.enabled,
   });
 

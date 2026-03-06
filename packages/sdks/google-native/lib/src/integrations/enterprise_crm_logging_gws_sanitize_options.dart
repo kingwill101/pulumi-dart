@@ -19,7 +19,7 @@ class EnterpriseCrmLoggingGwsSanitizeOptions {
   /// [logType] To which type(s) of logs the sanitize options apply.
   /// [privacy] Optional.
   /// [sanitizeType] Optional.
-  EnterpriseCrmLoggingGwsSanitizeOptions({
+  const EnterpriseCrmLoggingGwsSanitizeOptions({
     this.isAlreadySanitized,
     this.logType,
     this.privacy,

@@ -34,7 +34,7 @@ class TopicArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topic] Replaced by `topic_name` after version 1.97.0.
   /// [topicName] Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
-  TopicArgs({
+  const TopicArgs({
     required this.instanceId,
     required this.messageType,
     this.perm,

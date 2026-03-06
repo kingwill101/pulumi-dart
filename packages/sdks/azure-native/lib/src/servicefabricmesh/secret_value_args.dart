@@ -27,7 +27,7 @@ class SecretValueArgs {
   /// [secretValueResourceName] The name of the secret resource value which is typically the version identifier for the value.
   /// [tags] Resource tags.
   /// [value] The actual value of the secret.
-  SecretValueArgs({
+  const SecretValueArgs({
     this.location,
     required this.resourceGroupName,
     required this.secretResourceName,

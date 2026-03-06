@@ -15,7 +15,7 @@ class SkippedDetail {
   /// [incompatibleAppVersion] If the App doesn't support the specific API level.
   /// [incompatibleArchitecture] If the App doesn't run on the specific architecture, for example, x86.
   /// [incompatibleDevice] If the requested OS version doesn't run on the specific device model.
-  SkippedDetail({
+  const SkippedDetail({
     this.incompatibleAppVersion,
     this.incompatibleArchitecture,
     this.incompatibleDevice,

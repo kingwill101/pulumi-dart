@@ -9,7 +9,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration].
   /// [seedUrls] List of one or more seed URLs to crawl. See `seed_urls` block for details.
-  AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration({
+  const AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfiguration({
     this.seedUrls,
   });
 

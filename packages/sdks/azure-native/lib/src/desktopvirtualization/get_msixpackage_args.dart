@@ -18,7 +18,7 @@ class GetMSIXPackageArgs {
   /// [hostPoolName] The name of the host pool within the specified resource group
   /// [msixPackageFullName] The version specific package full name of the MSIX package within specified hostpool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMSIXPackageArgs({
+  const GetMSIXPackageArgs({
     required this.hostPoolName,
     required this.msixPackageFullName,
     required this.resourceGroupName,

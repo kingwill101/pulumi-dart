@@ -24,7 +24,7 @@ class MongoRoleDefinitionArgs {
   /// [inheritedRoleNames] A list of Mongo Roles which are inherited to the Mongo Role Definition.
   /// [privileges] A `privilege` block as defined below.
   /// [roleName] The user-friendly name for the Mongo Role Definition. It must be unique for the database account. Changing this forces a new resource to be created.
-  MongoRoleDefinitionArgs({
+  const MongoRoleDefinitionArgs({
     required this.cosmosMongoDatabaseId,
     this.inheritedRoleNames,
     this.privileges,

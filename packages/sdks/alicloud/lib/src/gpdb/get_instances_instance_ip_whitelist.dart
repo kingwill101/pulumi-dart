@@ -14,7 +14,7 @@ class GetInstancesInstanceIpWhitelist {
   /// [ipGroupAttribute] The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
   /// [ipGroupName] IP whitelist group name
   /// [securityIpList] List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
-  GetInstancesInstanceIpWhitelist({
+  const GetInstancesInstanceIpWhitelist({
     required this.ipGroupAttribute,
     required this.ipGroupName,
     required this.securityIpList,

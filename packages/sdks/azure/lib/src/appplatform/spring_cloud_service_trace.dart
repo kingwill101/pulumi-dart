@@ -11,7 +11,7 @@ class SpringCloudServiceTrace {
   /// Creates a new [SpringCloudServiceTrace].
   /// [connectionString] The connection string used for Application Insights.
   /// [sampleRate] The sampling rate of Application Insights Agent. Must be between `0.0` and `100.0`. Defaults to `10.0`.
-  SpringCloudServiceTrace({
+  const SpringCloudServiceTrace({
     this.connectionString,
     this.sampleRate,
   });

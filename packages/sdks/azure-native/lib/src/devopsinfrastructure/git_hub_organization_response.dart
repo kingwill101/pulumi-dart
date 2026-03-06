@@ -12,7 +12,7 @@ class GitHubOrganizationResponse {
   /// Creates a new [GitHubOrganizationResponse].
   /// [repositories] Optional list of repositories in which the pool should be created.
   /// [url] The GitHub organization URL in which the pool should be created.
-  GitHubOrganizationResponse({
+  const GitHubOrganizationResponse({
     this.repositories,
     required this.url,
   });

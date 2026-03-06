@@ -18,7 +18,7 @@ class ReservedIpState {
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the reserved IP is reserved to.
   /// [reservedIpUrn] The uniform resource name of the reserved ip
-  ReservedIpState({
+  const ReservedIpState({
     this.dropletId,
     this.ipAddress,
     this.region,

@@ -24,7 +24,7 @@ class GetPolicyVersionsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyName] The name of the policy.
   /// [policyType] The type of the policy. Valid values:`Custom` and `System`.
-  GetPolicyVersionsArgs({
+  const GetPolicyVersionsArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

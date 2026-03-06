@@ -14,7 +14,7 @@ class GetGatewayRouteSpecHttp2RouteActionRewrite {
   /// [hostnames] Required.
   /// [paths] Required.
   /// [prefixes] Required.
-  GetGatewayRouteSpecHttp2RouteActionRewrite({
+  const GetGatewayRouteSpecHttp2RouteActionRewrite({
     required this.hostnames,
     required this.paths,
     required this.prefixes,

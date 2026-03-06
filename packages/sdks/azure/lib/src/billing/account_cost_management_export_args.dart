@@ -38,7 +38,7 @@ class AccountCostManagementExportArgs {
   /// [recurrencePeriodEndDate] The date the export will stop capturing information.
   /// [recurrencePeriodStartDate] The date the export will start capturing information.
   /// [recurrenceType] How often the requested information will be exported. Valid values include `Annually`, `Daily`, `Monthly`, `Weekly`.
-  AccountCostManagementExportArgs({
+  const AccountCostManagementExportArgs({
     this.active,
     required this.billingAccountId,
     required this.exportDataOptions,

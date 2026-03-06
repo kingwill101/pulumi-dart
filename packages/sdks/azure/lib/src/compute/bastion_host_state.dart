@@ -74,7 +74,7 @@ class BastionHostState {
   /// [tunnelingEnabled] Is Tunneling feature enabled for the Bastion Host. Defaults to `false`.
   /// [virtualNetworkId] The ID of the Virtual Network for the Developer Bastion Host. Changing this forces a new resource to be created.
   /// [zones] Specifies a list of Availability Zones in which this Public Bastion Host should be located. Changing this forces a new resource to be created.
-  BastionHostState({
+  const BastionHostState({
     this.copyPasteEnabled,
     this.dnsName,
     this.fileCopyEnabled,

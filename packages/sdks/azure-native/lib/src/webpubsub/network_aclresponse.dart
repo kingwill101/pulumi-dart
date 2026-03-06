@@ -12,7 +12,7 @@ class NetworkACLResponse {
   /// Creates a new [NetworkACLResponse].
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   /// [deny] Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
-  NetworkACLResponse({
+  const NetworkACLResponse({
     this.allow,
     this.deny,
   });

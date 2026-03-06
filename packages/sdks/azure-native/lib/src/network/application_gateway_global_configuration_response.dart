@@ -12,7 +12,7 @@ class ApplicationGatewayGlobalConfigurationResponse {
   /// Creates a new [ApplicationGatewayGlobalConfigurationResponse].
   /// [enableRequestBuffering] Enable request buffering.
   /// [enableResponseBuffering] Enable response buffering.
-  ApplicationGatewayGlobalConfigurationResponse({
+  const ApplicationGatewayGlobalConfigurationResponse({
     this.enableRequestBuffering,
     this.enableResponseBuffering,
   });

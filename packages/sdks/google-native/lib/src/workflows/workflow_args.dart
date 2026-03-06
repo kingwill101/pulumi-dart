@@ -41,7 +41,7 @@ class WorkflowArgs {
   /// [sourceContents] Workflow code to be executed. The size limit is 128KB.
   /// [userEnvVars] Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
   /// [workflowId] Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location.
-  WorkflowArgs({
+  const WorkflowArgs({
     this.callLogLevel,
     this.cryptoKeyName,
     this.description,

@@ -34,7 +34,7 @@ class AutomatedBackupPolicyAlloydbV1beta {
   /// [quantityBasedRetention] Quantity-based Backup retention policy to retain recent backups.
   /// [timeBasedRetention] Time-based Backup retention policy.
   /// [weeklySchedule] Weekly schedule for the Backup.
-  AutomatedBackupPolicyAlloydbV1beta({
+  const AutomatedBackupPolicyAlloydbV1beta({
     this.backupWindow,
     this.enabled,
     this.encryptionConfig,

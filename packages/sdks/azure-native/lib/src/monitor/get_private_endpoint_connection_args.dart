@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.scopeName,

@@ -11,7 +11,7 @@ class AIServicesNetworkAclsVirtualNetworkRule {
   /// Creates a new [AIServicesNetworkAclsVirtualNetworkRule].
   /// [ignoreMissingVnetServiceEndpoint] Whether to ignore a missing Virtual Network Service Endpoint or not. Default to `false`.
   /// [subnetId] The ID of the subnet which should be able to access this AI Services Account.
-  AIServicesNetworkAclsVirtualNetworkRule({
+  const AIServicesNetworkAclsVirtualNetworkRule({
     this.ignoreMissingVnetServiceEndpoint,
     required this.subnetId,
   });

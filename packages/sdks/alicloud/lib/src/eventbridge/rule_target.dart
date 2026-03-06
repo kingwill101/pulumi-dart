@@ -28,7 +28,7 @@ class RuleTarget {
   /// [pushRetryStrategy] The retry policy that is used to push the event. Valid values:
   /// [targetId] The ID of the custom event target.
   /// [type] The type of the event target. Valid values: `acs.alikafka`, `acs.api.destination`, `acs.arms.loki`, `acs.datahub`, `acs.dingtalk`, `acs.eventbridge`, `acs.eventbridge.olap`, `acs.eventbus.SLSCloudLens`, `acs.fc.function`, `acs.fnf`, `acs.k8s`, `acs.mail`, `acs.mns.queue`, `acs.mns.topic`, `acs.openapi`, `acs.rabbitmq`, `acs.rds.mysql`, `acs.rocketmq`, `acs.sae`, `acs.sls`, `acs.sms`, `http`,`https` and `mysql`.
-  RuleTarget({
+  const RuleTarget({
     this.deadLetterQueue,
     required this.endpoint,
     required this.paramLists,

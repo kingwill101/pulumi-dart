@@ -12,7 +12,7 @@ class GetIpInfoArgs {
 
   /// Creates a new [GetIpInfoArgs].
   /// [ip] Specify IP address.
-  GetIpInfoArgs({
+  const GetIpInfoArgs({
     required this.ip,
   });
 

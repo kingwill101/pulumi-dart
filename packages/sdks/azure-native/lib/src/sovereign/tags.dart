@@ -12,7 +12,7 @@ class Tags {
   /// Creates a new [Tags].
   /// [name] A tag name.
   /// [value] A tag value.
-  Tags({
+  const Tags({
     required this.name,
     this.value,
   });

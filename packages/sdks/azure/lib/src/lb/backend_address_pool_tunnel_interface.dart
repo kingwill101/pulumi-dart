@@ -17,7 +17,7 @@ class BackendAddressPoolTunnelInterface {
   /// [port] The port number that this Gateway Load Balancer Tunnel Interface listens to.
   /// [protocol] The protocol used for this Gateway Load Balancer Tunnel Interface. Possible values are `None`, `Native` and `VXLAN`.
   /// [type] The traffic type of this Gateway Load Balancer Tunnel Interface. Possible values are `None`, `Internal` and `External`.
-  BackendAddressPoolTunnelInterface({
+  const BackendAddressPoolTunnelInterface({
     required this.identifier,
     required this.port,
     required this.protocol,

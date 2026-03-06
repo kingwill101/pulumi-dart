@@ -29,7 +29,7 @@ class ServicePrincipalTokenSigningCertificateState {
   /// [startDate] The start date from which the certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`).
   /// [thumbprint] A SHA-1 generated thumbprint of the token signing certificate, which can be used to set the preferred signing certificate for a service principal.
   /// [value] The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
-  ServicePrincipalTokenSigningCertificateState({
+  const ServicePrincipalTokenSigningCertificateState({
     this.displayName,
     this.endDate,
     this.keyId,

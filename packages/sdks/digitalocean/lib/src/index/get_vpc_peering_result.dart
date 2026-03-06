@@ -20,7 +20,7 @@ class GetVpcPeeringResult {
   /// [name] The name of the VPC Peering.
   /// [status] The status of the VPC Peering.
   /// [vpcIds] The list of VPC IDs involved in the peering.
-  GetVpcPeeringResult({
+  const GetVpcPeeringResult({
     required this.createdAt,
     required this.id,
     required this.name,

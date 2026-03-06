@@ -8,7 +8,7 @@ class SigningProfileSigningMaterial {
 
   /// Creates a new [SigningProfileSigningMaterial].
   /// [certificateArn] The Amazon Resource Name (ARN) of the certificates that is used to sign your code.
-  SigningProfileSigningMaterial({
+  const SigningProfileSigningMaterial({
     required this.certificateArn,
   });
 

@@ -13,7 +13,7 @@ class Sku {
   /// Creates a new [Sku].
   /// [family] SKU family name
   /// [name] SKU name to specify whether the key vault is a standard vault or a premium vault.
-  Sku({
+  const Sku({
     required this.family,
     required this.name,
   });

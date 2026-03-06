@@ -11,7 +11,7 @@ class ClusterIAMMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ClusterIAMMemberCondition({
+  const ClusterIAMMemberCondition({
     this.description,
     required this.expression,
     required this.title,

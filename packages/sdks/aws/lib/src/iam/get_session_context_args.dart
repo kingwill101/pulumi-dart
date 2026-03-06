@@ -14,7 +14,7 @@ class GetSessionContextArgs {
 
   /// Creates a new [GetSessionContextArgs].
   /// [arn] ARN for an assumed role.
-  GetSessionContextArgs({
+  const GetSessionContextArgs({
     required this.arn,
   });
 

@@ -15,7 +15,7 @@ class TriggererResource {
   /// [count] Optional. The number of triggerers.
   /// [cpu] Optional. CPU request and limit for a single Airflow triggerer replica.
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
-  TriggererResource({
+  const TriggererResource({
     this.count,
     this.cpu,
     this.memoryGb,

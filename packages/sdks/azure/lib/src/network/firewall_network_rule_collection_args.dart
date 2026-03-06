@@ -28,7 +28,7 @@ class FirewallNetworkRuleCollectionArgs {
   /// [priority] Specifies the priority of the rule collection. Possible values are between `100` - `65000`.
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Firewall exists. Changing this forces a new resource to be created.
   /// [rules] One or more `rule` blocks as defined below.
-  FirewallNetworkRuleCollectionArgs({
+  const FirewallNetworkRuleCollectionArgs({
     required this.action,
     required this.azureFirewallName,
     this.name,

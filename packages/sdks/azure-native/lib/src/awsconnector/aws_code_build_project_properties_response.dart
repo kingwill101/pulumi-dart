@@ -103,7 +103,7 @@ class AwsCodeBuildProjectPropertiesResponse {
   /// [timeoutInMinutes] &lt;p&gt;How long, in minutes, from 5 to 480 (8 hours), for CodeBuild to wait before timing out any related build that did not get marked as completed. The default is 60 minutes.&lt;/p&gt;
   /// [vpcConfig] &lt;p&gt;Information about the VPC configuration that CodeBuild accesses.&lt;/p&gt;
   /// [webhook] &lt;p&gt;Information about a webhook that connects repository events to a build project in CodeBuild.&lt;/p&gt;
-  AwsCodeBuildProjectPropertiesResponse({
+  const AwsCodeBuildProjectPropertiesResponse({
     this.arn,
     this.artifacts,
     this.badge,

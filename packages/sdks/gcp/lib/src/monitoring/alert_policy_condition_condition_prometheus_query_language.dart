@@ -54,7 +54,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage {
   /// [labels] Labels to add to or overwrite in the PromQL query result. Label names
   /// [query] The PromQL expression to evaluate. Every evaluation cycle this
   /// [ruleGroup] The rule group name of this alert in the corresponding Prometheus
-  AlertPolicyConditionConditionPrometheusQueryLanguage({
+  const AlertPolicyConditionConditionPrometheusQueryLanguage({
     this.alertRule,
     this.disableMetricValidation,
     this.duration,

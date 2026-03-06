@@ -24,7 +24,7 @@ class VpcSubnetArgs {
   /// [ipv6s] The IPv6 ranges of this subnet.
   /// [label] The label of the VPC. Only contains ASCII letters, digits and dashes.
   /// [vpcId] The id of the parent VPC for this VPC subnet.
-  VpcSubnetArgs({
+  const VpcSubnetArgs({
     this.ipv4,
     this.ipv6s,
     required this.label,

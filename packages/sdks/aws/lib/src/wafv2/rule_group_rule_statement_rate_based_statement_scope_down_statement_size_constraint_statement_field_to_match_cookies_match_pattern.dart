@@ -12,7 +12,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintSt
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

@@ -25,7 +25,7 @@ class FabricArgs {
   /// [properties] Fabric model properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Gets or sets the resource tags.
-  FabricArgs({
+  const FabricArgs({
     this.fabricName,
     this.location,
     required this.properties,

@@ -51,7 +51,7 @@ class Ingress {
   /// [targetPortHttpScheme] Whether an http app listens on http or https
   /// [traffic] Traffic weights for app's revisions
   /// [transport] Ingress transport protocol
-  Ingress({
+  const Ingress({
     this.additionalPortMappings,
     this.allowInsecure,
     this.clientCertificateMode,

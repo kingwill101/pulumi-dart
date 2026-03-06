@@ -8,7 +8,7 @@ class GetApiManagementServiceSsoTokenResult {
 
   /// Creates a new [GetApiManagementServiceSsoTokenResult].
   /// [redirectUri] Redirect URL to the Publisher Portal containing the SSO token.
-  GetApiManagementServiceSsoTokenResult({
+  const GetApiManagementServiceSsoTokenResult({
     this.redirectUri,
   });
 

@@ -25,7 +25,7 @@ class CurationProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourcePolicies] Resource policies that are a part of this curation profile.
   /// [scopes] Resources that have access to the shared resources that are a part of this curation profile.
-  CurationProfileArgs({
+  const CurationProfileArgs({
     this.curationProfileName,
     required this.devCenterName,
     required this.resourceGroupName,

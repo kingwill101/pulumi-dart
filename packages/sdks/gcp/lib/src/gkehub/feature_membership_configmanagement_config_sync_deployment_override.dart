@@ -15,7 +15,7 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverride {
   /// [containers] The override configurations for the containers in the Deployment. Structure is documented below.
   /// [deploymentName] The name of the Deployment.
   /// [deploymentNamespace] The namespace of the Deployment.
-  FeatureMembershipConfigmanagementConfigSyncDeploymentOverride({
+  const FeatureMembershipConfigmanagementConfigSyncDeploymentOverride({
     this.containers,
     this.deploymentName,
     this.deploymentNamespace,

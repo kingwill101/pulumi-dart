@@ -17,7 +17,7 @@ class LldpNeighborResponse {
   /// [portName] The system-assigned name of the port on the connected device.
   /// [systemDescription] The descriptive information about the connected device.
   /// [systemName] The system-assigned name of the connected device.
-  LldpNeighborResponse({
+  const LldpNeighborResponse({
     required this.portDescription,
     required this.portName,
     required this.systemDescription,

@@ -15,7 +15,7 @@ class SmsReceiver {
   /// [countryCode] The country code of the SMS receiver.
   /// [name] The name of the SMS receiver. Names must be unique across all receivers within a tenant action group.
   /// [phoneNumber] The phone number of the SMS receiver.
-  SmsReceiver({
+  const SmsReceiver({
     required this.countryCode,
     required this.name,
     required this.phoneNumber,

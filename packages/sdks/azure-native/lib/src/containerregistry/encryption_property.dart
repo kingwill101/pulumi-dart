@@ -12,7 +12,7 @@ class EncryptionProperty {
   /// Creates a new [EncryptionProperty].
   /// [keyVaultProperties] Key vault properties.
   /// [status] Indicates whether or not the encryption is enabled for container registry.
-  EncryptionProperty({
+  const EncryptionProperty({
     this.keyVaultProperties,
     this.status,
   });

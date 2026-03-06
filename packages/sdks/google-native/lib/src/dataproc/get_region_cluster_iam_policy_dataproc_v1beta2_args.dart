@@ -17,7 +17,7 @@ class GetRegionClusterIamPolicyDataprocV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionClusterIamPolicyDataprocV1beta2Args({
+  const GetRegionClusterIamPolicyDataprocV1beta2Args({
     required this.clusterId,
     this.optionsRequestedPolicyVersion,
     this.project,

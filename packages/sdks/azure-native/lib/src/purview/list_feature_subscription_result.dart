@@ -8,7 +8,7 @@ class ListFeatureSubscriptionResult {
 
   /// Creates a new [ListFeatureSubscriptionResult].
   /// [features] Features with enabled status
-  ListFeatureSubscriptionResult({
+  const ListFeatureSubscriptionResult({
     required this.features,
   });
 

@@ -10,7 +10,7 @@ class IstioCertificateAuthority {
 
   /// Creates a new [IstioCertificateAuthority].
   /// [plugin] Plugin certificates information for Service Mesh.
-  IstioCertificateAuthority({
+  const IstioCertificateAuthority({
     this.plugin,
   });
 

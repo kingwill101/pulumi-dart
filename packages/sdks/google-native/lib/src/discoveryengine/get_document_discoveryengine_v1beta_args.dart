@@ -21,7 +21,7 @@ class GetDocumentDiscoveryengineV1betaArgs {
   /// [documentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDocumentDiscoveryengineV1betaArgs({
+  const GetDocumentDiscoveryengineV1betaArgs({
     required this.branchId,
     required this.collectionId,
     required this.dataStoreId,

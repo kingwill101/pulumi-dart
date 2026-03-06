@@ -23,7 +23,7 @@ class WafRuleConfigManagedRuleset {
   /// [numberEnabled] Number of rules currently enabled.
   /// [numberTotal] Total number of rules in this ruleset.
   /// [protectionLevel] The protection strength level assigned to this ruleset.
-  WafRuleConfigManagedRuleset({
+  const WafRuleConfigManagedRuleset({
     this.action,
     this.attackType,
     this.managedRules,

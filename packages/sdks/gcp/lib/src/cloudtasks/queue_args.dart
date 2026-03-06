@@ -57,7 +57,7 @@ class QueueArgs {
   /// [rateLimits] Rate limits for task dispatches.
   /// [retryConfig] Settings that determine the retry behavior.
   /// [stackdriverLoggingConfig] Configuration options for writing logs to Stackdriver Logging.
-  QueueArgs({
+  const QueueArgs({
     this.appEngineRoutingOverride,
     this.desiredState,
     this.httpTarget,

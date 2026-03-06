@@ -21,7 +21,7 @@ class ListAgentApplicationAgentsArgs {
   /// [name] Agent Application name.
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListAgentApplicationAgentsArgs({
+  const ListAgentApplicationAgentsArgs({
     required this.accountName,
     required this.name,
     required this.projectName,

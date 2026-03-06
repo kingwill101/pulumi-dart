@@ -11,7 +11,7 @@ class ExpressGatewayServicePrimaryContainerAwsLogsConfiguration {
   /// Creates a new [ExpressGatewayServicePrimaryContainerAwsLogsConfiguration].
   /// [logGroup] CloudWatch log group name.
   /// [logStreamPrefix] Prefix for log stream names. If not specified, a default prefix will be used.
-  ExpressGatewayServicePrimaryContainerAwsLogsConfiguration({
+  const ExpressGatewayServicePrimaryContainerAwsLogsConfiguration({
     required this.logGroup,
     required this.logStreamPrefix,
   });

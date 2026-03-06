@@ -13,7 +13,7 @@ class WorkflowTemplateParameterValidation {
   /// Creates a new [WorkflowTemplateParameterValidation].
   /// [regex] Validation based on regular expressions.
   /// [values] Validation based on a list of allowed values.
-  WorkflowTemplateParameterValidation({
+  const WorkflowTemplateParameterValidation({
     this.regex,
     this.values,
   });

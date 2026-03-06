@@ -30,7 +30,7 @@ class RepositoryArgs {
   /// [project] Optional.
   /// [remoteUri] Git Clone HTTPS URI.
   /// [repositoryId] Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.annotations,
     required this.connectionId,
     this.etag,

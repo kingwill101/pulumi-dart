@@ -17,7 +17,7 @@ class DomainDevicesTpmBackendEmulatorActivePcrBanks {
   /// [sha256] Configures the SHA-256 PCR bank as active for the emulator TPM settings.
   /// [sha384] Configures the SHA-384 PCR bank as active for the emulator TPM settings.
   /// [sha512] Configures the SHA-512 PCR bank as active for the emulator TPM settings.
-  DomainDevicesTpmBackendEmulatorActivePcrBanks({
+  const DomainDevicesTpmBackendEmulatorActivePcrBanks({
     this.sha1,
     this.sha256,
     this.sha384,

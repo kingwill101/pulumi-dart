@@ -17,7 +17,7 @@ class ConfigurationBackupSchedulePolicy {
   /// [scheduleRunDays] The schedule run days of the backup policy. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
   /// [scheduleRunFrequency] The schedule run frequency of the backup policy. Possible values are `Daily` and `Weekly`. Defaults to `Daily`.
   /// [scheduleRunTimes] The schedule run times of the backup policy.
-  ConfigurationBackupSchedulePolicy({
+  const ConfigurationBackupSchedulePolicy({
     this.schedulePolicyType,
     this.scheduleRunDays,
     this.scheduleRunFrequency,

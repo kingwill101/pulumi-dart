@@ -11,7 +11,7 @@ class BucketLifecycleConfigurationRuleFilterS3Control {
   /// Creates a new [BucketLifecycleConfigurationRuleFilterS3Control].
   /// [prefix] Object prefix for rule filtering.
   /// [tags] Key-value map of object tags for rule filtering.
-  BucketLifecycleConfigurationRuleFilterS3Control({
+  const BucketLifecycleConfigurationRuleFilterS3Control({
     this.prefix,
     this.tags,
   });

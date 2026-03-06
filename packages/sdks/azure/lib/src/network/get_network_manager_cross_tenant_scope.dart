@@ -14,7 +14,7 @@ class GetNetworkManagerCrossTenantScope {
   /// [managementGroups] A list of management groups used as cross tenant scope for the Network Manager.
   /// [subscriptions] A list of subscriptions used as cross tenant scope for the Network Manager.
   /// [tenantId] The tenant ID of the cross tenant scope.
-  GetNetworkManagerCrossTenantScope({
+  const GetNetworkManagerCrossTenantScope({
     required this.managementGroups,
     required this.subscriptions,
     required this.tenantId,

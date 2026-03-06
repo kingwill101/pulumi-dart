@@ -30,7 +30,7 @@ class GetNetworkPeeringResult {
   /// [state] Required.
   /// [stateDetails] Required.
   /// [updateStrategy] Required.
-  GetNetworkPeeringResult({
+  const GetNetworkPeeringResult({
     required this.exportCustomRoutes,
     required this.exportSubnetRoutesWithPublicIp,
     required this.id,

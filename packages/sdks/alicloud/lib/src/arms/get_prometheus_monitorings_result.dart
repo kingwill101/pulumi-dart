@@ -31,7 +31,7 @@ class GetPrometheusMonitoringsResult {
   /// [prometheusMonitorings] A list of Prometheus Monitorings. Each element contains the following attributes:
   /// [status] The status of the monitoring configuration.
   /// [type] The type of the monitoring configuration.
-  GetPrometheusMonitoringsResult({
+  const GetPrometheusMonitoringsResult({
     required this.clusterId,
     required this.id,
     required this.ids,

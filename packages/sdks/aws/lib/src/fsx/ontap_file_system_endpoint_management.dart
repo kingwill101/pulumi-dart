@@ -11,7 +11,7 @@ class OntapFileSystemEndpointManagement {
   /// Creates a new [OntapFileSystemEndpointManagement].
   /// [dnsName] The Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
   /// [ipAddresses] IP addresses of the file system endpoint.
-  OntapFileSystemEndpointManagement({
+  const OntapFileSystemEndpointManagement({
     this.dnsName,
     this.ipAddresses,
   });

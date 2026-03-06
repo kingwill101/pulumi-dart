@@ -55,7 +55,7 @@ class GetWorkspaceBackendResult {
   /// [tls] Backend TLS Properties
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [url] Runtime Url of the Backend. Required when backend type is 'Single'.
-  GetWorkspaceBackendResult({
+  const GetWorkspaceBackendResult({
     required this.azureApiVersion,
     this.circuitBreaker,
     this.credentials,

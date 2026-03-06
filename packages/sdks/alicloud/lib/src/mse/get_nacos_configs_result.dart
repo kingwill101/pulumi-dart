@@ -39,7 +39,7 @@ class GetNacosConfigsResult {
   /// [outputFile] Optional.
   /// [requestPars] Optional.
   /// [tags] The tags of the configuration.
-  GetNacosConfigsResult({
+  const GetNacosConfigsResult({
     this.acceptLanguage,
     this.appName,
     required this.configs,

@@ -26,7 +26,7 @@ class GetDomainsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [status] Optional.
-  GetDomainsResult({
+  const GetDomainsResult({
     required this.domains,
     this.enableDetails,
     required this.id,

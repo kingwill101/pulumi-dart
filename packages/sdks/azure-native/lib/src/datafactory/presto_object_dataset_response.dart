@@ -40,7 +40,7 @@ class PrestoObjectDatasetResponse {
   /// [table] The table name of the Presto. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  PrestoObjectDatasetResponse({
+  const PrestoObjectDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

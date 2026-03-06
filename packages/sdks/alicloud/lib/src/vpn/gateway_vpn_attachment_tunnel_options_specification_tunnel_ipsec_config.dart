@@ -13,7 +13,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig {
   /// [ipsecEncAlg] Optional.
   /// [ipsecLifetime] Optional.
   /// [ipsecPfs] Optional.
-  GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig({
+  const GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIpsecConfig({
     this.ipsecAuthAlg,
     this.ipsecEncAlg,
     this.ipsecLifetime,

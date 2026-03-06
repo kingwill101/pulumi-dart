@@ -19,7 +19,7 @@ class RunBookJobSchedule {
   /// [parameters] A map of key/value pairs corresponding to the arguments that can be passed to the Runbook.
   /// [runOn] Name of a Hybrid Worker Group the Runbook will be executed on.
   /// [scheduleName] The name of the Schedule.
-  RunBookJobSchedule({
+  const RunBookJobSchedule({
     this.jobScheduleId,
     this.parameters,
     this.runOn,

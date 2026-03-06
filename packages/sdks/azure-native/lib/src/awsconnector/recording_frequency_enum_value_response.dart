@@ -9,7 +9,7 @@ class RecordingFrequencyEnumValueResponse {
 
   /// Creates a new [RecordingFrequencyEnumValueResponse].
   /// [value] Property value
-  RecordingFrequencyEnumValueResponse({
+  const RecordingFrequencyEnumValueResponse({
     this.value,
   });
 

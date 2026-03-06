@@ -13,7 +13,7 @@ class ToolSystemTool {
   /// Creates a new [ToolSystemTool].
   /// [description] (Output)
   /// [name] (Output)
-  ToolSystemTool({
+  const ToolSystemTool({
     this.description,
     this.name,
   });

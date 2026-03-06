@@ -8,7 +8,7 @@ class JobTemplateConfigEncryptionMpegCenc {
 
   /// Creates a new [JobTemplateConfigEncryptionMpegCenc].
   /// [scheme] Specify the encryption scheme.
-  JobTemplateConfigEncryptionMpegCenc({
+  const JobTemplateConfigEncryptionMpegCenc({
     required this.scheme,
   });
 

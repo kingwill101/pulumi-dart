@@ -15,7 +15,7 @@ class GetPipelineArgs {
   /// [location] Required.
   /// [pipelineId] Required.
   /// [project] Optional.
-  GetPipelineArgs({
+  const GetPipelineArgs({
     required this.location,
     required this.pipelineId,
     this.project,

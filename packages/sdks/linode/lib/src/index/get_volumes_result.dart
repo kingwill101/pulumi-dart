@@ -19,7 +19,7 @@ class GetVolumesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [volumes] Required.
-  GetVolumesResult({
+  const GetVolumesResult({
     this.filters,
     required this.id,
     this.order,

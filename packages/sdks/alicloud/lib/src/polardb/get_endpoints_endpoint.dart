@@ -27,7 +27,7 @@ class GetEndpointsEndpoint {
   /// [endpointType] Cluster address type.`Cluster`: the default address of the Cluster.`Primary`: Primary address.`Custom`: Custom cluster addresses.
   /// [nodes] A list of nodes that connect to the address configuration.
   /// [readWriteMode] Read-write mode:`ReadWrite`: readable and writable (automatic read-write separation).`ReadOnly`: ReadOnly.
-  GetEndpointsEndpoint({
+  const GetEndpointsEndpoint({
     required this.addressItems,
     required this.autoAddNewNodes,
     required this.dbEndpointId,

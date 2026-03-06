@@ -9,7 +9,7 @@ class ConsumptionMeteringConfigResponseContainerV1beta1 {
 
   /// Creates a new [ConsumptionMeteringConfigResponseContainerV1beta1].
   /// [enabled] Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
-  ConsumptionMeteringConfigResponseContainerV1beta1({
+  const ConsumptionMeteringConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

@@ -18,7 +18,7 @@ class GetRegistryEndpointArgs {
   /// [instanceName] Name of instance.
   /// [registryEndpointName] Name of RegistryEndpoint resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRegistryEndpointArgs({
+  const GetRegistryEndpointArgs({
     required this.instanceName,
     required this.registryEndpointName,
     required this.resourceGroupName,

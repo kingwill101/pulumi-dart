@@ -18,7 +18,7 @@ class EnvironmentLastDeployment {
   /// [failureReasons] Required.
   /// [isDeploymentComplete] Required.
   /// [messages] Required.
-  EnvironmentLastDeployment({
+  const EnvironmentLastDeployment({
     required this.deploymentId,
     required this.deploymentStatus,
     required this.deploymentType,

@@ -24,7 +24,7 @@ class DropletSnapshotState {
   /// [name] A name for the Droplet snapshot.
   /// [regions] A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
   /// [size] The billable size of the Droplet snapshot in gigabytes.
-  DropletSnapshotState({
+  const DropletSnapshotState({
     this.createdAt,
     this.dropletId,
     this.minDiskSize,

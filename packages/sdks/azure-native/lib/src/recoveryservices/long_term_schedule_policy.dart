@@ -10,7 +10,7 @@ class LongTermSchedulePolicy {
 
   /// Creates a new [LongTermSchedulePolicy].
   /// [schedulePolicyType] This property will be used as the discriminator for deciding the specific types in the polymorphic chain of types.
-  LongTermSchedulePolicy({
+  const LongTermSchedulePolicy({
     required this.schedulePolicyType,
   });
 

@@ -36,7 +36,7 @@ class GetBaseInstancesResult {
   /// [resourceGroupId] Optional.
   /// [searchKey] Optional.
   /// [status] Optional.
-  GetBaseInstancesResult({
+  const GetBaseInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

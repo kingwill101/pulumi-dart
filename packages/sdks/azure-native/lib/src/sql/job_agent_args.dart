@@ -35,7 +35,7 @@ class JobAgentArgs {
   /// [serverName] The name of the server.
   /// [sku] The name and tier of the SKU.
   /// [tags] Resource tags.
-  JobAgentArgs({
+  const JobAgentArgs({
     required this.databaseId,
     this.identity,
     this.jobAgentName,

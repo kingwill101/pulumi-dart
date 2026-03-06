@@ -35,7 +35,7 @@ class GetWebLockConfigsConfig {
   /// [localBackupDir] The local path to the backup files of the protected directory.
   /// [mode] The protection mode of web tamper proofing.
   /// [uuid] The UUID of the server that has web tamper proofing enabled.
-  GetWebLockConfigsConfig({
+  const GetWebLockConfigsConfig({
     required this.defenceMode,
     required this.dir,
     required this.exclusiveDir,

@@ -18,7 +18,7 @@ class K8sActiveDirectory {
   /// [connector] Optional.
   /// [encryptionTypes] An array of encryption types
   /// [keytabSecret] Keytab secret used to authenticate with Active Directory.
-  K8sActiveDirectory({
+  const K8sActiveDirectory({
     this.accountName,
     this.connector,
     this.encryptionTypes,

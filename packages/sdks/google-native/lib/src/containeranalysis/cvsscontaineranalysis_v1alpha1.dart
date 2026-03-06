@@ -49,7 +49,7 @@ class CVSSContaineranalysisV1alpha1 {
   /// [privilegesRequired] Defined in CVSS v3
   /// [scope] Defined in CVSS v3
   /// [userInteraction] Defined in CVSS v3
-  CVSSContaineranalysisV1alpha1({
+  const CVSSContaineranalysisV1alpha1({
     this.attackComplexity,
     this.attackVector,
     this.authentication,

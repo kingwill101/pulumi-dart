@@ -76,7 +76,7 @@ class GetProductResult {
   /// [sku] The product SKU.
   /// [type] Type of Resource.
   /// [vmExtensionType] The type of the Virtual Machine Extension.
-  GetProductResult({
+  const GetProductResult({
     this.billingPartNumber,
     this.compatibility,
     this.description,

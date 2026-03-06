@@ -18,7 +18,7 @@ class GetTopicSpaceArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicSpaceName] Name of the Topic space.
-  GetTopicSpaceArgs({
+  const GetTopicSpaceArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.topicSpaceName,

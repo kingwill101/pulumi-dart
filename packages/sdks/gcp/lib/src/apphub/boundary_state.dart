@@ -31,7 +31,7 @@ class BoundaryState {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] Boundary type.
   /// [updateTime] Update time.
-  BoundaryState({
+  const BoundaryState({
     this.createTime,
     this.crmNode,
     this.location,

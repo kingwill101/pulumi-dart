@@ -22,7 +22,7 @@ class DataFactory {
   /// [description] The description of the Machine Learning compute.
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [resourceId] ARM resource id of the underlying compute
-  DataFactory({
+  const DataFactory({
     this.computeLocation,
     required this.computeType,
     this.description,

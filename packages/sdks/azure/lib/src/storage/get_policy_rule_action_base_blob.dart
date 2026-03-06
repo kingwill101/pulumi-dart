@@ -47,7 +47,7 @@ class GetPolicyRuleActionBaseBlob {
   /// [tierToCoolAfterDaysSinceCreationGreaterThan] Optional The age in days after creation to cool storage. Supports blob currently at Hot tier.
   /// [tierToCoolAfterDaysSinceLastAccessTimeGreaterThan] The age in days after last access time to tier blobs to cool storage. Supports blob currently at Hot tier.
   /// [tierToCoolAfterDaysSinceModificationGreaterThan] The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier.
-  GetPolicyRuleActionBaseBlob({
+  const GetPolicyRuleActionBaseBlob({
     required this.autoTierToHotFromCoolEnabled,
     required this.deleteAfterDaysSinceCreationGreaterThan,
     required this.deleteAfterDaysSinceLastAccessTimeGreaterThan,

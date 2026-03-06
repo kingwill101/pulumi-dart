@@ -14,7 +14,7 @@ class GatewayZone {
   /// [name] The zone name.
   /// [vswitchId] The vswitch ID.
   /// [zoneId] The zone ID.
-  GatewayZone({
+  const GatewayZone({
     this.name,
     this.vswitchId,
     this.zoneId,

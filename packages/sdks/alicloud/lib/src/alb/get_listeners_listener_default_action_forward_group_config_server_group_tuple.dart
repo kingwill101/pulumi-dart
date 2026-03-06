@@ -8,7 +8,7 @@ class GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
 
   /// Creates a new [GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple].
   /// [serverGroupId] The ID of the destination server group to which requests are forwarded.
-  GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple({
+  const GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple({
     required this.serverGroupId,
   });
 

@@ -26,7 +26,7 @@ class BatchOperationsJobPutMetadata {
   /// [contentType] Content-Type of the object data.
   /// [customMetadata] User-provided metadata, in key/value pairs.
   /// [customTime] Updates the objects fixed custom time metadata.
-  BatchOperationsJobPutMetadata({
+  const BatchOperationsJobPutMetadata({
     this.cacheControl,
     this.contentDisposition,
     this.contentEncoding,

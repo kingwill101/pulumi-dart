@@ -43,7 +43,7 @@ class HyperVReplicaBluePolicyDetailsResponse {
   /// [replicaDeletionOption] A value indicating whether the VM has to be auto deleted. Supported Values: String.Empty, None, OnRecoveryCloud
   /// [replicationFrequencyInSeconds] A value indicating the replication interval.
   /// [replicationPort] A value indicating the recovery HTTPS port.
-  HyperVReplicaBluePolicyDetailsResponse({
+  const HyperVReplicaBluePolicyDetailsResponse({
     this.allowedAuthenticationType,
     this.applicationConsistentSnapshotFrequencyInHours,
     this.compression,

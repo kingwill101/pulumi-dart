@@ -15,7 +15,7 @@ class CustomBlocklistConfig {
   /// [blocking] If blocking would occur.
   /// [blocklistName] Name of ContentFilter.
   /// [source] Content source to apply the Content Filters.
-  CustomBlocklistConfig({
+  const CustomBlocklistConfig({
     this.blocking,
     this.blocklistName,
     this.source,

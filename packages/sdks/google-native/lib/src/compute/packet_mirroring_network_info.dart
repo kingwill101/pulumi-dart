@@ -8,7 +8,7 @@ class PacketMirroringNetworkInfo {
 
   /// Creates a new [PacketMirroringNetworkInfo].
   /// [url] URL of the network resource.
-  PacketMirroringNetworkInfo({
+  const PacketMirroringNetworkInfo({
     this.url,
   });
 

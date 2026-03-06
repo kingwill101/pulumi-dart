@@ -12,7 +12,7 @@ class MemoryGiBPerVCpuRequest {
   /// Creates a new [MemoryGiBPerVCpuRequest].
   /// [max] The memory maximum in GiB.
   /// [min] The memory minimum in GiB.
-  MemoryGiBPerVCpuRequest({
+  const MemoryGiBPerVCpuRequest({
     this.max,
     this.min,
   });

@@ -16,7 +16,7 @@ class OrcFormat {
   /// [deserializer] Deserializer. Type: string (or Expression with resultType string).
   /// [serializer] Serializer. Type: string (or Expression with resultType string).
   /// [type] Type of dataset storage format.
-  OrcFormat({
+  const OrcFormat({
     this.deserializer,
     this.serializer,
     required this.type,

@@ -15,7 +15,7 @@ class AuthorizedViewSubsetViewFamilySubset {
   /// [familyName] Name of the column family to be included in the authorized view. The specified column family must exist in the parent table of this authorized view.
   /// [qualifierPrefixes] A list of Base64-encoded prefixes for qualifiers of the column family to be included in the authorized view.
   /// [qualifiers] A list of Base64-encoded individual exact column qualifiers of the column family to be included in the authorized view.
-  AuthorizedViewSubsetViewFamilySubset({
+  const AuthorizedViewSubsetViewFamilySubset({
     required this.familyName,
     this.qualifierPrefixes,
     this.qualifiers,

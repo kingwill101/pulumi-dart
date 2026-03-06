@@ -35,7 +35,7 @@ class GetEcsDeploymentSetsSet {
   /// [instanceAmount] The number of instances in the deployment set.
   /// [instanceIds] The IDs of the instances in the deployment set.
   /// [strategy] The deployment strategy.
-  GetEcsDeploymentSetsSet({
+  const GetEcsDeploymentSetsSet({
     required this.createTime,
     required this.deploymentSetId,
     required this.deploymentSetName,

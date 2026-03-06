@@ -10,7 +10,7 @@ class LanguageExtensionsList {
 
   /// Creates a new [LanguageExtensionsList].
   /// [value] The list of language extensions.
-  LanguageExtensionsList({
+  const LanguageExtensionsList({
     this.value,
   });
 

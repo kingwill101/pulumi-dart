@@ -18,7 +18,7 @@ class GetLinuxFunctionAppBackup {
   /// [name] The name which should be used for this Linux Function App.
   /// [schedules] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to the container.
-  GetLinuxFunctionAppBackup({
+  const GetLinuxFunctionAppBackup({
     required this.enabled,
     required this.name,
     required this.schedules,

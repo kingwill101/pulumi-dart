@@ -23,7 +23,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformance].
   /// [distributionCut] Used when good_service is defined by a count of values aggregated in a
   /// [goodTotalRatio] A means to compute a ratio of `good_service` to `total_service`.
-  SloWindowsBasedSliGoodTotalRatioThresholdPerformance({
+  const SloWindowsBasedSliGoodTotalRatioThresholdPerformance({
     this.distributionCut,
     this.goodTotalRatio,
   });

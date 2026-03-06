@@ -18,7 +18,7 @@ class GetDomainOwnershipIdentifierArgs {
   /// [domainName] Name of domain.
   /// [name] Name of identifier.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetDomainOwnershipIdentifierArgs({
+  const GetDomainOwnershipIdentifierArgs({
     required this.domainName,
     required this.name,
     required this.resourceGroupName,

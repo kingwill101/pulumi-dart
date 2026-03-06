@@ -10,7 +10,7 @@ class ApiProductGrpcOperationGroup {
 
   /// Creates a new [ApiProductGrpcOperationGroup].
   /// [operationConfigs] Required. List of operation configurations for either Apigee API proxies that are associated with this API product.
-  ApiProductGrpcOperationGroup({
+  const ApiProductGrpcOperationGroup({
     this.operationConfigs,
   });
 

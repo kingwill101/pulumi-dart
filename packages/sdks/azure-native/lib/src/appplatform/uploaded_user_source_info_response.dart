@@ -16,7 +16,7 @@ class UploadedUserSourceInfoResponse {
   /// [relativePath] Relative path of the storage which stores the source
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  UploadedUserSourceInfoResponse({
+  const UploadedUserSourceInfoResponse({
     this.relativePath,
     required this.type,
     this.version,

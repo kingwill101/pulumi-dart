@@ -9,7 +9,7 @@ class NodeLabels {
 
   /// Creates a new [NodeLabels].
   /// [labels] Map of node label keys and node label values.
-  NodeLabels({
+  const NodeLabels({
     this.labels,
   });
 

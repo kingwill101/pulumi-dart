@@ -12,7 +12,7 @@ class GovernanceRuleOwnerSourceResponse {
   /// Creates a new [GovernanceRuleOwnerSourceResponse].
   /// [type] The owner type for the governance rule owner source
   /// [value] The source value e.g. tag key like owner name or email address
-  GovernanceRuleOwnerSourceResponse({
+  const GovernanceRuleOwnerSourceResponse({
     this.type,
     this.value,
   });

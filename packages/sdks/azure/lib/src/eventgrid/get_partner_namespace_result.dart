@@ -38,7 +38,7 @@ class GetPartnerNamespaceResult {
   /// [publicNetworkAccess] Whether or not public network access is allowed for this server.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags which are assigned to the Event Grid Partner Namespace.
-  GetPartnerNamespaceResult({
+  const GetPartnerNamespaceResult({
     required this.endpoint,
     required this.id,
     required this.inboundIpRules,

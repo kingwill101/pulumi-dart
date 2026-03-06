@@ -12,7 +12,7 @@ class AdditionalErrorInfoResponse {
   /// Creates a new [AdditionalErrorInfoResponse].
   /// [info] Additional information of the type of error.
   /// [type] Type of error (e.g. CustomerIntervention, PolicyViolation, SecurityViolation).
-  AdditionalErrorInfoResponse({
+  const AdditionalErrorInfoResponse({
     this.info,
     this.type,
   });

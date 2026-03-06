@@ -32,7 +32,7 @@ class GetConfigurationKeysItem {
   /// [type] The type of the App Configuration Key. It can either be `kv` (simple [key/value](https://docs.microsoft.com/azure/azure-app-configuration/concept-key-value)) or `vault` (where the value is a reference to a [Key Vault Secret](https://azure.microsoft.com/en-gb/services/key-vault/).
   /// [value] The value of the App Configuration Key.
   /// [vaultKeyReference] The ID of the vault secret this App Configuration Key refers to, when `type` is `vault`.
-  GetConfigurationKeysItem({
+  const GetConfigurationKeysItem({
     required this.contentType,
     required this.etag,
     required this.key,

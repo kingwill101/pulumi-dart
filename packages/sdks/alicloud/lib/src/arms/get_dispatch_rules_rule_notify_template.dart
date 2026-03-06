@@ -32,7 +32,7 @@ class GetDispatchRulesRuleNotifyTemplate {
   /// [smsRecoverContent] The content of the SMS.
   /// [ttsContent] The content of the TTS.
   /// [ttsRecoverContent] The content of the TTS.
-  GetDispatchRulesRuleNotifyTemplate({
+  const GetDispatchRulesRuleNotifyTemplate({
     required this.emailContent,
     required this.emailRecoverContent,
     required this.emailRecoverTitle,

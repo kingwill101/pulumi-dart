@@ -85,7 +85,7 @@ class GetAzureCliScriptResult {
   /// [tags] Resource tags.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
   /// [type] Type of this resource.
-  GetAzureCliScriptResult({
+  const GetAzureCliScriptResult({
     this.arguments,
     required this.azCliVersion,
     required this.azureApiVersion,

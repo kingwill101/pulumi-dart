@@ -8,7 +8,7 @@ class WebAclRuleRuleLabel {
 
   /// Creates a new [WebAclRuleRuleLabel].
   /// [name] Label string.
-  WebAclRuleRuleLabel({
+  const WebAclRuleRuleLabel({
     required this.name,
   });
 

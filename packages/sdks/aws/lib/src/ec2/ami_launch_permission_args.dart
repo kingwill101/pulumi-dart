@@ -27,7 +27,7 @@ class AmiLaunchPermissionArgs {
   /// [organizationArn] ARN of an organization for the launch permission.
   /// [organizationalUnitArn] ARN of an organizational unit for the launch permission.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AmiLaunchPermissionArgs({
+  const AmiLaunchPermissionArgs({
     this.accountId,
     this.group,
     required this.imageId,

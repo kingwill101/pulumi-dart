@@ -23,7 +23,7 @@ class GetEcsPrefixListsArgs {
   /// [ids] A list of Prefix List IDs.
   /// [nameRegex] A regex string to filter results by `prefix_list_name`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEcsPrefixListsArgs({
+  const GetEcsPrefixListsArgs({
     this.addressFamily,
     this.enableDetails,
     this.ids,

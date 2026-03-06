@@ -12,7 +12,7 @@ class BackupSourceResponseAlloydbV1alpha {
   /// Creates a new [BackupSourceResponseAlloydbV1alpha].
   /// [backupName] The name of the backup resource with the format: * projects/{project}/locations/{region}/backups/{backup_id}
   /// [backupUid] The system-generated UID of the backup which was used to create this resource. The UID is generated when the backup is created, and it is retained until the backup is deleted.
-  BackupSourceResponseAlloydbV1alpha({
+  const BackupSourceResponseAlloydbV1alpha({
     required this.backupName,
     required this.backupUid,
   });

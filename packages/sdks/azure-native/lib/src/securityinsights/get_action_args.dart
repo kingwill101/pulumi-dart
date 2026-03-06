@@ -21,7 +21,7 @@ class GetActionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleId] Alert rule ID
   /// [workspaceName] The name of the workspace.
-  GetActionArgs({
+  const GetActionArgs({
     required this.actionId,
     required this.resourceGroupName,
     required this.ruleId,

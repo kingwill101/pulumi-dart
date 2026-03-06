@@ -11,7 +11,7 @@ class LifecyclePolicyPolicyDetailsEventSource {
   /// Creates a new [LifecyclePolicyPolicyDetailsEventSource].
   /// [parameters] Required.
   /// [type] The source of the event. Currently only managed CloudWatch Events rules are supported. Valid values are `MANAGED_CWE`.
-  LifecyclePolicyPolicyDetailsEventSource({
+  const LifecyclePolicyPolicyDetailsEventSource({
     required this.parameters,
     required this.type,
   });

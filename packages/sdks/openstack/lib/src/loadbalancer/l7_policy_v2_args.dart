@@ -60,7 +60,7 @@ class L7PolicyV2Args {
   /// [redirectUrl] Requests matching this policy will be redirected to this URL.
   /// [region] The region in which to obtain the V2 Networking client.
   /// [tenantId] Required for admins. The UUID of the tenant who owns
-  L7PolicyV2Args({
+  const L7PolicyV2Args({
     required this.action,
     this.adminStateUp,
     this.description,

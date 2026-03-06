@@ -11,7 +11,7 @@ class ListSaasSubscriptionLevelAccessTokenResult {
   /// Creates a new [ListSaasSubscriptionLevelAccessTokenResult].
   /// [publisherOfferBaseUri] The Publisher Offer Base Uri
   /// [token] The generated token
-  ListSaasSubscriptionLevelAccessTokenResult({
+  const ListSaasSubscriptionLevelAccessTokenResult({
     this.publisherOfferBaseUri,
     this.token,
   });

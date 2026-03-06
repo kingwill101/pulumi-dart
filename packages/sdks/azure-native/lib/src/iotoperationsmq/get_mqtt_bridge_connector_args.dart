@@ -18,7 +18,7 @@ class GetMqttBridgeConnectorArgs {
   /// [mqName] Name of MQ resource
   /// [mqttBridgeConnectorName] Name of MQ mqttBridgeConnector resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMqttBridgeConnectorArgs({
+  const GetMqttBridgeConnectorArgs({
     required this.mqName,
     required this.mqttBridgeConnectorName,
     required this.resourceGroupName,

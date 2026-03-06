@@ -17,7 +17,7 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
   /// [ipsecEncAlg] IPsec Encript algorithm.
   /// [ipsecLifetime] IPsec lifetime.
   /// [ipsecPfs] DH Group.
-  GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig({
+  const GetConnectionsConnectionTunnelOptionsSpecificationTunnelIpsecConfig({
     required this.ipsecAuthAlg,
     required this.ipsecEncAlg,
     required this.ipsecLifetime,

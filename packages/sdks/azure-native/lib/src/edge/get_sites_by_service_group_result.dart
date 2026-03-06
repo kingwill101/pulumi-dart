@@ -25,7 +25,7 @@ class GetSitesByServiceGroupResult {
   /// [properties] The resource-specific properties for this resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSitesByServiceGroupResult({
+  const GetSitesByServiceGroupResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

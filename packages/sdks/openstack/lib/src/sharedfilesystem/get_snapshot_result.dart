@@ -34,7 +34,7 @@ class GetSnapshotResult {
   /// [shareSize] The share snapshot size, in GBs.
   /// [size] The snapshot size, in GBs.
   /// [status] See Argument Reference above.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.description,
     required this.id,
     required this.name,

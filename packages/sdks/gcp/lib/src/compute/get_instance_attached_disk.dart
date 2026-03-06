@@ -35,7 +35,7 @@ class GetInstanceAttachedDisk {
   /// [kmsKeySelfLink] The self_link of the encryption key that is stored in Google Cloud KMS to encrypt this disk. Only one of kms_key_self_link, disk_encryption_key_rsa and disk_encryption_key_raw may be set.
   /// [mode] Read/write mode for the disk. One of `"READ_ONLY"` or `"READ_WRITE"`.
   /// [source] The self_link of the disk attached to this instance.
-  GetInstanceAttachedDisk({
+  const GetInstanceAttachedDisk({
     required this.deviceName,
     required this.diskEncryptionKeyRaw,
     required this.diskEncryptionKeyRsa,

@@ -9,7 +9,7 @@ class DomainDevicesTpmBackendPassthrough {
 
   /// Creates a new [DomainDevicesTpmBackendPassthrough].
   /// [device] Sets parameters for the passthrough device associated with the TPM.
-  DomainDevicesTpmBackendPassthrough({
+  const DomainDevicesTpmBackendPassthrough({
     this.device,
   });
 

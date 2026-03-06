@@ -10,7 +10,7 @@ class AmlFilesystemEncryptionSettingsResponse {
 
   /// Creates a new [AmlFilesystemEncryptionSettingsResponse].
   /// [keyEncryptionKey] Specifies the location of the encryption key in Key Vault.
-  AmlFilesystemEncryptionSettingsResponse({
+  const AmlFilesystemEncryptionSettingsResponse({
     this.keyEncryptionKey,
   });
 

@@ -20,7 +20,7 @@ class FrontdoorBackendPoolLoadBalancing {
   /// [name] Specifies the name of the Load Balancer.
   /// [sampleSize] The number of samples to consider for load balancing decisions. Defaults to `4`.
   /// [successfulSamplesRequired] The number of samples within the sample period that must succeed. Defaults to `2`.
-  FrontdoorBackendPoolLoadBalancing({
+  const FrontdoorBackendPoolLoadBalancing({
     this.additionalLatencyMilliseconds,
     this.id,
     required this.name,

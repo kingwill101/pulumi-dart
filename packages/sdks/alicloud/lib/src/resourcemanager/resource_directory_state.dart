@@ -31,7 +31,7 @@ class ResourceDirectoryState {
   /// [memberDeletionStatus] The status of the member deletion feature. Valid values:
   /// [rootFolderId] The ID of the root folder
   /// [status] ScpStatus
-  ResourceDirectoryState({
+  const ResourceDirectoryState({
     this.createTime,
     this.masterAccountId,
     this.masterAccountName,

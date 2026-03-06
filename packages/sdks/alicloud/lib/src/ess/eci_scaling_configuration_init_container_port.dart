@@ -9,7 +9,7 @@ class EciScalingConfigurationInitContainerPort {
   /// Creates a new [EciScalingConfigurationInitContainerPort].
   /// [port] Optional.
   /// [protocol] Optional.
-  EciScalingConfigurationInitContainerPort({
+  const EciScalingConfigurationInitContainerPort({
     this.port,
     this.protocol,
   });

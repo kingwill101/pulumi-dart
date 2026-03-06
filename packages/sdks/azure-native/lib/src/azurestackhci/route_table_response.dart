@@ -19,7 +19,7 @@ class RouteTableResponse {
   /// [name] Resource name.
   /// [routes] Collection of routes contained within a route table.
   /// [type] Resource type.
-  RouteTableResponse({
+  const RouteTableResponse({
     required this.etag,
     required this.name,
     this.routes,

@@ -39,7 +39,7 @@ class GetNetworkPeeringConnectionResult {
   /// [status] Status of the ODB network peering connection.
   /// [statusReason] Status of the ODB network peering connection.
   /// [tags] Tags applied to the resource.
-  GetNetworkPeeringConnectionResult({
+  const GetNetworkPeeringConnectionResult({
     required this.arn,
     required this.createdAt,
     required this.displayName,

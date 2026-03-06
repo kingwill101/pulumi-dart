@@ -24,7 +24,7 @@ class ErArgs {
   /// [masterZoneId] Primary zone
   /// [resourceGroupId] The ID of the resource group instance.
   /// [tags] Label List
-  ErArgs({
+  const ErArgs({
     this.description,
     required this.erName,
     required this.masterZoneId,

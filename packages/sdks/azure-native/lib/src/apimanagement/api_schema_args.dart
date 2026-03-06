@@ -33,7 +33,7 @@ class ApiSchemaArgs {
   /// [schemaId] Schema id identifier. Must be unique in the current API Management service instance.
   /// [serviceName] The name of the API Management service.
   /// [value] Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
-  ApiSchemaArgs({
+  const ApiSchemaArgs({
     required this.apiId,
     this.components,
     required this.contentType,

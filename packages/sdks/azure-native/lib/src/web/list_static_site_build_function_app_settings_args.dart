@@ -18,7 +18,7 @@ class ListStaticSiteBuildFunctionAppSettingsArgs {
   /// [environmentName] The stage site identifier.
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListStaticSiteBuildFunctionAppSettingsArgs({
+  const ListStaticSiteBuildFunctionAppSettingsArgs({
     required this.environmentName,
     required this.name,
     required this.resourceGroupName,

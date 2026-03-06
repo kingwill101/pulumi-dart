@@ -12,7 +12,7 @@ class SoftDeletePolicy {
   /// Creates a new [SoftDeletePolicy].
   /// [retentionDays] The number of days after which a soft-deleted item is permanently deleted.
   /// [status] The value that indicates whether the policy is enabled or not.
-  SoftDeletePolicy({
+  const SoftDeletePolicy({
     this.retentionDays,
     this.status,
   });

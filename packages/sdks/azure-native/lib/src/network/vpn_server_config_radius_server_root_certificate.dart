@@ -12,7 +12,7 @@ class VpnServerConfigRadiusServerRootCertificate {
   /// Creates a new [VpnServerConfigRadiusServerRootCertificate].
   /// [name] The certificate name.
   /// [publicCertData] The certificate public data.
-  VpnServerConfigRadiusServerRootCertificate({
+  const VpnServerConfigRadiusServerRootCertificate({
     this.name,
     this.publicCertData,
   });

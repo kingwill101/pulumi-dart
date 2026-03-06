@@ -34,7 +34,7 @@ class GetListenersListener {
   /// [portRanges] The portRanges of the listener.
   /// [protocol] Type of network transport protocol monitored.
   /// [status] The status of the listener. Valid values: `active`, `configuring`, `creating`.
-  GetListenersListener({
+  const GetListenersListener({
     required this.certificates,
     required this.clientAffinity,
     required this.description,

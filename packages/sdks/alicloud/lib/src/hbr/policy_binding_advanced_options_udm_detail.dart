@@ -14,7 +14,7 @@ class PolicyBindingAdvancedOptionsUdmDetail {
   /// [destinationKmsKeyId] Custom KMS key ID of encrypted copy
   /// [diskIdLists] The list of backup disks. If it is empty, all disks are backed up.
   /// [excludeDiskIdLists] List of cloud disk IDs that are not backed up
-  PolicyBindingAdvancedOptionsUdmDetail({
+  const PolicyBindingAdvancedOptionsUdmDetail({
     this.destinationKmsKeyId,
     this.diskIdLists,
     this.excludeDiskIdLists,

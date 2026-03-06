@@ -14,7 +14,7 @@ class GetAccountAvailabilitiesResult {
   /// [availabilities] Required.
   /// [filters] Optional.
   /// [id] Required.
-  GetAccountAvailabilitiesResult({
+  const GetAccountAvailabilitiesResult({
     required this.availabilities,
     this.filters,
     required this.id,

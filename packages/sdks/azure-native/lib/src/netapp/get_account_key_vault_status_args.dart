@@ -15,7 +15,7 @@ class GetAccountKeyVaultStatusArgs {
   /// Creates a new [GetAccountKeyVaultStatusArgs].
   /// [accountName] The name of the NetApp account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccountKeyVaultStatusArgs({
+  const GetAccountKeyVaultStatusArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

@@ -12,7 +12,7 @@ class ServiceAccountSubjectPatch {
   /// Creates a new [ServiceAccountSubjectPatch].
   /// [name] `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
   /// [namespace] `namespace` is the namespace of matching ServiceAccount objects. Required.
-  ServiceAccountSubjectPatch({
+  const ServiceAccountSubjectPatch({
     this.name,
     this.namespace,
   });

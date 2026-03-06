@@ -14,7 +14,7 @@ class BackendProxy {
   /// [password] The password to connect to the proxy server.
   /// [url] The URL of the proxy server.
   /// [username] The username to connect to the proxy server.
-  BackendProxy({
+  const BackendProxy({
     this.password,
     required this.url,
     required this.username,

@@ -18,7 +18,7 @@ class ApplianceResourceDetailsResponse {
   /// [processUtilization] A value indicating the utilization percentage by gateway agent on appliance.
   /// [status] A value indicating the status of appliance resource.
   /// [totalUtilization] A value indicating the total utilization percentage for all processes on the appliance.
-  ApplianceResourceDetailsResponse({
+  const ApplianceResourceDetailsResponse({
     required this.capacity,
     required this.processUtilization,
     required this.status,

@@ -55,7 +55,7 @@ class DatastoreState {
   /// [state] The state of the Datastore.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
-  DatastoreState({
+  const DatastoreState({
     this.clusters,
     this.createTime,
     this.description,

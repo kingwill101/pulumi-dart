@@ -11,7 +11,7 @@ class ManagedPrefixListEntry {
   /// Creates a new [ManagedPrefixListEntry].
   /// [cidr] CIDR block of this entry.
   /// [description] Description of this entry. Due to API limitations, updating only the description of an existing entry requires temporarily removing and re-adding the entry.
-  ManagedPrefixListEntry({
+  const ManagedPrefixListEntry({
     required this.cidr,
     this.description,
   });

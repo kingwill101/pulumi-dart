@@ -14,7 +14,7 @@ class GetWorkerPoolTemplateVolumeNf {
   /// [path] Path that is exported by the NFS server.
   /// [readOnly] If true, mount the NFS volume as read only
   /// [server] Hostname or IP address of the NFS server
-  GetWorkerPoolTemplateVolumeNf({
+  const GetWorkerPoolTemplateVolumeNf({
     required this.path,
     required this.readOnly,
     required this.server,

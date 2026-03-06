@@ -10,7 +10,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion].
   /// [customStrengthOptions] The custom strength options enforced by the password policy.
-  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion({
+  const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyVersion({
     this.customStrengthOptions,
   });
 

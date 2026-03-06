@@ -18,7 +18,7 @@ class GetConnectedEnvironmentsCertificateArgs {
   /// [certificateName] Name of the Certificate.
   /// [connectedEnvironmentName] Name of the Connected Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectedEnvironmentsCertificateArgs({
+  const GetConnectedEnvironmentsCertificateArgs({
     required this.certificateName,
     required this.connectedEnvironmentName,
     required this.resourceGroupName,

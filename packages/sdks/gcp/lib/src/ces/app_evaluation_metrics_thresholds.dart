@@ -10,7 +10,7 @@ class AppEvaluationMetricsThresholds {
 
   /// Creates a new [AppEvaluationMetricsThresholds].
   /// [goldenEvaluationMetricsThresholds] Settings for golden evaluations.
-  AppEvaluationMetricsThresholds({
+  const AppEvaluationMetricsThresholds({
     this.goldenEvaluationMetricsThresholds,
   });
 

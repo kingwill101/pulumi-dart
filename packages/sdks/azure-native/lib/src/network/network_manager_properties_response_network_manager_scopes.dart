@@ -16,7 +16,7 @@ class NetworkManagerPropertiesResponseNetworkManagerScopes {
   /// [crossTenantScopes] List of cross tenant scopes.
   /// [managementGroups] List of management groups.
   /// [subscriptions] List of subscriptions.
-  NetworkManagerPropertiesResponseNetworkManagerScopes({
+  const NetworkManagerPropertiesResponseNetworkManagerScopes({
     required this.crossTenantScopes,
     this.managementGroups,
     this.subscriptions,

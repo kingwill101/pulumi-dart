@@ -11,7 +11,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig {
   /// Creates a new [ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig].
   /// [hugepageSize1g] Amount of 1G hugepages.
   /// [hugepageSize2m] Amount of 2M hugepages.
-  ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig({
+  const ClusterNodePoolNodeConfigLinuxNodeConfigHugepagesConfig({
     this.hugepageSize1g,
     this.hugepageSize2m,
   });

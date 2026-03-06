@@ -21,7 +21,7 @@ class GetPackageArgs {
   /// [packageName] The Package name.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
-  GetPackageArgs({
+  const GetPackageArgs({
     required this.automationAccountName,
     required this.packageName,
     required this.resourceGroupName,

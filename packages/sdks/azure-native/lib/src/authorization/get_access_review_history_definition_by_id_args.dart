@@ -12,7 +12,7 @@ class GetAccessReviewHistoryDefinitionByIdArgs {
 
   /// Creates a new [GetAccessReviewHistoryDefinitionByIdArgs].
   /// [historyDefinitionId] The id of the access review history definition.
-  GetAccessReviewHistoryDefinitionByIdArgs({
+  const GetAccessReviewHistoryDefinitionByIdArgs({
     required this.historyDefinitionId,
   });
 

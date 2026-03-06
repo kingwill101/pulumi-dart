@@ -17,7 +17,7 @@ class GetTriggerBuildOptionVolume {
   /// Creates a new [GetTriggerBuildOptionVolume].
   /// [name] Name of the volume to mount.
   /// [path] Path at which to mount the volume.
-  GetTriggerBuildOptionVolume({
+  const GetTriggerBuildOptionVolume({
     required this.name,
     required this.path,
   });

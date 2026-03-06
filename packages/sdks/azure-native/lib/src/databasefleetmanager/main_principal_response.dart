@@ -21,7 +21,7 @@ class MainPrincipalResponse {
   /// [objectId] Object Id of the main principal.
   /// [principalType] Principal type of the main principal.
   /// [tenantId] Tenant Id of the main principal.
-  MainPrincipalResponse({
+  const MainPrincipalResponse({
     this.applicationId,
     this.login,
     this.objectId,

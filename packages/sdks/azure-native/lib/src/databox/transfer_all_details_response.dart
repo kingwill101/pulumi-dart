@@ -15,7 +15,7 @@ class TransferAllDetailsResponse {
   /// [dataAccountType] Type of the account of data
   /// [transferAllBlobs] To indicate if all Azure blobs have to be transferred
   /// [transferAllFiles] To indicate if all Azure Files have to be transferred
-  TransferAllDetailsResponse({
+  const TransferAllDetailsResponse({
     required this.dataAccountType,
     this.transferAllBlobs,
     this.transferAllFiles,

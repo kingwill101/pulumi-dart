@@ -13,7 +13,7 @@ class ConnStringValueTypePair {
   /// Creates a new [ConnStringValueTypePair].
   /// [type] Type of database.
   /// [value] Value of pair.
-  ConnStringValueTypePair({
+  const ConnStringValueTypePair({
     required this.type,
     required this.value,
   });

@@ -14,7 +14,7 @@ class ApplicationAcceleratorResourceRequestsResponse {
   /// [cpu] Cpu allocated to each application accelerator component. 1 core can be represented by 1 or 1000m
   /// [instanceCount] Instance count of the application accelerator component.
   /// [memory] Memory allocated to each application accelerator component. 1 GB can be represented by 1Gi or 1024Mi.
-  ApplicationAcceleratorResourceRequestsResponse({
+  const ApplicationAcceleratorResourceRequestsResponse({
     required this.cpu,
     required this.instanceCount,
     required this.memory,

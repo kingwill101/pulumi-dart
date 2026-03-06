@@ -19,7 +19,7 @@ class NodeTemplateServerBinding {
 
   /// Creates a new [NodeTemplateServerBinding].
   /// [type] Type of server binding policy. If `RESTART_NODE_ON_ANY_SERVER`,
-  NodeTemplateServerBinding({
+  const NodeTemplateServerBinding({
     required this.type,
   });
 

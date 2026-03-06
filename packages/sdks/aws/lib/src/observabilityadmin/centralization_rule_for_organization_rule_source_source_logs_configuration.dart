@@ -11,7 +11,7 @@ class CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration {
   /// Creates a new [CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration].
   /// [encryptedLogGroupStrategy] Strategy for handling encrypted log groups. Valid values: `ALLOW`, `SKIP`.
   /// [logGroupSelectionCriteria] Criteria for selecting log groups. Use `*` for all log groups or OAM filter syntax like `LogGroupName LIKE '/aws/lambda%'`. Must be between 1 and 2000 characters.
-  CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration({
+  const CentralizationRuleForOrganizationRuleSourceSourceLogsConfiguration({
     required this.encryptedLogGroupStrategy,
     required this.logGroupSelectionCriteria,
   });

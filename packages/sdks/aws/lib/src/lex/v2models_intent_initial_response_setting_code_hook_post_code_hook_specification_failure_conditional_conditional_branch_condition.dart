@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailu
 
   /// Creates a new [V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition].
   /// [expressionString] Expression string that is evaluated.
-  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition({
+  const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecificationFailureConditionalConditionalBranchCondition({
     required this.expressionString,
   });
 

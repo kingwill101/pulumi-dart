@@ -45,7 +45,7 @@ class CustomKeysConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  CustomKeysConnectionPropertiesResponse({
+  const CustomKeysConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

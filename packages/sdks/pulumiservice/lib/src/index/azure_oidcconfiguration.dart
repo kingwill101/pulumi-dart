@@ -14,7 +14,7 @@ class AzureOIDCConfiguration {
   /// [clientId] The client ID of the federated workload identity.
   /// [subscriptionId] The subscription ID of the federated workload identity.
   /// [tenantId] The tenant ID of the federated workload identity.
-  AzureOIDCConfiguration({
+  const AzureOIDCConfiguration({
     required this.clientId,
     required this.subscriptionId,
     required this.tenantId,

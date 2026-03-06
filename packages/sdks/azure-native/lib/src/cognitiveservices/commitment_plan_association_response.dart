@@ -12,7 +12,7 @@ class CommitmentPlanAssociationResponse {
   /// Creates a new [CommitmentPlanAssociationResponse].
   /// [commitmentPlanId] The Azure resource id of the commitment plan.
   /// [commitmentPlanLocation] The location of of the commitment plan.
-  CommitmentPlanAssociationResponse({
+  const CommitmentPlanAssociationResponse({
     this.commitmentPlanId,
     this.commitmentPlanLocation,
   });

@@ -25,7 +25,7 @@ class GetCryptoKeyVersionsVersion {
   /// [publicKeys] Required.
   /// [state] Required.
   /// [version] Required.
-  GetCryptoKeyVersionsVersion({
+  const GetCryptoKeyVersionsVersion({
     required this.algorithm,
     required this.cryptoKey,
     required this.id,

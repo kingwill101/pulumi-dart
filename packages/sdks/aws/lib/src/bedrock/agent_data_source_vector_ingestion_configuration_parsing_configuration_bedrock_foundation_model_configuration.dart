@@ -15,7 +15,7 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoun
   /// [modelArn] The ARN of the model used to parse documents
   /// [parsingModality] Specifies whether to enable parsing of multimodal data, including both text and images. Valid values: `MULTIMODAL`.
   /// [parsingPrompt] Instructions for interpreting the contents of the document. See `parsing_prompt` block for details.
-  AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationParsingConfigurationBedrockFoundationModelConfiguration({
     required this.modelArn,
     this.parsingModality,
     this.parsingPrompt,

@@ -9,7 +9,7 @@ class PublicInternetAuthorizationRule {
 
   /// Creates a new [PublicInternetAuthorizationRule].
   /// [rights] List of access rights.
-  PublicInternetAuthorizationRule({
+  const PublicInternetAuthorizationRule({
     required this.rights,
   });
 

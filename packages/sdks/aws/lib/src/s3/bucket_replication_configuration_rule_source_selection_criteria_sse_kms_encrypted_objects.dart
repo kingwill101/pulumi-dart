@@ -8,7 +8,7 @@ class BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedOb
 
   /// Creates a new [BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects].
   /// [enabled] Boolean which indicates if this criteria is enabled.
-  BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects({
+  const BucketReplicationConfigurationRuleSourceSelectionCriteriaSseKmsEncryptedObjects({
     required this.enabled,
   });
 

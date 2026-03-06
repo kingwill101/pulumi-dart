@@ -23,7 +23,7 @@ class ServicePrincipalAppRole {
   /// [enabled] Specifies whether the permission scope is enabled.
   /// [id] The unique identifier of the delegated permission.
   /// [value] The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-  ServicePrincipalAppRole({
+  const ServicePrincipalAppRole({
     this.allowedMemberTypes,
     this.description,
     this.displayName,

@@ -12,7 +12,7 @@ class VpcPeeringConfigResponse {
   /// Creates a new [VpcPeeringConfigResponse].
   /// [subnet] A free subnet for peering. (CIDR of /29)
   /// [vpc] Fully qualified name of the VPC that Datastream will peer to. Format: `projects/{project}/global/{networks}/{name}`
-  VpcPeeringConfigResponse({
+  const VpcPeeringConfigResponse({
     required this.subnet,
     required this.vpc,
   });

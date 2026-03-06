@@ -10,7 +10,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection {
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection].
   /// [includeRegexes] A collection of regular expressions to match a resource against.
-  PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetFilterCollection({
     this.includeRegexes,
   });
 

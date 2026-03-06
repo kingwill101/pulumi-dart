@@ -15,7 +15,7 @@ class SpringCloudActiveDeploymentArgs {
   /// Creates a new [SpringCloudActiveDeploymentArgs].
   /// [deploymentName] Specifies the name of Spring Cloud Deployment which is going to be active.
   /// [springCloudAppId] Specifies the id of the Spring Cloud Application. Changing this forces a new resource to be created.
-  SpringCloudActiveDeploymentArgs({
+  const SpringCloudActiveDeploymentArgs({
     required this.deploymentName,
     required this.springCloudAppId,
   });

@@ -27,7 +27,7 @@ class Ipv6RangeState {
   /// [range] The IPv6 range of addresses in this pool.
   /// [region] The region for this range of IPv6 addresses.
   /// [routeTarget] The IPv6 SLAAC address to assign this range to.
-  Ipv6RangeState({
+  const Ipv6RangeState({
     this.isBgp,
     this.linodeId,
     this.linodes,

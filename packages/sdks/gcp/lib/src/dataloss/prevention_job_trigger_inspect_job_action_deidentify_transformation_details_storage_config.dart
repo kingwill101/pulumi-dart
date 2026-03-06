@@ -10,7 +10,7 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
 
   /// Creates a new [PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig].
   /// [table] The BigQuery table in which to store the output.
-  PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig({
+  const PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig({
     required this.table,
   });
 

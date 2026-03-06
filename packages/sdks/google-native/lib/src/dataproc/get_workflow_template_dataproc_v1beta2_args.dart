@@ -17,7 +17,7 @@ class GetWorkflowTemplateDataprocV1beta2Args {
   /// [project] Optional.
   /// [version] Optional.
   /// [workflowTemplateId] Required.
-  GetWorkflowTemplateDataprocV1beta2Args({
+  const GetWorkflowTemplateDataprocV1beta2Args({
     required this.location,
     this.project,
     this.version,

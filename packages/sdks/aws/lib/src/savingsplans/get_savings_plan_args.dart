@@ -12,7 +12,7 @@ class GetSavingsPlanArgs {
 
   /// Creates a new [GetSavingsPlanArgs].
   /// [savingsPlanId] The ID of the Savings Plan.
-  GetSavingsPlanArgs({
+  const GetSavingsPlanArgs({
     required this.savingsPlanId,
   });
 

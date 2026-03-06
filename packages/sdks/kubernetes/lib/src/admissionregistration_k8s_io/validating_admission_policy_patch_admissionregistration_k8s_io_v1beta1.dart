@@ -24,7 +24,7 @@ class ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1beta1 {
   /// [metadata] Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   /// [spec] Specification of the desired behavior of the ValidatingAdmissionPolicy.
   /// [status] The status of the ValidatingAdmissionPolicy, including warnings that are useful to determine if the policy behaves in the expected way. Populated by the system. Read-only.
-  ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1beta1({
+  const ValidatingAdmissionPolicyPatchAdmissionregistrationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

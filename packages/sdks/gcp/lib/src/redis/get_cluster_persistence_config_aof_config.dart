@@ -12,7 +12,7 @@ class GetClusterPersistenceConfigAofConfig {
 
   /// Creates a new [GetClusterPersistenceConfigAofConfig].
   /// [appendFsync] Optional. Available fsync modes.
-  GetClusterPersistenceConfigAofConfig({
+  const GetClusterPersistenceConfigAofConfig({
     required this.appendFsync,
   });
 

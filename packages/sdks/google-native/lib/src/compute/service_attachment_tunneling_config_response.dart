@@ -12,7 +12,7 @@ class ServiceAttachmentTunnelingConfigResponse {
   /// Creates a new [ServiceAttachmentTunnelingConfigResponse].
   /// [encapsulationProfile] Specify the encapsulation protocol and what metadata to include in incoming encapsulated packet headers.
   /// [routingMode] How this Service Attachment will treat traffic sent to the tunnel_ip, destined for the consumer network.
-  ServiceAttachmentTunnelingConfigResponse({
+  const ServiceAttachmentTunnelingConfigResponse({
     required this.encapsulationProfile,
     required this.routingMode,
   });

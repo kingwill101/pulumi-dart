@@ -11,7 +11,7 @@ class GetPlanRuleCopyActionLifecycle {
   /// [coldStorageAfter] Required.
   /// [deleteAfter] Required.
   /// [optInToArchiveForSupportedResources] Required.
-  GetPlanRuleCopyActionLifecycle({
+  const GetPlanRuleCopyActionLifecycle({
     required this.coldStorageAfter,
     required this.deleteAfter,
     required this.optInToArchiveForSupportedResources,

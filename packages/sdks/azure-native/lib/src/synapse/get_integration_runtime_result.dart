@@ -24,7 +24,7 @@ class GetIntegrationRuntimeResult {
   /// [name] The name of the resource
   /// [properties] Integration runtime properties.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetIntegrationRuntimeResult({
+  const GetIntegrationRuntimeResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

@@ -76,7 +76,7 @@ class InterceptDeploymentGroupState {
   /// [reconciling] The current state of the resource does not match the user's intended state,
   /// [state] (Output)
   /// [updateTime] The timestamp when the resource was most recently updated.
-  InterceptDeploymentGroupState({
+  const InterceptDeploymentGroupState({
     this.connectedEndpointGroups,
     this.createTime,
     this.description,

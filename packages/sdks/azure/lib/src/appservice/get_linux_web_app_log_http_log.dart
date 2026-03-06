@@ -13,7 +13,7 @@ class GetLinuxWebAppLogHttpLog {
   /// Creates a new [GetLinuxWebAppLogHttpLog].
   /// [azureBlobStorages] A `azure_blob_storage` block as defined above.
   /// [fileSystems] A `file_system` block as defined above.
-  GetLinuxWebAppLogHttpLog({
+  const GetLinuxWebAppLogHttpLog({
     required this.azureBlobStorages,
     required this.fileSystems,
   });

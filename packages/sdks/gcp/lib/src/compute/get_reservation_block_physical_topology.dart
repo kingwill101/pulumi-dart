@@ -11,7 +11,7 @@ class GetReservationBlockPhysicalTopology {
   /// Creates a new [GetReservationBlockPhysicalTopology].
   /// [block] The hash of the capacity block within the cluster.
   /// [cluster] The cluster name of the reservation block.
-  GetReservationBlockPhysicalTopology({
+  const GetReservationBlockPhysicalTopology({
     required this.block,
     required this.cluster,
   });

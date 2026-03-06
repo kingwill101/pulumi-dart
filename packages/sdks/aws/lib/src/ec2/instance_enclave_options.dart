@@ -10,7 +10,7 @@ class InstanceEnclaveOptions {
 
   /// Creates a new [InstanceEnclaveOptions].
   /// [enabled] Whether Nitro Enclaves will be enabled on the instance. Defaults to `false`.
-  InstanceEnclaveOptions({
+  const InstanceEnclaveOptions({
     this.enabled,
   });
 

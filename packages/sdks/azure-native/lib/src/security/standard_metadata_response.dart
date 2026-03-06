@@ -18,7 +18,7 @@ class StandardMetadataResponse {
   /// [createdOn] Standard creation date
   /// [lastUpdatedBy] Standard last updated by object id (GUID)
   /// [lastUpdatedOn] Standard last update date
-  StandardMetadataResponse({
+  const StandardMetadataResponse({
     required this.createdBy,
     required this.createdOn,
     required this.lastUpdatedBy,

@@ -22,7 +22,7 @@ class VersionState {
   /// [parent] The Flow to create an Version for.
   /// [status] The status of this version.
   /// [versionNumber] The sequential number of this version.
-  VersionState({
+  const VersionState({
     this.description,
     this.name,
     this.parent,

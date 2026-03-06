@@ -11,7 +11,7 @@ class NodeTemplateNodeTypeFlexibilityComputeBeta {
   /// [cpus] Optional.
   /// [localSsd] Optional.
   /// [memory] Optional.
-  NodeTemplateNodeTypeFlexibilityComputeBeta({
+  const NodeTemplateNodeTypeFlexibilityComputeBeta({
     this.cpus,
     this.localSsd,
     this.memory,

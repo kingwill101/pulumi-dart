@@ -36,7 +36,7 @@ class GetVirtualWanResult {
   /// [tags] A mapping of tags assigned to the Virtual Wan.
   /// [virtualHubIds] A list of Virtual Hubs IDs attached to this Virtual WAN.
   /// [vpnSiteIds] A list of VPN Site IDs attached to this Virtual WAN.
-  GetVirtualWanResult({
+  const GetVirtualWanResult({
     required this.allowBranchToBranchTraffic,
     required this.disableVpnEncryption,
     required this.id,

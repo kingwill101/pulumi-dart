@@ -95,7 +95,7 @@ class GetVirtualMachineResult {
   /// [vSphereNetworks] The list of Virtual VSphere Networks
   /// [vmId] The internal id of Virtual Machine in VCenter
   /// [vmwaretools] VMware tools version
-  GetVirtualMachineResult({
+  const GetVirtualMachineResult({
     required this.amountOfRam,
     required this.azureApiVersion,
     required this.controllers,

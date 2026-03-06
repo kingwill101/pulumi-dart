@@ -12,7 +12,7 @@ class GetTrafficManagerArgs {
 
   /// Creates a new [GetTrafficManagerArgs].
   /// [name] Specifies the name of the Location, for example `World`, `Europe` or `Germany`.
-  GetTrafficManagerArgs({
+  const GetTrafficManagerArgs({
     required this.name,
   });
 

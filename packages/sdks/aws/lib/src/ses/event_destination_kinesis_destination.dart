@@ -11,7 +11,7 @@ class EventDestinationKinesisDestination {
   /// Creates a new [EventDestinationKinesisDestination].
   /// [roleArn] The ARN of the role that has permissions to access the Kinesis Stream
   /// [streamArn] The ARN of the Kinesis Stream
-  EventDestinationKinesisDestination({
+  const EventDestinationKinesisDestination({
     required this.roleArn,
     required this.streamArn,
   });

@@ -28,7 +28,7 @@ class ServiceBusTopicMessageResponse {
   /// [namespace] Gets or sets the namespace.
   /// [topicPath] Gets or sets the topic path.
   /// [transportType] Gets or sets the transport type.
-  ServiceBusTopicMessageResponse({
+  const ServiceBusTopicMessageResponse({
     this.authentication,
     this.brokeredMessageProperties,
     this.customMessageProperties,

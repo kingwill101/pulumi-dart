@@ -13,7 +13,7 @@ class GitHubConfigResponse {
   /// Creates a new [GitHubConfigResponse].
   /// [appInstallationId] GitHub App installation id.
   /// [authorizerCredential] OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App.
-  GitHubConfigResponse({
+  const GitHubConfigResponse({
     required this.appInstallationId,
     required this.authorizerCredential,
   });

@@ -13,7 +13,7 @@ class RouteSpecHttp2RouteTimeout {
   /// Creates a new [RouteSpecHttp2RouteTimeout].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
   /// [perRequest] Per request timeout.
-  RouteSpecHttp2RouteTimeout({
+  const RouteSpecHttp2RouteTimeout({
     this.idle,
     this.perRequest,
   });

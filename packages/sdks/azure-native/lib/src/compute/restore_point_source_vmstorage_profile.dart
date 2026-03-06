@@ -14,7 +14,7 @@ class RestorePointSourceVMStorageProfile {
   /// Creates a new [RestorePointSourceVMStorageProfile].
   /// [dataDisks] Gets the data disks of the VM captured at the time of the restore point creation.
   /// [osDisk] Gets the OS disk of the VM captured at the time of the restore point creation.
-  RestorePointSourceVMStorageProfile({
+  const RestorePointSourceVMStorageProfile({
     this.dataDisks,
     this.osDisk,
   });

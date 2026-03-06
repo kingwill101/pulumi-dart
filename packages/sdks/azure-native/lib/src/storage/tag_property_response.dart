@@ -21,7 +21,7 @@ class TagPropertyResponse {
   /// [tenantId] Returns the Tenant ID that issued the token for the user who added the tag.
   /// [timestamp] Returns the date and time the tag was added.
   /// [upn] Returns the User Principal Name of the user who added the tag.
-  TagPropertyResponse({
+  const TagPropertyResponse({
     required this.objectIdentifier,
     required this.tag,
     required this.tenantId,

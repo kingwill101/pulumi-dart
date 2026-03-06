@@ -27,7 +27,7 @@ class AccessLevelsAccessLevel {
   /// [description] Description of the AccessLevel and its use. Does not affect behavior.
   /// [name] Resource name for the Access Level. The short_name component must begin
   /// [title] Human readable title. Must be unique within the Policy.
-  AccessLevelsAccessLevel({
+  const AccessLevelsAccessLevel({
     this.basic,
     this.custom,
     this.description,

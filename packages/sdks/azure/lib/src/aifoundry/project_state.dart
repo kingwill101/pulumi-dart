@@ -37,7 +37,7 @@ class ProjectState {
   /// [primaryUserAssignedIdentity] The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
   /// [projectId] The immutable project ID associated with this AI Foundry Project.
   /// [tags] A mapping of tags which should be assigned to the AI Foundry Project.
-  ProjectState({
+  const ProjectState({
     this.aiServicesHubId,
     this.description,
     this.friendlyName,

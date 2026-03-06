@@ -36,7 +36,7 @@ class ManagedAgentDeploymentResponse {
   /// [provisioningState] Gets or sets the provisioning state of the agent deployment.
   /// [state] Gets or sets the current operational state of the deployment (and, intrinsically, of the comprising agents).
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ManagedAgentDeploymentResponse({
+  const ManagedAgentDeploymentResponse({
     this.agents,
     this.deploymentId,
     required this.deploymentType,

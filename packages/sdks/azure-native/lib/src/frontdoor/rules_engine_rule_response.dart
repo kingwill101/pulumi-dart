@@ -23,7 +23,7 @@ class RulesEngineRuleResponse {
   /// [matchProcessingBehavior] If this rule is a match should the rules engine continue running the remaining rules or stop. If not present, defaults to Continue.
   /// [name] A name to refer to this specific rule.
   /// [priority] A priority assigned to this rule.
-  RulesEngineRuleResponse({
+  const RulesEngineRuleResponse({
     required this.action,
     this.matchConditions,
     this.matchProcessingBehavior,

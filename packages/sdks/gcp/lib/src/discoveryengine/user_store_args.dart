@@ -40,7 +40,7 @@ class UserStoreArgs {
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
   /// [userStoreId] The ID of the user store. Currently only accepts "default_user_store".
-  UserStoreArgs({
+  const UserStoreArgs({
     this.defaultLicenseConfig,
     this.enableExpiredLicenseAutoUpdate,
     this.enableLicenseAutoRegister,

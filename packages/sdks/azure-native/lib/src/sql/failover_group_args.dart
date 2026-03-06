@@ -39,7 +39,7 @@ class FailoverGroupArgs {
   /// [secondaryType] Databases secondary type on partner server.
   /// [serverName] The name of the server containing the failover group.
   /// [tags] Resource tags.
-  FailoverGroupArgs({
+  const FailoverGroupArgs({
     this.databases,
     this.failoverGroupName,
     required this.partnerServers,

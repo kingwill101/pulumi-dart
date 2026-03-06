@@ -37,7 +37,7 @@ class NetworkPeeringArgs {
   /// [peerNetwork] The peer network in the peering. The peer network
   /// [stackType] Which IP version(s) of traffic and routes are allowed to be imported or exported between peer networks. The default value is IPV4_ONLY. Possible values: ["IPV4_ONLY", "IPV4_IPV6"].
   /// [updateStrategy] The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
-  NetworkPeeringArgs({
+  const NetworkPeeringArgs({
     this.exportCustomRoutes,
     this.exportSubnetRoutesWithPublicIp,
     this.importCustomRoutes,

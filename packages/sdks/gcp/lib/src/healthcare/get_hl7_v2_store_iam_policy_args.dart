@@ -15,7 +15,7 @@ class GetHl7V2StoreIamPolicyArgs {
 
   /// Creates a new [GetHl7V2StoreIamPolicyArgs].
   /// [hl7V2StoreId] The HL7v2 store ID, in the form
-  GetHl7V2StoreIamPolicyArgs({
+  const GetHl7V2StoreIamPolicyArgs({
     required this.hl7V2StoreId,
   });
 

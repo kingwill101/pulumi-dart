@@ -13,7 +13,7 @@ class ServiceStatuses {
   /// Creates a new [ServiceStatuses].
   /// [extensionService] The state of the extension service on the Arc-enabled machine.
   /// [guestConfigurationService] The state of the guest configuration service on the Arc-enabled machine.
-  ServiceStatuses({
+  const ServiceStatuses({
     this.extensionService,
     this.guestConfigurationService,
   });

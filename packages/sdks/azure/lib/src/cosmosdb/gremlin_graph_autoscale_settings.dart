@@ -8,7 +8,7 @@ class GremlinGraphAutoscaleSettings {
 
   /// Creates a new [GremlinGraphAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the Gremlin graph (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  GremlinGraphAutoscaleSettings({
+  const GremlinGraphAutoscaleSettings({
     this.maxThroughput,
   });
 

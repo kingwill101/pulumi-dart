@@ -43,7 +43,7 @@ class EnterpriseProxyAccessState {
   /// [userId] The user ID.
   /// [userName] User nickname.
   /// [userUid] User UID.
-  EnterpriseProxyAccessState({
+  const EnterpriseProxyAccessState({
     this.accessId,
     this.accessSecret,
     this.createTime,

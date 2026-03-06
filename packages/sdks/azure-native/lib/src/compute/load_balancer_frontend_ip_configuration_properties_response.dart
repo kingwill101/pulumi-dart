@@ -16,7 +16,7 @@ class LoadBalancerFrontendIpConfigurationPropertiesResponse {
   /// [privateIPAddress] The virtual network private IP address of the IP configuration.
   /// [publicIPAddress] The reference to the public ip address resource.
   /// [subnet] The reference to the virtual network subnet resource.
-  LoadBalancerFrontendIpConfigurationPropertiesResponse({
+  const LoadBalancerFrontendIpConfigurationPropertiesResponse({
     this.privateIPAddress,
     this.publicIPAddress,
     this.subnet,

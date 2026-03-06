@@ -18,7 +18,7 @@ class GetWebAppRelayServiceConnectionArgs {
   /// [entityName] Name of the hybrid connection.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppRelayServiceConnectionArgs({
+  const GetWebAppRelayServiceConnectionArgs({
     required this.entityName,
     required this.name,
     required this.resourceGroupName,

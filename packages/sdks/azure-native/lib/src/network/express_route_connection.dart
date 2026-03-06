@@ -35,7 +35,7 @@ class ExpressRouteConnection {
   /// [name] The name of the resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [routingWeight] The routing weight associated to the connection.
-  ExpressRouteConnection({
+  const ExpressRouteConnection({
     this.authorizationKey,
     this.enableInternetSecurity,
     this.enablePrivateLinkFastPath,

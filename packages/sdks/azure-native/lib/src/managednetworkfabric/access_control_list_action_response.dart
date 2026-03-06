@@ -12,7 +12,7 @@ class AccessControlListActionResponse {
   /// Creates a new [AccessControlListActionResponse].
   /// [counterName] Name of the counter block to get match count information.
   /// [type] Type of actions that can be performed.
-  AccessControlListActionResponse({
+  const AccessControlListActionResponse({
     this.counterName,
     this.type,
   });

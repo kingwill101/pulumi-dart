@@ -12,7 +12,7 @@ class SchemaVersionPropertiesResponse {
   /// Creates a new [SchemaVersionPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
   /// [value] Value of schema version
-  SchemaVersionPropertiesResponse({
+  const SchemaVersionPropertiesResponse({
     required this.provisioningState,
     required this.value,
   });

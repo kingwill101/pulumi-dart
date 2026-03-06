@@ -15,7 +15,7 @@ class GetTenantActionGroupArgs {
   /// Creates a new [GetTenantActionGroupArgs].
   /// [managementGroupId] The management group id.
   /// [tenantActionGroupName] The name of the action group.
-  GetTenantActionGroupArgs({
+  const GetTenantActionGroupArgs({
     required this.managementGroupId,
     required this.tenantActionGroupName,
   });

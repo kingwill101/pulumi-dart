@@ -9,7 +9,7 @@ class GetSlotTypeEnumerationValue {
   /// Creates a new [GetSlotTypeEnumerationValue].
   /// [synonyms] Required.
   /// [value] Required.
-  GetSlotTypeEnumerationValue({
+  const GetSlotTypeEnumerationValue({
     required this.synonyms,
     required this.value,
   });

@@ -40,7 +40,7 @@ class GetQuicksightUserResult {
   /// [region] Required.
   /// [userName] Required.
   /// [userRole] The Amazon QuickSight role for the user. The user role can be one of the following:.
-  GetQuicksightUserResult({
+  const GetQuicksightUserResult({
     required this.active,
     required this.arn,
     required this.awsAccountId,

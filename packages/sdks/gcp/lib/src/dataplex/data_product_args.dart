@@ -38,7 +38,7 @@ class DataProductArgs {
   /// [location] The location for the data product.
   /// [ownerEmails] Emails of the owners.
   /// [project] The ID of the project in which the resource belongs.
-  DataProductArgs({
+  const DataProductArgs({
     this.accessGroups,
     required this.dataProductId,
     this.description,

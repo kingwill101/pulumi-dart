@@ -8,7 +8,7 @@ class BucketTransferAcceleration {
 
   /// Creates a new [BucketTransferAcceleration].
   /// [enabled] Specifies the accelerate status of a bucket.
-  BucketTransferAcceleration({
+  const BucketTransferAcceleration({
     required this.enabled,
   });
 

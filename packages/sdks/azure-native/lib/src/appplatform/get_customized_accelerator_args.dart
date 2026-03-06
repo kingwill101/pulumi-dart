@@ -21,7 +21,7 @@ class GetCustomizedAcceleratorArgs {
   /// [customizedAcceleratorName] The name of the customized accelerator.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetCustomizedAcceleratorArgs({
+  const GetCustomizedAcceleratorArgs({
     required this.applicationAcceleratorName,
     required this.customizedAcceleratorName,
     required this.resourceGroupName,

@@ -13,7 +13,7 @@ class ProjectSecondarySourceVersion {
   /// Creates a new [ProjectSecondarySourceVersion].
   /// [sourceIdentifier] An identifier for a source in the build project.
   /// [sourceVersion] The source version for the corresponding source identifier.
-  ProjectSecondarySourceVersion({
+  const ProjectSecondarySourceVersion({
     required this.sourceIdentifier,
     required this.sourceVersion,
   });

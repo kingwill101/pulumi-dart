@@ -12,7 +12,7 @@ class ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading {
 
   /// Creates a new [ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading].
   /// [policy] Possible kernel module loading policies.
-  ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
+  const ClusterNodePoolNodeConfigLinuxNodeConfigNodeKernelModuleLoading({
     this.policy,
   });
 

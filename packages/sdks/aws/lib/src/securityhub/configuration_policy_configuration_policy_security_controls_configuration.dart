@@ -15,7 +15,7 @@ class ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration {
   /// [disabledControlIdentifiers] A list of security controls that are disabled in the configuration policy Security Hub enables all other controls (including newly released controls) other than the listed controls. Conflicts with `enabled_control_identifiers`.
   /// [enabledControlIdentifiers] A list of security controls that are enabled in the configuration policy. Security Hub disables all other controls (including newly released controls) other than the listed controls. Conflicts with `disabled_control_identifiers`.
   /// [securityControlCustomParameters] A list of control parameter customizations that are included in a configuration policy. Include multiple blocks to define multiple control custom parameters. See below.
-  ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration({
+  const ConfigurationPolicyConfigurationPolicySecurityControlsConfiguration({
     this.disabledControlIdentifiers,
     this.enabledControlIdentifiers,
     this.securityControlCustomParameters,

@@ -9,7 +9,7 @@ class ExportPolicy {
 
   /// Creates a new [ExportPolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
-  ExportPolicy({
+  const ExportPolicy({
     this.status,
   });
 

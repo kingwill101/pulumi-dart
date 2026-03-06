@@ -8,7 +8,7 @@ class ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings {
 
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings].
   /// [htmlMotionGraphicsSettings] Html Motion Graphics Settings.
-  ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings({
+  const ChannelEncoderSettingsMotionGraphicsConfigurationMotionGraphicsSettings({
     this.htmlMotionGraphicsSettings,
   });
 

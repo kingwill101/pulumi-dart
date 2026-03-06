@@ -12,7 +12,7 @@ class BatchRestrictionsResponse {
   /// Creates a new [BatchRestrictionsResponse].
   /// [computeTypesAllowed] &lt;p&gt;An array of strings that specify the compute types that are allowed for the batch build. See &lt;a href='https://docs.aws.amazon.com/codebuild/latest/userguide/build-env-ref-compute-types.html'&gt;Build environment compute types&lt;/a&gt; in the &lt;i&gt;CodeBuild User Guide&lt;/i&gt; for these values. &lt;/p&gt;
   /// [maximumBuildsAllowed] &lt;p&gt;Specifies the maximum number of builds allowed.&lt;/p&gt;
-  BatchRestrictionsResponse({
+  const BatchRestrictionsResponse({
     this.computeTypesAllowed,
     this.maximumBuildsAllowed,
   });

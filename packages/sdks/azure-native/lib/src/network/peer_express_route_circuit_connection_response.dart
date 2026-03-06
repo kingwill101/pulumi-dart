@@ -40,7 +40,7 @@ class PeerExpressRouteCircuitConnectionResponse {
   /// [peerExpressRouteCircuitPeering] Reference to Express Route Circuit Private Peering Resource of the peered circuit.
   /// [provisioningState] The provisioning state of the peer express route circuit connection resource.
   /// [type] Type of the resource.
-  PeerExpressRouteCircuitConnectionResponse({
+  const PeerExpressRouteCircuitConnectionResponse({
     this.addressPrefix,
     this.authResourceGuid,
     required this.circuitConnectionStatus,

@@ -24,7 +24,7 @@ class StudioSessionMappingState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sessionPolicyArn] The Amazon Resource Name (ARN) for the session policy that will be applied to the user or group. You should specify the ARN for the session policy that you want to apply, not the ARN of your user role.
   /// [studioId] The ID of the Amazon EMR Studio to which the user or group will be mapped.
-  StudioSessionMappingState({
+  const StudioSessionMappingState({
     this.identityId,
     this.identityName,
     this.identityType,

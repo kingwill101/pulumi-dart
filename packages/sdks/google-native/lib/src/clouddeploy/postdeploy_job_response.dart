@@ -9,7 +9,7 @@ class PostdeployJobResponse {
 
   /// Creates a new [PostdeployJobResponse].
   /// [actions] The custom actions that the postdeploy Job executes.
-  PostdeployJobResponse({
+  const PostdeployJobResponse({
     required this.actions,
   });
 

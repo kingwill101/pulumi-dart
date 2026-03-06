@@ -24,7 +24,7 @@ class BootDiskDefaults {
   /// [diskType] Optional. The type of disk provisioning to use for the VM.
   /// [encryption] Optional. The encryption to apply to the boot disk.
   /// [image] The image to use when creating the disk.
-  BootDiskDefaults({
+  const BootDiskDefaults({
     this.deviceName,
     this.diskName,
     this.diskType,

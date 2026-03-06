@@ -15,7 +15,7 @@ class NetworkEndpointGroupLbNetworkEndpointGroup {
   /// [defaultPort] The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
   /// [network] The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
-  NetworkEndpointGroupLbNetworkEndpointGroup({
+  const NetworkEndpointGroupLbNetworkEndpointGroup({
     this.defaultPort,
     this.network,
     this.subnetwork,

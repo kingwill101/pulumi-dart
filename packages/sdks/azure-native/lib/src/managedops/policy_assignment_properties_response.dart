@@ -9,7 +9,7 @@ class PolicyAssignmentPropertiesResponse {
 
   /// Creates a new [PolicyAssignmentPropertiesResponse].
   /// [policyInitiativeAssignmentId] Policy initiative assignment ID.
-  PolicyAssignmentPropertiesResponse({
+  const PolicyAssignmentPropertiesResponse({
     required this.policyInitiativeAssignmentId,
   });
 

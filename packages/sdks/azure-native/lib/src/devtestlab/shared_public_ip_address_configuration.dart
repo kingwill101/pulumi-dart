@@ -10,7 +10,7 @@ class SharedPublicIpAddressConfiguration {
 
   /// Creates a new [SharedPublicIpAddressConfiguration].
   /// [inboundNatRules] The incoming NAT rules
-  SharedPublicIpAddressConfiguration({
+  const SharedPublicIpAddressConfiguration({
     this.inboundNatRules,
   });
 

@@ -38,7 +38,7 @@ class LinkedServiceAzureSearchState {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [searchServiceKey] The key of the Azure Search Service.
   /// [url] The URL of the Search Service endpoint (e.g. &lt;https://{searchServiceName}.search.windows.net&gt;).
-  LinkedServiceAzureSearchState({
+  const LinkedServiceAzureSearchState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

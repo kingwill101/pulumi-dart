@@ -15,7 +15,7 @@ class GetLakeArgs {
   /// [lakeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetLakeArgs({
+  const GetLakeArgs({
     required this.lakeId,
     required this.location,
     this.project,

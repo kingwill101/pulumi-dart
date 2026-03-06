@@ -8,7 +8,7 @@ class ConfigurationSetSuppressionOptions {
 
   /// Creates a new [ConfigurationSetSuppressionOptions].
   /// [suppressedReasons] A list that contains the reasons that email addresses are automatically added to the suppression list for your account. Valid values: `BOUNCE`, `COMPLAINT`.
-  ConfigurationSetSuppressionOptions({
+  const ConfigurationSetSuppressionOptions({
     this.suppressedReasons,
   });
 

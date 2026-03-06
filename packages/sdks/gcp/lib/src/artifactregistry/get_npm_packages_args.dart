@@ -18,7 +18,7 @@ class GetNpmPackagesArgs {
   /// [location] The location of the Artifact Registry repository.
   /// [project] The project ID in which the resource belongs. If it is not provided, the provider project is used.
   /// [repositoryId] The last part of the repository name to fetch from.
-  GetNpmPackagesArgs({
+  const GetNpmPackagesArgs({
     required this.location,
     this.project,
     required this.repositoryId,

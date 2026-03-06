@@ -9,7 +9,7 @@ class VirtualMachine {
 
   /// Creates a new [VirtualMachine].
   /// [tags] Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
-  VirtualMachine({
+  const VirtualMachine({
     this.tags,
   });
 

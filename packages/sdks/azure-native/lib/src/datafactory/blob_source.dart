@@ -31,7 +31,7 @@ class BlobSource {
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [treatEmptyAsNull] Treat empty as null. Type: boolean (or Expression with resultType boolean).
   /// [type] Copy source type.
-  BlobSource({
+  const BlobSource({
     this.disableMetricsCollection,
     this.maxConcurrentConnections,
     this.recursive,

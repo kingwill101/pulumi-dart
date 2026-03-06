@@ -9,7 +9,7 @@ class ServiceManagedResourcesSettingsResponse {
 
   /// Creates a new [ServiceManagedResourcesSettingsResponse].
   /// [cosmosDb] The settings for the service managed cosmosdb account.
-  ServiceManagedResourcesSettingsResponse({
+  const ServiceManagedResourcesSettingsResponse({
     this.cosmosDb,
   });
 

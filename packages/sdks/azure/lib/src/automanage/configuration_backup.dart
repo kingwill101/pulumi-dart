@@ -22,7 +22,7 @@ class ConfigurationBackup {
   /// [retentionPolicy] A `retention_policy` block as defined below.
   /// [schedulePolicy] A `schedule_policy` block as defined below.
   /// [timeZone] The timezone of the backup policy. Defaults to `UTC`.
-  ConfigurationBackup({
+  const ConfigurationBackup({
     this.instantRpRetentionRangeInDays,
     this.policyName,
     this.retentionPolicy,

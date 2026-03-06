@@ -14,7 +14,7 @@ class GetVirtualGatewaySpecListenerTlCertificate {
   /// [acms] Required.
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualGatewaySpecListenerTlCertificate({
+  const GetVirtualGatewaySpecListenerTlCertificate({
     required this.acms,
     required this.files,
     required this.sds,

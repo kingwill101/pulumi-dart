@@ -18,7 +18,7 @@ class CassandraSchemaResponse {
   /// [clusterKeys] List of cluster key.
   /// [columns] List of Cassandra table columns.
   /// [partitionKeys] List of partition key.
-  CassandraSchemaResponse({
+  const CassandraSchemaResponse({
     this.clusterKeys,
     this.columns,
     this.partitionKeys,

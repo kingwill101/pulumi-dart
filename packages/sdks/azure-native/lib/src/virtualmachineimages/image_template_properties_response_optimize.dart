@@ -10,7 +10,7 @@ class ImageTemplatePropertiesResponseOptimize {
 
   /// Creates a new [ImageTemplatePropertiesResponseOptimize].
   /// [vmBoot] Optimization is applied on the image for a faster VM boot.
-  ImageTemplatePropertiesResponseOptimize({
+  const ImageTemplatePropertiesResponseOptimize({
     this.vmBoot,
   });
 

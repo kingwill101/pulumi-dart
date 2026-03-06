@@ -23,7 +23,7 @@ class GetWebAppFtpAllowedResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetWebAppFtpAllowedResult({
+  const GetWebAppFtpAllowedResult({
     required this.allow,
     required this.azureApiVersion,
     required this.id,

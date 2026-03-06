@@ -12,7 +12,7 @@ class DisplayInfoResponse {
   /// Creates a new [DisplayInfoResponse].
   /// [configurationDisplayName] Configuration display name.
   /// [productFamilyDisplayName] Product family display name.
-  DisplayInfoResponse({
+  const DisplayInfoResponse({
     required this.configurationDisplayName,
     required this.productFamilyDisplayName,
   });

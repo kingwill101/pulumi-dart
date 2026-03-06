@@ -31,7 +31,7 @@ class DeliveryChannelArgs {
   /// [s3KmsKeyArn] The ARN of the AWS KMS key used to encrypt objects delivered by AWS Config. Must belong to the same Region as the destination S3 bucket.
   /// [snapshotDeliveryProperties] Options for how AWS Config delivers configuration snapshots. See below
   /// [snsTopicArn] The ARN of the SNS topic that AWS Config delivers notifications to.
-  DeliveryChannelArgs({
+  const DeliveryChannelArgs({
     this.name,
     this.region,
     required this.s3BucketName,

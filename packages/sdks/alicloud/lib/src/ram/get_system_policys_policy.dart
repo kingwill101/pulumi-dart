@@ -26,7 +26,7 @@ class GetSystemPolicysPolicy {
   /// [policyName] The permission policy name.
   /// [policyType] Permission policy type.
   /// [updateDate] Modification time.
-  GetSystemPolicysPolicy({
+  const GetSystemPolicysPolicy({
     required this.attachmentCount,
     required this.createTime,
     required this.description,

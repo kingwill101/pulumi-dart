@@ -12,7 +12,7 @@ class AuditLogConfigResponseDeploymentmanagerV2beta {
   /// Creates a new [AuditLogConfigResponseDeploymentmanagerV2beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigResponseDeploymentmanagerV2beta({
+  const AuditLogConfigResponseDeploymentmanagerV2beta({
     required this.exemptedMembers,
     required this.logType,
   });

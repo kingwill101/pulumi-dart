@@ -24,7 +24,7 @@ class GetBackupRunArgs {
   /// [instance] The name of the instance the backup is taken from.
   /// [mostRecent] Toggles use of the most recent backup run if multiple backups exist for a
   /// [project] The project to list instances for. If it
-  GetBackupRunArgs({
+  const GetBackupRunArgs({
     this.backupId,
     required this.instance,
     this.mostRecent,

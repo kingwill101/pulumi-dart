@@ -35,7 +35,7 @@ class BackupPolicyBlobStorageArgs {
   /// [timeZone] Specifies the Time Zone which should be used by the backup schedule. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [vaultDefaultRetentionDuration] The duration of vault default retention rule. It should follow `ISO 8601` duration format. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Policy Blob Storage should exist. Changing this forces a new Backup Policy Blob Storage to be created.
-  BackupPolicyBlobStorageArgs({
+  const BackupPolicyBlobStorageArgs({
     this.backupRepeatingTimeIntervals,
     this.name,
     this.operationalDefaultRetentionDuration,

@@ -46,7 +46,7 @@ class GetAppServicePlanResult {
   /// [sku] A `sku` block as documented below.
   /// [tags] A mapping of tags assigned to the resource.
   /// [zoneRedundant] App Service Plan perform availability zone balancing.
-  GetAppServicePlanResult({
+  const GetAppServicePlanResult({
     required this.appServiceEnvironmentId,
     required this.id,
     required this.isXenon,

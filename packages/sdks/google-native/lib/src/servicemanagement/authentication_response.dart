@@ -14,7 +14,7 @@ class AuthenticationResponse {
   /// Creates a new [AuthenticationResponse].
   /// [providers] Defines a set of authentication providers that a service supports.
   /// [rules] A list of authentication rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  AuthenticationResponse({
+  const AuthenticationResponse({
     required this.providers,
     required this.rules,
   });

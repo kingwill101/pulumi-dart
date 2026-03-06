@@ -11,7 +11,7 @@ class GetAddressBooksBookEcsTag {
   /// Creates a new [GetAddressBooksBookEcsTag].
   /// [tagKey] The key of ECS tag that to be matched.
   /// [tagValue] The value of ECS tag that to be matched.
-  GetAddressBooksBookEcsTag({
+  const GetAddressBooksBookEcsTag({
     required this.tagKey,
     required this.tagValue,
   });

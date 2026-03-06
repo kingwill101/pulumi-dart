@@ -45,7 +45,7 @@ class IpsecPolicyState {
   /// [protocol] Specifies the IPsec protocol. Valid choices are: `ah, esp`
   /// [tunnelLocalAddress] Specifies the local endpoint IP address of the IPsec tunnel. This parameter is only valid when mode is tunnel.
   /// [tunnelRemoteAddress] Specifies the remote endpoint IP address of the IPsec tunnel. This parameter is only valid when mode is tunnel.
-  IpsecPolicyState({
+  const IpsecPolicyState({
     this.authAlgorithm,
     this.description,
     this.encryptAlgorithm,

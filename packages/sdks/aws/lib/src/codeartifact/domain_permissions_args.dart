@@ -24,7 +24,7 @@ class DomainPermissionsArgs {
   /// [policyDocument] A JSON policy string to be set as the access control resource policy on the provided domain.
   /// [policyRevision] The current revision of the resource policy to be set. This revision is used for optimistic locking, which prevents others from overwriting your changes to the domain's resource policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainPermissionsArgs({
+  const DomainPermissionsArgs({
     required this.domain,
     this.domainOwner,
     this.policyDocument,

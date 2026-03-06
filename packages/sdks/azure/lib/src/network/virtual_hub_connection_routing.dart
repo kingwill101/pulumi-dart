@@ -28,7 +28,7 @@ class VirtualHubConnectionRouting {
   /// [staticVnetLocalRouteOverrideCriteria] The static VNet local route override criteria that is used to determine whether NVA in spoke VNet is bypassed for traffic with destination in spoke VNet. Possible values are `Contains` and `Equal`. Defaults to `Contains`. Changing this forces a new resource to be created.
   /// [staticVnetPropagateStaticRoutesEnabled] Whether the static routes should be propagated to the Virtual Hub. Defaults to `true`.
   /// [staticVnetRoutes] A `static_vnet_route` block as defined below.
-  VirtualHubConnectionRouting({
+  const VirtualHubConnectionRouting({
     this.associatedRouteTableId,
     this.inboundRouteMapId,
     this.outboundRouteMapId,

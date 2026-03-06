@@ -26,7 +26,7 @@ class NetworkMonitorPropertiesResponse {
   /// [configurationState] Configuration state of the resource.
   /// [lastOperation] Details of the last operation performed on the resource
   /// [provisioningState] Provides you the latest status of the NetworkMonitor resource
-  NetworkMonitorPropertiesResponse({
+  const NetworkMonitorPropertiesResponse({
     required this.administrativeState,
     this.annotation,
     this.bmpConfiguration,

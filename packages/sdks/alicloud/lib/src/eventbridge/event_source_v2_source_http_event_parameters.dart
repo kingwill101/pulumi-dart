@@ -41,7 +41,7 @@ class EventSourceV2SourceHttpEventParameters {
   /// [securityConfig] Select the type of security configuration. The optional range is as follows:
   /// [type] The protocol type supported by the generated Webhook. The value description is as follows:
   /// [vpcWebHookUrls] The intranet request URL.
-  EventSourceV2SourceHttpEventParameters({
+  const EventSourceV2SourceHttpEventParameters({
     this.ips,
     this.methods,
     this.publicWebHookUrls,

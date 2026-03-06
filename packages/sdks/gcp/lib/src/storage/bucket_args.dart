@@ -96,7 +96,7 @@ class BucketArgs {
   /// [uniformBucketLevelAccess] Enables [Uniform bucket-level access](https://cloud.google.com/storage/docs/uniform-bucket-level-access) access to a bucket.
   /// [versioning] The bucket's [Versioning](https://cloud.google.com/storage/docs/object-versioning) configuration.  Structure is documented below.
   /// [website] Configuration if the bucket acts as a website. Structure is documented below.
-  BucketArgs({
+  const BucketArgs({
     this.autoclass,
     this.cors,
     this.customPlacementConfig,

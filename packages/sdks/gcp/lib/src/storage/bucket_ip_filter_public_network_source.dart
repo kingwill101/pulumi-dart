@@ -8,7 +8,7 @@ class BucketIpFilterPublicNetworkSource {
 
   /// Creates a new [BucketIpFilterPublicNetworkSource].
   /// [allowedIpCidrRanges] The list of public IPv4 and IPv6 CIDR ranges that can access the bucket and its data.
-  BucketIpFilterPublicNetworkSource({
+  const BucketIpFilterPublicNetworkSource({
     required this.allowedIpCidrRanges,
   });
 

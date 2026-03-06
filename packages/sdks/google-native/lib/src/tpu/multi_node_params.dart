@@ -12,7 +12,7 @@ class MultiNodeParams {
   /// Creates a new [MultiNodeParams].
   /// [nodeCount] Number of nodes with this spec. The system will attempt to provison "node_count" nodes as part of the request. This needs to be &gt; 1.
   /// [nodeIdPrefix] Prefix of node_ids in case of multi-node request Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. If node_count = 3 and node_id_prefix = "np", node ids of nodes created will be "np-0", "np-1", "np-2". If this field is not provided we use queued_resource_id as the node_id_prefix.
-  MultiNodeParams({
+  const MultiNodeParams({
     required this.nodeCount,
     this.nodeIdPrefix,
   });

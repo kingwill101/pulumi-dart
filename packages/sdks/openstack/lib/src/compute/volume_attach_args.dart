@@ -36,7 +36,7 @@ class VolumeAttachArgs {
   /// [tag] Add a device role tag that is applied to the volume when
   /// [vendorOptions] Map of additional vendor-specific options.
   /// [volumeId] The ID of the Volume to attach to an Instance.
-  VolumeAttachArgs({
+  const VolumeAttachArgs({
     this.device,
     required this.instanceId,
     this.multiattach,

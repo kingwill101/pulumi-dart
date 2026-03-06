@@ -12,7 +12,7 @@ class ReportDetailsResponse {
   /// Creates a new [ReportDetailsResponse].
   /// [reportStatus] Report status.
   /// [reportType] Report type.
-  ReportDetailsResponse({
+  const ReportDetailsResponse({
     required this.reportStatus,
     required this.reportType,
   });

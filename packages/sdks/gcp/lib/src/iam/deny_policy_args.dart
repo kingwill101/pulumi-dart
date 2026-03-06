@@ -23,7 +23,7 @@ class DenyPolicyArgs {
   /// [name] The name of the policy.
   /// [parent] The attachment point is identified by its URL-encoded full resource name.
   /// [rules] Rules to be applied.
-  DenyPolicyArgs({
+  const DenyPolicyArgs({
     this.displayName,
     this.name,
     required this.parent,

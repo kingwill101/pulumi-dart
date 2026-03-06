@@ -18,7 +18,7 @@ class LicationLoadBalancerFrontendArgs {
   /// [applicationLoadBalancerId] The ID of the Application Gateway for Containers. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Application Gateway for Containers Frontend. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Application Gateway for Containers Frontend.
-  LicationLoadBalancerFrontendArgs({
+  const LicationLoadBalancerFrontendArgs({
     required this.applicationLoadBalancerId,
     this.name,
     this.tags,

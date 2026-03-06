@@ -25,7 +25,7 @@ class OutcomeResponse {
   /// [skippedDetail] More information about a SKIPPED outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SKIPPED. Optional
   /// [successDetail] More information about a SUCCESS outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not SUCCESS. Optional
   /// [summary] The simplest way to interpret a result. Required
-  OutcomeResponse({
+  const OutcomeResponse({
     required this.failureDetail,
     required this.inconclusiveDetail,
     required this.skippedDetail,

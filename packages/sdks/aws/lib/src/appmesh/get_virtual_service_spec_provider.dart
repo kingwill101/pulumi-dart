@@ -11,7 +11,7 @@ class GetVirtualServiceSpecProvider {
   /// Creates a new [GetVirtualServiceSpecProvider].
   /// [virtualNodes] Required.
   /// [virtualRouters] Required.
-  GetVirtualServiceSpecProvider({
+  const GetVirtualServiceSpecProvider({
     required this.virtualNodes,
     required this.virtualRouters,
   });

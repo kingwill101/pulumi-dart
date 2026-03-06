@@ -11,7 +11,7 @@ class ExperimentTemplateStopCondition {
   /// Creates a new [ExperimentTemplateStopCondition].
   /// [source] Source of the condition. One of `none`, `aws:cloudwatch:alarm`.
   /// [value] ARN of the CloudWatch alarm. Required if the source is a CloudWatch alarm.
-  ExperimentTemplateStopCondition({
+  const ExperimentTemplateStopCondition({
     required this.source,
     this.value,
   });

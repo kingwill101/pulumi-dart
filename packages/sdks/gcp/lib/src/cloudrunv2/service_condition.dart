@@ -38,7 +38,7 @@ class ServiceCondition {
   /// [severity] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  ServiceCondition({
+  const ServiceCondition({
     this.executionReason,
     this.lastTransitionTime,
     this.message,

@@ -28,7 +28,7 @@ class NetworkVirtualApplianceConnectionPropertiesResponse {
   /// [provisioningState] The provisioning state of the NetworkVirtualApplianceConnection resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [tunnelIdentifier] Unique identifier for the connection.
-  NetworkVirtualApplianceConnectionPropertiesResponse({
+  const NetworkVirtualApplianceConnectionPropertiesResponse({
     this.asn,
     this.bgpPeerAddress,
     this.enableInternetSecurity,

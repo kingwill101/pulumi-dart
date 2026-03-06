@@ -14,7 +14,7 @@ class CacheFromAzureBlob {
   /// [accountUrl] Base URL of the storage account.
   /// [name] The name of the cache image.
   /// [secretAccessKey] Blob storage account key.
-  CacheFromAzureBlob({
+  const CacheFromAzureBlob({
     this.accountUrl,
     required this.name,
     this.secretAccessKey,

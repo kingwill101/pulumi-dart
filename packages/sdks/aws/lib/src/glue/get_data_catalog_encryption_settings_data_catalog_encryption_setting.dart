@@ -13,7 +13,7 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting {
   /// Creates a new [GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting].
   /// [connectionPasswordEncryptions] When connection password protection is enabled, the Data Catalog uses a customer-provided key to encrypt the password as part of CreateConnection or UpdateConnection and store it in the ENCRYPTED_PASSWORD field in the connection properties. You can enable catalog encryption or only password encryption. see Connection Password Encryption.
   /// [encryptionAtRests] Encryption-at-rest configuration for the Data Catalog. see Encryption At Rest.
-  GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting({
+  const GetDataCatalogEncryptionSettingsDataCatalogEncryptionSetting({
     required this.connectionPasswordEncryptions,
     required this.encryptionAtRests,
   });

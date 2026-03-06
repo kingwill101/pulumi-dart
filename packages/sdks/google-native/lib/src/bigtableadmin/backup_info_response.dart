@@ -21,7 +21,7 @@ class BackupInfoResponse {
   /// [sourceBackup] Name of the backup from which this backup was copied. If a backup is not created by copying a backup, this field will be empty. Values are of the form: projects//instances//backups/.
   /// [sourceTable] Name of the table the backup was created from.
   /// [startTime] The time that the backup was started. Row data in the backup will be no older than this timestamp.
-  BackupInfoResponse({
+  const BackupInfoResponse({
     required this.backup,
     required this.endTime,
     required this.sourceBackup,

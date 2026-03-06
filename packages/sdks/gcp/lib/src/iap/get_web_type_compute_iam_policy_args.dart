@@ -13,7 +13,7 @@ class GetWebTypeComputeIamPolicyArgs {
 
   /// Creates a new [GetWebTypeComputeIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetWebTypeComputeIamPolicyArgs({
+  const GetWebTypeComputeIamPolicyArgs({
     this.project,
   });
 

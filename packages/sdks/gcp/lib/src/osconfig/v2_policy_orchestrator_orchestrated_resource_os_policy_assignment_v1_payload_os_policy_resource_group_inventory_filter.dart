@@ -15,7 +15,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter].
   /// [osShortName] Required. The OS short name
   /// [osVersion] The OS version
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupInventoryFilter({
     required this.osShortName,
     this.osVersion,
   });

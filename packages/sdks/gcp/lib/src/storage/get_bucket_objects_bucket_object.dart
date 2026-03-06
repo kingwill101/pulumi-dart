@@ -20,7 +20,7 @@ class GetBucketObjectsBucketObject {
   /// [name] The name of the object.
   /// [selfLink] A url reference to this object.
   /// [storageClass] The [StorageClass](https://cloud.google.com/storage/docs/storage-classes) of the bucket object.
-  GetBucketObjectsBucketObject({
+  const GetBucketObjectsBucketObject({
     required this.contentType,
     required this.mediaLink,
     required this.name,

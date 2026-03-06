@@ -8,7 +8,7 @@ class GetBundleUserStorage {
 
   /// Creates a new [GetBundleUserStorage].
   /// [capacity] Size of the user storage.
-  GetBundleUserStorage({
+  const GetBundleUserStorage({
     required this.capacity,
   });
 

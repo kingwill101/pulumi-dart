@@ -18,7 +18,7 @@ class CustomModelJobInput {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Input Asset Delivery Mode.
   /// [uri] [Required] Input Asset URI.
-  CustomModelJobInput({
+  const CustomModelJobInput({
     this.description,
     required this.jobInputType,
     this.mode,

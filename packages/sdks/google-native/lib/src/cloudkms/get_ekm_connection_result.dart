@@ -25,7 +25,7 @@ class GetEkmConnectionResult {
   /// [keyManagementMode] Optional. Describes who can perform control plane operations on the EKM. If unset, this defaults to MANUAL.
   /// [name] The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`.
   /// [serviceResolvers] A list of ServiceResolvers where the EKM can be reached. There should be one ServiceResolver per EKM replica. Currently, only a single ServiceResolver is supported.
-  GetEkmConnectionResult({
+  const GetEkmConnectionResult({
     required this.createTime,
     required this.cryptoSpacePath,
     required this.etag,

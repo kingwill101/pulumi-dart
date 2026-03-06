@@ -17,7 +17,7 @@ class GetEnvironmentDialogflowV3beta1Args {
   /// [environmentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEnvironmentDialogflowV3beta1Args({
+  const GetEnvironmentDialogflowV3beta1Args({
     required this.agentId,
     required this.environmentId,
     required this.location,

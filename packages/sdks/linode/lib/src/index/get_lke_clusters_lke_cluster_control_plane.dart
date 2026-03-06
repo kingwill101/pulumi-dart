@@ -11,7 +11,7 @@ class GetLkeClustersLkeClusterControlPlane {
   /// Creates a new [GetLkeClustersLkeClusterControlPlane].
   /// [auditLogsEnabled] Enables audit logs on the cluster's control plane.
   /// [highAvailability] Whether High Availability is enabled for the cluster Control Plane.
-  GetLkeClustersLkeClusterControlPlane({
+  const GetLkeClustersLkeClusterControlPlane({
     required this.auditLogsEnabled,
     required this.highAvailability,
   });

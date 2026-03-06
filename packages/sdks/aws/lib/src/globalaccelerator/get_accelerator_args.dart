@@ -17,7 +17,7 @@ class GetAcceleratorArgs {
   /// Creates a new [GetAcceleratorArgs].
   /// [arn] Full ARN of the Global Accelerator.
   /// [name] Unique name of the Global Accelerator.
-  GetAcceleratorArgs({
+  const GetAcceleratorArgs({
     this.arn,
     this.name,
   });

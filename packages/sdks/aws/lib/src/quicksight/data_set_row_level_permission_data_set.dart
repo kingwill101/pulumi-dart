@@ -20,7 +20,7 @@ class DataSetRowLevelPermissionDataSet {
   /// [namespace] Namespace associated with the dataset that contains permissions for RLS.
   /// [permissionPolicy] Type of permissions to use when interpreting the permissions for RLS. Valid values are `GRANT_ACCESS` and `DENY_ACCESS`.
   /// [status] Status of the row-level security permission dataset. If enabled, the status is `ENABLED`. If disabled, the status is `DISABLED`.
-  DataSetRowLevelPermissionDataSet({
+  const DataSetRowLevelPermissionDataSet({
     required this.arn,
     this.formatVersion,
     this.namespace,

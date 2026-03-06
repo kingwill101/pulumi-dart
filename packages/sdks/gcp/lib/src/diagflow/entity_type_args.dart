@@ -32,7 +32,7 @@ class EntityTypeArgs {
   /// [entities] The collection of entity entries associated with the entity type.
   /// [kind] Indicates the kind of entity type.
   /// [project] The ID of the project in which the resource belongs.
-  EntityTypeArgs({
+  const EntityTypeArgs({
     required this.displayName,
     this.enableFuzzyExtraction,
     this.entities,

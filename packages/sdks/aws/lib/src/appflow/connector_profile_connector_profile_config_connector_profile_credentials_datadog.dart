@@ -10,7 +10,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog {
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog].
   /// [apiKey] Required.
   /// [applicationKey] Application keys, in conjunction with your API key, give you full access to Datadog’s programmatic API. Application keys are associated with the user account that created them. The application key is used to log all requests made to the API.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsDatadog({
     required this.apiKey,
     required this.applicationKey,
   });

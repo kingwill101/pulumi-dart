@@ -19,7 +19,7 @@ class GetLocalGatewaysResult {
   /// [ids] Set of all the Local Gateway identifiers
   /// [region] Required.
   /// [tags] Required.
-  GetLocalGatewaysResult({
+  const GetLocalGatewaysResult({
     this.filters,
     required this.id,
     required this.ids,

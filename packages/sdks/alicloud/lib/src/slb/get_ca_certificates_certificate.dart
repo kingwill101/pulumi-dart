@@ -38,7 +38,7 @@ class GetCaCertificatesCertificate {
   /// [name] (Deprecated from v1.123.1) Deprecated and replace by `ca_certificate_name`.
   /// [resourceGroupId] The Id of resource group which ca certificates belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetCaCertificatesCertificate({
+  const GetCaCertificatesCertificate({
     required this.caCertificateId,
     required this.caCertificateName,
     required this.commonName,

@@ -9,7 +9,7 @@ class StorageMappingInputProperties {
 
   /// Creates a new [StorageMappingInputProperties].
   /// [targetStorageClassificationId] The ID of the storage object.
-  StorageMappingInputProperties({
+  const StorageMappingInputProperties({
     this.targetStorageClassificationId,
   });
 

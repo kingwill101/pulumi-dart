@@ -142,7 +142,7 @@ class WorkerPoolState {
   /// [terminalConditions] The Condition of this WorkerPool, containing its readiness status, and detailed error information in case it did not reach a serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
   /// [uid] Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   /// [updateTime] The last-modified time.
-  WorkerPoolState({
+  const WorkerPoolState({
     this.annotations,
     this.binaryAuthorization,
     this.client,

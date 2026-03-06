@@ -10,7 +10,7 @@ class ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse {
 
   /// Creates a new [ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse].
   /// [validationErrors] Errors associated with a selected database object
-  ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse({
+  const ValidateOracleAzureDbPostgreSqlSyncTaskOutputResponse({
     required this.validationErrors,
   });
 

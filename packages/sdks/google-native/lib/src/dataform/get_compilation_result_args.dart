@@ -17,7 +17,7 @@ class GetCompilationResultArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetCompilationResultArgs({
+  const GetCompilationResultArgs({
     required this.compilationResultId,
     required this.location,
     this.project,

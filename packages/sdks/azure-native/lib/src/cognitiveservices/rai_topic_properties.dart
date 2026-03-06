@@ -30,7 +30,7 @@ class RaiTopicProperties {
   /// [status] Status of the custom topic.
   /// [topicId] The unique identifier of the custom topic.
   /// [topicName] The name of the custom topic.
-  RaiTopicProperties({
+  const RaiTopicProperties({
     this.createdAt,
     this.description,
     this.failedReason,

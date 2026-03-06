@@ -18,7 +18,7 @@ class ZoneAssociationState {
   /// [vpcId] The VPC to associate with the private hosted zone.
   /// [vpcRegion] The VPC's region. Defaults to the region of the AWS provider.
   /// [zoneId] The private hosted zone to associate.
-  ZoneAssociationState({
+  const ZoneAssociationState({
     this.owningAccount,
     this.vpcId,
     this.vpcRegion,

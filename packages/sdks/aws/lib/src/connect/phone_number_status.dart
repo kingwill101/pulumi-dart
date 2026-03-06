@@ -11,7 +11,7 @@ class PhoneNumberStatus {
   /// Creates a new [PhoneNumberStatus].
   /// [message] The status message.
   /// [status] The status of the phone number. Valid Values: `CLAIMED` | `IN_PROGRESS` | `FAILED`.
-  PhoneNumberStatus({
+  const PhoneNumberStatus({
     this.message,
     this.status,
   });

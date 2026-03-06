@@ -12,7 +12,7 @@ class EncryptionResponse {
   /// Creates a new [EncryptionResponse].
   /// [keyVaultKeyUri] The URI of the key vault
   /// [userAssignedIdentity] The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
-  EncryptionResponse({
+  const EncryptionResponse({
     this.keyVaultKeyUri,
     this.userAssignedIdentity,
   });

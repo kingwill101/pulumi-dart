@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1OperationConfigResponse {
   /// [attributes] Custom attributes associated with the operation.
   /// [operations] List of resource/method pairs for the API proxy or remote service to which quota will applied. **Note**: Currently, you can specify only a single resource/method pair. The call will fail if more than one resource/method pair is provided.
   /// [quota] Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
-  GoogleCloudApigeeV1OperationConfigResponse({
+  const GoogleCloudApigeeV1OperationConfigResponse({
     required this.apiSource,
     required this.attributes,
     required this.operations,

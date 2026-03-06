@@ -46,7 +46,7 @@ class ClusterConfig {
   /// [warmType] &lt;p&gt;The instance type for the cluster's warm nodes.&lt;/p&gt;
   /// [zoneAwarenessConfig] &lt;p&gt;Container for zone awareness configuration options. Only required if &lt;code&gt;ZoneAwarenessEnabled&lt;/code&gt; is &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;
   /// [zoneAwarenessEnabled] &lt;p&gt;Indicates whether multiple Availability Zones are enabled. For more information, see &lt;a href='https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-multiaz.html'&gt;Configuring a multi-AZ domain in Amazon OpenSearch Service&lt;/a&gt;.&lt;/p&gt;
-  ClusterConfig({
+  const ClusterConfig({
     this.coldStorageOptions,
     this.dedicatedMasterCount,
     this.dedicatedMasterEnabled,

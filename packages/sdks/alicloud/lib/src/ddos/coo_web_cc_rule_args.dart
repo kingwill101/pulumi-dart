@@ -21,7 +21,7 @@ class CooWebCcRuleArgs {
   /// [domain] The domain name of the website service.
   /// [name] Rule name.
   /// [ruleDetail] Rule details.   See `rule_detail` below.
-  CooWebCcRuleArgs({
+  const CooWebCcRuleArgs({
     required this.domain,
     this.name,
     required this.ruleDetail,

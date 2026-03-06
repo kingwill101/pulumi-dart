@@ -65,7 +65,7 @@ class DeploymentPropertiesExtendedResponse {
   /// [templateLink] The URI referencing the template.
   /// [timestamp] The timestamp of the template deployment.
   /// [validatedResources] Array of validated resources.
-  DeploymentPropertiesExtendedResponse({
+  const DeploymentPropertiesExtendedResponse({
     required this.correlationId,
     required this.debugSetting,
     required this.dependencies,

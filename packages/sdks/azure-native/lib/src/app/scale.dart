@@ -22,7 +22,7 @@ class Scale {
   /// [minReplicas] Optional. Minimum number of container replicas.
   /// [pollingInterval] Optional. KEDA Polling Interval. Defaults to 30 seconds if not set.
   /// [rules] Scaling rules.
-  Scale({
+  const Scale({
     this.cooldownPeriod,
     this.maxReplicas,
     this.minReplicas,

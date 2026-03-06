@@ -7,7 +7,7 @@ class BackendServiceUsedByResponse {
 
   /// Creates a new [BackendServiceUsedByResponse].
   /// [reference] Required.
-  BackendServiceUsedByResponse({
+  const BackendServiceUsedByResponse({
     required this.reference,
   });
 

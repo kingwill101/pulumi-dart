@@ -37,7 +37,7 @@ class InformixTableDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] The Informix table name. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  InformixTableDatasetResponse({
+  const InformixTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

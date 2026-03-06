@@ -15,7 +15,7 @@ class GetApplicationSecurityGroupArgs {
   /// Creates a new [GetApplicationSecurityGroupArgs].
   /// [name] The name of the Application Security Group.
   /// [resourceGroupName] The name of the resource group in which the Application Security Group exists.
-  GetApplicationSecurityGroupArgs({
+  const GetApplicationSecurityGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

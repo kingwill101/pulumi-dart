@@ -72,7 +72,7 @@ class OsPolicyAssignmentState {
   /// [rolloutState] Output only. OS policy assignment rollout state
   /// [skipAwaitRollout] Set to true to skip awaiting rollout during resource creation and update.
   /// [uid] Output only. Server generated unique id for the OS policy assignment
-  OsPolicyAssignmentState({
+  const OsPolicyAssignmentState({
     this.baseline,
     this.deleted,
     this.description,

@@ -41,7 +41,7 @@ class GetComputeEnvironmentResult {
   /// [tags] Key-value map of resource tags
   /// [type] Type of the compute environment (for example, `MANAGED` or `UNMANAGED`).
   /// [updatePolicies] Specifies the infrastructure update policy for the compute environment.
-  GetComputeEnvironmentResult({
+  const GetComputeEnvironmentResult({
     required this.arn,
     required this.ecsClusterArn,
     required this.id,

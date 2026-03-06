@@ -10,7 +10,7 @@ class UpdatePolicyAlloydbV1beta {
 
   /// Creates a new [UpdatePolicyAlloydbV1beta].
   /// [mode] Mode for updating the instance.
-  UpdatePolicyAlloydbV1beta({
+  const UpdatePolicyAlloydbV1beta({
     this.mode,
   });
 

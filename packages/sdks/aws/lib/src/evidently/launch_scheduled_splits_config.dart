@@ -9,7 +9,7 @@ class LaunchScheduledSplitsConfig {
 
   /// Creates a new [LaunchScheduledSplitsConfig].
   /// [steps] One or up to six blocks that define the traffic allocation percentages among the feature variations during each step of the launch. This also defines the start time of each step. Detailed below.
-  LaunchScheduledSplitsConfig({
+  const LaunchScheduledSplitsConfig({
     required this.steps,
   });
 

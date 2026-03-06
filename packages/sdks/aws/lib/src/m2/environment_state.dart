@@ -68,7 +68,7 @@ class EnvironmentState {
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
-  EnvironmentState({
+  const EnvironmentState({
     this.applyChangesDuringMaintenanceWindow,
     this.arn,
     this.description,

@@ -41,7 +41,7 @@ class ThreeTierConfigurationResponse {
   /// [highAvailabilityConfig] The high availability configuration.
   /// [networkConfiguration] Network configuration common to all servers
   /// [storageConfiguration] The storage configuration.
-  ThreeTierConfigurationResponse({
+  const ThreeTierConfigurationResponse({
     required this.appResourceGroup,
     required this.applicationServer,
     required this.centralServer,

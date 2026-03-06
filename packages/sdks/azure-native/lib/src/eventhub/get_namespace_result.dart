@@ -89,7 +89,7 @@ class GetNamespaceResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedAt] The time the Namespace was updated.
   /// [zoneRedundant] Enabling this property creates a Standard Event Hubs Namespace in regions supported availability zones.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     this.alternateName,
     required this.azureApiVersion,
     this.clusterArmId,

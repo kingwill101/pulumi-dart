@@ -31,7 +31,7 @@ class EntryLinkArgs {
   /// [entryReferences] Specifies the Entries referenced in the Entry Link. There should be exactly two entry references.
   /// [location] The location for the entry.
   /// [project] The ID of the project in which the resource belongs.
-  EntryLinkArgs({
+  const EntryLinkArgs({
     required this.entryGroupId,
     required this.entryLinkId,
     required this.entryLinkType,

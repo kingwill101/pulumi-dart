@@ -9,7 +9,7 @@ class GceConfidentialInstanceConfigResponse {
 
   /// Creates a new [GceConfidentialInstanceConfigResponse].
   /// [enableConfidentialCompute] Optional. Whether the instance has confidential compute enabled.
-  GceConfidentialInstanceConfigResponse({
+  const GceConfidentialInstanceConfigResponse({
     required this.enableConfidentialCompute,
   });
 

@@ -15,7 +15,7 @@ class ActiveSlotState {
   /// [appServiceName] The name of the App Service within which the Slot exists. Changing this forces a new resource to be created.
   /// [appServiceSlotName] The name of the App Service Slot which should be promoted to the Production Slot within the App Service.
   /// [resourceGroupName] The name of the resource group in which the App Service exists. Changing this forces a new resource to be created.
-  ActiveSlotState({
+  const ActiveSlotState({
     this.appServiceName,
     this.appServiceSlotName,
     this.resourceGroupName,

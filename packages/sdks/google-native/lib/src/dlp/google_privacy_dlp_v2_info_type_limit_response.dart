@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2InfoTypeLimitResponse {
   /// Creates a new [GooglePrivacyDlpV2InfoTypeLimitResponse].
   /// [infoType] Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
   /// [maxFindings] Max findings limit for the given infoType.
-  GooglePrivacyDlpV2InfoTypeLimitResponse({
+  const GooglePrivacyDlpV2InfoTypeLimitResponse({
     required this.infoType,
     required this.maxFindings,
   });

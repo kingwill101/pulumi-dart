@@ -12,7 +12,7 @@ class ConnectionLogConfig {
   /// Creates a new [ConnectionLogConfig].
   /// [enabled] Enabled represents whether logging is enabled or not for a connection.
   /// [level] Log configuration level.
-  ConnectionLogConfig({
+  const ConnectionLogConfig({
     required this.enabled,
     this.level,
   });

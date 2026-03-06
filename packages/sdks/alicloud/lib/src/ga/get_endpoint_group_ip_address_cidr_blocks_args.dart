@@ -18,7 +18,7 @@ class GetEndpointGroupIpAddressCidrBlocksArgs {
   /// [acceleratorId] The ID of the Global Accelerator (GA) instance.
   /// [endpointGroupRegion] The region ID of the endpoint group.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEndpointGroupIpAddressCidrBlocksArgs({
+  const GetEndpointGroupIpAddressCidrBlocksArgs({
     this.acceleratorId,
     required this.endpointGroupRegion,
     this.outputFile,

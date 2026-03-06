@@ -66,7 +66,7 @@ class AggregateDeliveryState {
   /// [nonCompliantNotification] Indicates whether the specified destination receives resource non-compliance events. If the value of this parameter is true, Cloud Config delivers resource non-compliance events to Log Service or MNS when resources are evaluated as non-compliant. Valid values:
   /// [oversizedDataOssTargetArn] The ARN of the OSS bucket to which the delivered data is transferred when the size of the data exceeds the specified upper limit of the delivery channel.
   /// [status] The status of the delivery method. Valid values:
-  AggregateDeliveryState({
+  const AggregateDeliveryState({
     this.aggregatorId,
     this.configurationItemChangeNotification,
     this.configurationSnapshot,

@@ -58,7 +58,7 @@ class WorkloadState {
   /// [workloadId] The Workload identifier.
   /// [workloadProperties] Properties of an underlying compute resource represented by the Workload.
   /// [workloadReferences] Reference of an underlying compute resource represented by the Workload.
-  WorkloadState({
+  const WorkloadState({
     this.applicationId,
     this.attributes,
     this.createTime,

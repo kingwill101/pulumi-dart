@@ -19,7 +19,7 @@ class BatchSparkRBatch {
   /// [args] The arguments to pass to the driver. Do not include arguments that can be set as batch
   /// [fileUris] HCFS URIs of files to be placed in the working directory of each executor.
   /// [mainRFileUri] The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
-  BatchSparkRBatch({
+  const BatchSparkRBatch({
     this.archiveUris,
     this.args,
     this.fileUris,

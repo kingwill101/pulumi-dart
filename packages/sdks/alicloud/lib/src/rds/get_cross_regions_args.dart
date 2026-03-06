@@ -11,7 +11,7 @@ class GetCrossRegionsArgs {
 
   /// Creates a new [GetCrossRegionsArgs].
   /// [outputFile] Optional.
-  GetCrossRegionsArgs({
+  const GetCrossRegionsArgs({
     this.outputFile,
   });
 

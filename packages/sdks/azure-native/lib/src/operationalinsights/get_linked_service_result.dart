@@ -29,7 +29,7 @@ class GetLinkedServiceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [writeAccessResourceId] The resource id of the resource that will be linked to the workspace. This should be used for linking resources which require write access
-  GetLinkedServiceResult({
+  const GetLinkedServiceResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

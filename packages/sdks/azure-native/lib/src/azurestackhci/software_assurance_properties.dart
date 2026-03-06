@@ -9,7 +9,7 @@ class SoftwareAssuranceProperties {
 
   /// Creates a new [SoftwareAssuranceProperties].
   /// [softwareAssuranceIntent] Customer Intent for Software Assurance Benefit.
-  SoftwareAssuranceProperties({
+  const SoftwareAssuranceProperties({
     this.softwareAssuranceIntent,
   });
 

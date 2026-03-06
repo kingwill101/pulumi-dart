@@ -37,7 +37,7 @@ class ServiceLbPolicyArgs {
   /// [name] Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
   /// [project] Optional.
   /// [serviceLbPolicyId] Required. Short name of the ServiceLbPolicy resource to be created. E.g. for resource name `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`. the id is value of {service_lb_policy_name}
-  ServiceLbPolicyArgs({
+  const ServiceLbPolicyArgs({
     this.autoCapacityDrain,
     this.description,
     this.failoverConfig,

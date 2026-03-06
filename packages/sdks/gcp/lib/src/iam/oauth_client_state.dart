@@ -74,7 +74,7 @@ class OauthClientState {
   /// [oauthClientId] Required. The ID to use for the OauthClient, which becomes the final component of
   /// [project] The ID of the project in which the resource belongs.
   /// [state] The state of the OauthClient.
-  OauthClientState({
+  const OauthClientState({
     this.allowedGrantTypes,
     this.allowedRedirectUris,
     this.allowedScopes,

@@ -32,7 +32,7 @@ class ApplicationGatewayUrlPathMap {
   /// [id] Resource ID.
   /// [name] Name of the URL path map that is unique within an Application Gateway.
   /// [pathRules] Path rule of URL path map resource.
-  ApplicationGatewayUrlPathMap({
+  const ApplicationGatewayUrlPathMap({
     this.defaultBackendAddressPool,
     this.defaultBackendHttpSettings,
     this.defaultLoadDistributionPolicy,

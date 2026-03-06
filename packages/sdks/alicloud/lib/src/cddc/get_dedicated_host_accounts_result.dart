@@ -26,7 +26,7 @@ class GetDedicatedHostAccountsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetDedicatedHostAccountsResult({
+  const GetDedicatedHostAccountsResult({
     required this.accounts,
     this.dedicatedHostId,
     required this.id,

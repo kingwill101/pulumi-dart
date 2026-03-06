@@ -37,7 +37,7 @@ class TopicSpacesConfigurationResponse {
   /// [routingEnrichments] Routing enrichments for topic spaces configuration
   /// [routingIdentityInfo] Routing identity info for topic spaces configuration.
   /// [state] Indicate if Topic Spaces Configuration is enabled for the namespace. Default is Disabled.
-  TopicSpacesConfigurationResponse({
+  const TopicSpacesConfigurationResponse({
     this.customDomains,
     required this.hostname,
     this.maximumClientSessionsPerAuthenticationName,

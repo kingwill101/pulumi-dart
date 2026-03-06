@@ -11,7 +11,7 @@ class AccountNetworkRulesPrivateLinkAccessRule {
   /// Creates a new [AccountNetworkRulesPrivateLinkAccessRule].
   /// [endpointResourceId] The resource id of the resource access rule to be granted access.
   /// [endpointTenantId] The tenant id of the resource of the resource access rule to be granted access. Defaults to the current tenant id.
-  AccountNetworkRulesPrivateLinkAccessRule({
+  const AccountNetworkRulesPrivateLinkAccessRule({
     required this.endpointResourceId,
     this.endpointTenantId,
   });

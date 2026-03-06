@@ -20,7 +20,7 @@ class DataProtectionSettingsAssociationArgs {
   /// [dataProtectionSettingsArn] ARN of the data protection settings to associate with the portal. Forces replacement if changed.
   /// [portalArn] ARN of the portal to associate with the data protection settings. Forces replacement if changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DataProtectionSettingsAssociationArgs({
+  const DataProtectionSettingsAssociationArgs({
     required this.dataProtectionSettingsArn,
     required this.portalArn,
     this.region,

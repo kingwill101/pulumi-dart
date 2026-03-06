@@ -8,7 +8,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineS
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource].
   /// [s3Uri] URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionBaselineStatisticsResource({
     this.s3Uri,
   });
 

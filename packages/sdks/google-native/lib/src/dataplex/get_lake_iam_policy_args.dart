@@ -17,7 +17,7 @@ class GetLakeIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetLakeIamPolicyArgs({
+  const GetLakeIamPolicyArgs({
     required this.lakeId,
     required this.location,
     this.optionsRequestedPolicyVersion,

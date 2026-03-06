@@ -41,7 +41,7 @@ class TransitGatewayPeeringState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayArn] ARN of the transit gateway for the peering request.
   /// [transitGatewayPeeringAttachmentId] ID of the transit gateway peering attachment.
-  TransitGatewayPeeringState({
+  const TransitGatewayPeeringState({
     this.arn,
     this.coreNetworkArn,
     this.coreNetworkId,

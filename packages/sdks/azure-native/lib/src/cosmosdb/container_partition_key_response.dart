@@ -18,7 +18,7 @@ class ContainerPartitionKeyResponse {
   /// [paths] List of paths using which data within the container can be partitioned
   /// [systemKey] Indicates if the container is using a system generated partition key
   /// [version] Indicates the version of the partition key definition
-  ContainerPartitionKeyResponse({
+  const ContainerPartitionKeyResponse({
     this.kind,
     this.paths,
     required this.systemKey,

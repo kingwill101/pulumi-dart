@@ -33,7 +33,7 @@ class EnterpriseUserState {
   /// [tid] The tenant ID.
   /// [uid] The Alibaba Cloud unique ID (UID) of the user to add.
   /// [userName] The nickname of the user.
-  EnterpriseUserState({
+  const EnterpriseUserState({
     this.maxExecuteCount,
     this.maxResultCount,
     this.mobile,

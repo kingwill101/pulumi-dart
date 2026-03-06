@@ -27,7 +27,7 @@ class RoleManagementPolicyActivationRules {
   /// [requireMultifactorAuthentication] Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
   /// [requireTicketInfo] Is ticket information requrired during activation of the role.
   /// [requiredConditionalAccessAuthenticationContext] The Entra ID Conditional Access context that must be present for activation. Conflicts with `require_multifactor_authentication`.
-  RoleManagementPolicyActivationRules({
+  const RoleManagementPolicyActivationRules({
     this.approvalStage,
     this.maximumDuration,
     this.requireApproval,

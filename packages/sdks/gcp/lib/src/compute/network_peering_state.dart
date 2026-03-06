@@ -41,7 +41,7 @@ class NetworkPeeringState {
   /// [state] State for the peering, either `ACTIVE` or `INACTIVE`. The peering is
   /// [stateDetails] Details about the current state of the peering.
   /// [updateStrategy] The update strategy determines the semantics for updates and deletes to the peering connection configuration. The default value is INDEPENDENT. Possible values: ["INDEPENDENT", "CONSENSUS"]
-  NetworkPeeringState({
+  const NetworkPeeringState({
     this.exportCustomRoutes,
     this.exportSubnetRoutesWithPublicIp,
     this.importCustomRoutes,

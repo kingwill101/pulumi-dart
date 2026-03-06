@@ -23,7 +23,7 @@ class GetEndpointAttachmentResult {
   /// [name] Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}`
   /// [serviceAttachment] Format: projects/*/regions/*/serviceAttachments/*
   /// [state] State of the endpoint attachment. Values other than `ACTIVE` mean the resource is not ready to use.
-  GetEndpointAttachmentResult({
+  const GetEndpointAttachmentResult({
     required this.connectionState,
     required this.host,
     required this.location,

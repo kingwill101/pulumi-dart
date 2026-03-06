@@ -18,7 +18,7 @@ class GetApplicationsArgs {
   /// [ids] An ids string to filter results by the application id.
   /// [nameRegex] A regex string to filter results by the application name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetApplicationsArgs({
+  const GetApplicationsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

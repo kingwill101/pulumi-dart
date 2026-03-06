@@ -24,7 +24,7 @@ class LoadTestMappingArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [sourceResourceId] Mapped source resource Id.
   /// [testId] Mapped Azure Load Test resource test-id.
-  LoadTestMappingArgs({
+  const LoadTestMappingArgs({
     this.azureLoadTestingResourceId,
     this.loadTestMappingName,
     required this.resourceUri,

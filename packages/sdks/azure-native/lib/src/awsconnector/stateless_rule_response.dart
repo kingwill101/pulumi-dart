@@ -13,7 +13,7 @@ class StatelessRuleResponse {
   /// Creates a new [StatelessRuleResponse].
   /// [priority] Property priority
   /// [ruleDefinition] Property ruleDefinition
-  StatelessRuleResponse({
+  const StatelessRuleResponse({
     this.priority,
     this.ruleDefinition,
   });

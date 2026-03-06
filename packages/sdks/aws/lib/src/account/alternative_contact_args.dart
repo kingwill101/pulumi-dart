@@ -27,7 +27,7 @@ class AlternativeContactArgs {
   /// [name] Name of the alternate contact.
   /// [phoneNumber] Phone number for the alternate contact.
   /// [title] Title for the alternate contact.
-  AlternativeContactArgs({
+  const AlternativeContactArgs({
     this.accountId,
     required this.alternateContactType,
     required this.emailAddress,

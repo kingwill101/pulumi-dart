@@ -33,7 +33,7 @@ class GetServerPlansArgs {
   /// [memory] The memory size. Unit: GB.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [platform] The platform of Plan supported. Valid values: ["Linux", "Windows"].
-  GetServerPlansArgs({
+  const GetServerPlansArgs({
     this.bandwidth,
     this.core,
     this.diskSize,

@@ -11,7 +11,7 @@ class LinuxWebAppSiteConfigAutoHealSettingTriggerRequests {
   /// Creates a new [LinuxWebAppSiteConfigAutoHealSettingTriggerRequests].
   /// [count] The number of requests in the specified `interval` to trigger this rule.
   /// [interval] The interval in `hh:mm:ss`.
-  LinuxWebAppSiteConfigAutoHealSettingTriggerRequests({
+  const LinuxWebAppSiteConfigAutoHealSettingTriggerRequests({
     required this.count,
     required this.interval,
   });

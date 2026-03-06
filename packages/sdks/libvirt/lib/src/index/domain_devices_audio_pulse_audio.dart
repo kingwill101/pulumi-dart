@@ -16,7 +16,7 @@ class DomainDevicesAudioPulseAudio {
   /// [input] Configures the output settings for the PipeWire audio device.
   /// [output] Configures the output settings for the PipeWire audio device.
   /// [serverName] Specifies the server name for the PulseAudio audio backend configuration.
-  DomainDevicesAudioPulseAudio({
+  const DomainDevicesAudioPulseAudio({
     this.input,
     this.output,
     this.serverName,

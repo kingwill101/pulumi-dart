@@ -21,7 +21,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn {
   /// [dataType] (Output)
   /// [isPrimaryKey] (Output)
   /// [ordinalPosition] (Output)
-  StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn({
+  const StreamBackfillAllSpannerExcludedObjectsSchemaTableColumn({
     required this.column,
     this.dataType,
     this.isPrimaryKey,

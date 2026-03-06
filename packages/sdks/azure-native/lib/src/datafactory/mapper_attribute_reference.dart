@@ -16,7 +16,7 @@ class MapperAttributeReference {
   /// [entity] Name of the table.
   /// [entityConnectionReference] The connection reference for the connection.
   /// [name] Name of the column.
-  MapperAttributeReference({
+  const MapperAttributeReference({
     this.entity,
     this.entityConnectionReference,
     this.name,

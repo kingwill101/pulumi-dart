@@ -9,7 +9,7 @@ class WindowsNodeConfigResponseContainerV1beta1 {
 
   /// Creates a new [WindowsNodeConfigResponseContainerV1beta1].
   /// [osVersion] OSVersion specifies the Windows node config to be used on the node
-  WindowsNodeConfigResponseContainerV1beta1({
+  const WindowsNodeConfigResponseContainerV1beta1({
     required this.osVersion,
   });
 

@@ -26,7 +26,7 @@ class GetBillingAccountResult {
   /// [name] The resource name of the billing account in the form `billingAccounts/{billing_account_id}`.
   /// [open] Required.
   /// [projectIds] The IDs of any projects associated with the billing account. `lookup_projects` must not be false
-  GetBillingAccountResult({
+  const GetBillingAccountResult({
     this.billingAccount,
     required this.currencyCode,
     required this.displayName,

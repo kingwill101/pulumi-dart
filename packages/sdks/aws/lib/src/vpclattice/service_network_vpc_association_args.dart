@@ -32,7 +32,7 @@ class ServiceNetworkVpcAssociationArgs {
   /// [serviceNetworkIdentifier] The ID or Amazon Resource Identifier (ARN) of the service network. You must use the ARN if the resources specified in the operation are in different accounts.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcIdentifier] The ID of the VPC.
-  ServiceNetworkVpcAssociationArgs({
+  const ServiceNetworkVpcAssociationArgs({
     this.dnsOptions,
     this.privateDnsEnabled,
     this.region,

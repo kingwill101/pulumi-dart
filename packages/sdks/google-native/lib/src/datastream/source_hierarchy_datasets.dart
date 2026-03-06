@@ -10,7 +10,7 @@ class SourceHierarchyDatasets {
 
   /// Creates a new [SourceHierarchyDatasets].
   /// [datasetTemplate] The dataset template to use for dynamic dataset creation.
-  SourceHierarchyDatasets({
+  const SourceHierarchyDatasets({
     this.datasetTemplate,
   });
 

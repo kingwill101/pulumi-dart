@@ -12,7 +12,7 @@ class AlertMutingRuleCondition {
   /// Creates a new [AlertMutingRuleCondition].
   /// [conditions] The individual MutingRuleConditions within the group. See Nested conditions blocks below for details.
   /// [operator] The operator used to combine all the MutingRuleConditions within the group. Valid values are `AND`, `OR`.
-  AlertMutingRuleCondition({
+  const AlertMutingRuleCondition({
     required this.conditions,
     required this.operator,
   });

@@ -10,7 +10,7 @@ class SubnetSharedPublicIpAddressConfiguration {
 
   /// Creates a new [SubnetSharedPublicIpAddressConfiguration].
   /// [allowedPorts] Backend ports that virtual machines on this subnet are allowed to expose
-  SubnetSharedPublicIpAddressConfiguration({
+  const SubnetSharedPublicIpAddressConfiguration({
     this.allowedPorts,
   });
 

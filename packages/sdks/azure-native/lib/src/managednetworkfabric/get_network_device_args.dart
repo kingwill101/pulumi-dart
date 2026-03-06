@@ -15,7 +15,7 @@ class GetNetworkDeviceArgs {
   /// Creates a new [GetNetworkDeviceArgs].
   /// [networkDeviceName] Name of the Network Device.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkDeviceArgs({
+  const GetNetworkDeviceArgs({
     required this.networkDeviceName,
     required this.resourceGroupName,
   });

@@ -80,7 +80,7 @@ class URLMapArgs {
   /// [pathMatchers] The list of named PathMatchers to use against the URL.
   /// [project] The ID of the project in which the resource belongs.
   /// [tests] The list of expected URL mapping tests. Request to update this UrlMap will
-  URLMapArgs({
+  const URLMapArgs({
     this.defaultCustomErrorResponsePolicy,
     this.defaultRouteAction,
     this.defaultService,

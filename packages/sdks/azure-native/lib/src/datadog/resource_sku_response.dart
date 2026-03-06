@@ -8,7 +8,7 @@ class ResourceSkuResponse {
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Name of the SKU in {PlanId} format. For Terraform, the only allowed value is 'Linked'.
-  ResourceSkuResponse({
+  const ResourceSkuResponse({
     required this.name,
   });
 

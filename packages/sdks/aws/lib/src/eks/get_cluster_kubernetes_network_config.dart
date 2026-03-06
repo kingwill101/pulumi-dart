@@ -18,7 +18,7 @@ class GetClusterKubernetesNetworkConfig {
   /// [ipFamily] `ipv4` or `ipv6`.
   /// [serviceIpv4Cidr] The CIDR block to assign Kubernetes pod and service IP addresses from if `ipv4` was specified when the cluster was created.
   /// [serviceIpv6Cidr] The CIDR block to assign Kubernetes pod and service IP addresses from if `ipv6` was specified when the cluster was created. Kubernetes assigns service addresses from the unique local address range (fc00::/7) because you can't specify a custom IPv6 CIDR block when you create the cluster.
-  GetClusterKubernetesNetworkConfig({
+  const GetClusterKubernetesNetworkConfig({
     required this.elasticLoadBalancings,
     required this.ipFamily,
     required this.serviceIpv4Cidr,

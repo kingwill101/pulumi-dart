@@ -10,7 +10,7 @@ class ManagedClusterPodIdentityProvisioningErrorResponse {
 
   /// Creates a new [ManagedClusterPodIdentityProvisioningErrorResponse].
   /// [error] Details about the error.
-  ManagedClusterPodIdentityProvisioningErrorResponse({
+  const ManagedClusterPodIdentityProvisioningErrorResponse({
     this.error,
   });
 

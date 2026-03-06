@@ -15,7 +15,7 @@ class GetBackupPlanArgs {
   /// [backupPlanId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetBackupPlanArgs({
+  const GetBackupPlanArgs({
     required this.backupPlanId,
     required this.location,
     this.project,

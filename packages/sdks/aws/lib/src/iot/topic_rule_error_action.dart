@@ -62,7 +62,7 @@ class TopicRuleErrorAction {
   /// [sqs] Optional.
   /// [stepFunctions] Optional.
   /// [timestream] Optional.
-  TopicRuleErrorAction({
+  const TopicRuleErrorAction({
     this.cloudwatchAlarm,
     this.cloudwatchLogs,
     this.cloudwatchMetric,

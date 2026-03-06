@@ -17,7 +17,7 @@ class MonitorProperties {
   /// [datadogOrganizationProperties] Specify the Datadog organization name. In the case of linking to existing organizations, Id, ApiKey, and Applicationkey is required as well.
   /// [monitoringStatus] Flag specifying if the resource monitoring is enabled or disabled.
   /// [userInfo] Includes name, email and optionally, phone number. User Information can't be null.
-  MonitorProperties({
+  const MonitorProperties({
     this.datadogOrganizationProperties,
     this.monitoringStatus,
     this.userInfo,

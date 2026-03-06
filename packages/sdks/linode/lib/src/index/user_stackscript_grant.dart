@@ -11,7 +11,7 @@ class UserStackscriptGrant {
   /// Creates a new [UserStackscriptGrant].
   /// [id] The ID of the entity this grant applies to.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access.
-  UserStackscriptGrant({
+  const UserStackscriptGrant({
     required this.id,
     required this.permissions,
   });

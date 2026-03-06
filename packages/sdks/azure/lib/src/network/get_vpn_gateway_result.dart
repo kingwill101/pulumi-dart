@@ -33,7 +33,7 @@ class GetVpnGatewayResult {
   /// [scaleUnit] The Scale Unit of this VPN Gateway.
   /// [tags] A mapping of tags assigned to the VPN Gateway.
   /// [virtualHubId] The ID of the Virtual Hub within which this VPN Gateway has been created.
-  GetVpnGatewayResult({
+  const GetVpnGatewayResult({
     required this.bgpSettings,
     required this.id,
     required this.ipConfigurations,

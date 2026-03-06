@@ -51,7 +51,7 @@ class GetDatabaseAccountGremlinGraphResult {
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
   /// [type] The type of Azure resource.
   /// [uniqueKeyPolicy] The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  GetDatabaseAccountGremlinGraphResult({
+  const GetDatabaseAccountGremlinGraphResult({
     required this.azureApiVersion,
     this.conflictResolutionPolicy,
     this.defaultTtl,

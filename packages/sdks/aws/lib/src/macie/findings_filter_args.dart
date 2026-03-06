@@ -34,7 +34,7 @@ class FindingsFilterArgs {
   /// [position] The position of the filter in the list of saved filters on the Amazon Macie console. This value also determines the order in which the filter is applied to findings, relative to other filters that are also applied to the findings.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  FindingsFilterArgs({
+  const FindingsFilterArgs({
     required this.action,
     this.description,
     required this.findingCriteria,

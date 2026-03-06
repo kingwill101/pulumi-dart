@@ -8,7 +8,7 @@ class DomainDevicesFilesystemSourceBind {
 
   /// Creates a new [DomainDevicesFilesystemSourceBind].
   /// [dir] Sets the directory from which the filesystem is bound.
-  DomainDevicesFilesystemSourceBind({
+  const DomainDevicesFilesystemSourceBind({
     required this.dir,
   });
 

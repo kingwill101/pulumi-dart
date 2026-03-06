@@ -11,7 +11,7 @@ class GetInsightsDatasetConfigIdentity {
   /// Creates a new [GetInsightsDatasetConfigIdentity].
   /// [name] Name of the identity.
   /// [type] Type of identity to use for the DatasetConfig. Possible values: ["IDENTITY_TYPE_PER_CONFIG", "IDENTITY_TYPE_PER_PROJECT"]
-  GetInsightsDatasetConfigIdentity({
+  const GetInsightsDatasetConfigIdentity({
     required this.name,
     required this.type,
   });

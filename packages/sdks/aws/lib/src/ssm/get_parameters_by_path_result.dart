@@ -28,7 +28,7 @@ class GetParametersByPathResult {
   /// [types] A list that contains the types (`String`, `StringList`, or `SecureString`) of retrieved parameters.
   /// [values] A list that contains the retrieved parameter values. **Note:** This value is always marked as sensitive in the pulumi preview output, regardless of whether any retrieved parameters are of `SecureString` type. Use the `nonsensitive` function to override the behavior at your own risk and discretion, if you are certain that there are no sensitive values being retrieved.
   /// [withDecryption] Optional.
-  GetParametersByPathResult({
+  const GetParametersByPathResult({
     required this.arns,
     required this.id,
     required this.names,

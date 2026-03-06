@@ -38,7 +38,7 @@ class BareMetalNodePoolArgs {
   /// [nodePoolConfig] Node pool configuration.
   /// [project] Optional.
   /// [upgradePolicy] The worker node pool upgrade policy.
-  BareMetalNodePoolArgs({
+  const BareMetalNodePoolArgs({
     this.annotations,
     required this.bareMetalClusterId,
     this.bareMetalNodePoolId,

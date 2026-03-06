@@ -9,7 +9,7 @@ class QuantityBasedRetention {
 
   /// Creates a new [QuantityBasedRetention].
   /// [count] The number of backups to retain.
-  QuantityBasedRetention({
+  const QuantityBasedRetention({
     this.count,
   });
 

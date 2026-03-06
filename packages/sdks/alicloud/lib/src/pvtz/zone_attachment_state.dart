@@ -22,7 +22,7 @@ class ZoneAttachmentState {
   /// [vpcIds] The id List of the VPC with the same region, for example:["vpc-1","vpc-2"].
   /// [vpcs] See `vpcs` below.Recommend to use `vpcs`.
   /// [zoneId] The name of the Private Zone Record.
-  ZoneAttachmentState({
+  const ZoneAttachmentState({
     this.lang,
     this.userClientIp,
     this.vpcIds,

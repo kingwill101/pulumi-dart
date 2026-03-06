@@ -31,7 +31,7 @@ class GetAccountResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] resource tags.
   /// [type] Azure resource type.
-  GetAccountResult({
+  const GetAccountResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

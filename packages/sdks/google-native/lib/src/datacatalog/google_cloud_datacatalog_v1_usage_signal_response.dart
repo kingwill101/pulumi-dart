@@ -18,7 +18,7 @@ class GoogleCloudDatacatalogV1UsageSignalResponse {
   /// [favoriteCount] Favorite count in the source system.
   /// [updateTime] The end timestamp of the duration of usage statistics.
   /// [usageWithinTimeRange] BigQuery usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D"}`.
-  GoogleCloudDatacatalogV1UsageSignalResponse({
+  const GoogleCloudDatacatalogV1UsageSignalResponse({
     required this.commonUsageWithinTimeRange,
     required this.favoriteCount,
     required this.updateTime,

@@ -38,7 +38,7 @@ class GetDeviceSessionResult {
   /// [state] Current state of the DeviceSession.
   /// [stateHistories] The historical state transitions of the session_state message including the current session state.
   /// [ttl] Optional. The amount of time that a device will be initially allocated for. This can eventually be extended with the UpdateDeviceSession RPC. Default: 30 minutes.
-  GetDeviceSessionResult({
+  const GetDeviceSessionResult({
     required this.activeStartTime,
     required this.androidDevice,
     required this.createTime,

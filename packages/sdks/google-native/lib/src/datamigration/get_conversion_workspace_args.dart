@@ -15,7 +15,7 @@ class GetConversionWorkspaceArgs {
   /// [conversionWorkspaceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversionWorkspaceArgs({
+  const GetConversionWorkspaceArgs({
     required this.conversionWorkspaceId,
     required this.location,
     this.project,

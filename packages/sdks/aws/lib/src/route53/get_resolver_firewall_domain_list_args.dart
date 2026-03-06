@@ -15,7 +15,7 @@ class GetResolverFirewallDomainListArgs {
   /// Creates a new [GetResolverFirewallDomainListArgs].
   /// [firewallDomainListId] The ID of the domain list.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetResolverFirewallDomainListArgs({
+  const GetResolverFirewallDomainListArgs({
     required this.firewallDomainListId,
     this.region,
   });

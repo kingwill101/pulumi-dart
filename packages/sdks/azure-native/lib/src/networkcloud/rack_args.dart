@@ -37,7 +37,7 @@ class RackArgs {
   /// [rackSkuId] The SKU for the rack.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  RackArgs({
+  const RackArgs({
     required this.availabilityZone,
     required this.extendedLocation,
     this.location,

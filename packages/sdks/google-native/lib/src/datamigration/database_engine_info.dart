@@ -13,7 +13,7 @@ class DatabaseEngineInfo {
   /// Creates a new [DatabaseEngineInfo].
   /// [engine] Engine type.
   /// [version] Engine version, for example "12.c.1".
-  DatabaseEngineInfo({
+  const DatabaseEngineInfo({
     required this.engine,
     required this.version,
   });

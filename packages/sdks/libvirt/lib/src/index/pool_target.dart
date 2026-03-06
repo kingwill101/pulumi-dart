@@ -20,7 +20,7 @@ class PoolTarget {
   /// [path] Defines the path in the host filesystem where the storage pool is mapped.
   /// [permissions] Configures the permissions for the storage pool target.
   /// [timestamps] Sets the timestamp attributes for the storage pool target.
-  PoolTarget({
+  const PoolTarget({
     this.encryption,
     this.path,
     this.permissions,

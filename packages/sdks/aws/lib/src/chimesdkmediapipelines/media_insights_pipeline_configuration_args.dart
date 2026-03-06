@@ -29,7 +29,7 @@ class MediaInsightsPipelineConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceAccessRoleArn] ARN of IAM Role used by service to invoke processors and sinks specified by configuration elements.
   /// [tags] Key-value map of tags for the resource.
-  MediaInsightsPipelineConfigurationArgs({
+  const MediaInsightsPipelineConfigurationArgs({
     required this.elements,
     this.name,
     this.realTimeAlertConfiguration,

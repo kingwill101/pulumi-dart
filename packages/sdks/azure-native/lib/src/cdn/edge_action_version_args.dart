@@ -30,7 +30,7 @@ class EdgeActionVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [version] The name of the Edge Action version
-  EdgeActionVersionArgs({
+  const EdgeActionVersionArgs({
     required this.deploymentType,
     required this.edgeActionName,
     required this.isDefaultVersion,

@@ -11,7 +11,7 @@ class TableAutomatedBackupPolicy {
   /// Creates a new [TableAutomatedBackupPolicy].
   /// [frequency] How frequently automated backups should occur.
   /// [retentionPeriod] How long the automated backups should be retained.
-  TableAutomatedBackupPolicy({
+  const TableAutomatedBackupPolicy({
     this.frequency,
     this.retentionPeriod,
   });

@@ -9,7 +9,7 @@ class DiskImageDefaultsResponse {
 
   /// Creates a new [DiskImageDefaultsResponse].
   /// [sourceImage] The Image resource used when creating the disk.
-  DiskImageDefaultsResponse({
+  const DiskImageDefaultsResponse({
     required this.sourceImage,
   });
 

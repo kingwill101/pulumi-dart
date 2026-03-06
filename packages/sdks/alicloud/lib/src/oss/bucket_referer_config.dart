@@ -11,7 +11,7 @@ class BucketRefererConfig {
   /// Creates a new [BucketRefererConfig].
   /// [allowEmpty] Allows referer to be empty. Defaults false.
   /// [referers] The list of referer.
-  BucketRefererConfig({
+  const BucketRefererConfig({
     this.allowEmpty,
     required this.referers,
   });

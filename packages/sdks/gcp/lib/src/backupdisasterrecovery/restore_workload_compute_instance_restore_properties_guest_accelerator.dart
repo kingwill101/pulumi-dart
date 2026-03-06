@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator].
   /// [acceleratorCount] Optional. The number of the guest accelerator cards exposed to this instance.
   /// [acceleratorType] Optional. Full or partial URL of the accelerator type resource.
-  RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator({
+  const RestoreWorkloadComputeInstanceRestorePropertiesGuestAccelerator({
     this.acceleratorCount,
     this.acceleratorType,
   });

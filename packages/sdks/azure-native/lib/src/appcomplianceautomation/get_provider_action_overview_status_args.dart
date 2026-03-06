@@ -12,7 +12,7 @@ class GetProviderActionOverviewStatusArgs {
 
   /// Creates a new [GetProviderActionOverviewStatusArgs].
   /// [type] The resource type.
-  GetProviderActionOverviewStatusArgs({
+  const GetProviderActionOverviewStatusArgs({
     this.type,
   });
 

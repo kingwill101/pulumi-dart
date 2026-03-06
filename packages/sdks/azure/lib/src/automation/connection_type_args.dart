@@ -25,7 +25,7 @@ class ConnectionTypeArgs {
   /// [isGlobal] Whether the connection type is global. Changing this forces a new Automation to be created.
   /// [name] The name which should be used for this Automation Connection Type. Changing this forces a new Automation to be created.
   /// [resourceGroupName] The name of the Resource Group where the Automation should exist. Changing this forces a new Automation to be created.
-  ConnectionTypeArgs({
+  const ConnectionTypeArgs({
     required this.automationAccountName,
     required this.fields,
     this.isGlobal,

@@ -26,7 +26,7 @@ class TrailAdvancedEventSelectorFieldSelector {
   /// [notEquals] A list of values that excludes events that match the exact value of the event record field specified as the value of `field`.
   /// [notStartsWiths] A list of values that excludes events that match the first few characters of the event record field specified as the value of `field`.
   /// [startsWiths] A list of values that includes events that match the first few characters of the event record field specified as the value of `field`.
-  TrailAdvancedEventSelectorFieldSelector({
+  const TrailAdvancedEventSelectorFieldSelector({
     this.endsWiths,
     this.equals,
     required this.field,

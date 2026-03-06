@@ -65,7 +65,7 @@ class GetUserProvisioningEventsEvent {
   /// [targetType] User Provisioning target type
   /// [updateTime] Event update time
   /// [userProvisioningId] The ID of the User Provisioning.
-  GetUserProvisioningEventsEvent({
+  const GetUserProvisioningEventsEvent({
     required this.content,
     required this.createTime,
     required this.deletionStrategy,

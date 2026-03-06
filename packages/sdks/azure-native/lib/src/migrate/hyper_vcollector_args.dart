@@ -23,7 +23,7 @@ class HyperVCollectorArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [properties] Optional.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  HyperVCollectorArgs({
+  const HyperVCollectorArgs({
     this.eTag,
     this.hyperVCollectorName,
     required this.projectName,

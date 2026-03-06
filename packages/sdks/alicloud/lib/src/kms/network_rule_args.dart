@@ -18,7 +18,7 @@ class NetworkRuleArgs {
   /// [description] Description.
   /// [networkRuleName] Network Rule Name.
   /// [sourcePrivateIps] Allowed private network addresses.
-  NetworkRuleArgs({
+  const NetworkRuleArgs({
     this.description,
     this.networkRuleName,
     required this.sourcePrivateIps,

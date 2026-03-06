@@ -15,7 +15,7 @@ class GetSageMakerNotebookInstanceSummaryArgs {
   /// Creates a new [GetSageMakerNotebookInstanceSummaryArgs].
   /// [name] Name of SageMakerNotebookInstanceSummary
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSageMakerNotebookInstanceSummaryArgs({
+  const GetSageMakerNotebookInstanceSummaryArgs({
     required this.name,
     required this.resourceGroupName,
   });

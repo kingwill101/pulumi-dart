@@ -22,7 +22,7 @@ class ClusterUpgradeDeltaHealthPolicyResponse {
   /// [maxPercentDeltaUnhealthyApplications] The maximum allowed percentage of applications health degradation allowed during cluster upgrades.
   /// [maxPercentDeltaUnhealthyNodes] The maximum allowed percentage of nodes health degradation allowed during cluster upgrades.
   /// [maxPercentUpgradeDomainDeltaUnhealthyNodes] The maximum allowed percentage of upgrade domain nodes health degradation allowed during cluster upgrades.
-  ClusterUpgradeDeltaHealthPolicyResponse({
+  const ClusterUpgradeDeltaHealthPolicyResponse({
     this.maxPercentDeltaUnhealthyApplications,
     required this.maxPercentDeltaUnhealthyNodes,
     this.maxPercentUpgradeDomainDeltaUnhealthyNodes,

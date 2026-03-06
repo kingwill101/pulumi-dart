@@ -15,7 +15,7 @@ class GetCloudConnectorArgs {
   /// Creates a new [GetCloudConnectorArgs].
   /// [connectorName] Connector Name.
   /// [expand] May be used to expand the collectionInfo property. By default, collectionInfo is not included.
-  GetCloudConnectorArgs({
+  const GetCloudConnectorArgs({
     required this.connectorName,
     this.expand,
   });

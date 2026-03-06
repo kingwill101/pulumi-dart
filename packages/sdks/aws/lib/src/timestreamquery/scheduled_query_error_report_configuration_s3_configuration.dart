@@ -14,7 +14,7 @@ class ScheduledQueryErrorReportConfigurationS3Configuration {
   /// [bucketName] Name of the S3 bucket under which error reports will be created.
   /// [encryptionOption] Encryption at rest options for the error reports. If no encryption option is specified, Timestream will choose `SSE_S3` as default. Valid values are `SSE_S3`, `SSE_KMS`.
   /// [objectKeyPrefix] Prefix for the error report key.
-  ScheduledQueryErrorReportConfigurationS3Configuration({
+  const ScheduledQueryErrorReportConfigurationS3Configuration({
     required this.bucketName,
     this.encryptionOption,
     this.objectKeyPrefix,

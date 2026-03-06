@@ -26,7 +26,7 @@ class GetInstanceTypeFamiliesResult {
   /// [outputFile] Optional.
   /// [spotStrategy] Optional.
   /// [zoneId] Optional.
-  GetInstanceTypeFamiliesResult({
+  const GetInstanceTypeFamiliesResult({
     required this.families,
     this.generation,
     required this.id,

@@ -59,7 +59,7 @@ class ClusterState {
   /// [securityMode] The security mode of EMR cluster. Supported value: NORMAL or KERBEROS.
   /// [subscriptionConfig] The detail configuration of subscription payment type. See `subscription_config` below.
   /// [tags] A mapping of tags to assign to the resource.
-  ClusterState({
+  const ClusterState({
     this.applicationConfigs,
     this.applications,
     this.bootstrapScripts,

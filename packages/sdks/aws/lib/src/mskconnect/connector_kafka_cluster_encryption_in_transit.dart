@@ -8,7 +8,7 @@ class ConnectorKafkaClusterEncryptionInTransit {
 
   /// Creates a new [ConnectorKafkaClusterEncryptionInTransit].
   /// [encryptionType] The type of encryption in transit to the Apache Kafka cluster. Valid values: `PLAINTEXT`, `TLS`. The default values is `PLAINTEXT`.
-  ConnectorKafkaClusterEncryptionInTransit({
+  const ConnectorKafkaClusterEncryptionInTransit({
     this.encryptionType,
   });
 

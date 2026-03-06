@@ -18,7 +18,7 @@ class WorkspaceMemberArgs {
   /// [roles] The list of roles. see [how to use it](https://www.alibabacloud.com/help/en/pai/developer-reference/api-aiworkspace-2021-02-04-createmember).
   /// [userId] The ID of the User.
   /// [workspaceId] The ID of the Workspace.
-  WorkspaceMemberArgs({
+  const WorkspaceMemberArgs({
     required this.roles,
     required this.userId,
     required this.workspaceId,

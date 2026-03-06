@@ -15,7 +15,7 @@ class GetRegionAutoscalerArgs {
   /// [autoscaler] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionAutoscalerArgs({
+  const GetRegionAutoscalerArgs({
     required this.autoscaler,
     this.project,
     required this.region,

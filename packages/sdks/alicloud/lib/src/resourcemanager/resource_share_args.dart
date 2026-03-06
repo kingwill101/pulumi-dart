@@ -44,7 +44,7 @@ class ResourceShareArgs {
   /// [resources] List of shared resources. See `resources` below.
   /// [tags] The tag of the resource
   /// [targets] Resource user.
-  ResourceShareArgs({
+  const ResourceShareArgs({
     this.allowExternalTargets,
     this.permissionNames,
     this.resourceArns,

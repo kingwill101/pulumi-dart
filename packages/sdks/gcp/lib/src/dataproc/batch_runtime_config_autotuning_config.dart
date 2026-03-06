@@ -9,7 +9,7 @@ class BatchRuntimeConfigAutotuningConfig {
 
   /// Creates a new [BatchRuntimeConfigAutotuningConfig].
   /// [scenarios] Optional. Scenarios for which tunings are applied.
-  BatchRuntimeConfigAutotuningConfig({
+  const BatchRuntimeConfigAutotuningConfig({
     this.scenarios,
   });
 

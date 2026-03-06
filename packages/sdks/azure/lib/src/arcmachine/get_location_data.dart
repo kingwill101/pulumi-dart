@@ -17,7 +17,7 @@ class GetLocationData {
   /// [countryOrRegion] The country or region where the resource is located.
   /// [district] The district, state, or province where the resource is located.
   /// [name] The name of this Azure Arc machine.
-  GetLocationData({
+  const GetLocationData({
     required this.city,
     required this.countryOrRegion,
     required this.district,

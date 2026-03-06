@@ -42,7 +42,7 @@ class GetConfigResult {
   /// [serviceConfigId] The ID of the associated Service Config ( https://cloud.google.com/service-infrastructure/docs/glossary#config).
   /// [state] State of the API Config.
   /// [updateTime] Updated time.
-  GetConfigResult({
+  const GetConfigResult({
     required this.createTime,
     required this.displayName,
     required this.gatewayServiceAccount,

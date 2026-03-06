@@ -34,7 +34,7 @@ class GetKeyPairsResult {
   /// [pairs] Required.
   /// [resourceGroupId] The Id of resource group.
   /// [tags] (Optional, Available in v1.66.0+) A mapping of tags to assign to the resource.
-  GetKeyPairsResult({
+  const GetKeyPairsResult({
     this.fingerPrint,
     required this.id,
     required this.ids,

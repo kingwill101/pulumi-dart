@@ -14,7 +14,7 @@ class DomainSysInfoSmbiosMemoryEntry {
   /// [file] Specifies the file associated with the firmware configuration entry.
   /// [name] Defines the name of the firmware configuration entry.
   /// [value] Sets the value for the firmware configuration entry.
-  DomainSysInfoSmbiosMemoryEntry({
+  const DomainSysInfoSmbiosMemoryEntry({
     this.file,
     required this.name,
     required this.value,

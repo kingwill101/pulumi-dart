@@ -32,7 +32,7 @@ class BrokerPropertiesResponse {
   /// [generateResourceLimits] This setting controls whether Kubernetes CPU resource limits are requested. Increasing the number of replicas or workers proportionally increases the amount of CPU resources requested. If this setting is enabled and there are insufficient CPU resources, an error will be emitted.
   /// [memoryProfile] Memory profile of Broker.
   /// [provisioningState] The status of the last operation.
-  BrokerPropertiesResponse({
+  const BrokerPropertiesResponse({
     this.advanced,
     this.cardinality,
     this.diagnostics,

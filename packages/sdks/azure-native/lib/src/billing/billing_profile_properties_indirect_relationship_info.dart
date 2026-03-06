@@ -15,7 +15,7 @@ class BillingProfilePropertiesIndirectRelationshipInfo {
   /// [billingAccountName] The billing account name of the partner or the customer for an indirect motion.
   /// [billingProfileName] The billing profile name of the partner or the customer for an indirect motion.
   /// [displayName] The display name of the partner or customer for an indirect motion.
-  BillingProfilePropertiesIndirectRelationshipInfo({
+  const BillingProfilePropertiesIndirectRelationshipInfo({
     this.billingAccountName,
     this.billingProfileName,
     this.displayName,

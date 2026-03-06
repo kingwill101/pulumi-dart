@@ -10,7 +10,7 @@ class ConfigMonitoring {
 
   /// Creates a new [ConfigMonitoring].
   /// [requestLogging] Configuration for logging requests made to this project to Stackdriver Logging
-  ConfigMonitoring({
+  const ConfigMonitoring({
     this.requestLogging,
   });
 

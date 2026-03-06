@@ -66,7 +66,7 @@ class ServerGroupState {
   /// [status] Indicates the status of the backend server.
   /// [tags] The tag keys.
   /// [vpcId] The VPC ID.
-  ServerGroupState({
+  const ServerGroupState({
     this.connectionDrainConfig,
     this.createTime,
     this.dryRun,

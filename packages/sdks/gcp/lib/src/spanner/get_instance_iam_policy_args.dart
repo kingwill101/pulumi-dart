@@ -16,7 +16,7 @@ class GetInstanceIamPolicyArgs {
   /// Creates a new [GetInstanceIamPolicyArgs].
   /// [instance] The name of the instance.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetInstanceIamPolicyArgs({
+  const GetInstanceIamPolicyArgs({
     required this.instance,
     this.project,
   });

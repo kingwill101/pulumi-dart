@@ -20,7 +20,7 @@ class GetBucketObjectLockConfigurationArgs {
   /// [bucket] Name of the bucket.
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBucketObjectLockConfigurationArgs({
+  const GetBucketObjectLockConfigurationArgs({
     required this.bucket,
     this.expectedBucketOwner,
     this.region,

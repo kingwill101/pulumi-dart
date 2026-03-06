@@ -20,7 +20,7 @@ class DomainSource {
   /// [priority] The priority of the origin if multiple origins are specified. Default to `20`.
   /// [type] The type of the origin. Valid values:
   /// [weight] The weight of the origin if multiple origins are specified. Default to `10`.
-  DomainSource({
+  const DomainSource({
     this.content,
     this.port,
     this.priority,

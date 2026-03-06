@@ -8,7 +8,7 @@ class ConnectivityTestSourceCloudFunction {
 
   /// Creates a new [ConnectivityTestSourceCloudFunction].
   /// [uri] A Cloud Function name.
-  ConnectivityTestSourceCloudFunction({
+  const ConnectivityTestSourceCloudFunction({
     this.uri,
   });
 

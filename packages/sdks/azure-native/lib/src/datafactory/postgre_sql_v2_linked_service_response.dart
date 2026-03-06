@@ -88,7 +88,7 @@ class PostgreSqlV2LinkedServiceResponse {
   /// [type] Type of linked service.
   /// [username] Username for authentication. Type: string.
   /// [version] Version of the linked service.
-  PostgreSqlV2LinkedServiceResponse({
+  const PostgreSqlV2LinkedServiceResponse({
     this.annotations,
     required this.authenticationType,
     this.commandTimeout,

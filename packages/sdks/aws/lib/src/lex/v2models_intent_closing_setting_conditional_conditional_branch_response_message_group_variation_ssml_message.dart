@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGro
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentClosingSettingConditionalConditionalBranchResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

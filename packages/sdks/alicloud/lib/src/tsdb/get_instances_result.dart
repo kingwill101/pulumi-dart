@@ -28,7 +28,7 @@ class GetInstancesResult {
   /// [queryStr] Optional.
   /// [status] Optional.
   /// [statusList] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.appKey,
     this.enableDetails,
     this.engineType,

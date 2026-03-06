@@ -11,7 +11,7 @@ class KxVolumeAttachedCluster {
   /// [clusterName] Required.
   /// [clusterStatus] Required.
   /// [clusterType] Required.
-  KxVolumeAttachedCluster({
+  const KxVolumeAttachedCluster({
     required this.clusterName,
     required this.clusterStatus,
     required this.clusterType,

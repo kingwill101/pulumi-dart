@@ -15,7 +15,7 @@ class CapacitySkuResponse {
   /// [capacity] The capacity of the SKU.
   /// [name] Name of the SKU level.
   /// [tier] The name of the Azure pricing tier to which the SKU applies.
-  CapacitySkuResponse({
+  const CapacitySkuResponse({
     this.capacity,
     required this.name,
     this.tier,

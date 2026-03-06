@@ -23,7 +23,7 @@ class GetReceivedLicenseEntitlement {
   /// [overage] Indicates whether overages are allowed.
   /// [unit] Entitlement unit.
   /// [value] The value.
-  GetReceivedLicenseEntitlement({
+  const GetReceivedLicenseEntitlement({
     required this.allowCheckIn,
     required this.maxCount,
     required this.name,

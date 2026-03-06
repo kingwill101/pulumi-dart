@@ -14,7 +14,7 @@ class SpringbootappsPropertiesResponseInstances {
   /// [instanceCount] The instance count of this app instance
   /// [jvmMemoryInMB] The jvm heap memory allocated of this app instance
   /// [machineArmId] The machine ARM resource Id of this app instance
-  SpringbootappsPropertiesResponseInstances({
+  const SpringbootappsPropertiesResponseInstances({
     this.instanceCount,
     this.jvmMemoryInMB,
     required this.machineArmId,

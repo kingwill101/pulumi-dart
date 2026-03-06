@@ -8,7 +8,7 @@ class InputDestination {
 
   /// Creates a new [InputDestination].
   /// [streamName] A unique name for the location the RTMP stream is being pushed to.
-  InputDestination({
+  const InputDestination({
     required this.streamName,
   });
 

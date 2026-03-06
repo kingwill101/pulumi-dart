@@ -15,7 +15,7 @@ class ConfigurationResponse {
   /// [classification] &lt;p&gt;The classification within a configuration.&lt;/p&gt;
   /// [configurations] &lt;p&gt;A list of additional configurations to apply within a configuration object.&lt;/p&gt;
   /// [properties] &lt;p&gt;A set of properties specified within a configuration classification.&lt;/p&gt;
-  ConfigurationResponse({
+  const ConfigurationResponse({
     this.classification,
     this.configurations,
     this.properties,

@@ -18,7 +18,7 @@ class GetAutoUpgradeProfileArgs {
   /// [autoUpgradeProfileName] The name of the AutoUpgradeProfile resource.
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAutoUpgradeProfileArgs({
+  const GetAutoUpgradeProfileArgs({
     required this.autoUpgradeProfileName,
     required this.fleetName,
     required this.resourceGroupName,

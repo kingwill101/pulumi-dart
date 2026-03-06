@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStateme
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementByteMatchStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

@@ -9,7 +9,7 @@ class MachineSeriesResponse {
 
   /// Creates a new [MachineSeriesResponse].
   /// [code] Code to identify a Compute Engine machine series. Consult https://cloud.google.com/compute/docs/machine-resource#machine_type_comparison for more details on the available series.
-  MachineSeriesResponse({
+  const MachineSeriesResponse({
     required this.code,
   });
 

@@ -18,7 +18,7 @@ class HostGroupAccountUserGroupAttachmentState {
   /// [hostGroupId] The ID of the host group.
   /// [instanceId] The ID of the Bastionhost instance where you want to authorize the user to manage the specified hosts and host accounts.
   /// [userGroupId] The ID of the user group that you want to authorize to manage the specified hosts and host accounts.
-  HostGroupAccountUserGroupAttachmentState({
+  const HostGroupAccountUserGroupAttachmentState({
     this.hostAccountNames,
     this.hostGroupId,
     this.instanceId,

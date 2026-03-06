@@ -13,7 +13,7 @@ class ClassificationJobS3JobDefinitionBucketCriteria {
   /// Creates a new [ClassificationJobS3JobDefinitionBucketCriteria].
   /// [excludes] The property- or tag-based conditions that determine which S3 buckets to exclude from the analysis. (documented below)
   /// [includes] The property- or tag-based conditions that determine which S3 buckets to include in the analysis. (documented below)
-  ClassificationJobS3JobDefinitionBucketCriteria({
+  const ClassificationJobS3JobDefinitionBucketCriteria({
     this.excludes,
     this.includes,
   });

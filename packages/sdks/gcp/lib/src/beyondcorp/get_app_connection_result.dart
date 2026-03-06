@@ -33,7 +33,7 @@ class GetAppConnectionResult {
   /// [pulumiLabels] Required.
   /// [region] Optional.
   /// [type] Required.
-  GetAppConnectionResult({
+  const GetAppConnectionResult({
     required this.applicationEndpoints,
     required this.connectors,
     required this.displayName,

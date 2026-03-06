@@ -9,7 +9,7 @@ class QuotaInfoResponse {
 
   /// Creates a new [QuotaInfoResponse].
   /// [coresUsed] The cores used by the cluster.
-  QuotaInfoResponse({
+  const QuotaInfoResponse({
     this.coresUsed,
   });
 

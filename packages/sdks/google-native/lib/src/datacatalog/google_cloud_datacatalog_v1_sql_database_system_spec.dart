@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
   /// [databaseVersion] Version of the database engine.
   /// [instanceHost] Host of the SQL database enum InstanceHost { UNDEFINED = 0; SELF_HOSTED = 1; CLOUD_SQL = 2; AMAZON_RDS = 3; AZURE_SQL = 4; } Host of the enclousing database instance.
   /// [sqlEngine] SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance.
-  GoogleCloudDatacatalogV1SqlDatabaseSystemSpec({
+  const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec({
     this.databaseVersion,
     this.instanceHost,
     this.sqlEngine,

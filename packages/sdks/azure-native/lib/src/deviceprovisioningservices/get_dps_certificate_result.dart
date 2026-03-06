@@ -28,7 +28,7 @@ class GetDpsCertificateResult {
   /// [properties] properties of a certificate
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The resource type.
-  GetDpsCertificateResult({
+  const GetDpsCertificateResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

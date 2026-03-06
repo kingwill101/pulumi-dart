@@ -18,7 +18,7 @@ class DhcpOptionsSetAttachmentArgs {
   /// [dhcpOptionsSetId] The ID of the DHCP options set.
   /// [dryRun] Specifies whether to precheck this request only. Default values: `false`. Valid values:
   /// [vpcId] The ID of the VPC network that is to be associated with the DHCP options set..
-  DhcpOptionsSetAttachmentArgs({
+  const DhcpOptionsSetAttachmentArgs({
     required this.dhcpOptionsSetId,
     this.dryRun,
     required this.vpcId,

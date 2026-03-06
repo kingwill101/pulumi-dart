@@ -21,7 +21,7 @@ class GetImagesResult {
   /// [latest] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     this.filters,
     required this.id,
     required this.images,

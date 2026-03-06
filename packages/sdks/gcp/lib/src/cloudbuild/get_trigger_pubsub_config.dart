@@ -18,7 +18,7 @@ class GetTriggerPubsubConfig {
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration.
   /// [subscription] Output only. Name of the subscription.
   /// [topic] The name of the topic from which this subscription is receiving messages.
-  GetTriggerPubsubConfig({
+  const GetTriggerPubsubConfig({
     required this.serviceAccountEmail,
     required this.state,
     required this.subscription,

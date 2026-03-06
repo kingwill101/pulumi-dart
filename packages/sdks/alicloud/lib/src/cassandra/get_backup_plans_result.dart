@@ -18,7 +18,7 @@ class GetBackupPlansResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [plans] Required.
-  GetBackupPlansResult({
+  const GetBackupPlansResult({
     required this.clusterId,
     required this.id,
     required this.ids,

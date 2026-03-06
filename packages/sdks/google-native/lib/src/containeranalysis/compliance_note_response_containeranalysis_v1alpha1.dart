@@ -29,7 +29,7 @@ class ComplianceNoteResponseContaineranalysisV1alpha1 {
   /// [scanInstructions] Serialized scan instructions with a predefined format.
   /// [title] The title that identifies this compliance check.
   /// [version] The OS and config versions the benchmark applies to.
-  ComplianceNoteResponseContaineranalysisV1alpha1({
+  const ComplianceNoteResponseContaineranalysisV1alpha1({
     required this.cisBenchmark,
     required this.description,
     required this.rationale,

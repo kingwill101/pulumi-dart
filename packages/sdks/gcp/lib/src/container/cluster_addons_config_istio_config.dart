@@ -12,7 +12,7 @@ class ClusterAddonsConfigIstioConfig {
   /// Creates a new [ClusterAddonsConfigIstioConfig].
   /// [auth] The authentication type between services in Istio. Available options include `AUTH_MUTUAL_TLS`.
   /// [disabled] The status of the Istio addon, which makes it easy to set up Istio for services in a
-  ClusterAddonsConfigIstioConfig({
+  const ClusterAddonsConfigIstioConfig({
     this.auth,
     required this.disabled,
   });

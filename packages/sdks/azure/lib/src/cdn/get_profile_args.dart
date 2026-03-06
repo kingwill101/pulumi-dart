@@ -15,7 +15,7 @@ class GetProfileArgs {
   /// Creates a new [GetProfileArgs].
   /// [name] The name of the CDN Profile.
   /// [resourceGroupName] The name of the resource group in which the CDN Profile exists.
-  GetProfileArgs({
+  const GetProfileArgs({
     required this.name,
     required this.resourceGroupName,
   });

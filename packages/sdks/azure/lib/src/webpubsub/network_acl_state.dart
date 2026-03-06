@@ -20,7 +20,7 @@ class NetworkAclState {
   /// [privateEndpoints] A `private_endpoint` block as defined below.
   /// [publicNetwork] A `public_network` block as defined below.
   /// [webPubsubId] The ID of the Web Pubsub service. Changing this forces a new resource to be created.
-  NetworkAclState({
+  const NetworkAclState({
     this.defaultAction,
     this.privateEndpoints,
     this.publicNetwork,

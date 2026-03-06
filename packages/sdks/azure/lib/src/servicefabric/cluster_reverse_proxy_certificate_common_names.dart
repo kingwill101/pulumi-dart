@@ -12,7 +12,7 @@ class ClusterReverseProxyCertificateCommonNames {
   /// Creates a new [ClusterReverseProxyCertificateCommonNames].
   /// [commonNames] A `common_names` block as defined below.
   /// [x509StoreName] The X509 Store where the Certificate Exists, such as `My`.
-  ClusterReverseProxyCertificateCommonNames({
+  const ClusterReverseProxyCertificateCommonNames({
     required this.commonNames,
     required this.x509StoreName,
   });

@@ -12,7 +12,7 @@ class ManagedZoneServiceDirectoryConfigNamespace {
 
   /// Creates a new [ManagedZoneServiceDirectoryConfigNamespace].
   /// [namespaceUrl] The fully qualified or partial URL of the service directory namespace that should be
-  ManagedZoneServiceDirectoryConfigNamespace({
+  const ManagedZoneServiceDirectoryConfigNamespace({
     required this.namespaceUrl,
   });
 

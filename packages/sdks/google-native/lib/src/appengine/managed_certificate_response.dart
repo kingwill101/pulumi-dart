@@ -12,7 +12,7 @@ class ManagedCertificateResponse {
   /// Creates a new [ManagedCertificateResponse].
   /// [lastRenewalTime] Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.
   /// [status] Status of certificate management. Refers to the most recent certificate acquisition or renewal attempt.
-  ManagedCertificateResponse({
+  const ManagedCertificateResponse({
     required this.lastRenewalTime,
     required this.status,
   });

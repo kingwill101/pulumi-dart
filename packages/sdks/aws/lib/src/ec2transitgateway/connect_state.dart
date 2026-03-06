@@ -30,7 +30,7 @@ class ConnectState {
   /// [transitGatewayDefaultRouteTablePropagation] Boolean whether the Connect should propagate routes with the EC2 Transit Gateway propagation default route table. This cannot be configured or perform drift detection with Resource Access Manager shared EC2 Transit Gateways. Default value: `true`.
   /// [transitGatewayId] Identifier of EC2 Transit Gateway.
   /// [transportAttachmentId] The underlaying VPC attachment
-  ConnectState({
+  const ConnectState({
     this.protocol,
     this.region,
     this.tags,

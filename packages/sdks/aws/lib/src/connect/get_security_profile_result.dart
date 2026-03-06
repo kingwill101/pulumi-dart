@@ -31,7 +31,7 @@ class GetSecurityProfileResult {
   /// [region] Required.
   /// [securityProfileId] Required.
   /// [tags] Map of tags to assign to the Security Profile.
-  GetSecurityProfileResult({
+  const GetSecurityProfileResult({
     required this.arn,
     required this.description,
     required this.id,

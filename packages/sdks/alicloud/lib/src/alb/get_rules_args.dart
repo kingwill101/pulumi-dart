@@ -30,7 +30,7 @@ class GetRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [ruleIds] The rule ids.
   /// [status] The status of the forwarding rule. Valid values: `Provisioning`, `Configuring`, `Available`.
-  GetRulesArgs({
+  const GetRulesArgs({
     this.ids,
     this.listenerIds,
     this.loadBalancerIds,

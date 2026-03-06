@@ -11,7 +11,7 @@ class GetCryptoKeysKeyPrimary {
   /// Creates a new [GetCryptoKeysKeyPrimary].
   /// [name] The resource name for this CryptoKeyVersion.
   /// [state] The current state of the CryptoKeyVersion.
-  GetCryptoKeysKeyPrimary({
+  const GetCryptoKeysKeyPrimary({
     required this.name,
     required this.state,
   });

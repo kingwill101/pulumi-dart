@@ -15,7 +15,7 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsResult {
   /// [childrens] List of child organizational units, which have the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [parentId] Required.
-  GetOrganizationalUnitDescendantOrganizationalUnitsResult({
+  const GetOrganizationalUnitDescendantOrganizationalUnitsResult({
     required this.childrens,
     required this.id,
     required this.parentId,

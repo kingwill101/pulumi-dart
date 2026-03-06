@@ -61,7 +61,7 @@ class VirtualMachineArgs {
   /// [username] Username for login. Deprecated - use customization property
   /// [vSphereNetworks] The list of Virtual VSphere Networks
   /// [virtualMachineName] virtual machine name
-  VirtualMachineArgs({
+  const VirtualMachineArgs({
     required this.amountOfRam,
     this.customization,
     this.disks,

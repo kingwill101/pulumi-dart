@@ -23,7 +23,7 @@ class GetGradientaiAgentsAgentAnthropicApiKey {
   /// [name] Name of the API Key
   /// [updatedAt] Updated At timestamp for the API Key
   /// [uuid] API Key value
-  GetGradientaiAgentsAgentAnthropicApiKey({
+  const GetGradientaiAgentsAgentAnthropicApiKey({
     required this.createdAt,
     this.createdBy,
     required this.deletedAt,

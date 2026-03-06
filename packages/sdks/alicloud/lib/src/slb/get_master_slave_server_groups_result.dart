@@ -25,7 +25,7 @@ class GetMasterSlaveServerGroupsResult {
   /// [nameRegex] Optional.
   /// [names] A list of SLB master slave server groups names.
   /// [outputFile] Optional.
-  GetMasterSlaveServerGroupsResult({
+  const GetMasterSlaveServerGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

@@ -17,7 +17,7 @@ class InstancePscAttachmentDetail {
   /// Creates a new [InstancePscAttachmentDetail].
   /// [connectionType] (Output)
   /// [serviceAttachment] (Output)
-  InstancePscAttachmentDetail({
+  const InstancePscAttachmentDetail({
     this.connectionType,
     this.serviceAttachment,
   });

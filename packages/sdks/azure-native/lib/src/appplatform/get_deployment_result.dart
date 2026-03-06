@@ -29,7 +29,7 @@ class GetDeploymentResult {
   /// [sku] Sku of the Deployment resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

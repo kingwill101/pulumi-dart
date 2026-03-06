@@ -34,7 +34,7 @@ class AgentcoreGatewayTargetArgs {
   /// [region] AWS region where the resource will be created. If not provided, the region from the provider configuration will be used.
   /// [targetConfiguration] Configuration for the target endpoint. See `target_configuration` below.
   /// [timeouts] Optional.
-  AgentcoreGatewayTargetArgs({
+  const AgentcoreGatewayTargetArgs({
     this.credentialProviderConfiguration,
     this.description,
     required this.gatewayIdentifier,

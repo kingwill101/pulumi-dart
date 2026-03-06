@@ -14,7 +14,7 @@ class TokenAuthConfiguration {
   /// [authenticationScheme] The authentication scheme.
   /// [disableCertificateAuthenticationFallback] Whether certification authentication fallback is disabled.
   /// [signedRequestScope] The signed request scope.
-  TokenAuthConfiguration({
+  const TokenAuthConfiguration({
     this.authenticationScheme,
     this.disableCertificateAuthenticationFallback,
     this.signedRequestScope,

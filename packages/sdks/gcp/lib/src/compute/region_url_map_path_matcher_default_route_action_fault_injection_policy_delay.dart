@@ -14,7 +14,7 @@ class RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay {
   /// Creates a new [RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay].
   /// [fixedDelay] Specifies the value of the fixed delay interval.
   /// [percentage] The percentage of traffic (connections/operations/requests) on which delay will be introduced as part of fault injection.
-  RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay({
+  const RegionUrlMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay({
     this.fixedDelay,
     this.percentage,
   });

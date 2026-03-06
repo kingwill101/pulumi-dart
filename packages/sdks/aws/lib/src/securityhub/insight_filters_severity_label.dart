@@ -9,7 +9,7 @@ class InsightFiltersSeverityLabel {
   /// Creates a new [InsightFiltersSeverityLabel].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersSeverityLabel({
+  const InsightFiltersSeverityLabel({
     required this.comparison,
     required this.value,
   });

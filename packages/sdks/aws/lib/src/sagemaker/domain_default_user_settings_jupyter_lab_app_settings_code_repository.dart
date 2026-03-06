@@ -8,7 +8,7 @@ class DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository {
 
   /// Creates a new [DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository].
   /// [repositoryUrl] The URL of the Git repository.
-  DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository({
+  const DomainDefaultUserSettingsJupyterLabAppSettingsCodeRepository({
     required this.repositoryUrl,
   });
 

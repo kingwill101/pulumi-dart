@@ -26,7 +26,7 @@ class GetSlsGroupsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetSlsGroupsResult({
+  const GetSlsGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

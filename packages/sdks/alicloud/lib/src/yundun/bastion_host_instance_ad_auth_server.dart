@@ -29,7 +29,7 @@ class BastionHostInstanceAdAuthServer {
   /// [port] Required.
   /// [server] Required.
   /// [standbyServer] Optional.
-  BastionHostInstanceAdAuthServer({
+  const BastionHostInstanceAdAuthServer({
     required this.account,
     required this.baseDn,
     required this.domain,

@@ -10,7 +10,7 @@ class ListBotSecretsResult {
 
   /// Creates a new [ListBotSecretsResult].
   /// [secrets] Array of Azure Health Bot Secrets.
-  ListBotSecretsResult({
+  const ListBotSecretsResult({
     this.secrets,
   });
 

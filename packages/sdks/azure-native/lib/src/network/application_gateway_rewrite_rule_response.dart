@@ -20,7 +20,7 @@ class ApplicationGatewayRewriteRuleResponse {
   /// [conditions] Conditions based on which the action set execution will be evaluated.
   /// [name] Name of the rewrite rule that is unique within an Application Gateway.
   /// [ruleSequence] Rule Sequence of the rewrite rule that determines the order of execution of a particular rule in a RewriteRuleSet.
-  ApplicationGatewayRewriteRuleResponse({
+  const ApplicationGatewayRewriteRuleResponse({
     this.actionSet,
     this.conditions,
     this.name,

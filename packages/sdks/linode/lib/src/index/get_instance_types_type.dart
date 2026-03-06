@@ -44,7 +44,7 @@ class GetInstanceTypesType {
   /// [regionPrices] A list of region-specific prices for this plan.
   /// [transfer] The monthly outbound transfer amount, in MB.
   /// [vcpus] The number of VCPU cores this Linode Type offers.
-  GetInstanceTypesType({
+  const GetInstanceTypesType({
     required this.acceleratedDevices,
     required this.addons,
     required this.class_,

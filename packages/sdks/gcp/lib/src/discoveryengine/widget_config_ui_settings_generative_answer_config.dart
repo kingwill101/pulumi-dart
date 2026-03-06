@@ -43,7 +43,7 @@ class WidgetConfigUiSettingsGenerativeAnswerConfig {
   /// [modelPromptPreamble] Text at the beginning of the prompt that instructs the model that generates the answer.
   /// [modelVersion] The model version used to generate the answer.
   /// [resultCount] The number of top results to generate the answer from. Up to 10.
-  WidgetConfigUiSettingsGenerativeAnswerConfig({
+  const WidgetConfigUiSettingsGenerativeAnswerConfig({
     this.disableRelatedQuestions,
     this.ignoreAdversarialQuery,
     this.ignoreLowRelevantContent,

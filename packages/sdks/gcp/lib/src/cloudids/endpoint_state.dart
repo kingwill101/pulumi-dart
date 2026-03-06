@@ -41,7 +41,7 @@ class EndpointState {
   /// [severity] The minimum alert severity level that is reported by the endpoint.
   /// [threatExceptions] Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
   /// [updateTime] Last update timestamp in RFC 3339 text format.
-  EndpointState({
+  const EndpointState({
     this.createTime,
     this.description,
     this.endpointForwardingRule,

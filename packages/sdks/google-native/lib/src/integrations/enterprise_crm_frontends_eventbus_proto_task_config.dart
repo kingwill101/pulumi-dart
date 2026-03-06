@@ -101,7 +101,7 @@ class EnterpriseCrmFrontendsEventbusProtoTaskConfig {
   /// [taskSpec] A string template that allows user to configure task parameters (with either literal default values or tokens which will be resolved at execution time) for the task. It will eventually replace the old "parameters" field.
   /// [taskTemplateName] Used to define task-template name if task is of type task-template
   /// [taskType] Defines the type of the task
-  EnterpriseCrmFrontendsEventbusProtoTaskConfig({
+  const EnterpriseCrmFrontendsEventbusProtoTaskConfig({
     this.alertConfigs,
     this.createTime,
     this.creatorEmail,

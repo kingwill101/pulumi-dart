@@ -8,7 +8,7 @@ class GetLinkLinkConfigurationMetricConfiguration {
 
   /// Creates a new [GetLinkLinkConfigurationMetricConfiguration].
   /// [filter] Filter string that specifies  which metrics are to be shared with the monitoring account. See [MetricConfiguration](https://docs.aws.amazon.com/OAM/latest/APIReference/API_MetricConfiguration.html) for details.
-  GetLinkLinkConfigurationMetricConfiguration({
+  const GetLinkLinkConfigurationMetricConfiguration({
     required this.filter,
   });
 

@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigTrimString {
 
   /// Creates a new [LogTransformerTransformerConfigTrimString].
   /// [withKeys] Specifies the keys of the fields to trim.
-  LogTransformerTransformerConfigTrimString({
+  const LogTransformerTransformerConfigTrimString({
     required this.withKeys,
   });
 

@@ -12,7 +12,7 @@ class HardwareProfileResponse {
   /// Creates a new [HardwareProfileResponse].
   /// [azureLargeInstanceSize] Specifies the Azure Large Instance SKU.
   /// [hardwareType] Name of the hardware type (vendor and/or their product name)
-  HardwareProfileResponse({
+  const HardwareProfileResponse({
     this.azureLargeInstanceSize,
     this.hardwareType,
   });

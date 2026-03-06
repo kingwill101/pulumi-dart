@@ -15,7 +15,7 @@ class ListenerAdditionalCertificateAttachmentArgs {
   /// Creates a new [ListenerAdditionalCertificateAttachmentArgs].
   /// [certificateId] The Certificate ID.
   /// [listenerId] The ID of the ALB listener.
-  ListenerAdditionalCertificateAttachmentArgs({
+  const ListenerAdditionalCertificateAttachmentArgs({
     required this.certificateId,
     required this.listenerId,
   });

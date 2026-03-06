@@ -24,7 +24,7 @@ class ServerGroupFirewallRuleArgs {
   /// [firewallRuleName] The name of the cluster firewall rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startIpAddress] The start IP address of the cluster firewall rule. Must be IPv4 format.
-  ServerGroupFirewallRuleArgs({
+  const ServerGroupFirewallRuleArgs({
     required this.clusterName,
     required this.endIpAddress,
     this.firewallRuleName,

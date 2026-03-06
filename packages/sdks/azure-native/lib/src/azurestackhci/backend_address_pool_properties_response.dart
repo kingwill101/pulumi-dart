@@ -18,7 +18,7 @@ class BackendAddressPoolPropertiesResponse {
   /// [loadBalancerBackendAddresses] List of backend addresses for the backend pool
   /// [logicalNetwork] Reference to the logical network for this backend pool. Mutually exclusive with virtualNetwork
   /// [virtualNetwork] Reference to the virtual network for this backend pool. Mutually exclusive with logicalNetwork
-  BackendAddressPoolPropertiesResponse({
+  const BackendAddressPoolPropertiesResponse({
     this.loadBalancerBackendAddresses,
     this.logicalNetwork,
     this.virtualNetwork,

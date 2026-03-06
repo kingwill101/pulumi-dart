@@ -17,7 +17,7 @@ class JobIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Stream Analytics Job. Possible values are `SystemAssigned` and `UserAssigned`.
-  JobIdentity({
+  const JobIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

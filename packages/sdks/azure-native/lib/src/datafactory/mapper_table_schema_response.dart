@@ -12,7 +12,7 @@ class MapperTableSchemaResponse {
   /// Creates a new [MapperTableSchemaResponse].
   /// [dataType] Data type of the column.
   /// [name] Name of the column.
-  MapperTableSchemaResponse({
+  const MapperTableSchemaResponse({
     this.dataType,
     this.name,
   });

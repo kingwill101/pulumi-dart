@@ -12,7 +12,7 @@ class KekIdentityProperties {
   /// Creates a new [KekIdentityProperties].
   /// [useSystemAssignedIdentity] Boolean specifying whether to use system assigned identity or not
   /// [userAssignedIdentity] User assigned identity resource Id
-  KekIdentityProperties({
+  const KekIdentityProperties({
     this.useSystemAssignedIdentity,
     this.userAssignedIdentity,
   });

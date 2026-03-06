@@ -27,7 +27,7 @@ class DirectLineSpeechChannelPropertiesResponse {
   /// [customVoiceDeploymentId] Custom speech model id (optional).
   /// [isDefaultBotForCogSvcAccount] Make this a default bot for chosen cognitive service account.
   /// [isEnabled] Whether this channel is enabled or not.
-  DirectLineSpeechChannelPropertiesResponse({
+  const DirectLineSpeechChannelPropertiesResponse({
     this.cognitiveServiceRegion,
     this.cognitiveServiceResourceId,
     this.cognitiveServiceSubscriptionKey,

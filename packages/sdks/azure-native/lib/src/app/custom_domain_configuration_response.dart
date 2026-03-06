@@ -31,7 +31,7 @@ class CustomDomainConfigurationResponse {
   /// [expirationDate] Certificate expiration date.
   /// [subjectName] Subject name of the certificate.
   /// [thumbprint] Certificate thumbprint.
-  CustomDomainConfigurationResponse({
+  const CustomDomainConfigurationResponse({
     this.certificateKeyVaultProperties,
     this.certificatePassword,
     this.certificateValue,

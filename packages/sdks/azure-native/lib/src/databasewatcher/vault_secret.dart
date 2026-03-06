@@ -15,7 +15,7 @@ class VaultSecret {
   /// [akvResourceId] The Azure resource ID of the Key Vault instance storing database authentication secrets.
   /// [akvTargetPassword] The path to the Key Vault secret storing the password for authentication to a target.
   /// [akvTargetUser] The path to the Key Vault secret storing the login name (aka user name, aka account name) for authentication to a target.
-  VaultSecret({
+  const VaultSecret({
     this.akvResourceId,
     this.akvTargetPassword,
     this.akvTargetUser,

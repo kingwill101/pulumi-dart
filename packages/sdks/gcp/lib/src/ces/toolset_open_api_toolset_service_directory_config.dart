@@ -13,7 +13,7 @@ class ToolsetOpenApiToolsetServiceDirectoryConfig {
 
   /// Creates a new [ToolsetOpenApiToolsetServiceDirectoryConfig].
   /// [service] The name of [Service
-  ToolsetOpenApiToolsetServiceDirectoryConfig({
+  const ToolsetOpenApiToolsetServiceDirectoryConfig({
     required this.service,
   });
 

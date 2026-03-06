@@ -18,7 +18,7 @@ class SecretEnvVarResponseCloudfunctionsV2alpha {
   /// [project] Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function.
   /// [secret] Name of the secret in secret manager (not the full resource name).
   /// [version] Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
-  SecretEnvVarResponseCloudfunctionsV2alpha({
+  const SecretEnvVarResponseCloudfunctionsV2alpha({
     required this.key,
     required this.project,
     required this.secret,

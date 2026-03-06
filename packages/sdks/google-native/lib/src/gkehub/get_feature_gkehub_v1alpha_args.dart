@@ -15,7 +15,7 @@ class GetFeatureGkehubV1alphaArgs {
   /// [featureId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureGkehubV1alphaArgs({
+  const GetFeatureGkehubV1alphaArgs({
     required this.featureId,
     required this.location,
     this.project,

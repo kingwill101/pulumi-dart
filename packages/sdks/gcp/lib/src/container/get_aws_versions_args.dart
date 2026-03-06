@@ -16,7 +16,7 @@ class GetAwsVersionsArgs {
   /// Creates a new [GetAwsVersionsArgs].
   /// [location] The location to list versions for.
   /// [project] ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
-  GetAwsVersionsArgs({
+  const GetAwsVersionsArgs({
     this.location,
     this.project,
   });

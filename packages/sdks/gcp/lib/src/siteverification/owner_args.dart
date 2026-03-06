@@ -18,7 +18,7 @@ class OwnerArgs {
   /// Creates a new [OwnerArgs].
   /// [email] The email of the user to be added as an owner.
   /// [webResourceId] The id of of the web resource to which the owner will be added, in the form `webResource/&lt;resource_id&gt;`,
-  OwnerArgs({
+  const OwnerArgs({
     required this.email,
     required this.webResourceId,
   });

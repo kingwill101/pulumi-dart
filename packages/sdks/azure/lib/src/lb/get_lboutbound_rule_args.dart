@@ -15,7 +15,7 @@ class GetLBOutboundRuleArgs {
   /// Creates a new [GetLBOutboundRuleArgs].
   /// [loadbalancerId] The ID of the Load Balancer in which the Outbound Rule exists.
   /// [name] The name of this Load Balancer Outbound Rule.
-  GetLBOutboundRuleArgs({
+  const GetLBOutboundRuleArgs({
     required this.loadbalancerId,
     required this.name,
   });

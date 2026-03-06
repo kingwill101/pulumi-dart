@@ -42,7 +42,7 @@ class WorkteamState {
   /// [workerAccessConfiguration] Use this optional parameter to constrain access to an Amazon S3 resource based on the IP address using supported IAM global condition keys. The Amazon S3 resource is accessed in the worker portal using a Amazon S3 presigned URL. see Worker Access Configuration details below.
   /// [workforceName] The name of the workforce.
   /// [workteamName] The name of the Workteam (must be unique).
-  WorkteamState({
+  const WorkteamState({
     this.arn,
     this.description,
     this.memberDefinitions,

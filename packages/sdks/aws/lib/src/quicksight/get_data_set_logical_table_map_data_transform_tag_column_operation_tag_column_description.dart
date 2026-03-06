@@ -7,7 +7,7 @@ class GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescripti
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription].
   /// [text] Required.
-  GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription({
+  const GetDataSetLogicalTableMapDataTransformTagColumnOperationTagColumnDescription({
     required this.text,
   });
 

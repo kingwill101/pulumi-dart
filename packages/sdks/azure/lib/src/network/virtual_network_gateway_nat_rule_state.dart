@@ -32,7 +32,7 @@ class VirtualNetworkGatewayNatRuleState {
   /// [resourceGroupName] The Name of the Resource Group in which this Virtual Network Gateway Nat Rule should be created. Changing this forces a new resource to be created.
   /// [type] The type of the Virtual Network Gateway Nat Rule. Possible values are `Dynamic` and `Static`. Defaults to `Static`. Changing this forces a new resource to be created.
   /// [virtualNetworkGatewayId] The ID of the Virtual Network Gateway that this Virtual Network Gateway Nat Rule belongs to. Changing this forces a new resource to be created.
-  VirtualNetworkGatewayNatRuleState({
+  const VirtualNetworkGatewayNatRuleState({
     this.externalMappings,
     this.internalMappings,
     this.ipConfigurationId,

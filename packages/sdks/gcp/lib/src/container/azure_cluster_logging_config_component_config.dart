@@ -8,7 +8,7 @@ class AzureClusterLoggingConfigComponentConfig {
 
   /// Creates a new [AzureClusterLoggingConfigComponentConfig].
   /// [enableComponents] Components of the logging configuration to be enabled.
-  AzureClusterLoggingConfigComponentConfig({
+  const AzureClusterLoggingConfigComponentConfig({
     this.enableComponents,
   });
 

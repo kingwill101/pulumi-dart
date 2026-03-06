@@ -33,7 +33,7 @@ class SourceApiAssociationArgs {
   /// [sourceApiAssociationConfigs] Optional.
   /// [sourceApiId] ID of the source API. One of `source_api_arn` or `source_api_id` must be specified.
   /// [timeouts] Optional.
-  SourceApiAssociationArgs({
+  const SourceApiAssociationArgs({
     this.description,
     this.mergedApiArn,
     this.mergedApiId,

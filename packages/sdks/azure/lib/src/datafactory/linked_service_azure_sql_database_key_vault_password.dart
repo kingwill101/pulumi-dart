@@ -11,7 +11,7 @@ class LinkedServiceAzureSqlDatabaseKeyVaultPassword {
   /// Creates a new [LinkedServiceAzureSqlDatabaseKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores SQL Server password.
-  LinkedServiceAzureSqlDatabaseKeyVaultPassword({
+  const LinkedServiceAzureSqlDatabaseKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

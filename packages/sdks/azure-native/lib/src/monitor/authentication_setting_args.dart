@@ -25,7 +25,7 @@ class AuthenticationSettingArgs {
   /// [healthModelName] Name of health model resource
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AuthenticationSettingArgs({
+  const AuthenticationSettingArgs({
     this.authenticationSettingName,
     required this.azureMonitorWorkspaceName,
     required this.healthModelName,

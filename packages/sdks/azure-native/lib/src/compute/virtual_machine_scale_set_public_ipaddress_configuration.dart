@@ -34,7 +34,7 @@ class VirtualMachineScaleSetPublicIPAddressConfiguration {
   /// [publicIPAddressVersion] Available from Api-Version 2019-07-01 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4. Possible values are: 'IPv4' and 'IPv6'.
   /// [publicIPPrefix] The PublicIPPrefix from which to allocate publicIP addresses.
   /// [sku] Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
-  VirtualMachineScaleSetPublicIPAddressConfiguration({
+  const VirtualMachineScaleSetPublicIPAddressConfiguration({
     this.deleteOption,
     this.dnsSettings,
     this.idleTimeoutInMinutes,

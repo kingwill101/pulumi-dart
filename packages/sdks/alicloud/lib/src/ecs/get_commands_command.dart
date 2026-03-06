@@ -35,7 +35,7 @@ class GetCommandsCommand {
   /// [timeout] The timeout period that is specified for the command to be run on ECS instances.
   /// [type] The command type.
   /// [workingDir] The execution path of the command in the ECS instance.
-  GetCommandsCommand({
+  const GetCommandsCommand({
     required this.commandContent,
     required this.commandId,
     required this.description,

@@ -13,7 +13,7 @@ class EnvironmentLoggingConfigurationSchedulerLogs {
   /// [cloudWatchLogGroupArn] Optional.
   /// [enabled] Enabling or disabling the collection of logs
   /// [logLevel] Logging level. Valid values: `CRITICAL`, `ERROR`, `WARNING`, `INFO`, `DEBUG`. Will be `INFO` by default.
-  EnvironmentLoggingConfigurationSchedulerLogs({
+  const EnvironmentLoggingConfigurationSchedulerLogs({
     this.cloudWatchLogGroupArn,
     this.enabled,
     this.logLevel,

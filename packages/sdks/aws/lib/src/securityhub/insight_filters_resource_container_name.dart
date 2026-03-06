@@ -9,7 +9,7 @@ class InsightFiltersResourceContainerName {
   /// Creates a new [InsightFiltersResourceContainerName].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceContainerName({
+  const InsightFiltersResourceContainerName({
     required this.comparison,
     required this.value,
   });

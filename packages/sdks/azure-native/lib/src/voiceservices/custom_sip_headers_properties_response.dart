@@ -10,7 +10,7 @@ class CustomSipHeadersPropertiesResponse {
 
   /// Creates a new [CustomSipHeadersPropertiesResponse].
   /// [headers] The Custom SIP Headers to apply to the calls which traverse the Communications Gateway
-  CustomSipHeadersPropertiesResponse({
+  const CustomSipHeadersPropertiesResponse({
     this.headers,
   });
 

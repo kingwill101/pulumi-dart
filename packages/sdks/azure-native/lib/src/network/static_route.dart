@@ -15,7 +15,7 @@ class StaticRoute {
   /// [addressPrefixes] List of all address prefixes.
   /// [name] The name of the StaticRoute that is unique within a VnetRoute.
   /// [nextHopIpAddress] The ip address of the next hop.
-  StaticRoute({
+  const StaticRoute({
     this.addressPrefixes,
     this.name,
     this.nextHopIpAddress,

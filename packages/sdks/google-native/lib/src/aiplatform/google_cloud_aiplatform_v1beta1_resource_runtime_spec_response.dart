@@ -14,7 +14,7 @@ class GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse].
   /// [raySpec] Optional. Ray cluster configuration. Required when creating a dedicated RayCluster on the PersistentResource.
   /// [serviceAccountSpec] Optional. Configure the use of workload identity on the PersistentResource
-  GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse({
+  const GoogleCloudAiplatformV1beta1ResourceRuntimeSpecResponse({
     required this.raySpec,
     required this.serviceAccountSpec,
   });

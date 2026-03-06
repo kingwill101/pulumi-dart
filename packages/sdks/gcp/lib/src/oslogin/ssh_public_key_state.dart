@@ -21,7 +21,7 @@ class SshPublicKeyState {
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [project] The project ID of the Google Cloud Platform project.
   /// [user] The user email.
-  SshPublicKeyState({
+  const SshPublicKeyState({
     this.expirationTimeUsec,
     this.fingerprint,
     this.key,

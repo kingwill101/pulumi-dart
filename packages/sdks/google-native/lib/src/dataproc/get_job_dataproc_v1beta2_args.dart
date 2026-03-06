@@ -15,7 +15,7 @@ class GetJobDataprocV1beta2Args {
   /// [jobId] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetJobDataprocV1beta2Args({
+  const GetJobDataprocV1beta2Args({
     required this.jobId,
     this.project,
     required this.region,

@@ -9,7 +9,7 @@ class EncryptionConfigDataprocV1beta2 {
 
   /// Creates a new [EncryptionConfigDataprocV1beta2].
   /// [gcePdKmsKeyName] Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
-  EncryptionConfigDataprocV1beta2({
+  const EncryptionConfigDataprocV1beta2({
     this.gcePdKmsKeyName,
   });
 

@@ -15,7 +15,7 @@ class TextMatch {
   /// [caseSensitivity] Specifies the text matching conditions based on casing. For more detail please refer to the Casing model.
   /// [matchType] Specifies the text matching condition for text comparison. For more detail please refer to the MatchType model.
   /// [text] The word or phrase to match against replicated content. A phrase with spaces will be considered a single substring.
-  TextMatch({
+  const TextMatch({
     required this.caseSensitivity,
     required this.matchType,
     required this.text,

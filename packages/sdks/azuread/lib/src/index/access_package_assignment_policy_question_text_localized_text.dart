@@ -11,7 +11,7 @@ class AccessPackageAssignmentPolicyQuestionTextLocalizedText {
   /// Creates a new [AccessPackageAssignmentPolicyQuestionTextLocalizedText].
   /// [content] The localized content of this question
   /// [languageCode] The language code of this question content
-  AccessPackageAssignmentPolicyQuestionTextLocalizedText({
+  const AccessPackageAssignmentPolicyQuestionTextLocalizedText({
     required this.content,
     required this.languageCode,
   });

@@ -17,7 +17,7 @@ class NetworkProfileResponse {
   /// [networkApiVersion] specifies the Microsoft.Network API version used when creating networking resources in the Network Interface Configurations
   /// [networkInterfaceConfigurations] Specifies the networking configurations that will be used to create the virtual machine networking resources.
   /// [networkInterfaces] Specifies the list of resource Ids for the network interfaces associated with the virtual machine.
-  NetworkProfileResponse({
+  const NetworkProfileResponse({
     this.networkApiVersion,
     this.networkInterfaceConfigurations,
     this.networkInterfaces,

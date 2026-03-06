@@ -18,7 +18,7 @@ class ScheduleBasedTriggerContext {
   /// [objectType] Type of the specific object - used for deserializing
   /// [schedule] Schedule for this backup
   /// [taggingCriteria] List of tags that can be applicable for given schedule.
-  ScheduleBasedTriggerContext({
+  const ScheduleBasedTriggerContext({
     required this.objectType,
     required this.schedule,
     required this.taggingCriteria,

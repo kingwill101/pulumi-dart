@@ -17,7 +17,7 @@ class GetClientConfigResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [objectId] The object ID of the authenticated principal.
   /// [tenantId] The tenant ID of the authenticated principal.
-  GetClientConfigResult({
+  const GetClientConfigResult({
     required this.clientId,
     required this.id,
     required this.objectId,

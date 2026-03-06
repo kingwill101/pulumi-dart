@@ -64,7 +64,7 @@ class ResourceDeploymentScriptAzureCliArgs {
   /// [tags] A mapping of tags which should be assigned to the Resource Deployment Script.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Needs to be greater than 0 and smaller than 1 day. Defaults to `P1D`. Changing this forces a new Resource Deployment Script to be created.
   /// [version] Specifies the version of the Azure CLI that should be used in the format `X.Y.Z` (e.g. `2.30.0`). A canonical list of versions [is available from the Microsoft Container Registry API](https://mcr.microsoft.com/v2/azure-cli/tags/list). Changing this forces a new Resource Deployment Script to be created.
-  ResourceDeploymentScriptAzureCliArgs({
+  const ResourceDeploymentScriptAzureCliArgs({
     this.cleanupPreference,
     this.commandLine,
     this.container,

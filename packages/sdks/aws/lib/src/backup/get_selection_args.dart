@@ -18,7 +18,7 @@ class GetSelectionArgs {
   /// [planId] Backup plan ID associated with the selection of resources.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [selectionId] Backup selection ID.
-  GetSelectionArgs({
+  const GetSelectionArgs({
     required this.planId,
     this.region,
     required this.selectionId,

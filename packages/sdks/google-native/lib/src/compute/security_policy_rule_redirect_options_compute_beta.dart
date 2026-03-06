@@ -12,7 +12,7 @@ class SecurityPolicyRuleRedirectOptionsComputeBeta {
   /// Creates a new [SecurityPolicyRuleRedirectOptionsComputeBeta].
   /// [target] Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
   /// [type] Type of the redirect action.
-  SecurityPolicyRuleRedirectOptionsComputeBeta({
+  const SecurityPolicyRuleRedirectOptionsComputeBeta({
     this.target,
     this.type,
   });

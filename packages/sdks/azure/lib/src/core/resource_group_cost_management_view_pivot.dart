@@ -11,7 +11,7 @@ class ResourceGroupCostManagementViewPivot {
   /// Creates a new [ResourceGroupCostManagementViewPivot].
   /// [name] The name of the column which should be used for this sub-view in the Cost Analysis UI.
   /// [type] The data type to show in this sub-view. Possible values are `Dimension` and `TagKey`.
-  ResourceGroupCostManagementViewPivot({
+  const ResourceGroupCostManagementViewPivot({
     required this.name,
     required this.type,
   });

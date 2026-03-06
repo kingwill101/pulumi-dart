@@ -9,7 +9,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule {
 
   /// Creates a new [GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule].
   /// [dayOfWeeks] May contain up to seven (one for each day of the week) snapshot times.
-  GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule({
+  const GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule({
     required this.dayOfWeeks,
   });
 

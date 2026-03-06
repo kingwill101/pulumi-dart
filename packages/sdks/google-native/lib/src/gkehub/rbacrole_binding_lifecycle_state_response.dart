@@ -9,7 +9,7 @@ class RBACRoleBindingLifecycleStateResponse {
 
   /// Creates a new [RBACRoleBindingLifecycleStateResponse].
   /// [code] The current state of the rbacrolebinding resource.
-  RBACRoleBindingLifecycleStateResponse({
+  const RBACRoleBindingLifecycleStateResponse({
     required this.code,
   });
 

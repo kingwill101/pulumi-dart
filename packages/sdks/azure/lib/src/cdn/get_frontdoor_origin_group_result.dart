@@ -31,7 +31,7 @@ class GetFrontdoorOriginGroupResult {
   /// [resourceGroupName] Required.
   /// [restoreTrafficTimeToHealedOrNewEndpointInMinutes] Required.
   /// [sessionAffinityEnabled] Specifies whether session affinity is enabled on this host.
-  GetFrontdoorOriginGroupResult({
+  const GetFrontdoorOriginGroupResult({
     required this.cdnFrontdoorProfileId,
     required this.healthProbes,
     required this.id,

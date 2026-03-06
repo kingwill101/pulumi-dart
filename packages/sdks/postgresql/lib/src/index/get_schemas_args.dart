@@ -29,7 +29,7 @@ class GetSchemasArgs {
   /// [likeAnyPatterns] List of expressions which will be pattern matched in the query using the PostgreSQL ``LIKE ANY`` operators.
   /// [notLikeAllPatterns] List of expressions which will be pattern matched in the query using the PostgreSQL ``NOT LIKE ALL`` operators.
   /// [regexPattern] Expression which will be pattern matched in the query using the PostgreSQL ``~`` (regular expression match) operator.
-  GetSchemasArgs({
+  const GetSchemasArgs({
     required this.database,
     this.includeSystemSchemas,
     this.likeAllPatterns,

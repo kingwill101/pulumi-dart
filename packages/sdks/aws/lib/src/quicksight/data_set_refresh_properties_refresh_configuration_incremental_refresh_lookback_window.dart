@@ -14,7 +14,7 @@ class DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWind
   /// [columnName] The name of the lookback window column.
   /// [size] The lookback window column size.
   /// [sizeUnit] The size unit that is used for the lookback window column. Valid values for this structure are `HOUR`, `DAY`, and `WEEK`.
-  DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow({
+  const DataSetRefreshPropertiesRefreshConfigurationIncrementalRefreshLookbackWindow({
     required this.columnName,
     required this.size,
     required this.sizeUnit,

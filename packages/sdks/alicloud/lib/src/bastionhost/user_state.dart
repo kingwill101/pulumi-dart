@@ -66,7 +66,7 @@ class UserState {
   /// [status] The status of the resource. Valid values: `Frozen`, `Normal`.
   /// [userId] The User ID.
   /// [userName] Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
-  UserState({
+  const UserState({
     this.comment,
     this.displayName,
     this.email,

@@ -16,7 +16,7 @@ class EndpointCustomDomainCdnManagedHttps {
   /// [certificateType] The type of HTTPS certificate. Possible values are `Shared` and `Dedicated`.
   /// [protocolType] The type of protocol. Possible values are `ServerNameIndication` and `IPBased`.
   /// [tlsVersion] The minimum TLS protocol version that is used for HTTPS. Possible values are `TLS10` (representing TLS 1.0/1.1), `TLS12` (representing TLS 1.2) and `None` (representing no minimums). Defaults to `TLS12`.
-  EndpointCustomDomainCdnManagedHttps({
+  const EndpointCustomDomainCdnManagedHttps({
     required this.certificateType,
     required this.protocolType,
     this.tlsVersion,

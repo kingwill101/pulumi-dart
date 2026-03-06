@@ -75,7 +75,7 @@ class InMageAzureV2ProtectedDiskDetailsResponse {
   /// [secondsToTakeSwitchProvider] The seconds to take for switch provider.
   /// [sourceDataInMegaBytes] The source data transit in MB.
   /// [targetDataInMegaBytes] The target data transit in MB.
-  InMageAzureV2ProtectedDiskDetailsResponse({
+  const InMageAzureV2ProtectedDiskDetailsResponse({
     this.diskCapacityInBytes,
     this.diskId,
     this.diskName,

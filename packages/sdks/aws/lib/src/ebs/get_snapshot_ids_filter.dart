@@ -9,7 +9,7 @@ class GetSnapshotIdsFilter {
   /// Creates a new [GetSnapshotIdsFilter].
   /// [name] Required.
   /// [values] Required.
-  GetSnapshotIdsFilter({
+  const GetSnapshotIdsFilter({
     required this.name,
     required this.values,
   });

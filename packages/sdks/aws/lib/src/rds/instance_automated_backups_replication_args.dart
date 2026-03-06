@@ -24,7 +24,7 @@ class InstanceAutomatedBackupsReplicationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [retentionPeriod] The retention period for the replicated automated backups, defaults to `7`.
   /// [sourceDbInstanceArn] The Amazon Resource Name (ARN) of the source DB instance for the replicated automated backups, for example, `arn:aws:rds:us-west-2:123456789012:db:mydatabase`.
-  InstanceAutomatedBackupsReplicationArgs({
+  const InstanceAutomatedBackupsReplicationArgs({
     this.kmsKeyId,
     this.preSignedUrl,
     this.region,

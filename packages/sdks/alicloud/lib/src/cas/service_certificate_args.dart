@@ -42,7 +42,7 @@ class ServiceCertificateArgs {
   /// [signCert] The content of an SM signing certificate in PEM format.
   /// [signPrivateKey] The private key of an SM signing certificate in PEM format.
   /// [tags] The tag of the resource.
-  ServiceCertificateArgs({
+  const ServiceCertificateArgs({
     this.cert,
     this.certificateName,
     this.encryptCert,

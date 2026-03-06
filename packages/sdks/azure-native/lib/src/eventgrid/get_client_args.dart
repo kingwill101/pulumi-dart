@@ -18,7 +18,7 @@ class GetClientArgs {
   /// [clientName] Name of the client.
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetClientArgs({
+  const GetClientArgs({
     required this.clientName,
     required this.namespaceName,
     required this.resourceGroupName,

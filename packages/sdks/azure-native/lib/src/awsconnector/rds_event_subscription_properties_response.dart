@@ -34,7 +34,7 @@ class RdsEventSubscriptionPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  RdsEventSubscriptionPropertiesResponse({
+  const RdsEventSubscriptionPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

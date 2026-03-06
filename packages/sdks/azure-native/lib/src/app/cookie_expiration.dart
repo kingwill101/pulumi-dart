@@ -13,7 +13,7 @@ class CookieExpiration {
   /// Creates a new [CookieExpiration].
   /// [convention] The convention used when determining the session cookie's expiration.
   /// [timeToExpiration] The time after the request is made when the session cookie should expire.
-  CookieExpiration({
+  const CookieExpiration({
     this.convention,
     this.timeToExpiration,
   });

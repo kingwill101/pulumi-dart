@@ -103,7 +103,7 @@ class GetDeviceCloudidentityV1beta1Result {
   /// [securityPatchTime] OS security patch update time on device.
   /// [serialNumber] Serial Number of device. Example: HT82V1A01076.
   /// [wifiMacAddresses] WiFi MAC addresses of device.
-  GetDeviceCloudidentityV1beta1Result({
+  const GetDeviceCloudidentityV1beta1Result({
     required this.androidSpecificAttributes,
     required this.assetTag,
     required this.basebandVersion,

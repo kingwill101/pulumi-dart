@@ -15,7 +15,7 @@ class GetHypervSitesControllerArgs {
   /// Creates a new [GetHypervSitesControllerArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  GetHypervSitesControllerArgs({
+  const GetHypervSitesControllerArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

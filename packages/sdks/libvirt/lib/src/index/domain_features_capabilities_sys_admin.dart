@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysAdmin {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysAdmin].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysAdmin({
+  const DomainFeaturesCapabilitiesSysAdmin({
     this.state,
   });
 

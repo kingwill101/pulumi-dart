@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse].
   /// [importedLibraries] Paths of the imported libraries.
-  GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse({
+  const GoogleCloudDatacatalogV1BigQueryRoutineSpecResponse({
     required this.importedLibraries,
   });
 

@@ -25,7 +25,7 @@ class MqttToKafkaRoutesResponse {
   /// [name] The name of the route.
   /// [qos] The qos to use for mqtt.
   /// [sharedSubscription] The properties for shared subscription.
-  MqttToKafkaRoutesResponse({
+  const MqttToKafkaRoutesResponse({
     required this.kafkaAcks,
     required this.kafkaTopic,
     required this.mqttTopic,

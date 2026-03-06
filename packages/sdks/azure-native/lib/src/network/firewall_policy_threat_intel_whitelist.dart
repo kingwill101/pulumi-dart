@@ -12,7 +12,7 @@ class FirewallPolicyThreatIntelWhitelist {
   /// Creates a new [FirewallPolicyThreatIntelWhitelist].
   /// [fqdns] List of FQDNs for the ThreatIntel Whitelist.
   /// [ipAddresses] List of IP addresses for the ThreatIntel Whitelist.
-  FirewallPolicyThreatIntelWhitelist({
+  const FirewallPolicyThreatIntelWhitelist({
     this.fqdns,
     this.ipAddresses,
   });

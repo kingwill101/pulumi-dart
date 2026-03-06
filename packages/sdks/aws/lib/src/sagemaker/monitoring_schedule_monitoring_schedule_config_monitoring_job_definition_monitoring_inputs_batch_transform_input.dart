@@ -42,7 +42,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   /// [s3DataDistributionType] Whether input data distributed in Amazon S3 is fully replicated or sharded by an S3 key. Valid values: `FullyReplicated`, `ShardedByS3Key`.
   /// [s3InputMode] Input mode for transferring data for the monitoring job. Valid values: `Pipe`, `File`.
   /// [startTimeOffset] Monitoring jobs subtract this time from the start time.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringInputsBatchTransformInput({
     required this.dataCapturedDestinationS3Uri,
     required this.datasetFormat,
     this.endTimeOffset,

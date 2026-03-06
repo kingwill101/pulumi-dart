@@ -14,7 +14,7 @@ class AutomationRuleActionIncidentTask {
   /// [description] The description of the incident task.
   /// [order] The execution order of this action.
   /// [title] The title of the incident task.
-  AutomationRuleActionIncidentTask({
+  const AutomationRuleActionIncidentTask({
     this.description,
     required this.order,
     required this.title,

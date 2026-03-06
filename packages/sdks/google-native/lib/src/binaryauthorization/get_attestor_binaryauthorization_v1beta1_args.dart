@@ -13,7 +13,7 @@ class GetAttestorBinaryauthorizationV1beta1Args {
   /// Creates a new [GetAttestorBinaryauthorizationV1beta1Args].
   /// [attestorId] Required.
   /// [project] Optional.
-  GetAttestorBinaryauthorizationV1beta1Args({
+  const GetAttestorBinaryauthorizationV1beta1Args({
     required this.attestorId,
     this.project,
   });

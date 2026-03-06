@@ -19,7 +19,7 @@ class FileShareConfigFileV1beta1 {
   /// [name] The name of the file share (must be 32 characters or less for Enterprise and High Scale SSD tiers and 16 characters or less for all other tiers).
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [sourceBackup] The resource name of the backup, in the format `projects/{project_id}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
-  FileShareConfigFileV1beta1({
+  const FileShareConfigFileV1beta1({
     this.capacityGb,
     this.name,
     this.nfsExportOptions,

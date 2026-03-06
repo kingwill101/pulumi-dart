@@ -11,7 +11,7 @@ class AppVersionSnapshotAppEvaluationMetricsThreshold {
 
   /// Creates a new [AppVersionSnapshotAppEvaluationMetricsThreshold].
   /// [goldenEvaluationMetricsThresholds] (Output)
-  AppVersionSnapshotAppEvaluationMetricsThreshold({
+  const AppVersionSnapshotAppEvaluationMetricsThreshold({
     this.goldenEvaluationMetricsThresholds,
   });
 

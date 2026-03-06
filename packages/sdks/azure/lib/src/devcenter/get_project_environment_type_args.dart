@@ -15,7 +15,7 @@ class GetProjectEnvironmentTypeArgs {
   /// Creates a new [GetProjectEnvironmentTypeArgs].
   /// [devCenterProjectId] The ID of the associated Dev Center Project.
   /// [name] The name of this Dev Center Project Environment Type.
-  GetProjectEnvironmentTypeArgs({
+  const GetProjectEnvironmentTypeArgs({
     required this.devCenterProjectId,
     required this.name,
   });

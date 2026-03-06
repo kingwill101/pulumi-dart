@@ -61,7 +61,7 @@ class ExascaleDbStorageVaultState {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] The properties of the ExascaleDbStorageVault.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  ExascaleDbStorageVaultState({
+  const ExascaleDbStorageVaultState({
     this.createTime,
     this.deletionProtection,
     this.displayName,

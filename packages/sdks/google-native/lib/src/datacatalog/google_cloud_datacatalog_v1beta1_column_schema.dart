@@ -21,7 +21,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
   /// [mode] Optional. A column's mode indicates whether the values in this column are required, nullable, etc. Only `NULLABLE`, `REQUIRED` and `REPEATED` are supported. Default mode is `NULLABLE`.
   /// [subcolumns] Optional. Schema of sub-columns. A column can have zero or more sub-columns.
   /// [type] Type of the column.
-  GoogleCloudDatacatalogV1beta1ColumnSchema({
+  const GoogleCloudDatacatalogV1beta1ColumnSchema({
     required this.column,
     this.description,
     this.mode,

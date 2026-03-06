@@ -9,7 +9,7 @@ class CollapsibleGroupResponse {
 
   /// Creates a new [CollapsibleGroupResponse].
   /// [collapsed] The collapsed state of the widget on first page load.
-  CollapsibleGroupResponse({
+  const CollapsibleGroupResponse({
     required this.collapsed,
   });
 

@@ -73,7 +73,7 @@ class UpdateArgs {
   /// [state] State of the update as it relates to this stamp.
   /// [updateName] The name of the Update
   /// [version] Version of the update.
-  UpdateArgs({
+  const UpdateArgs({
     this.additionalProperties,
     this.availabilityType,
     required this.clusterName,

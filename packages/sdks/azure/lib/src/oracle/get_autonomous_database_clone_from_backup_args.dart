@@ -15,7 +15,7 @@ class GetAutonomousDatabaseCloneFromBackupArgs {
   /// Creates a new [GetAutonomousDatabaseCloneFromBackupArgs].
   /// [name] The name of this autonomous database clone from backup.
   /// [resourceGroupName] The name of the Resource Group where the Autonomous Database Clone exists.
-  GetAutonomousDatabaseCloneFromBackupArgs({
+  const GetAutonomousDatabaseCloneFromBackupArgs({
     required this.name,
     required this.resourceGroupName,
   });

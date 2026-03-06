@@ -57,7 +57,7 @@ class AttachedDiskState {
   /// [mode] The mode in which to attach this disk, either READ_WRITE or
   /// [project] The project that the referenced compute instance is a part of. If `instance` is referenced by its
   /// [zone] The zone that the referenced compute instance is located within. If `instance` is referenced by its
-  AttachedDiskState({
+  const AttachedDiskState({
     this.deviceName,
     this.disk,
     this.instance,

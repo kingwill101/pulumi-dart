@@ -60,7 +60,7 @@ class GetWebhookResult {
   /// [webhookId] Webhook id in database.
   /// [webhookKey] webhook secret token. If not set, this field value is null; otherwise, please set a string value.
   /// [webhookKeyEnabled] whether webhookKey is enabled.
-  GetWebhookResult({
+  const GetWebhookResult({
     required this.azureApiVersion,
     this.contentType,
     required this.deliveryStatus,

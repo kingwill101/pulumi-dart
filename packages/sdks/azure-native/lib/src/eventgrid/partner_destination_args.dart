@@ -40,7 +40,7 @@ class PartnerDestinationArgs {
   /// [partnerRegistrationImmutableId] The immutable Id of the corresponding partner registration.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
-  PartnerDestinationArgs({
+  const PartnerDestinationArgs({
     this.activationState,
     this.endpointBaseUrl,
     this.endpointServiceContext,

@@ -23,7 +23,7 @@ class GetFunctionUrlCor {
   /// [allowOrigins] List of origins that are allowed to make requests to the function URL.
   /// [exposeHeaders] List of headers in the response that you want to expose to the origin that called the function URL.
   /// [maxAge] Maximum amount of time, in seconds, that web browsers can cache results of a preflight request.
-  GetFunctionUrlCor({
+  const GetFunctionUrlCor({
     required this.allowCredentials,
     required this.allowHeaders,
     required this.allowMethods,

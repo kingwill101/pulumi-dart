@@ -13,7 +13,7 @@ class TemplateSourceEntity {
   /// Creates a new [TemplateSourceEntity].
   /// [sourceAnalysis] The source analysis, if it is based on an analysis.. Only one of `source_analysis` or `source_template` should be configured. See source_analysis.
   /// [sourceTemplate] The source template, if it is based on an template.. Only one of `source_analysis` or `source_template` should be configured. See source_template.
-  TemplateSourceEntity({
+  const TemplateSourceEntity({
     this.sourceAnalysis,
     this.sourceTemplate,
   });

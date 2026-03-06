@@ -17,7 +17,7 @@ class AddonsConfigArgs {
   /// Creates a new [AddonsConfigArgs].
   /// [addonsConfig] Addon configurations of the Apigee organization.
   /// [org] Name of the Apigee organization.
-  AddonsConfigArgs({
+  const AddonsConfigArgs({
     this.addonsConfig,
     required this.org,
   });

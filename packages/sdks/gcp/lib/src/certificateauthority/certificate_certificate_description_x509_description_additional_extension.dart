@@ -17,7 +17,7 @@ class CertificateCertificateDescriptionX509DescriptionAdditionalExtension {
   /// [critical] Indicates whether or not this extension is critical (i.e., if the client does not know how to
   /// [objectIds] Describes values that are relevant in a CA certificate.
   /// [value] The value of this X.509 extension. A base64-encoded string.
-  CertificateCertificateDescriptionX509DescriptionAdditionalExtension({
+  const CertificateCertificateDescriptionX509DescriptionAdditionalExtension({
     this.critical,
     this.objectIds,
     this.value,

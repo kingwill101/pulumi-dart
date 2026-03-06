@@ -18,7 +18,7 @@ class TrafficRoutingRuleResponse {
   /// [description] A user-provided description for this traffic routing rule.
   /// [ruleId] The identifier of this traffic routing rule.
   /// [trafficPercentage] Gets or sets the percentage of traffic allocated to this instance.
-  TrafficRoutingRuleResponse({
+  const TrafficRoutingRuleResponse({
     this.deploymentId,
     this.description,
     this.ruleId,

@@ -13,7 +13,7 @@ class ListTopLevelDomainAgreementsResult {
   /// Creates a new [ListTopLevelDomainAgreementsResult].
   /// [nextLink] Link to next page of resources.
   /// [value] Collection of resources.
-  ListTopLevelDomainAgreementsResult({
+  const ListTopLevelDomainAgreementsResult({
     required this.nextLink,
     required this.value,
   });

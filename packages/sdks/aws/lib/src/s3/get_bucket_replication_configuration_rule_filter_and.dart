@@ -12,7 +12,7 @@ class GetBucketReplicationConfigurationRuleFilterAnd {
   /// Creates a new [GetBucketReplicationConfigurationRuleFilterAnd].
   /// [prefix] The object key name prefix that identifies the subset of objects to which the rule applies.
   /// [tags] An unordered list of tags that identify a subset of objects to which the rule applies.
-  GetBucketReplicationConfigurationRuleFilterAnd({
+  const GetBucketReplicationConfigurationRuleFilterAnd({
     required this.prefix,
     required this.tags,
   });

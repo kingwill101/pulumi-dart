@@ -102,7 +102,7 @@ class GetServiceResult {
   /// [updateTime] Required.
   /// [uri] Required.
   /// [urls] Required.
-  GetServiceResult({
+  const GetServiceResult({
     required this.annotations,
     required this.binaryAuthorizations,
     required this.buildConfigs,

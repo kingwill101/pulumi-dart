@@ -41,7 +41,7 @@ class RouteServerEndpointState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC containing the endpoint.
-  RouteServerEndpointState({
+  const RouteServerEndpointState({
     this.arn,
     this.eniAddress,
     this.eniId,

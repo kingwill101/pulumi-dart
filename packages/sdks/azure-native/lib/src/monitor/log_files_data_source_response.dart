@@ -24,7 +24,7 @@ class LogFilesDataSourceResponse {
   /// [name] A friendly name for the data source.
   /// [settings] The log files specific settings.
   /// [streams] List of streams that this data source will be sent to.
-  LogFilesDataSourceResponse({
+  const LogFilesDataSourceResponse({
     required this.filePatterns,
     required this.format,
     this.name,

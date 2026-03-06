@@ -21,7 +21,7 @@ class AwsElasticLoadBalancingv2TargetHealthDescriptionProperties {
   /// [healthCheckPort] &lt;p&gt;The port to use to connect with the target.&lt;/p&gt;
   /// [target] &lt;p&gt;The description of the target.&lt;/p&gt;
   /// [targetHealth] &lt;p&gt;The health information for the target.&lt;/p&gt;
-  AwsElasticLoadBalancingv2TargetHealthDescriptionProperties({
+  const AwsElasticLoadBalancingv2TargetHealthDescriptionProperties({
     this.anomalyDetection,
     this.healthCheckPort,
     this.target,

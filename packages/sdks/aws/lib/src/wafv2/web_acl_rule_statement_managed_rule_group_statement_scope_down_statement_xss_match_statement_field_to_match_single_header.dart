@@ -8,7 +8,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStat
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleHeader].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleHeader({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementXssMatchStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

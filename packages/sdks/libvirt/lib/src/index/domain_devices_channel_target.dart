@@ -17,7 +17,7 @@ class DomainDevicesChannelTarget {
   /// [guestFwd] This field configures the guest forwarding settings for the channel target.
   /// [virtIo] This field defines the target configuration for the VirtIO channel.
   /// [xen] This field specifies the channel target configuration for Xen.
-  DomainDevicesChannelTarget({
+  const DomainDevicesChannelTarget({
     this.guestFwd,
     this.virtIo,
     this.xen,

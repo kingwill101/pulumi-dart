@@ -17,7 +17,7 @@ class GetServiceScaling {
   /// [maxInstanceCount] Combined maximum number of instances for all revisions receiving traffic.
   /// [minInstanceCount] Minimum number of instances for the service, to be divided among all revisions receiving traffic.
   /// [scalingMode] The [scaling mode](https://cloud.google.com/run/docs/reference/rest/v2/projects.locations.services#scalingmode) for the service. Possible values: ["AUTOMATIC", "MANUAL"]
-  GetServiceScaling({
+  const GetServiceScaling({
     required this.manualInstanceCount,
     required this.maxInstanceCount,
     required this.minInstanceCount,

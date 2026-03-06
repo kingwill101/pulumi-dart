@@ -11,7 +11,7 @@ class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResp
   /// Creates a new [AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse].
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB.
   /// [interface] Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
-  AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse({
+  const AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse({
     required this.diskSizeGb,
     required this.interface,
   });

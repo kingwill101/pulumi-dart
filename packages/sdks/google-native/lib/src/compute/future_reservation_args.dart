@@ -51,7 +51,7 @@ class FutureReservationArgs {
   /// [specificSkuProperties] Future Reservation configuration to indicate instance properties and total count.
   /// [timeWindow] Time window for this Future Reservation.
   /// [zone] Optional.
-  FutureReservationArgs({
+  const FutureReservationArgs({
     this.autoCreatedReservationsDeleteTime,
     this.autoCreatedReservationsDuration,
     this.autoDeleteAutoCreatedReservations,

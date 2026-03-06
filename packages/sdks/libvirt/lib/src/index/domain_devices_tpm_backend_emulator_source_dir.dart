@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendEmulatorSourceDir {
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorSourceDir].
   /// [path] Sets the path to the directory source for the emulator TPM backend.
-  DomainDevicesTpmBackendEmulatorSourceDir({
+  const DomainDevicesTpmBackendEmulatorSourceDir({
     this.path,
   });
 

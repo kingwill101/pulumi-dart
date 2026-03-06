@@ -15,7 +15,7 @@ class AbortInfoResponse {
   /// [cause] Causes that the analysis is aborted.
   /// [projectsMissingPermission] List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
   /// [resourceUri] URI of the resource that caused the abort.
-  AbortInfoResponse({
+  const AbortInfoResponse({
     required this.cause,
     required this.projectsMissingPermission,
     required this.resourceUri,

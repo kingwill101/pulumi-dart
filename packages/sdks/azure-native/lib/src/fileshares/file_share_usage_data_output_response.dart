@@ -10,7 +10,7 @@ class FileShareUsageDataOutputResponse {
 
   /// Creates a new [FileShareUsageDataOutputResponse].
   /// [liveShares] File share usage data for active file shares.
-  FileShareUsageDataOutputResponse({
+  const FileShareUsageDataOutputResponse({
     required this.liveShares,
   });
 

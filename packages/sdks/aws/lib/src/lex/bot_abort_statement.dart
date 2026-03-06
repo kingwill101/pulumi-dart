@@ -10,7 +10,7 @@ class BotAbortStatement {
   /// Creates a new [BotAbortStatement].
   /// [messages] Required.
   /// [responseCard] Optional.
-  BotAbortStatement({
+  const BotAbortStatement({
     required this.messages,
     this.responseCard,
   });

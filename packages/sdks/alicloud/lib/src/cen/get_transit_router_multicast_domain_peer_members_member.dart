@@ -20,7 +20,7 @@ class GetTransitRouterMulticastDomainPeerMembersMember {
   /// [peerTransitRouterMulticastDomainId] The multicast domain ID of the peer transit router.
   /// [status] The status of the resource
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
-  GetTransitRouterMulticastDomainPeerMembersMember({
+  const GetTransitRouterMulticastDomainPeerMembersMember({
     required this.groupIpAddress,
     required this.id,
     required this.peerTransitRouterMulticastDomainId,

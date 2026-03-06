@@ -64,7 +64,7 @@ class DomainArgs {
   /// [resourceGroupId] The ID of the resource group to which the queried domain belongs in Resource Management. By default, no value is specified, indicating that the domain belongs to the default resource group.
   /// [sourceIps] List of the IP address or domain of the origin server to which the specified domain points.
   /// [writeTime] The timeout period for a WAF exclusive cluster write connection. Unit: seconds.
-  DomainArgs({
+  const DomainArgs({
     this.clusterType,
     this.connectionTime,
     this.domain,

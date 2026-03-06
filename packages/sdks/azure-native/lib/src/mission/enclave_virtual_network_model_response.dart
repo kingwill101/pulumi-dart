@@ -22,7 +22,7 @@ class EnclaveVirtualNetworkModelResponse {
   /// [networkName] Network Name.
   /// [networkSize] Network Size.
   /// [subnetConfigurations] Subnet Configurations.
-  EnclaveVirtualNetworkModelResponse({
+  const EnclaveVirtualNetworkModelResponse({
     this.allowSubnetCommunication,
     this.customCidrRange,
     this.networkName,

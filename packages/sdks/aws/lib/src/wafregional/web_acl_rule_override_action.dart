@@ -7,7 +7,7 @@ class WebAclRuleOverrideAction {
 
   /// Creates a new [WebAclRuleOverrideAction].
   /// [type] Required.
-  WebAclRuleOverrideAction({
+  const WebAclRuleOverrideAction({
     required this.type,
   });
 

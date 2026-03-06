@@ -28,7 +28,7 @@ class StorageLensConfigurationState {
   /// [storageLensConfiguration] The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  StorageLensConfigurationState({
+  const StorageLensConfigurationState({
     this.accountId,
     this.arn,
     this.configId,

@@ -21,7 +21,7 @@ class HyperVToAzStackHCINicInputResponse {
   /// [selectionTypeForFailover] Gets or sets the selection type of the NIC.
   /// [targetNetworkId] Gets or sets the target network Id within AzStackHCI Cluster.
   /// [testNetworkId] Gets or sets the target test network Id within AzStackHCI Cluster.
-  HyperVToAzStackHCINicInputResponse({
+  const HyperVToAzStackHCINicInputResponse({
     required this.networkName,
     required this.nicId,
     required this.selectionTypeForFailover,

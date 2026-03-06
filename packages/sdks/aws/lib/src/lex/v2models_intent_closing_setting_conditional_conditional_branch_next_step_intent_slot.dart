@@ -15,7 +15,7 @@ class V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlot
   /// [mapBlockKey] Which attempt to configure. Valid values are `Initial`, `Retry1`, `Retry2`, `Retry3`, `Retry4`, `Retry5`.
   /// [shape] When the shape value is `List`, `values` contains a list of slot values. When the value is `Scalar`, `value` contains a single value.
   /// [value] Configuration block for the current value of the slot. See `value`.
-  V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlot({
+  const V2modelsIntentClosingSettingConditionalConditionalBranchNextStepIntentSlot({
     required this.mapBlockKey,
     this.shape,
     this.value,

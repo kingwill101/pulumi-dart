@@ -17,7 +17,7 @@ class SparkClusterRoles {
   /// [headNode] A `head_node` block as defined above.
   /// [workerNode] A `worker_node` block as defined below.
   /// [zookeeperNode] A `zookeeper_node` block as defined below.
-  SparkClusterRoles({
+  const SparkClusterRoles({
     required this.headNode,
     required this.workerNode,
     required this.zookeeperNode,

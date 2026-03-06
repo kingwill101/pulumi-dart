@@ -10,7 +10,7 @@ class NodePoolDefaults {
 
   /// Creates a new [NodePoolDefaults].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  NodePoolDefaults({
+  const NodePoolDefaults({
     this.nodeConfigDefaults,
   });
 

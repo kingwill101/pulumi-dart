@@ -62,7 +62,7 @@ class ProviderFeatures {
   /// [templateDeployment] Optional.
   /// [virtualMachine] Optional.
   /// [virtualMachineScaleSet] Optional.
-  ProviderFeatures({
+  const ProviderFeatures({
     this.apiManagement,
     this.appConfiguration,
     this.applicationInsights,

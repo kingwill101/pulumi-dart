@@ -19,7 +19,7 @@ class TaskStatusResponse {
   /// [attemptResponseCount] The number of attempts which have received a response. This field is not calculated for pull tasks.
   /// [firstAttemptStatus] The status of the task's first attempt. Only dispatch_time will be set. The other AttemptStatus information is not retained by Cloud Tasks. This field is not calculated for pull tasks.
   /// [lastAttemptStatus] The status of the task's last attempt. This field is not calculated for pull tasks.
-  TaskStatusResponse({
+  const TaskStatusResponse({
     required this.attemptDispatchCount,
     required this.attemptResponseCount,
     required this.firstAttemptStatus,

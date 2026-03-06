@@ -46,7 +46,7 @@ class GetAttachmentResult {
   /// [transitGatewayAttachmentId] Required.
   /// [transitGatewayId] ID of the transit gateway.
   /// [transitGatewayOwnerId] The ID of the AWS account that owns the transit gateway.
-  GetAttachmentResult({
+  const GetAttachmentResult({
     required this.arn,
     required this.associationState,
     required this.associationTransitGatewayRouteTableId,

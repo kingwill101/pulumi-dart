@@ -22,7 +22,7 @@ class TimeWindowCustomAlertRule {
   /// [minThreshold] The minimum threshold.
   /// [ruleType] The type of the custom alert rule.
   /// [timeWindowSize] The time window size in iso8601 format.
-  TimeWindowCustomAlertRule({
+  const TimeWindowCustomAlertRule({
     required this.isEnabled,
     required this.maxThreshold,
     required this.minThreshold,

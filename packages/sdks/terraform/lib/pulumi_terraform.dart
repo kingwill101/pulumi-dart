@@ -3,16 +3,16 @@
 import 'package:pulumi_terraform/providers.dart' as module_providers;
 import 'package:pulumi_terraform/state.dart' as module_state;
 
-final providers = _ProvidersModuleNamespace();
-final state = _StateModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+final state = const _StateModuleNamespace();
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Terraform = module_providers.ProviderProvider.new;
 }
 
 class _StateModuleNamespace {
-  _StateModuleNamespace();
+  const _StateModuleNamespace();
   final GetLocalReferenceArgs = module_state.GetLocalReferenceArgs.new;
   final GetLocalReferenceResult = module_state.GetLocalReferenceResult.new;
   final GetLocalReferenceResultArgs = module_state.GetLocalReferenceResult.new;

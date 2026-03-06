@@ -44,7 +44,7 @@ class LocalDiskResponse {
   /// [mode] The mode in which to attach this disk, either `READ_WRITE` or `READ_ONLY`. If not specified, the default is to attach the disk in `READ_WRITE` mode. Valid values: * `READ_ONLY` * `READ_WRITE`
   /// [source] Specifies a valid partial or full URL to an existing Persistent Disk resource.
   /// [type] Specifies the type of the disk, either `SCRATCH` or `PERSISTENT`. If not specified, the default is `PERSISTENT`. Valid values: * `PERSISTENT` * `SCRATCH`
-  LocalDiskResponse({
+  const LocalDiskResponse({
     required this.autoDelete,
     required this.boot,
     required this.deviceName,

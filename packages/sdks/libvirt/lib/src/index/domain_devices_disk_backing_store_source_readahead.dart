@@ -8,7 +8,7 @@ class DomainDevicesDiskBackingStoreSourceReadahead {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
-  DomainDevicesDiskBackingStoreSourceReadahead({
+  const DomainDevicesDiskBackingStoreSourceReadahead({
     required this.size,
   });
 

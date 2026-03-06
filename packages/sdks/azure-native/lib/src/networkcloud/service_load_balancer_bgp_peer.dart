@@ -35,7 +35,7 @@ class ServiceLoadBalancerBgpPeer {
   /// [peerAddress] The IPv4 or IPv6 address used to connect this BGP session.
   /// [peerAsn] The autonomous system number expected from the remote end of the BGP session.
   /// [peerPort] The port used to connect this BGP session.
-  ServiceLoadBalancerBgpPeer({
+  const ServiceLoadBalancerBgpPeer({
     this.bfdEnabled,
     this.bgpMultiHop,
     this.holdTime,

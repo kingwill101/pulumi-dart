@@ -22,7 +22,7 @@ class ServiceGroupArgs {
   /// [properties] ServiceGroup creation request body parameters.
   /// [serviceGroupName] ServiceGroup Name.
   /// [tags] The serviceGroup tags.
-  ServiceGroupArgs({
+  const ServiceGroupArgs({
     this.kind,
     this.properties,
     this.serviceGroupName,

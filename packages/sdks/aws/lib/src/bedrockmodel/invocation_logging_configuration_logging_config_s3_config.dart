@@ -11,7 +11,7 @@ class InvocationLoggingConfigurationLoggingConfigS3Config {
   /// Creates a new [InvocationLoggingConfigurationLoggingConfigS3Config].
   /// [bucketName] S3 bucket name.
   /// [keyPrefix] S3 prefix.
-  InvocationLoggingConfigurationLoggingConfigS3Config({
+  const InvocationLoggingConfigurationLoggingConfigS3Config({
     required this.bucketName,
     this.keyPrefix,
   });

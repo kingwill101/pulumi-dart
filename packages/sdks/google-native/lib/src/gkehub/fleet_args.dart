@@ -23,7 +23,7 @@ class FleetArgs {
   /// [labels] Optional. Labels for this Fleet.
   /// [location] Optional.
   /// [project] Optional.
-  FleetArgs({
+  const FleetArgs({
     this.defaultClusterConfig,
     this.displayName,
     this.labels,

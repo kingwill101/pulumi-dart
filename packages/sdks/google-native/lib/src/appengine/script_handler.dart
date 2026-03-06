@@ -9,7 +9,7 @@ class ScriptHandler {
 
   /// Creates a new [ScriptHandler].
   /// [scriptPath] Path to the script from the application root directory.
-  ScriptHandler({
+  const ScriptHandler({
     this.scriptPath,
   });
 

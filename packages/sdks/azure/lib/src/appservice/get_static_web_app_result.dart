@@ -57,7 +57,7 @@ class GetStaticWebAppResult {
   /// [skuSize] The SKU size of the Static Web App.
   /// [skuTier] The SKU tier of the Static Web App.
   /// [tags] The mapping of tags assigned to the resource.
-  GetStaticWebAppResult({
+  const GetStaticWebAppResult({
     required this.apiKey,
     required this.appSettings,
     required this.basicAuths,

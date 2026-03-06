@@ -23,7 +23,7 @@ class GenaiAgentRouteArgs {
   /// [parentAgentUuid] The UUID of the parent agent.
   /// [rollback] Optional.
   /// [routeName] A name for the route.
-  GenaiAgentRouteArgs({
+  const GenaiAgentRouteArgs({
     required this.childAgentUuid,
     this.ifCase,
     required this.parentAgentUuid,

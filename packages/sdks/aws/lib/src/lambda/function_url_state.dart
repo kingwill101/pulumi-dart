@@ -36,7 +36,7 @@ class FunctionUrlState {
   /// [qualifier] Alias name or `$LATEST`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [urlId] Generated ID for the endpoint.
-  FunctionUrlState({
+  const FunctionUrlState({
     this.authorizationType,
     this.cors,
     this.functionArn,

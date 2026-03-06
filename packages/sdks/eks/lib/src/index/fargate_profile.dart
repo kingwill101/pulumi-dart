@@ -16,7 +16,7 @@ class FargateProfile {
   /// [podExecutionRoleArn] Specify a custom role to use for executing pods in Fargate. Defaults to creating a new role with the `arn:aws:iam::aws:policy/AmazonEKSFargatePodExecutionRolePolicy` policy attached.
   /// [selectors] Specify the namespace and label selectors to use for launching pods into Fargate.
   /// [subnetIds] Specify the subnets in which to execute Fargate tasks for pods. Defaults to the private subnets associated with the cluster.
-  FargateProfile({
+  const FargateProfile({
     this.podExecutionRoleArn,
     this.selectors,
     this.subnetIds,

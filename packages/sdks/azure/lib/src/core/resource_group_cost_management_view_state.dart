@@ -39,7 +39,7 @@ class ResourceGroupCostManagementViewState {
   /// [reportType] The type of the report. The only possible value is `Usage`.
   /// [resourceGroupId] The ID of the Resource Group this View is scoped to. Changing this forces a new Cost Management View for a Resource Group to be created.
   /// [timeframe] The time frame for pulling data for the report. Possible values are `Custom`, `MonthToDate`, `WeekToDate` and `YearToDate`.
-  ResourceGroupCostManagementViewState({
+  const ResourceGroupCostManagementViewState({
     this.accumulated,
     this.chartType,
     this.dataset,

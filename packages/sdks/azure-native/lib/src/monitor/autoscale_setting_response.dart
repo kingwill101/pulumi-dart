@@ -30,7 +30,7 @@ class AutoscaleSettingResponse {
   /// [profiles] the collection of automatic scaling profiles that specify different scaling parameters for different time periods. A maximum of 20 profiles can be specified.
   /// [targetResourceLocation] the location of the resource that the autoscale setting should be added to.
   /// [targetResourceUri] the resource identifier of the resource that the autoscale setting should be added to.
-  AutoscaleSettingResponse({
+  const AutoscaleSettingResponse({
     this.enabled,
     this.name,
     this.notifications,

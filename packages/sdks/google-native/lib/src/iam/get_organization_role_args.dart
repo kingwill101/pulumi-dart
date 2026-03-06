@@ -13,7 +13,7 @@ class GetOrganizationRoleArgs {
   /// Creates a new [GetOrganizationRoleArgs].
   /// [organizationId] Required.
   /// [roleId] Required.
-  GetOrganizationRoleArgs({
+  const GetOrganizationRoleArgs({
     required this.organizationId,
     required this.roleId,
   });

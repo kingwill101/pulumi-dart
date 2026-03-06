@@ -35,7 +35,7 @@ class GetInstanceEnginesResult {
   /// [multiZone] Optional.
   /// [outputFile] Optional.
   /// [zoneId] Optional.
-  GetInstanceEnginesResult({
+  const GetInstanceEnginesResult({
     this.category,
     this.dbInstanceStorageType,
     this.engine,

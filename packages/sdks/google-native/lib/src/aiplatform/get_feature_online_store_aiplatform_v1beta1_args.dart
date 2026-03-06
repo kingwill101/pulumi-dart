@@ -15,7 +15,7 @@ class GetFeatureOnlineStoreAiplatformV1beta1Args {
   /// [featureOnlineStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureOnlineStoreAiplatformV1beta1Args({
+  const GetFeatureOnlineStoreAiplatformV1beta1Args({
     required this.featureOnlineStoreId,
     required this.location,
     this.project,

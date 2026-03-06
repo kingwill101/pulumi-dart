@@ -11,7 +11,7 @@ class ResourceSetResourceDnsTargetResourceTargetResourceR53Resource {
   /// Creates a new [ResourceSetResourceDnsTargetResourceTargetResourceR53Resource].
   /// [domainName] Domain name that is targeted.
   /// [recordSetId] Resource record set ID that is targeted.
-  ResourceSetResourceDnsTargetResourceTargetResourceR53Resource({
+  const ResourceSetResourceDnsTargetResourceTargetResourceR53Resource({
     this.domainName,
     this.recordSetId,
   });

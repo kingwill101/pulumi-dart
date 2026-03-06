@@ -11,7 +11,7 @@ class KxEnvironmentCustomDnsConfiguration {
   /// Creates a new [KxEnvironmentCustomDnsConfiguration].
   /// [customDnsServerIp] IP address of the DNS server.
   /// [customDnsServerName] Name of the DNS server.
-  KxEnvironmentCustomDnsConfiguration({
+  const KxEnvironmentCustomDnsConfiguration({
     required this.customDnsServerIp,
     required this.customDnsServerName,
   });

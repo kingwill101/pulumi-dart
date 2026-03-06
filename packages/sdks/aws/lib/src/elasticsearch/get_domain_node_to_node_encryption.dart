@@ -8,7 +8,7 @@ class GetDomainNodeToNodeEncryption {
 
   /// Creates a new [GetDomainNodeToNodeEncryption].
   /// [enabled] Whether node to node encryption is enabled.
-  GetDomainNodeToNodeEncryption({
+  const GetDomainNodeToNodeEncryption({
     required this.enabled,
   });
 

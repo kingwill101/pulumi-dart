@@ -13,7 +13,7 @@ class AppAuthorizationCredential {
   /// Creates a new [AppAuthorizationCredential].
   /// [apiKeyCredentials] Contains API key credential information.
   /// [oauth2Credential] Contains OAuth2 client credential information.
-  AppAuthorizationCredential({
+  const AppAuthorizationCredential({
     this.apiKeyCredentials,
     this.oauth2Credential,
   });

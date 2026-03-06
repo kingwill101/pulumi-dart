@@ -30,7 +30,7 @@ class VirtualWanState {
   /// [resourceGroupName] The name of the resource group in which to create the Virtual WAN. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Virtual WAN.
   /// [type] Specifies the Virtual WAN type. Possible Values include: `Basic` and `Standard`. Defaults to `Standard`.
-  VirtualWanState({
+  const VirtualWanState({
     this.allowBranchToBranchTraffic,
     this.disableVpnEncryption,
     this.location,

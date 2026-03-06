@@ -9,7 +9,7 @@ class Requests {
 
   /// Creates a new [Requests].
   /// [storage] Requested capacity of the pool in GiB.
-  Requests({
+  const Requests({
     this.storage,
   });
 

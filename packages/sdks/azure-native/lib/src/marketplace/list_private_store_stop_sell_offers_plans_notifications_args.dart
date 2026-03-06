@@ -14,7 +14,7 @@ class ListPrivateStoreStopSellOffersPlansNotificationsArgs {
   /// Creates a new [ListPrivateStoreStopSellOffersPlansNotificationsArgs].
   /// [privateStoreId] The store ID - must use the tenant ID
   /// [subscriptions] Optional.
-  ListPrivateStoreStopSellOffersPlansNotificationsArgs({
+  const ListPrivateStoreStopSellOffersPlansNotificationsArgs({
     required this.privateStoreId,
     this.subscriptions,
   });

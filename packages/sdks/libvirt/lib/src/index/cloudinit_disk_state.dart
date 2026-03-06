@@ -24,7 +24,7 @@ class CloudinitDiskState {
   /// [path] Full path to the generated ISO file
   /// [size] Size of the ISO file in bytes
   /// [userData] Cloud-init user-data content (usually YAML)
-  CloudinitDiskState({
+  const CloudinitDiskState({
     this.metaData,
     this.name,
     this.networkConfig,

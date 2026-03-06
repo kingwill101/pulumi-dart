@@ -49,7 +49,7 @@ class AssetIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  AssetIamBindingState({
+  const AssetIamBindingState({
     this.asset,
     this.condition,
     this.dataplexZone,

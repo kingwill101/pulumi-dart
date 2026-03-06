@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageTextResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3ResponseMessageTextResponse].
   /// [allowPlaybackInterruption] Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   /// [text] A collection of text responses.
-  GoogleCloudDialogflowCxV3ResponseMessageTextResponse({
+  const GoogleCloudDialogflowCxV3ResponseMessageTextResponse({
     required this.allowPlaybackInterruption,
     required this.text,
   });

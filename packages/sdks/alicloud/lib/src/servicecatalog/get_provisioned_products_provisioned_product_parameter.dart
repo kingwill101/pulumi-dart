@@ -9,7 +9,7 @@ class GetProvisionedProductsProvisionedProductParameter {
   /// Creates a new [GetProvisionedProductsProvisionedProductParameter].
   /// [parameterKey] Required.
   /// [parameterValue] Required.
-  GetProvisionedProductsProvisionedProductParameter({
+  const GetProvisionedProductsProvisionedProductParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

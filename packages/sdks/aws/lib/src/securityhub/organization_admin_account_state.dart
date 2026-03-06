@@ -12,7 +12,7 @@ class OrganizationAdminAccountState {
   /// Creates a new [OrganizationAdminAccountState].
   /// [adminAccountId] The AWS account identifier of the account to designate as the Security Hub administrator account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationAdminAccountState({
+  const OrganizationAdminAccountState({
     this.adminAccountId,
     this.region,
   });

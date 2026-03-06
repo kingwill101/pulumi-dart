@@ -12,7 +12,7 @@ class TokenRequestStatus {
   /// Creates a new [TokenRequestStatus].
   /// [expirationTimestamp] ExpirationTimestamp is the time of expiration of the returned token.
   /// [token] Token is the opaque bearer token.
-  TokenRequestStatus({
+  const TokenRequestStatus({
     required this.expirationTimestamp,
     required this.token,
   });

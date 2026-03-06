@@ -12,7 +12,7 @@ class AcceleratorConfigResponseTpuV2alpha1 {
   /// Creates a new [AcceleratorConfigResponseTpuV2alpha1].
   /// [topology] Topology of TPU in chips.
   /// [type] Type of TPU.
-  AcceleratorConfigResponseTpuV2alpha1({
+  const AcceleratorConfigResponseTpuV2alpha1({
     required this.topology,
     required this.type,
   });

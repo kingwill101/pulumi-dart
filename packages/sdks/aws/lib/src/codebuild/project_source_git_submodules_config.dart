@@ -8,7 +8,7 @@ class ProjectSourceGitSubmodulesConfig {
 
   /// Creates a new [ProjectSourceGitSubmodulesConfig].
   /// [fetchSubmodules] Whether to fetch Git submodules for the AWS CodeBuild build project.
-  ProjectSourceGitSubmodulesConfig({
+  const ProjectSourceGitSubmodulesConfig({
     required this.fetchSubmodules,
   });
 

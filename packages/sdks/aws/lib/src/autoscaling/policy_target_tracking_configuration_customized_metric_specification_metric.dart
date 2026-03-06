@@ -21,7 +21,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric {
   /// [label] Human-readable label for this metric or expression.
   /// [metricStat] Structure that defines CloudWatch metric to be used in target tracking scaling policy. You must specify either `expression` or `metric_stat`, but not both.
   /// [returnData] Boolean that indicates whether to return the timestamps and raw data values of this metric, the default is true
-  PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric({
+  const PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetric({
     this.expression,
     required this.id,
     this.label,

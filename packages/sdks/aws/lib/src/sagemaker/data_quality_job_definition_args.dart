@@ -49,7 +49,7 @@ class DataQualityJobDefinitionArgs {
   /// [roleArn] The Amazon Resource Name (ARN) of an IAM role that Amazon SageMaker AI can assume to perform tasks on your behalf.
   /// [stoppingCondition] A time limit for how long the monitoring job is allowed to run before stopping. Fields are documented below.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DataQualityJobDefinitionArgs({
+  const DataQualityJobDefinitionArgs({
     required this.dataQualityAppSpecification,
     this.dataQualityBaselineConfig,
     required this.dataQualityJobInput,

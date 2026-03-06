@@ -20,7 +20,7 @@ class GetShardingNetworkPublicAddressesResult {
   /// [nodeId] Optional.
   /// [outputFile] Optional.
   /// [role] Optional.
-  GetShardingNetworkPublicAddressesResult({
+  const GetShardingNetworkPublicAddressesResult({
     required this.addresses,
     required this.dbInstanceId,
     required this.id,

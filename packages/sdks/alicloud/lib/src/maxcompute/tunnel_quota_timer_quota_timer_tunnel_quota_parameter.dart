@@ -13,7 +13,7 @@ class TunnelQuotaTimerQuotaTimerTunnelQuotaParameter {
   /// Creates a new [TunnelQuotaTimerQuotaTimerTunnelQuotaParameter].
   /// [elasticReservedSlotNum] The number of elastic reserved concurrency (Slot).
   /// [slotNum] The number of reserved concurrency (Slot).
-  TunnelQuotaTimerQuotaTimerTunnelQuotaParameter({
+  const TunnelQuotaTimerQuotaTimerTunnelQuotaParameter({
     required this.elasticReservedSlotNum,
     required this.slotNum,
   });

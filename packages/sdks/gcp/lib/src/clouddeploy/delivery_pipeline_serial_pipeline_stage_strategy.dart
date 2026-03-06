@@ -13,7 +13,7 @@ class DeliveryPipelineSerialPipelineStageStrategy {
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategy].
   /// [canary] Canary deployment strategy provides progressive percentage based deployments to a Target.
   /// [standard] Standard deployment strategy executes a single deploy and allows verifying the deployment.
-  DeliveryPipelineSerialPipelineStageStrategy({
+  const DeliveryPipelineSerialPipelineStageStrategy({
     this.canary,
     this.standard,
   });

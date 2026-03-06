@@ -11,7 +11,7 @@ class InstanceGroupManagerStandbyPolicyComputeBeta {
   /// Creates a new [InstanceGroupManagerStandbyPolicyComputeBeta].
   /// [initialDelaySec] Optional.
   /// [mode] Defines behaviour of using instances from standby pool to resize MIG.
-  InstanceGroupManagerStandbyPolicyComputeBeta({
+  const InstanceGroupManagerStandbyPolicyComputeBeta({
     this.initialDelaySec,
     this.mode,
   });

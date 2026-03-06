@@ -15,7 +15,7 @@ class GetKeyRingArgs {
   /// [keyRingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetKeyRingArgs({
+  const GetKeyRingArgs({
     required this.keyRingId,
     required this.location,
     this.project,

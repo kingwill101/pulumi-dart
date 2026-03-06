@@ -22,7 +22,7 @@ class GetServiceResult {
   /// [reverseDnsPrefix] Required.
   /// [serviceId] Required.
   /// [supported] Whether the service is supported in the region's partition. New services may not be listed immediately as supported.
-  GetServiceResult({
+  const GetServiceResult({
     required this.dnsName,
     required this.id,
     required this.partition,

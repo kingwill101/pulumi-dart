@@ -37,7 +37,7 @@ class AzureSqlReferenceInputDataSourceResponse {
   /// [table] This element is associated with the datasource element. The name of the table in the Azure SQL database..
   /// [type] Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
   /// [user] This element is associated with the datasource element. This is the user name that will be used to connect to the SQL Database instance.
-  AzureSqlReferenceInputDataSourceResponse({
+  const AzureSqlReferenceInputDataSourceResponse({
     this.database,
     this.deltaSnapshotQuery,
     this.fullSnapshotQuery,

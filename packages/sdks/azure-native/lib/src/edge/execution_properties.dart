@@ -12,7 +12,7 @@ class ExecutionProperties {
   /// Creates a new [ExecutionProperties].
   /// [specification] Execution specification
   /// [workflowVersionId] Workflow version of execution
-  ExecutionProperties({
+  const ExecutionProperties({
     this.specification,
     required this.workflowVersionId,
   });

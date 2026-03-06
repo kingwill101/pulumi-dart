@@ -21,7 +21,7 @@ class AiEndpointDeployedModelPrivateEndpoint {
   /// [healthHttpUri] (Output)
   /// [predictHttpUri] (Output)
   /// [serviceAttachment] (Output)
-  AiEndpointDeployedModelPrivateEndpoint({
+  const AiEndpointDeployedModelPrivateEndpoint({
     this.explainHttpUri,
     this.healthHttpUri,
     this.predictHttpUri,

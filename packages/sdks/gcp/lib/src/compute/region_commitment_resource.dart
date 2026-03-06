@@ -18,7 +18,7 @@ class RegionCommitmentResource {
   /// [acceleratorType] Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
   /// [amount] The amount of the resource purchased (in a type-dependent unit,
   /// [type] Type of resource for which this commitment applies.
-  RegionCommitmentResource({
+  const RegionCommitmentResource({
     this.acceleratorType,
     this.amount,
     this.type,

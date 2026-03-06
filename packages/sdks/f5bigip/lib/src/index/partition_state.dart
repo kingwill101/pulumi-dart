@@ -15,7 +15,7 @@ class PartitionState {
   /// [description] Description of the partition.
   /// [name] Name of the partition.
   /// [routeDomainId] Route domain id of the partition.
-  PartitionState({
+  const PartitionState({
     this.description,
     this.name,
     this.routeDomainId,

@@ -13,7 +13,7 @@ class InterconnectGroupConfigured {
 
   /// Creates a new [InterconnectGroupConfigured].
   /// [topologyCapabilities] (Output)
-  InterconnectGroupConfigured({
+  const InterconnectGroupConfigured({
     this.topologyCapabilities,
   });
 

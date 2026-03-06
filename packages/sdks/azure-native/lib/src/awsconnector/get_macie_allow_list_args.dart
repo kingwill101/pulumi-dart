@@ -15,7 +15,7 @@ class GetMacieAllowListArgs {
   /// Creates a new [GetMacieAllowListArgs].
   /// [name] Name of MacieAllowList
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMacieAllowListArgs({
+  const GetMacieAllowListArgs({
     required this.name,
     required this.resourceGroupName,
   });

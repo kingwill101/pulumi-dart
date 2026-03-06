@@ -21,7 +21,7 @@ class ClusterPeeringState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
   /// [witnessRegion] Witness region for a multi-region cluster.
-  ClusterPeeringState({
+  const ClusterPeeringState({
     this.clusters,
     this.identifier,
     this.region,

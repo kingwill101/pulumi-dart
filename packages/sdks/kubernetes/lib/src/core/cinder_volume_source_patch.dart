@@ -19,7 +19,7 @@ class CinderVolumeSourcePatch {
   /// [readOnly] readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
   /// [secretRef] secretRef is optional: points to a secret object containing parameters used to connect to OpenStack.
   /// [volumeID] volumeID used to identify the volume in cinder. More info: https://examples.k8s.io/mysql-cinder-pd/README.md
-  CinderVolumeSourcePatch({
+  const CinderVolumeSourcePatch({
     this.fsType,
     this.readOnly,
     this.secretRef,

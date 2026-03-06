@@ -73,7 +73,7 @@ class GoogleCloudDocumentaiV1DocumentPageResponse {
   /// [tokens] A list of visually detected tokens on the page.
   /// [transforms] Transformation matrices that were applied to the original document image to produce Page.image.
   /// [visualElements] A list of detected non-text visual elements e.g. checkbox, signature etc. on the page.
-  GoogleCloudDocumentaiV1DocumentPageResponse({
+  const GoogleCloudDocumentaiV1DocumentPageResponse({
     required this.blocks,
     required this.detectedBarcodes,
     required this.detectedLanguages,

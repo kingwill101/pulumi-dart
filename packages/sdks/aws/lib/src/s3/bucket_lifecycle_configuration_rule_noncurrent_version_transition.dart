@@ -14,7 +14,7 @@ class BucketLifecycleConfigurationRuleNoncurrentVersionTransition {
   /// [newerNoncurrentVersions] Number of noncurrent versions Amazon S3 will retain. Must be a non-zero positive integer.
   /// [noncurrentDays] Number of days an object is noncurrent before Amazon S3 can perform the associated action.
   /// [storageClass] Class of storage used to store the object. Valid Values: `GLACIER`, `STANDARD_IA`, `ONEZONE_IA`, `INTELLIGENT_TIERING`, `DEEP_ARCHIVE`, `GLACIER_IR`.
-  BucketLifecycleConfigurationRuleNoncurrentVersionTransition({
+  const BucketLifecycleConfigurationRuleNoncurrentVersionTransition({
     this.newerNoncurrentVersions,
     required this.noncurrentDays,
     required this.storageClass,

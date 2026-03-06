@@ -9,7 +9,7 @@ class ScraperDestination {
 
   /// Creates a new [ScraperDestination].
   /// [amp] Configuration block for an Amazon Managed Prometheus workspace destination. See `amp`.
-  ScraperDestination({
+  const ScraperDestination({
     this.amp,
   });
 

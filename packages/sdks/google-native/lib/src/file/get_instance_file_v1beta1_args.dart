@@ -15,7 +15,7 @@ class GetInstanceFileV1beta1Args {
   /// [instanceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInstanceFileV1beta1Args({
+  const GetInstanceFileV1beta1Args({
     required this.instanceId,
     required this.location,
     this.project,

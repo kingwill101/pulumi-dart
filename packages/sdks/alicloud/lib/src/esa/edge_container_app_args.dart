@@ -61,7 +61,7 @@ class EdgeContainerAppArgs {
   /// [remarks] The backend port, which is also the service port of the application. Valid values: 1 to 65535.
   /// [servicePort] The name of the application. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name must be 6 to 128 characters in length.
   /// [targetPort] The server port. Valid values: 1 to 65535.
-  EdgeContainerAppArgs({
+  const EdgeContainerAppArgs({
     required this.edgeContainerAppName,
     this.healthCheckFailTimes,
     this.healthCheckHost,

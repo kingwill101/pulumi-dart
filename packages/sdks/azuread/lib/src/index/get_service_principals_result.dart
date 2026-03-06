@@ -26,7 +26,7 @@ class GetServicePrincipalsResult {
   /// [objectIds] The object IDs of the service principals.
   /// [returnAll] Optional.
   /// [servicePrincipals] A list of service principals. Each `service_principal` object provides the attributes documented below.
-  GetServicePrincipalsResult({
+  const GetServicePrincipalsResult({
     required this.clientIds,
     required this.displayNames,
     required this.id,

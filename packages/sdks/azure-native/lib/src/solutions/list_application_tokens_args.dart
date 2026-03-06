@@ -21,7 +21,7 @@ class ListApplicationTokensArgs {
   /// [authorizationAudience] The authorization audience.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userAssignedIdentities] The user assigned identities.
-  ListApplicationTokensArgs({
+  const ListApplicationTokensArgs({
     required this.applicationName,
     this.authorizationAudience,
     required this.resourceGroupName,

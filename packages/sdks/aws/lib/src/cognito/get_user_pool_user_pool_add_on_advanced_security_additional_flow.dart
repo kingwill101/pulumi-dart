@@ -8,7 +8,7 @@ class GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow {
 
   /// Creates a new [GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow].
   /// [customAuthMode] Mode of threat protection operation in custom authentication.
-  GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow({
+  const GetUserPoolUserPoolAddOnAdvancedSecurityAdditionalFlow({
     required this.customAuthMode,
   });
 

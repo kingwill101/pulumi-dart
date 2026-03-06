@@ -27,7 +27,7 @@ class ExperimentPlanArgs {
   /// [resourceId] The ID of the resource.
   /// [tags] The tag of the resource.
   /// [templateId] The ID of the template.
-  ExperimentPlanArgs({
+  const ExperimentPlanArgs({
     this.externalParams,
     this.planName,
     this.resourceGroupId,

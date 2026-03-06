@@ -11,7 +11,7 @@ class InterfacePublicIpv6AssignedRange {
   /// Creates a new [InterfacePublicIpv6AssignedRange].
   /// [range] The IPv6 network range in CIDR notation.
   /// [routeTarget] The public IPv6 address that the range is routed to.
-  InterfacePublicIpv6AssignedRange({
+  const InterfacePublicIpv6AssignedRange({
     this.range,
     this.routeTarget,
   });

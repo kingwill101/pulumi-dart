@@ -18,7 +18,7 @@ class VirtualHubRouteV2 {
   /// [destinations] List of all destinations.
   /// [nextHopType] The type of next hops.
   /// [nextHops] NextHops ip address.
-  VirtualHubRouteV2({
+  const VirtualHubRouteV2({
     this.destinationType,
     this.destinations,
     this.nextHopType,

@@ -8,7 +8,7 @@ class ListComputeKeysResult {
 
   /// Creates a new [ListComputeKeysResult].
   /// [computeType] The type of compute
-  ListComputeKeysResult({
+  const ListComputeKeysResult({
     required this.computeType,
   });
 

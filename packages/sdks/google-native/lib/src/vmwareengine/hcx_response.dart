@@ -18,7 +18,7 @@ class HcxResponse {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] The state of the appliance.
   /// [version] Version of the appliance.
-  HcxResponse({
+  const HcxResponse({
     required this.fqdn,
     required this.internalIp,
     required this.state,

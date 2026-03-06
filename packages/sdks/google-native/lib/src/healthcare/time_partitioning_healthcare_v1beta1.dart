@@ -13,7 +13,7 @@ class TimePartitioningHealthcareV1beta1 {
   /// Creates a new [TimePartitioningHealthcareV1beta1].
   /// [expirationMs] Number of milliseconds for which to keep the storage for a partition.
   /// [type] Type of partitioning.
-  TimePartitioningHealthcareV1beta1({
+  const TimePartitioningHealthcareV1beta1({
     this.expirationMs,
     this.type,
   });

@@ -11,7 +11,7 @@ class RestorePlanIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RestorePlanIamBindingCondition({
+  const RestorePlanIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

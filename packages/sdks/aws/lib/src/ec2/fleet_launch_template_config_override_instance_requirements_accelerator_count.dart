@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount {
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount].
   /// [max] Maximum. Set to `0` to exclude instance types with accelerators.
   /// [min] Minimum.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorCount({
     this.max,
     this.min,
   });

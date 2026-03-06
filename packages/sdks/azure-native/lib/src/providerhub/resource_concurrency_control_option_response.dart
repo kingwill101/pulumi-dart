@@ -8,7 +8,7 @@ class ResourceConcurrencyControlOptionResponse {
 
   /// Creates a new [ResourceConcurrencyControlOptionResponse].
   /// [policy] The policy.
-  ResourceConcurrencyControlOptionResponse({
+  const ResourceConcurrencyControlOptionResponse({
     this.policy,
   });
 

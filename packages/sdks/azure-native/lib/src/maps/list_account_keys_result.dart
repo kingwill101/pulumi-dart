@@ -17,7 +17,7 @@ class ListAccountKeysResult {
   /// [primaryKeyLastUpdated] The last updated date and time of the primary key.
   /// [secondaryKey] The secondary key for accessing the Maps REST APIs.
   /// [secondaryKeyLastUpdated] The last updated date and time of the secondary key.
-  ListAccountKeysResult({
+  const ListAccountKeysResult({
     required this.primaryKey,
     required this.primaryKeyLastUpdated,
     required this.secondaryKey,

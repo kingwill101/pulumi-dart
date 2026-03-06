@@ -22,7 +22,7 @@ class HciRemoteSupportJobProperties {
   /// [expirationTimestamp] Remote support expiration timestamp.
   /// [jobType] Job Type supported.
   /// [type] Remote support type.
-  HciRemoteSupportJobProperties({
+  const HciRemoteSupportJobProperties({
     required this.accessLevel,
     this.deploymentMode,
     required this.expirationTimestamp,

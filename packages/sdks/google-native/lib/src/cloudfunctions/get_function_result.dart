@@ -110,7 +110,7 @@ class GetFunctionResult {
   /// [versionId] The version identifier of the Cloud Function. Each deployment attempt results in a new version of a function being created.
   /// [vpcConnector] The VPC Network Connector that this cloud function can connect to. It can be either the fully-qualified URI, or the short name of the network connector resource. The format of this field is `projects/*/locations/*/connectors/*` This field is mutually exclusive with `network` field and will eventually replace it. See [the VPC documentation](https://cloud.google.com/compute/docs/vpc) for more information on connecting Cloud projects.
   /// [vpcConnectorEgressSettings] The egress settings for the connector, controlling what traffic is diverted through it.
-  GetFunctionResult({
+  const GetFunctionResult({
     required this.availableMemoryMb,
     required this.buildEnvironmentVariables,
     required this.buildId,

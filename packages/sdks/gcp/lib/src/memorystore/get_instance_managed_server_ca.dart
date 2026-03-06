@@ -9,7 +9,7 @@ class GetInstanceManagedServerCa {
 
   /// Creates a new [GetInstanceManagedServerCa].
   /// [caCerts] The PEM encoded CA certificate chains for managed server authentication
-  GetInstanceManagedServerCa({
+  const GetInstanceManagedServerCa({
     required this.caCerts,
   });
 

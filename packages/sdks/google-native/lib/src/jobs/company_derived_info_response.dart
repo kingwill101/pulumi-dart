@@ -10,7 +10,7 @@ class CompanyDerivedInfoResponse {
 
   /// Creates a new [CompanyDerivedInfoResponse].
   /// [headquartersLocation] A structured headquarters location of the company, resolved from Company.hq_location if provided.
-  CompanyDerivedInfoResponse({
+  const CompanyDerivedInfoResponse({
     required this.headquartersLocation,
   });
 

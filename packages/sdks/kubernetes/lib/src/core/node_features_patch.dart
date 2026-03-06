@@ -9,7 +9,7 @@ class NodeFeaturesPatch {
 
   /// Creates a new [NodeFeaturesPatch].
   /// [supplementalGroupsPolicy] SupplementalGroupsPolicy is set to true if the runtime supports SupplementalGroupsPolicy and ContainerUser.
-  NodeFeaturesPatch({
+  const NodeFeaturesPatch({
     this.supplementalGroupsPolicy,
   });
 

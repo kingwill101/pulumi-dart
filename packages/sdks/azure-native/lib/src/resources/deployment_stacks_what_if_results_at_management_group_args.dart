@@ -25,7 +25,7 @@ class DeploymentStacksWhatIfResultsAtManagementGroupArgs {
   /// [managementGroupId] The name of the management group. The name is case insensitive.
   /// [properties] The resource-specific properties for this resource.
   /// [tags] Resource tags.
-  DeploymentStacksWhatIfResultsAtManagementGroupArgs({
+  const DeploymentStacksWhatIfResultsAtManagementGroupArgs({
     this.deploymentStacksWhatIfResultName,
     this.location,
     required this.managementGroupId,

@@ -49,7 +49,7 @@ class ShareArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareStatus] Current status of the share.
   /// [userAccessRights] Mapping of users and corresponding access rights on the share (required for SMB protocol).
-  ShareArgs({
+  const ShareArgs({
     required this.accessProtocol,
     this.azureContainerInfo,
     this.clientAccessRights,

@@ -8,7 +8,7 @@ class StreamProcessorOutputKinesisDataStream {
 
   /// Creates a new [StreamProcessorOutputKinesisDataStream].
   /// [arn] ARN of the output Amazon Kinesis Data Streams stream.
-  StreamProcessorOutputKinesisDataStream({
+  const StreamProcessorOutputKinesisDataStream({
     this.arn,
   });
 

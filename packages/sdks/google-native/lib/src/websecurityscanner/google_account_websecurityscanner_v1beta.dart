@@ -12,7 +12,7 @@ class GoogleAccountWebsecurityscannerV1beta {
   /// Creates a new [GoogleAccountWebsecurityscannerV1beta].
   /// [password] Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
   /// [username] The user name of the Google account.
-  GoogleAccountWebsecurityscannerV1beta({
+  const GoogleAccountWebsecurityscannerV1beta({
     required this.password,
     required this.username,
   });

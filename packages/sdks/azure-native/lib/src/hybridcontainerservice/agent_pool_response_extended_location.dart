@@ -11,7 +11,7 @@ class AgentPoolResponseExtendedLocation {
   /// Creates a new [AgentPoolResponseExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  AgentPoolResponseExtendedLocation({
+  const AgentPoolResponseExtendedLocation({
     this.name,
     this.type,
   });

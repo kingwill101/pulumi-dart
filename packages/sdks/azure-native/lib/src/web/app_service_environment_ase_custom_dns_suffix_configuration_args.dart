@@ -27,7 +27,7 @@ class AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the App Service Environment.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs({
+  const AppServiceEnvironmentAseCustomDnsSuffixConfigurationArgs({
     this.certificateUrl,
     this.dnsSuffix,
     this.keyVaultReferenceIdentity,

@@ -26,7 +26,7 @@ class GetDataSetLogicalTableMapDataTransform {
   /// [renameColumnOperations] Required.
   /// [tagColumnOperations] Required.
   /// [untagColumnOperations] Required.
-  GetDataSetLogicalTableMapDataTransform({
+  const GetDataSetLogicalTableMapDataTransform({
     required this.castColumnTypeOperations,
     required this.createColumnsOperations,
     required this.filterOperations,

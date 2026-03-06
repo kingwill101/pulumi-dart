@@ -40,7 +40,7 @@ class ServiceConnectionPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [pscConfig] Configuration used for Private Service Connect connections. Used when Infrastructure is PSC.
   /// [serviceClass] The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
-  ServiceConnectionPolicyArgs({
+  const ServiceConnectionPolicyArgs({
     this.description,
     this.labels,
     required this.location,

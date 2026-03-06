@@ -16,7 +16,7 @@ class ArtifactManifestPropertiesFormatResponse {
   /// [artifactManifestState] The artifact manifest state.
   /// [artifacts] The artifacts list.
   /// [provisioningState] The provisioning state of the ArtifactManifest resource.
-  ArtifactManifestPropertiesFormatResponse({
+  const ArtifactManifestPropertiesFormatResponse({
     required this.artifactManifestState,
     this.artifacts,
     required this.provisioningState,

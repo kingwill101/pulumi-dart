@@ -12,7 +12,7 @@ class KmsWrappedCryptoKey {
   /// Creates a new [KmsWrappedCryptoKey].
   /// [cryptoKey] The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
   /// [wrappedKey] The wrapped data crypto key.
-  KmsWrappedCryptoKey({
+  const KmsWrappedCryptoKey({
     required this.cryptoKey,
     required this.wrappedKey,
   });

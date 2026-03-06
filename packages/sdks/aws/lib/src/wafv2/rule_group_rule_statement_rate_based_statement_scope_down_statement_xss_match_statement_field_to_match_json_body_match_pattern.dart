@@ -10,7 +10,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatemen
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementXssMatchStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

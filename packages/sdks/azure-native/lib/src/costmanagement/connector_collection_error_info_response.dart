@@ -18,7 +18,7 @@ class ConnectorCollectionErrorInfoResponse {
   /// [errorInnerMessage] External Provider error message
   /// [errorMessage] Detailed error message
   /// [errorStartTime] Time the error started occurring (Last time error occurred in lastRun)
-  ConnectorCollectionErrorInfoResponse({
+  const ConnectorCollectionErrorInfoResponse({
     required this.errorCode,
     this.errorInnerMessage,
     required this.errorMessage,

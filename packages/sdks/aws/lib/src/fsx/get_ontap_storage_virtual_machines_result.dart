@@ -17,7 +17,7 @@ class GetOntapStorageVirtualMachinesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] List of all SVM IDs found.
   /// [region] Required.
-  GetOntapStorageVirtualMachinesResult({
+  const GetOntapStorageVirtualMachinesResult({
     this.filters,
     required this.id,
     required this.ids,

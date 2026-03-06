@@ -30,7 +30,7 @@ class ServiceTypeHealthPolicy {
   /// [maxPercentUnhealthyPartitionsPerService] The maximum allowed percentage of unhealthy partitions per service.
   /// [maxPercentUnhealthyReplicasPerPartition] The maximum allowed percentage of unhealthy replicas per partition.
   /// [maxPercentUnhealthyServices] The maximum allowed percentage of unhealthy services.
-  ServiceTypeHealthPolicy({
+  const ServiceTypeHealthPolicy({
     required this.maxPercentUnhealthyPartitionsPerService,
     required this.maxPercentUnhealthyReplicasPerPartition,
     required this.maxPercentUnhealthyServices,

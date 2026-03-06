@@ -13,7 +13,7 @@ class PolicyControllerMembershipSpecResponse {
   /// Creates a new [PolicyControllerMembershipSpecResponse].
   /// [policyControllerHubConfig] Policy Controller configuration for the cluster.
   /// [version] Version of Policy Controller installed.
-  PolicyControllerMembershipSpecResponse({
+  const PolicyControllerMembershipSpecResponse({
     required this.policyControllerHubConfig,
     required this.version,
   });

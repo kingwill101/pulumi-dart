@@ -18,7 +18,7 @@ class NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule {
   /// [prefixListId] Optional.
   /// [protocol] Optional.
   /// [securityGroupId] Optional.
-  NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule({
+  const NetworkInsightsAnalysisForwardPathComponentSecurityGroupRule({
     this.cidr,
     this.direction,
     this.portRanges,

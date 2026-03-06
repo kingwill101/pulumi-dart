@@ -24,7 +24,7 @@ class GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec {
   /// [minStepCount] Minimum number of steps for a trial to complete. Trials which do not have a measurement with step_count &gt; min_step_count won't be considered for early stopping. It's ok to set it to 0, and a trial can be early stopped at any stage. By default, min_step_count is set to be one-tenth of the max_step_count. When use_elapsed_duration is true, this field is set to the minimum elapsed seconds.
   /// [updateAllStoppedTrials] ConvexAutomatedStoppingSpec by default only updates the trials that needs to be early stopped using a newly trained auto-regressive model. When this flag is set to True, all stopped trials from the beginning are potentially updated in terms of their `final_measurement`. Also, note that the training logic of autoregressive models is different in this case. Enabling this option has shown better results and this may be the default option in the future.
   /// [useElapsedDuration] This bool determines whether or not the rule is applied based on elapsed_secs or steps. If use_elapsed_duration==false, the early stopping decision is made according to the predicted objective values according to the target steps. If use_elapsed_duration==true, elapsed_secs is used instead of steps. Also, in this case, the parameters max_num_steps and min_num_steps are overloaded to contain max_elapsed_seconds and min_elapsed_seconds.
-  GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec({
+  const GoogleCloudAiplatformV1beta1StudySpecConvexAutomatedStoppingSpec({
     this.learningRateParameterName,
     this.maxStepCount,
     this.minMeasurementCount,

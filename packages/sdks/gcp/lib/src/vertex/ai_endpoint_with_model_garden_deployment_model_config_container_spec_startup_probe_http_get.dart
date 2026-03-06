@@ -25,7 +25,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHtt
   /// [path] Path to access on the HTTP server.
   /// [port] Number of the port to access on the container.
   /// [scheme] Scheme to use for connecting to the host.
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeHttpGet({
     this.host,
     this.httpHeaders,
     this.path,

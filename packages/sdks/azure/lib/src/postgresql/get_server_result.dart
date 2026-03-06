@@ -35,7 +35,7 @@ class GetServerResult {
   /// [skuName] The SKU name of the PostgreSQL Server.
   /// [tags] A mapping of tags assigned to the resource.
   /// [version] The version of the PostgreSQL Server.
-  GetServerResult({
+  const GetServerResult({
     required this.administratorLogin,
     required this.fqdn,
     required this.id,

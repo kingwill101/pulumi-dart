@@ -15,7 +15,7 @@ class GetCustomDomainArgs {
   /// [customDomainId] Required.
   /// [project] Optional.
   /// [siteId] Required.
-  GetCustomDomainArgs({
+  const GetCustomDomainArgs({
     required this.customDomainId,
     this.project,
     required this.siteId,

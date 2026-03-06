@@ -12,7 +12,7 @@ class SnapshotSettingsStorageLocationLocation {
   /// Creates a new [SnapshotSettingsStorageLocationLocation].
   /// [location] The identifier for this object. Format specified above.
   /// [name] Name of the location. It should be one of the Cloud Storage buckets.
-  SnapshotSettingsStorageLocationLocation({
+  const SnapshotSettingsStorageLocationLocation({
     required this.location,
     required this.name,
   });

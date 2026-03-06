@@ -9,7 +9,7 @@ class GatewayDetails {
 
   /// Creates a new [GatewayDetails].
   /// [gatewayResourceId] Gateway resource to be associated with the server.
-  GatewayDetails({
+  const GatewayDetails({
     this.gatewayResourceId,
   });
 

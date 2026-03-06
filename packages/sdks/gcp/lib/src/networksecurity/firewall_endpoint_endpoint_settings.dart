@@ -8,7 +8,7 @@ class FirewallEndpointEndpointSettings {
 
   /// Creates a new [FirewallEndpointEndpointSettings].
   /// [jumboFramesEnabled] Indicates whether Jumbo Frames are enabled for the firewall endpoint.
-  FirewallEndpointEndpointSettings({
+  const FirewallEndpointEndpointSettings({
     this.jumboFramesEnabled,
   });
 

@@ -10,7 +10,7 @@ class SandboxConfig {
 
   /// Creates a new [SandboxConfig].
   /// [type] Type of the sandbox to use for the node.
-  SandboxConfig({
+  const SandboxConfig({
     this.type,
   });
 

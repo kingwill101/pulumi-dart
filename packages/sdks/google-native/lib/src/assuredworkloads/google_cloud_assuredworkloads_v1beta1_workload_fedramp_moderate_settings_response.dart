@@ -10,7 +10,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse 
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
-  GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse({
+  const GoogleCloudAssuredworkloadsV1beta1WorkloadFedrampModerateSettingsResponse({
     required this.kmsSettings,
   });
 

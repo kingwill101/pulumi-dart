@@ -35,7 +35,7 @@ class AppAuthorizationArgs {
   /// [tags] Optional.
   /// [tenants] Contains information about an application tenant, such as the application display name and identifier.
   /// [timeouts] Optional.
-  AppAuthorizationArgs({
+  const AppAuthorizationArgs({
     required this.app,
     required this.appBundleArn,
     required this.authType,

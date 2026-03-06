@@ -38,7 +38,7 @@ class TopicIAMMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [topic] Used to find the parent resource to bind the IAM policy to
-  TopicIAMMemberArgs({
+  const TopicIAMMemberArgs({
     this.condition,
     required this.member,
     this.project,

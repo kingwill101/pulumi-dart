@@ -9,7 +9,7 @@ class EntryBigqueryTableSpecViewSpec {
 
   /// Creates a new [EntryBigqueryTableSpecViewSpec].
   /// [viewQuery] (Output)
-  EntryBigqueryTableSpecViewSpec({
+  const EntryBigqueryTableSpecViewSpec({
     this.viewQuery,
   });
 

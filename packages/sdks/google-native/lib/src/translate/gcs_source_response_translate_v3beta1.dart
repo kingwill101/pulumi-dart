@@ -9,7 +9,7 @@ class GcsSourceResponseTranslateV3beta1 {
 
   /// Creates a new [GcsSourceResponseTranslateV3beta1].
   /// [inputUri] Source data URI. For example, `gs://my_bucket/my_object`.
-  GcsSourceResponseTranslateV3beta1({
+  const GcsSourceResponseTranslateV3beta1({
     required this.inputUri,
   });
 

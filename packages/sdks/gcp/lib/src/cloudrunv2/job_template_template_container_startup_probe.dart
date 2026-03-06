@@ -38,7 +38,7 @@ class JobTemplateTemplateContainerStartupProbe {
   /// [periodSeconds] How often (in seconds) to perform the probe.
   /// [tcpSocket] TcpSocket specifies an action involving a TCP port.
   /// [timeoutSeconds] Number of seconds after which the probe times out.
-  JobTemplateTemplateContainerStartupProbe({
+  const JobTemplateTemplateContainerStartupProbe({
     this.failureThreshold,
     this.grpc,
     this.httpGet,

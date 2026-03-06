@@ -15,7 +15,7 @@ class KeyVaultKeyResponseAttributes {
   /// [created] When the key was created.
   /// [enabled] Whether the key is enabled or not.
   /// [updated] When the key was updated.
-  KeyVaultKeyResponseAttributes({
+  const KeyVaultKeyResponseAttributes({
     this.created,
     this.enabled,
     this.updated,

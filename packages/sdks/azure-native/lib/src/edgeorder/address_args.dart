@@ -32,7 +32,7 @@ class AddressArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [shippingAddress] Shipping details for the address.
   /// [tags] Resource tags.
-  AddressArgs({
+  const AddressArgs({
     this.addressClassification,
     this.addressName,
     this.contactDetails,

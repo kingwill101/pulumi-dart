@@ -13,7 +13,7 @@ class DefaultAuthorizationPolicy {
   /// Creates a new [DefaultAuthorizationPolicy].
   /// [allowedApplications] The configuration settings of the Azure Active Directory allowed applications.
   /// [allowedPrincipals] The configuration settings of the Azure Active Directory allowed principals.
-  DefaultAuthorizationPolicy({
+  const DefaultAuthorizationPolicy({
     this.allowedApplications,
     this.allowedPrincipals,
   });

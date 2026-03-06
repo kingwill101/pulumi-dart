@@ -31,7 +31,7 @@ class GetServiceTemplateSpecContainerLivenessProbe {
   /// [initialDelaySeconds] Number of seconds after the container has started before the probe is
   /// [periodSeconds] How often (in seconds) to perform the probe.
   /// [timeoutSeconds] Number of seconds after which the probe times out.
-  GetServiceTemplateSpecContainerLivenessProbe({
+  const GetServiceTemplateSpecContainerLivenessProbe({
     required this.failureThreshold,
     required this.grpcs,
     required this.httpGets,

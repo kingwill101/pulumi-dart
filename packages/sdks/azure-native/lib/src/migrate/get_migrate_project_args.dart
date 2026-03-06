@@ -15,7 +15,7 @@ class GetMigrateProjectArgs {
   /// Creates a new [GetMigrateProjectArgs].
   /// [migrateProjectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
-  GetMigrateProjectArgs({
+  const GetMigrateProjectArgs({
     required this.migrateProjectName,
     required this.resourceGroupName,
   });

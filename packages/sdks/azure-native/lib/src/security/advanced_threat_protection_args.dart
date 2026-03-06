@@ -18,7 +18,7 @@ class AdvancedThreatProtectionArgs {
   /// [isEnabled] Indicates whether Advanced Threat Protection is enabled.
   /// [resourceId] The identifier of the resource.
   /// [settingName] Advanced Threat Protection setting name.
-  AdvancedThreatProtectionArgs({
+  const AdvancedThreatProtectionArgs({
     this.isEnabled,
     required this.resourceId,
     this.settingName,

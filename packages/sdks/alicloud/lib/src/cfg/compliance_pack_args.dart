@@ -29,7 +29,7 @@ class CompliancePackArgs {
   /// [configRules] A list of Config Rules. See `config_rules` below. **NOTE:** Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead.
   /// [description] The Description of compliance pack.
   /// [riskLevel] The Risk Level. Valid values:
-  CompliancePackArgs({
+  const CompliancePackArgs({
     required this.compliancePackName,
     this.compliancePackTemplateId,
     this.configRuleIds,

@@ -13,7 +13,7 @@ class GetTraceSinkArgs {
   /// Creates a new [GetTraceSinkArgs].
   /// [project] Optional.
   /// [traceSinkId] Required.
-  GetTraceSinkArgs({
+  const GetTraceSinkArgs({
     this.project,
     required this.traceSinkId,
   });

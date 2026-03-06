@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText].
   /// [ssml] The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
   /// [text] The raw text to be synthesized.
-  GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText({
+  const GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText({
     this.ssml,
     this.text,
   });

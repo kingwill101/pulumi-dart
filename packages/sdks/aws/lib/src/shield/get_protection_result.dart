@@ -17,7 +17,7 @@ class GetProtectionResult {
   /// [protectionArn] ARN of the protection.
   /// [protectionId] Required.
   /// [resourceArn] Required.
-  GetProtectionResult({
+  const GetProtectionResult({
     required this.id,
     required this.name,
     required this.protectionArn,

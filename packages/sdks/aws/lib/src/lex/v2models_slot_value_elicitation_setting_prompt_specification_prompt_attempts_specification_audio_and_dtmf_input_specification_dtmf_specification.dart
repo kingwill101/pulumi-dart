@@ -13,7 +13,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
   /// [endCharacter] Required.
   /// [endTimeoutMs] Required.
   /// [maxLength] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationDtmfSpecification({
     required this.deletionCharacter,
     required this.endCharacter,
     required this.endTimeoutMs,

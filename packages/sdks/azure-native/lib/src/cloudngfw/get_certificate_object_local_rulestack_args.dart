@@ -18,7 +18,7 @@ class GetCertificateObjectLocalRulestackArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [name] certificate name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCertificateObjectLocalRulestackArgs({
+  const GetCertificateObjectLocalRulestackArgs({
     required this.localRulestackName,
     required this.name,
     required this.resourceGroupName,

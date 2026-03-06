@@ -26,7 +26,7 @@ class GetSecurityProfileArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [securityProfileId] Returns information on a specific Security Profile by Security Profile id
   /// [tags] Map of tags to assign to the Security Profile.
-  GetSecurityProfileArgs({
+  const GetSecurityProfileArgs({
     required this.instanceId,
     this.name,
     this.region,

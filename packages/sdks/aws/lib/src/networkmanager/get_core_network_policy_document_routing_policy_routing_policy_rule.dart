@@ -12,7 +12,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule {
   /// Creates a new [GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule].
   /// [ruleDefinition] Defines the match conditions and actions for the rule. Detailed below.
   /// [ruleNumber] Priority number for the rule within the routing policy. Must be between 1 and 9999. Lower numbers are evaluated first.
-  GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule({
+  const GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRule({
     required this.ruleDefinition,
     required this.ruleNumber,
   });

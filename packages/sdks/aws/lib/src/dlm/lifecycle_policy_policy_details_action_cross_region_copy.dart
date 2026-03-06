@@ -14,7 +14,7 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopy {
   /// [encryptionConfiguration] The encryption settings for the copied snapshot. See the `encryption_configuration` block. Max of 1 per action.
   /// [retainRule] Optional.
   /// [target] Required.
-  LifecyclePolicyPolicyDetailsActionCrossRegionCopy({
+  const LifecyclePolicyPolicyDetailsActionCrossRegionCopy({
     required this.encryptionConfiguration,
     this.retainRule,
     required this.target,

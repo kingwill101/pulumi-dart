@@ -18,7 +18,7 @@ class AutomationRule {
   /// [advanceRolloutRule] Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
   /// [promoteReleaseRule] Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
   /// [repairRolloutRule] Optional. The `RepairRolloutRule` will automatically repair a failed rollout.
-  AutomationRule({
+  const AutomationRule({
     this.advanceRolloutRule,
     this.promoteReleaseRule,
     this.repairRolloutRule,

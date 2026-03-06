@@ -41,7 +41,7 @@ class ProtectionContainerMappingPropertiesResponse {
   /// [targetFabricFriendlyName] Friendly name of target fabric.
   /// [targetProtectionContainerFriendlyName] Friendly name of paired container.
   /// [targetProtectionContainerId] Paired protection container ARM ID.
-  ProtectionContainerMappingPropertiesResponse({
+  const ProtectionContainerMappingPropertiesResponse({
     this.health,
     this.healthErrorDetails,
     this.policyFriendlyName,

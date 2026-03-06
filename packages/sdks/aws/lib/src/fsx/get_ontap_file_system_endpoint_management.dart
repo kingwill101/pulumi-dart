@@ -10,7 +10,7 @@ class GetOntapFileSystemEndpointManagement {
   /// Creates a new [GetOntapFileSystemEndpointManagement].
   /// [dnsName] DNS name for the file system.
   /// [ipAddresses] Required.
-  GetOntapFileSystemEndpointManagement({
+  const GetOntapFileSystemEndpointManagement({
     required this.dnsName,
     required this.ipAddresses,
   });

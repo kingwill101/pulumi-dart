@@ -17,7 +17,7 @@ class GetClusterDnsConfig {
   /// [clusterDns] Which in-cluster DNS provider should be used.
   /// [clusterDnsDomain] The suffix used for all cluster service records.
   /// [clusterDnsScope] The scope of access to cluster DNS records.
-  GetClusterDnsConfig({
+  const GetClusterDnsConfig({
     required this.additiveVpcScopeDnsDomain,
     required this.clusterDns,
     required this.clusterDnsDomain,

@@ -19,7 +19,7 @@ class LoadBalancerInternetState {
   /// [internetIp] Use designated public network SLBs that have been purchased to support non-shared instances.
   /// [internetSlbId] The internet SLB ID.
   /// [internets] The bound private network SLB. See `internet` below.
-  LoadBalancerInternetState({
+  const LoadBalancerInternetState({
     this.appId,
     this.internetIp,
     this.internetSlbId,

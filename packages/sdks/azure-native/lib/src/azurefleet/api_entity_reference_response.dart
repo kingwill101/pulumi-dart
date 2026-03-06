@@ -10,7 +10,7 @@ class ApiEntityReferenceResponse {
 
   /// Creates a new [ApiEntityReferenceResponse].
   /// [id] The ARM resource id in the form of
-  ApiEntityReferenceResponse({
+  const ApiEntityReferenceResponse({
     this.id,
   });
 

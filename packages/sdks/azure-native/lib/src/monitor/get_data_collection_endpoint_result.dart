@@ -75,7 +75,7 @@ class GetDataCollectionEndpointResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource.
-  GetDataCollectionEndpointResult({
+  const GetDataCollectionEndpointResult({
     required this.azureApiVersion,
     this.configurationAccess,
     this.description,

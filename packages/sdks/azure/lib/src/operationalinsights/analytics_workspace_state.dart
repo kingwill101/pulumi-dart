@@ -74,7 +74,7 @@ class AnalyticsWorkspaceState {
   /// [sku] Specifies the SKU of the Log Analytics Workspace. Possible values are `PerGB2018`, `PerNode`, `Premium`, `Standalone`, `Standard`, `CapacityReservation`, `LACluster` and `Unlimited`. Defaults to `PerGB2018`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [workspaceId] The Workspace (or Customer) ID for the Log Analytics Workspace.
-  AnalyticsWorkspaceState({
+  const AnalyticsWorkspaceState({
     this.allowResourceOnlyPermissions,
     this.cmkForQueryForced,
     this.dailyQuotaGb,

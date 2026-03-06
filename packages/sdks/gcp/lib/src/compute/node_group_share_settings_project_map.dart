@@ -11,7 +11,7 @@ class NodeGroupShareSettingsProjectMap {
   /// Creates a new [NodeGroupShareSettingsProjectMap].
   /// [id] The identifier for this object. Format specified above.
   /// [projectId] The project id/number should be the same as the key of this project config in the project map.
-  NodeGroupShareSettingsProjectMap({
+  const NodeGroupShareSettingsProjectMap({
     required this.id,
     required this.projectId,
   });

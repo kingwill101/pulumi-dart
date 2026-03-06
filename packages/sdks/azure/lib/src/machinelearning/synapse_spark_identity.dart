@@ -19,7 +19,7 @@ class SynapseSparkIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Machine Learning Synapse Spark.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Machine Learning Synapse Spark.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Machine Learning Synapse Spark. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both). Changing this forces a new resource to be created.
-  SynapseSparkIdentity({
+  const SynapseSparkIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

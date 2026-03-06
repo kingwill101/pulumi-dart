@@ -25,7 +25,7 @@ class DatastoreArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [skipValidation] Flag to skip validation.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  DatastoreArgs({
+  const DatastoreArgs({
     required this.datastoreProperties,
     this.name,
     required this.resourceGroupName,

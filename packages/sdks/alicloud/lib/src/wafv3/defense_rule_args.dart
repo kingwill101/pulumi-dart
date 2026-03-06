@@ -44,7 +44,7 @@ class DefenseRuleArgs {
   /// [ruleName] The rule name.
   /// [ruleStatus] Protection rule status.
   /// [templateId] The protection template ID of the protection rule to be created.
-  DefenseRuleArgs({
+  const DefenseRuleArgs({
     required this.config,
     this.defenseOrigin,
     required this.defenseScene,

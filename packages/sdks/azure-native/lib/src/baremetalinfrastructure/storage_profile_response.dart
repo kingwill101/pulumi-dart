@@ -13,7 +13,7 @@ class StorageProfileResponse {
   /// Creates a new [StorageProfileResponse].
   /// [nfsIpAddress] IP Address to connect to storage.
   /// [osDisks] Specifies information about the operating system disk used by bare metal instance.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     this.nfsIpAddress,
     this.osDisks,
   });

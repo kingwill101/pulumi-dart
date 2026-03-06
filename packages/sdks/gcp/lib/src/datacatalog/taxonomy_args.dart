@@ -33,7 +33,7 @@ class TaxonomyArgs {
   /// [displayName] User defined name of this taxonomy.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Taxonomy location region.
-  TaxonomyArgs({
+  const TaxonomyArgs({
     this.activatedPolicyTypes,
     this.description,
     required this.displayName,

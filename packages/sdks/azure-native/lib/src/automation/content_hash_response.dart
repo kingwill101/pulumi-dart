@@ -12,7 +12,7 @@ class ContentHashResponse {
   /// Creates a new [ContentHashResponse].
   /// [algorithm] Gets or sets the content hash algorithm used to hash the content.
   /// [value] Gets or sets expected hash value of the content.
-  ContentHashResponse({
+  const ContentHashResponse({
     required this.algorithm,
     required this.value,
   });

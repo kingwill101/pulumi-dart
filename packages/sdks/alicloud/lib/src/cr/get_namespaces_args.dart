@@ -15,7 +15,7 @@ class GetNamespacesArgs {
   /// Creates a new [GetNamespacesArgs].
   /// [nameRegex] A regex string to filter results by namespace name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetNamespacesArgs({
+  const GetNamespacesArgs({
     this.nameRegex,
     this.outputFile,
   });

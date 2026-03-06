@@ -26,7 +26,7 @@ class GetImageResult {
   /// [region] Required.
   /// [requiredTenancy] Specifies whether the image is running on dedicated hardware. When Bring Your Own License (BYOL) is enabled, this value is set to DEDICATED. For more information, see [Bring Your Own Windows Desktop Images](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
   /// [state] The status of the image.
-  GetImageResult({
+  const GetImageResult({
     required this.description,
     required this.id,
     required this.imageId,

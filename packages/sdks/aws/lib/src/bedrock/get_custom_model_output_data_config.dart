@@ -8,7 +8,7 @@ class GetCustomModelOutputDataConfig {
 
   /// Creates a new [GetCustomModelOutputDataConfig].
   /// [s3Uri] The S3 URI where the validation data is stored..
-  GetCustomModelOutputDataConfig({
+  const GetCustomModelOutputDataConfig({
     required this.s3Uri,
   });
 

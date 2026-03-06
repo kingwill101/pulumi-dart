@@ -24,7 +24,7 @@ class GetResponsePlanActionSsmAutomation {
   /// [parameters] The key-value pair parameters used when the automation document runs. The following values are supported:
   /// [roleArn] The Amazon Resource Name (ARN) of the role that the automation document assumes when it runs commands.
   /// [targetAccount] The account that runs the automation document. This can be in either the management account or an application account.
-  GetResponsePlanActionSsmAutomation({
+  const GetResponsePlanActionSsmAutomation({
     required this.documentName,
     required this.documentVersion,
     required this.dynamicParameters,

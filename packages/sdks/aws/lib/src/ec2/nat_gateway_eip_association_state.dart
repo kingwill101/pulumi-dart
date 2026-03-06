@@ -22,7 +22,7 @@ class NatGatewayEipAssociationState {
   /// [natGatewayId] The ID of the NAT Gateway to associate the Elastic IP Allocation to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  NatGatewayEipAssociationState({
+  const NatGatewayEipAssociationState({
     this.allocationId,
     this.associationId,
     this.natGatewayId,

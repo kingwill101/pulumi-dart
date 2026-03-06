@@ -12,7 +12,7 @@ class SelfManagedCertificate {
   /// Creates a new [SelfManagedCertificate].
   /// [pemCertificate] Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any.
   /// [pemPrivateKey] Input only. The PEM-encoded private key of the leaf certificate.
-  SelfManagedCertificate({
+  const SelfManagedCertificate({
     this.pemCertificate,
     this.pemPrivateKey,
   });

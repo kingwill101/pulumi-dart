@@ -11,7 +11,7 @@ class AlertConfigurationSeverityConfigurationEvalCondition {
   /// Creates a new [AlertConfigurationSeverityConfigurationEvalCondition].
   /// [condition] Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
   /// [countCondition] The number of pieces of data to determine the number of pieces of data to indicate how many pieces of data meet the conditions. If data exists, it is satisfied. Set it to an empty string. In other cases, it needs to be set as an expression, such as__count__&gt; 3.
-  AlertConfigurationSeverityConfigurationEvalCondition({
+  const AlertConfigurationSeverityConfigurationEvalCondition({
     this.condition,
     this.countCondition,
   });

@@ -9,7 +9,7 @@ class ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27So
   /// Creates a new [ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings].
   /// [ocrLanguage] Optional.
   /// [pid] Optional.
-  ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings({
+  const ChannelInputAttachmentInputSettingsCaptionSelectorSelectorSettingsScte27SourceSettings({
     this.ocrLanguage,
     this.pid,
   });

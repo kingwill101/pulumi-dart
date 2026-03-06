@@ -30,7 +30,7 @@ class GetRouteMapsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the route map, including `Creating`, `Active` and `Deleting`.
   /// [transmitDirection] The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
-  GetRouteMapsArgs({
+  const GetRouteMapsArgs({
     required this.cenId,
     this.cenRegionId,
     this.descriptionRegex,

@@ -26,7 +26,7 @@ class AwsGovcloudIntegrationsSqs {
   /// [queuePrefixes] Specify each name or prefix for the Queues that you want to monitor. Filter values are case-sensitive.
   /// [tagKey] Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   /// [tagValue] Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  AwsGovcloudIntegrationsSqs({
+  const AwsGovcloudIntegrationsSqs({
     this.awsRegions,
     this.fetchExtendedInventory,
     this.fetchTags,

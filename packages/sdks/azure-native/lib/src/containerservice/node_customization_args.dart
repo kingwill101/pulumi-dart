@@ -25,7 +25,7 @@ class NodeCustomizationArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NodeCustomizationArgs({
+  const NodeCustomizationArgs({
     this.location,
     this.nodeCustomizationName,
     this.properties,

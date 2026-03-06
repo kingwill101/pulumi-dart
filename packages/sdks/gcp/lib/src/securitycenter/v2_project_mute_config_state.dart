@@ -49,7 +49,7 @@ class V2ProjectMuteConfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the mute config.
   /// [updateTime] Output only. The most recent time at which the mute config was
-  V2ProjectMuteConfigState({
+  const V2ProjectMuteConfigState({
     this.createTime,
     this.description,
     this.filter,

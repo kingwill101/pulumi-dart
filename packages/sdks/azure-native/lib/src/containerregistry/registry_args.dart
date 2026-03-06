@@ -59,7 +59,7 @@ class RegistryArgs {
   /// [sku] The SKU of the container registry.
   /// [tags] The tags of the resource.
   /// [zoneRedundancy] Whether or not zone redundancy is enabled for this container registry
-  RegistryArgs({
+  const RegistryArgs({
     this.adminUserEnabled,
     this.anonymousPullEnabled,
     this.dataEndpointEnabled,

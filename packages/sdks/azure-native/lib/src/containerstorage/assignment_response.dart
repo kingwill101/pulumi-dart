@@ -13,7 +13,7 @@ class AssignmentResponse {
   /// Creates a new [AssignmentResponse].
   /// [id] Resource id for the assigned resource
   /// [status] Indicates if the assignment is in a usable state
-  AssignmentResponse({
+  const AssignmentResponse({
     required this.id,
     required this.status,
   });

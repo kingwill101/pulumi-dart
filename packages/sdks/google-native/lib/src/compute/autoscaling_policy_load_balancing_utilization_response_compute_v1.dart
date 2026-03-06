@@ -9,7 +9,7 @@ class AutoscalingPolicyLoadBalancingUtilizationResponseComputeV1 {
 
   /// Creates a new [AutoscalingPolicyLoadBalancingUtilizationResponseComputeV1].
   /// [utilizationTarget] Fraction of backend capacity utilization (set in HTTP(S) load balancing configuration) that the autoscaler maintains. Must be a positive float value. If not defined, the default is 0.8.
-  AutoscalingPolicyLoadBalancingUtilizationResponseComputeV1({
+  const AutoscalingPolicyLoadBalancingUtilizationResponseComputeV1({
     required this.utilizationTarget,
   });
 

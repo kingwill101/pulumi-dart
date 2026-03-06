@@ -18,7 +18,7 @@ class GetFunctionArgs {
   /// [functionName] The name of the function.
   /// [jobName] The name of the streaming job.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFunctionArgs({
+  const GetFunctionArgs({
     required this.functionName,
     required this.jobName,
     required this.resourceGroupName,

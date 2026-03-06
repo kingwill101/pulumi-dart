@@ -18,7 +18,7 @@ class GetEdgeActionExecutionFilterArgs {
   /// [edgeActionName] The name of the Edge Action
   /// [executionFilter] The name of the execution filter
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEdgeActionExecutionFilterArgs({
+  const GetEdgeActionExecutionFilterArgs({
     required this.edgeActionName,
     required this.executionFilter,
     required this.resourceGroupName,

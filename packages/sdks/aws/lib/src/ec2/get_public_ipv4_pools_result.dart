@@ -19,7 +19,7 @@ class GetPublicIpv4PoolsResult {
   /// [poolIds] List of all the pool IDs found.
   /// [region] Required.
   /// [tags] Required.
-  GetPublicIpv4PoolsResult({
+  const GetPublicIpv4PoolsResult({
     this.filters,
     required this.id,
     required this.poolIds,

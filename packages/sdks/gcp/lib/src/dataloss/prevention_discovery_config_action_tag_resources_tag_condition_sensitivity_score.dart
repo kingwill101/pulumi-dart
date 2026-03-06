@@ -9,7 +9,7 @@ class PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore {
 
   /// Creates a new [PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore({
+  const PreventionDiscoveryConfigActionTagResourcesTagConditionSensitivityScore({
     required this.score,
   });
 

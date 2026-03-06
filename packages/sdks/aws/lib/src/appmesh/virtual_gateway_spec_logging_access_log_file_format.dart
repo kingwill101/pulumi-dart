@@ -12,7 +12,7 @@ class VirtualGatewaySpecLoggingAccessLogFileFormat {
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFileFormat].
   /// [jsons] The logging format for JSON.
   /// [text] The logging format for text. Must be between 1 and 1000 characters in length.
-  VirtualGatewaySpecLoggingAccessLogFileFormat({
+  const VirtualGatewaySpecLoggingAccessLogFileFormat({
     this.jsons,
     this.text,
   });

@@ -41,7 +41,7 @@ class GetPatchBaselinesBaseline {
   /// [shareType] Patch baseline sharing type.
   /// [updatedBy] The user who updated the patch baselines.
   /// [updatedDate] The update time of patch baselines.
-  GetPatchBaselinesBaseline({
+  const GetPatchBaselinesBaseline({
     required this.approvalRules,
     required this.createTime,
     required this.createdBy,

@@ -20,7 +20,7 @@ class GetProjectCmekSettingsArgs {
   /// Creates a new [GetProjectCmekSettingsArgs].
   /// [kmsKeyName] The resource name for the configured Cloud KMS key.
   /// [project] The ID of the project.
-  GetProjectCmekSettingsArgs({
+  const GetProjectCmekSettingsArgs({
     this.kmsKeyName,
     required this.project,
   });

@@ -21,7 +21,7 @@ class ClusterMetadataResponse {
   /// [cluster] The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
   /// [gkeVersion] GKE version
   /// [k8sVersion] The Kubernetes server version of the source cluster.
-  ClusterMetadataResponse({
+  const ClusterMetadataResponse({
     required this.anthosVersion,
     required this.backupCrdVersions,
     required this.cluster,

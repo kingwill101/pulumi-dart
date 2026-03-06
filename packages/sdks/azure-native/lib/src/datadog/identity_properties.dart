@@ -8,7 +8,7 @@ class IdentityProperties {
 
   /// Creates a new [IdentityProperties].
   /// [type] Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
-  IdentityProperties({
+  const IdentityProperties({
     this.type,
   });
 

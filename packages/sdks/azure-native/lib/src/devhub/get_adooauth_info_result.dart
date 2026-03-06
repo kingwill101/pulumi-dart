@@ -11,7 +11,7 @@ class GetADOOAuthInfoResult {
   /// Creates a new [GetADOOAuthInfoResult].
   /// [authURL] URL used to authorize ADO app using Entra ID
   /// [token] OAuth token used to make calls to ADO APIs
-  GetADOOAuthInfoResult({
+  const GetADOOAuthInfoResult({
     this.authURL,
     this.token,
   });

@@ -26,7 +26,7 @@ class AnnotationArgs {
   /// [project] Optional.
   /// [requestId] Optional. An optional request ID to identify requests.
   /// [type] Type of an annotation.
-  AnnotationArgs({
+  const AnnotationArgs({
     this.labels,
     this.location,
     this.name,

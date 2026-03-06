@@ -9,7 +9,7 @@ class ElasticSanVolumeResponse {
 
   /// Creates a new [ElasticSanVolumeResponse].
   /// [targetId] Azure resource ID of the Elastic SAN Volume
-  ElasticSanVolumeResponse({
+  const ElasticSanVolumeResponse({
     required this.targetId,
   });
 

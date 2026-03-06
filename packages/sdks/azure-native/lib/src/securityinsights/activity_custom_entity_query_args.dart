@@ -50,7 +50,7 @@ class ActivityCustomEntityQueryArgs {
   /// [templateName] The template id this activity was created from
   /// [title] The entity query title
   /// [workspaceName] The name of the workspace.
-  ActivityCustomEntityQueryArgs({
+  const ActivityCustomEntityQueryArgs({
     this.content,
     this.description,
     this.enabled,

@@ -16,7 +16,7 @@ class AwsEc2NetworkAclProperties {
   /// [id] Property id
   /// [tags] The tags for the network ACL.
   /// [vpcId] The ID of the VPC for the network ACL.
-  AwsEc2NetworkAclProperties({
+  const AwsEc2NetworkAclProperties({
     this.id,
     this.tags,
     this.vpcId,

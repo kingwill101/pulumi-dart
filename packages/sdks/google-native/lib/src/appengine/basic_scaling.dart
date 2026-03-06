@@ -12,7 +12,7 @@ class BasicScaling {
   /// Creates a new [BasicScaling].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
   /// [maxInstances] Maximum number of instances to create for this version.
-  BasicScaling({
+  const BasicScaling({
     this.idleTimeout,
     this.maxInstances,
   });

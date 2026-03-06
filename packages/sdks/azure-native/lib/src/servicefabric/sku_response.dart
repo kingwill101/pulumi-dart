@@ -9,7 +9,7 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] Sku Name.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
   });
 

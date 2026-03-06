@@ -12,7 +12,7 @@ class GetSubscriptionTemplateDeploymentArgs {
 
   /// Creates a new [GetSubscriptionTemplateDeploymentArgs].
   /// [name] The name of this Subscription Template Deployment.
-  GetSubscriptionTemplateDeploymentArgs({
+  const GetSubscriptionTemplateDeploymentArgs({
     required this.name,
   });
 

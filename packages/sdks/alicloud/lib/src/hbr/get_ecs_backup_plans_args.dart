@@ -24,7 +24,7 @@ class GetEcsBackupPlansArgs {
   /// [nameRegex] A regex string to filter results by EcsBackupPlan name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vaultId] The Vault ID of the EcsBackupPlan used.
-  GetEcsBackupPlansArgs({
+  const GetEcsBackupPlansArgs({
     this.ids,
     this.instanceId,
     this.nameRegex,

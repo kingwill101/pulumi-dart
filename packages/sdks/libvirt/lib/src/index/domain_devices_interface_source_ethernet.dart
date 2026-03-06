@@ -13,7 +13,7 @@ class DomainDevicesInterfaceSourceEthernet {
   /// Creates a new [DomainDevicesInterfaceSourceEthernet].
   /// [ips] Configures the IP settings associated with the Ethernet source of the network interface.
   /// [routes] Configures routing settings for the Ethernet interface, defining how network traffic is managed.
-  DomainDevicesInterfaceSourceEthernet({
+  const DomainDevicesInterfaceSourceEthernet({
     this.ips,
     this.routes,
   });

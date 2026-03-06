@@ -21,7 +21,7 @@ class GetDocumentArgs {
   /// [documentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDocumentArgs({
+  const GetDocumentArgs({
     required this.branchId,
     required this.collectionId,
     required this.dataStoreId,

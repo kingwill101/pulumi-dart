@@ -15,7 +15,7 @@ class GetAuthorizedCertificateArgs {
   /// [appId] Required.
   /// [authorizedCertificateId] Required.
   /// [view] Optional.
-  GetAuthorizedCertificateArgs({
+  const GetAuthorizedCertificateArgs({
     required this.appId,
     required this.authorizedCertificateId,
     this.view,

@@ -21,7 +21,7 @@ class DatastoreArgs {
   /// [displayName] Display name in UI
   /// [organizationId] Required.
   /// [targetType] Destination storage type. Supported types `gcs` or `bigquery`.
-  DatastoreArgs({
+  const DatastoreArgs({
     this.datastoreConfig,
     required this.displayName,
     required this.organizationId,

@@ -32,7 +32,7 @@ class AssessmentDelegationState {
   /// [roleArn] Amazon Resource Name (ARN) of the IAM role.
   /// [roleType] Type of customer persona. For assessment delegation, type must always be `RESOURCE_OWNER`.
   /// [status] Status of the delegation.
-  AssessmentDelegationState({
+  const AssessmentDelegationState({
     this.assessmentId,
     this.comment,
     this.controlSetId,

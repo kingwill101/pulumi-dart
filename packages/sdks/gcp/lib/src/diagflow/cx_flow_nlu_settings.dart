@@ -21,7 +21,7 @@ class CxFlowNluSettings {
   /// [classificationThreshold] To filter out false positive results and still get variety in matched natural language inputs for your agent, you can tune the machine learning classification threshold.
   /// [modelTrainingMode] Indicates NLU model training mode.
   /// [modelType] Indicates the type of NLU model.
-  CxFlowNluSettings({
+  const CxFlowNluSettings({
     this.classificationThreshold,
     this.modelTrainingMode,
     this.modelType,

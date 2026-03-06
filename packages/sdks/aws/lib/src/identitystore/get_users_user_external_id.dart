@@ -11,7 +11,7 @@ class GetUsersUserExternalId {
   /// Creates a new [GetUsersUserExternalId].
   /// [id] Identifier issued to this resource by an external identity provider.
   /// [issuer] Issuer for an external identifier.
-  GetUsersUserExternalId({
+  const GetUsersUserExternalId({
     required this.id,
     required this.issuer,
   });

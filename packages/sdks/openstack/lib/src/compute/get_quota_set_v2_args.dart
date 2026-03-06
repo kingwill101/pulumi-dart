@@ -16,7 +16,7 @@ class GetQuotaSetV2Args {
   /// Creates a new [GetQuotaSetV2Args].
   /// [projectId] The id of the project to retrieve the quotaset.
   /// [region] The region in which to obtain the V2 Compute client.
-  GetQuotaSetV2Args({
+  const GetQuotaSetV2Args({
     required this.projectId,
     this.region,
   });

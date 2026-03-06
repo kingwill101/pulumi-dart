@@ -17,7 +17,7 @@ class GetMeshIamPolicyArgs {
   /// [meshId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetMeshIamPolicyArgs({
+  const GetMeshIamPolicyArgs({
     required this.location,
     required this.meshId,
     this.optionsRequestedPolicyVersion,

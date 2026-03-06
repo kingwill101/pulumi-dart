@@ -17,7 +17,7 @@ class GetIdentity {
   /// [principalId] The Principal ID for the System-Assigned Managed Identity assigned to this Load Test Service.
   /// [tenantId] The Tenant ID for the System-Assigned Managed Identity assigned to this Load Test Service.
   /// [type] Type of Managed Service Identity that is assigned to this Load Test Encryption.
-  GetIdentity({
+  const GetIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

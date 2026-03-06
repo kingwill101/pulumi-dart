@@ -57,7 +57,7 @@ class GetShareResult {
   /// [systemData] Metadata pertaining to creation and last modification of Share
   /// [type] The hierarchical type of the object.
   /// [userAccessRights] Mapping of users and corresponding access rights on the share (required for SMB protocol).
-  GetShareResult({
+  const GetShareResult({
     required this.accessProtocol,
     required this.azureApiVersion,
     this.azureContainerInfo,

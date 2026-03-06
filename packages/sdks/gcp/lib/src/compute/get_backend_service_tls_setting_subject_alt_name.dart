@@ -11,7 +11,7 @@ class GetBackendServiceTlsSettingSubjectAltName {
   /// Creates a new [GetBackendServiceTlsSettingSubjectAltName].
   /// [dnsName] The SAN specified as a DNS Name.
   /// [uniformResourceIdentifier] The SAN specified as a URI.
-  GetBackendServiceTlsSettingSubjectAltName({
+  const GetBackendServiceTlsSettingSubjectAltName({
     required this.dnsName,
     required this.uniformResourceIdentifier,
   });

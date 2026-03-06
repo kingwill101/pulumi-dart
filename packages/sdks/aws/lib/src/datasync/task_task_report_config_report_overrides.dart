@@ -19,7 +19,7 @@ class TaskTaskReportConfigReportOverrides {
   /// [skippedOverride] Specifies the level of reporting for the files, objects, and directories that DataSync attempted to skip during your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
   /// [transferredOverride] Specifies the level of reporting for the files, objects, and directories that DataSync attempted to transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
   /// [verifiedOverride] Specifies the level of reporting for the files, objects, and directories that DataSync attempted to verify at the end of your transfer. Valid values: `ERRORS_ONLY` and `SUCCESSES_AND_ERRORS`.
-  TaskTaskReportConfigReportOverrides({
+  const TaskTaskReportConfigReportOverrides({
     this.deletedOverride,
     this.skippedOverride,
     this.transferredOverride,

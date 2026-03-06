@@ -11,7 +11,7 @@ class GetClusterNodePoolManagement {
   /// Creates a new [GetClusterNodePoolManagement].
   /// [autoRepair] Whether the nodes will be automatically repaired. Enabled by default.
   /// [autoUpgrade] Whether the nodes will be automatically upgraded. Enabled by default.
-  GetClusterNodePoolManagement({
+  const GetClusterNodePoolManagement({
     required this.autoRepair,
     required this.autoUpgrade,
   });

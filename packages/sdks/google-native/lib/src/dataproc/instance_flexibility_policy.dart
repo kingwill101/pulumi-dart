@@ -10,7 +10,7 @@ class InstanceFlexibilityPolicy {
 
   /// Creates a new [InstanceFlexibilityPolicy].
   /// [instanceSelectionList] Optional. List of instance selection options that the group will use when creating new VMs.
-  InstanceFlexibilityPolicy({
+  const InstanceFlexibilityPolicy({
     this.instanceSelectionList,
   });
 

@@ -29,7 +29,7 @@ class GetPeeringManagedidentitiesV1alpha1Result {
   /// [state] The current state of this Peering.
   /// [statusMessage] Additional information about the current status of this peering, if available.
   /// [updateTime] Last update time.
-  GetPeeringManagedidentitiesV1alpha1Result({
+  const GetPeeringManagedidentitiesV1alpha1Result({
     required this.authorizedNetwork,
     required this.createTime,
     required this.domainResource,

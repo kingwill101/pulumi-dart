@@ -14,7 +14,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   /// [dropHandoffMessages] If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
   /// [dropIvrMessages] If set to true, all messages from ivr stage are dropped.
   /// [dropVirtualAgentMessages] If set to true, all messages from virtual agent are dropped.
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfigContextFilterSettings({
     this.dropHandoffMessages,
     this.dropIvrMessages,
     this.dropVirtualAgentMessages,

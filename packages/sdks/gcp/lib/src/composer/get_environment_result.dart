@@ -28,7 +28,7 @@ class GetEnvironmentResult {
   /// [pulumiLabels] Required.
   /// [region] Optional.
   /// [storageConfigs] Required.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.configs,
     required this.effectiveLabels,
     required this.id,

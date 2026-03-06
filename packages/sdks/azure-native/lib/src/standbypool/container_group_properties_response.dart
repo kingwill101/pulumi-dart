@@ -14,7 +14,7 @@ class ContainerGroupPropertiesResponse {
   /// Creates a new [ContainerGroupPropertiesResponse].
   /// [containerGroupProfile] Specifies container group profile of standby container groups.
   /// [subnetIds] Specifies subnet Ids for container group.
-  ContainerGroupPropertiesResponse({
+  const ContainerGroupPropertiesResponse({
     required this.containerGroupProfile,
     this.subnetIds,
   });

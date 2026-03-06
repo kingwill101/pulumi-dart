@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart].
   /// [parameterId] The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
   /// [text] The text for this part.
-  GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart({
+  const GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePart({
     this.parameterId,
     required this.text,
   });

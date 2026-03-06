@@ -27,7 +27,7 @@ class DnsZoneArgs {
   /// [domain] Doamin for the zone.
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [peeringConfig] Peering zone config
-  DnsZoneArgs({
+  const DnsZoneArgs({
     required this.description,
     required this.dnsZoneId,
     required this.domain,

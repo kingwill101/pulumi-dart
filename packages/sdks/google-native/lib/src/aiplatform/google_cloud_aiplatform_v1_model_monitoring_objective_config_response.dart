@@ -22,7 +22,7 @@ class GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigResponse {
   /// [predictionDriftDetectionConfig] The config for drift of prediction data.
   /// [trainingDataset] Training dataset for models. This field has to be set only if TrainingPredictionSkewDetectionConfig is specified.
   /// [trainingPredictionSkewDetectionConfig] The config for skew between training data and prediction data.
-  GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigResponse({
+  const GoogleCloudAiplatformV1ModelMonitoringObjectiveConfigResponse({
     required this.explanationConfig,
     required this.predictionDriftDetectionConfig,
     required this.trainingDataset,

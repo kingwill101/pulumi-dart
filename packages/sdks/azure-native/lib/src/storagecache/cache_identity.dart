@@ -13,7 +13,7 @@ class CacheIdentity {
   /// Creates a new [CacheIdentity].
   /// [type] The type of identity used for the cache
   /// [userAssignedIdentities] A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  CacheIdentity({
+  const CacheIdentity({
     this.type,
     this.userAssignedIdentities,
   });

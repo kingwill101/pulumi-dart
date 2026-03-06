@@ -18,7 +18,7 @@ class ApplicationGatewaySkuResponse {
   /// [family] Family of an application gateway SKU.
   /// [name] Name of an application gateway SKU.
   /// [tier] Tier of an application gateway.
-  ApplicationGatewaySkuResponse({
+  const ApplicationGatewaySkuResponse({
     this.capacity,
     this.family,
     this.name,

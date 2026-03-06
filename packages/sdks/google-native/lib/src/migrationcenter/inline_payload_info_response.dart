@@ -13,7 +13,7 @@ class InlinePayloadInfoResponse {
   /// Creates a new [InlinePayloadInfoResponse].
   /// [format] The import job format.
   /// [payload] List of payload files.
-  InlinePayloadInfoResponse({
+  const InlinePayloadInfoResponse({
     required this.format,
     required this.payload,
   });

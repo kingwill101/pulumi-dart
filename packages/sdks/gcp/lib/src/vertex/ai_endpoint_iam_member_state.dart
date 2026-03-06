@@ -21,7 +21,7 @@ class AiEndpointIamMemberState {
   /// [member] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  AiEndpointIamMemberState({
+  const AiEndpointIamMemberState({
     this.condition,
     this.endpoint,
     this.etag,

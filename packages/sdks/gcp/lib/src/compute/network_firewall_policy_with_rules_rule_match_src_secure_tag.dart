@@ -15,7 +15,7 @@ class NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag {
   /// Creates a new [NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag({
+  const NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag({
     this.name,
     this.state,
   });

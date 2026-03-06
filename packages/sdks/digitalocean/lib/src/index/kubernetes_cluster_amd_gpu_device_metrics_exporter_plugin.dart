@@ -8,7 +8,7 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
 
   /// Creates a new [KubernetesClusterAmdGpuDeviceMetricsExporterPlugin].
   /// [enabled] Boolean flag whether the component is enabled or not.
-  KubernetesClusterAmdGpuDeviceMetricsExporterPlugin({
+  const KubernetesClusterAmdGpuDeviceMetricsExporterPlugin({
     required this.enabled,
   });
 

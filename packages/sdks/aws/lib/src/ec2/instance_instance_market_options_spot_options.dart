@@ -17,7 +17,7 @@ class InstanceInstanceMarketOptionsSpotOptions {
   /// [maxPrice] The maximum hourly price that you're willing to pay for a Spot Instance.
   /// [spotInstanceType] The Spot Instance request type. Valid values include `one-time`, `persistent`. Persistent Spot Instance requests are only supported when the instance interruption behavior is either hibernate or stop. The default is `one-time`.
   /// [validUntil] The end date of the request, in UTC format (YYYY-MM-DDTHH:MM:SSZ). Supported only for persistent requests.
-  InstanceInstanceMarketOptionsSpotOptions({
+  const InstanceInstanceMarketOptionsSpotOptions({
     this.instanceInterruptionBehavior,
     this.maxPrice,
     this.spotInstanceType,

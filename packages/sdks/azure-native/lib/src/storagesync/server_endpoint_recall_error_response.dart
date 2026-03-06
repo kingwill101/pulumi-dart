@@ -12,7 +12,7 @@ class ServerEndpointRecallErrorResponse {
   /// Creates a new [ServerEndpointRecallErrorResponse].
   /// [count] Count of occurences of the error
   /// [errorCode] Error code (HResult)
-  ServerEndpointRecallErrorResponse({
+  const ServerEndpointRecallErrorResponse({
     required this.count,
     required this.errorCode,
   });

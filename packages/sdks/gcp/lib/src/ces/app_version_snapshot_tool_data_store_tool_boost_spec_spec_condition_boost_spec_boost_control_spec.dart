@@ -36,7 +36,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostCon
   /// [controlPoints] (Output)
   /// [fieldName] (Output)
   /// [interpolationType] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec({
+  const AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpec({
     this.attributeType,
     this.controlPoints,
     this.fieldName,

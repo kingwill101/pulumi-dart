@@ -14,7 +14,7 @@ class GetInstanceEphemeralBlockDevice {
   /// [deviceName] Physical name of the device.
   /// [noDevice] Whether the specified device included in the device mapping was suppressed or not (Boolean).
   /// [virtualName] Virtual device name.
-  GetInstanceEphemeralBlockDevice({
+  const GetInstanceEphemeralBlockDevice({
     required this.deviceName,
     this.noDevice,
     this.virtualName,

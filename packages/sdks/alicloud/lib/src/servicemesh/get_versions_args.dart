@@ -20,7 +20,7 @@ class GetVersionsArgs {
   /// [edition] The edition of the ASM instance. Valid values:
   /// [ids] A list of ASM versions. Its element formats as `&lt;edition&gt;:&lt;version&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetVersionsArgs({
+  const GetVersionsArgs({
     this.edition,
     this.ids,
     this.outputFile,

@@ -14,7 +14,7 @@ class AccessPolicy {
   /// [expiryTime] Expiry time of the access policy
   /// [permission] List of abbreviated permissions.
   /// [startTime] Start time of the access policy
-  AccessPolicy({
+  const AccessPolicy({
     this.expiryTime,
     this.permission,
     this.startTime,

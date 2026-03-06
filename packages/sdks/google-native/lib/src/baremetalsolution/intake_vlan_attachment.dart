@@ -12,7 +12,7 @@ class IntakeVlanAttachment {
   /// Creates a new [IntakeVlanAttachment].
   /// [id] Identifier of the VLAN attachment.
   /// [pairingKey] Attachment pairing key.
-  IntakeVlanAttachment({
+  const IntakeVlanAttachment({
     this.id,
     this.pairingKey,
   });

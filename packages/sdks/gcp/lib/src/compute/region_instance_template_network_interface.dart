@@ -62,7 +62,7 @@ class RegionInstanceTemplateNetworkInterface {
   /// [stackType] The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
   /// [subnetwork] the name of the subnetwork to attach this interface
   /// [subnetworkProject] The ID of the project in which the subnetwork belongs.
-  RegionInstanceTemplateNetworkInterface({
+  const RegionInstanceTemplateNetworkInterface({
     this.accessConfigs,
     this.aliasIpRanges,
     this.igmpQuery,

@@ -9,7 +9,7 @@ class GoogleCloudRetailV2RuleRemoveFacetActionResponse {
 
   /// Creates a new [GoogleCloudRetailV2RuleRemoveFacetActionResponse].
   /// [attributeNames] The attribute names (i.e. facet keys) to remove from the dynamic facets (if present in the request). There can't be more 3 attribute names. Each attribute name should be a valid attribute name, be non-empty and contain at most 80 characters.
-  GoogleCloudRetailV2RuleRemoveFacetActionResponse({
+  const GoogleCloudRetailV2RuleRemoveFacetActionResponse({
     required this.attributeNames,
   });
 

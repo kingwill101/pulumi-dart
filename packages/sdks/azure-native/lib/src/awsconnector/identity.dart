@@ -10,7 +10,7 @@ class Identity {
 
   /// Creates a new [Identity].
   /// [oidc] &lt;p&gt;An object representing the &lt;a href='https://openid.net/connect/'&gt;OpenID Connect&lt;/a&gt; identity provider information.&lt;/p&gt;
-  Identity({
+  const Identity({
     this.oidc,
   });
 

@@ -24,7 +24,7 @@ class GetSnapshotsArgs {
   /// [nameRegex] A regex string to filter results by Snapshot name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [snapshotId] The ID of the Snapshot.
-  GetSnapshotsArgs({
+  const GetSnapshotsArgs({
     this.desktopId,
     this.ids,
     this.nameRegex,

@@ -16,7 +16,7 @@ class DataflowGraphNodeGraphSettingsResponse {
   /// [artifact] The artifact name and version to pull. This should be in the format `&lt;artifact-name&gt;:&lt;version&gt;`.
   /// [configuration] Configuration key-value pairs.
   /// [registryEndpointRef] Reference to the registry endpoint for pulling the artifact.
-  DataflowGraphNodeGraphSettingsResponse({
+  const DataflowGraphNodeGraphSettingsResponse({
     required this.artifact,
     this.configuration,
     required this.registryEndpointRef,

@@ -8,7 +8,7 @@ class AccountBlobPropertiesContainerDeleteRetentionPolicy {
 
   /// Creates a new [AccountBlobPropertiesContainerDeleteRetentionPolicy].
   /// [days] Specifies the number of days that the container should be retained, between `1` and `365` days. Defaults to `7`.
-  AccountBlobPropertiesContainerDeleteRetentionPolicy({
+  const AccountBlobPropertiesContainerDeleteRetentionPolicy({
     this.days,
   });
 

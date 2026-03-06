@@ -29,7 +29,7 @@ class MoveCollectionArgs {
   /// [properties] Defines the move collection properties.
   /// [resourceGroupName] The Resource Group Name.
   /// [tags] Resource tags.
-  MoveCollectionArgs({
+  const MoveCollectionArgs({
     this.identity,
     this.location,
     this.moveCollectionName,

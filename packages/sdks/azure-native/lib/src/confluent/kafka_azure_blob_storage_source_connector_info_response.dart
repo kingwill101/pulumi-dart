@@ -37,7 +37,7 @@ class KafkaAzureBlobStorageSourceConnectorInfoResponse {
   /// [serviceAccountId] Kafka Service Account Id
   /// [topicRegex] Kafka topics Regex pattern
   /// [topicsDir] Kafka topics directory
-  KafkaAzureBlobStorageSourceConnectorInfoResponse({
+  const KafkaAzureBlobStorageSourceConnectorInfoResponse({
     this.apiKey,
     this.apiSecret,
     this.authType,

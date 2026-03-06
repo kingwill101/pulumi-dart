@@ -37,7 +37,7 @@ class VendorSkusArgs {
   /// [skuName] The name of the sku.
   /// [skuType] The sku type.
   /// [vendorName] The name of the vendor.
-  VendorSkusArgs({
+  const VendorSkusArgs({
     this.deploymentMode,
     this.managedApplicationParameters,
     this.managedApplicationTemplate,

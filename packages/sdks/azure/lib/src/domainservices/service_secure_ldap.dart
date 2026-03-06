@@ -26,7 +26,7 @@ class ServiceSecureLdap {
   /// [pfxCertificate] The certificate/private key to use for LDAPS, as a base64-encoded TripleDES-SHA1 encrypted PKCS#12 bundle (PFX file).
   /// [pfxCertificatePassword] The password to use for decrypting the PKCS#12 bundle (PFX file).
   /// [publicCertificate] The public certificate.
-  ServiceSecureLdap({
+  const ServiceSecureLdap({
     this.certificateExpiry,
     this.certificateThumbprint,
     required this.enabled,

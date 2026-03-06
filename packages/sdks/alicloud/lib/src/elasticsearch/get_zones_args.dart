@@ -15,7 +15,7 @@ class GetZonesArgs {
   /// Creates a new [GetZonesArgs].
   /// [multi] Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch Elasticsearch instances.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
+  const GetZonesArgs({
     this.multi,
     this.outputFile,
   });

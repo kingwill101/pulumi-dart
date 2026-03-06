@@ -8,7 +8,7 @@ class PortConfig {
 
   /// Creates a new [PortConfig].
   /// [persistenceTimeout] The timeout period for session retention. Value range: 30~3600, unit: second. The default is 0, which means off.
-  PortConfig({
+  const PortConfig({
     this.persistenceTimeout,
   });
 

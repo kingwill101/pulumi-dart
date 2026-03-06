@@ -29,7 +29,7 @@ class ByoipPrefixState {
   /// [signature] The cryptographic signature proving ownership of the prefix.
   /// [status] The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
   /// [uuid] The UUID of the BYOIP prefix.
-  ByoipPrefixState({
+  const ByoipPrefixState({
     this.advertised,
     this.failureReason,
     this.prefix,

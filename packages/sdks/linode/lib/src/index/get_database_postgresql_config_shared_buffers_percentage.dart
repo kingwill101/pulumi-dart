@@ -17,7 +17,7 @@ class GetDatabasePostgresqlConfigSharedBuffersPercentage {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabasePostgresqlConfigSharedBuffersPercentage({
+  const GetDatabasePostgresqlConfigSharedBuffersPercentage({
     required this.description,
     required this.example,
     required this.maximum,

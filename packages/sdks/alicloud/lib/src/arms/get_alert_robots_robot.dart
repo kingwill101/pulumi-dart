@@ -29,7 +29,7 @@ class GetAlertRobotsRobot {
   /// [robotId] The id of the robot.
   /// [robotName] The name of the robot.
   /// [robotType] The robot type.
-  GetAlertRobotsRobot({
+  const GetAlertRobotsRobot({
     required this.createTime,
     required this.dailyNoc,
     required this.dailyNocTime,

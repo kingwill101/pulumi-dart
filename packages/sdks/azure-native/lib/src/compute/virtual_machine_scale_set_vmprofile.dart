@@ -70,7 +70,7 @@ class VirtualMachineScaleSetVMProfile {
   /// [serviceArtifactReference] Specifies the service artifact reference id used to set same image version for all virtual machines in the scale set when using 'latest' image version. Minimum api-version: 2022-11-01
   /// [storageProfile] Specifies the storage settings for the virtual machine disks.
   /// [userData] UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-  VirtualMachineScaleSetVMProfile({
+  const VirtualMachineScaleSetVMProfile({
     this.applicationProfile,
     this.billingProfile,
     this.capacityReservation,

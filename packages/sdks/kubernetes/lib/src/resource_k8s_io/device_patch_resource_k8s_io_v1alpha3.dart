@@ -13,7 +13,7 @@ class DevicePatchResourceK8sIoV1alpha3 {
   /// Creates a new [DevicePatchResourceK8sIoV1alpha3].
   /// [basic] Basic defines one device instance.
   /// [name] Name is unique identifier among all devices managed by the driver in the pool. It must be a DNS label.
-  DevicePatchResourceK8sIoV1alpha3({
+  const DevicePatchResourceK8sIoV1alpha3({
     this.basic,
     this.name,
   });

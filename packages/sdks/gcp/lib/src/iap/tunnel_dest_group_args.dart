@@ -25,7 +25,7 @@ class TunnelDestGroupArgs {
   /// [groupName] Unique tunnel destination group name.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the tunnel group. Must be the same as the network resources in the group.
-  TunnelDestGroupArgs({
+  const TunnelDestGroupArgs({
     this.cidrs,
     this.fqdns,
     required this.groupName,

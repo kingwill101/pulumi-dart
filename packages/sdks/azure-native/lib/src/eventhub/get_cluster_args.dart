@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [clusterName] The name of the Event Hubs Cluster.
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

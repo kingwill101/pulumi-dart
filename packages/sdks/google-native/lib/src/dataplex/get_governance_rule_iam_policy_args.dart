@@ -17,7 +17,7 @@ class GetGovernanceRuleIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetGovernanceRuleIamPolicyArgs({
+  const GetGovernanceRuleIamPolicyArgs({
     required this.governanceRuleId,
     required this.location,
     this.optionsRequestedPolicyVersion,

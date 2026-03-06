@@ -11,7 +11,7 @@ class GetGroupDynamicMembership {
   /// Creates a new [GetGroupDynamicMembership].
   /// [enabled] Whether rule processing is "On" (true) or "Paused" (false).
   /// [rule] The rule that determines membership of this group.
-  GetGroupDynamicMembership({
+  const GetGroupDynamicMembership({
     required this.enabled,
     required this.rule,
   });

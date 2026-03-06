@@ -14,7 +14,7 @@ class DomainIdMapGiD {
   /// [count] Sets the count of group ID mappings specified for the domain's identity management.
   /// [start] Configures the starting GID for the group ID mapping in the domain.
   /// [target] Sets the target GID for the group ID mapping in the domain.
-  DomainIdMapGiD({
+  const DomainIdMapGiD({
     required this.count,
     required this.start,
     required this.target,

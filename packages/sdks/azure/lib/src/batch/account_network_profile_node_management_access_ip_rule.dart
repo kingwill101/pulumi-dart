@@ -11,7 +11,7 @@ class AccountNetworkProfileNodeManagementAccessIpRule {
   /// Creates a new [AccountNetworkProfileNodeManagementAccessIpRule].
   /// [action] Specifies the action of the ip rule. The only possible value is `Allow`. Defaults to `Allow`.
   /// [ipRange] The CIDR block from which requests will match the rule.
-  AccountNetworkProfileNodeManagementAccessIpRule({
+  const AccountNetworkProfileNodeManagementAccessIpRule({
     this.action,
     required this.ipRange,
   });

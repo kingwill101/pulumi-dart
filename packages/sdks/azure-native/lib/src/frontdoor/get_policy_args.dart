@@ -15,7 +15,7 @@ class GetPolicyArgs {
   /// Creates a new [GetPolicyArgs].
   /// [policyName] The name of the Web Application Firewall Policy.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
   });

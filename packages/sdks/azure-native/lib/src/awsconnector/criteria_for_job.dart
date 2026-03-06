@@ -14,7 +14,7 @@ class CriteriaForJob {
   /// Creates a new [CriteriaForJob].
   /// [simpleCriterion] &lt;p&gt;A property-based condition that defines a property, operator, and one or more values for including or excluding buckets from the job.&lt;/p&gt;
   /// [tagCriterion] &lt;p&gt;A tag-based condition that defines an operator and tag keys, tag values, or tag key and value pairs for including or excluding buckets from the job.&lt;/p&gt;
-  CriteriaForJob({
+  const CriteriaForJob({
     this.simpleCriterion,
     this.tagCriterion,
   });

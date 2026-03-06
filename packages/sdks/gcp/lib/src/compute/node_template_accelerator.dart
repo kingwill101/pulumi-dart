@@ -13,7 +13,7 @@ class NodeTemplateAccelerator {
   /// Creates a new [NodeTemplateAccelerator].
   /// [acceleratorCount] The number of the guest accelerator cards exposed to this
   /// [acceleratorType] Full or partial URL of the accelerator type resource to expose
-  NodeTemplateAccelerator({
+  const NodeTemplateAccelerator({
     this.acceleratorCount,
     this.acceleratorType,
   });

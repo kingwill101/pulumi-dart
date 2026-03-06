@@ -19,7 +19,7 @@ class BackupPolicyPostgresqlFlexibleServerRetentionRule {
   /// [lifeCycles] A `life_cycle` block as defined below. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the retention rule. Changing this forces a new resource to be created.
   /// [priority] Specifies the priority of the rule. The priority number must be unique for each rule. The lower the priority number, the higher the priority of the rule. Changing this forces a new resource to be created.
-  BackupPolicyPostgresqlFlexibleServerRetentionRule({
+  const BackupPolicyPostgresqlFlexibleServerRetentionRule({
     required this.criteria,
     required this.lifeCycles,
     required this.name,

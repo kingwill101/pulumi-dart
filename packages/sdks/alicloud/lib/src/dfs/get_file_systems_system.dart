@@ -53,7 +53,7 @@ class GetFileSystemsSystem {
   /// [throughputMode] The throughput mode of the File system. Valid values: `Provisioned`, `Standard`.
   /// [usedSpaceSize] The used space of the File system.
   /// [zoneId] The zone ID of the File system.
-  GetFileSystemsSystem({
+  const GetFileSystemsSystem({
     required this.createTime,
     required this.description,
     required this.fileSystemId,

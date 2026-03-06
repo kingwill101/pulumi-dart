@@ -14,7 +14,7 @@ class GetAiIndexMetadataConfigAlgorithmConfig {
   /// Creates a new [GetAiIndexMetadataConfigAlgorithmConfig].
   /// [bruteForceConfigs] Configuration options for using brute force search, which simply implements the
   /// [treeAhConfigs] Configuration options for using the tree-AH algorithm (Shallow tree + Asymmetric Hashing).
-  GetAiIndexMetadataConfigAlgorithmConfig({
+  const GetAiIndexMetadataConfigAlgorithmConfig({
     required this.bruteForceConfigs,
     required this.treeAhConfigs,
   });

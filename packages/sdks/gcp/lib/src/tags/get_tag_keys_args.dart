@@ -12,7 +12,7 @@ class GetTagKeysArgs {
 
   /// Creates a new [GetTagKeysArgs].
   /// [parent] The resource name of the parent organization or project. It can be in format `organizations/{org_id}` or `projects/{project_id_or_number}`.
-  GetTagKeysArgs({
+  const GetTagKeysArgs({
     required this.parent,
   });
 

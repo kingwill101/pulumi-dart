@@ -8,7 +8,7 @@ class GetEntitlementEligibleUser {
 
   /// Creates a new [GetEntitlementEligibleUser].
   /// [principals] Users who are being allowed for the operation. Each entry should be a valid v1 IAM Principal Identifier. Format for these is documented at "https://cloud.google.com/iam/docs/principal-identifiers#v1"
-  GetEntitlementEligibleUser({
+  const GetEntitlementEligibleUser({
     required this.principals,
   });
 

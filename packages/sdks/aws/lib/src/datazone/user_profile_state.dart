@@ -33,7 +33,7 @@ class UserProfileState {
   /// [type] The user profile type.
   /// [userIdentifier] The user identifier.
   /// [userType] The user type.
-  UserProfileState({
+  const UserProfileState({
     this.details,
     this.domainIdentifier,
     this.region,

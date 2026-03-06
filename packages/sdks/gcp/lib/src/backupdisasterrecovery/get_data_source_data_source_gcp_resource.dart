@@ -19,7 +19,7 @@ class GetDataSourceDataSourceGcpResource {
   /// [gcpResourcename] Full resource pathname URL of the source Google Cloud resource.
   /// [location] The location in which the Data Source belongs.
   /// [type] The type of the Google Cloud resource. Use the Unified Resource Type,
-  GetDataSourceDataSourceGcpResource({
+  const GetDataSourceDataSourceGcpResource({
     required this.computeInstanceDataSourceProperties,
     required this.gcpResourcename,
     required this.location,

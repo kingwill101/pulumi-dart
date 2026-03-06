@@ -15,7 +15,7 @@ class EdgeCacheServiceRouting {
   /// Creates a new [EdgeCacheServiceRouting].
   /// [hostRules] The list of hostRules to match against. These rules define which hostnames the EdgeCacheService will match against, and which route configurations apply.
   /// [pathMatchers] The list of pathMatchers referenced via name by hostRules. PathMatcher is used to match the path portion of the URL when a HostRule matches the URL's host portion.
-  EdgeCacheServiceRouting({
+  const EdgeCacheServiceRouting({
     required this.hostRules,
     required this.pathMatchers,
   });

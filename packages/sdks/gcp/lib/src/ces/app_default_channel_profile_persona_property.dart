@@ -12,7 +12,7 @@ class AppDefaultChannelProfilePersonaProperty {
 
   /// Creates a new [AppDefaultChannelProfilePersonaProperty].
   /// [persona] The persona of the channel.
-  AppDefaultChannelProfilePersonaProperty({
+  const AppDefaultChannelProfilePersonaProperty({
     this.persona,
   });
 

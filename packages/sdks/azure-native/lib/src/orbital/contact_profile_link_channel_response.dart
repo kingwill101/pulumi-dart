@@ -31,7 +31,7 @@ class ContactProfileLinkChannelResponse {
   /// [endPoint] Customer end point to store and retrieve data during a contact with the spacecraft.
   /// [modulationConfiguration] Copy of the modem configuration file such as Kratos QRadio. Only valid for uplink directions. If provided, the modem connects to the customer endpoint and accepts commands from the customer instead of a VITA.49 stream.
   /// [name] Channel name.
-  ContactProfileLinkChannelResponse({
+  const ContactProfileLinkChannelResponse({
     required this.bandwidthMHz,
     required this.centerFrequencyMHz,
     this.decodingConfiguration,

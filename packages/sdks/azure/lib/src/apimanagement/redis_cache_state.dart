@@ -24,7 +24,7 @@ class RedisCacheState {
   /// [description] The description of the API Management Redis Cache.
   /// [name] The name which should be used for this API Management Redis Cache. Changing this forces a new API Management Redis Cache to be created.
   /// [redisCacheId] The resource ID of the Cache for Redis.
-  RedisCacheState({
+  const RedisCacheState({
     this.apiManagementId,
     this.cacheLocation,
     this.connectionString,

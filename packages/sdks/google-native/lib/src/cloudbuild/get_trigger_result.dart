@@ -94,7 +94,7 @@ class GetTriggerResult {
   /// [tags] Tags for annotation of a `BuildTrigger`
   /// [triggerTemplate] Template describing the types of source changes to trigger a build. Branch and tag names in trigger templates are interpreted as regular expressions. Any branch or tag change that matches that regular expression will trigger a build. Mutually exclusive with `github`.
   /// [webhookConfig] WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
-  GetTriggerResult({
+  const GetTriggerResult({
     required this.approvalConfig,
     required this.autodetect,
     required this.bitbucketServerTriggerConfig,

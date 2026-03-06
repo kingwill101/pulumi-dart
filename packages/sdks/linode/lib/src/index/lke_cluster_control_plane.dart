@@ -17,7 +17,7 @@ class LkeClusterControlPlane {
   /// [acl] Defines the ACL configuration for an LKE cluster's control plane.
   /// [auditLogsEnabled] Enables audit logs on the cluster's control plane.
   /// [highAvailability] Defines whether High Availability is enabled for the cluster Control Plane. This is an **irreversible** change.
-  LkeClusterControlPlane({
+  const LkeClusterControlPlane({
     this.acl,
     this.auditLogsEnabled,
     this.highAvailability,

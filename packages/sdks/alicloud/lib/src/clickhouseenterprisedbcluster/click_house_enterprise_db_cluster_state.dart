@@ -80,7 +80,7 @@ class ClickHouseEnterpriseDbClusterState {
   /// [vpcId] The VPC ID.
   /// [vswitchId] vSwitch ID.
   /// [zoneId] The zone ID.
-  ClickHouseEnterpriseDbClusterState({
+  const ClickHouseEnterpriseDbClusterState({
     this.category,
     this.chargeType,
     this.computingGroupIds,

@@ -8,7 +8,7 @@ class QueryLoggingConfigurationDestinationFilters {
 
   /// Creates a new [QueryLoggingConfigurationDestinationFilters].
   /// [qspThreshold] The Query Samples Processed (QSP) threshold above which queries will be logged. Queries processing more samples than this threshold will be captured in logs.
-  QueryLoggingConfigurationDestinationFilters({
+  const QueryLoggingConfigurationDestinationFilters({
     required this.qspThreshold,
   });
 

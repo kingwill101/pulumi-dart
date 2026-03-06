@@ -25,7 +25,7 @@ class GetClusterNodeConfigLinuxNodeConfig {
   /// [sysctls] The Linux kernel parameters to be applied to the nodes and all pods running on the nodes.
   /// [transparentHugepageDefrag] The Linux kernel transparent hugepage defrag setting.
   /// [transparentHugepageEnabled] The Linux kernel transparent hugepage setting.
-  GetClusterNodeConfigLinuxNodeConfig({
+  const GetClusterNodeConfigLinuxNodeConfig({
     required this.cgroupMode,
     required this.hugepagesConfigs,
     required this.nodeKernelModuleLoadings,

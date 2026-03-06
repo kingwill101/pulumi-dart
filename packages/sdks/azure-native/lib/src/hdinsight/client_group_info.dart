@@ -12,7 +12,7 @@ class ClientGroupInfo {
   /// Creates a new [ClientGroupInfo].
   /// [groupId] The AAD security group id.
   /// [groupName] The AAD security group name.
-  ClientGroupInfo({
+  const ClientGroupInfo({
     this.groupId,
     this.groupName,
   });

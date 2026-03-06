@@ -52,7 +52,7 @@ class CloudServicePropertiesResponse {
   /// [startCloudService] (Optional) Indicates whether to start the cloud service immediately after it is created. The default value is `true`.
   /// [uniqueId] The unique identifier for the cloud service.
   /// [upgradeMode] Update mode for the cloud service. Role instances are allocated to update domains when the service is deployed. Updates can be initiated manually in each update domain or initiated automatically in all update domains.
-  CloudServicePropertiesResponse({
+  const CloudServicePropertiesResponse({
     this.allowModelOverride,
     this.configuration,
     this.configurationUrl,

@@ -26,7 +26,7 @@ class ProxyTargetArgs {
   /// [dbProxyName] The name of the DB proxy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetGroupName] The name of the target group.
-  ProxyTargetArgs({
+  const ProxyTargetArgs({
     this.dbClusterIdentifier,
     this.dbInstanceIdentifier,
     required this.dbProxyName,

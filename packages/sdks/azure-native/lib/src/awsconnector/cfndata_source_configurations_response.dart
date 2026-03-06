@@ -18,7 +18,7 @@ class CFNDataSourceConfigurationsResponse {
   /// [kubernetes] Property kubernetes
   /// [malwareProtection] Property malwareProtection
   /// [s3Logs] Property s3Logs
-  CFNDataSourceConfigurationsResponse({
+  const CFNDataSourceConfigurationsResponse({
     this.kubernetes,
     this.malwareProtection,
     this.s3Logs,

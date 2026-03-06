@@ -11,7 +11,7 @@ class FunctionFileSystemConfig {
   /// Creates a new [FunctionFileSystemConfig].
   /// [arn] ARN of the Amazon EFS Access Point.
   /// [localMountPath] Path where the function can access the file system. Must start with `/mnt/`.
-  FunctionFileSystemConfig({
+  const FunctionFileSystemConfig({
     required this.arn,
     required this.localMountPath,
   });

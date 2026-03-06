@@ -15,7 +15,7 @@ class GetGroupsResult {
   /// [groups] The list of groups under the provided customer or namespace. Structure is documented below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [parent] Required.
-  GetGroupsResult({
+  const GetGroupsResult({
     required this.groups,
     required this.id,
     required this.parent,

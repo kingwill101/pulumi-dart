@@ -280,5 +280,5 @@ class OpenstackConfig {
 
 }
 
-final config = OpenstackConfig();
+const config = OpenstackConfig();
 

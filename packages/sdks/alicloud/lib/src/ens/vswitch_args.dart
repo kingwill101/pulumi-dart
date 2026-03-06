@@ -24,7 +24,7 @@ class VswitchArgs {
   /// [ensRegionId] ENS Region ID.
   /// [networkId] The ID of the network to which the vSwitch that you want to create belongs.
   /// [vswitchName] The name of the vSwitch.
-  VswitchArgs({
+  const VswitchArgs({
     required this.cidrBlock,
     this.description,
     required this.ensRegionId,

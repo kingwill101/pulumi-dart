@@ -13,7 +13,7 @@ class VirtualNetworkProperties {
   /// Creates a new [VirtualNetworkProperties].
   /// [id] Uri of the virtual network.
   /// [subnet] Properties of a subnet.
-  VirtualNetworkProperties({
+  const VirtualNetworkProperties({
     this.id,
     this.subnet,
   });

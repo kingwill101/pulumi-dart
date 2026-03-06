@@ -18,7 +18,7 @@ class JitNetworkAccessPortRuleResponse {
   /// [maxRequestAccessDuration] Maximum duration requests can be made for. In ISO 8601 duration format. Minimum 5 minutes, maximum 1 day
   /// [number] Required.
   /// [protocol] Required.
-  JitNetworkAccessPortRuleResponse({
+  const JitNetworkAccessPortRuleResponse({
     this.allowedSourceAddressPrefix,
     this.allowedSourceAddressPrefixes,
     required this.maxRequestAccessDuration,

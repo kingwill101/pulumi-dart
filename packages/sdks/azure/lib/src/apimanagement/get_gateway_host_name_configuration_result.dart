@@ -32,7 +32,7 @@ class GetGatewayHostNameConfigurationResult {
   /// [requestClientCertificateEnabled] Whether the API Management Gateway requests a client certificate.
   /// [tls10Enabled] Whether TLS 1.0 is supported.
   /// [tls11Enabled] Whether TLS 1.1 is supported.
-  GetGatewayHostNameConfigurationResult({
+  const GetGatewayHostNameConfigurationResult({
     required this.apiManagementId,
     required this.certificateId,
     required this.gatewayName,

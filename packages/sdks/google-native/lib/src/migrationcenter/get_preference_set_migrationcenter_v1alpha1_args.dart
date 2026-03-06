@@ -15,7 +15,7 @@ class GetPreferenceSetMigrationcenterV1alpha1Args {
   /// [location] Required.
   /// [preferenceSetId] Required.
   /// [project] Optional.
-  GetPreferenceSetMigrationcenterV1alpha1Args({
+  const GetPreferenceSetMigrationcenterV1alpha1Args({
     required this.location,
     required this.preferenceSetId,
     this.project,

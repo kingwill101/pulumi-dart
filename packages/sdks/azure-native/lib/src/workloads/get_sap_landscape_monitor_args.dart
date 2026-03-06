@@ -15,7 +15,7 @@ class GetSapLandscapeMonitorArgs {
   /// Creates a new [GetSapLandscapeMonitorArgs].
   /// [monitorName] Name of the SAP monitor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSapLandscapeMonitorArgs({
+  const GetSapLandscapeMonitorArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

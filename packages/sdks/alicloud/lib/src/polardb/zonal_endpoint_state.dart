@@ -51,7 +51,7 @@ class ZonalEndpointState {
   /// [readWriteMode] Read or write mode. Valid values are `ReadWrite`, `ReadOnly`. When creating a new custom endpoint, default to `ReadOnly`.
   /// [vpcId] The ID of ENS VPC where to use the DB.
   /// [vswitchId] The ID of ENS virtual switch where to use the DB.
-  ZonalEndpointState({
+  const ZonalEndpointState({
     this.autoAddNewNodes,
     this.connectionPrefix,
     this.dbClusterId,

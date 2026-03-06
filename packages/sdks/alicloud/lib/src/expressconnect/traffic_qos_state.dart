@@ -23,7 +23,7 @@ class TrafficQosState {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the QoS policy.
   /// [tags] The tag of the resource.
-  TrafficQosState({
+  const TrafficQosState({
     this.qosDescription,
     this.qosName,
     this.resourceGroupId,

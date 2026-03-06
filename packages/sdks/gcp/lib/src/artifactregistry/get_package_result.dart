@@ -28,7 +28,7 @@ class GetPackageResult {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [updateTime] The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
-  GetPackageResult({
+  const GetPackageResult({
     required this.annotations,
     required this.createTime,
     required this.displayName,

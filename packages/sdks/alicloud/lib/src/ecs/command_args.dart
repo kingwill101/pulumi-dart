@@ -30,7 +30,7 @@ class CommandArgs {
   /// [timeout] The timeout period that is specified for the command to be run on ECS instances. Unit: seconds. Default to: `60`.
   /// [type] The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
   /// [workingDir] The execution path of the command in the ECS instance.
-  CommandArgs({
+  const CommandArgs({
     required this.commandContent,
     this.description,
     this.enableParameter,

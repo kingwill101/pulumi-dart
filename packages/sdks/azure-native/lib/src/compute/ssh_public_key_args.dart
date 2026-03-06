@@ -24,7 +24,7 @@ class SshPublicKeyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sshPublicKeyName] The name of the SSH public key.
   /// [tags] Resource tags.
-  SshPublicKeyArgs({
+  const SshPublicKeyArgs({
     this.location,
     this.publicKey,
     required this.resourceGroupName,

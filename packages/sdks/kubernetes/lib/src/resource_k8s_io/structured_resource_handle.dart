@@ -19,7 +19,7 @@ class StructuredResourceHandle {
   /// [results] Results lists all allocated driver resources.
   /// [vendorClaimParameters] VendorClaimParameters are the per-claim configuration parameters from the resource claim parameters at the time that the claim was allocated.
   /// [vendorClassParameters] VendorClassParameters are the per-claim configuration parameters from the resource class at the time that the claim was allocated.
-  StructuredResourceHandle({
+  const StructuredResourceHandle({
     this.nodeName,
     required this.results,
     this.vendorClaimParameters,

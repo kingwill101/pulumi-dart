@@ -21,7 +21,7 @@ class GetNetworkAclsResult {
   /// [region] Required.
   /// [tags] Required.
   /// [vpcId] Optional.
-  GetNetworkAclsResult({
+  const GetNetworkAclsResult({
     this.filters,
     required this.id,
     required this.ids,

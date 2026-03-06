@@ -15,7 +15,7 @@ class GetKubernetesClusterArgs {
   /// Creates a new [GetKubernetesClusterArgs].
   /// [kubernetesClusterName] The name of the Kubernetes cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetKubernetesClusterArgs({
+  const GetKubernetesClusterArgs({
     required this.kubernetesClusterName,
     required this.resourceGroupName,
   });

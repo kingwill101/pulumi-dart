@@ -17,7 +17,7 @@ class DNSConfigContainerV1beta1 {
   /// [clusterDns] cluster_dns indicates which in-cluster DNS provider should be used.
   /// [clusterDnsDomain] cluster_dns_domain is the suffix used for all cluster service records.
   /// [clusterDnsScope] cluster_dns_scope indicates the scope of access to cluster DNS records.
-  DNSConfigContainerV1beta1({
+  const DNSConfigContainerV1beta1({
     this.clusterDns,
     this.clusterDnsDomain,
     this.clusterDnsScope,

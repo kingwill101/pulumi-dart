@@ -25,7 +25,7 @@ class LinkedWorkspaceArgs {
   /// [properties] LinkedWorkspace specific properties.
   /// [resourceGroupName] Name of the resource group in which workspace is located.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  LinkedWorkspaceArgs({
+  const LinkedWorkspaceArgs({
     this.linkName,
     this.name,
     this.properties,

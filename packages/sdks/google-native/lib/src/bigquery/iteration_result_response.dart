@@ -20,7 +20,7 @@ class IterationResultResponse {
   /// [index] Index of the iteration, 0 based.
   /// [learnRate] Learn rate used for this iteration.
   /// [trainingLoss] Loss computed on the training data at the end of iteration.
-  IterationResultResponse({
+  const IterationResultResponse({
     required this.durationMs,
     required this.evalLoss,
     required this.index,

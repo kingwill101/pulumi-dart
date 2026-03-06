@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2CloudStorageFileSet {
 
   /// Creates a new [GooglePrivacyDlpV2CloudStorageFileSet].
   /// [url] The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
-  GooglePrivacyDlpV2CloudStorageFileSet({
+  const GooglePrivacyDlpV2CloudStorageFileSet({
     this.url,
   });
 

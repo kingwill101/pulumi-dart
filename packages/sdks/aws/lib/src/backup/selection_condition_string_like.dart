@@ -11,7 +11,7 @@ class SelectionConditionStringLike {
   /// Creates a new [SelectionConditionStringLike].
   /// [key] Key for the filter.
   /// [value] Value for the filter.
-  SelectionConditionStringLike({
+  const SelectionConditionStringLike({
     required this.key,
     required this.value,
   });

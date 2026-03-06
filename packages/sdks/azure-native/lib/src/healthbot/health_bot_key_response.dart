@@ -12,7 +12,7 @@ class HealthBotKeyResponse {
   /// Creates a new [HealthBotKeyResponse].
   /// [keyName] The name of the key.
   /// [value] The value of the key.
-  HealthBotKeyResponse({
+  const HealthBotKeyResponse({
     this.keyName,
     this.value,
   });

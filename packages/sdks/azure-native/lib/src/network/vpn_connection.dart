@@ -62,7 +62,7 @@ class VpnConnection {
   /// [usePolicyBasedTrafficSelectors] Enable policy-based traffic selectors.
   /// [vpnConnectionProtocolType] Connection protocol used for this connection.
   /// [vpnLinkConnections] List of all vpn site link connections to the gateway.
-  VpnConnection({
+  const VpnConnection({
     this.connectionBandwidth,
     this.dpdTimeoutSeconds,
     this.enableBgp,

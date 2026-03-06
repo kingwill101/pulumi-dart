@@ -13,7 +13,7 @@ class NetworkRefResponse {
   /// Creates a new [NetworkRefResponse].
   /// [endpointRefs] A list of endpoints that are exposed on this network.
   /// [name] Name of the network
-  NetworkRefResponse({
+  const NetworkRefResponse({
     this.endpointRefs,
     this.name,
   });

@@ -35,7 +35,7 @@ class StreamingDataSourceState {
   /// [dbInstanceId] The instance ID.
   /// [serviceId] The real-time data service ID.
   /// [status] Service Status:
-  StreamingDataSourceState({
+  const StreamingDataSourceState({
     this.createTime,
     this.dataSourceConfig,
     this.dataSourceDescription,

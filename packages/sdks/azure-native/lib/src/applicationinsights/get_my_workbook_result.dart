@@ -61,7 +61,7 @@ class GetMyWorkbookResult {
   /// [type] Azure resource type
   /// [userId] Unique user id of the specific user that owns this private workbook.
   /// [version] This instance's version of the data model. This can change as new features are added that can be marked private workbook.
-  GetMyWorkbookResult({
+  const GetMyWorkbookResult({
     required this.azureApiVersion,
     required this.category,
     required this.displayName,

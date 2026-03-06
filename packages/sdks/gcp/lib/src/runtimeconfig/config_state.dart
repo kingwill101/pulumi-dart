@@ -19,7 +19,7 @@ class ConfigState {
   /// [description] The description to associate with the runtime
   /// [name] The name of the runtime config.
   /// [project] The ID of the project in which the resource belongs. If it
-  ConfigState({
+  const ConfigState({
     this.description,
     this.name,
     this.project,

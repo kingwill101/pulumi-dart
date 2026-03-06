@@ -13,7 +13,7 @@ class DomainCpuNuma {
   /// Creates a new [DomainCpuNuma].
   /// [cells] Defines specific CPU NUMA cell properties, allowing for fine-tuning of resources.
   /// [interconnects] Defines the interconnects between NUMA nodes, configuring how they communicate.
-  DomainCpuNuma({
+  const DomainCpuNuma({
     this.cells,
     this.interconnects,
   });

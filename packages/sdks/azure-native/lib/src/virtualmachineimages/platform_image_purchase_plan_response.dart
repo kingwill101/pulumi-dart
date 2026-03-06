@@ -15,7 +15,7 @@ class PlatformImagePurchasePlanResponse {
   /// [planName] Name of the purchase plan.
   /// [planProduct] Product of the purchase plan.
   /// [planPublisher] Publisher of the purchase plan.
-  PlatformImagePurchasePlanResponse({
+  const PlatformImagePurchasePlanResponse({
     required this.planName,
     required this.planProduct,
     required this.planPublisher,

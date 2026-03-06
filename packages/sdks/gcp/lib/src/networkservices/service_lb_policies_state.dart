@@ -56,7 +56,7 @@ class ServiceLbPoliciesState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Time the ServiceLbPolicy was updated in UTC.
-  ServiceLbPoliciesState({
+  const ServiceLbPoliciesState({
     this.autoCapacityDrain,
     this.createTime,
     this.description,

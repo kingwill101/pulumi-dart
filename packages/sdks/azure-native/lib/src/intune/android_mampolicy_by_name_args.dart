@@ -55,7 +55,7 @@ class AndroidMAMPolicyByNameArgs {
   /// [policyName] Unique name for the policy
   /// [screenCapture] Optional.
   /// [tags] Resource Tags
-  AndroidMAMPolicyByNameArgs({
+  const AndroidMAMPolicyByNameArgs({
     this.accessRecheckOfflineTimeout,
     this.accessRecheckOnlineTimeout,
     this.appSharingFromLevel,

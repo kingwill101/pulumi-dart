@@ -17,7 +17,7 @@ class GetServiceSecureLdap {
   /// [enabled] Whether secure LDAP is enabled for the managed domain.
   /// [externalAccessEnabled] Whether external access to LDAPS over the Internet, is enabled.
   /// [publicCertificate] Required.
-  GetServiceSecureLdap({
+  const GetServiceSecureLdap({
     required this.certificateExpiry,
     required this.certificateThumbprint,
     required this.enabled,

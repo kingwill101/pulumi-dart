@@ -8,7 +8,7 @@ class HciDeploymentSettingScaleUnitOptionalService {
 
   /// Creates a new [HciDeploymentSettingScaleUnitOptionalService].
   /// [customLocation] Specifies the name of custom location. A custom location will be created after the deployment is completed. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitOptionalService({
+  const HciDeploymentSettingScaleUnitOptionalService({
     required this.customLocation,
   });
 

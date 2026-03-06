@@ -12,7 +12,7 @@ class GetVirtualMachineInstanceArgs {
 
   /// Creates a new [GetVirtualMachineInstanceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetVirtualMachineInstanceArgs({
+  const GetVirtualMachineInstanceArgs({
     required this.resourceUri,
   });
 

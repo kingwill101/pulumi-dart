@@ -38,7 +38,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackState {
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall Virtual Network Local Rulestack should exist. Changing this forces a new Palo Alto Next Generation Firewall Virtual Network Local Rulestack to be created.
   /// [rulestackId] The ID of the Local Rulestack which will be used to configure this Firewall Resource.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall Virtual Network Local Rulestack.
-  NextGenerationFirewallVirtualNetworkLocalRulestackState({
+  const NextGenerationFirewallVirtualNetworkLocalRulestackState({
     this.destinationNats,
     this.dnsSettings,
     this.marketplaceOfferId,

@@ -8,7 +8,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSetti
 
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings].
   /// [temporalFilterSettings] Optional.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH264SettingsFilterSettings({
     this.temporalFilterSettings,
   });
 

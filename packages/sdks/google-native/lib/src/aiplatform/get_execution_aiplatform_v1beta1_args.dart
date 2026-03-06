@@ -17,7 +17,7 @@ class GetExecutionAiplatformV1beta1Args {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetExecutionAiplatformV1beta1Args({
+  const GetExecutionAiplatformV1beta1Args({
     required this.executionId,
     required this.location,
     required this.metadataStoreId,

@@ -55,7 +55,7 @@ class EventGridDataConnectionArgs {
   /// [storageAccountResourceId] The resource ID of the storage account where the data resides.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [workspaceName] The name of the workspace.
-  EventGridDataConnectionArgs({
+  const EventGridDataConnectionArgs({
     this.blobStorageEventType,
     required this.consumerGroup,
     this.dataConnectionName,

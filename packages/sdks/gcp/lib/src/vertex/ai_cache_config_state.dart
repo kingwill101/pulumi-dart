@@ -16,7 +16,7 @@ class AiCacheConfigState {
   /// [disableCache] If set to true, disables GenAI caching. Otherwise caching is enabled.
   /// [name] Identifier. name of the cache config. Format: - `projects/{project}/cacheConfig`.
   /// [project] The ID of the project in which the resource belongs.
-  AiCacheConfigState({
+  const AiCacheConfigState({
     this.disableCache,
     this.name,
     this.project,

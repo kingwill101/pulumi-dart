@@ -29,7 +29,7 @@ class GetComputePolicyResult {
   /// [objectId] The AAD object identifier for the entity to create a policy for.
   /// [objectType] The type of AAD object the object identifier refers to.
   /// [type] The resource type.
-  GetComputePolicyResult({
+  const GetComputePolicyResult({
     required this.azureApiVersion,
     required this.id,
     required this.maxDegreeOfParallelismPerJob,

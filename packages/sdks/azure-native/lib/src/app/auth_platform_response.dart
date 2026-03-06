@@ -13,7 +13,7 @@ class AuthPlatformResponse {
   /// Creates a new [AuthPlatformResponse].
   /// [enabled] &lt;code&gt;true&lt;/code&gt; if the Authentication / Authorization feature is enabled for the current app; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [runtimeVersion] The RuntimeVersion of the Authentication / Authorization feature in use for the current app.
-  AuthPlatformResponse({
+  const AuthPlatformResponse({
     this.enabled,
     this.runtimeVersion,
   });

@@ -62,7 +62,7 @@ class UserArgs {
   /// [title] The user's title.
   /// [userName] A unique string used to identify the user. This value can consist of letters, accented characters, symbols, numbers, and punctuation. This value is specified at the time the user is created and stored as an attribute of the user object in the identity store. The limit is 128 characters.
   /// [userType] The user type.
-  UserArgs({
+  const UserArgs({
     this.addresses,
     required this.displayName,
     this.emails,

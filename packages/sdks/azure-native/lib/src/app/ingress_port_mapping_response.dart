@@ -15,7 +15,7 @@ class IngressPortMappingResponse {
   /// [exposedPort] Specifies the exposed port for the target port. If not specified, it defaults to target port
   /// [external] Specifies whether the app port is accessible outside of the environment
   /// [targetPort] Specifies the port user's container listens on
-  IngressPortMappingResponse({
+  const IngressPortMappingResponse({
     this.exposedPort,
     required this.external,
     required this.targetPort,

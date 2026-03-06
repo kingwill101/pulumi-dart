@@ -15,7 +15,7 @@ class GetInstanceDetailsArgs {
   /// Creates a new [GetInstanceDetailsArgs].
   /// [instanceName] The name of the instance. It must be a minimum of 3 characters, and a maximum of 63.
   /// [resourceGroupName] The name of the Azure Resource group of which a given DFP instance is part. This name must be at least 1 character in length, and no more than 90.
-  GetInstanceDetailsArgs({
+  const GetInstanceDetailsArgs({
     required this.instanceName,
     required this.resourceGroupName,
   });

@@ -16,7 +16,7 @@ class CloudHsmClusterSku {
   /// [capacity] Sku capacity
   /// [family] Sku family of the Cloud HSM Cluster
   /// [name] Sku name of the Cloud HSM Cluster
-  CloudHsmClusterSku({
+  const CloudHsmClusterSku({
     this.capacity,
     required this.family,
     required this.name,

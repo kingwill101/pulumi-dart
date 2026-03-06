@@ -79,7 +79,7 @@ class GetImagesImage {
   /// [status] The status of the image. The following values are available, Separate multiple parameter values by using commas (,). Default value: `Available`. Valid values:
   /// [tags] A mapping of tags to assign to the resource.
   /// [usage] Specifies whether to check the validity of the request without actually making the request. Valid values:
-  GetImagesImage({
+  const GetImagesImage({
     required this.architecture,
     required this.creationTime,
     required this.description,

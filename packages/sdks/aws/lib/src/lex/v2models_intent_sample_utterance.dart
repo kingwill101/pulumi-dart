@@ -8,7 +8,7 @@ class V2modelsIntentSampleUtterance {
 
   /// Creates a new [V2modelsIntentSampleUtterance].
   /// [utterance] Sample utterance that Amazon Lex uses to build its machine-learning model to recognize intents.
-  V2modelsIntentSampleUtterance({
+  const V2modelsIntentSampleUtterance({
     required this.utterance,
   });
 

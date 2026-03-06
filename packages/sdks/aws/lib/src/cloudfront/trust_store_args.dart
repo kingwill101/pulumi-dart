@@ -24,7 +24,7 @@ class TrustStoreArgs {
   /// [name] Name of the trust store. Changing this forces a new resource to be created.
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  TrustStoreArgs({
+  const TrustStoreArgs({
     required this.caCertificatesBundleSource,
     this.name,
     this.tags,

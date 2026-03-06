@@ -16,7 +16,7 @@ class VirtualNetworkRule {
   /// [action] The action of virtual network rule.
   /// [state] Gets the state of virtual network rule.
   /// [virtualNetworkResourceId] Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{vnetName}/subnets/{subnetName}.
-  VirtualNetworkRule({
+  const VirtualNetworkRule({
     this.action,
     this.state,
     required this.virtualNetworkResourceId,

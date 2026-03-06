@@ -14,7 +14,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk {
   /// [idFieldNames] Optional.
   /// [object_] Required.
   /// [writeOperationType] Optional.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesZendesk({
     this.errorHandlingConfig,
     this.idFieldNames,
     required this.object_,

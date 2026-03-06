@@ -13,7 +13,7 @@ class ReplicationTime {
   /// Creates a new [ReplicationTime].
   /// [status] Specifies whether the replication time is enabled.
   /// [time] A container specifying the time by which replication should be complete for all objects and operations on objects. A container specifying the time value for S3 Replication Time Control (S3 RTC) and replication metrics ``EventThreshold``.
-  ReplicationTime({
+  const ReplicationTime({
     this.status,
     this.time,
   });

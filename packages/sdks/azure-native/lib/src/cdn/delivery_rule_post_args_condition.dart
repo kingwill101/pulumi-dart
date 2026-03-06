@@ -14,7 +14,7 @@ class DeliveryRulePostArgsCondition {
   /// Creates a new [DeliveryRulePostArgsCondition].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRulePostArgsCondition({
+  const DeliveryRulePostArgsCondition({
     required this.name,
     required this.parameters,
   });

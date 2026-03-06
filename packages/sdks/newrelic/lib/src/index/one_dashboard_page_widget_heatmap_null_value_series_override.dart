@@ -11,7 +11,7 @@ class OneDashboardPageWidgetHeatmapNullValueSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetHeatmapNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesName] Series name
-  OneDashboardPageWidgetHeatmapNullValueSeriesOverride({
+  const OneDashboardPageWidgetHeatmapNullValueSeriesOverride({
     this.nullValue,
     this.seriesName,
   });

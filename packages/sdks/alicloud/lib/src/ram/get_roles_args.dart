@@ -27,7 +27,7 @@ class GetRolesArgs {
   /// [policyName] The name of the policy.
   /// [policyType] The type of the policy. Default value: `System`. Valid values: `System`, `Custom`. **Note:** `policy_type` takes effect only when `policy_name` is set.
   /// [tags] A mapping of tags to assign to the resource.
-  GetRolesArgs({
+  const GetRolesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -18,7 +18,7 @@ class DeviceAllocationConfigurationResourceK8sIoV1beta1 {
   /// [opaque] Opaque provides driver-specific configuration parameters.
   /// [requests] Requests lists the names of requests where the configuration applies. If empty, its applies to all requests.
   /// [source] Source records whether the configuration comes from a class and thus is not something that a normal user would have been able to set or from a claim.
-  DeviceAllocationConfigurationResourceK8sIoV1beta1({
+  const DeviceAllocationConfigurationResourceK8sIoV1beta1({
     this.opaque,
     this.requests,
     required this.source,

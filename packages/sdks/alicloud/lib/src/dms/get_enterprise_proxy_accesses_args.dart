@@ -20,7 +20,7 @@ class GetEnterpriseProxyAccessesArgs {
   /// [ids] A list of Proxy Access IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [proxyId] The ID of the security agent.
-  GetEnterpriseProxyAccessesArgs({
+  const GetEnterpriseProxyAccessesArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

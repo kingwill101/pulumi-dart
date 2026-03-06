@@ -57,7 +57,7 @@ class DockerBuildRequestResponse {
   /// [target] The name of the target build stage for the docker build.
   /// [timeout] Run timeout in seconds.
   /// [type] The type of the run request.
-  DockerBuildRequestResponse({
+  const DockerBuildRequestResponse({
     this.agentConfiguration,
     this.agentPoolName,
     this.arguments,

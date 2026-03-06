@@ -16,7 +16,7 @@ class GetExperimentTemplatesArgs {
   /// Creates a new [GetExperimentTemplatesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags, each pair of which must exactly match
-  GetExperimentTemplatesArgs({
+  const GetExperimentTemplatesArgs({
     this.region,
     this.tags,
   });

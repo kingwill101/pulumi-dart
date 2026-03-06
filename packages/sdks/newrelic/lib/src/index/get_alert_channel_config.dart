@@ -45,7 +45,7 @@ class GetAlertChannelConfig {
   /// [teams] Optional.
   /// [url] Optional.
   /// [userId] Optional.
-  GetAlertChannelConfig({
+  const GetAlertChannelConfig({
     this.apiKey,
     this.authPassword,
     this.authType,

@@ -15,7 +15,7 @@ class GetS3BucketPolicyArgs {
   /// Creates a new [GetS3BucketPolicyArgs].
   /// [name] Name of S3BucketPolicy
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetS3BucketPolicyArgs({
+  const GetS3BucketPolicyArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -34,7 +34,7 @@ class DispatchRuleState {
   /// [notifyRules] Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
   /// [notifyTemplates] Sets the notification template. See `notify_template` below.
   /// [status] The resource status of Alert Dispatch Rule.
-  DispatchRuleState({
+  const DispatchRuleState({
     this.dispatchRuleName,
     this.dispatchType,
     this.groupRules,

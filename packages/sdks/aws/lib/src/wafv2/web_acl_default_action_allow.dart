@@ -9,7 +9,7 @@ class WebAclDefaultActionAllow {
 
   /// Creates a new [WebAclDefaultActionAllow].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclDefaultActionAllow({
+  const WebAclDefaultActionAllow({
     this.customRequestHandling,
   });
 

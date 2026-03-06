@@ -28,7 +28,7 @@ class GetHanaInstancesResult {
   /// [pageSize] Optional.
   /// [status] Optional.
   /// [vaultId] Optional.
-  GetHanaInstancesResult({
+  const GetHanaInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

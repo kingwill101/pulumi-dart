@@ -8,7 +8,7 @@ class Certificate {
 
   /// Creates a new [Certificate].
   /// [pem] PEM formatted public key.
-  Certificate({
+  const Certificate({
     this.pem,
   });
 

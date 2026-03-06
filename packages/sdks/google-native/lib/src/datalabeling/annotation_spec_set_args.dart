@@ -21,7 +21,7 @@ class AnnotationSpecSetArgs {
   /// [description] Optional. User-provided description of the annotation specification set. The description can be up to 10,000 characters long.
   /// [displayName] The display name for AnnotationSpecSet that you define when you create it. Maximum of 64 characters.
   /// [project] Optional.
-  AnnotationSpecSetArgs({
+  const AnnotationSpecSetArgs({
     required this.annotationSpecs,
     this.description,
     required this.displayName,

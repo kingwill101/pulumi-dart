@@ -14,7 +14,7 @@ class EventSubscriptionAzureFunctionEndpoint {
   /// [functionId] Specifies the ID of the Function where the Event Subscription will receive events. This must be the functions ID in format {function_app.id}/functions/{name}.
   /// [maxEventsPerBatch] Maximum number of events per batch.
   /// [preferredBatchSizeInKilobytes] Preferred batch size in Kilobytes.
-  EventSubscriptionAzureFunctionEndpoint({
+  const EventSubscriptionAzureFunctionEndpoint({
     required this.functionId,
     this.maxEventsPerBatch,
     this.preferredBatchSizeInKilobytes,

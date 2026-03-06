@@ -21,7 +21,7 @@ class ManagedDiskSasTokenState {
   /// [durationInSeconds] The duration for which the export should be allowed. Should be between 30 & 4294967295 seconds. Changing this forces a new resource to be created.
   /// [managedDiskId] The ID of an existing Managed Disk which should be exported. Changing this forces a new resource to be created.
   /// [sasUrl] The computed Shared Access Signature (SAS) of the Managed Disk.
-  ManagedDiskSasTokenState({
+  const ManagedDiskSasTokenState({
     this.accessLevel,
     this.durationInSeconds,
     this.managedDiskId,

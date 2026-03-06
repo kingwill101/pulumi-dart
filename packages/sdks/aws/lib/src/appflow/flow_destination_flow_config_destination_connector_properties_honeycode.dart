@@ -10,7 +10,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode {
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode].
   /// [errorHandlingConfig] Optional.
   /// [object_] Required.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesHoneycode({
     this.errorHandlingConfig,
     required this.object_,
   });

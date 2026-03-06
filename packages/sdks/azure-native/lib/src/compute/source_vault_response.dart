@@ -9,7 +9,7 @@ class SourceVaultResponse {
 
   /// Creates a new [SourceVaultResponse].
   /// [id] Resource Id
-  SourceVaultResponse({
+  const SourceVaultResponse({
     this.id,
   });
 

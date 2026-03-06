@@ -8,7 +8,7 @@ class DataSourceConfigurationTemplateConfiguration {
 
   /// Creates a new [DataSourceConfigurationTemplateConfiguration].
   /// [template] JSON string containing a [data source template schema](https://docs.aws.amazon.com/kendra/latest/dg/ds-schemas.html).
-  DataSourceConfigurationTemplateConfiguration({
+  const DataSourceConfigurationTemplateConfiguration({
     required this.template,
   });
 

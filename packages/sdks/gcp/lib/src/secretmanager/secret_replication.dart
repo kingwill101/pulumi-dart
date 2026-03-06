@@ -15,7 +15,7 @@ class SecretReplication {
   /// Creates a new [SecretReplication].
   /// [auto] The Secret will automatically be replicated without any restrictions.
   /// [userManaged] The Secret will be replicated to the regions specified by the user.
-  SecretReplication({
+  const SecretReplication({
     this.auto,
     this.userManaged,
   });

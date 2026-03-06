@@ -11,7 +11,7 @@ class InstanceGroupManagerStatusAllInstancesConfig {
   /// Creates a new [InstanceGroupManagerStatusAllInstancesConfig].
   /// [currentRevision] Current all-instances configuration revision. This value is in RFC3339 text format.
   /// [effective] A bit indicating whether this configuration has been applied to all managed instances in the group.
-  InstanceGroupManagerStatusAllInstancesConfig({
+  const InstanceGroupManagerStatusAllInstancesConfig({
     this.currentRevision,
     this.effective,
   });

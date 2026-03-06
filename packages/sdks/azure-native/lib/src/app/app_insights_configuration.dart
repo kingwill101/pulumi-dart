@@ -9,7 +9,7 @@ class AppInsightsConfiguration {
 
   /// Creates a new [AppInsightsConfiguration].
   /// [connectionString] Application Insights connection string
-  AppInsightsConfiguration({
+  const AppInsightsConfiguration({
     this.connectionString,
   });
 

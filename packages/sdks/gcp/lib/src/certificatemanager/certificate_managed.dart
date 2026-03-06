@@ -37,7 +37,7 @@ class CertificateManaged {
   /// [issuanceConfig] The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format projects/*/locations/*/certificateIssuanceConfigs/*.
   /// [provisioningIssues] (Output)
   /// [state] (Output)
-  CertificateManaged({
+  const CertificateManaged({
     this.authorizationAttemptInfos,
     this.dnsAuthorizations,
     this.domains,

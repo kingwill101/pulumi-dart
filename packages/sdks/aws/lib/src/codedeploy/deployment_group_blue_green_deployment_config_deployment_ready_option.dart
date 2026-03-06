@@ -13,7 +13,7 @@ class DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption {
   /// Creates a new [DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption].
   /// [actionOnTimeout] When to reroute traffic from an original environment to a replacement environment in a blue/green deployment.
   /// [waitTimeInMinutes] The number of minutes to wait before the status of a blue/green deployment changed to Stopped if rerouting is not started manually. Applies only to the `STOP_DEPLOYMENT` option for `action_on_timeout`.
-  DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption({
+  const DeploymentGroupBlueGreenDeploymentConfigDeploymentReadyOption({
     this.actionOnTimeout,
     this.waitTimeInMinutes,
   });

@@ -9,7 +9,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryGibPerVcpu].
   /// [max] Optional.
   /// [min] Optional.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryGibPerVcpu({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryGibPerVcpu({
     this.max,
     this.min,
   });

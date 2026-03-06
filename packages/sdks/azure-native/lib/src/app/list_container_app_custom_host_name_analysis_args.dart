@@ -18,7 +18,7 @@ class ListContainerAppCustomHostNameAnalysisArgs {
   /// [containerAppName] Name of the Container App.
   /// [customHostname] Custom hostname.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListContainerAppCustomHostNameAnalysisArgs({
+  const ListContainerAppCustomHostNameAnalysisArgs({
     required this.containerAppName,
     this.customHostname,
     required this.resourceGroupName,

@@ -10,7 +10,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeade
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader].
   /// [key] Optional.
   /// [value] Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorReturnHeadersReturnHeader({
     this.key,
     this.value,
   });

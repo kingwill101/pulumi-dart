@@ -22,7 +22,7 @@ class GetLedgerResult {
   /// [permissionsMode] Required.
   /// [region] Required.
   /// [tags] Required.
-  GetLedgerResult({
+  const GetLedgerResult({
     required this.arn,
     required this.deletionProtection,
     required this.id,

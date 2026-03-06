@@ -14,7 +14,7 @@ class FrontdoorOriginGroupLoadBalancing {
   /// [additionalLatencyInMilliseconds] Specifies the additional latency in milliseconds for probes to fall into the lowest latency bucket. Possible values are between `0` and `1000` milliseconds (inclusive). Defaults to `50`.
   /// [sampleSize] Specifies the number of samples to consider for load balancing decisions. Possible values are between `0` and `255` (inclusive). Defaults to `4`.
   /// [successfulSamplesRequired] Specifies the number of samples within the sample period that must succeed. Possible values are between `0` and `255` (inclusive). Defaults to `3`.
-  FrontdoorOriginGroupLoadBalancing({
+  const FrontdoorOriginGroupLoadBalancing({
     this.additionalLatencyInMilliseconds,
     this.sampleSize,
     this.successfulSamplesRequired,

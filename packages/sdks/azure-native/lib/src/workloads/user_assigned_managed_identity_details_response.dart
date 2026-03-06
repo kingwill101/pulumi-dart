@@ -14,7 +14,7 @@ class UserAssignedManagedIdentityDetailsResponse {
   /// [identityArmId] Optional.
   /// [identityName] Optional.
   /// [userAssignedIdentityProperties] User assigned managed identity properties.
-  UserAssignedManagedIdentityDetailsResponse({
+  const UserAssignedManagedIdentityDetailsResponse({
     this.identityArmId,
     this.identityName,
     this.userAssignedIdentityProperties,

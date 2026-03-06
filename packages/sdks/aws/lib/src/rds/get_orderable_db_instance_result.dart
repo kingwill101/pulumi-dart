@@ -83,7 +83,7 @@ class GetOrderableDbInstanceResult {
   /// [supportsStorageAutoscaling] Required.
   /// [supportsStorageEncryption] Required.
   /// [vpc] Required.
-  GetOrderableDbInstanceResult({
+  const GetOrderableDbInstanceResult({
     required this.availabilityZoneGroup,
     required this.availabilityZones,
     required this.engine,

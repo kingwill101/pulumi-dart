@@ -11,7 +11,7 @@ class CloudFormationTypeLoggingConfig {
   /// Creates a new [CloudFormationTypeLoggingConfig].
   /// [logGroupName] Name of the CloudWatch Log Group where CloudFormation sends error logging information when invoking the type's handlers.
   /// [logRoleArn] Amazon Resource Name (ARN) of the IAM Role CloudFormation assumes when sending error logging information to CloudWatch Logs.
-  CloudFormationTypeLoggingConfig({
+  const CloudFormationTypeLoggingConfig({
     required this.logGroupName,
     required this.logRoleArn,
   });

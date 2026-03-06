@@ -15,7 +15,7 @@ class SQLStorageSettingsResponse {
   /// [defaultFilePath] SQL Server default file path
   /// [luns] Logical Unit Numbers for the disks.
   /// [useStoragePool] Use storage pool to build a drive if true or not provided
-  SQLStorageSettingsResponse({
+  const SQLStorageSettingsResponse({
     this.defaultFilePath,
     this.luns,
     this.useStoragePool,

@@ -20,7 +20,7 @@ class CanaryDeploymentResponse {
   /// [postdeploy] Optional. Configuration for the postdeploy job of the last phase. If this is not configured, there will be no postdeploy job for this phase.
   /// [predeploy] Optional. Configuration for the predeploy job of the first phase. If this is not configured, there will be no predeploy job for this phase.
   /// [verify] Whether to run verify tests after each percentage deployment.
-  CanaryDeploymentResponse({
+  const CanaryDeploymentResponse({
     required this.percentages,
     required this.postdeploy,
     required this.predeploy,

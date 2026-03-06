@@ -12,7 +12,7 @@ class KeyValuePairResponse {
   /// Creates a new [KeyValuePairResponse].
   /// [key] The name of the setting for the action.
   /// [value] The value of the setting for the action.
-  KeyValuePairResponse({
+  const KeyValuePairResponse({
     required this.key,
     required this.value,
   });

@@ -38,7 +38,7 @@ class GetVolumeResult {
   /// [status] The current status of the Volume. (`creating`, `active`, `resizing`, `contact_support`)
   /// [tags] An array of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [updated] When this Volume was last updated.
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.created,
     required this.encryption,
     required this.filesystemPath,

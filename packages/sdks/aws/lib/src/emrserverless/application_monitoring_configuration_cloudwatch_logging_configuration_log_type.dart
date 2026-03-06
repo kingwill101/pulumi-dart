@@ -11,7 +11,7 @@ class ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType {
   /// Creates a new [ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType].
   /// [name] The worker type. Valid values are `SPARK_DRIVER`, `SPARK_EXECUTOR`, `HIVE_DRIVER`, and `TEZ_TASK`.
   /// [values] The list of log types to publish. Valid values are `STDOUT`, `STDERR`, `HIVE_LOG`, `TEZ_AM`, and `SYSTEM_LOGS`.
-  ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType({
+  const ApplicationMonitoringConfigurationCloudwatchLoggingConfigurationLogType({
     required this.name,
     required this.values,
   });

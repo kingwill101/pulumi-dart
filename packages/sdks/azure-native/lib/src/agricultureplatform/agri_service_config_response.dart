@@ -27,7 +27,7 @@ class AgriServiceConfigResponse {
   /// [redisCacheResourceId] Redis cache resource Id.
   /// [storageAccountResourceId] Storage account resource Id.
   /// [version] Version of AgriService instance.
-  AgriServiceConfigResponse({
+  const AgriServiceConfigResponse({
     required this.appServiceResourceId,
     required this.cosmosDbResourceId,
     required this.instanceUri,

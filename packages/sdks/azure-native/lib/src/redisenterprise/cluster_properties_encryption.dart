@@ -10,7 +10,7 @@ class ClusterPropertiesEncryption {
 
   /// Creates a new [ClusterPropertiesEncryption].
   /// [customerManagedKeyEncryption] All Customer-managed key encryption properties for the resource. Set this to an empty object to use Microsoft-managed key encryption.
-  ClusterPropertiesEncryption({
+  const ClusterPropertiesEncryption({
     this.customerManagedKeyEncryption,
   });
 

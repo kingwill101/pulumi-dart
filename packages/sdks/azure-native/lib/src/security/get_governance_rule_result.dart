@@ -62,7 +62,7 @@ class GetGovernanceRuleResult {
   /// [sourceResourceType] The governance rule source, what the rule affects, e.g. Assessments
   /// [tenantId] The tenantId (GUID)
   /// [type] Resource type
-  GetGovernanceRuleResult({
+  const GetGovernanceRuleResult({
     required this.azureApiVersion,
     this.description,
     required this.displayName,

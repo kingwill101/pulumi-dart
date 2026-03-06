@@ -13,7 +13,7 @@ class AcceleratorConfigNotebooksV2 {
   /// Creates a new [AcceleratorConfigNotebooksV2].
   /// [coreCount] Optional. Count of cores of this accelerator.
   /// [type] Optional. Type of this accelerator.
-  AcceleratorConfigNotebooksV2({
+  const AcceleratorConfigNotebooksV2({
     this.coreCount,
     this.type,
   });

@@ -28,7 +28,7 @@ class LoadBalancerBackendAddressPropertiesResponse {
   /// [networkInterfaceIPConfiguration] Nic Based backend-ip association
   /// [subnet] Reference to the subnet containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
   /// [virtualNetwork] Reference to the virtual network containing the backend address. Populated automatically from the referenced IP configuration. Mutually exclusive with logicalNetwork.
-  LoadBalancerBackendAddressPropertiesResponse({
+  const LoadBalancerBackendAddressPropertiesResponse({
     this.adminState,
     required this.ipAddress,
     required this.logicalNetwork,

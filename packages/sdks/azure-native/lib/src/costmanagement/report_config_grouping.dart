@@ -12,7 +12,7 @@ class ReportConfigGrouping {
   /// Creates a new [ReportConfigGrouping].
   /// [name] The name of the column to group. This version supports subscription lowest possible grain.
   /// [type] Has type of the column to group.
-  ReportConfigGrouping({
+  const ReportConfigGrouping({
     required this.name,
     required this.type,
   });

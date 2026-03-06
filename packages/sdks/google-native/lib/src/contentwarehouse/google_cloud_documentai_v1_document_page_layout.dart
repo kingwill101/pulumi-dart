@@ -21,7 +21,7 @@ class GoogleCloudDocumentaiV1DocumentPageLayout {
   /// [confidence] Confidence of the current Layout within context of the object this layout is for. e.g. confidence can be for a single token, a table, a visual element, etc. depending on context. Range `[0, 1]`.
   /// [orientation] Detected orientation for the Layout.
   /// [textAnchor] Text anchor indexing into the Document.text.
-  GoogleCloudDocumentaiV1DocumentPageLayout({
+  const GoogleCloudDocumentaiV1DocumentPageLayout({
     this.boundingPoly,
     this.confidence,
     this.orientation,

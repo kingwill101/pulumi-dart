@@ -8,7 +8,7 @@ class StandardAppVersionHandlerScript {
 
   /// Creates a new [StandardAppVersionHandlerScript].
   /// [scriptPath] Path to the script from the application root directory.
-  StandardAppVersionHandlerScript({
+  const StandardAppVersionHandlerScript({
     required this.scriptPath,
   });
 

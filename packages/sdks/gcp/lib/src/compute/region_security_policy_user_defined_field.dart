@@ -27,7 +27,7 @@ class RegionSecurityPolicyUserDefinedField {
   /// [name] Name of the user-defined field, as given in the definition.
   /// [offset] Offset of the first byte of the field (in network byte order) relative to 'base'.
   /// [size] Size of the field in bytes. Valid values: 1-4.
-  RegionSecurityPolicyUserDefinedField({
+  const RegionSecurityPolicyUserDefinedField({
     required this.base,
     this.mask,
     this.name,

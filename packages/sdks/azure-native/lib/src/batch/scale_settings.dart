@@ -14,7 +14,7 @@ class ScaleSettings {
   /// Creates a new [ScaleSettings].
   /// [autoScale] This property and fixedScale are mutually exclusive and one of the properties must be specified.
   /// [fixedScale] This property and autoScale are mutually exclusive and one of the properties must be specified.
-  ScaleSettings({
+  const ScaleSettings({
     this.autoScale,
     this.fixedScale,
   });

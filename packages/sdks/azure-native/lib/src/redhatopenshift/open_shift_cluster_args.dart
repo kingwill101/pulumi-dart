@@ -52,7 +52,7 @@ class OpenShiftClusterArgs {
   /// [servicePrincipalProfile] The cluster service principal profile.
   /// [tags] Resource tags.
   /// [workerProfiles] The cluster worker profiles.
-  OpenShiftClusterArgs({
+  const OpenShiftClusterArgs({
     this.apiserverProfile,
     this.clusterProfile,
     this.ingressProfiles,

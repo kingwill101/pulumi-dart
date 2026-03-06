@@ -29,7 +29,7 @@ class GetEcsSnapshotGroupsGroup {
   /// [snapshotGroupName] The name of the snapshot-consistent group.
   /// [status] The status of the resource.
   /// [tags] List of label key-value pairs.
-  GetEcsSnapshotGroupsGroup({
+  const GetEcsSnapshotGroupsGroup({
     required this.description,
     required this.id,
     required this.instanceId,

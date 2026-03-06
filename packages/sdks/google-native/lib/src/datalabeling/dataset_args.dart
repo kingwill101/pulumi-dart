@@ -20,7 +20,7 @@ class DatasetArgs {
   /// [displayName] The display name of the dataset. Maximum of 64 characters.
   /// [lastMigrateTime] Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
   /// [project] Optional.
-  DatasetArgs({
+  const DatasetArgs({
     this.description,
     required this.displayName,
     this.lastMigrateTime,

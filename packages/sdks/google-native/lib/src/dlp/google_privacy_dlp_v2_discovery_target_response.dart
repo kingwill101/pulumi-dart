@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2DiscoveryTargetResponse {
 
   /// Creates a new [GooglePrivacyDlpV2DiscoveryTargetResponse].
   /// [bigQueryTarget] BigQuery target for Discovery. The first target to match a table will be the one applied.
-  GooglePrivacyDlpV2DiscoveryTargetResponse({
+  const GooglePrivacyDlpV2DiscoveryTargetResponse({
     required this.bigQueryTarget,
   });
 

@@ -9,7 +9,7 @@ class NamedResourcesIntSlice {
 
   /// Creates a new [NamedResourcesIntSlice].
   /// [ints] Ints is the slice of 64-bit integers.
-  NamedResourcesIntSlice({
+  const NamedResourcesIntSlice({
     required this.ints,
   });
 

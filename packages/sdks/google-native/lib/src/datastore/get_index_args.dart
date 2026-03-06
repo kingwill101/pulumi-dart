@@ -13,7 +13,7 @@ class GetIndexArgs {
   /// Creates a new [GetIndexArgs].
   /// [indexId] Required.
   /// [project] Optional.
-  GetIndexArgs({
+  const GetIndexArgs({
     required this.indexId,
     this.project,
   });

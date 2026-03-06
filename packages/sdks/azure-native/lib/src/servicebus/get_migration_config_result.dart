@@ -39,7 +39,7 @@ class GetMigrationConfigResult {
   /// [systemData] The system meta data relating to this resource.
   /// [targetNamespace] Existing premium Namespace ARM Id name which has no entities, will be used for migration
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetMigrationConfigResult({
+  const GetMigrationConfigResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -26,7 +26,7 @@ class TagArtifactregistryV1beta2Args {
   /// [repositoryId] Required.
   /// [tagId] The tag id to use for this repository.
   /// [version] The name of the version the tag refers to, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/sha256:5243811" If the package or version ID parts contain slashes, the slashes are escaped.
-  TagArtifactregistryV1beta2Args({
+  const TagArtifactregistryV1beta2Args({
     this.location,
     this.name,
     required this.packageId,

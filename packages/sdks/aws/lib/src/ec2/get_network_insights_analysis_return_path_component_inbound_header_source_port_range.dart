@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange 
   /// Creates a new [GetNetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange({
+  const GetNetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange({
     required this.from,
     required this.to,
   });

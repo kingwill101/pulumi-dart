@@ -102,7 +102,7 @@ class MigrationJobArgs {
   /// [sourceEndpointUserName] The username of database account.
   /// [status] The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
   /// [structureInitialization] Whether to perform a database table structure to migrate.
-  MigrationJobArgs({
+  const MigrationJobArgs({
     this.checkpoint,
     required this.dataInitialization,
     required this.dataSynchronization,

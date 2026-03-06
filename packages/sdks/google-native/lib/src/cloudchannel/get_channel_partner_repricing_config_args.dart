@@ -15,7 +15,7 @@ class GetChannelPartnerRepricingConfigArgs {
   /// [accountId] Required.
   /// [channelPartnerLinkId] Required.
   /// [channelPartnerRepricingConfigId] Required.
-  GetChannelPartnerRepricingConfigArgs({
+  const GetChannelPartnerRepricingConfigArgs({
     required this.accountId,
     required this.channelPartnerLinkId,
     required this.channelPartnerRepricingConfigId,

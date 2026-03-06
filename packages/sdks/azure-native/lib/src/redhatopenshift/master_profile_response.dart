@@ -18,7 +18,7 @@ class MasterProfileResponse {
   /// [encryptionAtHost] Whether master virtual machines are encrypted at host.
   /// [subnetId] The Azure resource ID of the master subnet.
   /// [vmSize] The size of the master VMs.
-  MasterProfileResponse({
+  const MasterProfileResponse({
     this.diskEncryptionSetId,
     this.encryptionAtHost,
     this.subnetId,

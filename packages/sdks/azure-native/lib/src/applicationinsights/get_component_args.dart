@@ -15,7 +15,7 @@ class GetComponentArgs {
   /// Creates a new [GetComponentArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  GetComponentArgs({
+  const GetComponentArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

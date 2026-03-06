@@ -15,7 +15,7 @@ class GetStorageBoxesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [storageBoxes] Required.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetStorageBoxesResult({
+  const GetStorageBoxesResult({
     required this.id,
     required this.storageBoxes,
     this.withSelector,

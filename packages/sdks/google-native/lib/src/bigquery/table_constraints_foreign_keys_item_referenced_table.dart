@@ -11,7 +11,7 @@ class TableConstraintsForeignKeysItemReferencedTable {
   /// [datasetId] Optional.
   /// [project] Optional.
   /// [tableId] Optional.
-  TableConstraintsForeignKeysItemReferencedTable({
+  const TableConstraintsForeignKeysItemReferencedTable({
     this.datasetId,
     this.project,
     this.tableId,

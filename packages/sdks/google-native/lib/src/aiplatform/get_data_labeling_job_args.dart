@@ -15,7 +15,7 @@ class GetDataLabelingJobArgs {
   /// [dataLabelingJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataLabelingJobArgs({
+  const GetDataLabelingJobArgs({
     required this.dataLabelingJobId,
     required this.location,
     this.project,

@@ -15,7 +15,7 @@ class GetElasticSanArgs {
   /// Creates a new [GetElasticSanArgs].
   /// [elasticSanName] The name of the ElasticSan.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticSanArgs({
+  const GetElasticSanArgs({
     required this.elasticSanName,
     required this.resourceGroupName,
   });

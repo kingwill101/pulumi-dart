@@ -14,7 +14,7 @@ class GetDbClustersClusterDbClusterAccessWhiteList {
   /// [dbClusterIpArrayAttribute] Field `db_cluster_ip_array_attribute` has been removed from provider.
   /// [dbClusterIpArrayName] Whitelist group name.
   /// [securityIpList] The IP address list under the whitelist group.
-  GetDbClustersClusterDbClusterAccessWhiteList({
+  const GetDbClustersClusterDbClusterAccessWhiteList({
     required this.dbClusterIpArrayAttribute,
     required this.dbClusterIpArrayName,
     required this.securityIpList,

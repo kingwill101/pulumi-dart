@@ -14,7 +14,7 @@ class UrlRedirectAction {
   /// Creates a new [UrlRedirectAction].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  UrlRedirectAction({
+  const UrlRedirectAction({
     required this.name,
     required this.parameters,
   });

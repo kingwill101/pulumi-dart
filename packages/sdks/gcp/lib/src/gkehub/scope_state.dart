@@ -9,7 +9,7 @@ class ScopeState {
 
   /// Creates a new [ScopeState].
   /// [code] (Output)
-  ScopeState({
+  const ScopeState({
     this.code,
   });
 

@@ -116,7 +116,7 @@ class ContainerGroupState {
   /// [volumes] The list of volumes. See `volumes` below.
   /// [vswitchId] The ID of the VSwitch. Currently, container groups can only be deployed in VPC networks. The number of IP addresses in the VSwitch CIDR block determines the maximum number of container groups that can be created in the VSwitch. Before you can create an ECI instance, plan the CIDR block of the VSwitch.
   /// [zoneId] The ID of the zone where you want to deploy the container group. If no value is specified, the system assigns a zone to the container group. By default, no value is specified.
-  ContainerGroupState({
+  const ContainerGroupState({
     this.acrRegistryInfos,
     this.autoCreateEip,
     this.autoMatchImageCache,

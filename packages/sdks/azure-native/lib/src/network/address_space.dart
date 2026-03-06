@@ -13,7 +13,7 @@ class AddressSpace {
   /// Creates a new [AddressSpace].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
   /// [ipamPoolPrefixAllocations] A list of IPAM Pools allocating IP address prefixes.
-  AddressSpace({
+  const AddressSpace({
     this.addressPrefixes,
     this.ipamPoolPrefixAllocations,
   });

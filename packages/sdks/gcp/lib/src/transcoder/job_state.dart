@@ -50,7 +50,7 @@ class JobState {
   /// [startTime] The time the transcoding started.
   /// [state] The current state of the job.
   /// [templateId] Specify the templateId to use for populating Job.config.
-  JobState({
+  const JobState({
     this.config,
     this.createTime,
     this.effectiveLabels,

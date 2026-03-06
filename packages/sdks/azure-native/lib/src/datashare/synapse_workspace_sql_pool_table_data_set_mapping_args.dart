@@ -31,7 +31,7 @@ class SynapseWorkspaceSqlPoolTableDataSetMappingArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the share subscription which will hold the data set sink.
   /// [synapseWorkspaceSqlPoolTableResourceId] Resource id of the Synapse Workspace SQL Pool Table
-  SynapseWorkspaceSqlPoolTableDataSetMappingArgs({
+  const SynapseWorkspaceSqlPoolTableDataSetMappingArgs({
     required this.accountName,
     required this.dataSetId,
     this.dataSetMappingName,

@@ -8,7 +8,7 @@ class GraphResourceGetPropertiesResponseResource {
 
   /// Creates a new [GraphResourceGetPropertiesResponseResource].
   /// [id] Name of the Cosmos DB Graph
-  GraphResourceGetPropertiesResponseResource({
+  const GraphResourceGetPropertiesResponseResource({
     required this.id,
   });
 

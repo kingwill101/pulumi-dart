@@ -52,7 +52,7 @@ class GetFaqResult {
   /// [status] Status of the FAQ. It is ready to use when the status is ACTIVE.
   /// [tags] Metadata that helps organize the FAQs you create.
   /// [updatedAt] Date and time that the FAQ was last updated.
-  GetFaqResult({
+  const GetFaqResult({
     required this.arn,
     required this.createdAt,
     required this.description,

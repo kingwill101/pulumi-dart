@@ -28,7 +28,7 @@ class PortSecGroupAssociateState {
   /// [portId] An UUID of the port to apply security groups to.
   /// [region] The region in which to obtain the V2 networking client.
   /// [securityGroupIds] A list of security group IDs to apply to
-  PortSecGroupAssociateState({
+  const PortSecGroupAssociateState({
     this.allSecurityGroupIds,
     this.enforce,
     this.portId,

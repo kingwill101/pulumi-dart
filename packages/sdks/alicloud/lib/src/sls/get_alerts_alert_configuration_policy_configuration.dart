@@ -14,7 +14,7 @@ class GetAlertsAlertConfigurationPolicyConfiguration {
   /// [actionPolicyId] The ID of the action policy used.If the alert policy is in advanced mode and the selected alert policy is not configured with a dynamic action policy, set the actionPolicyId to an empty string.
   /// [alertPolicyId] Alarm policy ID.If it is in simple mode or normal mode, set it to sls.builtin.dynamic (dynamic alarm policy built into the system).For advanced mode, set it to the specified alarm policy ID.
   /// [repeatInterval] Repeat the waiting time. For example, 5m, 1H, etc.
-  GetAlertsAlertConfigurationPolicyConfiguration({
+  const GetAlertsAlertConfigurationPolicyConfiguration({
     required this.actionPolicyId,
     required this.alertPolicyId,
     required this.repeatInterval,

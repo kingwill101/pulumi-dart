@@ -23,7 +23,7 @@ class GetNodebalancerConfigsArgs {
   /// [nodebalancerId] The ID of the NodeBalancer to access.
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. See the Filterable Fields section for a list of valid fields.
-  GetNodebalancerConfigsArgs({
+  const GetNodebalancerConfigsArgs({
     this.filters,
     required this.nodebalancerId,
     this.order,

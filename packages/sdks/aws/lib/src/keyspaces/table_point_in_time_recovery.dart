@@ -8,7 +8,7 @@ class TablePointInTimeRecovery {
 
   /// Creates a new [TablePointInTimeRecovery].
   /// [status] Valid values: `ENABLED`, `DISABLED`. The default value is `DISABLED`.
-  TablePointInTimeRecovery({
+  const TablePointInTimeRecovery({
     this.status,
   });
 

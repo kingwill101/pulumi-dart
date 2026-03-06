@@ -28,7 +28,7 @@ class GetSecretVersionArgs {
   /// [project] The project to get the secret version for. If it
   /// [secret] The secret to get the secret version for.
   /// [version] The version of the secret to get. If it
-  GetSecretVersionArgs({
+  const GetSecretVersionArgs({
     this.fetchSecretData,
     this.isSecretDataBase64,
     this.project,

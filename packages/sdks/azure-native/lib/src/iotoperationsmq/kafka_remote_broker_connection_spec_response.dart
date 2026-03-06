@@ -17,7 +17,7 @@ class KafkaRemoteBrokerConnectionSpecResponse {
   /// [authentication] The remote broker authentication methods.
   /// [endpoint] The endpoint of remote broker to connect to.
   /// [tls] TLS details for Remote broker Connection.
-  KafkaRemoteBrokerConnectionSpecResponse({
+  const KafkaRemoteBrokerConnectionSpecResponse({
     required this.authentication,
     required this.endpoint,
     required this.tls,

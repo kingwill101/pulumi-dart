@@ -22,7 +22,7 @@ class CommonFleetDefaultMemberConfigSpecGkehubV1beta {
   /// [identityservice] Identity Service-specific spec.
   /// [mesh] Anthos Service Mesh-specific spec
   /// [policycontroller] Policy Controller spec.
-  CommonFleetDefaultMemberConfigSpecGkehubV1beta({
+  const CommonFleetDefaultMemberConfigSpecGkehubV1beta({
     this.configmanagement,
     this.identityservice,
     this.mesh,

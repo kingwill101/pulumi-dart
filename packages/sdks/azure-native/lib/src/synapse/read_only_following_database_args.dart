@@ -31,7 +31,7 @@ class ReadOnlyFollowingDatabaseArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  ReadOnlyFollowingDatabaseArgs({
+  const ReadOnlyFollowingDatabaseArgs({
     this.databaseName,
     this.hotCachePeriod,
     required this.kind,

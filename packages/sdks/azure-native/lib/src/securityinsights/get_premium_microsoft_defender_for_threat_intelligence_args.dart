@@ -18,7 +18,7 @@ class GetPremiumMicrosoftDefenderForThreatIntelligenceArgs {
   /// [dataConnectorId] Connector ID
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetPremiumMicrosoftDefenderForThreatIntelligenceArgs({
+  const GetPremiumMicrosoftDefenderForThreatIntelligenceArgs({
     required this.dataConnectorId,
     required this.resourceGroupName,
     required this.workspaceName,

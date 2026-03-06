@@ -17,7 +17,7 @@ class MetastoreServiceScalingConfigAutoscalingConfig {
   /// [autoscalingEnabled] Defines whether autoscaling is enabled. The default value is false.
   /// [autoscalingFactor] (Output)
   /// [limitConfig] Represents the limit configuration of a metastore service.
-  MetastoreServiceScalingConfigAutoscalingConfig({
+  const MetastoreServiceScalingConfigAutoscalingConfig({
     this.autoscalingEnabled,
     this.autoscalingFactor,
     this.limitConfig,

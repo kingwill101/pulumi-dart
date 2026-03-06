@@ -9,7 +9,7 @@ class AssignedStandardItem {
 
   /// Creates a new [AssignedStandardItem].
   /// [id] Full resourceId of the Microsoft.Security/standard object
-  AssignedStandardItem({
+  const AssignedStandardItem({
     this.id,
   });
 

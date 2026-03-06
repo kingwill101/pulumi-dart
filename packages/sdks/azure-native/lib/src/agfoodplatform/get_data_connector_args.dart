@@ -18,7 +18,7 @@ class GetDataConnectorArgs {
   /// [dataConnectorName] Connector name.
   /// [dataManagerForAgricultureResourceName] DataManagerForAgriculture resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataConnectorArgs({
+  const GetDataConnectorArgs({
     required this.dataConnectorName,
     required this.dataManagerForAgricultureResourceName,
     required this.resourceGroupName,

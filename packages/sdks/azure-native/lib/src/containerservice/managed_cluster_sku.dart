@@ -12,7 +12,7 @@ class ManagedClusterSKU {
   /// Creates a new [ManagedClusterSKU].
   /// [name] The name of a managed cluster SKU.
   /// [tier] The tier of a managed cluster SKU. If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
-  ManagedClusterSKU({
+  const ManagedClusterSKU({
     this.name,
     this.tier,
   });

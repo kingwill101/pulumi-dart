@@ -13,7 +13,7 @@ class CloudFunctionV2TargetResponse {
   /// Creates a new [CloudFunctionV2TargetResponse].
   /// [cloudRunRevision] The cloud_run_revision Monitored Resource associated with the GCFv2. The Synthetic Monitor execution results (metrics, logs, and spans) are reported against this Monitored Resource. This field is output only.
   /// [name] Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required.
-  CloudFunctionV2TargetResponse({
+  const CloudFunctionV2TargetResponse({
     required this.cloudRunRevision,
     required this.name,
   });

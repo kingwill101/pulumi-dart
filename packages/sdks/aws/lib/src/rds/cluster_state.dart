@@ -249,7 +249,7 @@ class ClusterState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [upgradeRolloutOrder] Order in which the clusters are upgraded (`first`, `second`, `last`). See [the AWS documentation](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html) for details.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate with the Cluster
-  ClusterState({
+  const ClusterState({
     this.allocatedStorage,
     this.allowMajorVersionUpgrade,
     this.applyImmediately,

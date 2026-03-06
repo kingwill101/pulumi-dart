@@ -17,7 +17,7 @@ class GetResourcePolicyIamPolicyComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetResourcePolicyIamPolicyComputeBetaArgs({
+  const GetResourcePolicyIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

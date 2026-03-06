@@ -16,7 +16,7 @@ class GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Confi
   /// [encryptionOption] Required.
   /// [kmsKeyId] AWS KMS key ID for S3 location with AWS maanged key.
   /// [objectKeyPrefix] Object key preview for S3 location.
-  GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration({
+  const GetTableMagneticStoreWritePropertyMagneticStoreRejectedDataLocationS3Configuration({
     required this.bucketName,
     required this.encryptionOption,
     required this.kmsKeyId,

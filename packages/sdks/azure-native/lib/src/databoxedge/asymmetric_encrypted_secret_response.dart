@@ -15,7 +15,7 @@ class AsymmetricEncryptedSecretResponse {
   /// [encryptionAlgorithm] The algorithm used to encrypt "Value".
   /// [encryptionCertThumbprint] Thumbprint certificate used to encrypt \"Value\". If the value is unencrypted, it will be null.
   /// [value] The value of the secret.
-  AsymmetricEncryptedSecretResponse({
+  const AsymmetricEncryptedSecretResponse({
     required this.encryptionAlgorithm,
     this.encryptionCertThumbprint,
     required this.value,

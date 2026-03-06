@@ -21,7 +21,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfi
   /// [podAffinity] Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
   /// [podTolerations] Pod tolerations of node taints.
   /// [replicaCount] Pod replica count.
-  GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig({
+  const GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig({
     required this.component,
     required this.containerResources,
     required this.podAffinity,

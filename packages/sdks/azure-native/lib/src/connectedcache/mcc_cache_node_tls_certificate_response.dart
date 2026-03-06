@@ -27,7 +27,7 @@ class MccCacheNodeTlsCertificateResponse {
   /// [subject] Mcc cache node Tls certificate subject name.
   /// [subjectAltName] Mcc cache node Tls certificate subject alternate name.
   /// [thumbprint] Mcc cache node Tls certificate thumbprint.
-  MccCacheNodeTlsCertificateResponse({
+  const MccCacheNodeTlsCertificateResponse({
     required this.actionRequired,
     required this.certificateFileName,
     required this.expiryDate,

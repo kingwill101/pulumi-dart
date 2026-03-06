@@ -19,7 +19,7 @@ class RegistryGeoreplication {
   /// [regionalEndpointEnabled] Whether regional endpoint is enabled for this Container Registry?
   /// [tags] A mapping of tags to assign to this replication location.
   /// [zoneRedundancyEnabled] Whether zone redundancy is enabled for this replication location? Defaults to `false`.
-  RegistryGeoreplication({
+  const RegistryGeoreplication({
     required this.location,
     this.regionalEndpointEnabled,
     this.tags,

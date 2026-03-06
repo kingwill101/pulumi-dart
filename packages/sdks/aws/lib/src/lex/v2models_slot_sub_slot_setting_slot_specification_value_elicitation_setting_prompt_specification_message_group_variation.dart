@@ -17,7 +17,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   /// [imageResponseCard] Optional.
   /// [plainTextMessage] Optional.
   /// [ssmlMessage] Optional.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariation({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationMessageGroupVariation({
     this.customPayload,
     this.imageResponseCard,
     this.plainTextMessage,

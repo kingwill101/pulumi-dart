@@ -9,7 +9,7 @@ class DomainOsNvRamSourceCookies {
 
   /// Creates a new [DomainOsNvRamSourceCookies].
   /// [cookies] Configures cookies for the backing store source, allowing additional parameters for storage.
-  DomainOsNvRamSourceCookies({
+  const DomainOsNvRamSourceCookies({
     this.cookies,
   });
 

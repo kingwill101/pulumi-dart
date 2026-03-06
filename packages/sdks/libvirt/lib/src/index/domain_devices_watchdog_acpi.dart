@@ -8,7 +8,7 @@ class DomainDevicesWatchdogAcpi {
 
   /// Creates a new [DomainDevicesWatchdogAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesWatchdogAcpi({
+  const DomainDevicesWatchdogAcpi({
     this.index,
   });
 

@@ -12,7 +12,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettin
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap].
   /// [project] The ID of the project in which the resource belongs.
   /// [projectId] The project ID, should be same as the key of this project config in the parent map.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecsShareSettingsProjectMap({
     required this.project,
     this.projectId,
   });

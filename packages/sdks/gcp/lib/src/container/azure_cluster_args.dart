@@ -60,7 +60,7 @@ class AzureClusterArgs {
   /// [networking] Cluster-wide networking configuration.
   /// [project] The project for the resource
   /// [resourceGroupId] The ARM ID of the resource group where the cluster resources are deployed. For example: `/subscriptions/*/resourceGroups/*`
-  AzureClusterArgs({
+  const AzureClusterArgs({
     this.annotations,
     required this.authorization,
     required this.azureRegion,

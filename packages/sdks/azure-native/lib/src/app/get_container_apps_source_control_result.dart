@@ -36,7 +36,7 @@ class GetContainerAppsSourceControlResult {
   /// [repoUrl] The repo url which will be integrated to ContainerApp.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetContainerAppsSourceControlResult({
+  const GetContainerAppsSourceControlResult({
     required this.azureApiVersion,
     this.branch,
     this.githubActionConfiguration,

@@ -12,7 +12,7 @@ class GatewayPropertiesEnvironmentVariables {
   /// Creates a new [GatewayPropertiesEnvironmentVariables].
   /// [properties] Non-sensitive properties
   /// [secrets] Sensitive properties
-  GatewayPropertiesEnvironmentVariables({
+  const GatewayPropertiesEnvironmentVariables({
     this.properties,
     this.secrets,
   });

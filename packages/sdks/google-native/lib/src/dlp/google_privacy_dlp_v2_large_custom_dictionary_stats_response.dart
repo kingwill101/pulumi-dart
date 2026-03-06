@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse {
 
   /// Creates a new [GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse].
   /// [approxNumPhrases] Approximate number of distinct phrases in the dictionary.
-  GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse({
+  const GooglePrivacyDlpV2LargeCustomDictionaryStatsResponse({
     required this.approxNumPhrases,
   });
 

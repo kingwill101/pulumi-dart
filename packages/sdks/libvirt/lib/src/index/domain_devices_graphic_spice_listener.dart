@@ -17,7 +17,7 @@ class DomainDevicesGraphicSpiceListener {
   /// [address] Specifies the address settings for the Spice listener.
   /// [network] Defines network listener settings for the Spice channel, focusing on network-based connections.
   /// [socket] Configures socket listener settings for the Spice channel, enabling socket-based connections.
-  DomainDevicesGraphicSpiceListener({
+  const DomainDevicesGraphicSpiceListener({
     this.address,
     this.network,
     this.socket,

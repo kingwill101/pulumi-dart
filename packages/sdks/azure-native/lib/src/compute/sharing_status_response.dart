@@ -13,7 +13,7 @@ class SharingStatusResponse {
   /// Creates a new [SharingStatusResponse].
   /// [aggregatedState] Aggregated sharing state of current gallery.
   /// [summary] Summary of all regional sharing status.
-  SharingStatusResponse({
+  const SharingStatusResponse({
     required this.aggregatedState,
     this.summary,
   });

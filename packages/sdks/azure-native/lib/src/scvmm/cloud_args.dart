@@ -34,7 +34,7 @@ class CloudArgs {
   /// [tags] Resource tags
   /// [uuid] Unique ID of the cloud.
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  CloudArgs({
+  const CloudArgs({
     this.cloudName,
     required this.extendedLocation,
     this.inventoryItemId,

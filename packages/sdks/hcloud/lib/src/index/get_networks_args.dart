@@ -12,7 +12,7 @@ class GetNetworksArgs {
 
   /// Creates a new [GetNetworksArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetNetworksArgs({
+  const GetNetworksArgs({
     this.withSelector,
   });
 

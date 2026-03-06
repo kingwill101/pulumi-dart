@@ -33,7 +33,7 @@ class FlowDefinitionHumanLoopConfig {
   /// [taskTimeLimitInSeconds] The amount of time that a worker has to complete a task. The default value is `3600` seconds.
   /// [taskTitle] A title for the human worker task.
   /// [workteamArn] The Amazon Resource Name (ARN) of the human task user interface. Amazon Resource Name (ARN) of a team of workers. For Public workforces see [AWS Docs](https://docs.aws.amazon.com/sagemaker/latest/dg/sms-workforce-management-public.html).
-  FlowDefinitionHumanLoopConfig({
+  const FlowDefinitionHumanLoopConfig({
     required this.humanTaskUiArn,
     this.publicWorkforceTaskPrice,
     this.taskAvailabilityLifetimeInSeconds,

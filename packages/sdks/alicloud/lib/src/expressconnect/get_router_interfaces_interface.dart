@@ -118,7 +118,7 @@ class GetRouterInterfacesInterface {
   /// [spec] The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
   /// [status] The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
   /// [vpcInstanceId] The vpc instance id of the resource.
-  GetRouterInterfacesInterface({
+  const GetRouterInterfacesInterface({
     required this.accessPointId,
     required this.bandwidth,
     required this.businessStatus,

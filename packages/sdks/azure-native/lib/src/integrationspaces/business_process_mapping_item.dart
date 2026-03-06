@@ -18,7 +18,7 @@ class BusinessProcessMappingItem {
   /// [operationName] The operation name.
   /// [operationType] The mapping item operation type of the business process.
   /// [workflowName] The workflow name within the logic app.
-  BusinessProcessMappingItem({
+  const BusinessProcessMappingItem({
     this.logicAppResourceId,
     this.operationName,
     this.operationType,

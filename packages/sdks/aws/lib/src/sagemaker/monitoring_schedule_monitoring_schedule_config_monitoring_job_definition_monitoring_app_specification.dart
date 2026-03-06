@@ -20,7 +20,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   /// [imageUri] Container image to be run by the monitoring job.
   /// [postAnalyticsProcessorSourceUri] Script that is called after analysis has been performed.
   /// [recordPreprocessorSourceUri] Script that is called per row prior to running analysis.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringAppSpecification({
     this.containerArguments,
     this.containerEntrypoints,
     required this.imageUri,

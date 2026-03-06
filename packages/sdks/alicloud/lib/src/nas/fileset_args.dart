@@ -26,7 +26,7 @@ class FilesetArgs {
   /// [dryRun] Specifies whether to perform a dry run. Default value: `false`. Valid values: `true`, `false`.
   /// [fileSystemId] The ID of the file system.
   /// [fileSystemPath] The path of Fileset.
-  FilesetArgs({
+  const FilesetArgs({
     this.deletionProtection,
     this.description,
     this.dryRun,

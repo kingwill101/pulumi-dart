@@ -12,7 +12,7 @@ class MembershipAttachmentState {
   /// Creates a new [MembershipAttachmentState].
   /// [clusterId] The ID of the cluster to which the membership is being attached.
   /// [subClusterId] The ID of the member being attached to the cluster.
-  MembershipAttachmentState({
+  const MembershipAttachmentState({
     this.clusterId,
     this.subClusterId,
   });

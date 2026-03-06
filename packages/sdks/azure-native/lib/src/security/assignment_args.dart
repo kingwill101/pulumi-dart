@@ -54,7 +54,7 @@ class AssignmentArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [scope] Scope to which the standardAssignment applies - can be a subscription path or a resource group under that subscription
   /// [tags] A list of key value pairs that describe the resource.
-  AssignmentArgs({
+  const AssignmentArgs({
     this.additionalData,
     this.assignedComponent,
     this.assignedStandard,

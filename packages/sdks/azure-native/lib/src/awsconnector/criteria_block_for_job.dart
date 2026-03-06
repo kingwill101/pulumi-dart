@@ -10,7 +10,7 @@ class CriteriaBlockForJob {
 
   /// Creates a new [CriteriaBlockForJob].
   /// [and] &lt;p&gt;An array of conditions, one for each condition that determines which buckets to include or exclude from the job. If you specify more than one condition, Amazon Macie uses AND logic to join the conditions.&lt;/p&gt;
-  CriteriaBlockForJob({
+  const CriteriaBlockForJob({
     this.and,
   });
 

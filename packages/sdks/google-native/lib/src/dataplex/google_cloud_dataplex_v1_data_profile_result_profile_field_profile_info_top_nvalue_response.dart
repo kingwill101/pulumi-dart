@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResp
   /// [count] Count of the corresponding value in the scanned data.
   /// [ratio] Ratio of the corresponding value in the field against the total number of rows in the scanned data.
   /// [value] String value of a top N non-null value.
-  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse({
+  const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValueResponse({
     required this.count,
     required this.ratio,
     required this.value,

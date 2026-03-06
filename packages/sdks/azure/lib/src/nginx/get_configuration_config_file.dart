@@ -11,7 +11,7 @@ class GetConfigurationConfigFile {
   /// Creates a new [GetConfigurationConfigFile].
   /// [content] The base-64 encoded contents of this configuration file.
   /// [virtualPath] The path of this configuration file.
-  GetConfigurationConfigFile({
+  const GetConfigurationConfigFile({
     required this.content,
     required this.virtualPath,
   });

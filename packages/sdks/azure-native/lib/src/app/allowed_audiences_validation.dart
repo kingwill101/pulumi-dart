@@ -9,7 +9,7 @@ class AllowedAudiencesValidation {
 
   /// Creates a new [AllowedAudiencesValidation].
   /// [allowedAudiences] The configuration settings of the allowed list of audiences from which to validate the JWT token.
-  AllowedAudiencesValidation({
+  const AllowedAudiencesValidation({
     this.allowedAudiences,
   });
 

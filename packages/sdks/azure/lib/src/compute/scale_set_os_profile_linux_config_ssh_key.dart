@@ -17,7 +17,7 @@ class ScaleSetOsProfileLinuxConfigSshKey {
   /// Creates a new [ScaleSetOsProfileLinuxConfigSshKey].
   /// [keyData] The Public SSH Key which should be written to the `path` defined above.
   /// [path] The path of the destination file on the virtual machine
-  ScaleSetOsProfileLinuxConfigSshKey({
+  const ScaleSetOsProfileLinuxConfigSshKey({
     this.keyData,
     required this.path,
   });

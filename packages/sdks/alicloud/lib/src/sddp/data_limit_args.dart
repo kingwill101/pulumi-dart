@@ -39,7 +39,7 @@ class DataLimitArgs {
   /// [resourceType] The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
   /// [serviceRegionId] The region ID of the data asset.
   /// [userName] The name of the service to which the data asset belongs.
-  DataLimitArgs({
+  const DataLimitArgs({
     this.auditStatus,
     this.engineType,
     this.lang,

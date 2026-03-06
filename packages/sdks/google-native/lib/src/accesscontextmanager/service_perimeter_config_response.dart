@@ -27,7 +27,7 @@ class ServicePerimeterConfigResponse {
   /// [resources] A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`.
   /// [restrictedServices] Google Cloud services that are subject to the Service Perimeter restrictions. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
   /// [vpcAccessibleServices] Configuration for APIs allowed within Perimeter.
-  ServicePerimeterConfigResponse({
+  const ServicePerimeterConfigResponse({
     required this.accessLevels,
     required this.egressPolicies,
     required this.ingressPolicies,

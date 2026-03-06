@@ -15,7 +15,7 @@ class UserArtifactSettingsResponse {
   /// [configFileName] Optional. The name to assign the downloaded config file on the VM. This is limited to 4096 characters. If not specified, the config file will be named the Gallery Application name appended with "_config".
   /// [packageFileName] Optional. The name to assign the downloaded package file on the VM. This is limited to 4096 characters. If not specified, the package file will be named the same as the Gallery Application name.
   /// [scriptBehaviorAfterReboot] Optional. The action to be taken with regards to install/update/remove of the gallery application in the event of a reboot.
-  UserArtifactSettingsResponse({
+  const UserArtifactSettingsResponse({
     this.configFileName,
     this.packageFileName,
     this.scriptBehaviorAfterReboot,

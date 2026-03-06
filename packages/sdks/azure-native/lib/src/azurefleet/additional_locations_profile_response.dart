@@ -10,7 +10,7 @@ class AdditionalLocationsProfileResponse {
 
   /// Creates a new [AdditionalLocationsProfileResponse].
   /// [locationProfiles] The list of location profiles.
-  AdditionalLocationsProfileResponse({
+  const AdditionalLocationsProfileResponse({
     required this.locationProfiles,
   });
 

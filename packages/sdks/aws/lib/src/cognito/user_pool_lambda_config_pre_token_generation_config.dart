@@ -9,7 +9,7 @@ class UserPoolLambdaConfigPreTokenGenerationConfig {
   /// Creates a new [UserPoolLambdaConfigPreTokenGenerationConfig].
   /// [lambdaArn] Required.
   /// [lambdaVersion] Required.
-  UserPoolLambdaConfigPreTokenGenerationConfig({
+  const UserPoolLambdaConfigPreTokenGenerationConfig({
     required this.lambdaArn,
     required this.lambdaVersion,
   });

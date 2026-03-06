@@ -18,7 +18,7 @@ class GetRoleAssignmentArgs {
   /// [roleAssignmentName] The name of the role assignment. It can be any valid GUID.
   /// [scope] The scope of the operation or resource. Valid scopes are: subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
   /// [tenantId] Tenant ID for cross-tenant request
-  GetRoleAssignmentArgs({
+  const GetRoleAssignmentArgs({
     required this.roleAssignmentName,
     required this.scope,
     this.tenantId,

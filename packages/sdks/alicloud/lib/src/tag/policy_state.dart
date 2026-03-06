@@ -18,7 +18,7 @@ class PolicyState {
   /// [policyDesc] The description of the policy. The description must be 1 to 512 characters in length.
   /// [policyName] The name of the tag policy. The name must be 1 to 128 characters in length and can contain letters, digits, and underscores (_).
   /// [userType] The mode of the Tag Policy feature. Valid values: `USER`, `RD`.
-  PolicyState({
+  const PolicyState({
     this.policyContent,
     this.policyDesc,
     this.policyName,

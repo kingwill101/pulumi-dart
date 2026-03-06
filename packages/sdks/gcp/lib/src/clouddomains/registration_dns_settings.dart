@@ -15,7 +15,7 @@ class RegistrationDnsSettings {
   /// Creates a new [RegistrationDnsSettings].
   /// [customDns] Configuration for an arbitrary DNS provider.
   /// [glueRecords] The list of glue records for this Registration. Commonly empty.
-  RegistrationDnsSettings({
+  const RegistrationDnsSettings({
     this.customDns,
     this.glueRecords,
   });

@@ -15,7 +15,7 @@ class GetQueueIamPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [queueId] Required.
-  GetQueueIamPolicyArgs({
+  const GetQueueIamPolicyArgs({
     required this.location,
     this.project,
     required this.queueId,

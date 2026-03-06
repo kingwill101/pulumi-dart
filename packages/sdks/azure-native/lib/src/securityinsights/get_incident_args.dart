@@ -18,7 +18,7 @@ class GetIncidentArgs {
   /// [incidentId] Incident ID
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetIncidentArgs({
+  const GetIncidentArgs({
     required this.incidentId,
     required this.resourceGroupName,
     required this.workspaceName,

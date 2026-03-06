@@ -72,7 +72,7 @@ class DomainArgs {
   /// [publicNetworkAccess] This determines if traffic is allowed over public network. By default it is enabled.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
-  DomainArgs({
+  const DomainArgs({
     this.autoCreateTopicWithFirstSubscription,
     this.autoDeleteTopicWithLastSubscription,
     this.dataResidencyBoundary,

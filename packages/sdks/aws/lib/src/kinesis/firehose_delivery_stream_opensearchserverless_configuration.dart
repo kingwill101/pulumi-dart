@@ -42,7 +42,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfiguration {
   /// [s3BackupMode] Defines how documents should be delivered to Amazon S3.  Valid values are `FailedDocumentsOnly` and `AllDocuments`.  Default value is `FailedDocumentsOnly`.
   /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
   /// [vpcConfig] The VPC configuration for the delivery stream to connect to OpenSearch Serverless associated with the VPC. See `vpc_config` block below for details.
-  FirehoseDeliveryStreamOpensearchserverlessConfiguration({
+  const FirehoseDeliveryStreamOpensearchserverlessConfiguration({
     this.bufferingInterval,
     this.bufferingSize,
     this.cloudwatchLoggingOptions,

@@ -14,7 +14,7 @@ class DistributionViewerMtlsConfigTrustStoreConfig {
   /// [advertiseTrustStoreCaNames] Whether to advertise the trust store CA names to clients. Defaults to `false`.
   /// [ignoreCertificateExpiry] Whether to ignore certificate expiry for viewer mTLS. Defaults to `false`.
   /// [trustStoreId] Identifier of the trust store to use for viewer mTLS.
-  DistributionViewerMtlsConfigTrustStoreConfig({
+  const DistributionViewerMtlsConfigTrustStoreConfig({
     this.advertiseTrustStoreCaNames,
     this.ignoreCertificateExpiry,
     required this.trustStoreId,

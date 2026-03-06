@@ -15,7 +15,7 @@ class GetDeviceExtendedInformationArgs {
   /// Creates a new [GetDeviceExtendedInformationArgs].
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
-  GetDeviceExtendedInformationArgs({
+  const GetDeviceExtendedInformationArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

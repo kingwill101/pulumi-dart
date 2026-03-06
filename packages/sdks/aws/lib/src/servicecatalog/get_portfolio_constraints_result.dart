@@ -23,7 +23,7 @@ class GetPortfolioConstraintsResult {
   /// [portfolioId] Identifier of the portfolio the product resides in. The constraint applies only to the instance of the product that lives within this portfolio.
   /// [productId] Identifier of the product the constraint applies to. A constraint applies to a specific instance of a product within a certain portfolio.
   /// [region] Required.
-  GetPortfolioConstraintsResult({
+  const GetPortfolioConstraintsResult({
     this.acceptLanguage,
     required this.details,
     required this.id,

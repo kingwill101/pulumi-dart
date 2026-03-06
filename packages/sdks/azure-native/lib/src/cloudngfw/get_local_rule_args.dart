@@ -18,7 +18,7 @@ class GetLocalRuleArgs {
   /// [localRulestackName] LocalRulestack resource name
   /// [priority] Local Rule priority
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLocalRuleArgs({
+  const GetLocalRuleArgs({
     required this.localRulestackName,
     required this.priority,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class PolicyManagedRulesExclusionExcludedRuleSet {
   /// [ruleGroups] One or more `rule_group` block defined below.
   /// [type] The rule set type. Possible values are `Microsoft_DefaultRuleSet`, `Microsoft_BotManagerRuleSet` and `OWASP`. Defaults to `OWASP`.
   /// [version] The rule set version. Possible values are `1.0`, `1.1` (for rule set type `Microsoft_BotManagerRuleSet`), `2.1`, `2.2` (for rule set type `Microsoft_DefaultRuleSet`) and `3.2` (for rule set type `OWASP`). Defaults to `3.2`.
-  PolicyManagedRulesExclusionExcludedRuleSet({
+  const PolicyManagedRulesExclusionExcludedRuleSet({
     this.ruleGroups,
     this.type,
     this.version,

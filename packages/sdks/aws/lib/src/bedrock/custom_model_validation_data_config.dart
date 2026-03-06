@@ -9,7 +9,7 @@ class CustomModelValidationDataConfig {
 
   /// Creates a new [CustomModelValidationDataConfig].
   /// [validators] Information about the validators.
-  CustomModelValidationDataConfig({
+  const CustomModelValidationDataConfig({
     required this.validators,
   });
 

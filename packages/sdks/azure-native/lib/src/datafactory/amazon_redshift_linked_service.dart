@@ -46,7 +46,7 @@ class AmazonRedshiftLinkedService {
   /// [type] Type of linked service.
   /// [username] The username of the Amazon Redshift source. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AmazonRedshiftLinkedService({
+  const AmazonRedshiftLinkedService({
     this.annotations,
     this.connectVia,
     required this.database,

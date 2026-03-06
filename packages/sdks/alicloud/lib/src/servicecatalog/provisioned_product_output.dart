@@ -14,7 +14,7 @@ class ProvisionedProductOutput {
   /// [description] Description of the output value defined in the template.
   /// [outputKey] The name of the output value defined in the template.
   /// [outputValue] The content of the output value defined in the template.
-  ProvisionedProductOutput({
+  const ProvisionedProductOutput({
     this.description,
     this.outputKey,
     this.outputValue,

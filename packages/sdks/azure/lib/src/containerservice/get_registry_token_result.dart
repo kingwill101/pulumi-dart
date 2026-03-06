@@ -20,7 +20,7 @@ class GetRegistryTokenResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [scopeMapId] The Scope Map ID used by the token.
-  GetRegistryTokenResult({
+  const GetRegistryTokenResult({
     required this.containerRegistryName,
     required this.enabled,
     required this.id,

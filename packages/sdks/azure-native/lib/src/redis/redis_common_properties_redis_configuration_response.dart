@@ -63,7 +63,7 @@ class RedisCommonPropertiesRedisConfigurationResponse {
   /// [rdbStorageConnectionString] The storage account connection string for storing rdb file
   /// [storageSubscriptionId] SubscriptionId of the storage account for persistence (aof/rdb) using ManagedIdentity.
   /// [zonalConfiguration] Zonal Configuration
-  RedisCommonPropertiesRedisConfigurationResponse({
+  const RedisCommonPropertiesRedisConfigurationResponse({
     this.aadEnabled,
     this.aofBackupEnabled,
     this.aofStorageConnectionString0,

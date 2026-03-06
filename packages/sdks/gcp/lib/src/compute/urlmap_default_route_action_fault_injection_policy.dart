@@ -15,7 +15,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicy {
   /// Creates a new [URLMapDefaultRouteActionFaultInjectionPolicy].
   /// [abort] The specification for how client requests are aborted as part of fault injection.
   /// [delay] The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
-  URLMapDefaultRouteActionFaultInjectionPolicy({
+  const URLMapDefaultRouteActionFaultInjectionPolicy({
     this.abort,
     this.delay,
   });

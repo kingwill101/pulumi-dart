@@ -8,7 +8,7 @@ class NodePoolNodeConfigKubeletConfigMemoryManager {
 
   /// Creates a new [NodePoolNodeConfigKubeletConfigMemoryManager].
   /// [policy] The Memory Manager policy to use. This policy guides how memory and hugepages are allocated and managed for pods on the node, influencing NUMA affinity.
-  NodePoolNodeConfigKubeletConfigMemoryManager({
+  const NodePoolNodeConfigKubeletConfigMemoryManager({
     this.policy,
   });
 

@@ -18,7 +18,7 @@ class GmsaDetails {
   /// [gmsaAccount] gMSA account under which context all Management Server services will run
   /// [loadBalancerIP] Frontend IP configuration for Load Balancer, which should be an available IP in customer VNet
   /// [managementServerGroupName] OnPrem AD Computer Group where we will join VMs for ease of management
-  GmsaDetails({
+  const GmsaDetails({
     this.dnsName,
     this.gmsaAccount,
     this.loadBalancerIP,

@@ -41,7 +41,7 @@ class BackupPolicyArgs {
   /// [name] The name of the backup policy. Needs to be unique per location.
   /// [project] The ID of the project in which the resource belongs.
   /// [weeklyBackupLimit] Number of weekly backups to keep. Note that the sum of daily, weekly and monthly backups should be greater than 1.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     required this.dailyBackupLimit,
     this.description,
     this.enabled,

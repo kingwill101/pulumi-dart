@@ -41,7 +41,7 @@ class VirtualMachineManagerVirtualMachineInstanceState {
   /// [scopedResourceId] The ID of the Hybrid Compute Machine where this System Center Virtual Machine Manager Virtual Machine Instance is stored. Changing this forces a new resource to be created.
   /// [storageDisks] A `storage_disk` block as defined below.
   /// [systemCenterVirtualMachineManagerAvailabilitySetIds] A list of IDs of System Center Virtual Machine Manager Availability Set.
-  VirtualMachineManagerVirtualMachineInstanceState({
+  const VirtualMachineManagerVirtualMachineInstanceState({
     this.customLocationId,
     this.hardware,
     this.infrastructure,

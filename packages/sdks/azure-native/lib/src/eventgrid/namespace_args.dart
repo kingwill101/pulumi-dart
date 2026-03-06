@@ -59,7 +59,7 @@ class NamespaceArgs {
   /// [tags] Tags of the resource.
   /// [topicSpacesConfiguration] Topic spaces configuration information for the namespace resource
   /// [topicsConfiguration] Topics configuration information for the namespace resource
-  NamespaceArgs({
+  const NamespaceArgs({
     this.identity,
     this.inboundIpRules,
     this.isZoneRedundant,

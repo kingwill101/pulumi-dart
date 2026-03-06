@@ -21,7 +21,7 @@ class GoogleCloudMlV1StudyConfigResponse {
   /// [automatedStoppingConfig] Configuration for automated stopping of unpromising Trials.
   /// [metrics] Metric specs for the study.
   /// [parameters] The set of parameters to tune.
-  GoogleCloudMlV1StudyConfigResponse({
+  const GoogleCloudMlV1StudyConfigResponse({
     required this.algorithm,
     required this.automatedStoppingConfig,
     required this.metrics,

@@ -17,7 +17,7 @@ class SourceProvenanceResponseCloudfunctionsV2alpha {
   /// [gitUri] A copy of the build's `source.git_uri`, if exists, with any commits resolved.
   /// [resolvedRepoSource] A copy of the build's `source.repo_source`, if exists, with any revisions resolved.
   /// [resolvedStorageSource] A copy of the build's `source.storage_source`, if exists, with any generations resolved.
-  SourceProvenanceResponseCloudfunctionsV2alpha({
+  const SourceProvenanceResponseCloudfunctionsV2alpha({
     required this.gitUri,
     required this.resolvedRepoSource,
     required this.resolvedStorageSource,

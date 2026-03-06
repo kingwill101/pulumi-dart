@@ -26,7 +26,7 @@ class VirtualNetworkFunctionNetworkFunctionDefinitionVersionResponse {
   /// [networkFunctionType] The network function type.
   /// [provisioningState] The provisioning state of the network function definition version resource.
   /// [versionState] The network function definition version state.
-  VirtualNetworkFunctionNetworkFunctionDefinitionVersionResponse({
+  const VirtualNetworkFunctionNetworkFunctionDefinitionVersionResponse({
     this.deployParameters,
     this.description,
     this.networkFunctionTemplate,

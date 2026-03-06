@@ -15,7 +15,7 @@ class DomainAttachmentArgs {
   /// Creates a new [DomainAttachmentArgs].
   /// [domainNames] The domain names bound to the DNS instance.
   /// [instanceId] The id of the DNS instance.
-  DomainAttachmentArgs({
+  const DomainAttachmentArgs({
     required this.domainNames,
     required this.instanceId,
   });

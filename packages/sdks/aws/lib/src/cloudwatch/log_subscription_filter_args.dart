@@ -36,7 +36,7 @@ class LogSubscriptionFilterArgs {
   /// [name] Name for the subscription filter.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of an IAM role that grants CloudWatch Logs permissions to deliver ingested log events to the destination stream. You don't need to provide the ARN when you are working with a logical destination for cross-account delivery. If you use Lambda as a destination, you should skip this argument and use `aws.lambda.Permission` resource for granting access from CloudWatch logs to the destination Lambda function.
-  LogSubscriptionFilterArgs({
+  const LogSubscriptionFilterArgs({
     this.applyOnTransformedLogs,
     required this.destinationArn,
     this.distribution,

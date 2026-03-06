@@ -9,7 +9,7 @@ class TransitRouterVpnAttachmentZone {
 
   /// Creates a new [TransitRouterVpnAttachmentZone].
   /// [zoneId] The zone ID of the read-only instance.
-  TransitRouterVpnAttachmentZone({
+  const TransitRouterVpnAttachmentZone({
     required this.zoneId,
   });
 

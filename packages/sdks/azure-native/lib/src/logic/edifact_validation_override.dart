@@ -27,7 +27,7 @@ class EdifactValidationOverride {
   /// [trimLeadingAndTrailingSpacesAndZeroes] The value indicating whether to trim leading and trailing spaces and zeroes.
   /// [validateEDITypes] The value indicating whether to validate EDI types.
   /// [validateXSDTypes] The value indicating whether to validate XSD types.
-  EdifactValidationOverride({
+  const EdifactValidationOverride({
     required this.allowLeadingAndTrailingSpacesAndZeroes,
     required this.enforceCharacterSet,
     required this.messageId,

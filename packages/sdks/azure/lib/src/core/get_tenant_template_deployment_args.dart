@@ -12,7 +12,7 @@ class GetTenantTemplateDeploymentArgs {
 
   /// Creates a new [GetTenantTemplateDeploymentArgs].
   /// [name] The name of this Tenant Template Deployment.
-  GetTenantTemplateDeploymentArgs({
+  const GetTenantTemplateDeploymentArgs({
     required this.name,
   });
 

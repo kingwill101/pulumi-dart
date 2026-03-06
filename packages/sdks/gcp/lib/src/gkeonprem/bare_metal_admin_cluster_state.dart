@@ -149,7 +149,7 @@ class BareMetalAdminClusterState {
   /// [uid] The unique identifier of the Bare Metal Admin Cluster.
   /// [updateTime] The time the cluster was last updated, in RFC3339 text format.
   /// [validationChecks] Specifies the security related settings for the Bare Metal Admin Cluster.
-  BareMetalAdminClusterState({
+  const BareMetalAdminClusterState({
     this.annotations,
     this.bareMetalVersion,
     this.clusterOperations,

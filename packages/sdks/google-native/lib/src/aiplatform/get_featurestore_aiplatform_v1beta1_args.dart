@@ -15,7 +15,7 @@ class GetFeaturestoreAiplatformV1beta1Args {
   /// [featurestoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeaturestoreAiplatformV1beta1Args({
+  const GetFeaturestoreAiplatformV1beta1Args({
     required this.featurestoreId,
     required this.location,
     this.project,

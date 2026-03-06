@@ -18,7 +18,7 @@ class GetGalleryInVMAccessControlProfileArgs {
   /// [galleryName] The name of the Shared Image Gallery.
   /// [inVMAccessControlProfileName] The name of the gallery inVMAccessControlProfile to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryInVMAccessControlProfileArgs({
+  const GetGalleryInVMAccessControlProfileArgs({
     required this.galleryName,
     required this.inVMAccessControlProfileName,
     required this.resourceGroupName,

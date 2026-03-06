@@ -12,7 +12,7 @@ class StatelessRuleGroupReference {
   /// Creates a new [StatelessRuleGroupReference].
   /// [priority] Property priority
   /// [resourceArn] A resource ARN.
-  StatelessRuleGroupReference({
+  const StatelessRuleGroupReference({
     this.priority,
     this.resourceArn,
   });

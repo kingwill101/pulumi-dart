@@ -15,7 +15,7 @@ class GetPrivateLinkServicesForO365ManagementActivityAPIArgs {
   /// Creates a new [GetPrivateLinkServicesForO365ManagementActivityAPIArgs].
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  GetPrivateLinkServicesForO365ManagementActivityAPIArgs({
+  const GetPrivateLinkServicesForO365ManagementActivityAPIArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

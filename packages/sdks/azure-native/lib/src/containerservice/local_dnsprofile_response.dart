@@ -19,7 +19,7 @@ class LocalDNSProfileResponse {
   /// [mode] Mode of enablement for localDNS.
   /// [state] System-generated state of localDNS.
   /// [vnetDNSOverrides] VnetDNS overrides apply to DNS traffic from pods with dnsPolicy:default or kubelet (referred to as VnetDNS traffic).
-  LocalDNSProfileResponse({
+  const LocalDNSProfileResponse({
     this.kubeDNSOverrides,
     this.mode,
     required this.state,

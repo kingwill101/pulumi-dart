@@ -18,7 +18,7 @@ class AkriConnectorTemplateHelmAdvancedConfiguration {
   /// [delete] Delete operation configuration for the Helm chart.
   /// [install] Install operation configuration for the Helm chart.
   /// [upgrade] Upgrade operation configuration for the Helm chart.
-  AkriConnectorTemplateHelmAdvancedConfiguration({
+  const AkriConnectorTemplateHelmAdvancedConfiguration({
     this.delete,
     this.install,
     this.upgrade,

@@ -8,7 +8,7 @@ class PrivateConnectivityResponseDatastreamV1alpha1 {
 
   /// Creates a new [PrivateConnectivityResponseDatastreamV1alpha1].
   /// [privateConnectionName] Required.
-  PrivateConnectivityResponseDatastreamV1alpha1({
+  const PrivateConnectivityResponseDatastreamV1alpha1({
     required this.privateConnectionName,
   });
 

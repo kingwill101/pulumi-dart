@@ -66,7 +66,7 @@ class EntitlementState {
   /// [requesterJustificationConfig] Defines the ways in which a requester should provide the justification while requesting for access.
   /// [state] Output only. The current state of the Entitlement.
   /// [updateTime] Output only. Update time stamp. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  EntitlementState({
+  const EntitlementState({
     this.additionalNotificationTargets,
     this.approvalWorkflow,
     this.createTime,

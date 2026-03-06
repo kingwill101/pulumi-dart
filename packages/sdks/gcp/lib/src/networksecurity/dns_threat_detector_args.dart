@@ -32,7 +32,7 @@ class DnsThreatDetectorArgs {
   /// [name] Name of the DnsThreatDetector resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [threatDetectorProvider] DNS Threat Detection provider. The only supported value is `INFOBLOX`.
-  DnsThreatDetectorArgs({
+  const DnsThreatDetectorArgs({
     this.excludedNetworks,
     this.labels,
     this.location,

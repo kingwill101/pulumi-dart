@@ -16,7 +16,7 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseCompu
   /// [enable] If set to true, enables CAAP for L7 DDoS detection. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [ruleVisibility] Rule visibility can be one of the following: STANDARD - opaque rules. (default) PREMIUM - transparent rules. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [thresholdConfigs] Configuration options for layer7 adaptive protection for various customizable thresholds.
-  SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseComputeV1({
+  const SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponseComputeV1({
     required this.enable,
     required this.ruleVisibility,
     required this.thresholdConfigs,

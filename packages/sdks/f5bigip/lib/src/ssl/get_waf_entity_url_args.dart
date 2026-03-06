@@ -39,7 +39,7 @@ class GetWafEntityUrlArgs {
   /// [protocol] Specifies whether the protocol for the URL is 'http' or 'https'. Default is: http.
   /// [signatureOverridesDisables] List of Attack Signature Ids which are disabled for this particular URL.
   /// [type] Specifies whether the parameter is an 'explicit' or a 'wildcard' attribute. Default is: wildcard.
-  GetWafEntityUrlArgs({
+  const GetWafEntityUrlArgs({
     this.crossOriginRequestsEnforcements,
     this.description,
     this.method,

@@ -12,7 +12,7 @@ class ProjectRepoId {
   /// Creates a new [ProjectRepoId].
   /// [project] The ID of the project.
   /// [repoName] The name of the repo. Leave empty for the default repo.
-  ProjectRepoId({
+  const ProjectRepoId({
     this.project,
     this.repoName,
   });

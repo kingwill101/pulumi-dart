@@ -9,7 +9,7 @@ class DockerResponse {
 
   /// Creates a new [DockerResponse].
   /// [privileged] Indicate whether container shall run in privileged or non-privileged mode.
-  DockerResponse({
+  const DockerResponse({
     this.privileged,
   });
 

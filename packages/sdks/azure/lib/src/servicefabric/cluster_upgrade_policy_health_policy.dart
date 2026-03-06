@@ -11,7 +11,7 @@ class ClusterUpgradePolicyHealthPolicy {
   /// Creates a new [ClusterUpgradePolicyHealthPolicy].
   /// [maxUnhealthyApplicationsPercent] Specifies the maximum tolerated percentage of applications that can have aggregated health state of error. If the upgrade exceeds this percentage, the cluster is unhealthy. Defaults to `0`.
   /// [maxUnhealthyNodesPercent] Specifies the maximum tolerated percentage of nodes that can have aggregated health states of error. If an upgrade exceeds this percentage, the cluster is unhealthy. Defaults to `0`.
-  ClusterUpgradePolicyHealthPolicy({
+  const ClusterUpgradePolicyHealthPolicy({
     this.maxUnhealthyApplicationsPercent,
     this.maxUnhealthyNodesPercent,
   });

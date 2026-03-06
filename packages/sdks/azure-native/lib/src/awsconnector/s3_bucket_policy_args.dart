@@ -25,7 +25,7 @@ class S3BucketPolicyArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  S3BucketPolicyArgs({
+  const S3BucketPolicyArgs({
     this.location,
     this.name,
     this.properties,

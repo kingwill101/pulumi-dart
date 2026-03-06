@@ -13,7 +13,7 @@ class GetAppSpecIngressRuleComponent {
   /// [name] The name of the component.
   /// [preservePathPrefix] An optional flag to preserve the path that is forwarded to the backend service.
   /// [rewrite] Required.
-  GetAppSpecIngressRuleComponent({
+  const GetAppSpecIngressRuleComponent({
     required this.name,
     required this.preservePathPrefix,
     required this.rewrite,

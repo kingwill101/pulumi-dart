@@ -37,7 +37,7 @@ class SalesforceServiceCloudV2SinkResponse {
   /// [writeBatchSize] Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   /// [writeBatchTimeout] Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [writeBehavior] The write behavior for the operation. Default is Insert.
-  SalesforceServiceCloudV2SinkResponse({
+  const SalesforceServiceCloudV2SinkResponse({
     this.disableMetricsCollection,
     this.externalIdFieldName,
     this.ignoreNullValues,

@@ -17,7 +17,7 @@ class SRVRecordRecord {
   /// [priority] The priority of the SRV record.
   /// [target] The FQDN of the service.
   /// [weight] The Weight of the SRV record.
-  SRVRecordRecord({
+  const SRVRecordRecord({
     required this.port,
     required this.priority,
     required this.target,

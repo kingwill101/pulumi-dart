@@ -21,7 +21,7 @@ class WorkspaceState {
   /// [privateEndpointConnections] Optional.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Healthcare Workspace should exist. Changing this forces a new Healthcare Workspace to be created.
   /// [tags] A mapping of tags to assign to the Healthcare Workspace.
-  WorkspaceState({
+  const WorkspaceState({
     this.location,
     this.name,
     this.privateEndpointConnections,

@@ -11,7 +11,7 @@ class ApiConfigGrpcServiceSource {
   /// Creates a new [ApiConfigGrpcServiceSource].
   /// [contents] Base64 encoded content of the file.
   /// [path] The file path (full or relative path). This is typically the path of the file when it is uploaded.
-  ApiConfigGrpcServiceSource({
+  const ApiConfigGrpcServiceSource({
     required this.contents,
     required this.path,
   });

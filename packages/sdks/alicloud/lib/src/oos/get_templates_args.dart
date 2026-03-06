@@ -51,7 +51,7 @@ class GetTemplatesArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [templateFormat] The format of the template. Valid values: `JSON`, `YAML`.
   /// [templateType] The type of OOS Template.
-  GetTemplatesArgs({
+  const GetTemplatesArgs({
     this.category,
     this.createdBy,
     this.createdDate,

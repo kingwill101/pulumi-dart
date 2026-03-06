@@ -15,7 +15,7 @@ class ApplicationKafkaConfigs {
   /// [kafkaConfigs] One or more logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
   /// [kafkaEndpoint] The endpoint of the ApsaraMQ for Kafka API.
   /// [kafkaInstanceId] The  ID of the ApsaraMQ for Kafka instance.
-  ApplicationKafkaConfigs({
+  const ApplicationKafkaConfigs({
     this.kafkaConfigs,
     this.kafkaEndpoint,
     this.kafkaInstanceId,

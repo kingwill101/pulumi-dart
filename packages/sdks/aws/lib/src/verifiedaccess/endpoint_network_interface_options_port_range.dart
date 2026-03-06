@@ -9,7 +9,7 @@ class EndpointNetworkInterfaceOptionsPortRange {
   /// Creates a new [EndpointNetworkInterfaceOptionsPortRange].
   /// [fromPort] Required.
   /// [toPort] Required.
-  EndpointNetworkInterfaceOptionsPortRange({
+  const EndpointNetworkInterfaceOptionsPortRange({
     required this.fromPort,
     required this.toPort,
   });

@@ -15,7 +15,7 @@ class NodeResponseAlloydbV1alpha {
   /// [ip] The private IP address of the VM e.g. "10.57.0.34".
   /// [state] Determined by state of the compute VM and postgres-service health. Compute VM state can have values listed in https://cloud.google.com/compute/docs/instances/instance-life-cycle and postgres-service health can have values: HEALTHY and UNHEALTHY.
   /// [zone] The Compute Engine zone of the VM e.g. "us-central1-b".
-  NodeResponseAlloydbV1alpha({
+  const NodeResponseAlloydbV1alpha({
     required this.ip,
     required this.state,
     required this.zone,

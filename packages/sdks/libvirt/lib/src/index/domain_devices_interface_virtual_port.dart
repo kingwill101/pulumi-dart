@@ -9,7 +9,7 @@ class DomainDevicesInterfaceVirtualPort {
 
   /// Creates a new [DomainDevicesInterfaceVirtualPort].
   /// [params] Contains parameters settings for the virtual port.
-  DomainDevicesInterfaceVirtualPort({
+  const DomainDevicesInterfaceVirtualPort({
     this.params,
   });
 

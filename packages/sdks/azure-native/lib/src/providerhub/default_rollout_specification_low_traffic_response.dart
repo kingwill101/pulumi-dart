@@ -11,7 +11,7 @@ class DefaultRolloutSpecificationLowTrafficResponse {
   /// Creates a new [DefaultRolloutSpecificationLowTrafficResponse].
   /// [regions] Optional.
   /// [waitDuration] The wait duration.
-  DefaultRolloutSpecificationLowTrafficResponse({
+  const DefaultRolloutSpecificationLowTrafficResponse({
     this.regions,
     this.waitDuration,
   });

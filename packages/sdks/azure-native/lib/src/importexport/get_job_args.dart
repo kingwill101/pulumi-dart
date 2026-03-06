@@ -15,7 +15,7 @@ class GetJobArgs {
   /// Creates a new [GetJobArgs].
   /// [jobName] The name of the import/export job.
   /// [resourceGroupName] The resource group name uniquely identifies the resource group within the user subscription.
-  GetJobArgs({
+  const GetJobArgs({
     required this.jobName,
     required this.resourceGroupName,
   });

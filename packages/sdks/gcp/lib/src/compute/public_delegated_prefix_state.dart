@@ -69,7 +69,7 @@ class PublicDelegatedPrefixState {
   /// [publicDelegatedSubPrefixs] List of sub public delegated fixes for BYO IP functionality.
   /// [region] A region where the prefix will reside.
   /// [selfLink] The URI of the created resource.
-  PublicDelegatedPrefixState({
+  const PublicDelegatedPrefixState({
     this.allocatablePrefixLength,
     this.description,
     this.enableEnhancedIpv4Allocation,

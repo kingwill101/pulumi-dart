@@ -80,7 +80,7 @@ class ActiveDirectoryArgs {
   /// [securityOperators] Domain accounts that require elevated privileges such as `SeSecurityPrivilege` to manage security logs. Comma-separated list.
   /// [site] Specifies an Active Directory site to manage domain controller selection.
   /// [username] Username for the Active Directory account with permissions to create the compute account within the specified organizational unit.
-  ActiveDirectoryArgs({
+  const ActiveDirectoryArgs({
     this.administrators,
     this.aesEncryption,
     this.backupOperators,

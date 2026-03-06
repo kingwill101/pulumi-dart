@@ -15,7 +15,7 @@ class ListAutomationAccountDeletedRunbooksArgs {
   /// Creates a new [ListAutomationAccountDeletedRunbooksArgs].
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
-  ListAutomationAccountDeletedRunbooksArgs({
+  const ListAutomationAccountDeletedRunbooksArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
   });

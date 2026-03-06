@@ -37,7 +37,7 @@ class TableArgs {
   /// [name] The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
   /// [project] Optional.
   /// [tableId] The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters.
-  TableArgs({
+  const TableArgs({
     this.changeStreamConfig,
     this.columnFamilies,
     this.deletionProtection,

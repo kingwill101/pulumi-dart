@@ -12,7 +12,7 @@ class AwsWafWebACLSummaryPropertiesResponse {
   /// Creates a new [AwsWafWebACLSummaryPropertiesResponse].
   /// [name] &lt;p&gt;A friendly name or description of the &lt;a&gt;WebACL&lt;/a&gt;. You can't change the name of a &lt;code&gt;WebACL&lt;/code&gt; after you create it.&lt;/p&gt;
   /// [webACLId] &lt;p&gt;A unique identifier for a &lt;code&gt;WebACL&lt;/code&gt;. You use &lt;code&gt;WebACLId&lt;/code&gt; to get information about a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;GetWebACL&lt;/a&gt;), update a &lt;code&gt;WebACL&lt;/code&gt; (see &lt;a&gt;UpdateWebACL&lt;/a&gt;), and delete a &lt;code&gt;WebACL&lt;/code&gt; from AWS WAF (see &lt;a&gt;DeleteWebACL&lt;/a&gt;).&lt;/p&gt; &lt;p&gt; &lt;code&gt;WebACLId&lt;/code&gt; is returned by &lt;a&gt;CreateWebACL&lt;/a&gt; and by &lt;a&gt;ListWebACLs&lt;/a&gt;.&lt;/p&gt;
-  AwsWafWebACLSummaryPropertiesResponse({
+  const AwsWafWebACLSummaryPropertiesResponse({
     this.name,
     this.webACLId,
   });

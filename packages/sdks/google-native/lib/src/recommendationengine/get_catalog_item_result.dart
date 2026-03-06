@@ -33,7 +33,7 @@ class GetCatalogItemResult {
   /// [productMetadata] Optional. Metadata specific to retail products.
   /// [tags] Optional. Filtering tags associated with the catalog item. Each tag should be a UTF-8 encoded string with a length limit of 1 KiB. This tag can be used for filtering recommendation results by passing the tag as part of the predict request filter.
   /// [title] Catalog item title. UTF-8 encoded string with a length limit of 1 KiB.
-  GetCatalogItemResult({
+  const GetCatalogItemResult({
     required this.categoryHierarchies,
     required this.description,
     required this.itemAttributes,

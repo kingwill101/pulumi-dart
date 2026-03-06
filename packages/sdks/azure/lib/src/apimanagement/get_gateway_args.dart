@@ -15,7 +15,7 @@ class GetGatewayArgs {
   /// Creates a new [GetGatewayArgs].
   /// [apiManagementId] The ID of the API Management Service in which the Gateway exists.
   /// [name] The name of the API Management Gateway.
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.apiManagementId,
     required this.name,
   });

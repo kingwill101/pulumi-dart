@@ -19,27 +19,27 @@ import 'package:pulumi_openstack/providers.dart' as module_providers;
 import 'package:pulumi_openstack/sharedfilesystem.dart' as module_sharedfilesystem;
 import 'package:pulumi_openstack/vpnaas.dart' as module_vpnaas;
 
-final bgpvpn = _BgpvpnModuleNamespace();
-final blockstorage = _BlockstorageModuleNamespace();
-final compute = _ComputeModuleNamespace();
-final containerinfra = _ContainerinfraModuleNamespace();
-final database = _DatabaseModuleNamespace();
-final dns = _DnsModuleNamespace();
-final firewall = _FirewallModuleNamespace();
-final identity = _IdentityModuleNamespace();
-final images = _ImagesModuleNamespace();
-final index = _IndexModuleNamespace();
-final keymanager = _KeymanagerModuleNamespace();
-final loadbalancer = _LoadbalancerModuleNamespace();
-final networking = _NetworkingModuleNamespace();
-final objectstorage = _ObjectstorageModuleNamespace();
-final orchestration = _OrchestrationModuleNamespace();
-final providers = _ProvidersModuleNamespace();
-final sharedfilesystem = _SharedfilesystemModuleNamespace();
-final vpnaas = _VpnaasModuleNamespace();
+final bgpvpn = const _BgpvpnModuleNamespace();
+final blockstorage = const _BlockstorageModuleNamespace();
+final compute = const _ComputeModuleNamespace();
+final containerinfra = const _ContainerinfraModuleNamespace();
+final database = const _DatabaseModuleNamespace();
+final dns = const _DnsModuleNamespace();
+final firewall = const _FirewallModuleNamespace();
+final identity = const _IdentityModuleNamespace();
+final images = const _ImagesModuleNamespace();
+final index = const _IndexModuleNamespace();
+final keymanager = const _KeymanagerModuleNamespace();
+final loadbalancer = const _LoadbalancerModuleNamespace();
+final networking = const _NetworkingModuleNamespace();
+final objectstorage = const _ObjectstorageModuleNamespace();
+final orchestration = const _OrchestrationModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+final sharedfilesystem = const _SharedfilesystemModuleNamespace();
+final vpnaas = const _VpnaasModuleNamespace();
 
 class _BgpvpnModuleNamespace {
-  _BgpvpnModuleNamespace();
+  const _BgpvpnModuleNamespace();
   final NetworkAssociateV2 = module_bgpvpn.NetworkAssociateV2.new;
   final NetworkAssociateV2Args = module_bgpvpn.NetworkAssociateV2Args.new;
   final NetworkAssociateV2State = module_bgpvpn.NetworkAssociateV2State.new;
@@ -61,7 +61,7 @@ class _BgpvpnModuleNamespace {
 }
 
 class _BlockstorageModuleNamespace {
-  _BlockstorageModuleNamespace();
+  const _BlockstorageModuleNamespace();
   final GetAvailabilityZonesV3Args = module_blockstorage.GetAvailabilityZonesV3Args.new;
   final GetAvailabilityZonesV3Result = module_blockstorage.GetAvailabilityZonesV3Result.new;
   final GetAvailabilityZonesV3ResultArgs = module_blockstorage.GetAvailabilityZonesV3Result.new;
@@ -115,7 +115,7 @@ class _BlockstorageModuleNamespace {
 }
 
 class _ComputeModuleNamespace {
-  _ComputeModuleNamespace();
+  const _ComputeModuleNamespace();
   final AggregateV2 = module_compute.AggregateV2.new;
   final AggregateV2Args = module_compute.AggregateV2Args.new;
   final AggregateV2State = module_compute.AggregateV2State.new;
@@ -209,7 +209,7 @@ class _ComputeModuleNamespace {
 }
 
 class _ContainerinfraModuleNamespace {
-  _ContainerinfraModuleNamespace();
+  const _ContainerinfraModuleNamespace();
   final Cluster = module_containerinfra.Cluster.new;
   final ClusterArgs = module_containerinfra.ClusterArgs.new;
   final ClusterState = module_containerinfra.ClusterState.new;
@@ -237,7 +237,7 @@ class _ContainerinfraModuleNamespace {
 }
 
 class _DatabaseModuleNamespace {
-  _DatabaseModuleNamespace();
+  const _DatabaseModuleNamespace();
   final Configuration = module_database.Configuration.new;
   final ConfigurationArgs = module_database.ConfigurationArgs.new;
   final ConfigurationConfiguration = module_database.ConfigurationConfiguration.new;
@@ -269,7 +269,7 @@ class _DatabaseModuleNamespace {
 }
 
 class _DnsModuleNamespace {
-  _DnsModuleNamespace();
+  const _DnsModuleNamespace();
   final GetDnsZoneArgs = module_dns.GetDnsZoneArgs.new;
   final GetDnsZoneResult = module_dns.GetDnsZoneResult.new;
   final GetDnsZoneResultArgs = module_dns.GetDnsZoneResult.new;
@@ -305,7 +305,7 @@ class _DnsModuleNamespace {
 }
 
 class _FirewallModuleNamespace {
-  _FirewallModuleNamespace();
+  const _FirewallModuleNamespace();
   final GetGroupV2Args = module_firewall.GetGroupV2Args.new;
   final GetGroupV2Result = module_firewall.GetGroupV2Result.new;
   final GetGroupV2ResultArgs = module_firewall.GetGroupV2Result.new;
@@ -333,7 +333,7 @@ class _FirewallModuleNamespace {
 }
 
 class _IdentityModuleNamespace {
-  _IdentityModuleNamespace();
+  const _IdentityModuleNamespace();
   final ApplicationCredential = module_identity.ApplicationCredential.new;
   final ApplicationCredentialAccessRule = module_identity.ApplicationCredentialAccessRule.new;
   final ApplicationCredentialAccessRuleArgs = module_identity.ApplicationCredentialAccessRule.new;
@@ -431,7 +431,7 @@ class _IdentityModuleNamespace {
 }
 
 class _ImagesModuleNamespace {
-  _ImagesModuleNamespace();
+  const _ImagesModuleNamespace();
   final GetImageArgs = module_images.GetImageArgs.new;
   final GetImageIdsArgs = module_images.GetImageIdsArgs.new;
   final GetImageIdsResult = module_images.GetImageIdsResult.new;
@@ -455,7 +455,7 @@ class _ImagesModuleNamespace {
 }
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final BgpvpnNetworkAssociateV2 = module_index.BgpvpnNetworkAssociateV2.new;
   final BgpvpnNetworkAssociateV2Args = module_index.BgpvpnNetworkAssociateV2Args.new;
   final BgpvpnNetworkAssociateV2State = module_index.BgpvpnNetworkAssociateV2State.new;
@@ -507,7 +507,7 @@ class _IndexModuleNamespace {
 }
 
 class _KeymanagerModuleNamespace {
-  _KeymanagerModuleNamespace();
+  const _KeymanagerModuleNamespace();
   final ContainerV1 = module_keymanager.ContainerV1.new;
   final ContainerV1Acl = module_keymanager.ContainerV1Acl.new;
   final ContainerV1AclArgs = module_keymanager.ContainerV1Acl.new;
@@ -557,7 +557,7 @@ class _KeymanagerModuleNamespace {
 }
 
 class _LoadbalancerModuleNamespace {
-  _LoadbalancerModuleNamespace();
+  const _LoadbalancerModuleNamespace();
   final FlavorV2 = module_loadbalancer.FlavorV2.new;
   final FlavorV2Args = module_loadbalancer.FlavorV2Args.new;
   final FlavorV2State = module_loadbalancer.FlavorV2State.new;
@@ -651,7 +651,7 @@ class _LoadbalancerModuleNamespace {
 }
 
 class _NetworkingModuleNamespace {
-  _NetworkingModuleNamespace();
+  const _NetworkingModuleNamespace();
   final AddressGroupV2 = module_networking.AddressGroupV2.new;
   final AddressGroupV2Args = module_networking.AddressGroupV2Args.new;
   final AddressGroupV2State = module_networking.AddressGroupV2State.new;
@@ -871,7 +871,7 @@ class _NetworkingModuleNamespace {
 }
 
 class _ObjectstorageModuleNamespace {
-  _ObjectstorageModuleNamespace();
+  const _ObjectstorageModuleNamespace();
   final AccountV1 = module_objectstorage.AccountV1.new;
   final AccountV1Args = module_objectstorage.AccountV1Args.new;
   final AccountV1State = module_objectstorage.AccountV1State.new;
@@ -893,7 +893,7 @@ class _ObjectstorageModuleNamespace {
 }
 
 class _OrchestrationModuleNamespace {
-  _OrchestrationModuleNamespace();
+  const _OrchestrationModuleNamespace();
   final StackV1 = module_orchestration.StackV1.new;
   final StackV1Args = module_orchestration.StackV1Args.new;
   final StackV1StackOutput = module_orchestration.StackV1StackOutput.new;
@@ -903,7 +903,7 @@ class _OrchestrationModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Openstack = module_providers.ProviderProvider.new;
   final OpenstackArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -916,7 +916,7 @@ class _ProvidersModuleNamespace {
 }
 
 class _SharedfilesystemModuleNamespace {
-  _SharedfilesystemModuleNamespace();
+  const _SharedfilesystemModuleNamespace();
   final GetAvailbilityZonesArgs = module_sharedfilesystem.GetAvailbilityZonesArgs.new;
   final GetAvailbilityZonesResult = module_sharedfilesystem.GetAvailbilityZonesResult.new;
   final GetAvailbilityZonesResultArgs = module_sharedfilesystem.GetAvailbilityZonesResult.new;
@@ -956,7 +956,7 @@ class _SharedfilesystemModuleNamespace {
 }
 
 class _VpnaasModuleNamespace {
-  _VpnaasModuleNamespace();
+  const _VpnaasModuleNamespace();
   final EndpointGroup = module_vpnaas.EndpointGroup.new;
   final EndpointGroupArgs = module_vpnaas.EndpointGroupArgs.new;
   final EndpointGroupState = module_vpnaas.EndpointGroupState.new;

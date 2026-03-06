@@ -11,7 +11,7 @@ class UserProfileUserSettingsCustomPosixUserConfig {
   /// Creates a new [UserProfileUserSettingsCustomPosixUserConfig].
   /// [gid] The POSIX group ID.
   /// [uid] The POSIX user ID.
-  UserProfileUserSettingsCustomPosixUserConfig({
+  const UserProfileUserSettingsCustomPosixUserConfig({
     required this.gid,
     required this.uid,
   });

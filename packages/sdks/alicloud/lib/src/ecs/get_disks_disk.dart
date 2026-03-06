@@ -212,7 +212,7 @@ class GetDisksDisk {
   /// [tags] A map of tags assigned to the disks. It must be in the format:
   /// [type] Disk type. Possible values: `system` and `data`.
   /// [zoneId] Required.
-  GetDisksDisk({
+  const GetDisksDisk({
     required this.attachedTime,
     required this.autoSnapshotPolicyId,
     required this.availabilityZone,

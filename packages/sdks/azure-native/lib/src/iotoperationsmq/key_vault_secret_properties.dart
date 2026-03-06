@@ -14,7 +14,7 @@ class KeyVaultSecretProperties {
   /// Creates a new [KeyVaultSecretProperties].
   /// [vault] KeyVault properties.
   /// [vaultSecret] KeyVault secret details.
-  KeyVaultSecretProperties({
+  const KeyVaultSecretProperties({
     required this.vault,
     required this.vaultSecret,
   });

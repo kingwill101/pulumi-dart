@@ -65,7 +65,7 @@ class ServicePrincipalArgs {
   /// [samlSingleSignOn] A `saml_single_sign_on` block as documented below.
   /// [tags] A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `feature_tags` block.
   /// [useExisting] When true, any existing service principal linked to the same application will be automatically imported. When false, an import error will be raised for any pre-existing service principal.
-  ServicePrincipalArgs({
+  const ServicePrincipalArgs({
     this.accountEnabled,
     this.alternativeNames,
     this.appRoleAssignmentRequired,

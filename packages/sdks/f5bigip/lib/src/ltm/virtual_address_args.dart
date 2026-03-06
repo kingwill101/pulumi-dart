@@ -33,7 +33,7 @@ class VirtualAddressArgs {
   /// [icmpEcho] Specifies how the system sends responses to ICMP echo requests on a per-virtual address basis.
   /// [name] Name of the virtual address
   /// [trafficGroup] Specify the partition and traffic group
-  VirtualAddressArgs({
+  const VirtualAddressArgs({
     this.advertizeRoute,
     this.arp,
     this.autoDelete,

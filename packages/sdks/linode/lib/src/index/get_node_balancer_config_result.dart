@@ -63,7 +63,7 @@ class GetNodeBalancerConfigResult {
   /// [stickiness] Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
   /// [udpCheckPort] Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic.
   /// [udpSessionTimeout] The idle time in seconds after which a session that hasn’t received packets is destroyed.
-  GetNodeBalancerConfigResult({
+  const GetNodeBalancerConfigResult({
     required this.algorithm,
     required this.check,
     required this.checkAttempts,

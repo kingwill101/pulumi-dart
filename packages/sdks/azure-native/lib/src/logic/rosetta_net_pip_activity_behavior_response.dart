@@ -30,7 +30,7 @@ class RosettaNetPipActivityBehaviorResponse {
   /// [responseType] The value indicating whether the RosettaNet PIP communication is synchronous.
   /// [retryCount] The value indicating retry count.
   /// [timeToPerformInSeconds] The time to perform in seconds.
-  RosettaNetPipActivityBehaviorResponse({
+  const RosettaNetPipActivityBehaviorResponse({
     required this.actionType,
     required this.isAuthorizationRequired,
     required this.isSecuredTransportRequired,

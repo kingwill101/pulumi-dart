@@ -53,7 +53,7 @@ class GetNetworkSecurityPerimeterAccessRuleResult {
   /// [subscriptions] List of subscription ids
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkSecurityPerimeterAccessRuleResult({
+  const GetNetworkSecurityPerimeterAccessRuleResult({
     this.addressPrefixes,
     required this.azureApiVersion,
     this.direction,

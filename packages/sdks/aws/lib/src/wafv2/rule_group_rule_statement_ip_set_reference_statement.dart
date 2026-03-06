@@ -12,7 +12,7 @@ class RuleGroupRuleStatementIpSetReferenceStatement {
   /// Creates a new [RuleGroupRuleStatementIpSetReferenceStatement].
   /// [arn] The Amazon Resource Name (ARN) of the IP Set that this statement references.
   /// [ipSetForwardedIpConfig] The configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See IPSet Forwarded IP Config below for more details.
-  RuleGroupRuleStatementIpSetReferenceStatement({
+  const RuleGroupRuleStatementIpSetReferenceStatement({
     required this.arn,
     this.ipSetForwardedIpConfig,
   });

@@ -11,7 +11,7 @@ class WorkspaceCustomerManagedKeyState {
   /// Creates a new [WorkspaceCustomerManagedKeyState].
   /// [keyVaultKeyId] Optional.
   /// [workspaceId] The unique identifier of the databricks workspace in Databricks control plane.
-  WorkspaceCustomerManagedKeyState({
+  const WorkspaceCustomerManagedKeyState({
     this.keyVaultKeyId,
     this.workspaceId,
   });

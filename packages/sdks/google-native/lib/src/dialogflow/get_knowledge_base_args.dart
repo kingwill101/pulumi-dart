@@ -15,7 +15,7 @@ class GetKnowledgeBaseArgs {
   /// [knowledgeBaseId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetKnowledgeBaseArgs({
+  const GetKnowledgeBaseArgs({
     required this.knowledgeBaseId,
     required this.location,
     this.project,

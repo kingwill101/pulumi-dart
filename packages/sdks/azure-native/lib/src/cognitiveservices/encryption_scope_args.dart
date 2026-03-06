@@ -25,7 +25,7 @@ class EncryptionScopeArgs {
   /// [properties] Properties of Cognitive Services EncryptionScope.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  EncryptionScopeArgs({
+  const EncryptionScopeArgs({
     required this.accountName,
     this.encryptionScopeName,
     this.properties,

@@ -37,7 +37,7 @@ class SchemaRegistryArgs {
   /// [schemaRegistryName] Schema registry name parameter.
   /// [storageAccountContainerUrl] The Storage Account's Container URL where schemas will be stored.
   /// [tags] Resource tags.
-  SchemaRegistryArgs({
+  const SchemaRegistryArgs({
     this.description,
     this.displayName,
     this.identity,

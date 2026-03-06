@@ -12,7 +12,7 @@ class ResourceStatusResponseComputeV1 {
   /// Creates a new [ResourceStatusResponseComputeV1].
   /// [physicalHost] An opaque ID of the host on which the VM is running.
   /// [upcomingMaintenance] Required.
-  ResourceStatusResponseComputeV1({
+  const ResourceStatusResponseComputeV1({
     required this.physicalHost,
     required this.upcomingMaintenance,
   });

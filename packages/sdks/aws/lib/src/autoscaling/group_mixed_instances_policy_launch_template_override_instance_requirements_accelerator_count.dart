@@ -9,7 +9,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceler
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount].
   /// [max] Optional.
   /// [min] Optional.
-  GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount({
+  const GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorCount({
     this.max,
     this.min,
   });

@@ -12,7 +12,7 @@ class V2modelsSlotTypeCompositeSlotTypeSettingSubSlot {
   /// Creates a new [V2modelsSlotTypeCompositeSlotTypeSettingSubSlot].
   /// [name] Name of a constituent sub slot inside a composite slot.
   /// [slotTypeId] Unique identifier assigned to a slot type.
-  V2modelsSlotTypeCompositeSlotTypeSettingSubSlot({
+  const V2modelsSlotTypeCompositeSlotTypeSettingSubSlot({
     required this.name,
     required this.slotTypeId,
   });

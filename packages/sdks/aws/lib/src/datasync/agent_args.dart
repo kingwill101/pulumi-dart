@@ -36,7 +36,7 @@ class AgentArgs {
   /// [subnetArns] The Amazon Resource Names (ARNs) of the subnets in which DataSync will create elastic network interfaces for each data transfer task.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcEndpointId] The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
-  AgentArgs({
+  const AgentArgs({
     this.activationKey,
     this.ipAddress,
     this.name,

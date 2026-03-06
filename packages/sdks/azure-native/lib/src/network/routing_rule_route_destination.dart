@@ -12,7 +12,7 @@ class RoutingRuleRouteDestination {
   /// Creates a new [RoutingRuleRouteDestination].
   /// [destinationAddress] Destination address.
   /// [type] Destination type.
-  RoutingRuleRouteDestination({
+  const RoutingRuleRouteDestination({
     required this.destinationAddress,
     required this.type,
   });

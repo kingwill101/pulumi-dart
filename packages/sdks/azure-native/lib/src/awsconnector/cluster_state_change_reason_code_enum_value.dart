@@ -9,7 +9,7 @@ class ClusterStateChangeReasonCodeEnumValue {
 
   /// Creates a new [ClusterStateChangeReasonCodeEnumValue].
   /// [value] Property value
-  ClusterStateChangeReasonCodeEnumValue({
+  const ClusterStateChangeReasonCodeEnumValue({
     this.value,
   });
 

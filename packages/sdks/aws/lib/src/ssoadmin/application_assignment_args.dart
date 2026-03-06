@@ -21,7 +21,7 @@ class ApplicationAssignmentArgs {
   /// [principalId] An identifier for an object in IAM Identity Center, such as a user or group.
   /// [principalType] Entity type for which the assignment will be created. Valid values are `USER` or `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ApplicationAssignmentArgs({
+  const ApplicationAssignmentArgs({
     required this.applicationArn,
     required this.principalId,
     required this.principalType,

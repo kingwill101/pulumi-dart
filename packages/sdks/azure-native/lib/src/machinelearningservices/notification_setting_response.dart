@@ -16,7 +16,7 @@ class NotificationSettingResponse {
   /// [emailOn] Send email notification to user on specified notification type
   /// [emails] This is the email recipient list which has a limitation of 499 characters in total concat with comma separator
   /// [webhooks] Send webhook callback to a service. Key is a user-provided name for the webhook.
-  NotificationSettingResponse({
+  const NotificationSettingResponse({
     this.emailOn,
     this.emails,
     this.webhooks,

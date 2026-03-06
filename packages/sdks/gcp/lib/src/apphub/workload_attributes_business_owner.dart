@@ -11,7 +11,7 @@ class WorkloadAttributesBusinessOwner {
   /// Creates a new [WorkloadAttributesBusinessOwner].
   /// [displayName] Contact's name.
   /// [email] Email address of the contacts.
-  WorkloadAttributesBusinessOwner({
+  const WorkloadAttributesBusinessOwner({
     this.displayName,
     required this.email,
   });

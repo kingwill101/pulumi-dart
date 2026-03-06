@@ -74,7 +74,7 @@ class EntryState {
   /// [type] The type of the entry. Only used for Entries with types in the EntryType enum.
   /// [userSpecifiedSystem] This field indicates the entry's source system that Data Catalog does not integrate with.
   /// [userSpecifiedType] Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
-  EntryState({
+  const EntryState({
     this.bigqueryDateShardedSpecs,
     this.bigqueryTableSpecs,
     this.description,

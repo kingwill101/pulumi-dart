@@ -34,7 +34,7 @@ class NamedValueArgs {
   /// [serviceName] The name of the API Management service.
   /// [tags] Optional tags that when provided can be used to filter the NamedValue list.
   /// [value] Value of the NamedValue. Can contain policy expressions. It may not be empty or consist only of whitespace. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
-  NamedValueArgs({
+  const NamedValueArgs({
     required this.displayName,
     this.keyVault,
     this.namedValueId,

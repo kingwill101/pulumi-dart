@@ -11,7 +11,7 @@ class ScalingRuleAlarmDimension {
   /// Creates a new [ScalingRuleAlarmDimension].
   /// [dimensionKey] The dimension key of the metric.
   /// [dimensionValue] The dimension value of the metric.
-  ScalingRuleAlarmDimension({
+  const ScalingRuleAlarmDimension({
     this.dimensionKey,
     this.dimensionValue,
   });

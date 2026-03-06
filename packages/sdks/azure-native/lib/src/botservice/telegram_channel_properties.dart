@@ -15,7 +15,7 @@ class TelegramChannelProperties {
   /// [accessToken] The Telegram access token. Value only returned through POST to the action Channel List API, otherwise empty.
   /// [isEnabled] Whether this channel is enabled for the bot
   /// [isValidated] Whether this channel is validated for the bot
-  TelegramChannelProperties({
+  const TelegramChannelProperties({
     this.accessToken,
     required this.isEnabled,
     this.isValidated,

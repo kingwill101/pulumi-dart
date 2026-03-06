@@ -28,7 +28,7 @@ class GetClusterCredentialResult {
   /// [kubeConfig] (Sensitive) The kube config to use to authenticate with the cluster.
   /// [outputFile] Optional.
   /// [temporaryDurationMinutes] Optional.
-  GetClusterCredentialResult({
+  const GetClusterCredentialResult({
     required this.certificateAuthority,
     required this.clusterId,
     required this.clusterName,

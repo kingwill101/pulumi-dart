@@ -32,7 +32,7 @@ class GetRouteMapsResult {
   /// [outputFile] Optional.
   /// [status] The status of the route map.
   /// [transmitDirection] The direction in which the route map is applied.
-  GetRouteMapsResult({
+  const GetRouteMapsResult({
     required this.cenId,
     this.cenRegionId,
     this.descriptionRegex,

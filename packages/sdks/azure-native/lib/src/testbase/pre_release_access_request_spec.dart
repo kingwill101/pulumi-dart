@@ -23,7 +23,7 @@ class PreReleaseAccessRequestSpec {
   /// [stateOrProvince] Optional.
   /// [streetAddress] Optional.
   /// [zipCode] Optional.
-  PreReleaseAccessRequestSpec({
+  const PreReleaseAccessRequestSpec({
     this.city,
     this.companyWebsite,
     this.countryAndRegion,

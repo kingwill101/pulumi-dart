@@ -11,7 +11,7 @@ class TopicRuleErrorActionKafkaHeader {
   /// Creates a new [TopicRuleErrorActionKafkaHeader].
   /// [key] The key of the Kafka header.
   /// [value] The value of the Kafka header.
-  TopicRuleErrorActionKafkaHeader({
+  const TopicRuleErrorActionKafkaHeader({
     required this.key,
     required this.value,
   });

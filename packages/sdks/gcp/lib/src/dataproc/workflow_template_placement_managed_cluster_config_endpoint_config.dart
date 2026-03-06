@@ -11,7 +11,7 @@ class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigEndpointConfig].
   /// [enableHttpPortAccess] If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
   /// [httpPorts] Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-  WorkflowTemplatePlacementManagedClusterConfigEndpointConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigEndpointConfig({
     this.enableHttpPortAccess,
     this.httpPorts,
   });

@@ -11,7 +11,7 @@ class GetCustomerManagedKey {
   /// Creates a new [GetCustomerManagedKey].
   /// [keyVaultKeyId] The ID of the key vault key used for encryption.
   /// [userAssignedIdentityId] The ID of the User Assigned Identity that has access to the Key Vault Key.
-  GetCustomerManagedKey({
+  const GetCustomerManagedKey({
     required this.keyVaultKeyId,
     required this.userAssignedIdentityId,
   });

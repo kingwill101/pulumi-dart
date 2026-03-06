@@ -18,7 +18,7 @@ class GetLoadBalancersLoadBalancerServiceHealthCheck {
   /// [protocol] Required.
   /// [retries] Required.
   /// [timeout] Required.
-  GetLoadBalancersLoadBalancerServiceHealthCheck({
+  const GetLoadBalancersLoadBalancerServiceHealthCheck({
     required this.https,
     required this.interval,
     required this.port,

@@ -76,7 +76,7 @@ class StackV1State {
   /// [templateOpts] Template key/value pairs to associate with the
   /// [timeout] The timeout for stack action in minutes.
   /// [updatedTime] The date and time when the resource was updated. The date
-  StackV1State({
+  const StackV1State({
     this.stackOutputs,
     this.capabilities,
     this.creationTime,

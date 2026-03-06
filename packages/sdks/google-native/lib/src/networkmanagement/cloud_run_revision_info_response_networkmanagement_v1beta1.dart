@@ -21,7 +21,7 @@ class CloudRunRevisionInfoResponseNetworkmanagementV1beta1 {
   /// [serviceName] ID of Cloud Run Service this revision belongs to.
   /// [serviceUri] URI of Cloud Run service this revision belongs to.
   /// [uri] URI of a Cloud Run revision.
-  CloudRunRevisionInfoResponseNetworkmanagementV1beta1({
+  const CloudRunRevisionInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.location,
     required this.serviceName,

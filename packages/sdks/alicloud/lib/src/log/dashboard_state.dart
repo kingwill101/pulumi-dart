@@ -22,7 +22,7 @@ class DashboardState {
   /// [dashboardName] The name of the Log Dashboard.
   /// [displayName] Dashboard alias.
   /// [projectName] The name of the log project. It is the only in one Alicloud account.
-  DashboardState({
+  const DashboardState({
     this.attribute,
     this.charList,
     this.dashboardName,

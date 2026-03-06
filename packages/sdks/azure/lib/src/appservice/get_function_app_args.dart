@@ -17,7 +17,7 @@ class GetFunctionAppArgs {
   /// [name] The name of the Function App resource.
   /// [resourceGroupName] The name of the Resource Group where the Function App exists.
   /// [tags] Optional.
-  GetFunctionAppArgs({
+  const GetFunctionAppArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

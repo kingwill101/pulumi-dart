@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint {
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint].
   /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint({
+  const RuleGroupRuleStatementRateBasedStatementCustomKeyJa3Fingerprint({
     required this.fallbackBehavior,
   });
 

@@ -14,7 +14,7 @@ class ScheduledQueryRulesLogCriteriaDimension {
   /// [name] Name of the dimension.
   /// [operator] Operator for dimension values, - 'Include'. Defaults to `Include`.
   /// [values] List of dimension values.
-  ScheduledQueryRulesLogCriteriaDimension({
+  const ScheduledQueryRulesLogCriteriaDimension({
     required this.name,
     this.operator,
     required this.values,

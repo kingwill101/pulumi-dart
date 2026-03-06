@@ -9,7 +9,7 @@ class FormulaPropertiesFromVm {
 
   /// Creates a new [FormulaPropertiesFromVm].
   /// [labVmId] The identifier of the VM from which a formula is to be created.
-  FormulaPropertiesFromVm({
+  const FormulaPropertiesFromVm({
     this.labVmId,
   });
 

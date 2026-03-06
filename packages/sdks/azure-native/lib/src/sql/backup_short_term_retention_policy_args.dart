@@ -27,7 +27,7 @@ class BackupShortTermRetentionPolicyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [retentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
   /// [serverName] The name of the server.
-  BackupShortTermRetentionPolicyArgs({
+  const BackupShortTermRetentionPolicyArgs({
     required this.databaseName,
     this.diffBackupIntervalInHours,
     this.policyName,

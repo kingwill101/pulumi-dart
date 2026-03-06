@@ -15,7 +15,7 @@ class GetEfsMountTargetArgs {
   /// Creates a new [GetEfsMountTargetArgs].
   /// [name] Name of EfsMountTarget
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEfsMountTargetArgs({
+  const GetEfsMountTargetArgs({
     required this.name,
     required this.resourceGroupName,
   });

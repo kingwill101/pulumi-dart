@@ -13,7 +13,7 @@ class ListMonitorLinkedResourcesResult {
   /// Creates a new [ListMonitorLinkedResourcesResult].
   /// [nextLink] Link to the next set of results, if any.
   /// [value] Results of a list operation.
-  ListMonitorLinkedResourcesResult({
+  const ListMonitorLinkedResourcesResult({
     this.nextLink,
     this.value,
   });

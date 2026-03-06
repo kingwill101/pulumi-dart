@@ -21,7 +21,7 @@ class SshPublicKeyArgs {
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [project] The project ID of the Google Cloud Platform project.
   /// [user] The user email.
-  SshPublicKeyArgs({
+  const SshPublicKeyArgs({
     this.expirationTimeUsec,
     required this.key,
     this.project,

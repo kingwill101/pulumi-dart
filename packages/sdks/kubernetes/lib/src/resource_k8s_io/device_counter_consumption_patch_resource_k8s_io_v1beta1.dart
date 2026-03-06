@@ -15,7 +15,7 @@ class DeviceCounterConsumptionPatchResourceK8sIoV1beta1 {
   /// Creates a new [DeviceCounterConsumptionPatchResourceK8sIoV1beta1].
   /// [counterSet] CounterSet is the name of the set from which the counters defined will be consumed.
   /// [counters] Counters defines the counters that will be consumed by the device.
-  DeviceCounterConsumptionPatchResourceK8sIoV1beta1({
+  const DeviceCounterConsumptionPatchResourceK8sIoV1beta1({
     this.counterSet,
     this.counters,
   });

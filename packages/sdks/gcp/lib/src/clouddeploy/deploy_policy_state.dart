@@ -63,7 +63,7 @@ class DeployPolicyState {
   /// [suspended] When suspended, the policy will not prevent actions from occurring, even if the action violates the policy.
   /// [uid] Output only. Unique identifier of the `DeployPolicy`.
   /// [updateTime] Output only. Time at which the DeployPolicy was updated.
-  DeployPolicyState({
+  const DeployPolicyState({
     this.annotations,
     this.createTime,
     this.description,

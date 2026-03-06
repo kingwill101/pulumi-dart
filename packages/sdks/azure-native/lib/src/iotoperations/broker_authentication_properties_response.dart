@@ -13,7 +13,7 @@ class BrokerAuthenticationPropertiesResponse {
   /// Creates a new [BrokerAuthenticationPropertiesResponse].
   /// [authenticationMethods] Defines a set of Broker authentication methods to be used on `BrokerListeners`. For each array element one authenticator type supported.
   /// [provisioningState] The status of the last operation.
-  BrokerAuthenticationPropertiesResponse({
+  const BrokerAuthenticationPropertiesResponse({
     required this.authenticationMethods,
     required this.provisioningState,
   });

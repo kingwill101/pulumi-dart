@@ -12,7 +12,7 @@ class BucketReplicationConfigRuleDestinationReplicationTime {
   /// Creates a new [BucketReplicationConfigRuleDestinationReplicationTime].
   /// [status] Status of the Replication Time Control. Either `"Enabled"` or `"Disabled"`.
   /// [time] Configuration block specifying the time by which replication should be complete for all objects and operations on objects. See below.
-  BucketReplicationConfigRuleDestinationReplicationTime({
+  const BucketReplicationConfigRuleDestinationReplicationTime({
     required this.status,
     required this.time,
   });

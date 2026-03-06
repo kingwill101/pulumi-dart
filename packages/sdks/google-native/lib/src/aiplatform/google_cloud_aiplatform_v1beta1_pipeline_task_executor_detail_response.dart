@@ -14,7 +14,7 @@ class GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse].
   /// [containerDetail] The detailed info for a container executor.
   /// [customJobDetail] The detailed info for a custom job executor.
-  GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse({
+  const GoogleCloudAiplatformV1beta1PipelineTaskExecutorDetailResponse({
     required this.containerDetail,
     required this.customJobDetail,
   });

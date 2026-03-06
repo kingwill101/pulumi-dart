@@ -7,7 +7,7 @@ class ClusterAddonsConfigGcePersistentDiskCsiDriverConfig {
 
   /// Creates a new [ClusterAddonsConfigGcePersistentDiskCsiDriverConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigGcePersistentDiskCsiDriverConfig({
+  const ClusterAddonsConfigGcePersistentDiskCsiDriverConfig({
     required this.enabled,
   });
 

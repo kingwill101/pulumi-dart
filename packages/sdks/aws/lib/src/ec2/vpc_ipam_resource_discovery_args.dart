@@ -26,7 +26,7 @@ class VpcIpamResourceDiscoveryArgs {
   /// [organizationalUnitExclusions] Add an Organizational Unit (OU) exclusion to IPAM. If IPAM is integrated with AWS Organizations and OU exclusion is added, IPAM will not manage the IP addresses in accounts in the OU exclusion. Refer to [IPAM Quotas](https://docs.aws.amazon.com/vpc/latest/ipam/quotas-ipam.html) for the limit of exclusions that can be created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  VpcIpamResourceDiscoveryArgs({
+  const VpcIpamResourceDiscoveryArgs({
     this.description,
     required this.operatingRegions,
     this.organizationalUnitExclusions,

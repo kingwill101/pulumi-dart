@@ -9,7 +9,7 @@ class GroupProperties {
 
   /// Creates a new [GroupProperties].
   /// [groupType] The type of group.
-  GroupProperties({
+  const GroupProperties({
     this.groupType,
   });
 

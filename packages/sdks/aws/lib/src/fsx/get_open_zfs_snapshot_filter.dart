@@ -10,7 +10,7 @@ class GetOpenZfsSnapshotFilter {
   /// Creates a new [GetOpenZfsSnapshotFilter].
   /// [name] Name of the snapshot.
   /// [values] Required.
-  GetOpenZfsSnapshotFilter({
+  const GetOpenZfsSnapshotFilter({
     required this.name,
     required this.values,
   });

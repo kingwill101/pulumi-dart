@@ -34,7 +34,7 @@ class GeofenceCollectionState {
   /// [tags] Key-value tags for the geofence collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [updateTime] The timestamp for when the geofence collection resource was last updated in ISO 8601 format.
-  GeofenceCollectionState({
+  const GeofenceCollectionState({
     this.collectionArn,
     this.collectionName,
     this.createTime,

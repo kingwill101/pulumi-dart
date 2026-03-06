@@ -57,7 +57,7 @@ class FastTcpAppArgs {
   /// [snatPoolAddresses] List of address to be used for FAST-Generated SNAT Pool.
   /// [tenant] Name of the FAST TCP application tenant.
   /// [virtualServer] `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
-  FastTcpAppArgs({
+  const FastTcpAppArgs({
     required this.application,
     this.existingMonitor,
     this.existingPool,

@@ -18,7 +18,7 @@ class GetConsumerChannelsArgs {
   /// [dtsInstanceId] Subscription instance ID.
   /// [ids] A list of Consumer Channel IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConsumerChannelsArgs({
+  const GetConsumerChannelsArgs({
     required this.dtsInstanceId,
     this.ids,
     this.outputFile,

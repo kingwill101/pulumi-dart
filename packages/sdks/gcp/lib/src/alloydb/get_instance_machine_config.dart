@@ -13,7 +13,7 @@ class GetInstanceMachineConfig {
   /// Creates a new [GetInstanceMachineConfig].
   /// [cpuCount] The number of CPU's in the VM instance.
   /// [machineType] Machine type of the VM instance.
-  GetInstanceMachineConfig({
+  const GetInstanceMachineConfig({
     required this.cpuCount,
     required this.machineType,
   });

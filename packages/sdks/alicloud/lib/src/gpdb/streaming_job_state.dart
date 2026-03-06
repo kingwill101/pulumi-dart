@@ -98,7 +98,7 @@ class StreamingJobState {
   /// [tryRun] Specifies whether to test the real-time job. Valid values:
   /// [updateColumns] Update Field
   /// [writeMode] The write mode.
-  StreamingJobState({
+  const StreamingJobState({
     this.account,
     this.consistency,
     this.createTime,

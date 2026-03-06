@@ -17,7 +17,7 @@ class GetVirtualGatewaySpecListener {
   /// [healthChecks] Required.
   /// [portMappings] Required.
   /// [tls] Required.
-  GetVirtualGatewaySpecListener({
+  const GetVirtualGatewaySpecListener({
     required this.connectionPools,
     required this.healthChecks,
     required this.portMappings,

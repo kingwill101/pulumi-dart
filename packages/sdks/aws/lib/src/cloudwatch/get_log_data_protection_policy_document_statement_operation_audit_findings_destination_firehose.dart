@@ -8,7 +8,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehose].
   /// [deliveryStream] Name of the Kinesis Firehose Delivery Stream to send findings to.
-  GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehose({
+  const GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationFirehose({
     required this.deliveryStream,
   });
 

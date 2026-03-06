@@ -86,7 +86,7 @@ class NoteContaineranalysisV1beta1Args {
   /// [spdxRelationship] A note describing an SPDX File.
   /// [vulnerability] A note describing a package vulnerability.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
-  NoteContaineranalysisV1beta1Args({
+  const NoteContaineranalysisV1beta1Args({
     this.attestationAuthority,
     this.baseImage,
     this.build,

@@ -26,7 +26,7 @@ class PolicyVMWorkloadState {
   /// [resourceGroupName] The name of the resource group in which to create the VM Workload Backup Policy. Changing this forces a new resource to be created.
   /// [settings] A `settings` block as defined below.
   /// [workloadType] The VM Workload type for the Backup Policy. Possible values are `SQLDataBase` and `SAPHanaDatabase`. Changing this forces a new resource to be created.
-  PolicyVMWorkloadState({
+  const PolicyVMWorkloadState({
     this.name,
     this.protectionPolicies,
     this.recoveryVaultName,

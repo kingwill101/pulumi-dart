@@ -13,7 +13,7 @@ class AzureDevOpsWebhookResponse {
   /// Creates a new [AzureDevOpsWebhookResponse].
   /// [eventType] Send callback on a specified notification event
   /// [webhookType] Enum to determine the webhook callback service type.
-  AzureDevOpsWebhookResponse({
+  const AzureDevOpsWebhookResponse({
     this.eventType,
     required this.webhookType,
   });

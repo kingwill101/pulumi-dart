@@ -12,7 +12,7 @@ class ResourcePolicyWeeklyCycleDayOfWeekComputeV1 {
   /// Creates a new [ResourcePolicyWeeklyCycleDayOfWeekComputeV1].
   /// [day] Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
   /// [startTime] Time within the window to start the operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-00] GMT.
-  ResourcePolicyWeeklyCycleDayOfWeekComputeV1({
+  const ResourcePolicyWeeklyCycleDayOfWeekComputeV1({
     this.day,
     this.startTime,
   });

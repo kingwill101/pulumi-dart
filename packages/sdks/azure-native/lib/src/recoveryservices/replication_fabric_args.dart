@@ -22,7 +22,7 @@ class ReplicationFabricArgs {
   /// [properties] Fabric creation input.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationFabricArgs({
+  const ReplicationFabricArgs({
     this.fabricName,
     this.properties,
     required this.resourceGroupName,

@@ -11,7 +11,7 @@ class QueueHttpTargetHeaderOverrideHeader {
   /// Creates a new [QueueHttpTargetHeaderOverrideHeader].
   /// [key] The Key of the header.
   /// [value] The Value of the header.
-  QueueHttpTargetHeaderOverrideHeader({
+  const QueueHttpTargetHeaderOverrideHeader({
     required this.key,
     required this.value,
   });

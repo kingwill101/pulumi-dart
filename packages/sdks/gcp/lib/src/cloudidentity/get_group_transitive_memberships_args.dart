@@ -12,7 +12,7 @@ class GetGroupTransitiveMembershipsArgs {
 
   /// Creates a new [GetGroupTransitiveMembershipsArgs].
   /// [group] The parent Group resource to search transitive memberships in. Must be of the form groups/{group_id}.
-  GetGroupTransitiveMembershipsArgs({
+  const GetGroupTransitiveMembershipsArgs({
     required this.group,
   });
 

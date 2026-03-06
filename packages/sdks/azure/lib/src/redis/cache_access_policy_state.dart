@@ -15,7 +15,7 @@ class CacheAccessPolicyState {
   /// [name] The name of the Redis Cache Access Policy. Changing this forces a new Redis Cache Access Policy to be created.
   /// [permissions] Permissions that are going to be assigned to this Redis Cache Access Policy.
   /// [redisCacheId] The ID of the Redis Cache. Changing this forces a new Redis Cache Access Policy to be created.
-  CacheAccessPolicyState({
+  const CacheAccessPolicyState({
     this.name,
     this.permissions,
     this.redisCacheId,

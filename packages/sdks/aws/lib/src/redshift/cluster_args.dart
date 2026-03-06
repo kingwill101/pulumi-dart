@@ -155,7 +155,7 @@ class ClusterArgs {
   /// [snapshotIdentifier] The name of the snapshot from which to create the new cluster.  Conflicts with `snapshot_arn`.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster.
-  ClusterArgs({
+  const ClusterArgs({
     this.allowVersionUpgrade,
     this.applyImmediately,
     this.aquaConfigurationStatus,

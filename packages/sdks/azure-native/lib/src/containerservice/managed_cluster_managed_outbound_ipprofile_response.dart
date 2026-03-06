@@ -9,7 +9,7 @@ class ManagedClusterManagedOutboundIPProfileResponse {
 
   /// Creates a new [ManagedClusterManagedOutboundIPProfileResponse].
   /// [count] The desired number of outbound IPs created/managed by Azure. Allowed values must be in the range of 1 to 16 (inclusive). The default value is 1.
-  ManagedClusterManagedOutboundIPProfileResponse({
+  const ManagedClusterManagedOutboundIPProfileResponse({
     this.count,
   });
 

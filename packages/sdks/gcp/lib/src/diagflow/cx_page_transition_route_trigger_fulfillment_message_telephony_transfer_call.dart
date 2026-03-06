@@ -8,7 +8,7 @@ class CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall {
 
   /// Creates a new [CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall].
   /// [phoneNumber] Transfer the call to a phone number in E.164 format.
-  CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall({
+  const CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall({
     required this.phoneNumber,
   });
 

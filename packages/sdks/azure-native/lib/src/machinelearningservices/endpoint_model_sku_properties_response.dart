@@ -23,7 +23,7 @@ class EndpointModelSkuPropertiesResponse {
   /// [name] The name of the model SKU.
   /// [rateLimits] Optional.
   /// [usageName] The usage name of the model SKU.
-  EndpointModelSkuPropertiesResponse({
+  const EndpointModelSkuPropertiesResponse({
     this.capacity,
     this.connectionIds,
     this.deprecationDate,

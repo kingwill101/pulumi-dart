@@ -15,7 +15,7 @@ class AssignmentStatusResponse {
   /// [lastModified] Last modified time of this blueprint definition.
   /// [managedResources] List of resources that were created by the blueprint assignment.
   /// [timeCreated] Creation time of this blueprint definition.
-  AssignmentStatusResponse({
+  const AssignmentStatusResponse({
     required this.lastModified,
     required this.managedResources,
     required this.timeCreated,

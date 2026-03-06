@@ -14,7 +14,7 @@ class GetPermissionSetsResult {
   /// [id] Required.
   /// [instanceArn] Required.
   /// [region] Required.
-  GetPermissionSetsResult({
+  const GetPermissionSetsResult({
     required this.arns,
     required this.id,
     required this.instanceArn,

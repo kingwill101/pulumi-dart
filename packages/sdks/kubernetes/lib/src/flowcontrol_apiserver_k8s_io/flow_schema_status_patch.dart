@@ -10,7 +10,7 @@ class FlowSchemaStatusPatch {
 
   /// Creates a new [FlowSchemaStatusPatch].
   /// [conditions] `conditions` is a list of the current states of FlowSchema.
-  FlowSchemaStatusPatch({
+  const FlowSchemaStatusPatch({
     this.conditions,
   });
 

@@ -26,7 +26,7 @@ class GuardrailVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDestroy] Whether to retain the old version of a previously deployed Guardrail. Default is `false`
   /// [timeouts] Optional.
-  GuardrailVersionArgs({
+  const GuardrailVersionArgs({
     this.description,
     required this.guardrailArn,
     this.region,

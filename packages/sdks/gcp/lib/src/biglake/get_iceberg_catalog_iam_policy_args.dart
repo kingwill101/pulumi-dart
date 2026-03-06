@@ -16,7 +16,7 @@ class GetIcebergCatalogIamPolicyArgs {
   /// Creates a new [GetIcebergCatalogIamPolicyArgs].
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetIcebergCatalogIamPolicyArgs({
+  const GetIcebergCatalogIamPolicyArgs({
     required this.name,
     this.project,
   });

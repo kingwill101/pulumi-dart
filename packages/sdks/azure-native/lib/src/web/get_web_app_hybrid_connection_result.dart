@@ -45,7 +45,7 @@ class GetWebAppHybridConnectionResult {
   /// [serviceBusNamespace] The name of the Service Bus namespace.
   /// [serviceBusSuffix] The suffix for the service bus endpoint. By default this is .servicebus.windows.net
   /// [type] Resource type.
-  GetWebAppHybridConnectionResult({
+  const GetWebAppHybridConnectionResult({
     required this.azureApiVersion,
     this.hostname,
     required this.id,

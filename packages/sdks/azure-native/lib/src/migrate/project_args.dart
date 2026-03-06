@@ -28,7 +28,7 @@ class ProjectArgs {
   /// [properties] Properties of the project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [tags] Tags provided by Azure Tagging service.
-  ProjectArgs({
+  const ProjectArgs({
     this.eTag,
     this.location,
     this.projectName,

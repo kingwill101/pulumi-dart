@@ -21,7 +21,7 @@ class CorsRuleResponse {
   /// [allowedOrigins] The origin domains that are permitted to make a request against the service via CORS.
   /// [exposedHeaders] The response headers to expose to CORS clients.
   /// [maxAgeInSeconds] The number of seconds that the client/browser should cache a preflight response.
-  CorsRuleResponse({
+  const CorsRuleResponse({
     this.allowedHeaders,
     this.allowedMethods,
     required this.allowedOrigins,

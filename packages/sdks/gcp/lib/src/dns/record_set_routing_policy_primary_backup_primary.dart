@@ -12,7 +12,7 @@ class RecordSetRoutingPolicyPrimaryBackupPrimary {
   /// Creates a new [RecordSetRoutingPolicyPrimaryBackupPrimary].
   /// [externalEndpoints] The Internet IP addresses to be health checked.
   /// [internalLoadBalancers] The list of internal load balancers to health check.
-  RecordSetRoutingPolicyPrimaryBackupPrimary({
+  const RecordSetRoutingPolicyPrimaryBackupPrimary({
     this.externalEndpoints,
     this.internalLoadBalancers,
   });

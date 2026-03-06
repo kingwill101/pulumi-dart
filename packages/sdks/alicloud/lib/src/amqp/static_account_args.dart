@@ -18,7 +18,7 @@ class StaticAccountArgs {
   /// [accessKey] Access key.
   /// [instanceId] Amqp instance ID.
   /// [secretKey] Secret key.
-  StaticAccountArgs({
+  const StaticAccountArgs({
     required this.accessKey,
     required this.instanceId,
     required this.secretKey,

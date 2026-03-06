@@ -9,7 +9,7 @@ class AppliancePropertiesInfrastructureConfig {
 
   /// Creates a new [AppliancePropertiesInfrastructureConfig].
   /// [provider] Information about the connected appliance.
-  AppliancePropertiesInfrastructureConfig({
+  const AppliancePropertiesInfrastructureConfig({
     this.provider,
   });
 

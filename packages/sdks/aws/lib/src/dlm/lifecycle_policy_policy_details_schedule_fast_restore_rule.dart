@@ -14,7 +14,7 @@ class LifecyclePolicyPolicyDetailsScheduleFastRestoreRule {
   /// [count] Optional.
   /// [interval] Optional.
   /// [intervalUnit] Optional.
-  LifecyclePolicyPolicyDetailsScheduleFastRestoreRule({
+  const LifecyclePolicyPolicyDetailsScheduleFastRestoreRule({
     required this.availabilityZones,
     this.count,
     this.interval,

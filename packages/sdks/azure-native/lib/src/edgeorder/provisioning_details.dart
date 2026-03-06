@@ -30,7 +30,7 @@ class ProvisioningDetails {
   /// [readyToConnectArmId] Arc Enabled Resource Arm id.
   /// [serialNumber] Serial Number for the Device.
   /// [vendorName] Vendor Name for the Device , (for 1P devices - Microsoft).
-  ProvisioningDetails({
+  const ProvisioningDetails({
     this.autoProvisioningStatus,
     this.managementResourceArmId,
     this.provisioningArmId,

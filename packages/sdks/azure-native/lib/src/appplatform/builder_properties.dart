@@ -14,7 +14,7 @@ class BuilderProperties {
   /// Creates a new [BuilderProperties].
   /// [buildpackGroups] Builder buildpack groups.
   /// [stack] Builder cluster stack property.
-  BuilderProperties({
+  const BuilderProperties({
     this.buildpackGroups,
     this.stack,
   });

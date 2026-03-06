@@ -9,7 +9,7 @@ class ArtifactsTypeEnumValue {
 
   /// Creates a new [ArtifactsTypeEnumValue].
   /// [value] Property value
-  ArtifactsTypeEnumValue({
+  const ArtifactsTypeEnumValue({
     this.value,
   });
 

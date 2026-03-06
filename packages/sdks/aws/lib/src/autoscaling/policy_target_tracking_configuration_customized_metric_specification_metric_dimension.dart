@@ -11,7 +11,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimens
   /// Creates a new [PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension].
   /// [name] Name of the dimension.
   /// [value] Value of the dimension.
-  PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension({
+  const PolicyTargetTrackingConfigurationCustomizedMetricSpecificationMetricDimension({
     required this.name,
     required this.value,
   });

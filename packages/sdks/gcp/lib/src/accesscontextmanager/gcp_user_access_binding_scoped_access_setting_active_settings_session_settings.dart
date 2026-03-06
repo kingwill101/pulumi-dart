@@ -21,7 +21,7 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings {
   /// [sessionLengthEnabled] Optional. This field enables or disables Google Cloud session length. When false, all fields set above will be disregarded and the session length is basically infinite.
   /// [sessionReauthMethod] Optional. The session challenges proposed to users when the Google Cloud session length is up.
   /// [useOidcMaxAge] Optional. Only useful for OIDC apps. When false, the OIDC max_age param, if passed in the authentication request will be ignored. When true, the re-auth period will be the minimum of the sessionLength field and the max_age OIDC param.
-  GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings({
+  const GcpUserAccessBindingScopedAccessSettingActiveSettingsSessionSettings({
     this.maxInactivity,
     this.sessionLength,
     this.sessionLengthEnabled,

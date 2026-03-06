@@ -7,7 +7,7 @@ class GetLoadBalancersLoadBalancerAlgorithm {
 
   /// Creates a new [GetLoadBalancersLoadBalancerAlgorithm].
   /// [type] Required.
-  GetLoadBalancersLoadBalancerAlgorithm({
+  const GetLoadBalancersLoadBalancerAlgorithm({
     required this.type,
   });
 

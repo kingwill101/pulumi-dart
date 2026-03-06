@@ -15,7 +15,7 @@ class ListHostPoolRegistrationTokensArgs {
   /// Creates a new [ListHostPoolRegistrationTokensArgs].
   /// [hostPoolName] The name of the host pool within the specified resource group
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListHostPoolRegistrationTokensArgs({
+  const ListHostPoolRegistrationTokensArgs({
     required this.hostPoolName,
     required this.resourceGroupName,
   });

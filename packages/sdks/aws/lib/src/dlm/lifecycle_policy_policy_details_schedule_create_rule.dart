@@ -22,7 +22,7 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRule {
   /// [location] Specifies the destination for snapshots created by the policy. To create snapshots in the same Region as the source resource, specify `CLOUD`. To create snapshots on the same Outpost as the source resource, specify `OUTPOST_LOCAL`. If you omit this parameter, `CLOUD` is used by default. If the policy targets resources in an AWS Region, then you must create snapshots in the same Region as the source resource. If the policy targets resources on an Outpost, then you can create snapshots on the same Outpost as the source resource, or in the Region of that Outpost. Valid values are `CLOUD` and `OUTPOST_LOCAL`.
   /// [scripts] Specifies pre and/or post scripts for a snapshot lifecycle policy that targets instances. Valid only when `resource_type` is INSTANCE. See the `scripts` configuration block.
   /// [times] A list of times in 24 hour clock format that sets when the lifecycle policy should be evaluated. Max of 1. Conflicts with `cron_expression`. Must be set if `interval` is set.
-  LifecyclePolicyPolicyDetailsScheduleCreateRule({
+  const LifecyclePolicyPolicyDetailsScheduleCreateRule({
     this.cronExpression,
     this.interval,
     this.intervalUnit,

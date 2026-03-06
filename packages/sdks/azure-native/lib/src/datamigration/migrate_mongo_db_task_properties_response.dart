@@ -31,7 +31,7 @@ class MigrateMongoDbTaskPropertiesResponse {
   /// [output] Required.
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  MigrateMongoDbTaskPropertiesResponse({
+  const MigrateMongoDbTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

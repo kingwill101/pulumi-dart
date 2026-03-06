@@ -93,7 +93,7 @@ class LabVirtualMachineCreationParameterResponse {
   /// [storageType] Storage type to use for virtual machine (i.e. Standard, Premium).
   /// [tags] The tags of the resource.
   /// [userName] The user name of the virtual machine.
-  LabVirtualMachineCreationParameterResponse({
+  const LabVirtualMachineCreationParameterResponse({
     this.allowClaim,
     this.artifacts,
     this.bulkCreationParameters,

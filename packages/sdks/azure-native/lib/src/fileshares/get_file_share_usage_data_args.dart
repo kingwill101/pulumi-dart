@@ -12,7 +12,7 @@ class GetFileShareUsageDataArgs {
 
   /// Creates a new [GetFileShareUsageDataArgs].
   /// [location] The name of the Azure region.
-  GetFileShareUsageDataArgs({
+  const GetFileShareUsageDataArgs({
     required this.location,
   });
 

@@ -18,7 +18,7 @@ class GoogleCloudDataplexV1TaskInfrastructureSpec {
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.
   /// [containerImage] Container Image Runtime Configuration.
   /// [vpcNetwork] Vpc network.
-  GoogleCloudDataplexV1TaskInfrastructureSpec({
+  const GoogleCloudDataplexV1TaskInfrastructureSpec({
     this.batch,
     this.containerImage,
     this.vpcNetwork,

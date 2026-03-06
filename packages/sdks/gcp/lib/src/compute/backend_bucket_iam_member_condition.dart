@@ -11,7 +11,7 @@ class BackendBucketIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  BackendBucketIamMemberCondition({
+  const BackendBucketIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

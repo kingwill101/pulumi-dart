@@ -12,7 +12,7 @@ class NetworkConnectionMonitorEndpointFilter {
   /// Creates a new [NetworkConnectionMonitorEndpointFilter].
   /// [items] A `item` block as defined below.
   /// [type] The behaviour type of this endpoint filter. Currently the only allowed value is `Include`. Defaults to `Include`.
-  NetworkConnectionMonitorEndpointFilter({
+  const NetworkConnectionMonitorEndpointFilter({
     this.items,
     this.type,
   });

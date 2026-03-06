@@ -27,7 +27,7 @@ class StorageInsightsState {
   /// [storageAccountKey] The storage access key to be used to connect to the storage account.
   /// [tableNames] The names of the Azure tables that the workspace should read.
   /// [workspaceId] The ID of the Log Analytics Workspace within which the Storage Insights should exist. Changing this forces a new Log Analytics Storage Insights to be created.
-  StorageInsightsState({
+  const StorageInsightsState({
     this.blobContainerNames,
     this.name,
     this.resourceGroupName,

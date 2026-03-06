@@ -14,7 +14,7 @@ class AccountQueuePropertiesHourMetrics {
   /// [includeApis] Indicates whether metrics should generate summary statistics for called API operations.
   /// [retentionPolicyDays] Specifies the number of days that logs will be retained.
   /// [version] The version of storage analytics to configure.
-  AccountQueuePropertiesHourMetrics({
+  const AccountQueuePropertiesHourMetrics({
     this.includeApis,
     this.retentionPolicyDays,
     required this.version,

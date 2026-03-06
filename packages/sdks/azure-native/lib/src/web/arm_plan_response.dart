@@ -21,7 +21,7 @@ class ArmPlanResponse {
   /// [promotionCode] The promotion code.
   /// [publisher] The publisher.
   /// [version] Version of product.
-  ArmPlanResponse({
+  const ArmPlanResponse({
     this.name,
     this.product,
     this.promotionCode,

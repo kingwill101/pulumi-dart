@@ -15,7 +15,7 @@ class AppHostingBuildSourceCodebaseAuthor {
   /// [displayName] Human-readable name. 63 character limit.
   /// [email] The 'email' field in a Git user's git.config, if available.
   /// [imageUri] The URI of an image file associated with the user's account in an
-  AppHostingBuildSourceCodebaseAuthor({
+  const AppHostingBuildSourceCodebaseAuthor({
     this.displayName,
     this.email,
     this.imageUri,

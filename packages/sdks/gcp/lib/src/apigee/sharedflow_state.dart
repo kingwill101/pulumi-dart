@@ -33,7 +33,7 @@ class SharedflowState {
   /// [name] The ID of the shared flow.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
   /// [revisions] A list of revisions of this shared flow.
-  SharedflowState({
+  const SharedflowState({
     this.configBundle,
     this.detectMd5hash,
     this.latestRevisionId,

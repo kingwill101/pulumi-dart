@@ -14,7 +14,7 @@ class DefaultClusterConfigGkehubV1alpha {
   /// Creates a new [DefaultClusterConfigGkehubV1alpha].
   /// [binaryAuthorizationConfig] Optional. Enable/Disable binary authorization features for the cluster.
   /// [securityPostureConfig] Enable/Disable Security Posture features for the cluster.
-  DefaultClusterConfigGkehubV1alpha({
+  const DefaultClusterConfigGkehubV1alpha({
     this.binaryAuthorizationConfig,
     this.securityPostureConfig,
   });

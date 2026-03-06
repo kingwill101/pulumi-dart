@@ -9,7 +9,7 @@ class GetClustersClusterAccessInfo {
 
   /// Creates a new [GetClustersClusterAccessInfo].
   /// [zkLinks] Link address information list of ZooKeeper.
-  GetClustersClusterAccessInfo({
+  const GetClustersClusterAccessInfo({
     required this.zkLinks,
   });
 

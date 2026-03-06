@@ -23,7 +23,7 @@ class LbStickinessPolicyArgs {
   /// [enabled] Whether to enable session stickiness for the load balancer.
   /// [lbName] Name of the load balancer to which you want to enable session stickiness.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LbStickinessPolicyArgs({
+  const LbStickinessPolicyArgs({
     required this.cookieDuration,
     required this.enabled,
     required this.lbName,

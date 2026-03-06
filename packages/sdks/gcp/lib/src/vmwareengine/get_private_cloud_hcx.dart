@@ -17,7 +17,7 @@ class GetPrivateCloudHcx {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] State of the appliance. Possible values: ["ACTIVE", "CREATING"]
   /// [version] Version of the appliance.
-  GetPrivateCloudHcx({
+  const GetPrivateCloudHcx({
     required this.fqdn,
     required this.internalIp,
     required this.state,

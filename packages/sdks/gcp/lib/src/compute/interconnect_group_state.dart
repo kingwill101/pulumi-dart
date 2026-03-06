@@ -52,7 +52,7 @@ class InterconnectGroupState {
   /// [name] Name of the resource. Provided by the client when the resource is created. The name must be
   /// [physicalStructures] An analysis of the physical layout of Interconnects in this
   /// [project] The ID of the project in which the resource belongs.
-  InterconnectGroupState({
+  const InterconnectGroupState({
     this.configureds,
     this.creationTimestamp,
     this.description,

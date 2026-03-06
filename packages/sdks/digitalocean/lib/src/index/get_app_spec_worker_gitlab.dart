@@ -14,7 +14,7 @@ class GetAppSpecWorkerGitlab {
   /// [branch] The name of the branch to use.
   /// [deployOnPush] Whether to automatically deploy new commits made to the repo.
   /// [repo] The name of the repo in the format `owner/repo`.
-  GetAppSpecWorkerGitlab({
+  const GetAppSpecWorkerGitlab({
     this.branch,
     this.deployOnPush,
     this.repo,

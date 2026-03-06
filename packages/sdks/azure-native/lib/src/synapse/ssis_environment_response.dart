@@ -26,7 +26,7 @@ class SsisEnvironmentResponse {
   /// [name] Metadata name.
   /// [type] The type of SSIS object metadata.
   /// [variables] Variable in environment
-  SsisEnvironmentResponse({
+  const SsisEnvironmentResponse({
     this.description,
     this.folderId,
     this.id,

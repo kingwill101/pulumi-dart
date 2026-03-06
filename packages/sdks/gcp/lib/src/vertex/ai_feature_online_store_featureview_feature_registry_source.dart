@@ -13,7 +13,7 @@ class AiFeatureOnlineStoreFeatureviewFeatureRegistrySource {
   /// Creates a new [AiFeatureOnlineStoreFeatureviewFeatureRegistrySource].
   /// [featureGroups] List of features that need to be synced to Online Store.
   /// [projectNumber] The project number of the parent project of the feature Groups.
-  AiFeatureOnlineStoreFeatureviewFeatureRegistrySource({
+  const AiFeatureOnlineStoreFeatureviewFeatureRegistrySource({
     required this.featureGroups,
     this.projectNumber,
   });

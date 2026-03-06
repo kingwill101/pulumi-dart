@@ -21,7 +21,7 @@ class EnvironmentMembershipState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userArn] The Amazon Resource Name (ARN) of the environment member you want to add.
   /// [userId] The user ID in AWS Identity and Access Management (AWS IAM) of the environment member.
-  EnvironmentMembershipState({
+  const EnvironmentMembershipState({
     this.environmentId,
     this.permissions,
     this.region,

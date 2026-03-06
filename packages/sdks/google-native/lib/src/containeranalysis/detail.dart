@@ -49,7 +49,7 @@ class Detail {
   /// [source] The source from which the information in this Detail was obtained.
   /// [sourceUpdateTime] The time this information was last changed at the source. This is an upstream timestamp from the underlying information source - e.g. Ubuntu security tracker.
   /// [vendor] The name of the vendor of the product.
-  Detail({
+  const Detail({
     required this.affectedCpeUri,
     required this.affectedPackage,
     this.affectedVersionEnd,

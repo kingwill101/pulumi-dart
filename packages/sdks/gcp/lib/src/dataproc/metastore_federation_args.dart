@@ -41,7 +41,7 @@ class MetastoreFederationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tags] A map of resource manager tags.
   /// [version] The Apache Hive metastore version of the federation. All backend metastore versions must be compatible with the federation version.
-  MetastoreFederationArgs({
+  const MetastoreFederationArgs({
     required this.backendMetastores,
     this.deletionProtection,
     required this.federationId,

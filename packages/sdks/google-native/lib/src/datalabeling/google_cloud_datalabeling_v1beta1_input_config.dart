@@ -30,7 +30,7 @@ class GoogleCloudDatalabelingV1beta1InputConfig {
   /// [dataType] Data type must be specifed when user tries to import data.
   /// [gcsSource] Source located in Cloud Storage.
   /// [textMetadata] Required for text import, as language code must be specified.
-  GoogleCloudDatalabelingV1beta1InputConfig({
+  const GoogleCloudDatalabelingV1beta1InputConfig({
     this.annotationType,
     this.bigquerySource,
     this.classificationMetadata,

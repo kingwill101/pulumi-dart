@@ -24,7 +24,7 @@ class GetLinkedServiceResult {
   /// [name] The resource name.
   /// [properties] Properties of linked service.
   /// [type] The resource type.
-  GetLinkedServiceResult({
+  const GetLinkedServiceResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

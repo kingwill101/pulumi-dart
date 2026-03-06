@@ -15,7 +15,7 @@ class GetResourceGroupTemplateDeploymentArgs {
   /// Creates a new [GetResourceGroupTemplateDeploymentArgs].
   /// [name] The name of this Resource Group Template Deployment.
   /// [resourceGroupName] The name of the Resource Group to which the Resource Group Template Deployment was applied.
-  GetResourceGroupTemplateDeploymentArgs({
+  const GetResourceGroupTemplateDeploymentArgs({
     required this.name,
     required this.resourceGroupName,
   });

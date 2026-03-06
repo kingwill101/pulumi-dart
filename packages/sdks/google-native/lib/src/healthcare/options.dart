@@ -17,7 +17,7 @@ class Options {
   /// [cleanDescriptors] Set Clean Descriptors Option.
   /// [cleanImage] Apply `Action.clean_image` to [`PixelData`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html) as configured.
   /// [primaryIds] Set `Action` for [`StudyInstanceUID`, `SeriesInstanceUID`, `SOPInstanceUID`, and `MediaStorageSOPInstanceUID`](http://dicom.nema.org/medical/dicom/2018e/output/chtml/part06/chapter_6.html).
-  Options({
+  const Options({
     this.cleanDescriptors,
     this.cleanImage,
     this.primaryIds,

@@ -20,7 +20,7 @@ class WebChatChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Web Chat channel resource
-  WebChatChannel({
+  const WebChatChannel({
     required this.channelName,
     this.etag,
     this.location,

@@ -9,7 +9,7 @@ class GetGenaiAgentVersionsSort {
   /// Creates a new [GetGenaiAgentVersionsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiAgentVersionsSort({
+  const GetGenaiAgentVersionsSort({
     this.direction,
     required this.key,
   });

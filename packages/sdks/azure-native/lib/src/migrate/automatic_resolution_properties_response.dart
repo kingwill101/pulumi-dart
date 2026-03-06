@@ -10,7 +10,7 @@ class AutomaticResolutionPropertiesResponse {
 
   /// Creates a new [AutomaticResolutionPropertiesResponse].
   /// [moveResourceId] Gets the MoveResource ARM ID of
-  AutomaticResolutionPropertiesResponse({
+  const AutomaticResolutionPropertiesResponse({
     this.moveResourceId,
   });
 

@@ -12,7 +12,7 @@ class OrganizationsAccessArgs {
 
   /// Creates a new [OrganizationsAccessArgs].
   /// [enabled] Whether to enable AWS Organizations access.
-  OrganizationsAccessArgs({
+  const OrganizationsAccessArgs({
     required this.enabled,
   });
 

@@ -14,7 +14,7 @@ class DomainDevicesAudioOssOutput {
   /// [bufferCount] Sets the number of output buffers for the OSS audio device.
   /// [dev] Sets the device node for the OSS audio output.
   /// [tryPoll] Configures polling for the OSS audio output.
-  DomainDevicesAudioOssOutput({
+  const DomainDevicesAudioOssOutput({
     this.bufferCount,
     this.dev,
     this.tryPoll,

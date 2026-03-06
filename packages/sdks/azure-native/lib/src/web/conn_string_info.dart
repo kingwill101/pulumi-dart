@@ -16,7 +16,7 @@ class ConnStringInfo {
   /// [connectionString] Connection string value.
   /// [name] Name of connection string.
   /// [type] Type of database.
-  ConnStringInfo({
+  const ConnStringInfo({
     this.connectionString,
     this.name,
     this.type,

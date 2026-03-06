@@ -15,7 +15,7 @@ class GetStorageMoverArgs {
   /// Creates a new [GetStorageMoverArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  GetStorageMoverArgs({
+  const GetStorageMoverArgs({
     required this.resourceGroupName,
     required this.storageMoverName,
   });

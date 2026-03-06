@@ -11,7 +11,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage {
   /// Creates a new [ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage].
   /// [accountName] The full name of the Shared Storage Account. Changing this forces a new resource to be created.
   /// [privateEndpointName] The full name of Private Endpoint for the Shared Storage Account. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesSharedStorage({
     this.accountName,
     this.privateEndpointName,
   });

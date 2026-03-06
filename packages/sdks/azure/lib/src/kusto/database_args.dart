@@ -27,7 +27,7 @@ class DatabaseArgs {
   /// [name] The name of the Kusto Database to create. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the Resource Group where the Kusto Database should exist. Changing this forces a new resource to be created.
   /// [softDeletePeriod] The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan. Default is unlimited. For more information see: [ISO 8601 Timespan](https://en.wikipedia.org/wiki/ISO_8601#Durations)
-  DatabaseArgs({
+  const DatabaseArgs({
     required this.clusterName,
     this.hotCachePeriod,
     this.location,

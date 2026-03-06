@@ -21,7 +21,7 @@ class ServiceIdentityState {
   /// [member] The Identity of the Google managed service account in the form 'serviceAccount:{email}'. This value is often used to refer to the service account in order to grant IAM permissions.
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service to generate identity for.
-  ServiceIdentityState({
+  const ServiceIdentityState({
     this.email,
     this.member,
     this.project,

@@ -9,7 +9,7 @@ class GetDistributionTenantCustomizationGeoRestriction {
   /// Creates a new [GetDistributionTenantCustomizationGeoRestriction].
   /// [locations] Required.
   /// [restrictionType] Required.
-  GetDistributionTenantCustomizationGeoRestriction({
+  const GetDistributionTenantCustomizationGeoRestriction({
     required this.locations,
     required this.restrictionType,
   });

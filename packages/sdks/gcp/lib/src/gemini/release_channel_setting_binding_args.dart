@@ -34,7 +34,7 @@ class ReleaseChannelSettingBindingArgs {
   /// [releaseChannelSettingId] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
-  ReleaseChannelSettingBindingArgs({
+  const ReleaseChannelSettingBindingArgs({
     this.labels,
     this.location,
     this.product,

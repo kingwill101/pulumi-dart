@@ -16,7 +16,7 @@ class FirewallPolicyIntrusionDetectionResponse {
   /// [configuration] Intrusion detection configuration properties.
   /// [mode] Intrusion detection general state. When attached to a parent policy, the firewall's effective IDPS mode is the stricter mode of the two.
   /// [profile] IDPS profile name. When attached to a parent policy, the firewall's effective profile is the profile name of the parent policy.
-  FirewallPolicyIntrusionDetectionResponse({
+  const FirewallPolicyIntrusionDetectionResponse({
     this.configuration,
     this.mode,
     this.profile,

@@ -21,7 +21,7 @@ class DefaultServiceAccountsArgs {
   /// [action] The action to be performed in the default service accounts. Valid values are: `DEPRIVILEGE`, `DELETE`, `DISABLE`. Note that `DEPRIVILEGE` action will ignore the REVERT configuration in the restore_policy
   /// [project] The project ID where service accounts are created.
   /// [restorePolicy] The action to be performed in the default service accounts on the resource destroy.
-  DefaultServiceAccountsArgs({
+  const DefaultServiceAccountsArgs({
     required this.action,
     required this.project,
     this.restorePolicy,

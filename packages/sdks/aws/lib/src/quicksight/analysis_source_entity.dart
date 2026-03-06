@@ -9,7 +9,7 @@ class AnalysisSourceEntity {
 
   /// Creates a new [AnalysisSourceEntity].
   /// [sourceTemplate] The source template. See source_template.
-  AnalysisSourceEntity({
+  const AnalysisSourceEntity({
     this.sourceTemplate,
   });
 

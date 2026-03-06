@@ -27,7 +27,7 @@ class BackupInstancePostgresqlState {
   /// [name] The name which should be used for this Backup Instance PostgreSQL. Changing this forces a new Backup Instance PostgreSQL to be created.
   /// [protectionState] The protection state of the Backup Instance PostgreSQL.
   /// [vaultId] The ID of the Backup Vault within which the PostgreSQL Backup Instance should exist. Changing this forces a new Backup Instance PostgreSQL to be created.
-  BackupInstancePostgresqlState({
+  const BackupInstancePostgresqlState({
     this.backupPolicyId,
     this.databaseCredentialKeyVaultSecretId,
     this.databaseId,

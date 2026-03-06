@@ -9,7 +9,7 @@ class Ipv6CircuitConnectionConfig {
 
   /// Creates a new [Ipv6CircuitConnectionConfig].
   /// [addressPrefix] /125 IP address space to carve out customer addresses for global reach.
-  Ipv6CircuitConnectionConfig({
+  const Ipv6CircuitConnectionConfig({
     this.addressPrefix,
   });
 

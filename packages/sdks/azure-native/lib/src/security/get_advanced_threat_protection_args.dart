@@ -15,7 +15,7 @@ class GetAdvancedThreatProtectionArgs {
   /// Creates a new [GetAdvancedThreatProtectionArgs].
   /// [resourceId] The identifier of the resource.
   /// [settingName] Advanced Threat Protection setting name.
-  GetAdvancedThreatProtectionArgs({
+  const GetAdvancedThreatProtectionArgs({
     required this.resourceId,
     required this.settingName,
   });

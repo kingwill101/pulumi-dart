@@ -15,7 +15,7 @@ class GetDatabasePostgresqlArgs {
   /// Creates a new [GetDatabasePostgresqlArgs].
   /// [databaseId] The ID of the PostgreSQL database. Deprecated: Use id instead.
   /// [id] The ID of the PostgreSQL database. Mutually exclusive with `database_id`.
-  GetDatabasePostgresqlArgs({
+  const GetDatabasePostgresqlArgs({
     this.databaseId,
     this.id,
   });

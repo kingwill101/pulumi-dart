@@ -13,7 +13,7 @@ class EnvironmentAddonsConfigState {
   /// Creates a new [EnvironmentAddonsConfigState].
   /// [analyticsEnabled] Flag to enable/disable Analytics.
   /// [envId] The Apigee environment group associated with the Apigee environment,
-  EnvironmentAddonsConfigState({
+  const EnvironmentAddonsConfigState({
     this.analyticsEnabled,
     this.envId,
   });

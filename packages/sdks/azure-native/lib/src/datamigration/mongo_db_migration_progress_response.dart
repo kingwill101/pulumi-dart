@@ -53,7 +53,7 @@ class MongoDbMigrationProgressResponse {
   /// [state] Required.
   /// [totalBytes] The total number of document bytes on the source at the beginning of the Copying stage, or -1 if the total size was unknown
   /// [totalDocuments] The total number of documents on the source at the beginning of the Copying stage, or -1 if the total count was unknown
-  MongoDbMigrationProgressResponse({
+  const MongoDbMigrationProgressResponse({
     required this.bytesCopied,
     this.databases,
     required this.documentsCopied,

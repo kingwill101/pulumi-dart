@@ -35,7 +35,7 @@ class GetCertificateResult {
   /// [name] The name of the resource
   /// [thumbprint] Gets the thumbprint of the certificate.
   /// [type] The type of the resource.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.azureApiVersion,
     required this.creationTime,
     this.description,

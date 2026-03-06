@@ -8,7 +8,7 @@ class GetClusterManagedOpentelemetryConfig {
 
   /// Creates a new [GetClusterManagedOpentelemetryConfig].
   /// [scope] The scope of the Managed OpenTelemetry pipeline. Available options include SCOPE_UNSPECIFIED, NONE, and COLLECTION_AND_INSTRUMENTATION_COMPONENTS.
-  GetClusterManagedOpentelemetryConfig({
+  const GetClusterManagedOpentelemetryConfig({
     required this.scope,
   });
 

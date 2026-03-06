@@ -61,7 +61,7 @@ class GetAFDOriginResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [weight] Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
-  GetAFDOriginResult({
+  const GetAFDOriginResult({
     required this.azureApiVersion,
     this.azureOrigin,
     required this.deploymentStatus,

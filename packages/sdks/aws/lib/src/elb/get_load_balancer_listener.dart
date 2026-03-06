@@ -15,7 +15,7 @@ class GetLoadBalancerListener {
   /// [lbPort] Required.
   /// [lbProtocol] Required.
   /// [sslCertificateId] Required.
-  GetLoadBalancerListener({
+  const GetLoadBalancerListener({
     required this.instancePort,
     required this.instanceProtocol,
     required this.lbPort,

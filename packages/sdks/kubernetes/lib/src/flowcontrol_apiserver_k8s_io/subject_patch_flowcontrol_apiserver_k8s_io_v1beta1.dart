@@ -18,7 +18,7 @@ class SubjectPatchFlowcontrolApiserverK8sIoV1beta1 {
   /// [kind] Required
   /// [serviceAccount] Optional.
   /// [user] Optional.
-  SubjectPatchFlowcontrolApiserverK8sIoV1beta1({
+  const SubjectPatchFlowcontrolApiserverK8sIoV1beta1({
     this.group,
     this.kind,
     this.serviceAccount,

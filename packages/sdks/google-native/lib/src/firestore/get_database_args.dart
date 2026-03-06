@@ -13,7 +13,7 @@ class GetDatabaseArgs {
   /// Creates a new [GetDatabaseArgs].
   /// [databaseId] Required.
   /// [project] Optional.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.databaseId,
     this.project,
   });

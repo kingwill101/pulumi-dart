@@ -7,7 +7,7 @@ class ResourceSkuResponse {
 
   /// Creates a new [ResourceSkuResponse].
   /// [name] Required.
-  ResourceSkuResponse({
+  const ResourceSkuResponse({
     required this.name,
   });
 

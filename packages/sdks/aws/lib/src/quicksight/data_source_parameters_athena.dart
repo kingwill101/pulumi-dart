@@ -8,7 +8,7 @@ class DataSourceParametersAthena {
 
   /// Creates a new [DataSourceParametersAthena].
   /// [workGroup] The work-group to which to connect.
-  DataSourceParametersAthena({
+  const DataSourceParametersAthena({
     this.workGroup,
   });
 

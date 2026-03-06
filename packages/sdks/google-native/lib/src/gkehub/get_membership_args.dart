@@ -15,7 +15,7 @@ class GetMembershipArgs {
   /// [location] Required.
   /// [membershipId] Required.
   /// [project] Optional.
-  GetMembershipArgs({
+  const GetMembershipArgs({
     required this.location,
     required this.membershipId,
     this.project,

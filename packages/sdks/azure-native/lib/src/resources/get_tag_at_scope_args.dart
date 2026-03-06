@@ -12,7 +12,7 @@ class GetTagAtScopeArgs {
 
   /// Creates a new [GetTagAtScopeArgs].
   /// [scope] The resource scope.
-  GetTagAtScopeArgs({
+  const GetTagAtScopeArgs({
     required this.scope,
   });
 

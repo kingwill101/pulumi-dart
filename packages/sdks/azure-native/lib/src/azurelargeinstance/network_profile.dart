@@ -13,7 +13,7 @@ class NetworkProfile {
   /// Creates a new [NetworkProfile].
   /// [circuitId] Specifies the circuit id for connecting to express route.
   /// [networkInterfaces] Specifies the network interfaces for the Azure Large Instance.
-  NetworkProfile({
+  const NetworkProfile({
     this.circuitId,
     this.networkInterfaces,
   });

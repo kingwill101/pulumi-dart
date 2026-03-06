@@ -48,7 +48,7 @@ class DatabaseThreatDetectionPolicyArgs {
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account. If state is Enabled, storageAccountAccessKey is required.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). This blob storage will hold all Threat Detection audit logs. If state is Enabled, storageEndpoint is required.
   /// [useServerDefault] Specifies whether to use the default server policy.
-  DatabaseThreatDetectionPolicyArgs({
+  const DatabaseThreatDetectionPolicyArgs({
     required this.databaseName,
     this.disabledAlerts,
     this.emailAccountAdmins,

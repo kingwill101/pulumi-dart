@@ -23,7 +23,7 @@ class ResiliencyPolicyPolicy {
   /// [hardware] Specifies Infrastructure failure policy. See `policy.hardware`
   /// [region] Specifies Region failure policy. `policy.region`
   /// [software] Specifies Application failure policy. See `policy.software`
-  ResiliencyPolicyPolicy({
+  const ResiliencyPolicyPolicy({
     this.az,
     this.hardware,
     this.region,

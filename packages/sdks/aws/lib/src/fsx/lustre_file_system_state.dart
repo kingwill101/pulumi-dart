@@ -123,7 +123,7 @@ class LustreFileSystemState {
   /// [throughputCapacity] Throughput in MBps required for the `INTELLIGENT_TIERING` storage type. Must be 4000 or multiples of 4000.
   /// [vpcId] Identifier of the Virtual Private Cloud for the file system.
   /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  LustreFileSystemState({
+  const LustreFileSystemState({
     this.arn,
     this.autoImportPolicy,
     this.automaticBackupRetentionDays,

@@ -18,7 +18,7 @@ class ApplicationRedirectUrisArgs {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [redirectUris] A set of redirect URIs to assign to the application.
   /// [type] The type of redirect URIs to manage. Must be one of: `PublicClient`, `SPA`, or `Web`. Changing this forces a new resource to be created.
-  ApplicationRedirectUrisArgs({
+  const ApplicationRedirectUrisArgs({
     required this.applicationId,
     required this.redirectUris,
     required this.type,

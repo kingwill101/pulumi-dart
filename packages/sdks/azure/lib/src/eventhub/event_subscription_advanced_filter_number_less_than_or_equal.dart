@@ -10,7 +10,7 @@ class EventSubscriptionAdvancedFilterNumberLessThanOrEqual {
   /// Creates a new [EventSubscriptionAdvancedFilterNumberLessThanOrEqual].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
   /// [value] Required.
-  EventSubscriptionAdvancedFilterNumberLessThanOrEqual({
+  const EventSubscriptionAdvancedFilterNumberLessThanOrEqual({
     required this.key,
     required this.value,
   });

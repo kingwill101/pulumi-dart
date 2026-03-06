@@ -14,7 +14,7 @@ class TaskTaskReportConfigS3Destination {
   /// [bucketAccessRoleArn] Specifies the Amazon Resource Name (ARN) of the IAM policy that allows DataSync to upload a task report to your S3 bucket.
   /// [s3BucketArn] Specifies the ARN of the S3 bucket where DataSync uploads your report.
   /// [subdirectory] Specifies a bucket prefix for your report.
-  TaskTaskReportConfigS3Destination({
+  const TaskTaskReportConfigS3Destination({
     required this.bucketAccessRoleArn,
     required this.s3BucketArn,
     this.subdirectory,

@@ -10,7 +10,7 @@ class MetadataIntegration {
 
   /// Creates a new [MetadataIntegration].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
-  MetadataIntegration({
+  const MetadataIntegration({
     this.dataCatalogConfig,
   });
 

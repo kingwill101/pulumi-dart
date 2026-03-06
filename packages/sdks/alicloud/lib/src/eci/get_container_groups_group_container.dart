@@ -50,7 +50,7 @@ class GetContainerGroupsGroupContainer {
   /// [restartCount] The number of times that the container has restarted.
   /// [volumeMounts] The list of volumes mounted to the container.
   /// [workingDir] The working directory of the container.
-  GetContainerGroupsGroupContainer({
+  const GetContainerGroupsGroupContainer({
     required this.args,
     required this.commands,
     required this.cpu,

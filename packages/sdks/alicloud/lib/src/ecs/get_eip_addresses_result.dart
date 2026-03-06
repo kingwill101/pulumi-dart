@@ -53,7 +53,7 @@ class GetEipAddressesResult {
   /// [segmentInstanceId] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetEipAddressesResult({
+  const GetEipAddressesResult({
     this.addressName,
     required this.addresses,
     this.associatedInstanceId,

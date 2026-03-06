@@ -39,7 +39,7 @@ class GetRegistryResult {
   /// [resourceGroupName] Required.
   /// [sku] The SKU of this Container Registry, such as `Basic`.
   /// [tags] A map of tags assigned to the Container Registry.
-  GetRegistryResult({
+  const GetRegistryResult({
     required this.adminEnabled,
     required this.adminPassword,
     required this.adminUsername,

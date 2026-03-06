@@ -11,7 +11,7 @@ class LoadBalancerRandomSteering {
   /// Creates a new [LoadBalancerRandomSteering].
   /// [defaultWeight] The default round-robin weight, used for all pools that do not have individually specified weights. The value range is 0-100.
   /// [poolWeights] Weight configuration for each backend server pool, where the key is the pool ID and the value is the weight coefficient. The weight coefficient represents the proportion of relative traffic distribution.
-  LoadBalancerRandomSteering({
+  const LoadBalancerRandomSteering({
     this.defaultWeight,
     this.poolWeights,
   });

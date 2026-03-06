@@ -22,7 +22,7 @@ class DaprProperties {
   /// [scopes] The dapr component scopes
   /// [secretStoreComponent] The name of a secret store dapr to retrieve secret
   /// [version] The dapr component version
-  DaprProperties({
+  const DaprProperties({
     this.componentType,
     this.metadata,
     this.scopes,

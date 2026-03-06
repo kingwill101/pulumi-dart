@@ -27,7 +27,7 @@ class OrganizationExclusionArgs {
   /// [filter] The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// [name] The name of the logging exclusion.
   /// [orgId] The organization to create the exclusion in.
-  OrganizationExclusionArgs({
+  const OrganizationExclusionArgs({
     this.description,
     this.disabled,
     required this.filter,

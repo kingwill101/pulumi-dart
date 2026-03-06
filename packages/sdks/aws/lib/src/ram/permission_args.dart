@@ -27,7 +27,7 @@ class PermissionArgs {
   /// [resourceType] Specifies the name of the resource type that this customer managed permission applies to. The format is `&lt;service-code&gt;:&lt;resource-type&gt;` and is not case sensitive.
   /// [tags] A map of tags to assign to the resource share. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  PermissionArgs({
+  const PermissionArgs({
     this.name,
     required this.policyTemplate,
     this.region,

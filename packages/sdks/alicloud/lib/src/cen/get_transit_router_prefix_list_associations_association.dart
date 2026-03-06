@@ -32,7 +32,7 @@ class GetTransitRouterPrefixListAssociationsAssociation {
   /// [status] The status of the prefix list.
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterTableId] The ID of the route table of the transit router.
-  GetTransitRouterPrefixListAssociationsAssociation({
+  const GetTransitRouterPrefixListAssociationsAssociation({
     required this.id,
     required this.nextHop,
     required this.nextHopInstanceId,

@@ -9,7 +9,7 @@ class PipelineElapsedTimeMetricPolicyResponse {
 
   /// Creates a new [PipelineElapsedTimeMetricPolicyResponse].
   /// [duration] TimeSpan value, after which an Azure Monitoring Metric is fired.
-  PipelineElapsedTimeMetricPolicyResponse({
+  const PipelineElapsedTimeMetricPolicyResponse({
     this.duration,
   });
 

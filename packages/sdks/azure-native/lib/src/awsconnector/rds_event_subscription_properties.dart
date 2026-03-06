@@ -31,7 +31,7 @@ class RdsEventSubscriptionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  RdsEventSubscriptionProperties({
+  const RdsEventSubscriptionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

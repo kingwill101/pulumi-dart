@@ -8,7 +8,7 @@ class DomainDevicesDiskThrottleFiltersThrottleFilter {
 
   /// Creates a new [DomainDevicesDiskThrottleFiltersThrottleFilter].
   /// [group] Sets the group name for the throttle filter applied to the disk device.
-  DomainDevicesDiskThrottleFiltersThrottleFilter({
+  const DomainDevicesDiskThrottleFiltersThrottleFilter({
     required this.group,
   });
 

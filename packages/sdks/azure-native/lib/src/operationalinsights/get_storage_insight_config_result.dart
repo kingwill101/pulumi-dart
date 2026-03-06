@@ -37,7 +37,7 @@ class GetStorageInsightConfigResult {
   /// [tables] The names of the Azure tables that the workspace should read
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetStorageInsightConfigResult({
+  const GetStorageInsightConfigResult({
     required this.azureApiVersion,
     this.containers,
     this.eTag,

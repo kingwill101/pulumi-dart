@@ -17,7 +17,7 @@ class GetZonesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [zones] A list of availability zone information collection.
-  GetZonesResult({
+  const GetZonesResult({
     this.fileSystemType,
     required this.id,
     this.outputFile,

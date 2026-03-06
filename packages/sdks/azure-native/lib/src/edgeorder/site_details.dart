@@ -9,7 +9,7 @@ class SiteDetails {
 
   /// Creates a new [SiteDetails].
   /// [siteId] Unique Id, Identifying A Site.
-  SiteDetails({
+  const SiteDetails({
     required this.siteId,
   });
 

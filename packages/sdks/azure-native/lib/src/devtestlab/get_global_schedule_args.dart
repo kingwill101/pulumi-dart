@@ -18,7 +18,7 @@ class GetGlobalScheduleArgs {
   /// [expand] Specify the $expand query. Example: 'properties($select=status)'
   /// [name] The name of the Schedule
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGlobalScheduleArgs({
+  const GetGlobalScheduleArgs({
     this.expand,
     required this.name,
     required this.resourceGroupName,

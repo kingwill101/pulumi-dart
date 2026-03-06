@@ -90,7 +90,7 @@ class MultitenantDistributionState {
   /// [timeouts] Optional.
   /// [viewerCertificate] SSL configuration for this distribution. See Viewer Certificate below.
   /// [webAclId] Unique identifier that specifies the AWS WAF v2 web ACL to associate with this distribution.
-  MultitenantDistributionState({
+  const MultitenantDistributionState({
     this.activeTrustedKeyGroups,
     this.arn,
     this.cacheBehaviors,

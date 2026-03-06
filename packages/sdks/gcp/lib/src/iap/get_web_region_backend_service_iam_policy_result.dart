@@ -21,7 +21,7 @@ class GetWebRegionBackendServiceIamPolicyResult {
   /// [project] Required.
   /// [region] Required.
   /// [webRegionBackendService] Required.
-  GetWebRegionBackendServiceIamPolicyResult({
+  const GetWebRegionBackendServiceIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

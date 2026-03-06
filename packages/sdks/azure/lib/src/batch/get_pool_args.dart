@@ -18,7 +18,7 @@ class GetPoolArgs {
   /// [accountName] The Batch Account name associated with the Batch pool.
   /// [name] The name of the Batch pool.
   /// [resourceGroupName] The name of the resource group in which the Batch pool exists.
-  GetPoolArgs({
+  const GetPoolArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

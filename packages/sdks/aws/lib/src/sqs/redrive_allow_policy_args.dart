@@ -18,7 +18,7 @@ class RedriveAllowPolicyArgs {
   /// [queueUrl] The URL of the SQS Queue to which to attach the policy
   /// [redriveAllowPolicy] The JSON redrive allow policy for the SQS queue. Learn more in the [Amazon SQS dead-letter queues documentation](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  RedriveAllowPolicyArgs({
+  const RedriveAllowPolicyArgs({
     required this.queueUrl,
     required this.redriveAllowPolicy,
     this.region,

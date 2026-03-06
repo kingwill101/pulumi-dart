@@ -43,7 +43,7 @@ class ConfigurationFeatureState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [targetingFilters] A `targeting_filter` block as defined below.
   /// [timewindowFilters] A `timewindow_filter` block as defined below.
-  ConfigurationFeatureState({
+  const ConfigurationFeatureState({
     this.configurationStoreId,
     this.description,
     this.enabled,

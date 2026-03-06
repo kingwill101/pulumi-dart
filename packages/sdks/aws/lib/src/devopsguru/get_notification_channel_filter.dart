@@ -11,7 +11,7 @@ class GetNotificationChannelFilter {
   /// Creates a new [GetNotificationChannelFilter].
   /// [messageTypes] Events to receive notifications for.
   /// [severities] Severity levels to receive notifications for.
-  GetNotificationChannelFilter({
+  const GetNotificationChannelFilter({
     required this.messageTypes,
     required this.severities,
   });

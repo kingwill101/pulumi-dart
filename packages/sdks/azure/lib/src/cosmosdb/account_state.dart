@@ -145,7 +145,7 @@ class AccountState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkRules] Optional.
   /// [writeEndpoints] A list of write endpoints available for this CosmosDB account.
-  AccountState({
+  const AccountState({
     this.accessKeyMetadataWritesEnabled,
     this.analyticalStorage,
     this.analyticalStorageEnabled,

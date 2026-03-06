@@ -16,7 +16,7 @@ class RouteMapState {
   /// [name] The name which should be used for this Route Map. Changing this forces a new resource to be created.
   /// [rules] A `rule` block as defined below.
   /// [virtualHubId] The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
-  RouteMapState({
+  const RouteMapState({
     this.name,
     this.rules,
     this.virtualHubId,

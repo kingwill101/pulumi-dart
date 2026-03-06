@@ -13,7 +13,7 @@ class DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration {
   /// Creates a new [DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration].
   /// [maxRetries] The optional maximum number of retries
   /// [retryBackOff] The optional retry backoff configuration
-  DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration({
+  const DaprComponentResiliencyPolicyHttpRetryPolicyConfiguration({
     this.maxRetries,
     this.retryBackOff,
   });

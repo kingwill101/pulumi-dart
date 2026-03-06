@@ -29,7 +29,7 @@ class SpringBootAdminComponentResponse {
   /// [provisioningState] Provisioning state of the Java Component.
   /// [scale] Java component scaling configurations
   /// [serviceBinds] List of Java Components that are bound to the Java component
-  SpringBootAdminComponentResponse({
+  const SpringBootAdminComponentResponse({
     required this.componentType,
     this.configurations,
     this.ingress,

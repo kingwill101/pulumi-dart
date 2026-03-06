@@ -8,7 +8,7 @@ class DomainFeaturesVmPort {
 
   /// Creates a new [DomainFeaturesVmPort].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesVmPort({
+  const DomainFeaturesVmPort({
     this.state,
   });
 

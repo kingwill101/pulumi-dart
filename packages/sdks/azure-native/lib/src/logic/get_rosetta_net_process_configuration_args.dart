@@ -18,7 +18,7 @@ class GetRosettaNetProcessConfigurationArgs {
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
   /// [rosettaNetProcessConfigurationName] The integration account RosettaNetProcessConfiguration name.
-  GetRosettaNetProcessConfigurationArgs({
+  const GetRosettaNetProcessConfigurationArgs({
     required this.integrationAccountName,
     required this.resourceGroupName,
     required this.rosettaNetProcessConfigurationName,

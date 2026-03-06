@@ -57,7 +57,7 @@ class ChatEngineState {
   /// [name] The unique full resource name of the chat engine. Values are of the format
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp the Engine was last updated.
-  ChatEngineState({
+  const ChatEngineState({
     this.chatEngineConfig,
     this.chatEngineMetadatas,
     this.collectionId,

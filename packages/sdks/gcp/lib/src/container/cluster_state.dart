@@ -469,7 +469,7 @@ class ClusterState {
   /// [verticalPodAutoscaling] Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
   /// [workloadAltsConfig] Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
   /// [workloadIdentityConfig] Workload Identity allows Kubernetes service accounts to act as a user-managed
-  ClusterState({
+  const ClusterState({
     this.addonsConfig,
     this.allowNetAdmin,
     this.anonymousAuthenticationConfig,

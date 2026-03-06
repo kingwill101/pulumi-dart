@@ -27,7 +27,7 @@ class HostProjectRegistrationArgs {
   /// [hostProjectRegistrationId] Required. The ID to use for the Host Project Registration, which will become the
   /// [location] Part of `parent`. See documentation of `projectsId`.
   /// [project] The ID of the project in which the resource belongs.
-  HostProjectRegistrationArgs({
+  const HostProjectRegistrationArgs({
     required this.gcpProject,
     required this.hostProjectRegistrationId,
     required this.location,

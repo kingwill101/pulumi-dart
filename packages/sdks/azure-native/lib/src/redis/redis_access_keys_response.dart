@@ -12,7 +12,7 @@ class RedisAccessKeysResponse {
   /// Creates a new [RedisAccessKeysResponse].
   /// [primaryKey] The current primary key that clients can use to authenticate with Redis cache.
   /// [secondaryKey] The current secondary key that clients can use to authenticate with Redis cache.
-  RedisAccessKeysResponse({
+  const RedisAccessKeysResponse({
     required this.primaryKey,
     required this.secondaryKey,
   });

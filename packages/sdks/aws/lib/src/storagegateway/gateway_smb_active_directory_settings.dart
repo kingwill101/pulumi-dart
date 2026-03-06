@@ -27,7 +27,7 @@ class GatewaySmbActiveDirectorySettings {
   /// [password] The password of the user who has permission to add the gateway to the Active Directory domain.
   /// [timeoutInSeconds] Specifies the time in seconds, in which the JoinDomain operation must complete. The default is `20` seconds.
   /// [username] The user name of user who has permission to add the gateway to the Active Directory domain.
-  GatewaySmbActiveDirectorySettings({
+  const GatewaySmbActiveDirectorySettings({
     this.activeDirectoryStatus,
     this.domainControllers,
     required this.domainName,

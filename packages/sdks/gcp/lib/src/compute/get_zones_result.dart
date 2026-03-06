@@ -17,7 +17,7 @@ class GetZonesResult {
   /// [project] Required.
   /// [region] Optional.
   /// [status] Optional.
-  GetZonesResult({
+  const GetZonesResult({
     required this.id,
     required this.names,
     required this.project,

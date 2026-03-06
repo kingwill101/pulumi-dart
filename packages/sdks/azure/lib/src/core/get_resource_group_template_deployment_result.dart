@@ -15,7 +15,7 @@ class GetResourceGroupTemplateDeploymentResult {
   /// [name] Required.
   /// [outputContent] The JSON Content of the Outputs of the ARM Template Deployment.
   /// [resourceGroupName] Required.
-  GetResourceGroupTemplateDeploymentResult({
+  const GetResourceGroupTemplateDeploymentResult({
     required this.id,
     required this.name,
     required this.outputContent,

@@ -11,7 +11,7 @@ class FlowletDataFlowSinkRejectedLinkedService {
   /// Creates a new [FlowletDataFlowSinkRejectedLinkedService].
   /// [name] The name for the Data Factory Linked Service with schema.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
-  FlowletDataFlowSinkRejectedLinkedService({
+  const FlowletDataFlowSinkRejectedLinkedService({
     required this.name,
     this.parameters,
   });

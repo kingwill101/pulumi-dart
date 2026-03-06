@@ -14,7 +14,7 @@ class SourceControlSecurityTokenProperties {
   /// [accessToken] The access token.
   /// [refreshToken] The refresh token.
   /// [tokenType] The token type. Must be either PersonalAccessToken or Oauth.
-  SourceControlSecurityTokenProperties({
+  const SourceControlSecurityTokenProperties({
     this.accessToken,
     this.refreshToken,
     this.tokenType,

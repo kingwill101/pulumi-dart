@@ -105,7 +105,7 @@ class GetServiceRunV2Result {
   /// [uid] Server assigned unique identifier for the trigger. The value is a UUID4 string and guaranteed to remain unchanged until the resource is deleted.
   /// [updateTime] The last-modified time.
   /// [uri] The main URI in which this Service is serving traffic.
-  GetServiceRunV2Result({
+  const GetServiceRunV2Result({
     required this.annotations,
     required this.binaryAuthorization,
     required this.client,

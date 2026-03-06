@@ -15,7 +15,7 @@ class EncryptionScopeKeyVaultPropertiesResponse {
   /// [currentVersionedKeyIdentifier] The object identifier of the current versioned Key Vault Key in use.
   /// [keyUri] The object identifier for a key vault key object. When applied, the encryption scope will use the key referenced by the identifier to enable customer-managed key support on this encryption scope.
   /// [lastKeyRotationTimestamp] Timestamp of last rotation of the Key Vault Key.
-  EncryptionScopeKeyVaultPropertiesResponse({
+  const EncryptionScopeKeyVaultPropertiesResponse({
     required this.currentVersionedKeyIdentifier,
     this.keyUri,
     required this.lastKeyRotationTimestamp,

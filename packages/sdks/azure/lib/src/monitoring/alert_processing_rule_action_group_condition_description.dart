@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupConditionDescription {
   /// Creates a new [AlertProcessingRuleActionGroupConditionDescription].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] Specifies a list of values to match for a given condition.
-  AlertProcessingRuleActionGroupConditionDescription({
+  const AlertProcessingRuleActionGroupConditionDescription({
     required this.operator,
     required this.values,
   });

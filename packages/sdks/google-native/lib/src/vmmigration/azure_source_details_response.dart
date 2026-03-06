@@ -29,7 +29,7 @@ class AzureSourceDetailsResponse {
   /// [resourceGroupId] The ID of the Azure resource group that contains all resources related to the migration process of this source.
   /// [state] State of the source as determined by the health check.
   /// [subscriptionId] Immutable. Azure subscription ID.
-  AzureSourceDetailsResponse({
+  const AzureSourceDetailsResponse({
     required this.azureLocation,
     required this.clientSecretCreds,
     required this.error,

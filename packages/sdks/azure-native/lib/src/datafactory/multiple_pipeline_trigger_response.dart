@@ -23,7 +23,7 @@ class MultiplePipelineTriggerResponse {
   /// [pipelines] Pipelines that need to be started.
   /// [runtimeState] Indicates if trigger is running or not. Updated when Start/Stop APIs are called on the Trigger.
   /// [type] Trigger type.
-  MultiplePipelineTriggerResponse({
+  const MultiplePipelineTriggerResponse({
     this.annotations,
     this.description,
     this.pipelines,

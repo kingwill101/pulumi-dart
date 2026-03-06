@@ -30,7 +30,7 @@ class OutputSynapseState {
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
   /// [table] The name of the table in the Azure SQL database. Changing this forces a new resource to be created.
   /// [user] The user name that will be used to connect to the Azure SQL database. Changing this forces a new resource to be created.
-  OutputSynapseState({
+  const OutputSynapseState({
     this.database,
     this.name,
     this.password,

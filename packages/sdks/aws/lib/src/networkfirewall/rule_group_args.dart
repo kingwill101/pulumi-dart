@@ -38,7 +38,7 @@ class RuleGroupArgs {
   /// [rules] The stateful rule group rules specifications in Suricata file format, with one rule per line. Use this to import your existing Suricata compatible rule groups. Required unless `rule_group` is specified.
   /// [tags] A map of key:value pairs to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Whether the rule group is stateless (containing stateless rules) or stateful (containing stateful rules). Valid values include: `STATEFUL` or `STATELESS`.
-  RuleGroupArgs({
+  const RuleGroupArgs({
     required this.capacity,
     this.description,
     this.encryptionConfiguration,

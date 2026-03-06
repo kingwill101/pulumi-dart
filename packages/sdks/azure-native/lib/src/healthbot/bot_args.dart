@@ -33,7 +33,7 @@ class BotArgs {
   /// [resourceGroupName] The name of the Bot resource group in the user subscription.
   /// [sku] SKU of the Azure Health Bot.
   /// [tags] Resource tags.
-  BotArgs({
+  const BotArgs({
     this.botName,
     this.identity,
     this.location,

@@ -8,7 +8,7 @@ class ProfilingGroupAgentOrchestrationConfig {
 
   /// Creates a new [ProfilingGroupAgentOrchestrationConfig].
   /// [profilingEnabled] (Required) Boolean that specifies whether the profiling agent collects profiling data or
-  ProfilingGroupAgentOrchestrationConfig({
+  const ProfilingGroupAgentOrchestrationConfig({
     required this.profilingEnabled,
   });
 

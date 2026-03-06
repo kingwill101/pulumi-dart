@@ -9,7 +9,7 @@ class ShieldedVmIntegrityPolicy {
 
   /// Creates a new [ShieldedVmIntegrityPolicy].
   /// [updateAutoLearnPolicy] Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
-  ShieldedVmIntegrityPolicy({
+  const ShieldedVmIntegrityPolicy({
     this.updateAutoLearnPolicy,
   });
 

@@ -30,7 +30,7 @@ class ServerEndpointSyncActivityStatusResponse {
   /// [timestamp] Timestamp when properties were updated
   /// [totalBytes] Total bytes (if available)
   /// [totalItemCount] Total item count (if available)
-  ServerEndpointSyncActivityStatusResponse({
+  const ServerEndpointSyncActivityStatusResponse({
     required this.appliedBytes,
     required this.appliedItemCount,
     required this.perItemErrorCount,

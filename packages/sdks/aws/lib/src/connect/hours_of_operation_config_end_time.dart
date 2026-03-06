@@ -11,7 +11,7 @@ class HoursOfOperationConfigEndTime {
   /// Creates a new [HoursOfOperationConfigEndTime].
   /// [hours] Specifies the hour of closing.
   /// [minutes] Specifies the minute of closing.
-  HoursOfOperationConfigEndTime({
+  const HoursOfOperationConfigEndTime({
     required this.hours,
     required this.minutes,
   });

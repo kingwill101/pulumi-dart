@@ -24,7 +24,7 @@ class GetHostEcsLevelInfosArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [storageType] The storage type of the host ecs level info. Valid values: `local_ssd`, `cloud_essd`, `cloud_essd2`, `cloud_essd3`.
   /// [zoneId] The ID of the zone in the region.
-  GetHostEcsLevelInfosArgs({
+  const GetHostEcsLevelInfosArgs({
     required this.dbType,
     this.imageCategory,
     this.outputFile,

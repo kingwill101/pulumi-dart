@@ -27,7 +27,7 @@ class GetServiceLevelObjectiveResult {
   /// [rollingPeriod] A rolling time period, semantically "in the past ". Must be an integer multiple of 1 day no larger than 30 days.
   /// [serviceLevelIndicator] The definition of good service, used to measure and calculate the quality of the Service's performance with respect to a single aspect of service quality.
   /// [userLabels] Labels which have been used to annotate the service-level objective. Label keys must start with a letter. Label keys and values may contain lowercase letters, numbers, underscores, and dashes. Label keys and values have a maximum length of 63 characters, and must be less than 128 bytes in size. Up to 64 label entries may be stored. For labels which do not have a semantic value, the empty string may be supplied for the label value.
-  GetServiceLevelObjectiveResult({
+  const GetServiceLevelObjectiveResult({
     required this.calendarPeriod,
     required this.displayName,
     required this.goal,

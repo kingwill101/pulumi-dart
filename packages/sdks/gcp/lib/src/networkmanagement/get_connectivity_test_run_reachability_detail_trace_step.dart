@@ -21,7 +21,7 @@ class GetConnectivityTestRunReachabilityDetailTraceStep {
   /// [description] (Output)
   /// [projectId] (Output)
   /// [state] (Output)
-  GetConnectivityTestRunReachabilityDetailTraceStep({
+  const GetConnectivityTestRunReachabilityDetailTraceStep({
     required this.causesDrop,
     required this.description,
     required this.projectId,

@@ -8,7 +8,7 @@ class ConfigurationAzureSecurityBaseline {
 
   /// Creates a new [ConfigurationAzureSecurityBaseline].
   /// [assignmentType] The assignment type of the azure security baseline. Possible values are `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `Audit` and `DeployAndAutoCorrect`. Defaults to `ApplyAndAutoCorrect`.
-  ConfigurationAzureSecurityBaseline({
+  const ConfigurationAzureSecurityBaseline({
     this.assignmentType,
   });
 

@@ -42,7 +42,7 @@ class GetWorkloadNetworkDnsZoneResult {
   /// [sourceIp] Source IP of the DNS Zone.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkloadNetworkDnsZoneResult({
+  const GetWorkloadNetworkDnsZoneResult({
     required this.azureApiVersion,
     this.displayName,
     this.dnsServerIps,

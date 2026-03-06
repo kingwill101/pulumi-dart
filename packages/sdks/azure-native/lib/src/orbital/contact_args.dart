@@ -31,7 +31,7 @@ class ContactArgs {
   /// [reservationStartTime] Reservation start time of a contact (ISO 8601 UTC standard).
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spacecraftName] Spacecraft ID.
-  ContactArgs({
+  const ContactArgs({
     this.contactName,
     required this.contactProfile,
     required this.groundStationName,

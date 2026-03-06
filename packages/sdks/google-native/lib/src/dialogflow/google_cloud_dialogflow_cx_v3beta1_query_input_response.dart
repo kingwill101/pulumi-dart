@@ -29,7 +29,7 @@ class GoogleCloudDialogflowCxV3beta1QueryInputResponse {
   /// [intent] The intent to be triggered.
   /// [languageCode] The language of the input. See [Language Support](https://cloud.google.com/dialogflow/cx/docs/reference/language) for a list of the currently supported language codes. Note that queries in the same session do not necessarily need to specify the same language.
   /// [text] The natural language text to be processed.
-  GoogleCloudDialogflowCxV3beta1QueryInputResponse({
+  const GoogleCloudDialogflowCxV3beta1QueryInputResponse({
     required this.audio,
     required this.dtmf,
     required this.event,

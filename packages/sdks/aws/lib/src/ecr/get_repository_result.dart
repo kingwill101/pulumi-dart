@@ -42,7 +42,7 @@ class GetRepositoryResult {
   /// [registryId] Required.
   /// [repositoryUrl] URL of the repository (in the form `aws_account_id.dkr.ecr.region.amazonaws.com/repositoryName`).
   /// [tags] Map of tags assigned to the resource.
-  GetRepositoryResult({
+  const GetRepositoryResult({
     required this.arn,
     required this.encryptionConfigurations,
     required this.id,

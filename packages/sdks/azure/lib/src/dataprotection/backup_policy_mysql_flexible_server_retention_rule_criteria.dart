@@ -22,7 +22,7 @@ class BackupPolicyMysqlFlexibleServerRetentionRuleCriteria {
   /// [monthsOfYears] Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`. Changing this forces a new resource to be created.
   /// [scheduledBackupTimes] Specifies a list of backup times for backup in the `RFC3339` format. Changing this forces a new resource to be created.
   /// [weeksOfMonths] Possible values are `First`, `Second`, `Third`, `Fourth` and `Last`. Changing this forces a new resource to be created.
-  BackupPolicyMysqlFlexibleServerRetentionRuleCriteria({
+  const BackupPolicyMysqlFlexibleServerRetentionRuleCriteria({
     this.absoluteCriteria,
     this.daysOfWeeks,
     this.monthsOfYears,

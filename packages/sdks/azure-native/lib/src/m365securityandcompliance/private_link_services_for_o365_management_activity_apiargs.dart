@@ -33,7 +33,7 @@ class PrivateLinkServicesForO365ManagementActivityAPIArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
   /// [tags] The resource tags.
-  PrivateLinkServicesForO365ManagementActivityAPIArgs({
+  const PrivateLinkServicesForO365ManagementActivityAPIArgs({
     this.identity,
     required this.kind,
     this.location,

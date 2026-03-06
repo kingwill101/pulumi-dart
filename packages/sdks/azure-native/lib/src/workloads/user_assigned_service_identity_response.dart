@@ -13,7 +13,7 @@ class UserAssignedServiceIdentityResponse {
   /// Creates a new [UserAssignedServiceIdentityResponse].
   /// [type] Type of manage identity
   /// [userAssignedIdentities] User assigned identities dictionary
-  UserAssignedServiceIdentityResponse({
+  const UserAssignedServiceIdentityResponse({
     required this.type,
     this.userAssignedIdentities,
   });

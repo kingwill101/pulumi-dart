@@ -14,7 +14,7 @@ class InstanceConnectionPoolConfig {
   /// [enabled] Whether to enabled Managed Connection Pool.
   /// [flags] Optional.
   /// [poolerCount] (Output)
-  InstanceConnectionPoolConfig({
+  const InstanceConnectionPoolConfig({
     required this.enabled,
     this.flags,
     this.poolerCount,

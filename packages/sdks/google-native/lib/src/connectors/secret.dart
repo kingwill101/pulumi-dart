@@ -9,7 +9,7 @@ class Secret {
 
   /// Creates a new [Secret].
   /// [secretVersion] The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-  Secret({
+  const Secret({
     this.secretVersion,
   });
 

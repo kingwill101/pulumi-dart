@@ -14,7 +14,7 @@ class ClusterAutoscalingConfig {
   /// Creates a new [ClusterAutoscalingConfig].
   /// [autoscalingLimits] Autoscaling limits for this cluster.
   /// [autoscalingTargets] Autoscaling targets for this cluster.
-  ClusterAutoscalingConfig({
+  const ClusterAutoscalingConfig({
     required this.autoscalingLimits,
     required this.autoscalingTargets,
   });

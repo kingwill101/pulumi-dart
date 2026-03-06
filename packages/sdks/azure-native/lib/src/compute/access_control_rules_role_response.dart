@@ -12,7 +12,7 @@ class AccessControlRulesRoleResponse {
   /// Creates a new [AccessControlRulesRoleResponse].
   /// [name] The name of the role.
   /// [privileges] A list of privileges needed by this role.
-  AccessControlRulesRoleResponse({
+  const AccessControlRulesRoleResponse({
     required this.name,
     required this.privileges,
   });

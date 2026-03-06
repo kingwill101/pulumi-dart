@@ -10,7 +10,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings {
 
   /// Creates a new [GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings].
   /// [kmsSettings] Input only. Immutable. Settings used to create a CMEK crypto key.
-  GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings({
+  const GoogleCloudAssuredworkloadsV1beta1WorkloadCJISSettings({
     this.kmsSettings,
   });
 

@@ -40,7 +40,7 @@ class GetAssetsAsset {
   /// [status] The status of the asset. Valid values:
   /// [uuid] The UUID of the asset. Same as `id`.
   /// [vpcInstanceId] The ID of the VPC to which the asset belongs.
-  GetAssetsAsset({
+  const GetAssetsAsset({
     required this.clusterId,
     required this.clusterName,
     required this.createTime,

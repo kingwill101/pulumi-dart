@@ -19,7 +19,7 @@ class SlsGroupArgs {
   /// [slsGroupConfigs] The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
   /// [slsGroupDescription] The Description of the Sls Group.
   /// [slsGroupName] The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
-  SlsGroupArgs({
+  const SlsGroupArgs({
     required this.slsGroupConfigs,
     this.slsGroupDescription,
     required this.slsGroupName,

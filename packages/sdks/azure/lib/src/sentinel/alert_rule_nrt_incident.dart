@@ -12,7 +12,7 @@ class AlertRuleNrtIncident {
   /// Creates a new [AlertRuleNrtIncident].
   /// [createIncidentEnabled] Whether to create an incident from alerts triggered by this Sentinel NRT Alert Rule?
   /// [grouping] A `grouping` block as defined below.
-  AlertRuleNrtIncident({
+  const AlertRuleNrtIncident({
     required this.createIncidentEnabled,
     required this.grouping,
   });

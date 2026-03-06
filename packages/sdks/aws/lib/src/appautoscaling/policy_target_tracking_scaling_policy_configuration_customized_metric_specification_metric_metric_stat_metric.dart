@@ -15,7 +15,7 @@ class PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificatio
   /// [dimensions] Dimensions of the metric.
   /// [metricName] Name of the metric.
   /// [namespace] Namespace of the metric.
-  PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric({
+  const PolicyTargetTrackingScalingPolicyConfigurationCustomizedMetricSpecificationMetricMetricStatMetric({
     this.dimensions,
     required this.metricName,
     required this.namespace,

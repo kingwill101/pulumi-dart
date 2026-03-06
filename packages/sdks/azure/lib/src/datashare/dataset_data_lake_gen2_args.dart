@@ -27,7 +27,7 @@ class DatasetDataLakeGen2Args {
   /// [name] The name which should be used for this Data Share Data Lake Gen2 Dataset. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   /// [shareId] The resource ID of the Data Share where this Data Share Data Lake Gen2 Dataset should be created. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
   /// [storageAccountId] The resource id of the storage account of the data lake file system to be shared with the receiver. Changing this forces a new Data Share Data Lake Gen2 Dataset to be created.
-  DatasetDataLakeGen2Args({
+  const DatasetDataLakeGen2Args({
     this.filePath,
     required this.fileSystemName,
     this.folderPath,

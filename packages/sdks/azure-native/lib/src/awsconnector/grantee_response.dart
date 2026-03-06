@@ -22,7 +22,7 @@ class GranteeResponse {
   /// [id] &lt;p&gt;The canonical user ID of the grantee.&lt;/p&gt;
   /// [type] &lt;p&gt;Type of grantee&lt;/p&gt;
   /// [uri] &lt;p&gt;URI of the grantee group.&lt;/p&gt;
-  GranteeResponse({
+  const GranteeResponse({
     this.displayName,
     this.emailAddress,
     this.id,

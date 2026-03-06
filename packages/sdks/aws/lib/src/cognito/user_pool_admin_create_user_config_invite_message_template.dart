@@ -14,7 +14,7 @@ class UserPoolAdminCreateUserConfigInviteMessageTemplate {
   /// [emailMessage] Message template for email messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
   /// [emailSubject] Subject line for email messages.
   /// [smsMessage] Message template for SMS messages. Must contain `{username}` and `{####}` placeholders, for username and temporary password, respectively.
-  UserPoolAdminCreateUserConfigInviteMessageTemplate({
+  const UserPoolAdminCreateUserConfigInviteMessageTemplate({
     this.emailMessage,
     this.emailSubject,
     this.smsMessage,

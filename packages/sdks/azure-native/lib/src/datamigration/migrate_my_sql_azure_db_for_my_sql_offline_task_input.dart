@@ -29,7 +29,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskInput {
   /// [sourceConnectionInfo] Connection information for source MySQL
   /// [startedOn] Parameter to specify when the migration started
   /// [targetConnectionInfo] Connection information for target Azure Database for MySQL
-  MigrateMySqlAzureDbForMySqlOfflineTaskInput({
+  const MigrateMySqlAzureDbForMySqlOfflineTaskInput({
     this.encryptedKeyForSecureFields,
     this.makeSourceServerReadOnly,
     this.optionalAgentSettings,

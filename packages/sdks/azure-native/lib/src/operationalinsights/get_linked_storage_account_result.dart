@@ -23,7 +23,7 @@ class GetLinkedStorageAccountResult {
   /// [name] The name of the resource
   /// [storageAccountIds] Linked storage accounts resources ids.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLinkedStorageAccountResult({
+  const GetLinkedStorageAccountResult({
     required this.azureApiVersion,
     required this.dataSourceType,
     required this.id,

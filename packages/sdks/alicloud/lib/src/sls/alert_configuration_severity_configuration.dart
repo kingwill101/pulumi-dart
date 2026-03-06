@@ -12,7 +12,7 @@ class AlertConfigurationSeverityConfiguration {
   /// Creates a new [AlertConfigurationSeverityConfiguration].
   /// [evalCondition] Trigger condition. See `eval_condition` below.
   /// [severity] Alarm severity.
-  AlertConfigurationSeverityConfiguration({
+  const AlertConfigurationSeverityConfiguration({
     this.evalCondition,
     this.severity,
   });

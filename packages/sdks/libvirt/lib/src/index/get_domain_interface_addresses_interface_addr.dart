@@ -14,7 +14,7 @@ class GetDomainInterfaceAddressesInterfaceAddr {
   /// [addr] IP address.
   /// [prefix] Network prefix length (e.g., 24 for 255.255.255.0).
   /// [type] Address type: `ipv4` or `ipv6`.
-  GetDomainInterfaceAddressesInterfaceAddr({
+  const GetDomainInterfaceAddressesInterfaceAddr({
     required this.addr,
     required this.prefix,
     required this.type,

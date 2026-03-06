@@ -34,7 +34,7 @@ class ResourceClassArgs {
   /// [metadata] Standard object metadata
   /// [parametersRef] ParametersRef references an arbitrary separate object that may hold parameters that will be used by the driver when allocating a resource that uses this class. A dynamic resource driver can distinguish between parameters stored here and and those stored in ResourceClaimSpec.
   /// [suitableNodes] Only nodes matching the selector will be considered by the scheduler when trying to find a Node that fits a Pod when that Pod uses a ResourceClaim that has not been allocated yet.
-  ResourceClassArgs({
+  const ResourceClassArgs({
     this.apiVersion,
     required this.driverName,
     this.kind,

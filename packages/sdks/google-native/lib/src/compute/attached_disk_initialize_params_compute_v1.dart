@@ -60,7 +60,7 @@ class AttachedDiskInitializeParamsComputeV1 {
   /// [sourceImageEncryptionKey] The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. InstanceTemplate and InstancePropertiesPatch do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
   /// [sourceSnapshot] The source snapshot to create this disk. When creating a new instance, one of initializeParams.sourceSnapshot or initializeParams.sourceImage or disks.source is required except for local SSD. To create a disk with a snapshot that you created, specify the snapshot name in the following format: global/snapshots/my-backup If the source snapshot is deleted later, this field will not be set.
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot.
-  AttachedDiskInitializeParamsComputeV1({
+  const AttachedDiskInitializeParamsComputeV1({
     this.architecture,
     this.description,
     this.diskName,

@@ -52,7 +52,7 @@ class ManagedHardwareSecurityModuleState {
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` days. Defaults to `90`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tenantId] The Azure Active Directory Tenant ID that should be used for authenticating requests to the key vault Managed Hardware Security Module. Changing this forces a new resource to be created.
-  ManagedHardwareSecurityModuleState({
+  const ManagedHardwareSecurityModuleState({
     this.adminObjectIds,
     this.hsmUri,
     this.location,

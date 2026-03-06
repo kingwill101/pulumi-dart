@@ -9,7 +9,7 @@ class BrokerStateStoreDestinationConfiguration {
 
   /// Creates a new [BrokerStateStoreDestinationConfiguration].
   /// [key] The MQTT broker state store destination key.
-  BrokerStateStoreDestinationConfiguration({
+  const BrokerStateStoreDestinationConfiguration({
     required this.key,
   });
 

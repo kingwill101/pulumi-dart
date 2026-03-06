@@ -11,7 +11,7 @@ class FilterFilterCriteriaFixAvailable {
   /// Creates a new [FilterFilterCriteriaFixAvailable].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaFixAvailable({
+  const FilterFilterCriteriaFixAvailable({
     required this.comparison,
     required this.value,
   });

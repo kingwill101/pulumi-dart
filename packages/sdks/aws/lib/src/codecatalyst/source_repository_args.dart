@@ -26,7 +26,7 @@ class SourceRepositoryArgs {
   /// [projectName] The name of the project in the CodeCatalyst space.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the CodeCatalyst space.
-  SourceRepositoryArgs({
+  const SourceRepositoryArgs({
     this.description,
     this.name,
     required this.projectName,

@@ -10,7 +10,7 @@ class Price {
   /// Creates a new [Price].
   /// [amount] Optional.
   /// [currencyCode] The ISO 4217 3-letter currency code for the currency used by this purchase record.
-  Price({
+  const Price({
     this.amount,
     this.currencyCode,
   });

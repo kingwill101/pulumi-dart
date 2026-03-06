@@ -20,7 +20,7 @@ class CompoundAssessmentPropertiesResponse {
   /// [fallbackMachineAssessmentArmId] Fallback machine assessment ARM ID.
   /// [provisioningState] The status of the last operation.
   /// [targetAssessmentArmIds] ARM IDs of the target assessments.
-  CompoundAssessmentPropertiesResponse({
+  const CompoundAssessmentPropertiesResponse({
     required this.details,
     this.fallbackMachineAssessmentArmId,
     required this.provisioningState,

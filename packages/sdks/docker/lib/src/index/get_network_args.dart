@@ -12,7 +12,7 @@ class GetNetworkArgs {
 
   /// Creates a new [GetNetworkArgs].
   /// [name] The name of the Docker network.
-  GetNetworkArgs({
+  const GetNetworkArgs({
     required this.name,
   });
 

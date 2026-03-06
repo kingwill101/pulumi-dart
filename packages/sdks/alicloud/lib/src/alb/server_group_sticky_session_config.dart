@@ -37,7 +37,7 @@ class ServerGroupStickySessionConfig {
   /// [cookieTimeout] The maximum amount of time to wait before the session cookie expires. Unit: seconds.
   /// [stickySessionEnabled] Specifies whether to enable session persistence. Valid values:
   /// [stickySessionType] The method that is used to handle a cookie. Valid values:
-  ServerGroupStickySessionConfig({
+  const ServerGroupStickySessionConfig({
     this.cookie,
     this.cookieTimeout,
     this.stickySessionEnabled,

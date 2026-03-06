@@ -17,7 +17,7 @@ class AccountIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The Type of Managed Identity assigned to this Cosmos account. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  AccountIdentity({
+  const AccountIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

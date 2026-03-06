@@ -15,7 +15,7 @@ class MigrationConfigurationResponse {
   /// [keyVaultResourceId] Gets or sets the key vault resource Id.
   /// [migrationSolutionResourceId] Gets or sets the migration solution resource Id.
   /// [storageAccountResourceId] Gets or sets the storage account resource Id.
-  MigrationConfigurationResponse({
+  const MigrationConfigurationResponse({
     this.keyVaultResourceId,
     this.migrationSolutionResourceId,
     this.storageAccountResourceId,

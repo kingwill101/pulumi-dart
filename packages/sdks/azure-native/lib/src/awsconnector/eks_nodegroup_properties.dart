@@ -31,7 +31,7 @@ class EksNodegroupProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EksNodegroupProperties({
+  const EksNodegroupProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

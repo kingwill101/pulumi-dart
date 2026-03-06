@@ -31,7 +31,7 @@ class DeviceFleetArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The Amazon Resource Name (ARN) that has access to AWS Internet of Things (IoT).
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DeviceFleetArgs({
+  const DeviceFleetArgs({
     this.description,
     required this.deviceFleetName,
     this.enableIotRoleAlias,

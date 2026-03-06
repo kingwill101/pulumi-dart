@@ -11,7 +11,7 @@ class ResizeRequestStatusErrorErrorErrorDetailHelp {
 
   /// Creates a new [ResizeRequestStatusErrorErrorErrorDetailHelp].
   /// [links] (Output)
-  ResizeRequestStatusErrorErrorErrorDetailHelp({
+  const ResizeRequestStatusErrorErrorErrorDetailHelp({
     this.links,
   });
 

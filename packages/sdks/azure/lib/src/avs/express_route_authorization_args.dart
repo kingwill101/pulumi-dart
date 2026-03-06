@@ -15,7 +15,7 @@ class ExpressRouteAuthorizationArgs {
   /// Creates a new [ExpressRouteAuthorizationArgs].
   /// [name] The name which should be used for this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
   /// [privateCloudId] The ID of the Azure VMware Solution Private Cloud in which to create this Azure VMware Solution ExpressRoute Circuit Authorization. Changing this forces a new Azure VMware Solution ExpressRoute Circuit Authorization to be created.
-  ExpressRouteAuthorizationArgs({
+  const ExpressRouteAuthorizationArgs({
     this.name,
     required this.privateCloudId,
   });

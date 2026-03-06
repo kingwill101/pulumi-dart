@@ -14,7 +14,7 @@ class ReceiptRuleWorkmailAction {
   /// [organizationArn] The ARN of the WorkMail organization
   /// [position] The position of the action in the receipt rule
   /// [topicArn] The ARN of an SNS topic to notify
-  ReceiptRuleWorkmailAction({
+  const ReceiptRuleWorkmailAction({
     required this.organizationArn,
     required this.position,
     this.topicArn,

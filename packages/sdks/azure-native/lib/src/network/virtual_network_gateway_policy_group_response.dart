@@ -32,7 +32,7 @@ class VirtualNetworkGatewayPolicyGroupResponse {
   /// [priority] Priority for VirtualNetworkGatewayPolicyGroup.
   /// [provisioningState] The provisioning state of the VirtualNetworkGatewayPolicyGroup resource.
   /// [vngClientConnectionConfigurations] List of references to vngClientConnectionConfigurations.
-  VirtualNetworkGatewayPolicyGroupResponse({
+  const VirtualNetworkGatewayPolicyGroupResponse({
     required this.etag,
     this.id,
     required this.isDefault,

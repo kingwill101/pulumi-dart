@@ -10,7 +10,7 @@ class IapCredentialResponse {
 
   /// Creates a new [IapCredentialResponse].
   /// [iapTestServiceAccountInfo] Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
-  IapCredentialResponse({
+  const IapCredentialResponse({
     required this.iapTestServiceAccountInfo,
   });
 

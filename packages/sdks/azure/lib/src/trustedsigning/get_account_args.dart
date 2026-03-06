@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [name] The name of the Trusted Signing Account.
   /// [resourceGroupName] The name of the Resource Group where the Trusted Signing Account exists.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.name,
     required this.resourceGroupName,
   });

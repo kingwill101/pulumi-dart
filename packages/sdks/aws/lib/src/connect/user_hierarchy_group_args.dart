@@ -25,7 +25,7 @@ class UserHierarchyGroupArgs {
   /// [parentGroupId] The identifier for the parent hierarchy group. The user hierarchy is created at level one if the parent group ID is null.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the hierarchy group. If configured with a provider
-  UserHierarchyGroupArgs({
+  const UserHierarchyGroupArgs({
     required this.instanceId,
     this.name,
     this.parentGroupId,

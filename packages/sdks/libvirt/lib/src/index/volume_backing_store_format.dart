@@ -8,7 +8,7 @@ class VolumeBackingStoreFormat {
 
   /// Creates a new [VolumeBackingStoreFormat].
   /// [type] Specifies the type of the backing store format used for the storage volume.
-  VolumeBackingStoreFormat({
+  const VolumeBackingStoreFormat({
     required this.type,
   });
 

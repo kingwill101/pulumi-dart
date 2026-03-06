@@ -61,7 +61,7 @@ class ChannelsRegistrationArgs {
   /// [sku] The SKU of the Bot Channels Registration. Valid values include `F0` or `S1`. Changing this forces a new resource to be created.
   /// [streamingEndpointEnabled] Is the streaming endpoint enabled for the Bot Channels Registration. Defaults to `false`.
   /// [tags] A mapping of tags to assign to the resource.
-  ChannelsRegistrationArgs({
+  const ChannelsRegistrationArgs({
     this.cmkKeyVaultUrl,
     this.description,
     this.developerAppInsightsApiKey,

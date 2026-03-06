@@ -32,7 +32,7 @@ class GetSfdcInstanceResult {
   /// [serviceAuthority] URL used for API calls after authentication (the login authority is configured within the referenced AuthConfig).
   /// [sfdcOrgId] The SFDC Org Id. This is defined in salesforce.
   /// [updateTime] Time when the instance was last updated
-  GetSfdcInstanceResult({
+  const GetSfdcInstanceResult({
     required this.authConfigId,
     required this.createTime,
     required this.deleteTime,

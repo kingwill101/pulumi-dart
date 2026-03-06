@@ -32,7 +32,7 @@ class GetPublicIpv4PoolResult {
   /// [tags] Any tags for the address pool.
   /// [totalAddressCount] Total number of addresses in the pool.
   /// [totalAvailableAddressCount] Total number of available addresses in the pool.
-  GetPublicIpv4PoolResult({
+  const GetPublicIpv4PoolResult({
     required this.description,
     required this.id,
     required this.networkBorderGroup,

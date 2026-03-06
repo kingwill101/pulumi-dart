@@ -11,7 +11,7 @@ class DistributionDefaultCacheBehaviorFunctionAssociation {
   /// Creates a new [DistributionDefaultCacheBehaviorFunctionAssociation].
   /// [eventType] Specific event to trigger this function. Valid values: `viewer-request` or `viewer-response`.
   /// [functionArn] ARN of the CloudFront function.
-  DistributionDefaultCacheBehaviorFunctionAssociation({
+  const DistributionDefaultCacheBehaviorFunctionAssociation({
     required this.eventType,
     required this.functionArn,
   });

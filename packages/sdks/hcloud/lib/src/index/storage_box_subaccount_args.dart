@@ -31,7 +31,7 @@ class StorageBoxSubaccountArgs {
   /// [name] Name of the Storage Box Subaccount.
   /// [password] Password of the Storage Box. For more details, see the [Storage Boxes password policy](https://docs.hetzner.cloud/reference/hetzner#storage-boxes-password-policy).
   /// [storageBoxId] ID of the Storage Box.
-  StorageBoxSubaccountArgs({
+  const StorageBoxSubaccountArgs({
     this.accessSettings,
     this.description,
     required this.homeDirectory,

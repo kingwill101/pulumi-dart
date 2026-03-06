@@ -12,7 +12,7 @@ class AccountNetworkProfileAccountAccess {
   /// Creates a new [AccountNetworkProfileAccountAccess].
   /// [defaultAction] Specifies the default action for the account access. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   /// [ipRules] One or more `ip_rule` blocks as defined below.
-  AccountNetworkProfileAccountAccess({
+  const AccountNetworkProfileAccountAccess({
     this.defaultAction,
     this.ipRules,
   });

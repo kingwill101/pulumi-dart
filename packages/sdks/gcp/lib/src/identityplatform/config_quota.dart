@@ -10,7 +10,7 @@ class ConfigQuota {
 
   /// Creates a new [ConfigQuota].
   /// [signUpQuotaConfig] Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
-  ConfigQuota({
+  const ConfigQuota({
     this.signUpQuotaConfig,
   });
 

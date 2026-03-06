@@ -11,7 +11,7 @@ class ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeV1 
   /// Creates a new [ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeV1].
   /// [lastRunStartTime] The last time the schedule successfully ran. The timestamp is an RFC3339 string.
   /// [nextRunStartTime] The next time the schedule is planned to run. The actual time might be slightly different. The timestamp is an RFC3339 string.
-  ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeV1({
+  const ResourcePolicyResourceStatusInstanceSchedulePolicyStatusResponseComputeV1({
     required this.lastRunStartTime,
     required this.nextRunStartTime,
   });

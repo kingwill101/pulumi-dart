@@ -37,7 +37,7 @@ class ReplicaKeyArgs {
   /// [primaryKeyArn] The ARN of the multi-Region primary key to replicate. The primary key must be in a different AWS Region of the same AWS Partition. You can create only one replica of a given primary key in each AWS Region.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ReplicaKeyArgs({
+  const ReplicaKeyArgs({
     this.bypassPolicyLockoutSafetyCheck,
     this.deletionWindowInDays,
     this.description,

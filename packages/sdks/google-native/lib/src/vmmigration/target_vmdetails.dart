@@ -64,7 +64,7 @@ class TargetVMDetails {
   /// [subnetwork] The subnetwork to connect the VM to.
   /// [targetProject] The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
   /// [zone] The zone in which to create the VM.
-  TargetVMDetails({
+  const TargetVMDetails({
     this.computeScheduling,
     this.diskType,
     this.externalIp,

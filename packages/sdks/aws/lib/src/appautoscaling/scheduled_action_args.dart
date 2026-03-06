@@ -40,7 +40,7 @@ class ScheduledActionArgs {
   /// [serviceNamespace] Namespace of the AWS service. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_PutScheduledAction.html) Example: ecs
   /// [startTime] Date and time for the scheduled action to start in RFC 3339 format. The timezone is not affected by the setting of `timezone`.
   /// [timezone] Time zone used when setting a scheduled action by using an at or cron expression. Does not affect timezone for `start_time` and `end_time`. Valid values are the [canonical names of the IANA time zones supported by Joda-Time](https://www.joda.org/joda-time/timezones.html), such as `Etc/GMT+9` or `Pacific/Tahiti`. Default is `UTC`.
-  ScheduledActionArgs({
+  const ScheduledActionArgs({
     this.endTime,
     this.name,
     this.region,

@@ -57,7 +57,7 @@ class RecoveryPlanPropertiesResponse {
   /// [recoveryFabricFriendlyName] The recovery fabric friendly name.
   /// [recoveryFabricId] The recovery fabric Id.
   /// [replicationProviders] The list of replication providers.
-  RecoveryPlanPropertiesResponse({
+  const RecoveryPlanPropertiesResponse({
     this.allowedOperations,
     this.currentScenario,
     this.currentScenarioStatus,

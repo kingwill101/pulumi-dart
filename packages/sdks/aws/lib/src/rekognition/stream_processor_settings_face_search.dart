@@ -11,7 +11,7 @@ class StreamProcessorSettingsFaceSearch {
   /// Creates a new [StreamProcessorSettingsFaceSearch].
   /// [collectionId] ID of a collection that contains faces that you want to search for.
   /// [faceMatchThreshold] Minimum face match confidence score that must be met to return a result for a recognized face.
-  StreamProcessorSettingsFaceSearch({
+  const StreamProcessorSettingsFaceSearch({
     required this.collectionId,
     this.faceMatchThreshold,
   });

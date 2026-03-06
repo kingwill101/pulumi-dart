@@ -37,7 +37,7 @@ class GetCustomRoutingEndpointGroupDestinationsArgs {
   /// [pageSize] Optional.
   /// [protocols] The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
   /// [toPort] The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
-  GetCustomRoutingEndpointGroupDestinationsArgs({
+  const GetCustomRoutingEndpointGroupDestinationsArgs({
     required this.acceleratorId,
     this.endpointGroupId,
     this.fromPort,

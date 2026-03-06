@@ -11,7 +11,7 @@ class LicenseResourceRequirementsComputeBeta {
   /// Creates a new [LicenseResourceRequirementsComputeBeta].
   /// [minGuestCpuCount] Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
   /// [minMemoryMb] Minimum memory required to use the Instance. Enforced at Instance creation and Instance start.
-  LicenseResourceRequirementsComputeBeta({
+  const LicenseResourceRequirementsComputeBeta({
     this.minGuestCpuCount,
     this.minMemoryMb,
   });

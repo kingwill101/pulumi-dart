@@ -15,7 +15,7 @@ class AzureHybridBenefitPropertiesResponse {
   /// [scomLicenseType] SCOM license type. Maximize savings by using license you already own
   /// [sqlServerLicenseType] SQL Server license type. Maximize savings by using Azure Hybrid Benefit for SQL Server with license you already own
   /// [windowsServerLicenseType] Specifies that the image or disk that is being used was licensed on-premises. &lt;br&gt;&lt;br&gt; For more information, see [Azure Hybrid Use Benefit for Windows Server](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-hybrid-use-benefit-licensing?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-  AzureHybridBenefitPropertiesResponse({
+  const AzureHybridBenefitPropertiesResponse({
     this.scomLicenseType,
     this.sqlServerLicenseType,
     this.windowsServerLicenseType,

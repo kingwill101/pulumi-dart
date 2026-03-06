@@ -47,7 +47,7 @@ class CassandraDatacenterState {
   /// [nodeCount] The number of nodes the Cassandra Datacenter should have. The number should be equal or greater than `3`. Defaults to `3`.
   /// [seedNodeIpAddresses] A list of IP Address for the seed nodes in this Cassandra Datacenter.
   /// [skuName] Determines the selected sku. Defaults to `Standard_E16s_v5`.
-  CassandraDatacenterState({
+  const CassandraDatacenterState({
     this.availabilityZonesEnabled,
     this.backupStorageCustomerKeyUri,
     this.base64EncodedYamlFragment,

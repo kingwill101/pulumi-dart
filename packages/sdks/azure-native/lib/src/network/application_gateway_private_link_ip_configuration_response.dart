@@ -34,7 +34,7 @@ class ApplicationGatewayPrivateLinkIpConfigurationResponse {
   /// [provisioningState] The provisioning state of the application gateway private link IP configuration.
   /// [subnet] Reference to the subnet resource.
   /// [type] The resource type.
-  ApplicationGatewayPrivateLinkIpConfigurationResponse({
+  const ApplicationGatewayPrivateLinkIpConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

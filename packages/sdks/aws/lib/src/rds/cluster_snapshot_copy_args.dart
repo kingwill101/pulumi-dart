@@ -41,7 +41,7 @@ class ClusterSnapshotCopyArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetDbClusterSnapshotIdentifier] Identifier for the snapshot.
   /// [timeouts] Optional.
-  ClusterSnapshotCopyArgs({
+  const ClusterSnapshotCopyArgs({
     this.copyTags,
     this.destinationRegion,
     this.kmsKeyId,

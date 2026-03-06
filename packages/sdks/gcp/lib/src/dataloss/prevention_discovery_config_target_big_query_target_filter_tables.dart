@@ -10,7 +10,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTables {
 
   /// Creates a new [PreventionDiscoveryConfigTargetBigQueryTargetFilterTables].
   /// [includeRegexes] A collection of regular expressions to match a BQ table against.
-  PreventionDiscoveryConfigTargetBigQueryTargetFilterTables({
+  const PreventionDiscoveryConfigTargetBigQueryTargetFilterTables({
     this.includeRegexes,
   });
 

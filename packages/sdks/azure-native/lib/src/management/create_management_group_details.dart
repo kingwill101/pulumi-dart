@@ -10,7 +10,7 @@ class CreateManagementGroupDetails {
 
   /// Creates a new [CreateManagementGroupDetails].
   /// [parent] (Optional) The ID of the parent management group used during creation.
-  CreateManagementGroupDetails({
+  const CreateManagementGroupDetails({
     this.parent,
   });
 

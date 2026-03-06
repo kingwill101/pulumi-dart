@@ -12,7 +12,7 @@ class AzureTableStorageApplicationLogsConfigResponse {
   /// Creates a new [AzureTableStorageApplicationLogsConfigResponse].
   /// [level] Log level.
   /// [sasUrl] SAS URL to an Azure table with add/query/delete permissions.
-  AzureTableStorageApplicationLogsConfigResponse({
+  const AzureTableStorageApplicationLogsConfigResponse({
     this.level,
     required this.sasUrl,
   });

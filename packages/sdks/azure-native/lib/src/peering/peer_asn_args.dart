@@ -22,7 +22,7 @@ class PeerAsnArgs {
   /// [peerAsnName] The peer ASN name.
   /// [peerContactDetail] The contact details of the peer.
   /// [peerName] The name of the peer.
-  PeerAsnArgs({
+  const PeerAsnArgs({
     this.peerAsn,
     this.peerAsnName,
     this.peerContactDetail,

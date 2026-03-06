@@ -24,7 +24,7 @@ class GetReceiversResult {
   /// [outputFile] Optional.
   /// [receiverses] Required.
   /// [status] Optional.
-  GetReceiversResult({
+  const GetReceiversResult({
     required this.id,
     required this.ids,
     this.keyWord,

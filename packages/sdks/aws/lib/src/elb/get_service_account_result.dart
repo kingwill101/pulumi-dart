@@ -13,7 +13,7 @@ class GetServiceAccountResult {
   /// [arn] ARN of the AWS ELB service account in the selected Region.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetServiceAccountResult({
+  const GetServiceAccountResult({
     required this.arn,
     required this.id,
     required this.region,

@@ -21,7 +21,7 @@ class AgReplicaResponse {
   /// [readableSecondary] Replica readable secondary mode in availability group.
   /// [role] Replica Role in availability group.
   /// [sqlVirtualMachineInstanceId] Sql VirtualMachine Instance Id.
-  AgReplicaResponse({
+  const AgReplicaResponse({
     this.commit,
     this.failover,
     this.readableSecondary,

@@ -50,7 +50,7 @@ class GetThemeResult {
   /// [themeId] Required.
   /// [versionDescription] A description of the current theme version being created/updated.
   /// [versionNumber] The version number of the theme version.
-  GetThemeResult({
+  const GetThemeResult({
     required this.arn,
     required this.awsAccountId,
     required this.baseThemeId,

@@ -12,7 +12,7 @@ class AFDDomainHttpsCustomizedCipherSuiteSetResponse {
   /// Creates a new [AFDDomainHttpsCustomizedCipherSuiteSetResponse].
   /// [cipherSuiteSetForTls12] Cipher suites for TLS 1.2. Required at least one in minimumTlsVersion TLS 1.2.
   /// [cipherSuiteSetForTls13] Cipher suites for TLS 1.3. Required at least one in minimumTlsVersion TLS 1.2, TLS 1.3.
-  AFDDomainHttpsCustomizedCipherSuiteSetResponse({
+  const AFDDomainHttpsCustomizedCipherSuiteSetResponse({
     this.cipherSuiteSetForTls12,
     this.cipherSuiteSetForTls13,
   });

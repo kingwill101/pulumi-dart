@@ -11,7 +11,7 @@ class CrawlerSchemaChangePolicy {
   /// Creates a new [CrawlerSchemaChangePolicy].
   /// [deleteBehavior] The deletion behavior when the crawler finds a deleted object. Valid values: `LOG`, `DELETE_FROM_DATABASE`, or `DEPRECATE_IN_DATABASE`. Defaults to `DEPRECATE_IN_DATABASE`.
   /// [updateBehavior] The update behavior when the crawler finds a changed schema. Valid values: `LOG` or `UPDATE_IN_DATABASE`. Defaults to `UPDATE_IN_DATABASE`.
-  CrawlerSchemaChangePolicy({
+  const CrawlerSchemaChangePolicy({
     this.deleteBehavior,
     this.updateBehavior,
   });

@@ -10,7 +10,7 @@ class UserIdentityResponse {
 
   /// Creates a new [UserIdentityResponse].
   /// [identityType] Enum to determine identity framework.
-  UserIdentityResponse({
+  const UserIdentityResponse({
     required this.identityType,
   });
 

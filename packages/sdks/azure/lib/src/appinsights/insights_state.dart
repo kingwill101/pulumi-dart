@@ -62,7 +62,7 @@ class InsightsState {
   /// [samplingPercentage] Specifies the percentage of the data produced by the monitored application that is sampled for Application Insights telemetry. Defaults to `100`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [workspaceId] Specifies the id of a log analytics workspace resource.
-  InsightsState({
+  const InsightsState({
     this.appId,
     this.applicationType,
     this.connectionString,

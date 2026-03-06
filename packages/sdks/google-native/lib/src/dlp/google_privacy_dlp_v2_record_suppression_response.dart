@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2RecordSuppressionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2RecordSuppressionResponse].
   /// [condition] A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content.
-  GooglePrivacyDlpV2RecordSuppressionResponse({
+  const GooglePrivacyDlpV2RecordSuppressionResponse({
     required this.condition,
   });
 

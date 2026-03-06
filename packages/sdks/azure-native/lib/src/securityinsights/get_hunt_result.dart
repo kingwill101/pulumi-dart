@@ -49,7 +49,7 @@ class GetHuntResult {
   /// [status] The status of the hunt.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHuntResult({
+  const GetHuntResult({
     this.attackTactics,
     this.attackTechniques,
     required this.azureApiVersion,

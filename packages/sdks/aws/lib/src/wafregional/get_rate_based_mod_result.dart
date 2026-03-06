@@ -12,7 +12,7 @@ class GetRateBasedModResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetRateBasedModResult({
+  const GetRateBasedModResult({
     required this.id,
     required this.name,
     required this.region,

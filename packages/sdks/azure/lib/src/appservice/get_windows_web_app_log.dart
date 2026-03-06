@@ -19,7 +19,7 @@ class GetWindowsWebAppLog {
   /// [detailedErrorMessages] Is Detailed Error Messaging enabled.
   /// [failedRequestTracing] Is Failed Request Tracing enabled.
   /// [httpLogs] An `http_logs` block as defined above.
-  GetWindowsWebAppLog({
+  const GetWindowsWebAppLog({
     required this.applicationLogs,
     required this.detailedErrorMessages,
     required this.failedRequestTracing,

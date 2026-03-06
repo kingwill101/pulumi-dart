@@ -58,7 +58,7 @@ class GetEcsSnapshotsResult {
   /// [tags] The tags of the snapshot.
   /// [type] The type of the snapshot.
   /// [usage] Indicates whether the snapshot was used to create images or cloud disks.
-  GetEcsSnapshotsResult({
+  const GetEcsSnapshotsResult({
     this.category,
     this.dryRun,
     this.encrypted,

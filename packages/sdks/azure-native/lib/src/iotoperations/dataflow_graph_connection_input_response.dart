@@ -13,7 +13,7 @@ class DataflowGraphConnectionInputResponse {
   /// Creates a new [DataflowGraphConnectionInputResponse].
   /// [name] Name of the input node.
   /// [schema] Schema settings for the input node.
-  DataflowGraphConnectionInputResponse({
+  const DataflowGraphConnectionInputResponse({
     required this.name,
     this.schema,
   });

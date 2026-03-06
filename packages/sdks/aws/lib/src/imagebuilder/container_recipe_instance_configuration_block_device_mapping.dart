@@ -18,7 +18,7 @@ class ContainerRecipeInstanceConfigurationBlockDeviceMapping {
   /// [ebs] Configuration block with Elastic Block Storage (EBS) block device mapping settings. Detailed below.
   /// [noDevice] Set to `true` to remove a mapping from the parent image.
   /// [virtualName] Virtual device name. For example, `ephemeral0`. Instance store volumes are numbered starting from 0.
-  ContainerRecipeInstanceConfigurationBlockDeviceMapping({
+  const ContainerRecipeInstanceConfigurationBlockDeviceMapping({
     this.deviceName,
     this.ebs,
     this.noDevice,

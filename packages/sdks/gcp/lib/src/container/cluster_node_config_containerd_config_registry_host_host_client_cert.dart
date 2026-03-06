@@ -8,7 +8,7 @@ class ClusterNodeConfigContainerdConfigRegistryHostHostClientCert {
 
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHostHostClientCert].
   /// [gcpSecretManagerSecretUri] URI for the Secret Manager secret that hosts the client certificate.
-  ClusterNodeConfigContainerdConfigRegistryHostHostClientCert({
+  const ClusterNodeConfigContainerdConfigRegistryHostHostClientCert({
     this.gcpSecretManagerSecretUri,
   });
 

@@ -54,7 +54,7 @@ class DomainState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topLevelDomain] The top-level domain name.
   /// [weight] The weight of the origin server.
-  DomainState({
+  const DomainState({
     this.certName,
     this.checkUrl,
     this.cname,

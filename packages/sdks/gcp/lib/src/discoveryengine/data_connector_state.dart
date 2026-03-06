@@ -145,7 +145,7 @@ class DataConnectorState {
   /// [staticIpEnabled] Whether customer has enabled static IP addresses for this connector.
   /// [syncMode] The data synchronization mode supported by the data connector. The possible value can be:
   /// [updateTime] Timestamp when the DataConnector was updated.
-  DataConnectorState({
+  const DataConnectorState({
     this.actionState,
     this.autoRunDisabled,
     this.blockingReasons,

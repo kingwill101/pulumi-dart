@@ -38,7 +38,7 @@ class GetConnectorResult {
   /// [selfLink] Required.
   /// [state] Required.
   /// [subnets] Required.
-  GetConnectorResult({
+  const GetConnectorResult({
     required this.connectedProjects,
     required this.id,
     required this.ipCidrRange,

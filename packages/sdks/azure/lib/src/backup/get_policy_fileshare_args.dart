@@ -18,7 +18,7 @@ class GetPolicyFileshareArgs {
   /// [name] Specifies the name of the File Share Backup Policy.
   /// [recoveryVaultName] Specifies the name of the Recovery Services Vault.
   /// [resourceGroupName] The name of the resource group in which the File Share Backup Policy resides.
-  GetPolicyFileshareArgs({
+  const GetPolicyFileshareArgs({
     required this.name,
     required this.recoveryVaultName,
     required this.resourceGroupName,

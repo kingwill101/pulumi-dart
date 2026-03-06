@@ -33,7 +33,7 @@ class GetScopeConnectionResult {
   /// [systemData] The system metadata related to this resource.
   /// [tenantId] Tenant ID.
   /// [type] Resource type.
-  GetScopeConnectionResult({
+  const GetScopeConnectionResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

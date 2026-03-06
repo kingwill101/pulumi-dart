@@ -8,7 +8,7 @@ class EcsLaunchTemplateImageOptions {
 
   /// Creates a new [EcsLaunchTemplateImageOptions].
   /// [loginAsNonRoot] Specifies whether the instance that uses the image supports logons of the ecs-user user. Default value: `false`. Valid values: `true`,`false`.
-  EcsLaunchTemplateImageOptions({
+  const EcsLaunchTemplateImageOptions({
     this.loginAsNonRoot,
   });
 

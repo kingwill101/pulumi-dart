@@ -17,7 +17,7 @@ class ListDatabaseAccountKeysResult {
   /// [primaryReadonlyMasterKey] Base 64 encoded value of the primary read-only key.
   /// [secondaryMasterKey] Base 64 encoded value of the secondary read-write key.
   /// [secondaryReadonlyMasterKey] Base 64 encoded value of the secondary read-only key.
-  ListDatabaseAccountKeysResult({
+  const ListDatabaseAccountKeysResult({
     required this.primaryMasterKey,
     required this.primaryReadonlyMasterKey,
     required this.secondaryMasterKey,

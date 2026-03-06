@@ -21,7 +21,7 @@ class OpenIdConnectConfig {
   /// [issuer] The endpoint that issues the token.
   /// [tokenEndpoint] The endpoint to be used to request a token.
   /// [wellKnownOpenIdConfiguration] The endpoint that contains all the configuration endpoints for the provider.
-  OpenIdConnectConfig({
+  const OpenIdConnectConfig({
     this.authorizationEndpoint,
     this.certificationUri,
     this.issuer,

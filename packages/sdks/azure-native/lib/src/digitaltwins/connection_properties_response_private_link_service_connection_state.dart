@@ -15,7 +15,7 @@ class ConnectionPropertiesResponsePrivateLinkServiceConnectionState {
   /// [actionsRequired] Actions required for a private endpoint connection.
   /// [description] The description for the current state of a private endpoint connection.
   /// [status] The status of a private endpoint connection.
-  ConnectionPropertiesResponsePrivateLinkServiceConnectionState({
+  const ConnectionPropertiesResponsePrivateLinkServiceConnectionState({
     this.actionsRequired,
     required this.description,
     required this.status,

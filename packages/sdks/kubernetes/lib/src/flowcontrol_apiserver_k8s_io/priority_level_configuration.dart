@@ -24,7 +24,7 @@ class PriorityLevelConfiguration {
   /// [metadata] `metadata` is the standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] `spec` is the specification of the desired behavior of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
   /// [status] `status` is the current status of a "request-priority". More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  PriorityLevelConfiguration({
+  const PriorityLevelConfiguration({
     this.apiVersion,
     this.kind,
     this.metadata,

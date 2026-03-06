@@ -123,7 +123,7 @@ class NatFirewallControlPolicyArgs {
   /// [source] The source address in the access control policy. Valid values:
   /// [sourceType] The source address type in the access control policy. Valid values:
   /// [startTime] The start time of the policy validity period of the access control policy. Expresses using the second-level timestamp format. It must be a full or half hour and at least half an hour less than the end time.
-  NatFirewallControlPolicyArgs({
+  const NatFirewallControlPolicyArgs({
     required this.aclAction,
     required this.applicationNameLists,
     required this.description,

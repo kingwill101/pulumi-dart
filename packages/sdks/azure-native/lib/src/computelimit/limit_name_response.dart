@@ -12,7 +12,7 @@ class LimitNameResponse {
   /// Creates a new [LimitNameResponse].
   /// [localizedValue] The localized limit name.
   /// [value] The limit name.
-  LimitNameResponse({
+  const LimitNameResponse({
     required this.localizedValue,
     required this.value,
   });

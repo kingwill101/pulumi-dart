@@ -8,7 +8,7 @@ class MonitoringThresholdResponse {
 
   /// Creates a new [MonitoringThresholdResponse].
   /// [value] The threshold value. If null, the set default is dependent on the metric type.
-  MonitoringThresholdResponse({
+  const MonitoringThresholdResponse({
     this.value,
   });
 

@@ -18,7 +18,7 @@ class SparkRBatch {
   /// [args] Optional. The arguments to pass to the Spark driver. Do not include arguments that can be set as batch properties, such as --conf, since a collision can occur that causes an incorrect batch submission.
   /// [fileUris] Optional. HCFS URIs of files to be placed in the working directory of each executor.
   /// [mainRFileUri] The HCFS URI of the main R file to use as the driver. Must be a .R or .r file.
-  SparkRBatch({
+  const SparkRBatch({
     this.archiveUris,
     this.args,
     this.fileUris,

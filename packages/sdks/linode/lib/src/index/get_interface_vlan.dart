@@ -11,7 +11,7 @@ class GetInterfaceVlan {
   /// Creates a new [GetInterfaceVlan].
   /// [ipamAddress] The IPAM (IP Address Management) address of the VLAN interface.
   /// [vlanLabel] The label of the VLAN.
-  GetInterfaceVlan({
+  const GetInterfaceVlan({
     required this.ipamAddress,
     required this.vlanLabel,
   });

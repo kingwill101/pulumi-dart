@@ -18,7 +18,7 @@ class GetRoute53HealthChecksResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [planArn] Required.
   /// [region] Region for the health check.
-  GetRoute53HealthChecksResult({
+  const GetRoute53HealthChecksResult({
     required this.healthChecks,
     required this.id,
     required this.planArn,

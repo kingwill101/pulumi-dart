@@ -21,7 +21,7 @@ class GetNetworkServiceDesignVersionArgs {
   /// [networkServiceDesignVersionName] The name of the network service design version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkServiceDesignVersionArgs({
+  const GetNetworkServiceDesignVersionArgs({
     required this.networkServiceDesignGroupName,
     required this.networkServiceDesignVersionName,
     required this.publisherName,

@@ -18,7 +18,7 @@ class GetUpdateArgs {
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateName] The name of the Update
-  GetUpdateArgs({
+  const GetUpdateArgs({
     required this.clusterName,
     required this.resourceGroupName,
     required this.updateName,

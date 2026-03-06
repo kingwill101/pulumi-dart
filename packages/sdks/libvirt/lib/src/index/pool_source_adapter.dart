@@ -27,7 +27,7 @@ class PoolSourceAdapter {
   /// [type] Sets the type of the adapter being used for the storage source connection.
   /// [wwnn] Defines the World Wide Name for the node of the adapter used in the storage source context.
   /// [wwpn] Configures the World Wide Name for the portal of the adapter connected to the storage source.
-  PoolSourceAdapter({
+  const PoolSourceAdapter({
     this.managed,
     this.name,
     this.parent,

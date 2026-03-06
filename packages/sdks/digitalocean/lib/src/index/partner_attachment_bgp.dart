@@ -13,7 +13,7 @@ class PartnerAttachmentBgp {
   /// [localRouterIp] Optional.
   /// [peerRouterAsn] Optional.
   /// [peerRouterIp] Optional.
-  PartnerAttachmentBgp({
+  const PartnerAttachmentBgp({
     this.authKey,
     this.localRouterIp,
     this.peerRouterAsn,

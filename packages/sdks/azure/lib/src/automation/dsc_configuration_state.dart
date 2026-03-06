@@ -32,7 +32,7 @@ class DscConfigurationState {
   /// [resourceGroupName] The name of the resource group in which the DSC Configuration is created. Changing this forces a new resource to be created.
   /// [state] Optional.
   /// [tags] A mapping of tags to assign to the resource.
-  DscConfigurationState({
+  const DscConfigurationState({
     this.automationAccountName,
     this.contentEmbedded,
     this.description,

@@ -19,7 +19,7 @@ class AppHostingBuildSource {
   /// Creates a new [AppHostingBuildSource].
   /// [codebase] A codebase source, representing the state of the codebase
   /// [container] The URI of an Artifact Registry
-  AppHostingBuildSource({
+  const AppHostingBuildSource({
     this.codebase,
     this.container,
   });

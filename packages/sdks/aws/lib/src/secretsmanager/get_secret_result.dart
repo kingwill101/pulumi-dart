@@ -33,7 +33,7 @@ class GetSecretResult {
   /// [policy] Resource-based policy document that's attached to the secret.
   /// [region] Required.
   /// [tags] Tags of the secret.
-  GetSecretResult({
+  const GetSecretResult({
     required this.arn,
     required this.createdDate,
     required this.description,

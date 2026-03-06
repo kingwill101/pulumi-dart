@@ -20,7 +20,7 @@ class KeyPairAttachmentArgs {
   /// [instanceIds] The list of ECS instance's IDs.
   /// [keyName] The name of key pair used to bind.
   /// [keyPairName] Optional.
-  KeyPairAttachmentArgs({
+  const KeyPairAttachmentArgs({
     this.force,
     required this.instanceIds,
     this.keyName,

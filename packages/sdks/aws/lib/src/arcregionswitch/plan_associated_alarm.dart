@@ -20,7 +20,7 @@ class PlanAssociatedAlarm {
   /// [externalId] External ID for cross-account role assumption.
   /// [mapBlockKey] Name of the alarm.
   /// [resourceIdentifier] Resource identifier (ARN) of the CloudWatch alarm.
-  PlanAssociatedAlarm({
+  const PlanAssociatedAlarm({
     required this.alarmType,
     this.crossAccountRole,
     this.externalId,

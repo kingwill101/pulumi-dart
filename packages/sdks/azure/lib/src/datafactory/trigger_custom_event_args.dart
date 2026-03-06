@@ -43,7 +43,7 @@ class TriggerCustomEventArgs {
   /// [pipelines] One or more `pipeline` blocks as defined below.
   /// [subjectBeginsWith] The pattern that event subject starts with for trigger to fire.
   /// [subjectEndsWith] The pattern that event subject ends with for trigger to fire.
-  TriggerCustomEventArgs({
+  const TriggerCustomEventArgs({
     this.activated,
     this.additionalProperties,
     this.annotations,

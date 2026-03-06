@@ -45,7 +45,7 @@ class ProfileHttpCompressState {
   /// [uriExcludes] Disables compression on a specified list of HTTP Request-URI responses. Use a regular expression to specify a list of URIs you do not want to compress.
   /// [uriIncludes] Enables compression on a specified list of HTTP Request-URI responses. Use a regular expression to specify a list of URIs you want to compress.
   /// [varyHeader] Specifies, when checked (enabled), that the system inserts a Vary header into cacheable server responses. The default is `enabled`.
-  ProfileHttpCompressState({
+  const ProfileHttpCompressState({
     this.compressionBuffersize,
     this.contentTypeExcludes,
     this.contentTypeIncludes,

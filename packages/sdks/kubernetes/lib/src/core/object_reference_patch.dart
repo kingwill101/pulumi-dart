@@ -27,7 +27,7 @@ class ObjectReferencePatch {
   /// [namespace] Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
   /// [resourceVersion] Specific resourceVersion to which this reference is made, if any. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
   /// [uid] UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids
-  ObjectReferencePatch({
+  const ObjectReferencePatch({
     this.apiVersion,
     this.fieldPath,
     this.kind,

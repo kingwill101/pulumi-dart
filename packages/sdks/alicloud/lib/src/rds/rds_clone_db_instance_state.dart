@@ -265,7 +265,7 @@ class RdsCloneDbInstanceState {
   /// [zoneId] The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
   /// [zoneIdSlaveA] The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
   /// [zoneIdSlaveB] The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-  RdsCloneDbInstanceState({
+  const RdsCloneDbInstanceState({
     this.acl,
     this.autoUpgradeMinorVersion,
     this.backupId,

@@ -20,7 +20,7 @@ class GetUrlListNetworksecurityV1beta1Result {
   /// [name] Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$).
   /// [updateTime] Time when the security policy was updated.
   /// [values] FQDNs and URLs.
-  GetUrlListNetworksecurityV1beta1Result({
+  const GetUrlListNetworksecurityV1beta1Result({
     required this.createTime,
     required this.description,
     required this.name,

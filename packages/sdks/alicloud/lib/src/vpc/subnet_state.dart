@@ -34,7 +34,7 @@ class SubnetState {
   /// [vpcId] Optional.
   /// [vswitchName] Optional.
   /// [zoneId] Optional.
-  SubnetState({
+  const SubnetState({
     this.availabilityZone,
     this.cidrBlock,
     this.createTime,

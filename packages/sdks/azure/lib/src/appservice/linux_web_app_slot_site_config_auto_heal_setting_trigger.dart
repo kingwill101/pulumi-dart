@@ -21,7 +21,7 @@ class LinuxWebAppSlotSiteConfigAutoHealSettingTrigger {
   /// [slowRequest] A `slow_request` block as defined above.
   /// [slowRequestWithPaths] One or more `slow_request_with_path` blocks as defined above.
   /// [statusCodes] One or more `status_code` blocks as defined above.
-  LinuxWebAppSlotSiteConfigAutoHealSettingTrigger({
+  const LinuxWebAppSlotSiteConfigAutoHealSettingTrigger({
     this.requests,
     this.slowRequest,
     this.slowRequestWithPaths,

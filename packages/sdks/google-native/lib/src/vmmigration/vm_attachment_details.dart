@@ -9,7 +9,7 @@ class VmAttachmentDetails {
 
   /// Creates a new [VmAttachmentDetails].
   /// [deviceName] Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks.
-  VmAttachmentDetails({
+  const VmAttachmentDetails({
     this.deviceName,
   });
 

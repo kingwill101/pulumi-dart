@@ -25,7 +25,7 @@ class RulesEngineState {
   /// [name] The name of the Rules engine configuration. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [rules] A `rule` block as defined below.
-  RulesEngineState({
+  const RulesEngineState({
     this.enabled,
     this.frontdoorName,
     this.location,

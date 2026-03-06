@@ -12,7 +12,7 @@ class WsdlService {
   /// Creates a new [WsdlService].
   /// [endpointQualifiedNames] List of the endpoints' qualified names
   /// [qualifiedName] The service's qualified name
-  WsdlService({
+  const WsdlService({
     this.endpointQualifiedNames,
     required this.qualifiedName,
   });

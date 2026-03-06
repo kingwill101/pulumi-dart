@@ -18,7 +18,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
   /// [httpTransferMode] Optional.
   /// [numRetries] Number of retry attempts.
   /// [restartDelay] Number of seconds to wait until a restart is initiated.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSettingHlsWebdavSettings({
     this.connectionRetryInterval,
     this.filecacheDuration,
     this.httpTransferMode,

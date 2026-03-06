@@ -17,7 +17,7 @@ class GetCloudVmClusterArgs {
   /// Creates a new [GetCloudVmClusterArgs].
   /// [id] The unique identifier of the cloud vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCloudVmClusterArgs({
+  const GetCloudVmClusterArgs({
     required this.id,
     this.region,
   });

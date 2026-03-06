@@ -53,7 +53,7 @@ class ConnectClusterState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [state] The current state of the connect cluster. Possible values: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`.
   /// [updateTime] The time when the cluster was last updated.
-  ConnectClusterState({
+  const ConnectClusterState({
     this.capacityConfig,
     this.connectClusterId,
     this.createTime,

@@ -11,7 +11,7 @@ class ReplicationConfigurationReplicationConfigurationRuleDestination {
   /// Creates a new [ReplicationConfigurationReplicationConfigurationRuleDestination].
   /// [region] A Region to replicate to.
   /// [registryId] The account ID of the destination registry to replicate to.
-  ReplicationConfigurationReplicationConfigurationRuleDestination({
+  const ReplicationConfigurationReplicationConfigurationRuleDestination({
     required this.region,
     required this.registryId,
   });

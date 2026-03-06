@@ -22,7 +22,7 @@ class GetDataExchangeIamPolicyArgs {
   /// [dataExchangeId] Used to find the parent resource to bind the IAM policy to
   /// [location] The name of the location this data exchange.
   /// [project] The ID of the project in which the resource belongs.
-  GetDataExchangeIamPolicyArgs({
+  const GetDataExchangeIamPolicyArgs({
     required this.dataExchangeId,
     this.location,
     this.project,

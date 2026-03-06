@@ -133,7 +133,7 @@ class HDInsightOnDemandLinkedService {
   /// [virtualNetworkId] The ARM resource ID for the vNet to which the cluster should be joined after creation. Type: string (or Expression with resultType string).
   /// [yarnConfiguration] Specifies the Yarn configuration parameters (yarn-site.xml) for the HDInsight cluster.
   /// [zookeeperNodeSize] Specifies the size of the Zoo Keeper node for the HDInsight cluster.
-  HDInsightOnDemandLinkedService({
+  const HDInsightOnDemandLinkedService({
     this.additionalLinkedServiceNames,
     this.annotations,
     this.clusterNamePrefix,

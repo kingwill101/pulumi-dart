@@ -25,7 +25,7 @@ class GetPolicyArgs {
   /// [name] Name of the IAM policy.
   /// [pathPrefix] Prefix of the path to the IAM policy.
   /// [tags] Key-value mapping of tags for the IAM Policy.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     this.arn,
     this.name,
     this.pathPrefix,

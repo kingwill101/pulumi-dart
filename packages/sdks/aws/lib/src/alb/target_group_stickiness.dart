@@ -17,7 +17,7 @@ class TargetGroupStickiness {
   /// [cookieName] Name of the application based cookie. AWSALB, AWSALBAPP, and AWSALBTG prefixes are reserved and cannot be used. Only needed when type is `app_cookie`.
   /// [enabled] Boolean to enable / disable `stickiness`. Default is `true`.
   /// [type] The type of sticky sessions. The only current possible values are `lb_cookie`, `app_cookie` for ALBs, `source_ip` for NLBs, and `source_ip_dest_ip`, `source_ip_dest_ip_proto` for GWLBs.
-  TargetGroupStickiness({
+  const TargetGroupStickiness({
     this.cookieDuration,
     this.cookieName,
     this.enabled,

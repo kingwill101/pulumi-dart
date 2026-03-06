@@ -27,7 +27,7 @@ class FhirStoreNotificationConfig {
   /// [pubsubTopic] The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
   /// [sendFullResource] Whether to send full FHIR resource to this Pub/Sub topic for Create and Update operation.
   /// [sendPreviousResourceOnDelete] Whether to send full FHIR resource to this Pub/Sub topic for deleting FHIR resource. Note that setting this to
-  FhirStoreNotificationConfig({
+  const FhirStoreNotificationConfig({
     required this.pubsubTopic,
     this.sendFullResource,
     this.sendPreviousResourceOnDelete,

@@ -24,7 +24,7 @@ class ManagedClusterApplicationTypeArgs {
   /// [location] Resource location depends on the parent resource.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Azure resource tags.
-  ManagedClusterApplicationTypeArgs({
+  const ManagedClusterApplicationTypeArgs({
     this.applicationTypeName,
     required this.clusterName,
     this.location,

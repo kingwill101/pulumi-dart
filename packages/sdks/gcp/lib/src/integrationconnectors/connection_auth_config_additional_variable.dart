@@ -27,7 +27,7 @@ class ConnectionAuthConfigAdditionalVariable {
   /// [key] Key for the configVariable
   /// [secretValue] Secret value of configVariable
   /// [stringValue] String Value of configVariabley.
-  ConnectionAuthConfigAdditionalVariable({
+  const ConnectionAuthConfigAdditionalVariable({
     this.booleanValue,
     this.encryptionKeyValue,
     this.integerValue,

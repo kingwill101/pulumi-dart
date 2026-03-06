@@ -114,7 +114,7 @@ class ClusterArgs {
   /// [secondaryConfig] Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
   /// [skipAwaitMajorVersionUpgrade] Set to true to skip awaiting on the major version upgrade of the cluster.
   /// [subscriptionType] The subscrition type of cluster.
-  ClusterArgs({
+  const ClusterArgs({
     this.annotations,
     this.automatedBackupPolicy,
     required this.clusterId,

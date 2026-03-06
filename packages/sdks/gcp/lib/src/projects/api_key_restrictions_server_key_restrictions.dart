@@ -8,7 +8,7 @@ class ApiKeyRestrictionsServerKeyRestrictions {
 
   /// Creates a new [ApiKeyRestrictionsServerKeyRestrictions].
   /// [allowedIps] A list of the caller IP addresses that are allowed to make API calls with this key.
-  ApiKeyRestrictionsServerKeyRestrictions({
+  const ApiKeyRestrictionsServerKeyRestrictions({
     required this.allowedIps,
   });
 

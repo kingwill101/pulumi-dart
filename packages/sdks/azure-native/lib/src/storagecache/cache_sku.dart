@@ -9,7 +9,7 @@ class CacheSku {
 
   /// Creates a new [CacheSku].
   /// [name] SKU name for this cache.
-  CacheSku({
+  const CacheSku({
     this.name,
   });
 

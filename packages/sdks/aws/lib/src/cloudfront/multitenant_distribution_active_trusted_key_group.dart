@@ -12,7 +12,7 @@ class MultitenantDistributionActiveTrustedKeyGroup {
   /// Creates a new [MultitenantDistributionActiveTrustedKeyGroup].
   /// [enabled] Whether any of the key groups have public keys that CloudFront can use to verify the signatures of signed URLs and signed cookies.
   /// [items] List of key groups. See Key Group Items below.
-  MultitenantDistributionActiveTrustedKeyGroup({
+  const MultitenantDistributionActiveTrustedKeyGroup({
     this.enabled,
     this.items,
   });

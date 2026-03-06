@@ -8,7 +8,7 @@ class UserProfileUserSettingsCanvasAppSettingsKendraSettings {
 
   /// Creates a new [UserProfileUserSettingsCanvasAppSettingsKendraSettings].
   /// [status] Describes whether the document querying feature is enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  UserProfileUserSettingsCanvasAppSettingsKendraSettings({
+  const UserProfileUserSettingsCanvasAppSettingsKendraSettings({
     this.status,
   });
 

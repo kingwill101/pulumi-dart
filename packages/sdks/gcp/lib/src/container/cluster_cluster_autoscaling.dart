@@ -36,7 +36,7 @@ class ClusterClusterAutoscaling {
   /// [defaultComputeClassEnabled] Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
   /// [enabled] Whether node auto-provisioning is enabled. Must be supplied for GKE Standard clusters, `true` is implied
   /// [resourceLimits] Global constraints for machine resources in the
-  ClusterClusterAutoscaling({
+  const ClusterClusterAutoscaling({
     this.autoProvisioningDefaults,
     this.autoProvisioningLocations,
     this.autoscalingProfile,

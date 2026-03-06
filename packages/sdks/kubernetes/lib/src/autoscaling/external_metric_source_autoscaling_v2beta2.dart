@@ -14,7 +14,7 @@ class ExternalMetricSourceAutoscalingV2beta2 {
   /// Creates a new [ExternalMetricSourceAutoscalingV2beta2].
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  ExternalMetricSourceAutoscalingV2beta2({
+  const ExternalMetricSourceAutoscalingV2beta2({
     required this.metric,
     required this.target,
   });

@@ -8,7 +8,7 @@ class GetResponseHeadersPolicyCustomHeadersConfig {
 
   /// Creates a new [GetResponseHeadersPolicyCustomHeadersConfig].
   /// [items] Required.
-  GetResponseHeadersPolicyCustomHeadersConfig({
+  const GetResponseHeadersPolicyCustomHeadersConfig({
     required this.items,
   });
 

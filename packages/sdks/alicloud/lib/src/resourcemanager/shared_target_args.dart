@@ -15,7 +15,7 @@ class SharedTargetArgs {
   /// Creates a new [SharedTargetArgs].
   /// [resourceShareId] The ID of the resource share.
   /// [targetId] The ID of the principal.
-  SharedTargetArgs({
+  const SharedTargetArgs({
     required this.resourceShareId,
     required this.targetId,
   });

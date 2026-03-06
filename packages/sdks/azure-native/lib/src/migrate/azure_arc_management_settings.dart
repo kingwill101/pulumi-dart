@@ -10,7 +10,7 @@ class AzureArcManagementSettings {
 
   /// Creates a new [AzureArcManagementSettings].
   /// [monitoringSettings] Gets the azure arc monitoring settings.
-  AzureArcManagementSettings({
+  const AzureArcManagementSettings({
     required this.monitoringSettings,
   });
 

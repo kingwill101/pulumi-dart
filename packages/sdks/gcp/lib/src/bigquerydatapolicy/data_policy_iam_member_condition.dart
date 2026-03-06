@@ -11,7 +11,7 @@ class DataPolicyIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DataPolicyIamMemberCondition({
+  const DataPolicyIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

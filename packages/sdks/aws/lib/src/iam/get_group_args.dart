@@ -12,7 +12,7 @@ class GetGroupArgs {
 
   /// Creates a new [GetGroupArgs].
   /// [groupName] Friendly IAM group name to match.
-  GetGroupArgs({
+  const GetGroupArgs({
     required this.groupName,
   });
 

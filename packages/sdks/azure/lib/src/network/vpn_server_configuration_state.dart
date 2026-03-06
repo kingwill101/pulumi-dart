@@ -40,7 +40,7 @@ class VpnServerConfigurationState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpnAuthenticationTypes] A list of Authentication Types applicable for this VPN Server Configuration. Possible values are `AAD` (Azure Active Directory), `Certificate` and `Radius`.
   /// [vpnProtocols] A list of VPN Protocols to use for this Server Configuration. Possible values are `IkeV2` and `OpenVPN`.
-  VpnServerConfigurationState({
+  const VpnServerConfigurationState({
     this.azureActiveDirectoryAuthentications,
     this.clientRevokedCertificates,
     this.clientRootCertificates,

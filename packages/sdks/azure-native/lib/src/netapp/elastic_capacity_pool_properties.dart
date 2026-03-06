@@ -22,7 +22,7 @@ class ElasticCapacityPoolProperties {
   /// [serviceLevel] The service level of the elastic capacity pool
   /// [size] Provisioned size of the pool (in bytes). For zoneRedundant service level pool, value must be in the range 1TiB to 16TiB or 1TiB to 128TiB for supported region. Values expressed in bytes as multiples of 1TiB till 16TiB and in multiples of 8TiB from 24TiB to 128TiB. Pool size can't be shrunk once it is created.
   /// [subnetResourceId] The Azure Resource URI for a delegated subnet. Must have the delegation Microsoft.NetApp/elasticVolumes, this is used by all the volumes within the pool
-  ElasticCapacityPoolProperties({
+  const ElasticCapacityPoolProperties({
     this.activeDirectoryConfigResourceId,
     this.encryption,
     required this.serviceLevel,

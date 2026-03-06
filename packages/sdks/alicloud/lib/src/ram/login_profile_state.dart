@@ -25,7 +25,7 @@ class LoginProfileState {
   /// [password] The password must meet the Password strength requirements. For more information about password strength setting requirements, see [GetPasswordPolicy](https://help.aliyun.com/document_detail/2337691.html).
   /// [passwordResetRequired] Whether the user must reset the password at the next logon. Value:
   /// [userName] The user name.
-  LoginProfileState({
+  const LoginProfileState({
     this.createTime,
     this.mfaBindRequired,
     this.password,

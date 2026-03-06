@@ -10,7 +10,7 @@ class CloudServiceRoleProfileResponse {
 
   /// Creates a new [CloudServiceRoleProfileResponse].
   /// [roles] List of roles for the cloud service.
-  CloudServiceRoleProfileResponse({
+  const CloudServiceRoleProfileResponse({
     this.roles,
   });
 

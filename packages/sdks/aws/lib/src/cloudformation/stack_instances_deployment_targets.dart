@@ -17,7 +17,7 @@ class StackInstancesDeploymentTargets {
   /// [accounts] List of accounts to deploy stack set updates.
   /// [accountsUrl] S3 URL of the file containing the list of accounts.
   /// [organizationalUnitIds] Organization root ID or organizational unit (OU) IDs to which stack sets deploy.
-  StackInstancesDeploymentTargets({
+  const StackInstancesDeploymentTargets({
     this.accountFilterType,
     this.accounts,
     this.accountsUrl,

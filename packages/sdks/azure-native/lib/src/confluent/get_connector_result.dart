@@ -33,7 +33,7 @@ class GetConnectorResult {
   /// [partnerConnectorInfo] The connection information consumed by applications.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetConnectorResult({
+  const GetConnectorResult({
     required this.azureApiVersion,
     this.connectorBasicInfo,
     this.connectorServiceTypeInfo,

@@ -15,7 +15,7 @@ class FleetDefaultClusterConfig {
   /// Creates a new [FleetDefaultClusterConfig].
   /// [binaryAuthorizationConfig] Enable/Disable binary authorization features for the cluster.
   /// [securityPostureConfig] Enable/Disable Security Posture features for the cluster.
-  FleetDefaultClusterConfig({
+  const FleetDefaultClusterConfig({
     this.binaryAuthorizationConfig,
     this.securityPostureConfig,
   });

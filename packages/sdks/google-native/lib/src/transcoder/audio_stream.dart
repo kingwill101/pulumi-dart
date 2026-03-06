@@ -31,7 +31,7 @@ class AudioStream {
   /// [languageCode] The BCP-47 language code, such as `en-US` or `sr-Latn`. For more information, see https://www.unicode.org/reports/tr35/#Unicode_locale_identifier. Not supported in MP4 files.
   /// [mapping] The mapping for the JobConfig.edit_list atoms with audio EditAtom.inputs.
   /// [sampleRateHertz] The audio sample rate in Hertz. The default is 48000 Hertz.
-  AudioStream({
+  const AudioStream({
     required this.bitrateBps,
     this.channelCount,
     this.channelLayout,

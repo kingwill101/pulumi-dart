@@ -20,7 +20,7 @@ class GetZonesResult {
   /// [ids] A list of Zone IDs.
   /// [outputFile] Optional.
   /// [zones] A list of Zone Entries. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     this.acceptLanguage,
     required this.id,
     required this.ids,

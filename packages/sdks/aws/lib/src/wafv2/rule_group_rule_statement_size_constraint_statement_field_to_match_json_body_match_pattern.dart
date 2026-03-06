@@ -10,7 +10,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPatt
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern({
+  const RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

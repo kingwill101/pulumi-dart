@@ -21,7 +21,7 @@ class WireGroupWire {
   /// [endpoints] Endpoints grouped by location, each mapping to interconnect configurations.
   /// [label] (Output)
   /// [wireProperties] Default properties for wires within the group.
-  WireGroupWire({
+  const WireGroupWire({
     this.adminEnabled,
     this.endpoints,
     this.label,

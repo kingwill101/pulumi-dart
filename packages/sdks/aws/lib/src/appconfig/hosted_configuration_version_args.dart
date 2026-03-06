@@ -27,7 +27,7 @@ class HostedConfigurationVersionArgs {
   /// [contentType] Standard MIME type describing the format of the configuration content. For more information, see [Content-Type](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.17).
   /// [description] Description of the configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  HostedConfigurationVersionArgs({
+  const HostedConfigurationVersionArgs({
     required this.applicationId,
     required this.configurationProfileId,
     required this.content,

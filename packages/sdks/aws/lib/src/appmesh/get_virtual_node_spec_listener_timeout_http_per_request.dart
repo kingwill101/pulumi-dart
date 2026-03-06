@@ -9,7 +9,7 @@ class GetVirtualNodeSpecListenerTimeoutHttpPerRequest {
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutHttpPerRequest].
   /// [unit] Required.
   /// [value] Required.
-  GetVirtualNodeSpecListenerTimeoutHttpPerRequest({
+  const GetVirtualNodeSpecListenerTimeoutHttpPerRequest({
     required this.unit,
     required this.value,
   });

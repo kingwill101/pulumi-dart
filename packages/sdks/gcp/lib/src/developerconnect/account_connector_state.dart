@@ -56,7 +56,7 @@ class AccountConnectorState {
   /// [providerOauthConfig] ProviderOAuthConfig is the OAuth config for a provider.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Output only. The timestamp when the userConnection was updated.
-  AccountConnectorState({
+  const AccountConnectorState({
     this.accountConnectorId,
     this.annotations,
     this.createTime,

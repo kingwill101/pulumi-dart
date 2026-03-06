@@ -13,7 +13,7 @@ class ProfileLogScrubbing {
   /// Creates a new [ProfileLogScrubbing].
   /// [scrubbingRules] List of log scrubbing rules applied to the Azure Front Door profile logs.
   /// [state] State of the log scrubbing config. Default value is Enabled.
-  ProfileLogScrubbing({
+  const ProfileLogScrubbing({
     this.scrubbingRules,
     this.state,
   });

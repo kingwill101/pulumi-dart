@@ -18,7 +18,7 @@ class InMageAgentDetailsResponse {
   /// [agentUpdateStatus] A value indicating whether installed agent needs to be updated.
   /// [agentVersion] The agent version.
   /// [postUpdateRebootStatus] A value indicating whether reboot is required after update is applied.
-  InMageAgentDetailsResponse({
+  const InMageAgentDetailsResponse({
     this.agentExpiryDate,
     this.agentUpdateStatus,
     this.agentVersion,

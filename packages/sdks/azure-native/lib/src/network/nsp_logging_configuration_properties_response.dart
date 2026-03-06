@@ -12,7 +12,7 @@ class NspLoggingConfigurationPropertiesResponse {
   /// Creates a new [NspLoggingConfigurationPropertiesResponse].
   /// [enabledLogCategories] The log categories to enable in the NSP logging configuration.
   /// [version] The version of the NSP logging configuration.
-  NspLoggingConfigurationPropertiesResponse({
+  const NspLoggingConfigurationPropertiesResponse({
     this.enabledLogCategories,
     this.version,
   });

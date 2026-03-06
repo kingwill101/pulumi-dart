@@ -11,7 +11,7 @@ class BrokerLogs {
   /// Creates a new [BrokerLogs].
   /// [audit] Whether to enable audit logging. Only possible for `engine_type` of `ActiveMQ`. Logs user management actions via JMX or ActiveMQ Web Console. Defaults to `false`.
   /// [general] Whether to enable general logging via CloudWatch. Defaults to `false`.
-  BrokerLogs({
+  const BrokerLogs({
     this.audit,
     this.general,
   });

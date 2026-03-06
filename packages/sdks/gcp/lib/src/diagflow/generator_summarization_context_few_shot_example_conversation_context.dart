@@ -10,7 +10,7 @@ class GeneratorSummarizationContextFewShotExampleConversationContext {
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleConversationContext].
   /// [messageEntries] Optional. List of message transcripts in the conversation.
-  GeneratorSummarizationContextFewShotExampleConversationContext({
+  const GeneratorSummarizationContextFewShotExampleConversationContext({
     this.messageEntries,
   });
 

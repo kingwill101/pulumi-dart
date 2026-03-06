@@ -9,7 +9,7 @@ class WindowsConfigurationResponse {
 
   /// Creates a new [WindowsConfigurationResponse].
   /// [enableAutomaticUpdates] If omitted, the default value is true.
-  WindowsConfigurationResponse({
+  const WindowsConfigurationResponse({
     this.enableAutomaticUpdates,
   });
 

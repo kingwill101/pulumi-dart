@@ -32,7 +32,7 @@ class DomainDevicesParallel {
   /// [protocol] Sets the protocol type for the EGD backend.
   /// [source] Defines the source settings for the EGD backend.
   /// [target] Defines the target configuration for the parallel device settings within the domain.
-  DomainDevicesParallel({
+  const DomainDevicesParallel({
     this.acpi,
     this.address,
     this.alias,

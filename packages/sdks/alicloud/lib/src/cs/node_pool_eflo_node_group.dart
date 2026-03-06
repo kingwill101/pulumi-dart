@@ -11,7 +11,7 @@ class NodePoolEfloNodeGroup {
   /// Creates a new [NodePoolEfloNodeGroup].
   /// [clusterId] The ID of the associated Lingjun cluster is required when creating a Lingjun node pool.
   /// [groupId] When creating a Lingjun node pool, you need the Lingjun group ID of the associated Lingjun cluster.
-  NodePoolEfloNodeGroup({
+  const NodePoolEfloNodeGroup({
     this.clusterId,
     this.groupId,
   });

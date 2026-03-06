@@ -18,7 +18,7 @@ class GetGroupArgs {
   /// [apiManagementName] The Name of the API Management Service in which this Group exists.
   /// [name] The Name of the API Management Group.
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists.
-  GetGroupArgs({
+  const GetGroupArgs({
     required this.apiManagementName,
     required this.name,
     required this.resourceGroupName,

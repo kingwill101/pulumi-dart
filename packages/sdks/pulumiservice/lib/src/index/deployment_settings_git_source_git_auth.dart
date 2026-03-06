@@ -14,7 +14,7 @@ class DeploymentSettingsGitSourceGitAuth {
   /// Creates a new [DeploymentSettingsGitSourceGitAuth].
   /// [basicAuth] Basic auth for git authentication. Only one of `personalAccessToken`, `sshAuth`, or `basicAuth` must be defined.
   /// [sshAuth] SSH auth for git authentication. Only one of `personalAccessToken`, `sshAuth`, or `basicAuth` must be defined.
-  DeploymentSettingsGitSourceGitAuth({
+  const DeploymentSettingsGitSourceGitAuth({
     this.basicAuth,
     this.sshAuth,
   });

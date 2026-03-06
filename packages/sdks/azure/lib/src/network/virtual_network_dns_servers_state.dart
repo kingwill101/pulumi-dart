@@ -12,7 +12,7 @@ class VirtualNetworkDnsServersState {
   /// Creates a new [VirtualNetworkDnsServersState].
   /// [dnsServers] List of IP addresses of DNS servers
   /// [virtualNetworkId] The ID of the Virtual Network that should be linked to the DNS Zone. Changing this forces a new resource to be created.
-  VirtualNetworkDnsServersState({
+  const VirtualNetworkDnsServersState({
     this.dnsServers,
     this.virtualNetworkId,
   });

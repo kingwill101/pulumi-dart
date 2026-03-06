@@ -62,7 +62,7 @@ class GroupV2State {
   /// [shared] Sharing status of the firewall group (must be "true"
   /// [status] The status of the firewall group.
   /// [tenantId] This argument conflicts and is interchangeable with
-  GroupV2State({
+  const GroupV2State({
     this.adminStateUp,
     this.description,
     this.egressFirewallPolicyId,

@@ -30,7 +30,7 @@ class IdentityProviderAadArgs {
   /// [clientSecret] Client secret of the Application in the AAD Identity Provider.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   /// [signinTenant] The AAD Tenant to use instead of Common when logging into Active Directory.
-  IdentityProviderAadArgs({
+  const IdentityProviderAadArgs({
     required this.allowedTenants,
     required this.apiManagementName,
     required this.clientId,

@@ -25,7 +25,7 @@ class RunbookDraft {
   /// [lastModifiedTime] Gets or sets the last modified time of the runbook draft.
   /// [outputTypes] Gets or sets the runbook output types.
   /// [parameters] Gets or sets the runbook draft parameters.
-  RunbookDraft({
+  const RunbookDraft({
     this.creationTime,
     this.draftContentLink,
     this.inEdit,

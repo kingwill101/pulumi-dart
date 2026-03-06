@@ -9,7 +9,7 @@ class PodSchedulingGatePatch {
 
   /// Creates a new [PodSchedulingGatePatch].
   /// [name] Name of the scheduling gate. Each scheduling gate must have a unique name field.
-  PodSchedulingGatePatch({
+  const PodSchedulingGatePatch({
     this.name,
   });
 

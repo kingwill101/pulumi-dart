@@ -25,7 +25,7 @@ class VirtualHubRouteTableV2Response {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the virtual hub route table v2 resource.
   /// [routes] List of all routes.
-  VirtualHubRouteTableV2Response({
+  const VirtualHubRouteTableV2Response({
     this.attachedConnections,
     required this.etag,
     this.id,

@@ -18,7 +18,7 @@ class PaymentTermResponse {
   /// [isDefault] Indicates payment term is the standard payment term.
   /// [startDate] The date on when the defined 'Payment Term' will be effective from and is always in UTC.
   /// [term] Represents duration in netXX format. Always in days.
-  PaymentTermResponse({
+  const PaymentTermResponse({
     this.endDate,
     required this.isDefault,
     this.startDate,

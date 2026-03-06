@@ -19,7 +19,7 @@ class IISVirtualApplicationDetailsResponse {
   /// [id] Gets the ID.
   /// [isVirtualDirectory] Gets a value indicating whether the application corresponds to a directory.
   /// [path] Second level entity for virtual directories.
-  IISVirtualApplicationDetailsResponse({
+  const IISVirtualApplicationDetailsResponse({
     this.directories,
     required this.id,
     required this.isVirtualDirectory,

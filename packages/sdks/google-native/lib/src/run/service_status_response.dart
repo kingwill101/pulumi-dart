@@ -30,7 +30,7 @@ class ServiceStatusResponse {
   /// [observedGeneration] Returns the generation last seen by the system. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
   /// [traffic] Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
   /// [url] URL that will distribute traffic over the provided traffic targets. It generally has the form `https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app`
-  ServiceStatusResponse({
+  const ServiceStatusResponse({
     required this.address,
     required this.conditions,
     required this.latestCreatedRevisionName,

@@ -10,7 +10,7 @@ class FabricModelProperties {
 
   /// Creates a new [FabricModelProperties].
   /// [customProperties] Fabric model custom properties.
-  FabricModelProperties({
+  const FabricModelProperties({
     required this.customProperties,
   });
 

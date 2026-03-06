@@ -12,7 +12,7 @@ class DiskEncryptionConfigurationResponseSqladminV1beta4 {
   /// Creates a new [DiskEncryptionConfigurationResponseSqladminV1beta4].
   /// [kind] This is always `sql#diskEncryptionConfiguration`.
   /// [kmsKeyName] Resource name of KMS key for disk encryption
-  DiskEncryptionConfigurationResponseSqladminV1beta4({
+  const DiskEncryptionConfigurationResponseSqladminV1beta4({
     required this.kind,
     required this.kmsKeyName,
   });

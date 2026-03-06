@@ -12,7 +12,7 @@ class SparkClusterRolesWorkerNodeAutoscaleRecurrence {
   /// Creates a new [SparkClusterRolesWorkerNodeAutoscaleRecurrence].
   /// [schedules] A list of `schedule` blocks as defined below.
   /// [timezone] The time zone for the autoscale schedule times.
-  SparkClusterRolesWorkerNodeAutoscaleRecurrence({
+  const SparkClusterRolesWorkerNodeAutoscaleRecurrence({
     required this.schedules,
     required this.timezone,
   });

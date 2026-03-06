@@ -12,7 +12,7 @@ class ConnectionGitlabConfigAuthorizerCredential {
   /// Creates a new [ConnectionGitlabConfigAuthorizerCredential].
   /// [userTokenSecretVersion] Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   /// [username] (Output)
-  ConnectionGitlabConfigAuthorizerCredential({
+  const ConnectionGitlabConfigAuthorizerCredential({
     required this.userTokenSecretVersion,
     this.username,
   });

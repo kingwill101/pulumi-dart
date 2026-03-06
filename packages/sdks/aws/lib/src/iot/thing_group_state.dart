@@ -33,7 +33,7 @@ class ThingGroupState {
   /// [tags] Key-value mapping of resource tags
   /// [tagsAll] Optional.
   /// [version] The current version of the Thing Group record in the registry.
-  ThingGroupState({
+  const ThingGroupState({
     this.arn,
     this.metadatas,
     this.name,

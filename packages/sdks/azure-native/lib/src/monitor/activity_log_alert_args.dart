@@ -38,7 +38,7 @@ class ActivityLogAlertArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopes] A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.
   /// [tags] The tags of the resource.
-  ActivityLogAlertArgs({
+  const ActivityLogAlertArgs({
     required this.actions,
     this.activityLogAlertName,
     required this.condition,

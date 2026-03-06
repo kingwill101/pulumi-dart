@@ -21,7 +21,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [parentType] The type of the parent resource. This can be either \'topics\', \'domains\', or \'partnerNamespaces\' or \'namespaces\'.
   /// [privateEndpointConnectionName] The name of the private endpoint connection connection.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.parentName,
     required this.parentType,
     required this.privateEndpointConnectionName,

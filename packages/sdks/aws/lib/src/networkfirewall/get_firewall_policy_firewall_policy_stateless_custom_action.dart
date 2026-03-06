@@ -10,7 +10,7 @@ class GetFirewallPolicyFirewallPolicyStatelessCustomAction {
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatelessCustomAction].
   /// [actionDefinitions] Required.
   /// [actionName] Required.
-  GetFirewallPolicyFirewallPolicyStatelessCustomAction({
+  const GetFirewallPolicyFirewallPolicyStatelessCustomAction({
     required this.actionDefinitions,
     required this.actionName,
   });

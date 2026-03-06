@@ -17,7 +17,7 @@ class CassandraError {
   /// [code] The code of error that occurred.
   /// [message] The message of the error.
   /// [target] The target resource of the error.
-  CassandraError({
+  const CassandraError({
     this.additionalErrorInfo,
     this.code,
     this.message,

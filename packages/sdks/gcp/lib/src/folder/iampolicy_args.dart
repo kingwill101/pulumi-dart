@@ -22,7 +22,7 @@ class IAMPolicyArgs {
   /// Creates a new [IAMPolicyArgs].
   /// [folder] The resource name of the folder the policy is attached to. Its format is folders/{folder_id}.
   /// [policyData] The `gcp.organizations.getIAMPolicy` data source that represents
-  IAMPolicyArgs({
+  const IAMPolicyArgs({
     required this.folder,
     required this.policyData,
   });

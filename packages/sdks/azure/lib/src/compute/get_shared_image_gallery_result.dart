@@ -26,7 +26,7 @@ class GetSharedImageGalleryResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags which are assigned to the Shared Image Gallery.
   /// [uniqueName] The unique name assigned to the Shared Image Gallery.
-  GetSharedImageGalleryResult({
+  const GetSharedImageGalleryResult({
     required this.description,
     required this.id,
     required this.imageNames,

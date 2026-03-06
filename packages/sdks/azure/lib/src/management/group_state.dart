@@ -23,7 +23,7 @@ class GroupState {
   /// [parentManagementGroupId] The ID of the Parent Management Group.
   /// [subscriptionIds] A list of Subscription GUIDs which should be assigned to the Management Group.
   /// [tenantScopedId] The Management Group ID with the Tenant ID prefix.
-  GroupState({
+  const GroupState({
     this.displayName,
     this.name,
     this.parentManagementGroupId,

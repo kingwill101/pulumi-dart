@@ -87,7 +87,7 @@ class ScheduledAlertRuleArgs {
   /// [triggerOperator] The operation against the threshold that triggers alert rule.
   /// [triggerThreshold] The threshold triggers this alert rule.
   /// [workspaceName] The name of the workspace.
-  ScheduledAlertRuleArgs({
+  const ScheduledAlertRuleArgs({
     this.alertDetailsOverride,
     this.alertRuleTemplateName,
     this.customDetails,

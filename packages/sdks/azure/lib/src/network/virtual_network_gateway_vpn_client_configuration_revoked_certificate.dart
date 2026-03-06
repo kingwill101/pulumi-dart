@@ -11,7 +11,7 @@ class VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate {
   /// Creates a new [VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate].
   /// [name] Specifies the name of the certificate resource.
   /// [thumbprint] Specifies the public data of the certificate.
-  VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate({
+  const VirtualNetworkGatewayVpnClientConfigurationRevokedCertificate({
     required this.name,
     required this.thumbprint,
   });

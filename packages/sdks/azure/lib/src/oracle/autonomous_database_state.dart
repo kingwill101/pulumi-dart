@@ -78,7 +78,7 @@ class AutonomousDatabaseState {
   /// [subnetId] The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subnet the resource is associated with. Changing this forces a new Autonomous Database to be created.
   /// [tags] Optional.
   /// [virtualNetworkId] The ID of the vnet associated with the cloud VM cluster. Changing this forces a new Autonomous Database to be created.
-  AutonomousDatabaseState({
+  const AutonomousDatabaseState({
     this.adminPassword,
     this.allowedIps,
     this.autoScalingEnabled,

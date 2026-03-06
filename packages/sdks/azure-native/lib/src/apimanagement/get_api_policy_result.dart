@@ -23,7 +23,7 @@ class GetApiPolicyResult {
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Contents of the Policy as defined by the format.
-  GetApiPolicyResult({
+  const GetApiPolicyResult({
     required this.azureApiVersion,
     this.format,
     required this.id,

@@ -14,7 +14,7 @@ class GetWindowsWebAppAuthSettingsV2AppleV2 {
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
   /// [loginScopes] The list of Login scopes that are requested as part of Microsoft Account authentication.
-  GetWindowsWebAppAuthSettingsV2AppleV2({
+  const GetWindowsWebAppAuthSettingsV2AppleV2({
     required this.clientId,
     required this.clientSecretSettingName,
     required this.loginScopes,

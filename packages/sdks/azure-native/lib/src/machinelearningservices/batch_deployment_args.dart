@@ -42,7 +42,7 @@ class BatchDeploymentArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  BatchDeploymentArgs({
+  const BatchDeploymentArgs({
     required this.batchDeploymentProperties,
     this.deploymentName,
     required this.endpointName,

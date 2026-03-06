@@ -29,7 +29,7 @@ class GetGatewayResult {
   /// [sku] Sku of the Spring Cloud Gateway resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetGatewayResult({
+  const GetGatewayResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

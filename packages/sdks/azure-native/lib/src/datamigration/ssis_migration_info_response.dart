@@ -15,7 +15,7 @@ class SsisMigrationInfoResponse {
   /// [environmentOverwriteOption] The overwrite option for the SSIS environment migration
   /// [projectOverwriteOption] The overwrite option for the SSIS project migration
   /// [ssisStoreType] The SSIS store type of source, only SSIS catalog is supported now in DMS (classic)
-  SsisMigrationInfoResponse({
+  const SsisMigrationInfoResponse({
     this.environmentOverwriteOption,
     this.projectOverwriteOption,
     this.ssisStoreType,

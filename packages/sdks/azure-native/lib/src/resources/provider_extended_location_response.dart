@@ -15,7 +15,7 @@ class ProviderExtendedLocationResponse {
   /// [extendedLocations] The extended locations for the azure location.
   /// [location] The azure location.
   /// [type] The extended location type.
-  ProviderExtendedLocationResponse({
+  const ProviderExtendedLocationResponse({
     this.extendedLocations,
     this.location,
     this.type,

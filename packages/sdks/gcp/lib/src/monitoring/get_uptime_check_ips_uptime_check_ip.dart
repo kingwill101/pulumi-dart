@@ -18,7 +18,7 @@ class GetUptimeCheckIPsUptimeCheckIp {
   /// [ipAddress] The IP address from which the Uptime check originates. This is a fully specified IP address
   /// [location] A more specific location within the region that typically encodes a particular city/town/metro
   /// [region] A broad region category in which the IP address is located.
-  GetUptimeCheckIPsUptimeCheckIp({
+  const GetUptimeCheckIPsUptimeCheckIp({
     required this.ipAddress,
     required this.location,
     required this.region,

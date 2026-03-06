@@ -21,7 +21,7 @@ class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
   /// Creates a new [RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter].
   /// [filterLabels] The list of label value pairs that must match labels in the provided metadata
   /// [filterMatchCriteria] Specifies how individual filterLabel matches within the list of filterLabels
-  RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter({
+  const RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter({
     required this.filterLabels,
     required this.filterMatchCriteria,
   });

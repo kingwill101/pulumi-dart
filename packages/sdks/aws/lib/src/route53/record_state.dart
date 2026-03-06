@@ -67,7 +67,7 @@ class RecordState {
   /// [type] The record type. Valid values are `A`, `AAAA`, `CAA`, `CNAME`, `DS`, `HTTPS`, `MX`, `NAPTR`, `NS`, `PTR`, `SOA`, `SPF`, `SRV`, `SSHFP`, `SVCB`, `TLSA`, and `TXT`.
   /// [weightedRoutingPolicies] A block indicating a weighted routing policy. Conflicts with any other routing policy. Documented below.
   /// [zoneId] The ID of the hosted zone to contain this record.
-  RecordState({
+  const RecordState({
     this.aliases,
     this.allowOverwrite,
     this.cidrRoutingPolicy,

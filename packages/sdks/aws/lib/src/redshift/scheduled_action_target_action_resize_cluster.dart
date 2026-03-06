@@ -20,7 +20,7 @@ class ScheduledActionTargetActionResizeCluster {
   /// [clusterType] The new cluster type for the specified cluster.
   /// [nodeType] The new node type for the nodes you are adding.
   /// [numberOfNodes] The new number of nodes for the cluster.
-  ScheduledActionTargetActionResizeCluster({
+  const ScheduledActionTargetActionResizeCluster({
     this.classic,
     required this.clusterIdentifier,
     this.clusterType,

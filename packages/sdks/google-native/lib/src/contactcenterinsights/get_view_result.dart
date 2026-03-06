@@ -20,7 +20,7 @@ class GetViewResult {
   /// [name] Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
   /// [updateTime] The most recent time at which the view was updated.
   /// [value] String with specific view properties, must be non-empty.
-  GetViewResult({
+  const GetViewResult({
     required this.createTime,
     required this.displayName,
     required this.name,

@@ -74,7 +74,7 @@ class ContainerRecipeState {
   /// [targetRepository] The destination repository for the container image. Detailed below.
   /// [version] Version of the container recipe.
   /// [workingDirectory] The working directory to be used during build and test workflows.
-  ContainerRecipeState({
+  const ContainerRecipeState({
     this.arn,
     this.components,
     this.containerType,

@@ -20,7 +20,7 @@ class GetTableResult {
   /// [name] Required.
   /// [resourceManagerId] The Resource Manager ID of this Storage Table.
   /// [storageAccountName] Required.
-  GetTableResult({
+  const GetTableResult({
     required this.acls,
     required this.id,
     required this.name,

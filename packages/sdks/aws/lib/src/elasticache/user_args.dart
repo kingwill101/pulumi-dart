@@ -39,7 +39,7 @@ class UserArgs {
   /// [tags] A list of tags to be added to this resource. A tag is a key-value pair.
   /// [userId] The ID of the user.
   /// [userName] The username of the user.
-  UserArgs({
+  const UserArgs({
     required this.accessString,
     this.authenticationMode,
     required this.engine,

@@ -11,7 +11,7 @@ class WorkloadSaaEnrollmentResponse {
   /// Creates a new [WorkloadSaaEnrollmentResponse].
   /// [setupErrors] Indicates SAA enrollment setup error if any.
   /// [setupStatus] Indicates SAA enrollment status of a given workload. Possible values: SETUP_STATE_UNSPECIFIED, STATUS_PENDING, STATUS_COMPLETE
-  WorkloadSaaEnrollmentResponse({
+  const WorkloadSaaEnrollmentResponse({
     this.setupErrors,
     this.setupStatus,
   });

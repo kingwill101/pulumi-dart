@@ -13,7 +13,7 @@ class WaitStatusResponse {
   /// Creates a new [WaitStatusResponse].
   /// [status] The status of the wait duration.
   /// [waitDurationInSeconds] The wait duration configured in seconds.
-  WaitStatusResponse({
+  const WaitStatusResponse({
     required this.status,
     required this.waitDurationInSeconds,
   });

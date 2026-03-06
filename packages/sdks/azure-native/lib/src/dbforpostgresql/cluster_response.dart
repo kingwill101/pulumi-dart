@@ -12,7 +12,7 @@ class ClusterResponse {
   /// Creates a new [ClusterResponse].
   /// [clusterSize] Number of nodes assigned to the elastic cluster.
   /// [defaultDatabaseName] Default database name for the elastic cluster.
-  ClusterResponse({
+  const ClusterResponse({
     this.clusterSize,
     this.defaultDatabaseName,
   });

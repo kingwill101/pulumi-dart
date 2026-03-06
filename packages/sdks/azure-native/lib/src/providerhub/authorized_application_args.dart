@@ -18,7 +18,7 @@ class AuthorizedApplicationArgs {
   /// [applicationId] The application ID.
   /// [properties] Optional.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  AuthorizedApplicationArgs({
+  const AuthorizedApplicationArgs({
     this.applicationId,
     this.properties,
     required this.providerNamespace,

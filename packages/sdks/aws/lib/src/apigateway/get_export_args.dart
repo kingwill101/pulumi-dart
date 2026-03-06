@@ -27,7 +27,7 @@ class GetExportArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] Identifier of the associated REST API.
   /// [stageName] Name of the Stage that will be exported.
-  GetExportArgs({
+  const GetExportArgs({
     this.accepts,
     required this.exportType,
     this.parameters,

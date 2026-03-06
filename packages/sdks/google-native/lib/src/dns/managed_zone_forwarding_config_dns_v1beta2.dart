@@ -11,7 +11,7 @@ class ManagedZoneForwardingConfigDnsV1beta2 {
   /// Creates a new [ManagedZoneForwardingConfigDnsV1beta2].
   /// [kind] Optional.
   /// [targetNameServers] List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-  ManagedZoneForwardingConfigDnsV1beta2({
+  const ManagedZoneForwardingConfigDnsV1beta2({
     this.kind,
     this.targetNameServers,
   });

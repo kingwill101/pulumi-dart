@@ -33,7 +33,7 @@ class VpnTunnelInfoResponseNetworkmanagementV1beta1 {
   /// [sourceGateway] URI of the VPN gateway at local end of the tunnel.
   /// [sourceGatewayIp] Local VPN gateway's IP address.
   /// [uri] URI of a VPN tunnel.
-  VpnTunnelInfoResponseNetworkmanagementV1beta1({
+  const VpnTunnelInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.networkUri,
     required this.region,

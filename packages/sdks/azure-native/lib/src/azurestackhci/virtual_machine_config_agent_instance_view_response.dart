@@ -13,7 +13,7 @@ class VirtualMachineConfigAgentInstanceViewResponse {
   /// Creates a new [VirtualMachineConfigAgentInstanceViewResponse].
   /// [statuses] The resource status information.
   /// [vmConfigAgentVersion] The VM Config Agent full version.
-  VirtualMachineConfigAgentInstanceViewResponse({
+  const VirtualMachineConfigAgentInstanceViewResponse({
     this.statuses,
     this.vmConfigAgentVersion,
   });

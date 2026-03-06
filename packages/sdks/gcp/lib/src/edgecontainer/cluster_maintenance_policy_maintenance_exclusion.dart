@@ -13,7 +13,7 @@ class ClusterMaintenancePolicyMaintenanceExclusion {
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusion].
   /// [id] A unique (per cluster) id for the window.
   /// [window] Represents an arbitrary window of time.
-  ClusterMaintenancePolicyMaintenanceExclusion({
+  const ClusterMaintenancePolicyMaintenanceExclusion({
     this.id,
     this.window,
   });

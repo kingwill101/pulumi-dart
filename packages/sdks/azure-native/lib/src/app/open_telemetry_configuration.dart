@@ -22,7 +22,7 @@ class OpenTelemetryConfiguration {
   /// [logsConfiguration] Open telemetry logs configuration
   /// [metricsConfiguration] Open telemetry metrics configuration
   /// [tracesConfiguration] Open telemetry trace configuration
-  OpenTelemetryConfiguration({
+  const OpenTelemetryConfiguration({
     this.destinationsConfiguration,
     this.logsConfiguration,
     this.metricsConfiguration,

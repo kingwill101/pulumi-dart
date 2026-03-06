@@ -30,7 +30,7 @@ class GalleryScriptParameterResponse {
   /// [name] The name of the parameter.
   /// [required] Indicates whether this parameter must be passed.
   /// [type] Specifies the type of the Gallery Script parameter. Possible values are: String, Int, Double, Boolean, Enum
-  GalleryScriptParameterResponse({
+  const GalleryScriptParameterResponse({
     this.defaultValue,
     this.description,
     this.enumValues,

@@ -18,7 +18,7 @@ class CloudRunMetadataResponse {
   /// [revision] The Cloud Run Revision id associated with a `Rollout`.
   /// [service] The name of the Cloud Run Service that is associated with a `Rollout`. Format is `projects/{project}/locations/{location}/services/{service}`.
   /// [serviceUrls] The Cloud Run Service urls that are associated with a `Rollout`.
-  CloudRunMetadataResponse({
+  const CloudRunMetadataResponse({
     required this.job,
     required this.revision,
     required this.service,

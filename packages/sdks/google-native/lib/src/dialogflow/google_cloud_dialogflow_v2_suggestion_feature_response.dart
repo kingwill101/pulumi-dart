@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2SuggestionFeatureResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2SuggestionFeatureResponse].
   /// [type] Type of Human Agent Assistant API feature to request.
-  GoogleCloudDialogflowV2SuggestionFeatureResponse({
+  const GoogleCloudDialogflowV2SuggestionFeatureResponse({
     required this.type,
   });
 

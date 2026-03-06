@@ -11,7 +11,7 @@ class GetDeviceAwsLocation {
   /// Creates a new [GetDeviceAwsLocation].
   /// [subnetArn] ARN of the subnet that the device is located in.
   /// [zone] Zone that the device is located in.
-  GetDeviceAwsLocation({
+  const GetDeviceAwsLocation({
     required this.subnetArn,
     required this.zone,
   });

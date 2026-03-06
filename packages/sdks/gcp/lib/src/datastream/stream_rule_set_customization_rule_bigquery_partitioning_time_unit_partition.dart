@@ -12,7 +12,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition {
   /// Creates a new [StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition].
   /// [column] The partitioning column.
   /// [partitioningTimeGranularity] Partition granularity.
-  StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition({
+  const StreamRuleSetCustomizationRuleBigqueryPartitioningTimeUnitPartition({
     required this.column,
     this.partitioningTimeGranularity,
   });

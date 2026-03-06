@@ -36,7 +36,7 @@ class GetLoadBalancersLoadBalancer {
   /// [networkZone] Required.
   /// [services] Required.
   /// [targets] Required.
-  GetLoadBalancersLoadBalancer({
+  const GetLoadBalancersLoadBalancer({
     required this.algorithms,
     required this.deleteProtection,
     required this.id,

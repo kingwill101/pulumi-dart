@@ -15,7 +15,7 @@ class GetOrganizationEnvironmentIamPolicyArgs {
   /// [environmentId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [organizationId] Required.
-  GetOrganizationEnvironmentIamPolicyArgs({
+  const GetOrganizationEnvironmentIamPolicyArgs({
     required this.environmentId,
     this.optionsRequestedPolicyVersion,
     required this.organizationId,

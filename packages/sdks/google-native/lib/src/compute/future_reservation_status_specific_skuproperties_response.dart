@@ -9,7 +9,7 @@ class FutureReservationStatusSpecificSKUPropertiesResponse {
 
   /// Creates a new [FutureReservationStatusSpecificSKUPropertiesResponse].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate the Future Reservation properties.
-  FutureReservationStatusSpecificSKUPropertiesResponse({
+  const FutureReservationStatusSpecificSKUPropertiesResponse({
     required this.sourceInstanceTemplateId,
   });
 

@@ -38,7 +38,7 @@ class DropletAutoscaleDropletTemplate {
   /// [userData] Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a
   /// [vpcUuid] VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
   /// [withDropletAgent] Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
-  DropletAutoscaleDropletTemplate({
+  const DropletAutoscaleDropletTemplate({
     required this.image,
     this.ipv6,
     this.projectId,

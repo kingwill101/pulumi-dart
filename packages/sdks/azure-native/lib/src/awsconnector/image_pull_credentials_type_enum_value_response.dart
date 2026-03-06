@@ -9,7 +9,7 @@ class ImagePullCredentialsTypeEnumValueResponse {
 
   /// Creates a new [ImagePullCredentialsTypeEnumValueResponse].
   /// [value] Property value
-  ImagePullCredentialsTypeEnumValueResponse({
+  const ImagePullCredentialsTypeEnumValueResponse({
     this.value,
   });
 

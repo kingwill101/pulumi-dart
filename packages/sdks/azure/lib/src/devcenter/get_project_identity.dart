@@ -17,7 +17,7 @@ class GetProjectIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Dev Center Project.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Dev Center Project.
   /// [type] The type of Managed Service Identity that is configured on this Dev Center Project.
-  GetProjectIdentity({
+  const GetProjectIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

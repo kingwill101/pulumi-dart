@@ -78,7 +78,7 @@ class GlobalAddressState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [purpose] The purpose of the resource. Possible values include:
   /// [selfLink] The URI of the created resource.
-  GlobalAddressState({
+  const GlobalAddressState({
     this.address,
     this.addressType,
     this.creationTimestamp,

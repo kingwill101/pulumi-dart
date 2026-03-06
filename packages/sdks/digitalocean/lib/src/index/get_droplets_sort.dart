@@ -14,7 +14,7 @@ class GetDropletsSort {
   /// Creates a new [GetDropletsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-  GetDropletsSort({
+  const GetDropletsSort({
     this.direction,
     required this.key,
   });

@@ -53,7 +53,7 @@ class GetDesktopsDesktop {
   /// [policyGroupId] The policy group id of the Desktop.
   /// [status] The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
   /// [systemDiskSize] The system disk size of the Desktop.
-  GetDesktopsDesktop({
+  const GetDesktopsDesktop({
     required this.cpu,
     required this.createTime,
     required this.desktopId,

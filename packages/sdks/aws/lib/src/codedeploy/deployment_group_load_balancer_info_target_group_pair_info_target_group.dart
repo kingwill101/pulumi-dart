@@ -8,7 +8,7 @@ class DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup {
 
   /// Creates a new [DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup].
   /// [name] Name of the target group.
-  DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup({
+  const DeploymentGroupLoadBalancerInfoTargetGroupPairInfoTargetGroup({
     required this.name,
   });
 

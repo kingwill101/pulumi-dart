@@ -17,7 +17,7 @@ class SearchIndexSchemaIndexSortSorter {
   /// [mode] The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
   /// [order] The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
   /// [sorterType] Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
-  SearchIndexSchemaIndexSortSorter({
+  const SearchIndexSchemaIndexSortSorter({
     this.fieldName,
     this.mode,
     this.order,

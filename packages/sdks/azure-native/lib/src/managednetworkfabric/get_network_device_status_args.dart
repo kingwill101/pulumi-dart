@@ -15,7 +15,7 @@ class GetNetworkDeviceStatusArgs {
   /// Creates a new [GetNetworkDeviceStatusArgs].
   /// [networkDeviceName] Name of the NetworkDevice.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkDeviceStatusArgs({
+  const GetNetworkDeviceStatusArgs({
     required this.networkDeviceName,
     required this.resourceGroupName,
   });

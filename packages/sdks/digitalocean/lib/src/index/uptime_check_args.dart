@@ -24,7 +24,7 @@ class UptimeCheckArgs {
   /// [regions] An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
   /// [target] The endpoint to perform healthchecks on.
   /// [type] The type of health check to perform: 'ping' 'http' 'https'.
-  UptimeCheckArgs({
+  const UptimeCheckArgs({
     this.enabled,
     this.name,
     this.regions,

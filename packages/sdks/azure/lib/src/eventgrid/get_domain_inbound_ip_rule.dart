@@ -11,7 +11,7 @@ class GetDomainInboundIpRule {
   /// Creates a new [GetDomainInboundIpRule].
   /// [action] The action to take when the rule is matched. Possible values are `Allow`.
   /// [ipMask] The IP mask (CIDR) to match on.
-  GetDomainInboundIpRule({
+  const GetDomainInboundIpRule({
     required this.action,
     required this.ipMask,
   });

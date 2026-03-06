@@ -12,7 +12,7 @@ class CacheActiveDirectorySettingsResponseCredentials {
   /// Creates a new [CacheActiveDirectorySettingsResponseCredentials].
   /// [password] Plain text password of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
   /// [username] Username of the Active Directory domain administrator. This value is stored encrypted and not returned on response.
-  CacheActiveDirectorySettingsResponseCredentials({
+  const CacheActiveDirectorySettingsResponseCredentials({
     this.password,
     required this.username,
   });

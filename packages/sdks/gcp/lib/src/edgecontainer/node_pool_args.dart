@@ -48,7 +48,7 @@ class NodePoolArgs {
   /// [nodeCount] The number of nodes in the pool.
   /// [nodeLocation] Name of the Google Distributed Cloud Edge zone where this node pool will be created. For example: `us-central1-edge-customer-a`.
   /// [project] The ID of the project in which the resource belongs.
-  NodePoolArgs({
+  const NodePoolArgs({
     required this.cluster,
     this.labels,
     this.localDiskEncryption,

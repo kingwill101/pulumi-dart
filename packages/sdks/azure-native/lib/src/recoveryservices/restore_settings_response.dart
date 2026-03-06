@@ -10,7 +10,7 @@ class RestoreSettingsResponse {
 
   /// Creates a new [RestoreSettingsResponse].
   /// [crossSubscriptionRestoreSettings] Settings for CrossSubscriptionRestore
-  RestoreSettingsResponse({
+  const RestoreSettingsResponse({
     this.crossSubscriptionRestoreSettings,
   });
 

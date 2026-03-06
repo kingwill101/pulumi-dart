@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount 
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount].
   /// [max] Maximum.
   /// [min] Minimum.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsVcpuCount({
     this.max,
     this.min,
   });

@@ -38,7 +38,7 @@ class GetGatewayCacheDisksDisk {
   /// [localFilePath] The cache disk inside the device name.
   /// [renewUrl] A renewal link of the cache disk.
   /// [status] The status of the resource.
-  GetGatewayCacheDisksDisk({
+  const GetGatewayCacheDisksDisk({
     required this.cacheDiskCategory,
     required this.cacheDiskSizeInGb,
     required this.cacheId,

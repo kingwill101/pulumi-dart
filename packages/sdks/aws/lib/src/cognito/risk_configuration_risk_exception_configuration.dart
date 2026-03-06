@@ -15,7 +15,7 @@ class RiskConfigurationRiskExceptionConfiguration {
   /// Creates a new [RiskConfigurationRiskExceptionConfiguration].
   /// [blockedIpRangeLists] Overrides the risk decision to always block the pre-authentication requests.
   /// [skippedIpRangeLists] Risk detection isn't performed on the IP addresses in this range list.
-  RiskConfigurationRiskExceptionConfiguration({
+  const RiskConfigurationRiskExceptionConfiguration({
     this.blockedIpRangeLists,
     this.skippedIpRangeLists,
   });

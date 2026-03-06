@@ -9,7 +9,7 @@ class BucketWebsiteRoutingRules {
 
   /// Creates a new [BucketWebsiteRoutingRules].
   /// [routingRules] Specify a jump rule or a mirroring back-to-origin rule, with a maximum of 20 routing rules. See `routing_rule` below.
-  BucketWebsiteRoutingRules({
+  const BucketWebsiteRoutingRules({
     this.routingRules,
   });
 

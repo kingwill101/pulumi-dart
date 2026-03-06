@@ -15,7 +15,7 @@ class DomainDkimArgs {
   /// Creates a new [DomainDkimArgs].
   /// [domain] Verified domain name to generate DKIM tokens for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainDkimArgs({
+  const DomainDkimArgs({
     required this.domain,
     this.region,
   });

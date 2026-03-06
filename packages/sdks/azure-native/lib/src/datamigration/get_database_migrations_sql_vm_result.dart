@@ -25,7 +25,7 @@ class GetDatabaseMigrationsSqlVmResult {
   /// [properties] Database Migration Resource properties for SQL Virtual Machine.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDatabaseMigrationsSqlVmResult({
+  const GetDatabaseMigrationsSqlVmResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

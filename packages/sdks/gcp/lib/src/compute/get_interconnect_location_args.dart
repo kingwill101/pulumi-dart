@@ -16,7 +16,7 @@ class GetInterconnectLocationArgs {
   /// Creates a new [GetInterconnectLocationArgs].
   /// [name] The name of the interconnect location.
   /// [project] The project in which the resource belongs. If it
-  GetInterconnectLocationArgs({
+  const GetInterconnectLocationArgs({
     required this.name,
     this.project,
   });

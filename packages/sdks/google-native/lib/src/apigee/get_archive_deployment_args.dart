@@ -15,7 +15,7 @@ class GetArchiveDeploymentArgs {
   /// [archiveDeploymentId] Required.
   /// [environmentId] Required.
   /// [organizationId] Required.
-  GetArchiveDeploymentArgs({
+  const GetArchiveDeploymentArgs({
     required this.archiveDeploymentId,
     required this.environmentId,
     required this.organizationId,

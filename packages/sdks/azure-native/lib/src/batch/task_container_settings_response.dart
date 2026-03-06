@@ -23,7 +23,7 @@ class TaskContainerSettingsResponse {
   /// [imageName] This is the full image reference, as would be specified to "docker pull". If no tag is provided as part of the image name, the tag ":latest" is used as a default.
   /// [registry] This setting can be omitted if was already provided at pool creation.
   /// [workingDirectory] A flag to indicate where the container task working directory is. The default is 'taskWorkingDirectory'.
-  TaskContainerSettingsResponse({
+  const TaskContainerSettingsResponse({
     this.containerHostBatchBindMounts,
     this.containerRunOptions,
     required this.imageName,

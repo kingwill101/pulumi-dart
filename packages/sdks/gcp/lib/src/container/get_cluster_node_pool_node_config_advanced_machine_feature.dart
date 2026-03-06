@@ -14,7 +14,7 @@ class GetClusterNodePoolNodeConfigAdvancedMachineFeature {
   /// [enableNestedVirtualization] Whether the node should have nested virtualization enabled.
   /// [performanceMonitoringUnit] Level of Performance Monitoring Unit (PMU) requested. If unset, no access to the PMU is assumed.
   /// [threadsPerCore] The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
-  GetClusterNodePoolNodeConfigAdvancedMachineFeature({
+  const GetClusterNodePoolNodeConfigAdvancedMachineFeature({
     required this.enableNestedVirtualization,
     required this.performanceMonitoringUnit,
     required this.threadsPerCore,

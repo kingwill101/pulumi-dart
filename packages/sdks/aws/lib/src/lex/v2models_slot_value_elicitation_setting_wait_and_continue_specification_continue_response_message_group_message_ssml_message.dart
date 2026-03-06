@@ -7,7 +7,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueRes
 
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageSsmlMessage].
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageSsmlMessage({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

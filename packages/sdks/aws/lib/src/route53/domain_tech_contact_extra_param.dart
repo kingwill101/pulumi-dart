@@ -11,7 +11,7 @@ class DomainTechContactExtraParam {
   /// Creates a new [DomainTechContactExtraParam].
   /// [name] The name of an additional parameter that is required by a top-level domain.
   /// [value] The value that corresponds with the name of an extra parameter.
-  DomainTechContactExtraParam({
+  const DomainTechContactExtraParam({
     required this.name,
     required this.value,
   });

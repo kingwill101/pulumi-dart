@@ -27,7 +27,7 @@ class GetPolicyArgs {
   /// [requires] Specifies the protocol.
   /// [rules] Rules defined in the policy.
   /// [strategy] Specifies the match strategy.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     this.controls,
     required this.name,
     this.publishedCopy,

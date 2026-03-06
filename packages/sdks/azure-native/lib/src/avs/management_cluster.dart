@@ -15,7 +15,7 @@ class ManagementCluster {
   /// [clusterSize] The cluster size
   /// [hosts] The hosts
   /// [vsanDatastoreName] Name of the vsan datastore associated with the cluster
-  ManagementCluster({
+  const ManagementCluster({
     this.clusterSize,
     this.hosts,
     this.vsanDatastoreName,

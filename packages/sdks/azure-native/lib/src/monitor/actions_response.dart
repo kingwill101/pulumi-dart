@@ -15,7 +15,7 @@ class ActionsResponse {
   /// [actionGroups] Action Group resource Ids to invoke when the alert fires.
   /// [actionProperties] The properties of an action properties.
   /// [customProperties] The properties of an alert payload.
-  ActionsResponse({
+  const ActionsResponse({
     this.actionGroups,
     this.actionProperties,
     this.customProperties,

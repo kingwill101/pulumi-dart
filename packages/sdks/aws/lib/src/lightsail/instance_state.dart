@@ -69,7 +69,7 @@ class InstanceState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userData] Single lined launch script as a string to configure server with additional user data.
   /// [username] User name for connecting to the instance (e.g., ec2-user).
-  InstanceState({
+  const InstanceState({
     this.addOn,
     this.arn,
     this.availabilityZone,

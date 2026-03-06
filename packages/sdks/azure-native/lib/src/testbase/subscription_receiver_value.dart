@@ -15,7 +15,7 @@ class SubscriptionReceiverValue {
   /// [role] The role of the notification receiver.
   /// [subscriptionId] The subscription id of the notification receiver.
   /// [subscriptionName] The subscription name of the notification receiver.
-  SubscriptionReceiverValue({
+  const SubscriptionReceiverValue({
     this.role,
     this.subscriptionId,
     this.subscriptionName,

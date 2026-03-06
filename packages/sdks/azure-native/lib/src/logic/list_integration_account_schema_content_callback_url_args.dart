@@ -24,7 +24,7 @@ class ListIntegrationAccountSchemaContentCallbackUrlArgs {
   /// [notAfter] The expiry time.
   /// [resourceGroupName] The resource group name.
   /// [schemaName] The integration account schema name.
-  ListIntegrationAccountSchemaContentCallbackUrlArgs({
+  const ListIntegrationAccountSchemaContentCallbackUrlArgs({
     required this.integrationAccountName,
     this.keyType,
     this.notAfter,

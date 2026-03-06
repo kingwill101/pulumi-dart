@@ -17,7 +17,7 @@ class Authentication {
   /// [method] Defines the method to authenticate the user of the client at the server.
   /// [usernamePasswordCredentials] Defines the username and password references when UsernamePassword user authentication mode is selected.
   /// [x509Credentials] Defines the certificate reference when Certificate user authentication mode is selected.
-  Authentication({
+  const Authentication({
     required this.method,
     this.usernamePasswordCredentials,
     this.x509Credentials,

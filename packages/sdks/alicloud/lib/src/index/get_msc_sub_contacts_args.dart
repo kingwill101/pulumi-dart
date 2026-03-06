@@ -18,7 +18,7 @@ class GetMscSubContactsArgs {
   /// [ids] A list of Contact IDs.
   /// [nameRegex] A regex string to filter results by Contact name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMscSubContactsArgs({
+  const GetMscSubContactsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

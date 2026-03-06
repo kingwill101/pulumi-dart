@@ -46,7 +46,7 @@ class TrafficMirrorFilterIngressRuleState {
   /// [status] The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
   /// [trafficMirrorFilterId] The ID of the filter.
   /// [trafficMirrorFilterIngressRuleId] The ID of the outbound rule.
-  TrafficMirrorFilterIngressRuleState({
+  const TrafficMirrorFilterIngressRuleState({
     this.action,
     this.destinationCidrBlock,
     this.destinationPortRange,

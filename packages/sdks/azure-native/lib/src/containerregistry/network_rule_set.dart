@@ -13,7 +13,7 @@ class NetworkRuleSet {
   /// Creates a new [NetworkRuleSet].
   /// [defaultAction] The default action of allow or deny when no other rules match.
   /// [ipRules] The IP ACL rules.
-  NetworkRuleSet({
+  const NetworkRuleSet({
     required this.defaultAction,
     this.ipRules,
   });

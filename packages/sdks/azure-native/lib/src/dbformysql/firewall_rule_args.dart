@@ -24,7 +24,7 @@ class FirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
   /// [startIpAddress] The start IP address of the server firewall rule. Must be IPv4 format.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.endIpAddress,
     this.firewallRuleName,
     required this.resourceGroupName,

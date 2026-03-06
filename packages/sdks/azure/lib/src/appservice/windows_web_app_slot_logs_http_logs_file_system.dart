@@ -11,7 +11,7 @@ class WindowsWebAppSlotLogsHttpLogsFileSystem {
   /// Creates a new [WindowsWebAppSlotLogsHttpLogsFileSystem].
   /// [retentionInDays] The retention period in days. A values of `0` means no retention.
   /// [retentionInMb] The maximum size in megabytes that log files can use.
-  WindowsWebAppSlotLogsHttpLogsFileSystem({
+  const WindowsWebAppSlotLogsHttpLogsFileSystem({
     required this.retentionInDays,
     required this.retentionInMb,
   });

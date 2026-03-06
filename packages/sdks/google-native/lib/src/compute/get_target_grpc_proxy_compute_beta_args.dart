@@ -13,7 +13,7 @@ class GetTargetGrpcProxyComputeBetaArgs {
   /// Creates a new [GetTargetGrpcProxyComputeBetaArgs].
   /// [project] Optional.
   /// [targetGrpcProxy] Required.
-  GetTargetGrpcProxyComputeBetaArgs({
+  const GetTargetGrpcProxyComputeBetaArgs({
     this.project,
     required this.targetGrpcProxy,
   });

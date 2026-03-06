@@ -22,7 +22,7 @@ class GetImageRecipesResult {
   /// [names] Set of names of the matched Image Builder Image Recipes.
   /// [owner] Optional.
   /// [region] Required.
-  GetImageRecipesResult({
+  const GetImageRecipesResult({
     required this.arns,
     this.filters,
     required this.id,

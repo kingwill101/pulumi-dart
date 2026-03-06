@@ -14,7 +14,7 @@ class DatabaseUserSetting {
   /// Creates a new [DatabaseUserSetting].
   /// [acls] A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
   /// [opensearchAcls] Optional.
-  DatabaseUserSetting({
+  const DatabaseUserSetting({
     this.acls,
     this.opensearchAcls,
   });

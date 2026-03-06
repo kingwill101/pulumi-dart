@@ -27,7 +27,7 @@ class DnatEntryState {
   /// [ipProtocol] The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
   /// [sagId] The ID of the SAG instance.
   /// [type] The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
-  DnatEntryState({
+  const DnatEntryState({
     this.externalIp,
     this.externalPort,
     this.internalIp,

@@ -15,7 +15,7 @@ class GetDefenderForStorageArgs {
   /// Creates a new [GetDefenderForStorageArgs].
   /// [resourceId] The identifier of the resource.
   /// [settingName] Defender for Storage setting name.
-  GetDefenderForStorageArgs({
+  const GetDefenderForStorageArgs({
     required this.resourceId,
     required this.settingName,
   });

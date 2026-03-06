@@ -16,7 +16,7 @@ class GetFhirServiceIdentity {
   /// [principalId] The Principal ID associated with this System Assigned Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this System Assigned Managed Service Identity.
   /// [type] The type of identity used for the Healthcare FHIR service.
-  GetFhirServiceIdentity({
+  const GetFhirServiceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

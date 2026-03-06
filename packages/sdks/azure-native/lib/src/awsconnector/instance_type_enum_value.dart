@@ -9,7 +9,7 @@ class InstanceTypeEnumValue {
 
   /// Creates a new [InstanceTypeEnumValue].
   /// [value] Property value
-  InstanceTypeEnumValue({
+  const InstanceTypeEnumValue({
     this.value,
   });
 

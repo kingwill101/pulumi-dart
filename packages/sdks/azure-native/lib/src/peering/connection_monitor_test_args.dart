@@ -30,7 +30,7 @@ class ConnectionMonitorTestArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [sourceAgent] The Connection Monitor test source agent
   /// [testFrequencyInSec] The Connection Monitor test frequency in seconds
-  ConnectionMonitorTestArgs({
+  const ConnectionMonitorTestArgs({
     this.connectionMonitorTestName,
     this.destination,
     this.destinationPort,

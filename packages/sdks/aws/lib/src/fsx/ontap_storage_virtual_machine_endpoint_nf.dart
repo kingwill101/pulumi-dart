@@ -11,7 +11,7 @@ class OntapStorageVirtualMachineEndpointNf {
   /// Creates a new [OntapStorageVirtualMachineEndpointNf].
   /// [dnsName] The Domain Name Service (DNS) name for the storage virtual machine. You can mount your storage virtual machine using its DNS name.
   /// [ipAddresses] IP addresses of the storage virtual machine endpoint.
-  OntapStorageVirtualMachineEndpointNf({
+  const OntapStorageVirtualMachineEndpointNf({
     this.dnsName,
     this.ipAddresses,
   });

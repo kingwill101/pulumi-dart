@@ -8,7 +8,7 @@ class GetDeploymentNetworkInterface {
 
   /// Creates a new [GetDeploymentNetworkInterface].
   /// [subnetId] The subnet resource ID of the NGINX Deployment.
-  GetDeploymentNetworkInterface({
+  const GetDeploymentNetworkInterface({
     required this.subnetId,
   });
 

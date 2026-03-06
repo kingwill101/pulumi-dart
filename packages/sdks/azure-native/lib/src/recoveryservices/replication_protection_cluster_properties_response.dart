@@ -101,7 +101,7 @@ class ReplicationProtectionClusterPropertiesResponse {
   /// [sharedDiskProperties] The shared disk properties.
   /// [testFailoverState] The Test failover state.
   /// [testFailoverStateDescription] The Test failover state description.
-  ReplicationProtectionClusterPropertiesResponse({
+  const ReplicationProtectionClusterPropertiesResponse({
     this.activeLocation,
     this.agentClusterId,
     this.allowedOperations,

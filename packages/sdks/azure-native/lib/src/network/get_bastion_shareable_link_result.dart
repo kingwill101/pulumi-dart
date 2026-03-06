@@ -13,7 +13,7 @@ class GetBastionShareableLinkResult {
   /// Creates a new [GetBastionShareableLinkResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] List of Bastion Shareable Links for the request.
-  GetBastionShareableLinkResult({
+  const GetBastionShareableLinkResult({
     this.nextLink,
     this.value,
   });

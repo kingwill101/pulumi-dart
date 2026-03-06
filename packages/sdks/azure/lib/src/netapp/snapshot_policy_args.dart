@@ -43,7 +43,7 @@ class SnapshotPolicyArgs {
   /// [resourceGroupName] The name of the resource group where the NetApp Snapshot Policy should be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [weeklySchedule] Sets a weekly snapshot schedule. A `weekly_schedule` block as defined below.
-  SnapshotPolicyArgs({
+  const SnapshotPolicyArgs({
     required this.accountName,
     this.dailySchedule,
     required this.enabled,

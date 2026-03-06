@@ -22,7 +22,7 @@ class GetMscSubWebhooksResult {
   /// [names] A list of Webhook names.
   /// [outputFile] Optional.
   /// [webhooks] A list of Msc Sub Webhooks. Each element contains the following attributes:
-  GetMscSubWebhooksResult({
+  const GetMscSubWebhooksResult({
     required this.id,
     required this.ids,
     this.nameRegex,

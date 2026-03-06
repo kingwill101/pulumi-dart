@@ -13,7 +13,7 @@ class ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule {
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule].
   /// [daysInCycle] Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle. Days in cycle for snapshot schedule policy must be 1.
   /// [startTime] This must be in UTC format that resolves to one of
-  ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule({
+  const ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule({
     required this.daysInCycle,
     required this.startTime,
   });

@@ -17,7 +17,7 @@ class ListSignalRKeysResult {
   /// [primaryKey] The primary access key.
   /// [secondaryConnectionString] Connection string constructed via the secondaryKey
   /// [secondaryKey] The secondary access key.
-  ListSignalRKeysResult({
+  const ListSignalRKeysResult({
     this.primaryConnectionString,
     this.primaryKey,
     this.secondaryConnectionString,

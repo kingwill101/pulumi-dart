@@ -23,7 +23,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse {
   /// [postbackData] Opaque payload that the Dialogflow receives in a user event when the user taps the suggested action. This data will be also forwarded to webhook to allow performing custom business logic.
   /// [shareLocation] Suggested client side action: Share user location
   /// [text] Text to display alongside the action.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionResponse({
     required this.dial,
     required this.openUrl,
     required this.postbackData,

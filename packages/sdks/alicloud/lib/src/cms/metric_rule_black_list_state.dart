@@ -49,7 +49,7 @@ class MetricRuleBlackListState {
   /// [scopeType] The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
   /// [scopeValues] Application Group ID list. The format is JSON Array.&gt; This parameter is displayed only when 'ScopeType' is 'GROUP.
   /// [updateTime] Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
-  MetricRuleBlackListState({
+  const MetricRuleBlackListState({
     this.category,
     this.createTime,
     this.effectiveTime,

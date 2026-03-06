@@ -28,7 +28,7 @@ class SpringCloudServiceConfigServerGitSettingRepository {
   /// [searchPaths] An array of strings used to search subdirectories of the Git repository.
   /// [sshAuth] A `ssh_auth` block as defined below.
   /// [uri] The URI of the Git repository that's used as the Config Server back end should be started with `http://`, `https://`, `git@`, or `ssh://`.
-  SpringCloudServiceConfigServerGitSettingRepository({
+  const SpringCloudServiceConfigServerGitSettingRepository({
     this.httpBasicAuth,
     this.label,
     required this.name,

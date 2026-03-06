@@ -36,7 +36,7 @@ class GetDscNodeConfigurationResult {
   /// [nodeCount] Number of nodes with this node configuration assigned
   /// [source] Source of node configuration.
   /// [type] The type of the resource.
-  GetDscNodeConfigurationResult({
+  const GetDscNodeConfigurationResult({
     required this.azureApiVersion,
     this.configuration,
     this.creationTime,

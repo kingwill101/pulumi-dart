@@ -9,7 +9,7 @@ class SourceSqlChangeResponse {
 
   /// Creates a new [SourceSqlChangeResponse].
   /// [sqlCode] Sql code for source (stored procedure, function, trigger or view)
-  SourceSqlChangeResponse({
+  const SourceSqlChangeResponse({
     required this.sqlCode,
   });
 

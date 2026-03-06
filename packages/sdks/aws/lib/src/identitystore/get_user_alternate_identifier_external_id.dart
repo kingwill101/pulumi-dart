@@ -11,7 +11,7 @@ class GetUserAlternateIdentifierExternalId {
   /// Creates a new [GetUserAlternateIdentifierExternalId].
   /// [id] The identifier issued to this resource by an external identity provider.
   /// [issuer] The issuer for an external identifier.
-  GetUserAlternateIdentifierExternalId({
+  const GetUserAlternateIdentifierExternalId({
     required this.id,
     required this.issuer,
   });

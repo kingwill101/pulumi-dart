@@ -18,7 +18,7 @@ class GetContainerAclRead {
   /// [projectAccess] Whether the container is accessible project wide.
   /// [updatedAt] The date the container ACL was last updated.
   /// [users] The list of user IDs, which are allowed to access the container,
-  GetContainerAclRead({
+  const GetContainerAclRead({
     required this.createdAt,
     this.projectAccess,
     required this.updatedAt,

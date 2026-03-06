@@ -27,7 +27,7 @@ class OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpA
   /// [publicIpPrefixId] The ID of the Public IP Address Prefix from where Public IP Addresses should be allocated. Changing this forces a new resource to be created.
   /// [skuName] Specifies what Public IP Address SKU the Public IP Address should be provisioned as. Possible vaules include `Basic_Regional`, `Basic_Global`, `Standard_Regional` or `Standard_Global`. For more information about Public IP Address SKU's and their capabilities, please see the [product documentation](https://docs.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku). Changing this forces a new resource to be created.
   /// [version] The Internet Protocol Version which should be used for this public IP address. Possible values are `IPv4` and `IPv6`. Defaults to `IPv4`. Changing this forces a new resource to be created.
-  OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
+  const OrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
     this.domainNameLabel,
     this.idleTimeoutInMinutes,
     this.ipTags,

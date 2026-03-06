@@ -9,7 +9,7 @@ class MembershipRoleRestrictionEvaluationResponse {
 
   /// Creates a new [MembershipRoleRestrictionEvaluationResponse].
   /// [state] The current state of the restriction
-  MembershipRoleRestrictionEvaluationResponse({
+  const MembershipRoleRestrictionEvaluationResponse({
     required this.state,
   });
 

@@ -18,7 +18,7 @@ class ManagedRuleOverrideResponse {
   /// [ruleId] Identifier for the managed rule.
   /// [sensitivity] Describes the override sensitivity to be applied when rule matches.
   /// [state] The state of the managed rule. Defaults to Disabled if not specified.
-  ManagedRuleOverrideResponse({
+  const ManagedRuleOverrideResponse({
     this.action,
     required this.ruleId,
     this.sensitivity,

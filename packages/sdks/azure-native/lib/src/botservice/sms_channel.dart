@@ -20,7 +20,7 @@ class SmsChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Sms channel resource
-  SmsChannel({
+  const SmsChannel({
     required this.channelName,
     this.etag,
     this.location,

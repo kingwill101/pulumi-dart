@@ -24,7 +24,7 @@ class GetTriggerResult {
   /// [name] The resource name.
   /// [properties] Properties of the trigger.
   /// [type] The resource type.
-  GetTriggerResult({
+  const GetTriggerResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

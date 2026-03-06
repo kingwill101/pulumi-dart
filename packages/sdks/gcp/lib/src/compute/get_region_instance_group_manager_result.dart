@@ -86,7 +86,7 @@ class GetRegionInstanceGroupManagerResult {
   /// [versions] Required.
   /// [waitForInstances] Required.
   /// [waitForInstancesStatus] Required.
-  GetRegionInstanceGroupManagerResult({
+  const GetRegionInstanceGroupManagerResult({
     required this.allInstancesConfigs,
     required this.autoHealingPolicies,
     required this.baseInstanceName,

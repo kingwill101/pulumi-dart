@@ -28,7 +28,7 @@ class VirtualNetworkState {
   /// [subnet] A `subnet` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [uniqueIdentifier] The unique immutable identifier of the Dev Test Virtual Network.
-  VirtualNetworkState({
+  const VirtualNetworkState({
     this.description,
     this.labName,
     this.name,

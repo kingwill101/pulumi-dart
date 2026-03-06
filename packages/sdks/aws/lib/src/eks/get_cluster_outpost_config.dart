@@ -15,7 +15,7 @@ class GetClusterOutpostConfig {
   /// [controlPlaneInstanceType] The Amazon EC2 instance type for all Kubernetes control plane instances.
   /// [controlPlanePlacements] An object representing the placement configuration for all the control plane instances of your local Amazon EKS cluster on AWS Outpost.
   /// [outpostArns] List of ARNs of the Outposts hosting the EKS cluster. Only a single ARN is supported currently.
-  GetClusterOutpostConfig({
+  const GetClusterOutpostConfig({
     required this.controlPlaneInstanceType,
     required this.controlPlanePlacements,
     required this.outpostArns,

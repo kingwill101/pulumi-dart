@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionMonitorCondition {
   /// Creates a new [AlertProcessingRuleSuppressionConditionMonitorCondition].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   /// [values] Specifies a list of values to match for a given condition. Possible values are `Fired` and `Resolved`.
-  AlertProcessingRuleSuppressionConditionMonitorCondition({
+  const AlertProcessingRuleSuppressionConditionMonitorCondition({
     required this.operator,
     required this.values,
   });

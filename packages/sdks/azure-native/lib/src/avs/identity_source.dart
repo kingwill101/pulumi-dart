@@ -38,7 +38,7 @@ class IdentitySource {
   /// [secondaryServer] Secondary server URL
   /// [ssl] Protect LDAP communication using SSL certificate (LDAPS)
   /// [username] The ID of an Active Directory user with a minimum of read-only access to Base
-  IdentitySource({
+  const IdentitySource({
     this.alias,
     this.baseGroupDN,
     this.baseUserDN,

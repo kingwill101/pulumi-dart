@@ -22,7 +22,7 @@ class GetBgpPeersResult {
   /// [peers] Required.
   /// [routerId] Optional.
   /// [status] Optional.
-  GetBgpPeersResult({
+  const GetBgpPeersResult({
     this.bgpGroupId,
     required this.id,
     required this.ids,

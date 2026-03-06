@@ -60,7 +60,7 @@ class StoreArgs {
   /// [retentionPeriod] The data retention time (in days). Valid values: [1-3650]. Default to 30. Log store data will be stored permanently when the value is 3650.
   /// [shardCount] The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
   /// [telemetryType] Determines whether store type is metric. `Metrics` means metric store, empty means log store.
-  StoreArgs({
+  const StoreArgs({
     this.appendMeta,
     this.autoSplit,
     this.enableWebTracking,

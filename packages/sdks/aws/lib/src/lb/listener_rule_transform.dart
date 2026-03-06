@@ -16,7 +16,7 @@ class ListenerRuleTransform {
   /// [hostHeaderRewriteConfig] Configuration block for host header rewrite. Required if `type` is `host-header-rewrite`. See Host Header Rewrite Config Blocks below.
   /// [type] Type of transform. Valid values are `host-header-rewrite` and `url-rewrite`.
   /// [urlRewriteConfig] Configuration block for URL rewrite. Required if `type` is `url-rewrite`. See URL Rewrite Config Blocks below.
-  ListenerRuleTransform({
+  const ListenerRuleTransform({
     this.hostHeaderRewriteConfig,
     required this.type,
     this.urlRewriteConfig,

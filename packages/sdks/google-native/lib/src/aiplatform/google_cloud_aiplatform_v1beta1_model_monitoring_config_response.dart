@@ -21,7 +21,7 @@ class GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse {
   /// [analysisInstanceSchemaUri] YAML schema file uri in Cloud Storage describing the format of a single instance that you want Tensorflow Data Validation (TFDV) to analyze. If there are any data type differences between predict instance and TFDV instance, this field can be used to override the schema. For models trained with Vertex AI, this field must be set as all the fields in predict instance formatted as string.
   /// [objectiveConfigs] Model monitoring objective config.
   /// [statsAnomaliesBaseDirectory] A Google Cloud Storage location for batch prediction model monitoring to dump statistics and anomalies. If not provided, a folder will be created in customer project to hold statistics and anomalies.
-  GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse({
+  const GoogleCloudAiplatformV1beta1ModelMonitoringConfigResponse({
     required this.alertConfig,
     required this.analysisInstanceSchemaUri,
     required this.objectiveConfigs,

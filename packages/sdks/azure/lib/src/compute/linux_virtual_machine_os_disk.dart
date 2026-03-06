@@ -54,7 +54,7 @@ class LinuxVirtualMachineOsDisk {
   /// [securityEncryptionType] Encryption Type when the Virtual Machine is a Confidential VM. Possible values are `VMGuestStateOnly` and `DiskWithVMGuestState`. Changing this forces a new resource to be created.
   /// [storageAccountType] The Type of Storage Account which should back this the Internal OS Disk. Possible values are `Standard_LRS`, `StandardSSD_LRS`, `Premium_LRS`, `StandardSSD_ZRS` and `Premium_ZRS`. Changing this forces a new resource to be created.
   /// [writeAcceleratorEnabled] Should Write Accelerator be Enabled for this OS Disk? Defaults to `false`.
-  LinuxVirtualMachineOsDisk({
+  const LinuxVirtualMachineOsDisk({
     required this.caching,
     this.diffDiskSettings,
     this.diskEncryptionSetId,

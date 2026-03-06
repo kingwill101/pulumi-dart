@@ -35,7 +35,7 @@ class GetVolumeResult {
   /// [size] (int) Size of the volume.
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
-  GetVolumeResult({
+  const GetVolumeResult({
     required this.deleteProtection,
     required this.id,
     required this.labels,

@@ -17,7 +17,7 @@ class GlobalVMShutdownScheduleNotificationSettings {
   /// [enabled] Whether to enable pre-shutdown notifications. Possible values are `true` and `false`.
   /// [timeInMinutes] Time in minutes between 15 and 120 before a shutdown event at which a notification will be sent. Defaults to `30`.
   /// [webhookUrl] The webhook URL to which the notification will be sent.
-  GlobalVMShutdownScheduleNotificationSettings({
+  const GlobalVMShutdownScheduleNotificationSettings({
     this.email,
     required this.enabled,
     this.timeInMinutes,

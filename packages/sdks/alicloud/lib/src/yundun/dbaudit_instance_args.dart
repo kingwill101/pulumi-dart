@@ -28,7 +28,7 @@ class DBAuditInstanceArgs {
   /// [resourceGroupId] The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] vSwtich ID configured to audit
-  DBAuditInstanceArgs({
+  const DBAuditInstanceArgs({
     required this.description,
     required this.period,
     required this.planCode,

@@ -12,7 +12,7 @@ class HealthResponse {
   /// Creates a new [HealthResponse].
   /// [healthState] Health state of the resource
   /// [impactingReasons] Reasons impacting health state
-  HealthResponse({
+  const HealthResponse({
     required this.healthState,
     required this.impactingReasons,
   });

@@ -23,7 +23,7 @@ class GetBillingHubServiceUsageArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startTimeStamp] Required.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetBillingHubServiceUsageArgs({
+  const GetBillingHubServiceUsageArgs({
     required this.endTimeStamp,
     this.pageIndex,
     this.pageSize,

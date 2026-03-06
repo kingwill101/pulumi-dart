@@ -13,7 +13,7 @@ class ListRegistryCredentialsResult {
   /// Creates a new [ListRegistryCredentialsResult].
   /// [passwords] The list of passwords for a container registry.
   /// [username] The username for a container registry.
-  ListRegistryCredentialsResult({
+  const ListRegistryCredentialsResult({
     this.passwords,
     this.username,
   });

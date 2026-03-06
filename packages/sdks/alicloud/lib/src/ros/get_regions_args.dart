@@ -12,7 +12,7 @@ class GetRegionsArgs {
 
   /// Creates a new [GetRegionsArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.outputFile,
   });
 

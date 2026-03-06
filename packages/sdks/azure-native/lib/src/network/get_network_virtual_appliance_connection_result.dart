@@ -18,7 +18,7 @@ class GetNetworkVirtualApplianceConnectionResult {
   /// [id] Resource ID.
   /// [name] The name of the resource.
   /// [properties] Properties of the express route connection.
-  GetNetworkVirtualApplianceConnectionResult({
+  const GetNetworkVirtualApplianceConnectionResult({
     required this.azureApiVersion,
     this.id,
     this.name,

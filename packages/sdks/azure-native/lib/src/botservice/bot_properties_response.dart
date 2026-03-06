@@ -116,7 +116,7 @@ class BotPropertiesResponse {
   /// [schemaTransformationVersion] The channel schema transformation version for the bot
   /// [storageResourceId] The storage resourceId for the bot
   /// [tenantId] The Tenant Id for the bot
-  BotPropertiesResponse({
+  const BotPropertiesResponse({
     this.allSettings,
     this.appPasswordHint,
     required this.cmekEncryptionStatus,

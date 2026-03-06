@@ -13,7 +13,7 @@ class AkriConnectorsRegistryEndpointRef {
   /// Creates a new [AkriConnectorsRegistryEndpointRef].
   /// [registryEndpointRef] The name of the registry endpoint.
   /// [registrySettingsType] AkriConnectorsRegistrySettings properties.
-  AkriConnectorsRegistryEndpointRef({
+  const AkriConnectorsRegistryEndpointRef({
     required this.registryEndpointRef,
     required this.registrySettingsType,
   });

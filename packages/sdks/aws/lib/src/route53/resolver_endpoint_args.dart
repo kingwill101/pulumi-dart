@@ -44,7 +44,7 @@ class ResolverEndpointArgs {
   /// [securityGroupIds] ID of one or more security groups that you want to use to control access to this VPC.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetNameServerMetricsEnabled] Boolean indicating whether target name server metrics are enabled for the outbound Resolver endpoints. Defaults to `false`. This argument is supported only for outbound endpoints. Once set, changing the value back to `false` requires explicitly specifying `false` rather than removing the argument.
-  ResolverEndpointArgs({
+  const ResolverEndpointArgs({
     required this.direction,
     required this.ipAddresses,
     this.name,

@@ -15,7 +15,7 @@ class GetDiskAccessArgs {
   /// Creates a new [GetDiskAccessArgs].
   /// [diskAccessName] The name of the disk access resource that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiskAccessArgs({
+  const GetDiskAccessArgs({
     required this.diskAccessName,
     required this.resourceGroupName,
   });

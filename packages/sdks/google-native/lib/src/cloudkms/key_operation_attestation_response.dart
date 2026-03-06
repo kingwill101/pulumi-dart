@@ -16,7 +16,7 @@ class KeyOperationAttestationResponse {
   /// [certChains] The certificate chains needed to validate the attestation
   /// [content] The attestation data provided by the HSM when the key operation was performed.
   /// [format] The format of the attestation data.
-  KeyOperationAttestationResponse({
+  const KeyOperationAttestationResponse({
     required this.certChains,
     required this.content,
     required this.format,

@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerTimeoutGrpcIdle {
   /// Creates a new [VirtualNodeSpecListenerTimeoutGrpcIdle].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  VirtualNodeSpecListenerTimeoutGrpcIdle({
+  const VirtualNodeSpecListenerTimeoutGrpcIdle({
     required this.unit,
     required this.value,
   });

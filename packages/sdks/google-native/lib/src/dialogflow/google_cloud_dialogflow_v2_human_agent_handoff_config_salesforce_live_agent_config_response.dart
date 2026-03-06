@@ -18,7 +18,7 @@ class GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigRes
   /// [deploymentId] Live Agent deployment ID.
   /// [endpointDomain] Domain of the Live Agent endpoint for this agent. You can find the endpoint URL in the `Live Agent settings` page. For example if URL has the form https://d.la4-c2-phx.salesforceliveagent.com/..., you should fill in d.la4-c2-phx.salesforceliveagent.com.
   /// [organizationId] The organization ID of the Salesforce account.
-  GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse({
+  const GoogleCloudDialogflowV2HumanAgentHandoffConfigSalesforceLiveAgentConfigResponse({
     required this.buttonId,
     required this.deploymentId,
     required this.endpointDomain,

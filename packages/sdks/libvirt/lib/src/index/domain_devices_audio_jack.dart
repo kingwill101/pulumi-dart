@@ -13,7 +13,7 @@ class DomainDevicesAudioJack {
   /// Creates a new [DomainDevicesAudioJack].
   /// [input] Configures the output settings for the Jack audio device.
   /// [output] Configures the output settings for the Jack audio device.
-  DomainDevicesAudioJack({
+  const DomainDevicesAudioJack({
     this.input,
     this.output,
   });

@@ -12,7 +12,7 @@ class NormalizedVertex {
   /// Creates a new [NormalizedVertex].
   /// [x] X coordinate.
   /// [y] Y coordinate.
-  NormalizedVertex({
+  const NormalizedVertex({
     this.x,
     this.y,
   });

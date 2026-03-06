@@ -46,7 +46,7 @@ class GatewaySecurityPolicyRuleArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sessionMatcher] CEL expression for matching on session criteria.
   /// [tlsInspectionEnabled] Flag to enable TLS inspection of traffic matching on. Can only be true if the
-  GatewaySecurityPolicyRuleArgs({
+  const GatewaySecurityPolicyRuleArgs({
     this.applicationMatcher,
     required this.basicProfile,
     this.description,

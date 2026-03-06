@@ -8,7 +8,7 @@ class GetFunctionTracingConfig {
 
   /// Creates a new [GetFunctionTracingConfig].
   /// [mode] Tracing mode. Valid values: `Active`, `PassThrough`.
-  GetFunctionTracingConfig({
+  const GetFunctionTracingConfig({
     required this.mode,
   });
 

@@ -79,7 +79,7 @@ class SnowflakeV2LinkedService {
   /// [user] The name of the Snowflake user.
   /// [version] Version of the linked service.
   /// [warehouse] The name of the Snowflake warehouse.
-  SnowflakeV2LinkedService({
+  const SnowflakeV2LinkedService({
     required this.accountIdentifier,
     this.annotations,
     this.authenticationType,

@@ -30,7 +30,7 @@ class GoogleCloudApigeeV1AddonsConfig {
   /// [connectorsPlatformConfig] Configuration for the Connectors Platform add-on.
   /// [integrationConfig] Configuration for the Integration add-on.
   /// [monetizationConfig] Configuration for the Monetization add-on.
-  GoogleCloudApigeeV1AddonsConfig({
+  const GoogleCloudApigeeV1AddonsConfig({
     this.advancedApiOpsConfig,
     this.analyticsConfig,
     this.apiSecurityConfig,

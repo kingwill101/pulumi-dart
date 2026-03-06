@@ -25,7 +25,7 @@ class IosTest {
   /// [iosTestLoop] An iOS test loop.
   /// [iosXcTest] An iOS XCTest.
   /// [testTimeout] Max time a test is allowed to run before it is automatically cancelled.
-  IosTest({
+  const IosTest({
     this.iosAppInfo,
     this.iosRoboTest,
     this.iosTestLoop,

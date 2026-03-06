@@ -13,7 +13,7 @@ class BucketAclAccessControlPolicy {
   /// Creates a new [BucketAclAccessControlPolicy].
   /// [grants] Set of `grant` configuration blocks. See below.
   /// [owner] Configuration block for the bucket owner's display name and ID. See below.
-  BucketAclAccessControlPolicy({
+  const BucketAclAccessControlPolicy({
     this.grants,
     required this.owner,
   });

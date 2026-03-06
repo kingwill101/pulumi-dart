@@ -33,7 +33,7 @@ class AutoSnapshotPolicyArgs {
   /// [repeatWeekdays] The day on which an auto snapshot is created.
   /// [retentionDays] The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
   /// [timePoints] The point in time at which an auto snapshot is created.
-  AutoSnapshotPolicyArgs({
+  const AutoSnapshotPolicyArgs({
     this.autoSnapshotPolicyName,
     this.fileSystemType,
     required this.repeatWeekdays,

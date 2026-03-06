@@ -23,7 +23,7 @@ class MscSubContractArgs {
   /// [email] The User's Contact Email Address.
   /// [mobile] The User's Telephone.
   /// [position] The User's Position. Valid values: `CEO`, `Technical Director`, `Maintenance Director`, `Project Director`,`Finance Director` and `Other`.
-  MscSubContractArgs({
+  const MscSubContractArgs({
     required this.contactName,
     required this.email,
     required this.mobile,

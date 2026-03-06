@@ -13,7 +13,7 @@ class UserPasswordResponse {
   /// Creates a new [UserPasswordResponse].
   /// [password] Secret version reference containing the password.
   /// [username] Username.
-  UserPasswordResponse({
+  const UserPasswordResponse({
     required this.password,
     required this.username,
   });

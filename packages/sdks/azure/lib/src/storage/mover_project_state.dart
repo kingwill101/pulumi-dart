@@ -15,7 +15,7 @@ class MoverProjectState {
   /// [description] Specifies a description for this Storage Mover Project.
   /// [name] Specifies the name which should be used for this Storage Mover Project. Changing this forces a new resource to be created.
   /// [storageMoverId] Specifies the ID of the storage mover for this Storage Mover Project. Changing this forces a new resource to be created.
-  MoverProjectState({
+  const MoverProjectState({
     this.description,
     this.name,
     this.storageMoverId,

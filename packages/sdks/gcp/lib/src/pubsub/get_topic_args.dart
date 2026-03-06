@@ -18,7 +18,7 @@ class GetTopicArgs {
   /// Creates a new [GetTopicArgs].
   /// [name] The name of the Cloud Pub/Sub Topic.
   /// [project] The project in which the resource belongs. If it
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.name,
     this.project,
   });

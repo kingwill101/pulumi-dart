@@ -11,7 +11,7 @@ class VpcIngressConnectionIngressVpcConfiguration {
   /// Creates a new [VpcIngressConnectionIngressVpcConfiguration].
   /// [vpcEndpointId] The ID of the VPC endpoint that your App Runner service connects to.
   /// [vpcId] The ID of the VPC that is used for the VPC endpoint.
-  VpcIngressConnectionIngressVpcConfiguration({
+  const VpcIngressConnectionIngressVpcConfiguration({
     this.vpcEndpointId,
     this.vpcId,
   });

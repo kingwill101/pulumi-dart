@@ -24,7 +24,7 @@ class ClusterMaintenancePolicy {
   /// [createTime] (Output)
   /// [updateTime] (Output)
   /// [weeklyMaintenanceWindows] Optional. Maintenance window that is applied to resources covered by this policy.
-  ClusterMaintenancePolicy({
+  const ClusterMaintenancePolicy({
     this.createTime,
     this.updateTime,
     this.weeklyMaintenanceWindows,

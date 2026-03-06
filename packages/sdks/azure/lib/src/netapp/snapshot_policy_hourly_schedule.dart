@@ -11,7 +11,7 @@ class SnapshotPolicyHourlySchedule {
   /// Creates a new [SnapshotPolicyHourlySchedule].
   /// [minute] Minute of the hour that the snapshots will be created, valid range is from 0 to 59.
   /// [snapshotsToKeep] How many hourly snapshots to keep, valid range is from 0 to 255.
-  SnapshotPolicyHourlySchedule({
+  const SnapshotPolicyHourlySchedule({
     required this.minute,
     required this.snapshotsToKeep,
   });

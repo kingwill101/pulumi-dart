@@ -32,7 +32,7 @@ class IPConfigurationResponse {
   /// [provisioningState] The provisioning state of the IP configuration resource.
   /// [publicIPAddress] The reference to the public IP resource.
   /// [subnet] The reference to the subnet resource.
-  IPConfigurationResponse({
+  const IPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

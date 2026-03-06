@@ -10,7 +10,7 @@ class SerialPipeline {
 
   /// Creates a new [SerialPipeline].
   /// [stages] Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-  SerialPipeline({
+  const SerialPipeline({
     this.stages,
   });
 

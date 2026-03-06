@@ -23,7 +23,7 @@ class PrivateZoneState {
   /// [hostRegionId] The ID of the region where PrivateZone is deployed.
   /// [hostVpcId] The ID of the VPC that is associated with PrivateZone.
   /// [status] The status of the Private Zone.
-  PrivateZoneState({
+  const PrivateZoneState({
     this.accessRegionId,
     this.cenId,
     this.hostRegionId,

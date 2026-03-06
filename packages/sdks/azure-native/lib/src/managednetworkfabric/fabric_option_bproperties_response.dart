@@ -16,7 +16,7 @@ class FabricOptionBPropertiesResponse {
   /// [exportRouteTargets] Route Targets to be applied for outgoing routes from CE. This is for backward compatibility.
   /// [importRouteTargets] Route Targets to be applied for incoming routes into CE. This is for backward compatibility.
   /// [routeTargets] Route Targets to be applied.
-  FabricOptionBPropertiesResponse({
+  const FabricOptionBPropertiesResponse({
     this.exportRouteTargets,
     this.importRouteTargets,
     this.routeTargets,

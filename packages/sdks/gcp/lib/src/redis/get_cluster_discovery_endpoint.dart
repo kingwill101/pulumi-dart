@@ -16,7 +16,7 @@ class GetClusterDiscoveryEndpoint {
   /// [address] Output only. Network address of the exposed Redis endpoint used by clients to connect to the service.
   /// [port] Output only. The port number of the exposed Redis endpoint.
   /// [pscConfigs] Output only. Customer configuration for where the endpoint
-  GetClusterDiscoveryEndpoint({
+  const GetClusterDiscoveryEndpoint({
     required this.address,
     required this.port,
     required this.pscConfigs,

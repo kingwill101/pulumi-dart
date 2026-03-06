@@ -21,7 +21,7 @@ class TableSchemaDefinition {
   /// [columns] The regular columns of the table.
   /// [partitionKeys] The columns that are part of the partition key of the table .
   /// [staticColumns] The columns that have been defined as `STATIC`. Static columns store values that are shared by all rows in the same partition.
-  TableSchemaDefinition({
+  const TableSchemaDefinition({
     this.clusteringKeys,
     required this.columns,
     required this.partitionKeys,

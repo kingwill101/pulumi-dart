@@ -66,7 +66,7 @@ class GetOpenShiftClusterResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workerProfiles] The cluster worker profiles.
   /// [workerProfilesStatus] The cluster worker profiles status.
-  GetOpenShiftClusterResult({
+  const GetOpenShiftClusterResult({
     this.apiserverProfile,
     required this.azureApiVersion,
     this.clusterProfile,

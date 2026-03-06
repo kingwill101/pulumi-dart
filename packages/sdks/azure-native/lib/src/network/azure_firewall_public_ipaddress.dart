@@ -9,7 +9,7 @@ class AzureFirewallPublicIPAddress {
 
   /// Creates a new [AzureFirewallPublicIPAddress].
   /// [address] Public IP Address value.
-  AzureFirewallPublicIPAddress({
+  const AzureFirewallPublicIPAddress({
     this.address,
   });
 

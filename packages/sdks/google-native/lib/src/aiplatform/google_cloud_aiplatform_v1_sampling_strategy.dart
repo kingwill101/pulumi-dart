@@ -10,7 +10,7 @@ class GoogleCloudAiplatformV1SamplingStrategy {
 
   /// Creates a new [GoogleCloudAiplatformV1SamplingStrategy].
   /// [randomSampleConfig] Random sample config. Will support more sampling strategies later.
-  GoogleCloudAiplatformV1SamplingStrategy({
+  const GoogleCloudAiplatformV1SamplingStrategy({
     this.randomSampleConfig,
   });
 

@@ -46,7 +46,7 @@ class GetSnapshotsArgs {
   /// [sourceType] Data source type, valid values: `ECS_FILE`, `OSS`, `NAS`.
   /// [status] The status of snapshot, valid values: `COMPLETE`, `PARTIAL_COMPLETE`.
   /// [vaultId] The ID of Vault.
-  GetSnapshotsArgs({
+  const GetSnapshotsArgs({
     this.bucket,
     this.completeTime,
     this.completeTimeChecker,

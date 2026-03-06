@@ -23,7 +23,7 @@ class GetGroupVmmigrationV1alpha1Result {
   /// [migrationTargetType] Immutable. The target type of this group.
   /// [name] The Group name.
   /// [updateTime] The update time timestamp.
-  GetGroupVmmigrationV1alpha1Result({
+  const GetGroupVmmigrationV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

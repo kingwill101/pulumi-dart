@@ -17,7 +17,7 @@ class GroupPolicyAttachmentState {
   /// [groupName] The name of the group.
   /// [policyName] The name of the policy.
   /// [policyType] Policy type.
-  GroupPolicyAttachmentState({
+  const GroupPolicyAttachmentState({
     this.groupName,
     this.policyName,
     this.policyType,

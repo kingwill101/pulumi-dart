@@ -15,7 +15,7 @@ class GetAssetArgs {
   /// Creates a new [GetAssetArgs].
   /// [assetName] Asset name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAssetArgs({
+  const GetAssetArgs({
     required this.assetName,
     required this.resourceGroupName,
   });

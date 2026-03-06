@@ -29,7 +29,7 @@ class PublicIPAddressArgs {
   /// [publicIPAddressName] Name of the public IP
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PublicIPAddressArgs({
+  const PublicIPAddressArgs({
     this.extendedLocation,
     this.location,
     this.properties,

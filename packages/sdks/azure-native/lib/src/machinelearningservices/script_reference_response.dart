@@ -18,7 +18,7 @@ class ScriptReferenceResponse {
   /// [scriptData] The location of scripts in the mounted volume.
   /// [scriptSource] The storage source of the script: workspace.
   /// [timeout] Optional time period passed to timeout command.
-  ScriptReferenceResponse({
+  const ScriptReferenceResponse({
     this.scriptArguments,
     this.scriptData,
     this.scriptSource,

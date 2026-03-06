@@ -15,7 +15,7 @@ class InboundNatRuleResponse {
   /// [backendPort] The port to which the external traffic will be redirected.
   /// [frontendPort] The external endpoint port of the inbound connection. Possible values range between 1 and 65535, inclusive. If unspecified, a value will be allocated automatically.
   /// [transportProtocol] The transport protocol for the endpoint.
-  InboundNatRuleResponse({
+  const InboundNatRuleResponse({
     this.backendPort,
     this.frontendPort,
     this.transportProtocol,

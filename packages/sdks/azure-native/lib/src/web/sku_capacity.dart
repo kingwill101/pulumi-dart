@@ -21,7 +21,7 @@ class SkuCapacity {
   /// [maximum] Maximum number of workers for this App Service plan SKU.
   /// [minimum] Minimum number of workers for this App Service plan SKU.
   /// [scaleType] Available scale configurations for an App Service plan.
-  SkuCapacity({
+  const SkuCapacity({
     this.default_,
     this.elasticMaximum,
     this.maximum,

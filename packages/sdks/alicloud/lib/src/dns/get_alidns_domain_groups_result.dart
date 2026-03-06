@@ -23,7 +23,7 @@ class GetAlidnsDomainGroupsResult {
   /// [nameRegex] Optional.
   /// [names] A list of domain group names.
   /// [outputFile] Optional.
-  GetAlidnsDomainGroupsResult({
+  const GetAlidnsDomainGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

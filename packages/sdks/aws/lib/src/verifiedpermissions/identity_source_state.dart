@@ -19,7 +19,7 @@ class IdentitySourceState {
   /// [policyStoreId] Specifies the ID of the policy store in which you want to store this identity source.
   /// [principalEntityType] Specifies the namespace and data type of the principals generated for identities authenticated by the new identity source.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  IdentitySourceState({
+  const IdentitySourceState({
     this.configuration,
     this.policyStoreId,
     this.principalEntityType,

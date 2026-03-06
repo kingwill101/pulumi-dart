@@ -9,7 +9,7 @@ class PathOverrideResponse {
 
   /// Creates a new [PathOverrideResponse].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverrideResponse({
+  const PathOverrideResponse({
     required this.path,
   });
 

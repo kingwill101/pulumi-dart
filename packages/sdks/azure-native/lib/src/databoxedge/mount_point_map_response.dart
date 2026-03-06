@@ -21,7 +21,7 @@ class MountPointMapResponse {
   /// [roleId] ID of the role to which share is mounted.
   /// [roleType] Role type.
   /// [shareId] ID of the share mounted to the role VM.
-  MountPointMapResponse({
+  const MountPointMapResponse({
     required this.mountPoint,
     required this.mountType,
     required this.roleId,

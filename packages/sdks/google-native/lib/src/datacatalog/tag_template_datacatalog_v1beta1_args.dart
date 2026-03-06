@@ -25,7 +25,7 @@ class TagTemplateDatacatalogV1beta1Args {
   /// [name] The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name.
   /// [project] Optional.
   /// [tagTemplateId] Required. The id of the tag template to create.
-  TagTemplateDatacatalogV1beta1Args({
+  const TagTemplateDatacatalogV1beta1Args({
     this.displayName,
     required this.fields,
     this.location,

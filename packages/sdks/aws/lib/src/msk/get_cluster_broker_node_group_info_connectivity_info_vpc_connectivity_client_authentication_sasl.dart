@@ -9,7 +9,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenti
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl].
   /// [iam] Required.
   /// [scram] Required.
-  GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl({
+  const GetClusterBrokerNodeGroupInfoConnectivityInfoVpcConnectivityClientAuthenticationSasl({
     required this.iam,
     required this.scram,
   });

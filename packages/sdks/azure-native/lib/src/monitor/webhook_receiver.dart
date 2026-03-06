@@ -30,7 +30,7 @@ class WebhookReceiver {
   /// [tenantId] Indicates the tenant id for aad auth.
   /// [useAadAuth] Indicates whether or not use AAD authentication.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  WebhookReceiver({
+  const WebhookReceiver({
     this.identifierUri,
     this.managedIdentity,
     required this.name,

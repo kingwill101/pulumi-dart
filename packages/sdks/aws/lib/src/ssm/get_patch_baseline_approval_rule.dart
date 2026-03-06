@@ -21,7 +21,7 @@ class GetPatchBaselineApprovalRule {
   /// [complianceLevel] Compliance level for patches approved by this rule.
   /// [enableNonSecurity] Boolean enabling the application of non-security updates.
   /// [patchFilters] Patch filter group that defines the criteria for the rule.
-  GetPatchBaselineApprovalRule({
+  const GetPatchBaselineApprovalRule({
     required this.approveAfterDays,
     required this.approveUntilDate,
     required this.complianceLevel,

@@ -9,7 +9,7 @@ class Config {
 
   /// Creates a new [Config].
   /// [cmekKeyName] The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location.
-  Config({
+  const Config({
     required this.cmekKeyName,
   });
 

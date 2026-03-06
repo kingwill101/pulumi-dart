@@ -27,7 +27,7 @@ class SecurityAdminConfigurationArgs {
   /// [networkGroupAddressSpaceAggregationOption] Determine update behavior for changes to network groups referenced within the rules in this configuration.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  SecurityAdminConfigurationArgs({
+  const SecurityAdminConfigurationArgs({
     this.applyOnNetworkIntentPolicyBasedServices,
     this.configurationName,
     this.description,

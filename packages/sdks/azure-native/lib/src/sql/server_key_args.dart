@@ -24,7 +24,7 @@ class ServerKeyArgs {
   /// [serverKeyType] The server key type like 'ServiceManaged', 'AzureKeyVault'.
   /// [serverName] The name of the server.
   /// [uri] The URI of the server key. If the ServerKeyType is AzureKeyVault, then the URI is required. The AKV URI is required to be in this format: 'https://YourVaultName.vault.azure.net/keys/YourKeyName/YourKeyVersion'
-  ServerKeyArgs({
+  const ServerKeyArgs({
     this.keyName,
     required this.resourceGroupName,
     required this.serverKeyType,

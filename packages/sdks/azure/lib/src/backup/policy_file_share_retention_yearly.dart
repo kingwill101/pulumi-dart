@@ -25,7 +25,7 @@ class PolicyFileShareRetentionYearly {
   /// [months] The months of the year to retain backups of. Must be one of `January`, `February`, `March`, `April`, `May`, `June`, `July`, `Augest`, `September`, `October`, `November` and `December`.
   /// [weekdays] The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
   /// [weeks] The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
-  PolicyFileShareRetentionYearly({
+  const PolicyFileShareRetentionYearly({
     required this.count,
     this.days,
     this.includeLastDays,

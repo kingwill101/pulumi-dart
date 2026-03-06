@@ -15,7 +15,7 @@ class GetDigitalTwinArgs {
   /// Creates a new [GetDigitalTwinArgs].
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
-  GetDigitalTwinArgs({
+  const GetDigitalTwinArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

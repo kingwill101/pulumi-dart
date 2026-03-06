@@ -34,7 +34,7 @@ class StorageBoxSubaccountState {
   /// [server] FQDN of the Storage Box Subaccount.
   /// [storageBoxId] ID of the Storage Box.
   /// [username] Username of the Storage Box Subaccount.
-  StorageBoxSubaccountState({
+  const StorageBoxSubaccountState({
     this.accessSettings,
     this.description,
     this.homeDirectory,

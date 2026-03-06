@@ -20,7 +20,7 @@ class EndpointServicePrivateDnsVerificationState {
   /// [serviceId] ID of the endpoint service.
   /// [timeouts] Optional.
   /// [waitForVerification] Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
-  EndpointServicePrivateDnsVerificationState({
+  const EndpointServicePrivateDnsVerificationState({
     this.region,
     this.serviceId,
     this.timeouts,

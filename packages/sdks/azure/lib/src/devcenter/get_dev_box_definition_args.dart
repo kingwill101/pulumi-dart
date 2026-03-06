@@ -15,7 +15,7 @@ class GetDevBoxDefinitionArgs {
   /// Creates a new [GetDevBoxDefinitionArgs].
   /// [devCenterId] The ID of the associated Dev Center.
   /// [name] The name of this Dev Center Dev Box Definition.
-  GetDevBoxDefinitionArgs({
+  const GetDevBoxDefinitionArgs({
     required this.devCenterId,
     required this.name,
   });

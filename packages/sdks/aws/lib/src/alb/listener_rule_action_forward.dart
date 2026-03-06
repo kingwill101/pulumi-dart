@@ -13,7 +13,7 @@ class ListenerRuleActionForward {
   /// Creates a new [ListenerRuleActionForward].
   /// [stickiness] The target group stickiness for the rule.
   /// [targetGroups] One or more target group blocks.
-  ListenerRuleActionForward({
+  const ListenerRuleActionForward({
     this.stickiness,
     required this.targetGroups,
   });

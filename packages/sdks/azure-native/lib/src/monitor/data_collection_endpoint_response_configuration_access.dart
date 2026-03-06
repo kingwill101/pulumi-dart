@@ -9,7 +9,7 @@ class DataCollectionEndpointResponseConfigurationAccess {
 
   /// Creates a new [DataCollectionEndpointResponseConfigurationAccess].
   /// [endpoint] The endpoint. This property is READ-ONLY.
-  DataCollectionEndpointResponseConfigurationAccess({
+  const DataCollectionEndpointResponseConfigurationAccess({
     required this.endpoint,
   });
 

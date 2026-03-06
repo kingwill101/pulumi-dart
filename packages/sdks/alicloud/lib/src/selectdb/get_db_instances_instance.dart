@@ -82,7 +82,7 @@ class GetDbInstancesInstance {
   /// [vpcId] The ID of the VPC for DBInstance.
   /// [vswitchId] The ID of vswitch for DBInstance.
   /// [zoneId] The ID of zone for DBInstance.
-  GetDbInstancesInstance({
+  const GetDbInstancesInstance({
     required this.cacheSizePostpaid,
     required this.cacheSizePrepaid,
     required this.clusterCountPostpaid,

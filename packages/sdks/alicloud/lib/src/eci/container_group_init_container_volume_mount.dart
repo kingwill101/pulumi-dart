@@ -11,7 +11,7 @@ class ContainerGroupInitContainerVolumeMount {
   /// [mountPath] Optional.
   /// [name] Optional.
   /// [readOnly] Optional.
-  ContainerGroupInitContainerVolumeMount({
+  const ContainerGroupInitContainerVolumeMount({
     this.mountPath,
     this.name,
     this.readOnly,

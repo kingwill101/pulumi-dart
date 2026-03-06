@@ -24,7 +24,7 @@ class GetPortfolioConstraintsDetail {
   /// [portfolioId] Portfolio identifier.
   /// [productId] Product identifier.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `STACKSET`, and `TEMPLATE`.
-  GetPortfolioConstraintsDetail({
+  const GetPortfolioConstraintsDetail({
     required this.constraintId,
     required this.description,
     required this.owner,

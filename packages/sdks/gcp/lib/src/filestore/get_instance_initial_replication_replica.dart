@@ -8,7 +8,7 @@ class GetInstanceInitialReplicationReplica {
 
   /// Creates a new [GetInstanceInitialReplicationReplica].
   /// [peerInstance] The peer instance.
-  GetInstanceInitialReplicationReplica({
+  const GetInstanceInitialReplicationReplica({
     required this.peerInstance,
   });
 

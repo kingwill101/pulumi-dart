@@ -12,7 +12,7 @@ class ConnectionGithubConfigAuthorizerCredential {
   /// Creates a new [ConnectionGithubConfigAuthorizerCredential].
   /// [oauthTokenSecretVersion] A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/*/secrets/*/versions/*`.
   /// [username] (Output)
-  ConnectionGithubConfigAuthorizerCredential({
+  const ConnectionGithubConfigAuthorizerCredential({
     this.oauthTokenSecretVersion,
     this.username,
   });

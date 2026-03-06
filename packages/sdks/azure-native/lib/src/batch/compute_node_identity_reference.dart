@@ -9,7 +9,7 @@ class ComputeNodeIdentityReference {
 
   /// Creates a new [ComputeNodeIdentityReference].
   /// [resourceId] The ARM resource id of the user assigned identity.
-  ComputeNodeIdentityReference({
+  const ComputeNodeIdentityReference({
     this.resourceId,
   });
 

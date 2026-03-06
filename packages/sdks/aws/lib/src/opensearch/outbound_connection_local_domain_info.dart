@@ -14,7 +14,7 @@ class OutboundConnectionLocalDomainInfo {
   /// [domainName] The name of the local domain.
   /// [ownerId] The Account ID of the owner of the local domain.
   /// [region] The region of the local domain.
-  OutboundConnectionLocalDomainInfo({
+  const OutboundConnectionLocalDomainInfo({
     required this.domainName,
     required this.ownerId,
     required this.region,

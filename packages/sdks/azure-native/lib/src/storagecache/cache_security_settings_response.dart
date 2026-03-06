@@ -10,7 +10,7 @@ class CacheSecuritySettingsResponse {
 
   /// Creates a new [CacheSecuritySettingsResponse].
   /// [accessPolicies] NFS access policies defined for this cache.
-  CacheSecuritySettingsResponse({
+  const CacheSecuritySettingsResponse({
     this.accessPolicies,
   });
 

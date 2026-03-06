@@ -15,7 +15,7 @@ class ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs {
   /// Creates a new [ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs].
   /// [eventTrackingId] Event Id which uniquely identifies ServiceHealth event.
   /// [filter] The filter to apply on the operation. For more information please see https://docs.microsoft.com/en-us/rest/api/apimanagement/apis?redirectedfrom=MSDN
-  ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs({
+  const ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdArgs({
     required this.eventTrackingId,
     this.filter,
   });

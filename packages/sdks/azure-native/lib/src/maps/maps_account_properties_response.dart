@@ -31,7 +31,7 @@ class MapsAccountPropertiesResponse {
   /// [locations] List of additional data processing regions for the Maps Account, which may result in requests being processed in another geography. Some features or results may be restricted to specific regions. By default, Maps REST APIs process requests according to the account location or the [geographic scope](https://learn.microsoft.com/azure/azure-maps/geographic-scope).
   /// [provisioningState] The provisioning state of the Maps account resource, Account updates can only be performed on terminal states. Terminal states: `Succeeded` and `Failed`
   /// [uniqueId] A unique identifier for the Maps Account
-  MapsAccountPropertiesResponse({
+  const MapsAccountPropertiesResponse({
     this.cors,
     this.disableLocalAuth,
     this.encryption,

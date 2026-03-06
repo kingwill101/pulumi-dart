@@ -21,7 +21,7 @@ class InstanceIamBindingState {
   /// [members] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  InstanceIamBindingState({
+  const InstanceIamBindingState({
     this.condition,
     this.etag,
     this.instanceId,

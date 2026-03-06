@@ -14,7 +14,7 @@ class DistributionConfigurationDistributionSsmParameterConfiguration {
   /// [amiAccountId] AWS account ID that will own the parameter in the given region. This account must be specified as a target account in the distribution settings.
   /// [dataType] Data type of the SSM parameter. Valid values are `text` and `aws:ec2:image`. AWS recommends using `aws:ec2:image`.
   /// [parameterName] Name of the SSM parameter that will store the AMI ID after distribution.
-  DistributionConfigurationDistributionSsmParameterConfiguration({
+  const DistributionConfigurationDistributionSsmParameterConfiguration({
     this.amiAccountId,
     this.dataType,
     required this.parameterName,

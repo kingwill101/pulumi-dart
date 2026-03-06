@@ -33,7 +33,7 @@ class ApprovalRuleTemplateState {
   /// [name] The name for the approval rule template. Maximum of 100 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleContentSha256] The SHA-256 hash signature for the content of the approval rule template.
-  ApprovalRuleTemplateState({
+  const ApprovalRuleTemplateState({
     this.approvalRuleTemplateId,
     this.content,
     this.creationDate,

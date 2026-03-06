@@ -43,7 +43,7 @@ class GetDedicatedHostsArgs {
   /// [status] The status of the ECS Dedicated Host. Valid Value: `Available`, `Creating`, `PermanentFailure`, `Released`, `UnderAssessment`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The zone ID of the ECS Dedicated Host.
-  GetDedicatedHostsArgs({
+  const GetDedicatedHostsArgs({
     this.dedicatedHostId,
     this.dedicatedHostName,
     this.dedicatedHostType,

@@ -24,7 +24,7 @@ class GetDraResult {
   /// [properties] Dra model properties.
   /// [systemData] Required.
   /// [type] Gets or sets the type of the resource.
-  GetDraResult({
+  const GetDraResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -15,7 +15,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom {
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom].
   /// [customConstraint] Organization policy custom constraint definition.
   /// [policyRules] Definition of policy rules
-  PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom({
+  const PosturePolicySetPolicyConstraintOrgPolicyConstraintCustom({
     this.customConstraint,
     required this.policyRules,
   });

@@ -37,7 +37,7 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule {
   /// [sourceIpGroups] Optional.
   /// [terminateTls] Boolean specifying if TLS shall be terminated (true) or not (false). Must be `true` when using `destination_urls`. Needs Premium SKU for Firewall Policy.
   /// [webCategories] Specifies a list of web categories to which access is denied or allowed depending on the value of `action` above. Needs Premium SKU for Firewall Policy.
-  FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule({
+  const FirewallPolicyRuleCollectionGroupApplicationRuleCollectionRule({
     this.description,
     this.destinationAddresses,
     this.destinationFqdnTags,

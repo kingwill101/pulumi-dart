@@ -13,7 +13,7 @@ class GetDomainsDomainRecordLine {
   /// [lineCode] Required.
   /// [lineDisplayName] Required.
   /// [lineName] Required.
-  GetDomainsDomainRecordLine({
+  const GetDomainsDomainRecordLine({
     required this.fatherCode,
     required this.lineCode,
     required this.lineDisplayName,

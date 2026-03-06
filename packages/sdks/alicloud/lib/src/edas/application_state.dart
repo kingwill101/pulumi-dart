@@ -39,7 +39,7 @@ class ApplicationState {
   /// [packageType] The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
   /// [packageVersion] The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
   /// [warUrl] The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
-  ApplicationState({
+  const ApplicationState({
     this.applicationName,
     this.buildPackId,
     this.clusterId,

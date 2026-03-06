@@ -12,7 +12,7 @@ class ForwardInfoResponseNetworkmanagementV1beta1 {
   /// Creates a new [ForwardInfoResponseNetworkmanagementV1beta1].
   /// [resourceUri] URI of the resource that the packet is forwarded to.
   /// [target] Target type where this packet is forwarded to.
-  ForwardInfoResponseNetworkmanagementV1beta1({
+  const ForwardInfoResponseNetworkmanagementV1beta1({
     required this.resourceUri,
     required this.target,
   });

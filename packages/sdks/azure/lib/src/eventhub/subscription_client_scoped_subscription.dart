@@ -16,7 +16,7 @@ class SubscriptionClientScopedSubscription {
   /// [clientId] Specifies the Client ID of the application that created the client-scoped subscription. Changing this forces a new resource to be created.
   /// [isClientScopedSubscriptionDurable] Whether the client scoped subscription is durable. This property can only be controlled from the application side.
   /// [isClientScopedSubscriptionShareable] Whether the client scoped subscription is shareable. Defaults to `true` Changing this forces a new resource to be created.
-  SubscriptionClientScopedSubscription({
+  const SubscriptionClientScopedSubscription({
     this.clientId,
     this.isClientScopedSubscriptionDurable,
     this.isClientScopedSubscriptionShareable,

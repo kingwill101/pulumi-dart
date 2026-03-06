@@ -14,7 +14,7 @@ class BucketV2ObjectLockConfigurationRuleDefaultRetention {
   /// [days] Number of days that you want to specify for the default retention period.
   /// [mode] Default Object Lock retention mode you want to apply to new objects placed in this bucket. Valid values are `GOVERNANCE` and `COMPLIANCE`.
   /// [years] Number of years that you want to specify for the default retention period.
-  BucketV2ObjectLockConfigurationRuleDefaultRetention({
+  const BucketV2ObjectLockConfigurationRuleDefaultRetention({
     this.days,
     required this.mode,
     this.years,

@@ -34,7 +34,7 @@ class ApiGatewayStagePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ApiGatewayStagePropertiesResponse({
+  const ApiGatewayStagePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

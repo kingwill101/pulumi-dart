@@ -23,7 +23,7 @@ class EmailChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to email channel resource
   /// [provisioningState] Provisioning state of the resource
-  EmailChannelResponse({
+  const EmailChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

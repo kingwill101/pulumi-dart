@@ -9,7 +9,7 @@ class VirtualNetworkPropertiesResponseIpConfigurationReferences {
 
   /// Creates a new [VirtualNetworkPropertiesResponseIpConfigurationReferences].
   /// [id] IPConfigurationID
-  VirtualNetworkPropertiesResponseIpConfigurationReferences({
+  const VirtualNetworkPropertiesResponseIpConfigurationReferences({
     this.id,
   });
 

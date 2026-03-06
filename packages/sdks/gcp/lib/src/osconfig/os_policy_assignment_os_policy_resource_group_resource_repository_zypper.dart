@@ -20,7 +20,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper {
   /// [displayName] The display name of the repository.
   /// [gpgKeys] URIs of GPG keys.
   /// [id] A one word, unique name for this repository. This is the
-  OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper({
     required this.baseUrl,
     this.displayName,
     this.gpgKeys,

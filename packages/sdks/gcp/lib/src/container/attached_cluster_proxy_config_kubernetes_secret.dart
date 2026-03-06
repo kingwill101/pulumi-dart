@@ -11,7 +11,7 @@ class AttachedClusterProxyConfigKubernetesSecret {
   /// Creates a new [AttachedClusterProxyConfigKubernetesSecret].
   /// [name] Name of the kubernetes secret containing the proxy config.
   /// [namespace] Namespace of the kubernetes secret containing the proxy config.
-  AttachedClusterProxyConfigKubernetesSecret({
+  const AttachedClusterProxyConfigKubernetesSecret({
     required this.name,
     required this.namespace,
   });

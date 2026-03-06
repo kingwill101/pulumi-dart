@@ -66,7 +66,7 @@ class GetKustoPoolResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uri] The Kusto Pool URI.
   /// [workspaceUID] The workspace unique identifier.
-  GetKustoPoolResult({
+  const GetKustoPoolResult({
     required this.azureApiVersion,
     required this.dataIngestionUri,
     this.enablePurge,

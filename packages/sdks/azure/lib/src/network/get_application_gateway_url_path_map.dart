@@ -38,7 +38,7 @@ class GetApplicationGatewayUrlPathMap {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
   /// [pathRules] One or more `path_rule` blocks as defined above.
-  GetApplicationGatewayUrlPathMap({
+  const GetApplicationGatewayUrlPathMap({
     required this.defaultBackendAddressPoolId,
     required this.defaultBackendAddressPoolName,
     required this.defaultBackendHttpSettingsId,

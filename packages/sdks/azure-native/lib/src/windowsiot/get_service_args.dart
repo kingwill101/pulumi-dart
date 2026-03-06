@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [deviceName] The name of the Windows IoT Device Service.
   /// [resourceGroupName] The name of the resource group that contains the Windows IoT Device Service.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

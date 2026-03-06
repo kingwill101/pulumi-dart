@@ -19,7 +19,7 @@ class OSPolicyResponseOsconfigV1alpha {
   /// [description] Policy description. Length of the description is limited to 1024 characters.
   /// [mode] Policy mode
   /// [resourceGroups] List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
-  OSPolicyResponseOsconfigV1alpha({
+  const OSPolicyResponseOsconfigV1alpha({
     required this.allowNoResourceGroupMatch,
     required this.description,
     required this.mode,

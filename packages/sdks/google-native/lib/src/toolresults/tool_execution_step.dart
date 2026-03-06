@@ -10,7 +10,7 @@ class ToolExecutionStep {
 
   /// Creates a new [ToolExecutionStep].
   /// [toolExecution] A Tool execution. - In response: present if set by create/update request - In create/update request: optional
-  ToolExecutionStep({
+  const ToolExecutionStep({
     this.toolExecution,
   });
 

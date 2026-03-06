@@ -28,7 +28,7 @@ class NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs {
   /// [name] The name which should be used for this Network Manager Verifier Workspace Reachability Analysis Intent. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   /// [sourceResourceId] The ID of the source resource. The value can be the ID of either Public internet, Virtual machines, or Subnet. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
   /// [verifierWorkspaceId] The ID of the Network Manager Verifier Workspace. Changing this forces a new Network Manager Verifier Workspace Reachability Analysis Intent to be created.
-  NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs({
+  const NetworkManagerVerifierWorkspaceReachabilityAnalysisIntentArgs({
     this.description,
     required this.destinationResourceId,
     required this.ipTraffic,

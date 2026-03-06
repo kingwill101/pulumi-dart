@@ -66,7 +66,7 @@ class NetworkFirewallPolicyPacketMirroringRuleState {
   /// [securityProfileGroup] A fully-qualified URL of a SecurityProfile resource instance.
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule applies to.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
-  NetworkFirewallPolicyPacketMirroringRuleState({
+  const NetworkFirewallPolicyPacketMirroringRuleState({
     this.action,
     this.creationTimestamp,
     this.description,

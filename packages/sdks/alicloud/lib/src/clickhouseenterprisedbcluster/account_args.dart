@@ -33,7 +33,7 @@ class AccountArgs {
   /// [description] Note information.
   /// [dmlAuthSetting] Authorization information. See `dml_auth_setting` below.
   /// [password] Database account password. Set the following rules.
-  AccountArgs({
+  const AccountArgs({
     required this.account,
     required this.accountType,
     required this.dbInstanceId,

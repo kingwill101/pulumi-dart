@@ -8,7 +8,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings {
 
   /// Creates a new [DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings].
   /// [status] Describes whether model deployment permissions are enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings({
+  const DomainDefaultUserSettingsCanvasAppSettingsDirectDeploySettings({
     this.status,
   });
 

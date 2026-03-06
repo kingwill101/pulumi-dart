@@ -26,7 +26,7 @@ class AlertPolicyDocumentation {
   /// [links] Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries.
   /// [mimeType] The format of the content field. Presently, only the value
   /// [subject] The subject line of the notification. The subject line may not
-  AlertPolicyDocumentation({
+  const AlertPolicyDocumentation({
     this.content,
     this.links,
     this.mimeType,

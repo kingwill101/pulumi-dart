@@ -29,7 +29,7 @@ class RocketMQInstanceProductInfo {
   /// [storageSecretKey] The key for encryption at rest.
   /// [supportAutoScaling] is support auto scaling.
   /// [traceOn] Whether to enable the message trace function. Valid values: `true`, `false`.
-  RocketMQInstanceProductInfo({
+  const RocketMQInstanceProductInfo({
     this.autoScaling,
     this.messageRetentionTime,
     required this.msgProcessSpec,

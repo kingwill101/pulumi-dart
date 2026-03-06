@@ -18,7 +18,7 @@ class SqlServerAuditConfigSqladminV1beta4 {
   /// [kind] This is always sql#sqlServerAuditConfig
   /// [retentionInterval] How long to keep generated audit files.
   /// [uploadInterval] How often to upload generated audit files.
-  SqlServerAuditConfigSqladminV1beta4({
+  const SqlServerAuditConfigSqladminV1beta4({
     this.bucket,
     this.kind,
     this.retentionInterval,

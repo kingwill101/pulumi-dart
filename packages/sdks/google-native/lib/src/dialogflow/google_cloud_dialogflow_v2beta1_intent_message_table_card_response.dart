@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse {
   /// [rows] Optional. Rows in this table of data.
   /// [subtitle] Optional. Subtitle to the title.
   /// [title] Title of the card.
-  GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageTableCardResponse({
     required this.buttons,
     required this.columnProperties,
     required this.image,

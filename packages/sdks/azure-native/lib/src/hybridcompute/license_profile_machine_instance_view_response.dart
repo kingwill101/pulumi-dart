@@ -45,7 +45,7 @@ class LicenseProfileMachineInstanceViewResponse {
   /// [productType] Indicates the product type of the license.
   /// [softwareAssuranceCustomer] Specifies if this machine is licensed as part of a Software Assurance agreement.
   /// [subscriptionStatus] Indicates the subscription status of the product.
-  LicenseProfileMachineInstanceViewResponse({
+  const LicenseProfileMachineInstanceViewResponse({
     required this.billingEndDate,
     required this.billingStartDate,
     required this.disenrollmentDate,

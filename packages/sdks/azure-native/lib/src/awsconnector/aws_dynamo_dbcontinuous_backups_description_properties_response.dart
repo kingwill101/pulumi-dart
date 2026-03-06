@@ -14,7 +14,7 @@ class AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse {
   /// Creates a new [AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse].
   /// [continuousBackupsStatus] &lt;p&gt; &lt;code&gt;ContinuousBackupsStatus&lt;/code&gt; can be one of the following states: ENABLED, DISABLED&lt;/p&gt;
   /// [pointInTimeRecoveryDescription] &lt;p&gt;The description of the point in time recovery settings applied to the table.&lt;/p&gt;
-  AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse({
+  const AwsDynamoDBContinuousBackupsDescriptionPropertiesResponse({
     this.continuousBackupsStatus,
     this.pointInTimeRecoveryDescription,
   });

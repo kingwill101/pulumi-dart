@@ -21,7 +21,7 @@ class AuditCallbackState {
   /// [callbackTypes] A list of Callback types. Value: machineScan: Machine audit result notification, selfAudit: self-service audit notification.
   /// [cryptType] The encryption algorithm is used to verify that the callback request is sent by the content security service to your business service. The value is SHA256:SHA256 encryption algorithm and SM3: SM3 encryption algorithm.
   /// [url] The detection result will be called back to the url.
-  AuditCallbackState({
+  const AuditCallbackState({
     this.auditCallbackName,
     this.callbackSuggestions,
     this.callbackTypes,

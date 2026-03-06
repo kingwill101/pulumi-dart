@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift].
   /// [password] Required.
   /// [username] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsRedshift({
     required this.password,
     required this.username,
   });

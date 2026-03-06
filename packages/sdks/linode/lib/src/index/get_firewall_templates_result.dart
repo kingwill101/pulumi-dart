@@ -14,7 +14,7 @@ class GetFirewallTemplatesResult {
   /// [filters] Optional.
   /// [firewallTemplates] Required.
   /// [id] Required.
-  GetFirewallTemplatesResult({
+  const GetFirewallTemplatesResult({
     this.filters,
     required this.firewallTemplates,
     required this.id,

@@ -51,7 +51,7 @@ class GetRegionSecurityPolicyRuleRateLimitOption {
   /// [enforceOnKeyName] Rate limit key name applicable only for the following key types:
   /// [exceedAction] Action to take for requests that are above the configured rate limit threshold, to deny with a specified HTTP response code.
   /// [rateLimitThresholds] Threshold at which to begin ratelimiting.
-  GetRegionSecurityPolicyRuleRateLimitOption({
+  const GetRegionSecurityPolicyRuleRateLimitOption({
     required this.banDurationSec,
     required this.banThresholds,
     required this.conformAction,

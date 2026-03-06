@@ -22,7 +22,7 @@ class FlexibleServerCustomerManagedKey {
   /// [keyVaultKeyId] The ID of the Key Vault Key.
   /// [managedHsmKeyId] The ID of the Managed HSM Key.
   /// [primaryUserAssignedIdentityId] Specifies the primary user managed identity id for a Customer Managed Key. Should be added with `identity_ids`.
-  FlexibleServerCustomerManagedKey({
+  const FlexibleServerCustomerManagedKey({
     this.geoBackupKeyVaultKeyId,
     this.geoBackupUserAssignedIdentityId,
     this.keyVaultKeyId,

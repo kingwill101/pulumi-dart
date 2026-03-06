@@ -13,7 +13,7 @@ class AuthConfigDecryptedCredentialUsernameAndPassword {
   /// Creates a new [AuthConfigDecryptedCredentialUsernameAndPassword].
   /// [password] Password to be used.
   /// [username] Username to be used.
-  AuthConfigDecryptedCredentialUsernameAndPassword({
+  const AuthConfigDecryptedCredentialUsernameAndPassword({
     this.password,
     this.username,
   });

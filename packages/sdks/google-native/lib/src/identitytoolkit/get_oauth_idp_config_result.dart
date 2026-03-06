@@ -27,7 +27,7 @@ class GetOauthIdpConfigResult {
   /// [issuer] For OIDC Idps, the issuer identifier.
   /// [name] The name of the OAuthIdpConfig resource, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. Ignored during create requests.
   /// [responseType] The response type to request for in the OAuth authorization flow. You can set either `id_token` or `code` to true, but not both. Setting both types to be simultaneously true (`{code: true, id_token: true}`) is not yet supported.
-  GetOauthIdpConfigResult({
+  const GetOauthIdpConfigResult({
     required this.clientId,
     required this.clientSecret,
     required this.displayName,

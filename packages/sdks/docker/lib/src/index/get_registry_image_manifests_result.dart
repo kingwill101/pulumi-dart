@@ -23,7 +23,7 @@ class GetRegistryImageManifestsResult {
   /// [insecureSkipVerify] If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   /// [manifests] The metadata for each manifest in the image
   /// [name] The name of the Docker image, including any tags. e.g. `alpine:latest`
-  GetRegistryImageManifestsResult({
+  const GetRegistryImageManifestsResult({
     this.authConfig,
     required this.id,
     this.insecureSkipVerify,

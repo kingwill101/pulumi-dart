@@ -21,7 +21,7 @@ class GetApplicationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.appversionLifecycle,
     required this.arn,
     required this.description,

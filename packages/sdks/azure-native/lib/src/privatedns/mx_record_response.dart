@@ -12,7 +12,7 @@ class MxRecordResponse {
   /// Creates a new [MxRecordResponse].
   /// [exchange] The domain name of the mail host for this MX record.
   /// [preference] The preference value for this MX record.
-  MxRecordResponse({
+  const MxRecordResponse({
     this.exchange,
     this.preference,
   });

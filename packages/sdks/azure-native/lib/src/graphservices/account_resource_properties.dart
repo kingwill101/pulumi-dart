@@ -9,7 +9,7 @@ class AccountResourceProperties {
 
   /// Creates a new [AccountResourceProperties].
   /// [appId] Customer owned application ID
-  AccountResourceProperties({
+  const AccountResourceProperties({
     required this.appId,
   });
 

@@ -120,7 +120,7 @@ class VpcCniAddonArgs {
   /// [warmEniTarget] Specifies the number of free elastic network interfaces (and all of their available IP addresses) that the ipamD daemon should attempt to keep available for pod assignment on the node.
   /// [warmIpTarget] Specifies the number of free IP addresses that the ipamD daemon should attempt to keep available for pod assignment on the node.
   /// [warmPrefixTarget] WARM_PREFIX_TARGET will allocate one full (/28) prefix even if a single IP  is consumed with the existing prefix. Ref: https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/prefix-and-ip-target.md
-  VpcCniAddonArgs({
+  const VpcCniAddonArgs({
     this.addonVersion,
     required this.clusterName,
     this.clusterVersion,

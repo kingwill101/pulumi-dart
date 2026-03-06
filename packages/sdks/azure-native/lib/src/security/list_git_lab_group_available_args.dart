@@ -15,7 +15,7 @@ class ListGitLabGroupAvailableArgs {
   /// Creates a new [ListGitLabGroupAvailableArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  ListGitLabGroupAvailableArgs({
+  const ListGitLabGroupAvailableArgs({
     required this.resourceGroupName,
     required this.securityConnectorName,
   });

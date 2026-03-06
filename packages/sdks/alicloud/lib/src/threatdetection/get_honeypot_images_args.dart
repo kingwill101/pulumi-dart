@@ -20,7 +20,7 @@ class GetHoneypotImagesArgs {
   /// [nameRegex] A regex string to filter results by Honeypot mirror nam.
   /// [nodeId] Optional.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetHoneypotImagesArgs({
+  const GetHoneypotImagesArgs({
     this.ids,
     this.nameRegex,
     this.nodeId,

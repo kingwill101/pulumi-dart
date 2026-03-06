@@ -9,7 +9,7 @@ class JobDefinitionEksPropertiesPodPropertiesContainerResources {
   /// Creates a new [JobDefinitionEksPropertiesPodPropertiesContainerResources].
   /// [limits] Optional.
   /// [requests] Optional.
-  JobDefinitionEksPropertiesPodPropertiesContainerResources({
+  const JobDefinitionEksPropertiesPodPropertiesContainerResources({
     this.limits,
     this.requests,
   });

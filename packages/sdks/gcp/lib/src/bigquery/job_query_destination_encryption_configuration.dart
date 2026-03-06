@@ -13,7 +13,7 @@ class JobQueryDestinationEncryptionConfiguration {
   /// Creates a new [JobQueryDestinationEncryptionConfiguration].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table.
   /// [kmsKeyVersion] (Output)
-  JobQueryDestinationEncryptionConfiguration({
+  const JobQueryDestinationEncryptionConfiguration({
     required this.kmsKeyName,
     this.kmsKeyVersion,
   });

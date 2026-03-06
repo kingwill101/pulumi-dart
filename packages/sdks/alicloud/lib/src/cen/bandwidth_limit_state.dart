@@ -17,7 +17,7 @@ class BandwidthLimitState {
   /// [bandwidthLimit] The bandwidth configured for the interconnected regions communication.
   /// [instanceId] The ID of the CEN.
   /// [regionIds] List of the two regions to interconnect. Must be two different regions.
-  BandwidthLimitState({
+  const BandwidthLimitState({
     this.bandwidthLimit,
     this.instanceId,
     this.regionIds,

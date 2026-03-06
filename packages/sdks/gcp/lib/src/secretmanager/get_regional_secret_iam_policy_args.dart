@@ -22,7 +22,7 @@ class GetRegionalSecretIamPolicyArgs {
   /// [location] The location of the regional secret. eg us-central1
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] Used to find the parent resource to bind the IAM policy to
-  GetRegionalSecretIamPolicyArgs({
+  const GetRegionalSecretIamPolicyArgs({
     this.location,
     this.project,
     required this.secretId,

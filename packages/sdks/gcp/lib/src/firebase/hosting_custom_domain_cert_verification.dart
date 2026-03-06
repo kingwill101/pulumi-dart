@@ -17,7 +17,7 @@ class HostingCustomDomainCertVerification {
   /// Creates a new [HostingCustomDomainCertVerification].
   /// [dns] A `TXT` record to add to your DNS records that confirms your intent to
   /// [http] A file to add to your existing, non-Hosting hosting service that confirms
-  HostingCustomDomainCertVerification({
+  const HostingCustomDomainCertVerification({
     this.dns,
     this.http,
   });

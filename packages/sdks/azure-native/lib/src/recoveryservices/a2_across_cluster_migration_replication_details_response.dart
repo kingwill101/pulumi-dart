@@ -28,7 +28,7 @@ class A2ACrossClusterMigrationReplicationDetailsResponse {
   /// [primaryFabricLocation] Primary fabric location.
   /// [vmProtectionState] The protection state for the vm.
   /// [vmProtectionStateDescription] The protection state description for the vm.
-  A2ACrossClusterMigrationReplicationDetailsResponse({
+  const A2ACrossClusterMigrationReplicationDetailsResponse({
     this.fabricObjectId,
     required this.instanceType,
     this.lifecycleId,

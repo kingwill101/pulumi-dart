@@ -35,7 +35,7 @@ class InsightProperties {
   /// [impact] details of of the impact for which insight has been generated.
   /// [insightUniqueId] unique id of the insight.
   /// [status] status of the insight. example resolved, repaired, other.
-  InsightProperties({
+  const InsightProperties({
     this.additionalDetails,
     required this.category,
     required this.content,

@@ -12,7 +12,7 @@ class BucketPolicyState {
   /// Creates a new [BucketPolicyState].
   /// [bucket] The name of the Bucket.
   /// [policy] Json-formatted authorization policies for buckets.
-  BucketPolicyState({
+  const BucketPolicyState({
     this.bucket,
     this.policy,
   });

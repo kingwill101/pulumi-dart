@@ -13,7 +13,7 @@ class FunctionAsyncInvokeConfigDestinationConfig {
   /// Creates a new [FunctionAsyncInvokeConfigDestinationConfig].
   /// [onFailure] Configuration block with destination configuration for failed asynchronous invocations. See `on_failure` below.
   /// [onSuccess] Configuration block with destination configuration for successful asynchronous invocations. See `on_success` below.
-  FunctionAsyncInvokeConfigDestinationConfig({
+  const FunctionAsyncInvokeConfigDestinationConfig({
     this.onFailure,
     this.onSuccess,
   });

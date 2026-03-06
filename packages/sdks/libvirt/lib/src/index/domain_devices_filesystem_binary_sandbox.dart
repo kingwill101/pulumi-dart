@@ -8,7 +8,7 @@ class DomainDevicesFilesystemBinarySandbox {
 
   /// Creates a new [DomainDevicesFilesystemBinarySandbox].
   /// [mode] Sets the mode for the sandbox environment of the binary filesystem.
-  DomainDevicesFilesystemBinarySandbox({
+  const DomainDevicesFilesystemBinarySandbox({
     required this.mode,
   });
 

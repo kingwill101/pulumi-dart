@@ -11,7 +11,7 @@ class IotHubDeviceUpdateInstanceDiagnosticStorageAccount {
   /// Creates a new [IotHubDeviceUpdateInstanceDiagnosticStorageAccount].
   /// [connectionString] Connection String of the Diagnostic Storage Account.
   /// [id] Resource ID of the Diagnostic Storage Account.
-  IotHubDeviceUpdateInstanceDiagnosticStorageAccount({
+  const IotHubDeviceUpdateInstanceDiagnosticStorageAccount({
     required this.connectionString,
     required this.id,
   });

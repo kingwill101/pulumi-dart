@@ -17,7 +17,7 @@ class CustomDataDisk {
   /// [category] Instance storage type
   /// [performanceLevel] Cloud Disk Performance
   /// [size] Instance storage space. Unit: GB.
-  CustomDataDisk({
+  const CustomDataDisk({
     this.category,
     this.performanceLevel,
     this.size,

@@ -69,7 +69,7 @@ class KeyVaultArgs {
   /// [softDeleteRetentionDays] The number of days that items should be retained for once soft-deleted. This value can be between `7` and `90` (the default) days.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tenantId] The Azure Active Directory tenant ID that should be used for authenticating requests to the key vault.
-  KeyVaultArgs({
+  const KeyVaultArgs({
     this.accessPolicies,
     this.contacts,
     this.enableRbacAuthorization,

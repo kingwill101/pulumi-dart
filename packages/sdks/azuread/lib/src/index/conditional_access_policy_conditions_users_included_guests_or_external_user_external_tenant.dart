@@ -11,7 +11,7 @@ class ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternal
   /// Creates a new [ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant].
   /// [members] A list tenant IDs. Can only be specified if `membership_kind` is `enumerated`.
   /// [membershipKind] The external tenant membership kind. Possible values are: `all`, `enumerated`, `unknownFutureValue`.
-  ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant({
+  const ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserExternalTenant({
     this.members,
     required this.membershipKind,
   });

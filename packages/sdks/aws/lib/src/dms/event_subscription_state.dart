@@ -36,7 +36,7 @@ class EventSubscriptionState {
   /// [sourceType] Type of source for events. Valid values: `replication-instance` or `replication-task`
   /// [tags] Map of resource tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  EventSubscriptionState({
+  const EventSubscriptionState({
     this.arn,
     this.enabled,
     this.eventCategories,

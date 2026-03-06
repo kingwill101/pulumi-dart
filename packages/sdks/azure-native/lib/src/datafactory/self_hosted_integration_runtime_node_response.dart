@@ -60,7 +60,7 @@ class SelfHostedIntegrationRuntimeNodeResponse {
   /// [status] Status of the integration runtime node.
   /// [version] Version of the integration runtime node.
   /// [versionStatus] Status of the integration runtime node version.
-  SelfHostedIntegrationRuntimeNodeResponse({
+  const SelfHostedIntegrationRuntimeNodeResponse({
     required this.capabilities,
     required this.concurrentJobsLimit,
     required this.expiryTime,

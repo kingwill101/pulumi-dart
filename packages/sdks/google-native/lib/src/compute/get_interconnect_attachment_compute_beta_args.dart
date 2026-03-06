@@ -15,7 +15,7 @@ class GetInterconnectAttachmentComputeBetaArgs {
   /// [interconnectAttachment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetInterconnectAttachmentComputeBetaArgs({
+  const GetInterconnectAttachmentComputeBetaArgs({
     required this.interconnectAttachment,
     this.project,
     required this.region,

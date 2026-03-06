@@ -12,7 +12,7 @@ class TCPSocketAction {
   /// Creates a new [TCPSocketAction].
   /// [host] Optional: Host name to connect to, defaults to the pod IP.
   /// [port] Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
-  TCPSocketAction({
+  const TCPSocketAction({
     this.host,
     required this.port,
   });

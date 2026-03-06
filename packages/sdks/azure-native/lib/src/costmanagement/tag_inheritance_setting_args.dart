@@ -23,7 +23,7 @@ class TagInheritanceSettingArgs {
   /// [properties] The properties of the tag inheritance setting.
   /// [scope] The scope associated with this setting. This includes 'subscriptions/{subscriptionId}' for subscription scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}' for Billing Account scope, 'providers/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}' for billing profile scope.
   /// [type] Setting type.
-  TagInheritanceSettingArgs({
+  const TagInheritanceSettingArgs({
     required this.kind,
     this.properties,
     required this.scope,

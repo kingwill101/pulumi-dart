@@ -17,7 +17,7 @@ class LinuxFunctionAppAuthSettingsFacebook {
   /// [appSecret] The App Secret of the Facebook app used for Facebook login. Cannot be specified with `app_secret_setting_name`.
   /// [appSecretSettingName] The app setting name that contains the `app_secret` value used for Facebook login. Cannot be specified with `app_secret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes to be requested as part of Facebook login authentication.
-  LinuxFunctionAppAuthSettingsFacebook({
+  const LinuxFunctionAppAuthSettingsFacebook({
     required this.appId,
     this.appSecret,
     this.appSecretSettingName,

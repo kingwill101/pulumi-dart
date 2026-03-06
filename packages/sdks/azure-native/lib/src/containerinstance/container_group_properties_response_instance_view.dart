@@ -13,7 +13,7 @@ class ContainerGroupPropertiesResponseInstanceView {
   /// Creates a new [ContainerGroupPropertiesResponseInstanceView].
   /// [events] The events of this container group.
   /// [state] The state of the container group. Only valid in response.
-  ContainerGroupPropertiesResponseInstanceView({
+  const ContainerGroupPropertiesResponseInstanceView({
     required this.events,
     required this.state,
   });

@@ -14,7 +14,7 @@ class DeviceFile {
   /// Creates a new [DeviceFile].
   /// [obbFile] A reference to an opaque binary blob file.
   /// [regularFile] A reference to a regular file.
-  DeviceFile({
+  const DeviceFile({
     this.obbFile,
     this.regularFile,
   });

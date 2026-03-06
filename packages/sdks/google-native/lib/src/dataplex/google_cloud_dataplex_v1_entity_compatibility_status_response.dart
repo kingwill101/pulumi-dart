@@ -13,7 +13,7 @@ class GoogleCloudDataplexV1EntityCompatibilityStatusResponse {
   /// Creates a new [GoogleCloudDataplexV1EntityCompatibilityStatusResponse].
   /// [bigquery] Whether this entity is compatible with BigQuery.
   /// [hiveMetastore] Whether this entity is compatible with Hive Metastore.
-  GoogleCloudDataplexV1EntityCompatibilityStatusResponse({
+  const GoogleCloudDataplexV1EntityCompatibilityStatusResponse({
     required this.bigquery,
     required this.hiveMetastore,
   });

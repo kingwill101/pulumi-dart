@@ -21,7 +21,7 @@ class SourceContextContaineranalysisV1beta1 {
   /// [gerrit] A SourceContext referring to a Gerrit project.
   /// [git] A SourceContext referring to any third party Git repo (e.g., GitHub).
   /// [labels] Labels with user defined metadata.
-  SourceContextContaineranalysisV1beta1({
+  const SourceContextContaineranalysisV1beta1({
     this.cloudRepo,
     this.gerrit,
     this.git,

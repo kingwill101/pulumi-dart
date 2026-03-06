@@ -15,7 +15,7 @@ class Scope {
   /// [azureResourceGraphQuery] The ARG query.
   /// [scopeType] The scope type
   /// [serverGroupId] The server group arm id.
-  Scope({
+  const Scope({
     this.azureResourceGraphQuery,
     this.scopeType,
     this.serverGroupId,

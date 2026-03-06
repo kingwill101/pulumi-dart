@@ -9,7 +9,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
 
   /// Creates a new [DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup].
   /// [labelMatchExpressions] Sets the dispatch rule. See `label_match_expressions` below.
-  DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup({
+  const DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup({
     required this.labelMatchExpressions,
   });
 

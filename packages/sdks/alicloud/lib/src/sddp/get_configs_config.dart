@@ -23,7 +23,7 @@ class GetConfigsConfig {
   /// [description] Abnormal Alarm General Description of the Configuration Item.
   /// [id] The ID of the Config.
   /// [value] The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different.
-  GetConfigsConfig({
+  const GetConfigsConfig({
     required this.code,
     required this.configId,
     required this.defaultValue,

@@ -14,7 +14,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueRes
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse].
   /// [allowInterrupt] Whether the user can interrupt a speech response from Amazon Lex.
   /// [messageGroups] Configuration blocks for responses that Amazon Lex can send to the user.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponse({
     this.allowInterrupt,
     this.messageGroups,
   });

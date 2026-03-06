@@ -13,7 +13,7 @@ class PowerQuerySinkMapping {
   /// Creates a new [PowerQuerySinkMapping].
   /// [dataflowSinks] List of sinks mapped to Power Query mashup query.
   /// [queryName] Name of the query in Power Query mashup document.
-  PowerQuerySinkMapping({
+  const PowerQuerySinkMapping({
     this.dataflowSinks,
     this.queryName,
   });

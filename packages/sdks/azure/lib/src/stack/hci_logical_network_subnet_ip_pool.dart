@@ -11,7 +11,7 @@ class HciLogicalNetworkSubnetIpPool {
   /// Creates a new [HciLogicalNetworkSubnetIpPool].
   /// [end] The IPv4 address of the end of the IP address pool. Changing this forces a new resource to be created.
   /// [start] The IPv4 address of the start of the IP address pool. Changing this forces a new resource to be created.
-  HciLogicalNetworkSubnetIpPool({
+  const HciLogicalNetworkSubnetIpPool({
     required this.end,
     required this.start,
   });

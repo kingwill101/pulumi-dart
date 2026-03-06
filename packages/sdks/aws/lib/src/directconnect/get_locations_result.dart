@@ -13,7 +13,7 @@ class GetLocationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [locationCodes] Code for the locations.
   /// [region] Required.
-  GetLocationsResult({
+  const GetLocationsResult({
     required this.id,
     required this.locationCodes,
     required this.region,

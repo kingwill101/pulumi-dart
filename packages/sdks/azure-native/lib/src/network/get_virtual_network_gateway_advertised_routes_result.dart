@@ -10,7 +10,7 @@ class GetVirtualNetworkGatewayAdvertisedRoutesResult {
 
   /// Creates a new [GetVirtualNetworkGatewayAdvertisedRoutesResult].
   /// [value] List of gateway routes.
-  GetVirtualNetworkGatewayAdvertisedRoutesResult({
+  const GetVirtualNetworkGatewayAdvertisedRoutesResult({
     this.value,
   });
 

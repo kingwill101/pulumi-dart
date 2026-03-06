@@ -9,7 +9,7 @@ class ConfigManagementPolicyControllerMonitoringResponse {
 
   /// Creates a new [ConfigManagementPolicyControllerMonitoringResponse].
   /// [backends] Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
-  ConfigManagementPolicyControllerMonitoringResponse({
+  const ConfigManagementPolicyControllerMonitoringResponse({
     required this.backends,
   });
 

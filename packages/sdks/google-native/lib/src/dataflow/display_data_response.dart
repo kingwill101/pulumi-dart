@@ -42,7 +42,7 @@ class DisplayDataResponse {
   /// [strValue] Contains value if the data is of string type.
   /// [timestampValue] Contains value if the data is of timestamp type.
   /// [url] An optional full URL.
-  DisplayDataResponse({
+  const DisplayDataResponse({
     required this.boolValue,
     required this.durationValue,
     required this.floatValue,

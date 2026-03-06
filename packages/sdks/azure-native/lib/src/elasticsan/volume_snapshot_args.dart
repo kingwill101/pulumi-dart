@@ -25,7 +25,7 @@ class VolumeSnapshotArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotName] The name of the volume snapshot within the given volume group.
   /// [volumeGroupName] The name of the VolumeGroup.
-  VolumeSnapshotArgs({
+  const VolumeSnapshotArgs({
     required this.creationData,
     required this.elasticSanName,
     required this.resourceGroupName,

@@ -20,7 +20,7 @@ class GetConfigurationWindow {
   /// [recurEvery] The rate at which a maintenance window is expected to recur.
   /// [startDateTime] Effective start date of the maintenance window.
   /// [timeZone] The time zone for the maintenance window.
-  GetConfigurationWindow({
+  const GetConfigurationWindow({
     required this.duration,
     required this.expirationDateTime,
     required this.recurEvery,

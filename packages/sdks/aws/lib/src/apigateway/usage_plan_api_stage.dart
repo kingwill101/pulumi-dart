@@ -15,7 +15,7 @@ class UsagePlanApiStage {
   /// [apiId] API Id of the associated API stage in a usage plan.
   /// [stage] API stage name of the associated API stage in a usage plan.
   /// [throttles] The throttling limits of the usage plan.
-  UsagePlanApiStage({
+  const UsagePlanApiStage({
     required this.apiId,
     required this.stage,
     this.throttles,

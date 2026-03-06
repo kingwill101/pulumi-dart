@@ -18,7 +18,7 @@ class ContactProfileLink {
   /// [direction] Direction of the link. Possible values are `Uplink` and `Downlink`.
   /// [name] Name of the link.
   /// [polarization] Polarization of the link. Possible values are `LHCP`, `RHCP`, `linearVertical` and `linearHorizontal`.
-  ContactProfileLink({
+  const ContactProfileLink({
     required this.channels,
     required this.direction,
     required this.name,

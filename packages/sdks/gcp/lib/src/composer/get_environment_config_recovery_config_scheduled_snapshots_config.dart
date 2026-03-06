@@ -17,7 +17,7 @@ class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
   /// [snapshotCreationSchedule] Snapshot schedule, in the unix-cron format.
   /// [snapshotLocation] the URI of a bucket folder where to save the snapshot.
   /// [timeZone] A time zone for the schedule. This value is a time offset and does not take into account daylight saving time changes. Valid values are from UTC-12 to UTC+12. Examples: UTC, UTC-01, UTC+03.
-  GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig({
+  const GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig({
     required this.enabled,
     required this.snapshotCreationSchedule,
     required this.snapshotLocation,

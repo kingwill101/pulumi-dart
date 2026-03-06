@@ -37,7 +37,7 @@ class TargetServerSSlInfo {
   /// [keyStore] Required if clientAuthEnabled is true. The resource ID of the keystore.
   /// [protocols] The TLS versioins to be used.
   /// [trustStore] The resource ID of the truststore.
-  TargetServerSSlInfo({
+  const TargetServerSSlInfo({
     this.ciphers,
     this.clientAuthEnabled,
     this.commonName,

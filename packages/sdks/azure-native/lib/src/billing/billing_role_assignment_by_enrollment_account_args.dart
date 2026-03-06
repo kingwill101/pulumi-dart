@@ -25,7 +25,7 @@ class BillingRoleAssignmentByEnrollmentAccountArgs {
   /// [enrollmentAccountName] The name of the enrollment account.
   /// [properties] The properties of the billing role assignment.
   /// [tags] Dictionary of metadata associated with the resource. It may not be populated for all resource types. Maximum key/value length supported of 256 characters. Keys/value should not empty value nor null. Keys can not contain &lt; &gt; % & \ ? /
-  BillingRoleAssignmentByEnrollmentAccountArgs({
+  const BillingRoleAssignmentByEnrollmentAccountArgs({
     required this.billingAccountName,
     this.billingRoleAssignmentName,
     required this.enrollmentAccountName,

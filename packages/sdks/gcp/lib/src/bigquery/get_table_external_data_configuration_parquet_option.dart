@@ -11,7 +11,7 @@ class GetTableExternalDataConfigurationParquetOption {
   /// Creates a new [GetTableExternalDataConfigurationParquetOption].
   /// [enableListInference] Indicates whether to use schema inference specifically for Parquet LIST logical type.
   /// [enumAsString] Indicates whether to infer Parquet ENUM logical type as STRING instead of BYTES by default.
-  GetTableExternalDataConfigurationParquetOption({
+  const GetTableExternalDataConfigurationParquetOption({
     required this.enableListInference,
     required this.enumAsString,
   });

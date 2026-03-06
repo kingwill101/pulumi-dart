@@ -11,7 +11,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection {
 
   /// Creates a new [InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection].
   /// [pscConnection] Detailed information of a PSC connection that is created by the customer
-  InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection({
+  const InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnection({
     this.pscConnection,
   });
 

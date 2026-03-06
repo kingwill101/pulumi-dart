@@ -98,7 +98,7 @@ class ProfileHttpArgs {
   /// [viaRequest] Specifies whether to append, remove, or preserve a Via header in an HTTP request
   /// [viaResponse] Specifies whether to append, remove, or preserve a Via header in an HTTP request
   /// [xffAlternativeNames] Specifies alternative XFF headers instead of the default X-forwarded-for header.
-  ProfileHttpArgs({
+  const ProfileHttpArgs({
     this.acceptXff,
     this.appService,
     this.basicAuthRealm,

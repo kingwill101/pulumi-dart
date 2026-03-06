@@ -29,7 +29,7 @@ class VMGalleryApplication {
   /// [packageReferenceId] Specifies the GalleryApplicationVersion resource id on the form of
   /// [tags] Optional, Specifies a passthrough value for more generic context.
   /// [treatFailureAsDeploymentFailure] Optional, If true, any failure for any operation in the VmApplication will fail
-  VMGalleryApplication({
+  const VMGalleryApplication({
     this.configurationReference,
     this.enableAutomaticUpgrade,
     this.order,

@@ -49,7 +49,7 @@ class GetFunctionCloudfunctionsV2betaResult {
   /// [stateMessages] State Messages for this Cloud Function.
   /// [updateTime] The last update timestamp of a Cloud Function.
   /// [url] The deployed url for the function.
-  GetFunctionCloudfunctionsV2betaResult({
+  const GetFunctionCloudfunctionsV2betaResult({
     required this.buildConfig,
     required this.description,
     required this.environment,

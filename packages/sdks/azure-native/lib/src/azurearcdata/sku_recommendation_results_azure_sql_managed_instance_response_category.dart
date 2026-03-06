@@ -20,7 +20,7 @@ class SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory {
   /// [sqlPurchasingModel] The SQL purchasing model of the target SKU.
   /// [sqlServiceTier] The SQL service tier of the target SKU.
   /// [zoneRedundancyAvailable] Indicates if zone redundancy is available for the target SKU.
-  SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory({
+  const SkuRecommendationResultsAzureSqlManagedInstanceResponseCategory({
     this.computeTier,
     this.hardwareType,
     this.sqlPurchasingModel,

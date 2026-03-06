@@ -24,7 +24,7 @@ class ConfigGroupYamlArgs {
   /// [resourcePrefix] An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [transformations_] A set of transformations to apply to Kubernetes resource definitions before registering with engine.
   /// [yaml] YAML text containing Kubernetes resource definitions.
-  ConfigGroupYamlArgs({
+  const ConfigGroupYamlArgs({
     this.files,
     this.objs,
     this.resourcePrefix,

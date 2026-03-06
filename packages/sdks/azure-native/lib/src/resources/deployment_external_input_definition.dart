@@ -12,7 +12,7 @@ class DeploymentExternalInputDefinition {
   /// Creates a new [DeploymentExternalInputDefinition].
   /// [config] Configuration for the external input.
   /// [kind] The kind of external input.
-  DeploymentExternalInputDefinition({
+  const DeploymentExternalInputDefinition({
     this.config,
     required this.kind,
   });

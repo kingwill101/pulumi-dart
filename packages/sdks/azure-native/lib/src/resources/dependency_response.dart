@@ -19,7 +19,7 @@ class DependencyResponse {
   /// [id] The ID of the dependency.
   /// [resourceName] The dependency resource name.
   /// [resourceType] The dependency resource type.
-  DependencyResponse({
+  const DependencyResponse({
     this.dependsOn,
     this.id,
     this.resourceName,

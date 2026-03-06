@@ -11,7 +11,7 @@ class PluginGrantPermission {
   /// Creates a new [PluginGrantPermission].
   /// [name] The name of the permission
   /// [values] The value of the permission
-  PluginGrantPermission({
+  const PluginGrantPermission({
     required this.name,
     required this.values,
   });

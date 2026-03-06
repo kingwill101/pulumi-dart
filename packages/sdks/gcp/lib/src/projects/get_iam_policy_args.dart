@@ -13,7 +13,7 @@ class GetIamPolicyArgs {
 
   /// Creates a new [GetIamPolicyArgs].
   /// [project] The project id of the target project. This is not
-  GetIamPolicyArgs({
+  const GetIamPolicyArgs({
     required this.project,
   });
 

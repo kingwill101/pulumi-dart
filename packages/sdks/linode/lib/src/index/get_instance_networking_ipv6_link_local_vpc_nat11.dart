@@ -14,7 +14,7 @@ class GetInstanceNetworkingIpv6LinkLocalVpcNat11 {
   /// [address] The address.
   /// [subnetId] The unique globally general API entity identifier for the VPC subnet.
   /// [vpcId] The unique globally general API entity identifier for the VPC.
-  GetInstanceNetworkingIpv6LinkLocalVpcNat11({
+  const GetInstanceNetworkingIpv6LinkLocalVpcNat11({
     required this.address,
     required this.subnetId,
     required this.vpcId,

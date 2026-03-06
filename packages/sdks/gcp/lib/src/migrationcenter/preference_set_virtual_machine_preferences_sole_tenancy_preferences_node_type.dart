@@ -8,7 +8,7 @@ class PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType {
 
   /// Creates a new [PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType({
+  const PreferenceSetVirtualMachinePreferencesSoleTenancyPreferencesNodeType({
     this.nodeName,
   });
 

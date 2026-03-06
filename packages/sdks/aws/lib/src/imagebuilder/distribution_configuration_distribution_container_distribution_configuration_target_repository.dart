@@ -11,7 +11,7 @@ class DistributionConfigurationDistributionContainerDistributionConfigurationTar
   /// Creates a new [DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository].
   /// [repositoryName] The name of the container repository where the output container image is stored. This name is prefixed by the repository location.
   /// [service] The service in which this image is registered. Valid values: `ECR`.
-  DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository({
+  const DistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository({
     required this.repositoryName,
     required this.service,
   });

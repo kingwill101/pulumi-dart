@@ -34,7 +34,7 @@ class AssessmentTemplateState {
   /// [tags] Key-value map of tags for the Inspector assessment template. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetArn] The assessment target ARN to attach the template to.
-  AssessmentTemplateState({
+  const AssessmentTemplateState({
     this.arn,
     this.duration,
     this.eventSubscriptions,

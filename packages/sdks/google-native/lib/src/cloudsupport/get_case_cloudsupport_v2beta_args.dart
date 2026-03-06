@@ -15,7 +15,7 @@ class GetCaseCloudsupportV2betaArgs {
   /// [caseId] Required.
   /// [v2betaId1] Required.
   /// [v2betumId] Required.
-  GetCaseCloudsupportV2betaArgs({
+  const GetCaseCloudsupportV2betaArgs({
     required this.caseId,
     required this.v2betaId1,
     required this.v2betumId,

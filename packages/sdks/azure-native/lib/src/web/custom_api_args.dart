@@ -28,7 +28,7 @@ class CustomApiArgs {
   /// [resourceGroupName] The resource group
   /// [subscriptionId] Subscription Id
   /// [tags] Resource tags
-  CustomApiArgs({
+  const CustomApiArgs({
     this.apiName,
     this.location,
     this.properties,

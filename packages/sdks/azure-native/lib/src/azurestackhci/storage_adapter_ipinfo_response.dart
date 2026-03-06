@@ -15,7 +15,7 @@ class StorageAdapterIPInfoResponse {
   /// [ipv4Address] The IPv4 address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
   /// [physicalNode] storage adapter physical node name.
   /// [subnetMask] The SubnetMask address assigned to each storage adapter physical node on your Azure Stack HCI cluster.
-  StorageAdapterIPInfoResponse({
+  const StorageAdapterIPInfoResponse({
     required this.ipv4Address,
     required this.physicalNode,
     required this.subnetMask,

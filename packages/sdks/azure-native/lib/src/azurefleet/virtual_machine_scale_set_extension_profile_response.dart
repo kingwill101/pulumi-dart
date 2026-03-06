@@ -16,7 +16,7 @@ class VirtualMachineScaleSetExtensionProfileResponse {
   /// Creates a new [VirtualMachineScaleSetExtensionProfileResponse].
   /// [extensions] The virtual machine scale set child extension resources.
   /// [extensionsTimeBudget] Specifies the time alloted for all extensions to start. The time duration
-  VirtualMachineScaleSetExtensionProfileResponse({
+  const VirtualMachineScaleSetExtensionProfileResponse({
     this.extensions,
     this.extensionsTimeBudget,
   });

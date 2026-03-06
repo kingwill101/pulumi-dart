@@ -30,7 +30,7 @@ class RecurrenceTrigger {
   /// [startTime] Specifies start time of schedule in ISO 8601 format, but without a UTC offset.
   /// [timeZone] Specifies time zone in which the schedule runs.
   /// [triggerType] Expected value is 'Recurrence'.
-  RecurrenceTrigger({
+  const RecurrenceTrigger({
     this.endTime,
     required this.frequency,
     required this.interval,

@@ -17,7 +17,7 @@ class SelfHostedIntegrationRuntimeResponse {
   /// [description] Integration runtime description.
   /// [linkedInfo] Linked integration runtime type from data factory
   /// [type] The type of integration runtime.
-  SelfHostedIntegrationRuntimeResponse({
+  const SelfHostedIntegrationRuntimeResponse({
     this.description,
     this.linkedInfo,
     required this.type,

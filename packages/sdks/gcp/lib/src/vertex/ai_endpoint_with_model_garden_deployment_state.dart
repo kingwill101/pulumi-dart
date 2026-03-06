@@ -50,7 +50,7 @@ class AiEndpointWithModelGardenDeploymentState {
   /// [modelConfig] The model config to use for the deployment.
   /// [project] The ID of the project in which the resource belongs.
   /// [publisherModelName] The Model Garden model to deploy.
-  AiEndpointWithModelGardenDeploymentState({
+  const AiEndpointWithModelGardenDeploymentState({
     this.deployConfig,
     this.deployedModelDisplayName,
     this.deployedModelId,

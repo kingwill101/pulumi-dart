@@ -19,7 +19,7 @@ class IdentityResponse {
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
   /// [userAssignedIdentities] The list of user identities associated with the resource.
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

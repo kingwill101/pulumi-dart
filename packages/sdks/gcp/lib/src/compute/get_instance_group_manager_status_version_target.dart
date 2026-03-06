@@ -8,7 +8,7 @@ class GetInstanceGroupManagerStatusVersionTarget {
 
   /// Creates a new [GetInstanceGroupManagerStatusVersionTarget].
   /// [isReached] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-  GetInstanceGroupManagerStatusVersionTarget({
+  const GetInstanceGroupManagerStatusVersionTarget({
     required this.isReached,
   });
 

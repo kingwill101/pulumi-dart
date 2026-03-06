@@ -39,7 +39,7 @@ class DatabaseIAMMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [role] The role that should be applied. Only one
-  DatabaseIAMMemberArgs({
+  const DatabaseIAMMemberArgs({
     this.condition,
     required this.database,
     required this.instance,

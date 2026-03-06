@@ -12,7 +12,7 @@ class KeyVaultSecretObjectResponse {
   /// Creates a new [KeyVaultSecretObjectResponse].
   /// [name] KeyVault secret name.
   /// [version] KeyVault secret version.
-  KeyVaultSecretObjectResponse({
+  const KeyVaultSecretObjectResponse({
     required this.name,
     this.version,
   });

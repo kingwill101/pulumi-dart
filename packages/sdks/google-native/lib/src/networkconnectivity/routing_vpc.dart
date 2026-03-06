@@ -9,7 +9,7 @@ class RoutingVPC {
 
   /// Creates a new [RoutingVPC].
   /// [uri] The URI of the VPC network.
-  RoutingVPC({
+  const RoutingVPC({
     this.uri,
   });
 

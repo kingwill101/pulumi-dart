@@ -8,7 +8,7 @@ class PeeringAttachmentOptions {
 
   /// Creates a new [PeeringAttachmentOptions].
   /// [dynamicRouting] Indicates whether dynamic routing is enabled or disabled.. Supports `enable` and `disable`.
-  PeeringAttachmentOptions({
+  const PeeringAttachmentOptions({
     this.dynamicRouting,
   });
 

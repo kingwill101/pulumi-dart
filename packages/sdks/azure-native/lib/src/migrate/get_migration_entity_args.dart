@@ -18,7 +18,7 @@ class GetMigrationEntityArgs {
   /// [migrationEntityName] Migration Entity ARM name
   /// [projectName] Migrate Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMigrationEntityArgs({
+  const GetMigrationEntityArgs({
     required this.migrationEntityName,
     required this.projectName,
     required this.resourceGroupName,

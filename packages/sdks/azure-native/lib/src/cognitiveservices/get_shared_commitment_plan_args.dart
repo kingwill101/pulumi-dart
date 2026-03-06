@@ -15,7 +15,7 @@ class GetSharedCommitmentPlanArgs {
   /// Creates a new [GetSharedCommitmentPlanArgs].
   /// [commitmentPlanName] The name of the commitmentPlan associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSharedCommitmentPlanArgs({
+  const GetSharedCommitmentPlanArgs({
     required this.commitmentPlanName,
     required this.resourceGroupName,
   });

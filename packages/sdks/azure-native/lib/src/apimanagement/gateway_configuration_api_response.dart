@@ -9,7 +9,7 @@ class GatewayConfigurationApiResponse {
 
   /// Creates a new [GatewayConfigurationApiResponse].
   /// [hostname] Hostname to which the agent connects to propagate configuration to the cloud.
-  GatewayConfigurationApiResponse({
+  const GatewayConfigurationApiResponse({
     required this.hostname,
   });
 

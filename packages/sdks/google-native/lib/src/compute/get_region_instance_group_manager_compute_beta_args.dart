@@ -15,7 +15,7 @@ class GetRegionInstanceGroupManagerComputeBetaArgs {
   /// [instanceGroupManager] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionInstanceGroupManagerComputeBetaArgs({
+  const GetRegionInstanceGroupManagerComputeBetaArgs({
     required this.instanceGroupManager,
     this.project,
     required this.region,

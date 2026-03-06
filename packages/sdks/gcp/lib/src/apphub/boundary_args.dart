@@ -21,7 +21,7 @@ class BoundaryArgs {
   /// [crmNode] Optional. The resource name of the CRM node being attached to the
   /// [location] The location for the Boundary resource. Must be global.
   /// [project] The ID of the project in which the resource belongs.
-  BoundaryArgs({
+  const BoundaryArgs({
     this.crmNode,
     required this.location,
     this.project,

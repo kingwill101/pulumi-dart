@@ -40,7 +40,7 @@ class WindowsFunctionAppAuthSettingsV2CustomOidcV2 {
   /// [openidConfigurationEndpoint] The app setting name that contains the `client_secret` value used for the Custom OIDC Login.
   /// [scopes] The list of the scopes that should be requested while authenticating.
   /// [tokenEndpoint] The endpoint used to request a Token as supplied by `openid_configuration_endpoint` response.
-  WindowsFunctionAppAuthSettingsV2CustomOidcV2({
+  const WindowsFunctionAppAuthSettingsV2CustomOidcV2({
     this.authorisationEndpoint,
     this.certificationUri,
     this.clientCredentialMethod,

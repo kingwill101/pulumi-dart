@@ -20,7 +20,7 @@ class ScaleSetPacketCaptureFilter {
   /// [protocol] The Protocol to be filtered on. Possible values include `Any`, `TCP` and `UDP`. Changing this forces a new resource to be created.
   /// [remoteIpAddress] The remote IP Address to be filtered on. Specify `127.0.0.1` for a single address entry, `127.0.0.1-127.0.0.255` for a range and `127.0.0.1;127.0.0.5` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
   /// [remotePort] The remote port to be filtered on. Specify `80` for single port entry, `80-85` for a range and `80;443;` for multiple entries. Multiple ranges and mixing ranges with multiple entries are currently not supported. Changing this forces a new resource to be created.
-  ScaleSetPacketCaptureFilter({
+  const ScaleSetPacketCaptureFilter({
     this.localIpAddress,
     this.localPort,
     required this.protocol,

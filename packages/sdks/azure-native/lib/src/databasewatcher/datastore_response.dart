@@ -27,7 +27,7 @@ class DatastoreResponse {
   /// [kustoDatabaseName] The name of a Kusto database.
   /// [kustoManagementUrl] The Kusto management URL.
   /// [kustoOfferingType] The type of a Kusto offering.
-  DatastoreResponse({
+  const DatastoreResponse({
     this.adxClusterResourceId,
     this.kustoClusterDisplayName,
     required this.kustoClusterUri,

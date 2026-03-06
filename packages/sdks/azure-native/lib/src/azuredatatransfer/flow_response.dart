@@ -37,7 +37,7 @@ class FlowResponse {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  FlowResponse({
+  const FlowResponse({
     required this.id,
     this.identity,
     required this.location,

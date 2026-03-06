@@ -51,7 +51,7 @@ class SynchronizationInstanceState {
   /// [sourceEndpointRegion] The region of source instance.
   /// [status] The status.
   /// [syncArchitecture] The sync architecture. Valid values: `oneway`, `bidirectional`.
-  SynchronizationInstanceState({
+  const SynchronizationInstanceState({
     this.autoPay,
     this.autoStart,
     this.computeUnit,

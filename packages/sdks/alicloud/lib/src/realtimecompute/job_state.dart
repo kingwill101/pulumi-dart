@@ -37,7 +37,7 @@ class JobState {
   /// [restoreStrategy] Restore strategy See `restore_strategy` below.
   /// [status] job status See `status` below.
   /// [stopStrategy] Optional.
-  JobState({
+  const JobState({
     this.deploymentId,
     this.jobId,
     this.localVariables,

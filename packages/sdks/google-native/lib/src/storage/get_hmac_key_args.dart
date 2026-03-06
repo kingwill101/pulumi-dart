@@ -15,7 +15,7 @@ class GetHmacKeyArgs {
   /// [accessId] Required.
   /// [project] Optional.
   /// [userProject] Optional.
-  GetHmacKeyArgs({
+  const GetHmacKeyArgs({
     required this.accessId,
     this.project,
     this.userProject,

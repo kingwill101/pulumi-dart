@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1NasJobSpecResponse {
   /// [multiTrialAlgorithmSpec] The spec of multi-trial algorithms.
   /// [resumeNasJobId] The ID of the existing NasJob in the same Project and Location which will be used to resume search. search_space_spec and nas_algorithm_spec are obtained from previous NasJob hence should not provide them again for this NasJob.
   /// [searchSpaceSpec] It defines the search space for Neural Architecture Search (NAS).
-  GoogleCloudAiplatformV1NasJobSpecResponse({
+  const GoogleCloudAiplatformV1NasJobSpecResponse({
     required this.multiTrialAlgorithmSpec,
     required this.resumeNasJobId,
     required this.searchSpaceSpec,

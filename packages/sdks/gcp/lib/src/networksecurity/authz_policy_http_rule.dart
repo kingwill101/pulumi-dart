@@ -18,7 +18,7 @@ class AuthzPolicyHttpRule {
   /// [from] Describes properties of one or more sources of a request.
   /// [to] Describes properties of one or more targets of a request
   /// [when] CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
-  AuthzPolicyHttpRule({
+  const AuthzPolicyHttpRule({
     this.from,
     this.to,
     this.when,

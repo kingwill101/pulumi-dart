@@ -43,7 +43,7 @@ class GetCustomDomainResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validationData] Special validation or data may be required when delivering CDN to some regions due to local compliance reasons. E.g. ICP license number of a custom domain is required to deliver content in China.
-  GetCustomDomainResult({
+  const GetCustomDomainResult({
     required this.azureApiVersion,
     this.customHttpsParameters,
     required this.customHttpsProvisioningState,

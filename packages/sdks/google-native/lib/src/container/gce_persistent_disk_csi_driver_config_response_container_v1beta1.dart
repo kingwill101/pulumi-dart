@@ -9,7 +9,7 @@ class GcePersistentDiskCsiDriverConfigResponseContainerV1beta1 {
 
   /// Creates a new [GcePersistentDiskCsiDriverConfigResponseContainerV1beta1].
   /// [enabled] Whether the Compute Engine PD CSI driver is enabled for this cluster.
-  GcePersistentDiskCsiDriverConfigResponseContainerV1beta1({
+  const GcePersistentDiskCsiDriverConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

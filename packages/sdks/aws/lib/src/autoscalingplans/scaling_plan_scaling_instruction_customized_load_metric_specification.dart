@@ -20,7 +20,7 @@ class ScalingPlanScalingInstructionCustomizedLoadMetricSpecification {
   /// [namespace] Namespace of the metric.
   /// [statistic] Statistic of the metric. Currently, the value must always be `Sum`.
   /// [unit] Unit of the metric.
-  ScalingPlanScalingInstructionCustomizedLoadMetricSpecification({
+  const ScalingPlanScalingInstructionCustomizedLoadMetricSpecification({
     this.dimensions,
     required this.metricName,
     required this.namespace,

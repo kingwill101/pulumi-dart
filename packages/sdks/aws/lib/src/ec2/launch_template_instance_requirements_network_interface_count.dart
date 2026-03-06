@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsNetworkInterfaceCount {
   /// Creates a new [LaunchTemplateInstanceRequirementsNetworkInterfaceCount].
   /// [max] Maximum.
   /// [min] Minimum.
-  LaunchTemplateInstanceRequirementsNetworkInterfaceCount({
+  const LaunchTemplateInstanceRequirementsNetworkInterfaceCount({
     this.max,
     this.min,
   });

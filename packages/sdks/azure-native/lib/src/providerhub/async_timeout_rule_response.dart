@@ -10,7 +10,7 @@ class AsyncTimeoutRuleResponse {
   /// Creates a new [AsyncTimeoutRuleResponse].
   /// [actionName] Optional.
   /// [timeout] This is a TimeSpan property
-  AsyncTimeoutRuleResponse({
+  const AsyncTimeoutRuleResponse({
     this.actionName,
     this.timeout,
   });

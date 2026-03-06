@@ -41,7 +41,7 @@ class AppVersionSnapshotToolsetOpenApiToolset {
   /// [serviceDirectoryConfigs] (Output)
   /// [tlsConfigs] (Output)
   /// [url] (Output)
-  AppVersionSnapshotToolsetOpenApiToolset({
+  const AppVersionSnapshotToolsetOpenApiToolset({
     this.apiAuthentications,
     this.ignoreUnknownFields,
     this.openApiSchema,

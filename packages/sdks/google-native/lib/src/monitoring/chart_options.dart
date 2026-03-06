@@ -13,7 +13,7 @@ class ChartOptions {
   /// Creates a new [ChartOptions].
   /// [displayHorizontal] Preview: Configures whether the charted values are shown on the horizontal or vertical axis. By default, values are represented the vertical axis. This is a preview feature and may be subject to change before final release.
   /// [mode] The chart mode.
-  ChartOptions({
+  const ChartOptions({
     this.displayHorizontal,
     this.mode,
   });

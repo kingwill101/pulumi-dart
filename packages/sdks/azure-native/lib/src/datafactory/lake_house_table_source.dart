@@ -31,7 +31,7 @@ class LakeHouseTableSource {
   /// [timestampAsOf] Query an older snapshot by timestamp. Type: string (or Expression with resultType string).
   /// [type] Copy source type.
   /// [versionAsOf] Query an older snapshot by version. Type: integer (or Expression with resultType integer).
-  LakeHouseTableSource({
+  const LakeHouseTableSource({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.maxConcurrentConnections,

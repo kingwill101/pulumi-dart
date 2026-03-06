@@ -15,7 +15,7 @@ class DeviceClaimConfigurationResourceK8sIoV1beta1 {
   /// Creates a new [DeviceClaimConfigurationResourceK8sIoV1beta1].
   /// [opaque] Opaque provides driver-specific configuration parameters.
   /// [requests] Requests lists the names of requests where the configuration applies. If empty, it applies to all requests.
-  DeviceClaimConfigurationResourceK8sIoV1beta1({
+  const DeviceClaimConfigurationResourceK8sIoV1beta1({
     this.opaque,
     this.requests,
   });

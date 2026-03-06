@@ -31,7 +31,7 @@ class S3BucketProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  S3BucketProperties({
+  const S3BucketProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

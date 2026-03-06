@@ -18,7 +18,7 @@ class GetRestApiArgs {
   /// [name] Name of the REST API to look up. If no REST API is found with this name, an error will be returned. If multiple REST APIs are found with this name, an error will be returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags.
-  GetRestApiArgs({
+  const GetRestApiArgs({
     required this.name,
     this.region,
     this.tags,

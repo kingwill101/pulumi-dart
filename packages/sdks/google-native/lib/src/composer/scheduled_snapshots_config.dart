@@ -18,7 +18,7 @@ class ScheduledSnapshotsConfig {
   /// [snapshotCreationSchedule] Optional. The cron expression representing the time when snapshots creation mechanism runs. This field is subject to additional validation around frequency of execution.
   /// [snapshotLocation] Optional. The Cloud Storage location for storing automatically created snapshots.
   /// [timeZone] Optional. Time zone that sets the context to interpret snapshot_creation_schedule.
-  ScheduledSnapshotsConfig({
+  const ScheduledSnapshotsConfig({
     this.enabled,
     this.snapshotCreationSchedule,
     this.snapshotLocation,

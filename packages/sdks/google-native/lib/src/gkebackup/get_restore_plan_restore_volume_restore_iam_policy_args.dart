@@ -21,7 +21,7 @@ class GetRestorePlanRestoreVolumeRestoreIamPolicyArgs {
   /// [restoreId] Required.
   /// [restorePlanId] Required.
   /// [volumeRestoreId] Required.
-  GetRestorePlanRestoreVolumeRestoreIamPolicyArgs({
+  const GetRestorePlanRestoreVolumeRestoreIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

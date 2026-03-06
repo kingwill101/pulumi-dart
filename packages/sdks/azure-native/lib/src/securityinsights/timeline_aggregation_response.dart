@@ -12,7 +12,7 @@ class TimelineAggregationResponse {
   /// Creates a new [TimelineAggregationResponse].
   /// [count] the total items found for a kind
   /// [kind] the query kind
-  TimelineAggregationResponse({
+  const TimelineAggregationResponse({
     required this.count,
     required this.kind,
   });

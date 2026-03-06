@@ -25,7 +25,7 @@ class Route53ResourceRecordSetArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Route53ResourceRecordSetArgs({
+  const Route53ResourceRecordSetArgs({
     this.location,
     this.name,
     this.properties,

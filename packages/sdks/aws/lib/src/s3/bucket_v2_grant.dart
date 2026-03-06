@@ -17,7 +17,7 @@ class BucketV2Grant {
   /// [permissions] List of permissions to apply for grantee. Valid values are `READ`, `WRITE`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
   /// [type] Type of grantee to apply for. Valid values are `CanonicalUser` and `Group`. `AmazonCustomerByEmail` is not supported.
   /// [uri] Uri address to grant for. Used only when `type` is `Group`.
-  BucketV2Grant({
+  const BucketV2Grant({
     this.id,
     required this.permissions,
     required this.type,

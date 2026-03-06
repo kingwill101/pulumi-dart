@@ -9,7 +9,7 @@ class FilterResponseContainerV1beta1 {
 
   /// Creates a new [FilterResponseContainerV1beta1].
   /// [eventType] Event types to allowlist.
-  FilterResponseContainerV1beta1({
+  const FilterResponseContainerV1beta1({
     required this.eventType,
   });
 

@@ -10,7 +10,7 @@ class AllNodes {
 
   /// Creates a new [AllNodes].
   /// [nodesValueType] The enumerated types for the nodes value
-  AllNodes({
+  const AllNodes({
     required this.nodesValueType,
   });
 

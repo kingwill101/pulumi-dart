@@ -14,7 +14,7 @@ class DeploymentResourceConfigurationResponse {
   /// [instanceCount] Optional number of instances or nodes used by the compute target.
   /// [instanceType] Optional type of VM used as supported by the compute target.
   /// [properties] Additional properties bag.
-  DeploymentResourceConfigurationResponse({
+  const DeploymentResourceConfigurationResponse({
     this.instanceCount,
     this.instanceType,
     this.properties,

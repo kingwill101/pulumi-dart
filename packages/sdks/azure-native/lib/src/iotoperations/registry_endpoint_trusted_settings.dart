@@ -10,7 +10,7 @@ class RegistryEndpointTrustedSettings {
 
   /// Creates a new [RegistryEndpointTrustedSettings].
   /// [trustedSigningKeys] The trust properties for the registry endpoint.
-  RegistryEndpointTrustedSettings({
+  const RegistryEndpointTrustedSettings({
     required this.trustedSigningKeys,
   });
 

@@ -36,7 +36,7 @@ class IotConnectorArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [tags] Resource tags.
   /// [workspaceName] The name of workspace resource.
-  IotConnectorArgs({
+  const IotConnectorArgs({
     this.deviceMapping,
     this.identity,
     this.ingestionEndpointConfiguration,

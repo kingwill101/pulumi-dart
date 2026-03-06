@@ -66,7 +66,7 @@ class AgentcoreGatewayState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [workloadIdentityDetails] Workload identity details for the gateway. See `workload_identity_details` below.
-  AgentcoreGatewayState({
+  const AgentcoreGatewayState({
     this.authorizerConfiguration,
     this.authorizerType,
     this.description,

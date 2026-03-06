@@ -10,7 +10,7 @@ class WafPolicySignaturesSetting {
   /// Creates a new [WafPolicySignaturesSetting].
   /// [placesignaturesInStaging] Optional.
   /// [signatureStaging] setting true will enforce all signature from staging
-  WafPolicySignaturesSetting({
+  const WafPolicySignaturesSetting({
     this.placesignaturesInStaging,
     this.signatureStaging,
   });

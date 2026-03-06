@@ -17,7 +17,7 @@ class OptInResourceDataLfTagPolicy {
   /// [expressionName] If provided, permissions are granted to the Data Catalog resources whose assigned LF-Tags match the expression body of the saved expression under the provided ExpressionName .
   /// [expressions] List of LF-tag conditions or a saved expression that apply to the resource's LF-Tag policy.
   /// [resourceType] Resource type for which the LF-tag policy applies.
-  OptInResourceDataLfTagPolicy({
+  const OptInResourceDataLfTagPolicy({
     this.catalogId,
     this.expressionName,
     this.expressions,

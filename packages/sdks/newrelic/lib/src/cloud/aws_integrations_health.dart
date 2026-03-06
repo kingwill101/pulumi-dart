@@ -8,7 +8,7 @@ class AwsIntegrationsHealth {
 
   /// Creates a new [AwsIntegrationsHealth].
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsHealth({
+  const AwsIntegrationsHealth({
     this.metricsPollingInterval,
   });
 

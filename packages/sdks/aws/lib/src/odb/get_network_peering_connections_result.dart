@@ -15,7 +15,7 @@ class GetNetworkPeeringConnectionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [odbPeeringConnections] The list of ODB peering connections. A summary of an ODB peering connection.
   /// [region] Required.
-  GetNetworkPeeringConnectionsResult({
+  const GetNetworkPeeringConnectionsResult({
     required this.id,
     required this.odbPeeringConnections,
     required this.region,

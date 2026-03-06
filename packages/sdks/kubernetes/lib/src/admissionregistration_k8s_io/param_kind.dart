@@ -12,7 +12,7 @@ class ParamKind {
   /// Creates a new [ParamKind].
   /// [apiVersion] APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   /// [kind] Kind is the API kind the resources belong to. Required.
-  ParamKind({
+  const ParamKind({
     this.apiVersion,
     this.kind,
   });

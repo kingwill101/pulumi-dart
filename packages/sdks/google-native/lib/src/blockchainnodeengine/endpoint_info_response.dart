@@ -12,7 +12,7 @@ class EndpointInfoResponse {
   /// Creates a new [EndpointInfoResponse].
   /// [jsonRpcApiEndpoint] The assigned URL for the node JSON-RPC API endpoint.
   /// [websocketsApiEndpoint] The assigned URL for the node WebSockets API endpoint.
-  EndpointInfoResponse({
+  const EndpointInfoResponse({
     required this.jsonRpcApiEndpoint,
     required this.websocketsApiEndpoint,
   });

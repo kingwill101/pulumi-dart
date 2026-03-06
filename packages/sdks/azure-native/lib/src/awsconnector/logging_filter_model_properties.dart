@@ -13,7 +13,7 @@ class LoggingFilterModelProperties {
   /// Creates a new [LoggingFilterModelProperties].
   /// [defaultBehavior] Default handling for logs that don't match any of the specified filtering conditions.
   /// [filters] The filters that you want to apply to the logs.
-  LoggingFilterModelProperties({
+  const LoggingFilterModelProperties({
     this.defaultBehavior,
     this.filters,
   });

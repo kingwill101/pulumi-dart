@@ -15,7 +15,7 @@ class GetWorkspaceResult {
   /// [displayName] The display name of the API Management Workspace.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.apiManagementId,
     required this.displayName,
     required this.id,

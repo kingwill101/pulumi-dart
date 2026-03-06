@@ -31,7 +31,7 @@ class CacheAccessPolicyAccessRule {
   /// [scope] The scope of this rule. The `scope` and (potentially) the `filter` determine which clients match the rule. Possible values are: `default`, `network`, `host`.
   /// [submountAccessEnabled] Whether allow access to subdirectories under the root export?
   /// [suidEnabled] Whether [SUID](https://docs.microsoft.com/azure/hpc-cache/access-policies#suid) is allowed?
-  CacheAccessPolicyAccessRule({
+  const CacheAccessPolicyAccessRule({
     required this.access,
     this.anonymousGid,
     this.anonymousUid,

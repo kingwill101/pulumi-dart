@@ -35,7 +35,7 @@ class GetCertificateResult {
   /// [statuses] Optional.
   /// [tags] Mapping of tags for the resource.
   /// [types] Optional.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.arn,
     required this.certificate,
     required this.certificateChain,

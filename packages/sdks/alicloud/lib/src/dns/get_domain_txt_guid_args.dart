@@ -21,7 +21,7 @@ class GetDomainTxtGuidArgs {
   /// [lang] User language.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [type] Txt verification function. Value:`ADD_SUB_DOMAIN`, `RETRIEVAL`.
-  GetDomainTxtGuidArgs({
+  const GetDomainTxtGuidArgs({
     required this.domainName,
     this.lang,
     this.outputFile,

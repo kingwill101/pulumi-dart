@@ -14,7 +14,7 @@ class InstanceConfigDevice {
   /// [deviceName] The Disk ID to map to this disk slot
   /// [diskId] The Disk ID to map to this disk slot
   /// [volumeId] The Block Storage volume ID to map to this disk slot
-  InstanceConfigDevice({
+  const InstanceConfigDevice({
     required this.deviceName,
     this.diskId,
     this.volumeId,

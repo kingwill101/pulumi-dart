@@ -15,7 +15,7 @@ class GetFeatureArgs {
   /// [featureId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureArgs({
+  const GetFeatureArgs({
     required this.featureId,
     required this.location,
     this.project,

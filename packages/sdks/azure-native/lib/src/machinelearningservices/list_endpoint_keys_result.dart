@@ -9,7 +9,7 @@ class ListEndpointKeysResult {
 
   /// Creates a new [ListEndpointKeysResult].
   /// [keys] Dictionary of Keys for the endpoint.
-  ListEndpointKeysResult({
+  const ListEndpointKeysResult({
     this.keys,
   });
 

@@ -9,7 +9,7 @@ class ServiceProviderParameterMetadataConstraintsResponse {
 
   /// Creates a new [ServiceProviderParameterMetadataConstraintsResponse].
   /// [required] Whether required the constraints of the bot meta data.
-  ServiceProviderParameterMetadataConstraintsResponse({
+  const ServiceProviderParameterMetadataConstraintsResponse({
     this.required,
   });
 

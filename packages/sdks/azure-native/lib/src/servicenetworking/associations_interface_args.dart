@@ -31,7 +31,7 @@ class AssociationsInterfaceArgs {
   /// [subnet] Association Subnet
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
-  AssociationsInterfaceArgs({
+  const AssociationsInterfaceArgs({
     this.associationName,
     required this.associationType,
     this.location,

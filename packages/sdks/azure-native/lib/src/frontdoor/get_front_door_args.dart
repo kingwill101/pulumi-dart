@@ -15,7 +15,7 @@ class GetFrontDoorArgs {
   /// Creates a new [GetFrontDoorArgs].
   /// [frontDoorName] Name of the Front Door which is globally unique.
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
-  GetFrontDoorArgs({
+  const GetFrontDoorArgs({
     required this.frontDoorName,
     required this.resourceGroupName,
   });

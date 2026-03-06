@@ -21,7 +21,7 @@ class FirewallRuleState {
   /// [redisCacheName] The name of the Redis Cache. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which this Redis Cache exists. Changing this forces a new resource to be created.
   /// [startIp] The lowest IP address included in the range
-  FirewallRuleState({
+  const FirewallRuleState({
     this.endIp,
     this.name,
     this.redisCacheName,

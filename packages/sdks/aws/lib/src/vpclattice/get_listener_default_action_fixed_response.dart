@@ -7,7 +7,7 @@ class GetListenerDefaultActionFixedResponse {
 
   /// Creates a new [GetListenerDefaultActionFixedResponse].
   /// [statusCode] Required.
-  GetListenerDefaultActionFixedResponse({
+  const GetListenerDefaultActionFixedResponse({
     required this.statusCode,
   });
 

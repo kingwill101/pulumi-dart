@@ -25,7 +25,7 @@ class ClientGroupArgs {
   /// [namespaceName] Name of the namespace.
   /// [query] The grouping query for the clients.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  ClientGroupArgs({
+  const ClientGroupArgs({
     this.clientGroupName,
     this.description,
     required this.namespaceName,

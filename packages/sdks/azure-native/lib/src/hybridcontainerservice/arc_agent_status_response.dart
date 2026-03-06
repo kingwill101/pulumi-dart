@@ -27,7 +27,7 @@ class ArcAgentStatusResponse {
   /// [lastConnectivityTime] Last connected timestamp of the Provisioned cluster resource.
   /// [managedIdentityCertificateExpirationTime] ManagedIdentity certificate expiration time (ValidUntil).
   /// [onboardingPublicKey] Onboarding public key for provisioning the Managed identity for the HybridAKS cluster. Will be used to create the hybridIdentityMetadata proxy resource and will not be persisted.
-  ArcAgentStatusResponse({
+  const ArcAgentStatusResponse({
     this.agentVersion,
     this.coreCount,
     this.deploymentState,

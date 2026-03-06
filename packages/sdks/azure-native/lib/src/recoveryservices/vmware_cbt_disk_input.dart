@@ -27,7 +27,7 @@ class VMwareCbtDiskInput {
   /// [logStorageAccountId] The log storage account ARM Id.
   /// [logStorageAccountSasSecretName] The key vault secret name of the log storage account.
   /// [sectorSizeInBytes] The logical sector size (in bytes), 512 by default.
-  VMwareCbtDiskInput({
+  const VMwareCbtDiskInput({
     this.diskEncryptionSetId,
     required this.diskId,
     this.diskType,

@@ -9,7 +9,7 @@ class DbClusterLogDeliveryConfiguration {
 
   /// Creates a new [DbClusterLogDeliveryConfiguration].
   /// [s3Configuration] Configuration for S3 bucket log delivery.
-  DbClusterLogDeliveryConfiguration({
+  const DbClusterLogDeliveryConfiguration({
     this.s3Configuration,
   });
 

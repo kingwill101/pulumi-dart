@@ -16,7 +16,7 @@ class AdditionalPodNetworkConfig {
   /// [maxPodsPerNode] The maximum number of pods per node which use this pod network
   /// [secondaryPodRange] The name of the secondary range on the subnet which provides IP address for this pod range
   /// [subnetwork] Name of the subnetwork where the additional pod network belongs
-  AdditionalPodNetworkConfig({
+  const AdditionalPodNetworkConfig({
     this.maxPodsPerNode,
     this.secondaryPodRange,
     this.subnetwork,

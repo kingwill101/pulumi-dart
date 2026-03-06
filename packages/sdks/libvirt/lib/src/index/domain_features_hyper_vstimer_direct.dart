@@ -8,7 +8,7 @@ class DomainFeaturesHyperVStimerDirect {
 
   /// Creates a new [DomainFeaturesHyperVStimerDirect].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVStimerDirect({
+  const DomainFeaturesHyperVStimerDirect({
     this.state,
   });
 

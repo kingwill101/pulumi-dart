@@ -17,7 +17,7 @@ class GetResponseHeadersPolicySecurityHeadersConfigXssProtection {
   /// [override] Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
   /// [protection] Boolean value that determines the value of the X-XSS-Protection HTTP response header. When this setting is true, the value of the X-XSS-Protection header is 1. When this setting is false, the value of the X-XSS-Protection header is 0.
   /// [reportUri] Whether CloudFront sets a reporting URI in the X-XSS-Protection header.
-  GetResponseHeadersPolicySecurityHeadersConfigXssProtection({
+  const GetResponseHeadersPolicySecurityHeadersConfigXssProtection({
     required this.modeBlock,
     required this.override,
     required this.protection,

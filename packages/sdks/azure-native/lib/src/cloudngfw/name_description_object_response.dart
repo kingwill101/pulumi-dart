@@ -12,7 +12,7 @@ class NameDescriptionObjectResponse {
   /// Creates a new [NameDescriptionObjectResponse].
   /// [description] description value
   /// [name] name value
-  NameDescriptionObjectResponse({
+  const NameDescriptionObjectResponse({
     this.description,
     required this.name,
   });

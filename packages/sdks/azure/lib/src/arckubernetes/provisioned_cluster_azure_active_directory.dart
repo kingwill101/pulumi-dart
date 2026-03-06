@@ -14,7 +14,7 @@ class ProvisionedClusterAzureActiveDirectory {
   /// [adminGroupObjectIds] A list of IDs of Microsoft Entra ID Groups. All members of the specified Microsoft Entra ID Groups have the cluster administrator access to the Kubernetes cluster.
   /// [azureRbacEnabled] Whether to enable Azure RBAC for Kubernetes authorization. Defaults to `false`.
   /// [tenantId] The Tenant ID to use for authentication. If not specified, the Tenant of the Arc Kubernetes Cluster will be used.
-  ProvisionedClusterAzureActiveDirectory({
+  const ProvisionedClusterAzureActiveDirectory({
     this.adminGroupObjectIds,
     this.azureRbacEnabled,
     this.tenantId,

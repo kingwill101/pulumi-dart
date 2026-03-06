@@ -76,7 +76,7 @@ class ActiveSecurityAdminRuleResponse {
   /// [ruleGroups] Effective configuration groups.
   /// [sourcePortRanges] The source port ranges.
   /// [sources] The CIDR or source IP ranges.
-  ActiveSecurityAdminRuleResponse({
+  const ActiveSecurityAdminRuleResponse({
     required this.access,
     this.commitTime,
     this.configurationDescription,

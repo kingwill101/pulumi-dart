@@ -44,7 +44,7 @@ class GetSearchIndexesIndex {
   /// [syncPhase] The synchronization state of the index.
   /// [tableName] The name of OTS table.
   /// [timeToLive] TTL of index.
-  GetSearchIndexesIndex({
+  const GetSearchIndexesIndex({
     required this.createTime,
     required this.currentSyncTimestamp,
     required this.id,

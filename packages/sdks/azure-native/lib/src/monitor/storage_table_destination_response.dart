@@ -15,7 +15,7 @@ class StorageTableDestinationResponse {
   /// [name] A friendly name for the destination.
   /// [storageAccountResourceId] The resource ID of the storage account.
   /// [tableName] The name of the Storage Table.
-  StorageTableDestinationResponse({
+  const StorageTableDestinationResponse({
     this.name,
     this.storageAccountResourceId,
     this.tableName,

@@ -14,7 +14,7 @@ class GetGenaiAgentsByOpenaiApiKeyResult {
   /// [agents] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [uuid] Required.
-  GetGenaiAgentsByOpenaiApiKeyResult({
+  const GetGenaiAgentsByOpenaiApiKeyResult({
     required this.agents,
     required this.id,
     required this.uuid,

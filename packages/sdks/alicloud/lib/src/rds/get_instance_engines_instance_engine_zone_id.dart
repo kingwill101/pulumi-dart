@@ -11,7 +11,7 @@ class GetInstanceEnginesInstanceEngineZoneId {
   /// Creates a new [GetInstanceEnginesInstanceEngineZoneId].
   /// [id] The Zone to launch the DB instance
   /// [subZoneIds] A list of sub zone ids which in the id - e.g If `id` is `cn-beijing-MAZ5(a,b)`, `sub_zone_ids` will be `["cn-beijing-a", "cn-beijing-b"]`.
-  GetInstanceEnginesInstanceEngineZoneId({
+  const GetInstanceEnginesInstanceEngineZoneId({
     required this.id,
     required this.subZoneIds,
   });

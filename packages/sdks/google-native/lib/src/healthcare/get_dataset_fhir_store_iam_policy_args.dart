@@ -19,7 +19,7 @@ class GetDatasetFhirStoreIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetFhirStoreIamPolicyArgs({
+  const GetDatasetFhirStoreIamPolicyArgs({
     required this.datasetId,
     required this.fhirStoreId,
     required this.location,

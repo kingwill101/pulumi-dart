@@ -11,7 +11,7 @@ class RouteSpecGrpcRouteTimeoutPerRequest {
   /// Creates a new [RouteSpecGrpcRouteTimeoutPerRequest].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  RouteSpecGrpcRouteTimeoutPerRequest({
+  const RouteSpecGrpcRouteTimeoutPerRequest({
     required this.unit,
     required this.value,
   });

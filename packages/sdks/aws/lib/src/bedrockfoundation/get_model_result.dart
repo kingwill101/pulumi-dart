@@ -35,7 +35,7 @@ class GetModelResult {
   /// [providerName] Model provider name.
   /// [region] Required.
   /// [responseStreamingSupported] Indicates whether the model supports streaming.
-  GetModelResult({
+  const GetModelResult({
     required this.customizationsSupporteds,
     required this.id,
     required this.inferenceTypesSupporteds,

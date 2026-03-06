@@ -21,7 +21,7 @@ class LoadBalancerGlbSettings {
   /// [regionPriorities] region priority map
   /// [targetPort] An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
   /// [targetProtocol] The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
-  LoadBalancerGlbSettings({
+  const LoadBalancerGlbSettings({
     this.cdn,
     this.failoverThreshold,
     this.regionPriorities,

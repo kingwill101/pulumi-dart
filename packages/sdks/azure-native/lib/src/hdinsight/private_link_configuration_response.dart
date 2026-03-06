@@ -25,7 +25,7 @@ class PrivateLinkConfigurationResponse {
   /// [name] The name of private link configuration.
   /// [provisioningState] The private link configuration provisioning state, which only appears in the response.
   /// [type] The type of the private link configuration.
-  PrivateLinkConfigurationResponse({
+  const PrivateLinkConfigurationResponse({
     required this.groupId,
     required this.id,
     required this.ipConfigurations,

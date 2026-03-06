@@ -12,7 +12,7 @@ class GetNetworkVpcNetwork {
   /// Creates a new [GetNetworkVpcNetwork].
   /// [network] The relative resource name of the service VPC network this VMware Engine network is attached to.
   /// [type] Type of VPC network (INTRANET, INTERNET, or GOOGLE_CLOUD)
-  GetNetworkVpcNetwork({
+  const GetNetworkVpcNetwork({
     required this.network,
     required this.type,
   });

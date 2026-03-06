@@ -20,7 +20,7 @@ class GetGenaiRegionsRegion {
   /// [servesBatch] Indicates if the model serves batch requests
   /// [servesInference] Indicates if the model serves inference requests
   /// [streamInferenceUrl] Streaming inference URL for the model
-  GetGenaiRegionsRegion({
+  const GetGenaiRegionsRegion({
     required this.inferenceUrl,
     required this.region,
     required this.servesBatch,

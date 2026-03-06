@@ -34,7 +34,7 @@ class GetFirewallInboundRule {
   /// [sourceKubernetesIds] Optional.
   /// [sourceLoadBalancerUids] An array containing the IDs
   /// [sourceTags] A set of names of Tags corresponding to group of
-  GetFirewallInboundRule({
+  const GetFirewallInboundRule({
     this.portRange,
     required this.protocol,
     this.sourceAddresses,

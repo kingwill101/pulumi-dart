@@ -14,7 +14,7 @@ class TaskSparkInfrastructureSpecVpcNetwork {
   /// [network] The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
   /// [networkTags] List of network tags to apply to the job.
   /// [subNetwork] The Cloud VPC sub-network in which the job is run.
-  TaskSparkInfrastructureSpecVpcNetwork({
+  const TaskSparkInfrastructureSpecVpcNetwork({
     this.network,
     this.networkTags,
     this.subNetwork,

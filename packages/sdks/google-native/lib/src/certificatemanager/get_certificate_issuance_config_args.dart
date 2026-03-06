@@ -15,7 +15,7 @@ class GetCertificateIssuanceConfigArgs {
   /// [certificateIssuanceConfigId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCertificateIssuanceConfigArgs({
+  const GetCertificateIssuanceConfigArgs({
     required this.certificateIssuanceConfigId,
     required this.location,
     this.project,

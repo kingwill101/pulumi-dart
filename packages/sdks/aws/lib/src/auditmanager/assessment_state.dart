@@ -47,7 +47,7 @@ class AssessmentState {
   /// [status] Status of the assessment. Valid values are `ACTIVE` and `INACTIVE`.
   /// [tags] A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  AssessmentState({
+  const AssessmentState({
     this.arn,
     this.assessmentReportsDestination,
     this.description,

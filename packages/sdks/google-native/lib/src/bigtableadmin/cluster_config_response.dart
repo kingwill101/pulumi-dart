@@ -10,7 +10,7 @@ class ClusterConfigResponse {
 
   /// Creates a new [ClusterConfigResponse].
   /// [clusterAutoscalingConfig] Autoscaling configuration for this cluster.
-  ClusterConfigResponse({
+  const ClusterConfigResponse({
     required this.clusterAutoscalingConfig,
   });
 

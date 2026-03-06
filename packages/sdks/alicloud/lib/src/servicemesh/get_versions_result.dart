@@ -18,7 +18,7 @@ class GetVersionsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [versions] Required.
-  GetVersionsResult({
+  const GetVersionsResult({
     this.edition,
     required this.id,
     required this.ids,

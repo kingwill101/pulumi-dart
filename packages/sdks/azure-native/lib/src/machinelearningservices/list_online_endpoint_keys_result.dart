@@ -11,7 +11,7 @@ class ListOnlineEndpointKeysResult {
   /// Creates a new [ListOnlineEndpointKeysResult].
   /// [primaryKey] The primary key.
   /// [secondaryKey] The secondary key.
-  ListOnlineEndpointKeysResult({
+  const ListOnlineEndpointKeysResult({
     this.primaryKey,
     this.secondaryKey,
   });

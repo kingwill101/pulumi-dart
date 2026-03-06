@@ -24,7 +24,7 @@ class GetContactResult {
   /// [region] Required.
   /// [tags] Map of tags to assign to the resource.
   /// [type] The type of contact engaged. A single contact is type `PERSONAL` and an escalation plan is type `ESCALATION`.
-  GetContactResult({
+  const GetContactResult({
     required this.alias,
     required this.arn,
     required this.displayName,

@@ -12,7 +12,7 @@ class CertBasedSecurityPrincipalResponse {
   /// Creates a new [CertBasedSecurityPrincipalResponse].
   /// [cert] Public key of the user cert (.pem or .cer)
   /// [ledgerRoleName] LedgerRole associated with the Security Principal of Ledger
-  CertBasedSecurityPrincipalResponse({
+  const CertBasedSecurityPrincipalResponse({
     this.cert,
     this.ledgerRoleName,
   });

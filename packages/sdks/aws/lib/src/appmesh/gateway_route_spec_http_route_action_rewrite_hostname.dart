@@ -8,7 +8,7 @@ class GatewayRouteSpecHttpRouteActionRewriteHostname {
 
   /// Creates a new [GatewayRouteSpecHttpRouteActionRewriteHostname].
   /// [defaultTargetHostname] Default target host name to write to. Valid values: `ENABLED`, `DISABLED`.
-  GatewayRouteSpecHttpRouteActionRewriteHostname({
+  const GatewayRouteSpecHttpRouteActionRewriteHostname({
     required this.defaultTargetHostname,
   });
 

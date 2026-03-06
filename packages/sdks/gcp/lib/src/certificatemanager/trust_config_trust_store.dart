@@ -16,7 +16,7 @@ class TrustConfigTrustStore {
   /// Creates a new [TrustConfigTrustStore].
   /// [intermediateCas] Set of intermediate CA certificates used for the path building phase of chain validation.
   /// [trustAnchors] List of Trust Anchors to be used while performing validation against a given TrustStore.
-  TrustConfigTrustStore({
+  const TrustConfigTrustStore({
     this.intermediateCas,
     this.trustAnchors,
   });

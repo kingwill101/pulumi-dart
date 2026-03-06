@@ -27,7 +27,7 @@ class ChannelSmsArgs {
   /// [resourceGroupName] The name of the resource group where the SMS Channel should be created. Changing this forces a new resource to be created.
   /// [smsChannelAccountSecurityId] The account security identifier (SID) for the SMS Channel.
   /// [smsChannelAuthToken] The authorization token for the SMS Channel.
-  ChannelSmsArgs({
+  const ChannelSmsArgs({
     required this.botName,
     this.location,
     required this.phoneNumber,

@@ -12,7 +12,7 @@ class ClusterSkuResponse {
   /// Creates a new [ClusterSkuResponse].
   /// [capacity] The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
   /// [name] Name of this SKU.
-  ClusterSkuResponse({
+  const ClusterSkuResponse({
     this.capacity,
     required this.name,
   });

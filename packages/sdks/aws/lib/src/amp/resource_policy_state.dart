@@ -23,7 +23,7 @@ class ResourcePolicyState {
   /// [revisionId] The revision ID of the current resource-based policy.
   /// [timeouts] Optional.
   /// [workspaceId] The ID of the workspace to attach the resource-based policy to.
-  ResourcePolicyState({
+  const ResourcePolicyState({
     this.policyDocument,
     this.region,
     this.revisionId,

@@ -9,7 +9,7 @@ class StepDimensionValueEntry {
   /// Creates a new [StepDimensionValueEntry].
   /// [key] Optional.
   /// [value] Optional.
-  StepDimensionValueEntry({
+  const StepDimensionValueEntry({
     this.key,
     this.value,
   });

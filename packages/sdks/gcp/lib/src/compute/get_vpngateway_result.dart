@@ -24,7 +24,7 @@ class GetVPNGatewayResult {
   /// [project] Required.
   /// [region] Region of this VPN gateway.
   /// [selfLink] The URI of the resource.
-  GetVPNGatewayResult({
+  const GetVPNGatewayResult({
     required this.description,
     required this.id,
     required this.name,

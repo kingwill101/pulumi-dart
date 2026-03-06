@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchRe
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageSsmlMessage({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranchResponseMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

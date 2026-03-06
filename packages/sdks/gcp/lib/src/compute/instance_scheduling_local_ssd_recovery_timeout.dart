@@ -16,7 +16,7 @@ class InstanceSchedulingLocalSsdRecoveryTimeout {
   /// Creates a new [InstanceSchedulingLocalSsdRecoveryTimeout].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second. Must be from 0 to
-  InstanceSchedulingLocalSsdRecoveryTimeout({
+  const InstanceSchedulingLocalSsdRecoveryTimeout({
     this.nanos,
     required this.seconds,
   });

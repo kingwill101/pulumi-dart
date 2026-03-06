@@ -62,7 +62,7 @@ class EndpointKafkaSettings {
   /// [sslClientKeyArn] ARN for the client private key used to securely connect to a Kafka target endpoint.
   /// [sslClientKeyPassword] Password for the client private key used to securely connect to a Kafka target endpoint.
   /// [topic] Kafka topic for migration. Default is `kafka-default-topic`.
-  EndpointKafkaSettings({
+  const EndpointKafkaSettings({
     required this.broker,
     this.includeControlDetails,
     this.includeNullAndEmpty,

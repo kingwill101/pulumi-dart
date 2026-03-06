@@ -42,7 +42,7 @@ class WorkloadClassifierArgs {
   /// [startTime] The workload classifier start time for classification.
   /// [workloadClassifierName] The name of the workload classifier to create/update.
   /// [workloadGroupName] The name of the workload group from which to receive the classifier from.
-  WorkloadClassifierArgs({
+  const WorkloadClassifierArgs({
     this.context,
     required this.databaseName,
     this.endTime,

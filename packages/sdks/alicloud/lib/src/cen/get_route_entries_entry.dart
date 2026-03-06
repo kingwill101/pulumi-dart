@@ -30,7 +30,7 @@ class GetRouteEntriesEntry {
   /// [publishStatus] The publish status of the route entry in CEN, including "Published" and "NonPublished".
   /// [routeTableId] ID of the route table of the VPC or VBR.
   /// [routeType] Type of the route entry, including "System", "Custom" and "BGP".
-  GetRouteEntriesEntry({
+  const GetRouteEntriesEntry({
     required this.cidrBlock,
     required this.conflicts,
     required this.nextHopId,

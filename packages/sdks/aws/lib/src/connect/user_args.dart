@@ -45,7 +45,7 @@ class UserArgs {
   /// [routingProfileId] The identifier of the routing profile for the user.
   /// [securityProfileIds] A list of identifiers for the security profiles for the user. Specify a minimum of 1 and maximum of 10 security profile ids. For more information, see [Best Practices for Security Profiles](https://docs.aws.amazon.com/connect/latest/adminguide/security-profile-best-practices.html) in the Amazon Connect Administrator Guide.
   /// [tags] Tags to apply to the user. If configured with a provider
-  UserArgs({
+  const UserArgs({
     this.directoryUserId,
     this.hierarchyGroupId,
     this.identityInfo,

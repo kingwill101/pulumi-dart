@@ -37,7 +37,7 @@ class HostArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this host resides.
-  HostArgs({
+  const HostArgs({
     this.extendedLocation,
     this.hostName,
     this.inventoryItemId,

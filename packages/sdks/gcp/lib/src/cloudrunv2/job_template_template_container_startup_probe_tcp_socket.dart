@@ -9,7 +9,7 @@ class JobTemplateTemplateContainerStartupProbeTcpSocket {
 
   /// Creates a new [JobTemplateTemplateContainerStartupProbeTcpSocket].
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  JobTemplateTemplateContainerStartupProbeTcpSocket({
+  const JobTemplateTemplateContainerStartupProbeTcpSocket({
     this.port,
   });
 

@@ -21,7 +21,7 @@ class ChannelEncoderSettingsOutputGroupOutput {
   /// [outputName] The name used to identify an output.
   /// [outputSettings] Settings for output. See Output Settings for more details.
   /// [videoDescriptionName] The name of the video description used as video source for the output.
-  ChannelEncoderSettingsOutputGroupOutput({
+  const ChannelEncoderSettingsOutputGroupOutput({
     this.audioDescriptionNames,
     this.captionDescriptionNames,
     this.outputName,

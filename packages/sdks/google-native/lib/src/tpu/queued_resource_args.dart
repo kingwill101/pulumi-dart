@@ -40,7 +40,7 @@ class QueuedResourceArgs {
   /// [reservationName] Name of the reservation in which the resource should be provisioned. Format: projects/{project}/locations/{zone}/reservations/{reservation}
   /// [spot] Optional. The Spot tier.
   /// [tpu] Defines a TPU resource.
-  QueuedResourceArgs({
+  const QueuedResourceArgs({
     this.bestEffort,
     this.guaranteed,
     this.location,

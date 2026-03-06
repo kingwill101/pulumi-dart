@@ -15,7 +15,7 @@ class GetApplicationGatewayIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] The type of Managed Service Identity that is configured on this Application Gateway.
-  GetApplicationGatewayIdentity({
+  const GetApplicationGatewayIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

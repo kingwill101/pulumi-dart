@@ -108,7 +108,7 @@ class NamespaceDiscoveredAssetArgs {
   /// [streams] Array of streams that are part of the asset. Each stream can have a per-stream configuration.
   /// [tags] Resource tags.
   /// [version] An integer that is incremented each time the resource is modified.
-  NamespaceDiscoveredAssetArgs({
+  const NamespaceDiscoveredAssetArgs({
     this.assetTypeRefs,
     this.attributes,
     this.datasets,

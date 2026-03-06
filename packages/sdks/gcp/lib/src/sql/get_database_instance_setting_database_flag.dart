@@ -11,7 +11,7 @@ class GetDatabaseInstanceSettingDatabaseFlag {
   /// Creates a new [GetDatabaseInstanceSettingDatabaseFlag].
   /// [name] The name of the instance.
   /// [value] Value of the flag.
-  GetDatabaseInstanceSettingDatabaseFlag({
+  const GetDatabaseInstanceSettingDatabaseFlag({
     required this.name,
     required this.value,
   });

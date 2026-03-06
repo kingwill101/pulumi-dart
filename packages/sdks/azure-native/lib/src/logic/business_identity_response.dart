@@ -12,7 +12,7 @@ class BusinessIdentityResponse {
   /// Creates a new [BusinessIdentityResponse].
   /// [qualifier] The business identity qualifier e.g. as2identity, ZZ, ZZZ, 31, 32
   /// [value] The user defined business identity value.
-  BusinessIdentityResponse({
+  const BusinessIdentityResponse({
     required this.qualifier,
     required this.value,
   });

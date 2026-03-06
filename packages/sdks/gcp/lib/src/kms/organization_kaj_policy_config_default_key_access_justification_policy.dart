@@ -11,7 +11,7 @@ class OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy {
 
   /// Creates a new [OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy].
   /// [allowedAccessReasons] A KeyAccessJustificationsPolicy specifies zero or more allowed
-  OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy({
+  const OrganizationKajPolicyConfigDefaultKeyAccessJustificationPolicy({
     this.allowedAccessReasons,
   });
 

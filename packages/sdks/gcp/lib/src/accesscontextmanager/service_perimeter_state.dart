@@ -72,7 +72,7 @@ class ServicePerimeterState {
   /// [title] Human readable title. Must be unique within the Policy.
   /// [updateTime] Time the AccessPolicy was updated in UTC.
   /// [useExplicitDryRunSpec] Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
-  ServicePerimeterState({
+  const ServicePerimeterState({
     this.createTime,
     this.description,
     this.name,

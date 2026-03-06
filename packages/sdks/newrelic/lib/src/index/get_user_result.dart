@@ -14,7 +14,7 @@ class GetUserResult {
   /// [emailId] Required.
   /// [id] The ID of the matching user fetched.
   /// [name] Required.
-  GetUserResult({
+  const GetUserResult({
     required this.authenticationDomainId,
     required this.emailId,
     required this.id,

@@ -24,7 +24,7 @@ class GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig {
   /// Creates a new [GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig].
   /// [enforceOnKeyName] Rate limit key name applicable only for the following key types:
   /// [enforceOnKeyType] Determines the key to enforce the rateLimitThreshold on. Possible values are:
-  GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig({
+  const GetRegionSecurityPolicyRuleRateLimitOptionEnforceOnKeyConfig({
     required this.enforceOnKeyName,
     required this.enforceOnKeyType,
   });

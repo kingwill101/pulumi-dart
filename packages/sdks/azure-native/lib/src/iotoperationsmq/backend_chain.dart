@@ -31,7 +31,7 @@ class BackendChain {
   /// [temporaryMaxBackendMemUsagePercent] Defines the limits for memory usage percent of the backend instances of the MQTT broker.
   /// [temporaryResourceLimits] Defines the limits for resources of the backend instances of the MQTT broker.
   /// [workers] Number of logical backend workers per pod.
-  BackendChain({
+  const BackendChain({
     required this.partitions,
     required this.redundancyFactor,
     this.temporaryDiskTransferEnabled,

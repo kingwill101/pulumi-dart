@@ -97,7 +97,7 @@ class HealthCheckArgs {
   /// [tcpHealthCheck] A nested object resource.
   /// [timeoutSec] How long (in seconds) to wait before claiming failure.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many
-  HealthCheckArgs({
+  const HealthCheckArgs({
     this.checkIntervalSec,
     this.description,
     this.grpcHealthCheck,

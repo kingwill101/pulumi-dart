@@ -16,7 +16,7 @@ class VmwareReplicationPolicyAssociationState {
   /// [name] The name of the replication policy association. Changing this forces a new association to be created.
   /// [policyId] The ID of the VMWare replication policy which to be associated. Changing this forces a new association to be created.
   /// [recoveryVaultId] The ID of the Recovery Service Vault to which the policy should be associated.
-  VmwareReplicationPolicyAssociationState({
+  const VmwareReplicationPolicyAssociationState({
     this.name,
     this.policyId,
     this.recoveryVaultId,

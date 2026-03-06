@@ -12,7 +12,7 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
   /// Creates a new [GetEnvironmentConfigMasterAuthorizedNetworksConfig].
   /// [cidrBlocks] cidr_blocks define up to 50 external networks that could access Kubernetes master through HTTPS.
   /// [enabled] Whether or not master authorized networks is enabled.
-  GetEnvironmentConfigMasterAuthorizedNetworksConfig({
+  const GetEnvironmentConfigMasterAuthorizedNetworksConfig({
     required this.cidrBlocks,
     required this.enabled,
   });

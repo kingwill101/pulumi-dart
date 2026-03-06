@@ -15,7 +15,7 @@ class GetFirewallGlobalRulestackArgs {
   /// Creates a new [GetFirewallGlobalRulestackArgs].
   /// [firewallName] Firewall resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFirewallGlobalRulestackArgs({
+  const GetFirewallGlobalRulestackArgs({
     required this.firewallName,
     required this.resourceGroupName,
   });

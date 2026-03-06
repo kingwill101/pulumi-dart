@@ -37,7 +37,7 @@ class EnvironmentProfileArgs {
   /// [projectIdentifier] Project identifier for environment profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userParameters] Array of user parameters of the environment profile with the following attributes:
-  EnvironmentProfileArgs({
+  const EnvironmentProfileArgs({
     this.awsAccountId,
     required this.awsAccountRegion,
     this.description,

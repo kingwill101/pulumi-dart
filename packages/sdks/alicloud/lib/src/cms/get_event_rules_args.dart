@@ -28,7 +28,7 @@ class GetEventRulesArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the resource. Valid values: `DISABLED`, `ENABLED`.
-  GetEventRulesArgs({
+  const GetEventRulesArgs({
     this.ids,
     this.namePrefix,
     this.nameRegex,

@@ -12,7 +12,7 @@ class GroupPolicyAttachmentsExclusiveState {
   /// Creates a new [GroupPolicyAttachmentsExclusiveState].
   /// [groupName] IAM group name.
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the group. Policies attached to this group but not configured in this argument will be removed.
-  GroupPolicyAttachmentsExclusiveState({
+  const GroupPolicyAttachmentsExclusiveState({
     this.groupName,
     this.policyArns,
   });

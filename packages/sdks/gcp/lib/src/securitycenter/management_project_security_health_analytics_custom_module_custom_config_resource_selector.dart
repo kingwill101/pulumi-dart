@@ -8,7 +8,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSe
 
   /// Creates a new [ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector({
+  const ManagementProjectSecurityHealthAnalyticsCustomModuleCustomConfigResourceSelector({
     required this.resourceTypes,
   });
 

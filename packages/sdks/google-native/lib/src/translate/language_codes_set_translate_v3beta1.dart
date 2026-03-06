@@ -9,7 +9,7 @@ class LanguageCodesSetTranslateV3beta1 {
 
   /// Creates a new [LanguageCodesSetTranslateV3beta1].
   /// [languageCodes] The BCP-47 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code.
-  LanguageCodesSetTranslateV3beta1({
+  const LanguageCodesSetTranslateV3beta1({
     this.languageCodes,
   });
 

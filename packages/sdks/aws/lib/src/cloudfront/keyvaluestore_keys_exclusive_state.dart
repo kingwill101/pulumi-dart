@@ -22,7 +22,7 @@ class KeyvaluestoreKeysExclusiveState {
   /// [maxBatchSize] Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   /// [resourceKeyValuePairs] A list of all resource key value pairs associated with the KeyValueStore.
   /// [totalSizeInBytes] Total size of the Key Value Store in bytes.
-  KeyvaluestoreKeysExclusiveState({
+  const KeyvaluestoreKeysExclusiveState({
     this.keyValueStoreArn,
     this.maxBatchSize,
     this.resourceKeyValuePairs,

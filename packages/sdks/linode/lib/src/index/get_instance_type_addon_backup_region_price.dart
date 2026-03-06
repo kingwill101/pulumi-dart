@@ -12,7 +12,7 @@ class GetInstanceTypeAddonBackupRegionPrice {
   /// [hourly] Required.
   /// [id] Label used to identify instance type
   /// [monthly] Required.
-  GetInstanceTypeAddonBackupRegionPrice({
+  const GetInstanceTypeAddonBackupRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

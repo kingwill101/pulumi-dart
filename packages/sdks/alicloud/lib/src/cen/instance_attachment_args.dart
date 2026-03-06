@@ -29,7 +29,7 @@ class InstanceAttachmentArgs {
   /// [childInstanceRegionId] The region ID of the child instance to attach.
   /// [childInstanceType] The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
   /// [instanceId] The ID of the CEN.
-  InstanceAttachmentArgs({
+  const InstanceAttachmentArgs({
     this.cenOwnerId,
     required this.childInstanceId,
     this.childInstanceOwnerId,

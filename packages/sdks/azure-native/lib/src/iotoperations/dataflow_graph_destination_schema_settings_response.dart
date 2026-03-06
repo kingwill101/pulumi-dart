@@ -12,7 +12,7 @@ class DataflowGraphDestinationSchemaSettingsResponse {
   /// Creates a new [DataflowGraphDestinationSchemaSettingsResponse].
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
   /// [serializationFormat] The format of the output data.
-  DataflowGraphDestinationSchemaSettingsResponse({
+  const DataflowGraphDestinationSchemaSettingsResponse({
     this.schemaRef,
     required this.serializationFormat,
   });

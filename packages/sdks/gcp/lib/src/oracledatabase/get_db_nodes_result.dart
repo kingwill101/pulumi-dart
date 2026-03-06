@@ -18,7 +18,7 @@ class GetDbNodesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [project] Optional.
-  GetDbNodesResult({
+  const GetDbNodesResult({
     required this.cloudVmCluster,
     required this.dbNodes,
     required this.id,

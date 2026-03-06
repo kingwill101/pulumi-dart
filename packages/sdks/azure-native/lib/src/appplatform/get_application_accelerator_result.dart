@@ -29,7 +29,7 @@ class GetApplicationAcceleratorResult {
   /// [sku] Sku of the application accelerator resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetApplicationAcceleratorResult({
+  const GetApplicationAcceleratorResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

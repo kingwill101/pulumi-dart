@@ -18,7 +18,7 @@ class GetServerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serverId] ID for an SFTP server.
   /// [tags] Map of tags assigned to the resource.
-  GetServerArgs({
+  const GetServerArgs({
     this.region,
     required this.serverId,
     this.tags,

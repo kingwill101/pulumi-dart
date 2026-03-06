@@ -10,7 +10,7 @@ class ExperimentExecutionDetailsPropertiesResponseRunInformation {
 
   /// Creates a new [ExperimentExecutionDetailsPropertiesResponseRunInformation].
   /// [steps] The steps of the experiment run.
-  ExperimentExecutionDetailsPropertiesResponseRunInformation({
+  const ExperimentExecutionDetailsPropertiesResponseRunInformation({
     required this.steps,
   });
 

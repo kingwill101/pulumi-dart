@@ -12,7 +12,7 @@ class CertManagerPrivateKeyResponse {
   /// Creates a new [CertManagerPrivateKeyResponse].
   /// [algorithm] algorithm for private key.
   /// [rotationPolicy] cert-manager private key rotationPolicy.
-  CertManagerPrivateKeyResponse({
+  const CertManagerPrivateKeyResponse({
     required this.algorithm,
     required this.rotationPolicy,
   });

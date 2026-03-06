@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1DataQualityDimensionResponse {
 
   /// Creates a new [GoogleCloudDataplexV1DataQualityDimensionResponse].
   /// [name] The dimension name a rule belongs to. Supported dimensions are "COMPLETENESS", "ACCURACY", "CONSISTENCY", "VALIDITY", "UNIQUENESS", "INTEGRITY"
-  GoogleCloudDataplexV1DataQualityDimensionResponse({
+  const GoogleCloudDataplexV1DataQualityDimensionResponse({
     required this.name,
   });
 

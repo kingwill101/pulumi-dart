@@ -29,7 +29,7 @@ class GetMeshIstioServiceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceName] The name of the Istio service underlying this service.
   /// [serviceNamespace] The namespace of the Istio service underlying this service.
-  GetMeshIstioServiceArgs({
+  const GetMeshIstioServiceArgs({
     required this.meshUid,
     this.project,
     required this.serviceName,

@@ -21,7 +21,7 @@ class GetPoliciesPolicy {
   /// [policyQueries] A list containing the CEL query that defines which entities the policy applies to. Structure is documented below.
   /// [setting] The setting configured by this policy, represented as a JSON string.
   /// [type] The type of the policy.
-  GetPoliciesPolicy({
+  const GetPoliciesPolicy({
     required this.customer,
     required this.name,
     required this.policyQueries,

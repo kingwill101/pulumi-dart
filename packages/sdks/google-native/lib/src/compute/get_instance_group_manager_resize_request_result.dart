@@ -47,7 +47,7 @@ class GetInstanceGroupManagerResizeRequestResult {
   /// [state] [Output only] Current state of the request.
   /// [status] [Output only] Status of the request.
   /// [zone] The URL of a zone where the resize request is located. Populated only for zonal resize requests.
-  GetInstanceGroupManagerResizeRequestResult({
+  const GetInstanceGroupManagerResizeRequestResult({
     required this.count,
     required this.creationTimestamp,
     required this.description,

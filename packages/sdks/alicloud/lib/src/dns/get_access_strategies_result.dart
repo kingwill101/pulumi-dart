@@ -28,7 +28,7 @@ class GetAccessStrategiesResult {
   /// [outputFile] Optional.
   /// [strategies] Required.
   /// [strategyMode] Required.
-  GetAccessStrategiesResult({
+  const GetAccessStrategiesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

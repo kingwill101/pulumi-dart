@@ -7,7 +7,7 @@ class GetMonitorEnvironmentPropertyEnvironmentInfo {
 
   /// Creates a new [GetMonitorEnvironmentPropertyEnvironmentInfo].
   /// [environmentId] Required.
-  GetMonitorEnvironmentPropertyEnvironmentInfo({
+  const GetMonitorEnvironmentPropertyEnvironmentInfo({
     required this.environmentId,
   });
 

@@ -29,7 +29,7 @@ class GetFoldersFolder {
   /// [parent] The parent id of the folder
   /// [state] The lifecycle state of the folder
   /// [updateTime] The timestamp of when the folder was last modified
-  GetFoldersFolder({
+  const GetFoldersFolder({
     required this.createTime,
     required this.deleteTime,
     required this.displayName,

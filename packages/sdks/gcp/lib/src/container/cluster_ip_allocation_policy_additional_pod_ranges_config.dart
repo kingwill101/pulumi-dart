@@ -8,7 +8,7 @@ class ClusterIpAllocationPolicyAdditionalPodRangesConfig {
 
   /// Creates a new [ClusterIpAllocationPolicyAdditionalPodRangesConfig].
   /// [podRangeNames] The names of the Pod ranges to add to the cluster.
-  ClusterIpAllocationPolicyAdditionalPodRangesConfig({
+  const ClusterIpAllocationPolicyAdditionalPodRangesConfig({
     required this.podRangeNames,
   });
 

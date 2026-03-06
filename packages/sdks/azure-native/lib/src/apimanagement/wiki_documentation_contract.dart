@@ -9,7 +9,7 @@ class WikiDocumentationContract {
 
   /// Creates a new [WikiDocumentationContract].
   /// [documentationId] Documentation Identifier
-  WikiDocumentationContract({
+  const WikiDocumentationContract({
     this.documentationId,
   });
 

@@ -13,7 +13,7 @@ class GetAuthorizedOrgsDescArgs {
   /// Creates a new [GetAuthorizedOrgsDescArgs].
   /// [accessPolicyId] Required.
   /// [authorizedOrgsDescId] Required.
-  GetAuthorizedOrgsDescArgs({
+  const GetAuthorizedOrgsDescArgs({
     required this.accessPolicyId,
     required this.authorizedOrgsDescId,
   });

@@ -11,7 +11,7 @@ class GetNetworkSegment {
   /// [networkType] Required.
   /// [physicalNetwork] Required.
   /// [segmentationId] Required.
-  GetNetworkSegment({
+  const GetNetworkSegment({
     required this.networkType,
     required this.physicalNetwork,
     required this.segmentationId,

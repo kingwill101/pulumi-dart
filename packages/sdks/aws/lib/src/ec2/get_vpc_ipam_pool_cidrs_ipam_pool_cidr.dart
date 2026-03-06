@@ -11,7 +11,7 @@ class GetVpcIpamPoolCidrsIpamPoolCidr {
   /// Creates a new [GetVpcIpamPoolCidrsIpamPoolCidr].
   /// [cidr] A network CIDR.
   /// [state] The provisioning state of that CIDR.
-  GetVpcIpamPoolCidrsIpamPoolCidr({
+  const GetVpcIpamPoolCidrsIpamPoolCidr({
     required this.cidr,
     required this.state,
   });

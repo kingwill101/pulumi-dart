@@ -11,7 +11,7 @@ class SecurityActionFlagHeader {
   /// Creates a new [SecurityActionFlagHeader].
   /// [name] The header name to be sent to the target.
   /// [value] The header value to be sent to the target.
-  SecurityActionFlagHeader({
+  const SecurityActionFlagHeader({
     this.name,
     this.value,
   });

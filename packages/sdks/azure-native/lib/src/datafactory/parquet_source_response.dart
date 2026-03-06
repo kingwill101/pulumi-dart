@@ -33,7 +33,7 @@ class ParquetSourceResponse {
   /// [sourceRetryWait] Source retry wait. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [storeSettings] Parquet store settings.
   /// [type] Copy source type.
-  ParquetSourceResponse({
+  const ParquetSourceResponse({
     this.additionalColumns,
     this.disableMetricsCollection,
     this.formatSettings,

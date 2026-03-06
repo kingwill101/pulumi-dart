@@ -18,7 +18,7 @@ class GetWindowsWebAppSiteConfigVirtualApplication {
   /// [preload] Is this Application Pre-loaded at startup.
   /// [virtualDirectories] A `virtual_directory` block as defined below.
   /// [virtualPath] The Virtual Path of the Virtual Directory.
-  GetWindowsWebAppSiteConfigVirtualApplication({
+  const GetWindowsWebAppSiteConfigVirtualApplication({
     required this.physicalPath,
     required this.preload,
     required this.virtualDirectories,

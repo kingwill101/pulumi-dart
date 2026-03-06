@@ -15,7 +15,7 @@ class SslPolicyWarningsItemResponseComputeBeta {
   /// [code] A warning code, if applicable. For example, Compute Engine returns NO_RESULTS_ON_PAGE if there are no results in the response.
   /// [data] Metadata about this warning in key: value format. For example: "data": [ { "key": "scope", "value": "zones/us-east1-d" }
   /// [message] A human-readable description of the warning code.
-  SslPolicyWarningsItemResponseComputeBeta({
+  const SslPolicyWarningsItemResponseComputeBeta({
     required this.code,
     required this.data,
     required this.message,

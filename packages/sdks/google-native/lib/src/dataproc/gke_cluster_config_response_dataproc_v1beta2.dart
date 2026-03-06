@@ -10,7 +10,7 @@ class GkeClusterConfigResponseDataprocV1beta2 {
 
   /// Creates a new [GkeClusterConfigResponseDataprocV1beta2].
   /// [namespacedGkeDeploymentTarget] Optional. A target for the deployment.
-  GkeClusterConfigResponseDataprocV1beta2({
+  const GkeClusterConfigResponseDataprocV1beta2({
     required this.namespacedGkeDeploymentTarget,
   });
 

@@ -101,7 +101,7 @@ class GetResult {
   /// [tags] A mapping of tags assigned to the Hybrid Compute.
   /// [vmId] Specifies the Azure Arc machine unique ID.
   /// [vmUuid] Specifies the Arc Machine's unique SMBIOS ID.
-  GetResult({
+  const GetResult({
     required this.activeDirectoryFqdn,
     required this.agentVersion,
     required this.agents,

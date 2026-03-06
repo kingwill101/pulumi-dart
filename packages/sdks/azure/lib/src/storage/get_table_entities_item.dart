@@ -14,7 +14,7 @@ class GetTableEntitiesItem {
   /// [partitionKey] Partition Key of the Entity.
   /// [properties] A map of any additional properties in key-value format.
   /// [rowKey] Row Key of the Entity.
-  GetTableEntitiesItem({
+  const GetTableEntitiesItem({
     required this.partitionKey,
     required this.properties,
     required this.rowKey,

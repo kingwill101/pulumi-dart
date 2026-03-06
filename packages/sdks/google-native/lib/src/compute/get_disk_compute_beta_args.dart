@@ -15,7 +15,7 @@ class GetDiskComputeBetaArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetDiskComputeBetaArgs({
+  const GetDiskComputeBetaArgs({
     required this.disk,
     this.project,
     required this.zone,

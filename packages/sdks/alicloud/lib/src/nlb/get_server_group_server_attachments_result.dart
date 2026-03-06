@@ -24,7 +24,7 @@ class GetServerGroupServerAttachmentsResult {
   /// [serverGroupId] The ID of the server group.
   /// [serverIds] Optional.
   /// [serverIps] Optional.
-  GetServerGroupServerAttachmentsResult({
+  const GetServerGroupServerAttachmentsResult({
     required this.attachments,
     required this.id,
     required this.ids,

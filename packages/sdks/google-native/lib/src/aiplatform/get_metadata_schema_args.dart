@@ -17,7 +17,7 @@ class GetMetadataSchemaArgs {
   /// [metadataSchemaId] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetMetadataSchemaArgs({
+  const GetMetadataSchemaArgs({
     required this.location,
     required this.metadataSchemaId,
     required this.metadataStoreId,

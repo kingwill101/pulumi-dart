@@ -19,7 +19,7 @@ class GetVersionArgs {
   /// [productId] Required.
   /// [project] Optional.
   /// [versionId] Required.
-  GetVersionArgs({
+  const GetVersionArgs({
     required this.integrationId,
     required this.location,
     required this.productId,

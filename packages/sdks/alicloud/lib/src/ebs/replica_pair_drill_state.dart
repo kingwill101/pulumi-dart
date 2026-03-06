@@ -15,7 +15,7 @@ class ReplicaPairDrillState {
   /// [pairId] Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
   /// [replicaPairDrillId] The first ID of the resource.
   /// [status] Walkthrough status. _failed: Execution failed._failed: Cleanup failed.
-  ReplicaPairDrillState({
+  const ReplicaPairDrillState({
     this.pairId,
     this.replicaPairDrillId,
     this.status,

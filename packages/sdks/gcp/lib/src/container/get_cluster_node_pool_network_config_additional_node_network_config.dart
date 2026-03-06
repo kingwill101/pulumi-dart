@@ -11,7 +11,7 @@ class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
   /// Creates a new [GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig].
   /// [network] Name of the VPC where the additional interface belongs.
   /// [subnetwork] Name of the subnetwork where the additional interface belongs.
-  GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig({
+  const GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig({
     required this.network,
     required this.subnetwork,
   });

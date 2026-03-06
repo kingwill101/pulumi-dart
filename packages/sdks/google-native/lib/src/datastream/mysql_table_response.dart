@@ -13,7 +13,7 @@ class MysqlTableResponse {
   /// Creates a new [MysqlTableResponse].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  MysqlTableResponse({
+  const MysqlTableResponse({
     required this.mysqlColumns,
     required this.table,
   });

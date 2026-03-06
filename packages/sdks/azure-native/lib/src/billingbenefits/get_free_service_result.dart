@@ -75,7 +75,7 @@ class GetFreeServiceResult {
   /// [systemId] This is the globally unique identifier of the free services which will not change for its lifetime.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFreeServiceResult({
+  const GetFreeServiceResult({
     required this.azureApiVersion,
     required this.billingAccountResourceId,
     required this.billingProfileResourceId,

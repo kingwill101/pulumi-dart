@@ -21,7 +21,7 @@ class VpcConfig {
   /// [subnetIds] A list of VPC subnet IDs.
   /// [subnets] &lt;p&gt;A list of one or more subnet IDs in your Amazon VPC.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID of the Amazon VPC.&lt;/p&gt;
-  VpcConfig({
+  const VpcConfig({
     this.ipv6AllowedForDualStack,
     this.securityGroupIds,
     this.subnetIds,

@@ -33,7 +33,7 @@ class GetClusterIstioServiceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceName] The name of the Istio service underlying this service.
   /// [serviceNamespace] The namespace of the Istio service underlying this service.
-  GetClusterIstioServiceArgs({
+  const GetClusterIstioServiceArgs({
     required this.clusterName,
     required this.location,
     this.project,

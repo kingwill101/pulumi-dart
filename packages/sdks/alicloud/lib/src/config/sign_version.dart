@@ -9,7 +9,7 @@ class SignVersion {
   /// Creates a new [SignVersion].
   /// [oss] Optional.
   /// [sls] Optional.
-  SignVersion({
+  const SignVersion({
     this.oss,
     this.sls,
   });

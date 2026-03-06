@@ -9,7 +9,7 @@ class FileSystemTokenStore {
 
   /// Creates a new [FileSystemTokenStore].
   /// [directory] The directory in which the tokens will be stored.
-  FileSystemTokenStore({
+  const FileSystemTokenStore({
     this.directory,
   });
 

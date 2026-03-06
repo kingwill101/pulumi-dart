@@ -15,7 +15,7 @@ class GetNamespaceNetworkRuleSetArgs {
   /// Creates a new [GetNamespaceNetworkRuleSetArgs].
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNamespaceNetworkRuleSetArgs({
+  const GetNamespaceNetworkRuleSetArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

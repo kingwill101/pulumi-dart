@@ -14,7 +14,7 @@ class ManagedClusterAuthenticationCertificate {
   /// [commonName] The certificate's CN.
   /// [thumbprint] The thumbprint of the certificate.
   /// [type] The type of the certificate. Can be `AdminClient` or `ReadOnlyClient`.
-  ManagedClusterAuthenticationCertificate({
+  const ManagedClusterAuthenticationCertificate({
     this.commonName,
     required this.thumbprint,
     required this.type,

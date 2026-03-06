@@ -26,7 +26,7 @@ class GetSlotsSlot {
   /// [slotType] The Replication Slot type.
   /// [temporary] Is the Replication Slot temporary.
   /// [walDelay] The amount of logs accumulated by Replication Slot.
-  GetSlotsSlot({
+  const GetSlotsSlot({
     required this.database,
     required this.plugin,
     required this.slotName,

@@ -70,7 +70,7 @@ class BatchDeploymentResponse {
   /// [provisioningState] Provisioning state for the endpoint deployment.
   /// [resources] Indicates compute configuration for the job.
   /// [retrySettings] Retry Settings for the batch inference operation.
-  BatchDeploymentResponse({
+  const BatchDeploymentResponse({
     this.codeConfiguration,
     this.compute,
     this.deploymentConfiguration,

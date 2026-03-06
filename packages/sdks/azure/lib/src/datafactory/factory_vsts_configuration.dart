@@ -26,7 +26,7 @@ class FactoryVstsConfiguration {
   /// [repositoryName] Specifies the name of the git repository.
   /// [rootFolder] Specifies the root folder within the repository. Set to `/` for the top level.
   /// [tenantId] Specifies the Tenant ID associated with the VSTS account.
-  FactoryVstsConfiguration({
+  const FactoryVstsConfiguration({
     required this.accountName,
     required this.branchName,
     required this.projectName,

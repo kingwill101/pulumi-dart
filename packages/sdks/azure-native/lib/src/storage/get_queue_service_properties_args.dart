@@ -18,7 +18,7 @@ class GetQueueServicePropertiesArgs {
   /// [accountName] The name of the storage account within the specified resource group. Storage account names must be between 3 and 24 characters in length and use numbers and lower-case letters only.
   /// [queueServiceName] The name of the Queue Service within the specified storage account. Queue Service Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetQueueServicePropertiesArgs({
+  const GetQueueServicePropertiesArgs({
     required this.accountName,
     required this.queueServiceName,
     required this.resourceGroupName,

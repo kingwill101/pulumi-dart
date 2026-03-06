@@ -8,7 +8,7 @@ class ClusterGetKubeconfigResult {
 
   /// Creates a new [ClusterGetKubeconfigResult].
   /// [result] The kubeconfig for the cluster.
-  ClusterGetKubeconfigResult({
+  const ClusterGetKubeconfigResult({
     required this.result,
   });
 

@@ -14,7 +14,7 @@ class GameServerGroupInstanceDefinition {
   /// Creates a new [GameServerGroupInstanceDefinition].
   /// [instanceType] An EC2 instance type.
   /// [weightedCapacity] Instance weighting that indicates how much this instance type contributes
-  GameServerGroupInstanceDefinition({
+  const GameServerGroupInstanceDefinition({
     required this.instanceType,
     this.weightedCapacity,
   });

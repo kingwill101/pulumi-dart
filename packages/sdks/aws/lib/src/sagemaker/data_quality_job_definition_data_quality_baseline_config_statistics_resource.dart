@@ -8,7 +8,7 @@ class DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource {
 
   /// Creates a new [DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource].
   /// [s3Uri] The Amazon S3 URI for the statistics resource.
-  DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource({
+  const DataQualityJobDefinitionDataQualityBaselineConfigStatisticsResource({
     this.s3Uri,
   });
 

@@ -34,7 +34,7 @@ class KustomizationDefinition {
   /// [syncIntervalInSeconds] The interval at which to re-reconcile the Kustomization on the cluster.
   /// [timeoutInSeconds] The maximum time to attempt to reconcile the Kustomization on the cluster.
   /// [wait] Enable/disable health check for all Kubernetes objects created by this Kustomization.
-  KustomizationDefinition({
+  const KustomizationDefinition({
     this.dependsOn,
     this.force,
     this.path,

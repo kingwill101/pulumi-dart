@@ -20,7 +20,7 @@ class GetDistributionTenantArgs {
   /// [domain] An associated domain of the distribution tenant. Exactly one of `id` or `domain` must be specified.
   /// [id] Identifier for the distribution tenant. For example: `EDFDVBD632BHDS5`. Exactly one of `id` or `domain` must be specified.
   /// [name] Optional.
-  GetDistributionTenantArgs({
+  const GetDistributionTenantArgs({
     this.arn,
     this.domain,
     this.id,

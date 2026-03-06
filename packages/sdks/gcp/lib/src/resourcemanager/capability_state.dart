@@ -15,7 +15,7 @@ class CapabilityState {
   /// [capabilityName] Capability name that should be updated on the folder.
   /// [parent] Folder on which Capability needs to be updated in the format folders/folder_id.
   /// [value] Capability Value.
-  CapabilityState({
+  const CapabilityState({
     this.capabilityName,
     this.parent,
     this.value,

@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2SelectedInfoTypesResponse {
 
   /// Creates a new [GooglePrivacyDlpV2SelectedInfoTypesResponse].
   /// [infoTypes] InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
-  GooglePrivacyDlpV2SelectedInfoTypesResponse({
+  const GooglePrivacyDlpV2SelectedInfoTypesResponse({
     required this.infoTypes,
   });
 

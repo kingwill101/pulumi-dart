@@ -18,7 +18,7 @@ class GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetailResponse {
   /// [failedPreCachingCheckJobs] The names of the previously failed CustomJob for the pre-caching-check container executions. This job will be available if the PipelineJob.pipeline_spec specifies the `pre_caching_check` hook in the lifecycle events. The list includes the all attempts in chronological order.
   /// [mainJob] The name of the CustomJob for the main container execution.
   /// [preCachingCheckJob] The name of the CustomJob for the pre-caching-check container execution. This job will be available if the PipelineJob.pipeline_spec specifies the `pre_caching_check` hook in the lifecycle events.
-  GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetailResponse({
+  const GoogleCloudAiplatformV1PipelineTaskExecutorDetailContainerDetailResponse({
     required this.failedMainJobs,
     required this.failedPreCachingCheckJobs,
     required this.mainJob,

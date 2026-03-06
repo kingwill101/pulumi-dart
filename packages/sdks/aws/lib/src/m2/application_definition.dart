@@ -11,7 +11,7 @@ class ApplicationDefinition {
   /// Creates a new [ApplicationDefinition].
   /// [content] JSON application definition. Either this or `s3_location` must be specified.
   /// [s3Location] Location of the application definition in S3. Either this or `content` must be specified.
-  ApplicationDefinition({
+  const ApplicationDefinition({
     this.content,
     this.s3Location,
   });

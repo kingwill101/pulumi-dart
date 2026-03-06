@@ -15,7 +15,7 @@ class CompoundAssessmentDetailsResponse {
   /// [createdTimestamp] Timestamp when the assessment was created.
   /// [status] Status of the assessment.
   /// [updatedTimestamp] Timestamp when the assessment was last updated.
-  CompoundAssessmentDetailsResponse({
+  const CompoundAssessmentDetailsResponse({
     this.createdTimestamp,
     required this.status,
     this.updatedTimestamp,

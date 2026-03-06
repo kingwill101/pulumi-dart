@@ -94,7 +94,7 @@ class SignalRArgs {
   /// [tags] Resource tags.
   /// [tls] TLS settings for the resource
   /// [upstream] The settings for the Upstream when the service is in server-less mode.
-  SignalRArgs({
+  const SignalRArgs({
     this.cors,
     this.disableAadAuth,
     this.disableLocalAuth,

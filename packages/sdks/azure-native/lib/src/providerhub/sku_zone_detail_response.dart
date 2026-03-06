@@ -12,7 +12,7 @@ class SkuZoneDetailResponse {
   /// Creates a new [SkuZoneDetailResponse].
   /// [capabilities] The capabilities.
   /// [name] The name.
-  SkuZoneDetailResponse({
+  const SkuZoneDetailResponse({
     this.capabilities,
     this.name,
   });

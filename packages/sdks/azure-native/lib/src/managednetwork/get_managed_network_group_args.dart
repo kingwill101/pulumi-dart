@@ -18,7 +18,7 @@ class GetManagedNetworkGroupArgs {
   /// [managedNetworkGroupName] The name of the Managed Network Group.
   /// [managedNetworkName] The name of the Managed Network.
   /// [resourceGroupName] The name of the resource group.
-  GetManagedNetworkGroupArgs({
+  const GetManagedNetworkGroupArgs({
     required this.managedNetworkGroupName,
     required this.managedNetworkName,
     required this.resourceGroupName,

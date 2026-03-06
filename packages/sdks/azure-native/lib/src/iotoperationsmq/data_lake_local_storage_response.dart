@@ -9,7 +9,7 @@ class DataLakeLocalStorageResponse {
 
   /// Creates a new [DataLakeLocalStorageResponse].
   /// [volumeName] Volume name to write to.
-  DataLakeLocalStorageResponse({
+  const DataLakeLocalStorageResponse({
     required this.volumeName,
   });
 

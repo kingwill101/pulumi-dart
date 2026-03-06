@@ -10,7 +10,7 @@ class RepositoryConfig {
 
   /// Creates a new [RepositoryConfig].
   /// [pypiRepositoryConfig] Optional. Configuration for PyPi repository.
-  RepositoryConfig({
+  const RepositoryConfig({
     this.pypiRepositoryConfig,
   });
 

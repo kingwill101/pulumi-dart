@@ -23,7 +23,7 @@ class GetAuthorizationAccessPolicyResult {
   /// [objectId] The Object Id
   /// [tenantId] The Tenant Id
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAuthorizationAccessPolicyResult({
+  const GetAuthorizationAccessPolicyResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

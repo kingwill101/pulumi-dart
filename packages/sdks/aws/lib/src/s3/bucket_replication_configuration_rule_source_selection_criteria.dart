@@ -10,7 +10,7 @@ class BucketReplicationConfigurationRuleSourceSelectionCriteria {
 
   /// Creates a new [BucketReplicationConfigurationRuleSourceSelectionCriteria].
   /// [sseKmsEncryptedObjects] Match SSE-KMS encrypted objects (documented below). If specified, `replica_kms_key_id`
-  BucketReplicationConfigurationRuleSourceSelectionCriteria({
+  const BucketReplicationConfigurationRuleSourceSelectionCriteria({
     this.sseKmsEncryptedObjects,
   });
 

@@ -39,7 +39,7 @@ class GetServiceFabricResult {
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  GetServiceFabricResult({
+  const GetServiceFabricResult({
     required this.applicableSchedule,
     required this.azureApiVersion,
     this.environmentId,

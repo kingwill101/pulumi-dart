@@ -10,7 +10,7 @@ class ReportDeliveryInfo {
 
   /// Creates a new [ReportDeliveryInfo].
   /// [destination] Has destination for the report being delivered.
-  ReportDeliveryInfo({
+  const ReportDeliveryInfo({
     required this.destination,
   });
 

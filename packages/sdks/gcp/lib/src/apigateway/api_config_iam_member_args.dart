@@ -42,7 +42,7 @@ class ApiConfigIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  ApiConfigIamMemberArgs({
+  const ApiConfigIamMemberArgs({
     required this.api,
     required this.apiConfig,
     this.condition,

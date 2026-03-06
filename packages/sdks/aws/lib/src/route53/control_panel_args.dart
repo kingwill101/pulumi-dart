@@ -20,7 +20,7 @@ class ControlPanelArgs {
   /// [clusterArn] ARN of the cluster in which this control panel will reside.
   /// [name] Name describing the control panel.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ControlPanelArgs({
+  const ControlPanelArgs({
     required this.clusterArn,
     this.name,
     this.tags,

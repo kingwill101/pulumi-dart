@@ -14,7 +14,7 @@ class GetLkeClusterPoolAutoscaler {
   /// [enabled] The default policy. A value of true means a default policy of DENY. A value of false means a default policy of ALLOW.
   /// [max] The maximum number of nodes to autoscale to.
   /// [min] The minimum number of nodes to autoscale to.
-  GetLkeClusterPoolAutoscaler({
+  const GetLkeClusterPoolAutoscaler({
     required this.enabled,
     required this.max,
     required this.min,

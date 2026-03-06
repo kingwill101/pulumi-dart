@@ -42,7 +42,7 @@ class GetSchemaResult {
   /// [tags] Schema tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable id.
-  GetSchemaResult({
+  const GetSchemaResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

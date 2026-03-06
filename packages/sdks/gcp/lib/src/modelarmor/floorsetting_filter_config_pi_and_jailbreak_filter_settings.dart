@@ -18,7 +18,7 @@ class FloorsettingFilterConfigPiAndJailbreakFilterSettings {
   /// Creates a new [FloorsettingFilterConfigPiAndJailbreakFilterSettings].
   /// [confidenceLevel] Possible values:
   /// [filterEnforcement] Tells whether Prompt injection and Jailbreak filter is enabled or
-  FloorsettingFilterConfigPiAndJailbreakFilterSettings({
+  const FloorsettingFilterConfigPiAndJailbreakFilterSettings({
     this.confidenceLevel,
     this.filterEnforcement,
   });

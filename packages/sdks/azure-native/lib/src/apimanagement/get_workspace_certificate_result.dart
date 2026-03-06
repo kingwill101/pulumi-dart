@@ -30,7 +30,7 @@ class GetWorkspaceCertificateResult {
   /// [subject] Subject attribute of the certificate.
   /// [thumbprint] Thumbprint of the certificate.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceCertificateResult({
+  const GetWorkspaceCertificateResult({
     required this.azureApiVersion,
     required this.expirationDate,
     required this.id,

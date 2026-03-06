@@ -23,7 +23,7 @@ class GetEventBusesEventBus {
   /// [lastModifiedTime] The time the event bus was last modified.
   /// [name] The name of the event bus.
   /// [policy] The permissions policy of the event bus, describing which other AWS accounts can write events to this event bus.
-  GetEventBusesEventBus({
+  const GetEventBusesEventBus({
     required this.arn,
     required this.creationTime,
     required this.description,

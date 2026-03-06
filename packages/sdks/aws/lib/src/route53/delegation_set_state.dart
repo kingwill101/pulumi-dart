@@ -17,7 +17,7 @@ class DelegationSetState {
   /// [arn] The Amazon Resource Name (ARN) of the Delegation Set.
   /// [nameServers] A list of authoritative name servers for the hosted zone
   /// [referenceName] This is a reference name used in Caller Reference
-  DelegationSetState({
+  const DelegationSetState({
     this.arn,
     this.nameServers,
     this.referenceName,

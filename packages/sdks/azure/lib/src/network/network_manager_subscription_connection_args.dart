@@ -21,7 +21,7 @@ class NetworkManagerSubscriptionConnectionArgs {
   /// [name] Specifies the name which should be used for this Network Subscription Network Manager Connection. Changing this forces a new Network Subscription Network Manager Connection to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager which the Subscription is connected to.
   /// [subscriptionId] Specifies the ID of the target Subscription. Changing this forces a new resource to be created.
-  NetworkManagerSubscriptionConnectionArgs({
+  const NetworkManagerSubscriptionConnectionArgs({
     this.description,
     this.name,
     required this.networkManagerId,

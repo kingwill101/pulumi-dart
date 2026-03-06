@@ -48,7 +48,7 @@ class ReplicationTaskArgs {
   /// [tableMappings] Escaped JSON string that contains the table mappings. For information on table mapping see [Using Table Mapping with an AWS Database Migration Service Task to Select and Filter Data](http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TableMapping.html)
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetEndpointArn] ARN that uniquely identifies the target endpoint.
-  ReplicationTaskArgs({
+  const ReplicationTaskArgs({
     this.cdcStartPosition,
     this.cdcStartTime,
     required this.migrationType,

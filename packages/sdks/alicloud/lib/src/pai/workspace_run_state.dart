@@ -21,7 +21,7 @@ class WorkspaceRunState {
   /// [runName] The name of the resource
   /// [sourceId] Attribute Resource field representing the source task ID
   /// [sourceType] Resource attribute fields representing the source type
-  WorkspaceRunState({
+  const WorkspaceRunState({
     this.createTime,
     this.experimentId,
     this.runName,

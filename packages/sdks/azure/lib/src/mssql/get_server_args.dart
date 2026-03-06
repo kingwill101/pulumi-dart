@@ -15,7 +15,7 @@ class GetServerArgs {
   /// Creates a new [GetServerArgs].
   /// [name] The name of this Microsoft SQL Server.
   /// [resourceGroupName] The name of the Resource Group where the Microsoft SQL Server exists.
-  GetServerArgs({
+  const GetServerArgs({
     required this.name,
     required this.resourceGroupName,
   });

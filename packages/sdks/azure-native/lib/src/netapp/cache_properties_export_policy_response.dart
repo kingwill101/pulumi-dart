@@ -10,7 +10,7 @@ class CachePropertiesExportPolicyResponse {
 
   /// Creates a new [CachePropertiesExportPolicyResponse].
   /// [rules] Export policy rule
-  CachePropertiesExportPolicyResponse({
+  const CachePropertiesExportPolicyResponse({
     this.rules,
   });
 

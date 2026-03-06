@@ -13,7 +13,7 @@ class FleetObservabilityFleetObservabilityBaseFeatureStateResponse {
   /// Creates a new [FleetObservabilityFleetObservabilityBaseFeatureStateResponse].
   /// [code] The high-level, machine-readable status of this Feature.
   /// [errors] Errors after reconciling the monitoring and logging feature if the code is not OK.
-  FleetObservabilityFleetObservabilityBaseFeatureStateResponse({
+  const FleetObservabilityFleetObservabilityBaseFeatureStateResponse({
     required this.code,
     required this.errors,
   });

@@ -47,7 +47,7 @@ class SensitivityLabelArgs {
   /// [sensitivityLabelSource] The source of the sensitivity label.
   /// [serverName] The name of the server.
   /// [tableName] The name of the table.
-  SensitivityLabelArgs({
+  const SensitivityLabelArgs({
     this.clientClassificationSource,
     required this.columnName,
     required this.databaseName,

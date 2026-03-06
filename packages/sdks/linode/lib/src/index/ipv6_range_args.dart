@@ -18,7 +18,7 @@ class Ipv6RangeArgs {
   /// [linodeId] The ID of the Linode to assign this range to. This field may be updated to reassign the IPv6 range.
   /// [prefixLength] The prefix length of the IPv6 range.
   /// [routeTarget] The IPv6 SLAAC address to assign this range to.
-  Ipv6RangeArgs({
+  const Ipv6RangeArgs({
     this.linodeId,
     required this.prefixLength,
     this.routeTarget,

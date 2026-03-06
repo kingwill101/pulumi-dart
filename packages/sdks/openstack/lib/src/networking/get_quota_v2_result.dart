@@ -41,7 +41,7 @@ class GetQuotaV2Result {
   /// [securityGroupRule] The number of allowed security group rules.
   /// [subnet] The number of allowed subnets.
   /// [subnetpool] Required.
-  GetQuotaV2Result({
+  const GetQuotaV2Result({
     required this.floatingip,
     required this.id,
     required this.network,

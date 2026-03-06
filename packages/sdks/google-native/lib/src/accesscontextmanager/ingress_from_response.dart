@@ -16,7 +16,7 @@ class IngressFromResponse {
   /// [identities] A list of identities that are allowed access through this ingress policy. Should be in the format of email address. The email address should represent individual user or service account only.
   /// [identityType] Specifies the type of identities that are allowed access from outside the perimeter. If left unspecified, then members of `identities` field will be allowed access.
   /// [sources] Sources that this IngressPolicy authorizes access from.
-  IngressFromResponse({
+  const IngressFromResponse({
     required this.identities,
     required this.identityType,
     required this.sources,

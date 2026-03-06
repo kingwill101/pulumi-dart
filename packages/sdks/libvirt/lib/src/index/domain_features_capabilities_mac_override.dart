@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesMacOverride {
 
   /// Creates a new [DomainFeaturesCapabilitiesMacOverride].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesMacOverride({
+  const DomainFeaturesCapabilitiesMacOverride({
     this.state,
   });
 

@@ -14,7 +14,7 @@ class TunnelIamMemberCondition {
   /// [description] An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [title] A title for the expression, i.e. a short string describing its purpose.
-  TunnelIamMemberCondition({
+  const TunnelIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

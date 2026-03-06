@@ -12,7 +12,7 @@ class ManagedClusterNodeTypeVmSecret {
   /// Creates a new [ManagedClusterNodeTypeVmSecret].
   /// [certificates] One or more `certificates` blocks as defined above.
   /// [vaultId] The ID of the Vault that contain the certificates.
-  ManagedClusterNodeTypeVmSecret({
+  const ManagedClusterNodeTypeVmSecret({
     required this.certificates,
     required this.vaultId,
   });

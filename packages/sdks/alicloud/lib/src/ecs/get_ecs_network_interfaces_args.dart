@@ -57,7 +57,7 @@ class GetEcsNetworkInterfacesArgs {
   /// [type] The type of ENI. Valid Values: `Primary`, `Secondary`.
   /// [vpcId] The vpc id.
   /// [vswitchId] The vswitch id.
-  GetEcsNetworkInterfacesArgs({
+  const GetEcsNetworkInterfacesArgs({
     this.ids,
     this.instanceId,
     this.name,

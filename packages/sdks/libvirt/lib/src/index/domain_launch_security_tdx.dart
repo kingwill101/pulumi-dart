@@ -21,7 +21,7 @@ class DomainLaunchSecurityTdx {
   /// [mrOwnerConfig] Sets the configuration for the MR owner in the TDX environment.
   /// [policy] Configures the security policy for TDX operations within the domain.
   /// [quoteGenerationService] Configures the quote generation service for TDX in the domain.
-  DomainLaunchSecurityTdx({
+  const DomainLaunchSecurityTdx({
     this.mrConfigId,
     this.mrOwner,
     this.mrOwnerConfig,

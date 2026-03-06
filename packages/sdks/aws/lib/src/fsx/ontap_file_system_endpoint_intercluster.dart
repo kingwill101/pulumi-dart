@@ -11,7 +11,7 @@ class OntapFileSystemEndpointIntercluster {
   /// Creates a new [OntapFileSystemEndpointIntercluster].
   /// [dnsName] The Domain Name Service (DNS) name for the file system. You can mount your file system using its DNS name.
   /// [ipAddresses] IP addresses of the file system endpoint.
-  OntapFileSystemEndpointIntercluster({
+  const OntapFileSystemEndpointIntercluster({
     this.dnsName,
     this.ipAddresses,
   });

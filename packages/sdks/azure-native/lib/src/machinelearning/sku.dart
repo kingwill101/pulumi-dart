@@ -12,7 +12,7 @@ class Sku {
   /// Creates a new [Sku].
   /// [name] Name of the sku
   /// [tier] Tier of the sku like Basic or Enterprise
-  Sku({
+  const Sku({
     this.name,
     this.tier,
   });

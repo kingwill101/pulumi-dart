@@ -63,7 +63,7 @@ class MetricDescriptorArgs {
   /// [type] The metric type, including its DNS name prefix. The type is not URL-encoded. All service defined metrics must be prefixed with the service name, in the format of {service name}/{relative metric name}, such as cloudsql.googleapis.com/database/cpu/utilization. The relative metric name must have only upper and lower-case letters, digits, '/' and underscores '_' are allowed. Additionally, the maximum number of characters allowed for the relative_metric_name is 100. All user-defined metric types have the DNS name custom.googleapis.com, external.googleapis.com, or logging.googleapis.com/user/.
   /// [unit] The units in which the metric value is reported. It is only applicable if the
   /// [valueType] Whether the measurement is an integer, a floating-point number, etc. Some combinations of metricKind and valueType might not be supported.
-  MetricDescriptorArgs({
+  const MetricDescriptorArgs({
     this.description,
     this.displayName,
     this.labels,

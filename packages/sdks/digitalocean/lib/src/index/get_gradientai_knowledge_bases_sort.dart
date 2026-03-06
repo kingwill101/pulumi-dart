@@ -9,7 +9,7 @@ class GetGradientaiKnowledgeBasesSort {
   /// Creates a new [GetGradientaiKnowledgeBasesSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiKnowledgeBasesSort({
+  const GetGradientaiKnowledgeBasesSort({
     this.direction,
     required this.key,
   });

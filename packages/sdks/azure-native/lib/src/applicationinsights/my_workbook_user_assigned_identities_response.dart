@@ -12,7 +12,7 @@ class MyWorkbookUserAssignedIdentitiesResponse {
   /// Creates a new [MyWorkbookUserAssignedIdentitiesResponse].
   /// [principalId] The principal ID of resource identity.
   /// [tenantId] The tenant ID of resource.
-  MyWorkbookUserAssignedIdentitiesResponse({
+  const MyWorkbookUserAssignedIdentitiesResponse({
     required this.principalId,
     required this.tenantId,
   });

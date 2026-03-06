@@ -7,7 +7,7 @@ class GetCloudExadataInfrastructureCustomerContactsToSendToOci {
 
   /// Creates a new [GetCloudExadataInfrastructureCustomerContactsToSendToOci].
   /// [email] Required.
-  GetCloudExadataInfrastructureCustomerContactsToSendToOci({
+  const GetCloudExadataInfrastructureCustomerContactsToSendToOci({
     required this.email,
   });
 

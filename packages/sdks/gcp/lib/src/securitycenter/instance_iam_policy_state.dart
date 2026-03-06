@@ -20,7 +20,7 @@ class InstanceIamPolicyState {
   /// [policyData] Optional.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the Data Fusion instance.
-  InstanceIamPolicyState({
+  const InstanceIamPolicyState({
     this.etag,
     this.name,
     this.policyData,

@@ -8,7 +8,7 @@ class DomainDevicesSmartcardAlias {
 
   /// Creates a new [DomainDevicesSmartcardAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesSmartcardAlias({
+  const DomainDevicesSmartcardAlias({
     required this.name,
   });
 

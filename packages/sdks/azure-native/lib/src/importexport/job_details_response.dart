@@ -68,7 +68,7 @@ class JobDetailsResponse {
   /// [shippingInformation] Contains information about the Microsoft datacenter to which the drives should be shipped.
   /// [state] Current state of the job.
   /// [storageAccountId] The resource identifier of the storage account where data will be imported to or exported from.
-  JobDetailsResponse({
+  const JobDetailsResponse({
     this.backupDriveManifest,
     this.cancelRequested,
     this.deliveryPackage,

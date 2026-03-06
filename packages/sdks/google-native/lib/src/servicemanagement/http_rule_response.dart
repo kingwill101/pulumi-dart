@@ -37,7 +37,7 @@ class HttpRuleResponse {
   /// [put] Maps to HTTP PUT. Used for replacing a resource.
   /// [responseBody] Optional. The name of the response field whose value is mapped to the HTTP response body. When omitted, the entire response message will be used as the HTTP response body. NOTE: The referred field must be present at the top-level of the response message type.
   /// [selector] Selects a method to which this rule applies. Refer to selector for syntax details.
-  HttpRuleResponse({
+  const HttpRuleResponse({
     required this.additionalBindings,
     required this.body,
     required this.custom,

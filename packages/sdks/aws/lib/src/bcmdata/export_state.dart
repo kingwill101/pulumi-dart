@@ -22,7 +22,7 @@ class ExportState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
-  ExportState({
+  const ExportState({
     this.arn,
     this.export,
     this.tags,

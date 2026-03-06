@@ -33,7 +33,7 @@ class CustomRoutingEndpointState {
   /// [status] The status of the Custom Routing Endpoint.
   /// [trafficToEndpointPolicy] The access policy of traffic to the endpoint. Default value: `DenyAll`. Valid values:
   /// [type] The backend service type of the endpoint. Valid values: `PrivateSubNet`.
-  CustomRoutingEndpointState({
+  const CustomRoutingEndpointState({
     this.acceleratorId,
     this.customRoutingEndpointId,
     this.endpoint,

@@ -40,7 +40,7 @@ class DatabaseArgs {
   /// [description] Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
   /// [instanceId] The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
   /// [name] The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.characterSet,
     this.dataBaseName,
     this.description,

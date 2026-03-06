@@ -38,7 +38,7 @@ class PrivateEnvironmentConfigResponse {
   /// [privateClusterConfig] Optional. Configuration for the private GKE cluster for a Private IP Cloud Composer environment.
   /// [webServerIpv4CidrBlock] Optional. The CIDR block from which IP range for web server will be reserved. Needs to be disjoint from `private_cluster_config.master_ipv4_cidr_block` and `cloud_sql_ipv4_cidr_block`. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
   /// [webServerIpv4ReservedRange] The IP range reserved for the tenant project's App Engine VMs. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
-  PrivateEnvironmentConfigResponse({
+  const PrivateEnvironmentConfigResponse({
     required this.cloudComposerConnectionSubnetwork,
     required this.cloudComposerNetworkIpv4CidrBlock,
     required this.cloudComposerNetworkIpv4ReservedRange,

@@ -15,7 +15,7 @@ class GetGroupVmmigrationV1alpha1Args {
   /// [groupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGroupVmmigrationV1alpha1Args({
+  const GetGroupVmmigrationV1alpha1Args({
     required this.groupId,
     required this.location,
     this.project,

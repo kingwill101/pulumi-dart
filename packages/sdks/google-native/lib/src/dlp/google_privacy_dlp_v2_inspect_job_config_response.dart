@@ -21,7 +21,7 @@ class GooglePrivacyDlpV2InspectJobConfigResponse {
   /// [inspectConfig] How and what to scan for.
   /// [inspectTemplateName] If provided, will be used as the default for all values in InspectConfig. `inspect_config` will be merged into the values persisted as part of the template.
   /// [storageConfig] The data to scan.
-  GooglePrivacyDlpV2InspectJobConfigResponse({
+  const GooglePrivacyDlpV2InspectJobConfigResponse({
     required this.actions,
     required this.inspectConfig,
     required this.inspectTemplateName,

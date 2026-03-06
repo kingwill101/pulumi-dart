@@ -25,7 +25,7 @@ class VirtualMachineConfigurationAssignmentConfiguration {
   /// [contentUri] The content URI where the Guest Configuration package is stored.
   /// [parameters] One or more `parameter` blocks as defined below which define what configuration parameters and values against.
   /// [version] The version of the Guest Configuration that will be assigned in this Guest Configuration Assignment.
-  VirtualMachineConfigurationAssignmentConfiguration({
+  const VirtualMachineConfigurationAssignmentConfiguration({
     this.assignmentType,
     this.contentHash,
     this.contentUri,

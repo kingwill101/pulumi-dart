@@ -23,7 +23,7 @@ class InstanceArgs {
   /// [name] Replaced by `instance_name` after version 1.97.0.
   /// [remark] This attribute is a concise description of instance. The length cannot exceed 128.
   /// [tags] A mapping of tags to assign to the resource.
-  InstanceArgs({
+  const InstanceArgs({
     this.instanceName,
     this.name,
     this.remark,

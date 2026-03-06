@@ -17,7 +17,7 @@ class SqlAssessmentV3Properties {
   /// [fallbackMachineAssessmentArmId] Gets or sets the machine assessment ARM ID for VM fallback.
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  SqlAssessmentV3Properties({
+  const SqlAssessmentV3Properties({
     this.fallbackMachineAssessmentArmId,
     this.scope,
     this.settings,

@@ -16,7 +16,7 @@ class EnvKeystoreState {
   /// [aliases] Aliases in this keystore.
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [name] The name of the newly created keystore.
-  EnvKeystoreState({
+  const EnvKeystoreState({
     this.aliases,
     this.envId,
     this.name,

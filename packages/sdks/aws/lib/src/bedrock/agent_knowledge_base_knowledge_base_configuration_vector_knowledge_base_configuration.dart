@@ -16,7 +16,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfigurati
   /// [embeddingModelArn] ARN of the model used to create vector embeddings for the knowledge base.
   /// [embeddingModelConfiguration] The embeddings model configuration details for the vector model used in Knowledge Base.  See `embedding_model_configuration` block for details.
   /// [supplementalDataStorageConfiguration] supplemental_data_storage_configuration.  See `supplemental_data_storage_configuration` block for details.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationVectorKnowledgeBaseConfiguration({
     required this.embeddingModelArn,
     this.embeddingModelConfiguration,
     this.supplementalDataStorageConfiguration,

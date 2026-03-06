@@ -9,7 +9,7 @@ class IdentityForCmk {
 
   /// Creates a new [IdentityForCmk].
   /// [userAssignedIdentity] The ArmId of the user assigned identity that will be used to access the customer managed key vault
-  IdentityForCmk({
+  const IdentityForCmk({
     this.userAssignedIdentity,
   });
 

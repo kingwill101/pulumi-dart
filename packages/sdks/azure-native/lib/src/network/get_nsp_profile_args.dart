@@ -18,7 +18,7 @@ class GetNspProfileArgs {
   /// [networkSecurityPerimeterName] The name of the network security perimeter.
   /// [profileName] The name of the NSP profile.
   /// [resourceGroupName] The name of the resource group.
-  GetNspProfileArgs({
+  const GetNspProfileArgs({
     required this.networkSecurityPerimeterName,
     required this.profileName,
     required this.resourceGroupName,

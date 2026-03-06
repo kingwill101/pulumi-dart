@@ -18,7 +18,7 @@ class GetNetworkFunctionDefinitionGroupArgs {
   /// [networkFunctionDefinitionGroupName] The name of the network function definition group.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkFunctionDefinitionGroupArgs({
+  const GetNetworkFunctionDefinitionGroupArgs({
     required this.networkFunctionDefinitionGroupName,
     required this.publisherName,
     required this.resourceGroupName,

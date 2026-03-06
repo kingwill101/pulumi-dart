@@ -36,7 +36,7 @@ class AutoscaleSettingState {
   /// [resourceGroupName] The name of the Resource Group in the AutoScale Setting should be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [targetResourceId] Specifies the resource ID of the resource that the autoscale setting should be added to. Changing this forces a new resource to be created.
-  AutoscaleSettingState({
+  const AutoscaleSettingState({
     this.enabled,
     this.location,
     this.name,

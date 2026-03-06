@@ -65,7 +65,7 @@ class GetDeviceExtendedInformationResult {
   /// [resourceKey] The Resource ID of the Resource.
   /// [systemData] Metadata pertaining to creation and last modification of DataBoxEdgeDevice
   /// [type] The hierarchical type of the object.
-  GetDeviceExtendedInformationResult({
+  const GetDeviceExtendedInformationResult({
     this.channelIntegrityKeyName,
     this.channelIntegrityKeyVersion,
     this.clientSecretStoreId,

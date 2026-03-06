@@ -12,7 +12,7 @@ class OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha {
   /// Creates a new [OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha].
   /// [name] The name of the repository.
   /// [url] The url of the repository.
-  OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha({
+  const OSPolicyResourceRepositoryResourceGooRepositoryOsconfigV1alpha({
     required this.name,
     required this.url,
   });

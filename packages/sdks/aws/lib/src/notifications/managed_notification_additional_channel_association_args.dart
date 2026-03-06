@@ -15,7 +15,7 @@ class ManagedNotificationAdditionalChannelAssociationArgs {
   /// Creates a new [ManagedNotificationAdditionalChannelAssociationArgs].
   /// [channelArn] ARN of the channel to associate with the managed notification.
   /// [managedNotificationArn] ARN of the managed notification to associate the channel with.
-  ManagedNotificationAdditionalChannelAssociationArgs({
+  const ManagedNotificationAdditionalChannelAssociationArgs({
     required this.channelArn,
     required this.managedNotificationArn,
   });

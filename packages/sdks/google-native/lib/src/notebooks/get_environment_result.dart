@@ -28,7 +28,7 @@ class GetEnvironmentResult {
   /// [name] Name of this environment. Format: `projects/{project_id}/locations/{location}/environments/{environment_id}`
   /// [postStartupScript] Path to a Bash script that automatically runs after a notebook instance fully boots up. The path must be a URL or Cloud Storage path. Example: `"gs://path-to-file/file-name"`
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.containerImage,
     required this.createTime,
     required this.description,

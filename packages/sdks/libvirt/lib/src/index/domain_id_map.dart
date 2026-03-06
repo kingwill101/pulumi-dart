@@ -13,7 +13,7 @@ class DomainIdMap {
   /// Creates a new [DomainIdMap].
   /// [giDs] Defines the group ID mapping for identity management within the domain.
   /// [uiDs] Configures the UID mapping for the domain.
-  DomainIdMap({
+  const DomainIdMap({
     this.giDs,
     this.uiDs,
   });

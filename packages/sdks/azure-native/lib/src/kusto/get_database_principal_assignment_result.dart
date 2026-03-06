@@ -41,7 +41,7 @@ class GetDatabasePrincipalAssignmentResult {
   /// [tenantId] The tenant id of the principal
   /// [tenantName] The tenant name of the principal
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDatabasePrincipalAssignmentResult({
+  const GetDatabasePrincipalAssignmentResult({
     required this.aadObjectId,
     required this.azureApiVersion,
     required this.id,

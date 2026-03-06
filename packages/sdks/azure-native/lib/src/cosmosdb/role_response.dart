@@ -12,7 +12,7 @@ class RoleResponse {
   /// Creates a new [RoleResponse].
   /// [db] The database name the role is applied.
   /// [role] The role name.
-  RoleResponse({
+  const RoleResponse({
     this.db,
     this.role,
   });

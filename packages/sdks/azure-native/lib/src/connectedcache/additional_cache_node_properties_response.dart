@@ -102,7 +102,7 @@ class AdditionalCacheNodePropertiesResponse {
   /// [updateCycleType] Update Cycle Type
   /// [updateInfoDetails] Update related information details
   /// [updateRequestedDateTime] customer requested date time for mcc install of update cycle
-  AdditionalCacheNodePropertiesResponse({
+  const AdditionalCacheNodePropertiesResponse({
     required this.aggregatedStatusCode,
     required this.aggregatedStatusDetails,
     required this.aggregatedStatusText,

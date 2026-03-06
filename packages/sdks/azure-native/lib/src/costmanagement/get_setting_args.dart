@@ -12,7 +12,7 @@ class GetSettingArgs {
 
   /// Creates a new [GetSettingArgs].
   /// [settingName] Name of the setting. Allowed values: myscope
-  GetSettingArgs({
+  const GetSettingArgs({
     required this.settingName,
   });
 

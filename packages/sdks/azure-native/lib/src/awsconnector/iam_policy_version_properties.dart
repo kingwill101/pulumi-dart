@@ -31,7 +31,7 @@ class IamPolicyVersionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamPolicyVersionProperties({
+  const IamPolicyVersionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

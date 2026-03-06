@@ -15,7 +15,7 @@ class AvailabilityInformationResponse {
   /// [availabilityStage] Current availability stage of the product.
   /// [disabledReason] Reason why the product is disabled.
   /// [disabledReasonMessage] Message for why the product is disabled.
-  AvailabilityInformationResponse({
+  const AvailabilityInformationResponse({
     required this.availabilityStage,
     required this.disabledReason,
     required this.disabledReasonMessage,

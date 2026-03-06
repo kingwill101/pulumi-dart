@@ -49,7 +49,7 @@ class CaPoolArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [publishingOptions] The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// [tier] The Tier of this CaPool.
-  CaPoolArgs({
+  const CaPoolArgs({
     this.encryptionSpec,
     this.issuancePolicy,
     this.labels,

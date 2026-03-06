@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionCaptcha {
 
   /// Creates a new [GetManagedRuleGroupRuleActionCaptcha].
   /// [customRequestHandlings] Required.
-  GetManagedRuleGroupRuleActionCaptcha({
+  const GetManagedRuleGroupRuleActionCaptcha({
     required this.customRequestHandlings,
   });
 

@@ -18,7 +18,7 @@ class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1 {
   /// [guestFlush] Indication to perform a 'guest aware' snapshot.
   /// [labels] Labels to apply to scheduled snapshots. These can be later modified by the setLabels method. Label values may be empty.
   /// [storageLocations] Cloud Storage bucket storage location of the auto snapshot (regional or multi-regional).
-  ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1({
+  const ResourcePolicySnapshotSchedulePolicySnapshotPropertiesComputeV1({
     this.chainName,
     this.guestFlush,
     this.labels,

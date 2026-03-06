@@ -9,7 +9,7 @@ class JobExecutionInfoResponse {
 
   /// Creates a new [JobExecutionInfoResponse].
   /// [stages] A mapping from each stage to the information about that stage.
-  JobExecutionInfoResponse({
+  const JobExecutionInfoResponse({
     required this.stages,
   });
 

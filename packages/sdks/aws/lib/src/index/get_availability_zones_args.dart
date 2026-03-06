@@ -31,7 +31,7 @@ class GetAvailabilityZonesArgs {
   /// [filters] Configuration block(s) for filtering. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] Allows to filter list of Availability Zones based on their
-  GetAvailabilityZonesArgs({
+  const GetAvailabilityZonesArgs({
     this.allAvailabilityZones,
     this.excludeNames,
     this.excludeZoneIds,

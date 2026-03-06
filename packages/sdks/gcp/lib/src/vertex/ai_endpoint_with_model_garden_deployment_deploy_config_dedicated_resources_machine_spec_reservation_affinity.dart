@@ -22,7 +22,7 @@ class AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSp
   /// [key] Corresponds to the label key of a reservation resource. To target a
   /// [reservationAffinityType] Specifies the reservation affinity type.
   /// [values] Corresponds to the label values of a reservation resource. This must be the
-  AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity({
+  const AiEndpointWithModelGardenDeploymentDeployConfigDedicatedResourcesMachineSpecReservationAffinity({
     this.key,
     required this.reservationAffinityType,
     this.values,

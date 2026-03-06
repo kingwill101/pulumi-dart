@@ -9,7 +9,7 @@ class ProductCodeValuesEnumValue {
 
   /// Creates a new [ProductCodeValuesEnumValue].
   /// [value] Property value
-  ProductCodeValuesEnumValue({
+  const ProductCodeValuesEnumValue({
     this.value,
   });
 

@@ -38,7 +38,7 @@ class GetAddonReleasesRelease {
   /// [exporterCount] The number of exporters.
   /// [id] The ID of the Addon Release. It formats as `&lt;environment_id&gt;:&lt;addon_release_name&gt;`.
   /// [regionId] The region ID.
-  GetAddonReleasesRelease({
+  const GetAddonReleasesRelease({
     required this.addonName,
     required this.addonReleaseName,
     required this.addonVersion,

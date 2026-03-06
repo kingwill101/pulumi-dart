@@ -18,7 +18,7 @@ class SessionTemplateRuntimeConfig {
   /// [effectiveProperties] (Output)
   /// [properties] A mapping of property names to values, which are used to configure workload execution.
   /// [version] Version of the session runtime.
-  SessionTemplateRuntimeConfig({
+  const SessionTemplateRuntimeConfig({
     this.containerImage,
     this.effectiveProperties,
     this.properties,

@@ -26,7 +26,7 @@ class GetVpcEndpointLinkedVpcsArgs {
   /// [moduleName] The name of the module that you want to access. Valid Values:
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Vpc Endpoint Linked Vpc. Valid Values: `CREATING`, `RUNNING`.
-  GetVpcEndpointLinkedVpcsArgs({
+  const GetVpcEndpointLinkedVpcsArgs({
     this.ids,
     required this.instanceId,
     required this.moduleName,

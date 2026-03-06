@@ -14,7 +14,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift {
   /// [errorHandlingConfig] Optional.
   /// [intermediateBucketName] Required.
   /// [object_] Required.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesRedshift({
     this.bucketPrefix,
     this.errorHandlingConfig,
     required this.intermediateBucketName,

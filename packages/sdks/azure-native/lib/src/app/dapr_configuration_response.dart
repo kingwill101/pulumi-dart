@@ -9,7 +9,7 @@ class DaprConfigurationResponse {
 
   /// Creates a new [DaprConfigurationResponse].
   /// [version] The version of Dapr
-  DaprConfigurationResponse({
+  const DaprConfigurationResponse({
     required this.version,
   });
 

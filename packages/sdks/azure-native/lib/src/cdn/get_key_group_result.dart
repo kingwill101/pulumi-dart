@@ -31,7 +31,7 @@ class GetKeyGroupResult {
   /// [provisioningState] Provisioning status
   /// [systemData] Read only system data
   /// [type] Resource type.
-  GetKeyGroupResult({
+  const GetKeyGroupResult({
     required this.azureApiVersion,
     required this.deploymentStatus,
     required this.id,

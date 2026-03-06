@@ -12,7 +12,7 @@ class GetInstanceClientConnectionConfig {
   /// Creates a new [GetInstanceClientConnectionConfig].
   /// [requireConnectors] Configuration to enforce connectors only (ex: AuthProxy) connections to the database.
   /// [sslConfigs] SSL config option for this instance.
-  GetInstanceClientConnectionConfig({
+  const GetInstanceClientConnectionConfig({
     required this.requireConnectors,
     required this.sslConfigs,
   });

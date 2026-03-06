@@ -21,7 +21,7 @@ class DefenseResourceGroupArgs {
   /// [groupName] The name of the protected object group. The name must be 1 to 255 characters long and can contain Chinese characters, letters, digits, underscores (_), periods (.), and hyphens (-)
   /// [instanceId] The ID of the WAF instance.
   /// [resourceLists] The names of the protected objects that are added to the protected object group.
-  DefenseResourceGroupArgs({
+  const DefenseResourceGroupArgs({
     this.description,
     required this.groupName,
     required this.instanceId,

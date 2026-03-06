@@ -27,7 +27,7 @@ class GetInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
   /// [tags] A map of tags assigned to the Ons instance.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

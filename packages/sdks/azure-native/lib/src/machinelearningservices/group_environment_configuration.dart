@@ -23,7 +23,7 @@ class GroupEnvironmentConfiguration {
   /// [livenessProbe] Liveness probe monitors the health of the container regularly.
   /// [readinessProbe] Readiness probe validates if the container is ready to serve traffic. The properties and defaults are the same as liveness probe.
   /// [startupProbe] This verifies whether the application within a container is started. Startup probes run before any other probe, and, unless it finishes successfully, disables other probes.
-  GroupEnvironmentConfiguration({
+  const GroupEnvironmentConfiguration({
     this.environmentId,
     this.environmentVariables,
     this.livenessProbe,

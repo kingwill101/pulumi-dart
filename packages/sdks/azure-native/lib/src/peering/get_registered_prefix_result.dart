@@ -32,7 +32,7 @@ class GetRegisteredPrefixResult {
   /// [prefixValidationState] The prefix validation state.
   /// [provisioningState] The provisioning state of the resource.
   /// [type] The type of the resource.
-  GetRegisteredPrefixResult({
+  const GetRegisteredPrefixResult({
     required this.azureApiVersion,
     required this.errorMessage,
     required this.id,

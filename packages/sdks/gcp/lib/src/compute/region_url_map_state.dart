@@ -88,7 +88,7 @@ class RegionUrlMapState {
   /// [region] The Region in which the url map should reside.
   /// [selfLink] The URI of the created resource.
   /// [tests] The list of expected URL mappings. Requests to update this UrlMap will
-  RegionUrlMapState({
+  const RegionUrlMapState({
     this.creationTimestamp,
     this.defaultRouteAction,
     this.defaultService,

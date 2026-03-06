@@ -13,7 +13,7 @@ class ListPolicySetDefinitionVersionAllAtManagementGroupResult {
   /// Creates a new [ListPolicySetDefinitionVersionAllAtManagementGroupResult].
   /// [nextLink] The URL to use for getting the next set of results.
   /// [value] An array of policy set definition versions.
-  ListPolicySetDefinitionVersionAllAtManagementGroupResult({
+  const ListPolicySetDefinitionVersionAllAtManagementGroupResult({
     this.nextLink,
     this.value,
   });

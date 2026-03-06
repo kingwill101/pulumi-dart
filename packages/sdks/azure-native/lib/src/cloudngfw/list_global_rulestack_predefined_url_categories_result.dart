@@ -13,7 +13,7 @@ class ListGlobalRulestackPredefinedUrlCategoriesResult {
   /// Creates a new [ListGlobalRulestackPredefinedUrlCategoriesResult].
   /// [nextLink] next link
   /// [value] predefined url categories
-  ListGlobalRulestackPredefinedUrlCategoriesResult({
+  const ListGlobalRulestackPredefinedUrlCategoriesResult({
     this.nextLink,
     required this.value,
   });

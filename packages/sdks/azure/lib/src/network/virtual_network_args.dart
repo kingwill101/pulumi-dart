@@ -65,7 +65,7 @@ class VirtualNetworkArgs {
   /// [resourceGroupName] The name of the resource group in which to create the virtual network. Changing this forces a new resource to be created.
   /// [subnets] Can be specified multiple times to define multiple subnets. Each `subnet` block supports fields documented below.
   /// [tags] A mapping of tags to assign to the resource.
-  VirtualNetworkArgs({
+  const VirtualNetworkArgs({
     this.addressSpaces,
     this.bgpCommunity,
     this.ddosProtectionPlan,

@@ -14,7 +14,7 @@ class ThrottlingMetricResponse {
   /// [interval] The interval.
   /// [limit] The limit.
   /// [type] The throttling metric type
-  ThrottlingMetricResponse({
+  const ThrottlingMetricResponse({
     this.interval,
     required this.limit,
     required this.type,

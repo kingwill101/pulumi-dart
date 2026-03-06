@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVa
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariationPlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

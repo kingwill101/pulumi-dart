@@ -9,7 +9,7 @@ class V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector {
 
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector].
   /// [includedLocations] Names of the locations in scope.
-  V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector({
+  const V2PolicyOrchestratorForFolderOrchestrationScopeSelectorLocationSelector({
     this.includedLocations,
   });
 

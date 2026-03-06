@@ -14,7 +14,7 @@ class GetIndustrialSericeArgs {
 
   /// Creates a new [GetIndustrialSericeArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
-  GetIndustrialSericeArgs({
+  const GetIndustrialSericeArgs({
     this.enable,
   });
 

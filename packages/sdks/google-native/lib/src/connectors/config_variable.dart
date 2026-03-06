@@ -26,7 +26,7 @@ class ConfigVariable {
   /// [key] Key of the config variable.
   /// [secretValue] Value is a secret.
   /// [stringValue] Value is a string.
-  ConfigVariable({
+  const ConfigVariable({
     this.boolValue,
     this.encryptionKeyValue,
     this.intValue,

@@ -13,7 +13,7 @@ class GetSslPolicyArgs {
   /// Creates a new [GetSslPolicyArgs].
   /// [project] Optional.
   /// [sslPolicy] Required.
-  GetSslPolicyArgs({
+  const GetSslPolicyArgs({
     this.project,
     required this.sslPolicy,
   });

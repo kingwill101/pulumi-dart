@@ -17,7 +17,7 @@ class EventSourceV2SourceSlsParameters {
   /// [logStore] The logstore of log service SLS.
   /// [project] The log project of log service SLS.
   /// [roleName] When authorizing event bus EventBridge to use this role to read SLS log content, the following conditions must be met: when creating the role used by the service in the RAM console, you need to select Alibaba Cloud Service and event bus for trusted service ". For the permissions policy of this role, see custom event source log service SLS.
-  EventSourceV2SourceSlsParameters({
+  const EventSourceV2SourceSlsParameters({
     this.consumePosition,
     this.logStore,
     this.project,

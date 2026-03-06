@@ -9,7 +9,7 @@ class CloudRunConfig {
 
   /// Creates a new [CloudRunConfig].
   /// [automaticTrafficControl] Whether Cloud Deploy should update the traffic stanza in a Cloud Run Service on the user's behalf to facilitate traffic splitting. This is required to be true for CanaryDeployments, but optional for CustomCanaryDeployments.
-  CloudRunConfig({
+  const CloudRunConfig({
     this.automaticTrafficControl,
   });
 

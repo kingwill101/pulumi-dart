@@ -220,7 +220,7 @@ class ClusterArgs {
   /// [storageType] (Forces new for Multi-AZ DB clusters) Specifies the storage type to be associated with the DB cluster. For Aurora DB clusters, `storage_type` modifications can be done in-place. For Multi-AZ DB Clusters, the `iops` argument must also be set. Valid values are: `""`, `aurora-iopt1` (Aurora DB Clusters); `io1`, `io2` (Multi-AZ DB Clusters). Default: `""` (Aurora DB Clusters); `io1` (Multi-AZ DB Clusters).
   /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate with the Cluster
-  ClusterArgs({
+  const ClusterArgs({
     this.allocatedStorage,
     this.allowMajorVersionUpgrade,
     this.applyImmediately,

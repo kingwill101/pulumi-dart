@@ -8,7 +8,7 @@ class InstanceEcsList {
 
   /// Creates a new [InstanceEcsList].
   /// [ecsId] The ID of the ECS instance.
-  InstanceEcsList({
+  const InstanceEcsList({
     this.ecsId,
   });
 

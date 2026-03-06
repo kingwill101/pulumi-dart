@@ -51,7 +51,7 @@ class BackupVaultArgs {
   /// [retentionDurationInDays] The soft delete retention duration for this Backup Vault. Possible values are between `14` and `180`. Defaults to `14`.
   /// [softDelete] The state of soft delete for this Backup Vault. Possible values are `AlwaysOn`, `Off`, and `On`. Defaults to `On`.
   /// [tags] A mapping of tags which should be assigned to the Backup Vault.
-  BackupVaultArgs({
+  const BackupVaultArgs({
     this.crossRegionRestoreEnabled,
     required this.datastoreType,
     this.identity,

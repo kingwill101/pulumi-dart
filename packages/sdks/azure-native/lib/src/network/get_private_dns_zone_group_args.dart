@@ -18,7 +18,7 @@ class GetPrivateDnsZoneGroupArgs {
   /// [privateDnsZoneGroupName] The name of the private dns zone group.
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group.
-  GetPrivateDnsZoneGroupArgs({
+  const GetPrivateDnsZoneGroupArgs({
     required this.privateDnsZoneGroupName,
     required this.privateEndpointName,
     required this.resourceGroupName,

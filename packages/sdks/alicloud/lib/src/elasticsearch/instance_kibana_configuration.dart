@@ -14,7 +14,7 @@ class InstanceKibanaConfiguration {
   /// [amount] The number of disks of the Elasticsearch Kibana node. The default value is 1.
   /// [disk] Elasticsearch Kibana node disk size
   /// [spec] Elasticsearch Kibana node disk specifications
-  InstanceKibanaConfiguration({
+  const InstanceKibanaConfiguration({
     this.amount,
     this.disk,
     required this.spec,

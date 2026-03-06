@@ -9,7 +9,7 @@ class Tags {
 
   /// Creates a new [Tags].
   /// [items] An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-  Tags({
+  const Tags({
     this.items,
   });
 

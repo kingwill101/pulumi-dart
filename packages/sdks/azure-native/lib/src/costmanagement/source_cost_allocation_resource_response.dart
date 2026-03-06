@@ -15,7 +15,7 @@ class SourceCostAllocationResourceResponse {
   /// [name] If resource type is dimension, this must be either ResourceGroupName or SubscriptionId. If resource type is tag, this must be a valid Azure tag
   /// [resourceType] Type of resources contained in this cost allocation rule
   /// [values] Source Resources for cost allocation. This list cannot contain more than 25 values.
-  SourceCostAllocationResourceResponse({
+  const SourceCostAllocationResourceResponse({
     required this.name,
     required this.resourceType,
     required this.values,

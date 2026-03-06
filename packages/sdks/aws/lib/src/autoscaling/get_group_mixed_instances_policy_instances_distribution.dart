@@ -22,7 +22,7 @@ class GetGroupMixedInstancesPolicyInstancesDistribution {
   /// [spotAllocationStrategy] Strategy used when launching Spot instances.
   /// [spotInstancePools] Number of Spot pools per availability zone to allocate capacity.
   /// [spotMaxPrice] Maximum price per unit hour that the user is willing to pay for the Spot instances.
-  GetGroupMixedInstancesPolicyInstancesDistribution({
+  const GetGroupMixedInstancesPolicyInstancesDistribution({
     required this.onDemandAllocationStrategy,
     required this.onDemandBaseCapacity,
     required this.onDemandPercentageAboveBaseCapacity,

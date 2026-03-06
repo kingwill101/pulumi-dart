@@ -12,7 +12,7 @@ class CompositeFilterResponse {
   /// Creates a new [CompositeFilterResponse].
   /// [logicOperator] The logic operator of the sub filter.
   /// [subFilters] Sub filters.
-  CompositeFilterResponse({
+  const CompositeFilterResponse({
     required this.logicOperator,
     required this.subFilters,
   });

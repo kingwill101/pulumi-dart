@@ -9,7 +9,7 @@ class CspWorkspaceAdminPropertiesResponse {
 
   /// Creates a new [CspWorkspaceAdminPropertiesResponse].
   /// [initialWorkspaceAdminObjectId] AAD object ID of initial workspace admin
-  CspWorkspaceAdminPropertiesResponse({
+  const CspWorkspaceAdminPropertiesResponse({
     this.initialWorkspaceAdminObjectId,
   });
 

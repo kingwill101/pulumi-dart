@@ -14,7 +14,7 @@ class InsightFiltersNetworkDestinationPort {
   /// [eq] The equal-to condition to be applied to a single field when querying for findings, provided as a String.
   /// [gte] The greater-than-equal condition to be applied to a single field when querying for findings, provided as a String.
   /// [lte] The less-than-equal condition to be applied to a single field when querying for findings, provided as a String.
-  InsightFiltersNetworkDestinationPort({
+  const InsightFiltersNetworkDestinationPort({
     this.eq,
     this.gte,
     this.lte,

@@ -47,7 +47,7 @@ class BackupVaultResponse {
   /// [secureScore] Secure Score of Backup Vault
   /// [securitySettings] Security Settings
   /// [storageSettings] Storage Settings
-  BackupVaultResponse({
+  const BackupVaultResponse({
     required this.bcdrSecurityLevel,
     this.featureSettings,
     required this.isVaultProtectedByResourceGuard,

@@ -9,7 +9,7 @@ class AppVersionSnapshotGuardrailActionGenerativeAnswer {
 
   /// Creates a new [AppVersionSnapshotGuardrailActionGenerativeAnswer].
   /// [prompt] (Output)
-  AppVersionSnapshotGuardrailActionGenerativeAnswer({
+  const AppVersionSnapshotGuardrailActionGenerativeAnswer({
     this.prompt,
   });
 

@@ -15,7 +15,7 @@ class GetBucketIamPolicyArgs {
   /// [bucket] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [userProject] Optional.
-  GetBucketIamPolicyArgs({
+  const GetBucketIamPolicyArgs({
     required this.bucket,
     this.optionsRequestedPolicyVersion,
     this.userProject,

@@ -27,7 +27,7 @@ class TemporaryResourceLimitsConfigResponse {
   /// [maxQueuedMessages] Maximum receive for external clients.
   /// [maxQueuedQos0Messages] Maximum receive QoS0 for external clients.
   /// [maxSessionExpirySecs] Maximum session expiry interval, in seconds.
-  TemporaryResourceLimitsConfigResponse({
+  const TemporaryResourceLimitsConfigResponse({
     required this.maxInflightMessages,
     required this.maxInflightPatches,
     required this.maxInflightPatchesPerClient,

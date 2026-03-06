@@ -11,7 +11,7 @@ class DataCollectionRuleDestinationsEventHub {
   /// Creates a new [DataCollectionRuleDestinationsEventHub].
   /// [eventHubId] The resource ID of the Event Hub.
   /// [name] The name which should be used for this destination. This name should be unique across all destinations regardless of type within the Data Collection Rule.
-  DataCollectionRuleDestinationsEventHub({
+  const DataCollectionRuleDestinationsEventHub({
     required this.eventHubId,
     required this.name,
   });

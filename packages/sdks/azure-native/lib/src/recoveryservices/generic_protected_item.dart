@@ -73,7 +73,7 @@ class GenericProtectedItem {
   /// [softDeleteRetentionPeriodInDays] Soft delete retention period in days
   /// [sourceAssociations] Loosely coupled (type, value) associations (example - parent of a protected item)
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  GenericProtectedItem({
+  const GenericProtectedItem({
     this.backupSetName,
     this.containerName,
     this.createMode,

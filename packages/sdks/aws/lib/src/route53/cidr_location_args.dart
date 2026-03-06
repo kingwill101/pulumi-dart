@@ -18,7 +18,7 @@ class CidrLocationArgs {
   /// [cidrBlocks] CIDR blocks for the location.
   /// [cidrCollectionId] The ID of the CIDR collection to update.
   /// [name] Name for the CIDR location.
-  CidrLocationArgs({
+  const CidrLocationArgs({
     required this.cidrBlocks,
     required this.cidrCollectionId,
     this.name,

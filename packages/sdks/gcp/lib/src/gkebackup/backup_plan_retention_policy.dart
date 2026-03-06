@@ -32,7 +32,7 @@ class BackupPlanRetentionPolicy {
   /// [backupDeleteLockDays] Minimum age for a Backup created via this BackupPlan (in days).
   /// [backupRetainDays] The default maximum age of a Backup created via this BackupPlan.
   /// [locked] This flag denotes whether the retention policy of this BackupPlan is locked.
-  BackupPlanRetentionPolicy({
+  const BackupPlanRetentionPolicy({
     this.backupDeleteLockDays,
     this.backupRetainDays,
     this.locked,

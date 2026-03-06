@@ -12,7 +12,7 @@ class InstanceSecurityGroupAttachmentState {
   /// Creates a new [InstanceSecurityGroupAttachmentState].
   /// [instanceId] Instance ID.
   /// [securityGroupId] Security group ID.
-  InstanceSecurityGroupAttachmentState({
+  const InstanceSecurityGroupAttachmentState({
     this.instanceId,
     this.securityGroupId,
   });

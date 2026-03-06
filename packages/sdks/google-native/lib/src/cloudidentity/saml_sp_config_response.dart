@@ -12,7 +12,7 @@ class SamlSpConfigResponse {
   /// Creates a new [SamlSpConfigResponse].
   /// [assertionConsumerServiceUri] The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
   /// [entityId] The SAML **Entity ID** for this service provider.
-  SamlSpConfigResponse({
+  const SamlSpConfigResponse({
     required this.assertionConsumerServiceUri,
     required this.entityId,
   });

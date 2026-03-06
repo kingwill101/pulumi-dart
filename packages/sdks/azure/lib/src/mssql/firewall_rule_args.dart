@@ -23,7 +23,7 @@ class FirewallRuleArgs {
   /// [name] The name of the firewall rule. Changing this forces a new resource to be created.
   /// [serverId] The resource ID of the SQL Server on which to create the Firewall Rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The starting IP address to allow through the firewall for this rule.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.endIpAddress,
     this.name,
     required this.serverId,

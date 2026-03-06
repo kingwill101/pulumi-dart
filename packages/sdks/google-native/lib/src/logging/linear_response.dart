@@ -15,7 +15,7 @@ class LinearResponse {
   /// [numFiniteBuckets] Must be greater than 0.
   /// [offset] Lower bound of the first bucket.
   /// [width] Must be greater than 0.
-  LinearResponse({
+  const LinearResponse({
     required this.numFiniteBuckets,
     required this.offset,
     required this.width,

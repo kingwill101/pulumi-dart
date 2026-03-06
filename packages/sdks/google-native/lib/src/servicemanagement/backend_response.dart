@@ -10,7 +10,7 @@ class BackendResponse {
 
   /// Creates a new [BackendResponse].
   /// [rules] A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  BackendResponse({
+  const BackendResponse({
     required this.rules,
   });
 

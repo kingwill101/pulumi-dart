@@ -9,7 +9,7 @@ class ConnectionCloudResource {
 
   /// Creates a new [ConnectionCloudResource].
   /// [serviceAccountId] (Output)
-  ConnectionCloudResource({
+  const ConnectionCloudResource({
     this.serviceAccountId,
   });
 

@@ -14,7 +14,7 @@ class ClusterNodeGroupCostOptimizedConfig {
   /// [onDemandBaseCapacity] The cost optimized configuration which on demand based capacity.
   /// [onDemandPercentageAboveBaseCapacity] The cost optimized configuration which on demand percentage above based capacity.
   /// [spotInstancePools] The cost optimized configuration with spot instance pools.
-  ClusterNodeGroupCostOptimizedConfig({
+  const ClusterNodeGroupCostOptimizedConfig({
     required this.onDemandBaseCapacity,
     required this.onDemandPercentageAboveBaseCapacity,
     required this.spotInstancePools,

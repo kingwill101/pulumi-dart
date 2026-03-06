@@ -22,7 +22,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config {
   /// Creates a new [NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config].
   /// [ipProtocol] (Output)
   /// [ports] (Output)
-  NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config({
+  const NetworkFirewallPolicyWithRulesPredefinedRuleMatchLayer4Config({
     this.ipProtocol,
     this.ports,
   });

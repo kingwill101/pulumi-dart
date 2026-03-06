@@ -26,7 +26,7 @@ class ExternalVpnGatewayInterface {
   /// [id] The numeric ID for this interface. Allowed values are based on the redundancy type
   /// [ipAddress] IP address of the interface in the external VPN gateway.
   /// [ipv6Address] IPv6 address of the interface in the external VPN gateway. This IPv6
-  ExternalVpnGatewayInterface({
+  const ExternalVpnGatewayInterface({
     this.id,
     this.ipAddress,
     this.ipv6Address,

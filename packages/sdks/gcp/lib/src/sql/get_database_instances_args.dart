@@ -27,7 +27,7 @@ class GetDatabaseInstancesArgs {
   /// [state] To filter out the Cloud SQL instances based on the current serving state of the database instance. Supported values include `SQL_INSTANCE_STATE_UNSPECIFIED`, `RUNNABLE`, `SUSPENDED`, `PENDING_DELETE`, `PENDING_CREATE`, `MAINTENANCE`, `FAILED`.
   /// [tier] To filter out the Cloud SQL instances based on the tier(or machine type) of the database instances.
   /// [zone] To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
-  GetDatabaseInstancesArgs({
+  const GetDatabaseInstancesArgs({
     this.databaseVersion,
     this.project,
     this.region,

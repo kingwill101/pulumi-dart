@@ -26,7 +26,7 @@ class KeystoresAliasesSelfSignedCertSubject {
   /// [org] Organization name. Maximum length is 64 characters.
   /// [orgUnit] Organization team name. Maximum length is 64 characters.
   /// [state] State or district name. Maximum length is 128 characters.
-  KeystoresAliasesSelfSignedCertSubject({
+  const KeystoresAliasesSelfSignedCertSubject({
     this.commonName,
     this.countryCode,
     this.email,

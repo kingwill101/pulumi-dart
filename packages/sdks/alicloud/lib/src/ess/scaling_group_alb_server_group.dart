@@ -14,7 +14,7 @@ class ScalingGroupAlbServerGroup {
   /// [albServerGroupId] The ID of ALB server group.
   /// [port] The port number used by an ECS instance after Auto Scaling adds the ECS instance to ALB server group.
   /// [weight] The weight of the ECS instance as a backend server after Auto Scaling adds the ECS instance to ALB server group.
-  ScalingGroupAlbServerGroup({
+  const ScalingGroupAlbServerGroup({
     this.albServerGroupId,
     this.port,
     this.weight,

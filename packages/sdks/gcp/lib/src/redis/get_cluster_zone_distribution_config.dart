@@ -12,7 +12,7 @@ class GetClusterZoneDistributionConfig {
   /// Creates a new [GetClusterZoneDistributionConfig].
   /// [mode] Immutable. The mode for zone distribution for Memorystore Redis cluster.
   /// [zone] Immutable. The zone for single zone Memorystore Redis cluster.
-  GetClusterZoneDistributionConfig({
+  const GetClusterZoneDistributionConfig({
     required this.mode,
     required this.zone,
   });

@@ -34,7 +34,7 @@ class GoogleCloudMlV1HyperparameterSpecResponse {
   /// [maxTrials] Optional. How many training trials should be attempted to optimize the specified hyperparameters. Defaults to one.
   /// [params] The set of parameters to tune.
   /// [resumePreviousJobId] Optional. The prior hyperparameter tuning job id that users hope to continue with. The job id will be used to find the corresponding vizier study guid and resume the study.
-  GoogleCloudMlV1HyperparameterSpecResponse({
+  const GoogleCloudMlV1HyperparameterSpecResponse({
     required this.algorithm,
     required this.enableTrialEarlyStopping,
     required this.goal,

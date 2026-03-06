@@ -59,7 +59,7 @@ class FeatureGkehubState {
   /// [spec] Optional. Hub-wide Feature configuration. If this Feature does not support any Hub-wide configuration, this field may be unused.
   /// [states] (Output)
   /// [updateTime] (Output)
-  FeatureGkehubState({
+  const FeatureGkehubState({
     this.createTime,
     this.deleteTime,
     this.effectiveLabels,

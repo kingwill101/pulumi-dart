@@ -48,7 +48,7 @@ class SmartDetectorAlertRuleArgs {
   /// [state] The alert rule state.
   /// [tags] The resource tags.
   /// [throttling] The alert rule throttling information.
-  SmartDetectorAlertRuleArgs({
+  const SmartDetectorAlertRuleArgs({
     required this.actionGroups,
     this.alertRuleName,
     this.description,

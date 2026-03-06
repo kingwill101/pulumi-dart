@@ -11,7 +11,7 @@ class CxTestCaseTestCaseConversationTurnUserInputInputDtmf {
   /// Creates a new [CxTestCaseTestCaseConversationTurnUserInputInputDtmf].
   /// [digits] The dtmf digits.
   /// [finishDigit] The finish digit (if any).
-  CxTestCaseTestCaseConversationTurnUserInputInputDtmf({
+  const CxTestCaseTestCaseConversationTurnUserInputInputDtmf({
     this.digits,
     this.finishDigit,
   });

@@ -13,7 +13,7 @@ class GetAuthorityKeySpec {
   /// Creates a new [GetAuthorityKeySpec].
   /// [algorithm] The algorithm to use for creating a managed Cloud KMS key for a for a simplified
   /// [cloudKmsKeyVersion] The resource name for an existing Cloud KMS CryptoKeyVersion in the format
-  GetAuthorityKeySpec({
+  const GetAuthorityKeySpec({
     required this.algorithm,
     required this.cloudKmsKeyVersion,
   });

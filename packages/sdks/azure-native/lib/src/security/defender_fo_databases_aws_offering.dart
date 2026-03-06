@@ -22,7 +22,7 @@ class DefenderFoDatabasesAwsOffering {
   /// [databasesDspm] The databases data security posture management (DSPM) configuration
   /// [offeringType] The type of the security offering.
   /// [rds] The RDS configuration
-  DefenderFoDatabasesAwsOffering({
+  const DefenderFoDatabasesAwsOffering({
     this.arcAutoProvisioning,
     this.databasesDspm,
     required this.offeringType,

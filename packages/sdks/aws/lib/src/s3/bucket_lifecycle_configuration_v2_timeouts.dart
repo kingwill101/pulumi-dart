@@ -11,7 +11,7 @@ class BucketLifecycleConfigurationV2Timeouts {
   /// Creates a new [BucketLifecycleConfigurationV2Timeouts].
   /// [create] A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
   /// [update] A string that can be [parsed as a duration](https://pkg.go.dev/time#ParseDuration) consisting of numbers and unit suffixes, such as "30s" or "2h45m". Valid time units are "s" (seconds), "m" (minutes), "h" (hours).
-  BucketLifecycleConfigurationV2Timeouts({
+  const BucketLifecycleConfigurationV2Timeouts({
     this.create,
     this.update,
   });

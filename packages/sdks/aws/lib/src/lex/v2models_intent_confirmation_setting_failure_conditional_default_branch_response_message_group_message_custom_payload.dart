@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMe
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessageCustomPayload({
+  const V2modelsIntentConfirmationSettingFailureConditionalDefaultBranchResponseMessageGroupMessageCustomPayload({
     required this.value,
   });
 

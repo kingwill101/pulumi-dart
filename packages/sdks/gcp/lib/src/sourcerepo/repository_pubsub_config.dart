@@ -20,7 +20,7 @@ class RepositoryPubsubConfig {
   /// [messageFormat] The format of the Cloud Pub/Sub messages.
   /// [serviceAccountEmail] Email address of the service account used for publishing Cloud Pub/Sub messages.
   /// [topic] The identifier for this object. Format specified above.
-  RepositoryPubsubConfig({
+  const RepositoryPubsubConfig({
     required this.messageFormat,
     this.serviceAccountEmail,
     required this.topic,

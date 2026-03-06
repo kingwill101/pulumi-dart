@@ -146,7 +146,7 @@ class TriggerState {
   /// [triggerId] The unique identifier for the trigger.
   /// [triggerTemplate] Template describing the types of source changes to trigger a build.
   /// [webhookConfig] WebhookConfig describes the configuration of a trigger that creates
-  TriggerState({
+  const TriggerState({
     this.approvalConfig,
     this.bitbucketServerTriggerConfig,
     this.build,

@@ -20,7 +20,7 @@ class MsTeamsChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Microsoft Teams channel resource
-  MsTeamsChannel({
+  const MsTeamsChannel({
     required this.channelName,
     this.etag,
     this.location,

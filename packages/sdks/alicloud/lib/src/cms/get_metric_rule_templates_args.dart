@@ -30,7 +30,7 @@ class GetMetricRuleTemplatesArgs {
   /// [nameRegex] A regex string to filter results by Metric Rule Template name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [templateId] The ID of the alert template.
-  GetMetricRuleTemplatesArgs({
+  const GetMetricRuleTemplatesArgs({
     this.enableDetails,
     this.ids,
     this.keyword,

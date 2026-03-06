@@ -25,7 +25,7 @@ class CertificateDatastoreCredentialsResponse {
   /// [resourceUrl] Resource the service principal has access to.
   /// [tenantId] [Required] ID of the tenant to which the service principal belongs.
   /// [thumbprint] [Required] Thumbprint of the certificate used for authentication.
-  CertificateDatastoreCredentialsResponse({
+  const CertificateDatastoreCredentialsResponse({
     this.authorityUrl,
     required this.clientId,
     required this.credentialsType,

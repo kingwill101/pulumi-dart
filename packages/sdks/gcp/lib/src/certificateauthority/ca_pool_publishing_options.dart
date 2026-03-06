@@ -22,7 +22,7 @@ class CaPoolPublishingOptions {
   /// [encodingFormat] Specifies the encoding format of each CertificateAuthority's CA
   /// [publishCaCert] When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access"
   /// [publishCrl] When true, publishes each CertificateAuthority's CRL and includes its URL in the "CRL Distribution Points" X.509 extension
-  CaPoolPublishingOptions({
+  const CaPoolPublishingOptions({
     this.encodingFormat,
     required this.publishCaCert,
     required this.publishCrl,

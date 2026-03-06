@@ -18,7 +18,7 @@ class LogConfigResponse {
   /// [cloudAudit] This is deprecated and has no effect. Do not use.
   /// [counter] This is deprecated and has no effect. Do not use.
   /// [dataAccess] This is deprecated and has no effect. Do not use.
-  LogConfigResponse({
+  const LogConfigResponse({
     required this.cloudAudit,
     required this.counter,
     required this.dataAccess,

@@ -12,7 +12,7 @@ class ServiceEndpointResponse {
   /// Creates a new [ServiceEndpointResponse].
   /// [locations] A list of locations.
   /// [service] The type of the endpoint service.
-  ServiceEndpointResponse({
+  const ServiceEndpointResponse({
     this.locations,
     required this.service,
   });

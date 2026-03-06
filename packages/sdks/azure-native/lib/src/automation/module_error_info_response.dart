@@ -12,7 +12,7 @@ class ModuleErrorInfoResponse {
   /// Creates a new [ModuleErrorInfoResponse].
   /// [code] Gets the error code.
   /// [message] Gets the error message.
-  ModuleErrorInfoResponse({
+  const ModuleErrorInfoResponse({
     this.code,
     this.message,
   });

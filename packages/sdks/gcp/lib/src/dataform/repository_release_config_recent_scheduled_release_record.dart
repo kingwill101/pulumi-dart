@@ -19,7 +19,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecord {
   /// [compilationResult] (Output)
   /// [errorStatuses] (Output)
   /// [releaseTime] (Output)
-  RepositoryReleaseConfigRecentScheduledReleaseRecord({
+  const RepositoryReleaseConfigRecentScheduledReleaseRecord({
     this.compilationResult,
     this.errorStatuses,
     this.releaseTime,

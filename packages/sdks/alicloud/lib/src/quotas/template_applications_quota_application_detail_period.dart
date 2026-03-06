@@ -11,7 +11,7 @@ class TemplateApplicationsQuotaApplicationDetailPeriod {
   /// Creates a new [TemplateApplicationsQuotaApplicationDetailPeriod].
   /// [periodUnit] Quota calculation cycle unit.
   /// [periodValue] The quota calculation period value.
-  TemplateApplicationsQuotaApplicationDetailPeriod({
+  const TemplateApplicationsQuotaApplicationDetailPeriod({
     this.periodUnit,
     this.periodValue,
   });

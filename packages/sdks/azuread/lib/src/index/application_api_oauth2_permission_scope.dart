@@ -35,7 +35,7 @@ class ApplicationApiOauth2PermissionScope {
   /// [userConsentDescription] Delegated permission description that appears in the end user consent experience, intended to be read by a user consenting on their own behalf.
   /// [userConsentDisplayName] Display name for the delegated permission that appears in the end user consent experience.
   /// [value] The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-  ApplicationApiOauth2PermissionScope({
+  const ApplicationApiOauth2PermissionScope({
     this.adminConsentDescription,
     this.adminConsentDisplayName,
     this.enabled,

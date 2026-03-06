@@ -9,7 +9,7 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig {
 
   /// Creates a new [GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig].
   /// [serverGroupTuples] Terminal node group configuration.
-  GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig({
+  const GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig({
     required this.serverGroupTuples,
   });
 

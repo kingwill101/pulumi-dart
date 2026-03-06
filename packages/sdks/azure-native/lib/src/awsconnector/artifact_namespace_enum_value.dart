@@ -9,7 +9,7 @@ class ArtifactNamespaceEnumValue {
 
   /// Creates a new [ArtifactNamespaceEnumValue].
   /// [value] Property value
-  ArtifactNamespaceEnumValue({
+  const ArtifactNamespaceEnumValue({
     this.value,
   });
 

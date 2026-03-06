@@ -9,7 +9,7 @@ class ExpressionEvaluationOptions {
 
   /// Creates a new [ExpressionEvaluationOptions].
   /// [scope] The scope to be used for evaluation of parameters, variables and functions in a nested template.
-  ExpressionEvaluationOptions({
+  const ExpressionEvaluationOptions({
     this.scope,
   });
 

@@ -27,7 +27,7 @@ class GetMongoInstancesArgs {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetMongoInstancesArgs({
+  const GetMongoInstancesArgs({
     this.availabilityZone,
     this.enableDetails,
     this.ids,

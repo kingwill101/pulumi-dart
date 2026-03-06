@@ -12,7 +12,7 @@ class AwsLogsLogStreamPropertiesResponse {
   /// Creates a new [AwsLogsLogStreamPropertiesResponse].
   /// [logGroupName] The name of the log group where the log stream is created.
   /// [logStreamName] The name of the log stream. The name must be unique wihtin the log group.
-  AwsLogsLogStreamPropertiesResponse({
+  const AwsLogsLogStreamPropertiesResponse({
     this.logGroupName,
     this.logStreamName,
   });

@@ -31,7 +31,7 @@ class LoadBalancerRule {
   /// [ruleName] Rule name. When adding global configuration, this parameter does not need to be set.
   /// [sequence] Order of rule execution. The smaller the value, the higher the priority for execution.
   /// [terminates] Whether to terminate the execution of subsequent rules.
-  LoadBalancerRule({
+  const LoadBalancerRule({
     this.fixedResponse,
     this.overrides,
     this.rule,

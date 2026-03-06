@@ -21,7 +21,7 @@ class GetCustomTargetTypeIamPolicyArgs {
   /// [location] The location of the source. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetCustomTargetTypeIamPolicyArgs({
+  const GetCustomTargetTypeIamPolicyArgs({
     this.location,
     required this.name,
     this.project,

@@ -27,7 +27,7 @@ class CertificateState {
   /// [name] Name of the SSL Certificate to be Imported on to BIGIP
   /// [ocsp] Specifies the OCSP responder.
   /// [partition] Partition of ssl certificate
-  CertificateState({
+  const CertificateState({
     this.content,
     this.fullPath,
     this.issuerCert,

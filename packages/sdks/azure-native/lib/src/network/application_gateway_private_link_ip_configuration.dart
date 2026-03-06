@@ -25,7 +25,7 @@ class ApplicationGatewayPrivateLinkIpConfiguration {
   /// [privateIPAddress] The private IP address of the IP configuration.
   /// [privateIPAllocationMethod] The private IP address allocation method.
   /// [subnet] Reference to the subnet resource.
-  ApplicationGatewayPrivateLinkIpConfiguration({
+  const ApplicationGatewayPrivateLinkIpConfiguration({
     this.id,
     this.name,
     this.primary,

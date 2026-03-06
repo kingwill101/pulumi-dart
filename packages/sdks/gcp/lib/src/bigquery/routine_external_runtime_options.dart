@@ -29,7 +29,7 @@ class RoutineExternalRuntimeOptions {
   /// [maxBatchingRows] Maximum number of rows in each batch sent to the external runtime. If
   /// [runtimeConnection] Fully qualified name of the connection whose service account will be used
   /// [runtimeVersion] Language runtime version. Example: `python-3.11`.
-  RoutineExternalRuntimeOptions({
+  const RoutineExternalRuntimeOptions({
     this.containerCpu,
     this.containerMemory,
     this.maxBatchingRows,

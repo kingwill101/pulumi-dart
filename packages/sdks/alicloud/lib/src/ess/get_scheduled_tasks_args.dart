@@ -24,7 +24,7 @@ class GetScheduledTasksArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [scheduledAction] The operation to be performed when a scheduled task is triggered.
   /// [scheduledTaskId] The id of the scheduled task.
-  GetScheduledTasksArgs({
+  const GetScheduledTasksArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

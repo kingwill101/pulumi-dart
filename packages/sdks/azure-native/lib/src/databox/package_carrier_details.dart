@@ -15,7 +15,7 @@ class PackageCarrierDetails {
   /// [carrierAccountNumber] Carrier Account Number of customer for customer disk.
   /// [carrierName] Name of the carrier.
   /// [trackingId] Tracking Id of shipment.
-  PackageCarrierDetails({
+  const PackageCarrierDetails({
     this.carrierAccountNumber,
     this.carrierName,
     this.trackingId,

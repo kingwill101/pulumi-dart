@@ -41,7 +41,7 @@ class ListWebAppBackupStatusSecretsSlotArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of web app slot. If not specified then will default to production slot.
   /// [storageAccountUrl] SAS URL to the container.
-  ListWebAppBackupStatusSecretsSlotArgs({
+  const ListWebAppBackupStatusSecretsSlotArgs({
     required this.backupId,
     this.backupName,
     this.backupSchedule,

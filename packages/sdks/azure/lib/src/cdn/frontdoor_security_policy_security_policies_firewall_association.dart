@@ -12,7 +12,7 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation {
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation].
   /// [domains] One or more `domain` blocks as defined below.
   /// [patternsToMatch] The list of paths to match for this firewall policy. Possible value includes `/*`. Changing this forces a new Front Door Security Policy to be created.
-  FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation({
+  const FrontdoorSecurityPolicySecurityPoliciesFirewallAssociation({
     required this.domains,
     required this.patternsToMatch,
   });

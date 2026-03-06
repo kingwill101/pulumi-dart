@@ -19,7 +19,7 @@ class LifecyclePolicyPolicyDetail {
   /// [action] Configuration details for the policy action.
   /// [exclusionRules] Additional rules to specify resources that should be exempt from policy actions.
   /// [filter] Specifies the resources that the lifecycle policy applies to.
-  LifecyclePolicyPolicyDetail({
+  const LifecyclePolicyPolicyDetail({
     required this.action,
     this.exclusionRules,
     required this.filter,

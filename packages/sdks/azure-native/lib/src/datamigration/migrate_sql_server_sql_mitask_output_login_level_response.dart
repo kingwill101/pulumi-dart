@@ -34,7 +34,7 @@ class MigrateSqlServerSqlMITaskOutputLoginLevelResponse {
   /// [stage] Current stage of login
   /// [startedOn] Login migration start time
   /// [state] Current state of login
-  MigrateSqlServerSqlMITaskOutputLoginLevelResponse({
+  const MigrateSqlServerSqlMITaskOutputLoginLevelResponse({
     required this.endedOn,
     required this.exceptionsAndWarnings,
     required this.id,

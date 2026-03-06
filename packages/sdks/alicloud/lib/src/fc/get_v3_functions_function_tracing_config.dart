@@ -11,7 +11,7 @@ class GetV3FunctionsFunctionTracingConfig {
   /// Creates a new [GetV3FunctionsFunctionTracingConfig].
   /// [params] Tracing parameters.
   /// [type] The tracing protocol type. Currently, only Jaeger is supported.
-  GetV3FunctionsFunctionTracingConfig({
+  const GetV3FunctionsFunctionTracingConfig({
     required this.params,
     required this.type,
   });

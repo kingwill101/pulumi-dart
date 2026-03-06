@@ -12,7 +12,7 @@ class Accelerator {
   /// Creates a new [Accelerator].
   /// [count] Optional. Number of accelerator cards exposed to the instance.
   /// [type] Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
-  Accelerator({
+  const Accelerator({
     this.count,
     this.type,
   });

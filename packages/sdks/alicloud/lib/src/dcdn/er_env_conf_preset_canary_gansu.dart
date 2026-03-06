@@ -14,7 +14,7 @@ class ErEnvConfPresetCanaryGansu {
   /// [allowedHosts] Allowed DCDN domain names.
   /// [codeRev] The version number of the code.
   /// [specName] The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-  ErEnvConfPresetCanaryGansu({
+  const ErEnvConfPresetCanaryGansu({
     this.allowedHosts,
     this.codeRev,
     this.specName,

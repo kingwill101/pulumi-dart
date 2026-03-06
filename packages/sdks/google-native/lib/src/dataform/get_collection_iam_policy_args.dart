@@ -17,7 +17,7 @@ class GetCollectionIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetCollectionIamPolicyArgs({
+  const GetCollectionIamPolicyArgs({
     required this.collectionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

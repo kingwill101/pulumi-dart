@@ -9,7 +9,7 @@ class ClusterUpgradePostConditions {
 
   /// Creates a new [ClusterUpgradePostConditions].
   /// [soaking] Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days. Required.
-  ClusterUpgradePostConditions({
+  const ClusterUpgradePostConditions({
     required this.soaking,
   });
 

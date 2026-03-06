@@ -14,7 +14,7 @@ class VPNTunnelCipherSuitePhase2 {
   /// [encryptions] Encryption algorithms.
   /// [integrities] Integrity algorithms.
   /// [pfs] Perfect forward secrecy groups.
-  VPNTunnelCipherSuitePhase2({
+  const VPNTunnelCipherSuitePhase2({
     this.encryptions,
     this.integrities,
     this.pfs,

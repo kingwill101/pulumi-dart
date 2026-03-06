@@ -45,7 +45,7 @@ class ConnectedRegistryState {
   /// [syncSchedule] The cron expression indicating the schedule that the Connected Registry will sync with its parent. Defaults to `* * * * *`.
   /// [syncTokenId] The ID of the Container Registry Token which is used for synchronizing the Connected Registry. Changing this forces a new Container Connected Registry to be created.
   /// [syncWindow] The time window (in form of ISO8601) during which sync is enabled for each schedule occurrence. Allowed range is from `PT3H` to `P7D`.
-  ConnectedRegistryState({
+  const ConnectedRegistryState({
     this.auditLogEnabled,
     this.clientTokenIds,
     this.containerRegistryId,

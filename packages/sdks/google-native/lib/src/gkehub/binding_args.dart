@@ -27,7 +27,7 @@ class BindingArgs {
   /// [name] The resource name for the membershipbinding itself `projects/{project}/locations/{location}/memberships/{membership}/bindings/{membershipbinding}`
   /// [project] Optional.
   /// [scope] A Scope resource name in the format `projects/*/locations/*/scopes/*`.
-  BindingArgs({
+  const BindingArgs({
     this.labels,
     this.location,
     required this.membershipBindingId,

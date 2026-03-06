@@ -10,7 +10,7 @@ class VpcNetworkSource {
 
   /// Creates a new [VpcNetworkSource].
   /// [vpcSubnetwork] Sub-segment ranges of a VPC network.
-  VpcNetworkSource({
+  const VpcNetworkSource({
     this.vpcSubnetwork,
   });
 

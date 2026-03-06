@@ -11,7 +11,7 @@ class MultitenantDistributionOriginOriginShield {
   /// Creates a new [MultitenantDistributionOriginOriginShield].
   /// [enabled] Whether Origin Shield is enabled.
   /// [originShieldRegion] AWS Region for Origin Shield. Required when `enabled` is `true`.
-  MultitenantDistributionOriginOriginShield({
+  const MultitenantDistributionOriginOriginShield({
     required this.enabled,
     this.originShieldRegion,
   });

@@ -33,7 +33,7 @@ class RouteResponse {
   /// [nextHopType] The type of Azure hop the packet should be sent to.
   /// [provisioningState] The provisioning state of the route resource.
   /// [type] The type of the resource.
-  RouteResponse({
+  const RouteResponse({
     this.addressPrefix,
     required this.etag,
     required this.hasBgpOverride,

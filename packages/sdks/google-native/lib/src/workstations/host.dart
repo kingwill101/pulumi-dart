@@ -10,7 +10,7 @@ class Host {
 
   /// Creates a new [Host].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  Host({
+  const Host({
     this.gceInstance,
   });
 

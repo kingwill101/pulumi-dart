@@ -15,7 +15,7 @@ class GetRegionNetworkEndpointGroupComputeBetaArgs {
   /// [networkEndpointGroup] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionNetworkEndpointGroupComputeBetaArgs({
+  const GetRegionNetworkEndpointGroupComputeBetaArgs({
     required this.networkEndpointGroup,
     this.project,
     required this.region,

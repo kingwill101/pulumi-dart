@@ -15,7 +15,7 @@ class GetInstanceGroupArgs {
   /// [instanceGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceGroupArgs({
+  const GetInstanceGroupArgs({
     required this.instanceGroup,
     this.project,
     required this.zone,

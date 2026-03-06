@@ -19,7 +19,7 @@ class BackupPolicyArgs {
   /// [backupPolicy] A backup_policy object (documented below).
   /// [fileSystemId] The ID of the EFS file system.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BackupPolicyArgs({
+  const BackupPolicyArgs({
     required this.backupPolicy,
     required this.fileSystemId,
     this.region,

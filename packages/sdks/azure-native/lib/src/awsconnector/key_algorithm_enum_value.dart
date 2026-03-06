@@ -9,7 +9,7 @@ class KeyAlgorithmEnumValue {
 
   /// Creates a new [KeyAlgorithmEnumValue].
   /// [value] Property value
-  KeyAlgorithmEnumValue({
+  const KeyAlgorithmEnumValue({
     this.value,
   });
 

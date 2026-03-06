@@ -21,7 +21,7 @@ class GetPrivateLinkAssociationResult {
   /// [name] The pla name.
   /// [properties] The private link association properties.
   /// [type] The operation type.
-  GetPrivateLinkAssociationResult({
+  const GetPrivateLinkAssociationResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

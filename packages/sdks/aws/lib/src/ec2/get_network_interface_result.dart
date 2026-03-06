@@ -69,7 +69,7 @@ class GetNetworkInterfaceResult {
   /// [subnetId] ID of the subnet.
   /// [tags] Any tags assigned to the network interface.
   /// [vpcId] ID of the VPC.
-  GetNetworkInterfaceResult({
+  const GetNetworkInterfaceResult({
     required this.arn,
     required this.associations,
     required this.attachments,

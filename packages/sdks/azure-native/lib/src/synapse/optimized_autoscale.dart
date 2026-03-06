@@ -18,7 +18,7 @@ class OptimizedAutoscale {
   /// [maximum] Maximum allowed instances count.
   /// [minimum] Minimum allowed instances count.
   /// [version] The version of the template defined, for instance 1.
-  OptimizedAutoscale({
+  const OptimizedAutoscale({
     required this.isEnabled,
     required this.maximum,
     required this.minimum,

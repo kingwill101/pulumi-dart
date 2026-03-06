@@ -14,7 +14,7 @@ class DataSourceParametersMysql {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [port] The port to which to connect.
-  DataSourceParametersMysql({
+  const DataSourceParametersMysql({
     required this.database,
     required this.host,
     required this.port,

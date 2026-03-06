@@ -26,7 +26,7 @@ class GetPoolStartTaskResourceFile {
   /// [httpUrl] The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access.
   /// [storageContainerUrl] The URL of the blob container within Azure Blob Storage.
   /// [userAssignedIdentityId] The reference to the user assigned identity to use to access an Azure Container Registry instead of username and password.
-  GetPoolStartTaskResourceFile({
+  const GetPoolStartTaskResourceFile({
     required this.autoStorageContainerName,
     required this.blobPrefix,
     required this.fileMode,

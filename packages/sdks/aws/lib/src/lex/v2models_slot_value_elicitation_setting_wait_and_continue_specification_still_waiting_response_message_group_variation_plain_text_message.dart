@@ -7,7 +7,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitin
 
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage].
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

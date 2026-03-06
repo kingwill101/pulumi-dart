@@ -28,7 +28,7 @@ class DataAccessScopeDeniedDataAccessLabel {
   /// [displayName] (Output)
   /// [ingestionLabel] Representation of an ingestion label type.
   /// [logType] The name of the log type.
-  DataAccessScopeDeniedDataAccessLabel({
+  const DataAccessScopeDeniedDataAccessLabel({
     this.assetNamespace,
     this.dataAccessLabel,
     this.displayName,

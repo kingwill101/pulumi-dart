@@ -32,7 +32,7 @@ class GetTableResult {
   /// [name] The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL`
   /// [restoreInfo] If this table was restored from another data source (e.g. a backup), this field will be populated with information about the restore.
   /// [stats] Only available with STATS_VIEW, this includes summary statistics about the entire table contents. For statistics about a specific column family, see ColumnFamilyStats in the mapped ColumnFamily collection above.
-  GetTableResult({
+  const GetTableResult({
     required this.changeStreamConfig,
     required this.clusterStates,
     required this.columnFamilies,

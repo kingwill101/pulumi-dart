@@ -20,7 +20,7 @@ class GetQosDscpMarkingRuleArgs {
   /// [dscpMark] The value of a DSCP mark.
   /// [qosPolicyId] The QoS policy reference.
   /// [region] The region in which to obtain the V2 Networking client.
-  GetQosDscpMarkingRuleArgs({
+  const GetQosDscpMarkingRuleArgs({
     this.dscpMark,
     required this.qosPolicyId,
     this.region,

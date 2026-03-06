@@ -18,7 +18,7 @@ class GetContactArgs {
   /// [contactName] Contact name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spacecraftName] Spacecraft ID.
-  GetContactArgs({
+  const GetContactArgs({
     required this.contactName,
     required this.resourceGroupName,
     required this.spacecraftName,

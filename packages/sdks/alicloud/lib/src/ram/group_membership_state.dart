@@ -12,7 +12,7 @@ class GroupMembershipState {
   /// Creates a new [GroupMembershipState].
   /// [groupName] Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen "-", and must not begin with a hyphen.
   /// [userNames] Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-  GroupMembershipState({
+  const GroupMembershipState({
     this.groupName,
     this.userNames,
   });

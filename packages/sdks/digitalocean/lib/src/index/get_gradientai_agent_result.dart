@@ -95,7 +95,7 @@ class GetGradientaiAgentResult {
   /// [updatedAt] Required.
   /// [url] Optional.
   /// [userId] Optional.
-  GetGradientaiAgentResult({
+  const GetGradientaiAgentResult({
     this.agentGuardrails,
     required this.agentId,
     this.anthropicApiKeys,

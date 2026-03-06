@@ -164,7 +164,7 @@ class KubernetesClusterNodePoolArgs {
   /// [windowsProfile] A `windows_profile` block as documented below. Changing this forces a new resource to be created.
   /// [workloadRuntime] Used to specify the workload runtime. Allowed values are `OCIContainer` and `WasmWasi`.
   /// [zones] Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located. Changing this property requires specifying `temporary_name_for_rotation`.
-  KubernetesClusterNodePoolArgs({
+  const KubernetesClusterNodePoolArgs({
     this.autoScalingEnabled,
     this.capacityReservationGroupId,
     this.evictionPolicy,

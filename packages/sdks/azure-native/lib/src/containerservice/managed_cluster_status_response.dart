@@ -10,7 +10,7 @@ class ManagedClusterStatusResponse {
 
   /// Creates a new [ManagedClusterStatusResponse].
   /// [provisioningError] The error details information of the managed cluster. Preserves the detailed info of failure. If there was no error, this field is omitted.
-  ManagedClusterStatusResponse({
+  const ManagedClusterStatusResponse({
     required this.provisioningError,
   });
 

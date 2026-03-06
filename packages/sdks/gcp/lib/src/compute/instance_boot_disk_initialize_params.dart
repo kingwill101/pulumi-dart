@@ -77,7 +77,7 @@ class InstanceBootDiskInitializeParams {
   /// [sourceSnapshotEncryptionKey] Encryption key used to decrypt the given snapshot. Structure is documented below.
   /// [storagePool] The URL or the name of the storage pool in which the new disk is created.
   /// [type] The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
-  InstanceBootDiskInitializeParams({
+  const InstanceBootDiskInitializeParams({
     this.architecture,
     this.enableConfidentialCompute,
     this.image,

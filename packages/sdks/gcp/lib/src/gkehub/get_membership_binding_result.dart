@@ -38,7 +38,7 @@ class GetMembershipBindingResult {
   /// [states] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetMembershipBindingResult({
+  const GetMembershipBindingResult({
     required this.createTime,
     required this.deleteTime,
     required this.effectiveLabels,

@@ -36,7 +36,7 @@ class GetDhcpOptionsSetsSet {
   /// [id] Required.
   /// [ownerId] The ID of the account to which the DHCP options set belongs.
   /// [status] The status of the DHCP options set. Valid values: `Available`, `InUse` or `Pending`. `Available`: The DHCP options set is available for use. `InUse`: The DHCP options set is in use. `Pending`: The DHCP options set is being configured.
-  GetDhcpOptionsSetsSet({
+  const GetDhcpOptionsSetsSet({
     required this.associateVpcCount,
     required this.dhcpOptionsSetDescription,
     required this.dhcpOptionsSetId,

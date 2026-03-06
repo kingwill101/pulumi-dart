@@ -17,7 +17,7 @@ class AccountGeoLocation {
   /// [id] The CosmosDB Account ID.
   /// [location] The name of the Azure region to host replicated data.
   /// [zoneRedundant] Should zone redundancy be enabled for this region? Defaults to `false`.
-  AccountGeoLocation({
+  const AccountGeoLocation({
     required this.failoverPriority,
     this.id,
     required this.location,

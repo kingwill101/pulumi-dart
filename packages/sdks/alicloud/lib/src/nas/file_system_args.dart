@@ -123,7 +123,7 @@ class FileSystemArgs {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The ID of the switch.
   /// [zoneId] The zone ID.
-  FileSystemArgs({
+  const FileSystemArgs({
     this.capacity,
     this.description,
     this.encryptType,

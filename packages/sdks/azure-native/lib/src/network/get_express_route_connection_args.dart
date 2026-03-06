@@ -18,7 +18,7 @@ class GetExpressRouteConnectionArgs {
   /// [connectionName] The name of the ExpressRoute connection.
   /// [expressRouteGatewayName] The name of the ExpressRoute gateway.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRouteConnectionArgs({
+  const GetExpressRouteConnectionArgs({
     required this.connectionName,
     required this.expressRouteGatewayName,
     required this.resourceGroupName,

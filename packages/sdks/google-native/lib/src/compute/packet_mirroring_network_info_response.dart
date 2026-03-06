@@ -11,7 +11,7 @@ class PacketMirroringNetworkInfoResponse {
   /// Creates a new [PacketMirroringNetworkInfoResponse].
   /// [canonicalUrl] Unique identifier for the network; defined by the server.
   /// [url] URL of the network resource.
-  PacketMirroringNetworkInfoResponse({
+  const PacketMirroringNetworkInfoResponse({
     required this.canonicalUrl,
     required this.url,
   });

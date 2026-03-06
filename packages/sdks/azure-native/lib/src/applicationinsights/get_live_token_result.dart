@@ -8,7 +8,7 @@ class GetLiveTokenResult {
 
   /// Creates a new [GetLiveTokenResult].
   /// [liveToken] JWT token for accessing live metrics stream data.
-  GetLiveTokenResult({
+  const GetLiveTokenResult({
     required this.liveToken,
   });
 

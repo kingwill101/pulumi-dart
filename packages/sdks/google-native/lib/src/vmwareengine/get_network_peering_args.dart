@@ -13,7 +13,7 @@ class GetNetworkPeeringArgs {
   /// Creates a new [GetNetworkPeeringArgs].
   /// [networkPeeringId] Required.
   /// [project] Optional.
-  GetNetworkPeeringArgs({
+  const GetNetworkPeeringArgs({
     required this.networkPeeringId,
     this.project,
   });

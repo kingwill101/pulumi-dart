@@ -10,7 +10,7 @@ class PodSchedulingStatusPatch {
 
   /// Creates a new [PodSchedulingStatusPatch].
   /// [resourceClaims] ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses "WaitForFirstConsumer" allocation mode.
-  PodSchedulingStatusPatch({
+  const PodSchedulingStatusPatch({
     this.resourceClaims,
   });
 

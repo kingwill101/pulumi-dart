@@ -17,7 +17,7 @@ class DataflowGraphGraphNode {
   /// [graphSettings] Graph configuration.
   /// [name] Name of the node.
   /// [nodeType] DataflowGraph node types.
-  DataflowGraphGraphNode({
+  const DataflowGraphGraphNode({
     required this.graphSettings,
     required this.name,
     required this.nodeType,

@@ -9,7 +9,7 @@ class GalleryScriptVersionSafetyProfile {
 
   /// Creates a new [GalleryScriptVersionSafetyProfile].
   /// [allowDeletionOfReplicatedLocations] Indicates whether or not removing this Gallery Image Version from replicated regions is allowed.
-  GalleryScriptVersionSafetyProfile({
+  const GalleryScriptVersionSafetyProfile({
     this.allowDeletionOfReplicatedLocations,
   });
 

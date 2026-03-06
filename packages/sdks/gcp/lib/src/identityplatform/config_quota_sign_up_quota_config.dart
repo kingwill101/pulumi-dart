@@ -14,7 +14,7 @@ class ConfigQuotaSignUpQuotaConfig {
   /// [quota] A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
   /// [quotaDuration] How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
   /// [startTime] When this quota will take affect.
-  ConfigQuotaSignUpQuotaConfig({
+  const ConfigQuotaSignUpQuotaConfig({
     this.quota,
     this.quotaDuration,
     this.startTime,

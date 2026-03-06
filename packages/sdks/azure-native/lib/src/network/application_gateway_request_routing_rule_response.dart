@@ -49,7 +49,7 @@ class ApplicationGatewayRequestRoutingRuleResponse {
   /// [ruleType] Rule type.
   /// [type] Type of the resource.
   /// [urlPathMap] URL path map resource of the application gateway.
-  ApplicationGatewayRequestRoutingRuleResponse({
+  const ApplicationGatewayRequestRoutingRuleResponse({
     this.backendAddressPool,
     this.backendHttpSettings,
     required this.etag,

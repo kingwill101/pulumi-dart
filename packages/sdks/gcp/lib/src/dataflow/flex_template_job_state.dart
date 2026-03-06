@@ -107,7 +107,7 @@ class FlexTemplateJobState {
   /// [tempLocation] The Cloud Storage path to use for temporary files. Must be a valid Cloud Storage URL, beginning with gs://.
   /// [transformNameMapping] Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.Only applicable when updating a pipeline. Map of transform name prefixes of the job to be replaced with the corresponding name prefixes of the new job.
   /// [type] The type of this job, selected from the JobType enum.
-  FlexTemplateJobState({
+  const FlexTemplateJobState({
     this.additionalExperiments,
     this.additionalPipelineOptions,
     this.autoscalingAlgorithm,

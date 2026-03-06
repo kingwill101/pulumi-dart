@@ -11,7 +11,7 @@ class OneDashboardPageWidgetPyNullValueSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetPyNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesName] Series name
-  OneDashboardPageWidgetPyNullValueSeriesOverride({
+  const OneDashboardPageWidgetPyNullValueSeriesOverride({
     this.nullValue,
     this.seriesName,
   });

@@ -10,7 +10,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse {
 
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse].
   /// [value] The value of the client secret.
-  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse({
+  const GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretResponse({
     required this.value,
   });
 

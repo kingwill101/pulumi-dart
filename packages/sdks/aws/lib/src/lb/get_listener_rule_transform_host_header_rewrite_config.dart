@@ -9,7 +9,7 @@ class GetListenerRuleTransformHostHeaderRewriteConfig {
 
   /// Creates a new [GetListenerRuleTransformHostHeaderRewriteConfig].
   /// [rewrites] Block for URL rewrite configuration. Detailed below.
-  GetListenerRuleTransformHostHeaderRewriteConfig({
+  const GetListenerRuleTransformHostHeaderRewriteConfig({
     this.rewrites,
   });
 

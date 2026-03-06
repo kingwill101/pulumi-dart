@@ -18,7 +18,7 @@ class GetFrontdoorRuleSetArgs {
   /// [name] Specifies the name of the Front Door Rule Set to retrieve.
   /// [profileName] Specifies the name of the Front Door Profile where this Front Door Rule Set exists.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Front Door Profile exists.
-  GetFrontdoorRuleSetArgs({
+  const GetFrontdoorRuleSetArgs({
     required this.name,
     required this.profileName,
     required this.resourceGroupName,

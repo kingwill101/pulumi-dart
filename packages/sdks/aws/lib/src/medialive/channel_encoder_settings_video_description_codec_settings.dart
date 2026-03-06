@@ -16,7 +16,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettings {
   /// [frameCaptureSettings] Frame capture settings. See Frame Capture Settings for more details.
   /// [h264Settings] H264 settings. See H264 Settings for more details.
   /// [h265Settings] Optional.
-  ChannelEncoderSettingsVideoDescriptionCodecSettings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettings({
     this.frameCaptureSettings,
     this.h264Settings,
     this.h265Settings,

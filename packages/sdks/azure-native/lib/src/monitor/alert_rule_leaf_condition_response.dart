@@ -17,7 +17,7 @@ class AlertRuleLeafConditionResponse {
   /// [containsAny] The value of the event's field will be compared to the values in this array (case-insensitive) to determine if the condition is met.
   /// [equals] The value of the event's field will be compared to this value (case-insensitive) to determine if the condition is met.
   /// [field] The name of the Activity Log event's field that this condition will examine.
-  AlertRuleLeafConditionResponse({
+  const AlertRuleLeafConditionResponse({
     this.containsAny,
     this.equals,
     this.field,

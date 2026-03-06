@@ -66,7 +66,7 @@ class FileCacheState {
   /// [tags] A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [vpcId] The ID of your virtual private cloud (VPC).
-  FileCacheState({
+  const FileCacheState({
     this.arn,
     this.copyTagsToDataRepositoryAssociations,
     this.dataRepositoryAssociationIds,

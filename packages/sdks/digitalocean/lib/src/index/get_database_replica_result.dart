@@ -48,7 +48,7 @@ class GetDatabaseReplicaResult {
   /// [uri] The full URI for connecting to the database replica.
   /// [user] Username for the replica's default user.
   /// [uuid] The UUID of the database replica.
-  GetDatabaseReplicaResult({
+  const GetDatabaseReplicaResult({
     required this.clusterId,
     required this.database,
     required this.host,

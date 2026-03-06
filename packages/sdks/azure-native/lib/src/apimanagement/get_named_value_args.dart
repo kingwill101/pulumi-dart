@@ -18,7 +18,7 @@ class GetNamedValueArgs {
   /// [namedValueId] Identifier of the NamedValue.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetNamedValueArgs({
+  const GetNamedValueArgs({
     required this.namedValueId,
     required this.resourceGroupName,
     required this.serviceName,

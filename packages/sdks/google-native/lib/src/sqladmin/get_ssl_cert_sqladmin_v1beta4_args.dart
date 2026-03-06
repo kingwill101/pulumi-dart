@@ -15,7 +15,7 @@ class GetSslCertSqladminV1beta4Args {
   /// [instance] Required.
   /// [project] Optional.
   /// [sha1Fingerprint] Required.
-  GetSslCertSqladminV1beta4Args({
+  const GetSslCertSqladminV1beta4Args({
     required this.instance,
     this.project,
     required this.sha1Fingerprint,

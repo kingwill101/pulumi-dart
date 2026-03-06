@@ -16,7 +16,7 @@ class SftpLocationResponse {
   /// [fileName] Specify the file name of dataset. Type: string (or Expression with resultType string).
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  SftpLocationResponse({
+  const SftpLocationResponse({
     this.fileName,
     this.folderPath,
     required this.type,

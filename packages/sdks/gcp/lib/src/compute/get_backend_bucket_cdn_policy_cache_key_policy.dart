@@ -14,7 +14,7 @@ class GetBackendBucketCdnPolicyCacheKeyPolicy {
   /// Creates a new [GetBackendBucketCdnPolicyCacheKeyPolicy].
   /// [includeHttpHeaders] Allows HTTP request headers (by name) to be used in the
   /// [queryStringWhitelists] Names of query string parameters to include in cache keys.
-  GetBackendBucketCdnPolicyCacheKeyPolicy({
+  const GetBackendBucketCdnPolicyCacheKeyPolicy({
     required this.includeHttpHeaders,
     required this.queryStringWhitelists,
   });

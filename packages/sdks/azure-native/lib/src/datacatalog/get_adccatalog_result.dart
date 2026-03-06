@@ -46,7 +46,7 @@ class GetADCCatalogResult {
   /// [type] Resource type
   /// [units] Azure data catalog units.
   /// [users] Azure data catalog user list.
-  GetADCCatalogResult({
+  const GetADCCatalogResult({
     this.admins,
     required this.azureApiVersion,
     this.enableAutomaticUnitAdjustment,

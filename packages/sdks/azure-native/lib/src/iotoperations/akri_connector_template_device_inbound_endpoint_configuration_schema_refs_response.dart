@@ -21,7 +21,7 @@ class AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse 
   /// [defaultEventsConfigSchemaRef] The default configuration schema reference for events.
   /// [defaultProcessControlConfigSchemaRef] The default configuration schema reference for process control.
   /// [defaultStreamsConfigSchemaRef] The default configuration schema reference for streams.
-  AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse({
+  const AkriConnectorTemplateDeviceInboundEndpointConfigurationSchemaRefsResponse({
     this.additionalConfigSchemaRef,
     this.defaultDatasetConfigSchemaRef,
     this.defaultEventsConfigSchemaRef,

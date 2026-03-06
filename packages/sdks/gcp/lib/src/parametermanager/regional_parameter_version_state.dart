@@ -36,7 +36,7 @@ class RegionalParameterVersionState {
   /// [parameterData] The Regional Parameter data.
   /// [parameterVersionId] Version ID of the Regional Parameter Version Resource. This must be unique within the Regional Parameter.
   /// [updateTime] The time at which the Regional Parameter Version was updated.
-  RegionalParameterVersionState({
+  const RegionalParameterVersionState({
     this.createTime,
     this.disabled,
     this.kmsKeyVersion,

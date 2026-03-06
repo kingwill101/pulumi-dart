@@ -16,7 +16,7 @@ class AccountConsistencyPolicy {
   /// [consistencyLevel] The Consistency Level to use for this CosmosDB Account - can be either `BoundedStaleness`, `Eventual`, `Session`, `Strong` or `ConsistentPrefix`.
   /// [maxIntervalInSeconds] When used with the Bounded Staleness consistency level, this value represents the time amount of staleness (in seconds) tolerated. The accepted range for this value is `5` - `86400` (1 day). Defaults to `5`. Required when `consistency_level` is set to `BoundedStaleness`.
   /// [maxStalenessPrefix] When used with the Bounded Staleness consistency level, this value represents the number of stale requests tolerated. The accepted range for this value is `10` – `2147483647`. Defaults to `100`. Required when `consistency_level` is set to `BoundedStaleness`.
-  AccountConsistencyPolicy({
+  const AccountConsistencyPolicy({
     required this.consistencyLevel,
     this.maxIntervalInSeconds,
     this.maxStalenessPrefix,

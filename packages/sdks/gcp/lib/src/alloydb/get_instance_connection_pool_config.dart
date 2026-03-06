@@ -13,7 +13,7 @@ class GetInstanceConnectionPoolConfig {
   /// [enabled] Whether to enabled Managed Connection Pool.
   /// [flags] Required.
   /// [poolerCount] The number of running poolers per instance.
-  GetInstanceConnectionPoolConfig({
+  const GetInstanceConnectionPoolConfig({
     required this.enabled,
     required this.flags,
     required this.poolerCount,

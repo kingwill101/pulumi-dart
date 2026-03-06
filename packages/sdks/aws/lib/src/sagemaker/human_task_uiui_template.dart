@@ -14,7 +14,7 @@ class HumanTaskUIUiTemplate {
   /// [content] The content of the Liquid template for the worker user interface.
   /// [contentSha256] The SHA-256 digest of the contents of the template.
   /// [url] The URL for the user interface template.
-  HumanTaskUIUiTemplate({
+  const HumanTaskUIUiTemplate({
     this.content,
     this.contentSha256,
     this.url,

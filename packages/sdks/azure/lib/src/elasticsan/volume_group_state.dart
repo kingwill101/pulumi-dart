@@ -32,7 +32,7 @@ class VolumeGroupState {
   /// [name] Specifies the name of this Elastic SAN Volume Group. Changing this forces a new resource to be created.
   /// [networkRules] One or more `network_rule` blocks as defined below.
   /// [protocolType] Specifies the type of the storage target. The only possible value is `Iscsi`. Defaults to `Iscsi`.
-  VolumeGroupState({
+  const VolumeGroupState({
     this.elasticSanId,
     this.encryption,
     this.encryptionType,

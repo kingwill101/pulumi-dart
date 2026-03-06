@@ -18,7 +18,7 @@ class ClusterNetworkEntityResponse {
   /// [id] ID of the referred resource
   /// [related] API URL for accessing or modifying the referred object
   /// [resourceName] CRN reference to the referred resource
-  ClusterNetworkEntityResponse({
+  const ClusterNetworkEntityResponse({
     this.environment,
     this.id,
     this.related,

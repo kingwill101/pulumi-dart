@@ -21,7 +21,7 @@ class ProvisionedClustersCommonPropertiesResponseStatus {
   /// [errorMessage] ErrorMessage - Error messages during creation of cluster
   /// [featuresStatus] Additional features status like Arc Agent Onboarding.
   /// [provisioningStatus] Contains Provisioning errors
-  ProvisionedClustersCommonPropertiesResponseStatus({
+  const ProvisionedClustersCommonPropertiesResponseStatus({
     this.addonStatus,
     this.errorMessage,
     this.featuresStatus,

@@ -20,7 +20,7 @@ class GetClustersResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusterArns,
     required this.clusterIdentifiers,
     this.filters,

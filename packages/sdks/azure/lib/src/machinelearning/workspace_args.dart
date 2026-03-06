@@ -91,7 +91,7 @@ class WorkspaceArgs {
   /// [storageAccountId] The ID of the Storage Account associated with this Machine Learning Workspace. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [v1LegacyModeEnabled] Enable V1 API features, enabling `v1_legacy_mode` may prevent you from using features provided by the v2 API. Defaults to `false`.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     required this.applicationInsightsId,
     this.containerRegistryId,
     this.description,

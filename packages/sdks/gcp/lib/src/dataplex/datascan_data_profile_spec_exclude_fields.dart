@@ -10,7 +10,7 @@ class DatascanDataProfileSpecExcludeFields {
 
   /// Creates a new [DatascanDataProfileSpecExcludeFields].
   /// [fieldNames] Expected input is a list of fully qualified names of fields as in the schema.
-  DatascanDataProfileSpecExcludeFields({
+  const DatascanDataProfileSpecExcludeFields({
     this.fieldNames,
   });
 

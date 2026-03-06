@@ -42,7 +42,7 @@ class ClusterIAMMemberState {
   /// [project] The project in which the cluster belongs. If it
   /// [region] The region in which the cluster belongs. If it
   /// [role] The role that should be applied. Only one
-  ClusterIAMMemberState({
+  const ClusterIAMMemberState({
     this.cluster,
     this.condition,
     this.etag,

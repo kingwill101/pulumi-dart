@@ -29,7 +29,7 @@ class GetDetectorResult {
   /// [serviceRoleArn] Service-linked role that grants GuardDuty access to the resources in the AWS account.
   /// [status] Current status of the detector.
   /// [tags] Map of tags for the resource.
-  GetDetectorResult({
+  const GetDetectorResult({
     required this.arn,
     required this.features,
     required this.findingPublishingFrequency,

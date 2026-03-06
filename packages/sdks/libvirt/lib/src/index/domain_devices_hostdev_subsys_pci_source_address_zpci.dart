@@ -11,7 +11,7 @@ class DomainDevicesHostdevSubsysPciSourceAddressZpci {
   /// Creates a new [DomainDevicesHostdevSubsysPciSourceAddressZpci].
   /// [fid] Sets the function identifier for the zPCI device's address.
   /// [uid] Defines the unique identifier for the zPCI address of the device.
-  DomainDevicesHostdevSubsysPciSourceAddressZpci({
+  const DomainDevicesHostdevSubsysPciSourceAddressZpci({
     this.fid,
     this.uid,
   });

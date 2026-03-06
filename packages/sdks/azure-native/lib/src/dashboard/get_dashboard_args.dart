@@ -15,7 +15,7 @@ class GetDashboardArgs {
   /// Creates a new [GetDashboardArgs].
   /// [dashboardName] The name of the Azure Managed Dashboard.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDashboardArgs({
+  const GetDashboardArgs({
     required this.dashboardName,
     required this.resourceGroupName,
   });

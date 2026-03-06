@@ -29,7 +29,7 @@ class WebActivityAuthenticationResponse {
   /// [type] Web activity authentication (Basic/ClientCertificate/MSI/ServicePrincipal)
   /// [userTenant] TenantId for which Azure Auth token will be requested when using ServicePrincipal Authentication. Type: string (or Expression with resultType string).
   /// [username] Web activity authentication user name for basic authentication or ClientID when used for ServicePrincipal. Type: string (or Expression with resultType string).
-  WebActivityAuthenticationResponse({
+  const WebActivityAuthenticationResponse({
     this.credential,
     this.password,
     this.pfx,

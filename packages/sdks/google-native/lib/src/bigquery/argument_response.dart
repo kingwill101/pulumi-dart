@@ -22,7 +22,7 @@ class ArgumentResponse {
   /// [isAggregate] Optional. Whether the argument is an aggregate function parameter. Must be Unset for routine types other than AGGREGATE_FUNCTION. For AGGREGATE_FUNCTION, if set to false, it is equivalent to adding "NOT AGGREGATE" clause in DDL; Otherwise, it is equivalent to omitting "NOT AGGREGATE" clause in DDL.
   /// [mode] Optional. Specifies whether the argument is input or output. Can be set for procedures only.
   /// [name] Optional. The name of this argument. Can be absent for function return argument.
-  ArgumentResponse({
+  const ArgumentResponse({
     required this.argumentKind,
     required this.dataType,
     required this.isAggregate,

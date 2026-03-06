@@ -16,7 +16,7 @@ class ProducerImageShareGroupImage {
   /// [description] The description of the Image Share Group
   /// [id] (Required) The ID of the Image to share. This must be in the format `private/&lt;image_id&gt;`.
   /// [label] The label of the Image Share Group.
-  ProducerImageShareGroupImage({
+  const ProducerImageShareGroupImage({
     this.description,
     required this.id,
     this.label,

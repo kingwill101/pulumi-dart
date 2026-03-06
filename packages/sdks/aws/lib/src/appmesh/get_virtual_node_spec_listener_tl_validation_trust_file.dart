@@ -7,7 +7,7 @@ class GetVirtualNodeSpecListenerTlValidationTrustFile {
 
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationTrustFile].
   /// [certificateChain] Required.
-  GetVirtualNodeSpecListenerTlValidationTrustFile({
+  const GetVirtualNodeSpecListenerTlValidationTrustFile({
     required this.certificateChain,
   });
 

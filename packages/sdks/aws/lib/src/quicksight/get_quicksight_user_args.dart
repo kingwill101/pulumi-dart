@@ -23,7 +23,7 @@ class GetQuicksightUserArgs {
   /// [namespace] QuickSight namespace. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userName] The name of the user that you want to match.
-  GetQuicksightUserArgs({
+  const GetQuicksightUserArgs({
     this.awsAccountId,
     this.namespace,
     this.region,

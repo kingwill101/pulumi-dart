@@ -19,7 +19,7 @@ class AzureBlobStorageSourceConnectorServiceInfo {
   /// [storageAccountKey] Azure Blob Storage Account Key
   /// [storageAccountName] Azure Blob Storage Account Name
   /// [storageContainerName] Azure Blob Storage Account Container Name
-  AzureBlobStorageSourceConnectorServiceInfo({
+  const AzureBlobStorageSourceConnectorServiceInfo({
     required this.connectorServiceType,
     this.storageAccountKey,
     this.storageAccountName,

@@ -47,7 +47,7 @@ class GetInstanceNotebooksV2Result {
   /// [state] The state of this instance.
   /// [updateTime] Instance update time.
   /// [upgradeHistory] The upgrade history of this instance.
-  GetInstanceNotebooksV2Result({
+  const GetInstanceNotebooksV2Result({
     required this.createTime,
     required this.creator,
     required this.disableProxyAccess,

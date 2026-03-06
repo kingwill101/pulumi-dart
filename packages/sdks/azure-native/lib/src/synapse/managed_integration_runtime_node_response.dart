@@ -16,7 +16,7 @@ class ManagedIntegrationRuntimeNodeResponse {
   /// [errors] The errors that occurred on this integration runtime node.
   /// [nodeId] The managed integration runtime node id.
   /// [status] The managed integration runtime node status.
-  ManagedIntegrationRuntimeNodeResponse({
+  const ManagedIntegrationRuntimeNodeResponse({
     this.errors,
     required this.nodeId,
     required this.status,

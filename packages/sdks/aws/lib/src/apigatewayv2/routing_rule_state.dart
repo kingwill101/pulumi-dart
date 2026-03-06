@@ -31,7 +31,7 @@ class RoutingRuleState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingRuleArn] ARN of the Routing Rule.
   /// [routingRuleId] ID of the Routing Rule.
-  RoutingRuleState({
+  const RoutingRuleState({
     this.actions,
     this.conditions,
     this.domainName,

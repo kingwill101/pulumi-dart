@@ -23,7 +23,7 @@ class GetQosBandwidthLimitRuleResult {
   /// [maxKbps] See Argument Reference above.
   /// [qosPolicyId] See Argument Reference above.
   /// [region] See Argument Reference above.
-  GetQosBandwidthLimitRuleResult({
+  const GetQosBandwidthLimitRuleResult({
     required this.direction,
     required this.id,
     required this.maxBurstKbps,

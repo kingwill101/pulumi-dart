@@ -8,7 +8,7 @@ class InputMediaConnectFlow {
 
   /// Creates a new [InputMediaConnectFlow].
   /// [flowArn] The ARN of the MediaConnect Flow
-  InputMediaConnectFlow({
+  const InputMediaConnectFlow({
     required this.flowArn,
   });
 

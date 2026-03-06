@@ -15,7 +15,7 @@ class ReportComparisonExpressionResponse {
   /// [name] The name of the column to use in comparison.
   /// [operator] The operator to use for comparison.
   /// [values] Array of values to use for comparison
-  ReportComparisonExpressionResponse({
+  const ReportComparisonExpressionResponse({
     required this.name,
     required this.operator,
     required this.values,

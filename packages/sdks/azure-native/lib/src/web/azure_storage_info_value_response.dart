@@ -27,7 +27,7 @@ class AzureStorageInfoValueResponse {
   /// [shareName] Name of the file share (container name, for Blob storage).
   /// [state] State of the storage account.
   /// [type] Type of storage.
-  AzureStorageInfoValueResponse({
+  const AzureStorageInfoValueResponse({
     this.accessKey,
     this.accountName,
     this.mountPath,

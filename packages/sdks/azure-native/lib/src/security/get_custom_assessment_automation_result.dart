@@ -42,7 +42,7 @@ class GetCustomAssessmentAutomationResult {
   /// [supportedCloud] Relevant cloud for the custom assessment automation.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] Resource type
-  GetCustomAssessmentAutomationResult({
+  const GetCustomAssessmentAutomationResult({
     this.assessmentKey,
     required this.azureApiVersion,
     this.compressedQuery,

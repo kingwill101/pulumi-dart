@@ -14,7 +14,7 @@ class GetShareSnapshotSchedule {
   /// [name] The name of this Data Share.
   /// [recurrence] The interval of the synchronization with the source data.
   /// [startTime] The synchronization with the source data's start time.
-  GetShareSnapshotSchedule({
+  const GetShareSnapshotSchedule({
     required this.name,
     required this.recurrence,
     required this.startTime,

@@ -15,7 +15,7 @@ class GetResourceTypeRegistrationArgs {
   /// Creates a new [GetResourceTypeRegistrationArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
-  GetResourceTypeRegistrationArgs({
+  const GetResourceTypeRegistrationArgs({
     required this.providerNamespace,
     required this.resourceType,
   });

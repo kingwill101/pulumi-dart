@@ -12,7 +12,7 @@ class GetRateBasedRuleArgs {
 
   /// Creates a new [GetRateBasedRuleArgs].
   /// [name] Name of the WAF rate based rule.
-  GetRateBasedRuleArgs({
+  const GetRateBasedRuleArgs({
     required this.name,
   });
 

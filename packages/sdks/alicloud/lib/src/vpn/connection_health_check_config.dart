@@ -20,7 +20,7 @@ class ConnectionHealthCheckConfig {
   /// [interval] the time interval of health check retries. Unit: seconds. Default value: 3.
   /// [retry] the maximum number of health check retries. Default value: 3.
   /// [sip] the source IP address that is used for health checks.
-  ConnectionHealthCheckConfig({
+  const ConnectionHealthCheckConfig({
     this.dip,
     this.enable,
     this.interval,

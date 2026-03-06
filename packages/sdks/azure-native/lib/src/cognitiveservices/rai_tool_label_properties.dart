@@ -17,7 +17,7 @@ class RaiToolLabelProperties {
   /// [accountScope] Account-level tool label definition.
   /// [projectScopes] List of project-level tool label definitions.
   /// [toolConnectionName] The unique tool connection name, e.g., 'Web_Search'.
-  RaiToolLabelProperties({
+  const RaiToolLabelProperties({
     this.accountScope,
     this.projectScopes,
     required this.toolConnectionName,

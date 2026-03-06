@@ -21,7 +21,7 @@ class FirstPartyAppDefinitionResponse {
   /// [interopExecutionMode] Specifies how the first party applications should be inter-operated with user's application.
   /// [name] The media name of a first party application of a Test Base Account.
   /// [ring] The ring info of a first party application of a Test Base Account.
-  FirstPartyAppDefinitionResponse({
+  const FirstPartyAppDefinitionResponse({
     this.architecture,
     this.channel,
     this.interopExecutionMode,

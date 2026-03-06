@@ -43,7 +43,7 @@ class GetInstancePscAutoConnection {
   /// [pscConnectionId] Output only. The PSC connection id of the forwarding rule connected to the
   /// [pscConnectionStatus] Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
   /// [serviceAttachment] Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  GetInstancePscAutoConnection({
+  const GetInstancePscAutoConnection({
     required this.connectionType,
     required this.forwardingRule,
     required this.ipAddress,

@@ -12,7 +12,7 @@ class IndexColumn {
   /// Creates a new [IndexColumn].
   /// [columnName] Specifies the column name
   /// [dataType] Specifies the data type
-  IndexColumn({
+  const IndexColumn({
     this.columnName,
     this.dataType,
   });

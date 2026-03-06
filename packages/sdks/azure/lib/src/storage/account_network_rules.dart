@@ -27,7 +27,7 @@ class AccountNetworkRules {
   /// [ipRules] List of public IP or IP ranges in CIDR Format. Only IPv4 addresses are allowed. /31 CIDRs, /32 CIDRs, and Private IP address ranges (as defined in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)), are not allowed.
   /// [privateLinkAccesses] One or more `private_link_access` block as defined below.
   /// [virtualNetworkSubnetIds] A list of resource ids for subnets.
-  AccountNetworkRules({
+  const AccountNetworkRules({
     this.bypasses,
     required this.defaultAction,
     this.ipRules,

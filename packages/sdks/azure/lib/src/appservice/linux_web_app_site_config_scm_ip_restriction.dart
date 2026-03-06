@@ -32,7 +32,7 @@ class LinuxWebAppSiteConfigScmIpRestriction {
   /// [priority] The priority value of this `ip_restriction`. Defaults to `65000`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
-  LinuxWebAppSiteConfigScmIpRestriction({
+  const LinuxWebAppSiteConfigScmIpRestriction({
     this.action,
     this.description,
     this.headers,

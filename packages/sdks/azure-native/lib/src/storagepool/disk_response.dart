@@ -9,7 +9,7 @@ class DiskResponse {
 
   /// Creates a new [DiskResponse].
   /// [id] Unique Azure Resource ID of the Managed Disk.
-  DiskResponse({
+  const DiskResponse({
     required this.id,
   });
 

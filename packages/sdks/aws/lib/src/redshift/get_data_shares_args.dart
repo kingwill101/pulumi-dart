@@ -12,7 +12,7 @@ class GetDataSharesArgs {
 
   /// Creates a new [GetDataSharesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDataSharesArgs({
+  const GetDataSharesArgs({
     this.region,
   });
 

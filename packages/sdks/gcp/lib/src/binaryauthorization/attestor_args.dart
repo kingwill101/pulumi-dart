@@ -25,7 +25,7 @@ class AttestorArgs {
   /// [description] A descriptive comment. This field may be updated. The field may be
   /// [name] The resource name.
   /// [project] The ID of the project in which the resource belongs.
-  AttestorArgs({
+  const AttestorArgs({
     required this.attestationAuthorityNote,
     this.description,
     this.name,

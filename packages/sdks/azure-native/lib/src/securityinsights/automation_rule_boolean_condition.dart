@@ -12,7 +12,7 @@ class AutomationRuleBooleanCondition {
   /// Creates a new [AutomationRuleBooleanCondition].
   /// [innerConditions] Optional.
   /// [operator] Describes a boolean condition operator.
-  AutomationRuleBooleanCondition({
+  const AutomationRuleBooleanCondition({
     this.innerConditions,
     this.operator,
   });

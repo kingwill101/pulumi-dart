@@ -8,7 +8,7 @@ class WorkspaceConnectionApiKeyResponse {
 
   /// Creates a new [WorkspaceConnectionApiKeyResponse].
   /// [key] Optional.
-  WorkspaceConnectionApiKeyResponse({
+  const WorkspaceConnectionApiKeyResponse({
     this.key,
   });
 

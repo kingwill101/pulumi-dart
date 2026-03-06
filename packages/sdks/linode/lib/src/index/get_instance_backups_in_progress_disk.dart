@@ -14,7 +14,7 @@ class GetInstanceBackupsInProgressDisk {
   /// [filesystem] The filesystem of this disk.
   /// [label] The label of this disk.
   /// [size] The size of this disk.
-  GetInstanceBackupsInProgressDisk({
+  const GetInstanceBackupsInProgressDisk({
     required this.filesystem,
     required this.label,
     required this.size,

@@ -24,7 +24,7 @@ class RocketMQTopicArgs {
   /// [messageType] Message type.
   /// [remark] Custom remarks.
   /// [topicName] Topic name and identification.
-  RocketMQTopicArgs({
+  const RocketMQTopicArgs({
     required this.instanceId,
     this.maxSendTps,
     this.messageType,

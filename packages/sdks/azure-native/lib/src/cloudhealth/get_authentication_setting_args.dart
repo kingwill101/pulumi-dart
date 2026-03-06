@@ -18,7 +18,7 @@ class GetAuthenticationSettingArgs {
   /// [authenticationSettingName] Name of the authentication setting. Must be unique within a health model.
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAuthenticationSettingArgs({
+  const GetAuthenticationSettingArgs({
     required this.authenticationSettingName,
     required this.healthModelName,
     required this.resourceGroupName,

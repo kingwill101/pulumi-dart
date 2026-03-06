@@ -15,7 +15,7 @@ class GoogleCloudDialogflowCxV3beta1RolloutState {
   /// [startTime] Start time of the current step.
   /// [step] Display name of the current auto rollout step.
   /// [stepIndex] Index of the current step in the auto rollout steps list.
-  GoogleCloudDialogflowCxV3beta1RolloutState({
+  const GoogleCloudDialogflowCxV3beta1RolloutState({
     this.startTime,
     this.step,
     this.stepIndex,

@@ -9,7 +9,7 @@ class VirtualRouterAutoScaleConfiguration {
 
   /// Creates a new [VirtualRouterAutoScaleConfiguration].
   /// [minCapacity] The minimum number of scale units for VirtualHub Router.
-  VirtualRouterAutoScaleConfiguration({
+  const VirtualRouterAutoScaleConfiguration({
     this.minCapacity,
   });
 

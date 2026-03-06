@@ -12,7 +12,7 @@ class FleetCredentialResultResponse {
   /// Creates a new [FleetCredentialResultResponse].
   /// [name] The name of the credential.
   /// [value] Base64-encoded Kubernetes configuration file.
-  FleetCredentialResultResponse({
+  const FleetCredentialResultResponse({
     required this.name,
     required this.value,
   });

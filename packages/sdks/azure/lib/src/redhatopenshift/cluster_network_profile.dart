@@ -17,7 +17,7 @@ class ClusterNetworkProfile {
   /// [podCidr] The CIDR to use for pod IP addresses. Changing this forces a new resource to be created.
   /// [preconfiguredNetworkSecurityGroupEnabled] Whether a preconfigured network security group is being used on the subnets. Defaults to `false`. Changing this forces a new resource to be created.
   /// [serviceCidr] The network range used by the OpenShift service. Changing this forces a new resource to be created.
-  ClusterNetworkProfile({
+  const ClusterNetworkProfile({
     this.outboundType,
     required this.podCidr,
     this.preconfiguredNetworkSecurityGroupEnabled,

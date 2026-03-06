@@ -12,7 +12,7 @@ class ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1 {
   /// Creates a new [ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1].
   /// [name] `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
   /// [namespace] `namespace` is the namespace of matching ServiceAccount objects. Required.
-  ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1({
+  const ServiceAccountSubjectFlowcontrolApiserverK8sIoV1alpha1({
     required this.name,
     required this.namespace,
   });

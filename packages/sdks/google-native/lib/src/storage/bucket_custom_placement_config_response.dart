@@ -9,7 +9,7 @@ class BucketCustomPlacementConfigResponse {
 
   /// Creates a new [BucketCustomPlacementConfigResponse].
   /// [dataLocations] The list of regional locations in which data is placed.
-  BucketCustomPlacementConfigResponse({
+  const BucketCustomPlacementConfigResponse({
     required this.dataLocations,
   });
 

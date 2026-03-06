@@ -9,7 +9,7 @@ class PoolRefresh {
 
   /// Creates a new [PoolRefresh].
   /// [volume] Configures the refresh settings for individual volumes within the storage pool.
-  PoolRefresh({
+  const PoolRefresh({
     this.volume,
   });
 

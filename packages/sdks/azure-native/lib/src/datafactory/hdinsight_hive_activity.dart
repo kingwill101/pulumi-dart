@@ -62,7 +62,7 @@ class HDInsightHiveActivity {
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
   /// [variables] User specified arguments under hivevar namespace.
-  HDInsightHiveActivity({
+  const HDInsightHiveActivity({
     this.arguments,
     this.defines,
     this.dependsOn,

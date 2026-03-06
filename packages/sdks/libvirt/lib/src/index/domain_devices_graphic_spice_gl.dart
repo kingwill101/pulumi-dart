@@ -11,7 +11,7 @@ class DomainDevicesGraphicSpiceGl {
   /// Creates a new [DomainDevicesGraphicSpiceGl].
   /// [enable] Enables or disables OpenGL support for graphical rendering in the Spice channel.
   /// [renderNode] Specifies the render node to be used for OpenGL rendering in the Spice graphical environment.
-  DomainDevicesGraphicSpiceGl({
+  const DomainDevicesGraphicSpiceGl({
     this.enable,
     this.renderNode,
   });

@@ -9,7 +9,7 @@ class LoginScopes {
 
   /// Creates a new [LoginScopes].
   /// [scopes] A list of the scopes that should be requested while authenticating.
-  LoginScopes({
+  const LoginScopes({
     this.scopes,
   });
 

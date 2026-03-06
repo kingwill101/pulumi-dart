@@ -14,7 +14,7 @@ class PodTemplateSpec {
   /// Creates a new [PodTemplateSpec].
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired behavior of the pod. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
-  PodTemplateSpec({
+  const PodTemplateSpec({
     this.metadata,
     this.spec,
   });

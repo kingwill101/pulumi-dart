@@ -12,7 +12,7 @@ class DevToolPortalFeatureDetailResponse {
   /// Creates a new [DevToolPortalFeatureDetailResponse].
   /// [route] Route path to visit the plugin
   /// [state] State of the plugin
-  DevToolPortalFeatureDetailResponse({
+  const DevToolPortalFeatureDetailResponse({
     required this.route,
     this.state,
   });

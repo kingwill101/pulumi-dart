@@ -11,7 +11,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes].
   /// [allowAudioInput] Whether audio input is allowed.
   /// [allowDtmfInput] Whether DTMF input is allowed.
-  V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes({
+  const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAllowedInputTypes({
     required this.allowAudioInput,
     required this.allowDtmfInput,
   });

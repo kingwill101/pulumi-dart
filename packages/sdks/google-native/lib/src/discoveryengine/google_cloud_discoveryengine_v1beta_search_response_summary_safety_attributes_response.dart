@@ -12,7 +12,7 @@ class GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesRespo
   /// Creates a new [GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse].
   /// [categories] The display names of Safety Attribute categories associated with the generated content. Order matches the Scores.
   /// [scores] The confidence scores of the each category, higher value means higher confidence. Order matches the Categories.
-  GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse({
+  const GoogleCloudDiscoveryengineV1betaSearchResponseSummarySafetyAttributesResponse({
     required this.categories,
     required this.scores,
   });

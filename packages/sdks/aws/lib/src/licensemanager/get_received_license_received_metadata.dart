@@ -14,7 +14,7 @@ class GetReceivedLicenseReceivedMetadata {
   /// [allowedOperations] A list of allowed operations.
   /// [receivedStatus] Received status.
   /// [receivedStatusReason] Received status reason.
-  GetReceivedLicenseReceivedMetadata({
+  const GetReceivedLicenseReceivedMetadata({
     required this.allowedOperations,
     required this.receivedStatus,
     required this.receivedStatusReason,

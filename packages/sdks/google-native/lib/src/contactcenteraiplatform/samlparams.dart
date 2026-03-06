@@ -21,7 +21,7 @@ class SAMLParams {
   /// [entityId] Entity id URL
   /// [ssoUri] Single sign-on URL
   /// [userEmail] Email address of the first admin users.
-  SAMLParams({
+  const SAMLParams({
     this.certificate,
     this.emailMapping,
     this.entityId,

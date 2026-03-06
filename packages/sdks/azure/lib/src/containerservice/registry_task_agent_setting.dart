@@ -8,7 +8,7 @@ class RegistryTaskAgentSetting {
 
   /// Creates a new [RegistryTaskAgentSetting].
   /// [cpu] The number of cores required for the Container Registry Task. Possible value is `2`.
-  RegistryTaskAgentSetting({
+  const RegistryTaskAgentSetting({
     required this.cpu,
   });
 

@@ -27,7 +27,7 @@ class NetworkExperimentProfileArgs {
   /// [profileName] The Profile identifier associated with the Tenant and Partner
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [tags] Resource tags.
-  NetworkExperimentProfileArgs({
+  const NetworkExperimentProfileArgs({
     this.enabledState,
     this.location,
     this.name,

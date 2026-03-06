@@ -49,7 +49,7 @@ class RecordSetArgs {
   /// [type] The type of record set. Examples: "A", "MX".
   /// [valueSpecs] Map of additional options. Changing this creates a
   /// [zoneId] The ID of the zone in which to create the record set.
-  RecordSetArgs({
+  const RecordSetArgs({
     this.description,
     this.disableStatusCheck,
     this.name,

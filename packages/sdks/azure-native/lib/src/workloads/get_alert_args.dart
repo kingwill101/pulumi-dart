@@ -18,7 +18,7 @@ class GetAlertArgs {
   /// [alertName] Name of the SAP monitor alert resource.
   /// [monitorName] Name of the SAP monitor resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAlertArgs({
+  const GetAlertArgs({
     required this.alertName,
     required this.monitorName,
     required this.resourceGroupName,

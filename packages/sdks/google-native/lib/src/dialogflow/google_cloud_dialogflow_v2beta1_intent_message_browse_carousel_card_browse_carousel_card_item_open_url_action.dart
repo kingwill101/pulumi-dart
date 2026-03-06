@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction].
   /// [url] URL
   /// [urlTypeHint] Optional. Specifies the type of viewer that is used when opening the URL. Defaults to opening via web browser.
-  GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction({
+  const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction({
     required this.url,
     this.urlTypeHint,
   });

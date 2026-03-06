@@ -14,7 +14,7 @@ class AuthorizationBasicRule {
   /// Creates a new [AuthorizationBasicRule].
   /// [brokerResources] This subfield defines the broker resources that the Basic Rule is applied on.
   /// [principals] This subfield defines the identities that represent the clients.
-  AuthorizationBasicRule({
+  const AuthorizationBasicRule({
     required this.brokerResources,
     required this.principals,
   });

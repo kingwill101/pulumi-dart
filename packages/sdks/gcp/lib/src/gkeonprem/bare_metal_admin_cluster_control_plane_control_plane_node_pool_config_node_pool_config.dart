@@ -22,7 +22,7 @@ class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig 
   /// [nodeConfigs] Structure is documented below.
   /// [operatingSystem] The available Operating Systems to be run in a Node.
   /// [taints] Structure is documented below.
-  BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig({
+  const BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig({
     this.labels,
     this.nodeConfigs,
     this.operatingSystem,

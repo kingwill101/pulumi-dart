@@ -27,7 +27,7 @@ class GetDomainsArgs {
   /// [nameRegex] A regex string to filter results by domain name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group to which the queried domain belongs in Resource Management.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.enableDetails,
     this.ids,
     required this.instanceId,

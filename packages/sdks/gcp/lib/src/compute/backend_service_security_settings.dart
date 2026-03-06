@@ -24,7 +24,7 @@ class BackendServiceSecuritySettings {
   /// [awsV4Authentication] The configuration needed to generate a signature for access to private storage buckets that support AWS's Signature Version 4 for authentication.
   /// [clientTlsPolicy] ClientTlsPolicy is a resource that specifies how a client should authenticate
   /// [subjectAltNames] A list of alternate names to verify the subject identity in the certificate.
-  BackendServiceSecuritySettings({
+  const BackendServiceSecuritySettings({
     this.awsV4Authentication,
     this.clientTlsPolicy,
     this.subjectAltNames,

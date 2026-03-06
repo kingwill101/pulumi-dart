@@ -26,7 +26,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings {
   /// [drcRf] Sets the profile for heavy Dolby dynamic range compression.
   /// [heightTrim] Height dimensional trim.
   /// [surroundTrim] Surround dimensional trim.
-  ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3AtmosSettings({
     this.bitrate,
     this.codingMode,
     this.dialnorm,

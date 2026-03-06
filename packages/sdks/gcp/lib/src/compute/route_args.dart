@@ -92,7 +92,7 @@ class RouteArgs {
   /// [priority] The priority of this route. Priority is used to break ties in cases
   /// [project] The ID of the project in which the resource belongs.
   /// [tags] A list of instance tags to which this route applies.
-  RouteArgs({
+  const RouteArgs({
     this.description,
     required this.destRange,
     this.name,

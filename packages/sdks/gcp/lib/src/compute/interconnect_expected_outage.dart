@@ -54,7 +54,7 @@ class InterconnectExpectedOutage {
   /// [source] (Output)
   /// [startTime] (Output)
   /// [state] (Output)
-  InterconnectExpectedOutage({
+  const InterconnectExpectedOutage({
     this.affectedCircuits,
     this.description,
     this.endTime,

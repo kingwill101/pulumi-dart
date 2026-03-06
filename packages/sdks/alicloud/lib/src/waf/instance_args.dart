@@ -63,7 +63,7 @@ class InstanceArgs {
   /// [resourceGroupId] The resource group ID.
   /// [subscriptionType] Subscription of WAF service. Valid values: ["Subscription", "PayAsYouGo"].
   /// [wafLog] Specify whether Log service is supported. Valid values: ["true", "false"]
-  InstanceArgs({
+  const InstanceArgs({
     required this.bigScreen,
     required this.exclusiveIpPackage,
     required this.extBandwidth,

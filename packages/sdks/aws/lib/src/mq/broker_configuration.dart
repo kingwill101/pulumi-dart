@@ -11,7 +11,7 @@ class BrokerConfiguration {
   /// Creates a new [BrokerConfiguration].
   /// [id] Configuration ID.
   /// [revision] Revision of the Configuration.
-  BrokerConfiguration({
+  const BrokerConfiguration({
     this.id,
     this.revision,
   });

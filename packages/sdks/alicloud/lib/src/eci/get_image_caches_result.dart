@@ -34,7 +34,7 @@ class GetImageCachesResult {
   /// [outputFile] Optional.
   /// [snapshotId] The id of snapshot.
   /// [status] The status of ECI Image Cache.
-  GetImageCachesResult({
+  const GetImageCachesResult({
     required this.caches,
     required this.id,
     required this.ids,

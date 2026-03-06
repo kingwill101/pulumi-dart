@@ -18,7 +18,7 @@ class GetP2sVpnServerConfigurationArgs {
   /// [p2SVpnServerConfigurationName] The name of the P2SVpnServerConfiguration.
   /// [resourceGroupName] The resource group name of the P2SVpnServerConfiguration.
   /// [virtualWanName] The name of the VirtualWan.
-  GetP2sVpnServerConfigurationArgs({
+  const GetP2sVpnServerConfigurationArgs({
     required this.p2SVpnServerConfigurationName,
     required this.resourceGroupName,
     required this.virtualWanName,

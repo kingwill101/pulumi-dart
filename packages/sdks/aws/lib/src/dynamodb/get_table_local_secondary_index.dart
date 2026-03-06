@@ -14,7 +14,7 @@ class GetTableLocalSecondaryIndex {
   /// [nonKeyAttributes] Required.
   /// [projectionType] Required.
   /// [rangeKey] Required.
-  GetTableLocalSecondaryIndex({
+  const GetTableLocalSecondaryIndex({
     required this.name,
     required this.nonKeyAttributes,
     required this.projectionType,

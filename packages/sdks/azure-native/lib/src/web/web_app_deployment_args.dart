@@ -48,7 +48,7 @@ class WebAppDeploymentArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [startTime] Start time.
   /// [status] Deployment status.
-  WebAppDeploymentArgs({
+  const WebAppDeploymentArgs({
     this.active,
     this.author,
     this.authorEmail,

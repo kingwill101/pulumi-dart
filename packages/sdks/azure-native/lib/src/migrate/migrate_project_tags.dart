@@ -8,7 +8,7 @@ class MigrateProjectTags {
 
   /// Creates a new [MigrateProjectTags].
   /// [additionalProperties] Optional.
-  MigrateProjectTags({
+  const MigrateProjectTags({
     this.additionalProperties,
   });
 

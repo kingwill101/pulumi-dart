@@ -37,7 +37,7 @@ class VirtualDisk {
   /// [storageQoSPolicy] The QoS policy for the disk.
   /// [templateDiskId] Gets or sets the disk id in the template.
   /// [vhdType] Gets or sets the disk vhd type.
-  VirtualDisk({
+  const VirtualDisk({
     this.bus,
     this.busType,
     this.createDiffDisk,

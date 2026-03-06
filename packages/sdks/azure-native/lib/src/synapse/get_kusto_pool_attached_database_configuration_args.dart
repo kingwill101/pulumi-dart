@@ -21,7 +21,7 @@ class GetKustoPoolAttachedDatabaseConfigurationArgs {
   /// [kustoPoolName] The name of the Kusto pool.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetKustoPoolAttachedDatabaseConfigurationArgs({
+  const GetKustoPoolAttachedDatabaseConfigurationArgs({
     required this.attachedDatabaseConfigurationName,
     required this.kustoPoolName,
     required this.resourceGroupName,

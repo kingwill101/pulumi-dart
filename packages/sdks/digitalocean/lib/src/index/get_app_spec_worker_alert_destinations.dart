@@ -10,7 +10,7 @@ class GetAppSpecWorkerAlertDestinations {
   /// Creates a new [GetAppSpecWorkerAlertDestinations].
   /// [emails] Optional.
   /// [slackWebhooks] Optional.
-  GetAppSpecWorkerAlertDestinations({
+  const GetAppSpecWorkerAlertDestinations({
     this.emails,
     this.slackWebhooks,
   });

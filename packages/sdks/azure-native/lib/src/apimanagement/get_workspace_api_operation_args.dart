@@ -24,7 +24,7 @@ class GetWorkspaceApiOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  GetWorkspaceApiOperationArgs({
+  const GetWorkspaceApiOperationArgs({
     required this.apiId,
     required this.operationId,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class TableView {
   /// Creates a new [TableView].
   /// [query] A query that BigQuery executes when the view is referenced.
   /// [useLegacySql] Specifies whether to use BigQuery's legacy SQL for this view.
-  TableView({
+  const TableView({
     required this.query,
     this.useLegacySql,
   });

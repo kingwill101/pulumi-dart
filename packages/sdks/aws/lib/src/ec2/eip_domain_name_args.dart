@@ -21,7 +21,7 @@ class EipDomainNameArgs {
   /// [domainName] The domain name to modify for the IP address.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  EipDomainNameArgs({
+  const EipDomainNameArgs({
     required this.allocationId,
     required this.domainName,
     this.region,

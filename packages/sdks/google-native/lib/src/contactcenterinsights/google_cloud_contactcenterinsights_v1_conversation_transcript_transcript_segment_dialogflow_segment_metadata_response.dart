@@ -9,7 +9,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentD
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse].
   /// [smartReplyAllowlistCovered] Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist.
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadataResponse({
     required this.smartReplyAllowlistCovered,
   });
 

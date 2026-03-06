@@ -11,7 +11,7 @@ class GetContainerSecretRef {
   /// Creates a new [GetContainerSecretRef].
   /// [name] The Container name.
   /// [secretRef] The secret reference / where to find the secret, URL.
-  GetContainerSecretRef({
+  const GetContainerSecretRef({
     this.name,
     this.secretRef,
   });

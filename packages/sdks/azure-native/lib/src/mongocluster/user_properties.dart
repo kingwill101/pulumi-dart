@@ -14,7 +14,7 @@ class UserProperties {
   /// Creates a new [UserProperties].
   /// [identityProvider] The user's identity provider definition.
   /// [roles] Database roles that are assigned to the user.
-  UserProperties({
+  const UserProperties({
     this.identityProvider,
     this.roles,
   });

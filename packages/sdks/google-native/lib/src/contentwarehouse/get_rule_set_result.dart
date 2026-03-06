@@ -19,7 +19,7 @@ class GetRuleSetResult {
   /// [name] The resource name of the rule set. Managed internally. Format: projects/{project_number}/locations/{location}/ruleSet/{rule_set_id}. The name is ignored when creating a rule set.
   /// [rules] List of rules given by the customer.
   /// [source] Source of the rules i.e., customer name.
-  GetRuleSetResult({
+  const GetRuleSetResult({
     required this.description,
     required this.name,
     required this.rules,

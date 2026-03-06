@@ -18,7 +18,7 @@ class GetServerGroupPrivateEndpointConnectionArgs {
   /// [clusterName] The name of the cluster.
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetServerGroupPrivateEndpointConnectionArgs({
+  const GetServerGroupPrivateEndpointConnectionArgs({
     required this.clusterName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

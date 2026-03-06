@@ -18,7 +18,7 @@ class GetManagedInstanceKeyArgs {
   /// [keyName] The name of the managed instance key to be retrieved.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetManagedInstanceKeyArgs({
+  const GetManagedInstanceKeyArgs({
     required this.keyName,
     required this.managedInstanceName,
     required this.resourceGroupName,

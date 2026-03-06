@@ -8,7 +8,7 @@ class GetJobDefinitionTimeout {
 
   /// Creates a new [GetJobDefinitionTimeout].
   /// [attemptDurationSeconds] The job timeout time (in seconds) that's measured from the job attempt's startedAt timestamp.
-  GetJobDefinitionTimeout({
+  const GetJobDefinitionTimeout({
     required this.attemptDurationSeconds,
   });
 

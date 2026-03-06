@@ -17,7 +17,7 @@ class GitRepoVolumeSourcePatch {
   /// [directory] directory is the target directory name. Must not contain or start with '..'.  If '.' is supplied, the volume directory will be the git repository.  Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
   /// [repository] repository is the URL
   /// [revision] revision is the commit hash for the specified revision.
-  GitRepoVolumeSourcePatch({
+  const GitRepoVolumeSourcePatch({
     this.directory,
     this.repository,
     this.revision,

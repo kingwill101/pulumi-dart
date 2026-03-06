@@ -42,7 +42,7 @@ class TargetGrpcProxyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [urlMap] URL to the UrlMap resource that defines the mapping from URL to
   /// [validateForProxyless] If true, indicates that the BackendServices referenced by
-  TargetGrpcProxyArgs({
+  const TargetGrpcProxyArgs({
     this.description,
     this.name,
     this.project,

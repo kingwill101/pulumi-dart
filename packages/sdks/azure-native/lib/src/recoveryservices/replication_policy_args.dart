@@ -22,7 +22,7 @@ class ReplicationPolicyArgs {
   /// [properties] Policy creation properties.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationPolicyArgs({
+  const ReplicationPolicyArgs({
     this.policyName,
     this.properties,
     required this.resourceGroupName,

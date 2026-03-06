@@ -13,7 +13,7 @@ class AppVersionSnapshotAppDefaultChannelProfilePersonaProperty {
 
   /// Creates a new [AppVersionSnapshotAppDefaultChannelProfilePersonaProperty].
   /// [persona] (Output)
-  AppVersionSnapshotAppDefaultChannelProfilePersonaProperty({
+  const AppVersionSnapshotAppDefaultChannelProfilePersonaProperty({
     this.persona,
   });
 

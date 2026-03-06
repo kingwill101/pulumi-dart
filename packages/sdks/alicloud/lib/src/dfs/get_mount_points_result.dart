@@ -20,7 +20,7 @@ class GetMountPointsResult {
   /// [outputFile] Optional.
   /// [points] Required.
   /// [status] Optional.
-  GetMountPointsResult({
+  const GetMountPointsResult({
     required this.fileSystemId,
     required this.id,
     required this.ids,

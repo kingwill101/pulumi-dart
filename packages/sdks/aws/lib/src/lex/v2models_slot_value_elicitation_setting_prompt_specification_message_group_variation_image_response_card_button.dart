@@ -9,7 +9,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariatio
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton].
   /// [text] Required.
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCardButton({
     required this.text,
     required this.value,
   });

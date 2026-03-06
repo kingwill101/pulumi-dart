@@ -15,7 +15,7 @@ class TagFilterResponse {
   /// [name] This is the filter tag name, it can have 1 - 128 characters
   /// [op] This is the comparison operator which is used for object comparison and filtering. Only == (equality operator) is currently supported
   /// [value] This is the filter tag value field used for tag based filtering, it can have 0 - 256 characters
-  TagFilterResponse({
+  const TagFilterResponse({
     required this.name,
     required this.op,
     required this.value,

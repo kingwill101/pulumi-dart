@@ -31,7 +31,7 @@ class WorkgroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
   /// [tags] Key-value map of resource tags for the workgroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  WorkgroupArgs({
+  const WorkgroupArgs({
     this.configuration,
     this.description,
     this.forceDestroy,

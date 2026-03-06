@@ -9,7 +9,7 @@ class RuleGroupRuleStatementAndStatement {
 
   /// Creates a new [RuleGroupRuleStatementAndStatement].
   /// [statements] The statements to combine.
-  RuleGroupRuleStatementAndStatement({
+  const RuleGroupRuleStatementAndStatement({
     required this.statements,
   });
 

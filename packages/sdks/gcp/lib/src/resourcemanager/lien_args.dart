@@ -31,7 +31,7 @@ class LienArgs {
   /// [parent] A reference to the resource this Lien is attached to.
   /// [reason] Concise user-visible strings indicating why an action cannot be performed
   /// [restrictions] The types of operations which should be blocked as a result of this Lien.
-  LienArgs({
+  const LienArgs({
     required this.origin,
     required this.parent,
     required this.reason,

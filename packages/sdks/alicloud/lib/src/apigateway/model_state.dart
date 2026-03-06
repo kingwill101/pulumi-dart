@@ -18,7 +18,7 @@ class ModelState {
   /// [groupId] The group of the model belongs to.
   /// [modelName] The name of the model.
   /// [schema] The schema of the model.
-  ModelState({
+  const ModelState({
     this.description,
     this.groupId,
     this.modelName,

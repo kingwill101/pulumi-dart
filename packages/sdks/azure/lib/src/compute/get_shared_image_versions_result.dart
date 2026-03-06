@@ -21,7 +21,7 @@ class GetSharedImageVersionsResult {
   /// [images] An `images` block as defined below:
   /// [resourceGroupName] Required.
   /// [tagsFilter] Optional.
-  GetSharedImageVersionsResult({
+  const GetSharedImageVersionsResult({
     required this.galleryName,
     required this.id,
     required this.imageName,

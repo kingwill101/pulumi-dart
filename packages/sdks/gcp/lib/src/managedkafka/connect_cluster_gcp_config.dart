@@ -10,7 +10,7 @@ class ConnectClusterGcpConfig {
 
   /// Creates a new [ConnectClusterGcpConfig].
   /// [accessConfig] The configuration of access to the Kafka Connect cluster.
-  ConnectClusterGcpConfig({
+  const ConnectClusterGcpConfig({
     required this.accessConfig,
   });
 

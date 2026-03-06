@@ -11,7 +11,7 @@ class DataSourceParametersS3ManifestFileLocation {
   /// Creates a new [DataSourceParametersS3ManifestFileLocation].
   /// [bucket] The name of the bucket that contains the manifest file.
   /// [key] The key of the manifest file within the bucket.
-  DataSourceParametersS3ManifestFileLocation({
+  const DataSourceParametersS3ManifestFileLocation({
     required this.bucket,
     required this.key,
   });

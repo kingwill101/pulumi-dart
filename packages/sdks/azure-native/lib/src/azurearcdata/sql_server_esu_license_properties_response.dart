@@ -33,7 +33,7 @@ class SqlServerEsuLicensePropertiesResponse {
   /// [terminatedAt] The timestamp of the termination of the SqlServerEsuLicense in ISO 8601 date-time format.
   /// [uniqueId] The unique ID of this license. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   /// [version] The SQL Server version the license covers.
-  SqlServerEsuLicensePropertiesResponse({
+  const SqlServerEsuLicensePropertiesResponse({
     required this.activatedAt,
     required this.activationState,
     required this.billingPlan,

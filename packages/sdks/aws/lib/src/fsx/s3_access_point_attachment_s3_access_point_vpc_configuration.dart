@@ -8,7 +8,7 @@ class S3AccessPointAttachmentS3AccessPointVpcConfiguration {
 
   /// Creates a new [S3AccessPointAttachmentS3AccessPointVpcConfiguration].
   /// [vpcId] VPC ID.
-  S3AccessPointAttachmentS3AccessPointVpcConfiguration({
+  const S3AccessPointAttachmentS3AccessPointVpcConfiguration({
     this.vpcId,
   });
 

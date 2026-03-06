@@ -10,7 +10,7 @@ class IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse {
 
   /// Creates a new [IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse].
   /// [contentLinkDefinition] The integration service environment managed api content link for deployment.
-  IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse({
+  const IntegrationServiceEnvironmentManagedApiDeploymentParametersResponse({
     this.contentLinkDefinition,
   });
 

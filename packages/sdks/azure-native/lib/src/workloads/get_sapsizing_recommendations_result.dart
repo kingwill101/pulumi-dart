@@ -8,7 +8,7 @@ class GetSAPSizingRecommendationsResult {
 
   /// Creates a new [GetSAPSizingRecommendationsResult].
   /// [deploymentType] The type of SAP deployment, single server or Three tier.
-  GetSAPSizingRecommendationsResult({
+  const GetSAPSizingRecommendationsResult({
     required this.deploymentType,
   });
 

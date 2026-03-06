@@ -24,7 +24,7 @@ class CommitmentPlanAssociationArgs {
   /// [commitmentPlanName] The name of the commitmentPlan associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  CommitmentPlanAssociationArgs({
+  const CommitmentPlanAssociationArgs({
     this.accountId,
     this.commitmentPlanAssociationName,
     required this.commitmentPlanName,

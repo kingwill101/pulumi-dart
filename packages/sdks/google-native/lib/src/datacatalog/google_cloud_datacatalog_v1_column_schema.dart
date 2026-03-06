@@ -38,7 +38,7 @@ class GoogleCloudDatacatalogV1ColumnSchema {
   /// [ordinalPosition] Optional. Ordinal position
   /// [subcolumns] Optional. Schema of sub-columns. A column can have zero or more sub-columns.
   /// [type] Type of the column. Must be a UTF-8 string with the maximum size of 128 bytes.
-  GoogleCloudDatacatalogV1ColumnSchema({
+  const GoogleCloudDatacatalogV1ColumnSchema({
     required this.column,
     this.defaultValue,
     this.description,

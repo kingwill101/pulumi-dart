@@ -48,7 +48,7 @@ class DataLabelingJobAiplatformV1beta1Args {
   /// [location] Optional.
   /// [project] Optional.
   /// [specialistPools] The SpecialistPools' resource names associated with this job.
-  DataLabelingJobAiplatformV1beta1Args({
+  const DataLabelingJobAiplatformV1beta1Args({
     this.activeLearningConfig,
     this.annotationLabels,
     required this.datasets,

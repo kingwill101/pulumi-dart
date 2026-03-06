@@ -14,7 +14,7 @@ class HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule {
   /// [days] The days of the week to perform autoscale. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   /// [targetInstanceCount] The number of worker nodes to autoscale at the specified time.
   /// [time] The time of day to perform the autoscale in 24hour format.
-  HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule({
+  const HBaseClusterRolesWorkerNodeAutoscaleRecurrenceSchedule({
     required this.days,
     required this.targetInstanceCount,
     required this.time,

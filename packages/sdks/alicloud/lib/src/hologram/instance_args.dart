@@ -90,7 +90,7 @@ class InstanceArgs {
   /// [storageSize] The standard storage space of the instance. Unit: GB.
   /// [tags] Instance tag.
   /// [zoneId] The zone Id. Refer to "Instructions for Use".
-  InstanceArgs({
+  const InstanceArgs({
     this.autoPay,
     this.coldStorageSize,
     this.cpu,

@@ -51,7 +51,7 @@ class RegistrationArgs {
   /// [managementSettings] Settings for management of the Registration, including renewal, billing, and transfer
   /// [project] The ID of the project in which the resource belongs.
   /// [yearlyPrice] Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from
-  RegistrationArgs({
+  const RegistrationArgs({
     this.contactNotices,
     required this.contactSettings,
     this.dnsSettings,

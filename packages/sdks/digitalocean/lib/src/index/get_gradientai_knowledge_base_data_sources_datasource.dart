@@ -30,7 +30,7 @@ class GetGradientaiKnowledgeBaseDataSourcesDatasource {
   /// [updatedAt] Timestamp when the Knowledge Base was updated
   /// [uuid] UUID of the Knowledge Base
   /// [webCrawlerDataSources] Web crawler data source configuration
-  GetGradientaiKnowledgeBaseDataSourcesDatasource({
+  const GetGradientaiKnowledgeBaseDataSourcesDatasource({
     required this.createdAt,
     this.fileUploadDataSources,
     this.lastIndexingJobs,

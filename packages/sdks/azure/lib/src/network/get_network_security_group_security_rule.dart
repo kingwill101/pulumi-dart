@@ -51,7 +51,7 @@ class GetNetworkSecurityGroupSecurityRule {
   /// [sourceApplicationSecurityGroupIds] A List of source Application Security Group IDs
   /// [sourcePortRange] The Source Port or Range.
   /// [sourcePortRanges] Required.
-  GetNetworkSecurityGroupSecurityRule({
+  const GetNetworkSecurityGroupSecurityRule({
     required this.access,
     required this.description,
     required this.destinationAddressPrefix,

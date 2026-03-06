@@ -43,7 +43,7 @@ class DnsAuthorizationArgs {
   /// [name] Name of the resource; provided by the client when the resource is created.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] type of DNS authorization. If unset during the resource creation, FIXED_RECORD will
-  DnsAuthorizationArgs({
+  const DnsAuthorizationArgs({
     this.description,
     required this.domain,
     this.labels,

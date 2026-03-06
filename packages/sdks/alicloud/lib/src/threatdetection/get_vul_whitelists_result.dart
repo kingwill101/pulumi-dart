@@ -21,7 +21,7 @@ class GetVulWhitelistsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [whitelists] A list of Vul Whitelist Entries. Each element contains the following attributes:
-  GetVulWhitelistsResult({
+  const GetVulWhitelistsResult({
     required this.id,
     required this.ids,
     this.outputFile,

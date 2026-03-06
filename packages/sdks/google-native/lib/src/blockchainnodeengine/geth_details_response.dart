@@ -9,7 +9,7 @@ class GethDetailsResponse {
 
   /// Creates a new [GethDetailsResponse].
   /// [garbageCollectionMode] Immutable. Blockchain garbage collection mode.
-  GethDetailsResponse({
+  const GethDetailsResponse({
     required this.garbageCollectionMode,
   });
 

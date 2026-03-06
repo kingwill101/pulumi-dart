@@ -47,7 +47,7 @@ class GetRegistryEnterpriseSyncRulesRule {
   /// [targetNamespaceName] Name of Container Registry Enterprise Edition target namespace.
   /// [targetRegionId] Region of Container Registry Enterprise Edition target instance.
   /// [targetRepoName] Name of Container Registry Enterprise Edition target repo.
-  GetRegistryEnterpriseSyncRulesRule({
+  const GetRegistryEnterpriseSyncRulesRule({
     required this.id,
     required this.instanceId,
     required this.name,

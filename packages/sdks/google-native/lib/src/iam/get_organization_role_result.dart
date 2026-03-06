@@ -26,7 +26,7 @@ class GetOrganizationRoleResult {
   /// [name] The name of the role. When `Role` is used in `CreateRole`, the role name must not be set. When `Role` is used in output and other input such as `UpdateRole`, the role name is the complete path. For example, `roles/logging.viewer` for predefined roles, `organizations/{ORGANIZATION_ID}/roles/my-role` for organization-level custom roles, and `projects/{PROJECT_ID}/roles/my-role` for project-level custom roles.
   /// [stage] The current launch stage of the role. If the `ALPHA` launch stage has been selected for a role, the `stage` field will not be included in the returned definition for the role.
   /// [title] Optional. A human-readable title for the role. Typically this is limited to 100 UTF-8 bytes.
-  GetOrganizationRoleResult({
+  const GetOrganizationRoleResult({
     required this.deleted,
     required this.description,
     required this.etag,

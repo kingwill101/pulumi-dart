@@ -20,7 +20,7 @@ class GetInstancesArgs {
   /// [ids] A list of instance IDs to filter results.
   /// [nameRegex] A regex string to filter results by the instance name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

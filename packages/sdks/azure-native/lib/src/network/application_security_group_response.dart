@@ -30,7 +30,7 @@ class ApplicationSecurityGroupResponse {
   /// [resourceGuid] The resource GUID property of the application security group resource. It uniquely identifies a resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  ApplicationSecurityGroupResponse({
+  const ApplicationSecurityGroupResponse({
     required this.etag,
     this.id,
     this.location,

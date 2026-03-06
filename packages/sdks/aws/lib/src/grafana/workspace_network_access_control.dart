@@ -11,7 +11,7 @@ class WorkspaceNetworkAccessControl {
   /// Creates a new [WorkspaceNetworkAccessControl].
   /// [prefixListIds] An array of prefix list IDs.
   /// [vpceIds] An array of Amazon VPC endpoint IDs for the workspace. The only VPC endpoints that can be specified here are interface VPC endpoints for Grafana workspaces (using the com.amazonaws.[region].grafana-workspace service endpoint). Other VPC endpoints will be ignored.
-  WorkspaceNetworkAccessControl({
+  const WorkspaceNetworkAccessControl({
     required this.prefixListIds,
     required this.vpceIds,
   });

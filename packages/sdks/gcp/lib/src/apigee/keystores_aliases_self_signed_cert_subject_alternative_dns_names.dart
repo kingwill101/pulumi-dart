@@ -8,7 +8,7 @@ class KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames {
 
   /// Creates a new [KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames].
   /// [subjectAlternativeName] Subject Alternative Name
-  KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames({
+  const KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNames({
     this.subjectAlternativeName,
   });
 

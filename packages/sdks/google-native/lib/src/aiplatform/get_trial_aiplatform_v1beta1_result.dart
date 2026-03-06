@@ -41,7 +41,7 @@ class GetTrialAiplatformV1beta1Result {
   /// [startTime] Time when the Trial was started.
   /// [state] The detailed state of the Trial.
   /// [webAccessUris] URIs for accessing [interactive shells](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell) (one URI for each training node). Only available if this trial is part of a HyperparameterTuningJob and the job's trial_job_spec.enable_web_access field is `true`. The keys are names of each node used for the trial; for example, `workerpool0-0` for the primary node, `workerpool1-0` for the first node in the second worker pool, and `workerpool1-1` for the second node in the second worker pool. The values are the URIs for each node's interactive shell.
-  GetTrialAiplatformV1beta1Result({
+  const GetTrialAiplatformV1beta1Result({
     required this.clientId,
     required this.customJob,
     required this.endTime,

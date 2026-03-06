@@ -12,7 +12,7 @@ class EphemeralStorageResponse {
   /// Creates a new [EphemeralStorageResponse].
   /// [size] The size of the function's ``/tmp`` directory.
   /// [sizeInGiB] The total amount, in GiB, of ephemeral storage to set for the task. The minimum supported value is ``20`` GiB and the maximum supported value is ``200`` GiB.
-  EphemeralStorageResponse({
+  const EphemeralStorageResponse({
     this.size,
     this.sizeInGiB,
   });

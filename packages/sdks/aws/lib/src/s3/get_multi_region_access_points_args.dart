@@ -15,7 +15,7 @@ class GetMultiRegionAccessPointsArgs {
   /// Creates a new [GetMultiRegionAccessPointsArgs].
   /// [accountId] AWS account ID for the account that owns the multi-region access points. If omitted, defaults to the caller's account ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetMultiRegionAccessPointsArgs({
+  const GetMultiRegionAccessPointsArgs({
     this.accountId,
     this.region,
   });

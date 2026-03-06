@@ -11,7 +11,7 @@ class GetLocalGatewayVirtualInterfaceGroupsFilter {
   /// Creates a new [GetLocalGatewayVirtualInterfaceGroupsFilter].
   /// [name] Name of the filter.
   /// [values] List of one or more values for the filter.
-  GetLocalGatewayVirtualInterfaceGroupsFilter({
+  const GetLocalGatewayVirtualInterfaceGroupsFilter({
     required this.name,
     required this.values,
   });

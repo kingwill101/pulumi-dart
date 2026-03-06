@@ -17,7 +17,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSettin
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting({
+  const AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfigModelSetting({
     this.model,
     this.temperature,
   });

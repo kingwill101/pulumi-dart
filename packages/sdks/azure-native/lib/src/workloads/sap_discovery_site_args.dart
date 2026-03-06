@@ -31,7 +31,7 @@ class SapDiscoverySiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapDiscoverySiteName] The name of the discovery site resource for SAP Migration.
   /// [tags] Resource tags.
-  SapDiscoverySiteArgs({
+  const SapDiscoverySiteArgs({
     this.extendedLocation,
     this.location,
     this.masterSiteId,

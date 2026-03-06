@@ -26,7 +26,7 @@ class CooDomainPreciseAccessRuleArgs {
   /// [domain] Domain name of the website service.
   /// [expires] Rule validity period, in seconds. This parameter takes effect only when the rule's matching action is set to block (`action` is `block`), blocking access requests during the validity period. If this parameter is not specified, the rule remains effective permanently.
   /// [name] Rule name.
-  CooDomainPreciseAccessRuleArgs({
+  const CooDomainPreciseAccessRuleArgs({
     required this.action,
     required this.conditions,
     required this.domain,

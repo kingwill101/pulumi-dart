@@ -10,7 +10,7 @@ class VolumeExportPolicy {
 
   /// Creates a new [VolumeExportPolicy].
   /// [rules] Export rules (up to 5) control NFS volume access.
-  VolumeExportPolicy({
+  const VolumeExportPolicy({
     required this.rules,
   });
 

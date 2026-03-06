@@ -53,7 +53,7 @@ class AssessmentMetadataInSubscriptionArgs {
   /// [techniques] Optional.
   /// [threats] Optional.
   /// [userImpact] The user impact of the assessment
-  AssessmentMetadataInSubscriptionArgs({
+  const AssessmentMetadataInSubscriptionArgs({
     this.assessmentMetadataName,
     required this.assessmentType,
     this.categories,

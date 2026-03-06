@@ -11,7 +11,7 @@ class GetFolderIamPolicyCloudresourcemanagerV2beta1Args {
 
   /// Creates a new [GetFolderIamPolicyCloudresourcemanagerV2beta1Args].
   /// [folderId] Required.
-  GetFolderIamPolicyCloudresourcemanagerV2beta1Args({
+  const GetFolderIamPolicyCloudresourcemanagerV2beta1Args({
     required this.folderId,
   });
 

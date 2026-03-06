@@ -58,7 +58,7 @@ class ServerlessCacheArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [userGroupId] The identifier of the UserGroup to be associated with the serverless cache. Available for Redis and Valkey. Default is NULL.
-  ServerlessCacheArgs({
+  const ServerlessCacheArgs({
     this.cacheUsageLimits,
     this.dailySnapshotTime,
     this.description,

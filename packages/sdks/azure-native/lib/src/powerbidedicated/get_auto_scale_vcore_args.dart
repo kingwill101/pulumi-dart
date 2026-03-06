@@ -15,7 +15,7 @@ class GetAutoScaleVCoreArgs {
   /// Creates a new [GetAutoScaleVCoreArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vcoreName] The name of the auto scale v-core. It must be a minimum of 3 characters, and a maximum of 63.
-  GetAutoScaleVCoreArgs({
+  const GetAutoScaleVCoreArgs({
     required this.resourceGroupName,
     required this.vcoreName,
   });

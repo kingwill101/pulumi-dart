@@ -72,7 +72,7 @@ class ClusterArgs {
   /// [serverSideEncryption] Encrypt at rest options
   /// [subnetGroupName] Name of the subnet group to be used for the
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ClusterArgs({
+  const ClusterArgs({
     this.availabilityZones,
     this.clusterEndpointEncryptionType,
     required this.clusterName,

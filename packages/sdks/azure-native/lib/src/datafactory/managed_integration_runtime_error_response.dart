@@ -18,7 +18,7 @@ class ManagedIntegrationRuntimeErrorResponse {
   /// [message] Error message.
   /// [parameters] Managed integration runtime error parameters.
   /// [time] The time when the error occurred.
-  ManagedIntegrationRuntimeErrorResponse({
+  const ManagedIntegrationRuntimeErrorResponse({
     required this.code,
     required this.message,
     required this.parameters,

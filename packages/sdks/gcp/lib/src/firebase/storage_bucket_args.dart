@@ -16,7 +16,7 @@ class StorageBucketArgs {
   /// Creates a new [StorageBucketArgs].
   /// [bucketId] Required. Immutable. The ID of the underlying Google Cloud Storage bucket
   /// [project] The ID of the project in which the resource belongs.
-  StorageBucketArgs({
+  const StorageBucketArgs({
     this.bucketId,
     this.project,
   });

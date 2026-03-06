@@ -13,7 +13,7 @@ class UserIdentity {
   /// Creates a new [UserIdentity].
   /// [autoUser] The userName and autoUser properties are mutually exclusive; you must specify one but not both.
   /// [userName] The userName and autoUser properties are mutually exclusive; you must specify one but not both.
-  UserIdentity({
+  const UserIdentity({
     this.autoUser,
     this.userName,
   });

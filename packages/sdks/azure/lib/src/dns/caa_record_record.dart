@@ -14,7 +14,7 @@ class CaaRecordRecord {
   /// [flags] Extensible CAA flags, currently only 1 is implemented to set the issuer critical flag.
   /// [tag] A property tag, options are `issue`, `issuewild`, `iodef`, and `contactemail`.
   /// [value] A property value such as a registrar domain.
-  CaaRecordRecord({
+  const CaaRecordRecord({
     required this.flags,
     required this.tag,
     required this.value,

@@ -11,7 +11,7 @@ class AlertLabel {
   /// Creates a new [AlertLabel].
   /// [key] Labels's key for new alert.
   /// [value] Labels's value for new alert.
-  AlertLabel({
+  const AlertLabel({
     required this.key,
     required this.value,
   });

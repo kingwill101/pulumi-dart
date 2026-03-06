@@ -33,7 +33,7 @@ class SecretVersionArgs {
   /// [secretStringWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [secretStringWoVersion] Used together with `secret_string_wo` to trigger an update. Increment this value when an update to `secret_string_wo` is required.
   /// [versionStages] Specifies a list of staging labels that are attached to this version of the secret. A staging label must be unique to a single version of the secret. If you specify a staging label that's already associated with a different version of the same secret then that staging label is automatically removed from the other version and attached to this version. If you do not specify a value, then AWS Secrets Manager automatically moves the staging label `AWSCURRENT` to this new version on creation.
-  SecretVersionArgs({
+  const SecretVersionArgs({
     this.region,
     this.secretBinary,
     required this.secretId,

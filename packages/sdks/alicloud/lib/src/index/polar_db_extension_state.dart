@@ -24,7 +24,7 @@ class PolarDbExtensionState {
   /// [defaultVersion] Default version.
   /// [extensionName] Information about the installed plug-ins under the specified database.
   /// [installedVersion] Installed version, only supports upgrading to the default version.
-  PolarDbExtensionState({
+  const PolarDbExtensionState({
     this.accountName,
     this.dbClusterId,
     this.dbName,

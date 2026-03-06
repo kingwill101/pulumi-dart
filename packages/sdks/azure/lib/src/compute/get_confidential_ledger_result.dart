@@ -34,7 +34,7 @@ class GetConfidentialLedgerResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the Confidential Ledger.
-  GetConfidentialLedgerResult({
+  const GetConfidentialLedgerResult({
     required this.azureadBasedServicePrincipals,
     required this.certificateBasedSecurityPrincipals,
     required this.id,

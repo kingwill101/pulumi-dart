@@ -20,7 +20,7 @@ class GetAlarmContactGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetAlarmContactGroupsResult({
+  const GetAlarmContactGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

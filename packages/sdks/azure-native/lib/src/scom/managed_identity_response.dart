@@ -19,7 +19,7 @@ class ManagedIdentityResponse {
   /// [tenantId] The Azure Active Directory tenant id.
   /// [type] The identity type
   /// [userAssignedIdentities] The resource ids of the user assigned identities to use
-  ManagedIdentityResponse({
+  const ManagedIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

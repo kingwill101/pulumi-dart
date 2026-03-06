@@ -21,7 +21,7 @@ class NetworkState {
   /// [ipRange] IP Range of the whole Network which must span all included subnets and route destinations. Must be one of the private ipv4 ranges of RFC1918.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [name] Name of the Network to create (must be unique per project).
-  NetworkState({
+  const NetworkState({
     this.deleteProtection,
     this.exposeRoutesToVswitch,
     this.ipRange,

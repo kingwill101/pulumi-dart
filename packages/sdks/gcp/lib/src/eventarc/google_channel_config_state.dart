@@ -22,7 +22,7 @@ class GoogleChannelConfigState {
   /// [name] Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The last-modified time.
-  GoogleChannelConfigState({
+  const GoogleChannelConfigState({
     this.cryptoKeyName,
     this.location,
     this.name,

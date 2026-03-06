@@ -29,7 +29,7 @@ class SyntheticTaskCommonSetting {
   /// [monitorSamples] Whether the monitoring samples are evenly distributed:
   /// [traceClientType] Link trace client type:
   /// [xtraceRegion] The link data is reported to the region.
-  SyntheticTaskCommonSetting({
+  const SyntheticTaskCommonSetting({
     this.customHost,
     this.ipType,
     this.isOpenTrace,

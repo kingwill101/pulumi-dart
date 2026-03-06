@@ -19,7 +19,7 @@ class DataBoxAccountCopyLogDetailsResponse {
   /// [copyLogDetailsType] Indicates the type of job details.
   /// [copyLogLink] Link for copy logs.
   /// [copyVerboseLogLink] Link for copy verbose logs. This will be set only when LogCollectionLevel is set to Verbose.
-  DataBoxAccountCopyLogDetailsResponse({
+  const DataBoxAccountCopyLogDetailsResponse({
     required this.accountName,
     required this.copyLogDetailsType,
     required this.copyLogLink,

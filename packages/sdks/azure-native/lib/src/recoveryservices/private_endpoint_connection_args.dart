@@ -31,7 +31,7 @@ class PrivateEndpointConnectionArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.eTag,
     this.location,
     this.privateEndpointConnectionName,

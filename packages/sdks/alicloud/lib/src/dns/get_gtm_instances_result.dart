@@ -20,7 +20,7 @@ class GetGtmInstancesResult {
   /// [lang] Optional.
   /// [outputFile] Required.
   /// [resourceGroupId] Optional.
-  GetGtmInstancesResult({
+  const GetGtmInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

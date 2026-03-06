@@ -16,7 +16,7 @@ class VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration {
   /// [privateIpAddress] The private IP Address of the listener. Changing this forces a new resource to be created.
   /// [sqlVirtualMachineId] The ID of the Sql Virtual Machine. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet to create the listener. Changing this forces a new resource to be created.
-  VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration({
+  const VirtualMachineAvailabilityGroupListenerMultiSubnetIpConfiguration({
     required this.privateIpAddress,
     required this.sqlVirtualMachineId,
     required this.subnetId,

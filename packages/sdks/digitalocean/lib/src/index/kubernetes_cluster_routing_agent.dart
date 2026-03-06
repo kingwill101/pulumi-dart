@@ -8,7 +8,7 @@ class KubernetesClusterRoutingAgent {
 
   /// Creates a new [KubernetesClusterRoutingAgent].
   /// [enabled] Boolean flag whether the routing-agent should be enabled or not.
-  KubernetesClusterRoutingAgent({
+  const KubernetesClusterRoutingAgent({
     required this.enabled,
   });
 

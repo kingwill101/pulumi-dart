@@ -10,7 +10,7 @@ class VmwareStaticIpConfigResponse {
 
   /// Creates a new [VmwareStaticIpConfigResponse].
   /// [ipBlocks] Represents the configuration values for static IP allocation to nodes.
-  VmwareStaticIpConfigResponse({
+  const VmwareStaticIpConfigResponse({
     required this.ipBlocks,
   });
 

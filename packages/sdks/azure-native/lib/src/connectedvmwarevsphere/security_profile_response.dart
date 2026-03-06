@@ -10,7 +10,7 @@ class SecurityProfileResponse {
 
   /// Creates a new [SecurityProfileResponse].
   /// [uefiSettings] Specifies the security settings like secure boot used while creating the virtual machine.
-  SecurityProfileResponse({
+  const SecurityProfileResponse({
     this.uefiSettings,
   });
 

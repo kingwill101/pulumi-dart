@@ -36,7 +36,7 @@ class RuntimeEnvironmentArgs {
   /// [runtimeEnvironmentName] The name of the Runtime Environment.
   /// [tags] Resource tags.
   /// [version] Version of Language
-  RuntimeEnvironmentArgs({
+  const RuntimeEnvironmentArgs({
     required this.automationAccountName,
     this.defaultPackages,
     this.description,

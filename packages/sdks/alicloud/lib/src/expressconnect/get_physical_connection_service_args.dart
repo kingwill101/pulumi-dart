@@ -14,7 +14,7 @@ class GetPhysicalConnectionServiceArgs {
 
   /// Creates a new [GetPhysicalConnectionServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
-  GetPhysicalConnectionServiceArgs({
+  const GetPhysicalConnectionServiceArgs({
     this.enable,
   });
 

@@ -13,7 +13,7 @@ class FrontdoorSecretSecretCustomerCertificate {
   /// Creates a new [FrontdoorSecretSecretCustomerCertificate].
   /// [keyVaultCertificateId] The ID of the Key Vault certificate resource to use. Changing this forces a new Front Door Secret to be created.
   /// [subjectAlternativeNames] One or more `subject alternative names` contained within the key vault certificate.
-  FrontdoorSecretSecretCustomerCertificate({
+  const FrontdoorSecretSecretCustomerCertificate({
     required this.keyVaultCertificateId,
     this.subjectAlternativeNames,
   });

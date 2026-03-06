@@ -9,7 +9,7 @@ class ScopeNamespaceResponse {
 
   /// Creates a new [ScopeNamespaceResponse].
   /// [targetNamespace] Namespace where the extension will be created for an Namespace scoped extension.  If this namespace does not exist, it will be created
-  ScopeNamespaceResponse({
+  const ScopeNamespaceResponse({
     this.targetNamespace,
   });
 

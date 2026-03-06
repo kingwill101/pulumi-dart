@@ -12,7 +12,7 @@ class GetSubscriptionNetworkManagerConnectionArgs {
 
   /// Creates a new [GetSubscriptionNetworkManagerConnectionArgs].
   /// [networkManagerConnectionName] Name for the network manager connection.
-  GetSubscriptionNetworkManagerConnectionArgs({
+  const GetSubscriptionNetworkManagerConnectionArgs({
     required this.networkManagerConnectionName,
   });
 

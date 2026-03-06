@@ -18,7 +18,7 @@ class GetContainerAppsAuthConfigArgs {
   /// [authConfigName] Name of the Container App AuthConfig.
   /// [containerAppName] Name of the Container App.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContainerAppsAuthConfigArgs({
+  const GetContainerAppsAuthConfigArgs({
     required this.authConfigName,
     required this.containerAppName,
     required this.resourceGroupName,

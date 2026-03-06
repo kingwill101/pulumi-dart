@@ -13,7 +13,7 @@ class MultiEntityRename {
   /// Creates a new [MultiEntityRename].
   /// [newNamePattern] Optional. The pattern used to generate the new entity's name. This pattern must include the characters '{name}', which will be replaced with the name of the original entity. For example, the pattern 't_{name}' for an entity name jobs would be converted to 't_jobs'. If unspecified, the default value for this field is '{name}'
   /// [sourceNameTransformation] Optional. Additional transformation that can be done on the source entity name before it is being used by the new_name_pattern, for example lower case. If no transformation is desired, use NO_TRANSFORMATION
-  MultiEntityRename({
+  const MultiEntityRename({
     this.newNamePattern,
     this.sourceNameTransformation,
   });

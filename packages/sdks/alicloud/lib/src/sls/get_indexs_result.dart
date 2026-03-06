@@ -22,7 +22,7 @@ class GetIndexsResult {
   /// [logstoreName] Required.
   /// [outputFile] Optional.
   /// [projectName] Required.
-  GetIndexsResult({
+  const GetIndexsResult({
     required this.id,
     required this.ids,
     required this.indexs,

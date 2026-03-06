@@ -9,7 +9,7 @@ class AssociationSubnetResponse {
 
   /// Creates a new [AssociationSubnetResponse].
   /// [id] Association ID.
-  AssociationSubnetResponse({
+  const AssociationSubnetResponse({
     required this.id,
   });
 

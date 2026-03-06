@@ -15,7 +15,7 @@ class GetAppConnectionBeyondcorpV1alphaArgs {
   /// [appConnectionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAppConnectionBeyondcorpV1alphaArgs({
+  const GetAppConnectionBeyondcorpV1alphaArgs({
     required this.appConnectionId,
     required this.location,
     this.project,

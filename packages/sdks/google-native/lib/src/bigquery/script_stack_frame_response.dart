@@ -23,7 +23,7 @@ class ScriptStackFrameResponse {
   /// [startColumn] One-based start column.
   /// [startLine] One-based start line.
   /// [text] Text of the current statement/expression.
-  ScriptStackFrameResponse({
+  const ScriptStackFrameResponse({
     required this.endColumn,
     required this.endLine,
     required this.procedureId,

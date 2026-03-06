@@ -75,7 +75,7 @@ class EncryptionControlArgs {
   /// [vpcId] The ID of the VPC the VPC Encryption Control is linked to.
   /// [vpcLatticeExclusion] Whether to exclude VPC Lattice from encryption enforcement.
   /// [vpcPeeringExclusion] Whether to exclude peered VPCs from encryption enforcement.
-  EncryptionControlArgs({
+  const EncryptionControlArgs({
     this.egressOnlyInternetGatewayExclusion,
     this.elasticFileSystemExclusion,
     this.internetGatewayExclusion,

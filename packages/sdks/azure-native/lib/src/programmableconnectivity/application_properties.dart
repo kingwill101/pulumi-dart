@@ -27,7 +27,7 @@ class ApplicationProperties {
   /// [organizationDescription] A description of the organization owning the application.
   /// [privacyContactEmailAddress] Email address of the Privacy contact or Data Protection officer of the organization.
   /// [taxNumber] Unique Tax Number for the user's organization in the country/region the APC Gateway is being purchased.
-  ApplicationProperties({
+  const ApplicationProperties({
     this.applicationDescription,
     this.applicationType,
     this.legalName,

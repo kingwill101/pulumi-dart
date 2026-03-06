@@ -86,7 +86,7 @@ class CommonBandwithPackageState {
   /// [status] The status of the Internet Shared Bandwidth instance. Default value: `Available`.
   /// [tags] The tag of the resource
   /// [zone] The zone of the Internet Shared Bandwidth instance. This parameter is required if you create an Internet Shared Bandwidth instance for a cloud box.
-  CommonBandwithPackageState({
+  const CommonBandwithPackageState({
     this.bandwidth,
     this.bandwidthPackageName,
     this.createTime,

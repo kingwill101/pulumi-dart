@@ -21,7 +21,7 @@ class OrganizationSettingsArgs {
   /// [kmsKeyName] The resource name for the configured Cloud KMS key.
   /// [organization] The organization for which to retrieve or configure settings.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  OrganizationSettingsArgs({
+  const OrganizationSettingsArgs({
     this.disableDefaultSink,
     this.kmsKeyName,
     required this.organization,

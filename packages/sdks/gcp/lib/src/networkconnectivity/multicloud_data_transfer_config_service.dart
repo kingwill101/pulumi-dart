@@ -18,7 +18,7 @@ class MulticloudDataTransferConfigService {
   /// Creates a new [MulticloudDataTransferConfigService].
   /// [serviceName] The name of the service, like "big-query" or "cloud-storage".
   /// [states] (Output)
-  MulticloudDataTransferConfigService({
+  const MulticloudDataTransferConfigService({
     required this.serviceName,
     this.states,
   });

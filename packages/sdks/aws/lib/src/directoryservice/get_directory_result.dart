@@ -58,7 +58,7 @@ class GetDirectoryResult {
   /// [tags] A map of tags assigned to the directory/connector.
   /// [type] Directory type (`SimpleAD`, `ADConnector` or `MicrosoftAD`).
   /// [vpcSettings] Required.
-  GetDirectoryResult({
+  const GetDirectoryResult({
     required this.accessUrl,
     required this.alias,
     required this.connectSettings,

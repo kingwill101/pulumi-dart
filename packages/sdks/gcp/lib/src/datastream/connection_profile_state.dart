@@ -90,7 +90,7 @@ class ConnectionProfileState {
   /// [salesforceProfile] Salesforce profile.
   /// [spannerProfile] Spanner profile.
   /// [sqlServerProfile] SQL Server database profile.
-  ConnectionProfileState({
+  const ConnectionProfileState({
     this.bigqueryProfile,
     this.connectionProfileId,
     this.createWithoutValidation,

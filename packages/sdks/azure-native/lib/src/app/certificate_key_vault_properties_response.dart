@@ -12,7 +12,7 @@ class CertificateKeyVaultPropertiesResponse {
   /// Creates a new [CertificateKeyVaultPropertiesResponse].
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   /// [keyVaultUrl] URL pointing to the Azure Key Vault secret that holds the certificate.
-  CertificateKeyVaultPropertiesResponse({
+  const CertificateKeyVaultPropertiesResponse({
     this.identity,
     this.keyVaultUrl,
   });

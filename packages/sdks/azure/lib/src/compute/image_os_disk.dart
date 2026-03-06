@@ -29,7 +29,7 @@ class ImageOsDisk {
   /// [osType] Specifies the type of operating system contained in the virtual machine image. Possible values are: `Windows` or `Linux`.
   /// [sizeGb] Specifies the size of the image to be created. Changing this forces a new resource to be created.
   /// [storageType] The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
-  ImageOsDisk({
+  const ImageOsDisk({
     this.blobUri,
     this.caching,
     this.diskEncryptionSetId,

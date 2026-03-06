@@ -15,7 +15,7 @@ class GetAppConnectionArgs {
   /// [appConnectionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAppConnectionArgs({
+  const GetAppConnectionArgs({
     required this.appConnectionId,
     required this.location,
     this.project,

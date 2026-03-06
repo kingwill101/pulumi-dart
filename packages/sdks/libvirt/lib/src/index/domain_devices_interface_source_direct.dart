@@ -11,7 +11,7 @@ class DomainDevicesInterfaceSourceDirect {
   /// Creates a new [DomainDevicesInterfaceSourceDirect].
   /// [dev] Defines the physical device name for the direct attachment of the network interface.
   /// [mode] Sets the mode for the direct connection of the network interface, specifying how it interacts with the host.
-  DomainDevicesInterfaceSourceDirect({
+  const DomainDevicesInterfaceSourceDirect({
     this.dev,
     this.mode,
   });

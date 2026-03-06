@@ -31,7 +31,7 @@ class GetInboundSsoAssignmentCloudidentityV1beta1Result {
   /// [ssoMode] Inbound SSO behavior.
   /// [targetGroup] Immutable. Must be of the form `groups/{group}`.
   /// [targetOrgUnit] Immutable. Must be of the form `orgUnits/{org_unit}`.
-  GetInboundSsoAssignmentCloudidentityV1beta1Result({
+  const GetInboundSsoAssignmentCloudidentityV1beta1Result({
     required this.customer,
     required this.name,
     required this.rank,

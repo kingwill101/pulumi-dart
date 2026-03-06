@@ -35,7 +35,7 @@ class GetEcsKeyPairsResult {
   /// [pairs] A list of Ecs Key Pairs. Each element contains the following attributes:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tags of the Key Pair.
-  GetEcsKeyPairsResult({
+  const GetEcsKeyPairsResult({
     this.fingerPrint,
     required this.id,
     required this.ids,

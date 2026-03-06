@@ -187,5 +187,5 @@ class AzureNativeConfig {
 
 }
 
-final config = AzureNativeConfig();
+const config = AzureNativeConfig();
 

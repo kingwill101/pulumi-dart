@@ -18,7 +18,7 @@ class GetSqlVirtualMachineArgs {
   /// [expand] The child resources to include in the response.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineName] Name of the SQL virtual machine.
-  GetSqlVirtualMachineArgs({
+  const GetSqlVirtualMachineArgs({
     this.expand,
     required this.resourceGroupName,
     required this.sqlVirtualMachineName,

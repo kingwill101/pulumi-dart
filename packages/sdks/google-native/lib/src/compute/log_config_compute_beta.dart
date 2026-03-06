@@ -18,7 +18,7 @@ class LogConfigComputeBeta {
   /// [cloudAudit] This is deprecated and has no effect. Do not use.
   /// [counter] This is deprecated and has no effect. Do not use.
   /// [dataAccess] This is deprecated and has no effect. Do not use.
-  LogConfigComputeBeta({
+  const LogConfigComputeBeta({
     this.cloudAudit,
     this.counter,
     this.dataAccess,

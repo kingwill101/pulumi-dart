@@ -18,7 +18,7 @@ class CacheConfigurationResponse {
   /// [dynamicCompression] Whether to use dynamic compression for cached content
   /// [queryParameterStripDirective] Treatment of URL query terms when forming the cache key.
   /// [queryParameters] query parameters to include or exclude (comma separated).
-  CacheConfigurationResponse({
+  const CacheConfigurationResponse({
     this.cacheDuration,
     this.dynamicCompression,
     this.queryParameterStripDirective,

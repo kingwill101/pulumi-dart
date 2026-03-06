@@ -12,7 +12,7 @@ class FailoverGroupReadOnlyEndpointResponse {
   /// Creates a new [FailoverGroupReadOnlyEndpointResponse].
   /// [failoverPolicy] Failover policy of the read-only endpoint for the failover group.
   /// [targetServer] The target partner server where the read-only endpoint points to.
-  FailoverGroupReadOnlyEndpointResponse({
+  const FailoverGroupReadOnlyEndpointResponse({
     this.failoverPolicy,
     this.targetServer,
   });

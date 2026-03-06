@@ -44,7 +44,7 @@ class GetVpcAttachmentResult {
   /// [transitGatewayId] EC2 Transit Gateway identifier
   /// [vpcId] Identifier of EC2 VPC.
   /// [vpcOwnerId] Identifier of the AWS account that owns the EC2 VPC.
-  GetVpcAttachmentResult({
+  const GetVpcAttachmentResult({
     required this.applianceModeSupport,
     required this.arn,
     required this.dnsSupport,

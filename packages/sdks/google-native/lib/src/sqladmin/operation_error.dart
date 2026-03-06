@@ -15,7 +15,7 @@ class OperationError {
   /// [code] Identifies the specific error that occurred.
   /// [kind] This is always `sql#operationError`.
   /// [message] Additional information about the error encountered.
-  OperationError({
+  const OperationError({
     this.code,
     this.kind,
     this.message,

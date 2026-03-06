@@ -18,7 +18,7 @@ class GetPublicIPAddressArgs {
   /// [expand] Expands referenced resources.
   /// [publicIpAddressName] The name of the public IP address.
   /// [resourceGroupName] The name of the resource group.
-  GetPublicIPAddressArgs({
+  const GetPublicIPAddressArgs({
     this.expand,
     required this.publicIpAddressName,
     required this.resourceGroupName,

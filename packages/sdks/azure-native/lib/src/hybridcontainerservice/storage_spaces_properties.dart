@@ -16,7 +16,7 @@ class StorageSpacesProperties {
   /// [hciStorageProfile] Optional.
   /// [status] HybridAKSStorageStatus defines the observed state of HybridAKSStorage
   /// [vmwareStorageProfile] Optional.
-  StorageSpacesProperties({
+  const StorageSpacesProperties({
     this.hciStorageProfile,
     this.status,
     this.vmwareStorageProfile,

@@ -15,7 +15,7 @@ class GetWorkloadIdentityPoolArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [workloadIdentityPoolId] Required.
-  GetWorkloadIdentityPoolArgs({
+  const GetWorkloadIdentityPoolArgs({
     required this.location,
     this.project,
     required this.workloadIdentityPoolId,

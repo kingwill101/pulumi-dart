@@ -21,7 +21,7 @@ class ConsumerGroupArgs {
   /// [iothubName] The name of the IoT Hub. Changing this forces a new resource to be created.
   /// [name] The name of this Consumer Group. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group that contains the IoT hub. Changing this forces a new resource to be created.
-  ConsumerGroupArgs({
+  const ConsumerGroupArgs({
     required this.eventhubEndpointName,
     required this.iothubName,
     this.name,

@@ -8,7 +8,7 @@ class ServiceIntegrationLogsAnomalyDetection {
 
   /// Creates a new [ServiceIntegrationLogsAnomalyDetection].
   /// [optInStatus] Specifies if DevOps Guru is configured to perform log anomaly detection on CloudWatch log groups. Valid values are `DISABLED` and `ENABLED`.
-  ServiceIntegrationLogsAnomalyDetection({
+  const ServiceIntegrationLogsAnomalyDetection({
     this.optInStatus,
   });
 

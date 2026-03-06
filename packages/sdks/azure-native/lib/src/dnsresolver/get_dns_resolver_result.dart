@@ -43,7 +43,7 @@ class GetDnsResolverResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetwork] The reference to the virtual network. This cannot be changed after creation.
-  GetDnsResolverResult({
+  const GetDnsResolverResult({
     required this.azureApiVersion,
     required this.dnsResolverState,
     required this.etag,

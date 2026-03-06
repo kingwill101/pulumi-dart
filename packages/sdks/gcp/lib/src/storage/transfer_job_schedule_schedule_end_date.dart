@@ -14,7 +14,7 @@ class TransferJobScheduleScheduleEndDate {
   /// [day] Day of month. Must be from 1 to 31 and valid for the year and month.
   /// [month] Month of year. Must be from 1 to 12.
   /// [year] Year of date. Must be from 1 to 9999.
-  TransferJobScheduleScheduleEndDate({
+  const TransferJobScheduleScheduleEndDate({
     required this.day,
     required this.month,
     required this.year,

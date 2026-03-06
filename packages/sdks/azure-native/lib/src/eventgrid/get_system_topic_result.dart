@@ -43,7 +43,7 @@ class GetSystemTopicResult {
   /// [tags] Tags of the resource.
   /// [topicType] TopicType for the system topic.
   /// [type] Type of the resource.
-  GetSystemTopicResult({
+  const GetSystemTopicResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

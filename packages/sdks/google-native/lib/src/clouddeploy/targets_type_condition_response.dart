@@ -12,7 +12,7 @@ class TargetsTypeConditionResponse {
   /// Creates a new [TargetsTypeConditionResponse].
   /// [errorDetails] Human readable error message.
   /// [status] True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters.
-  TargetsTypeConditionResponse({
+  const TargetsTypeConditionResponse({
     required this.errorDetails,
     required this.status,
   });

@@ -14,7 +14,7 @@ class CustomDomainCertConfig {
   /// [certName] The name of the certificate, used to distinguish different certificates.
   /// [certificate] Certificate data of the HTTPS certificates, follow the 'pem' format.
   /// [privateKey] Private key of the HTTPS certificates, follow the 'pem' format.
-  CustomDomainCertConfig({
+  const CustomDomainCertConfig({
     required this.certName,
     required this.certificate,
     required this.privateKey,

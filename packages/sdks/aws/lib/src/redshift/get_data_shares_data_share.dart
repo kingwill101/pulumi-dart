@@ -14,7 +14,7 @@ class GetDataSharesDataShare {
   /// [dataShareArn] ARN (Amazon Resource Name) of the data share.
   /// [managedBy] Identifier of a datashare to show its managing entity.
   /// [producerArn] ARN (Amazon Resource Name) of the producer.
-  GetDataSharesDataShare({
+  const GetDataSharesDataShare({
     required this.dataShareArn,
     required this.managedBy,
     required this.producerArn,

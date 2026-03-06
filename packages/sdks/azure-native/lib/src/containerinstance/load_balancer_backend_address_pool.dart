@@ -9,7 +9,7 @@ class LoadBalancerBackendAddressPool {
 
   /// Creates a new [LoadBalancerBackendAddressPool].
   /// [resource] The Load Balancer backend address pool ARM resource Id.
-  LoadBalancerBackendAddressPool({
+  const LoadBalancerBackendAddressPool({
     this.resource,
   });
 

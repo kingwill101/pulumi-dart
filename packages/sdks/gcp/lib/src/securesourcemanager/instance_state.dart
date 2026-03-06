@@ -73,7 +73,7 @@ class InstanceState {
   /// [stateNote] Provides information about the current instance state.
   /// [updateTime] Time the Instance was updated in UTC.
   /// [workforceIdentityFederationConfig] Configuration for Workforce Identity Federation to support third party identity provider.
-  InstanceState({
+  const InstanceState({
     this.createTime,
     this.deletionPolicy,
     this.effectiveLabels,

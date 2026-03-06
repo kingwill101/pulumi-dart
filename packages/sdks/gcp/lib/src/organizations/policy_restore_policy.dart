@@ -8,7 +8,7 @@ class PolicyRestorePolicy {
 
   /// Creates a new [PolicyRestorePolicy].
   /// [default_] May only be set to true. If set, then the default Policy is restored.
-  PolicyRestorePolicy({
+  const PolicyRestorePolicy({
     required this.default_,
   });
 

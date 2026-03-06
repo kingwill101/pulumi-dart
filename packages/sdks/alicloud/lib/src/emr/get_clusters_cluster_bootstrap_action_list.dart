@@ -14,7 +14,7 @@ class GetClustersClusterBootstrapActionList {
   /// [arg] Parameters of the boot operation.
   /// [name] The name of the boot operation.
   /// [path] Boot operation script path.
-  GetClustersClusterBootstrapActionList({
+  const GetClustersClusterBootstrapActionList({
     required this.arg,
     required this.name,
     required this.path,

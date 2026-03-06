@@ -8,7 +8,7 @@ class DomainDevicesMemorydevAlias {
 
   /// Creates a new [DomainDevicesMemorydevAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesMemorydevAlias({
+  const DomainDevicesMemorydevAlias({
     required this.name,
   });
 

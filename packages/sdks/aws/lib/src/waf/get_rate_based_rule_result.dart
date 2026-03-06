@@ -10,7 +10,7 @@ class GetRateBasedRuleResult {
   /// Creates a new [GetRateBasedRuleResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetRateBasedRuleResult({
+  const GetRateBasedRuleResult({
     required this.id,
     required this.name,
   });

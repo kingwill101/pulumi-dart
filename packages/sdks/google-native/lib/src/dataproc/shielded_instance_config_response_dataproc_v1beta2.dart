@@ -15,7 +15,7 @@ class ShieldedInstanceConfigResponseDataprocV1beta2 {
   /// [enableIntegrityMonitoring] Optional. Defines whether instances have integrity monitoring enabled.
   /// [enableSecureBoot] Optional. Defines whether instances have Secure Boot enabled.
   /// [enableVtpm] Optional. Defines whether instances have the vTPM enabled.
-  ShieldedInstanceConfigResponseDataprocV1beta2({
+  const ShieldedInstanceConfigResponseDataprocV1beta2({
     required this.enableIntegrityMonitoring,
     required this.enableSecureBoot,
     required this.enableVtpm,

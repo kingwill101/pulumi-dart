@@ -11,7 +11,7 @@ class RegionDiskIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RegionDiskIamBindingCondition({
+  const RegionDiskIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

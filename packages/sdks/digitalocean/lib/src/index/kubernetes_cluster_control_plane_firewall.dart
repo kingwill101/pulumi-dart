@@ -11,7 +11,7 @@ class KubernetesClusterControlPlaneFirewall {
   /// Creates a new [KubernetesClusterControlPlaneFirewall].
   /// [allowedAddresses] A list of addresses allowed (CIDR notation).
   /// [enabled] Boolean flag whether the firewall should be enabled or not.
-  KubernetesClusterControlPlaneFirewall({
+  const KubernetesClusterControlPlaneFirewall({
     required this.allowedAddresses,
     required this.enabled,
   });

@@ -7,7 +7,7 @@ class ProviderFeaturesRecoveryServicesVaults {
 
   /// Creates a new [ProviderFeaturesRecoveryServicesVaults].
   /// [recoverSoftDeletedBackupProtectedVm] Optional.
-  ProviderFeaturesRecoveryServicesVaults({
+  const ProviderFeaturesRecoveryServicesVaults({
     this.recoverSoftDeletedBackupProtectedVm,
   });
 

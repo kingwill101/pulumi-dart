@@ -19,7 +19,7 @@ class GetPermissionsTable {
   /// [databaseName] Name of the database for the table. Unique to a Data Catalog.
   /// [name] Name of the table. At least one of `name` or `wildcard` is required.
   /// [wildcard] Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
-  GetPermissionsTable({
+  const GetPermissionsTable({
     required this.catalogId,
     required this.databaseName,
     required this.name,

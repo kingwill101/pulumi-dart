@@ -31,7 +31,7 @@ class Ec2AddressProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2AddressProperties({
+  const Ec2AddressProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

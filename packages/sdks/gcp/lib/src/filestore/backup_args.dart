@@ -46,7 +46,7 @@ class BackupArgs {
   /// [sourceFileShare] Name of the file share in the source Cloud Filestore instance that the backup is created from.
   /// [sourceInstance] The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
   /// [tags] A map of resource manager tags.
-  BackupArgs({
+  const BackupArgs({
     this.description,
     this.labels,
     required this.location,

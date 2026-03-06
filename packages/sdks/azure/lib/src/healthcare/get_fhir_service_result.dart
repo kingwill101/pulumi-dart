@@ -43,7 +43,7 @@ class GetFhirServiceResult {
   /// [name] Required.
   /// [tags] The map of tags assigned to the Healthcare FHIR Service.
   /// [workspaceId] Required.
-  GetFhirServiceResult({
+  const GetFhirServiceResult({
     required this.accessPolicyObjectIds,
     required this.authentications,
     required this.configurationExportStorageAccountName,

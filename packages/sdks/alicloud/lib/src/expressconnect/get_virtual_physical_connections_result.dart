@@ -41,7 +41,7 @@ class GetVirtualPhysicalConnectionsResult {
   /// [virtualPhysicalConnectionStatus] The business status of the shared line. Value:-**Confirmed**: The shared line has been Confirmed to receive.-**UnConfirmed**: The shared line has not been confirmed to be received.-**Deleted**: The shared line has been Deleted.
   /// [vlanIds] Optional.
   /// [vpconnAliUid] The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
-  GetVirtualPhysicalConnectionsResult({
+  const GetVirtualPhysicalConnectionsResult({
     this.businessStatus,
     required this.connections,
     required this.id,

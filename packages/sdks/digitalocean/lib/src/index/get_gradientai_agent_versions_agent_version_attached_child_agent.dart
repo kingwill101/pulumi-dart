@@ -20,7 +20,7 @@ class GetGradientaiAgentVersionsAgentVersionAttachedChildAgent {
   /// [ifCase] If case
   /// [isDeleted] Child agent is deleted
   /// [routeName] Route name
-  GetGradientaiAgentVersionsAgentVersionAttachedChildAgent({
+  const GetGradientaiAgentVersionsAgentVersionAttachedChildAgent({
     required this.agentName,
     required this.childAgentUuid,
     required this.ifCase,

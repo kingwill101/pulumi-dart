@@ -23,7 +23,7 @@ class ListManagedClusterAccessProfileResult {
   /// [name] Resource name
   /// [tags] Resource tags
   /// [type] Resource type
-  ListManagedClusterAccessProfileResult({
+  const ListManagedClusterAccessProfileResult({
     required this.id,
     this.kubeConfig,
     required this.location,

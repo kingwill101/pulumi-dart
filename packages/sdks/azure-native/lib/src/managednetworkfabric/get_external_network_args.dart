@@ -18,7 +18,7 @@ class GetExternalNetworkArgs {
   /// [externalNetworkName] Name of the External Network.
   /// [l3IsolationDomainName] Name of the L3 Isolation Domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetExternalNetworkArgs({
+  const GetExternalNetworkArgs({
     required this.externalNetworkName,
     required this.l3IsolationDomainName,
     required this.resourceGroupName,

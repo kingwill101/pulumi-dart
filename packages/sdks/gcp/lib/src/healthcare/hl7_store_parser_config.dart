@@ -21,7 +21,7 @@ class Hl7StoreParserConfig {
   /// [schema] JSON encoded string for schemas used to parse messages in this
   /// [segmentTerminator] Byte(s) to be used as the segment terminator. If this is unset, '\r' will be used as segment terminator.
   /// [version] The version of the unschematized parser to be used when a custom `schema` is not set.
-  Hl7StoreParserConfig({
+  const Hl7StoreParserConfig({
     this.allowNullHeader,
     this.schema,
     this.segmentTerminator,

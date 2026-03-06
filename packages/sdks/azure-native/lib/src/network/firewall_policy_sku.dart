@@ -9,7 +9,7 @@ class FirewallPolicySku {
 
   /// Creates a new [FirewallPolicySku].
   /// [tier] Tier of Firewall Policy.
-  FirewallPolicySku({
+  const FirewallPolicySku({
     this.tier,
   });
 

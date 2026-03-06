@@ -24,7 +24,7 @@ class SslConfigurationResponse {
   /// [leafDomainLabel] Leaf domain label of public endpoint
   /// [overwriteExistingDomain] Indicates whether to overwrite existing domain label.
   /// [status] Enable or disable ssl for scoring
-  SslConfigurationResponse({
+  const SslConfigurationResponse({
     this.cert,
     this.cname,
     this.key,

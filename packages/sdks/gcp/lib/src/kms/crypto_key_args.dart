@@ -68,7 +68,7 @@ class CryptoKeyArgs {
   /// [rotationPeriod] Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
   /// [skipInitialVersionCreation] If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
   /// [versionTemplate] A template describing settings for new crypto key versions.
-  CryptoKeyArgs({
+  const CryptoKeyArgs({
     this.cryptoKeyBackend,
     this.destroyScheduledDuration,
     this.importOnly,

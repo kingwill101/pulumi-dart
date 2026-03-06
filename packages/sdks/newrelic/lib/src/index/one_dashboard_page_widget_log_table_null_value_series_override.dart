@@ -11,7 +11,7 @@ class OneDashboardPageWidgetLogTableNullValueSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetLogTableNullValueSeriesOverride].
   /// [nullValue] Choose an option in displaying null values. Accepted values are `default`, `remove`, `preserve`, or `zero`.
   /// [seriesName] Series name
-  OneDashboardPageWidgetLogTableNullValueSeriesOverride({
+  const OneDashboardPageWidgetLogTableNullValueSeriesOverride({
     this.nullValue,
     this.seriesName,
   });

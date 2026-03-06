@@ -23,7 +23,7 @@ class RecoveryPlanA2AInput {
   /// [primaryZone] The primary zone.
   /// [recoveryExtendedLocation] The recovery extended location.
   /// [recoveryZone] The recovery zone.
-  RecoveryPlanA2AInput({
+  const RecoveryPlanA2AInput({
     required this.instanceType,
     this.primaryExtendedLocation,
     this.primaryZone,

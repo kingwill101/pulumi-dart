@@ -18,7 +18,7 @@ class BareMetalAdminClusterNetworkConfig {
   /// [advancedNetworking] Enables the use of advanced Anthos networking features.
   /// [islandModeCidr] A nested object resource.
   /// [multipleNetworkInterfacesConfig] Configuration for multiple network interfaces.
-  BareMetalAdminClusterNetworkConfig({
+  const BareMetalAdminClusterNetworkConfig({
     this.advancedNetworking,
     this.islandModeCidr,
     this.multipleNetworkInterfacesConfig,

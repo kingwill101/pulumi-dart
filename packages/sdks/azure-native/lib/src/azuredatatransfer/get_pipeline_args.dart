@@ -15,7 +15,7 @@ class GetPipelineArgs {
   /// Creates a new [GetPipelineArgs].
   /// [pipelineName] The name for the pipeline that is to be requested.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPipelineArgs({
+  const GetPipelineArgs({
     required this.pipelineName,
     required this.resourceGroupName,
   });

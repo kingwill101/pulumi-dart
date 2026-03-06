@@ -26,7 +26,7 @@ class GetConfigMapsMap {
   /// [id] The ID of the Config Map.
   /// [name] ConfigMap instance name.
   /// [namespaceId] The NamespaceId of Config Maps.
-  GetConfigMapsMap({
+  const GetConfigMapsMap({
     required this.configMapId,
     required this.createTime,
     required this.data,

@@ -13,7 +13,7 @@ class WindowsWebAppLogsHttpLogs {
   /// Creates a new [WindowsWebAppLogsHttpLogs].
   /// [azureBlobStorage] A `azure_blob_storage_http` block as defined below.
   /// [fileSystem] A `file_system` block as defined above.
-  WindowsWebAppLogsHttpLogs({
+  const WindowsWebAppLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
   });

@@ -18,7 +18,7 @@ class PostgresqlRoleArgs {
   /// [clusterId] The resource ID of the Azure Cosmos DB for PostgreSQL Cluster. Changing this forces a new resource to be created.
   /// [name] The name which should be used for this Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
   /// [password] The password of the Azure Cosmos DB for PostgreSQL Role. Changing this forces a new resource to be created.
-  PostgresqlRoleArgs({
+  const PostgresqlRoleArgs({
     required this.clusterId,
     this.name,
     required this.password,

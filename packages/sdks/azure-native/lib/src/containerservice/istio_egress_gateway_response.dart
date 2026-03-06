@@ -18,7 +18,7 @@ class IstioEgressGatewayResponse {
   /// [gatewayConfigurationName] Name of the gateway configuration custom resource for the Istio add-on egress gateway. Must be specified when enabling the Istio egress gateway. Must be deployed in the same namespace that the Istio egress gateway will be deployed in.
   /// [name] Name of the Istio add-on egress gateway.
   /// [namespace] Namespace that the Istio add-on egress gateway should be deployed in. If unspecified, the default is aks-istio-egress.
-  IstioEgressGatewayResponse({
+  const IstioEgressGatewayResponse({
     required this.enabled,
     this.gatewayConfigurationName,
     required this.name,

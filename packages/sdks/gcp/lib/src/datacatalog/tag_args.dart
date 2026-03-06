@@ -30,7 +30,7 @@ class TagArgs {
   /// [fields] This maps the ID of a tag field to the value of and additional information about that field.
   /// [parent] The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
   /// [template] The resource name of the tag template that this tag uses. Example:
-  TagArgs({
+  const TagArgs({
     this.column,
     required this.fields,
     this.parent,

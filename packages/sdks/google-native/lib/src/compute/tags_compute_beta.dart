@@ -9,7 +9,7 @@ class TagsComputeBeta {
 
   /// Creates a new [TagsComputeBeta].
   /// [items] An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035.
-  TagsComputeBeta({
+  const TagsComputeBeta({
     this.items,
   });
 

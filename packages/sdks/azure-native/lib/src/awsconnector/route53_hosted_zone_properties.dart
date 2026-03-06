@@ -31,7 +31,7 @@ class Route53HostedZoneProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Route53HostedZoneProperties({
+  const Route53HostedZoneProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

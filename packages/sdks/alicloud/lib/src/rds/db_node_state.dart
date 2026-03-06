@@ -24,7 +24,7 @@ class DbNodeState {
   /// [nodeRegionId] The region ID of the node.
   /// [nodeRole] The role of node.
   /// [zoneId] The zone ID of the node.
-  DbNodeState({
+  const DbNodeState({
     this.classCode,
     this.dbInstanceId,
     this.nodeId,

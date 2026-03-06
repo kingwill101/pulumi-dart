@@ -22,7 +22,7 @@ class MatchCondition {
   /// [negationConditon] Whether this is negate condition or not.
   /// [operator] The operator to be matched.
   /// [transforms] List of transforms.
-  MatchCondition({
+  const MatchCondition({
     required this.matchValues,
     required this.matchVariables,
     this.negationConditon,

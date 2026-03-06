@@ -8,7 +8,7 @@ class V3CustomDomainWafConfig {
 
   /// Creates a new [V3CustomDomainWafConfig].
   /// [enableWaf] Enable WAF protection
-  V3CustomDomainWafConfig({
+  const V3CustomDomainWafConfig({
     this.enableWaf,
   });
 

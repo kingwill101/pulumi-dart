@@ -24,7 +24,7 @@ class GetDataFlowResult {
   /// [name] The resource name.
   /// [properties] Data flow properties.
   /// [type] The resource type.
-  GetDataFlowResult({
+  const GetDataFlowResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

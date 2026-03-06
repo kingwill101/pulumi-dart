@@ -42,7 +42,7 @@ class JobDefinitionArgs {
   /// [storageMoverName] The name of the Storage Mover resource.
   /// [targetName] The name of the target Endpoint.
   /// [targetSubpath] The subpath to use when writing to the target Endpoint.
-  JobDefinitionArgs({
+  const JobDefinitionArgs({
     this.agentName,
     required this.copyMode,
     this.description,

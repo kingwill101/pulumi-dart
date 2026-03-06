@@ -13,7 +13,7 @@ class GoogleCloudMemcacheV1beta2MaintenancePolicy {
   /// Creates a new [GoogleCloudMemcacheV1beta2MaintenancePolicy].
   /// [description] Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
   /// [weeklyMaintenanceWindow] Maintenance window that is applied to resources covered by this policy. Minimum 1. For the current version, the maximum number of weekly_maintenance_windows is expected to be one.
-  GoogleCloudMemcacheV1beta2MaintenancePolicy({
+  const GoogleCloudMemcacheV1beta2MaintenancePolicy({
     this.description,
     required this.weeklyMaintenanceWindow,
   });

@@ -22,7 +22,7 @@ class VirtualMachineExtensionInstanceViewResponse {
   /// [substatuses] The resource status information.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  VirtualMachineExtensionInstanceViewResponse({
+  const VirtualMachineExtensionInstanceViewResponse({
     this.name,
     this.statuses,
     this.substatuses,

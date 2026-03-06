@@ -24,7 +24,7 @@ class GetBgpGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP group.
   /// [status] The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
-  GetBgpGroupsArgs({
+  const GetBgpGroupsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

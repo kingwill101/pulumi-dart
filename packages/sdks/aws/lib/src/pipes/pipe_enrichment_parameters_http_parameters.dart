@@ -11,7 +11,7 @@ class PipeEnrichmentParametersHttpParameters {
   /// [headerParameters] Optional.
   /// [pathParameterValues] Optional.
   /// [queryStringParameters] Optional.
-  PipeEnrichmentParametersHttpParameters({
+  const PipeEnrichmentParametersHttpParameters({
     this.headerParameters,
     this.pathParameterValues,
     this.queryStringParameters,

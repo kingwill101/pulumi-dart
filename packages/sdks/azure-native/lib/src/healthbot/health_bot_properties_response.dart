@@ -16,7 +16,7 @@ class HealthBotPropertiesResponse {
   /// [botManagementPortalLink] The link.
   /// [keyVaultProperties] KeyVault properties for the resource encryption.
   /// [provisioningState] The provisioning state of the Azure Health Bot resource.
-  HealthBotPropertiesResponse({
+  const HealthBotPropertiesResponse({
     required this.botManagementPortalLink,
     this.keyVaultProperties,
     required this.provisioningState,

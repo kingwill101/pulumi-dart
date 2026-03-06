@@ -50,7 +50,7 @@ class ReferenceListArgs {
   /// [referenceListId] Required. The ID to use for the reference list. This is also the display name for
   /// [scopeInfos] ScopeInfo specifies the scope info of the reference list.
   /// [syntaxType] Possible values:
-  ReferenceListArgs({
+  const ReferenceListArgs({
     required this.description,
     required this.entries,
     required this.instance,

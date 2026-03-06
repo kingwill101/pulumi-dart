@@ -14,7 +14,7 @@ class ActionGroupVoiceReceiver {
   /// [countryCode] The country code of the voice receiver.
   /// [name] The name of the voice receiver.
   /// [phoneNumber] The phone number of the voice receiver.
-  ActionGroupVoiceReceiver({
+  const ActionGroupVoiceReceiver({
     required this.countryCode,
     required this.name,
     required this.phoneNumber,

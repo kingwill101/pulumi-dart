@@ -12,7 +12,7 @@ class VmSkuProfileResponseProperties {
   /// Creates a new [VmSkuProfileResponseProperties].
   /// [provisioningState] Provisioning state of the resource
   /// [values] List of supported VM SKUs.
-  VmSkuProfileResponseProperties({
+  const VmSkuProfileResponseProperties({
     required this.provisioningState,
     this.values,
   });

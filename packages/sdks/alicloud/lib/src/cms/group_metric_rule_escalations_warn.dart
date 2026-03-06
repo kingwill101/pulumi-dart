@@ -17,7 +17,7 @@ class GroupMetricRuleEscalationsWarn {
   /// [statistics] The statistical aggregation method for warn-level alerts.
   /// [threshold] The threshold for warn-level alerts.
   /// [times] The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-  GroupMetricRuleEscalationsWarn({
+  const GroupMetricRuleEscalationsWarn({
     this.comparisonOperator,
     this.statistics,
     this.threshold,

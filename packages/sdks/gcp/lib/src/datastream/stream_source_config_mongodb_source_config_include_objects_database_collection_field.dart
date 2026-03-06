@@ -8,7 +8,7 @@ class StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField].
   /// [field] Field name.
-  StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField({
+  const StreamSourceConfigMongodbSourceConfigIncludeObjectsDatabaseCollectionField({
     this.field,
   });
 

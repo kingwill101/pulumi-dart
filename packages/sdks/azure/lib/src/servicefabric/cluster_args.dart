@@ -93,7 +93,7 @@ class ClusterArgs {
   /// [upgradePolicy] A `upgrade_policy` block as defined below.
   /// [vmImage] Specifies the Image expected for the Service Fabric Cluster, such as `Windows`. Changing this forces a new resource to be created.
   /// [vmssZonalUpgradeMode] Specifies the upgrade mode for the virtual machine scale set updates that happen in all availability zones at once. Possible values are `Hierarchical` or `Parallel`.
-  ClusterArgs({
+  const ClusterArgs({
     this.addOnFeatures,
     this.azureActiveDirectory,
     this.certificate,

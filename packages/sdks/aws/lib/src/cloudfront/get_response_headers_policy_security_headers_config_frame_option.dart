@@ -11,7 +11,7 @@ class GetResponseHeadersPolicySecurityHeadersConfigFrameOption {
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigFrameOption].
   /// [frameOption] Value of the X-Frame-Options HTTP response header. Valid values: `DENY` | `SAMEORIGIN`
   /// [override] Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  GetResponseHeadersPolicySecurityHeadersConfigFrameOption({
+  const GetResponseHeadersPolicySecurityHeadersConfigFrameOption({
     required this.frameOption,
     required this.override,
   });

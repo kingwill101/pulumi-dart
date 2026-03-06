@@ -17,7 +17,7 @@ class CustomDomainAssociationCertificateValidationRecord {
   /// [status] Current state of the certificate CNAME record validation. It should change to `SUCCESS` after App Runner completes validation with your DNS.
   /// [type] Record type, always `CNAME`.
   /// [value] Certificate CNAME record value.
-  CustomDomainAssociationCertificateValidationRecord({
+  const CustomDomainAssociationCertificateValidationRecord({
     this.name,
     this.status,
     this.type,

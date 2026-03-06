@@ -18,7 +18,7 @@ class DomainDevicesControllerPci {
   /// [hole64Unit] Specifies the unit for the 64-bit hole in the PCI address space for the device.
   /// [model] Configures the model for the PCI controller device.
   /// [target] Sets the target configuration for the PCI controller device.
-  DomainDevicesControllerPci({
+  const DomainDevicesControllerPci({
     this.hole64,
     this.hole64Unit,
     this.model,

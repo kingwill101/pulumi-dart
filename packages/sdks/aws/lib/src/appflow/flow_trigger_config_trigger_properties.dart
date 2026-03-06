@@ -8,7 +8,7 @@ class FlowTriggerConfigTriggerProperties {
 
   /// Creates a new [FlowTriggerConfigTriggerProperties].
   /// [scheduled] Optional.
-  FlowTriggerConfigTriggerProperties({
+  const FlowTriggerConfigTriggerProperties({
     this.scheduled,
   });
 

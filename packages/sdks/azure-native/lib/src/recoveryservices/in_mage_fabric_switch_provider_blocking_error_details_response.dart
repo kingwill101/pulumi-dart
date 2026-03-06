@@ -24,7 +24,7 @@ class InMageFabricSwitchProviderBlockingErrorDetailsResponse {
   /// [errorTags] The error tags.
   /// [possibleCauses] The possible causes.
   /// [recommendedAction] The recommended action.
-  InMageFabricSwitchProviderBlockingErrorDetailsResponse({
+  const InMageFabricSwitchProviderBlockingErrorDetailsResponse({
     required this.errorCode,
     required this.errorMessage,
     required this.errorMessageParameters,

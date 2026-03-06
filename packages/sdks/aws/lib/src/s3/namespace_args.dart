@@ -20,7 +20,7 @@ class NamespaceArgs {
   /// [namespace] Name of the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableBucketArn] ARN referencing the Table Bucket that contains this Namespace.
-  NamespaceArgs({
+  const NamespaceArgs({
     required this.namespace,
     this.region,
     required this.tableBucketArn,

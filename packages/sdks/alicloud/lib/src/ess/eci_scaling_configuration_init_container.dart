@@ -56,7 +56,7 @@ class EciScalingConfigurationInitContainer {
   /// [securityContextRunAsUser] Specifies user ID  under which all processes run.
   /// [volumeMounts] The structure of volumeMounts. See `volume_mounts` below for details.
   /// [workingDir] The working directory of the container.
-  EciScalingConfigurationInitContainer({
+  const EciScalingConfigurationInitContainer({
     this.args,
     this.commands,
     this.cpu,

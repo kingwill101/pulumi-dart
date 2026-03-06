@@ -25,7 +25,7 @@ class ManagementPolicyBaseBlobResponse {
   /// [tierToCold] The function to tier blobs to cold storage.
   /// [tierToCool] The function to tier blobs to cool storage.
   /// [tierToHot] The function to tier blobs to hot storage. This action can only be used with Premium Block Blob Storage Accounts
-  ManagementPolicyBaseBlobResponse({
+  const ManagementPolicyBaseBlobResponse({
     this.delete,
     this.enableAutoTierToHotFromCool,
     this.tierToArchive,

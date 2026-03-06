@@ -15,7 +15,7 @@ class ServiceOciArtifactEntryResponse {
   /// [digest] The artifact digest.
   /// [imageName] The artifact name.
   /// [loginServer] The Azure Container Registry login server.
-  ServiceOciArtifactEntryResponse({
+  const ServiceOciArtifactEntryResponse({
     this.digest,
     this.imageName,
     this.loginServer,

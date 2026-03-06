@@ -16,7 +16,7 @@ class NrqlAlertConditionNrql {
   /// [evaluationOffset] NRQL queries are evaluated in one-minute time windows. The start time depends on the value you provide in the NRQL condition's `evaluation_offset`.
   /// [query] Required.
   /// [sinceValue] NRQL queries are evaluated in one-minute time windows. The start time depends on the value you provide in the NRQL condition's `since_value`.
-  NrqlAlertConditionNrql({
+  const NrqlAlertConditionNrql({
     this.dataAccountId,
     this.evaluationOffset,
     required this.query,

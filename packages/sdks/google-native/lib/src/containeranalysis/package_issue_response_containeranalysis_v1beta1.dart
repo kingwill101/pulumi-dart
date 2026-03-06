@@ -22,7 +22,7 @@ class PackageIssueResponseContaineranalysisV1beta1 {
   /// [fixedLocation] The location of the available fix for vulnerability.
   /// [packageType] The type of package (e.g. OS, MAVEN, GO).
   /// [severityName] Deprecated, use Details.effective_severity instead The severity (e.g., distro assigned severity) for this vulnerability.
-  PackageIssueResponseContaineranalysisV1beta1({
+  const PackageIssueResponseContaineranalysisV1beta1({
     required this.affectedLocation,
     required this.effectiveSeverity,
     required this.fixedLocation,

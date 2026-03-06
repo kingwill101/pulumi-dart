@@ -14,7 +14,7 @@ class InstallationContaineranalysisV1beta1 {
   /// Creates a new [InstallationContaineranalysisV1beta1].
   /// [license] Licenses that have been declared by the authors of the package.
   /// [location] All of the places within the filesystem versions of this package have been found.
-  InstallationContaineranalysisV1beta1({
+  const InstallationContaineranalysisV1beta1({
     this.license,
     this.location,
   });

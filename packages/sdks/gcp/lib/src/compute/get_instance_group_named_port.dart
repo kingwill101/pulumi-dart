@@ -10,7 +10,7 @@ class GetInstanceGroupNamedPort {
   /// Creates a new [GetInstanceGroupNamedPort].
   /// [name] The name of the instance group. Either `name` or `self_link` must be provided.
   /// [port] Required.
-  GetInstanceGroupNamedPort({
+  const GetInstanceGroupNamedPort({
     required this.name,
     required this.port,
   });

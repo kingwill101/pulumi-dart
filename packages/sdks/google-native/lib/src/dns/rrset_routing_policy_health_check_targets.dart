@@ -9,7 +9,7 @@ class RRSetRoutingPolicyHealthCheckTargets {
 
   /// Creates a new [RRSetRoutingPolicyHealthCheckTargets].
   /// [internalLoadBalancers] Optional.
-  RRSetRoutingPolicyHealthCheckTargets({
+  const RRSetRoutingPolicyHealthCheckTargets({
     this.internalLoadBalancers,
   });
 

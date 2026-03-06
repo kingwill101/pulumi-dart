@@ -18,7 +18,7 @@ class GetHttpRouteConfigArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [httpRouteName] Name of the Http Route Config Resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHttpRouteConfigArgs({
+  const GetHttpRouteConfigArgs({
     required this.environmentName,
     required this.httpRouteName,
     required this.resourceGroupName,

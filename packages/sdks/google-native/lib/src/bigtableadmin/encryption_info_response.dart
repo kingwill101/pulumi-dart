@@ -16,7 +16,7 @@ class EncryptionInfoResponse {
   /// [encryptionStatus] The status of encrypt/decrypt calls on underlying data for this resource. Regardless of status, the existing data is always encrypted at rest.
   /// [encryptionType] The type of encryption used to protect this resource.
   /// [kmsKeyVersion] The version of the Cloud KMS key specified in the parent cluster that is in use for the data underlying this table.
-  EncryptionInfoResponse({
+  const EncryptionInfoResponse({
     required this.encryptionStatus,
     required this.encryptionType,
     required this.kmsKeyVersion,

@@ -11,7 +11,7 @@ class ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
   /// Creates a new [ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader].
   /// [name] The header field name.
   /// [value] The header field value.
-  ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader({
+  const ServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader({
     required this.name,
     this.value,
   });

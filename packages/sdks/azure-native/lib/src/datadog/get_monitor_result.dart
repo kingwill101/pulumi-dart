@@ -35,7 +35,7 @@ class GetMonitorResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Optional.
   /// [type] The type of the monitor resource.
-  GetMonitorResult({
+  const GetMonitorResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

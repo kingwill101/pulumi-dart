@@ -17,7 +17,7 @@ class ClusterUpgradeFleetSpecGkehubV1beta {
   /// [gkeUpgradeOverrides] Allow users to override some properties of each GKE upgrade.
   /// [postConditions] Post conditions to evaluate to mark an upgrade COMPLETE. Required.
   /// [upstreamFleets] This fleet consumes upgrades that have COMPLETE status code in the upstream fleets. See UpgradeStatus.Code for code definitions. The fleet name should be either fleet project number or id. This is defined as repeated for future proof reasons. Initial implementation will enforce at most one upstream fleet.
-  ClusterUpgradeFleetSpecGkehubV1beta({
+  const ClusterUpgradeFleetSpecGkehubV1beta({
     this.gkeUpgradeOverrides,
     required this.postConditions,
     this.upstreamFleets,

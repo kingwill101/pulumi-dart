@@ -10,7 +10,7 @@ class LoggingComponentConfigContainerV1beta1 {
 
   /// Creates a new [LoggingComponentConfigContainerV1beta1].
   /// [enableComponents] Select components to collect logs. An empty set would disable all logging.
-  LoggingComponentConfigContainerV1beta1({
+  const LoggingComponentConfigContainerV1beta1({
     this.enableComponents,
   });
 

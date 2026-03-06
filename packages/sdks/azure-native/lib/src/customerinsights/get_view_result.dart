@@ -38,7 +38,7 @@ class GetViewResult {
   /// [type] Resource type.
   /// [userId] the user ID.
   /// [viewName] Name of the view.
-  GetViewResult({
+  const GetViewResult({
     required this.azureApiVersion,
     required this.changed,
     required this.created,

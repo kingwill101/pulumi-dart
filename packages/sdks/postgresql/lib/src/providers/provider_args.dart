@@ -73,7 +73,7 @@ class ProviderArgs {
   /// [sslrootcert] The SSL server root certificate file path. The file must contain PEM encoded data.
   /// [superuser] Specify if the user to connect as is a Postgres superuser or not.If not, some feature might be disabled (e.g.: Refreshing state password from Postgres)
   /// [username] PostgreSQL user name to connect as
-  ProviderArgs({
+  const ProviderArgs({
     this.awsRdsIamAuth,
     this.awsRdsIamProfile,
     this.awsRdsIamProviderRoleArn,

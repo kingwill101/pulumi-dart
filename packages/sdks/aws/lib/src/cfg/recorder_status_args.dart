@@ -18,7 +18,7 @@ class RecorderStatusArgs {
   /// [isEnabled] Whether the configuration recorder should be enabled or disabled.
   /// [name] The name of the recorder
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  RecorderStatusArgs({
+  const RecorderStatusArgs({
     required this.isEnabled,
     this.name,
     this.region,

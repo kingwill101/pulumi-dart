@@ -29,7 +29,7 @@ class ProtectionModuleArgs {
   /// [instanceId] The ID of the WAF instance.
   /// [mode] The protection mode of the specified protection module. **NOTE:** The value of the Mode parameter varies based on the value of the `defense_type` parameter.
   /// [status] The status of the resource. Valid values: `0`, `1`.
-  ProtectionModuleArgs({
+  const ProtectionModuleArgs({
     required this.defenseType,
     required this.domain,
     required this.instanceId,

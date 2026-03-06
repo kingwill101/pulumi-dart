@@ -12,7 +12,7 @@ class AutomationScopeResponse {
   /// Creates a new [AutomationScopeResponse].
   /// [description] The resources scope description.
   /// [scopePath] The resources scope path. Can be the subscription on which the automation is defined on or a resource group under that subscription (fully qualified Azure resource IDs).
-  AutomationScopeResponse({
+  const AutomationScopeResponse({
     this.description,
     this.scopePath,
   });

@@ -21,7 +21,7 @@ class GetPackagesResult {
   /// [packages] A list of all retrieved Artifact Registry packages. Structure is defined below.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetPackagesResult({
+  const GetPackagesResult({
     this.filter,
     required this.id,
     required this.location,

@@ -8,7 +8,7 @@ class AgentcoreGatewayWorkloadIdentityDetail {
 
   /// Creates a new [AgentcoreGatewayWorkloadIdentityDetail].
   /// [workloadIdentityArn] ARN of the workload identity.
-  AgentcoreGatewayWorkloadIdentityDetail({
+  const AgentcoreGatewayWorkloadIdentityDetail({
     required this.workloadIdentityArn,
   });
 

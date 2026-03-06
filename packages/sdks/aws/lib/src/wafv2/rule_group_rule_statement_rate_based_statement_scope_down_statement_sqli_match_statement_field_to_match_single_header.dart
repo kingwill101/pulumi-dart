@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStateme
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementSqliMatchStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

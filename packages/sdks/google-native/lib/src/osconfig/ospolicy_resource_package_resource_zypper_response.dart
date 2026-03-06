@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceZypperResponse {
 
   /// Creates a new [OSPolicyResourcePackageResourceZypperResponse].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceZypperResponse({
+  const OSPolicyResourcePackageResourceZypperResponse({
     required this.name,
   });
 

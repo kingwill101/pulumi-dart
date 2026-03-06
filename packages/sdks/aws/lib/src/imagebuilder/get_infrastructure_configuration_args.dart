@@ -21,7 +21,7 @@ class GetInfrastructureConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceTags] Key-value map of resource tags for the infrastructure created by the infrastructure configuration.
   /// [tags] Key-value map of resource tags for the infrastructure configuration.
-  GetInfrastructureConfigurationArgs({
+  const GetInfrastructureConfigurationArgs({
     required this.arn,
     this.region,
     this.resourceTags,

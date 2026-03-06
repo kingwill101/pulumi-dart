@@ -17,7 +17,7 @@ class UpgradeOccurrenceResponseContaineranalysisV1alpha1 {
   /// [distribution] Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
   /// [package] Required - The package this Upgrade is for.
   /// [parsedVersion] Required - The version of the package in a machine + human readable form.
-  UpgradeOccurrenceResponseContaineranalysisV1alpha1({
+  const UpgradeOccurrenceResponseContaineranalysisV1alpha1({
     required this.distribution,
     required this.package,
     required this.parsedVersion,

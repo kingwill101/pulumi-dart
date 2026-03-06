@@ -16,7 +16,7 @@ class GoogleCloudChannelV1ParameterResponse {
   /// [editable] Specifies whether this parameter is allowed to be changed. For example, for a Google Workspace Business Starter entitlement in commitment plan, num_units is editable when entitlement is active.
   /// [name] Name of the parameter.
   /// [value] Value of the parameter.
-  GoogleCloudChannelV1ParameterResponse({
+  const GoogleCloudChannelV1ParameterResponse({
     required this.editable,
     required this.name,
     required this.value,

@@ -65,7 +65,7 @@ class GetMetricAlertResult {
   /// [targetResourceType] the resource type of the target resource(s) on which the alert is created/updated. Mandatory if the scope contains a subscription, resource group, or more than one resource.
   /// [type] Azure resource type
   /// [windowSize] the period of time (in ISO 8601 duration format) that is used to monitor alert activity based on the threshold.
-  GetMetricAlertResult({
+  const GetMetricAlertResult({
     this.actions,
     this.autoMitigate,
     required this.azureApiVersion,

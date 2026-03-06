@@ -16,7 +16,7 @@ class AssociationOutputLocation {
   /// [s3BucketName] The S3 bucket name.
   /// [s3KeyPrefix] The S3 bucket prefix. Results stored in the root if not configured.
   /// [s3Region] The S3 bucket region.
-  AssociationOutputLocation({
+  const AssociationOutputLocation({
     required this.s3BucketName,
     this.s3KeyPrefix,
     this.s3Region,

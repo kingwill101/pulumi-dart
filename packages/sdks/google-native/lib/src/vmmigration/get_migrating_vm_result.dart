@@ -87,7 +87,7 @@ class GetMigratingVmResult {
   /// [stateTime] The last time the migrating VM state was updated.
   /// [updateTime] The last time the migrating VM resource was updated.
   /// [vmwareSourceVmDetails] Details of the VM from a Vmware source.
-  GetMigratingVmResult({
+  const GetMigratingVmResult({
     required this.awsSourceVmDetails,
     required this.azureSourceVmDetails,
     required this.computeEngineDisksTargetDefaults,

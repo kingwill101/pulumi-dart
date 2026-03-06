@@ -76,7 +76,7 @@ class ProductResponse {
   /// [sku] The product SKU.
   /// [type] Type of Resource.
   /// [vmExtensionType] The type of the Virtual Machine Extension.
-  ProductResponse({
+  const ProductResponse({
     this.billingPartNumber,
     this.compatibility,
     this.description,

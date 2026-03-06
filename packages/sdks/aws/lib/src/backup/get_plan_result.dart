@@ -33,7 +33,7 @@ class GetPlanResult {
   /// [scanSettings] Scanning configuration for the backup rule.
   /// [tags] Metadata that you can assign to help organize the plans you create.
   /// [version] Unique, randomly generated, Unicode, UTF-8 encoded string that serves as the version ID of the backup plan.
-  GetPlanResult({
+  const GetPlanResult({
     required this.arn,
     required this.id,
     required this.name,

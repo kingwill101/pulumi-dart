@@ -8,7 +8,7 @@ class DomainDevicesParallelProtocol {
 
   /// Creates a new [DomainDevicesParallelProtocol].
   /// [type] Specifies the type of protocol used for the EGD source backend.
-  DomainDevicesParallelProtocol({
+  const DomainDevicesParallelProtocol({
     required this.type,
   });
 

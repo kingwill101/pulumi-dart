@@ -68,7 +68,7 @@ class OrganizationArgs {
   /// [runtimeDatabaseEncryptionKeyName] Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances. Update is not allowed after the organization is created. Required when [RuntimeType](#RuntimeType) is `CLOUD`. If not specified when [RuntimeType](#RuntimeType) is `TRIAL`, a Google-Managed encryption key will be used. For example: "projects/foo/locations/us/keyRings/bar/cryptoKeys/baz". **Note:** Not supported for Apigee hybrid.
   /// [runtimeType_] Runtime type of the Apigee organization based on the Apigee subscription purchased.
   /// [type] Not used by Apigee.
-  OrganizationArgs({
+  const OrganizationArgs({
     this.addonsConfig,
     required this.analyticsRegion,
     this.apiConsumerDataEncryptionKeyName,

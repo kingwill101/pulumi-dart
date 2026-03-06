@@ -38,7 +38,7 @@ class CVSSv3ContaineranalysisV1beta1 {
   /// [privilegesRequired] Optional.
   /// [scope] Optional.
   /// [userInteraction] Optional.
-  CVSSv3ContaineranalysisV1beta1({
+  const CVSSv3ContaineranalysisV1beta1({
     this.attackComplexity,
     this.attackVector,
     this.availabilityImpact,

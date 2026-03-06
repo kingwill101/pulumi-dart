@@ -15,7 +15,7 @@ class GetSignalRArgs {
   /// Creates a new [GetSignalRArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  GetSignalRArgs({
+  const GetSignalRArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

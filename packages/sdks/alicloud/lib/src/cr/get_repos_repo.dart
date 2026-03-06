@@ -25,7 +25,7 @@ class GetReposRepo {
   /// [repoType] `PUBLIC` or `PRIVATE`, repository's visibility.
   /// [summary] The repository general information.
   /// [tags] A list of image tags belong to this repository. Each contains several attributes, see `Block Tag`.
-  GetReposRepo({
+  const GetReposRepo({
     required this.domainList,
     required this.name,
     required this.namespace,

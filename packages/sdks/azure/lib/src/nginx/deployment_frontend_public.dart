@@ -8,7 +8,7 @@ class DeploymentFrontendPublic {
 
   /// Creates a new [DeploymentFrontendPublic].
   /// [ipAddresses] Specifies a list of Public IP Resource ID to this NGINX Deployment.
-  DeploymentFrontendPublic({
+  const DeploymentFrontendPublic({
     this.ipAddresses,
   });
 

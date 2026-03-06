@@ -28,7 +28,7 @@ class GetCustomRoutingEndpointsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetCustomRoutingEndpointsArgs({
+  const GetCustomRoutingEndpointsArgs({
     required this.acceleratorId,
     this.endpointGroupId,
     this.ids,

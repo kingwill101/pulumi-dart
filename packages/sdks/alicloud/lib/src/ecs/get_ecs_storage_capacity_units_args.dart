@@ -21,7 +21,7 @@ class GetEcsStorageCapacityUnitsArgs {
   /// [nameRegex] A regex string to filter results by Storage Capacity Unit name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
-  GetEcsStorageCapacityUnitsArgs({
+  const GetEcsStorageCapacityUnitsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

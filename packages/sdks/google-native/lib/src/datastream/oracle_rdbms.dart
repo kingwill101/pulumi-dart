@@ -10,7 +10,7 @@ class OracleRdbms {
 
   /// Creates a new [OracleRdbms].
   /// [oracleSchemas] Oracle schemas/databases in the database server.
-  OracleRdbms({
+  const OracleRdbms({
     this.oracleSchemas,
   });
 

@@ -9,7 +9,7 @@ class BucketObjectLockConfigurationV2Rule {
 
   /// Creates a new [BucketObjectLockConfigurationV2Rule].
   /// [defaultRetention] Configuration block for specifying the default Object Lock retention settings for new objects placed in the specified bucket. See below.
-  BucketObjectLockConfigurationV2Rule({
+  const BucketObjectLockConfigurationV2Rule({
     required this.defaultRetention,
   });
 

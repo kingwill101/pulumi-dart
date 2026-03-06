@@ -27,7 +27,7 @@ class GetInferenceGroupDeltaModelsStatusAsyncArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetBaseModel] Gets or sets target base model.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetInferenceGroupDeltaModelsStatusAsyncArgs({
+  const GetInferenceGroupDeltaModelsStatusAsyncArgs({
     this.deltaModels,
     required this.groupName,
     required this.poolName,

@@ -29,7 +29,7 @@ class ProjectBucketConfigCmekSettings {
   /// [kmsKeyVersionName] The CryptoKeyVersion resource name for the configured Cloud KMS key.
   /// [name] The resource name of the CMEK settings.
   /// [serviceAccountId] The service account associated with a project for which CMEK will apply.
-  ProjectBucketConfigCmekSettings({
+  const ProjectBucketConfigCmekSettings({
     required this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,

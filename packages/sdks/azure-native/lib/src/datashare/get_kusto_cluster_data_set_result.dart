@@ -37,7 +37,7 @@ class GetKustoClusterDataSetResult {
   /// [provisioningState] Provisioning state of the kusto cluster data set.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetKustoClusterDataSetResult({
+  const GetKustoClusterDataSetResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.id,

@@ -21,7 +21,7 @@ class GoogleCloudApigeeV1DatastoreConfigResponse {
   /// [path] Path of Cloud Storage bucket Required for `gcs` target_type.
   /// [project] GCP project in which the datastore exists
   /// [tablePrefix] Prefix of BigQuery table Required for `bigquery` target_type.
-  GoogleCloudApigeeV1DatastoreConfigResponse({
+  const GoogleCloudApigeeV1DatastoreConfigResponse({
     required this.bucketName,
     required this.datasetName,
     required this.path,

@@ -10,7 +10,7 @@ class OpenAuthenticationAccessPolicies {
 
   /// Creates a new [OpenAuthenticationAccessPolicies].
   /// [policies] Open authentication policies.
-  OpenAuthenticationAccessPolicies({
+  const OpenAuthenticationAccessPolicies({
     this.policies,
   });
 

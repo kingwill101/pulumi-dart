@@ -55,7 +55,7 @@ class GetArcSettingResult {
   /// [provisioningState] Provisioning state of the ArcSetting proxy resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetArcSettingResult({
+  const GetArcSettingResult({
     required this.aggregateState,
     this.arcApplicationClientId,
     this.arcApplicationObjectId,

@@ -27,7 +27,7 @@ class BackupConfig {
   /// [includeVolumeData] Optional. This flag specifies whether volume data should be backed up when PVCs are included in the scope of a Backup. Default: False
   /// [selectedApplications] If set, include just the resources referenced by the listed ProtectedApplications.
   /// [selectedNamespaces] If set, include just the resources in the listed namespaces.
-  BackupConfig({
+  const BackupConfig({
     this.allNamespaces,
     this.encryptionKey,
     this.includeSecrets,

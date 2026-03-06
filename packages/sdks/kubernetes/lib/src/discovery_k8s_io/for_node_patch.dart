@@ -9,7 +9,7 @@ class ForNodePatch {
 
   /// Creates a new [ForNodePatch].
   /// [name] name represents the name of the node.
-  ForNodePatch({
+  const ForNodePatch({
     this.name,
   });
 

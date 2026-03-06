@@ -28,7 +28,7 @@ class GetInterRegionTrafficQosQueuesQueue {
   /// [remainBandwidthPercent] The percentage of cross-region bandwidth that the current queue can use.
   /// [status] The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
   /// [trafficQosPolicyId] The ID of the traffic scheduling policy.
-  GetInterRegionTrafficQosQueuesQueue({
+  const GetInterRegionTrafficQosQueuesQueue({
     required this.dscps,
     required this.id,
     required this.interRegionTrafficQosQueueDescription,

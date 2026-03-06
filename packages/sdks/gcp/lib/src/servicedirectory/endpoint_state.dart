@@ -33,7 +33,7 @@ class EndpointState {
   /// [network] The URL to the network, such as projects/PROJECT_NUMBER/locations/global/networks/NETWORK_NAME.
   /// [port] Port that the endpoint is running on, must be in the
   /// [service] The resource name of the service that this endpoint provides.
-  EndpointState({
+  const EndpointState({
     this.address,
     this.endpointId,
     this.metadata,

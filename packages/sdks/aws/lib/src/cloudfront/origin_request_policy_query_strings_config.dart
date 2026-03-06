@@ -10,7 +10,7 @@ class OriginRequestPolicyQueryStringsConfig {
   /// Creates a new [OriginRequestPolicyQueryStringsConfig].
   /// [queryStringBehavior] Required.
   /// [queryStrings] Optional.
-  OriginRequestPolicyQueryStringsConfig({
+  const OriginRequestPolicyQueryStringsConfig({
     required this.queryStringBehavior,
     this.queryStrings,
   });

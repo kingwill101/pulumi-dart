@@ -12,7 +12,7 @@ class VMAttributeMinMaxIntegerResponse {
   /// Creates a new [VMAttributeMinMaxIntegerResponse].
   /// [max] Max VMSize from CRS, Max = 4294967295 (uint.MaxValue) if not specified.
   /// [min] Min VMSize from CRS, Min = 0 (uint.MinValue) if not specified.
-  VMAttributeMinMaxIntegerResponse({
+  const VMAttributeMinMaxIntegerResponse({
     this.max,
     this.min,
   });

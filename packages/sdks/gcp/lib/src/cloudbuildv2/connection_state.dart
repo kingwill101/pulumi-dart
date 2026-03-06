@@ -68,7 +68,7 @@ class ConnectionState {
   /// [project] The ID of the project in which the resource belongs.
   /// [reconciling] Output only. Set to true when the connection is being set up or updated in the background.
   /// [updateTime] Output only. Server assigned timestamp for when the connection was updated.
-  ConnectionState({
+  const ConnectionState({
     this.annotations,
     this.bitbucketCloudConfig,
     this.bitbucketDataCenterConfig,

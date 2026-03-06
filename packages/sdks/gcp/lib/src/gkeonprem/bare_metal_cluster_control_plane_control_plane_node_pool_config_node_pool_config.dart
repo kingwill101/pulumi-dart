@@ -30,7 +30,7 @@ class BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig {
   /// [nodeConfigs] The list of machine addresses in the Bare Metal Node Pool.
   /// [operatingSystem] Specifies the nodes operating system (default: LINUX).
   /// [taints] The initial taints assigned to nodes of this node pool.
-  BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig({
+  const BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig({
     this.labels,
     this.nodeConfigs,
     this.operatingSystem,

@@ -11,7 +11,7 @@ class GetSubnetDhcpAddressRange {
   /// Creates a new [GetSubnetDhcpAddressRange].
   /// [firstAddress] The first IP address of the range.
   /// [lastAddress] The last IP address of the range.
-  GetSubnetDhcpAddressRange({
+  const GetSubnetDhcpAddressRange({
     required this.firstAddress,
     required this.lastAddress,
   });

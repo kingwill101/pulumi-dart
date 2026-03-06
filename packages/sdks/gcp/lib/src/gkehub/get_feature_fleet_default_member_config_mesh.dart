@@ -8,7 +8,7 @@ class GetFeatureFleetDefaultMemberConfigMesh {
 
   /// Creates a new [GetFeatureFleetDefaultMemberConfigMesh].
   /// [management] Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
-  GetFeatureFleetDefaultMemberConfigMesh({
+  const GetFeatureFleetDefaultMemberConfigMesh({
     required this.management,
   });
 

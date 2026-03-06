@@ -25,7 +25,7 @@ class GetPricesPrice {
   /// [originalPrice] Original Price
   /// [promotionDetails] Offer Details
   /// [tradePrice] Preferential price
-  GetPricesPrice({
+  const GetPricesPrice({
     required this.currency,
     required this.discountPrice,
     required this.moduleDetails,

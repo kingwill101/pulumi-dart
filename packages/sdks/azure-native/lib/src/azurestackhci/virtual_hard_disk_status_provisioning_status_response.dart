@@ -12,7 +12,7 @@ class VirtualHardDiskStatusProvisioningStatusResponse {
   /// Creates a new [VirtualHardDiskStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the virtual hard disk
   /// [status] The status of the operation performed on the virtual hard disk [Succeeded, Failed, InProgress]
-  VirtualHardDiskStatusProvisioningStatusResponse({
+  const VirtualHardDiskStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

@@ -18,7 +18,7 @@ class StorageInfoResponse {
   /// [location] The region of 'bring your own storage' account
   /// [resourceGroup] The resourceGroup which 'bring your own storage' account belongs to
   /// [subscriptionId] The subscription id which 'bring your own storage' account belongs to
-  StorageInfoResponse({
+  const StorageInfoResponse({
     this.accountName,
     this.location,
     this.resourceGroup,

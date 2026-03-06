@@ -70,7 +70,7 @@ class GetPrivateLinkServiceResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [visibility] The visibility list of the private link service.
-  GetPrivateLinkServiceResult({
+  const GetPrivateLinkServiceResult({
     required this.alias,
     this.autoApproval,
     required this.azureApiVersion,

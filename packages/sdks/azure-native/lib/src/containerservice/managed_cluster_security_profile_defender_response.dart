@@ -13,7 +13,7 @@ class ManagedClusterSecurityProfileDefenderResponse {
   /// Creates a new [ManagedClusterSecurityProfileDefenderResponse].
   /// [logAnalyticsWorkspaceResourceId] Resource ID of the Log Analytics workspace to be associated with Microsoft Defender. When Microsoft Defender is enabled, this field is required and must be a valid workspace resource ID. When Microsoft Defender is disabled, leave the field empty.
   /// [securityMonitoring] Microsoft Defender threat detection for Cloud settings for the security profile.
-  ManagedClusterSecurityProfileDefenderResponse({
+  const ManagedClusterSecurityProfileDefenderResponse({
     this.logAnalyticsWorkspaceResourceId,
     this.securityMonitoring,
   });

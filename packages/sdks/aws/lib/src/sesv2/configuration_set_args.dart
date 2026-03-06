@@ -42,7 +42,7 @@ class ConfigurationSetArgs {
   /// [tags] A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trackingOptions] An object that defines the open and click tracking options for emails that you send using the configuration set. See `tracking_options` Block for details.
   /// [vdmOptions] An object that defines the VDM settings that apply to emails that you send using the configuration set. See `vdm_options` Block for details.
-  ConfigurationSetArgs({
+  const ConfigurationSetArgs({
     required this.configurationSetName,
     this.deliveryOptions,
     this.region,

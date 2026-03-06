@@ -21,7 +21,7 @@ class AuthorizationProfileResponse {
   /// [requestedTime] The requested time
   /// [requester] The requester
   /// [requesterObjectId] The requester object id
-  AuthorizationProfileResponse({
+  const AuthorizationProfileResponse({
     required this.approvedTime,
     required this.approver,
     required this.requestedTime,

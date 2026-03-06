@@ -75,7 +75,7 @@ class DomainState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] The domain's URL.
   /// [vpcId] The ID of the Amazon Virtual Private Cloud (VPC) that Studio uses for communication.
-  DomainState({
+  const DomainState({
     this.appNetworkAccessType,
     this.appSecurityGroupManagement,
     this.arn,

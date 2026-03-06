@@ -60,7 +60,7 @@ class GetFunctionsFunction {
   /// [name] Function name.
   /// [runtime] Function runtime. The list of possible values is [available here](https://www.alibabacloud.com/help/doc-detail/52077.htm).
   /// [timeout] Maximum amount of time the function can run in seconds.
-  GetFunctionsFunction({
+  const GetFunctionsFunction({
     required this.caPort,
     required this.codeChecksum,
     required this.codeSize,

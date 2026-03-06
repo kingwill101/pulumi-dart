@@ -8,7 +8,7 @@ class PoolSourceInitiatorIqn {
 
   /// Creates a new [PoolSourceInitiatorIqn].
   /// [name] Sets the name attribute of the iSCSI IQN for identification.
-  PoolSourceInitiatorIqn({
+  const PoolSourceInitiatorIqn({
     this.name,
   });
 

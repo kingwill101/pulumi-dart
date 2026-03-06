@@ -13,7 +13,7 @@ class DeploymentStrategy {
   /// Creates a new [DeploymentStrategy].
   /// [rollingUpdate] Rolling update config params. Present only if DeploymentStrategyType = RollingUpdate.
   /// [type] Type of deployment. Can be "Recreate" or "RollingUpdate". Default is RollingUpdate.
-  DeploymentStrategy({
+  const DeploymentStrategy({
     this.rollingUpdate,
     this.type,
   });

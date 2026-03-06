@@ -17,7 +17,7 @@ class GetUserTablesSqlTaskOutputResponse {
   /// [databasesToTables] Mapping from database name to list of tables
   /// [id] Result identifier
   /// [validationErrors] Validation errors
-  GetUserTablesSqlTaskOutputResponse({
+  const GetUserTablesSqlTaskOutputResponse({
     required this.databasesToTables,
     required this.id,
     required this.validationErrors,

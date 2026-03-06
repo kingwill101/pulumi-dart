@@ -36,7 +36,7 @@ class CertificateArgs {
   /// [name] The name of the API Management Certificate. Changing this forces a new resource to be created.
   /// [password] The password used for this certificate.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  CertificateArgs({
+  const CertificateArgs({
     required this.apiManagementName,
     this.data,
     this.keyVaultIdentityClientId,

@@ -9,7 +9,7 @@ class GetVirtualNodeSpecLoggingAccessLogFileFormatJson {
   /// Creates a new [GetVirtualNodeSpecLoggingAccessLogFileFormatJson].
   /// [key] Required.
   /// [value] Required.
-  GetVirtualNodeSpecLoggingAccessLogFileFormatJson({
+  const GetVirtualNodeSpecLoggingAccessLogFileFormatJson({
     required this.key,
     required this.value,
   });

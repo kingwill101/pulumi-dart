@@ -26,7 +26,7 @@ class GetAccountResult {
   /// [skuName] The SKU of the Azure Maps Account.
   /// [tags] Optional.
   /// [xMsClientId] A unique identifier for the Maps Account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.id,
     required this.name,
     required this.primaryAccessKey,

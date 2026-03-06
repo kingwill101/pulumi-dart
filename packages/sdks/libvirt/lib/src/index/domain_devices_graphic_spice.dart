@@ -76,7 +76,7 @@ class DomainDevicesGraphicSpice {
   /// [streaming] Configures streaming options for live content delivery through the Spice connection.
   /// [tlsPort] Specifies the port number for TLS connections in the Spice protocol to enhance security.
   /// [zlib] Configures settings for zlib compression within the Spice graphical environment.
-  DomainDevicesGraphicSpice({
+  const DomainDevicesGraphicSpice({
     this.autoPort,
     this.channels,
     this.clipBoard,

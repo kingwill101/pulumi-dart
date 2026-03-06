@@ -34,7 +34,7 @@ class GetSecretVersionResult {
   /// [secret] Required.
   /// [secretData] The secret data. No larger than 64KiB.
   /// [version] Required.
-  GetSecretVersionResult({
+  const GetSecretVersionResult({
     required this.createTime,
     required this.destroyTime,
     required this.enabled,

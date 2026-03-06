@@ -62,7 +62,7 @@ class HDInsightSparkActivity {
   /// [state] Activity state. This is an optional property and if not provided, the state will be Active by default.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  HDInsightSparkActivity({
+  const HDInsightSparkActivity({
     this.arguments,
     this.className,
     this.dependsOn,

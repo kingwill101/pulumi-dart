@@ -18,7 +18,7 @@ class InterconnectGroupConfiguredTopologyCapability {
   /// Creates a new [InterconnectGroupConfiguredTopologyCapability].
   /// [intendedCapabilityBlockers] (Output)
   /// [supportedSla] (Output)
-  InterconnectGroupConfiguredTopologyCapability({
+  const InterconnectGroupConfiguredTopologyCapability({
     this.intendedCapabilityBlockers,
     this.supportedSla,
   });

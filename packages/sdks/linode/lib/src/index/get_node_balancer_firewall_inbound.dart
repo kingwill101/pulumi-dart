@@ -23,7 +23,7 @@ class GetNodeBalancerFirewallInbound {
   /// [label] Used to identify this rule. For display purposes only.
   /// [ports] A string representation of ports and/or port ranges (i.e. "443" or "80-90, 91").
   /// [protocol] The network protocol this rule controls. (`TCP`, `UDP`, `ICMP`)
-  GetNodeBalancerFirewallInbound({
+  const GetNodeBalancerFirewallInbound({
     required this.action,
     required this.ipv4s,
     required this.ipv6s,

@@ -26,7 +26,7 @@ class GetGroupResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [type] The type of this API Management Group, such as `custom` or `external`.
-  GetGroupResult({
+  const GetGroupResult({
     required this.apiManagementName,
     required this.description,
     required this.displayName,

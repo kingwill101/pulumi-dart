@@ -15,7 +15,7 @@ class GetEcrImageDetailArgs {
   /// Creates a new [GetEcrImageDetailArgs].
   /// [name] Name of EcrImageDetail
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEcrImageDetailArgs({
+  const GetEcrImageDetailArgs({
     required this.name,
     required this.resourceGroupName,
   });

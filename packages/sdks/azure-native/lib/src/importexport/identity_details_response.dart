@@ -15,7 +15,7 @@ class IdentityDetailsResponse {
   /// [principalId] Specifies the principal id for the identity for the job.
   /// [tenantId] Specifies the tenant id for the identity for the job.
   /// [type] The type of identity
-  IdentityDetailsResponse({
+  const IdentityDetailsResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

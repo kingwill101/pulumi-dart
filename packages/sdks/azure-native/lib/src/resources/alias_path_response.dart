@@ -20,7 +20,7 @@ class AliasPathResponse {
   /// [metadata] The metadata of the alias path. If missing, fall back to the default metadata of the alias.
   /// [path] The path of an alias.
   /// [pattern] The pattern for an alias path.
-  AliasPathResponse({
+  const AliasPathResponse({
     this.apiVersions,
     required this.metadata,
     this.path,

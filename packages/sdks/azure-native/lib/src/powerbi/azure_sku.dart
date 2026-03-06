@@ -11,7 +11,7 @@ class AzureSku {
   /// Creates a new [AzureSku].
   /// [name] SKU name
   /// [tier] SKU tier
-  AzureSku({
+  const AzureSku({
     required this.name,
     required this.tier,
   });

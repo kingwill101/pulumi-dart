@@ -12,7 +12,7 @@ class ProfileEnumValidValuesFormat {
   /// Creates a new [ProfileEnumValidValuesFormat].
   /// [localizedValueNames] Localized names of the enum member.
   /// [value] The integer value of the enum member.
-  ProfileEnumValidValuesFormat({
+  const ProfileEnumValidValuesFormat({
     this.localizedValueNames,
     this.value,
   });

@@ -10,7 +10,7 @@ class FlexibleAppVersionManualScaling {
 
   /// Creates a new [FlexibleAppVersionManualScaling].
   /// [instances] Number of instances to assign to the service at the start.
-  FlexibleAppVersionManualScaling({
+  const FlexibleAppVersionManualScaling({
     required this.instances,
   });
 

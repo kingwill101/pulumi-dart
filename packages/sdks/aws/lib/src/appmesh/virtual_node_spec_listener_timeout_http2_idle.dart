@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerTimeoutHttp2Idle {
   /// Creates a new [VirtualNodeSpecListenerTimeoutHttp2Idle].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  VirtualNodeSpecListenerTimeoutHttp2Idle({
+  const VirtualNodeSpecListenerTimeoutHttp2Idle({
     required this.unit,
     required this.value,
   });

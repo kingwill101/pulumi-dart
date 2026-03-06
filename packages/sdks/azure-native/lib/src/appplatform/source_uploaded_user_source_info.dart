@@ -23,7 +23,7 @@ class SourceUploadedUserSourceInfo {
   /// [runtimeVersion] Runtime version of the source file
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  SourceUploadedUserSourceInfo({
+  const SourceUploadedUserSourceInfo({
     this.artifactSelector,
     this.relativePath,
     this.runtimeVersion,

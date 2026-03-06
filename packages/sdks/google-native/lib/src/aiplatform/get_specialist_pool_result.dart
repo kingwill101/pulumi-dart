@@ -23,7 +23,7 @@ class GetSpecialistPoolResult {
   /// [specialistManagerEmails] The email addresses of the managers in the SpecialistPool.
   /// [specialistManagersCount] The number of managers in this SpecialistPool.
   /// [specialistWorkerEmails] The email addresses of workers in the SpecialistPool.
-  GetSpecialistPoolResult({
+  const GetSpecialistPoolResult({
     required this.displayName,
     required this.name,
     required this.pendingDataLabelingJobs,

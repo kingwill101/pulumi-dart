@@ -11,7 +11,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuC
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount].
   /// [max] Maximum.
   /// [min] Minimum.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementVcpuCount({
     required this.max,
     required this.min,
   });

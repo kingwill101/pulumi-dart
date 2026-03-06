@@ -33,7 +33,7 @@ class DBBackupPolicyProperties {
   /// [settings] Common settings for the backup management
   /// [subProtectionPolicy] List of sub-protection policies which includes schedule and retention
   /// [workLoadType] Type of workload for the backup management
-  DBBackupPolicyProperties({
+  const DBBackupPolicyProperties({
     required this.backupManagementType,
     this.makePolicyConsistent,
     required this.name,

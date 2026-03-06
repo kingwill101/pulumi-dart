@@ -9,7 +9,7 @@ class PrivateLinkServicePropertiesAutoApproval {
 
   /// Creates a new [PrivateLinkServicePropertiesAutoApproval].
   /// [subscriptions] The list of subscriptions.
-  PrivateLinkServicePropertiesAutoApproval({
+  const PrivateLinkServicePropertiesAutoApproval({
     this.subscriptions,
   });
 

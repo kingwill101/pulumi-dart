@@ -31,7 +31,7 @@ class IAMBindingState {
   /// [members] Identities that will be granted the privilege in `role`. gcp.projects.IAMBinding expects `members` field while gcp.projects.IAMMember expects `member` field.
   /// [project] The project id of the target project. This is not
   /// [role] The role that should be applied. Only one
-  IAMBindingState({
+  const IAMBindingState({
     this.condition,
     this.etag,
     this.members,

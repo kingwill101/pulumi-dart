@@ -13,7 +13,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfig].
   /// [metastoreConfig] The Hive Metastore configuration for this workload.
   /// [sparkHistoryServerConfig] The Spark History Server configuration for the workload.
-  ClusterVirtualClusterConfigAuxiliaryServicesConfig({
+  const ClusterVirtualClusterConfigAuxiliaryServicesConfig({
     this.metastoreConfig,
     this.sparkHistoryServerConfig,
   });

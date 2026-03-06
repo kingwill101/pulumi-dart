@@ -17,7 +17,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey {
   /// [kmsKeyServiceAccount] (Optional)
   /// [rawKey] (Optional)
   /// [rsaEncryptedKey] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey({
+  const RestoreWorkloadComputeInstanceRestorePropertiesInstanceEncryptionKey({
     this.kmsKeyName,
     this.kmsKeyServiceAccount,
     this.rawKey,

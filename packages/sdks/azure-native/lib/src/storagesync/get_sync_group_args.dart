@@ -18,7 +18,7 @@ class GetSyncGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   /// [syncGroupName] Name of Sync Group resource.
-  GetSyncGroupArgs({
+  const GetSyncGroupArgs({
     required this.resourceGroupName,
     required this.storageSyncServiceName,
     required this.syncGroupName,

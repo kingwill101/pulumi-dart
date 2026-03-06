@@ -21,7 +21,7 @@ class NetworkInterfaceArgs {
   /// [networkDeviceName] Name of the Network Device.
   /// [networkInterfaceName] Name of the Network Interface.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  NetworkInterfaceArgs({
+  const NetworkInterfaceArgs({
     this.annotation,
     required this.networkDeviceName,
     this.networkInterfaceName,

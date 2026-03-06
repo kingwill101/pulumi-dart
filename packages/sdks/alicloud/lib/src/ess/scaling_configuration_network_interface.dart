@@ -17,7 +17,7 @@ class ScalingConfigurationNetworkInterface {
   /// [ipv6AddressCount] The number of randomly generated IPv6 addresses that you want to assign to primary ENI N.
   /// [networkInterfaceTrafficMode] The communication mode of the ENI. Valid values: Standard, HighPerformance.
   /// [securityGroupIds] The ID of security group N to which ENI N belongs.
-  ScalingConfigurationNetworkInterface({
+  const ScalingConfigurationNetworkInterface({
     this.instanceType,
     this.ipv6AddressCount,
     this.networkInterfaceTrafficMode,

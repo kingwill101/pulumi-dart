@@ -24,7 +24,7 @@ class RouteArgs {
   /// [network] The destination subnet and netmask for the route.
   /// [reject] reject route
   /// [tunnelRef] tunnel_ref to route traffic
-  RouteArgs({
+  const RouteArgs({
     this.gw,
     required this.name,
     required this.network,

@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2BigQueryTableCollection {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableCollection].
   /// [includeRegexes] A collection of regular expressions to match a BigQuery table against.
-  GooglePrivacyDlpV2BigQueryTableCollection({
+  const GooglePrivacyDlpV2BigQueryTableCollection({
     this.includeRegexes,
   });
 

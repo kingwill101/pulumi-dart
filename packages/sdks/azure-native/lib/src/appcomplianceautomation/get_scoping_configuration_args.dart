@@ -15,7 +15,7 @@ class GetScopingConfigurationArgs {
   /// Creates a new [GetScopingConfigurationArgs].
   /// [reportName] Report Name.
   /// [scopingConfigurationName] The scoping configuration of the specific report.
-  GetScopingConfigurationArgs({
+  const GetScopingConfigurationArgs({
     required this.reportName,
     required this.scopingConfigurationName,
   });

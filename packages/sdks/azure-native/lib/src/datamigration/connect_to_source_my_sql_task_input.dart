@@ -19,7 +19,7 @@ class ConnectToSourceMySqlTaskInput {
   /// [isOfflineMigration] Flag for whether or not the migration is offline
   /// [sourceConnectionInfo] Information for connecting to MySQL source
   /// [targetPlatform] Target Platform for the migration
-  ConnectToSourceMySqlTaskInput({
+  const ConnectToSourceMySqlTaskInput({
     this.checkPermissionsGroup,
     this.isOfflineMigration,
     required this.sourceConnectionInfo,

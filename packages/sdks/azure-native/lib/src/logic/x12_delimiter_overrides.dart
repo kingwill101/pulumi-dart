@@ -34,7 +34,7 @@ class X12DelimiterOverrides {
   /// [segmentTerminator] The segment terminator.
   /// [segmentTerminatorSuffix] The segment terminator suffix.
   /// [targetNamespace] The target namespace on which this delimiter settings has to be applied.
-  X12DelimiterOverrides({
+  const X12DelimiterOverrides({
     required this.componentSeparator,
     required this.dataElementSeparator,
     this.messageId,

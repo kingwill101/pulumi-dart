@@ -15,7 +15,7 @@ class PeriodicModeProperties {
   /// [backupIntervalInMinutes] An integer representing the interval in minutes between two backups
   /// [backupRetentionIntervalInHours] An integer representing the time (in hours) that each backup is retained
   /// [backupStorageRedundancy] Enum to indicate type of backup residency
-  PeriodicModeProperties({
+  const PeriodicModeProperties({
     this.backupIntervalInMinutes,
     this.backupRetentionIntervalInHours,
     this.backupStorageRedundancy,

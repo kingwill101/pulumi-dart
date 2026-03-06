@@ -19,7 +19,7 @@ class InsightArgs {
   /// [insightName] Name of the insight
   /// [properties] The resource-specific properties for this resource.
   /// [workloadImpactName] workloadImpact resource
-  InsightArgs({
+  const InsightArgs({
     this.insightName,
     this.properties,
     required this.workloadImpactName,

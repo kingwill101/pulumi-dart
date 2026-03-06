@@ -24,7 +24,7 @@ class GetImportDataFileMigrationcenterV1alpha1Result {
   /// [name] The name of the file.
   /// [state] The state of the import data file.
   /// [uploadFileInfo] Information about a file that is uploaded to a storage service.
-  GetImportDataFileMigrationcenterV1alpha1Result({
+  const GetImportDataFileMigrationcenterV1alpha1Result({
     required this.createTime,
     required this.displayName,
     required this.format,

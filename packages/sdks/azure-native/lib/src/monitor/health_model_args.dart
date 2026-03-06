@@ -32,7 +32,7 @@ class HealthModelArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  HealthModelArgs({
+  const HealthModelArgs({
     required this.azureMonitorWorkspaceName,
     this.healthModelName,
     this.identity,

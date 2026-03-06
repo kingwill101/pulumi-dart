@@ -17,7 +17,7 @@ class GalleryApplicationVersionTargetRegion {
   /// [name] The Azure Region in which the Gallery Application Version exists.
   /// [regionalReplicaCount] The number of replicas of the Gallery Application Version to be created per region. Possible values are between `1` and `10`.
   /// [storageAccountType] The storage account type for the Gallery Application Version. Possible values are `Standard_LRS`, `Premium_LRS` and `Standard_ZRS`. Defaults to `Standard_LRS`.
-  GalleryApplicationVersionTargetRegion({
+  const GalleryApplicationVersionTargetRegion({
     this.excludeFromLatest,
     required this.name,
     required this.regionalReplicaCount,

@@ -21,7 +21,7 @@ class NetworkManagerAdminRuleCollectionArgs {
   /// [name] Specifies the name which should be used for this Network Manager Admin Rule Collection. Changing this forces a new Network Manager Admin Rule Collection to be created.
   /// [networkGroupIds] A list of Network Group ID which this Network Manager Admin Rule Collection applies to.
   /// [securityAdminConfigurationId] Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Admin Rule Collection to be created.
-  NetworkManagerAdminRuleCollectionArgs({
+  const NetworkManagerAdminRuleCollectionArgs({
     this.description,
     this.name,
     required this.networkGroupIds,

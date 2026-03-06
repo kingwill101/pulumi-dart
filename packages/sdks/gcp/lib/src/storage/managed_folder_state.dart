@@ -31,7 +31,7 @@ class ManagedFolderState {
   /// [name] The name of the managed folder expressed as a path. Must include
   /// [selfLink] The URI of the created resource.
   /// [updateTime] The timestamp at which this managed folder was most recently updated.
-  ManagedFolderState({
+  const ManagedFolderState({
     this.bucket,
     this.createTime,
     this.forceDestroy,

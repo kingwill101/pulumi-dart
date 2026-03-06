@@ -26,7 +26,7 @@ class CertificateMapArgs {
   /// [labels] Set of labels associated with a Certificate Map resource.
   /// [name] A user-defined name of the Certificate Map. Certificate Map names must be unique
   /// [project] The ID of the project in which the resource belongs.
-  CertificateMapArgs({
+  const CertificateMapArgs({
     this.description,
     this.labels,
     this.name,

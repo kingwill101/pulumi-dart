@@ -33,7 +33,7 @@ class IngestionState {
   /// [runImmediately] Whether to run the ingestion job immediately, if false, wait for an interval before starting the ingestion.
   /// [source] Data source and data format details. [Refer to details](https://www.alibabacloud.com/help/en/doc-detail/147819.html).
   /// [timeZone] Which time zone is the log time imported in, e.g. `+0800`.
-  IngestionState({
+  const IngestionState({
     this.description,
     this.displayName,
     this.ingestionName,

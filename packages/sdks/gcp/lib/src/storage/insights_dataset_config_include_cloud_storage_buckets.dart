@@ -10,7 +10,7 @@ class InsightsDatasetConfigIncludeCloudStorageBuckets {
 
   /// Creates a new [InsightsDatasetConfigIncludeCloudStorageBuckets].
   /// [cloudStorageBuckets] The list of cloud storage buckets/bucket prefix regexes to include in the DatasetConfig.
-  InsightsDatasetConfigIncludeCloudStorageBuckets({
+  const InsightsDatasetConfigIncludeCloudStorageBuckets({
     required this.cloudStorageBuckets,
   });
 

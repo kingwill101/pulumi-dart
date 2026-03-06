@@ -12,7 +12,7 @@ class SkuType {
   /// Creates a new [SkuType].
   /// [name] The name of the SKU
   /// [tier] The tier of the SKU
-  SkuType({
+  const SkuType({
     required this.name,
     required this.tier,
   });

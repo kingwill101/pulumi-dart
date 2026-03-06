@@ -8,7 +8,7 @@ class ResponseHeadersPolicyCustomHeadersConfig {
 
   /// Creates a new [ResponseHeadersPolicyCustomHeadersConfig].
   /// [items] Optional.
-  ResponseHeadersPolicyCustomHeadersConfig({
+  const ResponseHeadersPolicyCustomHeadersConfig({
     this.items,
   });
 

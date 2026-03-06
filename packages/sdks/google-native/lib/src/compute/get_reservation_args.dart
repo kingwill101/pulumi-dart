@@ -15,7 +15,7 @@ class GetReservationArgs {
   /// [project] Optional.
   /// [reservation] Required.
   /// [zone] Required.
-  GetReservationArgs({
+  const GetReservationArgs({
     this.project,
     required this.reservation,
     required this.zone,

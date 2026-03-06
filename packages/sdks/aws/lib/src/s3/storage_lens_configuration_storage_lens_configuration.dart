@@ -28,7 +28,7 @@ class StorageLensConfigurationStorageLensConfiguration {
   /// [enabled] Whether the S3 Storage Lens configuration is enabled.
   /// [exclude] What is excluded in this configuration. Conflicts with `include`. See Exclude below for more details.
   /// [include] What is included in this configuration. Conflicts with `exclude`. See Include below for more details.
-  StorageLensConfigurationStorageLensConfiguration({
+  const StorageLensConfigurationStorageLensConfiguration({
     required this.accountLevel,
     this.awsOrg,
     this.dataExport,

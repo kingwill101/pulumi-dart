@@ -11,7 +11,7 @@ class InstanceLoggingConfigurationAccessLogsKinesisDataFirehose {
   /// Creates a new [InstanceLoggingConfigurationAccessLogsKinesisDataFirehose].
   /// [deliveryStream] The name of the delivery stream.
   /// [enabled] Indicates whether logging is enabled.
-  InstanceLoggingConfigurationAccessLogsKinesisDataFirehose({
+  const InstanceLoggingConfigurationAccessLogsKinesisDataFirehose({
     this.deliveryStream,
     required this.enabled,
   });

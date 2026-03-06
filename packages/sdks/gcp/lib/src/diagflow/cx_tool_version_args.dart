@@ -21,7 +21,7 @@ class CxToolVersionArgs {
   /// [displayName] The display name of the tool version.
   /// [parent] The tool to create a Version for.
   /// [tool] Snapshot of the tool to be associated with this version.
-  CxToolVersionArgs({
+  const CxToolVersionArgs({
     required this.displayName,
     required this.parent,
     required this.tool,

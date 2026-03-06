@@ -15,7 +15,7 @@ class GetTriggerScheduleArgs {
   /// Creates a new [GetTriggerScheduleArgs].
   /// [dataFactoryId] The ID of the Azure Data Factory to fetch trigger schedule from.
   /// [name] The name of the trigger schedule.
-  GetTriggerScheduleArgs({
+  const GetTriggerScheduleArgs({
     required this.dataFactoryId,
     required this.name,
   });

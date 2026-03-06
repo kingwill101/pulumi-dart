@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceZlib {
 
   /// Creates a new [DomainDevicesGraphicSpiceZlib].
   /// [compression] Sets the compression level used for zlib in the Spice protocol.
-  DomainDevicesGraphicSpiceZlib({
+  const DomainDevicesGraphicSpiceZlib({
     required this.compression,
   });
 

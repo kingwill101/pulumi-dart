@@ -15,7 +15,7 @@ class PolicyAttachmentState {
   /// [policyId] The ID of the tag policy.
   /// [targetId] The ID of the object.
   /// [targetType] The type of the object. Valid values: `USER`, `ROOT`, `FOLDER`, `ACCOUNT`.
-  PolicyAttachmentState({
+  const PolicyAttachmentState({
     this.policyId,
     this.targetId,
     this.targetType,

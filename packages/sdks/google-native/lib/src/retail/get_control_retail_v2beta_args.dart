@@ -17,7 +17,7 @@ class GetControlRetailV2betaArgs {
   /// [controlId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetControlRetailV2betaArgs({
+  const GetControlRetailV2betaArgs({
     required this.catalogId,
     required this.controlId,
     required this.location,

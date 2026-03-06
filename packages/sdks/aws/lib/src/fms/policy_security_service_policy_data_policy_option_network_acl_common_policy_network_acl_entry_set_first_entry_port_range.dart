@@ -11,7 +11,7 @@ class PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAc
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange].
   /// [from] The beginning port number of the range.
   /// [to] The ending port number of the range.
-  PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange({
+  const PolicySecurityServicePolicyDataPolicyOptionNetworkAclCommonPolicyNetworkAclEntrySetFirstEntryPortRange({
     this.from,
     this.to,
   });

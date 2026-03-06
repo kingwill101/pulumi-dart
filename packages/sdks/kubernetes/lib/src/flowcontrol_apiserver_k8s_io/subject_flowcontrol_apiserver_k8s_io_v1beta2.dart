@@ -21,7 +21,7 @@ class SubjectFlowcontrolApiserverK8sIoV1beta2 {
   /// [kind] `kind` indicates which one of the other fields is non-empty. Required
   /// [serviceAccount] `serviceAccount` matches ServiceAccounts.
   /// [user] `user` matches based on username.
-  SubjectFlowcontrolApiserverK8sIoV1beta2({
+  const SubjectFlowcontrolApiserverK8sIoV1beta2({
     this.group,
     required this.kind,
     this.serviceAccount,

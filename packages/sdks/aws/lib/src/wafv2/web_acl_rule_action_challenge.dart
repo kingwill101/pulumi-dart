@@ -9,7 +9,7 @@ class WebAclRuleActionChallenge {
 
   /// Creates a new [WebAclRuleActionChallenge].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleActionChallenge({
+  const WebAclRuleActionChallenge({
     this.customRequestHandling,
   });
 

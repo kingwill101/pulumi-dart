@@ -18,7 +18,7 @@ class AndroidDevice {
   /// [androidVersionId] The id of the Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options.
   /// [locale] The locale the test device used for testing. Use the TestEnvironmentDiscoveryService to get supported options.
   /// [orientation] How the device is oriented during the test. Use the TestEnvironmentDiscoveryService to get supported options.
-  AndroidDevice({
+  const AndroidDevice({
     required this.androidModelId,
     required this.androidVersionId,
     required this.locale,

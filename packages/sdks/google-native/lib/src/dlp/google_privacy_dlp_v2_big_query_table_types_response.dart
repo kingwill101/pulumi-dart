@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2BigQueryTableTypesResponse {
 
   /// Creates a new [GooglePrivacyDlpV2BigQueryTableTypesResponse].
   /// [types] A set of BigQuery table types.
-  GooglePrivacyDlpV2BigQueryTableTypesResponse({
+  const GooglePrivacyDlpV2BigQueryTableTypesResponse({
     required this.types,
   });
 

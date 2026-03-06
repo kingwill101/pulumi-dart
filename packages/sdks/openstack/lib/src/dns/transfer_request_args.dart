@@ -35,7 +35,7 @@ class TransferRequestArgs {
   /// [targetProjectId] The target Project ID to transfer to.
   /// [valueSpecs] Map of additional options. Changing this creates a
   /// [zoneId] The ID of the zone for which to create the transfer
-  TransferRequestArgs({
+  const TransferRequestArgs({
     this.description,
     this.disableStatusCheck,
     this.key,

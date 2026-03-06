@@ -31,7 +31,7 @@ class FirewallPolicyRuleCollectionGroupArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [ruleCollectionGroupName] The name of the FirewallPolicyRuleCollectionGroup.
   /// [ruleCollections] Group of Firewall Policy rule collections.
-  FirewallPolicyRuleCollectionGroupArgs({
+  const FirewallPolicyRuleCollectionGroupArgs({
     required this.firewallPolicyName,
     this.id,
     this.name,

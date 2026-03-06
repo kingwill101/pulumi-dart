@@ -12,7 +12,7 @@ class ReturnShipping {
   /// Creates a new [ReturnShipping].
   /// [carrierAccountNumber] The customer's account number with the carrier.
   /// [carrierName] The carrier's name.
-  ReturnShipping({
+  const ReturnShipping({
     required this.carrierAccountNumber,
     required this.carrierName,
   });

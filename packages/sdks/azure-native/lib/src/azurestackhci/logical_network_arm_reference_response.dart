@@ -9,7 +9,7 @@ class LogicalNetworkArmReferenceResponse {
 
   /// Creates a new [LogicalNetworkArmReferenceResponse].
   /// [id] The Azure Resource ID for a Logical Network.
-  LogicalNetworkArmReferenceResponse({
+  const LogicalNetworkArmReferenceResponse({
     this.id,
   });
 

@@ -15,7 +15,7 @@ class GetDiskEncryptionSetArgs {
   /// Creates a new [GetDiskEncryptionSetArgs].
   /// [diskEncryptionSetName] The name of the disk encryption set that is being created. The name can't be changed after the disk encryption set is created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiskEncryptionSetArgs({
+  const GetDiskEncryptionSetArgs({
     required this.diskEncryptionSetName,
     required this.resourceGroupName,
   });

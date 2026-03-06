@@ -11,7 +11,7 @@ class DomainDevicesAudioNone {
   /// Creates a new [DomainDevicesAudioNone].
   /// [input] Configures the output settings for the None audio device.
   /// [output] Configures the output settings for the None audio device.
-  DomainDevicesAudioNone({
+  const DomainDevicesAudioNone({
     this.input,
     this.output,
   });

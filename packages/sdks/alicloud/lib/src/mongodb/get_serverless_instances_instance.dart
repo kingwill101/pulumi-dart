@@ -90,7 +90,7 @@ class GetServerlessInstancesInstance {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The id of the vswitch.
   /// [zoneId] The ID of the zone.
-  GetServerlessInstancesInstance({
+  const GetServerlessInstancesInstance({
     required this.capacityUnit,
     required this.dbInstanceClass,
     required this.dbInstanceDescription,

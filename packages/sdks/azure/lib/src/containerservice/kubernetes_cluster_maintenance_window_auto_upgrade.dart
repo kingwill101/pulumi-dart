@@ -37,7 +37,7 @@ class KubernetesClusterMaintenanceWindowAutoUpgrade {
   /// [startTime] The time for maintenance to begin, based on the timezone determined by `utc_offset`. Format is `HH:mm`.
   /// [utcOffset] Used to determine the timezone for cluster maintenance.
   /// [weekIndex] Specifies on which instance of the allowed days specified in `day_of_week` the maintenance occurs. Options are `First`, `Second`, `Third`, `Fourth`, and `Last`.
-  KubernetesClusterMaintenanceWindowAutoUpgrade({
+  const KubernetesClusterMaintenanceWindowAutoUpgrade({
     this.dayOfMonth,
     this.dayOfWeek,
     required this.duration,

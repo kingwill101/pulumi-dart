@@ -27,7 +27,7 @@ class DeliveryChannelArgs {
   /// [deliveryChannelName] The name of the delivery channel.
   /// [resourceChangeDelivery] The configurations for delivery of resource configuration change events. See `resource_change_delivery` below.
   /// [resourceSnapshotDelivery] The configurations for delivery of scheduled resource snapshots. See `resource_snapshot_delivery` below.
-  DeliveryChannelArgs({
+  const DeliveryChannelArgs({
     this.deliveryChannelDescription,
     required this.deliveryChannelFilter,
     required this.deliveryChannelName,

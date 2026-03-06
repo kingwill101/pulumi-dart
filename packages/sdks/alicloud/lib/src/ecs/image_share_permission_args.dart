@@ -15,7 +15,7 @@ class ImageSharePermissionArgs {
   /// Creates a new [ImageSharePermissionArgs].
   /// [accountId] Alibaba Cloud Account ID. It is used to share images.
   /// [imageId] The source image ID.
-  ImageSharePermissionArgs({
+  const ImageSharePermissionArgs({
     required this.accountId,
     required this.imageId,
   });

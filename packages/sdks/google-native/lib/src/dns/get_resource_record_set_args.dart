@@ -19,7 +19,7 @@ class GetResourceRecordSetArgs {
   /// [name] Required.
   /// [project] Optional.
   /// [type] Required.
-  GetResourceRecordSetArgs({
+  const GetResourceRecordSetArgs({
     this.clientOperationId,
     required this.managedZone,
     required this.name,

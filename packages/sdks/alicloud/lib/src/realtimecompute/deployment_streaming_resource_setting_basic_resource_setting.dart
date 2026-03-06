@@ -13,7 +13,7 @@ class DeploymentStreamingResourceSettingBasicResourceSetting {
   /// [jobmanagerResourceSettingSpec] Optional.
   /// [parallelism] Optional.
   /// [taskmanagerResourceSettingSpec] Optional.
-  DeploymentStreamingResourceSettingBasicResourceSetting({
+  const DeploymentStreamingResourceSettingBasicResourceSetting({
     this.jobmanagerResourceSettingSpec,
     this.parallelism,
     this.taskmanagerResourceSettingSpec,

@@ -15,7 +15,7 @@ class ListWebAppSyncFunctionTriggersArgs {
   /// Creates a new [ListWebAppSyncFunctionTriggersArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppSyncFunctionTriggersArgs({
+  const ListWebAppSyncFunctionTriggersArgs({
     required this.name,
     required this.resourceGroupName,
   });

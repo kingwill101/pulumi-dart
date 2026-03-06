@@ -16,7 +16,7 @@ class ElasticSanResponse {
   /// [encryption] Encryption specifies the encryption configuration for the Azure Disk pool
   /// [resourceGroup] Managed resource group for the pool.
   /// [skuName] Sku name
-  ElasticSanResponse({
+  const ElasticSanResponse({
     this.encryption,
     required this.resourceGroup,
     this.skuName,

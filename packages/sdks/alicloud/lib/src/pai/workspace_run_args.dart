@@ -21,7 +21,7 @@ class WorkspaceRunArgs {
   /// [runName] The name of the resource
   /// [sourceId] Attribute Resource field representing the source task ID
   /// [sourceType] Resource attribute fields representing the source type
-  WorkspaceRunArgs({
+  const WorkspaceRunArgs({
     required this.experimentId,
     this.runName,
     this.sourceId,

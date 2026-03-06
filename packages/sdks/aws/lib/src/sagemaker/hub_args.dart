@@ -31,7 +31,7 @@ class HubArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [s3StorageConfig] The Amazon S3 storage configuration for the hub. See S3 Storage Config details below.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  HubArgs({
+  const HubArgs({
     required this.hubDescription,
     this.hubDisplayName,
     required this.hubName,

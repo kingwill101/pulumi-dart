@@ -14,7 +14,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint {
   /// [containerPath] The absolute file path in the container where the tmpfs volume is mounted.
   /// [readOnly] If this value is true, the container has read-only access to the volume.
   /// [sourceVolume] The name of the volume to mount.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerMountPoint({
     required this.containerPath,
     required this.readOnly,
     required this.sourceVolume,

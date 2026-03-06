@@ -21,7 +21,7 @@ class GetAuthenticationSettingArgs {
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
   /// [healthModelName] Name of health model resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAuthenticationSettingArgs({
+  const GetAuthenticationSettingArgs({
     required this.authenticationSettingName,
     required this.azureMonitorWorkspaceName,
     required this.healthModelName,

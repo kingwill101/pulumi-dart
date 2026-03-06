@@ -50,7 +50,7 @@ class ServerDetailsArgs {
   /// [serverName] The name of the Analysis Services server. It must be a minimum of 3 characters, and a maximum of 63.
   /// [sku] The SKU of the Analysis Services resource.
   /// [tags] Key-value pairs of additional resource provisioning properties.
-  ServerDetailsArgs({
+  const ServerDetailsArgs({
     this.asAdministrators,
     this.backupBlobContainerUri,
     this.gatewayDetails,

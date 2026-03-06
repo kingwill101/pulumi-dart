@@ -14,7 +14,7 @@ class GetAccountIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The identity type of this Managed Service Identity.
-  GetAccountIdentity({
+  const GetAccountIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

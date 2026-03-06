@@ -36,7 +36,7 @@ class AppTemplateContainerReadinessProbe {
   /// [successCountThreshold] The number of consecutive successful responses required to consider this probe as successful. Possible values are between `1` and `10`. Defaults to `3`.
   /// [timeout] Time in seconds after which the probe times out. Possible values are in the range `1` - `240`. Defaults to `1`.
   /// [transport] Type of probe. Possible values are `TCP`, `HTTP`, and `HTTPS`.
-  AppTemplateContainerReadinessProbe({
+  const AppTemplateContainerReadinessProbe({
     this.failureCountThreshold,
     this.headers,
     this.host,

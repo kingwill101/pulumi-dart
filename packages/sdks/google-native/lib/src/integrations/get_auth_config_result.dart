@@ -57,7 +57,7 @@ class GetAuthConfigResult {
   /// [updateTime] The timestamp when the auth config is modified.
   /// [validTime] The time until the auth config is valid. Empty or max value is considered the auth config won't expire.
   /// [visibility] The visibility of the auth config.
-  GetAuthConfigResult({
+  const GetAuthConfigResult({
     required this.certificateId,
     required this.createTime,
     required this.creatorEmail,

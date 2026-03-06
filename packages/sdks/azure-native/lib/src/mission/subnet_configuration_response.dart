@@ -24,7 +24,7 @@ class SubnetConfigurationResponse {
   /// [subnetDelegation] Subnet delegation.
   /// [subnetName] Subnet name.
   /// [subnetResourceId] Subnet Resource ID.
-  SubnetConfigurationResponse({
+  const SubnetConfigurationResponse({
     required this.addressPrefix,
     required this.networkPrefixSize,
     required this.networkSecurityGroupResourceId,

@@ -12,7 +12,7 @@ class ChannelNamespaceHandlerConfigsOnSubscribe {
   /// Creates a new [ChannelNamespaceHandlerConfigsOnSubscribe].
   /// [behavior] Behavior for the handler. Valid values: `CODE`, `DIRECT`.
   /// [integration] Integration data source configuration for the handler. See Integration below.
-  ChannelNamespaceHandlerConfigsOnSubscribe({
+  const ChannelNamespaceHandlerConfigsOnSubscribe({
     required this.behavior,
     required this.integration,
   });

@@ -11,7 +11,7 @@ class DistributionOriginOriginShield {
   /// Creates a new [DistributionOriginOriginShield].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
   /// [originShieldRegion] AWS Region for Origin Shield. To specify a region, use the region code, not the region name. For example, specify the US East (Ohio) region as `us-east-2`.
-  DistributionOriginOriginShield({
+  const DistributionOriginOriginShield({
     required this.enabled,
     this.originShieldRegion,
   });

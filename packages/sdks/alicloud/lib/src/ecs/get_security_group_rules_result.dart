@@ -35,7 +35,7 @@ class GetSecurityGroupRulesResult {
   /// [outputFile] Optional.
   /// [policy] Authorization policy. Can be either `accept` or `drop`.
   /// [rules] A list of security group rules. Each element contains the following attributes:
-  GetSecurityGroupRulesResult({
+  const GetSecurityGroupRulesResult({
     this.direction,
     required this.groupDesc,
     required this.groupId,

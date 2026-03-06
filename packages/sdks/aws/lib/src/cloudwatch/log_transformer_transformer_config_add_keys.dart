@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigAddKeys {
 
   /// Creates a new [LogTransformerTransformerConfigAddKeys].
   /// [entries] Objects containing the information about the keys to add to the log event. You must include at least one entry, and five at most. See `add_keys` `entry` below for details.
-  LogTransformerTransformerConfigAddKeys({
+  const LogTransformerTransformerConfigAddKeys({
     required this.entries,
   });
 

@@ -15,7 +15,7 @@ class GatewayEndpointRouteTableAttachmentState {
   /// [gatewayEndpointId] The ID of the gateway endpoint instance to which you want to associate the route table.
   /// [routeTableId] Routing table ID.
   /// [status] Status of the gateway endpoint.
-  GatewayEndpointRouteTableAttachmentState({
+  const GatewayEndpointRouteTableAttachmentState({
     this.gatewayEndpointId,
     this.routeTableId,
     this.status,

@@ -22,7 +22,7 @@ class NamedLocationState {
   /// [displayName] The friendly name for this named location.
   /// [ip] An `ip` block as documented below, which configures an IP-based named location.
   /// [objectId] The object ID of the named location.
-  NamedLocationState({
+  const NamedLocationState({
     this.country,
     this.displayName,
     this.ip,

@@ -24,7 +24,7 @@ class ApplicationGatewaySslProfile {
   /// [name] Name of the SSL profile that is unique within an Application Gateway.
   /// [sslPolicy] SSL policy of the application gateway resource.
   /// [trustedClientCertificates] Array of references to application gateway trusted client certificates.
-  ApplicationGatewaySslProfile({
+  const ApplicationGatewaySslProfile({
     this.clientAuthConfiguration,
     this.id,
     this.name,

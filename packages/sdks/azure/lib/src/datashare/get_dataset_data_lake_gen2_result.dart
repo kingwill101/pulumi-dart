@@ -27,7 +27,7 @@ class GetDatasetDataLakeGen2Result {
   /// [name] Required.
   /// [shareId] Required.
   /// [storageAccountId] The resource ID of the storage account of the data lake file system to be shared with the receiver.
-  GetDatasetDataLakeGen2Result({
+  const GetDatasetDataLakeGen2Result({
     required this.displayName,
     required this.filePath,
     required this.fileSystemName,

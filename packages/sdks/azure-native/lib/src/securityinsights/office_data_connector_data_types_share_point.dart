@@ -9,7 +9,7 @@ class OfficeDataConnectorDataTypesSharePoint {
 
   /// Creates a new [OfficeDataConnectorDataTypesSharePoint].
   /// [state] Describe whether this data type connection is enabled or not.
-  OfficeDataConnectorDataTypesSharePoint({
+  const OfficeDataConnectorDataTypesSharePoint({
     required this.state,
   });
 

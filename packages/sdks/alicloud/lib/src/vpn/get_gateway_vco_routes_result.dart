@@ -29,7 +29,7 @@ class GetGatewayVcoRoutesResult {
   /// [routes] A list of Vpn Gateway Vco Routes. Each element contains the following attributes:
   /// [status] The status of the vpn route entry.
   /// [vpnConnectionId] The id of the vpn connection.
-  GetGatewayVcoRoutesResult({
+  const GetGatewayVcoRoutesResult({
     required this.id,
     required this.ids,
     this.outputFile,

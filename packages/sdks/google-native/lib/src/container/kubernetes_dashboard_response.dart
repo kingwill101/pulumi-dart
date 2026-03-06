@@ -9,7 +9,7 @@ class KubernetesDashboardResponse {
 
   /// Creates a new [KubernetesDashboardResponse].
   /// [disabled] Whether the Kubernetes Dashboard is enabled for this cluster.
-  KubernetesDashboardResponse({
+  const KubernetesDashboardResponse({
     required this.disabled,
   });
 

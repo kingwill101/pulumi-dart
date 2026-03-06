@@ -47,7 +47,7 @@ class GetOrganizationResult {
   /// [nonMasterAccounts] List of organization accounts excluding the master account. For a list including the master account, see the `accounts` attribute. All elements have these attributes:
   /// [returnOrganizationOnly] Optional.
   /// [roots] List of organization roots. All elements have these attributes:
-  GetOrganizationResult({
+  const GetOrganizationResult({
     required this.accounts,
     required this.arn,
     required this.awsServiceAccessPrincipals,

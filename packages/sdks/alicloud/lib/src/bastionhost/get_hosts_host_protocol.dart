@@ -14,7 +14,7 @@ class GetHostsHostProtocol {
   /// [hostFingerPrint] Host fingerprint information, it is possible to uniquely identify a host.
   /// [port] Host the service port of the RDS.
   /// [protocolName] The host uses the protocol name.
-  GetHostsHostProtocol({
+  const GetHostsHostProtocol({
     required this.hostFingerPrint,
     required this.port,
     required this.protocolName,

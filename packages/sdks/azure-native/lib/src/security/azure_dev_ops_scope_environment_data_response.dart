@@ -10,7 +10,7 @@ class AzureDevOpsScopeEnvironmentDataResponse {
 
   /// Creates a new [AzureDevOpsScopeEnvironmentDataResponse].
   /// [environmentType] The type of the environment data.
-  AzureDevOpsScopeEnvironmentDataResponse({
+  const AzureDevOpsScopeEnvironmentDataResponse({
     required this.environmentType,
   });
 

@@ -17,7 +17,7 @@ class ServiceRegistryPropertiesResponse {
   /// [instances] Collection of instances belong to Service Registry.
   /// [provisioningState] State of the Service Registry.
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
-  ServiceRegistryPropertiesResponse({
+  const ServiceRegistryPropertiesResponse({
     required this.instances,
     required this.provisioningState,
     required this.resourceRequests,

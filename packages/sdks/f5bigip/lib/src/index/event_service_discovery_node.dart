@@ -14,7 +14,7 @@ class EventServiceDiscoveryNode {
   /// [id] name of node
   /// [ip] ip of nonde
   /// [port] port
-  EventServiceDiscoveryNode({
+  const EventServiceDiscoveryNode({
     this.id,
     this.ip,
     this.port,

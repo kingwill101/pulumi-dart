@@ -12,7 +12,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappin
   /// Creates a new [ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings].
   /// [multiMeasureAttributeMappings] Attribute mappings to be used for mapping query results to ingest data for multi-measure attributes. See above.
   /// [targetMultiMeasureName] Name of the target multi-measure name in the derived table. This input is required when `measure_name_column` is not provided. If `measure_name_column` is provided, then the value from that column will be used as the multi-measure name.
-  ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings({
+  const ScheduledQueryTargetConfigurationTimestreamConfigurationMultiMeasureMappings({
     required this.multiMeasureAttributeMappings,
     this.targetMultiMeasureName,
   });

@@ -9,7 +9,7 @@ class GetTablePointInTimeRecovery {
   /// Creates a new [GetTablePointInTimeRecovery].
   /// [enabled] Required.
   /// [recoveryPeriodInDays] Required.
-  GetTablePointInTimeRecovery({
+  const GetTablePointInTimeRecovery({
     required this.enabled,
     required this.recoveryPeriodInDays,
   });

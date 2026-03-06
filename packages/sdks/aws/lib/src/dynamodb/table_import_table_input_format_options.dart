@@ -9,7 +9,7 @@ class TableImportTableInputFormatOptions {
 
   /// Creates a new [TableImportTableInputFormatOptions].
   /// [csv] This block contains the processing options for the CSV file being imported:
-  TableImportTableInputFormatOptions({
+  const TableImportTableInputFormatOptions({
     this.csv,
   });
 

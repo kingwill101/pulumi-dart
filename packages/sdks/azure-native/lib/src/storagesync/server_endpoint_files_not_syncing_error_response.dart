@@ -15,7 +15,7 @@ class ServerEndpointFilesNotSyncingErrorResponse {
   /// [errorCode] Error code (HResult)
   /// [persistentCount] Count of persistent files not syncing with the specified error code
   /// [transientCount] Count of transient files not syncing with the specified error code
-  ServerEndpointFilesNotSyncingErrorResponse({
+  const ServerEndpointFilesNotSyncingErrorResponse({
     required this.errorCode,
     required this.persistentCount,
     required this.transientCount,

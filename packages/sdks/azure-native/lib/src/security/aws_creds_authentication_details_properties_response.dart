@@ -25,7 +25,7 @@ class AwsCredsAuthenticationDetailsPropertiesResponse {
   /// [awsAccessKeyId] Public key element of the AWS credential object (write only)
   /// [awsSecretAccessKey] Secret key element of the AWS credential object (write only)
   /// [grantedPermissions] The permissions detected in the cloud account.
-  AwsCredsAuthenticationDetailsPropertiesResponse({
+  const AwsCredsAuthenticationDetailsPropertiesResponse({
     required this.accountId,
     required this.authenticationProvisioningState,
     required this.authenticationType,

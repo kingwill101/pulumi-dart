@@ -15,7 +15,7 @@ class GetSecurityActionArgs {
   /// [environmentId] Required.
   /// [organizationId] Required.
   /// [securityActionId] Required.
-  GetSecurityActionArgs({
+  const GetSecurityActionArgs({
     required this.environmentId,
     required this.organizationId,
     required this.securityActionId,

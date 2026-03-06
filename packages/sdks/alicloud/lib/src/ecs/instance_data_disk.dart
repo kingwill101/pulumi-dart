@@ -54,7 +54,7 @@ class InstanceDataDisk {
   /// [provisionedIops] The provisioned read/write IOPS of the ESSD AutoPL disk to use as the data disk.
   /// [size] The size of the data disk.
   /// [snapshotId] The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-  InstanceDataDisk({
+  const InstanceDataDisk({
     this.autoSnapshotPolicyId,
     this.burstingEnabled,
     this.category,

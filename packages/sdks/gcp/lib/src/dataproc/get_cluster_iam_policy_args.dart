@@ -16,7 +16,7 @@ class GetClusterIamPolicyArgs {
   /// [cluster] The name or relative resource id of the cluster to manage IAM policies for.
   /// [project] Optional.
   /// [region] Optional.
-  GetClusterIamPolicyArgs({
+  const GetClusterIamPolicyArgs({
     required this.cluster,
     this.project,
     this.region,

@@ -21,7 +21,7 @@ class AppVersionSnapshotAppClientCertificateSetting {
   /// [passphrase] (Output)
   /// [privateKey] (Output)
   /// [tlsCertificate] (Output)
-  AppVersionSnapshotAppClientCertificateSetting({
+  const AppVersionSnapshotAppClientCertificateSetting({
     this.passphrase,
     this.privateKey,
     this.tlsCertificate,

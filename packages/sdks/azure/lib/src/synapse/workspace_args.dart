@@ -73,7 +73,7 @@ class WorkspaceArgs {
   /// [sqlIdentityControlEnabled] Are pipelines (running as workspace's system assigned identity) allowed to access SQL pools?
   /// [storageDataLakeGen2FilesystemId] Specifies the ID of storage data lake gen2 filesystem resource. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Synapse Workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.azureDevopsRepo,
     this.azureadAuthenticationOnly,
     this.computeSubnetId,

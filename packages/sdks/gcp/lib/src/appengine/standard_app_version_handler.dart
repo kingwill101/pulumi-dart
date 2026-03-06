@@ -36,7 +36,7 @@ class StandardAppVersionHandler {
   /// [securityLevel] Security (HTTPS) enforcement for this URL.
   /// [staticFiles] Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
   /// [urlRegex] URL prefix. Uses regular expression syntax, which means regexp special characters must be escaped, but should not contain groupings.
-  StandardAppVersionHandler({
+  const StandardAppVersionHandler({
     this.authFailAction,
     this.login,
     this.redirectHttpResponseCode,

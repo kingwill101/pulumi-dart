@@ -11,7 +11,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag {
   /// Creates a new [ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag].
   /// [key] The tag key for this scaling rule specific metrics trigger.
   /// [value] The tag value for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag({
+  const ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerConditionTag({
     required this.key,
     this.value,
   });

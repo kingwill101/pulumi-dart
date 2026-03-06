@@ -24,7 +24,7 @@ class GetPrefixListsArgs {
   /// [nameRegex] A regex string to filter results by Prefix List name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [prefixListName] The name of the prefix list.
-  GetPrefixListsArgs({
+  const GetPrefixListsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

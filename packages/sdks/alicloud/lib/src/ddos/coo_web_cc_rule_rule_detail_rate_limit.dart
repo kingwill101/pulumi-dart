@@ -20,7 +20,7 @@ class CooWebCcRuleRuleDetailRateLimit {
   /// [target] Statistic source. Valid values:
   /// [threshold] The trigger threshold.
   /// [ttl] Block duration. Unit: seconds.
-  CooWebCcRuleRuleDetailRateLimit({
+  const CooWebCcRuleRuleDetailRateLimit({
     required this.interval,
     this.subKey,
     required this.target,

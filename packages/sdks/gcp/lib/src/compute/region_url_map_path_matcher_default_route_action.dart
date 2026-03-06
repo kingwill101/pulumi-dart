@@ -61,7 +61,7 @@ class RegionUrlMapPathMatcherDefaultRouteAction {
   /// [timeout] Specifies the timeout for the selected route. Timeout is computed from the time the request has been fully processed (known as end-of-stream) up until the response has been processed. Timeout includes all retries.
   /// [urlRewrite] The spec to modify the URL of the request, before forwarding the request to the matched service.
   /// [weightedBackendServices] A list of weighted backend services to send traffic to when a route match occurs. The weights determine the fraction of traffic that flows to their corresponding backend service. If all traffic needs to go to a single backend service, there must be one weightedBackendService with weight set to a non-zero number.
-  RegionUrlMapPathMatcherDefaultRouteAction({
+  const RegionUrlMapPathMatcherDefaultRouteAction({
     this.corsPolicy,
     this.faultInjectionPolicy,
     this.maxStreamDuration,

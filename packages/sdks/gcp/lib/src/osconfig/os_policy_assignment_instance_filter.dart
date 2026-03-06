@@ -29,7 +29,7 @@ class OsPolicyAssignmentInstanceFilter {
   /// [exclusionLabels] List of label sets used for VM exclusion. If
   /// [inclusionLabels] List of label sets used for VM inclusion. If
   /// [inventories] List of inventories to select VMs. A VM is
-  OsPolicyAssignmentInstanceFilter({
+  const OsPolicyAssignmentInstanceFilter({
     this.all,
     this.exclusionLabels,
     this.inclusionLabels,

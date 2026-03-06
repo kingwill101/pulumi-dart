@@ -41,7 +41,7 @@ class SecurityProfileGroupArgs {
   /// [parent] The name of the parent this security profile group belongs to.
   /// [threatPreventionProfile] Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
   /// [urlFilteringProfile] Reference to a SecurityProfile with the URL filtering configuration for the SecurityProfileGroup.
-  SecurityProfileGroupArgs({
+  const SecurityProfileGroupArgs({
     this.customInterceptProfile,
     this.customMirroringProfile,
     this.description,

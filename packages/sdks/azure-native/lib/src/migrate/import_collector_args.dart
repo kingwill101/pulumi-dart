@@ -23,7 +23,7 @@ class ImportCollectorArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [properties] Optional.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  ImportCollectorArgs({
+  const ImportCollectorArgs({
     this.eTag,
     this.importCollectorName,
     required this.projectName,

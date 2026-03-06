@@ -26,7 +26,7 @@ class BackendServiceFabricCluster {
   /// [maxPartitionResolutionRetries] The maximum number of retries when attempting resolve the partition.
   /// [serverCertificateThumbprints] A list of thumbprints of the server certificates of the Service Fabric cluster.
   /// [serverX509Names] One or more `server_x509_name` blocks as documented below.
-  BackendServiceFabricCluster({
+  const BackendServiceFabricCluster({
     this.clientCertificateId,
     this.clientCertificateThumbprint,
     required this.managementEndpoints,

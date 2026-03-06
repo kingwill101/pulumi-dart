@@ -10,7 +10,7 @@ class Metadata {
 
   /// Creates a new [Metadata].
   /// [items] Array of key/value pairs. The total size of all keys and values must be less than 512 KB.
-  Metadata({
+  const Metadata({
     this.items,
   });
 

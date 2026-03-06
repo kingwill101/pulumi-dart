@@ -9,7 +9,7 @@ class GetVirtualGatewaySpecLoggingAccessLogFileFormatJson {
   /// Creates a new [GetVirtualGatewaySpecLoggingAccessLogFileFormatJson].
   /// [key] Required.
   /// [value] Required.
-  GetVirtualGatewaySpecLoggingAccessLogFileFormatJson({
+  const GetVirtualGatewaySpecLoggingAccessLogFileFormatJson({
     required this.key,
     required this.value,
   });

@@ -35,7 +35,7 @@ class LogMetaArgs {
   /// Creates a new [LogMetaArgs].
   /// [logMetaName] The name of the exclusive Logstore where logs are stored. Value:
   /// [status] The status of the resource
-  LogMetaArgs({
+  const LogMetaArgs({
     required this.logMetaName,
     required this.status,
   });

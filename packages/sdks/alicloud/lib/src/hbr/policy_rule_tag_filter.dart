@@ -14,7 +14,7 @@ class PolicyRuleTagFilter {
   /// [key] The tag key.
   /// [operator] Tag matching rules, support EQUAL: Match tag key and tag value. NOT: matches the tag key, but does NOT match the tag value.
   /// [value] The label value, which is empty and represents any value.
-  PolicyRuleTagFilter({
+  const PolicyRuleTagFilter({
     this.key,
     this.operator,
     this.value,

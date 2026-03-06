@@ -36,7 +36,7 @@ class GetGenaiKnowledgeBaseResult {
   /// [updatedAt] Required.
   /// [userId] Optional.
   /// [uuid] Optional.
-  GetGenaiKnowledgeBaseResult({
+  const GetGenaiKnowledgeBaseResult({
     this.addedToAgentAt,
     required this.createdAt,
     this.databaseId,

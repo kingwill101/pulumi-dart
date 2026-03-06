@@ -8,7 +8,7 @@ class DataSourceParametersAmazonElasticsearch {
 
   /// Creates a new [DataSourceParametersAmazonElasticsearch].
   /// [domain] The OpenSearch domain.
-  DataSourceParametersAmazonElasticsearch({
+  const DataSourceParametersAmazonElasticsearch({
     required this.domain,
   });
 

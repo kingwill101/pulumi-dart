@@ -9,7 +9,7 @@ class ConfigChangeStatusEnumValueResponse {
 
   /// Creates a new [ConfigChangeStatusEnumValueResponse].
   /// [value] Property value
-  ConfigChangeStatusEnumValueResponse({
+  const ConfigChangeStatusEnumValueResponse({
     this.value,
   });
 

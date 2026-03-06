@@ -22,7 +22,7 @@ class PerformanceResponse {
   /// [expectedValueRange] Max and Min Threshold values for the metric
   /// [metricName] Name of the Metric examples:  Disk, IOPs, CPU, GPU, Memory, details can be found from /impactCategories API
   /// [unit] Unit of the metric ex: Bytes, Percentage, Count, Seconds, Milliseconds, Bytes/Second, Count/Second, etc.., Other
-  PerformanceResponse({
+  const PerformanceResponse({
     this.actual,
     this.expected,
     this.expectedValueRange,

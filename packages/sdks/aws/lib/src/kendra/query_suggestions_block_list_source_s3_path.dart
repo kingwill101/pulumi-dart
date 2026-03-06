@@ -13,7 +13,7 @@ class QuerySuggestionsBlockListSourceS3Path {
   /// Creates a new [QuerySuggestionsBlockListSourceS3Path].
   /// [bucket] Name of the S3 bucket that contains the file.
   /// [key] Name of the file.
-  QuerySuggestionsBlockListSourceS3Path({
+  const QuerySuggestionsBlockListSourceS3Path({
     required this.bucket,
     required this.key,
   });

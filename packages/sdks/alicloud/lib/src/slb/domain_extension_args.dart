@@ -24,7 +24,7 @@ class DomainExtensionArgs {
   /// [frontendPort] The frontend port used by the HTTPS listener of the SLB instance. Valid values: 1–65535.
   /// [loadBalancerId] The ID of the SLB instance.
   /// [serverCertificateId] The ID of the certificate used by the domain name.
-  DomainExtensionArgs({
+  const DomainExtensionArgs({
     this.deleteProtectionValidation,
     required this.domain,
     required this.frontendPort,

@@ -15,7 +15,7 @@ class GetEnvironmentTypeArgs {
   /// Creates a new [GetEnvironmentTypeArgs].
   /// [devCenterId] The ID of the associated Dev Center.
   /// [name] The name of this Dev Center Environment Type.
-  GetEnvironmentTypeArgs({
+  const GetEnvironmentTypeArgs({
     required this.devCenterId,
     required this.name,
   });

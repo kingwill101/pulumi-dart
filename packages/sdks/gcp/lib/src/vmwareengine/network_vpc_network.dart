@@ -14,7 +14,7 @@ class NetworkVpcNetwork {
   /// Creates a new [NetworkVpcNetwork].
   /// [network] (Output)
   /// [type] VMware Engine network type.
-  NetworkVpcNetwork({
+  const NetworkVpcNetwork({
     this.network,
     this.type,
   });

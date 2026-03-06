@@ -9,7 +9,7 @@ class ConvertRowIdToColumn {
 
   /// Creates a new [ConvertRowIdToColumn].
   /// [onlyIfNoPrimaryKey] Only work on tables without primary key defined
-  ConvertRowIdToColumn({
+  const ConvertRowIdToColumn({
     required this.onlyIfNoPrimaryKey,
   });
 

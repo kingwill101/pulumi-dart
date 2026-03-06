@@ -26,7 +26,7 @@ class GetLoadBalancerTypeResult {
   /// [maxServices] Maximum number of services for the Load Balancer of this type.
   /// [maxTargets] Maximum number of targets for the Load Balancer of this type.
   /// [name] Name of the Load Balancer Type.
-  GetLoadBalancerTypeResult({
+  const GetLoadBalancerTypeResult({
     required this.description,
     required this.id,
     required this.maxAssignedCertificates,

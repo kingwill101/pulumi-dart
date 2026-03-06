@@ -24,7 +24,7 @@ class OracleProfileDatastreamV1alpha1 {
   /// [password] Password for the Oracle connection.
   /// [port] Port for the Oracle connection, default value is 1521.
   /// [username] Username for the Oracle connection.
-  OracleProfileDatastreamV1alpha1({
+  const OracleProfileDatastreamV1alpha1({
     this.connectionAttributes,
     required this.databaseService,
     required this.hostname,

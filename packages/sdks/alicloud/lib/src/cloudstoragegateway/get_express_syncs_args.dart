@@ -18,7 +18,7 @@ class GetExpressSyncsArgs {
   /// [ids] A list of Express Sync IDs.
   /// [nameRegex] A regex string to filter results by Express Sync name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetExpressSyncsArgs({
+  const GetExpressSyncsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

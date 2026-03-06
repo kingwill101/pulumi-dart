@@ -8,7 +8,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSucce
 
   /// Creates a new [CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess({
+  const CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageConversationSuccess({
     this.metadata,
   });
 

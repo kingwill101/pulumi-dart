@@ -8,7 +8,7 @@ class WorkflowTemplateEncryptionConfig {
 
   /// Creates a new [WorkflowTemplateEncryptionConfig].
   /// [kmsKey] Optional. The Cloud KMS key name to use for encryption.
-  WorkflowTemplateEncryptionConfig({
+  const WorkflowTemplateEncryptionConfig({
     this.kmsKey,
   });
 

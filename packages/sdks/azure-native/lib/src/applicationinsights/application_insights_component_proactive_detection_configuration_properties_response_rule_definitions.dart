@@ -30,7 +30,7 @@ class ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesRespo
   /// [isInPreview] A flag indicating whether the rule is in preview
   /// [name] The rule name
   /// [supportsEmailNotifications] A flag indicating whether email notifications are supported for detections for this rule
-  ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions({
+  const ApplicationInsightsComponentProactiveDetectionConfigurationPropertiesResponseRuleDefinitions({
     this.description,
     this.displayName,
     this.helpUrl,

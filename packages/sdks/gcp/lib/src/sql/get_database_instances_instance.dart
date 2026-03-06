@@ -108,7 +108,7 @@ class GetDatabaseInstancesInstance {
   /// [serverCaCerts] Required.
   /// [serviceAccountEmailAddress] The service account email address assigned to the instance.
   /// [settings] The settings to use for the database. The configuration is detailed below.
-  GetDatabaseInstancesInstance({
+  const GetDatabaseInstancesInstance({
     required this.availableMaintenanceVersions,
     required this.backupdrBackup,
     required this.clones,

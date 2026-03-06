@@ -8,7 +8,7 @@ class NodeGroupResourceAutoscalingGroup {
 
   /// Creates a new [NodeGroupResourceAutoscalingGroup].
   /// [name] Name of the AutoScaling Group.
-  NodeGroupResourceAutoscalingGroup({
+  const NodeGroupResourceAutoscalingGroup({
     this.name,
   });
 

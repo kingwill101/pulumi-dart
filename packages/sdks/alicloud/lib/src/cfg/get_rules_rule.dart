@@ -87,7 +87,7 @@ class GetRulesRule {
   /// [status] The status of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
   /// [tagKeyScope] (Available since v1.124.1) The scope of tag key.
   /// [tagValueScope] (Available since v1.124.1) The scope of tag value.
-  GetRulesRule({
+  const GetRulesRule({
     required this.accountId,
     required this.compliancePackId,
     required this.compliances,

@@ -13,7 +13,7 @@ class ResourceMetricStatus {
   /// Creates a new [ResourceMetricStatus].
   /// [current] current contains the current value for the given metric
   /// [name] name is the name of the resource in question.
-  ResourceMetricStatus({
+  const ResourceMetricStatus({
     required this.current,
     required this.name,
   });

@@ -33,7 +33,7 @@ class TableArgs {
   /// [schema] The schema of the table. See Schema below for more details.
   /// [tableName] The name of the Timestream table.
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  TableArgs({
+  const TableArgs({
     required this.databaseName,
     this.magneticStoreWriteProperties,
     this.region,

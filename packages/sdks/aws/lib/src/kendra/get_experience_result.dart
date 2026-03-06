@@ -47,7 +47,7 @@ class GetExperienceResult {
   /// [roleArn] Shows the ARN of a role with permission to access `Query` API, `QuerySuggestions` API, `SubmitFeedback` API, and AWS SSO that stores your user and group information.
   /// [status] Current processing status of your Amazon Kendra Experience. When the status is `ACTIVE`, your Amazon Kendra Experience is ready to use. When the status is `FAILED`, the `error_message` field contains the reason that this failed.
   /// [updatedAt] Date and time that the Experience was last updated.
-  GetExperienceResult({
+  const GetExperienceResult({
     required this.arn,
     required this.configurations,
     required this.createdAt,

@@ -91,7 +91,7 @@ class RolloutKindState {
   /// [unitKind] UnitKind that this rollout kind corresponds to. Rollouts stemming from this
   /// [updateTime] The timestamp when the resource was last updated. Any
   /// [updateUnitKindStrategy] The config for updating the unit kind. By default, the unit kind will be
-  RolloutKindState({
+  const RolloutKindState({
     this.annotations,
     this.createTime,
     this.effectiveAnnotations,

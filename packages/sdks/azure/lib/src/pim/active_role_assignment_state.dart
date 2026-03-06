@@ -29,7 +29,7 @@ class ActiveRoleAssignmentState {
   /// [schedule] A `schedule` block as defined below. Changing this forces a new resource to be created.
   /// [scope] The scope for this role assignment, should be a valid resource ID. Changing this forces a new resource to be created.
   /// [ticket] A `ticket` block as defined below. Changing this forces a new resource to be created.
-  ActiveRoleAssignmentState({
+  const ActiveRoleAssignmentState({
     this.justification,
     this.principalId,
     this.principalType,

@@ -13,7 +13,7 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase {
   /// Creates a new [StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase].
   /// [database] Database name.
   /// [mysqlTables] Tables in the database.
-  StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase({
+  const StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase({
     required this.database,
     this.mysqlTables,
   });

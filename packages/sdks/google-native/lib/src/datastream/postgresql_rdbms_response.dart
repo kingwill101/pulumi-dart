@@ -10,7 +10,7 @@ class PostgresqlRdbmsResponse {
 
   /// Creates a new [PostgresqlRdbmsResponse].
   /// [postgresqlSchemas] PostgreSQL schemas in the database server.
-  PostgresqlRdbmsResponse({
+  const PostgresqlRdbmsResponse({
     required this.postgresqlSchemas,
   });
 

@@ -12,7 +12,7 @@ class AkriConnectorTemplateAioMetadata {
   /// Creates a new [AkriConnectorTemplateAioMetadata].
   /// [aioMaxVersion] The maximum version of AIO required for the connector.
   /// [aioMinVersion] The minimum version of AIO required for the connector.
-  AkriConnectorTemplateAioMetadata({
+  const AkriConnectorTemplateAioMetadata({
     this.aioMaxVersion,
     this.aioMinVersion,
   });

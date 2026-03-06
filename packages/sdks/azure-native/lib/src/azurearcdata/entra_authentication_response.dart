@@ -12,7 +12,7 @@ class EntraAuthenticationResponse {
   /// Creates a new [EntraAuthenticationResponse].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity.
   /// [identityType] The method used for Entra authentication
-  EntraAuthenticationResponse({
+  const EntraAuthenticationResponse({
     this.clientId,
     this.identityType,
   });

@@ -11,7 +11,7 @@ class DistributionTenantParameter {
   /// Creates a new [DistributionTenantParameter].
   /// [name] Name of the distribution tenant.
   /// [value] Value of the parameter.
-  DistributionTenantParameter({
+  const DistributionTenantParameter({
     required this.name,
     required this.value,
   });

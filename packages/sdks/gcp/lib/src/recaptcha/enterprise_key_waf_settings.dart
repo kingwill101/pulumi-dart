@@ -11,7 +11,7 @@ class EnterpriseKeyWafSettings {
   /// Creates a new [EnterpriseKeyWafSettings].
   /// [wafFeature] Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
   /// [wafService] The WAF service that uses this key. Possible values: CA, FASTLY
-  EnterpriseKeyWafSettings({
+  const EnterpriseKeyWafSettings({
     required this.wafFeature,
     required this.wafService,
   });

@@ -26,7 +26,7 @@ class MongoDBCollectionResource {
   /// [indexes] List of index keys
   /// [restoreParameters] Parameters to indicate the information about the restore
   /// [shardKey] A key-value pair of shard keys to be applied for the request.
-  MongoDBCollectionResource({
+  const MongoDBCollectionResource({
     this.analyticalStorageTtl,
     this.createMode,
     required this.id,

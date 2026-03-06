@@ -8,7 +8,7 @@ class AzureClusterAuthorizationAdminUser {
 
   /// Creates a new [AzureClusterAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  AzureClusterAuthorizationAdminUser({
+  const AzureClusterAuthorizationAdminUser({
     required this.username,
   });
 

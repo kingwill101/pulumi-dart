@@ -49,7 +49,7 @@ class GetAcceleratorsAccelerator {
   /// [secondDnsName] CNAME of the Global Acceleration Linkage DDoS High Defense Instance.
   /// [spec] The instance type of the GA instance.
   /// [status] The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
-  GetAcceleratorsAccelerator({
+  const GetAcceleratorsAccelerator({
     required this.acceleratorId,
     required this.acceleratorName,
     required this.basicBandwidthPackages,

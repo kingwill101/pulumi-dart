@@ -77,7 +77,7 @@ class OssExportSinkConfigurationSink {
   /// [roleArn] The ARN of the RAM role that is used to write data to OSS. Example value: acs:ram::xxxxxxx
   /// [suffix] The suffix of the OSS object.
   /// [timeZone] The time zone. Example value: +0800
-  OssExportSinkConfigurationSink({
+  const OssExportSinkConfigurationSink({
     required this.bucket,
     required this.bufferInterval,
     required this.bufferSize,

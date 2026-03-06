@@ -28,7 +28,7 @@ class GetTemplatesResult {
   /// [tags] Optional.
   /// [templateName] Optional.
   /// [templates] Required.
-  GetTemplatesResult({
+  const GetTemplatesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

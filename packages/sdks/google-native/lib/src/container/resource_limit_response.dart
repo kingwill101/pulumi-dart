@@ -15,7 +15,7 @@ class ResourceLimitResponse {
   /// [maximum] Maximum amount of the resource in the cluster.
   /// [minimum] Minimum amount of the resource in the cluster.
   /// [resourceType] Resource name "cpu", "memory" or gpu-specific string.
-  ResourceLimitResponse({
+  const ResourceLimitResponse({
     required this.maximum,
     required this.minimum,
     required this.resourceType,

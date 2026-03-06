@@ -30,7 +30,7 @@ class GetRegistryEnterpriseReposResult {
   /// [namespace] The name of the namespace to which the Repository belongs.
   /// [outputFile] Optional.
   /// [repos] A list of Repositories. Each element contains the following attributes:
-  GetRegistryEnterpriseReposResult({
+  const GetRegistryEnterpriseReposResult({
     this.enableDetails,
     required this.id,
     required this.ids,

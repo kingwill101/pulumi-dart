@@ -16,7 +16,7 @@ class GetSubscriptionIamPolicyArgs {
   /// Creates a new [GetSubscriptionIamPolicyArgs].
   /// [project] The project in which the resource belongs. If it
   /// [subscription] The subscription name or id to bind to attach IAM policy to.
-  GetSubscriptionIamPolicyArgs({
+  const GetSubscriptionIamPolicyArgs({
     this.project,
     required this.subscription,
   });

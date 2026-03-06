@@ -25,7 +25,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel {
   /// [advancedDataProtectionMetrics] Advanced data-protection metrics for S3 Storage Lens. See Advanced Data-Protection Metrics above for more details.
   /// [detailedStatusCodeMetrics] Detailed status code metrics for S3 Storage Lens. See Detailed Status Code Metrics above for more details.
   /// [prefixLevel] Prefix-level metrics for S3 Storage Lens. See Prefix Level below for more details.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevel({
     this.activityMetrics,
     this.advancedCostOptimizationMetrics,
     this.advancedDataProtectionMetrics,

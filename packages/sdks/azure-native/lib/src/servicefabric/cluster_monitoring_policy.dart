@@ -21,7 +21,7 @@ class ClusterMonitoringPolicy {
   /// [healthCheckWaitDuration] The length of time to wait after completing an upgrade domain before performing health checks. The duration can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
   /// [upgradeDomainTimeout] The amount of time each upgrade domain has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
   /// [upgradeTimeout] The amount of time the overall upgrade has to complete before the upgrade rolls back. The timeout can be in either hh:mm:ss or in d.hh:mm:ss.ms format.
-  ClusterMonitoringPolicy({
+  const ClusterMonitoringPolicy({
     required this.healthCheckRetryTimeout,
     required this.healthCheckStableDuration,
     required this.healthCheckWaitDuration,

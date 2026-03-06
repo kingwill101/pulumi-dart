@@ -18,7 +18,7 @@ class GetIntegrationRuntimeConnectionInfoArgs {
   /// [factoryName] The factory name.
   /// [integrationRuntimeName] The integration runtime name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationRuntimeConnectionInfoArgs({
+  const GetIntegrationRuntimeConnectionInfoArgs({
     required this.factoryName,
     required this.integrationRuntimeName,
     required this.resourceGroupName,

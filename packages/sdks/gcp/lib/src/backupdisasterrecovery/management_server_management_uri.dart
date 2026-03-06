@@ -13,7 +13,7 @@ class ManagementServerManagementUri {
   /// Creates a new [ManagementServerManagementUri].
   /// [api] (Output)
   /// [webUi] (Output)
-  ManagementServerManagementUri({
+  const ManagementServerManagementUri({
     this.api,
     this.webUi,
   });

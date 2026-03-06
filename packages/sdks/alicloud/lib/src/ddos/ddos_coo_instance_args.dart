@@ -60,7 +60,7 @@ class DdosCooInstanceArgs {
   /// [productType] The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
   /// [serviceBandwidth] Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade. **NOTE:** `service_bandwidth` is valid only when `product_type` is set to `ddoscoo` or `ddoscoo_intl`.
   /// [tags] A mapping of tags to assign to the resource.
-  DdosCooInstanceArgs({
+  const DdosCooInstanceArgs({
     this.addressType,
     this.bandwidth,
     this.bandwidthMode,

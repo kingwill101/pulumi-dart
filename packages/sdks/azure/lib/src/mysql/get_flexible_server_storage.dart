@@ -17,7 +17,7 @@ class GetFlexibleServerStorage {
   /// [ioScalingEnabled] Should IOPS be scaled automatically?
   /// [iops] The storage IOPS of the MySQL Flexible Server.
   /// [sizeGb] The max storage allowed for the MySQL Flexible Server.
-  GetFlexibleServerStorage({
+  const GetFlexibleServerStorage({
     required this.autoGrowEnabled,
     required this.ioScalingEnabled,
     required this.iops,

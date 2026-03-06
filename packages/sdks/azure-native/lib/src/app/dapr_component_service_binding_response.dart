@@ -16,7 +16,7 @@ class DaprComponentServiceBindingResponse {
   /// [metadata] Service bind metadata
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  DaprComponentServiceBindingResponse({
+  const DaprComponentServiceBindingResponse({
     this.metadata,
     this.name,
     this.serviceId,

@@ -20,7 +20,7 @@ class GetNamespaceServicedirectoryV1beta1Result {
   /// [name] Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`.
   /// [uid] A globally unique identifier (in UUID4 format) for this namespace.
   /// [updateTime] The timestamp when the namespace was last updated.
-  GetNamespaceServicedirectoryV1beta1Result({
+  const GetNamespaceServicedirectoryV1beta1Result({
     required this.createTime,
     required this.labels,
     required this.name,

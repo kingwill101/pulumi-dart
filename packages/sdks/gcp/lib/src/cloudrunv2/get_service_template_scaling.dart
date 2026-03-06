@@ -12,7 +12,7 @@ class GetServiceTemplateScaling {
   /// Creates a new [GetServiceTemplateScaling].
   /// [maxInstanceCount] Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
   /// [minInstanceCount] Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
-  GetServiceTemplateScaling({
+  const GetServiceTemplateScaling({
     required this.maxInstanceCount,
     required this.minInstanceCount,
   });

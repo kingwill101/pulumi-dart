@@ -10,7 +10,7 @@ class GetMeshIstioServiceTelemetry {
 
   /// Creates a new [GetMeshIstioServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetMeshIstioServiceTelemetry({
+  const GetMeshIstioServiceTelemetry({
     required this.resourceName,
   });
 

@@ -55,7 +55,7 @@ class WorkgroupArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trackName] The name of the track for the workgroup. If it is `current`, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is `trailing`, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
   /// [workgroupName] The name of the workgroup.
-  WorkgroupArgs({
+  const WorkgroupArgs({
     this.baseCapacity,
     this.configParameters,
     this.enhancedVpcRouting,

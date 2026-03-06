@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbLogBufferSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbLogBufferSize({
+  const GetDatabaseMysqlConfigMysqlInnodbLogBufferSize({
     required this.description,
     required this.example,
     required this.maximum,

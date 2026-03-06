@@ -24,7 +24,7 @@ class ExplicitProxyResponse {
   /// [httpsPort] Port number for explicit proxy https protocol, cannot be greater than 64000.
   /// [pacFile] SAS URL for PAC file.
   /// [pacFilePort] Port number for firewall to serve PAC file.
-  ExplicitProxyResponse({
+  const ExplicitProxyResponse({
     this.enableExplicitProxy,
     this.enablePacFile,
     this.httpPort,

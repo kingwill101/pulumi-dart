@@ -28,7 +28,7 @@ class GetClusterResult {
   /// [name] The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
   /// [serveNodes] The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
   /// [state] The current state of the cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.clusterConfig,
     required this.defaultStorageType,
     required this.encryptionConfig,

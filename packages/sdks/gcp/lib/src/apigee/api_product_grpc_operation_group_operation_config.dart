@@ -26,7 +26,7 @@ class ApiProductGrpcOperationGroupOperationConfig {
   /// [methods] List of unqualified gRPC method names for the proxy to which quota will be applied. If this field is empty, the Quota will apply to all operations on the gRPC service defined on the proxy.
   /// [quota] Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done.
   /// [service] Required. gRPC Service name associated to be associated with the API proxy, on which quota rules can be applied upon.
-  ApiProductGrpcOperationGroupOperationConfig({
+  const ApiProductGrpcOperationGroupOperationConfig({
     this.apiSource,
     this.attributes,
     this.methods,

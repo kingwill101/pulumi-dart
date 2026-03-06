@@ -13,7 +13,7 @@ class GoogleCloudDataplexV1Trigger {
   /// Creates a new [GoogleCloudDataplexV1Trigger].
   /// [onDemand] The scan runs once via RunDataScan API.
   /// [schedule] The scan is scheduled to run periodically.
-  GoogleCloudDataplexV1Trigger({
+  const GoogleCloudDataplexV1Trigger({
     this.onDemand,
     this.schedule,
   });

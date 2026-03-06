@@ -79,7 +79,7 @@ class AlertPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [severity] The severity of an alert policy indicates how important incidents generated
   /// [userLabels] This field is intended to be used for organizing and identifying the AlertPolicy
-  AlertPolicyState({
+  const AlertPolicyState({
     this.alertStrategy,
     this.combiner,
     this.conditions,

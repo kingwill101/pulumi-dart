@@ -21,7 +21,7 @@ class GetSnapshotIdsResult {
   /// [owners] Optional.
   /// [region] Required.
   /// [restorableByUserIds] Optional.
-  GetSnapshotIdsResult({
+  const GetSnapshotIdsResult({
     this.filters,
     required this.id,
     required this.ids,

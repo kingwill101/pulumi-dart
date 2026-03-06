@@ -8,7 +8,7 @@ class ExperienceConfigurationUserIdentityConfiguration {
 
   /// Creates a new [ExperienceConfigurationUserIdentityConfiguration].
   /// [identityAttributeName] The AWS SSO field name that contains the identifiers of your users, such as their emails.
-  ExperienceConfigurationUserIdentityConfiguration({
+  const ExperienceConfigurationUserIdentityConfiguration({
     required this.identityAttributeName,
   });
 

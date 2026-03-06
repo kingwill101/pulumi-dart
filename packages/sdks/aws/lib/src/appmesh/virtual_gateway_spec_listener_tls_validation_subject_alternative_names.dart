@@ -9,7 +9,7 @@ class VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames {
 
   /// Creates a new [VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
-  VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames({
+  const VirtualGatewaySpecListenerTlsValidationSubjectAlternativeNames({
     required this.match,
   });
 

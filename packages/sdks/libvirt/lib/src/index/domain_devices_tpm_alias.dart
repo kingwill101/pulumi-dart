@@ -8,7 +8,7 @@ class DomainDevicesTpmAlias {
 
   /// Creates a new [DomainDevicesTpmAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesTpmAlias({
+  const DomainDevicesTpmAlias({
     required this.name,
   });
 

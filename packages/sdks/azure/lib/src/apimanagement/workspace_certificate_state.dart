@@ -37,7 +37,7 @@ class WorkspaceCertificateState {
   /// [subject] The subject name of the API Management Workspace Certificate.
   /// [thumbprint] The thumbprint of the API Management Workspace Certificate.
   /// [userAssignedIdentityClientId] Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
-  WorkspaceCertificateState({
+  const WorkspaceCertificateState({
     this.apiManagementWorkspaceId,
     this.certificateDataBase64,
     this.expiration,

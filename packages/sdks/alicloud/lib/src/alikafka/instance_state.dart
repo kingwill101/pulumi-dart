@@ -152,7 +152,7 @@ class InstanceState {
   /// [vswitchId] The ID of attaching vswitch to instance.
   /// [vswitchIds] The IDs of the vSwitches with which the instance is associated.
   /// [zoneId] The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
-  InstanceState({
+  const InstanceState({
     this.config,
     this.confluentConfig,
     this.defaultTopicPartitionNum,

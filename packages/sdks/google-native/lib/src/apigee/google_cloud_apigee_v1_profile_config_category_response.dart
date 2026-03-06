@@ -24,7 +24,7 @@ class GoogleCloudApigeeV1ProfileConfigCategoryResponse {
   /// [mediation] Checks to see if you have a mediation policy in place.
   /// [mtls] Checks to see if you have configured mTLS for the target server.
   /// [threat] Checks to see if you have a threat protection policy in place.
-  GoogleCloudApigeeV1ProfileConfigCategoryResponse({
+  const GoogleCloudApigeeV1ProfileConfigCategoryResponse({
     required this.abuse,
     required this.authorization,
     required this.cors,

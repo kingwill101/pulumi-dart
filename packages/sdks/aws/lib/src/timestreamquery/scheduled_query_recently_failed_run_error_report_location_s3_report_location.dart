@@ -11,7 +11,7 @@ class ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation {
   /// Creates a new [ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation].
   /// [bucketName] S3 bucket name.
   /// [objectKey] S3 key.
-  ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation({
+  const ScheduledQueryRecentlyFailedRunErrorReportLocationS3ReportLocation({
     this.bucketName,
     this.objectKey,
   });

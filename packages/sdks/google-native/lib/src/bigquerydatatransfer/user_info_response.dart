@@ -9,7 +9,7 @@ class UserInfoResponse {
 
   /// Creates a new [UserInfoResponse].
   /// [email] E-mail address of the user.
-  UserInfoResponse({
+  const UserInfoResponse({
     required this.email,
   });
 

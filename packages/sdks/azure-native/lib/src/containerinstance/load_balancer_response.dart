@@ -10,7 +10,7 @@ class LoadBalancerResponse {
 
   /// Creates a new [LoadBalancerResponse].
   /// [backendAddressPools] List of Load Balancer Backend Address Pools.
-  LoadBalancerResponse({
+  const LoadBalancerResponse({
     this.backendAddressPools,
   });
 

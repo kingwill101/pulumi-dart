@@ -9,7 +9,7 @@ class HealthCheckLogConfigComputeV1 {
 
   /// Creates a new [HealthCheckLogConfigComputeV1].
   /// [enable] Indicates whether or not to export logs. This is false by default, which means no health check logging will be done.
-  HealthCheckLogConfigComputeV1({
+  const HealthCheckLogConfigComputeV1({
     this.enable,
   });
 

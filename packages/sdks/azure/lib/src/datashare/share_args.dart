@@ -28,7 +28,7 @@ class ShareArgs {
   /// [name] The name which should be used for this Data Share. Changing this forces a new Data Share to be created.
   /// [snapshotSchedule] A `snapshot_schedule` block as defined below.
   /// [terms] The terms of the Data Share.
-  ShareArgs({
+  const ShareArgs({
     required this.accountId,
     this.description,
     required this.kind,

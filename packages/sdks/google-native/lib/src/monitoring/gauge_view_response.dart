@@ -12,7 +12,7 @@ class GaugeViewResponse {
   /// Creates a new [GaugeViewResponse].
   /// [lowerBound] The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
   /// [upperBound] The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
-  GaugeViewResponse({
+  const GaugeViewResponse({
     required this.lowerBound,
     required this.upperBound,
   });

@@ -106,7 +106,7 @@ class SubnetState {
   /// [tags] A set of string tags for the subnet.
   /// [tenantId] The owner of the subnet. Required if admin wants to
   /// [valueSpecs] Map of additional options.
-  SubnetState({
+  const SubnetState({
     this.allTags,
     this.allocationPools,
     this.cidr,

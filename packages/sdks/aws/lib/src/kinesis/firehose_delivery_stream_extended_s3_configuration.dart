@@ -55,7 +55,7 @@ class FirehoseDeliveryStreamExtendedS3Configuration {
   /// [roleArn] Required.
   /// [s3BackupConfiguration] The configuration for backup in Amazon S3. Required if `s3_backup_mode` is `Enabled`. Supports the same fields as `s3_configuration` object.
   /// [s3BackupMode] The Amazon S3 backup mode.  Valid values are `Disabled` and `Enabled`.  Default value is `Disabled`.
-  FirehoseDeliveryStreamExtendedS3Configuration({
+  const FirehoseDeliveryStreamExtendedS3Configuration({
     required this.bucketArn,
     this.bufferingInterval,
     this.bufferingSize,

@@ -15,7 +15,7 @@ class GetRegistryArgs {
   /// Creates a new [GetRegistryArgs].
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRegistryArgs({
+  const GetRegistryArgs({
     required this.registryName,
     required this.resourceGroupName,
   });

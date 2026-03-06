@@ -9,7 +9,7 @@ class IpamServiceState {
 
   /// Creates a new [IpamServiceState].
   /// [enabled] Whether the IPAM service has been activated.
-  IpamServiceState({
+  const IpamServiceState({
     this.enabled,
   });
 

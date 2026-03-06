@@ -8,7 +8,7 @@ class LbTrafficExtensionExtensionChainMatchCondition {
 
   /// Creates a new [LbTrafficExtensionExtensionChainMatchCondition].
   /// [celExpression] A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-  LbTrafficExtensionExtensionChainMatchCondition({
+  const LbTrafficExtensionExtensionChainMatchCondition({
     required this.celExpression,
   });
 

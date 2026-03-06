@@ -31,7 +31,7 @@ class GetProjectsProjectProperties {
   /// [tableLifecycle] Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property,.
   /// [timezone] Project time zone, example value: Asia/Shanghai.
   /// [typeSystem] Data type version. Value:(1/2/hive)1: The original MaxCompute type system.2: New type system introduced by MaxCompute 2.0.hive: the type system of the Hive compatibility mode introduced by MaxCompute 2.0.
-  GetProjectsProjectProperties({
+  const GetProjectsProjectProperties({
     required this.allowFullScan,
     required this.enableDecimal2,
     required this.encryption,

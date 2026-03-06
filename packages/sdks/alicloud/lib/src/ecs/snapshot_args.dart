@@ -37,7 +37,7 @@ class SnapshotArgs {
   /// [retentionDays] Optional.
   /// [snapshotName] Optional.
   /// [tags] A mapping of tags to assign to the resource.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.category,
     this.description,
     required this.diskId,

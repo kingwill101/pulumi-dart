@@ -11,7 +11,7 @@ class FilterFilterCriteriaEc2InstanceImageId {
   /// Creates a new [FilterFilterCriteriaEc2InstanceImageId].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaEc2InstanceImageId({
+  const FilterFilterCriteriaEc2InstanceImageId({
     required this.comparison,
     required this.value,
   });

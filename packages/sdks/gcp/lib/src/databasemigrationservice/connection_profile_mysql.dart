@@ -31,7 +31,7 @@ class ConnectionProfileMysql {
   /// [port] The network port of the source MySQL database.
   /// [ssl] SSL configuration for the destination to connect to the source database.
   /// [username] The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-  ConnectionProfileMysql({
+  const ConnectionProfileMysql({
     this.cloudSqlId,
     this.host,
     this.password,

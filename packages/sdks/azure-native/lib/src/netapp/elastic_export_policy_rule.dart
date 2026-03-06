@@ -24,7 +24,7 @@ class ElasticExportPolicyRule {
   /// [rootAccess] Indicates whether root access to the volume is granted to clients affected by this rule
   /// [ruleIndex] Controls the priority of the export policy rule. When connecting to the volume the rule with the lowest index that applies to the connecting client is used
   /// [unixAccessRule] Specifies the Unix file access level for the volume. It encompasses both read-only and read-write permissions. Additionally, NoAccess can be set to block all access to the volume
-  ElasticExportPolicyRule({
+  const ElasticExportPolicyRule({
     this.allowedClients,
     this.nfsv3,
     this.nfsv4,

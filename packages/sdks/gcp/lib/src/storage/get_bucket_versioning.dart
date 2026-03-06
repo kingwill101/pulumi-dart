@@ -8,7 +8,7 @@ class GetBucketVersioning {
 
   /// Creates a new [GetBucketVersioning].
   /// [enabled] While set to true, versioning is fully enabled for this bucket.
-  GetBucketVersioning({
+  const GetBucketVersioning({
     required this.enabled,
   });
 

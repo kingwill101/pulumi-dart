@@ -46,7 +46,7 @@ class EnterpriseCrmEventbusProtoWorkflowAlertConfig {
   /// [thresholdType] The threshold type, whether lower(expected_min) or upper(expected_max), for which this alert is being configured. If value falls below expected_min or exceeds expected_max, an alert will be fired.
   /// [thresholdValue] The metric value, above or below which the alert should be triggered.
   /// [warningEnumList] Optional.
-  EnterpriseCrmEventbusProtoWorkflowAlertConfig({
+  const EnterpriseCrmEventbusProtoWorkflowAlertConfig({
     this.aggregationPeriod,
     this.alertDisabled,
     this.alertName,

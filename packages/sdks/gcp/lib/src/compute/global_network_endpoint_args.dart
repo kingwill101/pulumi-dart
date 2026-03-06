@@ -26,7 +26,7 @@ class GlobalNetworkEndpointArgs {
   /// [ipAddress] IPv4 address external endpoint.
   /// [port] Port number of the external endpoint.
   /// [project] The ID of the project in which the resource belongs.
-  GlobalNetworkEndpointArgs({
+  const GlobalNetworkEndpointArgs({
     this.fqdn,
     required this.globalNetworkEndpointGroup,
     this.ipAddress,

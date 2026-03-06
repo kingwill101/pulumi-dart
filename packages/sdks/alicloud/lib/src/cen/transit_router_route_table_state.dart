@@ -30,7 +30,7 @@ class TransitRouterRouteTableState {
   /// [transitRouterRouteTableId] The id of the transit router route table.
   /// [transitRouterRouteTableName] The name of the transit router route table.
   /// [transitRouterRouteTableType] The type of the transit router route table. Valid values: `Custom`, `System`.
-  TransitRouterRouteTableState({
+  const TransitRouterRouteTableState({
     this.dryRun,
     this.status,
     this.tags,

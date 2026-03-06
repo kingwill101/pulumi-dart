@@ -17,7 +17,7 @@ class ListAccessServiceAccountsResult {
   /// [data] Data of the service accounts list
   /// [kind] Type of response
   /// [metadata] Metadata of the list
-  ListAccessServiceAccountsResult({
+  const ListAccessServiceAccountsResult({
     this.data,
     this.kind,
     this.metadata,

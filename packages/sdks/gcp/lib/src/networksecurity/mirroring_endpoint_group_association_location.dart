@@ -16,7 +16,7 @@ class MirroringEndpointGroupAssociationLocation {
   /// Creates a new [MirroringEndpointGroupAssociationLocation].
   /// [location] The cloud location of the association, currently restricted to `global`.
   /// [state] (Output)
-  MirroringEndpointGroupAssociationLocation({
+  const MirroringEndpointGroupAssociationLocation({
     this.location,
     this.state,
   });

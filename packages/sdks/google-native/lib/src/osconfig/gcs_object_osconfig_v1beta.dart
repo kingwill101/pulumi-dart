@@ -15,7 +15,7 @@ class GcsObjectOsconfigV1beta {
   /// [bucket] Bucket of the Google Cloud Storage object.
   /// [generationNumber] Generation number of the Google Cloud Storage object. This is used to ensure that the ExecStep specified by this PatchJob does not change.
   /// [object_] Name of the Google Cloud Storage object.
-  GcsObjectOsconfigV1beta({
+  const GcsObjectOsconfigV1beta({
     required this.bucket,
     required this.generationNumber,
     required this.object_,

@@ -18,7 +18,7 @@ class GetPrivateLocationArgs {
   /// [accountId] The New Relic account ID of the associated private location. If left empty will default to account ID specified in provider level configuration.
   /// [keys] The key of the private location.
   /// [name] The name of the Synthetics monitor private location.
-  GetPrivateLocationArgs({
+  const GetPrivateLocationArgs({
     this.accountId,
     this.keys,
     required this.name,

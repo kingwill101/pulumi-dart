@@ -12,7 +12,7 @@ class GlossaryTerm {
   /// Creates a new [GlossaryTerm].
   /// [languageCode] The language for this glossary term.
   /// [text] The text for the glossary term.
-  GlossaryTerm({
+  const GlossaryTerm({
     this.languageCode,
     this.text,
   });

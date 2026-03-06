@@ -18,7 +18,7 @@ class ConfigurationFilter {
   /// [childConfigurationFilter] Filter to fetch specific child configurations that exist in the configuration. This must be passed to either fetch a list of specific child configurations, or all child configurations of specific types of child configurations.
   /// [filterableProperty] Filters specific to product.
   /// [hierarchyInformation] Product hierarchy information.
-  ConfigurationFilter({
+  const ConfigurationFilter({
     this.childConfigurationFilter,
     this.filterableProperty,
     required this.hierarchyInformation,

@@ -87,7 +87,7 @@ class AppSpecService {
   /// [runCommand] An optional run command to override the component's default.
   /// [sourceDir] An optional path to the working directory to use for the build.
   /// [termination] Contains a component's termination parameters.
-  AppSpecService({
+  const AppSpecService({
     this.alerts,
     this.autoscaling,
     this.bitbucket,

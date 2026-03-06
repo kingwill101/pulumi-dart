@@ -15,7 +15,7 @@ class AttachmentRoutingPolicyLabelState {
   /// [attachmentId] The ID of the attachment to apply the routing policy label to.
   /// [coreNetworkId] The ID of the core network containing the attachment.
   /// [routingPolicyLabel] The routing policy label to apply to the attachment.
-  AttachmentRoutingPolicyLabelState({
+  const AttachmentRoutingPolicyLabelState({
     this.attachmentId,
     this.coreNetworkId,
     this.routingPolicyLabel,

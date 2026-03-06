@@ -10,7 +10,7 @@ class ApplicationPvtzDiscoverySvcPortProtocol {
   /// Creates a new [ApplicationPvtzDiscoverySvcPortProtocol].
   /// [port] Optional.
   /// [protocol] The protocol. Valid values: `TCP` and `UDP`.
-  ApplicationPvtzDiscoverySvcPortProtocol({
+  const ApplicationPvtzDiscoverySvcPortProtocol({
     this.port,
     this.protocol,
   });

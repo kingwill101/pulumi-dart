@@ -32,7 +32,7 @@ class GetConfigurationProfileResult {
   /// [properties] The properties of a configuration profile.
   /// [systemData] Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetConfigurationProfileResult({
+  const GetConfigurationProfileResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

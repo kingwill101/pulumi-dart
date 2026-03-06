@@ -18,7 +18,7 @@ class GetSharedPrivateLinkResourceArgs {
   /// [resourceGroupName] The name of the resource group within the current subscription. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [searchServiceName] The name of the Azure AI Search service associated with the specified resource group.
   /// [sharedPrivateLinkResourceName] The name of the shared private link resource managed by the Azure AI Search service within the specified resource group.
-  GetSharedPrivateLinkResourceArgs({
+  const GetSharedPrivateLinkResourceArgs({
     required this.resourceGroupName,
     required this.searchServiceName,
     required this.sharedPrivateLinkResourceName,

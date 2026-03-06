@@ -8,7 +8,7 @@ class ResourceTypeRegistrationPropertiesAvailabilityZoneRule {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesAvailabilityZoneRule].
   /// [availabilityZonePolicy] Optional.
-  ResourceTypeRegistrationPropertiesAvailabilityZoneRule({
+  const ResourceTypeRegistrationPropertiesAvailabilityZoneRule({
     this.availabilityZonePolicy,
   });
 

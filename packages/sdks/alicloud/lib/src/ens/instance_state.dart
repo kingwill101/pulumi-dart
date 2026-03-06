@@ -164,7 +164,7 @@ class InstanceState {
   /// [uniqueSuffix] Indicates whether to add an ordered suffix to HostName and InstanceName. The ordered suffix starts from 001 and cannot exceed 999.
   /// [userData] User-defined data, maximum support 16KB. You can pass in the UserData information. The UserData is encoded in Base64 format.
   /// [vswitchId] The ID of the vSwitch to which the instance belongs. Can only be used in node-level scheduling
-  InstanceState({
+  const InstanceState({
     this.amount,
     this.autoReleaseTime,
     this.autoRenew,

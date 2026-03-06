@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesZendesk {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesZendesk].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesZendesk({
+  const FlowSourceFlowConfigSourceConnectorPropertiesZendesk({
     required this.object_,
   });
 

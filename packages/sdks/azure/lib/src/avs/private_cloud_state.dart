@@ -67,7 +67,7 @@ class PrivateCloudState {
   /// [vcenterPassword] The password of the VMware vCenter Server cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   /// [vcsaEndpoint] The endpoint for VMware vCenter Server Appliance.
   /// [vmotionSubnetCidr] The network which is used for live migration of virtual machines.
-  PrivateCloudState({
+  const PrivateCloudState({
     this.circuits,
     this.hcxCloudManagerEndpoint,
     this.internetConnectionEnabled,

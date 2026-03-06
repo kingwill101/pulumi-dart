@@ -49,7 +49,7 @@ class NetworkState {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
   /// [vpcNetworks] VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
-  NetworkState({
+  const NetworkState({
     this.createTime,
     this.description,
     this.etag,

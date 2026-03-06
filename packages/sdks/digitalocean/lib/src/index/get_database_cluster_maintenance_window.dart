@@ -11,7 +11,7 @@ class GetDatabaseClusterMaintenanceWindow {
   /// Creates a new [GetDatabaseClusterMaintenanceWindow].
   /// [day] The day of the week on which to apply maintenance updates.
   /// [hour] The hour in UTC at which maintenance updates will be applied in 24 hour format.
-  GetDatabaseClusterMaintenanceWindow({
+  const GetDatabaseClusterMaintenanceWindow({
     required this.day,
     required this.hour,
   });

@@ -31,7 +31,7 @@ class GetPlacementGroupResult {
   /// [placementGroupPolicy] Whether Linodes must be able to become compliant during assignment. (Default `strict`)
   /// [placementGroupType] The placement group type to use when placing Linodes in this group.
   /// [region] The region of the Placement Group.
-  GetPlacementGroupResult({
+  const GetPlacementGroupResult({
     required this.id,
     required this.isCompliant,
     required this.label,

@@ -13,7 +13,7 @@ class GitHubAuthModelResponse {
   /// Creates a new [GitHubAuthModelResponse].
   /// [installationId] The GitHubApp auth installation id.
   /// [type] Type of paging
-  GitHubAuthModelResponse({
+  const GitHubAuthModelResponse({
     this.installationId,
     required this.type,
   });

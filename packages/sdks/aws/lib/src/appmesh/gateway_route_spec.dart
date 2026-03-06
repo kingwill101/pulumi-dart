@@ -20,7 +20,7 @@ class GatewayRouteSpec {
   /// [http2Route] Specification of an HTTP/2 gateway route.
   /// [httpRoute] Specification of an HTTP gateway route.
   /// [priority] Priority for the gateway route, between `0` and `1000`.
-  GatewayRouteSpec({
+  const GatewayRouteSpec({
     this.grpcRoute,
     this.http2Route,
     this.httpRoute,

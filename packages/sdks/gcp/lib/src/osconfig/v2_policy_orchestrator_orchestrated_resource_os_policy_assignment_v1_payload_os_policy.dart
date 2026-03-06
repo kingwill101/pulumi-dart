@@ -41,7 +41,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// [id] Required. The id of the OS policy with the following restrictions:
   /// [mode] Required. Policy mode
   /// [resourceGroups] Required. List of resource groups for the policy.
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicy({
     this.allowNoResourceGroupMatch,
     this.description,
     required this.id,

@@ -34,7 +34,7 @@ class GetTopicSpaceResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [topicTemplates] The topic filters in the topic space.
   /// [type] Type of the resource.
-  GetTopicSpaceResult({
+  const GetTopicSpaceResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

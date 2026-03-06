@@ -16,7 +16,7 @@ class HyperVMigrateFabricModelCustomProperties {
   /// [hyperVSiteId] Gets or sets the ARM Id of the HyperV site.
   /// [instanceType] Gets or sets the instance type.
   /// [migrationSolutionId] Gets or sets the migration solution ARM Id.
-  HyperVMigrateFabricModelCustomProperties({
+  const HyperVMigrateFabricModelCustomProperties({
     required this.hyperVSiteId,
     required this.instanceType,
     required this.migrationSolutionId,

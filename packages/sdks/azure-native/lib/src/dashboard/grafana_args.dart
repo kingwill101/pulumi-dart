@@ -33,7 +33,7 @@ class GrafanaArgs {
   /// [sku] The Sku of the grafana resource.
   /// [tags] The tags for grafana resource.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  GrafanaArgs({
+  const GrafanaArgs({
     this.identity,
     this.location,
     this.properties,

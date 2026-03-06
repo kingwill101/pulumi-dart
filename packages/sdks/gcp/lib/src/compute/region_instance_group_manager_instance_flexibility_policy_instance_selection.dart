@@ -24,7 +24,7 @@ class RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
   /// [minCpuPlatform] Name of the minimum CPU platform to be used by this instance selection. e.g. 'Intel Ice Lake'
   /// [name] The name of the instance group manager. Must be 1-63
   /// [rank] Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
-  RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection({
+  const RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection({
     this.disks,
     required this.machineTypes,
     this.minCpuPlatform,

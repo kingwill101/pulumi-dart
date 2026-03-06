@@ -16,7 +16,7 @@ class AgentDataSourceVectorIngestionConfigurationParsingConfiguration {
   /// [bedrockDataAutomationConfiguration] Settings for using Amazon Bedrock Data Automation to parse documents. See `bedrock_data_automation_configuration` block for details.
   /// [bedrockFoundationModelConfiguration] Settings for a foundation model used to parse documents in a data source. See `bedrock_foundation_model_configuration` block for details.
   /// [parsingStrategy] The parsing strategy to use. Valid values: `BEDROCK_FOUNDATION_MODEL`, `BEDROCK_DATA_AUTOMATION`.
-  AgentDataSourceVectorIngestionConfigurationParsingConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationParsingConfiguration({
     this.bedrockDataAutomationConfiguration,
     this.bedrockFoundationModelConfiguration,
     required this.parsingStrategy,

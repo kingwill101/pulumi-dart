@@ -23,7 +23,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig {
   /// [localId] Optional.
   /// [psk] Optional.
   /// [remoteId] Optional.
-  GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig({
+  const GatewayVpnAttachmentTunnelOptionsSpecificationTunnelIkeConfig({
     this.ikeAuthAlg,
     this.ikeEncAlg,
     this.ikeLifetime,

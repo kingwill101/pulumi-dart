@@ -18,7 +18,7 @@ class GetNotificationHubPnsCredentialsArgs {
   /// [namespaceName] Namespace name
   /// [notificationHubName] Notification Hub name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNotificationHubPnsCredentialsArgs({
+  const GetNotificationHubPnsCredentialsArgs({
     required this.namespaceName,
     required this.notificationHubName,
     required this.resourceGroupName,

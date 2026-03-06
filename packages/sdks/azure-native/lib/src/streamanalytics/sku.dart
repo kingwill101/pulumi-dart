@@ -9,7 +9,7 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The name of the SKU. Required on PUT (CreateOrReplace) requests.
-  Sku({
+  const Sku({
     this.name,
   });
 

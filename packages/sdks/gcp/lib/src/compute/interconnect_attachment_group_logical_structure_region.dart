@@ -17,7 +17,7 @@ class InterconnectAttachmentGroupLogicalStructureRegion {
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegion].
   /// [metros] (Output)
   /// [region] (Output)
-  InterconnectAttachmentGroupLogicalStructureRegion({
+  const InterconnectAttachmentGroupLogicalStructureRegion({
     this.metros,
     this.region,
   });

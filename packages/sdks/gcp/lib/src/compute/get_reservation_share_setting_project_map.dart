@@ -10,7 +10,7 @@ class GetReservationShareSettingProjectMap {
   /// Creates a new [GetReservationShareSettingProjectMap].
   /// [id] Required.
   /// [projectId] The project id/number, should be same as the key of this project config in the project map.
-  GetReservationShareSettingProjectMap({
+  const GetReservationShareSettingProjectMap({
     required this.id,
     required this.projectId,
   });

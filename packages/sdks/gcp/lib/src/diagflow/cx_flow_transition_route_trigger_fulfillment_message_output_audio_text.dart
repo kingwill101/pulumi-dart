@@ -17,7 +17,7 @@ class CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText {
   /// [allowPlaybackInterruption] (Output)
   /// [ssml] The SSML text to be synthesized. For more information, see SSML.
   /// [text] The raw text to be synthesized.
-  CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText({
+  const CxFlowTransitionRouteTriggerFulfillmentMessageOutputAudioText({
     this.allowPlaybackInterruption,
     this.ssml,
     this.text,

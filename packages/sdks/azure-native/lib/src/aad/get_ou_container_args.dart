@@ -18,7 +18,7 @@ class GetOuContainerArgs {
   /// [domainServiceName] The name of the domain service.
   /// [ouContainerName] The name of the OuContainer.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetOuContainerArgs({
+  const GetOuContainerArgs({
     required this.domainServiceName,
     required this.ouContainerName,
     required this.resourceGroupName,

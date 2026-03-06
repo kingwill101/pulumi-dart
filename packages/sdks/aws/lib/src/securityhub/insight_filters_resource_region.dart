@@ -9,7 +9,7 @@ class InsightFiltersResourceRegion {
   /// Creates a new [InsightFiltersResourceRegion].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceRegion({
+  const InsightFiltersResourceRegion({
     required this.comparison,
     required this.value,
   });

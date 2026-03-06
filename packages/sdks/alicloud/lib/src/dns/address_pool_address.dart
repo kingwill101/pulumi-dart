@@ -22,7 +22,7 @@ class AddressPoolAddress {
   /// [lbaWeight] The weight of the address. **NOTE:** The attribute is valid when the attribute `lba_strategy` is `RATIO`.
   /// [mode] The type of the address. Valid values:`SMART`, `ONLINE` and `OFFLINE`.
   /// [remark] The description of the address.
-  AddressPoolAddress({
+  const AddressPoolAddress({
     required this.address,
     required this.attributeInfo,
     this.lbaWeight,

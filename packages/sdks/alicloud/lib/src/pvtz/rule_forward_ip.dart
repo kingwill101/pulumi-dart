@@ -11,7 +11,7 @@ class RuleForwardIp {
   /// Creates a new [RuleForwardIp].
   /// [ip] The ip of the forwarding destination.
   /// [port] The port of the forwarding destination.
-  RuleForwardIp({
+  const RuleForwardIp({
     required this.ip,
     required this.port,
   });

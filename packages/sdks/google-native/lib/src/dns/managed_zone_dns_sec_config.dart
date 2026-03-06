@@ -19,7 +19,7 @@ class ManagedZoneDnsSecConfig {
   /// [kind] Optional.
   /// [nonExistence] Specifies the mechanism for authenticated denial-of-existence responses. Can only be changed while the state is OFF.
   /// [state] Specifies whether DNSSEC is enabled, and what mode it is in.
-  ManagedZoneDnsSecConfig({
+  const ManagedZoneDnsSecConfig({
     this.defaultKeySpecs,
     this.kind,
     this.nonExistence,

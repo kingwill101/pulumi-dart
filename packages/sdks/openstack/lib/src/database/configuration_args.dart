@@ -28,7 +28,7 @@ class ConfigurationArgs {
   /// [description] Description of the resource.
   /// [name] A unique name for the resource.
   /// [region] The region in which to create the db instance. Changing this
-  ConfigurationArgs({
+  const ConfigurationArgs({
     this.configurations,
     required this.datastore,
     required this.description,

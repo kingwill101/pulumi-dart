@@ -16,7 +16,7 @@ class ServiceGroupPropertiesResponse {
   /// [displayName] The display name of the serviceGroup. For example, ServiceGroupTest1
   /// [parent] The details of the parent serviceGroup.
   /// [provisioningState] The provisioning state of the serviceGroup. For example, Running
-  ServiceGroupPropertiesResponse({
+  const ServiceGroupPropertiesResponse({
     this.displayName,
     this.parent,
     required this.provisioningState,

@@ -12,7 +12,7 @@ class SqlFileShareResponse {
   /// Creates a new [SqlFileShareResponse].
   /// [path] Location as SMB share or local drive where backups are placed.
   /// [username] Username to access the file share location for backups.
-  SqlFileShareResponse({
+  const SqlFileShareResponse({
     this.path,
     this.username,
   });

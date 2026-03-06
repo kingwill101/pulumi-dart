@@ -9,7 +9,7 @@ class GuestAgentProfile {
 
   /// Creates a new [GuestAgentProfile].
   /// [clientPublicKey] Gets or sets the Public Key provided by the client for enabling guest management.
-  GuestAgentProfile({
+  const GuestAgentProfile({
     this.clientPublicKey,
   });
 

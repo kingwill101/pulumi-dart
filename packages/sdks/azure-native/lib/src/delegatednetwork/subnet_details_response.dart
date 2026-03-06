@@ -9,7 +9,7 @@ class SubnetDetailsResponse {
 
   /// Creates a new [SubnetDetailsResponse].
   /// [id] subnet arm resource id
-  SubnetDetailsResponse({
+  const SubnetDetailsResponse({
     this.id,
   });
 

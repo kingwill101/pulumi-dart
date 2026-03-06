@@ -41,7 +41,7 @@ class ClusterArgs {
   /// [project] The ID of the project in which the `cluster` will exist. If it
   /// [region] The region in which the cluster and associated nodes will be created in.
   /// [virtualClusterConfig] Allows you to configure a virtual Dataproc on GKE cluster.
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterConfig,
     this.gracefulDecommissionTimeout,
     this.labels,

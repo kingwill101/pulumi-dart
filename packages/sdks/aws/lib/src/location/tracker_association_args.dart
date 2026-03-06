@@ -18,7 +18,7 @@ class TrackerAssociationArgs {
   /// [consumerArn] The Amazon Resource Name (ARN) for the geofence collection to be associated to tracker resource. Used when you need to specify a resource across all AWS.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trackerName] The name of the tracker resource to be associated with a geofence collection.
-  TrackerAssociationArgs({
+  const TrackerAssociationArgs({
     required this.consumerArn,
     this.region,
     required this.trackerName,

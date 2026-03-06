@@ -18,7 +18,7 @@ class ListStaticSiteUsersArgs {
   /// [authprovider] The auth provider for the users.
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListStaticSiteUsersArgs({
+  const ListStaticSiteUsersArgs({
     required this.authprovider,
     required this.name,
     required this.resourceGroupName,

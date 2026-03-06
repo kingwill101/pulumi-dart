@@ -27,7 +27,7 @@ class HardwareProfileResponse {
   /// [model] Model info of the machine
   /// [processorType] Process type of the machine
   /// [serialNumber] Serial number of the machine
-  HardwareProfileResponse({
+  const HardwareProfileResponse({
     required this.cpuCores,
     required this.cpuSockets,
     required this.manufacturer,

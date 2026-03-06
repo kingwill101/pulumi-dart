@@ -40,7 +40,7 @@ class AuthorizerState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApi] ID of the associated REST API
   /// [type] Type of the authorizer. Possible values are `TOKEN` for a Lambda function using a single authorization token submitted in a custom header, `REQUEST` for a Lambda function using incoming request parameters, or `COGNITO_USER_POOLS` for using an Amazon Cognito user pool. Defaults to `TOKEN`.
-  AuthorizerState({
+  const AuthorizerState({
     this.arn,
     this.authorizerCredentials,
     this.authorizerResultTtlInSeconds,

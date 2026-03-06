@@ -12,7 +12,7 @@ class LogAnalyticsConfigurationResponse {
   /// Creates a new [LogAnalyticsConfigurationResponse].
   /// [customerId] Log analytics customer id
   /// [dynamicJsonColumns] Boolean indicating whether to parse json string log into dynamic json columns
-  LogAnalyticsConfigurationResponse({
+  const LogAnalyticsConfigurationResponse({
     this.customerId,
     this.dynamicJsonColumns,
   });

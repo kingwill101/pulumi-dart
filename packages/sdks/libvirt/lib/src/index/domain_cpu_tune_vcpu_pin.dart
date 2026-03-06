@@ -11,7 +11,7 @@ class DomainCpuTuneVcpuPin {
   /// Creates a new [DomainCpuTuneVcpuPin].
   /// [cpuSet] Specifies the CPU set for pinning virtual CPUs, controlling their execution placement on physical processors.
   /// [vcpu] Identifies which virtual CPU is configured for pinning, allowing precise resource allocation and scheduling.
-  DomainCpuTuneVcpuPin({
+  const DomainCpuTuneVcpuPin({
     required this.cpuSet,
     required this.vcpu,
   });

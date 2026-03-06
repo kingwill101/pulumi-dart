@@ -11,7 +11,7 @@ class VirtualNetworkGatewayAutoScaleBounds {
   /// Creates a new [VirtualNetworkGatewayAutoScaleBounds].
   /// [max] Maximum Scale Units for Autoscale configuration
   /// [min] Minimum scale Units for Autoscale configuration
-  VirtualNetworkGatewayAutoScaleBounds({
+  const VirtualNetworkGatewayAutoScaleBounds({
     this.max,
     this.min,
   });

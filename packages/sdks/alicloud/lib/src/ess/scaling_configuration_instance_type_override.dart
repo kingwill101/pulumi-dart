@@ -11,7 +11,7 @@ class ScalingConfigurationInstanceTypeOverride {
   /// Creates a new [ScalingConfigurationInstanceTypeOverride].
   /// [instanceType] The is specified for an instance type in instanceTypeOverride.
   /// [weightedCapacity] The weight of instance type in instanceTypeOverride.
-  ScalingConfigurationInstanceTypeOverride({
+  const ScalingConfigurationInstanceTypeOverride({
     this.instanceType,
     this.weightedCapacity,
   });

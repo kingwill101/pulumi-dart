@@ -11,7 +11,7 @@ class VirtualHubRoute {
   /// Creates a new [VirtualHubRoute].
   /// [addressPrefixes] A list of Address Prefixes.
   /// [nextHopIpAddress] The IP Address that Packets should be forwarded to as the Next Hop.
-  VirtualHubRoute({
+  const VirtualHubRoute({
     required this.addressPrefixes,
     required this.nextHopIpAddress,
   });

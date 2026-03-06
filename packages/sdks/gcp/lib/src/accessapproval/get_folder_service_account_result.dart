@@ -17,7 +17,7 @@ class GetFolderServiceAccountResult {
   /// [folderId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The Access Approval service account resource name. Format is "folders/{folder_id}/serviceAccount".
-  GetFolderServiceAccountResult({
+  const GetFolderServiceAccountResult({
     required this.accountEmail,
     required this.folderId,
     required this.id,

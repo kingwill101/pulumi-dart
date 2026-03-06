@@ -9,7 +9,7 @@ class WorkloadNetworkSegmentPortVifResponse {
 
   /// Creates a new [WorkloadNetworkSegmentPortVifResponse].
   /// [portName] Name of port or VIF attached to segment.
-  WorkloadNetworkSegmentPortVifResponse({
+  const WorkloadNetworkSegmentPortVifResponse({
     this.portName,
   });
 

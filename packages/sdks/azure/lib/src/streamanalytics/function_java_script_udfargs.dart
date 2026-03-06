@@ -29,7 +29,7 @@ class FunctionJavaScriptUDFArgs {
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Job exists. Changing this forces a new resource to be created.
   /// [script] The JavaScript of this UDF Function.
   /// [streamAnalyticsJobName] The name of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
-  FunctionJavaScriptUDFArgs({
+  const FunctionJavaScriptUDFArgs({
     required this.inputs,
     this.name,
     required this.output,

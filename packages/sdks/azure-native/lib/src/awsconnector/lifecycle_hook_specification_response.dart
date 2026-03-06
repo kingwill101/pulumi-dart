@@ -27,7 +27,7 @@ class LifecycleHookSpecificationResponse {
   /// [notificationMetadata] Additional information that you want to include any time Amazon EC2 Auto Scaling sends a message to the notification target.
   /// [notificationTargetARN] The Amazon Resource Name (ARN) of the notification target that Amazon EC2 Auto Scaling sends notifications to when an instance is in a wait state for the lifecycle hook. You can specify an Amazon SNS topic or an Amazon SQS queue.
   /// [roleARN] The ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target. For information about creating this role, see [Configure a notification target for a lifecycle hook](https://docs.aws.amazon.com/autoscaling/ec2/userguide/prepare-for-lifecycle-notifications.html#lifecycle-hook-notification-target) in the *Amazon EC2 Auto Scaling User Guide*. Valid only if the notification target is an Amazon SNS topic or an Amazon SQS queue.
-  LifecycleHookSpecificationResponse({
+  const LifecycleHookSpecificationResponse({
     this.defaultResult,
     this.heartbeatTimeout,
     this.lifecycleHookName,

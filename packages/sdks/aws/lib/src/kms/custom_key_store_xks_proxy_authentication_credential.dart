@@ -11,7 +11,7 @@ class CustomKeyStoreXksProxyAuthenticationCredential {
   /// Creates a new [CustomKeyStoreXksProxyAuthenticationCredential].
   /// [accessKeyId] A unique identifier for the raw secret access key.
   /// [rawSecretAccessKey] A secret string of 43-64 characters.
-  CustomKeyStoreXksProxyAuthenticationCredential({
+  const CustomKeyStoreXksProxyAuthenticationCredential({
     required this.accessKeyId,
     required this.rawSecretAccessKey,
   });

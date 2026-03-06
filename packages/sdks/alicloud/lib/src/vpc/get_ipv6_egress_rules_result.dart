@@ -28,7 +28,7 @@ class GetIpv6EgressRulesResult {
   /// [outputFile] Optional.
   /// [rules] Required.
   /// [status] Optional.
-  GetIpv6EgressRulesResult({
+  const GetIpv6EgressRulesResult({
     required this.id,
     required this.ids,
     this.instanceId,

@@ -29,7 +29,7 @@ class GetPublicConfigurationsConfig {
   /// [name] The name of the Public Maintenance Configuration.
   /// [recurEvery] The recurring window to filter the list of Public Maintenance Configurations against. Possible values are `Monday-Thursday` and `Friday-Sunday`
   /// [timeZone] The time zone for the maintenance window.
-  GetPublicConfigurationsConfig({
+  const GetPublicConfigurationsConfig({
     required this.description,
     required this.duration,
     required this.id,

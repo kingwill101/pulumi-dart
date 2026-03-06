@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse].
   /// [imageDisplayOptions] Optional. Settings for displaying the image. Applies to every image in items.
   /// [items] List of items in the Browse Carousel Card. Minimum of two items, maximum of ten.
-  GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardResponse({
     required this.imageDisplayOptions,
     required this.items,
   });

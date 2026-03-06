@@ -11,7 +11,7 @@ class ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRe
   /// Creates a new [ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection].
   /// [groupId] Specifies the GROUP-ID in the #EXT-X-MEDIA tag of the target HLS audio rendition.
   /// [name] Specifies the NAME in the #EXT-X-MEDIA tag of the target HLS audio rendition.
-  ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection({
+  const ChannelInputAttachmentInputSettingsAudioSelectorSelectorSettingsAudioHlsRenditionSelection({
     required this.groupId,
     required this.name,
   });

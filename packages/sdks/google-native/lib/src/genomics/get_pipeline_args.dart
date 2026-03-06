@@ -11,7 +11,7 @@ class GetPipelineArgs {
 
   /// Creates a new [GetPipelineArgs].
   /// [pipelineId] Required.
-  GetPipelineArgs({
+  const GetPipelineArgs({
     required this.pipelineId,
   });
 

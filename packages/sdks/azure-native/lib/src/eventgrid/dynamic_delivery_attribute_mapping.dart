@@ -16,7 +16,7 @@ class DynamicDeliveryAttributeMapping {
   /// [name] Name of the delivery attribute or header.
   /// [sourceField] JSON path in the event which contains attribute value.
   /// [type] Type of the delivery attribute or header name.
-  DynamicDeliveryAttributeMapping({
+  const DynamicDeliveryAttributeMapping({
     this.name,
     this.sourceField,
     required this.type,

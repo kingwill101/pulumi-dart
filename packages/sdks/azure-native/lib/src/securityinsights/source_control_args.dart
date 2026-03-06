@@ -48,7 +48,7 @@ class SourceControlArgs {
   /// [sourceControlId] Source control Id
   /// [version] The version number associated with the source control
   /// [workspaceName] The name of the workspace.
-  SourceControlArgs({
+  const SourceControlArgs({
     required this.contentTypes,
     this.description,
     required this.displayName,

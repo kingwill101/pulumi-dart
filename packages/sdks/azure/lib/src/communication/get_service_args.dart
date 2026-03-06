@@ -17,7 +17,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [name] The name of this Communication Service.
   /// [resourceGroupName] The name of the Resource Group where the Communication Service exists.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

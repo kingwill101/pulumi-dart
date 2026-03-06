@@ -34,7 +34,7 @@ class MonitorConfigArgs {
   /// [monitorExtendInfo] The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
   /// [protocolType] The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
   /// [timeout] The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
-  MonitorConfigArgs({
+  const MonitorConfigArgs({
     required this.addrPoolId,
     required this.evaluationCount,
     required this.interval,

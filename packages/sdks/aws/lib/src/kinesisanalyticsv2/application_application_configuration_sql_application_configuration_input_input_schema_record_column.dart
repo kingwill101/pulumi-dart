@@ -14,7 +14,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
   /// [mapping] A reference to the data element in the streaming input or the reference data source.
   /// [name] The name of the column that is created in the in-application input stream or reference table.
   /// [sqlType] The type of column created in the in-application input stream or reference table.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordColumn({
     this.mapping,
     required this.name,
     required this.sqlType,

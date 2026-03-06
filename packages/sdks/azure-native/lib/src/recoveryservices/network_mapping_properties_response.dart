@@ -34,7 +34,7 @@ class NetworkMappingPropertiesResponse {
   /// [recoveryNetworkFriendlyName] The recovery network friendly name.
   /// [recoveryNetworkId] The recovery network id for network mapping.
   /// [state] The pairing state for network mapping.
-  NetworkMappingPropertiesResponse({
+  const NetworkMappingPropertiesResponse({
     this.fabricSpecificSettings,
     this.primaryFabricFriendlyName,
     this.primaryNetworkFriendlyName,

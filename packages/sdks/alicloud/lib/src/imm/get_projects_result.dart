@@ -16,7 +16,7 @@ class GetProjectsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [projects] Required.
-  GetProjectsResult({
+  const GetProjectsResult({
     required this.id,
     required this.ids,
     this.outputFile,

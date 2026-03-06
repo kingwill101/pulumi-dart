@@ -11,7 +11,7 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric {
   /// Creates a new [DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric].
   /// [metric] Metric name for Read Pool Auto Scale.
   /// [targetValue] Target value for Read Pool Auto Scale.
-  DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric({
+  const DatabaseInstanceSettingsReadPoolAutoScaleConfigTargetMetric({
     this.metric,
     this.targetValue,
   });

@@ -23,7 +23,7 @@ class GetAdConnectorDirectoriesDirectoryAdConnector {
   /// [specification] The AD Connector specifications.
   /// [trustKey] The AD Connector control trust password.
   /// [vswitchId] The ID of vSwitch.
-  GetAdConnectorDirectoriesDirectoryAdConnector({
+  const GetAdConnectorDirectoriesDirectoryAdConnector({
     required this.adConnectorAddress,
     required this.connectorStatus,
     required this.networkInterfaceId,

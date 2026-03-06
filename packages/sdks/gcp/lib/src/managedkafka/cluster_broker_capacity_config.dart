@@ -8,7 +8,7 @@ class ClusterBrokerCapacityConfig {
 
   /// Creates a new [ClusterBrokerCapacityConfig].
   /// [diskSizeGib] The disk to provision for each broker in Gibibytes. Minimum: 100 GiB.
-  ClusterBrokerCapacityConfig({
+  const ClusterBrokerCapacityConfig({
     this.diskSizeGib,
   });
 

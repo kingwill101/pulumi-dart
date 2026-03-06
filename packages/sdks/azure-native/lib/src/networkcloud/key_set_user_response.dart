@@ -18,7 +18,7 @@ class KeySetUserResponse {
   /// [description] The free-form description for this user.
   /// [sshPublicKey] The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
   /// [userPrincipalName] The user principal name (email format) used to validate this user's group membership.
-  KeySetUserResponse({
+  const KeySetUserResponse({
     required this.azureUserName,
     this.description,
     required this.sshPublicKey,

@@ -42,7 +42,7 @@ class SecurityPolicyRuleComputeV1 {
   /// [priority] An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
   /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   /// [redirectOptions] Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
-  SecurityPolicyRuleComputeV1({
+  const SecurityPolicyRuleComputeV1({
     this.action,
     this.description,
     this.headerAction,

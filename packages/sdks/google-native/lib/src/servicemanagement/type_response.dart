@@ -30,7 +30,7 @@ class TypeResponse {
   /// [options] The protocol buffer options.
   /// [sourceContext] The source context.
   /// [syntax] The source syntax.
-  TypeResponse({
+  const TypeResponse({
     required this.edition,
     required this.fields,
     required this.name,

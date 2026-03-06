@@ -195,7 +195,7 @@ class InstanceState {
   /// [versionCode] Select the security center version. Value:
   /// [vulCount] Vulnerability repair times, interval type, value range:[20,100000000].
   /// [vulSwitch] Vulnerability fix switch. Value:
-  InstanceState({
+  const InstanceState({
     this.buyNumber,
     this.containerImageScan,
     this.containerImageScanNew,

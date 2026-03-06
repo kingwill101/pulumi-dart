@@ -15,7 +15,7 @@ class AzureDiskDetailsResponse {
   /// [diskId] Azure disk ID.
   /// [diskNumber] The ordinal number of the disk.
   /// [sizeGb] Size in GB.
-  AzureDiskDetailsResponse({
+  const AzureDiskDetailsResponse({
     required this.diskId,
     required this.diskNumber,
     required this.sizeGb,

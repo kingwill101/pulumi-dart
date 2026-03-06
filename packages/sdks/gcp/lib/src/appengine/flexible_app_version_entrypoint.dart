@@ -8,7 +8,7 @@ class FlexibleAppVersionEntrypoint {
 
   /// Creates a new [FlexibleAppVersionEntrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.
-  FlexibleAppVersionEntrypoint({
+  const FlexibleAppVersionEntrypoint({
     required this.shell,
   });
 

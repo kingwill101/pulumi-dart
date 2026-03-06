@@ -27,7 +27,7 @@ class GetProjectResult {
   /// [provisioningState] The provisioning state of this resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetProjectResult({
+  const GetProjectResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

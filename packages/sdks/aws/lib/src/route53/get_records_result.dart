@@ -17,7 +17,7 @@ class GetRecordsResult {
   /// [nameRegex] Optional.
   /// [resourceRecordSets] The resource records sets.
   /// [zoneId] Required.
-  GetRecordsResult({
+  const GetRecordsResult({
     required this.id,
     this.nameRegex,
     required this.resourceRecordSets,

@@ -12,7 +12,7 @@ class OsDiskImageResponse {
   /// Creates a new [OsDiskImageResponse].
   /// [operatingSystem] OS operating system type.
   /// [sourceBlobSasUri] SAS key for source blob.
-  OsDiskImageResponse({
+  const OsDiskImageResponse({
     required this.operatingSystem,
     required this.sourceBlobSasUri,
   });

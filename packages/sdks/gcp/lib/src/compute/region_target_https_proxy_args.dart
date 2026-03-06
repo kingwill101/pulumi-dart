@@ -70,7 +70,7 @@ class RegionTargetHttpsProxyArgs {
   /// [sslCertificates] URLs to SslCertificate resources that are used to authenticate connections between users and the load balancer.
   /// [sslPolicy] A reference to the Region SslPolicy resource that will be associated with
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
-  RegionTargetHttpsProxyArgs({
+  const RegionTargetHttpsProxyArgs({
     this.certificateManagerCertificates,
     this.description,
     this.httpKeepAliveTimeoutSec,

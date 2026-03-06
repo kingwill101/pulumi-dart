@@ -29,7 +29,7 @@ class ReplicaSetRoleState {
   /// [networkType] The network type of the connection string. Valid values:
   /// [replicaSetRole] The role of the related connection string.
   /// [roleId] The role ID in the replica set.
-  ReplicaSetRoleState({
+  const ReplicaSetRoleState({
     this.connectionDomain,
     this.connectionPort,
     this.connectionPrefix,

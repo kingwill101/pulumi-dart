@@ -25,7 +25,7 @@ class VaultArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Gets or sets the resource tags.
   /// [vaultName] The vault name.
-  VaultArgs({
+  const VaultArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

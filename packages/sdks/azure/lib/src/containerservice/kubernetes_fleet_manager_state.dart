@@ -21,7 +21,7 @@ class KubernetesFleetManagerState {
   /// [name] Specifies the name of this Kubernetes Fleet Manager. Changing this forces a new Kubernetes Fleet Manager to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Kubernetes Fleet Manager should exist. Changing this forces a new Kubernetes Fleet Manager to be created.
   /// [tags] A mapping of tags which should be assigned to the Kubernetes Fleet Manager.
-  KubernetesFleetManagerState({
+  const KubernetesFleetManagerState({
     this.hubProfile,
     this.location,
     this.name,

@@ -22,7 +22,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError({
+  const V2PolicyOrchestratorForFolderOrchestrationStatePreviousIterationStateError({
     this.code,
     this.details,
     this.message,

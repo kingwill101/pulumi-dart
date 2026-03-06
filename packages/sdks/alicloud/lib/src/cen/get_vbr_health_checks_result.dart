@@ -29,7 +29,7 @@ class GetVbrHealthChecksResult {
   /// [vbrInstanceId] The ID of the VBR instance.
   /// [vbrInstanceOwnerId] Optional.
   /// [vbrInstanceRegionId] The ID of the region where the VBR instance is deployed.
-  GetVbrHealthChecksResult({
+  const GetVbrHealthChecksResult({
     this.cenId,
     required this.checks,
     required this.id,

@@ -23,7 +23,7 @@ class GetBrokerNodesNodeInfoList {
   /// [clientVpcIpAddress] The client virtual private cloud (VPC) IP address
   /// [endpoints] Set of endpoints for accessing the broker. This does not include ports
   /// [nodeArn] ARN of the node
-  GetBrokerNodesNodeInfoList({
+  const GetBrokerNodesNodeInfoList({
     required this.attachedEniId,
     required this.brokerId,
     required this.clientSubnet,

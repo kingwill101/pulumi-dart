@@ -18,7 +18,7 @@ class GetExpressRouteCircuitAuthorizationArgs {
   /// [authorizationName] The name of the authorization.
   /// [circuitName] The name of the express route circuit.
   /// [resourceGroupName] The name of the resource group.
-  GetExpressRouteCircuitAuthorizationArgs({
+  const GetExpressRouteCircuitAuthorizationArgs({
     required this.authorizationName,
     required this.circuitName,
     required this.resourceGroupName,

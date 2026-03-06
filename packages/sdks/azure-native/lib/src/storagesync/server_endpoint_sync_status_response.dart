@@ -45,7 +45,7 @@ class ServerEndpointSyncStatusResponse {
   /// [uploadActivity] Upload sync activity
   /// [uploadHealth] Upload Health Status.
   /// [uploadStatus] Upload Status
-  ServerEndpointSyncStatusResponse({
+  const ServerEndpointSyncStatusResponse({
     required this.backgroundDataDownloadActivity,
     required this.combinedHealth,
     required this.downloadActivity,

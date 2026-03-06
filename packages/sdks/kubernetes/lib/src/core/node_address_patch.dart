@@ -12,7 +12,7 @@ class NodeAddressPatch {
   /// Creates a new [NodeAddressPatch].
   /// [address] The node address.
   /// [type] Node address type, one of Hostname, ExternalIP or InternalIP.
-  NodeAddressPatch({
+  const NodeAddressPatch({
     this.address,
     this.type,
   });

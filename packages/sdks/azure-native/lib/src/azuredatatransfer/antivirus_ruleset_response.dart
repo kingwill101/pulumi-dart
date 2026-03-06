@@ -9,7 +9,7 @@ class AntivirusRulesetResponse {
 
   /// Creates a new [AntivirusRulesetResponse].
   /// [avSolutions] Optional. The list of antiviruses to be used as a scanning solution for replicating data.
-  AntivirusRulesetResponse({
+  const AntivirusRulesetResponse({
     this.avSolutions,
   });
 

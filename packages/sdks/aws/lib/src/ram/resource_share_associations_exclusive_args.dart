@@ -30,7 +30,7 @@ class ResourceShareAssociationsExclusiveArgs {
   /// [resourceArns] A set of Amazon Resource Names (ARNs) of resources to associate with the resource share. Resources not configured in this argument will be removed.
   /// [resourceShareArn] The Amazon Resource Name (ARN) of the resource share. Changing this value forces creation of a new resource.
   /// [sources] A set of AWS account IDs that restrict which accounts a service principal can access resources from. This argument can only be specified when `principals` contains only service principals. When specified, it limits the source accounts from which the service can access the shared resources.
-  ResourceShareAssociationsExclusiveArgs({
+  const ResourceShareAssociationsExclusiveArgs({
     this.principals,
     this.region,
     this.resourceArns,

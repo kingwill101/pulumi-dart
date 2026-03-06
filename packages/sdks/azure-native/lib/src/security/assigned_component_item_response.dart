@@ -9,7 +9,7 @@ class AssignedComponentItemResponse {
 
   /// Creates a new [AssignedComponentItemResponse].
   /// [key] unique key to a security assessment object
-  AssignedComponentItemResponse({
+  const AssignedComponentItemResponse({
     this.key,
   });
 

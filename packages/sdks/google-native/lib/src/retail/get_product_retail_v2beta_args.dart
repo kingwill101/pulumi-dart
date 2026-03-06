@@ -19,7 +19,7 @@ class GetProductRetailV2betaArgs {
   /// [location] Required.
   /// [productId] Required.
   /// [project] Optional.
-  GetProductRetailV2betaArgs({
+  const GetProductRetailV2betaArgs({
     required this.branchId,
     required this.catalogId,
     required this.location,

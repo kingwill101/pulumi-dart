@@ -15,7 +15,7 @@ class GetImportSitesControllerArgs {
   /// Creates a new [GetImportSitesControllerArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  GetImportSitesControllerArgs({
+  const GetImportSitesControllerArgs({
     required this.resourceGroupName,
     required this.siteName,
   });

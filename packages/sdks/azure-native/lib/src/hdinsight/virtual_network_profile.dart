@@ -12,7 +12,7 @@ class VirtualNetworkProfile {
   /// Creates a new [VirtualNetworkProfile].
   /// [id] The ID of the virtual network.
   /// [subnet] The name of the subnet.
-  VirtualNetworkProfile({
+  const VirtualNetworkProfile({
     this.id,
     this.subnet,
   });

@@ -11,7 +11,7 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
   /// Creates a new [EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion].
   /// [regionId] Destination region ID.
   /// [retainDays] Number of days of snapshot retention for replication.
-  EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion({
+  const EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion({
     this.regionId,
     this.retainDays,
   });

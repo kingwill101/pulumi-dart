@@ -8,7 +8,7 @@ class DomainFeaturesHyperVSynic {
 
   /// Creates a new [DomainFeaturesHyperVSynic].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVSynic({
+  const DomainFeaturesHyperVSynic({
     this.state,
   });
 

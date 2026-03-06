@@ -15,7 +15,7 @@ class GetRegionUrlMapArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [urlMap] Required.
-  GetRegionUrlMapArgs({
+  const GetRegionUrlMapArgs({
     this.project,
     required this.region,
     required this.urlMap,

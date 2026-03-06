@@ -8,7 +8,7 @@ class FloorsettingFloorSettingMetadataMultiLanguageDetection {
 
   /// Creates a new [FloorsettingFloorSettingMetadataMultiLanguageDetection].
   /// [enableMultiLanguageDetection] If true, multi language detection will be enabled.
-  FloorsettingFloorSettingMetadataMultiLanguageDetection({
+  const FloorsettingFloorSettingMetadataMultiLanguageDetection({
     required this.enableMultiLanguageDetection,
   });
 

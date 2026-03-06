@@ -92,7 +92,7 @@ class StarRocksInstanceState {
   /// [version] The version of the instance.
   /// [vpcId] The VPC ID of the instance.
   /// [vswitches] The VSwitches info of the instance. See `vswitches` below.
-  StarRocksInstanceState({
+  const StarRocksInstanceState({
     this.adminPassword,
     this.autoRenew,
     this.backendNodeGroups,

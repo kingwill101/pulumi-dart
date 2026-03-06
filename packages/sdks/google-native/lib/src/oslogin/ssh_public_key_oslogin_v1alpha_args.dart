@@ -17,7 +17,7 @@ class SshPublicKeyOsloginV1alphaArgs {
   /// [expirationTimeUsec] An expiration time in microseconds since epoch.
   /// [key] Public key text in SSH format, defined by RFC4253 section 6.6.
   /// [userId] Required.
-  SshPublicKeyOsloginV1alphaArgs({
+  const SshPublicKeyOsloginV1alphaArgs({
     this.expirationTimeUsec,
     this.key,
     required this.userId,

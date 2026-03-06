@@ -13,7 +13,7 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3Bucket {
   /// [accessPointAlias] Optional.
   /// [accessPointArn] Optional.
   /// [assetSource] A block specifying the source bucket for the asset. This block supports the following:
-  RevisionAssetsAssetCreateS3DataAccessFromS3Bucket({
+  const RevisionAssetsAssetCreateS3DataAccessFromS3Bucket({
     this.accessPointAlias,
     this.accessPointArn,
     this.assetSource,

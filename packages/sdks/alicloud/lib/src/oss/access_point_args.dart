@@ -28,7 +28,7 @@ class AccessPointArgs {
   /// [networkOrigin] Access point network source. The valid values are as follows:
   /// [publicAccessBlockConfiguration] Configuration of Access Point Blocking Public Access See `public_access_block_configuration` below.
   /// [vpcConfiguration] If the Network Origin is vpc, the VPC source information is saved here. See `vpc_configuration` below.
-  AccessPointArgs({
+  const AccessPointArgs({
     required this.accessPointName,
     required this.bucket,
     required this.networkOrigin,

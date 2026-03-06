@@ -35,7 +35,7 @@ class SubscriberArgs {
   /// [subscriberName] The name of your Security Lake subscriber account.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  SubscriberArgs({
+  const SubscriberArgs({
     this.accessType,
     this.region,
     required this.sources,

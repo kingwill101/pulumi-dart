@@ -44,7 +44,7 @@ class WireGroupArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [wireGroupProperties] Properties specific to the wire group.
   /// [wireProperties] Default properties for wires within the group.
-  WireGroupArgs({
+  const WireGroupArgs({
     this.adminEnabled,
     required this.crossSiteNetwork,
     this.description,

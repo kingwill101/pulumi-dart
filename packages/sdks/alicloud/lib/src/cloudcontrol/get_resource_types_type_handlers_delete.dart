@@ -8,7 +8,7 @@ class GetResourceTypesTypeHandlersDelete {
 
   /// Creates a new [GetResourceTypesTypeHandlersDelete].
   /// [permissions] The collection of required RAM permission information.
-  GetResourceTypesTypeHandlersDelete({
+  const GetResourceTypesTypeHandlersDelete({
     required this.permissions,
   });
 

@@ -17,7 +17,7 @@ class DomainDevicesHostdevCapsNet {
   /// [ips] Configures the IP attributes for the host device's network capabilities, including address settings.
   /// [routes] Outlines the routing capabilities associated with the host device's network configuration.
   /// [source] Indicates the source parameters related to the host device's network capabilities.
-  DomainDevicesHostdevCapsNet({
+  const DomainDevicesHostdevCapsNet({
     this.ips,
     this.routes,
     this.source,

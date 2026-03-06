@@ -27,7 +27,7 @@ class V3AliasState {
   /// [functionName] Function Name
   /// [lastModifiedTime] (Available since v1.234.0) Last modification time
   /// [versionId] The version that the alias points
-  V3AliasState({
+  const V3AliasState({
     this.additionalVersionWeight,
     this.aliasName,
     this.createTime,

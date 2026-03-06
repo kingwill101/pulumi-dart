@@ -15,7 +15,7 @@ class SyncGroupArgs {
   /// Creates a new [SyncGroupArgs].
   /// [name] The name which should be used for this Storage Sync Group. Changing this forces a new Storage Sync Group to be created.
   /// [storageSyncId] The resource ID of the Storage Sync where this Storage Sync Group is. Changing this forces a new Storage Sync Group to be created.
-  SyncGroupArgs({
+  const SyncGroupArgs({
     this.name,
     required this.storageSyncId,
   });

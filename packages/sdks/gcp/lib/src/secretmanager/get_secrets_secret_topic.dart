@@ -8,7 +8,7 @@ class GetSecretsSecretTopic {
 
   /// Creates a new [GetSecretsSecretTopic].
   /// [name] The resource name of the Pub/Sub topic that will be published to.
-  GetSecretsSecretTopic({
+  const GetSecretsSecretTopic({
     required this.name,
   });
 

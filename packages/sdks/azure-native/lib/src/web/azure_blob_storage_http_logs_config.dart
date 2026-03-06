@@ -17,7 +17,7 @@ class AzureBlobStorageHttpLogsConfig {
   /// [enabled] True if configuration is enabled, false if it is disabled and null if configuration is not set.
   /// [retentionInDays] Retention in days.
   /// [sasUrl] SAS url to a azure blob container with read/write/list/delete permissions.
-  AzureBlobStorageHttpLogsConfig({
+  const AzureBlobStorageHttpLogsConfig({
     this.enabled,
     this.retentionInDays,
     this.sasUrl,

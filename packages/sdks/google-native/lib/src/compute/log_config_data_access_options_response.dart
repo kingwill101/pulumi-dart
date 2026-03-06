@@ -9,7 +9,7 @@ class LogConfigDataAccessOptionsResponse {
 
   /// Creates a new [LogConfigDataAccessOptionsResponse].
   /// [logMode] This is deprecated and has no effect. Do not use.
-  LogConfigDataAccessOptionsResponse({
+  const LogConfigDataAccessOptionsResponse({
     required this.logMode,
   });
 

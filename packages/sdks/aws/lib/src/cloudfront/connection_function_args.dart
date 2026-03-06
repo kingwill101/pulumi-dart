@@ -27,7 +27,7 @@ class ConnectionFunctionArgs {
   /// [name] Name for the connection function. Must be 1-64 characters and can contain letters, numbers, hyphens, and underscores. Changing this forces a new resource to be created.
   /// [publish] Whether to publish the function to the `LIVE` stage after creation or update. Defaults to `false`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ConnectionFunctionArgs({
+  const ConnectionFunctionArgs({
     required this.connectionFunctionCode,
     required this.connectionFunctionConfig,
     this.name,

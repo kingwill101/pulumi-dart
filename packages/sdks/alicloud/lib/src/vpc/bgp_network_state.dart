@@ -18,7 +18,7 @@ class BgpNetworkState {
   /// [routerId] The region ID of the virtual border router (VBR) group.
   /// [status] The state of the advertised BGP network.
   /// [vpcId] The ID of the VPC.
-  BgpNetworkState({
+  const BgpNetworkState({
     this.dstCidrBlock,
     this.routerId,
     this.status,

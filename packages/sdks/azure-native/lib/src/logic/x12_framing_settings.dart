@@ -28,7 +28,7 @@ class X12FramingSettings {
   /// [replaceSeparatorsInPayload] The value indicating whether to replace separators in payload.
   /// [segmentTerminator] The segment terminator.
   /// [segmentTerminatorSuffix] The segment terminator suffix.
-  X12FramingSettings({
+  const X12FramingSettings({
     required this.characterSet,
     required this.componentSeparator,
     required this.dataElementSeparator,

@@ -18,7 +18,7 @@ class GetRegionalSecretArgs {
   /// [location] The location of the regional secret. eg us-central1
   /// [project] The ID of the project in which the resource belongs.
   /// [secretId] The name of the regional secret.
-  GetRegionalSecretArgs({
+  const GetRegionalSecretArgs({
     required this.location,
     this.project,
     required this.secretId,

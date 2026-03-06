@@ -11,7 +11,7 @@ class ServiceTaskSpecPlacementPlatform {
   /// Creates a new [ServiceTaskSpecPlacementPlatform].
   /// [architecture] The architecture, e.g. `amd64`
   /// [os] The operation system, e.g. `linux`
-  ServiceTaskSpecPlacementPlatform({
+  const ServiceTaskSpecPlacementPlatform({
     required this.architecture,
     required this.os,
   });

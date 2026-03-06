@@ -25,7 +25,7 @@ class FrontendEndpoint {
   /// [sessionAffinityEnabledState] Whether to allow session affinity on this host. Valid options are 'Enabled' or 'Disabled'
   /// [sessionAffinityTtlSeconds] UNUSED. This field will be ignored. The TTL to use in seconds for session affinity, if applicable.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for each host (if applicable)
-  FrontendEndpoint({
+  const FrontendEndpoint({
     this.hostName,
     this.id,
     this.name,

@@ -16,7 +16,7 @@ class NatGatewayStatusResponse {
   /// [errorCode] NatGateway provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] NatGateway provisioning status
-  NatGatewayStatusResponse({
+  const NatGatewayStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

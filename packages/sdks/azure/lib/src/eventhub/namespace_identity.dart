@@ -19,7 +19,7 @@ class NamespaceIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Service Bus Namespace.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Service Bus Namespace.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Service Bus Namespace. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  NamespaceIdentity({
+  const NamespaceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

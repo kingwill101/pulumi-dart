@@ -28,7 +28,7 @@ class GetNatIpCidrsResult {
   /// [natIpCidrs] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetNatIpCidrsResult({
+  const GetNatIpCidrsResult({
     required this.cidrs,
     required this.id,
     required this.ids,

@@ -46,7 +46,7 @@ class WorkspaceState {
   /// [userVolumeEncryptionEnabled] Indicates whether the data stored on the user volume is encrypted.
   /// [volumeEncryptionKey] The ARN of a symmetric AWS KMS customer master key (CMK) used to encrypt data stored on your WorkSpace. Amazon WorkSpaces does not support asymmetric CMKs.
   /// [workspaceProperties] The WorkSpace properties.
-  WorkspaceState({
+  const WorkspaceState({
     this.bundleId,
     this.computerName,
     this.directoryId,

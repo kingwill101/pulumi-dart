@@ -18,7 +18,7 @@ class BucketDataRedundancyTransitionState {
   /// [createTime] Stores the creation time of the redundant transformation task.
   /// [status] Stores the state of the redundant translation task. The values are as follows:  Queueing: in the queue.  Processing: In progress.  Finished: Finished.
   /// [taskId] Unique identification of the storage redundancy conversion task.
-  BucketDataRedundancyTransitionState({
+  const BucketDataRedundancyTransitionState({
     this.bucket,
     this.createTime,
     this.status,

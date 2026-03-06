@@ -15,7 +15,7 @@ class GetServiceGroupMemberRelationshipArgs {
   /// Creates a new [GetServiceGroupMemberRelationshipArgs].
   /// [name] Name of ServiceGroupMember relationship.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetServiceGroupMemberRelationshipArgs({
+  const GetServiceGroupMemberRelationshipArgs({
     required this.name,
     required this.resourceUri,
   });

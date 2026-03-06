@@ -17,7 +17,7 @@ class GetHpcClustersCluster {
   /// [hpcClusterId] The ID of the Hpc Cluster.
   /// [id] The ID of the Hpc Cluster.
   /// [name] The name of ECS Hpc Cluster.
-  GetHpcClustersCluster({
+  const GetHpcClustersCluster({
     required this.description,
     required this.hpcClusterId,
     required this.id,

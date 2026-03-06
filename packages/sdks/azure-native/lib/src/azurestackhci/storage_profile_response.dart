@@ -9,7 +9,7 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [poolableDisksCount] Number of storage disks in the device with $CanPool as true.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     required this.poolableDisksCount,
   });
 

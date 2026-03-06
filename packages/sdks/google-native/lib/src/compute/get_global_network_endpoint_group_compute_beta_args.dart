@@ -13,7 +13,7 @@ class GetGlobalNetworkEndpointGroupComputeBetaArgs {
   /// Creates a new [GetGlobalNetworkEndpointGroupComputeBetaArgs].
   /// [networkEndpointGroup] Required.
   /// [project] Optional.
-  GetGlobalNetworkEndpointGroupComputeBetaArgs({
+  const GetGlobalNetworkEndpointGroupComputeBetaArgs({
     required this.networkEndpointGroup,
     this.project,
   });

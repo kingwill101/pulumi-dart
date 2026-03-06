@@ -32,7 +32,7 @@ class MigrateSqlServerSqlDbSyncTaskPropertiesResponse {
   /// [output] Task output. This is ignored if submitted.
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  MigrateSqlServerSqlDbSyncTaskPropertiesResponse({
+  const MigrateSqlServerSqlDbSyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

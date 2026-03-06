@@ -17,7 +17,7 @@ class CertificateArgs {
   /// [labels] Optional.
   /// [name] Optional.
   /// [privateKey] Required.
-  CertificateArgs({
+  const CertificateArgs({
     required this.certificate,
     this.labels,
     this.name,

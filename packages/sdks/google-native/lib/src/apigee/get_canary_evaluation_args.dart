@@ -15,7 +15,7 @@ class GetCanaryEvaluationArgs {
   /// [canaryevaluationId] Required.
   /// [instanceId] Required.
   /// [organizationId] Required.
-  GetCanaryEvaluationArgs({
+  const GetCanaryEvaluationArgs({
     required this.canaryevaluationId,
     required this.instanceId,
     required this.organizationId,

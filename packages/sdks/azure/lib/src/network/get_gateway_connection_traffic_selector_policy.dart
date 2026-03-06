@@ -11,7 +11,7 @@ class GetGatewayConnectionTrafficSelectorPolicy {
   /// Creates a new [GetGatewayConnectionTrafficSelectorPolicy].
   /// [localAddressCidrs] List of local CIDRs.
   /// [remoteAddressCidrs] List of remote CIDRs.
-  GetGatewayConnectionTrafficSelectorPolicy({
+  const GetGatewayConnectionTrafficSelectorPolicy({
     required this.localAddressCidrs,
     required this.remoteAddressCidrs,
   });

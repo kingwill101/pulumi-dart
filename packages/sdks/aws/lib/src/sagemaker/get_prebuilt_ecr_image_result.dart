@@ -22,7 +22,7 @@ class GetPrebuiltEcrImageResult {
   /// [registryId] Account ID containing the image. For example, `469771592824`.
   /// [registryPath] Docker image URL. For example, `341280168497.dkr.ecr.ca-central-1.amazonaws.com/sagemaker-sparkml-serving:2.4`.
   /// [repositoryName] Required.
-  GetPrebuiltEcrImageResult({
+  const GetPrebuiltEcrImageResult({
     this.dnsSuffix,
     required this.id,
     this.imageTag,

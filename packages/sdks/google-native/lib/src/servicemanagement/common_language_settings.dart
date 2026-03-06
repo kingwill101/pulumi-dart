@@ -13,7 +13,7 @@ class CommonLanguageSettings {
   /// Creates a new [CommonLanguageSettings].
   /// [destinations] The destination where API teams want this client library to be published.
   /// [referenceDocsUri] Link to automatically generated reference documentation. Example: https://cloud.google.com/nodejs/docs/reference/asset/latest
-  CommonLanguageSettings({
+  const CommonLanguageSettings({
     this.destinations,
     this.referenceDocsUri,
   });

@@ -8,7 +8,7 @@ class GetClusterClusterTelemetry {
 
   /// Creates a new [GetClusterClusterTelemetry].
   /// [type] Type of the integration.
-  GetClusterClusterTelemetry({
+  const GetClusterClusterTelemetry({
     required this.type,
   });
 

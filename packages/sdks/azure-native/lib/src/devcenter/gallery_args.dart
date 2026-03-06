@@ -21,7 +21,7 @@ class GalleryArgs {
   /// [galleryName] The name of the gallery.
   /// [galleryResourceId] The resource ID of the backing Azure Compute Gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GalleryArgs({
+  const GalleryArgs({
     required this.devCenterName,
     this.galleryName,
     required this.galleryResourceId,

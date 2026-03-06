@@ -20,7 +20,7 @@ class JobTemplateConfigElementaryStreamAudioStream {
   /// [channelLayouts] A list of channel names specifying layout of the audio channels.  The default is ["fl", "fr"].
   /// [codec] The codec for this audio stream. The default is `aac`.
   /// [sampleRateHertz] The audio sample rate in Hertz. The default is `48000`.
-  JobTemplateConfigElementaryStreamAudioStream({
+  const JobTemplateConfigElementaryStreamAudioStream({
     required this.bitrateBps,
     this.channelCount,
     this.channelLayouts,

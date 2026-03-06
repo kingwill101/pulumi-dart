@@ -71,7 +71,7 @@ class FleetArgs {
   /// [streamView] AppStream 2.0 view that is displayed to your users when they stream from the fleet. When `APP` is specified, only the windows of applications opened by users display. When `DESKTOP` is specified, the standard desktop that is provided by the operating system displays. If not specified, defaults to `APP`.
   /// [tags] Map of tags to attach to AppStream instances.
   /// [vpcConfig] Configuration block for the VPC configuration for the image builder. See below.
-  FleetArgs({
+  const FleetArgs({
     required this.computeCapacity,
     this.description,
     this.disconnectTimeoutInSeconds,

@@ -12,7 +12,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchic
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration].
   /// [levelConfigurations] Maximum number of tokens to include in a chunk. Must contain two `level_configurations`. See `level_configurations` for details.
   /// [overlapTokens] The number of tokens to repeat across chunks in the same layer.
-  AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationChunkingConfigurationHierarchicalChunkingConfiguration({
     this.levelConfigurations,
     required this.overlapTokens,
   });

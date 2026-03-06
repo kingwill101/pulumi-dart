@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse {
   /// Creates a new [GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse].
   /// [n] Number of retrieved smart replies. For example, when `n` is 3, this evaluation contains metrics for when Dialogflow retrieves 3 smart replies with the model.
   /// [recall] Defined as `number of queries whose top n smart replies have at least one similar (token match similarity above the defined threshold) reply as the real reply` divided by `number of queries with at least one smart reply`. Value ranges from 0.0 to 1.0 inclusive.
-  GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse({
+  const GoogleCloudDialogflowV2SmartReplyMetricsTopNMetricsResponse({
     required this.n,
     required this.recall,
   });

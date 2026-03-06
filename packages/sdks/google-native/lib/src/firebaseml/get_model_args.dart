@@ -13,7 +13,7 @@ class GetModelArgs {
   /// Creates a new [GetModelArgs].
   /// [modelId] Required.
   /// [project] Optional.
-  GetModelArgs({
+  const GetModelArgs({
     required this.modelId,
     this.project,
   });

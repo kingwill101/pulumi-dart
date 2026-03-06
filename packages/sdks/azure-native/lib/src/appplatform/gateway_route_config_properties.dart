@@ -29,7 +29,7 @@ class GatewayRouteConfigProperties {
   /// [protocol] Protocol of routed Azure Spring Apps applications.
   /// [routes] Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`.
   /// [ssoEnabled] Enable Single Sign-On in app level.
-  GatewayRouteConfigProperties({
+  const GatewayRouteConfigProperties({
     this.appResourceId,
     this.filters,
     this.openApi,

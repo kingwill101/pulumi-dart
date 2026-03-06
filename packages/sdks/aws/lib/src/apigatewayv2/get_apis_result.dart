@@ -19,7 +19,7 @@ class GetApisResult {
   /// [protocolType] Optional.
   /// [region] Required.
   /// [tags] Optional.
-  GetApisResult({
+  const GetApisResult({
     required this.id,
     required this.ids,
     this.name,

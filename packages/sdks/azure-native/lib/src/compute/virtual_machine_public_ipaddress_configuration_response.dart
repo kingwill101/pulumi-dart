@@ -37,7 +37,7 @@ class VirtualMachinePublicIPAddressConfigurationResponse {
   /// [publicIPAllocationMethod] Specify the public IP allocation type
   /// [publicIPPrefix] The PublicIPPrefix from which to allocate publicIP addresses.
   /// [sku] Describes the public IP Sku. It can only be set with OrchestrationMode as Flexible.
-  VirtualMachinePublicIPAddressConfigurationResponse({
+  const VirtualMachinePublicIPAddressConfigurationResponse({
     this.deleteOption,
     this.dnsSettings,
     this.idleTimeoutInMinutes,

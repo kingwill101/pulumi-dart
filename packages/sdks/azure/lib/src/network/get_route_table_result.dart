@@ -30,7 +30,7 @@ class GetRouteTableResult {
   /// [routes] One or more `route` blocks as documented below.
   /// [subnets] The collection of Subnets associated with this route table.
   /// [tags] A mapping of tags assigned to the Route Table.
-  GetRouteTableResult({
+  const GetRouteTableResult({
     required this.bgpRoutePropagationEnabled,
     required this.id,
     required this.location,

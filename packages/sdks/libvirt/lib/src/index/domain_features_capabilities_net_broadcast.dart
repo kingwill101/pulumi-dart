@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesNetBroadcast {
 
   /// Creates a new [DomainFeaturesCapabilitiesNetBroadcast].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesNetBroadcast({
+  const DomainFeaturesCapabilitiesNetBroadcast({
     this.state,
   });
 

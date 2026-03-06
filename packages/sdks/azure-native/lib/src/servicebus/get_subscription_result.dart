@@ -83,7 +83,7 @@ class GetSubscriptionResult {
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   /// [updatedAt] The exact time the message was updated.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.accessedAt,
     this.autoDeleteOnIdle,
     required this.azureApiVersion,

@@ -9,7 +9,7 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement {
 
   /// Creates a new [DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement({
+  const DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
 

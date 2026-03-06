@@ -12,7 +12,7 @@ class BackupRetentionSettingsResponseSqladminV1beta4 {
   /// Creates a new [BackupRetentionSettingsResponseSqladminV1beta4].
   /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
   /// [retentionUnit] The unit that 'retained_backups' represents.
-  BackupRetentionSettingsResponseSqladminV1beta4({
+  const BackupRetentionSettingsResponseSqladminV1beta4({
     required this.retainedBackups,
     required this.retentionUnit,
   });

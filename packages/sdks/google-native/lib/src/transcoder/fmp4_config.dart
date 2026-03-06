@@ -9,7 +9,7 @@ class Fmp4Config {
 
   /// Creates a new [Fmp4Config].
   /// [codecTag] Optional. Specify the codec tag string that will be used in the media bitstream. When not specified, the codec appropriate value is used. Supported H265 codec tags: - `hvc1` (default) - `hev1`
-  Fmp4Config({
+  const Fmp4Config({
     this.codecTag,
   });
 

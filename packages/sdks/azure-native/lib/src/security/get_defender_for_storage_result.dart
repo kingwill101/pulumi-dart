@@ -21,7 +21,7 @@ class GetDefenderForStorageResult {
   /// [name] Resource name
   /// [properties] Defender for Storage resource properties.
   /// [type] Resource type
-  GetDefenderForStorageResult({
+  const GetDefenderForStorageResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

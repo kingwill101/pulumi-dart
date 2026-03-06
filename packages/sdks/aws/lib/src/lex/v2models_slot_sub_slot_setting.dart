@@ -13,7 +13,7 @@ class V2modelsSlotSubSlotSetting {
   /// Creates a new [V2modelsSlotSubSlotSetting].
   /// [expression] Expression text for defining the constituent sub slots in the composite slot using logical `AND` and `OR` operators.
   /// [slotSpecifications] Specifications for the constituent sub slots of a composite slot.
-  V2modelsSlotSubSlotSetting({
+  const V2modelsSlotSubSlotSetting({
     this.expression,
     this.slotSpecifications,
   });

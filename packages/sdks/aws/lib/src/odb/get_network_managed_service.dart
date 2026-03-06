@@ -29,7 +29,7 @@ class GetNetworkManagedService {
   /// [serviceNetworkEndpoints] Required.
   /// [stsAccesses] Required.
   /// [zeroTlAccesses] Required.
-  GetNetworkManagedService({
+  const GetNetworkManagedService({
     required this.kmsAccesses,
     required this.managedS3BackupAccesses,
     required this.managedServiceIpv4Cidrs,

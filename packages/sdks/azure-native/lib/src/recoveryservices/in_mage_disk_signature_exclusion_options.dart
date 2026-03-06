@@ -9,7 +9,7 @@ class InMageDiskSignatureExclusionOptions {
 
   /// Creates a new [InMageDiskSignatureExclusionOptions].
   /// [diskSignature] The guest signature of disk to be excluded from replication.
-  InMageDiskSignatureExclusionOptions({
+  const InMageDiskSignatureExclusionOptions({
     this.diskSignature,
   });
 

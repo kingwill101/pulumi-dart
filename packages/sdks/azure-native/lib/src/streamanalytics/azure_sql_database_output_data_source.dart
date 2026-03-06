@@ -34,7 +34,7 @@ class AzureSqlDatabaseOutputDataSource {
   /// [table] The name of the table in the Azure SQL database. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
   /// [user] The user name that will be used to connect to the Azure SQL database. Required on PUT (CreateOrReplace) requests.
-  AzureSqlDatabaseOutputDataSource({
+  const AzureSqlDatabaseOutputDataSource({
     this.authenticationMode,
     this.database,
     this.maxBatchCount,

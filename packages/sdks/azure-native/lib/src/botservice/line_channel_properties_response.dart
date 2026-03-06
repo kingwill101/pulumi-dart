@@ -16,7 +16,7 @@ class LineChannelPropertiesResponse {
   /// [callbackUrl] Callback Url to enter in line registration.
   /// [isValidated] Whether this channel is validated for the bot
   /// [lineRegistrations] The list of line channel registrations
-  LineChannelPropertiesResponse({
+  const LineChannelPropertiesResponse({
     required this.callbackUrl,
     required this.isValidated,
     required this.lineRegistrations,

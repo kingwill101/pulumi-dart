@@ -33,7 +33,7 @@ class GetPrivateLinkScopedResourceResult {
   /// [subscriptionLocation] The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
   /// [systemData] System data
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateLinkScopedResourceResult({
+  const GetPrivateLinkScopedResourceResult({
     required this.azureApiVersion,
     required this.id,
     this.kind,

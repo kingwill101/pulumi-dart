@@ -25,7 +25,7 @@ class ServiceTrafficStatus {
   /// [tag] (Output)
   /// [type] (Output)
   /// [uri] (Output)
-  ServiceTrafficStatus({
+  const ServiceTrafficStatus({
     this.percent,
     this.revision,
     this.tag,

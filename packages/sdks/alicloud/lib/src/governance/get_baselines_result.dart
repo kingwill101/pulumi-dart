@@ -23,7 +23,7 @@ class GetBaselinesResult {
   /// [nameRegex] Optional.
   /// [names] A list of name of Baselines.
   /// [outputFile] Optional.
-  GetBaselinesResult({
+  const GetBaselinesResult({
     required this.baselines,
     required this.id,
     required this.ids,

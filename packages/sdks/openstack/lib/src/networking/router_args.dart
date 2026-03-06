@@ -85,7 +85,7 @@ class RouterArgs {
   /// [tenantId] The owner of the floating IP. Required if admin wants
   /// [valueSpecs] Map of additional driver-specific options.
   /// [vendorOptions] Map of additional vendor-specific options.
-  RouterArgs({
+  const RouterArgs({
     this.adminStateUp,
     this.availabilityZoneHints,
     this.description,

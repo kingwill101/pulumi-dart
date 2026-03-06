@@ -15,7 +15,7 @@ class ImportSourcePropertiesResponse {
   /// [dataDirPath] Relative path of data directory in storage.
   /// [storageType] Storage type of import source.
   /// [storageUrl] Uri of the import source storage.
-  ImportSourcePropertiesResponse({
+  const ImportSourcePropertiesResponse({
     this.dataDirPath,
     this.storageType,
     this.storageUrl,

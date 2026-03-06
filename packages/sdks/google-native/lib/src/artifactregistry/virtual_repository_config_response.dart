@@ -10,7 +10,7 @@ class VirtualRepositoryConfigResponse {
 
   /// Creates a new [VirtualRepositoryConfigResponse].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository.
-  VirtualRepositoryConfigResponse({
+  const VirtualRepositoryConfigResponse({
     required this.upstreamPolicies,
   });
 

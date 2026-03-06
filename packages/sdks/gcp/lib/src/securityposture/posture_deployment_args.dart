@@ -34,7 +34,7 @@ class PostureDeploymentArgs {
   /// [postureId] Relative name of the posture which needs to be deployed. It should be in the format:
   /// [postureRevisionId] Revision_id the posture which needs to be deployed.
   /// [targetResource] The resource on which the posture should be deployed. This can be in one of the following formats:
-  PostureDeploymentArgs({
+  const PostureDeploymentArgs({
     this.description,
     required this.location,
     required this.parent,

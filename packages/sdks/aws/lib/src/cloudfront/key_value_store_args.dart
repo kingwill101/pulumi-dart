@@ -20,7 +20,7 @@ class KeyValueStoreArgs {
   /// [comment] Comment.
   /// [name] Unique name for your CloudFront KeyValueStore.
   /// [timeouts] Optional.
-  KeyValueStoreArgs({
+  const KeyValueStoreArgs({
     this.comment,
     this.name,
     this.timeouts,

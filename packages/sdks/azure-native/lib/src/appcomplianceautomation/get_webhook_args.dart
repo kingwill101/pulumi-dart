@@ -15,7 +15,7 @@ class GetWebhookArgs {
   /// Creates a new [GetWebhookArgs].
   /// [reportName] Report Name.
   /// [webhookName] Webhook Name.
-  GetWebhookArgs({
+  const GetWebhookArgs({
     required this.reportName,
     required this.webhookName,
   });

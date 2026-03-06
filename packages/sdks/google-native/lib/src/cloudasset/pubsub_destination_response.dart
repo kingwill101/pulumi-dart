@@ -9,7 +9,7 @@ class PubsubDestinationResponse {
 
   /// Creates a new [PubsubDestinationResponse].
   /// [topic] The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
-  PubsubDestinationResponse({
+  const PubsubDestinationResponse({
     required this.topic,
   });
 

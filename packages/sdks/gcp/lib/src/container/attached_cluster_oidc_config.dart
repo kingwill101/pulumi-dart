@@ -11,7 +11,7 @@ class AttachedClusterOidcConfig {
   /// Creates a new [AttachedClusterOidcConfig].
   /// [issuerUrl] A JSON Web Token (JWT) issuer URI. `issuer` must start with `https://`
   /// [jwks] OIDC verification keys in JWKS format (RFC 7517).
-  AttachedClusterOidcConfig({
+  const AttachedClusterOidcConfig({
     required this.issuerUrl,
     this.jwks,
   });

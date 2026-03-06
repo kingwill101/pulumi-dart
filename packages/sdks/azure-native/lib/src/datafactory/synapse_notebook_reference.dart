@@ -12,7 +12,7 @@ class SynapseNotebookReference {
   /// Creates a new [SynapseNotebookReference].
   /// [referenceName] Reference notebook name. Type: string (or Expression with resultType string).
   /// [type] Synapse notebook reference type.
-  SynapseNotebookReference({
+  const SynapseNotebookReference({
     required this.referenceName,
     required this.type,
   });

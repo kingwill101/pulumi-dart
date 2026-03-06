@@ -11,7 +11,7 @@ class RegistryNetworkRuleSetIpRule {
   /// Creates a new [RegistryNetworkRuleSetIpRule].
   /// [action] The behaviour for requests matching this rule. At this time the only supported value is `Allow`
   /// [ipRange] The CIDR block from which requests will match the rule.
-  RegistryNetworkRuleSetIpRule({
+  const RegistryNetworkRuleSetIpRule({
     required this.action,
     required this.ipRange,
   });

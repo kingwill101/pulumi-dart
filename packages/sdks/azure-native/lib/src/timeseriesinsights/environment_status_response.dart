@@ -14,7 +14,7 @@ class EnvironmentStatusResponse {
   /// Creates a new [EnvironmentStatusResponse].
   /// [ingress] An object that represents the status of ingress on an environment.
   /// [warmStorage] An object that represents the status of warm storage on an environment.
-  EnvironmentStatusResponse({
+  const EnvironmentStatusResponse({
     required this.ingress,
     required this.warmStorage,
   });

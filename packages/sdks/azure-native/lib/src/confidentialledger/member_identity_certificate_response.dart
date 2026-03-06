@@ -15,7 +15,7 @@ class MemberIdentityCertificateResponse {
   /// [certificate] Member Identity Certificate
   /// [encryptionkey] Member Identity Certificate Encryption Key
   /// [tags] Optional.
-  MemberIdentityCertificateResponse({
+  const MemberIdentityCertificateResponse({
     this.certificate,
     this.encryptionkey,
     this.tags,

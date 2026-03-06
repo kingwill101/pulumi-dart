@@ -9,7 +9,7 @@ class GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout {
   /// Creates a new [GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout({
+  const GetRouteSpecGrpcRouteRetryPolicyPerRetryTimeout({
     required this.unit,
     required this.value,
   });

@@ -20,7 +20,7 @@ class GetCryptoKeyVersionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [publicKeys] Required.
   /// [versions] A list of all the retrieved crypto key versions from the provided crypto key. This list is influenced by the provided filter argument.
-  GetCryptoKeyVersionsResult({
+  const GetCryptoKeyVersionsResult({
     required this.cryptoKey,
     this.filter,
     required this.id,

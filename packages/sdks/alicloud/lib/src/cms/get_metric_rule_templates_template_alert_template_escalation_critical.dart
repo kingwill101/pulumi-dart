@@ -18,7 +18,7 @@ class GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical {
   /// [statistics] The statistical aggregation method for critical-level alerts.
   /// [threshold] The threshold for critical-level alerts.
   /// [times] The consecutive number of times for which the metric value is measured before a
-  GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical({
+  const GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical({
     required this.comparisonOperator,
     required this.statistics,
     required this.threshold,

@@ -13,7 +13,7 @@ class KeyVaultAndSecretReferenceResponse {
   /// Creates a new [KeyVaultAndSecretReferenceResponse].
   /// [secretUrl] Url pointing to a key or secret in KeyVault
   /// [sourceVault] Resource id of the KeyVault containing the key or secret
-  KeyVaultAndSecretReferenceResponse({
+  const KeyVaultAndSecretReferenceResponse({
     required this.secretUrl,
     required this.sourceVault,
   });

@@ -34,7 +34,7 @@ class ConversationModelArgs {
   /// [name] ConversationModel resource name. Format: `projects//conversationModels/`
   /// [project] Optional.
   /// [smartReplyModelMetadata] Metadata for smart reply models.
-  ConversationModelArgs({
+  const ConversationModelArgs({
     this.articleSuggestionModelMetadata,
     required this.datasets,
     required this.displayName,

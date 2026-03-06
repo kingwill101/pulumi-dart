@@ -12,7 +12,7 @@ class HttpRouteHeaderMatchIntegerRangeResponse {
   /// Creates a new [HttpRouteHeaderMatchIntegerRangeResponse].
   /// [end] End of the range (exclusive)
   /// [start] Start of the range (inclusive)
-  HttpRouteHeaderMatchIntegerRangeResponse({
+  const HttpRouteHeaderMatchIntegerRangeResponse({
     required this.end,
     required this.start,
   });

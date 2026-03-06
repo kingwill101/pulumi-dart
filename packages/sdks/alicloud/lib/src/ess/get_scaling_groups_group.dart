@@ -177,7 +177,7 @@ class GetScalingGroupsGroup {
   /// [vpcId] The ID of the VPC to which the scaling group belongs.
   /// [vswitchId] The ID of the vSwitch to which the scaling group belongs.
   /// [vswitchIds] Vswitches id in which the ECS instance launched.
-  GetScalingGroupsGroup({
+  const GetScalingGroupsGroup({
     required this.activeCapacity,
     required this.activeScalingConfiguration,
     required this.allocationStrategy,

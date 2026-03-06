@@ -21,7 +21,7 @@ class NetworkAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subnetId] The ID of the subnet to associate with the Client VPN endpoint.
   /// [vpcId] The ID of the VPC in which the target subnet is located.
-  NetworkAssociationState({
+  const NetworkAssociationState({
     this.associationId,
     this.clientVpnEndpointId,
     this.region,

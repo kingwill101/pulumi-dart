@@ -11,7 +11,7 @@ class ListenerRuleTransformHostHeaderRewriteConfigRewrite {
   /// Creates a new [ListenerRuleTransformHostHeaderRewriteConfigRewrite].
   /// [regex] Regular expression to match in the input string. Length constraints: Between 1 and 1024 characters.
   /// [replace] Replacement string to use when rewriting the matched input. Capture groups in the regular expression (for example, `$1` and `$2`) can be specified. Length constraints: Between 0 and 1024 characters.
-  ListenerRuleTransformHostHeaderRewriteConfigRewrite({
+  const ListenerRuleTransformHostHeaderRewriteConfigRewrite({
     required this.regex,
     required this.replace,
   });

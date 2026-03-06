@@ -15,7 +15,7 @@ class StreamRuleSet {
   /// Creates a new [StreamRuleSet].
   /// [customizationRules] List of customization rules to apply.
   /// [objectFilter] Object filter to apply the customization rules to.
-  StreamRuleSet({
+  const StreamRuleSet({
     required this.customizationRules,
     required this.objectFilter,
   });

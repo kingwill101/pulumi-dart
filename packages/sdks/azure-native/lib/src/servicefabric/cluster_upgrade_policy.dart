@@ -27,7 +27,7 @@ class ClusterUpgradePolicy {
   /// [healthPolicy] The cluster health policy defines a health policy used to evaluate the health of the cluster during a cluster upgrade.
   /// [monitoringPolicy] The cluster monitoring policy describes the parameters for monitoring an upgrade in Monitored mode.
   /// [upgradeReplicaSetCheckTimeout] The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues.
-  ClusterUpgradePolicy({
+  const ClusterUpgradePolicy({
     this.deltaHealthPolicy,
     this.forceRestart,
     this.healthPolicy,

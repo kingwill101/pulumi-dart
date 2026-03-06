@@ -9,7 +9,7 @@ class ClusterMaintenancePolicyDailyMaintenanceWindow {
   /// Creates a new [ClusterMaintenancePolicyDailyMaintenanceWindow].
   /// [duration] Optional.
   /// [startTime] Required.
-  ClusterMaintenancePolicyDailyMaintenanceWindow({
+  const ClusterMaintenancePolicyDailyMaintenanceWindow({
     this.duration,
     required this.startTime,
   });

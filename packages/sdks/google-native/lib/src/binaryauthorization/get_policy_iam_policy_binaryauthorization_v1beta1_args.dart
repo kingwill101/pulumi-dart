@@ -13,7 +13,7 @@ class GetPolicyIamPolicyBinaryauthorizationV1beta1Args {
   /// Creates a new [GetPolicyIamPolicyBinaryauthorizationV1beta1Args].
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetPolicyIamPolicyBinaryauthorizationV1beta1Args({
+  const GetPolicyIamPolicyBinaryauthorizationV1beta1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
   });

@@ -37,7 +37,7 @@ class SnapshotArgs {
   /// [location] The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
   /// [name] The resource name of the snapshot. The name must be unique within the specified instance.
   /// [project] The ID of the project in which the resource belongs.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.description,
     required this.instance,
     this.labels,

@@ -50,7 +50,7 @@ class TransitGatewayArgs {
   /// [tags] Key-value tags for the EC2 Transit Gateway. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayCidrBlocks] One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.
   /// [vpnEcmpSupport] Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-  TransitGatewayArgs({
+  const TransitGatewayArgs({
     this.amazonSideAsn,
     this.autoAcceptSharedAttachments,
     this.defaultRouteTableAssociation,

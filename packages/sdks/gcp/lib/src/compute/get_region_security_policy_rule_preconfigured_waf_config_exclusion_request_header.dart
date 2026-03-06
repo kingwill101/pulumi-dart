@@ -18,7 +18,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader {
   /// Creates a new [GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader].
   /// [operator] You can specify an exact match or a partial match by using a field operator and a field value.
   /// [value] A request field matching the specified value will be excluded from inspection during preconfigured WAF evaluation.
-  GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader({
+  const GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader({
     required this.operator,
     required this.value,
   });

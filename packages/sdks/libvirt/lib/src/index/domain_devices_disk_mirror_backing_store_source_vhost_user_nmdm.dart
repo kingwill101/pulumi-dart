@@ -11,7 +11,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm {
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm].
   /// [master] Specifies the master device in a master-slave NMDM configuration for the EGD backend.
   /// [slave] Specifies the slave device in a master-slave NMDM configuration for the EGD backend.
-  DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm({
+  const DomainDevicesDiskMirrorBackingStoreSourceVhostUserNmdm({
     required this.master,
     required this.slave,
   });

@@ -11,7 +11,7 @@ class ListEndpointManagedProxyDetailsResult {
   /// Creates a new [ListEndpointManagedProxyDetailsResult].
   /// [expiresOn] The expiration time of short lived proxy name in unix epoch.
   /// [proxy] The short lived proxy name.
-  ListEndpointManagedProxyDetailsResult({
+  const ListEndpointManagedProxyDetailsResult({
     required this.expiresOn,
     required this.proxy,
   });

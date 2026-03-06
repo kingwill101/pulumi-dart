@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecListenerTlCertificateAcm {
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlCertificateAcm].
   /// [certificateArn] Required.
-  GetVirtualGatewaySpecListenerTlCertificateAcm({
+  const GetVirtualGatewaySpecListenerTlCertificateAcm({
     required this.certificateArn,
   });
 

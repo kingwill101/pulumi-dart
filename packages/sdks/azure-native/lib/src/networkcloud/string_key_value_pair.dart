@@ -11,7 +11,7 @@ class StringKeyValuePair {
   /// Creates a new [StringKeyValuePair].
   /// [key] The key to the mapped value.
   /// [value] The value of the mapping key.
-  StringKeyValuePair({
+  const StringKeyValuePair({
     required this.key,
     required this.value,
   });

@@ -301,7 +301,7 @@ class ClusterState {
   /// [terminationProtection] Switch on/off termination protection (default is `false`, except when using multiple master nodes). Before attempting to destroy the resource when termination protection is enabled, this configuration must be applied with its value set to `false`.
   /// [unhealthyNodeReplacement] Whether whether Amazon EMR should gracefully replace core nodes that have degraded within the cluster. Default value is `false`.
   /// [visibleToAllUsers] Whether the job flow is visible to all IAM users of the AWS account associated with the job flow. Default value is `true`.
-  ClusterState({
+  const ClusterState({
     this.additionalInfo,
     this.applications,
     this.arn,

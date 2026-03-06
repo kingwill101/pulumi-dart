@@ -9,7 +9,7 @@ class ResourceIdentity {
 
   /// Creates a new [ResourceIdentity].
   /// [type] The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identities.
-  ResourceIdentity({
+  const ResourceIdentity({
     this.type,
   });
 

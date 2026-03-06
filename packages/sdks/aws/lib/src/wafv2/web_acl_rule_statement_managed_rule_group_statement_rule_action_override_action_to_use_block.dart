@@ -9,7 +9,7 @@ class WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseB
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock].
   /// [customResponse] Defines a custom response for the web request. See `custom_response` below for details.
-  WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock({
+  const WebAclRuleStatementManagedRuleGroupStatementRuleActionOverrideActionToUseBlock({
     this.customResponse,
   });
 

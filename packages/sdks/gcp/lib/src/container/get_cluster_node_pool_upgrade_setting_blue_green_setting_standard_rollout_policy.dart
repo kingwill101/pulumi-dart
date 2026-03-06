@@ -14,7 +14,7 @@ class GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy {
   /// [batchNodeCount] Number of blue nodes to drain in a batch.
   /// [batchPercentage] Percentage of the blue pool nodes to drain in a batch.
   /// [batchSoakDuration] Soak time after each batch gets drained.
-  GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy({
+  const GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy({
     required this.batchNodeCount,
     required this.batchPercentage,
     required this.batchSoakDuration,

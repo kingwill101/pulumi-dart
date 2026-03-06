@@ -29,7 +29,7 @@ class GetServiceTopicsResult {
   /// [pageSize] Optional.
   /// [topicName] The name of the topic.
   /// [topics] A list of Topics. Each element contains the following attributes:
-  GetServiceTopicsResult({
+  const GetServiceTopicsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

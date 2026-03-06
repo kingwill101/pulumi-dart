@@ -27,7 +27,7 @@ class SharedDirectoryArgs {
   /// [notes] Message sent by the directory owner to the directory consumer to help the directory consumer administrator determine whether to approve or reject the share invitation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [target] Identifier for the directory consumer account with whom the directory is to be shared. See below.
-  SharedDirectoryArgs({
+  const SharedDirectoryArgs({
     required this.directoryId,
     this.method,
     this.notes,

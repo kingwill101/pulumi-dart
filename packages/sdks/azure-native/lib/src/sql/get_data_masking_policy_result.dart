@@ -35,7 +35,7 @@ class GetDataMaskingPolicyResult {
   /// [maskingLevel] The masking level. This is a legacy parameter and is no longer used.
   /// [name] Resource name.
   /// [type] Resource type.
-  GetDataMaskingPolicyResult({
+  const GetDataMaskingPolicyResult({
     required this.applicationPrincipals,
     required this.azureApiVersion,
     required this.dataMaskingState,

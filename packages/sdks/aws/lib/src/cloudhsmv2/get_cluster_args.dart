@@ -18,7 +18,7 @@ class GetClusterArgs {
   /// [clusterId] ID of Cloud HSM v2 cluster.
   /// [clusterState] State of the cluster to be found.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterId,
     this.clusterState,
     this.region,

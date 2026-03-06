@@ -20,7 +20,7 @@ class MigrationJobReverseSshConnectivity {
   /// [vmIp] The IP of the virtual machine (Compute Engine) used as the bastion server
   /// [vmPort] The forwarding port of the virtual machine (Compute Engine) used as the
   /// [vpc] The name of the VPC to peer with the Cloud SQL private network.
-  MigrationJobReverseSshConnectivity({
+  const MigrationJobReverseSshConnectivity({
     this.vm,
     this.vmIp,
     this.vmPort,

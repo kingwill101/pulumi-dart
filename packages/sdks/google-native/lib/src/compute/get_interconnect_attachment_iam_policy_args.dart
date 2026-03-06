@@ -17,7 +17,7 @@ class GetInterconnectAttachmentIamPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetInterconnectAttachmentIamPolicyArgs({
+  const GetInterconnectAttachmentIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

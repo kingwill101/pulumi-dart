@@ -55,7 +55,7 @@ class GetCryptoKeyVersionResult {
   /// [protectionLevel] The ProtectionLevel describing how crypto operations are performed with this CryptoKeyVersion.
   /// [reimportEligible] Whether or not this key version is eligible for reimport, by being specified as a target in ImportCryptoKeyVersionRequest.crypto_key_version.
   /// [state] The current state of the CryptoKeyVersion.
-  GetCryptoKeyVersionResult({
+  const GetCryptoKeyVersionResult({
     required this.algorithm,
     required this.attestation,
     required this.createTime,

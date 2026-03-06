@@ -50,7 +50,7 @@ class GetNetworkSecurityPerimeterLinkResult {
   /// [remotePerimeterLocation] Remote NSP location with which the link gets created.
   /// [status] The NSP link state.
   /// [type] Resource type.
-  GetNetworkSecurityPerimeterLinkResult({
+  const GetNetworkSecurityPerimeterLinkResult({
     this.autoApprovedRemotePerimeterResourceId,
     required this.azureApiVersion,
     this.description,

@@ -8,7 +8,7 @@ class DomainFeaturesHyperVReEnlightenment {
 
   /// Creates a new [DomainFeaturesHyperVReEnlightenment].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesHyperVReEnlightenment({
+  const DomainFeaturesHyperVReEnlightenment({
     this.state,
   });
 

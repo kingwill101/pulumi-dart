@@ -12,7 +12,7 @@ class ModelDefinitionModelOptionsResponse {
   /// [labels] Required.
   /// [lossType] Required.
   /// [modelType] Required.
-  ModelDefinitionModelOptionsResponse({
+  const ModelDefinitionModelOptionsResponse({
     required this.labels,
     required this.lossType,
     required this.modelType,

@@ -9,7 +9,7 @@ class CompressionResponse {
 
   /// Creates a new [CompressionResponse].
   /// [type] Indicates the type of compression that the input uses. Required on PUT (CreateOrReplace) requests.
-  CompressionResponse({
+  const CompressionResponse({
     required this.type,
   });
 

@@ -21,7 +21,7 @@ class ClusterState {
   /// [resourceGroupName] The name of the Resource Group where the Stream Analytics Cluster should exist. Changing this forces a new resource to be created.
   /// [streamingCapacity] The number of streaming units supported by the Cluster. Accepted values are multiples of `36` in the range of `36` to `216`.
   /// [tags] A mapping of tags which should be assigned to the Stream Analytics.
-  ClusterState({
+  const ClusterState({
     this.location,
     this.name,
     this.resourceGroupName,

@@ -27,7 +27,7 @@ class Ipv6EgressRuleState {
   /// [ipv6EgressRuleName] The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
   /// [ipv6GatewayId] The ID of the IPv6 gateway.
   /// [status] The status of the resource.
-  Ipv6EgressRuleState({
+  const Ipv6EgressRuleState({
     this.description,
     this.instanceId,
     this.instanceType,

@@ -11,7 +11,7 @@ class ServiceAttributesOperatorOwner {
   /// Creates a new [ServiceAttributesOperatorOwner].
   /// [displayName] Contact's name.
   /// [email] Required. Email address of the contacts.
-  ServiceAttributesOperatorOwner({
+  const ServiceAttributesOperatorOwner({
     this.displayName,
     required this.email,
   });

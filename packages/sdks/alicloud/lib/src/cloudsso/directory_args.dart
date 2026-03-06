@@ -45,7 +45,7 @@ class DirectoryArgs {
   /// [samlServiceProvider] SP information. See `saml_service_provider` below.
   /// [scimSynchronizationStatus] SCIM Synchronization Status
   /// [userProvisioningConfiguration] User Provisioning configuration See `user_provisioning_configuration` below.
-  DirectoryArgs({
+  const DirectoryArgs({
     this.directoryGlobalAccessStatus,
     this.directoryName,
     this.loginPreference,

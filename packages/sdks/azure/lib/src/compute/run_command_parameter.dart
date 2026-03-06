@@ -11,7 +11,7 @@ class RunCommandParameter {
   /// Creates a new [RunCommandParameter].
   /// [name] The run parameter name.
   /// [value] The run parameter value.
-  RunCommandParameter({
+  const RunCommandParameter({
     required this.name,
     required this.value,
   });

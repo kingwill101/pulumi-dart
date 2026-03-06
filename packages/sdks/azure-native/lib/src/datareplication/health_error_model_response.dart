@@ -51,7 +51,7 @@ class HealthErrorModelResponse {
   /// [severity] Gets or sets the error severity.
   /// [source] Gets or sets the error source.
   /// [summary] Gets or sets the error summary.
-  HealthErrorModelResponse({
+  const HealthErrorModelResponse({
     this.affectedResourceCorrelationIds,
     this.affectedResourceType,
     required this.category,

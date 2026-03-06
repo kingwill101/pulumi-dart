@@ -9,7 +9,7 @@ class OfficeDataConnectorDataTypesResponseExchange {
 
   /// Creates a new [OfficeDataConnectorDataTypesResponseExchange].
   /// [state] Describe whether this data type connection is enabled or not.
-  OfficeDataConnectorDataTypesResponseExchange({
+  const OfficeDataConnectorDataTypesResponseExchange({
     required this.state,
   });
 

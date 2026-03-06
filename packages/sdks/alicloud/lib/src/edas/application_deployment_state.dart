@@ -21,7 +21,7 @@ class ApplicationDeploymentState {
   /// [lastPackageVersion] Last package version deployed.
   /// [packageVersion] The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
   /// [warUrl] The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
-  ApplicationDeploymentState({
+  const ApplicationDeploymentState({
     this.appId,
     this.groupId,
     this.lastPackageVersion,

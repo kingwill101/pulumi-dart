@@ -39,7 +39,7 @@ class ListListSchemaArgs {
   /// [schemaType] The Schema Type
   /// [schemaUri] Uri containing SAS token for the zipped schema
   /// [status] Status of the schema
-  ListListSchemaArgs({
+  const ListListSchemaArgs({
     this.connectionId,
     this.content,
     this.direction,

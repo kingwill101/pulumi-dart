@@ -21,7 +21,7 @@ class AppConnectionGateway {
   /// [ingressPort] (Output)
   /// [type] The type of hosting used by the gateway. Refer to
   /// [uri] (Output)
-  AppConnectionGateway({
+  const AppConnectionGateway({
     required this.appGateway,
     this.ingressPort,
     this.type,

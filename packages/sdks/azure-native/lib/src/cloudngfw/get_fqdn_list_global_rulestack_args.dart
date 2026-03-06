@@ -15,7 +15,7 @@ class GetFqdnListGlobalRulestackArgs {
   /// Creates a new [GetFqdnListGlobalRulestackArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] fqdn list name
-  GetFqdnListGlobalRulestackArgs({
+  const GetFqdnListGlobalRulestackArgs({
     required this.globalRulestackName,
     required this.name,
   });

@@ -36,7 +36,7 @@ class DeviceFleetState {
   /// [roleArn] The Amazon Resource Name (ARN) that has access to AWS Internet of Things (IoT).
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  DeviceFleetState({
+  const DeviceFleetState({
     this.arn,
     this.description,
     this.deviceFleetName,

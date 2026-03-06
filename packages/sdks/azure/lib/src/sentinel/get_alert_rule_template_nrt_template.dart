@@ -17,7 +17,7 @@ class GetAlertRuleTemplateNrtTemplate {
   /// [query] The query of this Sentinel Scheduled Alert Rule Template.
   /// [severity] The alert severity of this Sentinel Scheduled Alert Rule Template.
   /// [tactics] A list of categories of attacks by which to classify the rule.
-  GetAlertRuleTemplateNrtTemplate({
+  const GetAlertRuleTemplateNrtTemplate({
     required this.description,
     required this.query,
     required this.severity,

@@ -15,7 +15,7 @@ class GetConversationProfileArgs {
   /// [conversationProfileId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversationProfileArgs({
+  const GetConversationProfileArgs({
     required this.conversationProfileId,
     required this.location,
     this.project,

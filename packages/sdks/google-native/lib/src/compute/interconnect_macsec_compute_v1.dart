@@ -13,7 +13,7 @@ class InterconnectMacsecComputeV1 {
   /// Creates a new [InterconnectMacsecComputeV1].
   /// [failOpen] If set to true, the Interconnect connection is configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect connection is configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
   /// [preSharedKeys] A keychain placeholder describing a set of named key objects along with their start times. A MACsec CKN/CAK is generated for each key in the key chain. Google router automatically picks the key with the most recent startTime when establishing or re-establishing a MACsec secure link.
-  InterconnectMacsecComputeV1({
+  const InterconnectMacsecComputeV1({
     this.failOpen,
     required this.preSharedKeys,
   });

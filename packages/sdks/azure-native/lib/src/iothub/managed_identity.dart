@@ -9,7 +9,7 @@ class ManagedIdentity {
 
   /// Creates a new [ManagedIdentity].
   /// [userAssignedIdentity] The user assigned identity.
-  ManagedIdentity({
+  const ManagedIdentity({
     this.userAssignedIdentity,
   });
 

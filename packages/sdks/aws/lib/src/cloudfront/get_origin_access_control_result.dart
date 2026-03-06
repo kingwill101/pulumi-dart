@@ -28,7 +28,7 @@ class GetOriginAccessControlResult {
   /// [originAccessControlOriginType] The type of origin that this origin access control is for.
   /// [signingBehavior] Specifies which requests CloudFront signs.
   /// [signingProtocol] The signing protocol of the origin access control, which determines how CloudFront signs (authenticates) requests.
-  GetOriginAccessControlResult({
+  const GetOriginAccessControlResult({
     required this.arn,
     required this.description,
     required this.etag,

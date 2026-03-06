@@ -63,7 +63,7 @@ class ConditionalCreditArgs {
   /// [startAt] Start date of the conditional credit
   /// [status] The status of the conditional credit
   /// [tags] Resource tags.
-  ConditionalCreditArgs({
+  const ConditionalCreditArgs({
     this.billingAccountResourceId,
     this.conditionalCreditName,
     this.displayName,

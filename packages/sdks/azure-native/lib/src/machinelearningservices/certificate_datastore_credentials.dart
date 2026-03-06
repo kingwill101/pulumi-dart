@@ -29,7 +29,7 @@ class CertificateDatastoreCredentials {
   /// [secrets] [Required] Service principal secrets.
   /// [tenantId] [Required] ID of the tenant to which the service principal belongs.
   /// [thumbprint] [Required] Thumbprint of the certificate used for authentication.
-  CertificateDatastoreCredentials({
+  const CertificateDatastoreCredentials({
     this.authorityUrl,
     required this.clientId,
     required this.credentialsType,

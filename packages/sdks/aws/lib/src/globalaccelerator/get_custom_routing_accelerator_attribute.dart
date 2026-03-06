@@ -11,7 +11,7 @@ class GetCustomRoutingAcceleratorAttribute {
   /// [flowLogsEnabled] Required.
   /// [flowLogsS3Bucket] Required.
   /// [flowLogsS3Prefix] Required.
-  GetCustomRoutingAcceleratorAttribute({
+  const GetCustomRoutingAcceleratorAttribute({
     required this.flowLogsEnabled,
     required this.flowLogsS3Bucket,
     required this.flowLogsS3Prefix,

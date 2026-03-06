@@ -9,7 +9,7 @@ class MultiClusterIngressFeatureSpec {
 
   /// Creates a new [MultiClusterIngressFeatureSpec].
   /// [configMembership] Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
-  MultiClusterIngressFeatureSpec({
+  const MultiClusterIngressFeatureSpec({
     this.configMembership,
   });
 

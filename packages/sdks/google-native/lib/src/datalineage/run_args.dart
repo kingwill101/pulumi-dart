@@ -37,7 +37,7 @@ class RunArgs {
   /// [requestId] A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
   /// [startTime] The timestamp of the start of the run.
   /// [state] The state of the run.
-  RunArgs({
+  const RunArgs({
     this.attributes,
     this.displayName,
     this.endTime,

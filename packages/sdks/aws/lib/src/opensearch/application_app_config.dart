@@ -11,7 +11,7 @@ class ApplicationAppConfig {
   /// Creates a new [ApplicationAppConfig].
   /// [key] The configuration item to set. Valid values are `opensearchDashboards.dashboardAdmin.users` and `opensearchDashboards.dashboardAdmin.groups`.
   /// [value] The value assigned to the configuration key, such as an IAM user ARN or group name. Must be between 1 and 4096 characters.
-  ApplicationAppConfig({
+  const ApplicationAppConfig({
     this.key,
     this.value,
   });

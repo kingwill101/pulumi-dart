@@ -23,7 +23,7 @@ class FileSystemPolicyArgs {
   /// [fileSystemId] The ID of the EFS file system.
   /// [policy] The JSON formatted file system policy for the EFS file system. see [Docs](https://docs.aws.amazon.com/efs/latest/ug/access-control-overview.html#access-control-manage-access-intro-resource-policies) for more info.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  FileSystemPolicyArgs({
+  const FileSystemPolicyArgs({
     this.bypassPolicyLockoutSafetyCheck,
     required this.fileSystemId,
     required this.policy,

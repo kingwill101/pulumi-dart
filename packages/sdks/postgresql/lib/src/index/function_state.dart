@@ -47,7 +47,7 @@ class FunctionState {
   /// [securityDefiner] If the function should execute with the permissions of the owner, rather than the permissions of the caller. Default is false.
   /// [strict] If the function should always return NULL when any of the inputs is NULL. Default is false.
   /// [volatility] Defines the volatility of the function. Can be one of VOLATILE, STABLE, or IMMUTABLE. Default is VOLATILE.
-  FunctionState({
+  const FunctionState({
     this.args,
     this.body,
     this.database,

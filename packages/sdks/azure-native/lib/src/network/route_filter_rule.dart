@@ -24,7 +24,7 @@ class RouteFilterRule {
   /// [location] Resource location.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [routeFilterRuleType] The rule type of the rule.
-  RouteFilterRule({
+  const RouteFilterRule({
     required this.access,
     required this.communities,
     this.id,

@@ -9,7 +9,7 @@ class LinkedDatabase {
 
   /// Creates a new [LinkedDatabase].
   /// [id] Resource ID of a database resource to link with this database.
-  LinkedDatabase({
+  const LinkedDatabase({
     this.id,
   });
 

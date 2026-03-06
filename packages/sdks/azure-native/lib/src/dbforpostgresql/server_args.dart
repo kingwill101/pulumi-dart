@@ -89,7 +89,7 @@ class ServerArgs {
   /// [storage] Storage properties of a server.
   /// [tags] Resource tags.
   /// [version] Major version of PostgreSQL database engine.
-  ServerArgs({
+  const ServerArgs({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.authConfig,

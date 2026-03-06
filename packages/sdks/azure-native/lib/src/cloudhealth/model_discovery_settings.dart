@@ -15,7 +15,7 @@ class ModelDiscoverySettings {
   /// [addRecommendedSignals] Whether to add all recommended signals to the discovered entities.
   /// [identity] Which Managed Identity of the health model to use for discovery. Defaults to SystemAssigned, if not set. Can be set to 'SystemAssigned' or to the resource id of a user-assigned managed identity which is linked to the health model.
   /// [scope] The scope from which entities should be automatically discovered. For example, the resource id of a Service Group.
-  ModelDiscoverySettings({
+  const ModelDiscoverySettings({
     required this.addRecommendedSignals,
     this.identity,
     required this.scope,

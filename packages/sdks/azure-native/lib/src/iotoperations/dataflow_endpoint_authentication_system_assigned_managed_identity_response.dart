@@ -9,7 +9,7 @@ class DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse {
 
   /// Creates a new [DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse].
   /// [audience] Audience of the service to authenticate against. Optional; defaults to the audience for Service host configuration.
-  DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse({
+  const DataflowEndpointAuthenticationSystemAssignedManagedIdentityResponse({
     this.audience,
   });
 

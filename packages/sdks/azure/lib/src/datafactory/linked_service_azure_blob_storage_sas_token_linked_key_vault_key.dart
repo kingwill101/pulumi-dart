@@ -11,7 +11,7 @@ class LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey {
   /// Creates a new [LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores the SAS token.
-  LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey({
+  const LinkedServiceAzureBlobStorageSasTokenLinkedKeyVaultKey({
     required this.linkedServiceName,
     required this.secretName,
   });

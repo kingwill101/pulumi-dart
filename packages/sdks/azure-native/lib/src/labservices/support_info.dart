@@ -18,7 +18,7 @@ class SupportInfo {
   /// [instructions] Support instructions.
   /// [phone] Support contact phone number.
   /// [url] Support web address.
-  SupportInfo({
+  const SupportInfo({
     this.email,
     this.instructions,
     this.phone,

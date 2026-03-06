@@ -59,7 +59,7 @@ class BookmarkArgs {
   /// [updated] The last time the bookmark was updated
   /// [updatedBy] Describes a user that updated the bookmark
   /// [workspaceName] The name of the workspace.
-  BookmarkArgs({
+  const BookmarkArgs({
     this.bookmarkId,
     this.created,
     this.createdBy,

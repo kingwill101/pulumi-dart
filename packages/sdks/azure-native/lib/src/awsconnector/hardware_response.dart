@@ -16,7 +16,7 @@ class HardwareResponse {
   /// [cpuCount] CPU count of the Instance.
   /// [disks] Disks attached to the Instance.
   /// [ramSizeInGb] RAM Size of the Instance.
-  HardwareResponse({
+  const HardwareResponse({
     this.cpuCount,
     this.disks,
     this.ramSizeInGb,

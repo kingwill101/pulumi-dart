@@ -9,7 +9,7 @@ class JavaComponentIngressResponse {
 
   /// Creates a new [JavaComponentIngressResponse].
   /// [fqdn] Hostname of the Java Component endpoint
-  JavaComponentIngressResponse({
+  const JavaComponentIngressResponse({
     required this.fqdn,
   });
 

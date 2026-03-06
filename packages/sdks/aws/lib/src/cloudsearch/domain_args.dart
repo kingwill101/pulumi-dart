@@ -30,7 +30,7 @@ class DomainArgs {
   /// [name] The name of the CloudSearch domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scalingParameters] Domain scaling parameters. Documented below.
-  DomainArgs({
+  const DomainArgs({
     this.endpointOptions,
     this.indexFields,
     this.multiAz,

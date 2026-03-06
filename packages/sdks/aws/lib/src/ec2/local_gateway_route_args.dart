@@ -21,7 +21,7 @@ class LocalGatewayRouteArgs {
   /// [localGatewayRouteTableId] Identifier of EC2 Local Gateway Route Table.
   /// [localGatewayVirtualInterfaceGroupId] Identifier of EC2 Local Gateway Virtual Interface Group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LocalGatewayRouteArgs({
+  const LocalGatewayRouteArgs({
     required this.destinationCidrBlock,
     required this.localGatewayRouteTableId,
     required this.localGatewayVirtualInterfaceGroupId,

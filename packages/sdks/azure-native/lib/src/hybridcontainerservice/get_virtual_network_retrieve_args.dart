@@ -15,7 +15,7 @@ class GetVirtualNetworkRetrieveArgs {
   /// Creates a new [GetVirtualNetworkRetrieveArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworksName] Parameter for the name of the virtual network
-  GetVirtualNetworkRetrieveArgs({
+  const GetVirtualNetworkRetrieveArgs({
     required this.resourceGroupName,
     required this.virtualNetworksName,
   });

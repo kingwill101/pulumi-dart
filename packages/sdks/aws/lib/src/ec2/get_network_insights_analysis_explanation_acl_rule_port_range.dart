@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisExplanationAclRulePortRange {
   /// Creates a new [GetNetworkInsightsAnalysisExplanationAclRulePortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisExplanationAclRulePortRange({
+  const GetNetworkInsightsAnalysisExplanationAclRulePortRange({
     required this.from,
     required this.to,
   });

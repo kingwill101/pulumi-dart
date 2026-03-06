@@ -14,7 +14,7 @@ class GetHciClusterIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] (Required) The type of Managed Service Identity configured on the Azure Stack HCI Cluster.
-  GetHciClusterIdentity({
+  const GetHciClusterIdentity({
     required this.principalId,
     required this.tenantId,
     required this.type,

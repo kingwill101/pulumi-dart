@@ -17,7 +17,7 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResourceResource {
   /// [name] Name of the Kubernetes object.
   /// [namespace] Kubernetes namespace.
   /// [resourceName] Name of the resource.
-  PlanWorkflowStepEksResourceScalingConfigScalingResourceResource({
+  const PlanWorkflowStepEksResourceScalingConfigScalingResourceResource({
     this.hpaName,
     required this.name,
     required this.namespace,

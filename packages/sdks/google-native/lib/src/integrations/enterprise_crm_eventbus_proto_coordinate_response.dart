@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoCoordinateResponse {
   /// Creates a new [EnterpriseCrmEventbusProtoCoordinateResponse].
   /// [x] Required.
   /// [y] Required.
-  EnterpriseCrmEventbusProtoCoordinateResponse({
+  const EnterpriseCrmEventbusProtoCoordinateResponse({
     required this.x,
     required this.y,
   });

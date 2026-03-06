@@ -20,7 +20,7 @@ class UpgradeSettings {
   /// [maxSurge] The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
   /// [maxUnavailable] The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready.
   /// [strategy] Update strategy of the node pool.
-  UpgradeSettings({
+  const UpgradeSettings({
     this.blueGreenSettings,
     this.maxSurge,
     this.maxUnavailable,

@@ -36,7 +36,7 @@ class GetFeatureViewAiplatformV1beta1Result {
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// [updateTime] Timestamp when this FeatureView was last updated.
   /// [vectorSearchConfig] Optional. Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
-  GetFeatureViewAiplatformV1beta1Result({
+  const GetFeatureViewAiplatformV1beta1Result({
     required this.bigQuerySource,
     required this.createTime,
     required this.etag,

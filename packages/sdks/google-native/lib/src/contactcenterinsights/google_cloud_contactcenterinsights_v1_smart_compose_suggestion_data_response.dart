@@ -18,7 +18,7 @@ class GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse {
   /// [metadata] Map that contains metadata about the Smart Compose suggestion and the document from which it originates.
   /// [queryRecord] The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
   /// [suggestion] The content of the suggestion.
-  GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse({
+  const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionDataResponse({
     required this.confidenceScore,
     required this.metadata,
     required this.queryRecord,

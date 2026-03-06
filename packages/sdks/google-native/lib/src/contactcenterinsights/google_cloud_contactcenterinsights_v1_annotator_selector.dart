@@ -40,7 +40,7 @@ class GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /// [runSilenceAnnotator] Whether to run the silence annotator.
   /// [runSummarizationAnnotator] Whether to run the summarization annotator.
   /// [summarizationConfig] Configuration for the summarization annotator.
-  GoogleCloudContactcenterinsightsV1AnnotatorSelector({
+  const GoogleCloudContactcenterinsightsV1AnnotatorSelector({
     this.issueModels,
     this.phraseMatchers,
     this.runEntityAnnotator,

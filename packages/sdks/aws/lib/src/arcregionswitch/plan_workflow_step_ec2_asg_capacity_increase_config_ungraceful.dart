@@ -8,7 +8,7 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful].
   /// [minimumSuccessPercentage] Minimum success percentage required.
-  PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful({
+  const PlanWorkflowStepEc2AsgCapacityIncreaseConfigUngraceful({
     required this.minimumSuccessPercentage,
   });
 

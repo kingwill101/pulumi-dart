@@ -19,7 +19,7 @@ class GetConfigsResult {
   /// [ids] Required.
   /// [lang] Optional.
   /// [outputFile] Optional.
-  GetConfigsResult({
+  const GetConfigsResult({
     required this.configs,
     required this.id,
     required this.ids,

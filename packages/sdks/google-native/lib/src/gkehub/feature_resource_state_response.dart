@@ -9,7 +9,7 @@ class FeatureResourceStateResponse {
 
   /// Creates a new [FeatureResourceStateResponse].
   /// [state] The current state of the Feature resource in the Hub API.
-  FeatureResourceStateResponse({
+  const FeatureResourceStateResponse({
     required this.state,
   });
 

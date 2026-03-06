@@ -13,7 +13,7 @@ class GetGradientaiModelsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGradientaiModelsFilter({
+  const GetGradientaiModelsFilter({
     this.all,
     required this.key,
     this.matchBy,

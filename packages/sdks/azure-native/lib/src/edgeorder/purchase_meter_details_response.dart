@@ -25,7 +25,7 @@ class PurchaseMeterDetailsResponse {
   /// [productId] Product Id.
   /// [skuId] Sku Id.
   /// [termId] Term Id.
-  PurchaseMeterDetailsResponse({
+  const PurchaseMeterDetailsResponse({
     required this.billingType,
     required this.chargingType,
     required this.multiplier,

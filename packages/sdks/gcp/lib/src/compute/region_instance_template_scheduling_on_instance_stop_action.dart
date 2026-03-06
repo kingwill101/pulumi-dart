@@ -8,7 +8,7 @@ class RegionInstanceTemplateSchedulingOnInstanceStopAction {
 
   /// Creates a new [RegionInstanceTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
-  RegionInstanceTemplateSchedulingOnInstanceStopAction({
+  const RegionInstanceTemplateSchedulingOnInstanceStopAction({
     this.discardLocalSsd,
   });
 

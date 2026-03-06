@@ -24,7 +24,7 @@ class ListIntegrationAccountPartnerContentCallbackUrlArgs {
   /// [notAfter] The expiry time.
   /// [partnerName] The integration account partner name.
   /// [resourceGroupName] The resource group name.
-  ListIntegrationAccountPartnerContentCallbackUrlArgs({
+  const ListIntegrationAccountPartnerContentCallbackUrlArgs({
     required this.integrationAccountName,
     this.keyType,
     this.notAfter,

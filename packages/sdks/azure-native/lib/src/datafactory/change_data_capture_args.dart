@@ -43,7 +43,7 @@ class ChangeDataCaptureArgs {
   /// [sourceConnectionsInfo] List of sources connections that can be used as sources in the CDC.
   /// [status] Status of the CDC as to if it is running or stopped.
   /// [targetConnectionsInfo] List of target connections that can be used as sources in the CDC.
-  ChangeDataCaptureArgs({
+  const ChangeDataCaptureArgs({
     this.allowVNetOverride,
     this.changeDataCaptureName,
     this.description,

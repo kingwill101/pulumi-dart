@@ -18,7 +18,7 @@ class ContainerResourcesResponse {
   /// [ephemeralStorage] Ephemeral Storage, e.g. "1Gi"
   /// [gpu] Required GPU in cores for GPU based app, e.g. 1.0
   /// [memory] Required memory, e.g. "250Mb"
-  ContainerResourcesResponse({
+  const ContainerResourcesResponse({
     this.cpu,
     required this.ephemeralStorage,
     this.gpu,

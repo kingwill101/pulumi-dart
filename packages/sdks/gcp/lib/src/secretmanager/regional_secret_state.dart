@@ -111,7 +111,7 @@ class RegionalSecretState {
   /// [ttl] The TTL for the regional secret. A duration in seconds with up to nine fractional digits,
   /// [versionAliases] Mapping from version alias to version name.
   /// [versionDestroyTtl] Secret Version TTL after destruction request.
-  RegionalSecretState({
+  const RegionalSecretState({
     this.annotations,
     this.createTime,
     this.customerManagedEncryption,

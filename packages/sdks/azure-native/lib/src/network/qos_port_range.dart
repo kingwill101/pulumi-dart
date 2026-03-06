@@ -12,7 +12,7 @@ class QosPortRange {
   /// Creates a new [QosPortRange].
   /// [end] Qos Port Range end.
   /// [start] Qos Port Range start.
-  QosPortRange({
+  const QosPortRange({
     this.end,
     this.start,
   });

@@ -8,7 +8,7 @@ class GetVpcIpsVpcIpIpv6Address {
 
   /// Creates a new [GetVpcIpsVpcIpIpv6Address].
   /// [slaacAddress] A specific address within the prefix that the interface is expected to autoconfigure through SLAAC.
-  GetVpcIpsVpcIpIpv6Address({
+  const GetVpcIpsVpcIpIpv6Address({
     required this.slaacAddress,
   });
 

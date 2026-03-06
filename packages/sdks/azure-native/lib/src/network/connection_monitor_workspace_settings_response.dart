@@ -9,7 +9,7 @@ class ConnectionMonitorWorkspaceSettingsResponse {
 
   /// Creates a new [ConnectionMonitorWorkspaceSettingsResponse].
   /// [workspaceResourceId] Log analytics workspace resource ID.
-  ConnectionMonitorWorkspaceSettingsResponse({
+  const ConnectionMonitorWorkspaceSettingsResponse({
     this.workspaceResourceId,
   });
 

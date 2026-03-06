@@ -10,7 +10,7 @@ class TypeCheckingPatch {
 
   /// Creates a new [TypeCheckingPatch].
   /// [expressionWarnings] The type checking warnings for each expression.
-  TypeCheckingPatch({
+  const TypeCheckingPatch({
     this.expressionWarnings,
   });
 

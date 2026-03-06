@@ -15,7 +15,7 @@ class ConfigurationFeatureTargetingFilter {
   /// [defaultRolloutPercentage] A number representing the percentage of the entire user base.
   /// [groups] One or more `groups` blocks as defined below.
   /// [users] A list of users to target for this feature.
-  ConfigurationFeatureTargetingFilter({
+  const ConfigurationFeatureTargetingFilter({
     required this.defaultRolloutPercentage,
     this.groups,
     this.users,

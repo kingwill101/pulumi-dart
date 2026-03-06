@@ -15,7 +15,7 @@ class DelegatedAdministratorArgs {
   /// Creates a new [DelegatedAdministratorArgs].
   /// [accountId] The Alibaba Cloud account ID of the member in the resource directory.
   /// [servicePrincipal] The identifier of the trusted service.
-  DelegatedAdministratorArgs({
+  const DelegatedAdministratorArgs({
     required this.accountId,
     required this.servicePrincipal,
   });

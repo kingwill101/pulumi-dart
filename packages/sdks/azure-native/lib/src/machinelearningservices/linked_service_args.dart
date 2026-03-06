@@ -32,7 +32,7 @@ class LinkedServiceArgs {
   /// [properties] LinkedService specific properties.
   /// [resourceGroupName] Name of the resource group in which workspace is located.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  LinkedServiceArgs({
+  const LinkedServiceArgs({
     this.identity,
     this.linkName,
     this.location,

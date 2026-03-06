@@ -21,7 +21,7 @@ class ListCapacityPoolVolumeQuotaReportArgs {
   /// [poolName] The name of the capacity pool
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [volumeName] The name of the volume
-  ListCapacityPoolVolumeQuotaReportArgs({
+  const ListCapacityPoolVolumeQuotaReportArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

@@ -11,7 +11,7 @@ class InteractiveQueryClusterMonitor {
   /// Creates a new [InteractiveQueryClusterMonitor].
   /// [logAnalyticsWorkspaceId] The Operations Management Suite (OMS) workspace ID.
   /// [primaryKey] The Operations Management Suite (OMS) workspace key.
-  InteractiveQueryClusterMonitor({
+  const InteractiveQueryClusterMonitor({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

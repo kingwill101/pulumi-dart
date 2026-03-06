@@ -85,7 +85,7 @@ class GetSnapshotsSnapshot {
   /// [startTime] The start time of the snapshot. UNIX time in seconds.
   /// [status] The status of snapshot execution. Possible values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`.
   /// [updatedTime] The update time of snapshot. UNIX time in seconds.
-  GetSnapshotsSnapshot({
+  const GetSnapshotsSnapshot({
     required this.actualBytes,
     required this.actualItems,
     required this.backupType,

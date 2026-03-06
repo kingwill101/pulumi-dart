@@ -13,7 +13,7 @@ class DomainCpuNumaInterconnects {
   /// Creates a new [DomainCpuNumaInterconnects].
   /// [bandwidths] Configures the bandwidth characteristics for the interconnects among the NUMA nodes.
   /// [latencies] Specifies the latency measures associated with the interconnections between NUMA nodes.
-  DomainCpuNumaInterconnects({
+  const DomainCpuNumaInterconnects({
     this.bandwidths,
     this.latencies,
   });

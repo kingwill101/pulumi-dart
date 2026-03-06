@@ -19,7 +19,7 @@ class GetResourceRecordSetDnsV1beta2Args {
   /// [name] Required.
   /// [project] Optional.
   /// [type] Required.
-  GetResourceRecordSetDnsV1beta2Args({
+  const GetResourceRecordSetDnsV1beta2Args({
     this.clientOperationId,
     required this.managedZone,
     required this.name,

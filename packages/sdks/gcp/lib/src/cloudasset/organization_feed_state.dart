@@ -51,7 +51,7 @@ class OrganizationFeedState {
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [name] The format will be organizations/{organization_number}/feeds/{client-assigned_feed_identifier}.
   /// [orgId] The organization this feed should be created in.
-  OrganizationFeedState({
+  const OrganizationFeedState({
     this.assetNames,
     this.assetTypes,
     this.billingProject,

@@ -13,7 +13,7 @@ class GetClusterCrossClusterReplicationConfigMembership {
   /// Creates a new [GetClusterCrossClusterReplicationConfigMembership].
   /// [primaryClusters] Details of the primary cluster that is used as the replication source for all the secondary clusters.
   /// [secondaryClusters] List of secondary clusters that are replicating from the primary cluster.
-  GetClusterCrossClusterReplicationConfigMembership({
+  const GetClusterCrossClusterReplicationConfigMembership({
     required this.primaryClusters,
     required this.secondaryClusters,
   });

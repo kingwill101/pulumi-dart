@@ -34,7 +34,7 @@ class LoggerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceId] Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
   /// [serviceName] The name of the API Management service.
-  LoggerArgs({
+  const LoggerArgs({
     this.credentials,
     this.description,
     this.isBuffered,

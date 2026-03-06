@@ -20,7 +20,7 @@ class ClusterCoreInstanceGroupEbsConfig {
   /// [throughput] The throughput, in mebibyte per second (MiB/s).
   /// [type] Volume type. Valid options are `gp3`, `gp2`, `io1`, `io2`, `standard`, `st1` and `sc1`. See [EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
   /// [volumesPerInstance] Number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1).
-  ClusterCoreInstanceGroupEbsConfig({
+  const ClusterCoreInstanceGroupEbsConfig({
     this.iops,
     required this.size,
     this.throughput,

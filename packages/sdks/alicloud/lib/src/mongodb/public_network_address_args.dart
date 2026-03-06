@@ -12,7 +12,7 @@ class PublicNetworkAddressArgs {
 
   /// Creates a new [PublicNetworkAddressArgs].
   /// [dbInstanceId] The instance ID.
-  PublicNetworkAddressArgs({
+  const PublicNetworkAddressArgs({
     required this.dbInstanceId,
   });
 

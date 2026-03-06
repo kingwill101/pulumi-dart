@@ -12,7 +12,7 @@ class ReservationAutoscale {
   /// Creates a new [ReservationAutoscale].
   /// [currentSlots] (Output)
   /// [maxSlots] Number of slots to be scaled when needed.
-  ReservationAutoscale({
+  const ReservationAutoscale({
     this.currentSlots,
     this.maxSlots,
   });

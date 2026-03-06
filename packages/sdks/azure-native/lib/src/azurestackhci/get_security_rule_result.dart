@@ -55,7 +55,7 @@ class GetSecurityRuleResult {
   /// [sourcePortRanges] The source port ranges. Integer or range between 0 and 65535. Asterisk '*' can also be used to match all ports.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSecurityRuleResult({
+  const GetSecurityRuleResult({
     required this.access,
     required this.azureApiVersion,
     this.description,

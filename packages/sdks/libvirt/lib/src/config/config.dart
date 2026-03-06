@@ -26,5 +26,5 @@ class LibvirtConfig {
 
 }
 
-final config = LibvirtConfig();
+const config = LibvirtConfig();
 

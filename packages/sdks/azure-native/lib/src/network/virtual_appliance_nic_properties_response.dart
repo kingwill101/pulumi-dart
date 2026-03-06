@@ -21,7 +21,7 @@ class VirtualApplianceNicPropertiesResponse {
   /// [nicType] NIC type - PublicNic, PrivateNic, or AdditionalNic.
   /// [privateIpAddress] Private IP address.
   /// [publicIpAddress] Public IP address.
-  VirtualApplianceNicPropertiesResponse({
+  const VirtualApplianceNicPropertiesResponse({
     required this.instanceName,
     required this.name,
     required this.nicType,

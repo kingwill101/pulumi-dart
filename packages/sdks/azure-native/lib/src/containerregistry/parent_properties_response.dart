@@ -13,7 +13,7 @@ class ParentPropertiesResponse {
   /// Creates a new [ParentPropertiesResponse].
   /// [id] The resource ID of the parent to which the connected registry will be associated.
   /// [syncProperties] The sync properties of the connected registry with its parent.
-  ParentPropertiesResponse({
+  const ParentPropertiesResponse({
     this.id,
     required this.syncProperties,
   });

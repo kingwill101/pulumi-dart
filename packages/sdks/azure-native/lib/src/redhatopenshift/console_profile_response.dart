@@ -9,7 +9,7 @@ class ConsoleProfileResponse {
 
   /// Creates a new [ConsoleProfileResponse].
   /// [url] The URL to access the cluster console.
-  ConsoleProfileResponse({
+  const ConsoleProfileResponse({
     required this.url,
   });
 

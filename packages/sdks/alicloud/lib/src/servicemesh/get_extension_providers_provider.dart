@@ -20,7 +20,7 @@ class GetExtensionProvidersProvider {
   /// [id] The ID of the Service Mesh Extension Provider. It formats as `&lt;service_mesh_id&gt;:&lt;type&gt;:&lt;extension_provider_name&gt;`.
   /// [serviceMeshId] The ID of the Service Mesh.
   /// [type] The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
-  GetExtensionProvidersProvider({
+  const GetExtensionProvidersProvider({
     required this.config,
     required this.extensionProviderName,
     required this.id,

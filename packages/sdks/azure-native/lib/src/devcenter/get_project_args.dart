@@ -15,7 +15,7 @@ class GetProjectArgs {
   /// Creates a new [GetProjectArgs].
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.projectName,
     required this.resourceGroupName,
   });

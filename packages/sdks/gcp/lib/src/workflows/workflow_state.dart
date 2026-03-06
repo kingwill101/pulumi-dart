@@ -86,7 +86,7 @@ class WorkflowState {
   /// [tags] A map of resource manager tags. Resource manager tag keys and values have the same definition
   /// [updateTime] The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// [userEnvVars] User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with "GOOGLE" or "WORKFLOWS".
-  WorkflowState({
+  const WorkflowState({
     this.callLogLevel,
     this.createTime,
     this.cryptoKeyName,

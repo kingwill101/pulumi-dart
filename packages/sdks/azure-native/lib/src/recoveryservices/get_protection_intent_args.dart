@@ -21,7 +21,7 @@ class GetProtectionIntentArgs {
   /// [intentObjectName] Backed up item name whose details are to be fetched.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [vaultName] The name of the recovery services vault.
-  GetProtectionIntentArgs({
+  const GetProtectionIntentArgs({
     required this.fabricName,
     required this.intentObjectName,
     required this.resourceGroupName,

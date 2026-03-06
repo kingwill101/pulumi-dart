@@ -17,7 +17,7 @@ class GetDatacenterConnectorVmmigrationV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetDatacenterConnectorVmmigrationV1alpha1Args({
+  const GetDatacenterConnectorVmmigrationV1alpha1Args({
     required this.datacenterConnectorId,
     required this.location,
     this.project,

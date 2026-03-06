@@ -38,7 +38,7 @@ class GetContextResult {
   /// [schemaTitle] The title of the schema describing the metadata. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [schemaVersion] The version of the schema in schema_name to use. Schema title and version is expected to be registered in earlier Create Schema calls. And both are used together as unique identifiers to identify schemas within the local metadata store.
   /// [updateTime] Timestamp when this Context was last updated.
-  GetContextResult({
+  const GetContextResult({
     required this.createTime,
     required this.description,
     required this.displayName,

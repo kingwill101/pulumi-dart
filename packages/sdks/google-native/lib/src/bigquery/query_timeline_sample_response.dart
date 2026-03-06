@@ -23,7 +23,7 @@ class QueryTimelineSampleResponse {
   /// [estimatedRunnableUnits] Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
   /// [pendingUnits] Total units of work remaining for the query. This number can be revised (increased or decreased) while the query is running.
   /// [totalSlotMs] Cumulative slot-ms consumed by the query.
-  QueryTimelineSampleResponse({
+  const QueryTimelineSampleResponse({
     required this.activeUnits,
     required this.completedUnits,
     required this.elapsedMs,

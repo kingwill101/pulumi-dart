@@ -46,7 +46,7 @@ class ClusterSpecEntityResponse {
   /// [network] Specification of the cluster
   /// [region] The cloud service provider region
   /// [zone] type of zone availability
-  ClusterSpecEntityResponse({
+  const ClusterSpecEntityResponse({
     this.apiEndpoint,
     this.availability,
     this.byok,

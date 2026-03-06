@@ -15,7 +15,7 @@ class GetImagesArgs {
   /// Creates a new [GetImagesArgs].
   /// [resourceGroupName] The name of the Resource Group in which the Image exists.
   /// [tagsFilter] A mapping of tags to filter the list of images against.
-  GetImagesArgs({
+  const GetImagesArgs({
     required this.resourceGroupName,
     this.tagsFilter,
   });

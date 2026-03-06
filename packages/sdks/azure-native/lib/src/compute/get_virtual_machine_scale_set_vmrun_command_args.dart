@@ -24,7 +24,7 @@ class GetVirtualMachineScaleSetVMRunCommandArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runCommandName] The name of the VirtualMachineRunCommand
   /// [vmScaleSetName] The name of the VirtualMachineScaleSet
-  GetVirtualMachineScaleSetVMRunCommandArgs({
+  const GetVirtualMachineScaleSetVMRunCommandArgs({
     this.expand,
     required this.instanceId,
     required this.resourceGroupName,

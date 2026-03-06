@@ -13,7 +13,7 @@ class FileReferenceInputDataSource {
   /// Creates a new [FileReferenceInputDataSource].
   /// [path] The path of the file.
   /// [type] Indicates the type of input data source containing reference data. Required on PUT (CreateOrReplace) requests.
-  FileReferenceInputDataSource({
+  const FileReferenceInputDataSource({
     this.path,
     required this.type,
   });

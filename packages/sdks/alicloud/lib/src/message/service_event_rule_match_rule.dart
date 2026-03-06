@@ -16,7 +16,7 @@ class ServiceEventRuleMatchRule {
   /// [name] Optional.
   /// [prefix] Prefix matching rule.
   /// [suffix] Suffix matching rule.
-  ServiceEventRuleMatchRule({
+  const ServiceEventRuleMatchRule({
     this.matchState,
     this.name,
     this.prefix,

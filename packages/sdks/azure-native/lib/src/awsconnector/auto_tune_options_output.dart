@@ -16,7 +16,7 @@ class AutoTuneOptionsOutput {
   /// [errorMessage] &lt;p&gt;Any errors that occurred while enabling or disabling Auto-Tune.&lt;/p&gt;
   /// [state] &lt;p&gt;The current state of Auto-Tune on the domain.&lt;/p&gt;
   /// [useOffPeakWindow] &lt;p&gt;Whether the domain's off-peak window will be used to deploy Auto-Tune changes rather than a maintenance schedule.&lt;/p&gt;
-  AutoTuneOptionsOutput({
+  const AutoTuneOptionsOutput({
     this.errorMessage,
     this.state,
     this.useOffPeakWindow,

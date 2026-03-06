@@ -13,7 +13,7 @@ class BudgetFilterPropertiesResponse {
   /// Creates a new [BudgetFilterPropertiesResponse].
   /// [dimensions] Has comparison expression for a dimension
   /// [tags] Has comparison expression for a tag
-  BudgetFilterPropertiesResponse({
+  const BudgetFilterPropertiesResponse({
     this.dimensions,
     this.tags,
   });

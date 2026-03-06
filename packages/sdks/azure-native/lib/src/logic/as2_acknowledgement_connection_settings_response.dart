@@ -18,7 +18,7 @@ class AS2AcknowledgementConnectionSettingsResponse {
   /// [keepHttpConnectionAlive] Indicates whether to keep the connection alive.
   /// [supportHttpStatusCodeContinue] Indicates whether to support HTTP status code 'CONTINUE'.
   /// [unfoldHttpHeaders] Indicates whether to unfold the HTTP headers.
-  AS2AcknowledgementConnectionSettingsResponse({
+  const AS2AcknowledgementConnectionSettingsResponse({
     required this.ignoreCertificateNameMismatch,
     required this.keepHttpConnectionAlive,
     required this.supportHttpStatusCodeContinue,

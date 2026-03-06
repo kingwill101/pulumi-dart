@@ -15,7 +15,7 @@ class GetDdosCustomPolicyArgs {
   /// Creates a new [GetDdosCustomPolicyArgs].
   /// [ddosCustomPolicyName] The name of the DDoS custom policy.
   /// [resourceGroupName] The name of the resource group.
-  GetDdosCustomPolicyArgs({
+  const GetDdosCustomPolicyArgs({
     required this.ddosCustomPolicyName,
     required this.resourceGroupName,
   });

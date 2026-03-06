@@ -12,7 +12,7 @@ class DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration {
   /// Creates a new [DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration].
   /// [initialDelayInMilliseconds] The optional initial delay in milliseconds before an operation is retried
   /// [maxIntervalInMilliseconds] The optional maximum time interval in milliseconds between retry attempts
-  DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration({
+  const DaprComponentResiliencyPolicyHttpRetryBackOffConfiguration({
     this.initialDelayInMilliseconds,
     this.maxIntervalInMilliseconds,
   });

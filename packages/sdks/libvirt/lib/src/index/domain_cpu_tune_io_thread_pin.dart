@@ -11,7 +11,7 @@ class DomainCpuTuneIoThreadPin {
   /// Creates a new [DomainCpuTuneIoThreadPin].
   /// [cpuSet] Specifies which CPUs IO threads can be pinned to, allowing for optimized resource allocation in IO operations.
   /// [ioThread] Identifies the specific IO thread that can be pinned to designated CPUs, impacting data processing efficiency.
-  DomainCpuTuneIoThreadPin({
+  const DomainCpuTuneIoThreadPin({
     required this.cpuSet,
     required this.ioThread,
   });

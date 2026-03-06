@@ -85,7 +85,7 @@ class DiskState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] Optional.
   /// [zoneId] Optional.
-  DiskState({
+  const DiskState({
     this.advancedFeatures,
     this.availabilityZone,
     this.burstingEnabled,

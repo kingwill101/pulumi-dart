@@ -12,7 +12,7 @@ class GoogleCloudMlV1MeasurementMetricResponse {
   /// Creates a new [GoogleCloudMlV1MeasurementMetricResponse].
   /// [metric] Metric name.
   /// [value] The value for this metric.
-  GoogleCloudMlV1MeasurementMetricResponse({
+  const GoogleCloudMlV1MeasurementMetricResponse({
     required this.metric,
     required this.value,
   });

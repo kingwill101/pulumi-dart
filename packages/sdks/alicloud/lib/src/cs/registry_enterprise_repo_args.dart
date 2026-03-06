@@ -29,7 +29,7 @@ class RegistryEnterpriseRepoArgs {
   /// [namespace] The name of the namespace to which the image repository belongs.
   /// [repoType] The type of the repository. Valid values:
   /// [summary] The summary about the repository.
-  RegistryEnterpriseRepoArgs({
+  const RegistryEnterpriseRepoArgs({
     this.detail,
     required this.instanceId,
     this.name,

@@ -37,7 +37,7 @@ class GetServiceResult {
   /// [serviceIdentifier] Required.
   /// [status] Status of the service.
   /// [tags] List of tags associated with the service.
-  GetServiceResult({
+  const GetServiceResult({
     required this.arn,
     required this.authType,
     required this.certificateArn,

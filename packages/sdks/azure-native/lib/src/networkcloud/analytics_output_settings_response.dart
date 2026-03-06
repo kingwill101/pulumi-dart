@@ -12,7 +12,7 @@ class AnalyticsOutputSettingsResponse {
   /// Creates a new [AnalyticsOutputSettingsResponse].
   /// [analyticsWorkspaceId] The resource ID of the analytics workspace that is to be used by the specified identity.
   /// [associatedIdentity] The selection of the managed identity to use with this analytics workspace. The identity type must be either system assigned or user assigned.
-  AnalyticsOutputSettingsResponse({
+  const AnalyticsOutputSettingsResponse({
     this.analyticsWorkspaceId,
     this.associatedIdentity,
   });

@@ -21,7 +21,7 @@ class GetGalleryArgs {
   /// [galleryName] The name of the Shared Image Gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [select] The select expression to apply on the operation.
-  GetGalleryArgs({
+  const GetGalleryArgs({
     this.expand,
     required this.galleryName,
     required this.resourceGroupName,

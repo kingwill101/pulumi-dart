@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1BigQuerySourceResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1BigQuerySourceResponse].
   /// [inputUri] BigQuery URI to a table, up to 2000 characters long. Accepted forms: * BigQuery path. For example: `bq://projectId.bqDatasetId.bqTableId`.
-  GoogleCloudAiplatformV1BigQuerySourceResponse({
+  const GoogleCloudAiplatformV1BigQuerySourceResponse({
     required this.inputUri,
   });
 

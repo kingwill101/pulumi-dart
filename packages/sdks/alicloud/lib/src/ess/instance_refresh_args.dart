@@ -59,7 +59,7 @@ class InstanceRefreshArgs {
   /// [scalingGroupId] The ID of the scaling group.
   /// [skipMatching] Indicates whether to skip instances that match the desired configuration.
   /// [status] The current status of the instance refresh task. Possible values:
-  InstanceRefreshArgs({
+  const InstanceRefreshArgs({
     this.checkpointPauseTime,
     this.checkpoints,
     this.desiredConfigurationContainers,

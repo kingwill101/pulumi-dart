@@ -23,7 +23,7 @@ class RepositoryCleanupPolicy {
   /// [condition] Policy condition for matching versions.
   /// [id] The identifier for this object. Format specified above.
   /// [mostRecentVersions] Policy condition for retaining a minimum number of versions. May only be
-  RepositoryCleanupPolicy({
+  const RepositoryCleanupPolicy({
     this.action,
     this.condition,
     required this.id,

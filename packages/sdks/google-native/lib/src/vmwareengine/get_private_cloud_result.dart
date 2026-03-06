@@ -52,7 +52,7 @@ class GetPrivateCloudResult {
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
   /// [vcenter] Vcenter appliance.
-  GetPrivateCloudResult({
+  const GetPrivateCloudResult({
     required this.createTime,
     required this.deleteTime,
     required this.description,

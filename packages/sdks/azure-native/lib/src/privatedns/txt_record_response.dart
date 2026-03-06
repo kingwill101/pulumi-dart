@@ -9,7 +9,7 @@ class TxtRecordResponse {
 
   /// Creates a new [TxtRecordResponse].
   /// [value] The text value of this TXT record.
-  TxtRecordResponse({
+  const TxtRecordResponse({
     this.value,
   });
 

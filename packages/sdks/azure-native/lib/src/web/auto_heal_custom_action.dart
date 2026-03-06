@@ -13,7 +13,7 @@ class AutoHealCustomAction {
   /// Creates a new [AutoHealCustomAction].
   /// [exe] Executable to be run.
   /// [parameters] Parameters for the executable.
-  AutoHealCustomAction({
+  const AutoHealCustomAction({
     this.exe,
     this.parameters,
   });

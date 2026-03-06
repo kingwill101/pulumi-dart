@@ -17,7 +17,7 @@ class GetExadataInfrastructureEstimatedPatchingTime {
   /// [estimatedNetworkSwitchesPatchingTime] The estimated time required in minutes for network switch patching.
   /// [estimatedStorageServerPatchingTime] The estimated time required in minutes for storage server patching.
   /// [totalEstimatedPatchingTime] The estimated total time required in minutes for all patching operations.
-  GetExadataInfrastructureEstimatedPatchingTime({
+  const GetExadataInfrastructureEstimatedPatchingTime({
     required this.estimatedDbServerPatchingTime,
     required this.estimatedNetworkSwitchesPatchingTime,
     required this.estimatedStorageServerPatchingTime,

@@ -34,7 +34,7 @@ class GetNamespaceAuthorizationRuleResult {
   /// [secondaryConnectionString] The secondary connection string for the authorization rule.
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
   /// [secondaryKey] The secondary access key for the authorization rule.
-  GetNamespaceAuthorizationRuleResult({
+  const GetNamespaceAuthorizationRuleResult({
     required this.id,
     required this.name,
     this.namespaceId,

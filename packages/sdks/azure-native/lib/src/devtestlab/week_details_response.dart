@@ -12,7 +12,7 @@ class WeekDetailsResponse {
   /// Creates a new [WeekDetailsResponse].
   /// [time] The time of the day the schedule will occur.
   /// [weekdays] The days of the week for which the schedule is set (e.g. Sunday, Monday, Tuesday, etc.).
-  WeekDetailsResponse({
+  const WeekDetailsResponse({
     this.time,
     this.weekdays,
   });

@@ -33,7 +33,7 @@ class OfferDetail {
   /// [status] SaaS Offer Status
   /// [termId] Offer Plan Term Id
   /// [termUnit] Offer Plan Term unit
-  OfferDetail({
+  const OfferDetail({
     required this.id,
     required this.planId,
     required this.planName,

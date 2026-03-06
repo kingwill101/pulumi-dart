@@ -47,7 +47,7 @@ class AzureFileDatastoreResponse {
   /// [serviceDataAccessAuthIdentity] Indicates which identity to use to authenticate service data access to customer's storage.
   /// [subscriptionId] Azure Subscription Id
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  AzureFileDatastoreResponse({
+  const AzureFileDatastoreResponse({
     required this.accountName,
     required this.credentials,
     required this.datastoreType,

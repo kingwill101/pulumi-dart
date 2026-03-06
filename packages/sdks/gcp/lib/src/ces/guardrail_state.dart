@@ -81,7 +81,7 @@ class GuardrailState {
   /// [name] Identifier. The unique identifier of the guardrail.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp when the guardrail was last updated.
-  GuardrailState({
+  const GuardrailState({
     this.action,
     this.app,
     this.codeCallback,

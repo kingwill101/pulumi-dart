@@ -29,7 +29,7 @@ class ProcessArgs {
   /// [origin] Optional. The origin of this process and its runs and lineage events.
   /// [project] Optional.
   /// [requestId] A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
-  ProcessArgs({
+  const ProcessArgs({
     this.attributes,
     this.displayName,
     this.location,

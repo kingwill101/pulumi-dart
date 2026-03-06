@@ -34,7 +34,7 @@ class S3AccessPointAttachmentState {
   /// [s3AccessPointArn] S3 access point's ARN.
   /// [timeouts] Optional.
   /// [type] Type of S3 access point. Valid values: `OpenZFS`.
-  S3AccessPointAttachmentState({
+  const S3AccessPointAttachmentState({
     this.name,
     this.openzfsConfiguration,
     this.region,

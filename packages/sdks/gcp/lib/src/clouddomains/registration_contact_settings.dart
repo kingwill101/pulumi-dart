@@ -30,7 +30,7 @@ class RegistrationContactSettings {
   /// [privacy] Required. Privacy setting for the contacts associated with the Registration.
   /// [registrantContact] Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
   /// [technicalContact] Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
-  RegistrationContactSettings({
+  const RegistrationContactSettings({
     required this.adminContact,
     required this.privacy,
     required this.registrantContact,

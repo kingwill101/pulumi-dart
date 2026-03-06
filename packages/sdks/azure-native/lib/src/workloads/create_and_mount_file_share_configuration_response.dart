@@ -16,7 +16,7 @@ class CreateAndMountFileShareConfigurationResponse {
   /// [configurationType] The type of file share config.
   /// [resourceGroup] The name of transport file share resource group. This should be pre created by the customer. The app rg is used in case of missing input.
   /// [storageAccountName] The name of file share storage account name . A custom name is used in case of missing input.
-  CreateAndMountFileShareConfigurationResponse({
+  const CreateAndMountFileShareConfigurationResponse({
     required this.configurationType,
     this.resourceGroup,
     this.storageAccountName,

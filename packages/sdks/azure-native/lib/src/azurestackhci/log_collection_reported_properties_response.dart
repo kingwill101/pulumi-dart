@@ -20,7 +20,7 @@ class LogCollectionReportedPropertiesResponse {
   /// [logCollectionSessionDetails] Details of the log collection session.
   /// [percentComplete] The percentage of the job that is complete.
   /// [validationStatus] Validation status of job.
-  LogCollectionReportedPropertiesResponse({
+  const LogCollectionReportedPropertiesResponse({
     required this.deploymentStatus,
     required this.logCollectionSessionDetails,
     required this.percentComplete,

@@ -19,7 +19,7 @@ class GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRout
   /// [resourceType] Required.
   /// [routeOrigin] Required.
   /// [state] Required.
-  GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute({
+  const GetNetworkInsightsAnalysisForwardPathComponentTransitGatewayRouteTableRoute({
     required this.attachmentId,
     required this.destinationCidr,
     required this.prefixListId,

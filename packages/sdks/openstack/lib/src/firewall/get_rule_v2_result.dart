@@ -56,7 +56,7 @@ class GetRuleV2Result {
   /// [sourceIpAddress] See Argument Reference above.
   /// [sourcePort] See Argument Reference above.
   /// [tenantId] See Argument Reference above.
-  GetRuleV2Result({
+  const GetRuleV2Result({
     this.action,
     this.description,
     this.destinationIpAddress,

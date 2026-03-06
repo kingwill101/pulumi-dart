@@ -52,7 +52,7 @@ class CloudExadataInfrastructureArgs {
   /// [storageServerType] The storage server model type of the Exadata infrastructure. For the list of valid model names, use the ListDbSystemShapes operation. This is a mandatory parameter for Exadata.X11M system shape. Changing this will force terraform to create new resource.
   /// [tags] A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  CloudExadataInfrastructureArgs({
+  const CloudExadataInfrastructureArgs({
     this.availabilityZone,
     required this.availabilityZoneId,
     this.computeCount,

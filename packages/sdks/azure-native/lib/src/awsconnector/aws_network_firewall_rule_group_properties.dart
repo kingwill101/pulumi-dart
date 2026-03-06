@@ -32,7 +32,7 @@ class AwsNetworkFirewallRuleGroupProperties {
   /// [ruleGroupName] Property ruleGroupName
   /// [tags] Property tags
   /// [type] Property type
-  AwsNetworkFirewallRuleGroupProperties({
+  const AwsNetworkFirewallRuleGroupProperties({
     this.capacity,
     this.description,
     this.ruleGroup,

@@ -19,7 +19,7 @@ class PartnerConfigurationState {
   /// [partnerAuthorizations] One or more `partner_authorization` blocks as defined below.
   /// [resourceGroupName] The name of the Resource Group where the Event Grid Partner Configuration should exist. Changing this forces a new Event Grid Partner Configuration to be created.
   /// [tags] A mapping of tags which should be assigned to the Event Grid Partner Configuration.
-  PartnerConfigurationState({
+  const PartnerConfigurationState({
     this.defaultMaximumExpirationTimeInDays,
     this.partnerAuthorizations,
     this.resourceGroupName,

@@ -137,7 +137,7 @@ class GetNamespaceAssetResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uuid] Globally unique, immutable, non-reusable ID.
   /// [version] An integer that is incremented each time the resource is modified.
-  GetNamespaceAssetResult({
+  const GetNamespaceAssetResult({
     this.assetTypeRefs,
     this.attributes,
     required this.azureApiVersion,

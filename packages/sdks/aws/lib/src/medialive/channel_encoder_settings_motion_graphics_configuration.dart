@@ -12,7 +12,7 @@ class ChannelEncoderSettingsMotionGraphicsConfiguration {
   /// Creates a new [ChannelEncoderSettingsMotionGraphicsConfiguration].
   /// [motionGraphicsInsertion] Motion Graphics Insertion.
   /// [motionGraphicsSettings] Motion Graphics Settings. See Motion Graphics Settings for more details.
-  ChannelEncoderSettingsMotionGraphicsConfiguration({
+  const ChannelEncoderSettingsMotionGraphicsConfiguration({
     this.motionGraphicsInsertion,
     required this.motionGraphicsSettings,
   });

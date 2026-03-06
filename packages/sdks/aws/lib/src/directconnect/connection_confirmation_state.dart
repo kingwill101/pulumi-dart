@@ -12,7 +12,7 @@ class ConnectionConfirmationState {
   /// Creates a new [ConnectionConfirmationState].
   /// [connectionId] The ID of the hosted connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ConnectionConfirmationState({
+  const ConnectionConfirmationState({
     this.connectionId,
     this.region,
   });

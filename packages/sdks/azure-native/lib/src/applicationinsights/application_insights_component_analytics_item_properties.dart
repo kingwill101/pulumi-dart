@@ -9,7 +9,7 @@ class ApplicationInsightsComponentAnalyticsItemProperties {
 
   /// Creates a new [ApplicationInsightsComponentAnalyticsItemProperties].
   /// [functionAlias] A function alias, used when the type of the item is Function
-  ApplicationInsightsComponentAnalyticsItemProperties({
+  const ApplicationInsightsComponentAnalyticsItemProperties({
     this.functionAlias,
   });
 

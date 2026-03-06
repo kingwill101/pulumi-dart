@@ -12,7 +12,7 @@ class BucketArchiveDirectReadState {
   /// Creates a new [BucketArchiveDirectReadState].
   /// [bucket] The name of the bucket
   /// [enabled] Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
-  BucketArchiveDirectReadState({
+  const BucketArchiveDirectReadState({
     this.bucket,
     this.enabled,
   });

@@ -18,7 +18,7 @@ class GetWorkspaceResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A map of tags assigned to the Healthcare Workspace.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.id,
     required this.location,
     required this.name,

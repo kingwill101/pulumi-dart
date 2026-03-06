@@ -38,7 +38,7 @@ class GetMountPointsPoint {
   /// [status] The status of the Mount Point. Valid values: `Active`, `Inactive`.
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The vswitch id.
-  GetMountPointsPoint({
+  const GetMountPointsPoint({
     required this.accessGroupId,
     required this.createTime,
     required this.description,

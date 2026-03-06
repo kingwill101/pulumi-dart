@@ -26,7 +26,7 @@ class GetConsumerChannelsChannel {
   /// [id] The ID of the Consumer Channel.
   /// [messageDelay] The message delay time, for the current time data subscription channel in the earliest time of unconsumed messages of the difference, in Unix timestamp format, which is measured in seconds.
   /// [unconsumedData] The total number of unconsumed messages.
-  GetConsumerChannelsChannel({
+  const GetConsumerChannelsChannel({
     required this.consumerGroupId,
     required this.consumerGroupName,
     required this.consumerGroupUserName,

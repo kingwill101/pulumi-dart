@@ -13,7 +13,7 @@ class ClusterNodePoolNodeConfigKubeletConfigTopologyManager {
   /// Creates a new [ClusterNodePoolNodeConfigKubeletConfigTopologyManager].
   /// [policy] The Topology Manager policy controls resource alignment on the node and can be set to one of the following: none (default), best-effort, restricted, or single-numa-node.  If unset (or set to the empty string `""`), the API will treat the field as if set to "none".
   /// [scope] The Topology Manager scope, defining the granularity at which
-  ClusterNodePoolNodeConfigKubeletConfigTopologyManager({
+  const ClusterNodePoolNodeConfigKubeletConfigTopologyManager({
     this.policy,
     this.scope,
   });

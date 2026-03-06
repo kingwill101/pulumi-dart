@@ -17,7 +17,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse {
   /// [auxiliaryTables] Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table.
   /// [quasiIds] Fields considered to be quasi-identifiers. No two fields can have the same tag.
   /// [regionCode] ISO 3166-1 alpha-2 region code to use in the statistical modeling. Set if no column is tagged with a region-specific InfoType (like US_ZIP_5) or a region code.
-  GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse({
+  const GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse({
     required this.auxiliaryTables,
     required this.quasiIds,
     required this.regionCode,

@@ -15,7 +15,7 @@ class GetNetworkSecurityPerimeterProfileArgs {
   /// Creates a new [GetNetworkSecurityPerimeterProfileArgs].
   /// [name] The name of this Network Security Perimeter Profile.
   /// [networkSecurityPerimeterId] The ID of the Network Security Perimeter.
-  GetNetworkSecurityPerimeterProfileArgs({
+  const GetNetworkSecurityPerimeterProfileArgs({
     required this.name,
     required this.networkSecurityPerimeterId,
   });

@@ -16,7 +16,7 @@ class AssessmentSettings {
   /// [enable] Enable or disable SQL best practices Assessment feature on SQL virtual machine.
   /// [runImmediately] Run SQL best practices Assessment immediately on SQL virtual machine.
   /// [schedule] Schedule for SQL best practices Assessment.
-  AssessmentSettings({
+  const AssessmentSettings({
     this.enable,
     this.runImmediately,
     this.schedule,

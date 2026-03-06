@@ -15,7 +15,7 @@ class AccountAzureFilesAuthentication {
   /// [activeDirectory] A `active_directory` block as defined below. Required when `directory_type` is `AD`.
   /// [defaultShareLevelPermission] Specifies the default share level permissions applied to all users. Possible values are `StorageFileDataSmbShareReader`, `StorageFileDataSmbShareContributor`, `StorageFileDataSmbShareElevatedContributor`, or `None`. Defaults to `None`.
   /// [directoryType] Specifies the directory service used. Possible values are `AADDS`, `AD` and `AADKERB`.
-  AccountAzureFilesAuthentication({
+  const AccountAzureFilesAuthentication({
     this.activeDirectory,
     this.defaultShareLevelPermission,
     required this.directoryType,

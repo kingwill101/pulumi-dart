@@ -21,7 +21,7 @@ class GetMachineGroupsArgs {
   /// [ids] A list of Machine Group IDs. The value is formulated as `&lt;project_name&gt;:&lt;group_name&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [projectName] Project name
-  GetMachineGroupsArgs({
+  const GetMachineGroupsArgs({
     this.groupName,
     this.ids,
     this.outputFile,

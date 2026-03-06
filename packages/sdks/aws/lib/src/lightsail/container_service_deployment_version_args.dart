@@ -25,7 +25,7 @@ class ContainerServiceDeploymentVersionArgs {
   /// [publicEndpoint] Configuration block that describes the settings of the public endpoint for the container service. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceName] Name of the container service.
-  ContainerServiceDeploymentVersionArgs({
+  const ContainerServiceDeploymentVersionArgs({
     required this.containers,
     this.publicEndpoint,
     this.region,

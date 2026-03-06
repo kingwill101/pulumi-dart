@@ -15,7 +15,7 @@ class UpstreamPolicy {
   /// [id] The user-provided ID of the upstream policy.
   /// [priority] Entries with a greater priority value take precedence in the pull order.
   /// [repository] A reference to the repository resource, for example: `projects/p1/locations/us-central1/repositories/repo1`.
-  UpstreamPolicy({
+  const UpstreamPolicy({
     this.id,
     this.priority,
     this.repository,

@@ -28,7 +28,7 @@ class GetSamlProviderResult {
   /// [samlProviderUuid] Unique identifier assigned to the SAML provider.
   /// [tags] Tags attached to the SAML provider.
   /// [validUntil] Expiration date and time for the SAML provider in RFC1123 format, e.g. `Mon, 02 Jan 2007 15:04:05 MST`.
-  GetSamlProviderResult({
+  const GetSamlProviderResult({
     required this.arn,
     required this.createDate,
     required this.id,

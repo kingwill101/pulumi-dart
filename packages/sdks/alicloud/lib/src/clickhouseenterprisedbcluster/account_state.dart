@@ -30,7 +30,7 @@ class AccountState {
   /// [description] Note information.
   /// [dmlAuthSetting] Authorization information. See `dml_auth_setting` below.
   /// [password] Database account password. Set the following rules.
-  AccountState({
+  const AccountState({
     this.account,
     this.accountType,
     this.dbInstanceId,

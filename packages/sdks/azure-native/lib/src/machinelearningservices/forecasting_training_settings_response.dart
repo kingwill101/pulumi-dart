@@ -35,7 +35,7 @@ class ForecastingTrainingSettingsResponse {
   /// [enableVoteEnsemble] Enable voting ensemble run.
   /// [ensembleModelDownloadTimeout] During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
   /// [stackEnsembleSettings] Stack ensemble settings for stack ensemble run.
-  ForecastingTrainingSettingsResponse({
+  const ForecastingTrainingSettingsResponse({
     this.allowedTrainingAlgorithms,
     this.blockedTrainingAlgorithms,
     this.enableDnnTraining,

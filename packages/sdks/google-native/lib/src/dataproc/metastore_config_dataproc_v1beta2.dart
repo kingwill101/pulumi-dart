@@ -9,7 +9,7 @@ class MetastoreConfigDataprocV1beta2 {
 
   /// Creates a new [MetastoreConfigDataprocV1beta2].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-  MetastoreConfigDataprocV1beta2({
+  const MetastoreConfigDataprocV1beta2({
     required this.dataprocMetastoreService,
   });
 

@@ -14,7 +14,7 @@ class GetPoolFixedScale {
   /// [resizeTimeout] The timeout for resize operations.
   /// [targetDedicatedNodes] The number of nodes in the Batch pool.
   /// [targetLowPriorityNodes] The number of low priority nodes in the Batch pool.
-  GetPoolFixedScale({
+  const GetPoolFixedScale({
     required this.resizeTimeout,
     required this.targetDedicatedNodes,
     required this.targetLowPriorityNodes,

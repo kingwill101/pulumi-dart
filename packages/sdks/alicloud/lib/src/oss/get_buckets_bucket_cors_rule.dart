@@ -20,7 +20,7 @@ class GetBucketsBucketCorsRule {
   /// [allowedOrigins] The origins allowed for cross-domain requests. Multiple elements can be used to specify multiple allowed origins. Each rule allows up to one wildcard "\*". If "\*" is specified, cross-domain requests of all origins are allowed.
   /// [exposeHeaders] Specify the response headers allowing users to access from an application (for example, a Javascript XMLHttpRequest object). The wildcard "\*" is not allowed.
   /// [maxAgeSeconds] Specify the cache time for the returned result of a browser prefetch (OPTIONS) request to a specific resource.
-  GetBucketsBucketCorsRule({
+  const GetBucketsBucketCorsRule({
     required this.allowedHeaders,
     required this.allowedMethods,
     required this.allowedOrigins,

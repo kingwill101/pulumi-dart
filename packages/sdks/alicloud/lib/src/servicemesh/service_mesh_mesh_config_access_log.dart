@@ -23,7 +23,7 @@ class ServiceMeshMeshConfigAccessLog {
   /// [project] The name of the SLS Project to which the control plane logs are collected.
   /// [sidecarEnabled] Whether collect AccessLog of ASM Gateway to Alibaba Cloud SLS
   /// [sidecarLifecycle] Lifecycle of AccessLog of ASM Sidecars which have been collected to Alibaba Cloud SLS
-  ServiceMeshMeshConfigAccessLog({
+  const ServiceMeshMeshConfigAccessLog({
     this.enabled,
     this.gatewayEnabled,
     this.gatewayLifecycle,

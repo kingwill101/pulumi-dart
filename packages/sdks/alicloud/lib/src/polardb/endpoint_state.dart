@@ -56,7 +56,7 @@ class EndpointState {
   /// [sslConnectionString] (Available since v1.121.0) The SSL connection string.
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   /// [sslExpireTime] (Available since v1.121.0) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  EndpointState({
+  const EndpointState({
     this.autoAddNewNodes,
     this.connectionPrefix,
     this.dbClusterId,

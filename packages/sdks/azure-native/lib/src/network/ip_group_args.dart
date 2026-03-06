@@ -27,7 +27,7 @@ class IpGroupArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  IpGroupArgs({
+  const IpGroupArgs({
     this.id,
     this.ipAddresses,
     this.ipGroupsName,

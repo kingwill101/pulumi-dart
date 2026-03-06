@@ -25,7 +25,7 @@ class ExecutionStatisticsResponse {
   /// [hasErrors] Indicates whether the query resulted in an error
   /// [sqlErrors] List of sql Errors
   /// [waitStats] Dictionary of sql query execution wait types and the respective statistics
-  ExecutionStatisticsResponse({
+  const ExecutionStatisticsResponse({
     this.cpuTimeMs,
     this.elapsedTimeMs,
     this.executionCount,

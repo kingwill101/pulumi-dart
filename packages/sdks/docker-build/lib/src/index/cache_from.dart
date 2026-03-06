@@ -36,7 +36,7 @@ class CacheFrom {
   /// [raw] A raw string as you would provide it to the Docker CLI (e.g.,
   /// [registry] Upload build caches to remote registries.
   /// [s3] Upload build caches to AWS S3 or an S3-compatible services such as
-  CacheFrom({
+  const CacheFrom({
     this.azblob,
     this.disabled,
     this.gha,

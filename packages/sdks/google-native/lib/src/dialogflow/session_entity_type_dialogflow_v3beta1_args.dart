@@ -30,7 +30,7 @@ class SessionEntityTypeDialogflowV3beta1Args {
   /// [name] The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
   /// [project] Optional.
   /// [sessionId] Required.
-  SessionEntityTypeDialogflowV3beta1Args({
+  const SessionEntityTypeDialogflowV3beta1Args({
     required this.agentId,
     required this.entities,
     required this.entityOverrideMode,

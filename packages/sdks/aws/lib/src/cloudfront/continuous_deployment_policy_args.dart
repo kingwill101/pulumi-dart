@@ -20,7 +20,7 @@ class ContinuousDeploymentPolicyArgs {
   /// [enabled] Whether this continuous deployment policy is enabled.
   /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
   /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
-  ContinuousDeploymentPolicyArgs({
+  const ContinuousDeploymentPolicyArgs({
     required this.enabled,
     required this.stagingDistributionDnsNames,
     this.trafficConfig,

@@ -43,7 +43,7 @@ class FirmwareArgs {
   /// [vendor] Firmware vendor.
   /// [version] Firmware version.
   /// [workspaceName] The name of the firmware analysis workspace.
-  FirmwareArgs({
+  const FirmwareArgs({
     this.description,
     this.fileName,
     this.fileSize,

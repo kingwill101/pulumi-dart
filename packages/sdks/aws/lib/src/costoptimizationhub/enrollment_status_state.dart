@@ -12,7 +12,7 @@ class EnrollmentStatusState {
   /// Creates a new [EnrollmentStatusState].
   /// [includeMemberAccounts] Flag to enroll member accounts of the organization if the account is the management account. No drift detection is currently supported for this argument. Default value is `false`.
   /// [status] Status of enrollment. When the resource is present in Terraform, its status will always be `Active`.
-  EnrollmentStatusState({
+  const EnrollmentStatusState({
     this.includeMemberAccounts,
     this.status,
   });

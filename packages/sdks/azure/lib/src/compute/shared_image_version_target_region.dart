@@ -20,7 +20,7 @@ class SharedImageVersionTargetRegion {
   /// [name] The Azure Region in which this Image Version should exist.
   /// [regionalReplicaCount] The number of replicas of the Image Version to be created per region.
   /// [storageAccountType] The storage account type for the image version. Possible values are `Standard_LRS`, `Premium_LRS` and `Standard_ZRS`. Defaults to `Standard_LRS`. You can store all of your image version replicas in Zone Redundant Storage by specifying `Standard_ZRS`.
-  SharedImageVersionTargetRegion({
+  const SharedImageVersionTargetRegion({
     this.diskEncryptionSetId,
     this.excludeFromLatestEnabled,
     required this.name,

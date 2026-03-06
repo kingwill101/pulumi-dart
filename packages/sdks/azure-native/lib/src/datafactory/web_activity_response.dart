@@ -74,7 +74,7 @@ class WebActivityResponse {
   /// [type] Type of activity.
   /// [url] Web activity target endpoint and path. Type: string (or Expression with resultType string).
   /// [userProperties] Activity user properties.
-  WebActivityResponse({
+  const WebActivityResponse({
     this.authentication,
     this.body,
     this.connectVia,

@@ -23,7 +23,7 @@ class LaunchConfigurationEbsBlockDevice {
   /// [throughput] Optional.
   /// [volumeSize] Optional.
   /// [volumeType] Optional.
-  LaunchConfigurationEbsBlockDevice({
+  const LaunchConfigurationEbsBlockDevice({
     this.deleteOnTermination,
     required this.deviceName,
     this.encrypted,

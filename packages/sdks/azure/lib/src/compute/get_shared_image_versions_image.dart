@@ -27,7 +27,7 @@ class GetSharedImageVersionsImage {
   /// [name] The Azure Region in which this Image Version exists.
   /// [tags] A mapping of tags assigned to the Shared Image.
   /// [targetRegions] One or more `target_region` blocks as documented below.
-  GetSharedImageVersionsImage({
+  const GetSharedImageVersionsImage({
     required this.excludeFromLatest,
     required this.id,
     required this.location,

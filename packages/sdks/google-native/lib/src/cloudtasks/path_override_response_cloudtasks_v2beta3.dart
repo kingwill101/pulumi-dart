@@ -9,7 +9,7 @@ class PathOverrideResponseCloudtasksV2beta3 {
 
   /// Creates a new [PathOverrideResponseCloudtasksV2beta3].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  PathOverrideResponseCloudtasksV2beta3({
+  const PathOverrideResponseCloudtasksV2beta3({
     required this.path,
   });
 

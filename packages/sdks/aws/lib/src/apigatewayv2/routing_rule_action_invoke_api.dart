@@ -14,7 +14,7 @@ class RoutingRuleActionInvokeApi {
   /// [apiId] Action to invoke a stage of a target API. Only REST APIs are supported.
   /// [stage] Action to invoke a stage of a target API. Only REST APIs are supported.
   /// [stripBasePath] Action to invoke a stage of a target API. Only REST APIs are supported.
-  RoutingRuleActionInvokeApi({
+  const RoutingRuleActionInvokeApi({
     required this.apiId,
     required this.stage,
     this.stripBasePath,

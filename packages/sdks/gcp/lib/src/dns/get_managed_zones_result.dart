@@ -14,7 +14,7 @@ class GetManagedZonesResult {
   /// [id] Required.
   /// [managedZones] A list of managed zones.
   /// [project] Optional.
-  GetManagedZonesResult({
+  const GetManagedZonesResult({
     required this.id,
     required this.managedZones,
     this.project,

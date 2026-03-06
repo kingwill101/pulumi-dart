@@ -9,7 +9,7 @@ class ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove {
 
   /// Creates a new [ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove].
   /// [blockActionVerb] The action verb that will be blocked when the resource group is locked during move.
-  ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove({
+  const ResourceProviderManifestPropertiesResourceGroupLockOptionDuringMove({
     this.blockActionVerb,
   });
 

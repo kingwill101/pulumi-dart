@@ -20,7 +20,7 @@ class EdgeKubernetesRuntime {
   /// Creates a new [EdgeKubernetesRuntime].
   /// [name] The name of the runtime. Supported runtimes can be queried by data source alicloud_cs_kubernetes_version.
   /// [version] The version of the runtime.
-  EdgeKubernetesRuntime({
+  const EdgeKubernetesRuntime({
     this.name,
     this.version,
   });

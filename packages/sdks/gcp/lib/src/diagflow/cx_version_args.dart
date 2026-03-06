@@ -19,7 +19,7 @@ class CxVersionArgs {
   /// [description] The description of the version. The maximum length is 500 characters. If exceeded, the request is rejected.
   /// [displayName] The human-readable name of the version. Limit of 64 characters.
   /// [parent] The Flow to create an Version for.
-  CxVersionArgs({
+  const CxVersionArgs({
     this.description,
     required this.displayName,
     this.parent,

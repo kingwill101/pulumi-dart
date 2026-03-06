@@ -15,7 +15,7 @@ class InternetGatewayAttachmentState {
   /// [internetGatewayId] The ID of the internet gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcId] The ID of the VPC.
-  InternetGatewayAttachmentState({
+  const InternetGatewayAttachmentState({
     this.internetGatewayId,
     this.region,
     this.vpcId,

@@ -15,7 +15,7 @@ class GetDataControllerArgs {
   /// Creates a new [GetDataControllerArgs].
   /// [dataControllerName] The name of the data controller
   /// [resourceGroupName] The name of the Azure resource group
-  GetDataControllerArgs({
+  const GetDataControllerArgs({
     required this.dataControllerName,
     required this.resourceGroupName,
   });

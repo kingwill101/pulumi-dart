@@ -24,7 +24,7 @@ class GetReceiversArgs {
   /// [nameRegex] A regex string to filter results by Receivers name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
-  GetReceiversArgs({
+  const GetReceiversArgs({
     this.ids,
     this.keyWord,
     this.nameRegex,

@@ -45,7 +45,7 @@ class GetGenaiKnowledgeBasesKnowledgeBase {
   /// [updatedAt] Timestamp when the Knowledge Base was updated
   /// [userId] User ID of the Knowledge Base
   /// [uuid] UUID of the Knowledge Base
-  GetGenaiKnowledgeBasesKnowledgeBase({
+  const GetGenaiKnowledgeBasesKnowledgeBase({
     required this.addedToAgentAt,
     required this.createdAt,
     required this.databaseId,

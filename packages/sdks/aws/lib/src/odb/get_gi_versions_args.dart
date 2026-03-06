@@ -15,7 +15,7 @@ class GetGiVersionsArgs {
   /// Creates a new [GetGiVersionsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [shape] The system shape.
-  GetGiVersionsArgs({
+  const GetGiVersionsArgs({
     this.region,
     this.shape,
   });

@@ -20,7 +20,7 @@ class GetProvisioningArtifactsArgs {
   /// [acceptLanguage] Language code. Valid values: `en` (English), `jp` (Japanese), `zh` (Chinese). Default value is `en`.
   /// [productId] Product identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetProvisioningArtifactsArgs({
+  const GetProvisioningArtifactsArgs({
     this.acceptLanguage,
     required this.productId,
     this.region,

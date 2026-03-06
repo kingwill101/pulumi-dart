@@ -21,7 +21,7 @@ class LicenseAssociationArgs {
   /// [licenseType] The type of license for the workspace license association. Valid values are `ENTERPRISE` and `ENTERPRISE_FREE_TRIAL`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workspaceId] The workspace id.
-  LicenseAssociationArgs({
+  const LicenseAssociationArgs({
     this.grafanaToken,
     required this.licenseType,
     this.region,

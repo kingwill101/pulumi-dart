@@ -18,7 +18,7 @@ class GetSolutionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
-  GetSolutionArgs({
+  const GetSolutionArgs({
     required this.resourceGroupName,
     required this.solutionName,
     required this.targetName,

@@ -206,7 +206,7 @@ class GetInstancesInstance {
   /// [vswitchId] Used to retrieve instances belong to specified `vswitch` resources.
   /// [zoneIdSlaveA] (Available in 1.101.0+) The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
   /// [zoneIdSlaveB] (Available in 1.101.0+) The region ID of the log instance if you create a log instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.acl,
     required this.availabilityZone,
     required this.caType,

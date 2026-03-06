@@ -13,7 +13,7 @@ class AppServiceLogsHttpLogsAzureBlobStorage {
   /// Creates a new [AppServiceLogsHttpLogsAzureBlobStorage].
   /// [retentionInDays] The number of days to retain logs for.
   /// [sasUrl] The URL to the storage container with a shared access signature token appended.
-  AppServiceLogsHttpLogsAzureBlobStorage({
+  const AppServiceLogsHttpLogsAzureBlobStorage({
     required this.retentionInDays,
     required this.sasUrl,
   });

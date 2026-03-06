@@ -33,7 +33,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPost
   /// [precision] (Output)
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] (Output)
-  StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn({
+  const StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn({
     this.column,
     this.dataType,
     this.length,

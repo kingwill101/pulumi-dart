@@ -9,7 +9,7 @@ class Sku {
 
   /// Creates a new [Sku].
   /// [name] The name of the sku of this Bastion Host.
-  Sku({
+  const Sku({
     this.name,
   });
 

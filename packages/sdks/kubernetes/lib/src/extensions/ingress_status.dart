@@ -10,7 +10,7 @@ class IngressStatus {
 
   /// Creates a new [IngressStatus].
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer.
-  IngressStatus({
+  const IngressStatus({
     this.loadBalancer,
   });
 

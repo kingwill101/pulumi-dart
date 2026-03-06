@@ -12,7 +12,7 @@ class AddonProfiles {
   /// Creates a new [AddonProfiles].
   /// [config] Config - Key-value pairs for configuring an add-on.
   /// [enabled] Enabled - Whether the add-on is enabled or not.
-  AddonProfiles({
+  const AddonProfiles({
     this.config,
     this.enabled,
   });

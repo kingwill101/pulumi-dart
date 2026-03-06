@@ -48,7 +48,7 @@ class GetWCFRelayResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedAt] The time the namespace was updated.
   /// [userMetadata] The usermetadata is a placeholder to store user-defined string data for the WCF Relay endpoint. For example, it can be used to store descriptive data, such as list of teams and their contact information. Also, user-defined configuration settings can be stored.
-  GetWCFRelayResult({
+  const GetWCFRelayResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

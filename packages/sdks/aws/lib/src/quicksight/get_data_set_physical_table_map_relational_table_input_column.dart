@@ -9,7 +9,7 @@ class GetDataSetPhysicalTableMapRelationalTableInputColumn {
   /// Creates a new [GetDataSetPhysicalTableMapRelationalTableInputColumn].
   /// [name] Required.
   /// [type] Required.
-  GetDataSetPhysicalTableMapRelationalTableInputColumn({
+  const GetDataSetPhysicalTableMapRelationalTableInputColumn({
     required this.name,
     required this.type,
   });

@@ -32,7 +32,7 @@ class CVSSResponse {
   /// [privilegesRequired] Required.
   /// [scope] Required.
   /// [userInteraction] Required.
-  CVSSResponse({
+  const CVSSResponse({
     required this.attackComplexity,
     required this.attackVector,
     required this.authentication,

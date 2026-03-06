@@ -9,7 +9,7 @@ class LogAnalyticsConfiguration {
   /// Creates a new [LogAnalyticsConfiguration].
   /// [customerId] Optional.
   /// [sharedKey] Optional.
-  LogAnalyticsConfiguration({
+  const LogAnalyticsConfiguration({
     this.customerId,
     this.sharedKey,
   });

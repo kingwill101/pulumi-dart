@@ -15,7 +15,7 @@ class AiReasoningEngineSpecDeploymentSpecSecretEnv {
   /// Creates a new [AiReasoningEngineSpecDeploymentSpecSecretEnv].
   /// [name] The name of the environment variable. Must be a valid C
   /// [secretRef] Reference to a secret stored in the Cloud Secret Manager
-  AiReasoningEngineSpecDeploymentSpecSecretEnv({
+  const AiReasoningEngineSpecDeploymentSpecSecretEnv({
     required this.name,
     required this.secretRef,
   });

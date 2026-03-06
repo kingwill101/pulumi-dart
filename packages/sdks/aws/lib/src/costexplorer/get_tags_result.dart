@@ -25,7 +25,7 @@ class GetTagsResult {
   /// [tagKey] Optional.
   /// [tags] Tags that match your request.
   /// [timePeriod] Required.
-  GetTagsResult({
+  const GetTagsResult({
     this.filter,
     required this.id,
     this.searchString,

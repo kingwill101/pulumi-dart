@@ -64,7 +64,7 @@ class PrivateEndpointResponse {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  PrivateEndpointResponse({
+  const PrivateEndpointResponse({
     this.applicationSecurityGroups,
     this.customDnsConfigs,
     this.customNetworkInterfaceName,

@@ -42,7 +42,7 @@ class GetVpcFlowLogsArgs {
   /// [resourceType] The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
   /// [status] The status of  flow log. Valid values: `Active`, `Inactive`.
   /// [trafficType] The traffic type. Valid values: `All`, `Allow`, `Drop`.
-  GetVpcFlowLogsArgs({
+  const GetVpcFlowLogsArgs({
     this.description,
     this.flowLogName,
     this.ids,

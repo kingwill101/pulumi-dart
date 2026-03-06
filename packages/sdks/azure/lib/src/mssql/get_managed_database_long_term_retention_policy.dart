@@ -20,7 +20,7 @@ class GetManagedDatabaseLongTermRetentionPolicy {
   /// [weekOfYear] The week of year to take the yearly backup.
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format.
   /// [yearlyRetention] The yearly retention policy for an LTR backup in an ISO 8601 format.
-  GetManagedDatabaseLongTermRetentionPolicy({
+  const GetManagedDatabaseLongTermRetentionPolicy({
     required this.immutableBackupsEnabled,
     required this.monthlyRetention,
     required this.weekOfYear,

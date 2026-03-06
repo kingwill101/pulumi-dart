@@ -71,7 +71,7 @@ class QuotaSetV2State {
   /// [securityGroups] Quota value for security groups.
   /// [serverGroupMembers] Quota value for server groups members.
   /// [serverGroups] Quota value for server groups.
-  QuotaSetV2State({
+  const QuotaSetV2State({
     this.cores,
     this.fixedIps,
     this.floatingIps,

@@ -33,7 +33,7 @@ class SsisProjectResponse {
   /// [parameters] Parameters in project
   /// [type] The type of SSIS object metadata.
   /// [version] Project version.
-  SsisProjectResponse({
+  const SsisProjectResponse({
     this.description,
     this.environmentRefs,
     this.folderId,

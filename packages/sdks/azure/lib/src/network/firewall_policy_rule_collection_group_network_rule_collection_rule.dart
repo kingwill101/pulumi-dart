@@ -25,7 +25,7 @@ class FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule {
   /// [protocols] Required.
   /// [sourceAddresses] Optional.
   /// [sourceIpGroups] Optional.
-  FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule({
+  const FirewallPolicyRuleCollectionGroupNetworkRuleCollectionRule({
     this.description,
     this.destinationAddresses,
     this.destinationFqdns,

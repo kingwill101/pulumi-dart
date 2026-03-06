@@ -12,7 +12,7 @@ class DefenderCspmAwsOfferingResponseDataSensitivityDiscovery {
   /// Creates a new [DefenderCspmAwsOfferingResponseDataSensitivityDiscovery].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is Microsoft Defender Data Sensitivity discovery enabled
-  DefenderCspmAwsOfferingResponseDataSensitivityDiscovery({
+  const DefenderCspmAwsOfferingResponseDataSensitivityDiscovery({
     this.cloudRoleArn,
     this.enabled,
   });

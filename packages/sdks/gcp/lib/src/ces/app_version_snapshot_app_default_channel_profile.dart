@@ -42,7 +42,7 @@ class AppVersionSnapshotAppDefaultChannelProfile {
   /// [personaProperties] (Output)
   /// [profileId] (Output)
   /// [webWidgetConfigs] (Output)
-  AppVersionSnapshotAppDefaultChannelProfile({
+  const AppVersionSnapshotAppDefaultChannelProfile({
     this.channelType,
     this.disableBargeInControl,
     this.disableDtmf,

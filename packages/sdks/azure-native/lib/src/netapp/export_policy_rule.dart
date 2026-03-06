@@ -63,7 +63,7 @@ class ExportPolicyRule {
   /// [ruleIndex] Order index
   /// [unixReadOnly] Read only access
   /// [unixReadWrite] Read and write access
-  ExportPolicyRule({
+  const ExportPolicyRule({
     this.allowedClients,
     this.chownMode,
     this.cifs,

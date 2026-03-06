@@ -10,7 +10,7 @@ class CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig {
 
   /// Creates a new [CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig].
   /// [serviceAgentAuth] Optional. Indicate the auth token type generated from the Diglogflow service agent.
-  CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig({
+  const CxToolVersionToolOpenApiSpecAuthenticationServiceAgentAuthConfig({
     this.serviceAgentAuth,
   });
 

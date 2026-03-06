@@ -12,7 +12,7 @@ class IntegrationResponseParameter {
   /// Creates a new [IntegrationResponseParameter].
   /// [mappings] Key-value map. The key of this map identifies the location of the request parameter to change, and how to change it. The corresponding value specifies the new data for the parameter.
   /// [statusCode] HTTP status code in the range 200-599.
-  IntegrationResponseParameter({
+  const IntegrationResponseParameter({
     required this.mappings,
     required this.statusCode,
   });

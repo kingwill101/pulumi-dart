@@ -13,7 +13,7 @@ class NamespaceStatusPatch {
   /// Creates a new [NamespaceStatusPatch].
   /// [conditions] Represents the latest available observations of a namespace's current state.
   /// [phase] Phase is the current lifecycle phase of the namespace. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-  NamespaceStatusPatch({
+  const NamespaceStatusPatch({
     this.conditions,
     this.phase,
   });

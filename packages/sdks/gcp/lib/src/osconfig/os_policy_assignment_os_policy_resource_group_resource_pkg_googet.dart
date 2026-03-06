@@ -8,7 +8,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget {
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget].
   /// [name] Package name.
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget({
     required this.name,
   });
 

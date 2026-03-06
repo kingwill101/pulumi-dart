@@ -26,7 +26,7 @@ class MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties {
   /// [isCloneable] whether the task can be cloned or not
   /// [taskId] task id
   /// [taskType] Task type.
-  MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties({
+  const MigratePostgreSqlAzureDbForPostgreSqlSyncTaskProperties({
     this.clientData,
     this.createdOn,
     this.input,

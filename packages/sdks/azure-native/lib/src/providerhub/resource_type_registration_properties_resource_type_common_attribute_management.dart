@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement].
   /// [commonApiVersionsMergeMode] Common api versions merge mode.
-  ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement({
+  const ResourceTypeRegistrationPropertiesResourceTypeCommonAttributeManagement({
     this.commonApiVersionsMergeMode,
   });
 

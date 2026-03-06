@@ -67,7 +67,7 @@ class GetResourceTypesType {
   /// [sensitiveInfoProperties] A collection of sensitive attributes, such as passwords.
   /// [updateOnlyProperties] Update operation private parameter collection. The attributes are not returned in the resource query operation, but the parameters are required in the update operation.
   /// [updateTypeProperties] A collection of properties that can be modified.
-  GetResourceTypesType({
+  const GetResourceTypesType({
     required this.createOnlyProperties,
     required this.deleteOnlyProperties,
     required this.filterProperties,

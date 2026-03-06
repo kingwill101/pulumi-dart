@@ -15,7 +15,7 @@ class GetS3BucketArgs {
   /// Creates a new [GetS3BucketArgs].
   /// [name] Name of S3Bucket
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetS3BucketArgs({
+  const GetS3BucketArgs({
     required this.name,
     required this.resourceGroupName,
   });

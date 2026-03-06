@@ -22,7 +22,7 @@ class SqlServerDatabaseResourcePropertiesDatabaseOptions {
   /// [isMemoryOptimizationEnabled] Optional.
   /// [isRemoteDataArchiveEnabled] Optional.
   /// [isTrustworthyOn] Optional.
-  SqlServerDatabaseResourcePropertiesDatabaseOptions({
+  const SqlServerDatabaseResourcePropertiesDatabaseOptions({
     this.isAutoCloseOn,
     this.isAutoCreateStatsOn,
     this.isAutoShrinkOn,

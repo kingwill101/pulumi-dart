@@ -18,7 +18,7 @@ class BasicAccelerateIpEndpointRelationState {
   /// [acceleratorId] The ID of the Basic GA instance.
   /// [endpointId] The ID of the Basic Endpoint.
   /// [status] The status of the Basic Accelerate Ip Endpoint Relation.
-  BasicAccelerateIpEndpointRelationState({
+  const BasicAccelerateIpEndpointRelationState({
     this.accelerateIpId,
     this.acceleratorId,
     this.endpointId,

@@ -12,7 +12,7 @@ class HostPortRange {
   /// Creates a new [HostPortRange].
   /// [max] max is the end of the range, inclusive.
   /// [min] min is the start of the range, inclusive.
-  HostPortRange({
+  const HostPortRange({
     required this.max,
     required this.min,
   });

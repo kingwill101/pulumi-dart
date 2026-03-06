@@ -21,7 +21,7 @@ class GoogleCloudIntegrationsV1alphaAccessTokenResponse {
   /// [refreshToken] If the access token will expire, use the refresh token to obtain another access token.
   /// [refreshTokenExpireTime] The approximate time until the refresh token retrieved is valid.
   /// [tokenType] Only support "bearer" token in v1 as bearer token is the predominant type used with OAuth 2.0.
-  GoogleCloudIntegrationsV1alphaAccessTokenResponse({
+  const GoogleCloudIntegrationsV1alphaAccessTokenResponse({
     required this.accessToken,
     required this.accessTokenExpireTime,
     required this.refreshToken,

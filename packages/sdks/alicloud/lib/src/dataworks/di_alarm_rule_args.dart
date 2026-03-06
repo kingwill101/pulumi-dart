@@ -33,7 +33,7 @@ class DiAlarmRuleArgs {
   /// [metricType] Alarm indicator type. Optional enumerated values:
   /// [notificationSettings] Alarm notification settings See `notification_settings` below.
   /// [triggerConditions] Alarm trigger condition list, supporting multiple conditions See `trigger_conditions` below.
-  DiAlarmRuleArgs({
+  const DiAlarmRuleArgs({
     this.description,
     required this.diAlarmRuleName,
     required this.diJobId,

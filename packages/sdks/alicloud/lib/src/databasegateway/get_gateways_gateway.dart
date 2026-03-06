@@ -35,7 +35,7 @@ class GetGatewaysGateway {
   /// [parentId] The parent node Id of Gateway.
   /// [status] The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
   /// [userId] The user's id.
-  GetGatewaysGateway({
+  const GetGatewaysGateway({
     required this.createTime,
     required this.gatewayDesc,
     required this.gatewayInstances,

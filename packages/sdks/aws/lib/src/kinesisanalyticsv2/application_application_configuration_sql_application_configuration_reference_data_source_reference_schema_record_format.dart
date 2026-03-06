@@ -12,7 +12,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat].
   /// [mappingParameters] Provides additional mapping information specific to the record format (such as JSON, CSV, or record fields delimited by some delimiter) on the streaming source.
   /// [recordFormatType] The type of record format. Valid values: `CSV`, `JSON`.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormat({
     required this.mappingParameters,
     required this.recordFormatType,
   });

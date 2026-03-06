@@ -58,7 +58,7 @@ class EventServiceDiscoveryState {
   /// Creates a new [EventServiceDiscoveryState].
   /// [nodes] Map of node which will be added to pool which will be having node name(id),node address(ip) and node port(port)
   /// [taskid] servicediscovery endpoint ( Below example shows how to create endpoing using AS3 )
-  EventServiceDiscoveryState({
+  const EventServiceDiscoveryState({
     this.nodes,
     this.taskid,
   });

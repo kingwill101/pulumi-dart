@@ -19,7 +19,7 @@ class DashboardFilter {
   /// [labelKey] The key for the label
   /// [stringValue] A variable-length string value.
   /// [templateVariable] The placeholder text that can be referenced in a filter string or MQL query. If omitted, the dashboard filter will be applied to all relevant widgets in the dashboard.
-  DashboardFilter({
+  const DashboardFilter({
     this.filterType,
     required this.labelKey,
     this.stringValue,

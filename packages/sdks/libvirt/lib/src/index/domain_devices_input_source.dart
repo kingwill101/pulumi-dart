@@ -13,7 +13,7 @@ class DomainDevicesInputSource {
   /// Creates a new [DomainDevicesInputSource].
   /// [evDev] Configures an event device as the source for the input device.
   /// [passthrough] Enables passthrough mode for the input device source configuration.
-  DomainDevicesInputSource({
+  const DomainDevicesInputSource({
     this.evDev,
     this.passthrough,
   });

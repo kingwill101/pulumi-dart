@@ -25,7 +25,7 @@ class ApiArgs {
   /// [location] Optional.
   /// [managedService] Optional. Immutable. The name of a Google Managed Service ( https://cloud.google.com/service-infrastructure/docs/glossary#managed). If not specified, a new Service will automatically be created in the same project as this API.
   /// [project] Optional.
-  ApiArgs({
+  const ApiArgs({
     required this.apiId,
     this.displayName,
     this.labels,

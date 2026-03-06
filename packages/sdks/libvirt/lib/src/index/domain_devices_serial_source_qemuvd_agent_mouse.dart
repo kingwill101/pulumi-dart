@@ -8,7 +8,7 @@ class DomainDevicesSerialSourceQemuvdAgentMouse {
 
   /// Creates a new [DomainDevicesSerialSourceQemuvdAgentMouse].
   /// [mode] Sets the mode for the mouse interaction through the QEMU guest agent.
-  DomainDevicesSerialSourceQemuvdAgentMouse({
+  const DomainDevicesSerialSourceQemuvdAgentMouse({
     required this.mode,
   });
 

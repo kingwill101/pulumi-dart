@@ -12,7 +12,7 @@ class ExportTimePeriod {
   /// Creates a new [ExportTimePeriod].
   /// [from] The start date for export data.
   /// [to] The end date for export data.
-  ExportTimePeriod({
+  const ExportTimePeriod({
     required this.from,
     required this.to,
   });

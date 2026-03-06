@@ -12,7 +12,7 @@ class VpcPeeringConfigResponse {
   /// Creates a new [VpcPeeringConfigResponse].
   /// [subnet] A free subnet for peering. (CIDR of /29)
   /// [vpcName] Fully qualified name of the VPC that Database Migration Service will peer to.
-  VpcPeeringConfigResponse({
+  const VpcPeeringConfigResponse({
     required this.subnet,
     required this.vpcName,
   });

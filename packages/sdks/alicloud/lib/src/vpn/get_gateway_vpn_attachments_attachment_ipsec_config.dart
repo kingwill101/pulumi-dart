@@ -17,7 +17,7 @@ class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
   /// [ipsecEncAlg] The encryption algorithm negotiated in the second stage. Value: **aes**, **aes192**, **aes256**, **des**, or **3des**. Default value: **aes**.
   /// [ipsecLifetime] The life cycle of SA negotiated in the second stage. Unit: seconds.Value range: **0** to **86400**. Default value: **86400**.
   /// [ipsecPfs] The second stage negotiates the Diffie-Hellman key exchange algorithm used. Default value: **group2**.Values: **disabled**, **group1**, **group2**, **group5**, **group14**.
-  GetGatewayVpnAttachmentsAttachmentIpsecConfig({
+  const GetGatewayVpnAttachmentsAttachmentIpsecConfig({
     required this.ipsecAuthAlg,
     required this.ipsecEncAlg,
     required this.ipsecLifetime,

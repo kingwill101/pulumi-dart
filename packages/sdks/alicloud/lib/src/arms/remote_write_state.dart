@@ -15,7 +15,7 @@ class RemoteWriteState {
   /// [clusterId] The ID of the Prometheus instance.
   /// [remoteWriteName] The name of the Remote Write configuration item.
   /// [remoteWriteYaml] The details of the Remote Write configuration item. Specify the value in the YAML format.
-  RemoteWriteState({
+  const RemoteWriteState({
     this.clusterId,
     this.remoteWriteName,
     this.remoteWriteYaml,

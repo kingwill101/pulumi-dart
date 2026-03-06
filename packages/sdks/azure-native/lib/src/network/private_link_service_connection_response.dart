@@ -34,7 +34,7 @@ class PrivateLinkServiceConnectionResponse {
   /// [provisioningState] The provisioning state of the private link service connection resource.
   /// [requestMessage] A message passed to the owner of the remote resource with this connection request. Restricted to 140 chars.
   /// [type] The resource type.
-  PrivateLinkServiceConnectionResponse({
+  const PrivateLinkServiceConnectionResponse({
     required this.etag,
     this.groupIds,
     this.id,

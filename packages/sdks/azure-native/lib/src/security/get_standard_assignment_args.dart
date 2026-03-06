@@ -15,7 +15,7 @@ class GetStandardAssignmentArgs {
   /// Creates a new [GetStandardAssignmentArgs].
   /// [resourceId] The identifier of the resource.
   /// [standardAssignmentName] The standard assignments assignment key - unique key for the standard assignment
-  GetStandardAssignmentArgs({
+  const GetStandardAssignmentArgs({
     required this.resourceId,
     required this.standardAssignmentName,
   });

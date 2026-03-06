@@ -8,7 +8,7 @@ class DomainOsNvRamSourceSsl {
 
   /// Creates a new [DomainOsNvRamSourceSsl].
   /// [verify] Specifies the verification level of the SSL connections for the backing store.
-  DomainOsNvRamSourceSsl({
+  const DomainOsNvRamSourceSsl({
     required this.verify,
   });
 

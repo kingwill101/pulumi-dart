@@ -11,7 +11,7 @@ class StringKeyValuePairResponse {
   /// Creates a new [StringKeyValuePairResponse].
   /// [key] The key to the mapped value.
   /// [value] The value of the mapping key.
-  StringKeyValuePairResponse({
+  const StringKeyValuePairResponse({
     required this.key,
     required this.value,
   });

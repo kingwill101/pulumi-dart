@@ -11,7 +11,7 @@ class WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfiguratio
   /// Creates a new [WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType].
   /// [key] Type of worker to deliver logs to CloudWatch (for example, `SPARK_DRIVER` and `SPARK_EXECUTOR`).
   /// [values] List of log types to be delivered to CloudWatch (for example, `STDOUT` and `STDERR`).
-  WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType({
+  const WorkgroupConfigurationMonitoringConfigurationCloudWatchLoggingConfigurationLogType({
     required this.key,
     required this.values,
   });

@@ -11,7 +11,7 @@ class GetVpcAttachmentFilter {
   /// Creates a new [GetVpcAttachmentFilter].
   /// [name] Name of the filter.
   /// [values] List of one or more values for the filter.
-  GetVpcAttachmentFilter({
+  const GetVpcAttachmentFilter({
     required this.name,
     required this.values,
   });

@@ -58,7 +58,7 @@ class ContainerAppsSessionPoolArgs {
   /// [sessionNetworkConfiguration] The network configuration of the sessions in the session pool.
   /// [sessionPoolName] Name of the session pool.
   /// [tags] Resource tags.
-  ContainerAppsSessionPoolArgs({
+  const ContainerAppsSessionPoolArgs({
     this.containerType,
     this.customContainerTemplate,
     this.dynamicPoolConfiguration,

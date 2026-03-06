@@ -30,7 +30,7 @@ class ScheduleBasedBackupCriteriaResponse {
   /// [objectType] Type of the specific object - used for deserializing
   /// [scheduleTimes] List of schedule times for backup
   /// [weeksOfTheMonth] It should be First/Second/Third/Fourth/Last
-  ScheduleBasedBackupCriteriaResponse({
+  const ScheduleBasedBackupCriteriaResponse({
     this.absoluteCriteria,
     this.daysOfMonth,
     this.daysOfTheWeek,

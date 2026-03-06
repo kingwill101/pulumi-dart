@@ -14,7 +14,7 @@ class SourceSelectionCriteriaResponse {
   /// Creates a new [SourceSelectionCriteriaResponse].
   /// [replicaModifications] A filter that you can specify for selection for modifications on replicas. A filter that you can specify for selection for modifications on replicas.
   /// [sseKmsEncryptedObjects] A container for filter information for the selection of Amazon S3 objects encrypted with AWS KMS. A container for filter information for the selection of S3 objects encrypted with AWS KMS.
-  SourceSelectionCriteriaResponse({
+  const SourceSelectionCriteriaResponse({
     this.replicaModifications,
     this.sseKmsEncryptedObjects,
   });

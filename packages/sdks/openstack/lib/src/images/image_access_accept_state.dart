@@ -32,7 +32,7 @@ class ImageAccessAcceptState {
   /// [schema] The membership schema.
   /// [status] The membership proposal status. Can either be
   /// [updatedAt] The date the image membership was last updated.
-  ImageAccessAcceptState({
+  const ImageAccessAcceptState({
     this.createdAt,
     this.imageId,
     this.memberId,

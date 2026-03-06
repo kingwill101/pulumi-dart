@@ -13,7 +13,7 @@ class UserIdentityResponse {
   /// Creates a new [UserIdentityResponse].
   /// [autoUser] The userName and autoUser properties are mutually exclusive; you must specify one but not both.
   /// [userName] The userName and autoUser properties are mutually exclusive; you must specify one but not both.
-  UserIdentityResponse({
+  const UserIdentityResponse({
     this.autoUser,
     this.userName,
   });

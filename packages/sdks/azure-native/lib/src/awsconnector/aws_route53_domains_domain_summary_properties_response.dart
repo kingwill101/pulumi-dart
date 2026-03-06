@@ -18,7 +18,7 @@ class AwsRoute53DomainsDomainSummaryPropertiesResponse {
   /// [domainName] &lt;p&gt;The name of the domain that the summary information applies to.&lt;/p&gt;
   /// [expiry] &lt;p&gt;Expiration date of the domain in Unix time format and Coordinated Universal Time (UTC).&lt;/p&gt;
   /// [transferLock] &lt;p&gt;Indicates whether a domain is locked from unauthorized transfer to another party.&lt;/p&gt;
-  AwsRoute53DomainsDomainSummaryPropertiesResponse({
+  const AwsRoute53DomainsDomainSummaryPropertiesResponse({
     this.autoRenew,
     this.domainName,
     this.expiry,

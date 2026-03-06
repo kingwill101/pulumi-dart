@@ -65,7 +65,7 @@ class GetCertificateOrderResult {
   /// [status] Current order status.
   /// [tags] A mapping of tags to assign to the resource.
   /// [validityInYears] Duration in years (must be between 1 and 3).
-  GetCertificateOrderResult({
+  const GetCertificateOrderResult({
     required this.appServiceCertificateNotRenewableReasons,
     required this.autoRenew,
     required this.certificates,

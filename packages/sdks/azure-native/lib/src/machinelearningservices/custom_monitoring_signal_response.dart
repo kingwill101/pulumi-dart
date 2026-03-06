@@ -29,7 +29,7 @@ class CustomMonitoringSignalResponse {
   /// [notificationTypes] The current notification mode for this signal.
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [signalType] Expected value is 'Custom'.
-  CustomMonitoringSignalResponse({
+  const CustomMonitoringSignalResponse({
     required this.componentId,
     this.inputAssets,
     this.inputs,

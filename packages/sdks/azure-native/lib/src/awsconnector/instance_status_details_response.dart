@@ -17,7 +17,7 @@ class InstanceStatusDetailsResponse {
   /// [impairedSince] &lt;p&gt;The time when a status check failed. For an instance that was launched and impaired, this is the time when the instance was launched.&lt;/p&gt;
   /// [name] &lt;p&gt;The type of instance status.&lt;/p&gt;
   /// [status] &lt;p&gt;The status.&lt;/p&gt;
-  InstanceStatusDetailsResponse({
+  const InstanceStatusDetailsResponse({
     this.impairedSince,
     this.name,
     this.status,

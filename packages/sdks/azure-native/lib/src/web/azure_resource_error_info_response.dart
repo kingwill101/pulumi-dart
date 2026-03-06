@@ -15,7 +15,7 @@ class AzureResourceErrorInfoResponse {
   /// [code] The error code.
   /// [details] The error details.
   /// [message] The error message.
-  AzureResourceErrorInfoResponse({
+  const AzureResourceErrorInfoResponse({
     required this.code,
     this.details,
     required this.message,

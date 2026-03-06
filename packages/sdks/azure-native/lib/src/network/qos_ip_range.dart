@@ -12,7 +12,7 @@ class QosIpRange {
   /// Creates a new [QosIpRange].
   /// [endIP] End IP Address.
   /// [startIP] Start IP Address.
-  QosIpRange({
+  const QosIpRange({
     this.endIP,
     this.startIP,
   });

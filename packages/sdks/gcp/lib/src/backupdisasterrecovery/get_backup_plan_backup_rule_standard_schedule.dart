@@ -33,7 +33,7 @@ class GetBackupPlanBackupRuleStandardSchedule {
   /// [recurrenceType] RecurrenceType enumerates the applicable periodicity for the schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY"]
   /// [timeZone] The time zone to be used when interpreting the schedule.
   /// [weekDayOfMonths] Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
-  GetBackupPlanBackupRuleStandardSchedule({
+  const GetBackupPlanBackupRuleStandardSchedule({
     required this.backupWindows,
     required this.daysOfMonths,
     required this.daysOfWeeks,

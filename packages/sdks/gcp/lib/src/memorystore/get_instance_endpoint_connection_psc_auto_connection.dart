@@ -37,7 +37,7 @@ class GetInstanceEndpointConnectionPscAutoConnection {
   /// [projectId] Output only. The consumer project_id where the forwarding rule is created from.
   /// [pscConnectionId] Output only. The PSC connection id of the forwarding rule connected to the
   /// [serviceAttachment] Output only. The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  GetInstanceEndpointConnectionPscAutoConnection({
+  const GetInstanceEndpointConnectionPscAutoConnection({
     required this.connectionType,
     required this.forwardingRule,
     required this.ipAddress,

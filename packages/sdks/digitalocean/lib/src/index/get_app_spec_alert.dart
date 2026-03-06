@@ -14,7 +14,7 @@ class GetAppSpecAlert {
   /// [destinations] Optional.
   /// [disabled] Determines whether or not the alert is disabled (default: `false`).
   /// [rule] The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-  GetAppSpecAlert({
+  const GetAppSpecAlert({
     this.destinations,
     this.disabled,
     required this.rule,

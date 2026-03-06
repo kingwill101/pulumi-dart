@@ -15,7 +15,7 @@ class AzureFileVolumeSource {
   /// [readOnly] readOnly defaults to false (read/write). ReadOnly here will force the ReadOnly setting in VolumeMounts.
   /// [secretName] secretName is the  name of secret that contains Azure Storage Account Name and Key
   /// [shareName] shareName is the azure share Name
-  AzureFileVolumeSource({
+  const AzureFileVolumeSource({
     this.readOnly,
     required this.secretName,
     required this.shareName,

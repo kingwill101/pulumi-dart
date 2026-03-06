@@ -25,7 +25,7 @@ class TrafficControllerInterfaceArgs {
   /// [securityPolicyConfigurations] Security Policy Configuration
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
-  TrafficControllerInterfaceArgs({
+  const TrafficControllerInterfaceArgs({
     this.location,
     required this.resourceGroupName,
     this.securityPolicyConfigurations,

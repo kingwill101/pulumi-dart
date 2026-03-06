@@ -37,7 +37,7 @@ class TunnelState {
   /// [tunnelRpo] The latest consumption time of the tunnel, unix time in nanosecond.
   /// [tunnelStage] The stage of OTS tunnel, valid values: `InitBaseDataAndStreamShard`, `ProcessBaseData`, `ProcessStream`.
   /// [tunnelType] The type of the OTS tunnel. Only `BaseAndStream`, `BaseData` or `Stream` is allowed.
-  TunnelState({
+  const TunnelState({
     this.channels,
     this.createTime,
     this.expired,

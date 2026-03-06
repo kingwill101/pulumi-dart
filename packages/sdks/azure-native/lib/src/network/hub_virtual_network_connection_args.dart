@@ -41,7 +41,7 @@ class HubVirtualNetworkConnectionArgs {
   /// [resourceGroupName] The resource group name of the HubVirtualNetworkConnection.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [virtualHubName] The name of the VirtualHub.
-  HubVirtualNetworkConnectionArgs({
+  const HubVirtualNetworkConnectionArgs({
     this.allowHubToRemoteVnetTransit,
     this.allowRemoteVnetToUseHubVnetGateways,
     this.connectionName,

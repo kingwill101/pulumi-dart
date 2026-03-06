@@ -15,7 +15,7 @@ class GetMasterSlaveServerGroupsGroup {
   /// [id] master slave server group ID.
   /// [name] master slave server group name.
   /// [servers] ECS instances associated to the group. Each element contains the following attributes:
-  GetMasterSlaveServerGroupsGroup({
+  const GetMasterSlaveServerGroupsGroup({
     required this.id,
     required this.name,
     required this.servers,

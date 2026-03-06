@@ -13,7 +13,7 @@ class GetInstanceTemplateComputeV1Args {
   /// Creates a new [GetInstanceTemplateComputeV1Args].
   /// [instanceTemplate] Required.
   /// [project] Optional.
-  GetInstanceTemplateComputeV1Args({
+  const GetInstanceTemplateComputeV1Args({
     required this.instanceTemplate,
     this.project,
   });

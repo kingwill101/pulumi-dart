@@ -93,7 +93,7 @@ class ClusterGetPropertiesResponse {
   /// [securityProfile] The security profile.
   /// [storageProfile] The storage profile.
   /// [tier] The cluster tier.
-  ClusterGetPropertiesResponse({
+  const ClusterGetPropertiesResponse({
     required this.clusterDefinition,
     this.clusterHdpVersion,
     this.clusterId,

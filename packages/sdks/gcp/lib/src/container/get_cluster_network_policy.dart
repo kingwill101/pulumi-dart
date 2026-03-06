@@ -11,7 +11,7 @@ class GetClusterNetworkPolicy {
   /// Creates a new [GetClusterNetworkPolicy].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  GetClusterNetworkPolicy({
+  const GetClusterNetworkPolicy({
     required this.enabled,
     required this.provider,
   });

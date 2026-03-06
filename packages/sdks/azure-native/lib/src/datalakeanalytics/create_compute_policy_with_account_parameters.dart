@@ -21,7 +21,7 @@ class CreateComputePolicyWithAccountParameters {
   /// [name] The unique name of the compute policy to create.
   /// [objectId] The AAD object identifier for the entity to create a policy for.
   /// [objectType] The type of AAD object the object identifier refers to.
-  CreateComputePolicyWithAccountParameters({
+  const CreateComputePolicyWithAccountParameters({
     this.maxDegreeOfParallelismPerJob,
     this.minPriorityPerJob,
     required this.name,

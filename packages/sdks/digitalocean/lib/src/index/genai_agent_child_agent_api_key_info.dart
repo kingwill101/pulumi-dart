@@ -23,7 +23,7 @@ class GenaiAgentChildAgentApiKeyInfo {
   /// [name] Name of the API Key
   /// [secretKey] Updated At timestamp for the API Key
   /// [uuid] API Key value
-  GenaiAgentChildAgentApiKeyInfo({
+  const GenaiAgentChildAgentApiKeyInfo({
     this.createdAt,
     this.createdBy,
     this.deletedAt,

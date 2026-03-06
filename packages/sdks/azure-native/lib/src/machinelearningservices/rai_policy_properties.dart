@@ -23,7 +23,7 @@ class RaiPolicyProperties {
   /// [mode] Content Filters mode.
   /// [promptBlocklists] Optional.
   /// [type] Content Filters policy type.
-  RaiPolicyProperties({
+  const RaiPolicyProperties({
     this.basePolicyName,
     this.completionBlocklists,
     this.contentFilters,

@@ -69,7 +69,7 @@ class ProviderArgs {
   /// [useDefaultAzureCredential] Use the default credential chain of the Azure SDK (see https://learn.microsoft.com/en-us/azure/developer/go/sdk/authentication/credential-chains#defaultazurecredential-overview).
   /// [useMsi] Allow Managed Service Identity to be used for Authentication.
   /// [useOidc] Allow OpenID Connect (OIDC) to be used for Authentication.
-  ProviderArgs({
+  const ProviderArgs({
     this.auxiliaryTenantIds,
     this.clientCertificatePassword,
     this.clientCertificatePath,

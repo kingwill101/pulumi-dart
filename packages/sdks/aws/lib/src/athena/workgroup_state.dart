@@ -34,7 +34,7 @@ class WorkgroupState {
   /// [state] State of the workgroup. Valid values are `DISABLED` or `ENABLED`. Defaults to `ENABLED`.
   /// [tags] Key-value map of resource tags for the workgroup. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  WorkgroupState({
+  const WorkgroupState({
     this.arn,
     this.configuration,
     this.description,

@@ -121,7 +121,7 @@ class AgentArgs {
   /// [remoteDialogflowAgent] The agent which will transfer execution to an existing remote
   /// [tools] List of available tools for the agent.
   /// [toolsets] List of toolsets for the agent.
-  AgentArgs({
+  const AgentArgs({
     this.afterAgentCallbacks,
     this.afterModelCallbacks,
     this.afterToolCallbacks,

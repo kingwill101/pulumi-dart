@@ -21,7 +21,7 @@ class AssignmentDynamicScopeArgs {
   /// [filter] A `filter` block as defined below.
   /// [maintenanceConfigurationId] The ID of the Maintenance Configuration Resource. Changing this forces a new Dynamic Maintenance Assignment to be created.
   /// [name] The name which should be used for this Dynamic Maintenance Assignment. Changing this forces a new Dynamic Maintenance Assignment to be created.
-  AssignmentDynamicScopeArgs({
+  const AssignmentDynamicScopeArgs({
     required this.filter,
     required this.maintenanceConfigurationId,
     this.name,

@@ -16,7 +16,7 @@ class GoogleCloudDialogflowV2SmartReplyMetricsResponse {
   /// [allowlistCoverage] Percentage of target participant messages in the evaluation dataset for which similar messages have appeared at least once in the allowlist. Should be [0, 1].
   /// [conversationCount] Total number of conversations used to generate this metric.
   /// [topNMetrics] Metrics of top n smart replies, sorted by TopNMetric.n.
-  GoogleCloudDialogflowV2SmartReplyMetricsResponse({
+  const GoogleCloudDialogflowV2SmartReplyMetricsResponse({
     required this.allowlistCoverage,
     required this.conversationCount,
     required this.topNMetrics,

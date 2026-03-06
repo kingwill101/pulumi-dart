@@ -12,7 +12,7 @@ class Int64RangeMatchResponseComputeV1 {
   /// Creates a new [Int64RangeMatchResponseComputeV1].
   /// [rangeEnd] The end of the range (exclusive) in signed long integer format.
   /// [rangeStart] The start of the range (inclusive) in signed long integer format.
-  Int64RangeMatchResponseComputeV1({
+  const Int64RangeMatchResponseComputeV1({
     required this.rangeEnd,
     required this.rangeStart,
   });

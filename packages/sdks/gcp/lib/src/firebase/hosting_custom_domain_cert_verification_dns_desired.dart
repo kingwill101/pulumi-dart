@@ -13,7 +13,7 @@ class HostingCustomDomainCertVerificationDnsDesired {
   /// Creates a new [HostingCustomDomainCertVerificationDnsDesired].
   /// [domainName] The domain name the record pertains to, e.g. `foo.bar.com.`.
   /// [records] Records on the domain
-  HostingCustomDomainCertVerificationDnsDesired({
+  const HostingCustomDomainCertVerificationDnsDesired({
     this.domainName,
     this.records,
   });

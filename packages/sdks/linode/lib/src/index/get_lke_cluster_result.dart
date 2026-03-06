@@ -62,7 +62,7 @@ class GetLkeClusterResult {
   /// [tier] The desired Kubernetes tier. **NOTE: This field may not be available to all users and is only populated when api_version is set to `v4beta`.**
   /// [updated] When this Kubernetes cluster was updated.
   /// [vpcId] The ID of the VPC to use for the Kubernetes cluster.
-  GetLkeClusterResult({
+  const GetLkeClusterResult({
     required this.apiEndpoints,
     required this.aplEnabled,
     required this.controlPlanes,

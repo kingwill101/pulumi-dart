@@ -17,7 +17,7 @@ class ClusterMasterAuthorizedNetworksConfig {
   /// [cidrBlocks] External networks that can access the
   /// [gcpPublicCidrsAccessEnabled] Whether Kubernetes master is
   /// [privateEndpointEnforcementEnabled] Whether authorized networks is enforced on the private endpoint or not.
-  ClusterMasterAuthorizedNetworksConfig({
+  const ClusterMasterAuthorizedNetworksConfig({
     this.cidrBlocks,
     this.gcpPublicCidrsAccessEnabled,
     this.privateEndpointEnforcementEnabled,

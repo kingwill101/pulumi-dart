@@ -17,7 +17,7 @@ class GetKubernetesClusterIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Kubernetes Cluster.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Kubernetes Cluster.
   /// [type] The type of Managed Service Identity that is configured on this Kubernetes Cluster.
-  GetKubernetesClusterIdentity({
+  const GetKubernetesClusterIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -56,7 +56,7 @@ class AppAttachPackageInfoProperties {
   /// [packageName] Package Name from appxmanifest.xml.
   /// [packageRelativePath] Relative Path to the package inside the image.
   /// [version] Package version found in the appxmanifest.xml.
-  AppAttachPackageInfoProperties({
+  const AppAttachPackageInfoProperties({
     this.certificateExpiry,
     this.certificateName,
     this.displayName,

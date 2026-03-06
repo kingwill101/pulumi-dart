@@ -8,7 +8,7 @@ class AlertConfigurationSinkCms {
 
   /// Creates a new [AlertConfigurationSinkCms].
   /// [enabled] Open.
-  AlertConfigurationSinkCms({
+  const AlertConfigurationSinkCms({
     this.enabled,
   });
 

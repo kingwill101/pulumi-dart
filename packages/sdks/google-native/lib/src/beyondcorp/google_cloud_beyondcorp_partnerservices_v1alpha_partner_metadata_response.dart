@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse {
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse].
   /// [internalTenantId] Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
   /// [partnerTenantId] Optional. UUID used by the Partner to refer to the PartnerTenant in their internal systems.
-  GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerMetadataResponse({
     required this.internalTenantId,
     required this.partnerTenantId,
   });

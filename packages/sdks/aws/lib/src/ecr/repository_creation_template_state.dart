@@ -44,7 +44,7 @@ class RepositoryCreationTemplateState {
   /// [registryId] The registry ID the repository creation template applies to.
   /// [repositoryPolicy] The registry policy document to apply to any created repositories. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
   /// [resourceTags] A map of tags to assign to any created repositories.
-  RepositoryCreationTemplateState({
+  const RepositoryCreationTemplateState({
     this.appliedFors,
     this.customRoleArn,
     this.description,

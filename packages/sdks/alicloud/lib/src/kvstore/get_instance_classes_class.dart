@@ -10,7 +10,7 @@ class GetInstanceClassesClass {
   /// Creates a new [GetInstanceClassesClass].
   /// [instanceClass] KVStore available instance class.
   /// [price] Required.
-  GetInstanceClassesClass({
+  const GetInstanceClassesClass({
     required this.instanceClass,
     required this.price,
   });

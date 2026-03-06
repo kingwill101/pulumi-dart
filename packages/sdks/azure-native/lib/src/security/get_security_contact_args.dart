@@ -12,7 +12,7 @@ class GetSecurityContactArgs {
 
   /// Creates a new [GetSecurityContactArgs].
   /// [securityContactName] Name of the security contact object
-  GetSecurityContactArgs({
+  const GetSecurityContactArgs({
     required this.securityContactName,
   });
 

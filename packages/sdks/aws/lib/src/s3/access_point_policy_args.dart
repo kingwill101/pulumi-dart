@@ -18,7 +18,7 @@ class AccessPointPolicyArgs {
   /// [accessPointArn] The ARN of the access point that you want to associate with the specified policy.
   /// [policy] The policy that you want to apply to the specified access point.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AccessPointPolicyArgs({
+  const AccessPointPolicyArgs({
     required this.accessPointArn,
     required this.policy,
     this.region,

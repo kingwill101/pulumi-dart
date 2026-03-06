@@ -12,7 +12,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote].
   /// [sha256Checksum] SHA256 checksum of the remote file.
   /// [uri] URI from which to fetch the object. It should contain
-  OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceFileFileRemote({
     this.sha256Checksum,
     required this.uri,
   });

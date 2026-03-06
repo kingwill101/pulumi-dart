@@ -8,7 +8,7 @@ class ManagedInstancePrivateEndpointProperty {
 
   /// Creates a new [ManagedInstancePrivateEndpointProperty].
   /// [id] Resource id of the private endpoint.
-  ManagedInstancePrivateEndpointProperty({
+  const ManagedInstancePrivateEndpointProperty({
     this.id,
   });
 

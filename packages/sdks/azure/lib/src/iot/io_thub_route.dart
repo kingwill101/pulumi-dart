@@ -20,7 +20,7 @@ class IoTHubRoute {
   /// [endpointNames] The list of endpoints to which messages that satisfy the condition are routed.
   /// [name] The name of the route.
   /// [source] The source that the routing rule is to be applied to, such as `DeviceMessages`. Possible values include: `Invalid`, `DeviceMessages`, `TwinChangeEvents`, `DeviceLifecycleEvents`, `DeviceConnectionStateEvents`, `DeviceJobLifecycleEvents` and `DigitalTwinChangeEvents`.
-  IoTHubRoute({
+  const IoTHubRoute({
     this.condition,
     required this.enabled,
     required this.endpointNames,

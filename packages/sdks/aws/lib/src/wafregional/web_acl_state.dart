@@ -36,7 +36,7 @@ class WebAclState {
   /// [rules] Set of configuration blocks containing rules for the web ACL. Detailed below.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  WebAclState({
+  const WebAclState({
     this.arn,
     this.defaultAction,
     this.loggingConfiguration,

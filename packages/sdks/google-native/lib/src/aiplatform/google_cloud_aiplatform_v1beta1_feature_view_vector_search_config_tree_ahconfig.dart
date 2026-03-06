@@ -8,7 +8,7 @@ class GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig].
   /// [leafNodeEmbeddingCount] Optional. Number of embeddings on each leaf node. The default value is 1000 if not set.
-  GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig({
+  const GoogleCloudAiplatformV1beta1FeatureViewVectorSearchConfigTreeAHConfig({
     this.leafNodeEmbeddingCount,
   });
 

@@ -32,7 +32,7 @@ class GetLocalNetworkGatewayResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Local Network Gateway.
-  GetLocalNetworkGatewayResult({
+  const GetLocalNetworkGatewayResult({
     required this.addressSpaces,
     required this.bgpSettings,
     required this.gatewayAddress,

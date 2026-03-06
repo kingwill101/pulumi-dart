@@ -8,7 +8,7 @@ class WafPolicyHostName {
 
   /// Creates a new [WafPolicyHostName].
   /// [name] The unique user-given name of the policy. Policy names cannot contain spaces or special characters. Allowed characters are a-z, A-Z, 0-9, dot, dash (-), colon (:) and underscore (_).
-  WafPolicyHostName({
+  const WafPolicyHostName({
     this.name,
   });
 

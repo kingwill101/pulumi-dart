@@ -14,7 +14,7 @@ class NodeConfigDefaultsResponse {
   /// Creates a new [NodeConfigDefaultsResponse].
   /// [gcfsConfig] GCFS (Google Container File System, also known as Riptide) options.
   /// [loggingConfig] Logging configuration for node pools.
-  NodeConfigDefaultsResponse({
+  const NodeConfigDefaultsResponse({
     required this.gcfsConfig,
     required this.loggingConfig,
   });

@@ -37,7 +37,7 @@ class AppleAppState {
   /// [name] The fully qualified resource name of the App, for example:
   /// [project] The ID of the project in which the resource belongs.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
-  AppleAppState({
+  const AppleAppState({
     this.apiKeyId,
     this.appId,
     this.appStoreId,

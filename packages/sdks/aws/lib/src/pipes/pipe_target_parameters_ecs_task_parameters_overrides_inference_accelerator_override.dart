@@ -11,7 +11,7 @@ class PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride
   /// Creates a new [PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride].
   /// [deviceName] The Elastic Inference accelerator device name to override for the task. This parameter must match a deviceName specified in the task definition.
   /// [deviceType] The Elastic Inference accelerator type to use.
-  PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride({
+  const PipeTargetParametersEcsTaskParametersOverridesInferenceAcceleratorOverride({
     this.deviceName,
     this.deviceType,
   });

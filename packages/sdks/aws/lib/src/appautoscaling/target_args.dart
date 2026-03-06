@@ -37,7 +37,7 @@ class TargetArgs {
   /// [serviceNamespace] AWS service namespace of the scalable target. Documentation can be found in the `ServiceNamespace` parameter at: [AWS Application Auto Scaling API Reference](https://docs.aws.amazon.com/autoscaling/application/APIReference/API_RegisterScalableTarget.html#API_RegisterScalableTarget_RequestParameters)
   /// [suspendedState] Specifies whether the scaling activities for a scalable target are in a suspended state.
   /// [tags] Map of tags to assign to the scalable target. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  TargetArgs({
+  const TargetArgs({
     required this.maxCapacity,
     required this.minCapacity,
     this.region,

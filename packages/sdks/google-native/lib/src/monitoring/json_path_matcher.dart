@@ -13,7 +13,7 @@ class JsonPathMatcher {
   /// Creates a new [JsonPathMatcher].
   /// [jsonMatcher] The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
   /// [jsonPath] JSONPath within the response output pointing to the expected ContentMatcher::content to match against.
-  JsonPathMatcher({
+  const JsonPathMatcher({
     this.jsonMatcher,
     this.jsonPath,
   });

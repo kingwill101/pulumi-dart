@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry({
+  const GetDatabaseMysqlConfigMysqlInformationSchemaStatsExpiry({
     required this.description,
     required this.example,
     required this.maximum,

@@ -8,7 +8,7 @@ class TransferAgentPoolBandwidthLimit {
 
   /// Creates a new [TransferAgentPoolBandwidthLimit].
   /// [limitMbps] Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
-  TransferAgentPoolBandwidthLimit({
+  const TransferAgentPoolBandwidthLimit({
     required this.limitMbps,
   });
 

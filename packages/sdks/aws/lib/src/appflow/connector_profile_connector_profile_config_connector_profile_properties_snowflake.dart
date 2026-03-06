@@ -24,7 +24,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake 
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stage] Name of the Amazon S3 stage that was created while setting up an Amazon S3 stage in the Snowflake account. This is written in the following format: `&lt;Database&gt;.&lt;Schema&gt;.&lt;Stage Name&gt;`.
   /// [warehouse] The name of the Snowflake warehouse.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSnowflake({
     this.accountName,
     required this.bucketName,
     this.bucketPrefix,

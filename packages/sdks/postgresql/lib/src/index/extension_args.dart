@@ -27,7 +27,7 @@ class ExtensionArgs {
   /// [name] The name of the extension.
   /// [schema] Sets the schema of an extension.
   /// [version] Sets the version number of the extension.
-  ExtensionArgs({
+  const ExtensionArgs({
     this.createCascade,
     this.database,
     this.dropCascade,

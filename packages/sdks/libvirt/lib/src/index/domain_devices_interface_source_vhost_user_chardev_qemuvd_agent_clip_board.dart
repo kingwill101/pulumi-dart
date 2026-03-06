@@ -8,7 +8,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard {
 
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard({
+  const DomainDevicesInterfaceSourceVhostUserChardevQemuvdAgentClipBoard({
     required this.copyPaste,
   });
 

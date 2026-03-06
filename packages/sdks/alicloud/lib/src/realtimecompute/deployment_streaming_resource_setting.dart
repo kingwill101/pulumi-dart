@@ -16,7 +16,7 @@ class DeploymentStreamingResourceSetting {
   /// [basicResourceSetting] Resource settings for basic mode See `basic_resource_setting` below.
   /// [expertResourceSetting] Expert mode resource settings See `expert_resource_setting` below.
   /// [resourceSettingMode] Resource mode used in streaming mode, valid values: BASIC or EXPERT
-  DeploymentStreamingResourceSetting({
+  const DeploymentStreamingResourceSetting({
     this.basicResourceSetting,
     this.expertResourceSetting,
     this.resourceSettingMode,

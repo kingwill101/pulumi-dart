@@ -26,7 +26,7 @@ class ServiceTopicArgs {
   /// [maxMessageSize] The maximum length of the message that is sent to the topic. Default value: `65536`. Valid values: `1024` to `65536`. Unit: bytes.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topicName] The name of the topic.
-  ServiceTopicArgs({
+  const ServiceTopicArgs({
     this.enableLogging,
     this.loggingEnabled,
     this.maxMessageSize,

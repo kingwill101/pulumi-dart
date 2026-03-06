@@ -40,7 +40,7 @@ class DocumentArgs {
   /// [tags] A map of tags to assign to the object. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetType] The target type which defines the kinds of resources the document can run on. For example, `/AWS::EC2::Instance`. For a list of valid resource types, see [AWS resource and property types reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html).
   /// [versionName] The version of the artifact associated with the document. For example, `12.6`. This value is unique across all versions of a document, and can't be changed.
-  DocumentArgs({
+  const DocumentArgs({
     this.attachmentsSources,
     required this.content,
     this.documentFormat,

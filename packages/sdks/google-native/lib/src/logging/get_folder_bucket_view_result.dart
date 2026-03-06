@@ -20,7 +20,7 @@ class GetFolderBucketViewResult {
   /// [filter] Filter that restricts which log entries in a bucket are visible in this view.Filters are restricted to be a logical AND of ==/!= of any of the following: originating project/folder/organization/billing account. resource type log idFor example:SOURCE("projects/myproject") AND resource.type = "gce_instance" AND LOG_ID("stdout")
   /// [name] The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   /// [updateTime] The last update timestamp of the view.
-  GetFolderBucketViewResult({
+  const GetFolderBucketViewResult({
     required this.createTime,
     required this.description,
     required this.filter,

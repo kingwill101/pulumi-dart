@@ -23,7 +23,7 @@ class InboundNATRulePropertiesResponse {
   /// [frontendPort] Frontend Port for the inbound rule
   /// [protocol] Protocol for the NAT rule
   /// [publicIPAddress] Public IP Address for this NAT rule
-  InboundNATRulePropertiesResponse({
+  const InboundNATRulePropertiesResponse({
     required this.backendIPConfiguration,
     required this.backendPort,
     required this.frontendPort,

@@ -10,7 +10,7 @@ class MonitoringSettings {
 
   /// Creates a new [MonitoringSettings].
   /// [azureMonitorAlertSettings] Settings for Azure Monitor based alerts
-  MonitoringSettings({
+  const MonitoringSettings({
     this.azureMonitorAlertSettings,
   });
 

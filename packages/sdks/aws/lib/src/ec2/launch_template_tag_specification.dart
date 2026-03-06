@@ -11,7 +11,7 @@ class LaunchTemplateTagSpecification {
   /// Creates a new [LaunchTemplateTagSpecification].
   /// [resourceType] The type of resource to tag.
   /// [tags] A map of tags to assign to the resource.
-  LaunchTemplateTagSpecification({
+  const LaunchTemplateTagSpecification({
     this.resourceType,
     this.tags,
   });

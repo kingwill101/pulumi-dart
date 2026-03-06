@@ -12,7 +12,7 @@ class PodFailurePolicyOnPodConditionsPattern {
   /// Creates a new [PodFailurePolicyOnPodConditionsPattern].
   /// [status] Specifies the required Pod condition status. To match a pod condition it is required that the specified status equals the pod condition status. Defaults to True.
   /// [type] Specifies the required Pod condition type. To match a pod condition it is required that specified type equals the pod condition type.
-  PodFailurePolicyOnPodConditionsPattern({
+  const PodFailurePolicyOnPodConditionsPattern({
     this.status,
     required this.type,
   });

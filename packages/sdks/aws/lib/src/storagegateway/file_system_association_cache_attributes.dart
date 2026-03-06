@@ -10,7 +10,7 @@ class FileSystemAssociationCacheAttributes {
 
   /// Creates a new [FileSystemAssociationCacheAttributes].
   /// [cacheStaleTimeoutInSeconds] Refreshes a file share's cache by using Time To Live (TTL).
-  FileSystemAssociationCacheAttributes({
+  const FileSystemAssociationCacheAttributes({
     this.cacheStaleTimeoutInSeconds,
   });
 

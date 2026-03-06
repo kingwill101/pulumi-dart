@@ -45,7 +45,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRule {
   /// [routeAction] In response to a matching path, the routeAction performs advanced routing actions like URL rewrites, header transformations, etc. prior to forwarding the request to the selected origin.
   /// [routeMethods] Allow overriding the set of methods that are allowed for this route.
   /// [urlRedirect] The URL redirect configuration for requests that match this route.
-  EdgeCacheServiceRoutingPathMatcherRouteRule({
+  const EdgeCacheServiceRoutingPathMatcherRouteRule({
     this.description,
     this.headerAction,
     required this.matchRules,

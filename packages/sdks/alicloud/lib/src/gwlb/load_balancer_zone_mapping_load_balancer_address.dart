@@ -11,7 +11,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress {
   /// Creates a new [LoadBalancerZoneMappingLoadBalancerAddress].
   /// [eniId] The ID of the elastic network interface (ENI) used by the GWLB instance.
   /// [privateIpv4Address] The private IPv4 address.
-  LoadBalancerZoneMappingLoadBalancerAddress({
+  const LoadBalancerZoneMappingLoadBalancerAddress({
     this.eniId,
     this.privateIpv4Address,
   });

@@ -30,7 +30,7 @@ class WorkloadAttributes {
   /// [developerOwners] Developer team that owns development and coding.
   /// [environment] Environment of the Application, Service, or Workload
   /// [operatorOwners] Operator team that ensures runtime and operations.
-  WorkloadAttributes({
+  const WorkloadAttributes({
     this.businessOwners,
     this.criticality,
     this.developerOwners,

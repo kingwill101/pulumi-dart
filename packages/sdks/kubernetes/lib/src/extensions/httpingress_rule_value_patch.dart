@@ -10,7 +10,7 @@ class HTTPIngressRuleValuePatch {
 
   /// Creates a new [HTTPIngressRuleValuePatch].
   /// [paths] A collection of paths that map requests to backends.
-  HTTPIngressRuleValuePatch({
+  const HTTPIngressRuleValuePatch({
     this.paths,
   });
 

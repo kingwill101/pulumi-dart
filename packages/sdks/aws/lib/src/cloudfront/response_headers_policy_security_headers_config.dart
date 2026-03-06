@@ -29,7 +29,7 @@ class ResponseHeadersPolicySecurityHeadersConfig {
   /// [referrerPolicy] Determines whether CloudFront includes the `Referrer-Policy` HTTP response header and the header’s value. See Referrer Policy for more information.
   /// [strictTransportSecurity] Determines whether CloudFront includes the `Strict-Transport-Security` HTTP response header and the header’s value. See Strict Transport Security for more information.
   /// [xssProtection] Determine whether CloudFront includes the `X-XSS-Protection` HTTP response header and the header’s value. See XSS Protection for more information.
-  ResponseHeadersPolicySecurityHeadersConfig({
+  const ResponseHeadersPolicySecurityHeadersConfig({
     this.contentSecurityPolicy,
     this.contentTypeOptions,
     this.frameOptions,

@@ -12,7 +12,7 @@ class InstancePropertiesPatchResponse {
   /// Creates a new [InstancePropertiesPatchResponse].
   /// [labels] The label key-value pairs that you want to patch onto the instance.
   /// [metadata] The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata.
-  InstancePropertiesPatchResponse({
+  const InstancePropertiesPatchResponse({
     required this.labels,
     required this.metadata,
   });

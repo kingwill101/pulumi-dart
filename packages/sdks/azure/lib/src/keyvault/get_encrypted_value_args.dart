@@ -23,7 +23,7 @@ class GetEncryptedValueArgs {
   /// [encryptedData] The Base64 URL Encoded Encrypted Data which should be decrypted into `plain_text_value`.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Decrypt/Encrypt this Value.
   /// [plainTextValue] The plain-text value which should be Encrypted into `encrypted_data`.
-  GetEncryptedValueArgs({
+  const GetEncryptedValueArgs({
     required this.algorithm,
     this.encryptedData,
     required this.keyVaultKeyId,

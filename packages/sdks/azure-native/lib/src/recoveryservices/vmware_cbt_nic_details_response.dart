@@ -48,7 +48,7 @@ class VMwareCbtNicDetailsResponse {
   /// [testIPAddressType] The test IP address type.
   /// [testNetworkId] Source network Id.
   /// [testSubnetName] Test subnet name.
-  VMwareCbtNicDetailsResponse({
+  const VMwareCbtNicDetailsResponse({
     this.isPrimaryNic,
     this.isSelectedForMigration,
     required this.nicId,

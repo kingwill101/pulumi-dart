@@ -14,7 +14,7 @@ class ResourceProviderCapabilitiesResponse {
   /// [effect] The effect.
   /// [quotaId] The quota id.
   /// [requiredFeatures] The required features.
-  ResourceProviderCapabilitiesResponse({
+  const ResourceProviderCapabilitiesResponse({
     required this.effect,
     required this.quotaId,
     this.requiredFeatures,

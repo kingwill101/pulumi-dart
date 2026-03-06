@@ -23,7 +23,7 @@ class StorageTaskAssignmentProperties {
   /// [executionContext] The storage task assignment execution context
   /// [report] The storage task assignment report
   /// [taskId] Id of the corresponding storage task
-  StorageTaskAssignmentProperties({
+  const StorageTaskAssignmentProperties({
     required this.description,
     required this.enabled,
     required this.executionContext,

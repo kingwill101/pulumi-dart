@@ -47,7 +47,7 @@ class DomainConfigurationArgs {
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tlsConfig] An object that specifies the TLS configuration for a domain. See the `tls_config` Block below for details.
   /// [validationCertificateArn] The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.
-  DomainConfigurationArgs({
+  const DomainConfigurationArgs({
     this.applicationProtocol,
     this.authenticationType,
     this.authorizerConfig,

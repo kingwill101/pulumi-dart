@@ -21,7 +21,7 @@ class ImageTemplateLastRunStatusResponse {
   /// [runState] State of the last run
   /// [runSubState] Sub-state of the last run
   /// [startTime] Start time of the last run (UTC)
-  ImageTemplateLastRunStatusResponse({
+  const ImageTemplateLastRunStatusResponse({
     this.endTime,
     this.message,
     this.runState,

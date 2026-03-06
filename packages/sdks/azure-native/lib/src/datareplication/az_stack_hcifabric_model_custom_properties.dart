@@ -20,7 +20,7 @@ class AzStackHCIFabricModelCustomProperties {
   /// [cluster] AzStackHCI cluster properties.
   /// [instanceType] Gets or sets the instance type.
   /// [migrationSolutionId] Gets or sets the Migration solution ARM Id.
-  AzStackHCIFabricModelCustomProperties({
+  const AzStackHCIFabricModelCustomProperties({
     required this.azStackHciSiteId,
     required this.cluster,
     required this.instanceType,

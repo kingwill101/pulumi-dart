@@ -24,7 +24,7 @@ class LocalRulestackFqdnListArgs {
   /// [fullyQualifiedDomainNames] Specifies a list of Fully Qualified Domain Names.
   /// [name] The name which should be used for this Palo Alto Local Rulestack FQDN List.
   /// [rulestackId] The ID of the TODO. Changing this forces a new Palo Alto Local Rulestack FQDN List to be created.
-  LocalRulestackFqdnListArgs({
+  const LocalRulestackFqdnListArgs({
     this.auditComment,
     this.description,
     required this.fullyQualifiedDomainNames,

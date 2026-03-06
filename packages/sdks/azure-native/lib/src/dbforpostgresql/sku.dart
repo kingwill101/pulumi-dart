@@ -12,7 +12,7 @@ class Sku {
   /// Creates a new [Sku].
   /// [name] Name by which is known a given compute size assigned to a server.
   /// [tier] Tier of the compute assigned to a server.
-  Sku({
+  const Sku({
     required this.name,
     required this.tier,
   });

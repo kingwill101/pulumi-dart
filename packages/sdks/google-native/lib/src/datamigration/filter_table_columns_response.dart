@@ -12,7 +12,7 @@ class FilterTableColumnsResponse {
   /// Creates a new [FilterTableColumnsResponse].
   /// [excludeColumns] Optional. List of columns to be excluded for a particular table.
   /// [includeColumns] Optional. List of columns to be included for a particular table.
-  FilterTableColumnsResponse({
+  const FilterTableColumnsResponse({
     required this.excludeColumns,
     required this.includeColumns,
   });

@@ -18,7 +18,7 @@ class GoogleCloudDocumentaiV1DocumentPageParagraph {
   /// [detectedLanguages] A list of detected languages together with confidence.
   /// [layout] Layout for Paragraph.
   /// [provenance] The history of this annotation.
-  GoogleCloudDocumentaiV1DocumentPageParagraph({
+  const GoogleCloudDocumentaiV1DocumentPageParagraph({
     this.detectedLanguages,
     this.layout,
     this.provenance,

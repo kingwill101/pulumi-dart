@@ -102,7 +102,7 @@ class EndpointArgs {
   /// [sslMode] SSL mode to use for the connection. Valid values are `none`, `require`, `verify-ca`, `verify-full`
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [username] User name to be used to login to the endpoint database.
-  EndpointArgs({
+  const EndpointArgs({
     this.certificateArn,
     this.databaseName,
     this.elasticsearchSettings,

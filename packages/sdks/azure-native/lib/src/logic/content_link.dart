@@ -9,7 +9,7 @@ class ContentLink {
 
   /// Creates a new [ContentLink].
   /// [uri] The content link URI.
-  ContentLink({
+  const ContentLink({
     this.uri,
   });
 

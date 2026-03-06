@@ -28,7 +28,7 @@ class ByteMatchSetByteMatchTuple {
   /// [positionalConstraint] Within the portion of a web request that you want to search
   /// [targetString] The value that you want to search for within the field specified by `field_to_match`, e.g., `badrefer1`.
   /// [textTransformation] Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  ByteMatchSetByteMatchTuple({
+  const ByteMatchSetByteMatchTuple({
     required this.fieldToMatch,
     required this.positionalConstraint,
     this.targetString,

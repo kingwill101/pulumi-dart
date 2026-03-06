@@ -55,7 +55,7 @@ class TargetSSLProxyState {
   /// [selfLink] The URI of the created resource.
   /// [sslCertificates] A list of SslCertificate resources that are used to authenticate
   /// [sslPolicy] A reference to the SslPolicy resource that will be associated with
-  TargetSSLProxyState({
+  const TargetSSLProxyState({
     this.backendService,
     this.certificateMap,
     this.creationTimestamp,

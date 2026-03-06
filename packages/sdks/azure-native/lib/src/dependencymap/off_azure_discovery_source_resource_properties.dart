@@ -13,7 +13,7 @@ class OffAzureDiscoverySourceResourceProperties {
   /// Creates a new [OffAzureDiscoverySourceResourceProperties].
   /// [sourceId] Source ArmId of Discovery Source resource
   /// [sourceType] Source type of the discoverySource
-  OffAzureDiscoverySourceResourceProperties({
+  const OffAzureDiscoverySourceResourceProperties({
     required this.sourceId,
     required this.sourceType,
   });

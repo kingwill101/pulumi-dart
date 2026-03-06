@@ -60,7 +60,7 @@ class WorkstationConfigHostGceInstance {
   /// [shieldedInstanceConfig] A set of Compute Engine Shielded instance options.
   /// [tags] Network tags to add to the Compute Engine machines backing the Workstations.
   /// [vmTags] Resource manager tags to be bound to the VM instances backing the Workstations.
-  WorkstationConfigHostGceInstance({
+  const WorkstationConfigHostGceInstance({
     this.accelerators,
     this.boostConfigs,
     this.bootDiskSizeGb,

@@ -8,7 +8,7 @@ class FsxOpenZfsFileSystemProtocolNfsMountOptions {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocolNfsMountOptions].
   /// [version] The specific NFS version that you want DataSync to use for mounting your NFS share. Valid values: `AUTOMATIC`, `NFS3`, `NFS4_0` and `NFS4_1`. Default: `AUTOMATIC`
-  FsxOpenZfsFileSystemProtocolNfsMountOptions({
+  const FsxOpenZfsFileSystemProtocolNfsMountOptions({
     this.version,
   });
 

@@ -11,7 +11,7 @@ class ResourceServerScope {
   /// Creates a new [ResourceServerScope].
   /// [scopeDescription] The scope description.
   /// [scopeName] The scope name.
-  ResourceServerScope({
+  const ResourceServerScope({
     required this.scopeDescription,
     required this.scopeName,
   });

@@ -11,7 +11,7 @@ class VvpInstanceResourceSpec {
   /// Creates a new [VvpInstanceResourceSpec].
   /// [cpu] CPU number.
   /// [memoryGb] Memory size.
-  VvpInstanceResourceSpec({
+  const VvpInstanceResourceSpec({
     this.cpu,
     this.memoryGb,
   });

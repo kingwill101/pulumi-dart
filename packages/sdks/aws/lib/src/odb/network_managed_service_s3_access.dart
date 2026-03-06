@@ -15,7 +15,7 @@ class NetworkManagedServiceS3Access {
   /// [ipv4Addresses] Required.
   /// [s3PolicyDocument] Specifies the endpoint policy for Amazon S3 access from the ODB network.
   /// [status] The status of the network resource.
-  NetworkManagedServiceS3Access({
+  const NetworkManagedServiceS3Access({
     required this.domainName,
     required this.ipv4Addresses,
     required this.s3PolicyDocument,

@@ -14,7 +14,7 @@ class ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha {
   /// Creates a new [ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha].
   /// [conditions] Current conditions of the feature.
   /// [upgradeState] Upgrade state. It will eventually replace `state`.
-  ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha({
+  const ClusterUpgradeGKEUpgradeFeatureStateResponseGkehubV1alpha({
     required this.conditions,
     required this.upgradeState,
   });

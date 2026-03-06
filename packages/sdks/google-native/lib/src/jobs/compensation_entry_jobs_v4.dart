@@ -28,7 +28,7 @@ class CompensationEntryJobsV4 {
   /// [range] Compensation range.
   /// [type] Compensation type. Default is CompensationType.COMPENSATION_TYPE_UNSPECIFIED.
   /// [unit] Frequency of the specified amount. Default is CompensationUnit.COMPENSATION_UNIT_UNSPECIFIED.
-  CompensationEntryJobsV4({
+  const CompensationEntryJobsV4({
     this.amount,
     this.description,
     this.expectedUnitsPerYear,

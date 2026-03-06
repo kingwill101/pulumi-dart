@@ -24,7 +24,7 @@ class GetExtensionProvidersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceMeshId] The ID of the Service Mesh.
   /// [type] The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
-  GetExtensionProvidersArgs({
+  const GetExtensionProvidersArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

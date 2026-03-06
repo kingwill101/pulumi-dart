@@ -12,7 +12,7 @@ class FingerprintContaineranalysisV1alpha1 {
   /// Creates a new [FingerprintContaineranalysisV1alpha1].
   /// [v1Name] The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
   /// [v2Blob] The ordered list of v2 blobs that represent a given image.
-  FingerprintContaineranalysisV1alpha1({
+  const FingerprintContaineranalysisV1alpha1({
     this.v1Name,
     this.v2Blob,
   });

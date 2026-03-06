@@ -8,7 +8,7 @@ class ViewIncludedProperty {
 
   /// Creates a new [ViewIncludedProperty].
   /// [name] The name of the property that is included in this view. Valid values: `tags`.
-  ViewIncludedProperty({
+  const ViewIncludedProperty({
     required this.name,
   });
 

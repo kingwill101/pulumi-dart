@@ -25,7 +25,7 @@ class GetBudgetSubscriptionNotification {
   /// [operator] The operator to used for comparison.
   /// [threshold] Threshold value associated with the notification.
   /// [thresholdType] Required.
-  GetBudgetSubscriptionNotification({
+  const GetBudgetSubscriptionNotification({
     required this.contactEmails,
     required this.contactGroups,
     required this.contactRoles,

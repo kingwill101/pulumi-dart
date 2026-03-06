@@ -18,7 +18,7 @@ class ListenerAdditionalCertificateAttachmentState {
   /// [certificateType] The type of the certificate.
   /// [listenerId] The ID of the ALB listener.
   /// [status] The status of the certificate.
-  ListenerAdditionalCertificateAttachmentState({
+  const ListenerAdditionalCertificateAttachmentState({
     this.certificateId,
     this.certificateType,
     this.listenerId,

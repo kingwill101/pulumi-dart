@@ -122,7 +122,7 @@ class ProjectState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider
   /// [vpcConfig] Configuration block. Detailed below.
-  ProjectState({
+  const ProjectState({
     this.arn,
     this.artifacts,
     this.autoRetryLimit,

@@ -12,7 +12,7 @@ class BandwidthPackageAttachmentState {
   /// Creates a new [BandwidthPackageAttachmentState].
   /// [bandwidthPackageId] The ID of the bandwidth package.
   /// [instanceId] The ID of the CEN.
-  BandwidthPackageAttachmentState({
+  const BandwidthPackageAttachmentState({
     this.bandwidthPackageId,
     this.instanceId,
   });

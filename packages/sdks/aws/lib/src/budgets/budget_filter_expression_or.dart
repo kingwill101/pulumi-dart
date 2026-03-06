@@ -29,7 +29,7 @@ class BudgetFilterExpressionOr {
   /// [not] (Optional) A single filter expression to negate. Must contain exactly one root.
   /// [ors] (Optional) A list of filter expressions to combine with OR logic. Each `or` block is one operand and must itself contain exactly one root.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  BudgetFilterExpressionOr({
+  const BudgetFilterExpressionOr({
     this.ands,
     this.costCategories,
     this.dimensions,

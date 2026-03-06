@@ -36,7 +36,7 @@ class GetResourcePolicyResult {
   /// [selfLink] The URI of the resource.
   /// [snapshotSchedulePolicies] Required.
   /// [workloadPolicies] Required.
-  GetResourcePolicyResult({
+  const GetResourcePolicyResult({
     required this.description,
     required this.diskConsistencyGroupPolicies,
     required this.groupPlacementPolicies,

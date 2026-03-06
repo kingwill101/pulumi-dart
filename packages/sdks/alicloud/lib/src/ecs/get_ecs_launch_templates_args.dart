@@ -30,7 +30,7 @@ class GetEcsLaunchTemplatesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [templateResourceGroupId] The ID of the Resource Group.
   /// [templateTags] The tags of the launch template.
-  GetEcsLaunchTemplatesArgs({
+  const GetEcsLaunchTemplatesArgs({
     this.enableDetails,
     this.ids,
     this.launchTemplateName,

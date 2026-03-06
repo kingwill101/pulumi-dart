@@ -17,7 +17,7 @@ class DefaultObjectACLArgs {
   /// Creates a new [DefaultObjectACLArgs].
   /// [bucket] The name of the bucket it applies to.
   /// [roleEntities] List of role/entity pairs in the form `ROLE:entity`.
-  DefaultObjectACLArgs({
+  const DefaultObjectACLArgs({
     required this.bucket,
     this.roleEntities,
   });

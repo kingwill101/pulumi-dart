@@ -38,7 +38,7 @@ class FunctionState {
   /// [publish] Whether to publish creation/change as Live CloudFront Function Version. Defaults to `true`.
   /// [runtime] Identifier of the function's runtime. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
   /// [status] Status of the function. Can be `UNPUBLISHED`, `UNASSOCIATED` or `ASSOCIATED`.
-  FunctionState({
+  const FunctionState({
     this.arn,
     this.code,
     this.comment,

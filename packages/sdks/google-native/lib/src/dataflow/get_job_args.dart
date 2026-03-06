@@ -17,7 +17,7 @@ class GetJobArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetJobArgs({
+  const GetJobArgs({
     required this.jobId,
     required this.location,
     this.project,

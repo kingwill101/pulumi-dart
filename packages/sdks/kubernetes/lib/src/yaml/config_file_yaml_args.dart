@@ -18,7 +18,7 @@ class ConfigFileYamlArgs {
   /// [file] Path or a URL that uniquely identifies a file.
   /// [resourcePrefix] An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [transformations_] A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  ConfigFileYamlArgs({
+  const ConfigFileYamlArgs({
     required this.file,
     this.resourcePrefix,
     this.transformations_,

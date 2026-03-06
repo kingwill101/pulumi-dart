@@ -11,7 +11,7 @@ class WorkstationConfigAllowedPort {
   /// Creates a new [WorkstationConfigAllowedPort].
   /// [first] Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
   /// [last] Ending port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535.
-  WorkstationConfigAllowedPort({
+  const WorkstationConfigAllowedPort({
     this.first,
     this.last,
   });

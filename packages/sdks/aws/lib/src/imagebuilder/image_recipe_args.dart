@@ -50,7 +50,7 @@ class ImageRecipeArgs {
   /// [userDataBase64] Base64 encoded user data. Use this to provide commands or a command script to run when you launch your build instance.
   /// [version] The semantic version of the image recipe, which specifies the version in the following format, with numeric values in each position to indicate a specific version: major.minor.patch. For example: 1.0.0.
   /// [workingDirectory] The working directory to be used during build and test workflows.
-  ImageRecipeArgs({
+  const ImageRecipeArgs({
     this.amiTags,
     this.blockDeviceMappings,
     required this.components,

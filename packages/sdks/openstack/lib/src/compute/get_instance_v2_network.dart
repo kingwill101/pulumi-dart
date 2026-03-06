@@ -23,7 +23,7 @@ class GetInstanceV2Network {
   /// [name] The name of the network
   /// [port] The port UUID for this network
   /// [uuid] The UUID of the network
-  GetInstanceV2Network({
+  const GetInstanceV2Network({
     required this.fixedIpV4,
     required this.fixedIpV6,
     required this.mac,

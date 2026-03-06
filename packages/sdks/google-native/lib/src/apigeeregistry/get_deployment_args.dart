@@ -17,7 +17,7 @@ class GetDeploymentArgs {
   /// [deploymentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDeploymentArgs({
+  const GetDeploymentArgs({
     required this.apiId,
     required this.deploymentId,
     required this.location,

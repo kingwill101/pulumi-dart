@@ -13,7 +13,7 @@ class DbInstanceLogDeliveryConfigurationS3Configuration {
   /// Creates a new [DbInstanceLogDeliveryConfigurationS3Configuration].
   /// [bucketName] Name of the S3 bucket to deliver logs to.
   /// [enabled] Indicates whether log delivery to the S3 bucket is enabled.
-  DbInstanceLogDeliveryConfigurationS3Configuration({
+  const DbInstanceLogDeliveryConfigurationS3Configuration({
     required this.bucketName,
     required this.enabled,
   });

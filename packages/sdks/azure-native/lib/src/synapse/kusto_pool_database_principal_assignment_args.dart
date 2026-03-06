@@ -36,7 +36,7 @@ class KustoPoolDatabasePrincipalAssignmentArgs {
   /// [role] Database principal role.
   /// [tenantId] The tenant id of the principal
   /// [workspaceName] The name of the workspace.
-  KustoPoolDatabasePrincipalAssignmentArgs({
+  const KustoPoolDatabasePrincipalAssignmentArgs({
     required this.databaseName,
     required this.kustoPoolName,
     this.principalAssignmentName,

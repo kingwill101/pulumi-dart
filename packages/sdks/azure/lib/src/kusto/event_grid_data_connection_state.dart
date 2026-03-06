@@ -58,7 +58,7 @@ class EventGridDataConnectionState {
   /// [skipFirstRecord] is the first record of every file ignored? Defaults to `false`.
   /// [storageAccountId] Specifies the resource id of the Storage Account this data connection will use for ingestion. Changing this forces a new resource to be created.
   /// [tableName] Specifies the target table name used for the message ingestion. Table must exist before resource is created.
-  EventGridDataConnectionState({
+  const EventGridDataConnectionState({
     this.blobStorageEventType,
     this.clusterName,
     this.dataFormat,

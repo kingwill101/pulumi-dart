@@ -28,7 +28,7 @@ class ImageSourceImageEncryptionKey {
   /// [kmsKeyServiceAccount] The service account being used for the encryption request for the
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
-  ImageSourceImageEncryptionKey({
+  const ImageSourceImageEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

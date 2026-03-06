@@ -26,7 +26,7 @@ class GetMonitoringConfigResult {
   /// [name] The object name.
   /// [systemData] Metadata pertaining to creation and last modification of MonitoringConfiguration
   /// [type] The hierarchical type of the object.
-  GetMonitoringConfigResult({
+  const GetMonitoringConfigResult({
     required this.azureApiVersion,
     required this.id,
     required this.metricConfigurations,

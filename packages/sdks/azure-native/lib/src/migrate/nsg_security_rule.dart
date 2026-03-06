@@ -47,7 +47,7 @@ class NsgSecurityRule {
   /// [protocol] Gets or sets Network protocol this rule applies to. Can be Tcp, Udp or All(*).
   /// [sourceAddressPrefix] Gets or sets source address prefix. CIDR or source IP range. A
   /// [sourcePortRange] Gets or sets Source Port or Range. Integer or range between 0 and
-  NsgSecurityRule({
+  const NsgSecurityRule({
     this.access,
     this.description,
     this.destinationAddressPrefix,

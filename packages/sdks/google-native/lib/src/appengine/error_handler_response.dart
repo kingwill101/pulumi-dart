@@ -15,7 +15,7 @@ class ErrorHandlerResponse {
   /// [errorCode] Error condition this handler applies to.
   /// [mimeType] MIME type of file. Defaults to text/html.
   /// [staticFile] Static file content to be served for this error.
-  ErrorHandlerResponse({
+  const ErrorHandlerResponse({
     required this.errorCode,
     required this.mimeType,
     required this.staticFile,

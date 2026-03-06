@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse].
   /// [enableSpeechAdaptation] Whether to use speech adaptation for speech recognition.
-  GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse({
+  const GoogleCloudDialogflowCxV3SpeechToTextSettingsResponse({
     required this.enableSpeechAdaptation,
   });
 

@@ -43,7 +43,7 @@ class DynamicsSink {
   /// [writeBatchSize] Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   /// [writeBatchTimeout] Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
   /// [writeBehavior] The write behavior for the operation.
-  DynamicsSink({
+  const DynamicsSink({
     this.alternateKeyName,
     this.bypassBusinessLogicExecution,
     this.bypassPowerAutomateFlows,

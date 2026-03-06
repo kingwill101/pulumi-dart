@@ -8,7 +8,7 @@ class DomainDevicesSmartcardPassthroughDbus {
 
   /// Creates a new [DomainDevicesSmartcardPassthroughDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesSmartcardPassthroughDbus({
+  const DomainDevicesSmartcardPassthroughDbus({
     this.channel,
   });
 

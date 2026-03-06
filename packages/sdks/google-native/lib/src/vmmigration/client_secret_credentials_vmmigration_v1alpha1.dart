@@ -15,7 +15,7 @@ class ClientSecretCredentialsVmmigrationV1alpha1 {
   /// [clientId] Azure client ID.
   /// [clientSecret] Input only. Azure client secret.
   /// [tenantId] Azure tenant ID.
-  ClientSecretCredentialsVmmigrationV1alpha1({
+  const ClientSecretCredentialsVmmigrationV1alpha1({
     this.clientId,
     this.clientSecret,
     this.tenantId,

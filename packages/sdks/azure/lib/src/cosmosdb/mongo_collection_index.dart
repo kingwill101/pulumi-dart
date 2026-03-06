@@ -13,7 +13,7 @@ class MongoCollectionIndex {
   /// Creates a new [MongoCollectionIndex].
   /// [keys] Specifies the list of user settable keys for each Cosmos DB Mongo Collection.
   /// [unique] Is the index unique or not? Defaults to `false`.
-  MongoCollectionIndex({
+  const MongoCollectionIndex({
     required this.keys,
     this.unique,
   });

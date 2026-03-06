@@ -12,7 +12,7 @@ class RedshiftClusterEndpoint {
   /// Creates a new [RedshiftClusterEndpoint].
   /// [address] Property address
   /// [port] Property port
-  RedshiftClusterEndpoint({
+  const RedshiftClusterEndpoint({
     this.address,
     this.port,
   });

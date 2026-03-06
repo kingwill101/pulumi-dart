@@ -54,7 +54,7 @@ class BackupChannelState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [uid] Server generated, unique identifier of UUID format.
-  BackupChannelState({
+  const BackupChannelState({
     this.description,
     this.destinationProject,
     this.destinationProjectId,

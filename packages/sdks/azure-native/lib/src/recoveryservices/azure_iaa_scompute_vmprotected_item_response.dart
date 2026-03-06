@@ -104,7 +104,7 @@ class AzureIaaSComputeVMProtectedItemResponse {
   /// [vaultId] ID of the vault which protects this item
   /// [virtualMachineId] Fully qualified ARM ID of the virtual machine represented by this item.
   /// [workloadType] Type of workload this item represents.
-  AzureIaaSComputeVMProtectedItemResponse({
+  const AzureIaaSComputeVMProtectedItemResponse({
     required this.backupManagementType,
     this.backupSetName,
     this.containerName,

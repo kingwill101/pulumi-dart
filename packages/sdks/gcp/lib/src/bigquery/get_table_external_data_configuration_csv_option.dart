@@ -25,7 +25,7 @@ class GetTableExternalDataConfigurationCsvOption {
   /// [quote] Required.
   /// [skipLeadingRows] The number of rows at the top of a CSV file that BigQuery will skip when reading the data.
   /// [sourceColumnMatch] Specifies how source columns are matched to the table schema. Valid values are POSITION (columns matched by position, assuming same ordering) or NAME (columns matched by name, reads header row and reorders columns to align with schema field names).
-  GetTableExternalDataConfigurationCsvOption({
+  const GetTableExternalDataConfigurationCsvOption({
     required this.allowJaggedRows,
     required this.allowQuotedNewlines,
     required this.encoding,

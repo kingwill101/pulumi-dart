@@ -47,7 +47,7 @@ class ListingIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  ListingIamMemberState({
+  const ListingIamMemberState({
     this.condition,
     this.dataExchangeId,
     this.etag,

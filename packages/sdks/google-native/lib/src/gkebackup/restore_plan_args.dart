@@ -32,7 +32,7 @@ class RestorePlanArgs {
   /// [project] Optional.
   /// [restoreConfig] Configuration of Restores created via this RestorePlan.
   /// [restorePlanId] Required. The client-provided short name for the RestorePlan resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of RestorePlans in this location
-  RestorePlanArgs({
+  const RestorePlanArgs({
     required this.backupPlan,
     required this.cluster,
     this.description,

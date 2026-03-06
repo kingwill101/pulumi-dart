@@ -18,7 +18,7 @@ class ResourceArgs {
   /// [groupArn] Name or ARN of the resource group to add resources to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the resource to be added to the group.
-  ResourceArgs({
+  const ResourceArgs({
     required this.groupArn,
     this.region,
     required this.resourceArn,

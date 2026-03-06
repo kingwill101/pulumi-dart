@@ -30,7 +30,7 @@ class GetDesktopsResult {
   /// [outputFile] Optional.
   /// [policyGroupId] Optional.
   /// [status] Optional.
-  GetDesktopsResult({
+  const GetDesktopsResult({
     this.desktopName,
     required this.desktops,
     this.endUserIds,

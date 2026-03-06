@@ -23,7 +23,7 @@ class RepositoryCatalogData {
   /// [logoImageBlob] The base64-encoded repository logo payload. (Only visible for verified accounts) Note that drift detection is disabled for this attribute.
   /// [operatingSystems] The operating systems that the images in the repository are compatible with. On the Amazon ECR Public Gallery, the following supported operating systems will appear as badges on the repository and are used as search filters: `Linux`, `Windows`
   /// [usageText] Detailed information on how to use the contents of the repository. It is publicly visible in the Amazon ECR Public Gallery. The usage text provides context, support information, and additional usage details for users of the repository. The text must be in markdown format.
-  RepositoryCatalogData({
+  const RepositoryCatalogData({
     this.aboutText,
     this.architectures,
     this.description,

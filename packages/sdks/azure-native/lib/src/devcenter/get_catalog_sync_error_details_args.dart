@@ -18,7 +18,7 @@ class GetCatalogSyncErrorDetailsArgs {
   /// [catalogName] The name of the Catalog.
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCatalogSyncErrorDetailsArgs({
+  const GetCatalogSyncErrorDetailsArgs({
     required this.catalogName,
     required this.devCenterName,
     required this.resourceGroupName,

@@ -62,7 +62,7 @@ class AiInstanceState {
   /// [sslEnabled] Enable or disable SSL. Valid values:
   /// [status] The status of the instance. Valid values: `Running`, `Stopped`.
   /// [storageConfigLists] A list of storage configurations. See `storage_config_list` below.
-  AiInstanceState({
+  const AiInstanceState({
     this.appName,
     this.appType,
     this.authConfigLists,

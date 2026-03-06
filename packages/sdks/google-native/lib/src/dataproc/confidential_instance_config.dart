@@ -9,7 +9,7 @@ class ConfidentialInstanceConfig {
 
   /// Creates a new [ConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.
-  ConfidentialInstanceConfig({
+  const ConfidentialInstanceConfig({
     this.enableConfidentialCompute,
   });
 

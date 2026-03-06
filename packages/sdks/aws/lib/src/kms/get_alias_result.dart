@@ -22,7 +22,7 @@ class GetAliasResult {
   /// [region] Required.
   /// [targetKeyArn] ARN pointed to by the alias.
   /// [targetKeyId] Key identifier pointed to by the alias.
-  GetAliasResult({
+  const GetAliasResult({
     required this.arn,
     required this.id,
     required this.name,

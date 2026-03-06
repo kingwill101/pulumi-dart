@@ -33,7 +33,7 @@ class MulticastDomainState {
   /// [tags] Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayId] EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
-  MulticastDomainState({
+  const MulticastDomainState({
     this.arn,
     this.autoAcceptSharedAssociations,
     this.igmpv2Support,

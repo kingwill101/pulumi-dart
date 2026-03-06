@@ -11,7 +11,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationState
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail].
   /// [typeUrl] A URL/resource name that uniquely identifies the type of the serialized protocol buffer message
   /// [value] (Optional)
-  V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail({
+  const V2PolicyOrchestratorForOrganizationOrchestrationStateCurrentIterationStateErrorDetail({
     this.typeUrl,
     this.value,
   });

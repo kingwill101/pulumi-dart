@@ -24,7 +24,7 @@ class GetHybridMonitorDatasResult {
   /// [period] Optional.
   /// [promSql] Required.
   /// [start] Required.
-  GetHybridMonitorDatasResult({
+  const GetHybridMonitorDatasResult({
     required this.datas,
     required this.end,
     required this.id,

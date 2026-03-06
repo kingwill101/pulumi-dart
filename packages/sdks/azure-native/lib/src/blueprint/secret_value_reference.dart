@@ -16,7 +16,7 @@ class SecretValueReference {
   /// [keyVault] Specifies the reference to a given Azure Key Vault.
   /// [secretName] Name of the secret.
   /// [secretVersion] The version of the secret to use. If left blank, the latest version of the secret is used.
-  SecretValueReference({
+  const SecretValueReference({
     required this.keyVault,
     required this.secretName,
     this.secretVersion,

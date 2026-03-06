@@ -33,7 +33,7 @@ class AccessPackageAssignmentPolicyAssignmentReviewSettings {
   /// [reviewType] Self-review or specific reviewers. Valid values are `Manager`, `Reviewers`, or `Self`.
   /// [reviewers] One or more `reviewer` blocks to specify the users who will be reviewers (when `review_type` is `Reviewers`), as documented below.
   /// [startingOn] This is the date the access review campaign will start on, formatted as an RFC3339 date string in UTC(e.g. 2018-01-01T01:02:03Z), default is now. Once an access review has been created, you cannot update its start date
-  AccessPackageAssignmentPolicyAssignmentReviewSettings({
+  const AccessPackageAssignmentPolicyAssignmentReviewSettings({
     this.accessRecommendationEnabled,
     this.accessReviewTimeoutBehavior,
     this.approverJustificationRequired,

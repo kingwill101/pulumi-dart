@@ -19,7 +19,7 @@ class GetMigratingVmVmmigrationV1alpha1Args {
   /// [project] Optional.
   /// [sourceId] Required.
   /// [view] Optional.
-  GetMigratingVmVmmigrationV1alpha1Args({
+  const GetMigratingVmVmmigrationV1alpha1Args({
     required this.location,
     required this.migratingVmId,
     this.project,

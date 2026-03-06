@@ -61,7 +61,7 @@ class GlobalClusterState {
   /// [storageEncrypted] Specifies whether the DB cluster is encrypted. The default is `false` unless `source_db_cluster_identifier` is specified and encrypted. The provider will only perform drift detection if a configuration value is provided.
   /// [tags] A map of tags to assign to the DB cluster. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  GlobalClusterState({
+  const GlobalClusterState({
     this.arn,
     this.databaseName,
     this.deletionProtection,

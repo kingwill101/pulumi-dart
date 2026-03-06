@@ -33,7 +33,7 @@ class FhirStoreIamMemberState {
   /// [fhirStoreId] The FHIR store ID, in the form
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  FhirStoreIamMemberState({
+  const FhirStoreIamMemberState({
     this.condition,
     this.etag,
     this.fhirStoreId,

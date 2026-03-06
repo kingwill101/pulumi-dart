@@ -100,7 +100,7 @@ class FutureReservationState {
   /// [statuses] [Output only] Status of the Future Reservation
   /// [timeWindow] Time window for this Future Reservation.
   /// [zone] URL of the Zone where this future reservation resides.
-  FutureReservationState({
+  const FutureReservationState({
     this.aggregateReservation,
     this.autoCreatedReservationsDeleteTime,
     this.autoCreatedReservationsDuration,

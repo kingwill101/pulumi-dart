@@ -13,7 +13,7 @@ class AdditionalPodRangesConfigResponse {
   /// Creates a new [AdditionalPodRangesConfigResponse].
   /// [podRangeInfo] [Output only] Information for additional pod range.
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.
-  AdditionalPodRangesConfigResponse({
+  const AdditionalPodRangesConfigResponse({
     required this.podRangeInfo,
     required this.podRangeNames,
   });

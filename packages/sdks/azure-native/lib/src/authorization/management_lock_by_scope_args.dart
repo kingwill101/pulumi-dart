@@ -25,7 +25,7 @@ class ManagementLockByScopeArgs {
   /// [notes] Notes about the lock. Maximum of 512 characters.
   /// [owners] The owners of the lock.
   /// [scope] The scope for the lock. When providing a scope for the assignment, use '/subscriptions/{subscriptionId}' for subscriptions, '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}' for resource groups, and '/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{parentResourcePathIfPresent}/{resourceType}/{resourceName}' for resources.
-  ManagementLockByScopeArgs({
+  const ManagementLockByScopeArgs({
     required this.level,
     this.lockName,
     this.notes,

@@ -33,7 +33,7 @@ class AzureFirewallNetworkRule {
   /// [protocols] Array of AzureFirewallNetworkRuleProtocols.
   /// [sourceAddresses] List of source IP addresses for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
-  AzureFirewallNetworkRule({
+  const AzureFirewallNetworkRule({
     this.description,
     this.destinationAddresses,
     this.destinationFqdns,

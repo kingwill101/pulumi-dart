@@ -15,7 +15,7 @@ class GetTransferConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [transferConfigId] Required.
-  GetTransferConfigArgs({
+  const GetTransferConfigArgs({
     required this.location,
     this.project,
     required this.transferConfigId,

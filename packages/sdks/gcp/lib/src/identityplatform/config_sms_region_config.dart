@@ -15,7 +15,7 @@ class ConfigSmsRegionConfig {
   /// Creates a new [ConfigSmsRegionConfig].
   /// [allowByDefault] A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
   /// [allowlistOnly] A policy of only allowing regions by explicitly adding them to an allowlist.
-  ConfigSmsRegionConfig({
+  const ConfigSmsRegionConfig({
     this.allowByDefault,
     this.allowlistOnly,
   });

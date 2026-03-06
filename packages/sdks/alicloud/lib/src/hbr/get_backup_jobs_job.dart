@@ -101,7 +101,7 @@ class GetBackupJobsJob {
   /// [status] The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
   /// [updatedTime] The update time of backup job. UNIX time seconds.
   /// [vaultId] The ID of backup vault.
-  GetBackupJobsJob({
+  const GetBackupJobsJob({
     required this.actualBytes,
     required this.actualItems,
     required this.backJobName,

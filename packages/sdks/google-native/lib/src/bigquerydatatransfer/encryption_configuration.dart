@@ -9,7 +9,7 @@ class EncryptionConfiguration {
 
   /// Creates a new [EncryptionConfiguration].
   /// [kmsKeyName] The name of the KMS key used for encrypting BigQuery data.
-  EncryptionConfiguration({
+  const EncryptionConfiguration({
     this.kmsKeyName,
   });
 

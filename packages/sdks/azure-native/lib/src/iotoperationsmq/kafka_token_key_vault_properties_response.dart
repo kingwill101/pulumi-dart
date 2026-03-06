@@ -17,7 +17,7 @@ class KafkaTokenKeyVaultPropertiesResponse {
   /// [username] Username to connect with.
   /// [vault] KeyVault properties.
   /// [vaultSecret] KeyVault secret details.
-  KafkaTokenKeyVaultPropertiesResponse({
+  const KafkaTokenKeyVaultPropertiesResponse({
     this.username,
     required this.vault,
     required this.vaultSecret,

@@ -45,7 +45,7 @@ class RoleResponse {
   /// [targetInstanceCount] The instance count of the cluster.
   /// [vMGroupName] The name of the virtual machine group.
   /// [virtualNetworkProfile] The virtual network profile.
-  RoleResponse({
+  const RoleResponse({
     this.autoscaleConfiguration,
     this.dataDisksGroups,
     this.encryptDataDisks,

@@ -21,7 +21,7 @@ class WebhookArgs {
   /// [branchName] Name for a branch that is part of the Amplify app.
   /// [description] Description for a webhook.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  WebhookArgs({
+  const WebhookArgs({
     required this.appId,
     required this.branchName,
     this.description,

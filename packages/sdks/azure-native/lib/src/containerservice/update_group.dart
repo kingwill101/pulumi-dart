@@ -10,7 +10,7 @@ class UpdateGroup {
 
   /// Creates a new [UpdateGroup].
   /// [name] Name of the group.
-  UpdateGroup({
+  const UpdateGroup({
     required this.name,
   });
 

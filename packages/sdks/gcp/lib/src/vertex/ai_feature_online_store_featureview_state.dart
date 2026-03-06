@@ -58,7 +58,7 @@ class AiFeatureOnlineStoreFeatureviewState {
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// [updateTime] The timestamp of when the featureOnlinestore was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
   /// [vectorSearchConfig] Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
-  AiFeatureOnlineStoreFeatureviewState({
+  const AiFeatureOnlineStoreFeatureviewState({
     this.bigQuerySource,
     this.createTime,
     this.effectiveLabels,

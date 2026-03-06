@@ -17,7 +17,7 @@ class DenyMaintenancePeriodResponse {
   /// [endDate] End date of the deny maintenance period.
   /// [startDate] Start date of the deny maintenance period.
   /// [time] Time in UTC when the period starts and ends.
-  DenyMaintenancePeriodResponse({
+  const DenyMaintenancePeriodResponse({
     required this.endDate,
     required this.startDate,
     required this.time,

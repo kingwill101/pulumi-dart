@@ -11,7 +11,7 @@ class IpAccessSettingsIpRule {
   /// Creates a new [IpAccessSettingsIpRule].
   /// [description] The description of the IP access settings.
   /// [ipRange] The IP range of the IP rule.
-  IpAccessSettingsIpRule({
+  const IpAccessSettingsIpRule({
     this.description,
     required this.ipRange,
   });

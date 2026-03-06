@@ -18,7 +18,7 @@ class GetFleetUpdateStrategyArgs {
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateStrategyName] The name of the UpdateStrategy resource.
-  GetFleetUpdateStrategyArgs({
+  const GetFleetUpdateStrategyArgs({
     required this.fleetName,
     required this.resourceGroupName,
     required this.updateStrategyName,

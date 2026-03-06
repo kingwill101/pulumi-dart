@@ -49,7 +49,7 @@ class GetClusterRedisV1beta1Result {
   /// [stateInfo] Additional information about the current state of the cluster.
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
   /// [uid] System assigned, unique identifier for the cluster.
-  GetClusterRedisV1beta1Result({
+  const GetClusterRedisV1beta1Result({
     required this.authorizationMode,
     required this.createTime,
     required this.discoveryEndpoints,

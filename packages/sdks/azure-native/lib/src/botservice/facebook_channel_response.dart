@@ -23,7 +23,7 @@ class FacebookChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to bot facebook channel
   /// [provisioningState] Provisioning state of the resource
-  FacebookChannelResponse({
+  const FacebookChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

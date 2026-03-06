@@ -96,7 +96,7 @@ class BatchState {
   /// [stateMessage] (Output)
   /// [stateTime] Batch state details, such as a failure description if the state is FAILED.
   /// [uuid] A batch UUID (Unique Universal Identifier). The service generates this value when it creates the batch.
-  BatchState({
+  const BatchState({
     this.batchId,
     this.createTime,
     this.creator,

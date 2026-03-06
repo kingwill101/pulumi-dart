@@ -76,7 +76,7 @@ class IntegrationState {
   /// [tlsConfig] TLS configuration. See below.
   /// [type] Integration input's [type](https://docs.aws.amazon.com/apigateway/api-reference/resource/integration/). Valid values are `HTTP` (for HTTP backends), `MOCK` (not calling any real backend), `AWS` (for AWS services), `AWS_PROXY` (for Lambda proxy integration) and `HTTP_PROXY` (for HTTP proxy integration). An `HTTP` or `HTTP_PROXY` integration with a `connection_type` of `VPC_LINK` is referred to as a private integration and uses a VpcLink to connect API Gateway to a network load balancer of a VPC.
   /// [uri] Input's URI. **Required** if `type` is `AWS`, `AWS_PROXY`, `HTTP` or `HTTP_PROXY`.
-  IntegrationState({
+  const IntegrationState({
     this.cacheKeyParameters,
     this.cacheNamespace,
     this.connectionId,

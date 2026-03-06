@@ -9,7 +9,7 @@ class NamespacesResponse {
 
   /// Creates a new [NamespacesResponse].
   /// [namespaces] Optional. A list of Kubernetes Namespaces
-  NamespacesResponse({
+  const NamespacesResponse({
     required this.namespaces,
   });
 

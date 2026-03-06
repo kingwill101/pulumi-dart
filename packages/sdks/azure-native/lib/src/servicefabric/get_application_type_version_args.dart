@@ -21,7 +21,7 @@ class GetApplicationTypeVersionArgs {
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] The application type version.
-  GetApplicationTypeVersionArgs({
+  const GetApplicationTypeVersionArgs({
     required this.applicationTypeName,
     required this.clusterName,
     required this.resourceGroupName,

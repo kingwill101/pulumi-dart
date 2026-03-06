@@ -15,7 +15,7 @@ class URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionRes
   /// [headerName] The name of the header to add.
   /// [headerValue] The value of the header to add.
   /// [replace] If false, headerValue is appended to any values that already exist for the header.
-  URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd({
+  const URLMapPathMatcherRouteRuleRouteActionWeightedBackendServiceHeaderActionResponseHeadersToAdd({
     required this.headerName,
     required this.headerValue,
     required this.replace,

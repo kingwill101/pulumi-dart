@@ -11,7 +11,7 @@ class EncryptionControlResourceExclusionsVpcLattice {
   /// Creates a new [EncryptionControlResourceExclusionsVpcLattice].
   /// [state] The current state of the VPC Encryption Control.
   /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  EncryptionControlResourceExclusionsVpcLattice({
+  const EncryptionControlResourceExclusionsVpcLattice({
     required this.state,
     required this.stateMessage,
   });

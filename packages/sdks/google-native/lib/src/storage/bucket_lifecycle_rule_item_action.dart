@@ -12,7 +12,7 @@ class BucketLifecycleRuleItemAction {
   /// Creates a new [BucketLifecycleRuleItemAction].
   /// [storageClass] Target storage class. Required iff the type of the action is SetStorageClass.
   /// [type] Type of the action. Currently, only Delete, SetStorageClass, and AbortIncompleteMultipartUpload are supported.
-  BucketLifecycleRuleItemAction({
+  const BucketLifecycleRuleItemAction({
     this.storageClass,
     this.type,
   });

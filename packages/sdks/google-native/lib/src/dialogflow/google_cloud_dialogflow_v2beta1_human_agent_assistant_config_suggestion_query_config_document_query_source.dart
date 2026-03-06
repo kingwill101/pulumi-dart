@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
 
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource].
   /// [documents] Knowledge documents to query from. Format: `projects//locations//knowledgeBases//documents/`. Currently, only one document is supported.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySource({
     required this.documents,
   });
 

@@ -14,7 +14,7 @@ class SubjectConfig {
   /// Creates a new [SubjectConfig].
   /// [subject] Optional. Contains distinguished name fields such as the common name, location and organization.
   /// [subjectAltName] Optional. The subject alternative name fields.
-  SubjectConfig({
+  const SubjectConfig({
     this.subject,
     this.subjectAltName,
   });

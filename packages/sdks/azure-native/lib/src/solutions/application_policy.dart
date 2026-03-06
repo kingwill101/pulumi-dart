@@ -15,7 +15,7 @@ class ApplicationPolicy {
   /// [name] The policy name
   /// [parameters] The policy parameters.
   /// [policyDefinitionId] The policy definition Id.
-  ApplicationPolicy({
+  const ApplicationPolicy({
     this.name,
     this.parameters,
     this.policyDefinitionId,

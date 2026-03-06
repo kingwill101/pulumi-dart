@@ -8,7 +8,7 @@ class DomainDevicesInputAlias {
 
   /// Creates a new [DomainDevicesInputAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesInputAlias({
+  const DomainDevicesInputAlias({
     required this.name,
   });
 

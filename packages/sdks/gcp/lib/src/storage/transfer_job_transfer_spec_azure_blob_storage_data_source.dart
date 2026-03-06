@@ -25,7 +25,7 @@ class TransferJobTransferSpecAzureBlobStorageDataSource {
   /// [federatedIdentityConfig] Federated identity config of a user registered Azure application. Structure documented below.
   /// [path] Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   /// [storageAccount] The name of the Azure Storage account.
-  TransferJobTransferSpecAzureBlobStorageDataSource({
+  const TransferJobTransferSpecAzureBlobStorageDataSource({
     this.azureCredentials,
     required this.container,
     this.credentialsSecret,

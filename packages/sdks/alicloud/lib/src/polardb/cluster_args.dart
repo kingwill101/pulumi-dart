@@ -269,7 +269,7 @@ class ClusterArgs {
   /// [vpcId] The id of the VPC.
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB cluster. it supports multiple zone.
-  ClusterArgs({
+  const ClusterArgs({
     this.allowShutDown,
     this.autoRenewPeriod,
     this.backupRetentionPolicyOnClusterDeletion,

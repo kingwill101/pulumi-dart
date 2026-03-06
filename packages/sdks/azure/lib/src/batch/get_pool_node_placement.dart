@@ -8,7 +8,7 @@ class GetPoolNodePlacement {
 
   /// Creates a new [GetPoolNodePlacement].
   /// [policy] The placement policy for allocating nodes in the pool.
-  GetPoolNodePlacement({
+  const GetPoolNodePlacement({
     required this.policy,
   });
 

@@ -9,7 +9,7 @@ class ScriptHandlerAppengineV1beta {
 
   /// Creates a new [ScriptHandlerAppengineV1beta].
   /// [scriptPath] Path to the script from the application root directory.
-  ScriptHandlerAppengineV1beta({
+  const ScriptHandlerAppengineV1beta({
     this.scriptPath,
   });
 

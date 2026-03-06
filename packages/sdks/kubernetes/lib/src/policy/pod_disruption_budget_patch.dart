@@ -24,7 +24,7 @@ class PodDisruptionBudgetPatch {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired behavior of the PodDisruptionBudget.
   /// [status] Most recently observed status of the PodDisruptionBudget.
-  PodDisruptionBudgetPatch({
+  const PodDisruptionBudgetPatch({
     this.apiVersion,
     this.kind,
     this.metadata,

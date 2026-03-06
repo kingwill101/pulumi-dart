@@ -17,7 +17,7 @@ class GetServingConfigArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [servingConfigId] Required.
-  GetServingConfigArgs({
+  const GetServingConfigArgs({
     required this.catalogId,
     required this.location,
     this.project,

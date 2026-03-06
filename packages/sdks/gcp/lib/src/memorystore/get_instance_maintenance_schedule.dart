@@ -21,7 +21,7 @@ class GetInstanceMaintenanceSchedule {
   /// [endTime] The end time of any upcoming scheduled maintenance for this cluster.
   /// [scheduleDeadlineTime] The deadline that the maintenance schedule start time
   /// [startTime] The start time of any upcoming scheduled maintenance for this cluster.
-  GetInstanceMaintenanceSchedule({
+  const GetInstanceMaintenanceSchedule({
     required this.endTime,
     required this.scheduleDeadlineTime,
     required this.startTime,

@@ -21,7 +21,7 @@ class AzureTrafficCollectorArgs {
   /// [name] Specifies the name which should be used for this Network Function Azure Traffic Collector. Changing this forces a new Network Function Azure Traffic Collector to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Network Function Azure Traffic Collector should exist. Changing this forces a new Network Function Azure Traffic Collector to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Function Azure Traffic Collector.
-  AzureTrafficCollectorArgs({
+  const AzureTrafficCollectorArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

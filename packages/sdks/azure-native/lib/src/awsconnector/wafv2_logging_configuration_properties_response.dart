@@ -34,7 +34,7 @@ class Wafv2LoggingConfigurationPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Wafv2LoggingConfigurationPropertiesResponse({
+  const Wafv2LoggingConfigurationPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

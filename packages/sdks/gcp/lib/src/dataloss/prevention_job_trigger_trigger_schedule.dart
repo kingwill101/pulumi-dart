@@ -11,7 +11,7 @@ class PreventionJobTriggerTriggerSchedule {
 
   /// Creates a new [PreventionJobTriggerTriggerSchedule].
   /// [recurrencePeriodDuration] With this option a job is started a regular periodic basis. For example: every day (86400 seconds).
-  PreventionJobTriggerTriggerSchedule({
+  const PreventionJobTriggerTriggerSchedule({
     this.recurrencePeriodDuration,
   });
 

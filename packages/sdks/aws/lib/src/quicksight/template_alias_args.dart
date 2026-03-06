@@ -26,7 +26,7 @@ class TemplateAliasArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [templateId] ID of the template.
   /// [templateVersionNumber] Version number of the template.
-  TemplateAliasArgs({
+  const TemplateAliasArgs({
     required this.aliasName,
     this.awsAccountId,
     this.region,

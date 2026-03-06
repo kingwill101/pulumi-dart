@@ -12,7 +12,7 @@ class TopicsInputConfig {
   /// Creates a new [TopicsInputConfig].
   /// [name] Name of the topic input config
   /// [value] Value of the topic input config
-  TopicsInputConfig({
+  const TopicsInputConfig({
     this.name,
     this.value,
   });

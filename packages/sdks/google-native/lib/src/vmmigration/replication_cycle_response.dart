@@ -39,7 +39,7 @@ class ReplicationCycleResponse {
   /// [steps] The cycle's steps list representing its progress.
   /// [totalPauseDuration] The accumulated duration the replication cycle was paused.
   /// [warnings] Warnings that occurred during the cycle.
-  ReplicationCycleResponse({
+  const ReplicationCycleResponse({
     required this.cycleNumber,
     required this.endTime,
     required this.error,

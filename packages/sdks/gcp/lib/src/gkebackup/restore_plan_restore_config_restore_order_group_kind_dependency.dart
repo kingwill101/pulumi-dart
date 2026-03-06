@@ -17,7 +17,7 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependency {
   /// Creates a new [RestorePlanRestoreConfigRestoreOrderGroupKindDependency].
   /// [requiring] The requiring group kind requires that the satisfying
   /// [satisfying] The satisfying group kind must be restored first
-  RestorePlanRestoreConfigRestoreOrderGroupKindDependency({
+  const RestorePlanRestoreConfigRestoreOrderGroupKindDependency({
     required this.requiring,
     required this.satisfying,
   });

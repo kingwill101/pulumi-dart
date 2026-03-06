@@ -14,7 +14,7 @@ class DataSourceParametersAurora {
   /// [database] The database to which to connect.
   /// [host] The host to which to connect.
   /// [port] The port to which to connect.
-  DataSourceParametersAurora({
+  const DataSourceParametersAurora({
     required this.database,
     required this.host,
     required this.port,

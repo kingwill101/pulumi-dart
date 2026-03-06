@@ -26,7 +26,7 @@ class SqlTriggerGetPropertiesResponseResource {
   /// [triggerOperation] The operation the trigger is associated with
   /// [triggerType] Type of the Trigger
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
-  SqlTriggerGetPropertiesResponseResource({
+  const SqlTriggerGetPropertiesResponseResource({
     this.body,
     required this.etag,
     required this.id,

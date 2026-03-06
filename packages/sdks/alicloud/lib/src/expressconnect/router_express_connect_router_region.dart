@@ -11,7 +11,7 @@ class RouterExpressConnectRouterRegion {
   /// Creates a new [RouterExpressConnectRouterRegion].
   /// [regionId] Representative region ID.
   /// [transitMode] Represents the forwarding mode of the current region.
-  RouterExpressConnectRouterRegion({
+  const RouterExpressConnectRouterRegion({
     this.regionId,
     this.transitMode,
   });

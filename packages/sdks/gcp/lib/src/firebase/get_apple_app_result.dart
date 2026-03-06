@@ -34,7 +34,7 @@ class GetAppleAppResult {
   /// [name] The fully qualified resource name of the App, for example:
   /// [project] Optional.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
-  GetAppleAppResult({
+  const GetAppleAppResult({
     required this.apiKeyId,
     required this.appId,
     required this.appStoreId,

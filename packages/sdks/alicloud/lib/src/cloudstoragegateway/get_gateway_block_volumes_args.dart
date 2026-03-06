@@ -24,7 +24,7 @@ class GetGatewayBlockVolumesArgs {
   /// [nameRegex] A regex string to filter results by Gateway Block Volume name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of volume. Valid values:
-  GetGatewayBlockVolumesArgs({
+  const GetGatewayBlockVolumesArgs({
     required this.gatewayId,
     this.ids,
     this.nameRegex,

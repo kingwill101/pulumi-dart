@@ -17,7 +17,7 @@ class WindowsWebAppAuthSettingsGithub {
   /// [clientSecret] The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `client_secret_setting_name`.
   /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for GitHub login. Cannot be specified with `client_secret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes that will be requested as part of GitHub login authentication.
-  WindowsWebAppAuthSettingsGithub({
+  const WindowsWebAppAuthSettingsGithub({
     required this.clientId,
     this.clientSecret,
     this.clientSecretSettingName,

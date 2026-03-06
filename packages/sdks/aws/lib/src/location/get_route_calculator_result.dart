@@ -30,7 +30,7 @@ class GetRouteCalculatorResult {
   /// [region] Required.
   /// [tags] Key-value map of resource tags for the route calculator.
   /// [updateTime] Timestamp for when the route calculator resource was last updated in ISO 8601 format.
-  GetRouteCalculatorResult({
+  const GetRouteCalculatorResult({
     required this.calculatorArn,
     required this.calculatorName,
     required this.createTime,

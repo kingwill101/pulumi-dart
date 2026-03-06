@@ -31,7 +31,7 @@ class GetClientGroupResult {
   /// [query] The grouping query for the clients.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetClientGroupResult({
+  const GetClientGroupResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

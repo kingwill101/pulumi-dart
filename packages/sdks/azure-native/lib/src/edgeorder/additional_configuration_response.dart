@@ -17,7 +17,7 @@ class AdditionalConfigurationResponse {
   /// [hierarchyInformation] Hierarchy of the product which uniquely identifies the configuration.
   /// [provisioningDetails] List Provisioning Details for Devices in Additional Config.
   /// [quantity] Quantity of the product.
-  AdditionalConfigurationResponse({
+  const AdditionalConfigurationResponse({
     required this.hierarchyInformation,
     this.provisioningDetails,
     required this.quantity,

@@ -12,7 +12,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret {
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret].
   /// [certificates] One or more `certificate` blocks as defined below.
   /// [keyVaultId] The ID of the Key Vault from which all Secrets should be sourced.
-  OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret({
+  const OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationSecret({
     required this.certificates,
     required this.keyVaultId,
   });

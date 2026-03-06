@@ -11,7 +11,7 @@ class EcsInstanceSetExcludeInstanceFilter {
   /// Creates a new [EcsInstanceSetExcludeInstanceFilter].
   /// [key] The type of the excluded. Valid values: `InstanceId`, `InstanceName`.
   /// [values] The value of the excluded. The identification of the excluded instances. It is a list of instance Ids or names.
-  EcsInstanceSetExcludeInstanceFilter({
+  const EcsInstanceSetExcludeInstanceFilter({
     required this.key,
     required this.values,
   });

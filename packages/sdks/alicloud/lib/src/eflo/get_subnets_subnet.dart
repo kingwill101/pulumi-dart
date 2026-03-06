@@ -44,7 +44,7 @@ class GetSubnetsSubnet {
   /// [type] Eflo subnet usage type, optional value:
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID of the resource.
-  GetSubnetsSubnet({
+  const GetSubnetsSubnet({
     required this.cidr,
     required this.createTime,
     required this.gmtModified,

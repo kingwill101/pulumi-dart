@@ -10,7 +10,7 @@ class GetSAPSupportedSkuResult {
 
   /// Creates a new [GetSAPSupportedSkuResult].
   /// [supportedSkus] Gets the list of SAP supported SKUs.
-  GetSAPSupportedSkuResult({
+  const GetSAPSupportedSkuResult({
     this.supportedSkus,
   });
 

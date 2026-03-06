@@ -13,7 +13,7 @@ class InstanceTemplateDiskDiskEncryptionKey {
   /// Creates a new [InstanceTemplateDiskDiskEncryptionKey].
   /// [kmsKeySelfLink] The self link of the encryption key that is stored in Google Cloud KMS
   /// [kmsKeyServiceAccount] The service account being used for the
-  InstanceTemplateDiskDiskEncryptionKey({
+  const InstanceTemplateDiskDiskEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
   });

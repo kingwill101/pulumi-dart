@@ -20,7 +20,7 @@ class SiteConnectionDpd {
   /// [action] The dead peer detection (DPD) action.
   /// [interval] The dead peer detection (DPD) interval, in seconds.
   /// [timeout] The dead peer detection (DPD) timeout in seconds.
-  SiteConnectionDpd({
+  const SiteConnectionDpd({
     this.action,
     this.interval,
     this.timeout,

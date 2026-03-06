@@ -32,7 +32,7 @@ class PipelineGroupPropertiesResponse {
   /// [receivers] The receivers specified for a pipeline group instance.
   /// [replicas] Defines the amount of replicas of the pipeline group instance.
   /// [service] The service section for a given pipeline group instance.
-  PipelineGroupPropertiesResponse({
+  const PipelineGroupPropertiesResponse({
     required this.exporters,
     this.networkingConfigurations,
     required this.processors,

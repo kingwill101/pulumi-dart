@@ -23,7 +23,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomCon
   /// [basic] Basic credentials that are required for the authentication of the user.
   /// [custom] If the connector uses the custom authentication mechanism, this holds the required credentials.
   /// [oauth2] OAuth 2.0 credentials required for the authentication of the user.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsCustomConnector({
     this.apiKey,
     required this.authenticationType,
     this.basic,

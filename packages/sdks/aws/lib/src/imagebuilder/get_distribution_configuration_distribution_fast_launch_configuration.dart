@@ -22,7 +22,7 @@ class GetDistributionConfigurationDistributionFastLaunchConfiguration {
   /// [launchTemplates] Nested list of launch templates that the fast-launch enabled Windows AMI uses when it launches Windows instances to create pre-provisioned snapshots.
   /// [maxParallelLaunches] The maximum number of parallel instances that are launched for creating resources.
   /// [snapshotConfigurations] Nested list of configurations for managing the number of snapshots that are created from pre-provisioned instances for the Windows AMI when faster launching is enabled.
-  GetDistributionConfigurationDistributionFastLaunchConfiguration({
+  const GetDistributionConfigurationDistributionFastLaunchConfiguration({
     required this.accountId,
     required this.enabled,
     required this.launchTemplates,

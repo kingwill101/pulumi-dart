@@ -13,7 +13,7 @@ class RouteParams {
 
   /// Creates a new [RouteParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the route. Tag keys and values have the
-  RouteParams({
+  const RouteParams({
     this.resourceManagerTags,
   });
 

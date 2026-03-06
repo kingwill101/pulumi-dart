@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig
   /// Creates a new [GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource].
   /// [agent] The name of a dialogflow virtual agent used for end user side intent detection and suggestion. Format: `projects//locations//agent`. When multiple agents are allowed in the same Dialogflow project.
   /// [humanAgentSideConfig] The Dialogflow assist configuration for human agent.
-  GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource({
+  const GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySource({
     required this.agent,
     this.humanAgentSideConfig,
   });

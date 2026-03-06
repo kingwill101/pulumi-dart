@@ -16,7 +16,7 @@ class ProcessorResponse {
   /// [batch] Batch processor configurations.
   /// [name] The name of processor.
   /// [type] The type of processor.
-  ProcessorResponse({
+  const ProcessorResponse({
     this.batch,
     required this.name,
     required this.type,

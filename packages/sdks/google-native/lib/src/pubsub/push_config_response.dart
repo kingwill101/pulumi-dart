@@ -23,7 +23,7 @@ class PushConfigResponse {
   /// [oidcToken] Optional. If specified, Pub/Sub will generate and attach an OIDC JWT token as an `Authorization` header in the HTTP request for every pushed message.
   /// [pubsubWrapper] Optional. When set, the payload to the push endpoint is in the form of the JSON representation of a PubsubMessage (https://cloud.google.com/pubsub/docs/reference/rpc/google.pubsub.v1#pubsubmessage).
   /// [pushEndpoint] Optional. A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use `https://example.com/push`.
-  PushConfigResponse({
+  const PushConfigResponse({
     required this.attributes,
     required this.noWrapper,
     required this.oidcToken,

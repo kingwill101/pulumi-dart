@@ -98,7 +98,7 @@ class ServerGroupHealthCheckConfig {
   /// [healthCheckTimeout] The timeout period of a health check response. If a backend ECS instance does not respond within the specified timeout period, the ECS instance fails the health check. Unit: seconds.
   /// [healthyThreshold] The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health check status of the backend server changes from `fail` to `success`.
   /// [unhealthyThreshold] The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health check status of the backend server changes from `success` to `fail`.
-  ServerGroupHealthCheckConfig({
+  const ServerGroupHealthCheckConfig({
     this.healthCheckCodes,
     this.healthCheckConnectPort,
     required this.healthCheckEnabled,

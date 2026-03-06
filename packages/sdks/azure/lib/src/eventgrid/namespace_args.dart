@@ -42,7 +42,7 @@ class NamespaceArgs {
   /// [sku] Defines which tier to use. The only possible value is `Standard`. Defaults to `Standard`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [topicSpacesConfigurations] A `topic_spaces_configuration` block as defined below. Changing this forces a new resource to be created.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.capacity,
     this.identity,
     this.inboundIpRules,

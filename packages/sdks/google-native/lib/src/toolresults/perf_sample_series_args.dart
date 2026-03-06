@@ -21,7 +21,7 @@ class PerfSampleSeriesArgs {
   /// [historyId] Required.
   /// [project] Optional.
   /// [stepId] Required.
-  PerfSampleSeriesArgs({
+  const PerfSampleSeriesArgs({
     this.basicPerfSampleSeries,
     required this.executionId,
     required this.historyId,

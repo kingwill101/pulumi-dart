@@ -9,7 +9,7 @@ class VaultModelProperties {
 
   /// Creates a new [VaultModelProperties].
   /// [vaultType] Gets or sets the type of vault.
-  VaultModelProperties({
+  const VaultModelProperties({
     this.vaultType,
   });
 

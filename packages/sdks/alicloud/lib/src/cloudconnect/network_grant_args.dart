@@ -18,7 +18,7 @@ class NetworkGrantArgs {
   /// [ccnId] The ID of the CCN instance.
   /// [cenId] The ID of the CEN instance.
   /// [cenUid] The ID of the account to which the CEN instance belongs.
-  NetworkGrantArgs({
+  const NetworkGrantArgs({
     required this.ccnId,
     required this.cenId,
     required this.cenUid,

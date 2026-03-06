@@ -11,7 +11,7 @@ class GetVolumeV3Attachment {
   /// [device] Required.
   /// [id] Required.
   /// [instanceId] Required.
-  GetVolumeV3Attachment({
+  const GetVolumeV3Attachment({
     required this.device,
     required this.id,
     required this.instanceId,

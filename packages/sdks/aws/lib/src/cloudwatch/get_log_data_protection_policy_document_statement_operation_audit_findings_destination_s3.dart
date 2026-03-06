@@ -8,7 +8,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3].
   /// [bucket] Name of the S3 Bucket to send findings to.
-  GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3({
+  const GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationS3({
     required this.bucket,
   });
 

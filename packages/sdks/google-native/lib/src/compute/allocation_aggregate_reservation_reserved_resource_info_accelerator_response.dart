@@ -11,7 +11,7 @@ class AllocationAggregateReservationReservedResourceInfoAcceleratorResponse {
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoAcceleratorResponse].
   /// [acceleratorCount] Number of accelerators of specified type.
   /// [acceleratorType] Full or partial URL to accelerator type. e.g. "projects/{PROJECT}/zones/{ZONE}/acceleratorTypes/ct4l"
-  AllocationAggregateReservationReservedResourceInfoAcceleratorResponse({
+  const AllocationAggregateReservationReservedResourceInfoAcceleratorResponse({
     required this.acceleratorCount,
     required this.acceleratorType,
   });

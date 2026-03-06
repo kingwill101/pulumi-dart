@@ -13,7 +13,7 @@ class ScriptActivityTypePropertiesResponseLogSettings {
   /// Creates a new [ScriptActivityTypePropertiesResponseLogSettings].
   /// [logDestination] The destination of logs. Type: string.
   /// [logLocationSettings] Log location settings customer needs to provide when enabling log.
-  ScriptActivityTypePropertiesResponseLogSettings({
+  const ScriptActivityTypePropertiesResponseLogSettings({
     required this.logDestination,
     this.logLocationSettings,
   });

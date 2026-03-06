@@ -26,7 +26,7 @@ class VpcEndpointConnectionNotificationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] The ID of the VPC Endpoint to receive notifications for.
   /// [vpcEndpointServiceId] The ID of the VPC Endpoint Service to receive notifications for.
-  VpcEndpointConnectionNotificationArgs({
+  const VpcEndpointConnectionNotificationArgs({
     required this.connectionEvents,
     required this.connectionNotificationArn,
     this.region,

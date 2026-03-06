@@ -79,7 +79,7 @@ class GetOntapFileSystemResult {
   /// [throughputCapacityPerHaPair] The sustained throughput of each HA pair for an Amazon FSx file system in Megabytes per second (MBps).
   /// [vpcId] The ID of the primary virtual private cloud (VPC) for the file system.
   /// [weeklyMaintenanceStartTime] The preferred start time (in `D:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  GetOntapFileSystemResult({
+  const GetOntapFileSystemResult({
     required this.arn,
     required this.automaticBackupRetentionDays,
     required this.dailyAutomaticBackupStartTime,

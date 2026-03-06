@@ -97,7 +97,7 @@ class GetClusterResult {
   /// [transitEncryptionMode] Required.
   /// [uid] Required.
   /// [zoneDistributionConfigs] Required.
-  GetClusterResult({
+  const GetClusterResult({
     required this.authorizationMode,
     required this.automatedBackupConfigs,
     required this.availableMaintenanceVersions,

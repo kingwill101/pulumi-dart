@@ -9,7 +9,7 @@ class ForZonePatch {
 
   /// Creates a new [ForZonePatch].
   /// [name] name represents the name of the zone.
-  ForZonePatch({
+  const ForZonePatch({
     this.name,
   });
 

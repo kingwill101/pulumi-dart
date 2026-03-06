@@ -18,7 +18,7 @@ class DefaultCreditSpecificationState {
   /// [instanceFamily] Instance family. Valid values are `t2`, `t3`, `t3a`, `t4g`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  DefaultCreditSpecificationState({
+  const DefaultCreditSpecificationState({
     this.cpuCredits,
     this.instanceFamily,
     this.region,

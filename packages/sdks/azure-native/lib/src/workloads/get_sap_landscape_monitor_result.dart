@@ -33,7 +33,7 @@ class GetSapLandscapeMonitorResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [topMetricsThresholds] Gets or sets the list Top Metric Thresholds for SAP Landscape Monitor Dashboard
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSapLandscapeMonitorResult({
+  const GetSapLandscapeMonitorResult({
     required this.azureApiVersion,
     this.grouping,
     required this.id,

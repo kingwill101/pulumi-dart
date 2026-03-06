@@ -8,7 +8,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal {
 
   /// Creates a new [InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal].
   /// [timeoutSec] The number of seconds to wait for a readiness signal during initialization before timing out.
-  InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal({
+  const InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignal({
     this.timeoutSec,
   });
 

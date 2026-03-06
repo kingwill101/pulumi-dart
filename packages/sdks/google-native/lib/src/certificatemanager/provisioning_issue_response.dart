@@ -12,7 +12,7 @@ class ProvisioningIssueResponse {
   /// Creates a new [ProvisioningIssueResponse].
   /// [details] Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
   /// [reason] Reason for provisioning failures.
-  ProvisioningIssueResponse({
+  const ProvisioningIssueResponse({
     required this.details,
     required this.reason,
   });

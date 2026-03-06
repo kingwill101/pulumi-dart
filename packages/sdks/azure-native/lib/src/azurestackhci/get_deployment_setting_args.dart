@@ -18,7 +18,7 @@ class GetDeploymentSettingArgs {
   /// [clusterName] The name of the cluster.
   /// [deploymentSettingsName] Name of Deployment Setting
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeploymentSettingArgs({
+  const GetDeploymentSettingArgs({
     required this.clusterName,
     required this.deploymentSettingsName,
     required this.resourceGroupName,

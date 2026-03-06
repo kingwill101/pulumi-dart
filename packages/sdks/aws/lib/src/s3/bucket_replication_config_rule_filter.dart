@@ -16,7 +16,7 @@ class BucketReplicationConfigRuleFilter {
   /// [and] Configuration block for specifying rule filters. This element is required only if you specify more than one filter. See and below for more details.
   /// [prefix] Object key name prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   /// [tag] Configuration block for specifying a tag key and value. See below.
-  BucketReplicationConfigRuleFilter({
+  const BucketReplicationConfigRuleFilter({
     this.and,
     this.prefix,
     this.tag,

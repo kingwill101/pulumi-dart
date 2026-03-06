@@ -26,7 +26,7 @@ class VolumeAttachmentStorageK8sIoV1beta1 {
   /// [metadata] Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
   /// [status] Status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
-  VolumeAttachmentStorageK8sIoV1beta1({
+  const VolumeAttachmentStorageK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

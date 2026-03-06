@@ -25,7 +25,7 @@ class WorkloadIdentityPoolArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [workloadIdentityPoolId] Required. The ID to use for the pool, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix `gcp-` is reserved for use by Google, and may not be specified.
-  WorkloadIdentityPoolArgs({
+  const WorkloadIdentityPoolArgs({
     this.description,
     this.disabled,
     this.displayName,

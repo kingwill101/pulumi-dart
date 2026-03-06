@@ -32,7 +32,7 @@ class ListWebAppPublishingCredentialsSlotResult {
   /// [publishingUserName] Username used for publishing.
   /// [scmUri] Url of SCM site.
   /// [type] Resource type.
-  ListWebAppPublishingCredentialsSlotResult({
+  const ListWebAppPublishingCredentialsSlotResult({
     required this.id,
     this.kind,
     required this.name,

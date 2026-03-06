@@ -9,7 +9,7 @@ class InstanceCollectionTypeEnumValueResponse {
 
   /// Creates a new [InstanceCollectionTypeEnumValueResponse].
   /// [value] Property value
-  InstanceCollectionTypeEnumValueResponse({
+  const InstanceCollectionTypeEnumValueResponse({
     this.value,
   });
 

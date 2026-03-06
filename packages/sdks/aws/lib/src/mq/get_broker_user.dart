@@ -17,7 +17,7 @@ class GetBrokerUser {
   /// [groups] List of groups to which the ActiveMQ user belongs.
   /// [replicationUser] Whether to set replication user.
   /// [username] Username of the user.
-  GetBrokerUser({
+  const GetBrokerUser({
     required this.consoleAccess,
     required this.groups,
     required this.replicationUser,

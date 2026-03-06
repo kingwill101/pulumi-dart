@@ -15,7 +15,7 @@ class GroupVersionResourcePatch {
   /// [group] The name of the group.
   /// [resource] The name of the resource.
   /// [version] The name of the version.
-  GroupVersionResourcePatch({
+  const GroupVersionResourcePatch({
     this.group,
     this.resource,
     this.version,

@@ -22,7 +22,7 @@ class GetCertificateResult {
   /// [id] Unique identifier of this data source: hashing of the certificates in the chain.
   /// [url] The URL of the website to get the certificates from. Cannot be used with `content`.
   /// [verifyChain] Whether to verify the certificate chain while parsing it or not (default: `true`). Cannot be used with `content`.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificates,
     this.content,
     required this.id,

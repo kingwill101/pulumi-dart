@@ -9,7 +9,7 @@ class CorsRuleResponse {
 
   /// Creates a new [CorsRuleResponse].
   /// [allowedOrigins] Required if CorsRule element is present. A list of origin domains that will be allowed via CORS, or "*" to allow all domains
-  CorsRuleResponse({
+  const CorsRuleResponse({
     required this.allowedOrigins,
   });
 

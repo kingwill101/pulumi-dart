@@ -9,7 +9,7 @@ class LastRunErrorStatusCodeEnumValue {
 
   /// Creates a new [LastRunErrorStatusCodeEnumValue].
   /// [value] Property value
-  LastRunErrorStatusCodeEnumValue({
+  const LastRunErrorStatusCodeEnumValue({
     this.value,
   });
 

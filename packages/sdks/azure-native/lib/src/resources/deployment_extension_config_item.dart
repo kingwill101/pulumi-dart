@@ -13,7 +13,7 @@ class DeploymentExtensionConfigItem {
   /// Creates a new [DeploymentExtensionConfigItem].
   /// [keyVaultReference] The key vault reference of the config item.
   /// [value] The value of the config item. The type is determined by the extension config schema.
-  DeploymentExtensionConfigItem({
+  const DeploymentExtensionConfigItem({
     this.keyVaultReference,
     this.value,
   });

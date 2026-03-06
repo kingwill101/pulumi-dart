@@ -17,7 +17,7 @@ class KubernetesClusterInfoResponse {
   /// [etcdInfo] Etcd configuration
   /// [nodes] Kubernetes cluster nodes
   /// [version] Kubernetes cluster version
-  KubernetesClusterInfoResponse({
+  const KubernetesClusterInfoResponse({
     required this.etcdInfo,
     required this.nodes,
     required this.version,

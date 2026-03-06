@@ -60,7 +60,7 @@ class GetGen2EnvironmentResult {
   /// [timeSeriesIdProperties] The list of event properties which will be used to define the environment's time series id.
   /// [type] Resource type
   /// [warmStoreConfiguration] The warm store configuration provides the details to create a warm store cache that will retain a copy of the environment's data available for faster query.
-  GetGen2EnvironmentResult({
+  const GetGen2EnvironmentResult({
     required this.azureApiVersion,
     required this.creationTime,
     required this.dataAccessFqdn,

@@ -9,7 +9,7 @@ class GetClusterSetting {
   /// Creates a new [GetClusterSetting].
   /// [name] Required.
   /// [value] Required.
-  GetClusterSetting({
+  const GetClusterSetting({
     required this.name,
     required this.value,
   });

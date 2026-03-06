@@ -8,7 +8,7 @@ class ClusterZonalShiftConfig {
 
   /// Creates a new [ClusterZonalShiftConfig].
   /// [enabled] Whether zonal shift is enabled for the cluster.
-  ClusterZonalShiftConfig({
+  const ClusterZonalShiftConfig({
     this.enabled,
   });
 

@@ -32,7 +32,7 @@ class GetEcsImageComponentsArgs {
   /// [owner] Mirror component type. Valid values: `SELF` or `ALIYUN`. Possible values:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  GetEcsImageComponentsArgs({
+  const GetEcsImageComponentsArgs({
     this.ids,
     this.imageComponentName,
     this.nameRegex,

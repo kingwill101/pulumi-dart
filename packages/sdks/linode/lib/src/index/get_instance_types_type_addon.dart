@@ -8,7 +8,7 @@ class GetInstanceTypesTypeAddon {
 
   /// Creates a new [GetInstanceTypesTypeAddon].
   /// [backups] Required.
-  GetInstanceTypesTypeAddon({
+  const GetInstanceTypesTypeAddon({
     required this.backups,
   });
 

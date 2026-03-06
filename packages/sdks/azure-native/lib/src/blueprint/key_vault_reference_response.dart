@@ -9,7 +9,7 @@ class KeyVaultReferenceResponse {
 
   /// Creates a new [KeyVaultReferenceResponse].
   /// [id] Azure resource ID of the Key Vault.
-  KeyVaultReferenceResponse({
+  const KeyVaultReferenceResponse({
     required this.id,
   });
 

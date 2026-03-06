@@ -42,7 +42,7 @@ class InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPsc
   /// [pscConnectionId] The PSC connection id of the forwarding rule connected to the
   /// [pscConnectionStatus] (Output)
   /// [serviceAttachment] The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
-  InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection({
+  const InstanceDesiredUserCreatedEndpointsDesiredUserCreatedEndpointConnectionPscConnection({
     this.connectionType,
     required this.forwardingRule,
     required this.ipAddress,

@@ -15,7 +15,7 @@ class GetStorageBoxSnapshotsArgs {
   /// Creates a new [GetStorageBoxSnapshotsArgs].
   /// [storageBoxId] ID of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetStorageBoxSnapshotsArgs({
+  const GetStorageBoxSnapshotsArgs({
     required this.storageBoxId,
     this.withSelector,
   });

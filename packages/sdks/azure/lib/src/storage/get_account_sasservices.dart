@@ -17,7 +17,7 @@ class GetAccountSASServices {
   /// [file] Should permission be granted to `file` services within this storage account?
   /// [queue] Should permission be granted to `queue` services within this storage account?
   /// [table] Should permission be granted to `table` services within this storage account?
-  GetAccountSASServices({
+  const GetAccountSASServices({
     required this.blob,
     required this.file,
     required this.queue,

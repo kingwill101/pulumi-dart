@@ -21,7 +21,7 @@ class ActiveDirectoryAdministratorState {
   /// [resourceGroupName] The name of the resource group for the PostgreSQL server. Changing this forces a new resource to be created.
   /// [serverName] The name of the PostgreSQL Server on which to set the administrator. Changing this forces a new resource to be created.
   /// [tenantId] The Azure Tenant ID
-  ActiveDirectoryAdministratorState({
+  const ActiveDirectoryAdministratorState({
     this.login,
     this.objectId,
     this.resourceGroupName,

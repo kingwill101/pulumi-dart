@@ -15,7 +15,7 @@ class DomainDevicesInterfaceSourceUdp {
   /// [address] Defines the UDP address for the network interface, specifying where UDP packets are sent or received.
   /// [local] Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
   /// [port] Defines the UDP port number for the network interface, determining the endpoint for UDP communications.
-  DomainDevicesInterfaceSourceUdp({
+  const DomainDevicesInterfaceSourceUdp({
     this.address,
     this.local,
     this.port,

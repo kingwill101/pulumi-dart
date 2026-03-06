@@ -16,7 +16,7 @@ class AcceleratorBasicAuthSettingResponse {
   /// [authType] The type of the auth setting.
   /// [caCertResourceId] Resource Id of CA certificate for https URL of Git repository.
   /// [username] Username of git repository basic auth.
-  AcceleratorBasicAuthSettingResponse({
+  const AcceleratorBasicAuthSettingResponse({
     required this.authType,
     this.caCertResourceId,
     required this.username,

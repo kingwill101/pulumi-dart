@@ -19,7 +19,7 @@ class WorkspaceIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Synapse Workspace.
   /// [type] Specifies the type of Managed Service Identity that should be associated with this Synapse Workspace. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned` (to enable both).
-  WorkspaceIdentity({
+  const WorkspaceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

@@ -13,7 +13,7 @@ class GetVpcPeeringConnectionFilter {
   /// Creates a new [GetVpcPeeringConnectionFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetVpcPeeringConnectionFilter({
+  const GetVpcPeeringConnectionFilter({
     required this.name,
     required this.values,
   });

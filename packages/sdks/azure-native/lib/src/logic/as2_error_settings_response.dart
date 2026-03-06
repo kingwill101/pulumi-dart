@@ -12,7 +12,7 @@ class AS2ErrorSettingsResponse {
   /// Creates a new [AS2ErrorSettingsResponse].
   /// [resendIfMDNNotReceived] The value indicating whether to resend message If MDN is not received.
   /// [suspendDuplicateMessage] The value indicating whether to suspend duplicate message.
-  AS2ErrorSettingsResponse({
+  const AS2ErrorSettingsResponse({
     required this.resendIfMDNNotReceived,
     required this.suspendDuplicateMessage,
   });

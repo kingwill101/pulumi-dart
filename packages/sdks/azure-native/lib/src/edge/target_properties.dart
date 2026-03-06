@@ -30,7 +30,7 @@ class TargetProperties {
   /// [solutionScope] Scope of the target resource
   /// [state] State of resource
   /// [targetSpecification] target spec
-  TargetProperties({
+  const TargetProperties({
     required this.capabilities,
     required this.contextId,
     required this.description,

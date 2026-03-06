@@ -10,7 +10,7 @@ class AutoPausePropertiesResponse {
   /// Creates a new [AutoPausePropertiesResponse].
   /// [delayInMinutes] Optional.
   /// [enabled] Optional.
-  AutoPausePropertiesResponse({
+  const AutoPausePropertiesResponse({
     this.delayInMinutes,
     this.enabled,
   });

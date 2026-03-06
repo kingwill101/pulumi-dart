@@ -15,7 +15,7 @@ class GetApprovalArgs {
   /// Creates a new [GetApprovalArgs].
   /// [approvalName] The name of the approvals resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetApprovalArgs({
+  const GetApprovalArgs({
     required this.approvalName,
     required this.resourceUri,
   });

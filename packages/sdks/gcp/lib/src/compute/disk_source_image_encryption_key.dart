@@ -25,7 +25,7 @@ class DiskSourceImageEncryptionKey {
   /// [kmsKeyServiceAccount] The service account used for the encryption request for the given KMS key.
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [sha256] (Output)
-  DiskSourceImageEncryptionKey({
+  const DiskSourceImageEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

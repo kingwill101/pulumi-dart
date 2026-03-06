@@ -21,7 +21,7 @@ class DeviceState {
   /// [device] The device to register with SageMaker AI Edge Manager. See Device details below.
   /// [deviceFleetName] The name of the Device Fleet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DeviceState({
+  const DeviceState({
     this.agentVersion,
     this.arn,
     this.device,

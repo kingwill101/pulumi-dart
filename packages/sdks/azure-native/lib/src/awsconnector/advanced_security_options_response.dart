@@ -22,7 +22,7 @@ class AdvancedSecurityOptionsResponse {
   /// [enabled] &lt;p&gt;True if fine-grained access control is enabled.&lt;/p&gt;
   /// [internalUserDatabaseEnabled] &lt;p&gt;True if the internal user database is enabled.&lt;/p&gt;
   /// [samlOptions] &lt;p&gt;Container for information about the SAML configuration for OpenSearch Dashboards.&lt;/p&gt;
-  AdvancedSecurityOptionsResponse({
+  const AdvancedSecurityOptionsResponse({
     this.anonymousAuthDisableDate,
     this.anonymousAuthEnabled,
     this.enabled,

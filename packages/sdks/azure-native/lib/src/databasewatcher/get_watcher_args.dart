@@ -15,7 +15,7 @@ class GetWatcherArgs {
   /// Creates a new [GetWatcherArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [watcherName] The database watcher name.
-  GetWatcherArgs({
+  const GetWatcherArgs({
     required this.resourceGroupName,
     required this.watcherName,
   });

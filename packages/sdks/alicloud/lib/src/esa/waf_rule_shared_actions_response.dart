@@ -10,7 +10,7 @@ class WafRuleSharedActionsResponse {
   /// Creates a new [WafRuleSharedActionsResponse].
   /// [code] Optional.
   /// [id] The internal unique ID of the WAF rule.
-  WafRuleSharedActionsResponse({
+  const WafRuleSharedActionsResponse({
     this.code,
     this.id,
   });

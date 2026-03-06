@@ -11,7 +11,7 @@ class StandardSiteConfigCors {
   /// Creates a new [StandardSiteConfigCors].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
   /// [supportCredentials] Are credentials supported?
-  StandardSiteConfigCors({
+  const StandardSiteConfigCors({
     this.allowedOrigins,
     this.supportCredentials,
   });

@@ -18,7 +18,7 @@ class BucketServerSideEncryptionState {
   /// [kmsDataEncryption] The algorithm used to encrypt objects. If this element is not specified, objects are encrypted by using AES256. This element is valid only when the value of SSEAlgorithm is set to KMS.
   /// [kmsMasterKeyId] The CMK ID that must be specified when SSEAlgorithm is set to KMS and a specified CMK is used for encryption. In other cases, this element must be set to null.
   /// [sseAlgorithm] The server-side encryption method. Valid Values: KMS, AES256.
-  BucketServerSideEncryptionState({
+  const BucketServerSideEncryptionState({
     this.bucket,
     this.kmsDataEncryption,
     this.kmsMasterKeyId,

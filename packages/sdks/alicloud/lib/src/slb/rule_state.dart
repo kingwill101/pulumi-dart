@@ -75,7 +75,7 @@ class RuleState {
   /// [stickySessionType] Mode for handling the cookie. If `sticky_session` is `on`, it is mandatory. Otherwise, it will be ignored. Valid values: `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
   /// [unhealthyThreshold] Threshold determining the result of the health check is fail. It is required when `health_check` is `on`. Valid values: [1-10] in seconds. Default value: `3`.
   /// [url] Domain of the forwarding rule. It must be 2-80 characters in length. Only letters a-z, numbers 0-9, and characters '-' '/' '?' '%' '#' and '&' are allowed. URLs must be started with the character '/', but cannot be '/' alone.
-  RuleState({
+  const RuleState({
     this.cookie,
     this.cookieTimeout,
     this.deleteProtectionValidation,

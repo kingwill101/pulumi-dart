@@ -55,7 +55,7 @@ class ScriptActivityResponse {
   /// [treatDecimalAsString] Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  ScriptActivityResponse({
+  const ScriptActivityResponse({
     this.dependsOn,
     this.description,
     required this.linkedServiceName,

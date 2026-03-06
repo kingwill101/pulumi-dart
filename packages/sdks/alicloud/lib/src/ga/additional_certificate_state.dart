@@ -18,7 +18,7 @@ class AdditionalCertificateState {
   /// [certificateId] The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
   /// [domain] The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
   /// [listenerId] The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
-  AdditionalCertificateState({
+  const AdditionalCertificateState({
     this.acceleratorId,
     this.certificateId,
     this.domain,

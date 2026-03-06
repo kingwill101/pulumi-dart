@@ -92,7 +92,7 @@ class LabelingJobResponse {
   /// [status] Status of the job.
   /// [statusMessages] Status messages of the job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  LabelingJobResponse({
+  const LabelingJobResponse({
     this.componentId,
     this.computeId,
     required this.createdDateTime,

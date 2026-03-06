@@ -10,7 +10,7 @@ class MonitoringResponse {
 
   /// Creates a new [MonitoringResponse].
   /// [state] &lt;p&gt;Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.&lt;/p&gt;
-  MonitoringResponse({
+  const MonitoringResponse({
     this.state,
   });
 

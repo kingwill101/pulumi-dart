@@ -18,7 +18,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   /// [referenceSchema] Describes the format of the data in the streaming source, and how each data element maps to corresponding columns created in the in-application stream.
   /// [s3ReferenceDataSource] Identifies the S3 bucket and object that contains the reference data.
   /// [tableName] The name of the in-application table to create.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSource({
     this.referenceId,
     required this.referenceSchema,
     required this.s3ReferenceDataSource,

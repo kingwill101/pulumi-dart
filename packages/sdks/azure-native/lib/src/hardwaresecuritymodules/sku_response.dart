@@ -9,7 +9,7 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] SKU of the dedicated HSM
-  SkuResponse({
+  const SkuResponse({
     this.name,
   });
 

@@ -45,7 +45,7 @@ class GCPolicyState {
   /// [mode] If multiple policies are set, you should choose between `UNION` OR `INTERSECTION`.
   /// [project] The ID of the project in which the resource belongs. If it is not provided, the provider project is used.
   /// [table] The name of the table.
-  GCPolicyState({
+  const GCPolicyState({
     this.columnFamily,
     this.deletionPolicy,
     this.gcRules,

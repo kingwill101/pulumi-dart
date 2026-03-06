@@ -30,7 +30,7 @@ class PipeTargetParametersBatchJobParameters {
   /// [jobName] The name of the job. It can be up to 128 letters long.
   /// [parameters] Additional parameters passed to the job that replace parameter substitution placeholders that are set in the job definition. Parameters are specified as a key and value pair mapping. Parameters included here override any corresponding parameter defaults from the job definition. Detailed below.
   /// [retryStrategy] The retry strategy to use for failed jobs. When a retry strategy is specified here, it overrides the retry strategy defined in the job definition. Detailed below.
-  PipeTargetParametersBatchJobParameters({
+  const PipeTargetParametersBatchJobParameters({
     this.arrayProperties,
     this.containerOverrides,
     this.dependsOns,

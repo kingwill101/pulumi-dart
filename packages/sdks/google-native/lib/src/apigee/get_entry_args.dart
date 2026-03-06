@@ -17,7 +17,7 @@ class GetEntryArgs {
   /// [entryId] Required.
   /// [keyvaluemapId] Required.
   /// [organizationId] Required.
-  GetEntryArgs({
+  const GetEntryArgs({
     required this.apiId,
     required this.entryId,
     required this.keyvaluemapId,

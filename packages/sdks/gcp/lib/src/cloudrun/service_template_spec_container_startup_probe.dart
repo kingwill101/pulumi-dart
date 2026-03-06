@@ -38,7 +38,7 @@ class ServiceTemplateSpecContainerStartupProbe {
   /// [periodSeconds] How often (in seconds) to perform the probe.
   /// [tcpSocket] TcpSocket specifies an action involving a TCP port.
   /// [timeoutSeconds] Number of seconds after which the probe times out.
-  ServiceTemplateSpecContainerStartupProbe({
+  const ServiceTemplateSpecContainerStartupProbe({
     this.failureThreshold,
     this.grpc,
     this.httpGet,

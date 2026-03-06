@@ -36,7 +36,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResource {
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResource].
   /// [id] ID of the resource to be used while generating set of affected resources.
   /// [osPolicyAssignmentV1Payload] OS policy assignment is an API resource that is used to
-  V2PolicyOrchestratorForFolderOrchestratedResource({
+  const V2PolicyOrchestratorForFolderOrchestratedResource({
     this.id,
     this.osPolicyAssignmentV1Payload,
   });

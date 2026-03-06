@@ -20,7 +20,7 @@ class ApiEventConfigAuthProvider {
   /// [cognitoConfig] Configuration for Cognito user pool authentication. Required when `auth_type` is `AMAZON_COGNITO_USER_POOLS`. See Cognito Config below.
   /// [lambdaAuthorizerConfig] Configuration for Lambda authorization. Required when `auth_type` is `AWS_LAMBDA`. See Lambda Authorizer Config below.
   /// [openidConnectConfig] Configuration for OpenID Connect. Required when `auth_type` is `OPENID_CONNECT`. See OpenID Connect Config below.
-  ApiEventConfigAuthProvider({
+  const ApiEventConfigAuthProvider({
     required this.authType,
     this.cognitoConfig,
     this.lambdaAuthorizerConfig,

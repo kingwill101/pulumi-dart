@@ -12,7 +12,7 @@ class SnapshotDefinitionResponse {
   /// Creates a new [SnapshotDefinitionResponse].
   /// [baseTableReference] [Required] Reference describing the ID of the table that was snapshot.
   /// [snapshotTime] [Required] The time at which the base table was snapshot. This value is reported in the JSON response using RFC3339 format.
-  SnapshotDefinitionResponse({
+  const SnapshotDefinitionResponse({
     required this.baseTableReference,
     required this.snapshotTime,
   });

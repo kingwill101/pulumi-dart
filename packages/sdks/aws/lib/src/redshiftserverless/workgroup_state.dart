@@ -65,7 +65,7 @@ class WorkgroupState {
   /// [trackName] The name of the track for the workgroup. If it is `current`, you get the most up-to-date certified release version with the latest features, security updates, and performance enhancements. If it is `trailing`, you will be on the previous certified release. For more information, see the following [AWS document](https://docs.aws.amazon.com/redshift/latest/mgmt/tracks.html).
   /// [workgroupId] The Redshift Workgroup ID.
   /// [workgroupName] The name of the workgroup.
-  WorkgroupState({
+  const WorkgroupState({
     this.arn,
     this.baseCapacity,
     this.configParameters,

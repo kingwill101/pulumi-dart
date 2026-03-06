@@ -65,7 +65,7 @@ class SubnetArgs {
   /// [serviceEndpoints] The list of Service endpoints to associate with the subnet. Possible values include: `Microsoft.AzureActiveDirectory`, `Microsoft.AzureCosmosDB`, `Microsoft.ContainerRegistry`, `Microsoft.EventHub`, `Microsoft.KeyVault`, `Microsoft.ServiceBus`, `Microsoft.Sql`, `Microsoft.Storage`, `Microsoft.Storage.Global` and `Microsoft.Web`.
   /// [sharingScope] The sharing scope of the subnet. Possible value is `Tenant`.
   /// [virtualNetworkName] The name of the virtual network to which to attach the subnet. Changing this forces a new resource to be created.
-  SubnetArgs({
+  const SubnetArgs({
     this.addressPrefixes,
     this.defaultOutboundAccessEnabled,
     this.delegations,

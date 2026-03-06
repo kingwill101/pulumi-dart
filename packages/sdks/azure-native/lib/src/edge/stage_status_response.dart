@@ -30,7 +30,7 @@ class StageStatusResponse {
   /// [stage] Current stage
   /// [status] Deployment status
   /// [statusMessage] Status message
-  StageStatusResponse({
+  const StageStatusResponse({
     this.errorMessage,
     this.inputs,
     this.isActive,

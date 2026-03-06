@@ -15,7 +15,7 @@ class GetNetworkWatcherArgs {
   /// Creates a new [GetNetworkWatcherArgs].
   /// [networkWatcherName] The name of the network watcher.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkWatcherArgs({
+  const GetNetworkWatcherArgs({
     required this.networkWatcherName,
     required this.resourceGroupName,
   });

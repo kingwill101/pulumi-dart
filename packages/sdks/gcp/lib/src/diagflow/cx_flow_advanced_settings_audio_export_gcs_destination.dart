@@ -9,7 +9,7 @@ class CxFlowAdvancedSettingsAudioExportGcsDestination {
 
   /// Creates a new [CxFlowAdvancedSettingsAudioExportGcsDestination].
   /// [uri] The Google Cloud Storage URI for the exported objects. Whether a full object name, or just a prefix, its usage depends on the Dialogflow operation.
-  CxFlowAdvancedSettingsAudioExportGcsDestination({
+  const CxFlowAdvancedSettingsAudioExportGcsDestination({
     this.uri,
   });
 

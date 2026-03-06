@@ -19,7 +19,7 @@ class WebtestLocationAvailabilityCriteria {
   /// [failedLocationCount] The number of failed locations.
   /// [odataType] specifies the type of the alert criteria.
   /// [webTestId] The Application Insights web test Id.
-  WebtestLocationAvailabilityCriteria({
+  const WebtestLocationAvailabilityCriteria({
     required this.componentId,
     required this.failedLocationCount,
     required this.odataType,

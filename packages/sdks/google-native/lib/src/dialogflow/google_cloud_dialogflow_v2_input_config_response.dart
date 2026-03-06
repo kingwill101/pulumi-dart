@@ -10,7 +10,7 @@ class GoogleCloudDialogflowV2InputConfigResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2InputConfigResponse].
   /// [gcsSource] The Cloud Storage URI has the form gs:////agent*.json. Wildcards are allowed and will be expanded into all matched JSON files, which will be read as one conversation per file.
-  GoogleCloudDialogflowV2InputConfigResponse({
+  const GoogleCloudDialogflowV2InputConfigResponse({
     required this.gcsSource,
   });
 

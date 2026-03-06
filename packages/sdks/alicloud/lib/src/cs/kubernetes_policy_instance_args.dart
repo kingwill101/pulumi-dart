@@ -24,7 +24,7 @@ class KubernetesPolicyInstanceArgs {
   /// [namespaces] Limits the namespace of the policy implementation. Empty indicates all namespaces.
   /// [parameters] The parameter configuration of the current rule instance. For more information about the parameters supported by each policy rule, see [Container Security Policy Rule Base Description](https://www.alibabacloud.com/help/doc-detail/359819.html).
   /// [policyName] Policy Name
-  KubernetesPolicyInstanceArgs({
+  const KubernetesPolicyInstanceArgs({
     this.action,
     required this.clusterId,
     this.namespaces,

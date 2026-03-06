@@ -13,7 +13,7 @@ class URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout {
   /// Creates a new [URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout].
   /// [nanos] Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are
   /// [seconds] Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive.
-  URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout({
+  const URLMapPathMatcherPathRuleRouteActionRetryPolicyPerTryTimeout({
     this.nanos,
     required this.seconds,
   });

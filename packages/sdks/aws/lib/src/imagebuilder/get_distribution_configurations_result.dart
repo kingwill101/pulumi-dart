@@ -20,7 +20,7 @@ class GetDistributionConfigurationsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] Set of names of the matched Image Builder Distribution Configurations.
   /// [region] Required.
-  GetDistributionConfigurationsResult({
+  const GetDistributionConfigurationsResult({
     required this.arns,
     this.filters,
     required this.id,

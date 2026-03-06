@@ -12,7 +12,7 @@ class StateErrorResponse {
   /// Creates a new [StateErrorResponse].
   /// [details] Provides specifics about the error.
   /// [type] The type of this state error.
-  StateErrorResponse({
+  const StateErrorResponse({
     required this.details,
     required this.type,
   });

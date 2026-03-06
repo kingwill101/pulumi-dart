@@ -50,7 +50,7 @@ class SyntheticTaskArgs {
   /// [syntheticTaskName] The name of synthetic task.
   /// [tags] The list of tags.
   /// [taskType] The type of synthetic task.
-  SyntheticTaskArgs({
+  const SyntheticTaskArgs({
     this.availableAssertions,
     this.commonSetting,
     this.customPeriod,

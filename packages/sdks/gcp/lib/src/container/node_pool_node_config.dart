@@ -166,7 +166,7 @@ class NodePoolNodeConfig {
   /// [taints] List of Kubernetes taints to be applied to each node.
   /// [windowsNodeConfig] Parameters that can be configured on Windows nodes.
   /// [workloadMetadataConfig] The workload metadata configuration for this node.
-  NodePoolNodeConfig({
+  const NodePoolNodeConfig({
     this.advancedMachineFeatures,
     this.bootDisk,
     this.bootDiskKmsKey,

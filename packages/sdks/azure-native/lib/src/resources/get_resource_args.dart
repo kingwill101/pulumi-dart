@@ -27,7 +27,7 @@ class GetResourceArgs {
   /// [resourceName] The name of the resource to get.
   /// [resourceProviderNamespace] The namespace of the resource provider.
   /// [resourceType] The resource type of the resource.
-  GetResourceArgs({
+  const GetResourceArgs({
     required this.apiVersion,
     required this.parentResourcePath,
     required this.resourceGroupName,

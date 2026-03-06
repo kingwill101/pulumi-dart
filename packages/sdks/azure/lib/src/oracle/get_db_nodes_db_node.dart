@@ -68,7 +68,7 @@ class GetDbNodesDbNode {
   /// [timeMaintenanceWindowStart] Start date and time of maintenance window.
   /// [vnic2Id] Required.
   /// [vnicId] The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the VNIC.
-  GetDbNodesDbNode({
+  const GetDbNodesDbNode({
     required this.additionalDetails,
     required this.backupIpId,
     required this.backupVnic2Id,

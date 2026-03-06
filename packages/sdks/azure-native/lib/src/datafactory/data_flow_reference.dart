@@ -18,7 +18,7 @@ class DataFlowReference {
   /// [parameters] Data flow parameters
   /// [referenceName] Reference data flow name.
   /// [type] Data flow reference type.
-  DataFlowReference({
+  const DataFlowReference({
     this.datasetParameters,
     this.parameters,
     required this.referenceName,

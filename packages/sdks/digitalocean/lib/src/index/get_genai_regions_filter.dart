@@ -13,7 +13,7 @@ class GetGenaiRegionsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGenaiRegionsFilter({
+  const GetGenaiRegionsFilter({
     this.all,
     required this.key,
     this.matchBy,

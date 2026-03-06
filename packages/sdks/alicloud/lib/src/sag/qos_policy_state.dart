@@ -39,7 +39,7 @@ class QosPolicyState {
   /// [sourceCidr] The source CIDR block.
   /// [sourcePortRange] The source port range of the transport layer.
   /// [startTime] The time when the quintuple rule takes effect.
-  QosPolicyState({
+  const QosPolicyState({
     this.description,
     this.destCidr,
     this.destPortRange,

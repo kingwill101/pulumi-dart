@@ -34,7 +34,7 @@ class GetConnectionTypeResult {
   /// [lastModifiedTime] Gets or sets the last modified time.
   /// [name] Gets the name of the connection type.
   /// [type] Resource type
-  GetConnectionTypeResult({
+  const GetConnectionTypeResult({
     required this.azureApiVersion,
     required this.creationTime,
     this.description,

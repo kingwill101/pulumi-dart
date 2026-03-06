@@ -9,7 +9,7 @@ class InsightFiltersNetworkDirection {
   /// Creates a new [InsightFiltersNetworkDirection].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNetworkDirection({
+  const InsightFiltersNetworkDirection({
     required this.comparison,
     required this.value,
   });

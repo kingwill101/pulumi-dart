@@ -9,7 +9,7 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [fileShares] Optional.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     this.fileShares,
   });
 

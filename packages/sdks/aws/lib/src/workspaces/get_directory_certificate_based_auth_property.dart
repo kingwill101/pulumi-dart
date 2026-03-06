@@ -9,7 +9,7 @@ class GetDirectoryCertificateBasedAuthProperty {
   /// Creates a new [GetDirectoryCertificateBasedAuthProperty].
   /// [certificateAuthorityArn] Required.
   /// [status] Required.
-  GetDirectoryCertificateBasedAuthProperty({
+  const GetDirectoryCertificateBasedAuthProperty({
     required this.certificateAuthorityArn,
     required this.status,
   });

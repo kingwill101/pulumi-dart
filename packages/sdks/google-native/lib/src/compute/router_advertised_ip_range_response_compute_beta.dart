@@ -12,7 +12,7 @@ class RouterAdvertisedIpRangeResponseComputeBeta {
   /// Creates a new [RouterAdvertisedIpRangeResponseComputeBeta].
   /// [description] User-specified description for the IP range.
   /// [range] The IP range to advertise. The value must be a CIDR-formatted string.
-  RouterAdvertisedIpRangeResponseComputeBeta({
+  const RouterAdvertisedIpRangeResponseComputeBeta({
     required this.description,
     required this.range,
   });

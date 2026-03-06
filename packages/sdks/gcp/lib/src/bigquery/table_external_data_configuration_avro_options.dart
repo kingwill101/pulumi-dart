@@ -10,7 +10,7 @@ class TableExternalDataConfigurationAvroOptions {
 
   /// Creates a new [TableExternalDataConfigurationAvroOptions].
   /// [useAvroLogicalTypes] If is set to true, indicates whether
-  TableExternalDataConfigurationAvroOptions({
+  const TableExternalDataConfigurationAvroOptions({
     required this.useAvroLogicalTypes,
   });
 

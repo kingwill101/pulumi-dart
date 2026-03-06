@@ -21,7 +21,7 @@ class GatewayCertificateAuthorityArgs {
   /// [certificateName] The name of the API Management Certificate. Changing this forces a new resource to be created.
   /// [gatewayName] The name of the API Management Gateway. Changing this forces a new resource to be created.
   /// [isTrusted] Whether the API Management Gateway Certificate Authority is trusted.
-  GatewayCertificateAuthorityArgs({
+  const GatewayCertificateAuthorityArgs({
     required this.apiManagementId,
     required this.certificateName,
     required this.gatewayName,

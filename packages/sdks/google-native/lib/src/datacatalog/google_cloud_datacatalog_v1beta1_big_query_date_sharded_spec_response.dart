@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse {
   /// [dataset] The Data Catalog resource name of the dataset entry the current table belongs to, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`.
   /// [shardCount] Total number of shards.
   /// [tablePrefix] The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`, for example, for shard `MyTable20180101`, the `table_prefix` is `MyTable`.
-  GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse({
+  const GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecResponse({
     required this.dataset,
     required this.shardCount,
     required this.tablePrefix,

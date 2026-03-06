@@ -71,7 +71,7 @@ class DatabaseArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [tags] Input only. A map of resource manager tags. Resource manager tag keys
   /// [type] The type of the database.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.appEngineIntegrationMode,
     this.cmekConfig,
     this.concurrencyMode,

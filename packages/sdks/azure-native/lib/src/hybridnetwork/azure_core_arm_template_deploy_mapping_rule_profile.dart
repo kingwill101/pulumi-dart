@@ -13,7 +13,7 @@ class AzureCoreArmTemplateDeployMappingRuleProfile {
   /// Creates a new [AzureCoreArmTemplateDeployMappingRuleProfile].
   /// [applicationEnablement] The application enablement.
   /// [templateMappingRuleProfile] The template mapping rule profile.
-  AzureCoreArmTemplateDeployMappingRuleProfile({
+  const AzureCoreArmTemplateDeployMappingRuleProfile({
     this.applicationEnablement,
     this.templateMappingRuleProfile,
   });

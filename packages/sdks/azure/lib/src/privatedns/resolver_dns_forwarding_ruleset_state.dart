@@ -21,7 +21,7 @@ class ResolverDnsForwardingRulesetState {
   /// [privateDnsResolverOutboundEndpointIds] The list of IDs of the Private DNS Resolver Outbound Endpoint that is linked to the Private DNS Resolver Dns Forwarding Ruleset.
   /// [resourceGroupName] Specifies the name of the Resource Group where the Private DNS Resolver Dns Forwarding Ruleset should exist. Changing this forces a new Private DNS Resolver Dns Forwarding Ruleset to be created.
   /// [tags] A mapping of tags to assign to the Private DNS Resolver Dns Forwarding Ruleset.
-  ResolverDnsForwardingRulesetState({
+  const ResolverDnsForwardingRulesetState({
     this.location,
     this.name,
     this.privateDnsResolverOutboundEndpointIds,

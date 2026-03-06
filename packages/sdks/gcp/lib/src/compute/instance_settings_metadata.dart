@@ -8,7 +8,7 @@ class InstanceSettingsMetadata {
 
   /// Creates a new [InstanceSettingsMetadata].
   /// [items] A metadata key/value items map. The total size of all keys and values must be less than 512KB
-  InstanceSettingsMetadata({
+  const InstanceSettingsMetadata({
     this.items,
   });
 

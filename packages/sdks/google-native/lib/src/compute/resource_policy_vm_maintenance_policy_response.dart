@@ -12,7 +12,7 @@ class ResourcePolicyVmMaintenancePolicyResponse {
   /// Creates a new [ResourcePolicyVmMaintenancePolicyResponse].
   /// [concurrencyControlGroup] Required.
   /// [maintenanceWindow] Maintenance windows that are applied to VMs covered by this policy.
-  ResourcePolicyVmMaintenancePolicyResponse({
+  const ResourcePolicyVmMaintenancePolicyResponse({
     required this.concurrencyControlGroup,
     required this.maintenanceWindow,
   });

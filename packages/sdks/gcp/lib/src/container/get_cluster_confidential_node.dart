@@ -11,7 +11,7 @@ class GetClusterConfidentialNode {
   /// Creates a new [GetClusterConfidentialNode].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential node.
   /// [enabled] Whether Confidential Nodes feature is enabled for all nodes in this cluster.
-  GetClusterConfidentialNode({
+  const GetClusterConfidentialNode({
     required this.confidentialInstanceType,
     required this.enabled,
   });

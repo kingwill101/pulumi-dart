@@ -13,7 +13,7 @@ class RoomMessageReviewHandler {
   /// Creates a new [RoomMessageReviewHandler].
   /// [fallbackResult] The fallback behavior (whether the message
   /// [uri] ARN of the lambda message review handler function.
-  RoomMessageReviewHandler({
+  const RoomMessageReviewHandler({
     this.fallbackResult,
     this.uri,
   });

@@ -26,7 +26,7 @@ class GetManagedFolderResult {
   /// [name] The name of the managed folder. Required if not specified by URL parameter.
   /// [selfLink] The link to this managed folder.
   /// [updateTime] The last update time of the managed folder metadata in RFC 3339 format.
-  GetManagedFolderResult({
+  const GetManagedFolderResult({
     required this.bucket,
     required this.createTime,
     required this.kind,

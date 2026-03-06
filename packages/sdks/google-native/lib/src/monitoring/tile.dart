@@ -22,7 +22,7 @@ class Tile {
   /// [width] The width of the tile, measured in grid blocks. Tiles must have a minimum width of 1.
   /// [xPos] The zero-indexed position of the tile in grid blocks relative to the left edge of the grid. Tiles must be contained within the specified number of columns. x_pos cannot be negative.
   /// [yPos] The zero-indexed position of the tile in grid blocks relative to the top edge of the grid. y_pos cannot be negative.
-  Tile({
+  const Tile({
     this.height,
     this.widget,
     this.width,

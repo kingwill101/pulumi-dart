@@ -8,7 +8,7 @@ class DomainDevicesDiskBackingStoreSourceVhostUserSpicePort {
 
   /// Creates a new [DomainDevicesDiskBackingStoreSourceVhostUserSpicePort].
   /// [channel] Sets the channel attribute for the SPICE port in the random number generator backend.
-  DomainDevicesDiskBackingStoreSourceVhostUserSpicePort({
+  const DomainDevicesDiskBackingStoreSourceVhostUserSpicePort({
     required this.channel,
   });
 

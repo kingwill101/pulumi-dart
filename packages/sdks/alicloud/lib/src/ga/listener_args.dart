@@ -65,7 +65,7 @@ class ListenerArgs {
   /// [proxyProtocol] The proxy protocol of the listener. Default value: `false`. Valid values:
   /// [requestTimeout] The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
   /// [securityPolicyId] The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
-  ListenerArgs({
+  const ListenerArgs({
     required this.acceleratorId,
     this.certificates,
     this.clientAffinity,

@@ -9,7 +9,7 @@ class LiteSubscriptionDeliveryConfig {
 
   /// Creates a new [LiteSubscriptionDeliveryConfig].
   /// [deliveryRequirement] When this subscription should send messages to subscribers relative to messages persistence in storage.
-  LiteSubscriptionDeliveryConfig({
+  const LiteSubscriptionDeliveryConfig({
     required this.deliveryRequirement,
   });
 

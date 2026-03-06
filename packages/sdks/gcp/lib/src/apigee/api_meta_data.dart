@@ -14,7 +14,7 @@ class ApiMetaData {
   /// [createdAt] Time at which the API proxy was created, in milliseconds since epoch.
   /// [lastModifiedAt] Time at which the API proxy was most recently modified, in milliseconds since epoch.
   /// [subType] The type of entity described
-  ApiMetaData({
+  const ApiMetaData({
     this.createdAt,
     this.lastModifiedAt,
     this.subType,

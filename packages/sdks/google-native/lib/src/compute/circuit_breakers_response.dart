@@ -25,7 +25,7 @@ class CircuitBreakersResponse {
   /// [maxRequests] The maximum number of parallel requests that allowed to the backend service. If not specified, there is no limit.
   /// [maxRequestsPerConnection] Maximum requests for a single connection to the backend service. This parameter is respected by both the HTTP/1.1 and HTTP/2 implementations. If not specified, there is no limit. Setting this parameter to 1 will effectively disable keep alive. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
   /// [maxRetries] The maximum number of parallel retries allowed to the backend cluster. If not specified, the default is 1. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
-  CircuitBreakersResponse({
+  const CircuitBreakersResponse({
     required this.connectTimeout,
     required this.maxConnections,
     required this.maxPendingRequests,

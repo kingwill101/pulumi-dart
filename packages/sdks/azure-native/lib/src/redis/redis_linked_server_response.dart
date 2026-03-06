@@ -9,7 +9,7 @@ class RedisLinkedServerResponse {
 
   /// Creates a new [RedisLinkedServerResponse].
   /// [id] Linked server Id.
-  RedisLinkedServerResponse({
+  const RedisLinkedServerResponse({
     required this.id,
   });
 

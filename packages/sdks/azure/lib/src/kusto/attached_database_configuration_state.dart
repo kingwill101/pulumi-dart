@@ -36,7 +36,7 @@ class AttachedDatabaseConfigurationState {
   /// [name] The name of the Kusto Attached Database Configuration to create. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the resource group of the Kusto Cluster for which the configuration will be created. Changing this forces a new resource to be created.
   /// [sharing] A `sharing` block as defined below.
-  AttachedDatabaseConfigurationState({
+  const AttachedDatabaseConfigurationState({
     this.attachedDatabaseNames,
     this.clusterId,
     this.clusterName,

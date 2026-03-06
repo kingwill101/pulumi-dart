@@ -11,7 +11,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAccel
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib].
   /// [max] Maximum.
   /// [min] Minimum.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementAcceleratorTotalMemoryMib({
     required this.max,
     required this.min,
   });

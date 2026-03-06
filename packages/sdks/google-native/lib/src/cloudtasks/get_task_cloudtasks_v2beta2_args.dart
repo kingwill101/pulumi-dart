@@ -19,7 +19,7 @@ class GetTaskCloudtasksV2beta2Args {
   /// [queueId] Required.
   /// [responseView] Optional.
   /// [taskId] Required.
-  GetTaskCloudtasksV2beta2Args({
+  const GetTaskCloudtasksV2beta2Args({
     required this.location,
     this.project,
     required this.queueId,

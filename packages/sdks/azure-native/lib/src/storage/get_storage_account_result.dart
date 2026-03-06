@@ -176,7 +176,7 @@ class GetStorageAccountResult {
   /// [storageAccountSkuConversionStatus] This property is readOnly and is set by server during asynchronous storage account sku conversion operations.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetStorageAccountResult({
+  const GetStorageAccountResult({
     required this.accessTier,
     required this.accountMigrationInProgress,
     this.allowBlobPublicAccess,

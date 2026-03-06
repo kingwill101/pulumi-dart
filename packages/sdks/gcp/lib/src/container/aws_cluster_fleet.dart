@@ -11,7 +11,7 @@ class AwsClusterFleet {
   /// Creates a new [AwsClusterFleet].
   /// [membership] The name of the managed Hub Membership resource associated to this cluster. Membership names are formatted as projects/&lt;project-number&gt;/locations/global/membership/&lt;cluster-id&gt;.
   /// [project] The number of the Fleet host project where this cluster will be registered.
-  AwsClusterFleet({
+  const AwsClusterFleet({
     this.membership,
     this.project,
   });

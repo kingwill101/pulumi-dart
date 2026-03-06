@@ -11,7 +11,7 @@ class ScalingConfigurationSpotPriceLimit {
   /// Creates a new [ScalingConfigurationSpotPriceLimit].
   /// [instanceType] Resource type of an ECS instance.
   /// [priceLimit] Price limit hourly of instance type, 2 decimals is allowed at most.
-  ScalingConfigurationSpotPriceLimit({
+  const ScalingConfigurationSpotPriceLimit({
     this.instanceType,
     this.priceLimit,
   });

@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse 
 
   /// Creates a new [GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse].
   /// [enabled] Optional. Immutable. Whether to enable embedding management in this FeatureOnlineStore. It's immutable after creation to ensure the FeatureOnlineStore availability.
-  GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse({
+  const GoogleCloudAiplatformV1beta1FeatureOnlineStoreEmbeddingManagementResponse({
     required this.enabled,
   });
 

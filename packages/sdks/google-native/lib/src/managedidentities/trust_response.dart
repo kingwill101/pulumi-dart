@@ -39,7 +39,7 @@ class TrustResponse {
   /// [trustHandshakeSecret] The trust secret used for the handshake with the target domain. This will not be stored.
   /// [trustType] The type of trust represented by the trust resource.
   /// [updateTime] The last update time.
-  TrustResponse({
+  const TrustResponse({
     required this.createTime,
     required this.lastTrustHeartbeatTime,
     required this.selectiveAuthentication,

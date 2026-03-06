@@ -19,7 +19,7 @@ class AutomationSourceRuleSetRule {
   /// [operator] The comparison operator to use, must be one of: `Contains`, `EndsWith`, `Equals`, `GreaterThan`, `GreaterThanOrEqualTo`, `LesserThan`, `LesserThanOrEqualTo`, `NotEquals`, `StartsWith`
   /// [propertyPath] The JPath of the entity model property that should be checked.
   /// [propertyType] The data type of the compared operands, must be one of: `Integer`, `String`, `Boolean` or `Number`.
-  AutomationSourceRuleSetRule({
+  const AutomationSourceRuleSetRule({
     required this.expectedValue,
     required this.operator,
     required this.propertyPath,

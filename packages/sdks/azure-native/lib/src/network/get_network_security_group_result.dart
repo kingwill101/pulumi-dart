@@ -55,7 +55,7 @@ class GetNetworkSecurityGroupResult {
   /// [subnets] A collection of references to subnets.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkSecurityGroupResult({
+  const GetNetworkSecurityGroupResult({
     required this.azureApiVersion,
     required this.defaultSecurityRules,
     required this.etag,

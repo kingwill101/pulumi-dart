@@ -28,7 +28,7 @@ class WorkloadIdentityPoolKeyArgs {
   /// [use] The purpose of the key.
   /// [workloadIdentityPoolId] Required.
   /// [workloadIdentityPoolProviderKeyId] Required. The ID to use for the key, which becomes the final component of the resource name. This value should be 4-32 characters, and may contain the characters [a-z0-9-].
-  WorkloadIdentityPoolKeyArgs({
+  const WorkloadIdentityPoolKeyArgs({
     this.keyData,
     this.location,
     this.project,

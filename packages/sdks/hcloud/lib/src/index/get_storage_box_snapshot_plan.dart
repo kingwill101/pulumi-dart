@@ -20,7 +20,7 @@ class GetStorageBoxSnapshotPlan {
   /// [hour] Hour when the Snapshot Plan is executed (UTC).
   /// [maxSnapshots] Maximum amount of Snapshots that will be created by this Snapshot Plan. Older Snapshots will be deleted.
   /// [minute] Minute when the Snapshot Plan is executed (UTC).
-  GetStorageBoxSnapshotPlan({
+  const GetStorageBoxSnapshotPlan({
     required this.dayOfMonth,
     required this.dayOfWeek,
     required this.hour,

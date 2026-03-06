@@ -173,7 +173,7 @@ class FunctionState {
   /// [tracingConfig] Configuration block for X-Ray tracing. See below.
   /// [version] Latest published version of your Lambda Function.
   /// [vpcConfig] Configuration block for VPC. See below.
-  FunctionState({
+  const FunctionState({
     this.architectures,
     this.arn,
     this.capacityProviderConfig,

@@ -23,7 +23,7 @@ class RegistrationDefinitionArgs {
   /// [properties] The properties of a registration definition.
   /// [registrationDefinitionId] The GUID of the registration definition.
   /// [scope] The scope of the resource.
-  RegistrationDefinitionArgs({
+  const RegistrationDefinitionArgs({
     this.plan,
     this.properties,
     this.registrationDefinitionId,

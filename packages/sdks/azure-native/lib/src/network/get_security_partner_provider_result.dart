@@ -39,7 +39,7 @@ class GetSecurityPartnerProviderResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualHub] The virtualHub to which the Security Partner Provider belongs.
-  GetSecurityPartnerProviderResult({
+  const GetSecurityPartnerProviderResult({
     required this.azureApiVersion,
     required this.connectionStatus,
     required this.etag,

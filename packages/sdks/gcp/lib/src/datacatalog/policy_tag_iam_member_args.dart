@@ -34,7 +34,7 @@ class PolicyTagIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [policyTag] Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
-  PolicyTagIamMemberArgs({
+  const PolicyTagIamMemberArgs({
     this.condition,
     required this.member,
     required this.policyTag,

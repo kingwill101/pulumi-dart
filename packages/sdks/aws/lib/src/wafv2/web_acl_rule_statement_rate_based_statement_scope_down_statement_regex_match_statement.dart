@@ -16,7 +16,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement
   /// [fieldToMatch] The part of a web request that you want AWS WAF to inspect. See `field_to_match` below for details.
   /// [regexString] String representing the regular expression. Minimum of `1` and maximum of `512` characters.
   /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection. At least one transformation is required. See `text_transformation` below for details.
-  WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatement({
     this.fieldToMatch,
     required this.regexString,
     required this.textTransformations,

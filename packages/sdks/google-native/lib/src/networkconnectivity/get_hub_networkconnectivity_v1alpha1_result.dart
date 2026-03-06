@@ -29,7 +29,7 @@ class GetHubNetworkconnectivityV1alpha1Result {
   /// [state] The current lifecycle state of this Hub.
   /// [uniqueId] Google-generated UUID for this resource. This is unique across all Hub resources. If a Hub resource is deleted and another with the same name is created, it gets a different unique_id.
   /// [updateTime] Time when the Hub was updated.
-  GetHubNetworkconnectivityV1alpha1Result({
+  const GetHubNetworkconnectivityV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.labels,

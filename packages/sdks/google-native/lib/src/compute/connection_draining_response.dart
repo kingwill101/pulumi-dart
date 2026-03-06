@@ -9,7 +9,7 @@ class ConnectionDrainingResponse {
 
   /// Creates a new [ConnectionDrainingResponse].
   /// [drainingTimeoutSec] Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
-  ConnectionDrainingResponse({
+  const ConnectionDrainingResponse({
     required this.drainingTimeoutSec,
   });
 

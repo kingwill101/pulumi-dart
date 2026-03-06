@@ -12,7 +12,7 @@ class GetObjectStorageQuotasArgs {
 
   /// Creates a new [GetObjectStorageQuotasArgs].
   /// [filters] Optional.
-  GetObjectStorageQuotasArgs({
+  const GetObjectStorageQuotasArgs({
     this.filters,
   });
 

@@ -35,7 +35,7 @@ class ServiceBus {
   /// [identity] Managed identity properties for the endpoint.
   /// [primaryConnectionString] PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
   /// [secondaryConnectionString] SecondaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
-  ServiceBus({
+  const ServiceBus({
     this.authenticationType,
     this.deadLetterSecret,
     this.deadLetterUri,

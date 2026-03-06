@@ -14,7 +14,7 @@ class InstanceCpuOptions {
   /// [coreCount] The maximum number of partitions in the storage set.
   /// [threadsPerCore] The number of threads per CPU core.
   /// [topologyType] The CPU topology type of the instance. Valid values: `ContinuousCoreToHTMapping`, `DiscreteCoreToHTMapping`.
-  InstanceCpuOptions({
+  const InstanceCpuOptions({
     this.coreCount,
     this.threadsPerCore,
     this.topologyType,

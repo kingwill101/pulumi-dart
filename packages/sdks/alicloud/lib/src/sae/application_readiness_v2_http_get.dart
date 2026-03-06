@@ -15,7 +15,7 @@ class ApplicationReadinessV2HttpGet {
   /// [path] Optional.
   /// [port] Optional.
   /// [scheme] Optional.
-  ApplicationReadinessV2HttpGet({
+  const ApplicationReadinessV2HttpGet({
     this.isContainKeyWord,
     this.keyWord,
     this.path,

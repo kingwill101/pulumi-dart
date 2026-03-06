@@ -30,7 +30,7 @@ class BasicEndpointGroupArgs {
   /// [endpointGroupRegion] The ID of the region where you want to create the endpoint group.
   /// [endpointSubAddress] The sub address of the endpoint.
   /// [endpointType] The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
-  BasicEndpointGroupArgs({
+  const BasicEndpointGroupArgs({
     required this.acceleratorId,
     this.basicEndpointGroupName,
     this.description,

@@ -87,7 +87,7 @@ class GetLabResult {
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [vaultName] The lab's Key vault.
   /// [vmCreationResourceGroup] The resource group in which all new lab virtual machines will be created. To let DevTest Labs manage resource group creation, set this value to null.
-  GetLabResult({
+  const GetLabResult({
     this.announcement,
     required this.artifactsStorageAccount,
     required this.azureApiVersion,

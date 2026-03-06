@@ -11,7 +11,7 @@ class AccountNetworkAclsVirtualNetworkRule {
   /// Creates a new [AccountNetworkAclsVirtualNetworkRule].
   /// [ignoreMissingVnetServiceEndpoint] Whether ignore missing vnet service endpoint or not. Defaults to `false`.
   /// [subnetId] The ID of the subnet which should be able to access this Cognitive Account.
-  AccountNetworkAclsVirtualNetworkRule({
+  const AccountNetworkAclsVirtualNetworkRule({
     this.ignoreMissingVnetServiceEndpoint,
     required this.subnetId,
   });

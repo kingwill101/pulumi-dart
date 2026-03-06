@@ -50,7 +50,7 @@ class GetSmartDetectorAlertRuleResult {
   /// [tags] The resource tags.
   /// [throttling] The alert rule throttling information.
   /// [type] The resource type.
-  GetSmartDetectorAlertRuleResult({
+  const GetSmartDetectorAlertRuleResult({
     required this.actionGroups,
     required this.azureApiVersion,
     this.description,

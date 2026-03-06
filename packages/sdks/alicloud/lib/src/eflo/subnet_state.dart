@@ -42,7 +42,7 @@ class SubnetState {
   /// [type] Eflo subnet usage type. optional value:
   /// [vpdId] The Eflo VPD ID.
   /// [zoneId] The zone ID  of the resource.
-  SubnetState({
+  const SubnetState({
     this.cidr,
     this.createTime,
     this.gmtModified,

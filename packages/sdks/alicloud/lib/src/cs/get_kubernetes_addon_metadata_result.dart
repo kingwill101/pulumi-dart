@@ -17,7 +17,7 @@ class GetKubernetesAddonMetadataResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [version] Required.
-  GetKubernetesAddonMetadataResult({
+  const GetKubernetesAddonMetadataResult({
     required this.clusterId,
     required this.configSchema,
     required this.id,

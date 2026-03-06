@@ -15,7 +15,7 @@ class GetAccessConnectorArgs {
   /// Creates a new [GetAccessConnectorArgs].
   /// [name] The name of this Databricks Access Connector.
   /// [resourceGroupName] The name of the Resource Group where the Databricks Access Connector exists. Changing this forces a new Databricks Access Connector to be created.
-  GetAccessConnectorArgs({
+  const GetAccessConnectorArgs({
     required this.name,
     required this.resourceGroupName,
   });

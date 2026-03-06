@@ -21,7 +21,7 @@ class GetAdminRuleCollectionArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   /// [ruleCollectionName] The name of the network manager security Configuration rule collection.
-  GetAdminRuleCollectionArgs({
+  const GetAdminRuleCollectionArgs({
     required this.configurationName,
     required this.networkManagerName,
     required this.resourceGroupName,

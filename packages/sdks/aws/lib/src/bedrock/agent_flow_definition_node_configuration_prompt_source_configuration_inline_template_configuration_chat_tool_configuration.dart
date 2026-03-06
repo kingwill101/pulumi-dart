@@ -13,7 +13,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration].
   /// [toolChoice] Defines which tools the model should request when invoked. See Tool Choice for more information.
   /// [tools] A list of tools to pass to a model. See Tool for more information.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChatToolConfiguration({
     this.toolChoice,
     this.tools,
   });

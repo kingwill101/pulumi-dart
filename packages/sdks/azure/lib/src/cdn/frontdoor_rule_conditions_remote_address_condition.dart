@@ -16,7 +16,7 @@ class FrontdoorRuleConditionsRemoteAddressCondition {
   /// [matchValues] For the IP Match or IP Not Match operators: specify one or more IP address ranges. If multiple IP address ranges are specified, they're evaluated using `OR` logic. For the Geo Match or Geo Not Match operators: specify one or more locations using their country code.
   /// [negateCondition] If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   /// [operator] The type of the remote address to match. Possible values include `Any`, `GeoMatch` or `IPMatch`. Use the `negate_condition` to specify Not `GeoMatch` or Not `IPMatch`. Defaults to `IPMatch`.
-  FrontdoorRuleConditionsRemoteAddressCondition({
+  const FrontdoorRuleConditionsRemoteAddressCondition({
     this.matchValues,
     this.negateCondition,
     this.operator,

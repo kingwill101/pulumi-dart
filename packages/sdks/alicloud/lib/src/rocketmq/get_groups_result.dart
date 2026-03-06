@@ -32,7 +32,7 @@ class GetGroupsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [tags] A map of tags assigned to the Ons group.
-  GetGroupsResult({
+  const GetGroupsResult({
     this.groupIdRegex,
     this.groupType,
     required this.groups,

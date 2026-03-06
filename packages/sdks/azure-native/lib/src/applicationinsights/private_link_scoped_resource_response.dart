@@ -12,7 +12,7 @@ class PrivateLinkScopedResourceResponse {
   /// Creates a new [PrivateLinkScopedResourceResponse].
   /// [resourceId] The full resource Id of the private link scope resource.
   /// [scopeId] The private link scope unique Identifier.
-  PrivateLinkScopedResourceResponse({
+  const PrivateLinkScopedResourceResponse({
     this.resourceId,
     this.scopeId,
   });

@@ -18,7 +18,7 @@ class GetPartnerTopicEventSubscriptionDeliveryAttributesArgs {
   /// [eventSubscriptionName] Name of the event subscription.
   /// [partnerTopicName] Name of the partner topic.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerTopicEventSubscriptionDeliveryAttributesArgs({
+  const GetPartnerTopicEventSubscriptionDeliveryAttributesArgs({
     required this.eventSubscriptionName,
     required this.partnerTopicName,
     required this.resourceGroupName,

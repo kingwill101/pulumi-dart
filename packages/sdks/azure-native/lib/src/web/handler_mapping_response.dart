@@ -16,7 +16,7 @@ class HandlerMappingResponse {
   /// [arguments] Command-line arguments to be passed to the script processor.
   /// [extension] Requests with this extension will be handled using the specified FastCGI application.
   /// [scriptProcessor] The absolute path to the FastCGI application.
-  HandlerMappingResponse({
+  const HandlerMappingResponse({
     this.arguments,
     this.extension,
     this.scriptProcessor,

@@ -24,7 +24,7 @@ class MongoConnectionInformation {
   /// [port] Port of mongo connection.
   /// [useSsl] Whether to UseSsl or UseTls to connect to Mongo. Default is true.
   /// [userName] User name to connect to Mongo.
-  MongoConnectionInformation({
+  const MongoConnectionInformation({
     this.connectionString,
     this.host,
     this.password,

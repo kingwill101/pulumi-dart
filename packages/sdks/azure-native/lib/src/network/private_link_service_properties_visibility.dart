@@ -9,7 +9,7 @@ class PrivateLinkServicePropertiesVisibility {
 
   /// Creates a new [PrivateLinkServicePropertiesVisibility].
   /// [subscriptions] The list of subscriptions.
-  PrivateLinkServicePropertiesVisibility({
+  const PrivateLinkServicePropertiesVisibility({
     this.subscriptions,
   });
 

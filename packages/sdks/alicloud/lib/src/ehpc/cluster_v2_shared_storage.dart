@@ -25,7 +25,7 @@ class ClusterV2SharedStorage {
   /// [mountTargetDomain] The mount point address of the mounted file system.
   /// [nasDirectory] The remote directory to which the mounted file system needs to be mounted.
   /// [protocolType] The protocol type of the mounted file system. Value range:
-  ClusterV2SharedStorage({
+  const ClusterV2SharedStorage({
     this.fileSystemId,
     this.mountDirectory,
     this.mountOptions,

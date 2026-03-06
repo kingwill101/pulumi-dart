@@ -19,7 +19,7 @@ class DirectLineChannelProperties {
   /// [extensionKey1] The extensionKey1
   /// [extensionKey2] The extensionKey2
   /// [sites] The list of Direct Line sites
-  DirectLineChannelProperties({
+  const DirectLineChannelProperties({
     this.directLineEmbedCode,
     this.extensionKey1,
     this.extensionKey2,

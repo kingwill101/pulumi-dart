@@ -18,7 +18,7 @@ class GetPeriodicTimerEventTriggerArgs {
   /// [deviceName] The device name.
   /// [name] The trigger name.
   /// [resourceGroupName] The resource group name.
-  GetPeriodicTimerEventTriggerArgs({
+  const GetPeriodicTimerEventTriggerArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

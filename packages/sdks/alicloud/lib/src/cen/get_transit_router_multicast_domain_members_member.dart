@@ -23,7 +23,7 @@ class GetTransitRouterMulticastDomainMembersMember {
   /// [status] The status of the resource
   /// [transitRouterMulticastDomainId] The ID of the multicast domain to which the multicast member belongs.
   /// [vpcId] The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
-  GetTransitRouterMulticastDomainMembersMember({
+  const GetTransitRouterMulticastDomainMembersMember({
     required this.groupIpAddress,
     required this.id,
     required this.networkInterfaceId,

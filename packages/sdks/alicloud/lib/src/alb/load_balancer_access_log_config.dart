@@ -11,7 +11,7 @@ class LoadBalancerAccessLogConfig {
   /// Creates a new [LoadBalancerAccessLogConfig].
   /// [logProject] The project to which the access log is shipped.
   /// [logStore] The Logstore to which the access log is shipped.
-  LoadBalancerAccessLogConfig({
+  const LoadBalancerAccessLogConfig({
     this.logProject,
     this.logStore,
   });

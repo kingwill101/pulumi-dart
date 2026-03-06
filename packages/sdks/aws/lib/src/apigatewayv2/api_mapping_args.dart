@@ -24,7 +24,7 @@ class ApiMappingArgs {
   /// [domainName] Domain name. Use the `aws.apigatewayv2.DomainName` resource to configure a domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stage] API stage. Use the `aws.apigatewayv2.Stage` resource to configure an API stage.
-  ApiMappingArgs({
+  const ApiMappingArgs({
     required this.apiId,
     this.apiMappingKey,
     required this.domainName,

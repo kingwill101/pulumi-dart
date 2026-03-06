@@ -8,7 +8,7 @@ class GetEventSubscriptionFullUrlResult {
 
   /// Creates a new [GetEventSubscriptionFullUrlResult].
   /// [endpointUrl] The URL that represents the endpoint of the destination of an event subscription.
-  GetEventSubscriptionFullUrlResult({
+  const GetEventSubscriptionFullUrlResult({
     this.endpointUrl,
   });
 

@@ -12,7 +12,7 @@ class ContainerGroupSubnetId {
   /// Creates a new [ContainerGroupSubnetId].
   /// [id] Resource ID of subnet.
   /// [name] Friendly name for the subnet.
-  ContainerGroupSubnetId({
+  const ContainerGroupSubnetId({
     required this.id,
     this.name,
   });

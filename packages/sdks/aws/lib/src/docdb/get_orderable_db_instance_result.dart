@@ -25,7 +25,7 @@ class GetOrderableDbInstanceResult {
   /// [preferredInstanceClasses] Optional.
   /// [region] Required.
   /// [vpc] Required.
-  GetOrderableDbInstanceResult({
+  const GetOrderableDbInstanceResult({
     required this.availabilityZones,
     this.engine,
     required this.engineVersion,

@@ -14,7 +14,7 @@ class GoogleCloudDatacatalogV1BusinessContextResponse {
   /// Creates a new [GoogleCloudDatacatalogV1BusinessContextResponse].
   /// [contacts] Contact people for the entry.
   /// [entryOverview] Entry overview fields for rich text descriptions of entries.
-  GoogleCloudDatacatalogV1BusinessContextResponse({
+  const GoogleCloudDatacatalogV1BusinessContextResponse({
     required this.contacts,
     required this.entryOverview,
   });

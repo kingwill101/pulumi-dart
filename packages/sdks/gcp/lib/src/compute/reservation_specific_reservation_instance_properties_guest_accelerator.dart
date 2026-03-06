@@ -15,7 +15,7 @@ class ReservationSpecificReservationInstancePropertiesGuestAccelerator {
   /// Creates a new [ReservationSpecificReservationInstancePropertiesGuestAccelerator].
   /// [acceleratorCount] The number of the guest accelerator cards exposed to
   /// [acceleratorType] The full or partial URL of the accelerator type to
-  ReservationSpecificReservationInstancePropertiesGuestAccelerator({
+  const ReservationSpecificReservationInstancePropertiesGuestAccelerator({
     required this.acceleratorCount,
     required this.acceleratorType,
   });

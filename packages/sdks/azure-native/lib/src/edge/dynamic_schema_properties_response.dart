@@ -15,7 +15,7 @@ class DynamicSchemaPropertiesResponse {
   /// [configurationModel] Type of configuration model
   /// [configurationType] Type of configuration
   /// [provisioningState] Provisioning state of resource
-  DynamicSchemaPropertiesResponse({
+  const DynamicSchemaPropertiesResponse({
     required this.configurationModel,
     required this.configurationType,
     required this.provisioningState,

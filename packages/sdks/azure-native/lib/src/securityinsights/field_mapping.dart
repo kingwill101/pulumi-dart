@@ -12,7 +12,7 @@ class FieldMapping {
   /// Creates a new [FieldMapping].
   /// [columnName] the column name to be mapped to the identifier
   /// [identifier] the V3 identifier of the entity
-  FieldMapping({
+  const FieldMapping({
     this.columnName,
     this.identifier,
   });

@@ -33,7 +33,7 @@ class GetEndpointAssociationsAssociation {
   /// [serviceNetworkArn] Service Network ARN. Applicable for endpoints of type `ServiceNetwork`.
   /// [serviceNetworkName] Service Network Name. Applicable for endpoints of type `ServiceNetwork`.
   /// [tags] Tags of the association.
-  GetEndpointAssociationsAssociation({
+  const GetEndpointAssociationsAssociation({
     required this.associatedResourceAccessibility,
     required this.associatedResourceArn,
     required this.dnsEntries,

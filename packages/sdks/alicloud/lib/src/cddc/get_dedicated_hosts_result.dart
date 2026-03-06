@@ -32,7 +32,7 @@ class GetDedicatedHostsResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [zoneId] Optional.
-  GetDedicatedHostsResult({
+  const GetDedicatedHostsResult({
     this.allocationStatus,
     required this.dedicatedHostGroupId,
     this.enableDetails,

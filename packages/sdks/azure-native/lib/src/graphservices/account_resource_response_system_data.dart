@@ -18,7 +18,7 @@ class AccountResourceResponseSystemData {
   /// [createdByType] The type of identity that created the resource.
   /// [lastModifiedAt] The timestamp of resource last modification (UTC)
   /// [lastModifiedByType] The type of identity that last modified the resource.
-  AccountResourceResponseSystemData({
+  const AccountResourceResponseSystemData({
     this.createdAt,
     this.createdByType,
     this.lastModifiedAt,

@@ -30,7 +30,7 @@ class GetLinuxFunctionAppSiteConfigIpRestriction {
   /// [priority] The priority value of this `ip_restriction`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The Virtual Network Subnet ID used for this IP Restriction.
-  GetLinuxFunctionAppSiteConfigIpRestriction({
+  const GetLinuxFunctionAppSiteConfigIpRestriction({
     required this.action,
     required this.description,
     required this.headers,

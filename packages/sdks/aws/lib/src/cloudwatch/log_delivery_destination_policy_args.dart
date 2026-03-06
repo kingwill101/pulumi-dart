@@ -18,7 +18,7 @@ class LogDeliveryDestinationPolicyArgs {
   /// [deliveryDestinationName] The name of the delivery destination to assign this policy to.
   /// [deliveryDestinationPolicy] The contents of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LogDeliveryDestinationPolicyArgs({
+  const LogDeliveryDestinationPolicyArgs({
     required this.deliveryDestinationName,
     required this.deliveryDestinationPolicy,
     this.region,

@@ -20,7 +20,7 @@ class EndpointPrivateDnsZoneConfigRecordSet {
   /// [name] Specifies the Name of the Private Endpoint. Changing this forces a new resource to be created.
   /// [ttl] The time to live for each connection to the `private_dns_zone`.
   /// [type] The type of DNS record.
-  EndpointPrivateDnsZoneConfigRecordSet({
+  const EndpointPrivateDnsZoneConfigRecordSet({
     this.fqdn,
     this.ipAddresses,
     this.name,

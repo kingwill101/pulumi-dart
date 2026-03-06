@@ -23,7 +23,7 @@ class StackScriptUserDefinedField {
   /// [manyOf] A list of acceptable values for the field in any quantity, combination or order.
   /// [name] The name of the field.
   /// [oneOf] A list of acceptable single values for the field.
-  StackScriptUserDefinedField({
+  const StackScriptUserDefinedField({
     required this.default_,
     required this.example,
     required this.label,

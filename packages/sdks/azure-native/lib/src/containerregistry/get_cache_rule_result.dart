@@ -37,7 +37,7 @@ class GetCacheRuleResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [targetRepository] Target repository specified in docker pull command.
   /// [type] The type of the resource.
-  GetCacheRuleResult({
+  const GetCacheRuleResult({
     required this.azureApiVersion,
     required this.creationDate,
     this.credentialSetResourceId,

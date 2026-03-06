@@ -11,7 +11,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   /// Creates a new [ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling].
   /// [maxNodeCount] The maximum number of nodes in the node pool. Must be &gt;= minNodeCount, and must be &gt; 0.
   /// [minNodeCount] The minimum number of nodes in the node pool. Must be &gt;= 0 and &lt;= maxNodeCount.
-  ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling({
+  const ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigAutoscaling({
     this.maxNodeCount,
     this.minNodeCount,
   });

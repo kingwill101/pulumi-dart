@@ -8,7 +8,7 @@ class ListenerDefaultActionForwardGroupConfigServerGroupTuple {
 
   /// Creates a new [ListenerDefaultActionForwardGroupConfigServerGroupTuple].
   /// [serverGroupId] Forwarded to the Destination Server Group ID
-  ListenerDefaultActionForwardGroupConfigServerGroupTuple({
+  const ListenerDefaultActionForwardGroupConfigServerGroupTuple({
     required this.serverGroupId,
   });
 

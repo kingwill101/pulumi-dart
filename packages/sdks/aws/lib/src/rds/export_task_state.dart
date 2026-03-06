@@ -59,7 +59,7 @@ class ExportTaskState {
   /// [taskStartTime] Time that the snapshot export task started.
   /// [timeouts] Optional.
   /// [warningMessage] Warning about the snapshot export task, if any.
-  ExportTaskState({
+  const ExportTaskState({
     this.exportOnlies,
     this.exportTaskIdentifier,
     this.failureCause,

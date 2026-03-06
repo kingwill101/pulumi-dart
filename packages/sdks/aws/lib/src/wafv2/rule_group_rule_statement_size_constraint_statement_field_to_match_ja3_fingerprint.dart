@@ -8,7 +8,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint {
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint].
   /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a JA3 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint({
+  const RuleGroupRuleStatementSizeConstraintStatementFieldToMatchJa3Fingerprint({
     required this.fallbackBehavior,
   });
 

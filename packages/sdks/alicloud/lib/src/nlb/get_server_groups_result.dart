@@ -30,7 +30,7 @@ class GetServerGroupsResult {
   /// [serverGroupType] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetServerGroupsResult({
+  const GetServerGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

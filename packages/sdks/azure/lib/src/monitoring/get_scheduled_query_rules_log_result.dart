@@ -35,7 +35,7 @@ class GetScheduledQueryRulesLogResult {
   /// [name] Name of the dimension.
   /// [resourceGroupName] Required.
   /// [tags] Required.
-  GetScheduledQueryRulesLogResult({
+  const GetScheduledQueryRulesLogResult({
     required this.authorizedResourceIds,
     required this.criterias,
     required this.dataSourceId,

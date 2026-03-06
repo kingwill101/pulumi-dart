@@ -23,7 +23,7 @@ class JobScaleRuleResponse {
   /// [metadata] Metadata properties to describe the scale rule.
   /// [name] Scale Rule Name
   /// [type] Type of the scale rule
-  JobScaleRuleResponse({
+  const JobScaleRuleResponse({
     this.auth,
     this.identity,
     this.metadata,

@@ -19,7 +19,7 @@ class TenantInboundSamlConfigIdpConfig {
   /// [idpEntityId] Unique identifier for all SAML entities
   /// [signRequest] Indicates if outbounding SAMLRequest should be signed.
   /// [ssoUrl] URL to send Authentication request to.
-  TenantInboundSamlConfigIdpConfig({
+  const TenantInboundSamlConfigIdpConfig({
     required this.idpCertificates,
     required this.idpEntityId,
     this.signRequest,

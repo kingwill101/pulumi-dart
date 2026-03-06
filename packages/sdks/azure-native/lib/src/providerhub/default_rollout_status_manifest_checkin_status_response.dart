@@ -18,7 +18,7 @@ class DefaultRolloutStatusManifestCheckinStatusResponse {
   /// [isCheckedIn] Whether the manifest is checked in.
   /// [pullRequest] The pull request.
   /// [statusMessage] The status message.
-  DefaultRolloutStatusManifestCheckinStatusResponse({
+  const DefaultRolloutStatusManifestCheckinStatusResponse({
     this.commitId,
     required this.isCheckedIn,
     this.pullRequest,

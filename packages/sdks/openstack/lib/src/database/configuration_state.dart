@@ -25,7 +25,7 @@ class ConfigurationState {
   /// [description] Description of the resource.
   /// [name] A unique name for the resource.
   /// [region] The region in which to create the db instance. Changing this
-  ConfigurationState({
+  const ConfigurationState({
     this.configurations,
     this.datastore,
     this.description,

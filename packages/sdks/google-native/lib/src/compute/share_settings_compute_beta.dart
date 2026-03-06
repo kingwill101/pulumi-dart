@@ -16,7 +16,7 @@ class ShareSettingsComputeBeta {
   /// [projectMap] A map of project id and project config. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   /// [projects] A List of Project names to specify consumer projects for this shared-reservation. This is only valid when share_type's value is SPECIFIC_PROJECTS.
   /// [shareType] Type of sharing for this shared-reservation
-  ShareSettingsComputeBeta({
+  const ShareSettingsComputeBeta({
     this.projectMap,
     this.projects,
     this.shareType,

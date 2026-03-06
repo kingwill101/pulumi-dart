@@ -20,7 +20,7 @@ class ListenerAclAttachmentState {
   /// [aclType] Access control type:
   /// [listenerId] Listener instance ID.
   /// [status] Listener Status.
-  ListenerAclAttachmentState({
+  const ListenerAclAttachmentState({
     this.aclId,
     this.aclType,
     this.listenerId,

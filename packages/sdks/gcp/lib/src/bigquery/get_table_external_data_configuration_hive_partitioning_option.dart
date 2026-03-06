@@ -14,7 +14,7 @@ class GetTableExternalDataConfigurationHivePartitioningOption {
   /// [mode] When set, what mode of hive partitioning to use when reading data.
   /// [requirePartitionFilter] If set to true, queries over this table require a partition filter that can be used for partition elimination to be specified.
   /// [sourceUriPrefix] When hive partition detection is requested, a common for all source uris must be required. The prefix must end immediately before the partition key encoding begins.
-  GetTableExternalDataConfigurationHivePartitioningOption({
+  const GetTableExternalDataConfigurationHivePartitioningOption({
     required this.mode,
     required this.requirePartitionFilter,
     required this.sourceUriPrefix,

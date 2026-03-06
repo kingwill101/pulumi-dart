@@ -42,7 +42,7 @@ class MulticastGroupProducerActivationArgs {
   /// [multicastGroupRangeActivation] The resource name of the multicast group range activationcreated by the
   /// [multicastProducerAssociation] The resource name of the multicast producer association that is in the
   /// [project] The ID of the project in which the resource belongs.
-  MulticastGroupProducerActivationArgs({
+  const MulticastGroupProducerActivationArgs({
     this.description,
     this.labels,
     required this.location,

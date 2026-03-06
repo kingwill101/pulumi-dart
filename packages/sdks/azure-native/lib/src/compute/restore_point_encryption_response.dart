@@ -13,7 +13,7 @@ class RestorePointEncryptionResponse {
   /// Creates a new [RestorePointEncryptionResponse].
   /// [diskEncryptionSet] Describes the parameter of customer managed disk encryption set resource id that can be specified for disk. **Note:** The disk encryption set resource id can only be specified for managed disk. Please refer https://aka.ms/mdssewithcmkoverview for more details.
   /// [type] The type of key used to encrypt the data of the disk restore point.
-  RestorePointEncryptionResponse({
+  const RestorePointEncryptionResponse({
     this.diskEncryptionSet,
     this.type,
   });

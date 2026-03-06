@@ -8,7 +8,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstrai
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSizeConstraintStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

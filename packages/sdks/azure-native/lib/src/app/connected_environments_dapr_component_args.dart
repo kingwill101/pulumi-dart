@@ -48,7 +48,7 @@ class ConnectedEnvironmentsDaprComponentArgs {
   /// [secrets] Collection of secrets used by a Dapr component
   /// [serviceComponentBind] List of container app services that are bound to the Dapr component
   /// [version] Component version
-  ConnectedEnvironmentsDaprComponentArgs({
+  const ConnectedEnvironmentsDaprComponentArgs({
     this.componentName,
     this.componentType,
     required this.connectedEnvironmentName,

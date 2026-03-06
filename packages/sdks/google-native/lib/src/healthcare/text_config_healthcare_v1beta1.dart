@@ -20,7 +20,7 @@ class TextConfigHealthcareV1beta1 {
   /// [excludeInfoTypes] InfoTypes to skip transforming, overriding `profile`.
   /// [profileType] Base profile type for text transformation.
   /// [transformations_] The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead.
-  TextConfigHealthcareV1beta1({
+  const TextConfigHealthcareV1beta1({
     this.additionalTransformations,
     this.excludeInfoTypes,
     this.profileType,

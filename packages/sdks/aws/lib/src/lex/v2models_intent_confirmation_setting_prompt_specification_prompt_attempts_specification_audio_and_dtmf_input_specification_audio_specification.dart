@@ -11,7 +11,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification].
   /// [endTimeoutMs] Time for which a bot waits after the customer stops speaking to assume the utterance is finished.
   /// [maxLengthMs] Time for how long Amazon Lex waits before speech input is truncated and the speech is returned to application.
-  V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification({
+  const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification({
     required this.endTimeoutMs,
     required this.maxLengthMs,
   });

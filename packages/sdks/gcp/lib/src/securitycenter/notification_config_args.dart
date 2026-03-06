@@ -28,7 +28,7 @@ class NotificationConfigArgs {
   /// [organization] The organization whose Cloud Security Command Center the Notification
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  NotificationConfigArgs({
+  const NotificationConfigArgs({
     required this.configId,
     this.description,
     required this.organization,

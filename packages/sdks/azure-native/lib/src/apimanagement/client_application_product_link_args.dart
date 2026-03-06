@@ -24,7 +24,7 @@ class ClientApplicationProductLinkArgs {
   /// [productId] The unique resource identifier of the Product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  ClientApplicationProductLinkArgs({
+  const ClientApplicationProductLinkArgs({
     required this.clientApplicationId,
     this.clientApplicationProductLinkId,
     required this.productId,

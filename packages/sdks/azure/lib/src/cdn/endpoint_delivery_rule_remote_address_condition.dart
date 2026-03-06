@@ -14,7 +14,7 @@ class EndpointDeliveryRuleRemoteAddressCondition {
   /// [matchValues] List of string values. For `GeoMatch` `operator` this should be a list of country codes (e.g. `US` or `DE`). List of IP address if `operator` equals to `IPMatch`. This is required if `operator` is not `Any`.
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Any`, `GeoMatch` and `IPMatch`.
-  EndpointDeliveryRuleRemoteAddressCondition({
+  const EndpointDeliveryRuleRemoteAddressCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

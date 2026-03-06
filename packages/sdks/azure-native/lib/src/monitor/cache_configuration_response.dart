@@ -12,7 +12,7 @@ class CacheConfigurationResponse {
   /// Creates a new [CacheConfigurationResponse].
   /// [maxStorageUsage] Max storage usage in megabytes.
   /// [retentionPeriod] Retention period in minutes.
-  CacheConfigurationResponse({
+  const CacheConfigurationResponse({
     this.maxStorageUsage,
     this.retentionPeriod,
   });

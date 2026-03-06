@@ -12,7 +12,7 @@ class DomainClusterConfigNodeOption {
   /// Creates a new [DomainClusterConfigNodeOption].
   /// [nodeConfig] Container to specify sizing of a node type.
   /// [nodeType] Type of node this configuration describes. Valid values: `coordinator`.
-  DomainClusterConfigNodeOption({
+  const DomainClusterConfigNodeOption({
     this.nodeConfig,
     this.nodeType,
   });

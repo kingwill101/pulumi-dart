@@ -35,7 +35,7 @@ class KeyRingIAMMemberArgs {
   /// [keyRingId] The key ring ID, in the form
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  KeyRingIAMMemberArgs({
+  const KeyRingIAMMemberArgs({
     this.condition,
     required this.keyRingId,
     required this.member,

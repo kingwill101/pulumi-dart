@@ -24,7 +24,7 @@ class KeyHandleArgs {
   /// [name] The resource name for the KeyHandle.
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceTypeSelector] Selector of the resource type where we want to protect resources.
-  KeyHandleArgs({
+  const KeyHandleArgs({
     required this.location,
     this.name,
     this.project,

@@ -31,7 +31,7 @@ class EventContentResponse {
   /// [source] The registry node that generated the event. Put differently, while the actor initiates the event, the source generates it.
   /// [target] The target of the event.
   /// [timestamp] The time at which the event occurred.
-  EventContentResponse({
+  const EventContentResponse({
     this.action,
     this.actor,
     this.id,

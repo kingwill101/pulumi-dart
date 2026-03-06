@@ -32,7 +32,7 @@ class GetSqlServerResult {
   /// [registrationID] ID for Parent Sql Server Registration.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
   /// [version] Version of the Sql Server.
-  GetSqlServerResult({
+  const GetSqlServerResult({
     required this.azureApiVersion,
     this.cores,
     this.edition,

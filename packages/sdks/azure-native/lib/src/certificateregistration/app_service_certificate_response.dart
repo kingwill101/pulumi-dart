@@ -15,7 +15,7 @@ class AppServiceCertificateResponse {
   /// [keyVaultId] Key Vault resource Id.
   /// [keyVaultSecretName] Key Vault secret name.
   /// [provisioningState] Status of the Key Vault secret.
-  AppServiceCertificateResponse({
+  const AppServiceCertificateResponse({
     this.keyVaultId,
     this.keyVaultSecretName,
     required this.provisioningState,

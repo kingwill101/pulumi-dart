@@ -48,7 +48,7 @@ class CustomDbEngineVersionArgs {
   /// [sourceImageId] The ID of the AMI to create the CEV from. Required for RDS Custom for SQL Server. For RDS Custom for Oracle, you can specify an AMI ID that was used in a different Oracle CEV.
   /// [status] The status of the CEV. Valid values are `available`, `inactive`, `inactive-except-restore`.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CustomDbEngineVersionArgs({
+  const CustomDbEngineVersionArgs({
     this.databaseInstallationFilesS3BucketName,
     this.databaseInstallationFilesS3Prefix,
     this.description,

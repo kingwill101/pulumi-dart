@@ -10,7 +10,7 @@ class GetSAPAvailabilityZoneDetailsResult {
 
   /// Creates a new [GetSAPAvailabilityZoneDetailsResult].
   /// [availabilityZonePairs] Gets the list of availability zone pairs.
-  GetSAPAvailabilityZoneDetailsResult({
+  const GetSAPAvailabilityZoneDetailsResult({
     this.availabilityZonePairs,
   });
 

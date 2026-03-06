@@ -13,7 +13,7 @@ class DataExport {
   /// Creates a new [DataExport].
   /// [destination] The place to store the data for an analysis. Specifies information about where to publish analysis or configuration results for an Amazon S3 bucket.
   /// [outputSchemaVersion] The version of the output schema to use when exporting data. Must be ``V_1``.
-  DataExport({
+  const DataExport({
     this.destination,
     this.outputSchemaVersion,
   });

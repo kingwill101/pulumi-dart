@@ -27,7 +27,7 @@ class CdnState {
   /// [endpoint] The fully qualified domain name (FQDN) from which the CDN-backed content is served.
   /// [origin] The fully qualified domain name, (FQDN) for a Space.
   /// [ttl] The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
-  CdnState({
+  const CdnState({
     this.certificateId,
     this.certificateName,
     this.createdAt,

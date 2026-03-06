@@ -15,7 +15,7 @@ class GetCodeBuildProjectArgs {
   /// Creates a new [GetCodeBuildProjectArgs].
   /// [name] Name of CodeBuildProject
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCodeBuildProjectArgs({
+  const GetCodeBuildProjectArgs({
     required this.name,
     required this.resourceGroupName,
   });

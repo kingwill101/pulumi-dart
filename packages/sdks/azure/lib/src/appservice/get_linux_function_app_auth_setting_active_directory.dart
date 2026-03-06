@@ -17,7 +17,7 @@ class GetLinuxFunctionAppAuthSettingActiveDirectory {
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
   /// [clientSecret] The OAuth 2.0 client secret that was created for the app used for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication.
-  GetLinuxFunctionAppAuthSettingActiveDirectory({
+  const GetLinuxFunctionAppAuthSettingActiveDirectory({
     required this.allowedAudiences,
     required this.clientId,
     required this.clientSecret,

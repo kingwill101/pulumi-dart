@@ -11,7 +11,7 @@ class AwsGovcloudIntegrationsRoute53 {
   /// Creates a new [AwsGovcloudIntegrationsRoute53].
   /// [fetchExtendedInventory] Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
   /// [metricsPollingInterval] The data polling interval in seconds
-  AwsGovcloudIntegrationsRoute53({
+  const AwsGovcloudIntegrationsRoute53({
     this.fetchExtendedInventory,
     this.metricsPollingInterval,
   });

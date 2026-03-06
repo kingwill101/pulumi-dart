@@ -14,7 +14,7 @@ class GetProductProductSkusImage {
   /// [imageId] The Ecs image id.
   /// [imageName] The Ecs image display name.
   /// [regionId] The Ecs image region.
-  GetProductProductSkusImage({
+  const GetProductProductSkusImage({
     required this.imageId,
     required this.imageName,
     required this.regionId,

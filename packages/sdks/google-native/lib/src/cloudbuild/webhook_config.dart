@@ -13,7 +13,7 @@ class WebhookConfig {
   /// Creates a new [WebhookConfig].
   /// [secret] Resource name for the secret required as a URL parameter.
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
-  WebhookConfig({
+  const WebhookConfig({
     required this.secret,
     this.state,
   });

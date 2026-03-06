@@ -38,7 +38,7 @@ class GetUtilizationReportResult {
   /// [timeFrame] Time frame of the report.
   /// [vmCount] Total number of VMs included in the report.
   /// [vms] List of utilization information per VM. When sent as part of the request, the "vm_id" field is used in order to specify which VMs to include in the report. In that case all other fields are ignored.
-  GetUtilizationReportResult({
+  const GetUtilizationReportResult({
     required this.createTime,
     required this.displayName,
     required this.error,

@@ -23,7 +23,7 @@ class GetDBAuditInstanceInstance {
   /// [publicNetworkAccess] Required.
   /// [tags] Optional.
   /// [userVswitchId] Required.
-  GetDBAuditInstanceInstance({
+  const GetDBAuditInstanceInstance({
     required this.description,
     required this.id,
     required this.instanceStatus,

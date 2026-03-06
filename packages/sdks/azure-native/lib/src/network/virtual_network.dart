@@ -62,7 +62,7 @@ class VirtualNetwork {
   /// [subnets] A list of subnets in a Virtual Network.
   /// [tags] Resource tags.
   /// [virtualNetworkPeerings] A list of peerings in a Virtual Network.
-  VirtualNetwork({
+  const VirtualNetwork({
     this.addressSpace,
     this.bgpCommunities,
     this.ddosProtectionPlan,

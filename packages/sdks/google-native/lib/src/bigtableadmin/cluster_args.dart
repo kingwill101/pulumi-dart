@@ -37,7 +37,7 @@ class ClusterArgs {
   /// [name] The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`.
   /// [project] Optional.
   /// [serveNodes] The number of nodes in the cluster. If no value is set, Cloud Bigtable automatically allocates nodes based on your data footprint and optimized for 50% storage utilization.
-  ClusterArgs({
+  const ClusterArgs({
     this.clusterConfig,
     required this.clusterId,
     this.defaultStorageType,

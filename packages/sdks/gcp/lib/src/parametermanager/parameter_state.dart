@@ -57,7 +57,7 @@ class ParameterState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The time at which the Parameter was updated.
-  ParameterState({
+  const ParameterState({
     this.createTime,
     this.effectiveLabels,
     this.format,

@@ -50,7 +50,7 @@ class ContainerResponse {
   /// [resources] The resource requirements of the container instance.
   /// [securityContext] The container security properties.
   /// [volumeMounts] The volume mounts available to the container instance.
-  ContainerResponse({
+  const ContainerResponse({
     this.command,
     this.configMap,
     this.environmentVariables,

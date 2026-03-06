@@ -9,7 +9,7 @@ class ClusterPodSecurityPolicyConfig {
 
   /// Creates a new [ClusterPodSecurityPolicyConfig].
   /// [enabled] Enable the PodSecurityPolicy controller for this cluster.
-  ClusterPodSecurityPolicyConfig({
+  const ClusterPodSecurityPolicyConfig({
     required this.enabled,
   });
 

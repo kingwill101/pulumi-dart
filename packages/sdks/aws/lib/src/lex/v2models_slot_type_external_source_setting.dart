@@ -10,7 +10,7 @@ class V2modelsSlotTypeExternalSourceSetting {
 
   /// Creates a new [V2modelsSlotTypeExternalSourceSetting].
   /// [grammarSlotTypeSettings] Settings required for a slot type based on a grammar that you provide.
-  V2modelsSlotTypeExternalSourceSetting({
+  const V2modelsSlotTypeExternalSourceSetting({
     this.grammarSlotTypeSettings,
   });
 

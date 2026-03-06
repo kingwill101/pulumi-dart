@@ -19,7 +19,7 @@ class GetManagedPrefixListsResult {
   /// [ids] List of all the managed prefix list ids found.
   /// [region] Required.
   /// [tags] Required.
-  GetManagedPrefixListsResult({
+  const GetManagedPrefixListsResult({
     this.filters,
     required this.id,
     required this.ids,

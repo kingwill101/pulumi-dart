@@ -17,7 +17,7 @@ class HybridConnectionEventSubscriptionDestinationResponse {
   /// [deliveryAttributeMappings] Delivery attribute details.
   /// [endpointType] Type of the endpoint for the event subscription destination.
   /// [resourceId] The Azure Resource ID of an hybrid connection that is the destination of an event subscription.
-  HybridConnectionEventSubscriptionDestinationResponse({
+  const HybridConnectionEventSubscriptionDestinationResponse({
     this.deliveryAttributeMappings,
     required this.endpointType,
     this.resourceId,

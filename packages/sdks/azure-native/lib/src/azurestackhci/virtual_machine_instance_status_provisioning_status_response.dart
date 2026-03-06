@@ -12,7 +12,7 @@ class VirtualMachineInstanceStatusProvisioningStatusResponse {
   /// Creates a new [VirtualMachineInstanceStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the virtual machine instance
   /// [status] The status of the operation performed on the virtual machine instance [Succeeded, Failed, InProgress]
-  VirtualMachineInstanceStatusProvisioningStatusResponse({
+  const VirtualMachineInstanceStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

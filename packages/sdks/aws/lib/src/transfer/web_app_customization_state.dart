@@ -23,7 +23,7 @@ class WebAppCustomizationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [title] Title of the web app. Must be between 1 and 100 characters in length (an empty string is not allowed). To remove the title, omit this argument from your configuration.
   /// [webAppId] The identifier of the web app to be customized.
-  WebAppCustomizationState({
+  const WebAppCustomizationState({
     this.faviconFile,
     this.logoFile,
     this.region,

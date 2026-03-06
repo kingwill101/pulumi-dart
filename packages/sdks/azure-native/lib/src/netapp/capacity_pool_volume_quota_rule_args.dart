@@ -39,7 +39,7 @@ class CapacityPoolVolumeQuotaRuleArgs {
   /// [tags] Resource tags.
   /// [volumeName] The name of the volume
   /// [volumeQuotaRuleName] The name of volume quota rule
-  CapacityPoolVolumeQuotaRuleArgs({
+  const CapacityPoolVolumeQuotaRuleArgs({
     required this.accountName,
     this.location,
     required this.poolName,

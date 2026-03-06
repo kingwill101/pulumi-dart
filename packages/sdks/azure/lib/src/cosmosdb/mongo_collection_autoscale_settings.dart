@@ -8,7 +8,7 @@ class MongoCollectionAutoscaleSettings {
 
   /// Creates a new [MongoCollectionAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the MongoDB collection (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  MongoCollectionAutoscaleSettings({
+  const MongoCollectionAutoscaleSettings({
     this.maxThroughput,
   });
 

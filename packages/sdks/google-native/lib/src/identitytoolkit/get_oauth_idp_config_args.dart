@@ -15,7 +15,7 @@ class GetOauthIdpConfigArgs {
   /// [oauthIdpConfigId] Required.
   /// [project] Optional.
   /// [tenantId] Required.
-  GetOauthIdpConfigArgs({
+  const GetOauthIdpConfigArgs({
     required this.oauthIdpConfigId,
     this.project,
     required this.tenantId,

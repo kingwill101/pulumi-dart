@@ -25,7 +25,7 @@ class GetConversationResult {
   /// [startTime] The time the conversation started.
   /// [state] The state of the Conversation.
   /// [userPseudoId] A unique identifier for tracking users.
-  GetConversationResult({
+  const GetConversationResult({
     required this.endTime,
     required this.messages,
     required this.name,

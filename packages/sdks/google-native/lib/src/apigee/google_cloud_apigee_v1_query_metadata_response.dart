@@ -23,7 +23,7 @@ class GoogleCloudApigeeV1QueryMetadataResponse {
   /// [outputFormat] Output format.
   /// [startTimestamp] Start timestamp of the query range.
   /// [timeUnit] Query GroupBy time unit.
-  GoogleCloudApigeeV1QueryMetadataResponse({
+  const GoogleCloudApigeeV1QueryMetadataResponse({
     required this.dimensions,
     required this.endTimestamp,
     required this.metrics,

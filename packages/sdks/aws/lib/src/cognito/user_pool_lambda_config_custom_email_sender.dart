@@ -11,7 +11,7 @@ class UserPoolLambdaConfigCustomEmailSender {
   /// Creates a new [UserPoolLambdaConfigCustomEmailSender].
   /// [lambdaArn] The Lambda Amazon Resource Name of the Lambda function that Amazon Cognito triggers to send email notifications to users.
   /// [lambdaVersion] The Lambda version represents the signature of the "request" attribute in the "event" information Amazon Cognito passes to your custom email Lambda function. The only supported value is `V1_0`.
-  UserPoolLambdaConfigCustomEmailSender({
+  const UserPoolLambdaConfigCustomEmailSender({
     required this.lambdaArn,
     required this.lambdaVersion,
   });

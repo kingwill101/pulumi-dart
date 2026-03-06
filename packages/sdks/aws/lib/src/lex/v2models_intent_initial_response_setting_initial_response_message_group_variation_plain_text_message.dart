@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationPl
 
   /// Creates a new [V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationPlainTextMessage].
   /// [value] Message to send to the user.
-  V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationPlainTextMessage({
+  const V2modelsIntentInitialResponseSettingInitialResponseMessageGroupVariationPlainTextMessage({
     required this.value,
   });
 

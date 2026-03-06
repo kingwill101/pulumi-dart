@@ -33,7 +33,7 @@ class SqlPoolWorkloadGroupArgs {
   /// [name] The name which should be used for this Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Group to be created.
   /// [queryExecutionTimeoutInSeconds] The workload group query execution timeout.
   /// [sqlPoolId] The ID of the Synapse SQL Pool. Changing this forces a new Synapse SQL Pool Workload Group to be created.
-  SqlPoolWorkloadGroupArgs({
+  const SqlPoolWorkloadGroupArgs({
     this.importance,
     required this.maxResourcePercent,
     this.maxResourcePercentPerRequest,

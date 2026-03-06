@@ -52,7 +52,7 @@ class ElasticSanState {
   /// [totalVolumeSizeInGib] Total size of the provisioned Volumes in GiB.
   /// [volumeGroupCount] Total number of volume groups in this Elastic SAN resource.
   /// [zones] Logical zone for the Elastic SAN resource. Changing this forces a new resource to be created.
-  ElasticSanState({
+  const ElasticSanState({
     this.baseSizeInTib,
     this.extendedSizeInTib,
     this.location,

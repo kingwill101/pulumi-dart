@@ -55,7 +55,7 @@ class FolderFeedState {
   /// [folder] The folder this feed should be created in.
   /// [folderId] The ID of the folder where this feed has been created. Both [FOLDER_NUMBER]
   /// [name] The format will be folders/{folder_number}/feeds/{client-assigned_feed_identifier}.
-  FolderFeedState({
+  const FolderFeedState({
     this.assetNames,
     this.assetTypes,
     this.billingProject,

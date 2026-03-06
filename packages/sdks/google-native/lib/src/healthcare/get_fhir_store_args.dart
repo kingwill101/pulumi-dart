@@ -17,7 +17,7 @@ class GetFhirStoreArgs {
   /// [fhirStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFhirStoreArgs({
+  const GetFhirStoreArgs({
     required this.datasetId,
     required this.fhirStoreId,
     required this.location,

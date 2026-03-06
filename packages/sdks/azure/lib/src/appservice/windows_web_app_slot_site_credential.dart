@@ -13,7 +13,7 @@ class WindowsWebAppSlotSiteCredential {
   /// Creates a new [WindowsWebAppSlotSiteCredential].
   /// [name] The name which should be used for this Windows Web App Slot. Changing this forces a new Windows Web App Slot to be created.
   /// [password] The Site Credentials Password used for publishing.
-  WindowsWebAppSlotSiteCredential({
+  const WindowsWebAppSlotSiteCredential({
     this.name,
     this.password,
   });

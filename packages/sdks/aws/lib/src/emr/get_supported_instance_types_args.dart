@@ -15,7 +15,7 @@ class GetSupportedInstanceTypesArgs {
   /// Creates a new [GetSupportedInstanceTypesArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [releaseLabel] Amazon EMR release label. For more information about Amazon EMR releases and their included application versions and features, see the [Amazon EMR Release Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html).
-  GetSupportedInstanceTypesArgs({
+  const GetSupportedInstanceTypesArgs({
     this.region,
     required this.releaseLabel,
   });

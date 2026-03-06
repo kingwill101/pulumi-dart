@@ -16,7 +16,7 @@ class DeliveryPipelineIamPolicyState {
   /// [name] Optional.
   /// [policyData] Optional.
   /// [project] Optional.
-  DeliveryPipelineIamPolicyState({
+  const DeliveryPipelineIamPolicyState({
     this.etag,
     this.location,
     this.name,

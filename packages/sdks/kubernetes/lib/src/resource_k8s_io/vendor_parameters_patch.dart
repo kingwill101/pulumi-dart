@@ -12,7 +12,7 @@ class VendorParametersPatch {
   /// Creates a new [VendorParametersPatch].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
   /// [parameters] Parameters can be arbitrary setup parameters. They are ignored while allocating a claim.
-  VendorParametersPatch({
+  const VendorParametersPatch({
     this.driverName,
     this.parameters,
   });

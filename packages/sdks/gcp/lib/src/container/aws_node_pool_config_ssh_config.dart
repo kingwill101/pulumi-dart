@@ -8,7 +8,7 @@ class AwsNodePoolConfigSshConfig {
 
   /// Creates a new [AwsNodePoolConfigSshConfig].
   /// [ec2KeyPair] The name of the EC2 key pair used to login into cluster machines.
-  AwsNodePoolConfigSshConfig({
+  const AwsNodePoolConfigSshConfig({
     required this.ec2KeyPair,
   });
 

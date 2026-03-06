@@ -11,7 +11,7 @@ class AlertJoinConfiguration {
   /// Creates a new [AlertJoinConfiguration].
   /// [condition] Join condition.
   /// [type] Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
-  AlertJoinConfiguration({
+  const AlertJoinConfiguration({
     required this.condition,
     required this.type,
   });

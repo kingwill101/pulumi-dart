@@ -20,7 +20,7 @@ class AwsSourceVmDetailsResponse {
   /// [disks] The disks attached to the source VM.
   /// [firmware] The firmware type of the source VM.
   /// [vmCapabilitiesInfo] Information about VM capabilities needed for some Compute Engine features.
-  AwsSourceVmDetailsResponse({
+  const AwsSourceVmDetailsResponse({
     required this.committedStorageBytes,
     required this.disks,
     required this.firmware,

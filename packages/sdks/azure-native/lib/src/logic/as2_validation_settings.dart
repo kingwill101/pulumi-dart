@@ -36,7 +36,7 @@ class AS2ValidationSettings {
   /// [overrideMessageProperties] The value indicating whether to override incoming message properties with those in agreement.
   /// [signMessage] The value indicating whether the message has to be signed.
   /// [signingAlgorithm] The signing algorithm.
-  AS2ValidationSettings({
+  const AS2ValidationSettings({
     required this.checkCertificateRevocationListOnReceive,
     required this.checkCertificateRevocationListOnSend,
     required this.checkDuplicateMessage,

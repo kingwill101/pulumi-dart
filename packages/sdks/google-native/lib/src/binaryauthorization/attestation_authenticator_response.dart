@@ -13,7 +13,7 @@ class AttestationAuthenticatorResponse {
   /// Creates a new [AttestationAuthenticatorResponse].
   /// [displayName] Optional. A user-provided name for this `AttestationAuthenticator`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   /// [pkixPublicKeySet] Optional. A set of raw PKIX SubjectPublicKeyInfo format public keys. If any public key in the set validates the attestation signature, then the signature is considered authenticated (i.e. any one key is sufficient to authenticate).
-  AttestationAuthenticatorResponse({
+  const AttestationAuthenticatorResponse({
     required this.displayName,
     required this.pkixPublicKeySet,
   });

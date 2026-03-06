@@ -9,7 +9,7 @@ class ListWorkflowRunActionRepetitionExpressionTracesResult {
 
   /// Creates a new [ListWorkflowRunActionRepetitionExpressionTracesResult].
   /// [inputs] Optional.
-  ListWorkflowRunActionRepetitionExpressionTracesResult({
+  const ListWorkflowRunActionRepetitionExpressionTracesResult({
     this.inputs,
   });
 

@@ -23,7 +23,7 @@ class VpcEndpointServiceConnectionArgs {
   /// [dryRun] Specifies whether to perform only a dry run, without performing the actual request. Valid values:
   /// [endpointId] The endpoint ID.
   /// [serviceId] The endpoint service ID.
-  VpcEndpointServiceConnectionArgs({
+  const VpcEndpointServiceConnectionArgs({
     this.bandwidth,
     this.dryRun,
     required this.endpointId,

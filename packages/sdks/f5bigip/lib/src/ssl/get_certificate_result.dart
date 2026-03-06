@@ -16,7 +16,7 @@ class GetCertificateResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Name of ssl_certificate configured on bigip with full path
   /// [partition] Bigip partition in which ssl-certificate is configured
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificate,
     required this.id,
     required this.name,

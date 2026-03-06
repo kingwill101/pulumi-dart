@@ -46,7 +46,7 @@ class DataLakeSettingsState {
   /// [readOnlyAdmins] Set of ARNs of AWS Lake Formation principals (IAM users or roles) with only view access to the resources.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trustedResourceOwners] List of the resource-owning account IDs that the caller's account can use to share their user access details (user ARNs).
-  DataLakeSettingsState({
+  const DataLakeSettingsState({
     this.admins,
     this.allowExternalDataFiltering,
     this.allowFullTableExternalDataAccess,

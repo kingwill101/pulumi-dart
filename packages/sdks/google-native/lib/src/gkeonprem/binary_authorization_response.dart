@@ -9,7 +9,7 @@ class BinaryAuthorizationResponse {
 
   /// Creates a new [BinaryAuthorizationResponse].
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
-  BinaryAuthorizationResponse({
+  const BinaryAuthorizationResponse({
     required this.evaluationMode,
   });
 

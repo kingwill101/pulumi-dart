@@ -23,7 +23,7 @@ class TCPHealthCheckResponse {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
   /// [request] Instructs the health check prober to send this exact ASCII string, up to 1024 bytes in length, after establishing the TCP connection.
   /// [response] Creates a content-based TCP health check. In addition to establishing a TCP connection, you can configure the health check to pass only when the backend sends this exact response ASCII string, up to 1024 bytes in length. For details, see: https://cloud.google.com/load-balancing/docs/health-check-concepts#criteria-protocol-ssl-tcp
-  TCPHealthCheckResponse({
+  const TCPHealthCheckResponse({
     required this.port,
     required this.portName,
     required this.portSpecification,

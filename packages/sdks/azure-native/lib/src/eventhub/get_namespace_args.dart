@@ -15,7 +15,7 @@ class GetNamespaceArgs {
   /// Creates a new [GetNamespaceArgs].
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetNamespaceArgs({
+  const GetNamespaceArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

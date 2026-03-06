@@ -26,7 +26,7 @@ class GetAccountsAccount {
   /// [id] The ID of the Account.
   /// [instanceId] The Id of instance in which account belongs.
   /// [status] The status of account.
-  GetAccountsAccount({
+  const GetAccountsAccount({
     required this.accountName,
     required this.accountPrivilege,
     required this.accountType,

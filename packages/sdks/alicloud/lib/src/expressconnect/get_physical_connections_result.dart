@@ -24,7 +24,7 @@ class GetPhysicalConnectionsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetPhysicalConnectionsResult({
+  const GetPhysicalConnectionsResult({
     required this.connections,
     required this.id,
     required this.ids,

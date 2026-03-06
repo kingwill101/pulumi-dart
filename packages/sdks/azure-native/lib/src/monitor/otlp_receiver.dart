@@ -9,7 +9,7 @@ class OtlpReceiver {
 
   /// Creates a new [OtlpReceiver].
   /// [endpoint] OTLP GRPC endpoint definition. Example: 0.0.0.0:&lt;port&gt;.
-  OtlpReceiver({
+  const OtlpReceiver({
     required this.endpoint,
   });
 

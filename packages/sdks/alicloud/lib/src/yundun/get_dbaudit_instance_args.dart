@@ -17,7 +17,7 @@ class GetDBAuditInstanceArgs {
   /// [ids] Optional.
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetDBAuditInstanceArgs({
+  const GetDBAuditInstanceArgs({
     this.descriptionRegex,
     this.ids,
     this.outputFile,

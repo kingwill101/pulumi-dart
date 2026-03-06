@@ -16,7 +16,7 @@ class NetworkForwardNat {
   /// [addresses] Defines the addresses for NAT configuration.
   /// [ipv6] Configures whether IPv6 is used for NAT in the forwarding settings.
   /// [ports] Defines the ports to be used in NAT configuration.
-  NetworkForwardNat({
+  const NetworkForwardNat({
     this.addresses,
     this.ipv6,
     this.ports,

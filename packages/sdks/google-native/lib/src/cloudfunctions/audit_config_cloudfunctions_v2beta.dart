@@ -13,7 +13,7 @@ class AuditConfigCloudfunctionsV2beta {
   /// Creates a new [AuditConfigCloudfunctionsV2beta].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigCloudfunctionsV2beta({
+  const AuditConfigCloudfunctionsV2beta({
     this.auditLogConfigs,
     this.service,
   });

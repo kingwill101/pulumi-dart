@@ -38,7 +38,7 @@ class DnsManagedZoneIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  DnsManagedZoneIamBindingState({
+  const DnsManagedZoneIamBindingState({
     this.condition,
     this.etag,
     this.managedZone,

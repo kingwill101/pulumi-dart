@@ -11,7 +11,7 @@ class CacheDns {
   /// Creates a new [CacheDns].
   /// [searchDomain] The DNS search domain for the HPC Cache.
   /// [servers] A list of DNS servers for the HPC Cache. At most three IP(s) are allowed to set.
-  CacheDns({
+  const CacheDns({
     this.searchDomain,
     required this.servers,
   });

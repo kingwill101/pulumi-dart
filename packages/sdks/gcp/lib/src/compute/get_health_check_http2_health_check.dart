@@ -47,7 +47,7 @@ class GetHealthCheckHttp2HealthCheck {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to the
   /// [requestPath] The request path of the HTTP2 health check request.
   /// [response] The bytes to match against the beginning of the response data. If left empty
-  GetHealthCheckHttp2HealthCheck({
+  const GetHealthCheckHttp2HealthCheck({
     required this.host,
     required this.port,
     required this.portName,

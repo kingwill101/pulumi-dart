@@ -273,5 +273,5 @@ class AzureConfig {
 
 }
 
-final config = AzureConfig();
+const config = AzureConfig();
 

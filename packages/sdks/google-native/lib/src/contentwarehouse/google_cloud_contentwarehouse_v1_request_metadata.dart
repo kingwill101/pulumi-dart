@@ -10,7 +10,7 @@ class GoogleCloudContentwarehouseV1RequestMetadata {
 
   /// Creates a new [GoogleCloudContentwarehouseV1RequestMetadata].
   /// [userInfo] Provides user unique identification and groups information.
-  GoogleCloudContentwarehouseV1RequestMetadata({
+  const GoogleCloudContentwarehouseV1RequestMetadata({
     this.userInfo,
   });
 

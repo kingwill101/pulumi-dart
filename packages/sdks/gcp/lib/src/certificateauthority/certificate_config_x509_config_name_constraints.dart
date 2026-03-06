@@ -56,7 +56,7 @@ class CertificateConfigX509ConfigNameConstraints {
   /// [permittedEmailAddresses] Contains the permitted email addresses. The value can be a particular
   /// [permittedIpRanges] Contains the permitted IP ranges. For IPv4 addresses, the ranges
   /// [permittedUris] Contains the permitted URIs that apply to the host part of the name.
-  CertificateConfigX509ConfigNameConstraints({
+  const CertificateConfigX509ConfigNameConstraints({
     required this.critical,
     this.excludedDnsNames,
     this.excludedEmailAddresses,

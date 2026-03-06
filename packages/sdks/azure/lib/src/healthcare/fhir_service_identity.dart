@@ -15,7 +15,7 @@ class FhirServiceIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of managed identity to assign. Possible values are `UserAssigned` and `SystemAssigned`.
-  FhirServiceIdentity({
+  const FhirServiceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

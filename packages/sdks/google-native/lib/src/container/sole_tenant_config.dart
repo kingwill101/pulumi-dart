@@ -10,7 +10,7 @@ class SoleTenantConfig {
 
   /// Creates a new [SoleTenantConfig].
   /// [nodeAffinities] NodeAffinities used to match to a shared sole tenant node group.
-  SoleTenantConfig({
+  const SoleTenantConfig({
     this.nodeAffinities,
   });
 

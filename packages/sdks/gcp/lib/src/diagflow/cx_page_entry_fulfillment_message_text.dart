@@ -13,7 +13,7 @@ class CxPageEntryFulfillmentMessageText {
   /// Creates a new [CxPageEntryFulfillmentMessageText].
   /// [allowPlaybackInterruption] (Output)
   /// [texts] A collection of text response variants. If multiple variants are defined, only one text response variant is returned at runtime.
-  CxPageEntryFulfillmentMessageText({
+  const CxPageEntryFulfillmentMessageText({
     this.allowPlaybackInterruption,
     this.texts,
   });

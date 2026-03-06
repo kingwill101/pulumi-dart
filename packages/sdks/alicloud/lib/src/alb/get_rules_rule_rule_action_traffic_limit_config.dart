@@ -8,7 +8,7 @@ class GetRulesRuleRuleActionTrafficLimitConfig {
 
   /// Creates a new [GetRulesRuleRuleActionTrafficLimitConfig].
   /// [qps] The Number of requests per second.
-  GetRulesRuleRuleActionTrafficLimitConfig({
+  const GetRulesRuleRuleActionTrafficLimitConfig({
     required this.qps,
   });
 

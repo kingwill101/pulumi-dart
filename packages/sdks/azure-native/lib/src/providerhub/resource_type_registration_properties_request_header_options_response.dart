@@ -12,7 +12,7 @@ class ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse {
   /// Creates a new [ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse].
   /// [optInHeaders] The opt in headers.
   /// [optOutHeaders] The opt out headers.
-  ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse({
+  const ResourceTypeRegistrationPropertiesRequestHeaderOptionsResponse({
     this.optInHeaders,
     this.optOutHeaders,
   });

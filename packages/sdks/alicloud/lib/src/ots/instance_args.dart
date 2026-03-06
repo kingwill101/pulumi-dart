@@ -47,7 +47,7 @@ class InstanceArgs {
   /// [networkTypeAcls] The set of network types that are allowed access. Valid optional values:
   /// [resourceGroupId] The resource group the instance belongs to.
   /// [tags] A mapping of tags to assign to the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.accessedBy,
     this.description,
     this.instanceType,

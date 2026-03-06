@@ -9,7 +9,7 @@ class VpnConnectionTunnel1LogOptions {
 
   /// Creates a new [VpnConnectionTunnel1LogOptions].
   /// [cloudwatchLogOptions] Options for sending VPN tunnel logs to CloudWatch. See CloudWatch Log Options below for more details.
-  VpnConnectionTunnel1LogOptions({
+  const VpnConnectionTunnel1LogOptions({
     this.cloudwatchLogOptions,
   });
 

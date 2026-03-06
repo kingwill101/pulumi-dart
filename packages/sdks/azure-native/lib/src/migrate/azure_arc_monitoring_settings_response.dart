@@ -12,7 +12,7 @@ class AzureArcMonitoringSettingsResponse {
   /// Creates a new [AzureArcMonitoringSettingsResponse].
   /// [alertRulesCount] Number of alert rules settings.
   /// [logsVolumeInGB] Logs volume settings.
-  AzureArcMonitoringSettingsResponse({
+  const AzureArcMonitoringSettingsResponse({
     required this.alertRulesCount,
     required this.logsVolumeInGB,
   });

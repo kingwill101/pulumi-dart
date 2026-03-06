@@ -15,7 +15,7 @@ class GetNotebookRuntimeTemplateAiplatformV1beta1Args {
   /// [location] Required.
   /// [notebookRuntimeTemplateId] Required.
   /// [project] Optional.
-  GetNotebookRuntimeTemplateAiplatformV1beta1Args({
+  const GetNotebookRuntimeTemplateAiplatformV1beta1Args({
     required this.location,
     required this.notebookRuntimeTemplateId,
     this.project,

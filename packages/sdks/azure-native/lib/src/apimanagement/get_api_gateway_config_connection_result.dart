@@ -32,7 +32,7 @@ class GetApiGatewayConfigConnectionResult {
   /// [provisioningState] The current provisioning state of the API Management gateway config connection
   /// [sourceId] The link to the API Management service workspace.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiGatewayConfigConnectionResult({
+  const GetApiGatewayConfigConnectionResult({
     required this.azureApiVersion,
     required this.defaultHostname,
     required this.etag,

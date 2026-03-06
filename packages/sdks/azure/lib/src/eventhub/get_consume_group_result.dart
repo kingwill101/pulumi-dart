@@ -19,7 +19,7 @@ class GetConsumeGroupResult {
   /// [namespaceName] Required.
   /// [resourceGroupName] Required.
   /// [userMetadata] Specifies the user metadata.
-  GetConsumeGroupResult({
+  const GetConsumeGroupResult({
     required this.eventhubName,
     required this.id,
     required this.name,

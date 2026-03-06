@@ -29,7 +29,7 @@ class V2modelsBotVersionArgs {
   /// [localeSpecification] Specifies the locales that Amazon Lex adds to this version. You can choose the draft version or any other previously published version for each locale. When you specify a source version, the locale data is copied from the source version to the new version.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  V2modelsBotVersionArgs({
+  const V2modelsBotVersionArgs({
     required this.botId,
     this.botVersion,
     this.description,

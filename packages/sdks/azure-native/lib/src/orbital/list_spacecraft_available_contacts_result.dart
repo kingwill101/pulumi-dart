@@ -13,7 +13,7 @@ class ListSpacecraftAvailableContactsResult {
   /// Creates a new [ListSpacecraftAvailableContactsResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] A list of available contacts.
-  ListSpacecraftAvailableContactsResult({
+  const ListSpacecraftAvailableContactsResult({
     required this.nextLink,
     this.value,
   });

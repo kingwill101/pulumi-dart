@@ -16,7 +16,7 @@ class StackTraceElementResponse {
   /// [position] The source position information of the stack trace element.
   /// [routine] The routine where the error occurred.
   /// [step] The step the error occurred at.
-  StackTraceElementResponse({
+  const StackTraceElementResponse({
     required this.position,
     required this.routine,
     required this.step,

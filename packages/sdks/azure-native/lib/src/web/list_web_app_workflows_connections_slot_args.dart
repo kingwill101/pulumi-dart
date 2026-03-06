@@ -18,7 +18,7 @@ class ListWebAppWorkflowsConnectionsSlotArgs {
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot.
-  ListWebAppWorkflowsConnectionsSlotArgs({
+  const ListWebAppWorkflowsConnectionsSlotArgs({
     required this.name,
     required this.resourceGroupName,
     required this.slot,

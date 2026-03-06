@@ -10,7 +10,7 @@ class ResponsePolicyNetworkResponseDnsV1beta2 {
   /// Creates a new [ResponsePolicyNetworkResponseDnsV1beta2].
   /// [kind] Required.
   /// [networkUrl] The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  ResponsePolicyNetworkResponseDnsV1beta2({
+  const ResponsePolicyNetworkResponseDnsV1beta2({
     required this.kind,
     required this.networkUrl,
   });

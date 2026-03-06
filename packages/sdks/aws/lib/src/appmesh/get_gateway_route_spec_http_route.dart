@@ -11,7 +11,7 @@ class GetGatewayRouteSpecHttpRoute {
   /// Creates a new [GetGatewayRouteSpecHttpRoute].
   /// [actions] Required.
   /// [matches] Required.
-  GetGatewayRouteSpecHttpRoute({
+  const GetGatewayRouteSpecHttpRoute({
     required this.actions,
     required this.matches,
   });

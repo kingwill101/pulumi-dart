@@ -74,7 +74,7 @@ class GetNatGatewaysGateway {
   /// [tags] The tags of NAT gateway.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch to which the NAT gateway belongs.
-  GetNatGatewaysGateway({
+  const GetNatGatewaysGateway({
     required this.businessStatus,
     required this.deletionProtection,
     required this.description,

@@ -17,7 +17,7 @@ class EndpointIpConfig {
   /// [ip] The IP address within the parameter range of the subnet mask.  It is recommended to use the IP address assigned by the system.
   /// [vswitchId] The Vswitch id.
   /// [zoneId] The Zone ID.
-  EndpointIpConfig({
+  const EndpointIpConfig({
     required this.cidrBlock,
     this.ip,
     required this.vswitchId,

@@ -13,7 +13,7 @@ class MonitoringSubscriptionState {
   /// Creates a new [MonitoringSubscriptionState].
   /// [distributionId] The ID of the distribution that you are enabling metrics for.
   /// [monitoringSubscription] A monitoring subscription. This structure contains information about whether additional CloudWatch metrics are enabled for a given CloudFront distribution.
-  MonitoringSubscriptionState({
+  const MonitoringSubscriptionState({
     this.distributionId,
     this.monitoringSubscription,
   });

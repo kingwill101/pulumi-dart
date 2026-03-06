@@ -14,7 +14,7 @@ class GetOrganizationsOrganization {
   /// [id] The ID of the Organization.
   /// [organizationId] The first ID of the resource.
   /// [organizationName] Company name.
-  GetOrganizationsOrganization({
+  const GetOrganizationsOrganization({
     required this.id,
     required this.organizationId,
     required this.organizationName,

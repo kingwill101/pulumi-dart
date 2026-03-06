@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1ContentNotebookResponse {
 
   /// Creates a new [GoogleCloudDataplexV1ContentNotebookResponse].
   /// [kernelType] Kernel Type of the notebook.
-  GoogleCloudDataplexV1ContentNotebookResponse({
+  const GoogleCloudDataplexV1ContentNotebookResponse({
     required this.kernelType,
   });
 

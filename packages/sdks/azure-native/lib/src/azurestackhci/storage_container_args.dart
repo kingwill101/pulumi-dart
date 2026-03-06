@@ -28,7 +28,7 @@ class StorageContainerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageContainerName] Name of the storage container
   /// [tags] Resource tags.
-  StorageContainerArgs({
+  const StorageContainerArgs({
     this.extendedLocation,
     this.location,
     required this.path,

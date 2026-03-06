@@ -26,7 +26,7 @@ class Kubernetes {
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [properties] Properties of Kubernetes
   /// [resourceId] ARM resource id of the underlying compute
-  Kubernetes({
+  const Kubernetes({
     this.computeLocation,
     required this.computeType,
     this.description,

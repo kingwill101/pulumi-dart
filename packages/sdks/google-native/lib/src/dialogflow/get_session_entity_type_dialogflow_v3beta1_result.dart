@@ -16,7 +16,7 @@ class GetSessionEntityTypeDialogflowV3beta1Result {
   /// [entities] The collection of entities to override or supplement the custom entity type.
   /// [entityOverrideMode] Indicates whether the additional data should override or supplement the custom entity type definition.
   /// [name] The unique identifier of the session entity type. Format: `projects//locations//agents//sessions//entityTypes/` or `projects//locations//agents//environments//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment.
-  GetSessionEntityTypeDialogflowV3beta1Result({
+  const GetSessionEntityTypeDialogflowV3beta1Result({
     required this.entities,
     required this.entityOverrideMode,
     required this.name,

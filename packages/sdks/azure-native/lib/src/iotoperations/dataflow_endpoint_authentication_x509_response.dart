@@ -9,7 +9,7 @@ class DataflowEndpointAuthenticationX509Response {
 
   /// Creates a new [DataflowEndpointAuthenticationX509Response].
   /// [secretRef] Secret reference of the X.509 certificate.
-  DataflowEndpointAuthenticationX509Response({
+  const DataflowEndpointAuthenticationX509Response({
     required this.secretRef,
   });
 

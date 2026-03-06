@@ -12,7 +12,7 @@ class UserCreatedResourceTagResponse {
   /// Creates a new [UserCreatedResourceTagResponse].
   /// [tagName] The tag name. Please read for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
   /// [tagValue] The tag value. Please read her for more information: https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/tag-resources#limitations
-  UserCreatedResourceTagResponse({
+  const UserCreatedResourceTagResponse({
     this.tagName,
     this.tagValue,
   });

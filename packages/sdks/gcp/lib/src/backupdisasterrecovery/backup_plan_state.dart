@@ -52,7 +52,7 @@ class BackupPlanState {
   /// [resourceType] The resource type to which the `BackupPlan` will be applied.
   /// [supportedResourceTypes] The list of all resource types to which the `BackupPlan` can be applied.
   /// [updateTime] When the `BackupPlan` was last updated.
-  BackupPlanState({
+  const BackupPlanState({
     this.backupPlanId,
     this.backupRules,
     this.backupVault,

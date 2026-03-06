@@ -21,7 +21,7 @@ class QueryDefinitionState {
   /// [queryDefinitionId] The query definition ID.
   /// [queryString] The query to save. You can read more about CloudWatch Logs Query Syntax in the [documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  QueryDefinitionState({
+  const QueryDefinitionState({
     this.logGroupNames,
     this.name,
     this.queryDefinitionId,

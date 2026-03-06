@@ -14,7 +14,7 @@ class LakeAccountAccountPrivilegePrivilegeObject {
   /// [column] The name of column.
   /// [database] The name of database.
   /// [table] The name of table.
-  LakeAccountAccountPrivilegePrivilegeObject({
+  const LakeAccountAccountPrivilegePrivilegeObject({
     this.column,
     this.database,
     this.table,

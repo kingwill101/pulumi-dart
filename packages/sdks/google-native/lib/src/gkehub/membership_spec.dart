@@ -10,7 +10,7 @@ class MembershipSpec {
 
   /// Creates a new [MembershipSpec].
   /// [certificateManagement] Specifies workload certificate management.
-  MembershipSpec({
+  const MembershipSpec({
     this.certificateManagement,
   });
 

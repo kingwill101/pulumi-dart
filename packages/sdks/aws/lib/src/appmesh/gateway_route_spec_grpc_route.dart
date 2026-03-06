@@ -13,7 +13,7 @@ class GatewayRouteSpecGrpcRoute {
   /// Creates a new [GatewayRouteSpecGrpcRoute].
   /// [action] Action to take if a match is determined.
   /// [match] Criteria for determining a request match.
-  GatewayRouteSpecGrpcRoute({
+  const GatewayRouteSpecGrpcRoute({
     required this.action,
     required this.match,
   });

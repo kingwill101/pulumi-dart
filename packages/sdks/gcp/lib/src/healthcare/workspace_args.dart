@@ -27,7 +27,7 @@ class WorkspaceArgs {
   /// [labels] The user labels. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }
   /// [name] The name of the workspace, in the format 'projects/{projectId}/locations/{location}/datasets/{datasetId}/dataMapperWorkspaces/{workspaceId}'
   /// [settings] Settings associated with this workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     required this.dataset,
     this.labels,
     this.name,

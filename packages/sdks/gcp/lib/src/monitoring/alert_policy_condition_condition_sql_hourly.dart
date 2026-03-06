@@ -14,7 +14,7 @@ class AlertPolicyConditionConditionSqlHourly {
   /// Creates a new [AlertPolicyConditionConditionSqlHourly].
   /// [minuteOffset] The number of minutes after the hour (in UTC) to run the query.
   /// [periodicity] Number of hours between runs. The interval must be greater than or
-  AlertPolicyConditionConditionSqlHourly({
+  const AlertPolicyConditionConditionSqlHourly({
     this.minuteOffset,
     required this.periodicity,
   });

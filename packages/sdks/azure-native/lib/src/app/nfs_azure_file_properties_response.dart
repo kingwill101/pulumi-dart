@@ -15,7 +15,7 @@ class NfsAzureFilePropertiesResponse {
   /// [accessMode] Access mode for storage
   /// [server] Server for NFS azure file.
   /// [shareName] NFS Azure file share name.
-  NfsAzureFilePropertiesResponse({
+  const NfsAzureFilePropertiesResponse({
     this.accessMode,
     this.server,
     this.shareName,

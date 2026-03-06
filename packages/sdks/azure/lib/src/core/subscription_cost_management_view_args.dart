@@ -42,7 +42,7 @@ class SubscriptionCostManagementViewArgs {
   /// [reportType] The type of the report. The only possible value is `Usage`.
   /// [subscriptionId] The ID of the Subscription this View is scoped to. Changing this forces a new Cost Management View for a Subscription to be created.
   /// [timeframe] The time frame for pulling data for the report. Possible values are `Custom`, `MonthToDate`, `WeekToDate` and `YearToDate`.
-  SubscriptionCostManagementViewArgs({
+  const SubscriptionCostManagementViewArgs({
     required this.accumulated,
     required this.chartType,
     required this.dataset,

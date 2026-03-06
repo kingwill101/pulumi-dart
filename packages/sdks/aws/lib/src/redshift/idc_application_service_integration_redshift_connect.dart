@@ -8,7 +8,7 @@ class IdcApplicationServiceIntegrationRedshiftConnect {
 
   /// Creates a new [IdcApplicationServiceIntegrationRedshiftConnect].
   /// [authorization] Determines whether the connect integration is enabled or disabled.
-  IdcApplicationServiceIntegrationRedshiftConnect({
+  const IdcApplicationServiceIntegrationRedshiftConnect({
     required this.authorization,
   });
 

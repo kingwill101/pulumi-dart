@@ -11,7 +11,7 @@ class PolicyListPolicyAllow {
   /// Creates a new [PolicyListPolicyAllow].
   /// [all] The policy allows or denies all values.
   /// [values] The policy can define specific values that are allowed or denied.
-  PolicyListPolicyAllow({
+  const PolicyListPolicyAllow({
     this.all,
     this.values,
   });

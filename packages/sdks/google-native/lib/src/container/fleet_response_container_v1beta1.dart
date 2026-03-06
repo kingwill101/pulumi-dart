@@ -15,7 +15,7 @@ class FleetResponseContainerV1beta1 {
   /// [membership] [Output only] The full resource name of the registered fleet membership of the cluster, in the format `//gkehub.googleapis.com/projects/*/locations/*/memberships/*`.
   /// [preRegistered] [Output only] Whether the cluster has been registered through the fleet API.
   /// [project] The Fleet host project(project ID or project number) where this cluster will be registered to. This field cannot be changed after the cluster has been registered.
-  FleetResponseContainerV1beta1({
+  const FleetResponseContainerV1beta1({
     required this.membership,
     required this.preRegistered,
     required this.project,

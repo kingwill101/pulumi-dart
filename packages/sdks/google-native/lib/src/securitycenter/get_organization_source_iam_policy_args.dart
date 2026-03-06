@@ -13,7 +13,7 @@ class GetOrganizationSourceIamPolicyArgs {
   /// Creates a new [GetOrganizationSourceIamPolicyArgs].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetOrganizationSourceIamPolicyArgs({
+  const GetOrganizationSourceIamPolicyArgs({
     required this.organizationId,
     required this.sourceId,
   });

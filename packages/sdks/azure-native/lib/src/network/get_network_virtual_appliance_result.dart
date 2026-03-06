@@ -96,7 +96,7 @@ class GetNetworkVirtualApplianceResult {
   /// [virtualApplianceNics] List of Virtual Appliance Network Interfaces.
   /// [virtualApplianceSites] List of references to VirtualApplianceSite.
   /// [virtualHub] The Virtual Hub where Network Virtual Appliance is being deployed.
-  GetNetworkVirtualApplianceResult({
+  const GetNetworkVirtualApplianceResult({
     this.additionalNics,
     required this.addressPrefix,
     required this.azureApiVersion,

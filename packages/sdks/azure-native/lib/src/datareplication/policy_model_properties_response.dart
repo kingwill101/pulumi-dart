@@ -13,7 +13,7 @@ class PolicyModelPropertiesResponse {
   /// Creates a new [PolicyModelPropertiesResponse].
   /// [customProperties] Policy model custom properties.
   /// [provisioningState] Gets or sets the provisioning state of the policy.
-  PolicyModelPropertiesResponse({
+  const PolicyModelPropertiesResponse({
     required this.customProperties,
     required this.provisioningState,
   });

@@ -17,7 +17,7 @@ class GetServiceNetworkArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceNetworkIdentifier] Identifier of the service network.
   /// [tags] Optional.
-  GetServiceNetworkArgs({
+  const GetServiceNetworkArgs({
     this.region,
     required this.serviceNetworkIdentifier,
     this.tags,

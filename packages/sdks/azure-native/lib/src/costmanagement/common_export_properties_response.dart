@@ -27,7 +27,7 @@ class CommonExportPropertiesResponse {
   /// [nextRunTimeEstimate] If the export has an active schedule, provides an estimate of the next run time.
   /// [partitionData] If set to true, exported data will be partitioned by size and placed in a blob directory together with a manifest file. Note: this option is currently available only for Microsoft Customer Agreement commerce scopes.
   /// [runHistory] If requested, has the most recent run history for the export.
-  CommonExportPropertiesResponse({
+  const CommonExportPropertiesResponse({
     required this.definition,
     required this.deliveryInfo,
     this.format,

@@ -9,7 +9,7 @@ class OracleSslConfig {
 
   /// Creates a new [OracleSslConfig].
   /// [caCertificate] Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
-  OracleSslConfig({
+  const OracleSslConfig({
     this.caCertificate,
   });
 

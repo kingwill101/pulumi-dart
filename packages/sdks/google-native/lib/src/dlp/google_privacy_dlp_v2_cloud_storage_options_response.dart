@@ -24,7 +24,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse {
   /// [fileTypes] List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
   /// [filesLimitPercent] Limits the number of files to scan to this percentage of the input FileSet. Number of files scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0.
   /// [sampleMethod] Required.
-  GooglePrivacyDlpV2CloudStorageOptionsResponse({
+  const GooglePrivacyDlpV2CloudStorageOptionsResponse({
     required this.bytesLimitPerFile,
     required this.bytesLimitPerFilePercent,
     required this.fileSet,

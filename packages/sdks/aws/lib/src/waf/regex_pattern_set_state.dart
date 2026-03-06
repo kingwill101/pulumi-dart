@@ -15,7 +15,7 @@ class RegexPatternSetState {
   /// [arn] Amazon Resource Name (ARN)
   /// [name] The name or description of the Regex Pattern Set.
   /// [regexPatternStrings] A list of regular expression (regex) patterns that you want AWS WAF to search for, such as `B[a@]dB[o0]t`.
-  RegexPatternSetState({
+  const RegexPatternSetState({
     this.arn,
     this.name,
     this.regexPatternStrings,

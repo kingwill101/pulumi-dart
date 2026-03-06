@@ -12,7 +12,7 @@ class PolicyResponse {
   /// Creates a new [PolicyResponse].
   /// [policyDocument] The entire contents of the policy that defines permissions. For more information, see [Overview of JSON policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
   /// [policyName] The friendly name (not ARN) identifying the policy.
-  PolicyResponse({
+  const PolicyResponse({
     this.policyDocument,
     this.policyName,
   });

@@ -18,7 +18,7 @@ class GetVMwareCollectorArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [vmWareCollectorName] Unique name of a VMware collector within a project.
-  GetVMwareCollectorArgs({
+  const GetVMwareCollectorArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.vmWareCollectorName,

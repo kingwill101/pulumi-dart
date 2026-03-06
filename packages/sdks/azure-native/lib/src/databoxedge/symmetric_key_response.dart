@@ -10,7 +10,7 @@ class SymmetricKeyResponse {
 
   /// Creates a new [SymmetricKeyResponse].
   /// [connectionString] Connection string based on the symmetric key.
-  SymmetricKeyResponse({
+  const SymmetricKeyResponse({
     this.connectionString,
   });
 

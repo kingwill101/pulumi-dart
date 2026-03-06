@@ -51,7 +51,7 @@ class PodCertificateProjectionPatch {
   /// [maxExpirationSeconds] maxExpirationSeconds is the maximum lifetime permitted for the certificate.
   /// [signerName] Kubelet's generated CSRs will be addressed to this signer.
   /// [userAnnotations] userAnnotations allow pod authors to pass additional information to the signer implementation.  Kubernetes does not restrict or validate this metadata in any way.
-  PodCertificateProjectionPatch({
+  const PodCertificateProjectionPatch({
     this.certificateChainPath,
     this.credentialBundlePath,
     this.keyPath,

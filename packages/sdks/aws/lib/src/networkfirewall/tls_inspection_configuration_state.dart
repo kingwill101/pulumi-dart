@@ -52,7 +52,7 @@ class TlsInspectionConfigurationState {
   /// [tlsInspectionConfiguration] TLS inspection configuration block. Detailed below.
   /// [tlsInspectionConfigurationId] A unique identifier for the TLS inspection configuration.
   /// [updateToken] String token used when updating the rule group.
-  TlsInspectionConfigurationState({
+  const TlsInspectionConfigurationState({
     this.arn,
     this.certificateAuthorities,
     this.certificates,

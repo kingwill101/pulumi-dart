@@ -21,7 +21,7 @@ class SkuResponse {
   /// [name] Namespace SKU name.
   /// [size] Gets or sets the Sku size
   /// [tier] Gets or sets the tier of particular sku
-  SkuResponse({
+  const SkuResponse({
     this.capacity,
     this.family,
     required this.name,

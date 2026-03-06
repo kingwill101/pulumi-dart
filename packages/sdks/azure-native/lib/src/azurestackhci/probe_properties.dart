@@ -21,7 +21,7 @@ class ProbeProperties {
   /// [port] Port on the backend address to probe
   /// [protocol] Protocol for this probe: Can be Tcp or Http - Diverges from Azure where Https is also an option
   /// [requestPath] For http probes, specify the request path e.g. /health
-  ProbeProperties({
+  const ProbeProperties({
     this.intervalInSeconds,
     this.numberOfProbes,
     required this.port,

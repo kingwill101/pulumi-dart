@@ -15,7 +15,7 @@ class GetHttpRouteNetworkservicesV1beta1Args {
   /// [httpRouteId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetHttpRouteNetworkservicesV1beta1Args({
+  const GetHttpRouteNetworkservicesV1beta1Args({
     required this.httpRouteId,
     required this.location,
     this.project,

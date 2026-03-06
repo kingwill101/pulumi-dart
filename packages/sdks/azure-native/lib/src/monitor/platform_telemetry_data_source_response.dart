@@ -13,7 +13,7 @@ class PlatformTelemetryDataSourceResponse {
   /// Creates a new [PlatformTelemetryDataSourceResponse].
   /// [name] A friendly name for the data source.
   /// [streams] List of platform telemetry streams to collect
-  PlatformTelemetryDataSourceResponse({
+  const PlatformTelemetryDataSourceResponse({
     this.name,
     required this.streams,
   });

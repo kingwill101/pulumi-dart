@@ -15,7 +15,7 @@ class SecretAttributes {
   /// [enabled] Determines whether the object is enabled.
   /// [expires] Expiry date in seconds since 1970-01-01T00:00:00Z.
   /// [notBefore] Not before date in seconds since 1970-01-01T00:00:00Z.
-  SecretAttributes({
+  const SecretAttributes({
     this.enabled,
     this.expires,
     this.notBefore,

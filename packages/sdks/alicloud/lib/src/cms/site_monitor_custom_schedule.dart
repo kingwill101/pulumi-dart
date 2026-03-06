@@ -17,7 +17,7 @@ class SiteMonitorCustomSchedule {
   /// [endHour] The end time of the detection. Unit: hours.
   /// [startHour] The start time of the detection. Unit: hours.
   /// [timeZone] The time zone of the detection.
-  SiteMonitorCustomSchedule({
+  const SiteMonitorCustomSchedule({
     this.days,
     this.endHour,
     this.startHour,

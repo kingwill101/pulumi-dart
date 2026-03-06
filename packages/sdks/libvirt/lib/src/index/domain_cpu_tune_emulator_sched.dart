@@ -11,7 +11,7 @@ class DomainCpuTuneEmulatorSched {
   /// Creates a new [DomainCpuTuneEmulatorSched].
   /// [priority] Sets the priority level for the emulator's scheduling, influencing its responsiveness relative to other processes.
   /// [scheduler] Specifies the scheduler type for the emulator, determining how tasks are scheduled and executed on CPUs.
-  DomainCpuTuneEmulatorSched({
+  const DomainCpuTuneEmulatorSched({
     this.priority,
     this.scheduler,
   });

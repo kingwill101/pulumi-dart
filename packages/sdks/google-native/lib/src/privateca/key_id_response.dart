@@ -9,7 +9,7 @@ class KeyIdResponse {
 
   /// Creates a new [KeyIdResponse].
   /// [keyId] Optional. The value of this KeyId encoded in lowercase hexadecimal. This is most likely the 160 bit SHA-1 hash of the public key.
-  KeyIdResponse({
+  const KeyIdResponse({
     required this.keyId,
   });
 

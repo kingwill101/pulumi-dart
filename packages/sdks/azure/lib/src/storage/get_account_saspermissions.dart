@@ -38,7 +38,7 @@ class GetAccountSASPermissions {
   /// [tag] Should Get / Set Index Tags permissions be enabled for this SAS?
   /// [update] Should Update permissions be enabled for this SAS?
   /// [write] Should Write permissions be enabled for this SAS?
-  GetAccountSASPermissions({
+  const GetAccountSASPermissions({
     required this.add,
     required this.create,
     required this.delete,

@@ -33,7 +33,7 @@ class GetConsumerGroupResult {
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   /// [updatedAt] The exact time the message was updated.
   /// [userMetadata] User Metadata is a placeholder to store user-defined string data with maximum length 1024. e.g. it can be used to store descriptive data, such as list of teams and their contact information also user-defined configuration settings can be stored.
-  GetConsumerGroupResult({
+  const GetConsumerGroupResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

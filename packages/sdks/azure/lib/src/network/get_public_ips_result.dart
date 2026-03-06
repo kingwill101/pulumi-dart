@@ -21,7 +21,7 @@ class GetPublicIPsResult {
   /// [namePrefix] Optional.
   /// [publicIps] A List of `public_ips` blocks as defined below filtered by the criteria above.
   /// [resourceGroupName] Required.
-  GetPublicIPsResult({
+  const GetPublicIPsResult({
     this.allocationType,
     this.attachmentStatus,
     required this.id,

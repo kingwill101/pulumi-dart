@@ -19,7 +19,7 @@ class GetFeaturestoreEntityTypeIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFeaturestoreEntityTypeIamPolicyArgs({
+  const GetFeaturestoreEntityTypeIamPolicyArgs({
     required this.entityTypeId,
     required this.featurestoreId,
     required this.location,

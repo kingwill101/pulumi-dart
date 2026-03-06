@@ -14,7 +14,7 @@ class GetLinuxFunctionAppConnectionString {
   /// [name] The name which should be used for this Linux Function App.
   /// [type] The type of Managed Service Identity that is configured on this Linux Function App.
   /// [value] The connection string value.
-  GetLinuxFunctionAppConnectionString({
+  const GetLinuxFunctionAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

@@ -21,7 +21,7 @@ class VirtualNetworkRuleArgs {
   /// [resourceGroupName] The name of the Azure resource group.
   /// [subnetId] The resource identifier for the subnet.
   /// [virtualNetworkRuleName] The name of the virtual network rule to create or update.
-  VirtualNetworkRuleArgs({
+  const VirtualNetworkRuleArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.subnetId,

@@ -37,7 +37,7 @@ class SpacecraftArgs {
   /// [titleLine] Title line of the two-line element set (TLE).
   /// [tleLine1] Line 1 of the two-line element set (TLE).
   /// [tleLine2] Line 2 of the two-line element set (TLE).
-  SpacecraftArgs({
+  const SpacecraftArgs({
     required this.links,
     this.location,
     this.noradId,

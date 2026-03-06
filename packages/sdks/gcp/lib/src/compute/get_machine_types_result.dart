@@ -19,7 +19,7 @@ class GetMachineTypesResult {
   /// [machineTypes] The list of machine types matching the provided filter. Structure is documented below.
   /// [project] Required.
   /// [zone] Required.
-  GetMachineTypesResult({
+  const GetMachineTypesResult({
     this.filter,
     required this.id,
     required this.machineTypes,

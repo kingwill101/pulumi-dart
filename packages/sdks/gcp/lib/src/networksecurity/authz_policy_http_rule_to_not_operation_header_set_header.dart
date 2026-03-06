@@ -13,7 +13,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeader {
   /// Creates a new [AuthzPolicyHttpRuleToNotOperationHeaderSetHeader].
   /// [name] Specifies the name of the header in the request.
   /// [value] Specifies how the header match will be performed.
-  AuthzPolicyHttpRuleToNotOperationHeaderSetHeader({
+  const AuthzPolicyHttpRuleToNotOperationHeaderSetHeader({
     this.name,
     this.value,
   });

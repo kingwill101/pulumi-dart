@@ -9,7 +9,7 @@ class DefenderForContainersAwsOfferingKubernetesDataCollection {
 
   /// Creates a new [DefenderForContainersAwsOfferingKubernetesDataCollection].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature used for reading data
-  DefenderForContainersAwsOfferingKubernetesDataCollection({
+  const DefenderForContainersAwsOfferingKubernetesDataCollection({
     this.cloudRoleArn,
   });
 

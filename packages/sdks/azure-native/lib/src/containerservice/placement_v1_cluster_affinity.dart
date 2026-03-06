@@ -10,7 +10,7 @@ class PlacementV1ClusterAffinity {
 
   /// Creates a new [PlacementV1ClusterAffinity].
   /// [requiredDuringSchedulingIgnoredDuringExecution] If the affinity requirements specified by this field are not met at scheduling time, the resource will not be scheduled onto the cluster. If the affinity requirements specified by this field cease to be met at some point after the placement (e.g. due to an update), the system may or may not try to eventually remove the resource from the cluster.
-  PlacementV1ClusterAffinity({
+  const PlacementV1ClusterAffinity({
     this.requiredDuringSchedulingIgnoredDuringExecution,
   });
 

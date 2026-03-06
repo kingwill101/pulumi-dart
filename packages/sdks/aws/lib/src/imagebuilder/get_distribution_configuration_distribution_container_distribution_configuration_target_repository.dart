@@ -11,7 +11,7 @@ class GetDistributionConfigurationDistributionContainerDistributionConfiguration
   /// Creates a new [GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository].
   /// [repositoryName] Name of the container repository where the output container image is stored.
   /// [service] Service in which the image is registered.
-  GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository({
+  const GetDistributionConfigurationDistributionContainerDistributionConfigurationTargetRepository({
     required this.repositoryName,
     required this.service,
   });

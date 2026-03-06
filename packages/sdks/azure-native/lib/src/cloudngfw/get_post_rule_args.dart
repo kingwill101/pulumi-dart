@@ -15,7 +15,7 @@ class GetPostRuleArgs {
   /// Creates a new [GetPostRuleArgs].
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Post Rule priority
-  GetPostRuleArgs({
+  const GetPostRuleArgs({
     required this.globalRulestackName,
     required this.priority,
   });

@@ -23,7 +23,7 @@ class ContainerServiceDeploymentVersionPublicEndpointHealthCheck {
   /// [successCodes] HTTP codes to use when checking for a successful response from a container. You can specify values between 200 and 499. Defaults to "200-499".
   /// [timeoutSeconds] Amount of time, in seconds, during which no response means a failed health check. You can specify between 2 and 60 seconds. Defaults to 2.
   /// [unhealthyThreshold] Number of consecutive health check failures required before moving the container to the Unhealthy state. Defaults to 2.
-  ContainerServiceDeploymentVersionPublicEndpointHealthCheck({
+  const ContainerServiceDeploymentVersionPublicEndpointHealthCheck({
     this.healthyThreshold,
     this.intervalSeconds,
     this.path,

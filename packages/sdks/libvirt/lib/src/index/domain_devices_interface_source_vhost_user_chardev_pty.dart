@@ -12,7 +12,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevPty {
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevPty].
   /// [path] Sets the path for the PTY source in the EGD backend.
   /// [secLabels] This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  DomainDevicesInterfaceSourceVhostUserChardevPty({
+  const DomainDevicesInterfaceSourceVhostUserChardevPty({
     required this.path,
     this.secLabels,
   });

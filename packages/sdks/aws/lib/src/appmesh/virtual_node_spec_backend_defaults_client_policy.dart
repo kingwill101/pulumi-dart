@@ -9,7 +9,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicy {
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicy].
   /// [tls] Transport Layer Security (TLS) client policy.
-  VirtualNodeSpecBackendDefaultsClientPolicy({
+  const VirtualNodeSpecBackendDefaultsClientPolicy({
     this.tls,
   });
 

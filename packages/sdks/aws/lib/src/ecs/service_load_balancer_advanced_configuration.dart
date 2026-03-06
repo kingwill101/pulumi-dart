@@ -17,7 +17,7 @@ class ServiceLoadBalancerAdvancedConfiguration {
   /// [productionListenerRule] ARN of the listener rule that routes production traffic.
   /// [roleArn] ARN of the IAM role that allows ECS to manage the target groups.
   /// [testListenerRule] ARN of the listener rule that routes test traffic.
-  ServiceLoadBalancerAdvancedConfiguration({
+  const ServiceLoadBalancerAdvancedConfiguration({
     required this.alternateTargetGroupArn,
     required this.productionListenerRule,
     required this.roleArn,

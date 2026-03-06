@@ -16,7 +16,7 @@ class GetDataSetPhysicalTableMap {
   /// [physicalTableMapId] Required.
   /// [relationalTables] Required.
   /// [s3Sources] Required.
-  GetDataSetPhysicalTableMap({
+  const GetDataSetPhysicalTableMap({
     required this.customSqls,
     required this.physicalTableMapId,
     required this.relationalTables,

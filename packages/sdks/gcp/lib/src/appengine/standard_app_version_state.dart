@@ -96,7 +96,7 @@ class StandardAppVersionState {
   /// [threadsafe] Whether multiple requests can be dispatched to this version at once.
   /// [versionId] Relative name of the version within the service. For example, `v1`. Version names can contain only lowercase letters, numbers, or hyphens. Reserved names,"default", "latest", and any name with the prefix "ah-".
   /// [vpcAccessConnector] Enables VPC connectivity for standard apps.
-  StandardAppVersionState({
+  const StandardAppVersionState({
     this.appEngineApis,
     this.automaticScaling,
     this.basicScaling,

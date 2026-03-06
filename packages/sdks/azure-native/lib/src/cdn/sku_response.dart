@@ -21,7 +21,7 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] Name of the pricing tier.
-  SkuResponse({
+  const SkuResponse({
     this.name,
   });
 

@@ -20,7 +20,7 @@ class GetHostShareKeysKey {
   /// [id] The ID of the Host Share Key.
   /// [instanceId] The ID of the Bastion instance.
   /// [privateKeyFingerPrint] The fingerprint of the private key.
-  GetHostShareKeysKey({
+  const GetHostShareKeysKey({
     required this.hostShareKeyId,
     required this.hostShareKeyName,
     required this.id,

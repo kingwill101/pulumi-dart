@@ -14,7 +14,7 @@ class GetDatabaseMysqlConfigResult {
   /// [binlogRetentionPeriods] Required.
   /// [id] Required.
   /// [mysqls] Required.
-  GetDatabaseMysqlConfigResult({
+  const GetDatabaseMysqlConfigResult({
     required this.binlogRetentionPeriods,
     required this.id,
     required this.mysqls,

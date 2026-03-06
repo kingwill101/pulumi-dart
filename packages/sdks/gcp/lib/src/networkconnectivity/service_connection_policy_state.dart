@@ -61,7 +61,7 @@ class ServiceConnectionPolicyState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [serviceClass] The service class identifier for which this ServiceConnectionPolicy is for. The service class identifier is a unique, symbolic representation of a ServiceClass.
   /// [updateTime] The timestamp when the resource was updated.
-  ServiceConnectionPolicyState({
+  const ServiceConnectionPolicyState({
     this.createTime,
     this.description,
     this.effectiveLabels,

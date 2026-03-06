@@ -12,7 +12,7 @@ class DatasetStateResponseDeprecatedBy {
   /// Creates a new [DatasetStateResponseDeprecatedBy].
   /// [datasetId] Unique Dataset identifier.
   /// [definitionVersion] Definition Version
-  DatasetStateResponseDeprecatedBy({
+  const DatasetStateResponseDeprecatedBy({
     required this.datasetId,
     this.definitionVersion,
   });

@@ -9,7 +9,7 @@ class ClientIPConfig {
 
   /// Creates a new [ClientIPConfig].
   /// [timeoutSeconds] timeoutSeconds specifies the seconds of ClientIP type session sticky time. The value must be &gt;0 && &lt;=86400(for 1 day) if ServiceAffinity == "ClientIP". Default value is 10800(for 3 hours).
-  ClientIPConfig({
+  const ClientIPConfig({
     this.timeoutSeconds,
   });
 

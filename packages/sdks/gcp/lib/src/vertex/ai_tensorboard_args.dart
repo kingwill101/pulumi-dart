@@ -33,7 +33,7 @@ class AiTensorboardArgs {
   /// [labels] The labels with user-defined metadata to organize your Tensorboards.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the tensorboard. eg us-central1
-  AiTensorboardArgs({
+  const AiTensorboardArgs({
     this.description,
     required this.displayName,
     this.encryptionSpec,

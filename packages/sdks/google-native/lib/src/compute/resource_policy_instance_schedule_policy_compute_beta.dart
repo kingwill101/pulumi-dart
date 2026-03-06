@@ -22,7 +22,7 @@ class ResourcePolicyInstanceSchedulePolicyComputeBeta {
   /// [timeZone] Specifies the time zone to be used in interpreting Schedule.schedule. The value of this field must be a time zone name from the tz database: https://wikipedia.org/wiki/Tz_database.
   /// [vmStartSchedule] Specifies the schedule for starting instances.
   /// [vmStopSchedule] Specifies the schedule for stopping instances.
-  ResourcePolicyInstanceSchedulePolicyComputeBeta({
+  const ResourcePolicyInstanceSchedulePolicyComputeBeta({
     this.expirationTime,
     this.startTime,
     this.timeZone,

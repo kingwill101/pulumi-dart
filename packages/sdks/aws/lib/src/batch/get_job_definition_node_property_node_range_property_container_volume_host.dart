@@ -8,7 +8,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost {
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost].
   /// [sourcePath] The path on the host container instance that's presented to the container.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerVolumeHost({
     required this.sourcePath,
   });
 

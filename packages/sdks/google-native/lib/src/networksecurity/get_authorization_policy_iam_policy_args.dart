@@ -17,7 +17,7 @@ class GetAuthorizationPolicyIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAuthorizationPolicyIamPolicyArgs({
+  const GetAuthorizationPolicyIamPolicyArgs({
     required this.authorizationPolicyId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -40,7 +40,7 @@ class GetImagesImage {
   /// [sourceDisk] The URL of the source disk used to create this image.
   /// [sourceDiskId] The ID value of the disk used to create this image.
   /// [sourceImageId] The ID value of the image used to create this image.
-  GetImagesImage({
+  const GetImagesImage({
     required this.archiveSizeBytes,
     required this.creationTimestamp,
     required this.description,

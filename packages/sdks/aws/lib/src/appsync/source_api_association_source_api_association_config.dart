@@ -8,7 +8,7 @@ class SourceApiAssociationSourceApiAssociationConfig {
 
   /// Creates a new [SourceApiAssociationSourceApiAssociationConfig].
   /// [mergeType] Merge type. Valid values: `MANUAL_MERGE`, `AUTO_MERGE`
-  SourceApiAssociationSourceApiAssociationConfig({
+  const SourceApiAssociationSourceApiAssociationConfig({
     required this.mergeType,
   });
 

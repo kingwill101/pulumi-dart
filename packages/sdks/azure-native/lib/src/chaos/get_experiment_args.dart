@@ -15,7 +15,7 @@ class GetExperimentArgs {
   /// Creates a new [GetExperimentArgs].
   /// [experimentName] String that represents a Experiment resource name.
   /// [resourceGroupName] String that represents an Azure resource group.
-  GetExperimentArgs({
+  const GetExperimentArgs({
     required this.experimentName,
     required this.resourceGroupName,
   });

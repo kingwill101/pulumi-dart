@@ -12,7 +12,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookiesMatchPatte
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern({
+  const RuleGroupRuleStatementSizeConstraintStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

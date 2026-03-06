@@ -13,7 +13,7 @@ class KeyVaultSecretReference {
   /// Creates a new [KeyVaultSecretReference].
   /// [secretUrl] The URL referencing a secret in a Key Vault.
   /// [sourceVault] The relative URL of the Key Vault containing the secret.
-  KeyVaultSecretReference({
+  const KeyVaultSecretReference({
     required this.secretUrl,
     required this.sourceVault,
   });

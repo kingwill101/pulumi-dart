@@ -31,7 +31,7 @@ class EncryptionScopeArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [source] The provider for the encryption scope. Possible values (case-insensitive):  Microsoft.Storage, Microsoft.KeyVault.
   /// [state] The state of the encryption scope. Possible values (case-insensitive):  Enabled, Disabled.
-  EncryptionScopeArgs({
+  const EncryptionScopeArgs({
     required this.accountName,
     this.encryptionScopeName,
     this.keyVaultProperties,

@@ -22,7 +22,7 @@ class PolicyFileShareRetentionMonthly {
   /// [includeLastDays] Including the last day of the month, default to `false`.
   /// [weekdays] The weekday backups to retain . Must be one of `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
   /// [weeks] The weeks of the month to retain backups of. Must be one of `First`, `Second`, `Third`, `Fourth`, `Last`.
-  PolicyFileShareRetentionMonthly({
+  const PolicyFileShareRetentionMonthly({
     required this.count,
     this.days,
     this.includeLastDays,

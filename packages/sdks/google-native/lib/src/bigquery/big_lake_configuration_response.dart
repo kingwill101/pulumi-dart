@@ -17,7 +17,7 @@ class BigLakeConfigurationResponse {
   /// [fileFormat] [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
   /// [storageUri] [Required] Required and immutable. Fully qualified location prefix of the external folder where data is stored. Normalized to standard format: "gs:////". Starts with "gs://" rather than "/bigstore/". Ends with "/". Does not contain "*". See also BigLakeStorageMetadata on how it is used.
   /// [tableFormat] [Required] Required and immutable. Open source file format that the table data is stored in. Currently only PARQUET is supported.
-  BigLakeConfigurationResponse({
+  const BigLakeConfigurationResponse({
     required this.connectionId,
     required this.fileFormat,
     required this.storageUri,

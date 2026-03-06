@@ -20,7 +20,7 @@ class ProtectionContainerMappingAutomaticUpdate {
   /// [authenticationType] The authentication type used for automation account. Possible values are `RunAsAccount` and `SystemAssignedIdentity`. Defaults to `SystemAssignedIdentity`.
   /// [automationAccountId] The automation account ID which holds the automatic update runbook and authenticates to Azure resources.
   /// [enabled] Should the Mobility service installed on Azure virtual machines be automatically updated. Defaults to `false`.
-  ProtectionContainerMappingAutomaticUpdate({
+  const ProtectionContainerMappingAutomaticUpdate({
     this.authenticationType,
     this.automationAccountId,
     this.enabled,

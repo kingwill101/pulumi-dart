@@ -38,7 +38,7 @@ class MangedSslCertificateArgs {
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [project] The ID of the project in which the resource belongs.
   /// [type] Enum field whose value is always `MANAGED` - used to signal to the API
-  MangedSslCertificateArgs({
+  const MangedSslCertificateArgs({
     this.description,
     this.managed,
     this.name,

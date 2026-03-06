@@ -9,7 +9,7 @@ class GroupMembersItemResponse {
 
   /// Creates a new [GroupMembersItemResponse].
   /// [resourceId] Resource Id.
-  GroupMembersItemResponse({
+  const GroupMembersItemResponse({
     this.resourceId,
   });
 

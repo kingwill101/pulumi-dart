@@ -18,7 +18,7 @@ class Secret {
   /// [keyVaultUrl] Azure Key Vault URL pointing to the secret referenced by the container app.
   /// [name] Secret Name.
   /// [value] Secret Value.
-  Secret({
+  const Secret({
     this.identity,
     this.keyVaultUrl,
     this.name,

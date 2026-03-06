@@ -17,7 +17,7 @@ class VaultPropertiesEncryption {
   /// [infrastructureEncryption] Enabling/Disabling the Double Encryption state
   /// [kekIdentity] The details of the identity used for CMK
   /// [keyVaultProperties] The properties of the Key Vault which hosts CMK
-  VaultPropertiesEncryption({
+  const VaultPropertiesEncryption({
     this.infrastructureEncryption,
     this.kekIdentity,
     this.keyVaultProperties,

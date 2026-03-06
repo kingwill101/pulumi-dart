@@ -14,7 +14,7 @@ class UserEmails {
   /// [primary] When `true`, this is the primary email associated with the user.
   /// [type] The type of email.
   /// [value] The email address. This value must be unique across the identity store.
-  UserEmails({
+  const UserEmails({
     this.primary,
     this.type,
     this.value,

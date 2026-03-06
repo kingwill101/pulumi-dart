@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2FieldTransformation {
   /// [fields] Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type".
   /// [infoTypeTransformations] Treat the contents of the field as free text, and selectively transform content that matches an `InfoType`.
   /// [primitiveTransformation] Apply the transformation to the entire field.
-  GooglePrivacyDlpV2FieldTransformation({
+  const GooglePrivacyDlpV2FieldTransformation({
     this.condition,
     required this.fields,
     this.infoTypeTransformations,

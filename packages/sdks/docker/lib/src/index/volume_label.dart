@@ -11,7 +11,7 @@ class VolumeLabel {
   /// Creates a new [VolumeLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  VolumeLabel({
+  const VolumeLabel({
     required this.label,
     required this.value,
   });

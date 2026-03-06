@@ -8,7 +8,7 @@ class V2VmShieldedInstanceConfig {
 
   /// Creates a new [V2VmShieldedInstanceConfig].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  V2VmShieldedInstanceConfig({
+  const V2VmShieldedInstanceConfig({
     required this.enableSecureBoot,
   });
 

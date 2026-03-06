@@ -15,7 +15,7 @@ class GetRegionHealthCheckComputeBetaArgs {
   /// [healthCheck] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionHealthCheckComputeBetaArgs({
+  const GetRegionHealthCheckComputeBetaArgs({
     required this.healthCheck,
     this.project,
     required this.region,

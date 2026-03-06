@@ -17,7 +17,7 @@ class GetRoutineArgs {
   /// [project] Optional.
   /// [readMask] Optional.
   /// [routineId] Required.
-  GetRoutineArgs({
+  const GetRoutineArgs({
     required this.datasetId,
     this.project,
     this.readMask,

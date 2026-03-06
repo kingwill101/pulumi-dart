@@ -53,7 +53,7 @@ class GetNodeGroupComputeBetaResult {
   /// [size] The total number of nodes in the node group.
   /// [status] Required.
   /// [zone] The name of the zone where the node group resides, such as us-central1-a.
-  GetNodeGroupComputeBetaResult({
+  const GetNodeGroupComputeBetaResult({
     required this.autoscalingPolicy,
     required this.creationTimestamp,
     required this.description,

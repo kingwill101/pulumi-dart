@@ -9,7 +9,7 @@ class GetFirewallsFirewallApplyTo {
   /// Creates a new [GetFirewallsFirewallApplyTo].
   /// [labelSelector] Required.
   /// [server] Required.
-  GetFirewallsFirewallApplyTo({
+  const GetFirewallsFirewallApplyTo({
     required this.labelSelector,
     required this.server,
   });

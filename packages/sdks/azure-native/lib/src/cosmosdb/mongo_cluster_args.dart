@@ -41,7 +41,7 @@ class MongoClusterArgs {
   /// [restoreParameters] Parameters used for restore operations
   /// [serverVersion] The Mongo DB server version. Defaults to the latest available version if not specified.
   /// [tags] Resource tags.
-  MongoClusterArgs({
+  const MongoClusterArgs({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.createMode,

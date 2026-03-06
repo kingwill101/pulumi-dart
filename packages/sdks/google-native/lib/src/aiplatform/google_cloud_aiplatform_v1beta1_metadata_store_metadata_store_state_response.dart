@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse].
   /// [diskUtilizationBytes] The disk utilization of the MetadataStore in bytes.
-  GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse({
+  const GoogleCloudAiplatformV1beta1MetadataStoreMetadataStoreStateResponse({
     required this.diskUtilizationBytes,
   });
 

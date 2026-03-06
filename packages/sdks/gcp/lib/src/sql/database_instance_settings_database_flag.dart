@@ -11,7 +11,7 @@ class DatabaseInstanceSettingsDatabaseFlag {
   /// Creates a new [DatabaseInstanceSettingsDatabaseFlag].
   /// [name] Name of the flag.
   /// [value] Value of the flag.
-  DatabaseInstanceSettingsDatabaseFlag({
+  const DatabaseInstanceSettingsDatabaseFlag({
     required this.name,
     required this.value,
   });

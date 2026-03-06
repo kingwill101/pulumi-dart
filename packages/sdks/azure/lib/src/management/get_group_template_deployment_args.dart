@@ -15,7 +15,7 @@ class GetGroupTemplateDeploymentArgs {
   /// Creates a new [GetGroupTemplateDeploymentArgs].
   /// [managementGroupId] The ID of the Management Group to which this template was applied.
   /// [name] The name of this Management Group Template Deployment.
-  GetGroupTemplateDeploymentArgs({
+  const GetGroupTemplateDeploymentArgs({
     required this.managementGroupId,
     required this.name,
   });

@@ -31,7 +31,7 @@ class NetworkServiceDesignVersionArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkServiceDesignVersionArgs({
+  const NetworkServiceDesignVersionArgs({
     this.location,
     required this.networkServiceDesignGroupName,
     this.networkServiceDesignVersionName,

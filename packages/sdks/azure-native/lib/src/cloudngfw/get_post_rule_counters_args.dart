@@ -17,7 +17,7 @@ class GetPostRuleCountersArgs {
   /// [firewallName] Optional.
   /// [globalRulestackName] GlobalRulestack resource name
   /// [priority] Post Rule priority
-  GetPostRuleCountersArgs({
+  const GetPostRuleCountersArgs({
     this.firewallName,
     required this.globalRulestackName,
     required this.priority,

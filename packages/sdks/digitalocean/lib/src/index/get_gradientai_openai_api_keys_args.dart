@@ -15,7 +15,7 @@ class GetGradientaiOpenaiApiKeysArgs {
   /// Creates a new [GetGradientaiOpenaiApiKeysArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGradientaiOpenaiApiKeysArgs({
+  const GetGradientaiOpenaiApiKeysArgs({
     this.filters,
     this.sorts,
   });

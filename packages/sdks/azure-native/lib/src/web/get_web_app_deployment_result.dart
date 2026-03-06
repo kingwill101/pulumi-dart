@@ -47,7 +47,7 @@ class GetWebAppDeploymentResult {
   /// [startTime] Start time.
   /// [status] Deployment status.
   /// [type] Resource type.
-  GetWebAppDeploymentResult({
+  const GetWebAppDeploymentResult({
     this.active,
     this.author,
     this.authorEmail,

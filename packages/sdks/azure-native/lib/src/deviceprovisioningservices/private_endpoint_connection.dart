@@ -10,7 +10,7 @@ class PrivateEndpointConnection {
 
   /// Creates a new [PrivateEndpointConnection].
   /// [properties] The properties of a private endpoint connection
-  PrivateEndpointConnection({
+  const PrivateEndpointConnection({
     required this.properties,
   });
 

@@ -12,7 +12,7 @@ class ClusterComponent {
   /// Creates a new [ClusterComponent].
   /// [componentConfig] Component Configuration See `component_config` below.
   /// [componentType] Component Type
-  ClusterComponent({
+  const ClusterComponent({
     this.componentConfig,
     this.componentType,
   });

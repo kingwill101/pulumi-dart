@@ -40,7 +40,7 @@ class EtlEtlSink {
   /// [project] The project where the target logstore is delivered.
   /// [roleArn] Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret)` to use KMS to get the key pair.
   /// [type] ETL sinks type, the default value is AliyunLOG.
-  EtlEtlSink({
+  const EtlEtlSink({
     this.accessKeyId,
     this.accessKeySecret,
     this.datasets,

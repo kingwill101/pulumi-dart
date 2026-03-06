@@ -11,7 +11,7 @@ class DbClusterMultiZoneVswitchList {
   /// Creates a new [DbClusterMultiZoneVswitchList].
   /// [vswitchId] The ID of the vswitch.
   /// [zoneId] The zone ID of the vswitch.
-  DbClusterMultiZoneVswitchList({
+  const DbClusterMultiZoneVswitchList({
     required this.vswitchId,
     this.zoneId,
   });

@@ -24,7 +24,7 @@ class HybridRunbookWorkerArgs {
   /// [vmResourceId] The ID of the virtual machine used for this HybridWorker. Changing this forces a new Automation to be created.
   /// [workerGroupName] The name of the HybridWorker Group. Changing this forces a new Automation to be created.
   /// [workerId] Specify the ID of this HybridWorker in UUID notation. Changing this forces a new Automation to be created.
-  HybridRunbookWorkerArgs({
+  const HybridRunbookWorkerArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.vmResourceId,

@@ -15,7 +15,7 @@ class GetConnectionProfileDatastreamV1alpha1Args {
   /// [connectionProfileId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConnectionProfileDatastreamV1alpha1Args({
+  const GetConnectionProfileDatastreamV1alpha1Args({
     required this.connectionProfileId,
     required this.location,
     this.project,

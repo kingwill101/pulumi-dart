@@ -11,7 +11,7 @@ class GetWafEntityUrlMethodOverride {
   /// Creates a new [GetWafEntityUrlMethodOverride].
   /// [allow] Specifies that the system allows or disallows a method for this URL
   /// [method] Specifies an HTTP method.
-  GetWafEntityUrlMethodOverride({
+  const GetWafEntityUrlMethodOverride({
     required this.allow,
     required this.method,
   });

@@ -9,7 +9,7 @@ class DataplexConfigResponseMetastoreV1beta {
 
   /// Creates a new [DataplexConfigResponseMetastoreV1beta].
   /// [lakeResources] A reference to the Lake resources that this metastore service is attached to. The key is the lake resource name. Example: projects/{project_number}/locations/{location_id}/lakes/{lake_id}.
-  DataplexConfigResponseMetastoreV1beta({
+  const DataplexConfigResponseMetastoreV1beta({
     required this.lakeResources,
   });
 

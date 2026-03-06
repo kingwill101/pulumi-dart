@@ -35,7 +35,7 @@ class ToolOpenApiToolApiAuthentication {
   /// [oauthConfigs] (Output)
   /// [serviceAccountAuthConfigs] (Output)
   /// [serviceAgentIdTokenAuthConfigs] (Output)
-  ToolOpenApiToolApiAuthentication({
+  const ToolOpenApiToolApiAuthentication({
     this.apiKeyConfigs,
     this.bearerTokenConfigs,
     this.oauthConfigs,

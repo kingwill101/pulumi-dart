@@ -43,7 +43,7 @@ class GetServiceResult {
   /// [resourceGroupName] Required.
   /// [secondaryKey] The Secondary Key used for Search Service Administration.
   /// [tags] A mapping of tags assigned to the resource.
-  GetServiceResult({
+  const GetServiceResult({
     required this.customerManagedKeyEncryptionComplianceStatus,
     required this.id,
     required this.identities,

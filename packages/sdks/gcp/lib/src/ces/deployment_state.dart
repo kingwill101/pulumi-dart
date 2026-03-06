@@ -46,7 +46,7 @@ class DeploymentState {
   /// [name] Identifier. The resource name of the deployment.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Timestamp when this deployment was last updated.
-  DeploymentState({
+  const DeploymentState({
     this.app,
     this.appVersion,
     this.channelProfile,

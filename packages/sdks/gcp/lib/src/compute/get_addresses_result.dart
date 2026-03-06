@@ -20,7 +20,7 @@ class GetAddressesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] Required.
   /// [region] The region in which the address resides.
-  GetAddressesResult({
+  const GetAddressesResult({
     required this.addresses,
     this.filter,
     required this.id,

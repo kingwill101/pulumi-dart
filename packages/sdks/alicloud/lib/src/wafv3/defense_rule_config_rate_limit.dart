@@ -31,7 +31,7 @@ class DefenseRuleConfigRateLimit {
   /// [target] The type of the statistical object. Valid values:
   /// [threshold] The maximum number of requests that can be sent from a statistical object.
   /// [ttl] The period of time during which you want the specified action to be valid. Unit: seconds.
-  DefenseRuleConfigRateLimit({
+  const DefenseRuleConfigRateLimit({
     this.interval,
     this.status,
     this.subKey,

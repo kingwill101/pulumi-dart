@@ -23,7 +23,7 @@ class DatasetDelimitedTextAzureBlobStorageLocation {
   /// [dynamicPathEnabled] Is the `path` using dynamic expression, function or system variables? Defaults to `false`.
   /// [filename] The filename of the file.
   /// [path] The folder path to the file. This can be an empty string.
-  DatasetDelimitedTextAzureBlobStorageLocation({
+  const DatasetDelimitedTextAzureBlobStorageLocation({
     required this.container,
     this.dynamicContainerEnabled,
     this.dynamicFilenameEnabled,

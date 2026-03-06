@@ -31,7 +31,7 @@ class IamRoleProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamRoleProperties({
+  const IamRoleProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

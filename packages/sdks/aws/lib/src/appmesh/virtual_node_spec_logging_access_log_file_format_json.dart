@@ -11,7 +11,7 @@ class VirtualNodeSpecLoggingAccessLogFileFormatJson {
   /// Creates a new [VirtualNodeSpecLoggingAccessLogFileFormatJson].
   /// [key] The specified key for the JSON. Must be between 1 and 100 characters in length.
   /// [value] The specified value for the JSON. Must be between 1 and 100 characters in length.
-  VirtualNodeSpecLoggingAccessLogFileFormatJson({
+  const VirtualNodeSpecLoggingAccessLogFileFormatJson({
     required this.key,
     required this.value,
   });

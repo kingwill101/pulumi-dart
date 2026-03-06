@@ -15,7 +15,7 @@ class FleetUpdateStrategyStage {
   /// [afterStageWaitInSeconds] Specifies the time in seconds to wait at the end of this stage before starting the next one.
   /// [groups] One or more `group` blocks as defined below.
   /// [name] The name which should be used for this stage.
-  FleetUpdateStrategyStage({
+  const FleetUpdateStrategyStage({
     this.afterStageWaitInSeconds,
     required this.groups,
     required this.name,

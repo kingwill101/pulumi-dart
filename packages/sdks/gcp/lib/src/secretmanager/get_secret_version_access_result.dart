@@ -23,7 +23,7 @@ class GetSecretVersionAccessResult {
   /// [secret] Required.
   /// [secretData] The secret data. No larger than 64KiB.
   /// [version] Required.
-  GetSecretVersionAccessResult({
+  const GetSecretVersionAccessResult({
     required this.id,
     this.isSecretDataBase64,
     required this.name,

@@ -9,7 +9,7 @@ class RunbookAssociationProperty {
 
   /// Creates a new [RunbookAssociationProperty].
   /// [name] Gets or sets the name of the runbook.
-  RunbookAssociationProperty({
+  const RunbookAssociationProperty({
     this.name,
   });
 

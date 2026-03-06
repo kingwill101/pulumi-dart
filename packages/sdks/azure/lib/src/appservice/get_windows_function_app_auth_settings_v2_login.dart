@@ -38,7 +38,7 @@ class GetWindowsFunctionAppAuthSettingsV2Login {
   /// [tokenStorePath] The directory path in the App Filesystem in which the tokens are stored.
   /// [tokenStoreSasSettingName] The name of the app setting which contains the SAS URL of the blob storage containing the tokens.
   /// [validateNonce] Is the nonce validated while completing the login flow.
-  GetWindowsFunctionAppAuthSettingsV2Login({
+  const GetWindowsFunctionAppAuthSettingsV2Login({
     required this.allowedExternalRedirectUrls,
     required this.cookieExpirationConvention,
     required this.cookieExpirationTime,

@@ -21,7 +21,7 @@ class GoogleCloudContactcenterinsightsV1ConversationParticipantResponse {
   /// [obfuscatedExternalUserId] Obfuscated user ID from Dialogflow.
   /// [role] The role of the participant.
   /// [userId] A user-specified ID representing the participant.
-  GoogleCloudContactcenterinsightsV1ConversationParticipantResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationParticipantResponse({
     required this.dialogflowParticipant,
     required this.dialogflowParticipantName,
     required this.obfuscatedExternalUserId,

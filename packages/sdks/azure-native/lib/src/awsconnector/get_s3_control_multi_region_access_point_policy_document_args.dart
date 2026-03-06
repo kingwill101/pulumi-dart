@@ -15,7 +15,7 @@ class GetS3ControlMultiRegionAccessPointPolicyDocumentArgs {
   /// Creates a new [GetS3ControlMultiRegionAccessPointPolicyDocumentArgs].
   /// [name] Name of S3ControlMultiRegionAccessPointPolicyDocument
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetS3ControlMultiRegionAccessPointPolicyDocumentArgs({
+  const GetS3ControlMultiRegionAccessPointPolicyDocumentArgs({
     required this.name,
     required this.resourceGroupName,
   });

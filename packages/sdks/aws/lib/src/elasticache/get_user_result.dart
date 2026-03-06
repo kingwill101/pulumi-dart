@@ -29,7 +29,7 @@ class GetUserResult {
   /// [region] Required.
   /// [userId] Identifier for the user.
   /// [userName] User name of the user.
-  GetUserResult({
+  const GetUserResult({
     this.accessString,
     this.authenticationModes,
     this.engine,

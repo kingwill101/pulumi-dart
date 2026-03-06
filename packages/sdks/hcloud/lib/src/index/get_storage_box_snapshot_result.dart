@@ -30,7 +30,7 @@ class GetStorageBoxSnapshotResult {
   /// [stats] Statistics of the Storage Box Snapshot.
   /// [storageBoxId] ID of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
-  GetStorageBoxSnapshotResult({
+  const GetStorageBoxSnapshotResult({
     required this.description,
     required this.id,
     required this.isAutomatic,

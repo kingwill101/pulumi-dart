@@ -15,7 +15,7 @@ class ListWebAppWorkflowsConnectionsArgs {
   /// Creates a new [ListWebAppWorkflowsConnectionsArgs].
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppWorkflowsConnectionsArgs({
+  const ListWebAppWorkflowsConnectionsArgs({
     required this.name,
     required this.resourceGroupName,
   });

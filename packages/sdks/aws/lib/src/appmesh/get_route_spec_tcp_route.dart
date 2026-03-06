@@ -14,7 +14,7 @@ class GetRouteSpecTcpRoute {
   /// [actions] Required.
   /// [matches] Required.
   /// [timeouts] Required.
-  GetRouteSpecTcpRoute({
+  const GetRouteSpecTcpRoute({
     required this.actions,
     required this.matches,
     required this.timeouts,

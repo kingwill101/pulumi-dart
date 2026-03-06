@@ -13,7 +13,7 @@ class CustomPropertyState {
   /// Creates a new [CustomPropertyState].
   /// [propertyKey] The Custom attribute key.
   /// [propertyValues] Custom attribute sets the value of. See `property_values` below.
-  CustomPropertyState({
+  const CustomPropertyState({
     this.propertyKey,
     this.propertyValues,
   });

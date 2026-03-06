@@ -11,7 +11,7 @@ class GetAcceleratorAttribute {
   /// [flowLogsEnabled] Required.
   /// [flowLogsS3Bucket] Required.
   /// [flowLogsS3Prefix] Required.
-  GetAcceleratorAttribute({
+  const GetAcceleratorAttribute({
     required this.flowLogsEnabled,
     required this.flowLogsS3Bucket,
     required this.flowLogsS3Prefix,

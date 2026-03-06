@@ -12,7 +12,7 @@ class AliasContextResponse {
   /// Creates a new [AliasContextResponse].
   /// [kind] The alias kind.
   /// [name] The alias name.
-  AliasContextResponse({
+  const AliasContextResponse({
     required this.kind,
     required this.name,
   });

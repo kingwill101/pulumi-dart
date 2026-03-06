@@ -15,7 +15,7 @@ class GetAttestationAtResourceArgs {
   /// Creates a new [GetAttestationAtResourceArgs].
   /// [attestationName] The name of the attestation.
   /// [resourceId] Resource ID.
-  GetAttestationAtResourceArgs({
+  const GetAttestationAtResourceArgs({
     required this.attestationName,
     required this.resourceId,
   });

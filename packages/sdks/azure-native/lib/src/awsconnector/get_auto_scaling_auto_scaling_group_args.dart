@@ -15,7 +15,7 @@ class GetAutoScalingAutoScalingGroupArgs {
   /// Creates a new [GetAutoScalingAutoScalingGroupArgs].
   /// [name] Name of AutoScalingAutoScalingGroup
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAutoScalingAutoScalingGroupArgs({
+  const GetAutoScalingAutoScalingGroupArgs({
     required this.name,
     required this.resourceGroupName,
   });

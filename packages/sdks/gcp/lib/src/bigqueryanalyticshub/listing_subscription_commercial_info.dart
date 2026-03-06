@@ -11,7 +11,7 @@ class ListingSubscriptionCommercialInfo {
 
   /// Creates a new [ListingSubscriptionCommercialInfo].
   /// [cloudMarketplaces] (Output)
-  ListingSubscriptionCommercialInfo({
+  const ListingSubscriptionCommercialInfo({
     this.cloudMarketplaces,
   });
 

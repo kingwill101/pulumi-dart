@@ -37,7 +37,7 @@ class SalesforceServiceCloudObjectDataset {
   /// [schema] Columns that define the physical type schema of the dataset. Type: array (or Expression with resultType array), itemType: DatasetSchemaDataElement.
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [type] Type of dataset.
-  SalesforceServiceCloudObjectDataset({
+  const SalesforceServiceCloudObjectDataset({
     this.annotations,
     this.description,
     this.folder,

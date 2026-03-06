@@ -20,7 +20,7 @@ class InboundSamlConfigSpConfig {
   /// [callbackUri] Callback URI where responses from IDP are handled. Must start with `https://`.
   /// [spCertificates] (Output)
   /// [spEntityId] Unique identifier for all SAML entities.
-  InboundSamlConfigSpConfig({
+  const InboundSamlConfigSpConfig({
     this.callbackUri,
     this.spCertificates,
     this.spEntityId,

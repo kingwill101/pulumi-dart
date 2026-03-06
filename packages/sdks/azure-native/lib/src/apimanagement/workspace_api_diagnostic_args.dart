@@ -60,7 +60,7 @@ class WorkspaceApiDiagnosticArgs {
   /// [serviceName] The name of the API Management service.
   /// [verbosity] The verbosity level applied to traces emitted by trace policies.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceApiDiagnosticArgs({
+  const WorkspaceApiDiagnosticArgs({
     this.alwaysLog,
     required this.apiId,
     this.backend,

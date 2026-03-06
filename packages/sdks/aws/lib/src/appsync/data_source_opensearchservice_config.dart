@@ -11,7 +11,7 @@ class DataSourceOpensearchserviceConfig {
   /// Creates a new [DataSourceOpensearchserviceConfig].
   /// [endpoint] HTTP endpoint of the OpenSearch domain.
   /// [region] AWS region of the OpenSearch domain. Defaults to current region.
-  DataSourceOpensearchserviceConfig({
+  const DataSourceOpensearchserviceConfig({
     required this.endpoint,
     this.region,
   });

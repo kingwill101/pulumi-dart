@@ -24,7 +24,7 @@ class StaticSiteCustomDomainArgs {
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [validationMethod] Validation method for adding a custom domain
-  StaticSiteCustomDomainArgs({
+  const StaticSiteCustomDomainArgs({
     this.domainName,
     this.kind,
     required this.name,

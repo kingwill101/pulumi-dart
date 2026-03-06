@@ -25,7 +25,7 @@ class NamespaceCustomerManagedKeyArgs {
   /// [infrastructureEncryptionEnabled] Whether to enable Infrastructure Encryption (Double Encryption). Changing this forces a new resource to be created.
   /// [keyVaultKeyIds] The list of keys of Key Vault.
   /// [userAssignedIdentityId] The ID of a User Managed Identity that will be used to access Key Vaults that contain the encryption keys.
-  NamespaceCustomerManagedKeyArgs({
+  const NamespaceCustomerManagedKeyArgs({
     required this.eventhubNamespaceId,
     this.infrastructureEncryptionEnabled,
     required this.keyVaultKeyIds,

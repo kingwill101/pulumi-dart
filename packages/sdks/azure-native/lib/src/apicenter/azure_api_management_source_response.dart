@@ -12,7 +12,7 @@ class AzureApiManagementSourceResponse {
   /// Creates a new [AzureApiManagementSourceResponse].
   /// [msiResourceId] The resource ID of the managed identity that has access to the API Management instance.
   /// [resourceId] API Management service resource ID.
-  AzureApiManagementSourceResponse({
+  const AzureApiManagementSourceResponse({
     this.msiResourceId,
     required this.resourceId,
   });

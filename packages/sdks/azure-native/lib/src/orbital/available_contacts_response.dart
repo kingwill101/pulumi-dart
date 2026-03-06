@@ -40,7 +40,7 @@ class AvailableContactsResponse {
   /// [startElevationDegrees] Spacecraft elevation above the horizon at contact start.
   /// [txEndTime] Time at which antenna transmit will be disabled (ISO 8601 UTC standard).
   /// [txStartTime] Time at which antenna transmit will be enabled (ISO 8601 UTC standard).
-  AvailableContactsResponse({
+  const AvailableContactsResponse({
     required this.endAzimuthDegrees,
     required this.endElevationDegrees,
     required this.groundStationName,

@@ -15,7 +15,7 @@ class GetTableArgs {
   /// Creates a new [GetTableArgs].
   /// [name] The name of the Table.
   /// [storageAccountName] The name of the Storage Account where the Table exists.
-  GetTableArgs({
+  const GetTableArgs({
     required this.name,
     required this.storageAccountName,
   });

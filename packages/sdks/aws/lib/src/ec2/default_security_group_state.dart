@@ -42,7 +42,7 @@ class DefaultSecurityGroupState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcId] VPC ID. **Note that changing the `vpc_id` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
-  DefaultSecurityGroupState({
+  const DefaultSecurityGroupState({
     this.arn,
     this.description,
     this.egress,

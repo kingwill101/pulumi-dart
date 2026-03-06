@@ -17,7 +17,7 @@ class DomainDevicesAudioJackOutput {
   /// [connectPorts] Specifies the connection ports for the Jack audio output.
   /// [exactName] Sets the exact client name for the Jack audio output.
   /// [serverName] Sets the server name for the Jack audio output.
-  DomainDevicesAudioJackOutput({
+  const DomainDevicesAudioJackOutput({
     this.clientName,
     this.connectPorts,
     this.exactName,

@@ -18,7 +18,7 @@ class SwitchDasProArgs {
   /// [instanceId] The ID of the database instance.
   /// [sqlRetention] The storage duration of SQL Explorer data. Valid values: `30`, `180`, `365`, `1095`, `1825`. Unit: days. Default value: `30`.
   /// [userId] The ID of the Alibaba Cloud account that is used to create the database instance.
-  SwitchDasProArgs({
+  const SwitchDasProArgs({
     required this.instanceId,
     this.sqlRetention,
     this.userId,

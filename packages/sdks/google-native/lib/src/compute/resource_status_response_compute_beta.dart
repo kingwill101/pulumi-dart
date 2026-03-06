@@ -15,7 +15,7 @@ class ResourceStatusResponseComputeBeta {
   /// [physicalHost] An opaque ID of the host on which the VM is running.
   /// [scheduling] Required.
   /// [upcomingMaintenance] Required.
-  ResourceStatusResponseComputeBeta({
+  const ResourceStatusResponseComputeBeta({
     required this.physicalHost,
     required this.scheduling,
     required this.upcomingMaintenance,

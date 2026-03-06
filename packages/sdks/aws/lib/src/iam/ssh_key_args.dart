@@ -21,7 +21,7 @@ class SshKeyArgs {
   /// [publicKey] The SSH public key. The public key must be encoded in ssh-rsa format or PEM format.
   /// [status] The status to assign to the SSH public key. Active means the key can be used for authentication with an AWS CodeCommit repository. Inactive means the key cannot be used. Default is `active`.
   /// [username] The name of the IAM user to associate the SSH public key with.
-  SshKeyArgs({
+  const SshKeyArgs({
     required this.encoding,
     required this.publicKey,
     this.status,

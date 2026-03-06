@@ -15,7 +15,7 @@ class OSProfileWindowsConfiguration {
   /// [assessmentMode] Specifies the assessment mode.
   /// [enableHotpatching] Captures the hotpatch capability enrollment intent of the customers, which enables customers to patch their Windows machines without requiring a reboot.
   /// [patchMode] Specifies the patch mode.
-  OSProfileWindowsConfiguration({
+  const OSProfileWindowsConfiguration({
     this.assessmentMode,
     this.enableHotpatching,
     this.patchMode,

@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudSt
 
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath].
   /// [path] A url representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt`
-  PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath({
+  const PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath({
     required this.path,
   });
 

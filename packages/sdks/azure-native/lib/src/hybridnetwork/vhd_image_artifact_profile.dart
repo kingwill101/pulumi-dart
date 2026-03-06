@@ -12,7 +12,7 @@ class VhdImageArtifactProfile {
   /// Creates a new [VhdImageArtifactProfile].
   /// [vhdName] Vhd name.
   /// [vhdVersion] Vhd version.
-  VhdImageArtifactProfile({
+  const VhdImageArtifactProfile({
     this.vhdName,
     this.vhdVersion,
   });

@@ -12,7 +12,7 @@ class ConnectedSubnet {
   /// Creates a new [ConnectedSubnet].
   /// [annotation] Switch configuration description.
   /// [prefix] Prefix of the Connected Subnet.
-  ConnectedSubnet({
+  const ConnectedSubnet({
     this.annotation,
     required this.prefix,
   });

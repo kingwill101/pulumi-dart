@@ -29,7 +29,7 @@ class JobTargetGroupJobTarget {
   /// [membershipType] The membership type for this job target. Possible values are `Include` and `Exclude`. Defaults to `Include`.
   /// [serverName] The name of the MS SQL Server.
   /// [type] The job target type. This value is computed based on `server_name`, `database_name`, and `elastic_pool_name`.
-  JobTargetGroupJobTarget({
+  const JobTargetGroupJobTarget({
     this.databaseName,
     this.elasticPoolName,
     this.jobCredentialId,

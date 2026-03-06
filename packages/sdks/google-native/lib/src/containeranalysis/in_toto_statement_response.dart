@@ -24,7 +24,7 @@ class InTotoStatementResponse {
   /// [slsaProvenanceZeroTwo] Required.
   /// [subject] Required.
   /// [type] Always `https://in-toto.io/Statement/v0.1`.
-  InTotoStatementResponse({
+  const InTotoStatementResponse({
     required this.predicateType,
     required this.provenance,
     required this.slsaProvenance,

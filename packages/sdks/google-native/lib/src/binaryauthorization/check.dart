@@ -36,7 +36,7 @@ class Check {
   /// [slsaCheck] Optional. Require that an image was built by a trusted builder (such as Google Cloud Build), meets requirements for Supply chain Levels for Software Artifacts (SLSA), and was built from a trusted source code repostitory.
   /// [trustedDirectoryCheck] Optional. Require that an image lives in a trusted directory.
   /// [vulnerabilityCheck] Optional. Require that an image does not contain vulnerabilities that violate the configured rules, such as based on severity levels.
-  Check({
+  const Check({
     this.alwaysDeny,
     this.displayName,
     this.imageAllowlist,

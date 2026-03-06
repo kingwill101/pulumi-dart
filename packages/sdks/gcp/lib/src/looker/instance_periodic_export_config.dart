@@ -19,7 +19,7 @@ class InstancePeriodicExportConfig {
   /// [gcsUri] Cloud Storage bucket URI for periodic export.
   /// [kmsKey] Name of the CMEK key in KMS.
   /// [startTime] Time in UTC to start the periodic export job.
-  InstancePeriodicExportConfig({
+  const InstancePeriodicExportConfig({
     required this.gcsUri,
     required this.kmsKey,
     required this.startTime,

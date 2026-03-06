@@ -40,7 +40,7 @@ class GetWorkerPoolCloudbuildV1beta1Result {
   /// [uid] A unique identifier for the `WorkerPool`.
   /// [updateTime] Time at which the request to update the `WorkerPool` was received.
   /// [workerConfig] Worker configuration for the `WorkerPool`.
-  GetWorkerPoolCloudbuildV1beta1Result({
+  const GetWorkerPoolCloudbuildV1beta1Result({
     required this.annotations,
     required this.createTime,
     required this.deleteTime,

@@ -34,7 +34,7 @@ class GetAddressBooksBook {
   /// [groupUuid] The ID of the Address Book.
   /// [id] The ID of the Address Book.
   /// [tagRelation] One or more tags for the relationship between.
-  GetAddressBooksBook({
+  const GetAddressBooksBook({
     required this.addressLists,
     required this.autoAddTagEcs,
     required this.description,

@@ -9,7 +9,7 @@ class KubernetesDashboard {
 
   /// Creates a new [KubernetesDashboard].
   /// [disabled] Whether the Kubernetes Dashboard is enabled for this cluster.
-  KubernetesDashboard({
+  const KubernetesDashboard({
     this.disabled,
   });
 

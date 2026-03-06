@@ -30,7 +30,7 @@ class GetAggregatorsAggregator {
   /// [description] The description of aggregator.
   /// [id] The id of the aggregator.
   /// [status] The status of the resource. Valid Values:  `0`: creating `1`: normal `2`: deleting.
-  GetAggregatorsAggregator({
+  const GetAggregatorsAggregator({
     required this.accountId,
     required this.aggregatorAccounts,
     required this.aggregatorId,

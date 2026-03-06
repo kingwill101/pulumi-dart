@@ -13,7 +13,7 @@ class DataPlaneAuthOptions {
   /// Creates a new [DataPlaneAuthOptions].
   /// [aadOrApiKey] Indicates that either the API key or an access token from a Microsoft Entra ID tenant can be used for authentication.
   /// [apiKeyOnly] Indicates that only the API key can be used for authentication.
-  DataPlaneAuthOptions({
+  const DataPlaneAuthOptions({
     this.aadOrApiKey,
     this.apiKeyOnly,
   });

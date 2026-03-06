@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec].
   /// [type] Looker specific column type of this column.
-  GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
+  const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec({
     this.type,
   });
 

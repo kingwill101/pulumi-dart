@@ -17,7 +17,7 @@ class VolumeTargetPermissions {
   /// [label] Configures the label associated with the backing store permissions.
   /// [mode] Specifies the mode (file permissions) for the backing store of the volume.
   /// [owner] Defines the owner of the backing store permissions for the volume.
-  VolumeTargetPermissions({
+  const VolumeTargetPermissions({
     this.group,
     this.label,
     this.mode,

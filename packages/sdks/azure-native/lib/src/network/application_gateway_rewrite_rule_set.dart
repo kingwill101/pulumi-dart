@@ -16,7 +16,7 @@ class ApplicationGatewayRewriteRuleSet {
   /// [id] Resource ID.
   /// [name] Name of the rewrite rule set that is unique within an Application Gateway.
   /// [rewriteRules] Rewrite rules in the rewrite rule set.
-  ApplicationGatewayRewriteRuleSet({
+  const ApplicationGatewayRewriteRuleSet({
     this.id,
     this.name,
     this.rewriteRules,

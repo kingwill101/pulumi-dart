@@ -9,7 +9,7 @@ class ResponsePlanIntegration {
 
   /// Creates a new [ResponsePlanIntegration].
   /// [pagerduties] Details about the PagerDuty configuration for a response plan. The following values are supported:
-  ResponsePlanIntegration({
+  const ResponsePlanIntegration({
     this.pagerduties,
   });
 

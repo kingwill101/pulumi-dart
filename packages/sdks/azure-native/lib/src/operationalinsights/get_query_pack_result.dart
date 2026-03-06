@@ -39,7 +39,7 @@ class GetQueryPackResult {
   /// [timeCreated] Creation Date for the Log Analytics QueryPack, in ISO 8601 format.
   /// [timeModified] Last modified date of the Log Analytics QueryPack, in ISO 8601 format.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetQueryPackResult({
+  const GetQueryPackResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

@@ -18,7 +18,7 @@ class GetPackageDownloadURLArgs {
   /// [packageName] The resource name of the Test Base Package.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetPackageDownloadURLArgs({
+  const GetPackageDownloadURLArgs({
     required this.packageName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

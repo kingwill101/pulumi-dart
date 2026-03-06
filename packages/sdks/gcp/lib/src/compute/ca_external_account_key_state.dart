@@ -31,7 +31,7 @@ class CaExternalAccountKeyState {
   /// [location] Location for the externalAccountKey. Currently only `global` is supported.
   /// [name] Resource name. projects/{project}/locations/{location}/externalAccountKeys/{keyId}.
   /// [project] The ID of the project in which the resource belongs.
-  CaExternalAccountKeyState({
+  const CaExternalAccountKeyState({
     this.b64MacKey,
     this.b64urlMacKey,
     this.keyId,

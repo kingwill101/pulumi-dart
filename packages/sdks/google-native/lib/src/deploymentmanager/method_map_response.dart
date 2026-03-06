@@ -21,7 +21,7 @@ class MethodMapResponse {
   /// [get] The action identifier for the get method to be used for this collection
   /// [setIamPolicy] The action identifier for the setIamPolicy method to be used for this collection
   /// [update] The action identifier for the update method to be used for this collection
-  MethodMapResponse({
+  const MethodMapResponse({
     required this.create,
     required this.delete,
     required this.get,

@@ -9,7 +9,7 @@ class ExportExportDestinationConfiguration {
 
   /// Creates a new [ExportExportDestinationConfiguration].
   /// [s3Destinations] Object that describes the destination of the data exports file. See the `s3_destination` argument reference below.
-  ExportExportDestinationConfiguration({
+  const ExportExportDestinationConfiguration({
     this.s3Destinations,
   });
 

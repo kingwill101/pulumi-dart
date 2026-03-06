@@ -15,7 +15,7 @@ class GetConditionalCreditArgs {
   /// Creates a new [GetConditionalCreditArgs].
   /// [conditionalCreditName] Name of the conditional credit
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConditionalCreditArgs({
+  const GetConditionalCreditArgs({
     required this.conditionalCreditName,
     required this.resourceGroupName,
   });

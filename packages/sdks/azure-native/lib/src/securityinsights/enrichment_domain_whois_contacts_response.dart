@@ -19,7 +19,7 @@ class EnrichmentDomainWhoisContactsResponse {
   /// [billing] The billing contact for this whois record
   /// [registrant] The registrant contact for this whois record
   /// [tech] The technical contact for this whois record
-  EnrichmentDomainWhoisContactsResponse({
+  const EnrichmentDomainWhoisContactsResponse({
     this.admin,
     this.billing,
     this.registrant,

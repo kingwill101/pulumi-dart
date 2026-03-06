@@ -10,7 +10,7 @@ class MonitoringComponentConfigContainerV1beta1 {
 
   /// Creates a new [MonitoringComponentConfigContainerV1beta1].
   /// [enableComponents] Select components to collect metrics. An empty set would disable all monitoring.
-  MonitoringComponentConfigContainerV1beta1({
+  const MonitoringComponentConfigContainerV1beta1({
     this.enableComponents,
   });
 

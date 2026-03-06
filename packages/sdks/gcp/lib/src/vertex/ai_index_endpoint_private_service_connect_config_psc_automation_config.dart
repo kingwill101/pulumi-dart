@@ -11,7 +11,7 @@ class AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig {
   /// Creates a new [AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig].
   /// [network] The full name of the Google Compute Engine [network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/get): projects/{project}/global/networks/{network}.
   /// [projectId] Project id used to create forwarding rule.
-  AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig({
+  const AiIndexEndpointPrivateServiceConnectConfigPscAutomationConfig({
     required this.network,
     required this.projectId,
   });

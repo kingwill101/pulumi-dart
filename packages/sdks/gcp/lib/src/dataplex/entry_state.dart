@@ -48,7 +48,7 @@ class EntryState {
   /// [parentEntry] The resource name of the parent entry, in the format projects/{project_number}/locations/{locationId}/entryGroups/{entryGroupId}/entries/{entryId}.
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] The time when the entry was last updated in Dataplex.
-  EntryState({
+  const EntryState({
     this.aspects,
     this.createTime,
     this.entryGroupId,

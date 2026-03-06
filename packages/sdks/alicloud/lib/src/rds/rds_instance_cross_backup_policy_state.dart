@@ -48,7 +48,7 @@ class RdsInstanceCrossBackupPolicyState {
   /// [logBackupEnabledTime] The time when cross-region log backup was enabled on the instance. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   /// [retentType] The policy that is used to retain cross-region backups of the instance. Default value: 1. The default value 1 indicate that cross-region backups are retained based on the specified retention period.
   /// [retention] The number of days for which the cross-region backup files of the instance are retained. Valid values: 7 to 1825. Default value: 7.
-  RdsInstanceCrossBackupPolicyState({
+  const RdsInstanceCrossBackupPolicyState({
     this.backupEnabled,
     this.backupEnabledTime,
     this.crossBackupRegion,

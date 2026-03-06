@@ -30,7 +30,7 @@ class RouteTableState {
   /// [routes] A list of objects representing routes. Each object accepts the arguments documented below.
   /// [subnets] The collection of Subnets associated with this route table.
   /// [tags] A mapping of tags to assign to the resource.
-  RouteTableState({
+  const RouteTableState({
     this.bgpRoutePropagationEnabled,
     this.location,
     this.name,

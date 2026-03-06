@@ -10,7 +10,7 @@ class ExtensionProfileResponseV1 {
 
   /// Creates a new [ExtensionProfileResponseV1].
   /// [extensions] List of Arc extensions installed on edge device.
-  ExtensionProfileResponseV1({
+  const ExtensionProfileResponseV1({
     required this.extensions,
   });
 

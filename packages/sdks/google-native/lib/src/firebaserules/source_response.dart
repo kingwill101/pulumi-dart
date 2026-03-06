@@ -10,7 +10,7 @@ class SourceResponse {
 
   /// Creates a new [SourceResponse].
   /// [files] `File` set constituting the `Source` bundle.
-  SourceResponse({
+  const SourceResponse({
     required this.files,
   });
 

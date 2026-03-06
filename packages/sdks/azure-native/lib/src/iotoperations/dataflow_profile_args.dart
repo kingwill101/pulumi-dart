@@ -26,7 +26,7 @@ class DataflowProfileArgs {
   /// [instanceName] Name of instance.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DataflowProfileArgs({
+  const DataflowProfileArgs({
     this.dataflowProfileName,
     required this.extendedLocation,
     required this.instanceName,

@@ -31,7 +31,7 @@ class SharedResourceState {
   /// [resourceShareId] The ID of the resource share.
   /// [resourceType] The type of the shared resource.
   /// [status] The association status.
-  SharedResourceState({
+  const SharedResourceState({
     this.createTime,
     this.permissionName,
     this.resourceArn,

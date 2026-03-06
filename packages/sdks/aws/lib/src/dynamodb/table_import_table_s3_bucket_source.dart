@@ -14,7 +14,7 @@ class TableImportTableS3BucketSource {
   /// [bucket] The S3 bucket that is being imported from.
   /// [bucketOwner] The account number of the S3 bucket that is being imported from.
   /// [keyPrefix] The key prefix shared by all S3 Objects that are being imported.
-  TableImportTableS3BucketSource({
+  const TableImportTableS3BucketSource({
     required this.bucket,
     this.bucketOwner,
     this.keyPrefix,

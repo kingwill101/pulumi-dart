@@ -21,7 +21,7 @@ class ManagedPolicyAttachmentArgs {
   /// [managedPolicyArn] The IAM managed policy Amazon Resource Name (ARN) to be attached to the Permission Set.
   /// [permissionSetArn] The Amazon Resource Name (ARN) of the Permission Set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ManagedPolicyAttachmentArgs({
+  const ManagedPolicyAttachmentArgs({
     required this.instanceArn,
     required this.managedPolicyArn,
     required this.permissionSetArn,

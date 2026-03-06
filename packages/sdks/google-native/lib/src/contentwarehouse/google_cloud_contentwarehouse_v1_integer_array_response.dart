@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1IntegerArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1IntegerArrayResponse].
   /// [values] List of integer values.
-  GoogleCloudContentwarehouseV1IntegerArrayResponse({
+  const GoogleCloudContentwarehouseV1IntegerArrayResponse({
     required this.values,
   });
 

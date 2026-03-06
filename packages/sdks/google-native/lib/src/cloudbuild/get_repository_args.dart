@@ -17,7 +17,7 @@ class GetRepositoryArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetRepositoryArgs({
+  const GetRepositoryArgs({
     required this.connectionId,
     required this.location,
     this.project,

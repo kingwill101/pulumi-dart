@@ -103,7 +103,7 @@ class DataBoxCustomerDiskJobDetailsResponse {
   /// [reverseShipmentLabelSasKey] Shared access key to download the return shipment label
   /// [reverseShippingDetails] Optional Reverse Shipping details for order.
   /// [shippingAddress] Shipping address of the customer.
-  DataBoxCustomerDiskJobDetailsResponse({
+  const DataBoxCustomerDiskJobDetailsResponse({
     required this.actions,
     required this.chainOfCustodySasKey,
     required this.contactDetails,

@@ -9,7 +9,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage {
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
-  ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage({
+  const ScheduledQueryLastRunSummaryQueryInsightsResponseQuerySpatialCoverage({
     this.maxes,
   });
 

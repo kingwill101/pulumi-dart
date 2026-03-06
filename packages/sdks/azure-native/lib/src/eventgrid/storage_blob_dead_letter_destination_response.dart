@@ -16,7 +16,7 @@ class StorageBlobDeadLetterDestinationResponse {
   /// [blobContainerName] The name of the Storage blob container that is the destination of the deadletter events
   /// [endpointType] Type of the endpoint for the dead letter destination
   /// [resourceId] The Azure Resource ID of the storage account that is the destination of the deadletter events
-  StorageBlobDeadLetterDestinationResponse({
+  const StorageBlobDeadLetterDestinationResponse({
     this.blobContainerName,
     required this.endpointType,
     this.resourceId,

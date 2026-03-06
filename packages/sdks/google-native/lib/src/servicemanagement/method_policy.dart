@@ -13,7 +13,7 @@ class MethodPolicy {
   /// Creates a new [MethodPolicy].
   /// [requestPolicies] Policies that are applicable to the request message.
   /// [selector] Selects a method to which these policies should be enforced, for example, "google.pubsub.v1.Subscriber.CreateSubscription". Refer to selector for syntax details. NOTE: This field must not be set in the proto annotation. It will be automatically filled by the service config compiler .
-  MethodPolicy({
+  const MethodPolicy({
     this.requestPolicies,
     this.selector,
   });

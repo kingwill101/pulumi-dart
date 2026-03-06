@@ -27,7 +27,7 @@ class GetPrivateAtlaseResult {
   /// [properties] The Private Atlas resource properties.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateAtlaseResult({
+  const GetPrivateAtlaseResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

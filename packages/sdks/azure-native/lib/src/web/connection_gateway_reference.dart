@@ -18,7 +18,7 @@ class ConnectionGatewayReference {
   /// [location] Resource reference location
   /// [name] Resource reference name
   /// [type] Resource reference type
-  ConnectionGatewayReference({
+  const ConnectionGatewayReference({
     this.id,
     this.location,
     this.name,

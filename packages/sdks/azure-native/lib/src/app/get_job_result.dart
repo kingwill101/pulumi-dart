@@ -61,7 +61,7 @@ class GetJobResult {
   /// [template] Container Apps job definition.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workloadProfileName] Workload profile name to pin for container apps job execution.
-  GetJobResult({
+  const GetJobResult({
     required this.azureApiVersion,
     this.configuration,
     this.environmentId,

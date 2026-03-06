@@ -24,7 +24,7 @@ class GetInstancesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of resource group to which WAF instance belongs.
   /// [status] The status of WAF instance to filter results. Optional value: `0`: The instance has expired, `1` : The instance has not expired and is working properly.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.instanceSource,
     this.outputFile,

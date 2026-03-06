@@ -8,7 +8,7 @@ class AppAuthorizationCredentialApiKeyCredential {
 
   /// Creates a new [AppAuthorizationCredentialApiKeyCredential].
   /// [apiKey] Contains API key credential information.
-  AppAuthorizationCredentialApiKeyCredential({
+  const AppAuthorizationCredentialApiKeyCredential({
     required this.apiKey,
   });
 

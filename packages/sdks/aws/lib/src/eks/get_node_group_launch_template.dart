@@ -14,7 +14,7 @@ class GetNodeGroupLaunchTemplate {
   /// [id] The ID of the launch template.
   /// [name] Name of the AutoScaling Group.
   /// [version] Kubernetes version.
-  GetNodeGroupLaunchTemplate({
+  const GetNodeGroupLaunchTemplate({
     required this.id,
     required this.name,
     required this.version,

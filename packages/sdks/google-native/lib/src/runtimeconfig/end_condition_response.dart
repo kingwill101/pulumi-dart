@@ -10,7 +10,7 @@ class EndConditionResponse {
 
   /// Creates a new [EndConditionResponse].
   /// [cardinality] The cardinality of the `EndCondition`.
-  EndConditionResponse({
+  const EndConditionResponse({
     required this.cardinality,
   });
 

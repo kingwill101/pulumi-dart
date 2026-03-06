@@ -16,7 +16,7 @@ class LLMDiagnosticSettings {
   /// [logs] Specifies whether default diagnostic should be enabled for Large Language Models or not.
   /// [requests] Diagnostic settings for Large Language Models requests.
   /// [responses] Diagnostic settings for Large Language Models responses.
-  LLMDiagnosticSettings({
+  const LLMDiagnosticSettings({
     this.logs,
     this.requests,
     this.responses,

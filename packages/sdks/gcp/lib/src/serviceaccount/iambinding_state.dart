@@ -32,7 +32,7 @@ class IAMBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
-  IAMBindingState({
+  const IAMBindingState({
     this.condition,
     this.etag,
     this.members,

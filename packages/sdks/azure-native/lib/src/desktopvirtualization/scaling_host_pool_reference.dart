@@ -12,7 +12,7 @@ class ScalingHostPoolReference {
   /// Creates a new [ScalingHostPoolReference].
   /// [hostPoolArmPath] Arm path of referenced hostpool.
   /// [scalingPlanEnabled] Is the scaling plan enabled for this hostpool.
-  ScalingHostPoolReference({
+  const ScalingHostPoolReference({
     this.hostPoolArmPath,
     this.scalingPlanEnabled,
   });

@@ -23,7 +23,7 @@ class GetPolicyPackResult {
   /// [policies] List of policies in this pack.
   /// [version] The version number.
   /// [versionTag] The version tag (if any).
-  GetPolicyPackResult({
+  const GetPolicyPackResult({
     this.config,
     required this.displayName,
     required this.name,

@@ -56,7 +56,7 @@ class CertificateState {
   /// [version] The current version of the Key Vault Certificate.
   /// [versionlessId] The Base ID of the Key Vault Certificate.
   /// [versionlessSecretId] The Base ID of the Key Vault Secret.
-  CertificateState({
+  const CertificateState({
     this.certificate,
     this.certificateAttributes,
     this.certificateData,

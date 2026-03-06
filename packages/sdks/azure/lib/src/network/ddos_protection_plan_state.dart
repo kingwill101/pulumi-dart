@@ -21,7 +21,7 @@ class DdosProtectionPlanState {
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkIds] A list of Virtual Network IDs associated with the DDoS Protection Plan.
-  DdosProtectionPlanState({
+  const DdosProtectionPlanState({
     this.location,
     this.name,
     this.resourceGroupName,

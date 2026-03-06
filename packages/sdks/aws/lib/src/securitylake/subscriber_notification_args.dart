@@ -19,7 +19,7 @@ class SubscriberNotificationArgs {
   /// [configuration] Specify the configuration using which you want to create the subscriber notification..
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subscriberId] The subscriber ID for the notification subscription.
-  SubscriberNotificationArgs({
+  const SubscriberNotificationArgs({
     required this.configuration,
     this.region,
     required this.subscriberId,

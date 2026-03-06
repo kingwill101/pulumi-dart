@@ -12,7 +12,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValue {
   /// Creates a new [AccessPackageAssignmentPolicyQuestionChoiceDisplayValue].
   /// [defaultText] The default text of this question
   /// [localizedTexts] The localized text of this question
-  AccessPackageAssignmentPolicyQuestionChoiceDisplayValue({
+  const AccessPackageAssignmentPolicyQuestionChoiceDisplayValue({
     required this.defaultText,
     this.localizedTexts,
   });

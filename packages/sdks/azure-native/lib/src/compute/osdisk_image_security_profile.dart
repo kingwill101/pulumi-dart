@@ -12,7 +12,7 @@ class OSDiskImageSecurityProfile {
   /// Creates a new [OSDiskImageSecurityProfile].
   /// [confidentialVMEncryptionType] confidential VM encryption types
   /// [secureVMDiskEncryptionSetId] secure VM disk encryption set id
-  OSDiskImageSecurityProfile({
+  const OSDiskImageSecurityProfile({
     this.confidentialVMEncryptionType,
     this.secureVMDiskEncryptionSetId,
   });

@@ -8,7 +8,7 @@ class V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCust
 
   /// Creates a new [V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload({
+  const V2modelsIntentInitialResponseSettingInitialResponseMessageGroupMessageCustomPayload({
     required this.value,
   });
 

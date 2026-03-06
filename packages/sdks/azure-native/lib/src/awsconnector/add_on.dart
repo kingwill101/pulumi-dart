@@ -16,7 +16,7 @@ class AddOn {
   /// [addOnType] The add-on type
   /// [autoSnapshotAddOnRequest] An object that represents additional parameters when enabling or modifying the automatic snapshot add-on
   /// [status] Status of the Addon
-  AddOn({
+  const AddOn({
     this.addOnType,
     this.autoSnapshotAddOnRequest,
     this.status,

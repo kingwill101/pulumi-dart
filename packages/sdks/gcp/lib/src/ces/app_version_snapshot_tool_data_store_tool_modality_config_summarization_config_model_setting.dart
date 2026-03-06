@@ -17,7 +17,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelS
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting({
+  const AppVersionSnapshotToolDataStoreToolModalityConfigSummarizationConfigModelSetting({
     this.model,
     this.temperature,
   });

@@ -24,7 +24,7 @@ class GetTagsArgs {
   /// [packageName] The name of the package.
   /// [project] The project ID in which the resource belongs. If it is not provided, the provider project is used.
   /// [repositoryId] The last part of the repository name to fetch from.
-  GetTagsArgs({
+  const GetTagsArgs({
     this.filter,
     required this.location,
     required this.packageName,

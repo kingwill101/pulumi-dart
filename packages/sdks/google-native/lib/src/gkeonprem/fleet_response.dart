@@ -9,7 +9,7 @@ class FleetResponse {
 
   /// Creates a new [FleetResponse].
   /// [membership] The name of the managed fleet Membership resource associated to this cluster. Membership names are formatted as `projects//locations//memberships/`.
-  FleetResponse({
+  const FleetResponse({
     required this.membership,
   });
 

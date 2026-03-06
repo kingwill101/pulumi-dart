@@ -15,7 +15,7 @@ class FilteringTag {
   /// [action] Valid actions for a filtering tag. Exclusion takes priority over inclusion.
   /// [name] The name (also known as the key) of the tag.
   /// [value] The value of the tag.
-  FilteringTag({
+  const FilteringTag({
     this.action,
     this.name,
     this.value,

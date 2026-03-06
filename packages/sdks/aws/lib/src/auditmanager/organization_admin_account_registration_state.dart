@@ -15,7 +15,7 @@ class OrganizationAdminAccountRegistrationState {
   /// [adminAccountId] Identifier for the organization administrator account.
   /// [organizationId] Identifier for the organization.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationAdminAccountRegistrationState({
+  const OrganizationAdminAccountRegistrationState({
     this.adminAccountId,
     this.organizationId,
     this.region,

@@ -11,7 +11,7 @@ class ClusterClusterEndpoint {
   /// Creates a new [ClusterClusterEndpoint].
   /// [address] DNS hostname of the node.
   /// [port] The port number on which each of the nodes accepts connections. Defaults to `6379`.
-  ClusterClusterEndpoint({
+  const ClusterClusterEndpoint({
     this.address,
     this.port,
   });

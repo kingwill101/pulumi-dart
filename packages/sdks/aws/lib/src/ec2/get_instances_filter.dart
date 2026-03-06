@@ -12,7 +12,7 @@ class GetInstancesFilter {
   /// Creates a new [GetInstancesFilter].
   /// [name] Name of the filter.
   /// [values] One or more values to match.
-  GetInstancesFilter({
+  const GetInstancesFilter({
     required this.name,
     required this.values,
   });

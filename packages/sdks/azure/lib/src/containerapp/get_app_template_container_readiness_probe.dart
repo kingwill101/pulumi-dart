@@ -36,7 +36,7 @@ class GetAppTemplateContainerReadinessProbe {
   /// [successCountThreshold] The number of consecutive successful responses required to consider this probe as successful.
   /// [timeout] Time in seconds after which the probe times out.
   /// [transport] The transport method for the Ingress.
-  GetAppTemplateContainerReadinessProbe({
+  const GetAppTemplateContainerReadinessProbe({
     required this.failureCountThreshold,
     required this.headers,
     required this.host,

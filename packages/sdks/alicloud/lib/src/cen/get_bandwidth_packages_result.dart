@@ -31,7 +31,7 @@ class GetBandwidthPackagesResult {
   /// [outputFile] Optional.
   /// [packages] A list of CEN bandwidth package. Each element contains the following attributes:
   /// [status] Status of the CEN Bandwidth Package in CEN instance, including `Idle` and `InUse`.
-  GetBandwidthPackagesResult({
+  const GetBandwidthPackagesResult({
     required this.id,
     required this.ids,
     this.includeReservationData,

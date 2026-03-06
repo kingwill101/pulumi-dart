@@ -20,7 +20,7 @@ class ContainerServiceDeploymentVersionContainer {
   /// [environment] Key-value map of the environment variables of the container.
   /// [image] Name of the image used for the container. Container images sourced from your Lightsail container service, that are registered and stored on your service, start with a colon (`:`). For example, `:container-service-1.mystaticwebsite.1`. Container images sourced from a public registry like Docker Hub don't start with a colon. For example, `nginx:latest` or `nginx`.
   /// [ports] Key-value map of the open firewall ports of the container. Valid values: `HTTP`, `HTTPS`, `TCP`, `UDP`.
-  ContainerServiceDeploymentVersionContainer({
+  const ContainerServiceDeploymentVersionContainer({
     this.commands,
     required this.containerName,
     this.environment,

@@ -37,7 +37,7 @@ class GetImportJobResult {
   /// [protectionLevel] Immutable. The protection level of the ImportJob. This must match the protection_level of the version_template on the CryptoKey you attempt to import into.
   /// [publicKey] The public key with which to wrap key material prior to import. Only returned if state is ACTIVE.
   /// [state] The current state of the ImportJob, indicating if it can be used.
-  GetImportJobResult({
+  const GetImportJobResult({
     required this.attestation,
     required this.createTime,
     required this.expireEventTime,

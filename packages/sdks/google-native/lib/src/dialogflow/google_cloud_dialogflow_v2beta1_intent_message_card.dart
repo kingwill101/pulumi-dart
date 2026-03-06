@@ -19,7 +19,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
   /// [imageUri] Optional. The public URI to an image file for the card.
   /// [subtitle] Optional. The subtitle of the card.
   /// [title] Optional. The title of the card.
-  GoogleCloudDialogflowV2beta1IntentMessageCard({
+  const GoogleCloudDialogflowV2beta1IntentMessageCard({
     this.buttons,
     this.imageUri,
     this.subtitle,

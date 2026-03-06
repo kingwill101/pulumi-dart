@@ -9,7 +9,7 @@ class PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection {
 
   /// Creates a new [PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection].
   /// [id] Remote private endpoint connection ID.
-  PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection({
+  const PrivateLinkServiceProxyResponseRemotePrivateEndpointConnection({
     required this.id,
   });
 

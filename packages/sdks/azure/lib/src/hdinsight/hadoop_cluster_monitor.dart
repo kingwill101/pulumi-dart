@@ -11,7 +11,7 @@ class HadoopClusterMonitor {
   /// Creates a new [HadoopClusterMonitor].
   /// [logAnalyticsWorkspaceId] The Operations Management Suite (OMS) workspace ID.
   /// [primaryKey] The Operations Management Suite (OMS) workspace key.
-  HadoopClusterMonitor({
+  const HadoopClusterMonitor({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

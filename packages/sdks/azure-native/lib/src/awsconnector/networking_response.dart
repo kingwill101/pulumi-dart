@@ -14,7 +14,7 @@ class NetworkingResponse {
   /// Creates a new [NetworkingResponse].
   /// [monthlyTransfer] Monthly Transfer of the Instance.
   /// [ports] Ports to the Instance.
-  NetworkingResponse({
+  const NetworkingResponse({
     this.monthlyTransfer,
     this.ports,
   });

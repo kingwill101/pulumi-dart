@@ -59,7 +59,7 @@ class PackageInfoNote {
   /// [title] Identify the full name of the package as given by the Package Originator
   /// [verificationCode] This field provides an independently reproducible mechanism identifying specific contents of a package based on the actual files (except the SPDX file itself, if it is included in the package) that make up each package and that correlates to the data in this SPDX file
   /// [version] Identify the version of the package
-  PackageInfoNote({
+  const PackageInfoNote({
     this.analyzed,
     this.attribution,
     this.checksum,

@@ -48,7 +48,7 @@ class OssScanConfigArgs {
   /// [ossScanConfigName] The policy name.
   /// [scanDayLists] The days when the check is performed. The value indicates the days of the week.
   /// [startTime] The start time of the check. The time is in the HH:mm:ss format.
-  OssScanConfigArgs({
+  const OssScanConfigArgs({
     this.allKeyPrefix,
     required this.bucketNameLists,
     this.decompressMaxFileCount,

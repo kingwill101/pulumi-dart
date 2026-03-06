@@ -15,7 +15,7 @@ class GetDatabaseUserArgs {
   /// Creates a new [GetDatabaseUserArgs].
   /// [clusterId] The ID of the database cluster.
   /// [name] The name of the database user.
-  GetDatabaseUserArgs({
+  const GetDatabaseUserArgs({
     required this.clusterId,
     required this.name,
   });

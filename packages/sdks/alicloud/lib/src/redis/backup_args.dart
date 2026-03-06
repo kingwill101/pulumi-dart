@@ -17,7 +17,7 @@ class BackupArgs {
   /// Creates a new [BackupArgs].
   /// [backupRetentionPeriod] The expiration period for this manual backup ranges from 7 to 730 days. When you pass in -1, it indicates that this manual backup will not expire (during the instance's lifecycle). If you do not pass any value (default case), it means the expiration policy will be consistent with the current automatic backup strategy.
   /// [instanceId] InstanceId
-  BackupArgs({
+  const BackupArgs({
     this.backupRetentionPeriod,
     required this.instanceId,
   });

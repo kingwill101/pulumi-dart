@@ -36,7 +36,7 @@ class ExecutionArgs {
   /// [templateContent] The content of template. When the user selects an existing template to create and execute a task, it is not necessary to pass in this field.
   /// [templateName] The name of execution template.
   /// [templateVersion] The version of execution template.
-  ExecutionArgs({
+  const ExecutionArgs({
     this.description,
     this.loopMode,
     this.mode,

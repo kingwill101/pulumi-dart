@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [family] SKU family name
   /// [name] SKU name to specify whether the key vault is a standard vault or a premium vault.
-  SkuResponse({
+  const SkuResponse({
     required this.family,
     required this.name,
   });

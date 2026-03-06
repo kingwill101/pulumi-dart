@@ -8,7 +8,7 @@ class InstancesBulkInsertOperationMetadataResponse {
 
   /// Creates a new [InstancesBulkInsertOperationMetadataResponse].
   /// [perLocationStatus] Status information per location (location name is key). Example key: zones/us-central1-a
-  InstancesBulkInsertOperationMetadataResponse({
+  const InstancesBulkInsertOperationMetadataResponse({
     required this.perLocationStatus,
   });
 

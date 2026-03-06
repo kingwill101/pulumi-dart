@@ -26,7 +26,7 @@ class GetZnodesResult {
   /// [outputFile] Optional.
   /// [path] Required.
   /// [znodes] Required.
-  GetZnodesResult({
+  const GetZnodesResult({
     this.acceptLanguage,
     required this.clusterId,
     required this.id,

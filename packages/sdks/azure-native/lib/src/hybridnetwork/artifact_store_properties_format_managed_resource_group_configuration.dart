@@ -11,7 +11,7 @@ class ArtifactStorePropertiesFormatManagedResourceGroupConfiguration {
   /// Creates a new [ArtifactStorePropertiesFormatManagedResourceGroupConfiguration].
   /// [location] The managed resource group location.
   /// [name] The managed resource group name.
-  ArtifactStorePropertiesFormatManagedResourceGroupConfiguration({
+  const ArtifactStorePropertiesFormatManagedResourceGroupConfiguration({
     this.location,
     this.name,
   });

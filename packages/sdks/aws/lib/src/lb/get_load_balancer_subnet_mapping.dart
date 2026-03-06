@@ -15,7 +15,7 @@ class GetLoadBalancerSubnetMapping {
   /// [outpostId] Required.
   /// [privateIpv4Address] Required.
   /// [subnetId] Required.
-  GetLoadBalancerSubnetMapping({
+  const GetLoadBalancerSubnetMapping({
     required this.allocationId,
     required this.ipv6Address,
     required this.outpostId,

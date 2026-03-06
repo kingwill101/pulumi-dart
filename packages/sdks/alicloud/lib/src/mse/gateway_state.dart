@@ -43,7 +43,7 @@ class GatewayState {
   /// [status] The status of the gateway.
   /// [vpcId] The ID of the vpc.
   /// [vswitchId] The ID of the vswitch.
-  GatewayState({
+  const GatewayState({
     this.backupVswitchId,
     this.deleteSlb,
     this.enterpriseSecurityGroup,

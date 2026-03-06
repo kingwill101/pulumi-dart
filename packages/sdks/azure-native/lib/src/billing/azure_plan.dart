@@ -15,7 +15,7 @@ class AzurePlan {
   /// [productId] The ID that uniquely identifies a product.
   /// [skuDescription] The sku description.
   /// [skuId] The ID that uniquely identifies a sku.
-  AzurePlan({
+  const AzurePlan({
     this.productId,
     this.skuDescription,
     this.skuId,

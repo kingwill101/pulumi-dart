@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseA
 
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow].
   /// [customRequestHandling] Custom handling for allowed requests. See below.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseAllow({
     this.customRequestHandling,
   });
 

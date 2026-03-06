@@ -9,7 +9,7 @@ class ExpiryDetail {
 
   /// Creates a new [ExpiryDetail].
   /// [expireTime] The time at which the `MembershipRole` will expire.
-  ExpiryDetail({
+  const ExpiryDetail({
     this.expireTime,
   });
 

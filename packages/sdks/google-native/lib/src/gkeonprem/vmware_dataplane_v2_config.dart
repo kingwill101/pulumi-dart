@@ -15,7 +15,7 @@ class VmwareDataplaneV2Config {
   /// [advancedNetworking] Enable advanced networking which requires dataplane_v2_enabled to be set true.
   /// [dataplaneV2Enabled] Enables Dataplane V2.
   /// [windowsDataplaneV2Enabled] Enable Dataplane V2 for clusters with Windows nodes.
-  VmwareDataplaneV2Config({
+  const VmwareDataplaneV2Config({
     this.advancedNetworking,
     this.dataplaneV2Enabled,
     this.windowsDataplaneV2Enabled,

@@ -16,7 +16,7 @@ class MigrationPropertiesResponse {
   /// [migrationProgress] Migration Progress
   /// [oldSubnetId] Old Subnet Id
   /// [oldVnetSiteId] Old Vnet Site Id
-  MigrationPropertiesResponse({
+  const MigrationPropertiesResponse({
     required this.migrationProgress,
     required this.oldSubnetId,
     required this.oldVnetSiteId,

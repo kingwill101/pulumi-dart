@@ -17,7 +17,7 @@ class HostedZoneDnsSecArgs {
   /// Creates a new [HostedZoneDnsSecArgs].
   /// [hostedZoneId] Identifier of the Route 53 Hosted Zone.
   /// [signingStatus] Hosted Zone signing status. Valid values: `SIGNING`, `NOT_SIGNING`. Defaults to `SIGNING`.
-  HostedZoneDnsSecArgs({
+  const HostedZoneDnsSecArgs({
     required this.hostedZoneId,
     this.signingStatus,
   });

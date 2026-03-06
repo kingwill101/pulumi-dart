@@ -15,7 +15,7 @@ class GetFleetArgs {
   /// Creates a new [GetFleetArgs].
   /// [fleetName] The name of the Compute Fleet
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetArgs({
+  const GetFleetArgs({
     required this.fleetName,
     required this.resourceGroupName,
   });

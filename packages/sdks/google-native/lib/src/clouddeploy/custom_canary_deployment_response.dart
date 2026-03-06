@@ -10,7 +10,7 @@ class CustomCanaryDeploymentResponse {
 
   /// Creates a new [CustomCanaryDeploymentResponse].
   /// [phaseConfigs] Configuration for each phase in the canary deployment in the order executed.
-  CustomCanaryDeploymentResponse({
+  const CustomCanaryDeploymentResponse({
     required this.phaseConfigs,
   });
 

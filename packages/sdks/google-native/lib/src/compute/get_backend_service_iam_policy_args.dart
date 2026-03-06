@@ -15,7 +15,7 @@ class GetBackendServiceIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetBackendServiceIamPolicyArgs({
+  const GetBackendServiceIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

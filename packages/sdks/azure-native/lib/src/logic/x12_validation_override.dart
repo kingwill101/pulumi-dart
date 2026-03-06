@@ -27,7 +27,7 @@ class X12ValidationOverride {
   /// [validateCharacterSet] The value indicating whether to validate character Set.
   /// [validateEDITypes] The value indicating whether to validate EDI types.
   /// [validateXSDTypes] The value indicating whether to validate XSD types.
-  X12ValidationOverride({
+  const X12ValidationOverride({
     required this.allowLeadingAndTrailingSpacesAndZeroes,
     required this.messageId,
     required this.trailingSeparatorPolicy,

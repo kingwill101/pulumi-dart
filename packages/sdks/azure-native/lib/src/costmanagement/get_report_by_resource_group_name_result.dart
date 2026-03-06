@@ -35,7 +35,7 @@ class GetReportByResourceGroupNameResult {
   /// [schedule] Has schedule information for the report.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetReportByResourceGroupNameResult({
+  const GetReportByResourceGroupNameResult({
     required this.azureApiVersion,
     required this.definition,
     required this.deliveryInfo,

@@ -28,7 +28,7 @@ class AzureResourceProtectionIntent {
   /// [protectionIntentItemType] backup protectionIntent type.
   /// [protectionState] Backup state of this backup item.
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  AzureResourceProtectionIntent({
+  const AzureResourceProtectionIntent({
     this.backupManagementType,
     this.friendlyName,
     this.itemId,

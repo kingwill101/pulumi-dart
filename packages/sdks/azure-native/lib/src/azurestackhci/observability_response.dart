@@ -15,7 +15,7 @@ class ObservabilityResponse {
   /// [episodicDataUpload] When set to true, collects log data to facilitate quicker issue resolution.
   /// [euLocation] Location of your cluster. The log and diagnostic data is sent to the appropriate diagnostics servers depending upon where your cluster resides. Setting this to false results in all data sent to Microsoft to be stored outside of the EU.
   /// [streamingDataClient] Enables telemetry data to be sent to Microsoft
-  ObservabilityResponse({
+  const ObservabilityResponse({
     this.episodicDataUpload,
     this.euLocation,
     this.streamingDataClient,

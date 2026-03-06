@@ -20,7 +20,7 @@ class GetStoresArgs {
   /// [nameRegex] A regex string to filter results by store name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [project] Required.
-  GetStoresArgs({
+  const GetStoresArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

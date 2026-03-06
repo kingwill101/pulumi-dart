@@ -15,7 +15,7 @@ class DaprMetadataResponse {
   /// [name] Metadata property name.
   /// [secretRef] Name of the Dapr Component secret from which to pull the metadata property value.
   /// [value] Metadata property value.
-  DaprMetadataResponse({
+  const DaprMetadataResponse({
     this.name,
     this.secretRef,
     this.value,

@@ -14,7 +14,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
   /// [localPath] Local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
   /// [s3UploadMode] Whether to upload the results of the monitoring job continuously or after the job completes. Valid values: `Continuous`, `EndOfJob`.
   /// [s3Uri] URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringOutputConfigMonitoringOutputsS3Output({
     required this.localPath,
     this.s3UploadMode,
     required this.s3Uri,

@@ -15,7 +15,7 @@ class HttpRouteHeaderModifierNetworkservicesV1beta1 {
   /// [add] Add the headers with given map where key is the name of the header, value is the value of the header.
   /// [remove] Remove headers (matching by header names) specified in the list.
   /// [set] Completely overwrite/replace the headers with given map where key is the name of the header, value is the value of the header.
-  HttpRouteHeaderModifierNetworkservicesV1beta1({
+  const HttpRouteHeaderModifierNetworkservicesV1beta1({
     this.add,
     this.remove,
     this.set,

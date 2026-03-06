@@ -12,7 +12,7 @@ class GetInstanceDesiredPscAutoConnection {
   /// Creates a new [GetInstanceDesiredPscAutoConnection].
   /// [network] Required. The consumer network where the IP address resides, in the form of
   /// [projectId] Required. The consumer project_id where the forwarding rule is created from.
-  GetInstanceDesiredPscAutoConnection({
+  const GetInstanceDesiredPscAutoConnection({
     required this.network,
     required this.projectId,
   });

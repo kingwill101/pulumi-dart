@@ -15,7 +15,7 @@ class ResourceClaimParametersReferencePatch {
   /// [apiGroup] APIGroup is the group for the resource being referenced. It is empty for the core API. This matches the group in the APIVersion that is used when creating the resources.
   /// [kind] Kind is the type of resource being referenced. This is the same value as in the parameter object's metadata, for example "ConfigMap".
   /// [name] Name is the name of resource being referenced.
-  ResourceClaimParametersReferencePatch({
+  const ResourceClaimParametersReferencePatch({
     this.apiGroup,
     this.kind,
     this.name,

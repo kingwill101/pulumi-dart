@@ -120,7 +120,7 @@ class ConnectionState {
   /// [subscriptionType] This subscription type enum states the subscription type of the project.
   /// [suspended] Suspended indicates if a user has suspended a connection or not.
   /// [updateTime] Time the Namespace was updated in UTC.
-  ConnectionState({
+  const ConnectionState({
     this.authConfig,
     this.configVariables,
     this.connectionRevision,

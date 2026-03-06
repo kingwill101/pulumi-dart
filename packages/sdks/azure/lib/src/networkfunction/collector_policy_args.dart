@@ -29,7 +29,7 @@ class CollectorPolicyArgs {
   /// [name] Specifies the name which should be used for this Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
   /// [tags] A mapping of tags which should be assigned to the Network Function Collector Policy.
   /// [trafficCollectorId] Specifies the Azure Traffic Collector ID of the Network Function Collector Policy. Changing this forces a new Network Function Collector Policy to be created.
-  CollectorPolicyArgs({
+  const CollectorPolicyArgs({
     required this.ipfxEmission,
     required this.ipfxIngestion,
     this.location,

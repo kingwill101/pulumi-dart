@@ -15,7 +15,7 @@ class GetNodeTypesResult {
   /// [names] A list of node types available in the given zone and project.
   /// [project] Required.
   /// [zone] Required.
-  GetNodeTypesResult({
+  const GetNodeTypesResult({
     required this.id,
     required this.names,
     required this.project,

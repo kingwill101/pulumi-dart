@@ -21,7 +21,7 @@ class GetReplicationProtectionClusterResult {
   /// [name] The name of the protection cluster.
   /// [properties] The custom data.
   /// [type] The Type of the object.
-  GetReplicationProtectionClusterResult({
+  const GetReplicationProtectionClusterResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

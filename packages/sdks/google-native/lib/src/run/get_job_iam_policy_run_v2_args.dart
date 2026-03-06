@@ -17,7 +17,7 @@ class GetJobIamPolicyRunV2Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetJobIamPolicyRunV2Args({
+  const GetJobIamPolicyRunV2Args({
     required this.jobId,
     required this.location,
     this.optionsRequestedPolicyVersion,

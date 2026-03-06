@@ -8,7 +8,7 @@ class GetKubernetesClusterLinuxProfileSshKey {
 
   /// Creates a new [GetKubernetesClusterLinuxProfileSshKey].
   /// [keyData] The Public SSH Key used to access the cluster.
-  GetKubernetesClusterLinuxProfileSshKey({
+  const GetKubernetesClusterLinuxProfileSshKey({
     required this.keyData,
   });
 

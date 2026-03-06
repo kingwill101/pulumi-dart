@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1PublishActionResponse {
   /// Creates a new [GoogleCloudContentwarehouseV1PublishActionResponse].
   /// [messages] Messages to be published.
   /// [topicId] The topic id in the Pub/Sub service for which messages will be published to.
-  GoogleCloudContentwarehouseV1PublishActionResponse({
+  const GoogleCloudContentwarehouseV1PublishActionResponse({
     required this.messages,
     required this.topicId,
   });

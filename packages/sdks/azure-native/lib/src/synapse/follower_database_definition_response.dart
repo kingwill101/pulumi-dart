@@ -15,7 +15,7 @@ class FollowerDatabaseDefinitionResponse {
   /// [attachedDatabaseConfigurationName] Resource name of the attached database configuration in the follower cluster.
   /// [databaseName] The database name owned by this cluster that was followed. * in case following all databases.
   /// [kustoPoolResourceId] Resource id of the cluster that follows a database owned by this cluster.
-  FollowerDatabaseDefinitionResponse({
+  const FollowerDatabaseDefinitionResponse({
     required this.attachedDatabaseConfigurationName,
     required this.databaseName,
     required this.kustoPoolResourceId,

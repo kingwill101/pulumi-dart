@@ -13,7 +13,7 @@ class WorkloadWorkloadPropertyExtendedMetadataValue {
   /// Creates a new [WorkloadWorkloadPropertyExtendedMetadataValue].
   /// [extendedMetadataSchema] (Output)
   /// [metadataStruct] (Output)
-  WorkloadWorkloadPropertyExtendedMetadataValue({
+  const WorkloadWorkloadPropertyExtendedMetadataValue({
     this.extendedMetadataSchema,
     this.metadataStruct,
   });

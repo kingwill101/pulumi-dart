@@ -18,7 +18,7 @@ class ConfigurationOptionSettingResponse {
   /// [optionName] The name of the configuration option.
   /// [resourceName] A unique resource name for the option setting. Use it for a time–based scaling configuration option.
   /// [value] The current value for the configuration option.
-  ConfigurationOptionSettingResponse({
+  const ConfigurationOptionSettingResponse({
     this.namespace,
     this.optionName,
     this.resourceName,

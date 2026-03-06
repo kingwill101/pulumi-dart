@@ -17,7 +17,7 @@ class GetFabricResult {
   /// [name] Required.
   /// [recoveryVaultName] Required.
   /// [resourceGroupName] Required.
-  GetFabricResult({
+  const GetFabricResult({
     required this.id,
     required this.location,
     required this.name,

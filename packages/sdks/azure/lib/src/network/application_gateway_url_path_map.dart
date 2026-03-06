@@ -40,7 +40,7 @@ class ApplicationGatewayUrlPathMap {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The Name of the URL Path Map.
   /// [pathRules] One or more `path_rule` blocks as defined above.
-  ApplicationGatewayUrlPathMap({
+  const ApplicationGatewayUrlPathMap({
     this.defaultBackendAddressPoolId,
     this.defaultBackendAddressPoolName,
     this.defaultBackendHttpSettingsId,

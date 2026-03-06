@@ -29,7 +29,7 @@ class RestApiPutState {
   /// [restApiId] Identifier of the associated REST API.
   /// [timeouts] Optional.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment. To force a redeployment without changing these keys/values, use the `-replace` option with `pulumi preview` or `pulumi up`.
-  RestApiPutState({
+  const RestApiPutState({
     this.body,
     this.failOnWarnings,
     this.parameters,

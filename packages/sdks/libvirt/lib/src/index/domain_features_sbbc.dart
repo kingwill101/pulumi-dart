@@ -8,7 +8,7 @@ class DomainFeaturesSbbc {
 
   /// Creates a new [DomainFeaturesSbbc].
   /// [value] Sets the value attribute for the SBBC feature, indicating its configuration.
-  DomainFeaturesSbbc({
+  const DomainFeaturesSbbc({
     required this.value,
   });
 

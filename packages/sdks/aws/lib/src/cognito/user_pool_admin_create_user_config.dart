@@ -12,7 +12,7 @@ class UserPoolAdminCreateUserConfig {
   /// Creates a new [UserPoolAdminCreateUserConfig].
   /// [allowAdminCreateUserOnly] Set to True if only the administrator is allowed to create user profiles. Set to False if users can sign themselves up via an app.
   /// [inviteMessageTemplate] Invite message template structure. Detailed below.
-  UserPoolAdminCreateUserConfig({
+  const UserPoolAdminCreateUserConfig({
     this.allowAdminCreateUserOnly,
     this.inviteMessageTemplate,
   });

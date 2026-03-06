@@ -17,7 +17,7 @@ class GetApplicationResult {
   /// [id] Required.
   /// [name] Required.
   /// [region] Required.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.arn,
     required this.description,
     required this.id,

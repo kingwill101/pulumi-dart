@@ -14,7 +14,7 @@ class ClusterServerlessv2ScalingConfiguration {
   /// [maxCapacity] Maximum capacity for an Aurora DB cluster in `provisioned` DB engine mode. The maximum capacity must be greater than or equal to the minimum capacity. Valid capacity values are in a range of `0` up to `256` in steps of `0.5`.
   /// [minCapacity] Minimum capacity for an Aurora DB cluster in `provisioned` DB engine mode. The minimum capacity must be lesser than or equal to the maximum capacity. Valid capacity values are in a range of `0` up to `256` in steps of `0.5`.
   /// [secondsUntilAutoPause] Time, in seconds, before an Aurora DB cluster in `provisioned` DB engine mode is paused. Valid values are `300` through `86400`.
-  ClusterServerlessv2ScalingConfiguration({
+  const ClusterServerlessv2ScalingConfiguration({
     required this.maxCapacity,
     required this.minCapacity,
     this.secondsUntilAutoPause,

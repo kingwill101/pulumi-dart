@@ -14,7 +14,7 @@ class Condition {
   /// Creates a new [Condition].
   /// [actionCondition] A single action condition.
   /// [labelNameCondition] A single label name condition.
-  Condition({
+  const Condition({
     this.actionCondition,
     this.labelNameCondition,
   });

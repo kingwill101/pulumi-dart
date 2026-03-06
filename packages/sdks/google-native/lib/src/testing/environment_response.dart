@@ -14,7 +14,7 @@ class EnvironmentResponse {
   /// Creates a new [EnvironmentResponse].
   /// [androidDevice] An Android device which must be used with an Android test.
   /// [iosDevice] An iOS device which must be used with an iOS test.
-  EnvironmentResponse({
+  const EnvironmentResponse({
     required this.androidDevice,
     required this.iosDevice,
   });

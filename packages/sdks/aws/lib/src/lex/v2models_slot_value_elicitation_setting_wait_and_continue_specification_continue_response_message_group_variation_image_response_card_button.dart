@@ -9,7 +9,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueRes
   /// Creates a new [V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariationImageResponseCardButton].
   /// [text] Required.
   /// [value] Required.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariationImageResponseCardButton({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariationImageResponseCardButton({
     required this.text,
     required this.value,
   });

@@ -11,7 +11,7 @@ class WafRuleConfigAppSdkCustomSign {
   /// Creates a new [WafRuleConfigAppSdkCustomSign].
   /// [key] The name of the custom signature field used for validation.
   /// [value] The value of the custom signature field used for validation.
-  WafRuleConfigAppSdkCustomSign({
+  const WafRuleConfigAppSdkCustomSign({
     this.key,
     this.value,
   });

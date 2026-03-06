@@ -18,7 +18,7 @@ class GetHealthCheckArgs {
   /// Creates a new [GetHealthCheckArgs].
   /// [name] Name of the resource.
   /// [project] The ID of the project in which the resource belongs. If it
-  GetHealthCheckArgs({
+  const GetHealthCheckArgs({
     required this.name,
     this.project,
   });

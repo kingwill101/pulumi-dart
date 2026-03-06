@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [elasticSanName] The name of the ElasticSan.
   /// [privateEndpointConnectionName] The name of the Private Endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.elasticSanName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

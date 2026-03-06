@@ -20,7 +20,7 @@ class GetResponsePolicyRuleDnsV1beta2Result {
   /// [kind] Required.
   /// [localData] Answer this query directly with DNS data. These ResourceRecordSets override any other DNS behavior for the matched name; in particular they override private zones, the public internet, and GCP internal DNS. No SOA nor NS types are allowed.
   /// [ruleName] An identifier for this rule. Must be unique with the ResponsePolicy.
-  GetResponsePolicyRuleDnsV1beta2Result({
+  const GetResponsePolicyRuleDnsV1beta2Result({
     required this.behavior,
     required this.dnsName,
     required this.kind,

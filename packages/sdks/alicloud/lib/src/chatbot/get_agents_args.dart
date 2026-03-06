@@ -22,7 +22,7 @@ class GetAgentsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetAgentsArgs({
+  const GetAgentsArgs({
     this.agentName,
     this.nameRegex,
     this.outputFile,

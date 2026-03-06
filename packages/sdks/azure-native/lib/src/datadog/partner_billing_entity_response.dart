@@ -15,7 +15,7 @@ class PartnerBillingEntityResponse {
   /// [id] The Datadog Organization Id.
   /// [name] The Datadog Organization Name.
   /// [partnerEntityUri] Link to the datadog organization page
-  PartnerBillingEntityResponse({
+  const PartnerBillingEntityResponse({
     this.id,
     this.name,
     this.partnerEntityUri,

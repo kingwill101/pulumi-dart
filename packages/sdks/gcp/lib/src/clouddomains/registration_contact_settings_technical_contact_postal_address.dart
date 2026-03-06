@@ -39,7 +39,7 @@ class RegistrationContactSettingsTechnicalContactPostalAddress {
   /// [postalCode] Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
   /// [recipients] The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
   /// [regionCode] Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
-  RegistrationContactSettingsTechnicalContactPostalAddress({
+  const RegistrationContactSettingsTechnicalContactPostalAddress({
     this.addressLines,
     this.administrativeArea,
     this.locality,

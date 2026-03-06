@@ -49,7 +49,7 @@ class WebTestState {
   /// [syntheticMonitorId] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   /// [timeout] Seconds until this WebTest will timeout and fail. Default is `30`.
-  WebTestState({
+  const WebTestState({
     this.applicationInsightsId,
     this.configuration,
     this.description,

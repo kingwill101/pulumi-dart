@@ -20,7 +20,7 @@ class GetTrafficMirrorFilterIngressRulesResult {
   /// [rules] Required.
   /// [status] Optional.
   /// [trafficMirrorFilterId] Required.
-  GetTrafficMirrorFilterIngressRulesResult({
+  const GetTrafficMirrorFilterIngressRulesResult({
     required this.id,
     required this.ids,
     this.outputFile,

@@ -72,7 +72,7 @@ class CanaryArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcConfig] Configuration block. Detailed below.
   /// [zipFile] ZIP file that contains the script, if you input your canary script directly into the canary instead of referring to an S3 location. It can be up to 225KB. **Conflicts with `s3_bucket`, `s3_key`, and `s3_version`.**
-  CanaryArgs({
+  const CanaryArgs({
     this.artifactConfig,
     required this.artifactS3Location,
     this.deleteLambda,

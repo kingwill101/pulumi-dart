@@ -11,7 +11,7 @@ class GcpIntegrationsPubSub {
   /// Creates a new [GcpIntegrationsPubSub].
   /// [fetchTags] to fetch tags of the resource
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsPubSub({
+  const GcpIntegrationsPubSub({
     this.fetchTags,
     this.metricsPollingInterval,
   });

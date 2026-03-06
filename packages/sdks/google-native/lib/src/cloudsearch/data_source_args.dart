@@ -37,7 +37,7 @@ class DataSourceArgs {
   /// [operationIds] IDs of the Long Running Operations (LROs) currently running for this schema.
   /// [returnThumbnailUrls] Can a user request to get thumbnail URI for Items indexed in this data source.
   /// [shortName] A short name or alias for the source. This value will be used to match the 'source' operator. For example, if the short name is *&lt;value&gt;* then queries like *source:&lt;value&gt;* will only return results for this source. The value must be unique across all datasources. The value must only contain alphanumeric characters (a-zA-Z0-9). The value cannot start with 'google' and cannot be one of the following: mail, gmail, docs, drive, groups, sites, calendar, hangouts, gplus, keep, people, teams. Its maximum length is 32 characters.
-  DataSourceArgs({
+  const DataSourceArgs({
     this.disableModifications,
     this.disableServing,
     required this.displayName,

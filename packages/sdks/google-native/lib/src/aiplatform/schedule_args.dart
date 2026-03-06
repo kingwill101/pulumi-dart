@@ -41,7 +41,7 @@ class ScheduleArgs {
   /// [name] Immutable. The resource name of the Schedule.
   /// [project] Optional.
   /// [startTime] Optional. Timestamp after which the first run can be scheduled. Default to Schedule create time if not specified.
-  ScheduleArgs({
+  const ScheduleArgs({
     this.allowQueueing,
     this.createPipelineJobRequest,
     this.cron,

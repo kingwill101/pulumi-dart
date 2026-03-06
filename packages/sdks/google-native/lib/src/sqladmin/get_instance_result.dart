@@ -138,7 +138,7 @@ class GetInstanceResult {
   /// [state] The current serving state of the Cloud SQL instance.
   /// [suspensionReason] If the instance state is SUSPENDED, the reason for the suspension.
   /// [writeEndpoint] The dns name of the primary instance in a replication group.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.availableMaintenanceVersions,
     required this.backendType,
     required this.connectionName,

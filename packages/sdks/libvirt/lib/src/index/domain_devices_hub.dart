@@ -19,7 +19,7 @@ class DomainDevicesHub {
   /// [address] Specifies the memory address for the persistent storage device in the guest's address space.
   /// [alias] Configures the alias for the persistent storage device, allowing for easier identification within the domain.
   /// [type] Indicates the type of hub device being configured.
-  DomainDevicesHub({
+  const DomainDevicesHub({
     this.acpi,
     this.address,
     this.alias,

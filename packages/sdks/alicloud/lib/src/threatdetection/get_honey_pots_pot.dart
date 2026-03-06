@@ -32,7 +32,7 @@ class GetHoneyPotsPot {
   /// [presetId] The custom parameter ID of honeypot.
   /// [states] Honeypot status.
   /// [status] The status of the resource
-  GetHoneyPotsPot({
+  const GetHoneyPotsPot({
     required this.honeypotId,
     required this.honeypotImageId,
     required this.honeypotImageName,

@@ -38,7 +38,7 @@ class GetContainerDefinitionResult {
   /// [memoryReservation] Soft limit (in MiB) of memory to reserve for the container. When system memory is under contention, Docker attempts to keep the container memory to this soft limit
   /// [region] Required.
   /// [taskDefinition] Required.
-  GetContainerDefinitionResult({
+  const GetContainerDefinitionResult({
     required this.containerName,
     required this.cpu,
     required this.disableNetworking,

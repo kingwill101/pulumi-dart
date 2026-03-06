@@ -53,7 +53,7 @@ class TrailDeprecatedState {
   /// [status] Optional.
   /// [trailName] Optional.
   /// [trailRegion] Optional.
-  TrailDeprecatedState({
+  const TrailDeprecatedState({
     this.createTime,
     this.dataEventTrailRegion,
     this.eventRw,

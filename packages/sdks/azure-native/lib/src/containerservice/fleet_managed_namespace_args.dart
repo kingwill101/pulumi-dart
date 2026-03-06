@@ -28,7 +28,7 @@ class FleetManagedNamespaceArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  FleetManagedNamespaceArgs({
+  const FleetManagedNamespaceArgs({
     required this.fleetName,
     this.location,
     this.managedNamespaceName,

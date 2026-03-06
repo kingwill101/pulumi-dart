@@ -15,7 +15,7 @@ class GetNfsShareArgs {
   /// [location] Required.
   /// [nfsShareId] Required.
   /// [project] Optional.
-  GetNfsShareArgs({
+  const GetNfsShareArgs({
     required this.location,
     required this.nfsShareId,
     this.project,

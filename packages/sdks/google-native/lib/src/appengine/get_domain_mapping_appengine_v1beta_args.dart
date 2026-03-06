@@ -13,7 +13,7 @@ class GetDomainMappingAppengineV1betaArgs {
   /// Creates a new [GetDomainMappingAppengineV1betaArgs].
   /// [appId] Required.
   /// [domainMappingId] Required.
-  GetDomainMappingAppengineV1betaArgs({
+  const GetDomainMappingAppengineV1betaArgs({
     required this.appId,
     required this.domainMappingId,
   });

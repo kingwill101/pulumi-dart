@@ -20,7 +20,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse {
   /// [media] Optional. However at least one of the title, description or media must be set. Media (image, GIF or a video) to include in the card.
   /// [suggestions] Optional. List of suggestions to include in the card.
   /// [title] Optional. Title of the card (at most 200 bytes). At least one of the title, description or media must be set.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentResponse({
     required this.description,
     required this.media,
     required this.suggestions,

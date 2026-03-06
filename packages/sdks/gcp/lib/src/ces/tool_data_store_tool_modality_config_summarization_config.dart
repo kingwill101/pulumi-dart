@@ -16,7 +16,7 @@ class ToolDataStoreToolModalityConfigSummarizationConfig {
   /// [disabled] Whether summarization is disabled.
   /// [modelSettings] Model settings contains various configurations for the LLM model.
   /// [prompt] The prompt definition. If not set, default prompt will be used.
-  ToolDataStoreToolModalityConfigSummarizationConfig({
+  const ToolDataStoreToolModalityConfigSummarizationConfig({
     this.disabled,
     this.modelSettings,
     this.prompt,

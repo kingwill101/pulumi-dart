@@ -33,7 +33,7 @@ class GetAccessPolicyAssignmentResult {
   /// [provisioningState] Provisioning state of an access policy assignment set
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAccessPolicyAssignmentResult({
+  const GetAccessPolicyAssignmentResult({
     required this.accessPolicyName,
     required this.azureApiVersion,
     required this.id,

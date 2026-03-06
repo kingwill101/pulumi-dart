@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse {
   /// [database] Database name.
   /// [instanceId] Cloud SQL instance ID in the format of `project:location:instance`.
   /// [type] Type of the Cloud SQL database.
-  GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse({
+  const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponse({
     required this.database,
     required this.instanceId,
     required this.type,

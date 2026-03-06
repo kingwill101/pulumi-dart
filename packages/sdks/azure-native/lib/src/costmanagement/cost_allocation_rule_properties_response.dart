@@ -22,7 +22,7 @@ class CostAllocationRulePropertiesResponse {
   /// [details] Resource information for the cost allocation rule
   /// [status] Status of the rule
   /// [updatedDate] Time at which the rule was last updated.
-  CostAllocationRulePropertiesResponse({
+  const CostAllocationRulePropertiesResponse({
     required this.createdDate,
     this.description,
     required this.details,

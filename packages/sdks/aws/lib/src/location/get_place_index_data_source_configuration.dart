@@ -7,7 +7,7 @@ class GetPlaceIndexDataSourceConfiguration {
 
   /// Creates a new [GetPlaceIndexDataSourceConfiguration].
   /// [intendedUse] Required.
-  GetPlaceIndexDataSourceConfiguration({
+  const GetPlaceIndexDataSourceConfiguration({
     required this.intendedUse,
   });
 

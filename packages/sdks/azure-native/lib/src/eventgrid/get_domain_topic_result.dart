@@ -24,7 +24,7 @@ class GetDomainTopicResult {
   /// [provisioningState] Provisioning state of the domain topic.
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [type] Type of the resource.
-  GetDomainTopicResult({
+  const GetDomainTopicResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

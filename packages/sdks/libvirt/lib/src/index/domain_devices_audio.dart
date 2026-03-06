@@ -55,7 +55,7 @@ class DomainDevicesAudio {
   /// [sdl] Configures the SDL audio backend for the virtual machine.
   /// [spice] Configures the SPICE audio backend for the virtual machine.
   /// [timerPeriod] Sets the timer period for the audio devices in the configuration.
-  DomainDevicesAudio({
+  const DomainDevicesAudio({
     this.alsa,
     this.coreAudio,
     this.dbus,

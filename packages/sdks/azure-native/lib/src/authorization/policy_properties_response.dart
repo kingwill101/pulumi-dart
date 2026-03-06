@@ -10,7 +10,7 @@ class PolicyPropertiesResponse {
 
   /// Creates a new [PolicyPropertiesResponse].
   /// [scope] Details of the resource scope
-  PolicyPropertiesResponse({
+  const PolicyPropertiesResponse({
     required this.scope,
   });
 

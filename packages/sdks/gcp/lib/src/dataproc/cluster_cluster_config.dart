@@ -102,7 +102,7 @@ class ClusterClusterConfig {
   /// [stagingBucket] The Cloud Storage staging bucket used to stage files,
   /// [tempBucket] The Cloud Storage temp bucket used to store ephemeral cluster
   /// [workerConfig] The Google Compute Engine config settings for the worker instances
-  ClusterClusterConfig({
+  const ClusterClusterConfig({
     this.autoscalingConfig,
     this.auxiliaryNodeGroups,
     this.bucket,

@@ -8,7 +8,7 @@ class GetDatabaseInstanceSettingAdvancedMachineFeature {
 
   /// Creates a new [GetDatabaseInstanceSettingAdvancedMachineFeature].
   /// [threadsPerCore] The number of threads per physical core. Can be 1 or 2.
-  GetDatabaseInstanceSettingAdvancedMachineFeature({
+  const GetDatabaseInstanceSettingAdvancedMachineFeature({
     required this.threadsPerCore,
   });
 

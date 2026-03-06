@@ -11,7 +11,7 @@ class DomainConfigFunctionArg {
   /// Creates a new [DomainConfigFunctionArg].
   /// [argName] The name of arg.
   /// [argValue] The value of arg.
-  DomainConfigFunctionArg({
+  const DomainConfigFunctionArg({
     required this.argName,
     required this.argValue,
   });

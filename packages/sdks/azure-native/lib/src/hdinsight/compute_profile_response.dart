@@ -10,7 +10,7 @@ class ComputeProfileResponse {
 
   /// Creates a new [ComputeProfileResponse].
   /// [roles] The list of roles in the cluster.
-  ComputeProfileResponse({
+  const ComputeProfileResponse({
     this.roles,
   });
 

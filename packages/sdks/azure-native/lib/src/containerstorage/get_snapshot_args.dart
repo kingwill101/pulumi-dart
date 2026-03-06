@@ -18,7 +18,7 @@ class GetSnapshotArgs {
   /// [poolName] Pool Object
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotName] Volume Snapshot Resource
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     required this.poolName,
     required this.resourceGroupName,
     required this.snapshotName,

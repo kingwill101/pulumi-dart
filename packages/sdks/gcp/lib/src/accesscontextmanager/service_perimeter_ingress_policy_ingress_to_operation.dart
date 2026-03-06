@@ -18,7 +18,7 @@ class ServicePerimeterIngressPolicyIngressToOperation {
   /// Creates a new [ServicePerimeterIngressPolicyIngressToOperation].
   /// [methodSelectors] API methods or permissions to allow. Method or permission must belong to
   /// [serviceName] The name of the API whose methods or permissions the `IngressPolicy` or
-  ServicePerimeterIngressPolicyIngressToOperation({
+  const ServicePerimeterIngressPolicyIngressToOperation({
     this.methodSelectors,
     this.serviceName,
   });

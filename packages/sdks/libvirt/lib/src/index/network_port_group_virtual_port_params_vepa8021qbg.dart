@@ -17,7 +17,7 @@ class NetworkPortGroupVirtualPortParamsVepa8021qbg {
   /// [managerId] Configures the manager ID associated with VEPA 802.1Qbg parameters.
   /// [typeId] Specifies the type ID for VEPA 802.1Qbg virtual port parameters.
   /// [typeIdVersion] Indicates the version of the type ID for VEPA 802.1Qbg parameters.
-  NetworkPortGroupVirtualPortParamsVepa8021qbg({
+  const NetworkPortGroupVirtualPortParamsVepa8021qbg({
     this.instanceId,
     this.managerId,
     this.typeId,

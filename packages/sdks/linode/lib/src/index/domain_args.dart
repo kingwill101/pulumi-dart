@@ -50,7 +50,7 @@ class DomainArgs {
   /// [tags] A list of tags applied to this object. Tags are case-insensitive and are for organizational purposes only.
   /// [ttlSec] 'Time to Live' - the amount of time in seconds that this Domain's records may be cached by resolvers or other domain servers. Valid values are 0, 30, 120, 300, 3600, 7200, 14400, 28800, 57600, 86400, 172800, 345600, 604800, 1209600, and 2419200 - any other value will be rounded to the nearest valid value.
   /// [type] If this Domain represents the authoritative source of information for the domain it describes, or if it is a read-only copy of a master (also called a slave).
-  DomainArgs({
+  const DomainArgs({
     this.axfrIps,
     this.description,
     required this.domain,

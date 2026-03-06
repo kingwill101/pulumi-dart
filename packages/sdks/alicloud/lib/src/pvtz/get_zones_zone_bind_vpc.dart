@@ -17,7 +17,7 @@ class GetZonesZoneBindVpc {
   /// [regionName] The name of the region where the VPC resides.
   /// [vpcId] The ID of the VPC.
   /// [vpcName] The Name of the VPC.
-  GetZonesZoneBindVpc({
+  const GetZonesZoneBindVpc({
     required this.regionId,
     required this.regionName,
     required this.vpcId,

@@ -92,7 +92,7 @@ class WebAppAssessmentV2OperationArgs {
   /// [scalingFactor] Percentage of buffer that user wants on performance metrics when recommending
   /// [sizingCriterion] Assessment sizing criterion.
   /// [timeRange] Time Range for which the historic utilization data should be considered for
-  WebAppAssessmentV2OperationArgs({
+  const WebAppAssessmentV2OperationArgs({
     this.appSvcContainerSettings,
     this.appSvcNativeSettings,
     this.assessmentName,

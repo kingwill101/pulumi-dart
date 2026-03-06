@@ -55,7 +55,7 @@ class DomainEventSubscriptionArgs {
   /// [labels] List of user defined labels.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [retryPolicy] The retry policy for events. This can be used to configure maximum number of delivery attempts and time to live for events.
-  DomainEventSubscriptionArgs({
+  const DomainEventSubscriptionArgs({
     this.deadLetterDestination,
     this.deadLetterWithResourceIdentity,
     this.deliveryWithResourceIdentity,

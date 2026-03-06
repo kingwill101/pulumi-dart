@@ -12,7 +12,7 @@ class ReplicaSet {
   /// Creates a new [ReplicaSet].
   /// [location] Virtual network location
   /// [subnetId] The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
-  ReplicaSet({
+  const ReplicaSet({
     this.location,
     this.subnetId,
   });

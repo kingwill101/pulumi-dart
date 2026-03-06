@@ -12,7 +12,7 @@ class SnatPoolState {
   /// Creates a new [SnatPoolState].
   /// [members] Specifies a translation address to add to or delete from a SNAT pool (at least one address is required)
   /// [name] Name of the snatpool
-  SnatPoolState({
+  const SnatPoolState({
     this.members,
     this.name,
   });

@@ -12,7 +12,7 @@ class ConnectionSettingParameter {
   /// Creates a new [ConnectionSettingParameter].
   /// [key] Key for the Connection Setting Parameter.
   /// [value] Value associated with the Connection Setting Parameter.
-  ConnectionSettingParameter({
+  const ConnectionSettingParameter({
     this.key,
     this.value,
   });

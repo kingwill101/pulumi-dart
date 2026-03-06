@@ -49,7 +49,7 @@ class MetastoreTableIamMemberArgs {
   /// [role] The role that should be applied. Only one
   /// [serviceId] Used to find the parent resource to bind the IAM policy to
   /// [table] Used to find the parent resource to bind the IAM policy to
-  MetastoreTableIamMemberArgs({
+  const MetastoreTableIamMemberArgs({
     this.condition,
     required this.databaseId,
     this.location,

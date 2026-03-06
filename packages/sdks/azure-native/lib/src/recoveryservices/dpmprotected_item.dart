@@ -68,7 +68,7 @@ class DPMProtectedItem {
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [softDeleteRetentionPeriodInDays] Soft delete retention period in days
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  DPMProtectedItem({
+  const DPMProtectedItem({
     this.backupEngineName,
     this.backupSetName,
     this.containerName,

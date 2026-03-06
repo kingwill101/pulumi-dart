@@ -40,7 +40,7 @@ class GuestPoliciesRecipe {
   /// [name] Unique identifier for the recipe. Only one recipe with a given name is installed on an instance.
   /// [updateSteps] Actions to be taken for updating this recipe. On failure it stops executing steps and does not attempt another update for this recipe.
   /// [version] The version of this software recipe. Version can be up to 4 period separated numbers (e.g. 12.34.56.78).
-  GuestPoliciesRecipe({
+  const GuestPoliciesRecipe({
     this.artifacts,
     this.desiredState,
     this.installSteps,

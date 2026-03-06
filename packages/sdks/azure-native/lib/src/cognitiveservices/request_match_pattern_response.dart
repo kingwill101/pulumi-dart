@@ -9,7 +9,7 @@ class RequestMatchPatternResponse {
   /// Creates a new [RequestMatchPatternResponse].
   /// [method] Optional.
   /// [path] Optional.
-  RequestMatchPatternResponse({
+  const RequestMatchPatternResponse({
     this.method,
     this.path,
   });

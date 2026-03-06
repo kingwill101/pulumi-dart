@@ -18,7 +18,7 @@ class GetCacheRuleArgs {
   /// [cacheRuleName] The name of the cache rule.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCacheRuleArgs({
+  const GetCacheRuleArgs({
     required this.cacheRuleName,
     required this.registryName,
     required this.resourceGroupName,

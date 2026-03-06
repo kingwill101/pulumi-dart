@@ -46,7 +46,7 @@ class AppIngress {
   /// [targetPort] The target port on the container for the Ingress traffic.
   /// [trafficWeights] One or more `traffic_weight` blocks as detailed below.
   /// [transport] The transport method for the Ingress. Possible values are `auto`, `http`, `http2` and `tcp`. Defaults to `auto`.
-  AppIngress({
+  const AppIngress({
     this.allowInsecureConnections,
     this.clientCertificateMode,
     this.cors,

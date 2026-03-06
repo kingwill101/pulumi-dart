@@ -22,7 +22,7 @@ class FleetTierArgs {
   /// [properties] A Fleet tier properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tierName] Name of the tier.
-  FleetTierArgs({
+  const FleetTierArgs({
     required this.fleetName,
     this.properties,
     required this.resourceGroupName,

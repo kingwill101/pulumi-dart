@@ -29,7 +29,7 @@ class KeyTransactionState {
   /// [metricName] The name of the underlying metric monitored by the key transaction to be created.
   /// [name] The name of the key transaction.
   /// [type] The type of the entity monitored by the key transaction.
-  KeyTransactionState({
+  const KeyTransactionState({
     this.apdexIndex,
     this.applicationGuid,
     this.browserApdexTarget,

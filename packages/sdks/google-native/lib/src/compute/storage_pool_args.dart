@@ -45,7 +45,7 @@ class StoragePoolArgs {
   /// [sizeGb] Size, in GiB, of the storage pool.
   /// [storagePoolType] Type of the storage pool.
   /// [zone] Optional.
-  StoragePoolArgs({
+  const StoragePoolArgs({
     this.capacityProvisioningType,
     this.description,
     this.labels,

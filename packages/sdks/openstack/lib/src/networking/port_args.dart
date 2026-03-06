@@ -109,7 +109,7 @@ class PortArgs {
   /// [tags] A set of string tags for the port.
   /// [tenantId] The owner of the port. Required if admin wants
   /// [valueSpecs] Map of additional options.
-  PortArgs({
+  const PortArgs({
     this.adminStateUp,
     this.allowedAddressPairs,
     this.binding,

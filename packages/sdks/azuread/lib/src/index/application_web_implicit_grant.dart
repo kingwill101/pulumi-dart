@@ -11,7 +11,7 @@ class ApplicationWebImplicitGrant {
   /// Creates a new [ApplicationWebImplicitGrant].
   /// [accessTokenIssuanceEnabled] Whether this web application can request an access token using OAuth 2.0 implicit flow.
   /// [idTokenIssuanceEnabled] Whether this web application can request an ID token using OAuth 2.0 implicit flow.
-  ApplicationWebImplicitGrant({
+  const ApplicationWebImplicitGrant({
     this.accessTokenIssuanceEnabled,
     this.idTokenIssuanceEnabled,
   });

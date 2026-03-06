@@ -84,7 +84,7 @@ class GetInstanceGroupManagerResult {
   /// [waitForInstances] Required.
   /// [waitForInstancesStatus] Required.
   /// [zone] Optional.
-  GetInstanceGroupManagerResult({
+  const GetInstanceGroupManagerResult({
     required this.allInstancesConfigs,
     required this.autoHealingPolicies,
     required this.baseInstanceName,

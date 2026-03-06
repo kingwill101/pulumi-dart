@@ -51,7 +51,7 @@ class RuleArgs {
   /// [ruleId] Rule Id is the ID of the Rule.
   /// [scope] Resource name of the DataAccessScope bound to this rule.
   /// [text] The YARA-L content of the rule.
-  RuleArgs({
+  const RuleArgs({
     this.deletionPolicy,
     this.etag,
     required this.instance,

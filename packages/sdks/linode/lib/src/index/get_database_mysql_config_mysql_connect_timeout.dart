@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlConnectTimeout {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlConnectTimeout({
+  const GetDatabaseMysqlConfigMysqlConnectTimeout({
     required this.description,
     required this.example,
     required this.maximum,

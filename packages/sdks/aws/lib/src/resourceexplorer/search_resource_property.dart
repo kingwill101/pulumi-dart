@@ -14,7 +14,7 @@ class SearchResourceProperty {
   /// [data] Details about this property. The content of this field is a JSON object that varies based on the resource type.
   /// [lastReportedAt] The date and time that the information about this resource property was last updated.
   /// [name] Name of this property of the resource.
-  SearchResourceProperty({
+  const SearchResourceProperty({
     required this.data,
     required this.lastReportedAt,
     required this.name,

@@ -12,7 +12,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchSta
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [excludedCookies] Optional.
   /// [includedCookies] Optional.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchCookiesMatchPattern({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementSqliMatchStatementFieldToMatchCookiesMatchPattern({
     this.all,
     this.excludedCookies,
     this.includedCookies,

@@ -17,7 +17,7 @@ class GetResourceGuardProxyArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceGuardProxyName] Required.
   /// [vaultName] The name of the recovery services vault.
-  GetResourceGuardProxyArgs({
+  const GetResourceGuardProxyArgs({
     required this.resourceGroupName,
     required this.resourceGuardProxyName,
     required this.vaultName,

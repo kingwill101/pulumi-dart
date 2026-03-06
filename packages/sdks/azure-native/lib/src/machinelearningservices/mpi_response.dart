@@ -13,7 +13,7 @@ class MpiResponse {
   /// Creates a new [MpiResponse].
   /// [distributionType] Enum to determine the job distribution type.
   /// [processCountPerInstance] Number of processes per MPI node.
-  MpiResponse({
+  const MpiResponse({
     required this.distributionType,
     this.processCountPerInstance,
   });

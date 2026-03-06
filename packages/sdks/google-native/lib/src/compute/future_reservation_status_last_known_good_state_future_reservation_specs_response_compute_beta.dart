@@ -18,7 +18,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseCom
   /// [shareSettings] The previous share settings of the Future Reservation.
   /// [specificSkuProperties] The previous instance related properties of the Future Reservation.
   /// [timeWindow] The previous time window of the Future Reservation.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecsResponseComputeBeta({
     required this.shareSettings,
     required this.specificSkuProperties,
     required this.timeWindow,

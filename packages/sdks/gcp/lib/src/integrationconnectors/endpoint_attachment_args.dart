@@ -34,7 +34,7 @@ class EndpointAttachmentArgs {
   /// [name] Name of Endpoint Attachment needs to be created.
   /// [project] The ID of the project in which the resource belongs.
   /// [serviceAttachment] The path of the service attachment.
-  EndpointAttachmentArgs({
+  const EndpointAttachmentArgs({
     this.description,
     this.endpointGlobalAccess,
     this.labels,

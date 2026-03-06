@@ -23,7 +23,7 @@ class IntelligentTieringConfigurationResponse {
   /// [status] Specifies the status of the configuration.
   /// [tagFilters] A container for a key-value pair.
   /// [tierings] Specifies a list of S3 Intelligent-Tiering storage class tiers in the configuration. At least one tier must be defined in the list. At most, you can specify two tiers in the list, one for each available AccessTier: ``ARCHIVE_ACCESS`` and ``DEEP_ARCHIVE_ACCESS``.  You only need Intelligent Tiering Configuration enabled on a bucket if you want to automatically move objects stored in the Intelligent-Tiering storage class to Archive Access or Deep Archive Access tiers.
-  IntelligentTieringConfigurationResponse({
+  const IntelligentTieringConfigurationResponse({
     this.id,
     this.prefix,
     this.status,

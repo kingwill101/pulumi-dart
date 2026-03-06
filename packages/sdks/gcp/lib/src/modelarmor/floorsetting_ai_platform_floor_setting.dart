@@ -16,7 +16,7 @@ class FloorsettingAiPlatformFloorSetting {
   /// [enableCloudLogging] If true, log Model Armor filter results to Cloud Logging.
   /// [inspectAndBlock] If true, Model Armor filters will be run in inspect and block mode.
   /// [inspectOnly] If true, Model Armor filters will be run in inspect only mode. No action
-  FloorsettingAiPlatformFloorSetting({
+  const FloorsettingAiPlatformFloorSetting({
     this.enableCloudLogging,
     this.inspectAndBlock,
     this.inspectOnly,

@@ -17,7 +17,7 @@ class DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPer
   /// [organizationalUnitArns] Set of AWS Organizational Unit ARNs to assign.
   /// [userGroups] Set of EC2 launch permission user groups to assign. Use `all` to distribute a public AMI.
   /// [userIds] Set of AWS Account identifiers to assign.
-  DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission({
+  const DistributionConfigurationDistributionAmiDistributionConfigurationLaunchPermission({
     this.organizationArns,
     this.organizationalUnitArns,
     this.userGroups,

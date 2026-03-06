@@ -9,7 +9,7 @@ class VirtualRouterSpecListener {
 
   /// Creates a new [VirtualRouterSpecListener].
   /// [portMapping] Port mapping information for the listener.
-  VirtualRouterSpecListener({
+  const VirtualRouterSpecListener({
     required this.portMapping,
   });
 

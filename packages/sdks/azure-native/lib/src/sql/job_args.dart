@@ -28,7 +28,7 @@ class JobArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [schedule] Schedule properties of the job.
   /// [serverName] The name of the server.
-  JobArgs({
+  const JobArgs({
     this.description,
     required this.jobAgentName,
     this.jobName,

@@ -101,7 +101,7 @@ class GetVirtualBorderRoutersRouter {
   /// [virtualBorderRouterName] The name of VBR. Length is from 2 to 128 characters, must start with a letter or the Chinese at the beginning can contain numbers, the underscore character (_) and dash (-). But do not start with http:// or https:// at the beginning.
   /// [vlanId] The VLAN ID of the VBR. Value range: 0~2999.
   /// [vlanInterfaceId] The ID of the Router Interface.
-  GetVirtualBorderRoutersRouter({
+  const GetVirtualBorderRoutersRouter({
     required this.accessPointId,
     required this.activationTime,
     required this.circuitCode,

@@ -27,7 +27,7 @@ class BillingAccountExclusionArgs {
   /// [disabled] Whether this exclusion rule should be disabled or not. This defaults to
   /// [filter] The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// [name] The name of the logging exclusion.
-  BillingAccountExclusionArgs({
+  const BillingAccountExclusionArgs({
     required this.billingAccount,
     this.description,
     this.disabled,

@@ -9,7 +9,7 @@ class ScaleSpecPatchAppsV1beta2 {
 
   /// Creates a new [ScaleSpecPatchAppsV1beta2].
   /// [replicas] desired number of instances for the scaled object.
-  ScaleSpecPatchAppsV1beta2({
+  const ScaleSpecPatchAppsV1beta2({
     this.replicas,
   });
 

@@ -11,7 +11,7 @@ class CacheFromLocal {
   /// Creates a new [CacheFromLocal].
   /// [digest] Digest of manifest to import.
   /// [src] Path of the local directory where cache gets imported from.
-  CacheFromLocal({
+  const CacheFromLocal({
     this.digest,
     required this.src,
   });

@@ -22,7 +22,7 @@ class BlobInventoryPolicyArgs {
   /// [blobInventoryPolicyName] The name of the storage account blob inventory policy. It should always be 'default'
   /// [policy] The storage account blob inventory policy object. It is composed of policy rules.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  BlobInventoryPolicyArgs({
+  const BlobInventoryPolicyArgs({
     required this.accountName,
     this.blobInventoryPolicyName,
     required this.policy,

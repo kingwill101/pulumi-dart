@@ -12,7 +12,7 @@ class ResourceBasicsResponse {
   /// Creates a new [ResourceBasicsResponse].
   /// [addressPrefixes] List of IP address prefixes of the resource.
   /// [resourceId] ResourceId of the Azure resource.
-  ResourceBasicsResponse({
+  const ResourceBasicsResponse({
     this.addressPrefixes,
     this.resourceId,
   });

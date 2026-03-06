@@ -9,7 +9,7 @@ class FsxOpenZfsFileSystemProtocolNfs {
 
   /// Creates a new [FsxOpenZfsFileSystemProtocolNfs].
   /// [mountOptions] Represents the mount options that are available for DataSync to access an NFS location. See below.
-  FsxOpenZfsFileSystemProtocolNfs({
+  const FsxOpenZfsFileSystemProtocolNfs({
     required this.mountOptions,
   });
 

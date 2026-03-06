@@ -13,7 +13,7 @@ class GetRulesPackagesResult {
   /// [arns] List of the Amazon Inspector Classic Rules Packages arns available in the AWS region.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetRulesPackagesResult({
+  const GetRulesPackagesResult({
     required this.arns,
     required this.id,
     required this.region,

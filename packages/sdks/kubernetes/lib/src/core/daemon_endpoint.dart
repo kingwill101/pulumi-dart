@@ -9,7 +9,7 @@ class DaemonEndpoint {
 
   /// Creates a new [DaemonEndpoint].
   /// [port] Port number of the given endpoint.
-  DaemonEndpoint({
+  const DaemonEndpoint({
     required this.port,
   });
 

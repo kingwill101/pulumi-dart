@@ -44,7 +44,7 @@ class VolumeCacheParameters {
   /// [peerVolumeName] Required. Name of the origin volume for the cache volume.
   /// [peeringCommandExpiryTime] Optional. Expiration time for the peering command to be executed on user's ONTAP. A timestamp in RFC3339 UTC "Zulu" format. Examples: "2023-06-22T09:13:01.617Z".
   /// [stateDetails] (Output)
-  VolumeCacheParameters({
+  const VolumeCacheParameters({
     this.cacheConfig,
     this.cacheState,
     this.command,

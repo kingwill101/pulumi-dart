@@ -22,7 +22,7 @@ class ObjectCopyGrant {
   /// [permissions] List of permissions to grant to grantee. Valid values are `READ`, `READ_ACP`, `WRITE_ACP`, `FULL_CONTROL`.
   /// [type] Type of grantee. Valid values are `CanonicalUser`, `Group`, and `AmazonCustomerByEmail`.
   /// [uri] URI of the grantee group. Used only when `type` is `Group`.
-  ObjectCopyGrant({
+  const ObjectCopyGrant({
     this.email,
     this.id,
     required this.permissions,

@@ -54,7 +54,7 @@ class DatabaseMigrationStateResponse {
   /// [migrationOperation] Migration operation of a database.
   /// [migrationState] Migration state of a database.
   /// [startedOn] Start time of a migration state.
-  DatabaseMigrationStateResponse({
+  const DatabaseMigrationStateResponse({
     this.appliedChanges,
     this.cdcDeleteCounter,
     this.cdcInsertCounter,

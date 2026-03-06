@@ -27,7 +27,7 @@ class ServiceState {
   /// [status] Service Current Status.
   /// [tags] The tag of the resource.
   /// [workspaceId] Workspace id
-  ServiceState({
+  const ServiceState({
     this.createTime,
     this.develop,
     this.regionId,

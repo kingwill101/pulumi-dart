@@ -11,7 +11,7 @@ class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsProp
   /// Creates a new [DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions].
   /// [possibleValues] List of possible enum values.
   /// [validationCheckDisabled] Make sure the enum property value provided in the document is in the possile value list during document creation. The validation check runs by default.
-  DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions({
+  const DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions({
     required this.possibleValues,
     this.validationCheckDisabled,
   });

@@ -9,7 +9,7 @@ class ChatEngineChatEngineMetadata {
 
   /// Creates a new [ChatEngineChatEngineMetadata].
   /// [dialogflowAgent] (Output)
-  ChatEngineChatEngineMetadata({
+  const ChatEngineChatEngineMetadata({
     this.dialogflowAgent,
   });
 

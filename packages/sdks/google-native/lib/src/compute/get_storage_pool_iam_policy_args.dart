@@ -17,7 +17,7 @@ class GetStoragePoolIamPolicyArgs {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetStoragePoolIamPolicyArgs({
+  const GetStoragePoolIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

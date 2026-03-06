@@ -45,7 +45,7 @@ class PipelineArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [triggers] A trigger block. Valid only when `pipeline_type` is `V2`. Triggers are documented below.
   /// [variables] A pipeline-level variable block. Valid only when `pipeline_type` is `V2`. Variable are documented below.
-  PipelineArgs({
+  const PipelineArgs({
     required this.artifactStores,
     this.executionMode,
     this.name,

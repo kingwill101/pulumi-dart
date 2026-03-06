@@ -8,7 +8,7 @@ class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
 
   /// Creates a new [ClusterClusterConfigGceClusterConfigNodeGroupAffinity].
   /// [nodeGroupUri] The URI of a sole-tenant node group resource that the cluster will be created on.
-  ClusterClusterConfigGceClusterConfigNodeGroupAffinity({
+  const ClusterClusterConfigGceClusterConfigNodeGroupAffinity({
     required this.nodeGroupUri,
   });
 

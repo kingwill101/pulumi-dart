@@ -8,7 +8,7 @@ class ServerBinding {
 
   /// Creates a new [ServerBinding].
   /// [type] Optional.
-  ServerBinding({
+  const ServerBinding({
     this.type,
   });
 

@@ -17,7 +17,7 @@ class GetEventBusesBus {
   /// [description] The description of event bus.
   /// [eventBusName] The name of event bus.
   /// [id] The ID of the Event Bus. Its value is same as Queue Name.
-  GetEventBusesBus({
+  const GetEventBusesBus({
     required this.createTime,
     required this.description,
     required this.eventBusName,

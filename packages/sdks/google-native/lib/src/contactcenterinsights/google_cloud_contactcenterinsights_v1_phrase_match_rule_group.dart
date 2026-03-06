@@ -14,7 +14,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /// Creates a new [GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup].
   /// [phraseMatchRules] A list of phrase match rules that are included in this group.
   /// [type] The type of this phrase match rule group.
-  GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup({
+  const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup({
     this.phraseMatchRules,
     required this.type,
   });

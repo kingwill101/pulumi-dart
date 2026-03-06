@@ -26,7 +26,7 @@ class QueueAuthorizationRuleArgs {
   /// [name] Specifies the name of the Authorization Rule. Changing this forces a new resource to be created.
   /// [queueId] Specifies the ID of the ServiceBus Queue. Changing this forces a new resource to be created.
   /// [send] Does this Authorization Rule have Send permissions to the ServiceBus Queue? Defaults to `false`.
-  QueueAuthorizationRuleArgs({
+  const QueueAuthorizationRuleArgs({
     this.listen,
     this.manage,
     this.name,

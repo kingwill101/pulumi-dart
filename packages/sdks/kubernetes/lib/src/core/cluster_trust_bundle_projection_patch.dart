@@ -22,7 +22,7 @@ class ClusterTrustBundleProjectionPatch {
   /// [optional] If true, don't block pod startup if the referenced ClusterTrustBundle(s) aren't available.  If using name, then the named ClusterTrustBundle is allowed not to exist.  If using signerName, then the combination of signerName and labelSelector is allowed to match zero ClusterTrustBundles.
   /// [path] Relative path from the volume root to write the bundle.
   /// [signerName] Select all ClusterTrustBundles that match this signer name. Mutually-exclusive with name.  The contents of all selected ClusterTrustBundles will be unified and deduplicated.
-  ClusterTrustBundleProjectionPatch({
+  const ClusterTrustBundleProjectionPatch({
     this.labelSelector,
     this.name,
     this.optional,

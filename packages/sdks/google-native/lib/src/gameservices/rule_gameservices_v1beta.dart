@@ -30,7 +30,7 @@ class RuleGameservicesV1beta {
   /// [logConfig] The config returned to callers of CheckPolicy for any entries that match the LOG action.
   /// [notIn] If one or more 'not_in' clauses are specified, the rule matches if the PRINCIPAL/AUTHORITY_SELECTOR is in none of the entries. The format for in and not_in entries can be found at in the Local IAM documentation (see go/local-iam#features).
   /// [permissions] A permission is a string of form '..' (e.g., 'storage.buckets.list'). A value of '*' matches all permissions, and a verb part of '*' (e.g., 'storage.buckets.*') matches all verbs.
-  RuleGameservicesV1beta({
+  const RuleGameservicesV1beta({
     this.action,
     this.conditions,
     this.description,

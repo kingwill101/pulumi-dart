@@ -12,7 +12,7 @@ class GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse].
   /// [key] The reCAPTCHA Enterprise key resource name, e.g. "projects/{project}/keys/{key}"
   /// [type] The client's platform type.
-  GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse({
+  const GoogleCloudIdentitytoolkitAdminV2RecaptchaKeyResponse({
     required this.key,
     required this.type,
   });

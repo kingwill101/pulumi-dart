@@ -18,7 +18,7 @@ class GetTableExternalDataConfigurationBigtableOption {
   /// [ignoreUnspecifiedColumnFamilies] If field is true, then the column families that are not specified in columnFamilies list are not exposed in the table schema. Otherwise, they are read with BYTES type values. The default value is false.
   /// [outputColumnFamiliesAsJson] If field is true, then each column family will be read as a single JSON column. Otherwise they are read as a repeated cell structure containing timestamp/value tuples. The default value is false.
   /// [readRowkeyAsString] If field is true, then the rowkey column families will be read and converted to string. Otherwise they are read with BYTES type values and users need to manually cast them with CAST if necessary. The default value is false.
-  GetTableExternalDataConfigurationBigtableOption({
+  const GetTableExternalDataConfigurationBigtableOption({
     required this.columnFamilies,
     required this.ignoreUnspecifiedColumnFamilies,
     required this.outputColumnFamiliesAsJson,

@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics({
+  const FlowSourceFlowConfigSourceConnectorPropertiesGoogleAnalytics({
     required this.object_,
   });
 

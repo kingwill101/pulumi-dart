@@ -25,7 +25,7 @@ class CustomerDiskJobSecretsResponse {
   /// [diskSecrets] Contains the list of secrets object for that device.
   /// [error] Error while fetching the secrets.
   /// [jobSecretsType] Used to indicate what type of job secrets object.
-  CustomerDiskJobSecretsResponse({
+  const CustomerDiskJobSecretsResponse({
     required this.carrierAccountNumber,
     required this.dcAccessSecurityCode,
     required this.diskSecrets,

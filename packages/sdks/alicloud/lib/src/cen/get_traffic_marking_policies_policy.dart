@@ -29,7 +29,7 @@ class GetTrafficMarkingPoliciesPolicy {
   /// [trafficMarkingPolicyId] The ID of the Traffic Marking Policy.
   /// [trafficMarkingPolicyName] The name of the Traffic Marking Policy.
   /// [transitRouterId] The ID of the transit router.
-  GetTrafficMarkingPoliciesPolicy({
+  const GetTrafficMarkingPoliciesPolicy({
     required this.description,
     required this.id,
     required this.markingDscp,

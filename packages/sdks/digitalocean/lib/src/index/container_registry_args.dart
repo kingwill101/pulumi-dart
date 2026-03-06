@@ -18,7 +18,7 @@ class ContainerRegistryArgs {
   /// [name] The name of the container_registry
   /// [region] The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
   /// [subscriptionTierSlug] The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
-  ContainerRegistryArgs({
+  const ContainerRegistryArgs({
     this.name,
     this.region,
     required this.subscriptionTierSlug,

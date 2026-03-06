@@ -20,7 +20,7 @@ class GetBindingsResult {
   /// [instanceId] Required.
   /// [outputFile] Optional.
   /// [virtualHostName] Required.
-  GetBindingsResult({
+  const GetBindingsResult({
     required this.bindings,
     required this.id,
     required this.ids,

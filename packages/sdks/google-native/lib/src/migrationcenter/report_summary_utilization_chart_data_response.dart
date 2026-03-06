@@ -12,7 +12,7 @@ class ReportSummaryUtilizationChartDataResponse {
   /// Creates a new [ReportSummaryUtilizationChartDataResponse].
   /// [free] Aggregate value which falls into the "Free" bucket.
   /// [used] Aggregate value which falls into the "Used" bucket.
-  ReportSummaryUtilizationChartDataResponse({
+  const ReportSummaryUtilizationChartDataResponse({
     required this.free,
     required this.used,
   });

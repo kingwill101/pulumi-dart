@@ -15,7 +15,7 @@ class TriggererResourceResponseComposerV1beta1 {
   /// [count] Optional. The number of triggerers.
   /// [cpu] Optional. CPU request and limit for a single Airflow triggerer replica.
   /// [memoryGb] Optional. Memory (GB) request and limit for a single Airflow triggerer replica.
-  TriggererResourceResponseComposerV1beta1({
+  const TriggererResourceResponseComposerV1beta1({
     required this.count,
     required this.cpu,
     required this.memoryGb,

@@ -16,7 +16,7 @@ class ExclusionManagedRuleSetResponse {
   /// [ruleGroups] Defines the rule groups to apply to the rule set.
   /// [ruleSetType] Defines the rule set type to use.
   /// [ruleSetVersion] Defines the version of the rule set to use.
-  ExclusionManagedRuleSetResponse({
+  const ExclusionManagedRuleSetResponse({
     this.ruleGroups,
     required this.ruleSetType,
     required this.ruleSetVersion,

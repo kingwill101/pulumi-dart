@@ -101,7 +101,7 @@ class InMageRcmFailbackReplicationDetailsResponse {
   /// [targetVmName] The target VM name.
   /// [targetvCenterId] The target vCenter Id.
   /// [vmNics] The network details.
-  InMageRcmFailbackReplicationDetailsResponse({
+  const InMageRcmFailbackReplicationDetailsResponse({
     required this.azureVirtualMachineId,
     this.discoveredVmDetails,
     required this.initialReplicationProcessedBytes,

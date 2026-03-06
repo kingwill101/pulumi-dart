@@ -29,7 +29,7 @@ class ServicePerimeterDryRunEgressPolicyState {
   /// [etag] The perimeter etag is internally used to prevent overwriting the list of policies on PATCH calls. It is retrieved from the same GET perimeter API call that's used to get the current list of policies. The policy defined in this resource is added or removed from that list, and then this etag is sent with the PATCH call along with the updated policies.
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  ServicePerimeterDryRunEgressPolicyState({
+  const ServicePerimeterDryRunEgressPolicyState({
     this.accessPolicyId,
     this.egressFrom,
     this.egressTo,

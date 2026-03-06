@@ -12,7 +12,7 @@ class Principals {
   /// Creates a new [Principals].
   /// [objectId] Object Id for the user
   /// [upn] UPN of the user.
-  Principals({
+  const Principals({
     this.objectId,
     this.upn,
   });

@@ -25,7 +25,7 @@ class ManagedClusterPodIdentityResponse {
   /// [namespace] The namespace of the pod identity.
   /// [provisioningInfo] Required.
   /// [provisioningState] The current provisioning state of the pod identity.
-  ManagedClusterPodIdentityResponse({
+  const ManagedClusterPodIdentityResponse({
     this.bindingSelector,
     required this.identity,
     required this.name,

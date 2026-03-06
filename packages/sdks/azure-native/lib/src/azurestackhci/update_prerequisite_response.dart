@@ -15,7 +15,7 @@ class UpdatePrerequisiteResponse {
   /// [packageName] Friendly name of the prerequisite.
   /// [updateType] Updatable component type.
   /// [version] Version of the prerequisite.
-  UpdatePrerequisiteResponse({
+  const UpdatePrerequisiteResponse({
     this.packageName,
     this.updateType,
     this.version,

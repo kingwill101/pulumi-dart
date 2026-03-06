@@ -12,7 +12,7 @@ class KeyValueItemResponse {
   /// Creates a new [KeyValueItemResponse].
   /// [key] Key of tuple.
   /// [value] Value of tuple.
-  KeyValueItemResponse({
+  const KeyValueItemResponse({
     required this.key,
     required this.value,
   });

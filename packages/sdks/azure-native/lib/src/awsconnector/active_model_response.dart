@@ -9,7 +9,7 @@ class ActiveModelResponse {
 
   /// Creates a new [ActiveModelResponse].
   /// [active] When true, StackSets performs non-conflicting operations concurrently and queues conflicting operations. After conflicting operations finish, StackSets starts queued operations in request order.
-  ActiveModelResponse({
+  const ActiveModelResponse({
     this.active,
   });
 

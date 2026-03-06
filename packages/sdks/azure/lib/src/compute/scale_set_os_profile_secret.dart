@@ -12,7 +12,7 @@ class ScaleSetOsProfileSecret {
   /// Creates a new [ScaleSetOsProfileSecret].
   /// [sourceVaultId] Specifies the key vault to use.
   /// [vaultCertificates] (Required, on Windows machines) One or more `vault_certificates` blocks as defined below.
-  ScaleSetOsProfileSecret({
+  const ScaleSetOsProfileSecret({
     required this.sourceVaultId,
     this.vaultCertificates,
   });

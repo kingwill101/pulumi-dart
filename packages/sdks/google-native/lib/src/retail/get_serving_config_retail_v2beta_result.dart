@@ -64,7 +64,7 @@ class GetServingConfigRetailV2betaResult {
   /// [replacementControlIds] Condition replacement specifications. - Applied according to the order in the list. - A previously replaced term can not be re-replaced. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
   /// [solutionTypes] Immutable. Specifies the solution types that a serving config can be associated with. Currently we support setting only one type of solution.
   /// [twowaySynonymsControlIds] Condition synonyms specifications. If multiple syonyms conditions match, all matching synonyms control in the list will execute. Order of controls in the list will not matter. Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
-  GetServingConfigRetailV2betaResult({
+  const GetServingConfigRetailV2betaResult({
     required this.boostControlIds,
     required this.displayName,
     required this.diversityLevel,

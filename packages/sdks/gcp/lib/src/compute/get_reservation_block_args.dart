@@ -24,7 +24,7 @@ class GetReservationBlockArgs {
   /// [project] The project in which the resource belongs. If it
   /// [reservation] The name of the parent reservation.
   /// [zone] The zone where the reservation block resides.
-  GetReservationBlockArgs({
+  const GetReservationBlockArgs({
     required this.name,
     this.project,
     required this.reservation,

@@ -13,7 +13,7 @@ class ServiceAttachmentPscServiceAttachmentId {
   /// Creates a new [ServiceAttachmentPscServiceAttachmentId].
   /// [high] (Output)
   /// [low] (Output)
-  ServiceAttachmentPscServiceAttachmentId({
+  const ServiceAttachmentPscServiceAttachmentId({
     this.high,
     this.low,
   });

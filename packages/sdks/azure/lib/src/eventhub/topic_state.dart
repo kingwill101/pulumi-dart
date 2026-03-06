@@ -51,7 +51,7 @@ class TopicState {
   /// [resourceGroupName] Optional.
   /// [status] The Status of the Service Bus Topic. Acceptable values are `Active` or `Disabled`. Defaults to `Active`.
   /// [supportOrdering] Boolean flag which controls whether the Topic supports ordering.
-  TopicState({
+  const TopicState({
     this.autoDeleteOnIdle,
     this.batchedOperationsEnabled,
     this.defaultMessageTtl,

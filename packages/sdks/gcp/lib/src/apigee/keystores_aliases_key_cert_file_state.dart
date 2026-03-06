@@ -41,7 +41,7 @@ class KeystoresAliasesKeyCertFileState {
   /// [password] Password for the Private Key if it's encrypted
   /// [timeouts] Optional.
   /// [type] Optional.Type of Alias
-  KeystoresAliasesKeyCertFileState({
+  const KeystoresAliasesKeyCertFileState({
     this.alias,
     this.cert,
     this.certsInfos,

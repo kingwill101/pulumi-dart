@@ -12,7 +12,7 @@ class GetDeploymentStacksWhatIfResultsAtSubscriptionArgs {
 
   /// Creates a new [GetDeploymentStacksWhatIfResultsAtSubscriptionArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
-  GetDeploymentStacksWhatIfResultsAtSubscriptionArgs({
+  const GetDeploymentStacksWhatIfResultsAtSubscriptionArgs({
     required this.deploymentStacksWhatIfResultName,
   });
 

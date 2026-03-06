@@ -21,7 +21,7 @@ class AppSpecIngressRule {
   /// [cors] The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
   /// [match] The match configuration for the rule
   /// [redirect] The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-  AppSpecIngressRule({
+  const AppSpecIngressRule({
     this.component,
     this.cors,
     this.match,

@@ -15,7 +15,7 @@ class NetworkGrantState {
   /// [ccnId] The ID of the CCN instance.
   /// [cenId] The ID of the CEN instance.
   /// [cenUid] The ID of the account to which the CEN instance belongs.
-  NetworkGrantState({
+  const NetworkGrantState({
     this.ccnId,
     this.cenId,
     this.cenUid,

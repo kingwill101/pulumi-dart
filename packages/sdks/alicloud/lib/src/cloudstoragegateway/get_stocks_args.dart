@@ -15,7 +15,7 @@ class GetStocksArgs {
   /// Creates a new [GetStocksArgs].
   /// [gatewayClass] The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetStocksArgs({
+  const GetStocksArgs({
     this.gatewayClass,
     this.outputFile,
   });

@@ -48,7 +48,7 @@ class DomainBillingContact {
   /// [phoneNumber] The phone number of the contact. Phone number must be specified in the format "+[country dialing code].[number including any area code]".
   /// [state] The state or province of the contact's city.
   /// [zipCode] The zip or postal code of the contact's address.
-  DomainBillingContact({
+  const DomainBillingContact({
     required this.addressLine1,
     required this.addressLine2,
     required this.city,

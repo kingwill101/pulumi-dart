@@ -12,7 +12,7 @@ class ManagedResourceGroupConfigurationResponse {
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [location] Managed resource group location.
   /// [name] The NFC service will be hosted in a Managed resource group.
-  ManagedResourceGroupConfigurationResponse({
+  const ManagedResourceGroupConfigurationResponse({
     this.location,
     this.name,
   });

@@ -9,7 +9,7 @@ class VpnGatewayVpnGatewayInterfaceComputeV1 {
 
   /// Creates a new [VpnGatewayVpnGatewayInterfaceComputeV1].
   /// [interconnectAttachment] URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for HA VPN over Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource.
-  VpnGatewayVpnGatewayInterfaceComputeV1({
+  const VpnGatewayVpnGatewayInterfaceComputeV1({
     this.interconnectAttachment,
   });
 

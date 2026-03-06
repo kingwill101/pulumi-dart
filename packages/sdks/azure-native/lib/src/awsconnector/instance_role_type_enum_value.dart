@@ -9,7 +9,7 @@ class InstanceRoleTypeEnumValue {
 
   /// Creates a new [InstanceRoleTypeEnumValue].
   /// [value] Property value
-  InstanceRoleTypeEnumValue({
+  const InstanceRoleTypeEnumValue({
     this.value,
   });
 

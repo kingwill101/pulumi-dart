@@ -16,7 +16,7 @@ class ResourceLogCategoryResponse {
   /// Creates a new [ResourceLogCategoryResponse].
   /// [enabled] Indicates whether or the resource log category is enabled.
   /// [name] Gets or sets the resource log category's name.
-  ResourceLogCategoryResponse({
+  const ResourceLogCategoryResponse({
     this.enabled,
     this.name,
   });

@@ -9,7 +9,7 @@ class FileDestination {
 
   /// Creates a new [FileDestination].
   /// [fileFormats] Destination of the view data. Currently only CSV format is supported.
-  FileDestination({
+  const FileDestination({
     this.fileFormats,
   });
 

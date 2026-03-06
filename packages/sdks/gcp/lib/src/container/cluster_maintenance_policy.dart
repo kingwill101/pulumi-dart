@@ -47,7 +47,7 @@ class ClusterMaintenancePolicy {
   /// [dailyMaintenanceWindow] Time window specified for daily maintenance operations.
   /// [maintenanceExclusions] Exceptions to maintenance window. Non-emergency maintenance should not occur in these windows. A cluster can have up to 20 maintenance exclusions at a time [Maintenance Window and Exclusions](https://cloud.google.com/kubernetes-engine/docs/concepts/maintenance-windows-and-exclusions)
   /// [recurringWindow] Time window for recurring maintenance operations.
-  ClusterMaintenancePolicy({
+  const ClusterMaintenancePolicy({
     this.dailyMaintenanceWindow,
     this.maintenanceExclusions,
     this.recurringWindow,

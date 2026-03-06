@@ -9,7 +9,7 @@ class GetRdsParameterGroupsGroupParamDetail {
   /// Creates a new [GetRdsParameterGroupsGroupParamDetail].
   /// [paramName] Required.
   /// [paramValue] Required.
-  GetRdsParameterGroupsGroupParamDetail({
+  const GetRdsParameterGroupsGroupParamDetail({
     required this.paramName,
     required this.paramValue,
   });

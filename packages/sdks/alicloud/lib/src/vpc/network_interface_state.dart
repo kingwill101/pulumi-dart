@@ -64,7 +64,7 @@ class NetworkInterfaceState {
   /// [status] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   /// [vswitchId] The VSwitch to create the ENI in.
-  NetworkInterfaceState({
+  const NetworkInterfaceState({
     this.description,
     this.instanceType,
     this.ipv4PrefixCount,

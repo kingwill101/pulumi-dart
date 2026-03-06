@@ -9,7 +9,7 @@ class OutboundWebIdentityFederationState {
 
   /// Creates a new [OutboundWebIdentityFederationState].
   /// [issuerIdentifier] A unique issuer URL for your AWS account that hosts the OpenID Connect (OIDC) discovery endpoints.
-  OutboundWebIdentityFederationState({
+  const OutboundWebIdentityFederationState({
     this.issuerIdentifier,
   });
 

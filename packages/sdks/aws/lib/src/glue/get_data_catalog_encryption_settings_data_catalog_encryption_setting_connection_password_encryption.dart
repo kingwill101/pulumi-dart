@@ -11,7 +11,7 @@ class GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPass
   /// Creates a new [GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption].
   /// [awsKmsKeyId] KMS key ARN that is used to encrypt the connection password.
   /// [returnConnectionPasswordEncrypted] When set to `true`, passwords remain encrypted in the responses of GetConnection and GetConnections. This encryption takes effect independently of the catalog encryption.
-  GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption({
+  const GetDataCatalogEncryptionSettingsDataCatalogEncryptionSettingConnectionPasswordEncryption({
     required this.awsKmsKeyId,
     required this.returnConnectionPasswordEncrypted,
   });

@@ -74,7 +74,7 @@ class GetReportResult {
   /// [timeUnit] This field contains the time unit of aggregation for the report
   /// [toTime] Legacy field: not used. Contains the end time for the report
   /// [topk] Legacy field: not used. This field contains the top k parameter value for restricting the result
-  GetReportResult({
+  const GetReportResult({
     required this.chartType,
     required this.comments,
     required this.createdAt,

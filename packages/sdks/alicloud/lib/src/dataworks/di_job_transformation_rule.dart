@@ -33,7 +33,7 @@ class DiJobTransformationRule {
   /// [ruleExpression] Regular expression, in json string format.
   /// [ruleName] Rule Name
   /// [ruleTargetType] Target type of action, optional enumeration value:
-  DiJobTransformationRule({
+  const DiJobTransformationRule({
     this.ruleActionType,
     this.ruleExpression,
     this.ruleName,

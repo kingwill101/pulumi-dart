@@ -10,7 +10,7 @@ class PersonalComputeInstanceSettings {
 
   /// Creates a new [PersonalComputeInstanceSettings].
   /// [assignedUser] A user explicitly assigned to a personal compute instance.
-  PersonalComputeInstanceSettings({
+  const PersonalComputeInstanceSettings({
     this.assignedUser,
   });
 

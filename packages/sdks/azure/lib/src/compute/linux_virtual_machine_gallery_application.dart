@@ -23,7 +23,7 @@ class LinuxVirtualMachineGalleryApplication {
   /// [tag] Specifies a passthrough value for more generic context. This field can be any valid `string` value.
   /// [treatFailureAsDeploymentFailureEnabled] Specifies whether any failure for any operation in the VmApplication will fail the deployment of the VM. Defaults to `false`.
   /// [versionId] Specifies the Gallery Application Version resource ID.
-  LinuxVirtualMachineGalleryApplication({
+  const LinuxVirtualMachineGalleryApplication({
     this.automaticUpgradeEnabled,
     this.configurationBlobUri,
     this.order,

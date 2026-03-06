@@ -12,7 +12,7 @@ class FileContentBufferComputeV1 {
   /// Creates a new [FileContentBufferComputeV1].
   /// [content] The raw content in the secure keys file.
   /// [fileType] The file type of source file.
-  FileContentBufferComputeV1({
+  const FileContentBufferComputeV1({
     this.content,
     this.fileType,
   });

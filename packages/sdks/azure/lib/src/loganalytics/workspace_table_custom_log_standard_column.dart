@@ -19,7 +19,7 @@ class WorkspaceTableCustomLogStandardColumn {
   /// [displayName] The display name of the table.
   /// [name] Specifies the name of the Log Analytics Workspace Table Custom Log. Changing this forces a new resource to be created.
   /// [type] The data type of the standard column.
-  WorkspaceTableCustomLogStandardColumn({
+  const WorkspaceTableCustomLogStandardColumn({
     this.description,
     this.displayName,
     this.name,

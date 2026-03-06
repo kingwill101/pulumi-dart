@@ -32,7 +32,7 @@ class RunAiplatformV1beta1Args {
   /// [project] Optional.
   /// [tensorboardId] Required.
   /// [tensorboardRunId] Required. The ID to use for the Tensorboard run, which becomes the final component of the Tensorboard run's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
-  RunAiplatformV1beta1Args({
+  const RunAiplatformV1beta1Args({
     this.description,
     required this.displayName,
     this.etag,

@@ -25,7 +25,7 @@ class InstanceMemcacheNode {
   /// [port] (Output)
   /// [state] (Output)
   /// [zone] (Output)
-  InstanceMemcacheNode({
+  const InstanceMemcacheNode({
     this.host,
     this.nodeId,
     this.port,

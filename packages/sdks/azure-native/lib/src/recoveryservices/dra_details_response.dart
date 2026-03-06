@@ -34,7 +34,7 @@ class DraDetailsResponse {
   /// [name] The DRA name.
   /// [reverseProtectedItemCount] The count of protected items which are protected in reverse direction.
   /// [version] The version.
-  DraDetailsResponse({
+  const DraDetailsResponse({
     required this.biosId,
     required this.forwardProtectedItemCount,
     required this.health,

@@ -19,7 +19,7 @@ class GetTagArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [tagId] Required.
-  GetTagArgs({
+  const GetTagArgs({
     required this.location,
     required this.packageId,
     this.project,

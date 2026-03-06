@@ -45,7 +45,7 @@ class AgentPromptState {
   /// [updatedAt] Time at which the prompt was last updated.
   /// [variants] A list of objects, each containing details about a variant of the prompt. See Variant for more information.
   /// [version] Version of the prompt. When you create a prompt, the version created is the `DRAFT` version.
-  AgentPromptState({
+  const AgentPromptState({
     this.arn,
     this.createdAt,
     this.customerEncryptionKeyArn,

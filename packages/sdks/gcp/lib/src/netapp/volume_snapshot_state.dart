@@ -38,7 +38,7 @@ class VolumeSnapshotState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [usedBytes] Storage used to store blocks unique to this snapshot.
   /// [volumeName] The name of the volume to create the snapshot in.
-  VolumeSnapshotState({
+  const VolumeSnapshotState({
     this.description,
     this.effectiveLabels,
     this.labels,

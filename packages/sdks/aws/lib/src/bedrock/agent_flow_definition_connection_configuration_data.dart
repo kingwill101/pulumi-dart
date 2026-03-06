@@ -11,7 +11,7 @@ class AgentFlowDefinitionConnectionConfigurationData {
   /// Creates a new [AgentFlowDefinitionConnectionConfigurationData].
   /// [sourceOutput] The name of the output in the source node that the connection begins from.
   /// [targetInput] The name of the input in the target node that the connection ends at.
-  AgentFlowDefinitionConnectionConfigurationData({
+  const AgentFlowDefinitionConnectionConfigurationData({
     required this.sourceOutput,
     required this.targetInput,
   });

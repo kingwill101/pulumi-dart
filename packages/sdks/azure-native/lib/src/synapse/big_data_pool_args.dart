@@ -84,7 +84,7 @@ class BigDataPoolArgs {
   /// [sparkVersion] The Apache Spark version.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
-  BigDataPoolArgs({
+  const BigDataPoolArgs({
     this.autoPause,
     this.autoScale,
     this.bigDataPoolName,

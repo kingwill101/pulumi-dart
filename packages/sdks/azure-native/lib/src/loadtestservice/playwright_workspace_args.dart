@@ -27,7 +27,7 @@ class PlaywrightWorkspaceArgs {
   /// [regionalAffinity] Controls the connection region for client workers to cloud-hosted browsers. When enabled, workers connect to browsers in the closest Azure region for lower latency. When disabled, workers connect to browsers in the Azure region where the workspace was created.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PlaywrightWorkspaceArgs({
+  const PlaywrightWorkspaceArgs({
     this.localAuth,
     this.location,
     this.playwrightWorkspaceName,

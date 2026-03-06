@@ -17,7 +17,7 @@ class GetOrganizationPartnerTenantProxyConfigIamPolicyArgs {
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
   /// [proxyConfigId] Required.
-  GetOrganizationPartnerTenantProxyConfigIamPolicyArgs({
+  const GetOrganizationPartnerTenantProxyConfigIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     required this.organizationId,
     required this.partnerTenantId,

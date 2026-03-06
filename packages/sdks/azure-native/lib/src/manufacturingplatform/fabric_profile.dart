@@ -15,7 +15,7 @@ class FabricProfile {
   /// [keyUri] Azure Key Vault Uri
   /// [oneLakePath] One Lake Path
   /// [oneLakeUri] URI of One Lake
-  FabricProfile({
+  const FabricProfile({
     required this.keyUri,
     required this.oneLakePath,
     required this.oneLakeUri,

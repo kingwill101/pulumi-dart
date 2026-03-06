@@ -29,7 +29,7 @@ class MonitorDatadogOrganization {
   /// [linkingClientId] The ID of the linking_client. Changing this forces a new Datadog Monitor to be created.
   /// [name] The name of the user that will be associated with the Datadog Monitor. Changing this forces a new Datadog Monitor to be created.
   /// [redirectUri] The redirect uri for linking. Changing this forces a new Datadog Monitor to be created.
-  MonitorDatadogOrganization({
+  const MonitorDatadogOrganization({
     required this.apiKey,
     required this.applicationKey,
     this.enterpriseAppId,

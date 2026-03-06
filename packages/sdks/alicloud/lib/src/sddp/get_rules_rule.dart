@@ -74,7 +74,7 @@ class GetRulesRule {
   /// [target] The Target.
   /// [userId] The User ID.
   /// [warnLevel] The Level of Risk. Valid values:
-  GetRulesRule({
+  const GetRulesRule({
     required this.category,
     required this.categoryName,
     required this.content,

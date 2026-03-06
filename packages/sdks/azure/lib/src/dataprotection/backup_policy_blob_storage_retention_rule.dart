@@ -19,7 +19,7 @@ class BackupPolicyBlobStorageRetentionRule {
   /// [lifeCycle] A `life_cycle` block as defined below. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [name] The name which should be used for this retention rule. Changing this forces a new Backup Policy Blob Storage to be created.
   /// [priority] Specifies the priority of the rule. The priority number must be unique for each rule. The lower the priority number, the higher the priority of the rule. Changing this forces a new Backup Policy Blob Storage to be created.
-  BackupPolicyBlobStorageRetentionRule({
+  const BackupPolicyBlobStorageRetentionRule({
     required this.criteria,
     required this.lifeCycle,
     required this.name,

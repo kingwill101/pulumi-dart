@@ -24,7 +24,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile {
   /// [publicIpAddresses] A list of public IPs associated with this Next Generation Firewall.
   /// [trustedAddressRanges] A list of trusted ranges to use for the Network.
   /// [vnetConfiguration] A `vnet_configuration` block as defined below.
-  NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile({
+  const NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
     required this.publicIpAddressIds,

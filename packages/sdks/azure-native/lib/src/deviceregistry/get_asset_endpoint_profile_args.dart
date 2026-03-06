@@ -15,7 +15,7 @@ class GetAssetEndpointProfileArgs {
   /// Creates a new [GetAssetEndpointProfileArgs].
   /// [assetEndpointProfileName] Asset Endpoint Profile name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAssetEndpointProfileArgs({
+  const GetAssetEndpointProfileArgs({
     required this.assetEndpointProfileName,
     required this.resourceGroupName,
   });

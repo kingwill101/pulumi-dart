@@ -45,7 +45,7 @@ class LaunchTemplateSystemDisk {
   /// [name] Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
   /// [performanceLevel] Optional.
   /// [size] The size of the data disk.
-  LaunchTemplateSystemDisk({
+  const LaunchTemplateSystemDisk({
     this.category,
     this.deleteWithInstance,
     this.description,

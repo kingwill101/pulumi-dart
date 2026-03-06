@@ -15,7 +15,7 @@ class GetRegionHealthCheckArgs {
   /// [healthCheck] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionHealthCheckArgs({
+  const GetRegionHealthCheckArgs({
     required this.healthCheck,
     this.project,
     required this.region,

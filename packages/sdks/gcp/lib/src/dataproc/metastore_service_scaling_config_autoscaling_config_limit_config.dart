@@ -11,7 +11,7 @@ class MetastoreServiceScalingConfigAutoscalingConfigLimitConfig {
   /// Creates a new [MetastoreServiceScalingConfigAutoscalingConfigLimitConfig].
   /// [maxScalingFactor] The maximum scaling factor that the service will autoscale to. The default value is 6.0.
   /// [minScalingFactor] The minimum scaling factor that the service will autoscale to. The default value is 0.1.
-  MetastoreServiceScalingConfigAutoscalingConfigLimitConfig({
+  const MetastoreServiceScalingConfigAutoscalingConfigLimitConfig({
     this.maxScalingFactor,
     this.minScalingFactor,
   });

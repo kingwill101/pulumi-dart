@@ -18,7 +18,7 @@ class GetWaveArgs {
   /// [projectName] Migrate Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [waveName] Migration Wave Resource
-  GetWaveArgs({
+  const GetWaveArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.waveName,

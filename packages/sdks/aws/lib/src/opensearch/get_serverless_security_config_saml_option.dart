@@ -17,7 +17,7 @@ class GetServerlessSecurityConfigSamlOption {
   /// [metadata] The XML IdP metadata file generated from your identity provider.
   /// [sessionTimeout] Session timeout, in minutes. Minimum is 5 minutes and maximum is 720 minutes (12 hours). Default is 60 minutes.
   /// [userAttribute] User attribute for this SAML integration.
-  GetServerlessSecurityConfigSamlOption({
+  const GetServerlessSecurityConfigSamlOption({
     required this.groupAttribute,
     required this.metadata,
     required this.sessionTimeout,

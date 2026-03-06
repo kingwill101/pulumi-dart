@@ -14,7 +14,7 @@ class IAppVariable {
   /// [encrypted] Name of origin
   /// [name] Name of the iApp.
   /// [value] Name of origin
-  IAppVariable({
+  const IAppVariable({
     this.encrypted,
     this.name,
     this.value,

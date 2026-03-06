@@ -13,7 +13,7 @@ class SandboxManagementGroupPropertiesResponse {
   /// Creates a new [SandboxManagementGroupPropertiesResponse].
   /// [create] This parameter determines whether the 'Sandbox' management group will be created. If set to true, the group will be created; if set to false, it will not be created. The default value is false.
   /// [policyInitiativesAssignmentProperties] Array of policy initiatives applied to the management group.
-  SandboxManagementGroupPropertiesResponse({
+  const SandboxManagementGroupPropertiesResponse({
     required this.create,
     required this.policyInitiativesAssignmentProperties,
   });

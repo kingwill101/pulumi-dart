@@ -22,7 +22,7 @@ class VariableValueAtManagementGroupArgs {
   /// [values] Variable value column value array.
   /// [variableName] The name of the variable to operate on.
   /// [variableValueName] The name of the variable value to operate on.
-  VariableValueAtManagementGroupArgs({
+  const VariableValueAtManagementGroupArgs({
     required this.managementGroupId,
     required this.values,
     required this.variableName,

@@ -20,7 +20,7 @@ class RegistryEnterpriseNamespaceState {
   /// [defaultVisibility] The default type of the repository that is automatically created. Valid values:
   /// [instanceId] The ID of the Container Registry Enterprise Edition instance.
   /// [name] The name of the Container Registry Enterprise Edition Name. It must be `2` to `120` characters in length, and can contain lowercase letters, digits, underscores (_), hyphens (-), and periods (.). It cannot start or end with a delimiter.
-  RegistryEnterpriseNamespaceState({
+  const RegistryEnterpriseNamespaceState({
     this.autoCreate,
     this.defaultVisibility,
     this.instanceId,

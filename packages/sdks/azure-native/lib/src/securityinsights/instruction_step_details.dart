@@ -12,7 +12,7 @@ class InstructionStepDetails {
   /// Creates a new [InstructionStepDetails].
   /// [parameters] Gets or sets the instruction type parameters settings.
   /// [type] Gets or sets the instruction type name.
-  InstructionStepDetails({
+  const InstructionStepDetails({
     required this.parameters,
     required this.type,
   });

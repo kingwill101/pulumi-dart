@@ -18,7 +18,7 @@ class GetProjectPolicyArgs {
   /// [devCenterName] The name of the devcenter.
   /// [projectPolicyName] The name of the project policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectPolicyArgs({
+  const GetProjectPolicyArgs({
     required this.devCenterName,
     required this.projectPolicyName,
     required this.resourceGroupName,

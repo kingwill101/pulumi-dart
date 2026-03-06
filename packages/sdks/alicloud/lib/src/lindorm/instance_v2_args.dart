@@ -103,7 +103,7 @@ class InstanceV2Args {
   /// [vswitchId] VswitchId
   /// [whiteIpLists] Instance whitelist list See `white_ip_list` below.
   /// [zoneId] The zone ID  of the resource
-  InstanceV2Args({
+  const InstanceV2Args({
     this.arbiterVswitchId,
     this.arbiterZoneId,
     required this.archVersion,

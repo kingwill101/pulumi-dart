@@ -12,7 +12,7 @@ class Library {
   /// Creates a new [Library].
   /// [name] Name of the library. Example: "django".
   /// [version] Version of the library to select, or "latest".
-  Library({
+  const Library({
     this.name,
     this.version,
   });

@@ -17,7 +17,7 @@ class DefinitionPlan {
   /// [product] The product code of the plan.
   /// [publisher] The publisher ID of the plan.
   /// [version] The version of the plan.
-  DefinitionPlan({
+  const DefinitionPlan({
     required this.name,
     required this.product,
     required this.publisher,

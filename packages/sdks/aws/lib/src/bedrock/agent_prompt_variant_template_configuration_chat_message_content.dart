@@ -10,7 +10,7 @@ class AgentPromptVariantTemplateConfigurationChatMessageContent {
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatMessageContent].
   /// [cachePoint] Optional.
   /// [text] Optional.
-  AgentPromptVariantTemplateConfigurationChatMessageContent({
+  const AgentPromptVariantTemplateConfigurationChatMessageContent({
     this.cachePoint,
     this.text,
   });

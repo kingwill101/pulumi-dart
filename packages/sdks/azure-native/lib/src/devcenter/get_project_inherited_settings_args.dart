@@ -15,7 +15,7 @@ class GetProjectInheritedSettingsArgs {
   /// Creates a new [GetProjectInheritedSettingsArgs].
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectInheritedSettingsArgs({
+  const GetProjectInheritedSettingsArgs({
     required this.projectName,
     required this.resourceGroupName,
   });

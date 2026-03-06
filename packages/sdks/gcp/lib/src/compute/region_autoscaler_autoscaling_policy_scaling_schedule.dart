@@ -26,7 +26,7 @@ class RegionAutoscalerAutoscalingPolicyScalingSchedule {
   /// [name] The identifier for this object. Format specified above.
   /// [schedule] The start timestamps of time intervals when this scaling schedule should provide a scaling signal. This field uses the extended cron format (with an optional year field).
   /// [timeZone] The time zone to be used when interpreting the schedule. The value of this field must be a time zone name from the tz database: http://en.wikipedia.org/wiki/Tz_database.
-  RegionAutoscalerAutoscalingPolicyScalingSchedule({
+  const RegionAutoscalerAutoscalingPolicyScalingSchedule({
     this.description,
     this.disabled,
     required this.durationSec,

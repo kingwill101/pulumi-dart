@@ -33,7 +33,7 @@ class WorkloadNetworkPortMirroringArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [revision] NSX revision number.
   /// [source] Source VM Group.
-  WorkloadNetworkPortMirroringArgs({
+  const WorkloadNetworkPortMirroringArgs({
     this.destination,
     this.direction,
     this.displayName,

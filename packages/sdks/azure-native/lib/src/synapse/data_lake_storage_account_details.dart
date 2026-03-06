@@ -18,7 +18,7 @@ class DataLakeStorageAccountDetails {
   /// [createManagedPrivateEndpoint] Create managed private endpoint to this storage account or not
   /// [filesystem] Filesystem name
   /// [resourceId] ARM resource Id of this storage account
-  DataLakeStorageAccountDetails({
+  const DataLakeStorageAccountDetails({
     this.accountUrl,
     this.createManagedPrivateEndpoint,
     this.filesystem,

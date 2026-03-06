@@ -23,7 +23,7 @@ class AccountV1Args {
   /// [metadata] A map of custom key/value pairs to associate with the
   /// [projectId] The project ID of the corresponding account. If
   /// [region] The region in which to create the account. If omitted,
-  AccountV1Args({
+  const AccountV1Args({
     this.metadata,
     this.projectId,
     this.region,

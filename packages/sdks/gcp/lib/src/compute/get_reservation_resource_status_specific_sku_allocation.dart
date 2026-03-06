@@ -11,7 +11,7 @@ class GetReservationResourceStatusSpecificSkuAllocation {
   /// Creates a new [GetReservationResourceStatusSpecificSkuAllocation].
   /// [sourceInstanceTemplateId] ID of the instance template used to populate reservation properties.
   /// [utilizations] Per service utilization breakdown. The Key is the Google Cloud managed service name.
-  GetReservationResourceStatusSpecificSkuAllocation({
+  const GetReservationResourceStatusSpecificSkuAllocation({
     required this.sourceInstanceTemplateId,
     required this.utilizations,
   });

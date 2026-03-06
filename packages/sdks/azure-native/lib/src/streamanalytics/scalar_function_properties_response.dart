@@ -24,7 +24,7 @@ class ScalarFunctionPropertiesResponse {
   /// [inputs] Optional.
   /// [output] Describes the output of a function.
   /// [type] Indicates the type of function.
-  ScalarFunctionPropertiesResponse({
+  const ScalarFunctionPropertiesResponse({
     this.binding,
     required this.etag,
     this.inputs,

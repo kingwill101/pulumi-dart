@@ -24,7 +24,7 @@ class APIServicePatch {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Spec contains information for locating and communicating with a server
   /// [status] Status contains derived information about an API server
-  APIServicePatch({
+  const APIServicePatch({
     this.apiVersion,
     this.kind,
     this.metadata,

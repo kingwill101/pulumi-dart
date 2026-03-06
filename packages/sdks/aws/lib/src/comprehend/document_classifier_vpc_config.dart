@@ -11,7 +11,7 @@ class DocumentClassifierVpcConfig {
   /// Creates a new [DocumentClassifierVpcConfig].
   /// [securityGroupIds] List of security group IDs.
   /// [subnets] List of VPC subnets.
-  DocumentClassifierVpcConfig({
+  const DocumentClassifierVpcConfig({
     required this.securityGroupIds,
     required this.subnets,
   });

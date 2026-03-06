@@ -68,7 +68,7 @@ class CxSecuritySettingsState {
   /// [redactionStrategy] Defines how we redact data. If not set, defaults to not redacting.
   /// [retentionStrategy] Defines how long we retain persisted data that contains sensitive info. Only one of `retention_window_days` and `retention_strategy` may be set.
   /// [retentionWindowDays] Retains the data for the specified number of days. User must set a value lower than Dialogflow's default 365d TTL (30 days for Agent Assist traffic), higher value will be ignored and use default. Setting a value higher than that has no effect. A missing value or setting to 0 also means we use default TTL.
-  CxSecuritySettingsState({
+  const CxSecuritySettingsState({
     this.audioExportSettings,
     this.deidentifyTemplate,
     this.displayName,

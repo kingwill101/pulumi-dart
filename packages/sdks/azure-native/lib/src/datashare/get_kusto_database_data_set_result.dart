@@ -37,7 +37,7 @@ class GetKustoDatabaseDataSetResult {
   /// [provisioningState] Provisioning state of the kusto database data set.
   /// [systemData] System Data of the Azure resource.
   /// [type] Type of the azure resource
-  GetKustoDatabaseDataSetResult({
+  const GetKustoDatabaseDataSetResult({
     required this.azureApiVersion,
     required this.dataSetId,
     required this.id,

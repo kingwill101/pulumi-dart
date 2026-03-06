@@ -40,7 +40,7 @@ class OutlierDetectionResponseComputeBeta {
   /// [successRateMinimumHosts] The number of backend endpoints in the load balancing pool that must have enough request volume to detect success rate outliers. If the number of backend endpoints is fewer than this setting, outlier detection via success rate statistics is not performed for any backend endpoint in the load balancing pool. Defaults to 5. Not supported when the backend service uses Serverless NEG.
   /// [successRateRequestVolume] The minimum number of total requests that must be collected in one interval (as defined by the interval duration above) to include this backend endpoint in success rate based outlier detection. If the volume is lower than this setting, outlier detection via success rate statistics is not performed for that backend endpoint. Defaults to 100. Not supported when the backend service uses Serverless NEG.
   /// [successRateStdevFactor] This factor is used to determine the ejection threshold for success rate outlier ejection. The ejection threshold is the difference between the mean success rate, and the product of this factor and the standard deviation of the mean success rate: mean - (stdev * successRateStdevFactor). This factor is divided by a thousand to get a double. That is, if the desired factor is 1.9, the runtime value should be 1900. Defaults to 1900. Not supported when the backend service uses Serverless NEG.
-  OutlierDetectionResponseComputeBeta({
+  const OutlierDetectionResponseComputeBeta({
     required this.baseEjectionTime,
     required this.consecutiveErrors,
     required this.consecutiveGatewayFailure,

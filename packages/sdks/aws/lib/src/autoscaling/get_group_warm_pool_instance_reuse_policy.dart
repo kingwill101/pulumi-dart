@@ -8,7 +8,7 @@ class GetGroupWarmPoolInstanceReusePolicy {
 
   /// Creates a new [GetGroupWarmPoolInstanceReusePolicy].
   /// [reuseOnScaleIn] Indicates whether instances in the Auto Scaling group can be returned to the warm pool on scale in.
-  GetGroupWarmPoolInstanceReusePolicy({
+  const GetGroupWarmPoolInstanceReusePolicy({
     required this.reuseOnScaleIn,
   });
 

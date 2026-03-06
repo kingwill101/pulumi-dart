@@ -22,7 +22,7 @@ class LinkedServiceArgs {
   /// [linkedServiceName] The linked service name.
   /// [properties] Properties of linked service.
   /// [resourceGroupName] The resource group name.
-  LinkedServiceArgs({
+  const LinkedServiceArgs({
     required this.factoryName,
     this.linkedServiceName,
     required this.properties,

@@ -7,7 +7,7 @@ class WebAppWebAppUnit {
 
   /// Creates a new [WebAppWebAppUnit].
   /// [provisioned] Required.
-  WebAppWebAppUnit({
+  const WebAppWebAppUnit({
     required this.provisioned,
   });
 

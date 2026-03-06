@@ -19,7 +19,7 @@ class ServicePerimetersServicePerimeterStatusEgressPolicy {
   /// [egressFrom] Defines conditions on the source of a request causing this `EgressPolicy` to apply.
   /// [egressTo] Defines the conditions on the `ApiOperation` and destination resources that
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  ServicePerimetersServicePerimeterStatusEgressPolicy({
+  const ServicePerimetersServicePerimeterStatusEgressPolicy({
     this.egressFrom,
     this.egressTo,
     this.title,

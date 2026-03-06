@@ -15,7 +15,7 @@ class IotDpsSkuInfoResponse {
   /// [capacity] The number of units to provision
   /// [name] Sku name.
   /// [tier] Pricing tier name of the provisioning service.
-  IotDpsSkuInfoResponse({
+  const IotDpsSkuInfoResponse({
     this.capacity,
     this.name,
     required this.tier,

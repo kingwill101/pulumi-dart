@@ -63,7 +63,7 @@ class GetDataLabelingJobAiplatformV1beta1Result {
   /// [specialistPools] The SpecialistPools' resource names associated with this job.
   /// [state] The detailed state of the job.
   /// [updateTime] Timestamp when this DataLabelingJob was updated most recently.
-  GetDataLabelingJobAiplatformV1beta1Result({
+  const GetDataLabelingJobAiplatformV1beta1Result({
     required this.activeLearningConfig,
     required this.annotationLabels,
     required this.createTime,

@@ -11,7 +11,7 @@ class DomainRegistrantContactExtraParam {
   /// Creates a new [DomainRegistrantContactExtraParam].
   /// [name] The name of an additional parameter that is required by a top-level domain.
   /// [value] The value that corresponds with the name of an extra parameter.
-  DomainRegistrantContactExtraParam({
+  const DomainRegistrantContactExtraParam({
     required this.name,
     required this.value,
   });

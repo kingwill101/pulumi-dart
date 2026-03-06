@@ -15,7 +15,7 @@ class GetRuntimeArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [runtimeId] Required.
-  GetRuntimeArgs({
+  const GetRuntimeArgs({
     required this.location,
     this.project,
     required this.runtimeId,

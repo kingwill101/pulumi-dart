@@ -44,7 +44,7 @@ class GetAlertResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [templateName] Name of the alert template from which it was created.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAlertResult({
+  const GetAlertResult({
     this.alertRuleProperties,
     required this.alertRuleResourceId,
     required this.azureApiVersion,

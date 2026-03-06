@@ -8,7 +8,7 @@ class EventSourceMappingMetricsConfig {
 
   /// Creates a new [EventSourceMappingMetricsConfig].
   /// [metrics] List containing the metrics to be produced by the event source mapping. Valid values: `EventCount`.
-  EventSourceMappingMetricsConfig({
+  const EventSourceMappingMetricsConfig({
     required this.metrics,
   });
 

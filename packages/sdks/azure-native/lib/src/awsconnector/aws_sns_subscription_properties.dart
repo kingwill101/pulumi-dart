@@ -21,7 +21,7 @@ class AwsSnsSubscriptionProperties {
   /// [protocol] &lt;p&gt;The subscription's protocol.&lt;/p&gt;
   /// [subscriptionArn] &lt;p&gt;The subscription's ARN.&lt;/p&gt;
   /// [topicArn] &lt;p&gt;The ARN of the subscription's topic.&lt;/p&gt;
-  AwsSnsSubscriptionProperties({
+  const AwsSnsSubscriptionProperties({
     this.endpoint,
     this.owner,
     this.protocol,

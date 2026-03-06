@@ -18,7 +18,7 @@ class LockArgs {
   /// [entityId] The ID of the entity to lock.
   /// [entityType] The type of the entity to lock. Currently only `linode` is supported. Note: Linodes that are part of an LKE cluster cannot be locked.
   /// [lockType] The type of lock to apply. Only one lock type can exist per resource at a time. Valid values are:
-  LockArgs({
+  const LockArgs({
     required this.entityId,
     required this.entityType,
     required this.lockType,

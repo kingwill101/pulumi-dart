@@ -34,7 +34,7 @@ class KeypairArgs {
   /// [region] The region in which to obtain the V2 Compute client.
   /// [userId] This allows administrative users to operate key-pairs
   /// [valueSpecs] Map of additional options.
-  KeypairArgs({
+  const KeypairArgs({
     this.name,
     this.publicKey,
     this.region,

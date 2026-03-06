@@ -32,7 +32,7 @@ class GetParameterResult {
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [updateTime] Required.
-  GetParameterResult({
+  const GetParameterResult({
     required this.createTime,
     required this.effectiveLabels,
     required this.format,

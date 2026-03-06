@@ -15,7 +15,7 @@ class GetLifecyclePolicyDocumentResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [json] The above arguments serialized as a standard JSON policy document.
   /// [rules] Required.
-  GetLifecyclePolicyDocumentResult({
+  const GetLifecyclePolicyDocumentResult({
     required this.id,
     required this.json,
     required this.rules,

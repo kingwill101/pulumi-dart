@@ -111,7 +111,7 @@ class MachineLearningDatastoreArgs {
   /// [userName] The username of the database user.
   /// [workspaceName] Name of Azure Machine Learning workspace.
   /// [workspaceSystemAssignedIdentity] If set to true, datastore support data access authenticated with Workspace MSI.
-  MachineLearningDatastoreArgs({
+  const MachineLearningDatastoreArgs({
     this.accountKey,
     this.accountName,
     this.adlsResourceGroup,

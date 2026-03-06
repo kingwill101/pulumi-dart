@@ -21,7 +21,7 @@ class GetDeliveriesArgs {
   /// [nameRegex] A regex string to filter results by delivery channel name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
-  GetDeliveriesArgs({
+  const GetDeliveriesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

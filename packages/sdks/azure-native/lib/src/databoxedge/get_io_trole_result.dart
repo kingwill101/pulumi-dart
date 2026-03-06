@@ -54,7 +54,7 @@ class GetIoTRoleResult {
   /// [shareMappings] Mount points of shares in role(s).
   /// [systemData] Metadata pertaining to creation and last modification of Role
   /// [type] The hierarchical type of the object.
-  GetIoTRoleResult({
+  const GetIoTRoleResult({
     required this.azureApiVersion,
     this.computeResource,
     required this.hostPlatform,

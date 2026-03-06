@@ -15,7 +15,7 @@ class KubernetesClusterClusterAutoscalerConfiguration {
   /// [expanders] Optional.
   /// [scaleDownUnneededTime] String setting how long a node should be unneeded before it's eligible for scale down.
   /// [scaleDownUtilizationThreshold] Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
-  KubernetesClusterClusterAutoscalerConfiguration({
+  const KubernetesClusterClusterAutoscalerConfiguration({
     this.expanders,
     this.scaleDownUnneededTime,
     this.scaleDownUtilizationThreshold,

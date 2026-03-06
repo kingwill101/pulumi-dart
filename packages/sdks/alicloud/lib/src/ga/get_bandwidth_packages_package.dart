@@ -41,7 +41,7 @@ class GetBandwidthPackagesPackage {
   /// [paymentType] The payment type of the bandwidth.
   /// [status] The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
   /// [type] The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
-  GetBandwidthPackagesPackage({
+  const GetBandwidthPackagesPackage({
     required this.bandwidth,
     required this.bandwidthPackageId,
     required this.bandwidthPackageName,

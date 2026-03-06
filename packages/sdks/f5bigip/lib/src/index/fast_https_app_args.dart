@@ -94,7 +94,7 @@ class FastHttpsAppArgs {
   /// [tlsServerProfile] `tls_server_profile` block takes input for FAST-Generated TLS Server Profile.
   /// [virtualServer] `virtual_server` block will provide `ip` and `port` options to be used for virtual server.
   /// [wafSecurityPolicy] `waf_security_policy` block takes input for FAST-Generated WAF Security Policy.
-  FastHttpsAppArgs({
+  const FastHttpsAppArgs({
     required this.application,
     this.endpointLtmPolicies,
     this.existingMonitor,

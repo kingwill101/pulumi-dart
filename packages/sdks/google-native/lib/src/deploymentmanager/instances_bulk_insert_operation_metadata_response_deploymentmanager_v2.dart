@@ -8,7 +8,7 @@ class InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2 {
 
   /// Creates a new [InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2].
   /// [perLocationStatus] Status information per location (location name is key). Example key: zones/us-central1-a
-  InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2({
+  const InstancesBulkInsertOperationMetadataResponseDeploymentmanagerV2({
     required this.perLocationStatus,
   });
 

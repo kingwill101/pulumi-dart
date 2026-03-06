@@ -25,7 +25,7 @@ class HyperVReplicaAzurePolicyInput {
   /// [recoveryPointHistoryDuration] The duration (in hours) to which point the recovery history needs to be maintained.
   /// [replicationInterval] The replication interval.
   /// [storageAccounts] The list of storage accounts to which the VMs in the primary cloud can replicate to.
-  HyperVReplicaAzurePolicyInput({
+  const HyperVReplicaAzurePolicyInput({
     this.applicationConsistentSnapshotFrequencyInHours,
     required this.instanceType,
     this.onlineReplicationStartTime,

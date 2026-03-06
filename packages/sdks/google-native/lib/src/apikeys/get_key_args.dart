@@ -15,7 +15,7 @@ class GetKeyArgs {
   /// [keyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetKeyArgs({
+  const GetKeyArgs({
     required this.keyId,
     required this.location,
     this.project,

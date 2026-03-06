@@ -27,7 +27,7 @@ class WorkspaceTableState {
   /// [retentionInDays] The table's retention in days. Possible values are either `8` (Basic Tier only) or range between `4` and `730`.
   /// [totalRetentionInDays] The table's total retention in days. Possible values range between `4` and `730`; or `1095`, `1460`, `1826`, `2191`, `2556`, `2922`, `3288`, `3653`, `4018`, or `4383`.
   /// [workspaceId] The object ID of the Log Analytics Workspace that contains the table.
-  WorkspaceTableState({
+  const WorkspaceTableState({
     this.name,
     this.plan,
     this.retentionInDays,

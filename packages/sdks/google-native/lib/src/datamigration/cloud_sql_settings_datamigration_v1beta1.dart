@@ -49,7 +49,7 @@ class CloudSqlSettingsDatamigrationV1beta1 {
   /// [tier] The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
   /// [userLabels] The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
   /// [zone] The Google Cloud Platform zone where your Cloud SQL database instance is located.
-  CloudSqlSettingsDatamigrationV1beta1({
+  const CloudSqlSettingsDatamigrationV1beta1({
     this.activationPolicy,
     this.autoStorageIncrease,
     this.dataDiskSizeGb,

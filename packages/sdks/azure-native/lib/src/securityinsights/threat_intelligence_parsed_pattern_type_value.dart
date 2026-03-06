@@ -12,7 +12,7 @@ class ThreatIntelligenceParsedPatternTypeValue {
   /// Creates a new [ThreatIntelligenceParsedPatternTypeValue].
   /// [value] Value of parsed pattern
   /// [valueType] Type of the value
-  ThreatIntelligenceParsedPatternTypeValue({
+  const ThreatIntelligenceParsedPatternTypeValue({
     this.value,
     this.valueType,
   });

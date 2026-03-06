@@ -27,7 +27,7 @@ class WebAppPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] Optional.
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppPrivateEndpointConnectionArgs({
+  const WebAppPrivateEndpointConnectionArgs({
     this.ipAddresses,
     this.kind,
     required this.name,

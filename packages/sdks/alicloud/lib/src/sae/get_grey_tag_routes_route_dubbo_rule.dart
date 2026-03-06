@@ -24,7 +24,7 @@ class GetGreyTagRoutesRouteDubboRule {
   /// [methodName] The method name
   /// [serviceName] The service name.
   /// [version] The service version.
-  GetGreyTagRoutesRouteDubboRule({
+  const GetGreyTagRoutesRouteDubboRule({
     required this.condition,
     required this.group,
     required this.items,

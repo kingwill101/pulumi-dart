@@ -12,7 +12,7 @@ class GetClusterNodeConfigSoleTenantConfig {
   /// Creates a new [GetClusterNodeConfigSoleTenantConfig].
   /// [minNodeCpus] Specifies the minimum number of vCPUs that each sole tenant node must have to use CPU overcommit. If not specified, the CPU overcommit feature is disabled.
   /// [nodeAffinities] .
-  GetClusterNodeConfigSoleTenantConfig({
+  const GetClusterNodeConfigSoleTenantConfig({
     required this.minNodeCpus,
     required this.nodeAffinities,
   });

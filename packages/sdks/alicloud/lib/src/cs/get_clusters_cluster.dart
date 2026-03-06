@@ -92,7 +92,7 @@ class GetClustersCluster {
   /// [timezone] Cluster time zone.
   /// [vpcId] The Virtual Private Cloud (VPC) used by the cluster.
   /// [vswitchIds] Virtual switches for the cluster control plane.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.autoMode,
     required this.clusterDomain,
     required this.clusterId,

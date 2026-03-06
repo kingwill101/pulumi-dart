@@ -16,7 +16,7 @@ class GetAccountResult {
   /// [name] Optional.
   /// [region] Required.
   /// [scope] Optional.
-  GetAccountResult({
+  const GetAccountResult({
     this.accountId,
     required this.id,
     this.name,

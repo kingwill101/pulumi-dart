@@ -10,7 +10,7 @@ class CustomRolloutSpecificationAutoProvisionConfigResponse {
   /// Creates a new [CustomRolloutSpecificationAutoProvisionConfigResponse].
   /// [resourceGraph] Optional.
   /// [storage] Optional.
-  CustomRolloutSpecificationAutoProvisionConfigResponse({
+  const CustomRolloutSpecificationAutoProvisionConfigResponse({
     this.resourceGraph,
     this.storage,
   });

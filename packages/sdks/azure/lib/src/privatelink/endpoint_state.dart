@@ -48,7 +48,7 @@ class EndpointState {
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the Private Endpoint should exist. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet from which Private IP Addresses will be allocated for this Private Endpoint. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  EndpointState({
+  const EndpointState({
     this.customDnsConfigs,
     this.customNetworkInterfaceName,
     this.ipConfigurations,

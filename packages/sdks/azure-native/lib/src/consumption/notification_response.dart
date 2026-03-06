@@ -30,7 +30,7 @@ class NotificationResponse {
   /// [operator] The comparison operator.
   /// [threshold] Threshold value associated with a notification. Notification is sent when the cost exceeded the threshold. It is always percent and has to be between 0 and 1000.
   /// [thresholdType] The type of threshold
-  NotificationResponse({
+  const NotificationResponse({
     required this.contactEmails,
     this.contactGroups,
     this.contactRoles,

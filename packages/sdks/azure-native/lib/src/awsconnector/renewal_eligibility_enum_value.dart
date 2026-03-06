@@ -9,7 +9,7 @@ class RenewalEligibilityEnumValue {
 
   /// Creates a new [RenewalEligibilityEnumValue].
   /// [value] Property value
-  RenewalEligibilityEnumValue({
+  const RenewalEligibilityEnumValue({
     this.value,
   });
 

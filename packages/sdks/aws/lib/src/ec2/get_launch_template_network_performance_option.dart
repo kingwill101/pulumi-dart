@@ -7,7 +7,7 @@ class GetLaunchTemplateNetworkPerformanceOption {
 
   /// Creates a new [GetLaunchTemplateNetworkPerformanceOption].
   /// [bandwidthWeighting] Required.
-  GetLaunchTemplateNetworkPerformanceOption({
+  const GetLaunchTemplateNetworkPerformanceOption({
     required this.bandwidthWeighting,
   });
 

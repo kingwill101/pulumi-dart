@@ -18,7 +18,7 @@ class CropResponse {
   /// [leftPixels] The number of pixels to crop from the left. The default is 0.
   /// [rightPixels] The number of pixels to crop from the right. The default is 0.
   /// [topPixels] The number of pixels to crop from the top. The default is 0.
-  CropResponse({
+  const CropResponse({
     required this.bottomPixels,
     required this.leftPixels,
     required this.rightPixels,

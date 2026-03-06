@@ -14,7 +14,7 @@ class GetPoolCertificate {
   /// [storeLocation] Required.
   /// [storeName] Required.
   /// [visibilities] Required.
-  GetPoolCertificate({
+  const GetPoolCertificate({
     required this.id,
     required this.storeLocation,
     required this.storeName,

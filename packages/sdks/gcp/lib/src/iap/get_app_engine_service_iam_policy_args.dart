@@ -19,7 +19,7 @@ class GetAppEngineServiceIamPolicyArgs {
   /// [appId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [service] Used to find the parent resource to bind the IAM policy to
-  GetAppEngineServiceIamPolicyArgs({
+  const GetAppEngineServiceIamPolicyArgs({
     required this.appId,
     this.project,
     required this.service,

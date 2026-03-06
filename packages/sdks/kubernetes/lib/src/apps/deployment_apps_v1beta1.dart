@@ -46,7 +46,7 @@ class DeploymentAppsV1beta1 {
   /// [metadata] Standard object metadata.
   /// [spec] Specification of the desired behavior of the Deployment.
   /// [status] Most recently observed status of the Deployment.
-  DeploymentAppsV1beta1({
+  const DeploymentAppsV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

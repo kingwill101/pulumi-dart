@@ -12,7 +12,7 @@ class AgentcoreAgentRuntimeNetworkConfiguration {
   /// Creates a new [AgentcoreAgentRuntimeNetworkConfiguration].
   /// [networkMode] Network mode for the agent runtime. Valid values: `PUBLIC`, `VPC`.
   /// [networkModeConfig] Network mode configuration. See `network_mode_config` below.
-  AgentcoreAgentRuntimeNetworkConfiguration({
+  const AgentcoreAgentRuntimeNetworkConfiguration({
     required this.networkMode,
     this.networkModeConfig,
   });

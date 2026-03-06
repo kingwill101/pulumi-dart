@@ -14,7 +14,7 @@ class GetGradientaiKnowledgeBaseDataSourcesResult {
   /// [datasources] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [knowledgeBaseUuid] Required.
-  GetGradientaiKnowledgeBaseDataSourcesResult({
+  const GetGradientaiKnowledgeBaseDataSourcesResult({
     required this.datasources,
     required this.id,
     required this.knowledgeBaseUuid,

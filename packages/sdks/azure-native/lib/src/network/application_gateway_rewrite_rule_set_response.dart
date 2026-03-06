@@ -22,7 +22,7 @@ class ApplicationGatewayRewriteRuleSetResponse {
   /// [name] Name of the rewrite rule set that is unique within an Application Gateway.
   /// [provisioningState] The provisioning state of the rewrite rule set resource.
   /// [rewriteRules] Rewrite rules in the rewrite rule set.
-  ApplicationGatewayRewriteRuleSetResponse({
+  const ApplicationGatewayRewriteRuleSetResponse({
     required this.etag,
     this.id,
     this.name,

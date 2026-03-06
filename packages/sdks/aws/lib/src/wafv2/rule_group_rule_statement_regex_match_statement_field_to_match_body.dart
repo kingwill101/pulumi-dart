@@ -7,7 +7,7 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchBody {
 
   /// Creates a new [RuleGroupRuleStatementRegexMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementRegexMatchStatementFieldToMatchBody({
+  const RuleGroupRuleStatementRegexMatchStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

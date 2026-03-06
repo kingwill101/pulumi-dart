@@ -11,7 +11,7 @@ class QueueIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  QueueIamBindingCondition({
+  const QueueIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

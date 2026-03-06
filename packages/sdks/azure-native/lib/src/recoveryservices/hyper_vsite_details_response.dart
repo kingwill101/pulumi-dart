@@ -14,7 +14,7 @@ class HyperVSiteDetailsResponse {
   /// Creates a new [HyperVSiteDetailsResponse].
   /// [hyperVHosts] The list of Hyper-V hosts associated with the fabric.
   /// [instanceType] Gets the class type. Overridden in derived classes.
-  HyperVSiteDetailsResponse({
+  const HyperVSiteDetailsResponse({
     this.hyperVHosts,
     required this.instanceType,
   });

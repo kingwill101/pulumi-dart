@@ -16,7 +16,7 @@ class RuleAttachmentArgs {
   /// Creates a new [RuleAttachmentArgs].
   /// [ruleId] The ID of the rule.
   /// [vpcs] The List of the VPC. See `vpcs` below.
-  RuleAttachmentArgs({
+  const RuleAttachmentArgs({
     required this.ruleId,
     required this.vpcs,
   });

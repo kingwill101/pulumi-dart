@@ -48,7 +48,7 @@ class VPCRouteEntryArgs {
   /// [routeEntryName] The name of the route entry.
   /// [routePublishTargets] Route publish status and publish target type See `route_publish_targets` below.
   /// [routeTableId] Routing table ID
-  VPCRouteEntryArgs({
+  const VPCRouteEntryArgs({
     this.description,
     required this.destinationCidrBlock,
     this.nextHops,

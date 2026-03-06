@@ -19,7 +19,7 @@ class PrivateEndpointConnectionResponse {
   /// [name] The resource name.
   /// [properties] The properties of a private endpoint connection
   /// [type] The resource type.
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.id,
     required this.name,
     required this.properties,

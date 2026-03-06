@@ -44,7 +44,7 @@ class AnalysisArgs {
   /// [sourceEntity] The entity that you are using as a source when you create the analysis (template). Only one of `definition` or `source_entity` should be configured. See source_entity.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [themeArn] The Amazon Resource Name (ARN) of the theme that is being used for this analysis. The theme ARN must exist in the same AWS account where you create the analysis.
-  AnalysisArgs({
+  const AnalysisArgs({
     required this.analysisId,
     this.awsAccountId,
     this.name,

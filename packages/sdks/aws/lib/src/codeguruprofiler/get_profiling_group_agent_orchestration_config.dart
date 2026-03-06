@@ -7,7 +7,7 @@ class GetProfilingGroupAgentOrchestrationConfig {
 
   /// Creates a new [GetProfilingGroupAgentOrchestrationConfig].
   /// [profilingEnabled] Required.
-  GetProfilingGroupAgentOrchestrationConfig({
+  const GetProfilingGroupAgentOrchestrationConfig({
     required this.profilingEnabled,
   });
 

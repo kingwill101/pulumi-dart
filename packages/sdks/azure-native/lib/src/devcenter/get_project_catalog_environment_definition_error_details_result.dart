@@ -10,7 +10,7 @@ class GetProjectCatalogEnvironmentDefinitionErrorDetailsResult {
 
   /// Creates a new [GetProjectCatalogEnvironmentDefinitionErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetProjectCatalogEnvironmentDefinitionErrorDetailsResult({
+  const GetProjectCatalogEnvironmentDefinitionErrorDetailsResult({
     required this.errors,
   });
 

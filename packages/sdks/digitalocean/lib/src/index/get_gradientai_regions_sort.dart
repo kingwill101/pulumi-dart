@@ -9,7 +9,7 @@ class GetGradientaiRegionsSort {
   /// Creates a new [GetGradientaiRegionsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiRegionsSort({
+  const GetGradientaiRegionsSort({
     this.direction,
     required this.key,
   });

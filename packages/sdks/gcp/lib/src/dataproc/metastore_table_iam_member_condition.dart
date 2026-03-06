@@ -11,7 +11,7 @@ class MetastoreTableIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  MetastoreTableIamMemberCondition({
+  const MetastoreTableIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

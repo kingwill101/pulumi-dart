@@ -15,7 +15,7 @@ class GetFirehoseDeliveryStreamArgs {
   /// Creates a new [GetFirehoseDeliveryStreamArgs].
   /// [name] Name of the Kinesis Firehose Delivery Stream.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetFirehoseDeliveryStreamArgs({
+  const GetFirehoseDeliveryStreamArgs({
     required this.name,
     this.region,
   });

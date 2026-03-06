@@ -10,7 +10,7 @@ class RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction {
   /// Creates a new [RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction].
   /// [eventAction] Required.
   /// [notify] Whether to send a notification.
-  RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction({
+  const RiskConfigurationAccountTakeoverRiskConfigurationActionsLowAction({
     required this.eventAction,
     required this.notify,
   });

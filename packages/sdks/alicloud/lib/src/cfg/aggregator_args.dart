@@ -29,7 +29,7 @@ class AggregatorArgs {
   /// [aggregatorType] The type of the account group. Default value: `CUSTOM`. Valid values:
   /// [description] The description of the account group.
   /// [folderId] The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
-  AggregatorArgs({
+  const AggregatorArgs({
     this.aggregatorAccounts,
     required this.aggregatorName,
     this.aggregatorType,

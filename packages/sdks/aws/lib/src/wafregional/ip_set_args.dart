@@ -19,7 +19,7 @@ class IpSetArgs {
   /// [ipSetDescriptors] One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR notation) from which web requests originate.
   /// [name] The name or description of the IPSet.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  IpSetArgs({
+  const IpSetArgs({
     this.ipSetDescriptors,
     this.name,
     this.region,

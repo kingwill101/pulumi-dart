@@ -25,7 +25,7 @@ class GetPermissionsTableWithColumns {
   /// [excludedColumnNames] Set of column names for the table to exclude. At least one of `column_names` or `excluded_column_names` is required.
   /// [name] Name of the table resource.
   /// [wildcard] Whether to use a wildcard representing every table under a database. At least one of `name` or `wildcard` is required. Defaults to `false`.
-  GetPermissionsTableWithColumns({
+  const GetPermissionsTableWithColumns({
     required this.catalogId,
     this.columnNames,
     required this.databaseName,

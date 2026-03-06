@@ -14,7 +14,7 @@ class ConnectionEventingConfigAdditionalVariableEncryptionKeyValue {
   /// Creates a new [ConnectionEventingConfigAdditionalVariableEncryptionKeyValue].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The
   /// [type] Type of Encryption Key
-  ConnectionEventingConfigAdditionalVariableEncryptionKeyValue({
+  const ConnectionEventingConfigAdditionalVariableEncryptionKeyValue({
     this.kmsKeyName,
     this.type,
   });

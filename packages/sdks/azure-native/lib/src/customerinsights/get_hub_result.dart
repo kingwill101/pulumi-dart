@@ -39,7 +39,7 @@ class GetHubResult {
   /// [tenantFeatures] The bit flags for enabled hub features. Bit 0 is set to 1 indicates graph is enabled, or disabled if set to 0. Bit 1 is set to 1 indicates the hub is disabled, or enabled if set to 0.
   /// [type] Resource type.
   /// [webEndpoint] Web endpoint URL of the hub.
-  GetHubResult({
+  const GetHubResult({
     required this.apiEndpoint,
     required this.azureApiVersion,
     this.hubBillingInfo,

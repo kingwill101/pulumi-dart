@@ -14,7 +14,7 @@ class CollectorAgentPropertiesResponse {
   /// [lastHeartbeatUtc] Required.
   /// [spnDetails] Optional.
   /// [version] Required.
-  CollectorAgentPropertiesResponse({
+  const CollectorAgentPropertiesResponse({
     required this.id,
     required this.lastHeartbeatUtc,
     this.spnDetails,

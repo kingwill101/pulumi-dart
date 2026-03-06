@@ -59,7 +59,7 @@ class GetNetworkComputeV1Result {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [subnetworks] Server-defined fully-qualified URLs for all subnetworks in this VPC network.
-  GetNetworkComputeV1Result({
+  const GetNetworkComputeV1Result({
     required this.autoCreateSubnetworks,
     required this.creationTimestamp,
     required this.description,

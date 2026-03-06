@@ -18,7 +18,7 @@ class ApprovalRuleConfig {
   /// [eligibleApprovers] List of eligible approvers.
   /// [numApprovalsRequired] Number of approvals required.
   /// [requireReapprovalOnChange] Whether reapproval is required on changes.
-  ApprovalRuleConfig({
+  const ApprovalRuleConfig({
     required this.allowSelfApproval,
     required this.eligibleApprovers,
     required this.numApprovalsRequired,

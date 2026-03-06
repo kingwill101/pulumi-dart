@@ -24,7 +24,7 @@ class GetIpsecServersArgs {
   /// [nameRegex] A regex string to filter results by Ipsec Server name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [vpnGatewayId] The ID of the VPN gateway.
-  GetIpsecServersArgs({
+  const GetIpsecServersArgs({
     this.ids,
     this.ipsecServerName,
     this.nameRegex,

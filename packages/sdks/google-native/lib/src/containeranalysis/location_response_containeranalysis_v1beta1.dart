@@ -16,7 +16,7 @@ class LocationResponseContaineranalysisV1beta1 {
   /// [cpeUri] Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/) denoting the package manager version distributing a package.
   /// [path] The path from which we gathered that this package/version is installed.
   /// [version] Deprecated. The version installed at this location.
-  LocationResponseContaineranalysisV1beta1({
+  const LocationResponseContaineranalysisV1beta1({
     required this.cpeUri,
     required this.path,
     required this.version,

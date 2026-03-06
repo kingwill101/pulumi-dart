@@ -26,7 +26,7 @@ class WafPolicyIpException {
   /// [ipAddress] Specifies the IP address that you want the system to trust.
   /// [ipMask] Specifies the netmask of the exceptional IP address. This is an optional field.
   /// [trustedbyPolicybuilder] Specifies when enabled the Policy Builder considers traffic from this IP address as being safe.
-  WafPolicyIpException({
+  const WafPolicyIpException({
     this.blockRequests,
     this.description,
     this.ignoreAnomalies,

@@ -8,7 +8,7 @@ class RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant
 
   /// Creates a new [RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant].
   /// [kmsKeyArn] The ARN of the KMS key.
-  RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant({
+  const RevisionAssetsAssetCreateS3DataAccessFromS3BucketAssetSourceKmsKeysToGrant({
     required this.kmsKeyArn,
   });
 

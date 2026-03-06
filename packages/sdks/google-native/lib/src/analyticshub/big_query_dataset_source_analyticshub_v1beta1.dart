@@ -9,7 +9,7 @@ class BigQueryDatasetSourceAnalyticshubV1beta1 {
 
   /// Creates a new [BigQueryDatasetSourceAnalyticshubV1beta1].
   /// [dataset] Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123`
-  BigQueryDatasetSourceAnalyticshubV1beta1({
+  const BigQueryDatasetSourceAnalyticshubV1beta1({
     this.dataset,
   });
 

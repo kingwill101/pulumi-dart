@@ -11,7 +11,7 @@ class VpcIpamOrganizationAdminAccountArgs {
 
   /// Creates a new [VpcIpamOrganizationAdminAccountArgs].
   /// [delegatedAdminAccountId] Required.
-  VpcIpamOrganizationAdminAccountArgs({
+  const VpcIpamOrganizationAdminAccountArgs({
     required this.delegatedAdminAccountId,
   });
 

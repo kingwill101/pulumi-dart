@@ -11,7 +11,7 @@ class GetPartnerAttachmentBgp {
   /// [localRouterIp] Optional.
   /// [peerRouterAsn] Optional.
   /// [peerRouterIp] Optional.
-  GetPartnerAttachmentBgp({
+  const GetPartnerAttachmentBgp({
     this.localRouterIp,
     this.peerRouterAsn,
     this.peerRouterIp,

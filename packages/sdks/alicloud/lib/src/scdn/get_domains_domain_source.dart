@@ -20,7 +20,7 @@ class GetDomainsDomainSource {
   /// [port] Port.
   /// [priority] Priority.
   /// [type] the Origin Server Type. Valid Values: Ipaddr: IP Source Station Domain: the Domain Name, See Extra Domain Quota OSS: OSS Bucket as a Source Station.
-  GetDomainsDomainSource({
+  const GetDomainsDomainSource({
     required this.content,
     required this.enabled,
     required this.port,

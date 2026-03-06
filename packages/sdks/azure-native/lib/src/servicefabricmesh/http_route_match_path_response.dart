@@ -15,7 +15,7 @@ class HttpRouteMatchPathResponse {
   /// [rewrite] replacement string for matched part of the Uri.
   /// [type] how to match value in the Uri
   /// [value] Uri path to match for request.
-  HttpRouteMatchPathResponse({
+  const HttpRouteMatchPathResponse({
     this.rewrite,
     required this.type,
     required this.value,

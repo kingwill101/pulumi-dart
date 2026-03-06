@@ -10,7 +10,7 @@ class ListMongoClusterConnectionStringsResult {
 
   /// Creates a new [ListMongoClusterConnectionStringsResult].
   /// [connectionStrings] An array that contains the connection strings for a mongo cluster.
-  ListMongoClusterConnectionStringsResult({
+  const ListMongoClusterConnectionStringsResult({
     required this.connectionStrings,
   });
 

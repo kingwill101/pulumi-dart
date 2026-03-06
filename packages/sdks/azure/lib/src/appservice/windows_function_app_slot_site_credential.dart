@@ -11,7 +11,7 @@ class WindowsFunctionAppSlotSiteCredential {
   /// Creates a new [WindowsFunctionAppSlotSiteCredential].
   /// [name] The Site Credentials Username used for publishing.
   /// [password] The Site Credentials Password used for publishing.
-  WindowsFunctionAppSlotSiteCredential({
+  const WindowsFunctionAppSlotSiteCredential({
     this.name,
     this.password,
   });

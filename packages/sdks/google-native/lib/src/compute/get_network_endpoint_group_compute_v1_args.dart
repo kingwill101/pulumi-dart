@@ -15,7 +15,7 @@ class GetNetworkEndpointGroupComputeV1Args {
   /// [networkEndpointGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetNetworkEndpointGroupComputeV1Args({
+  const GetNetworkEndpointGroupComputeV1Args({
     required this.networkEndpointGroup,
     this.project,
     required this.zone,

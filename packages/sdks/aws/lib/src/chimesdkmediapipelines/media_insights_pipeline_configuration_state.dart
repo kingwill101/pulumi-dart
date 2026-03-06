@@ -31,7 +31,7 @@ class MediaInsightsPipelineConfigurationState {
   /// [resourceAccessRoleArn] ARN of IAM Role used by service to invoke processors and sinks specified by configuration elements.
   /// [tags] Key-value map of tags for the resource.
   /// [tagsAll] Optional.
-  MediaInsightsPipelineConfigurationState({
+  const MediaInsightsPipelineConfigurationState({
     this.arn,
     this.elements,
     this.name,

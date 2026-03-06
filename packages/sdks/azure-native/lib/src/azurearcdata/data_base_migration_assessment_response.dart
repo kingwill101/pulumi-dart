@@ -17,7 +17,7 @@ class DataBaseMigrationAssessmentResponse {
   /// [assessmentUploadTime] The time when Migration Assessment Report upload was last performed.
   /// [databaseAssessments] Issues and warnings impacting the migration of Database to particular Azure Migration Target.
   /// [targetReadiness] The target readiness for migration for this database.
-  DataBaseMigrationAssessmentResponse({
+  const DataBaseMigrationAssessmentResponse({
     required this.assessmentUploadTime,
     required this.databaseAssessments,
     required this.targetReadiness,

@@ -29,7 +29,7 @@ class GetDataSourceResult {
   /// [properties] The data source properties in raw json format, each kind of data source have it's own schema.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDataSourceResult({
+  const GetDataSourceResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

@@ -37,7 +37,7 @@ class IncidentTaskArgs {
   /// [status] The status of the task
   /// [title] The title of the task
   /// [workspaceName] The name of the workspace.
-  IncidentTaskArgs({
+  const IncidentTaskArgs({
     this.createdBy,
     this.description,
     required this.incidentId,

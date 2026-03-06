@@ -7,7 +7,7 @@ class SecurityPolicyDdosProtectionConfigResponseComputeBeta {
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigResponseComputeBeta].
   /// [ddosProtection] Required.
-  SecurityPolicyDdosProtectionConfigResponseComputeBeta({
+  const SecurityPolicyDdosProtectionConfigResponseComputeBeta({
     required this.ddosProtection,
   });
 

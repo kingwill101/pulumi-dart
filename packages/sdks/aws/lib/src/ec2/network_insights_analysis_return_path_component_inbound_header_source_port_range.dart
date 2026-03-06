@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange {
   /// Creates a new [NetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange({
+  const NetworkInsightsAnalysisReturnPathComponentInboundHeaderSourcePortRange({
     this.from,
     this.to,
   });

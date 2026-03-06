@@ -18,7 +18,7 @@ class MetadataSupportResponse {
   /// [link] Link for support help, like to support page to open a ticket etc.
   /// [name] Name of the support contact. Company or person.
   /// [tier] Type of support for content item
-  MetadataSupportResponse({
+  const MetadataSupportResponse({
     this.email,
     this.link,
     this.name,

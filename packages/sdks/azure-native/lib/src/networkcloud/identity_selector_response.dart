@@ -11,7 +11,7 @@ class IdentitySelectorResponse {
   /// Creates a new [IdentitySelectorResponse].
   /// [identityType] The type of managed identity that is being selected.
   /// [userAssignedIdentityResourceId] The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
-  IdentitySelectorResponse({
+  const IdentitySelectorResponse({
     this.identityType,
     this.userAssignedIdentityResourceId,
   });

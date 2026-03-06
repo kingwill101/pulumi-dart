@@ -9,7 +9,7 @@ class ServiceExternalIPsConfigResponse {
 
   /// Creates a new [ServiceExternalIPsConfigResponse].
   /// [enabled] Whether Services with ExternalIPs field are allowed or not.
-  ServiceExternalIPsConfigResponse({
+  const ServiceExternalIPsConfigResponse({
     required this.enabled,
   });
 

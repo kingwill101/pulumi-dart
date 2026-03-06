@@ -31,7 +31,7 @@ class GetPythonPackageResult {
   /// [repositoryId] Required.
   /// [updateTime] The time the package was last updated.
   /// [version] The version of the Python package.
-  GetPythonPackageResult({
+  const GetPythonPackageResult({
     required this.createTime,
     required this.id,
     required this.location,

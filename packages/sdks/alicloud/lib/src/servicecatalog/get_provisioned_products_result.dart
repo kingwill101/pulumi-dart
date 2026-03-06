@@ -39,7 +39,7 @@ class GetProvisionedProductsResult {
   /// [provisionedProducts] (Available since v1.197.0) A list of Provisioned Product Entries. Each element contains the following attributes:
   /// [sortBy] Optional.
   /// [sortOrder] Optional.
-  GetProvisionedProductsResult({
+  const GetProvisionedProductsResult({
     this.accessLevelFilter,
     this.enableDetails,
     required this.id,

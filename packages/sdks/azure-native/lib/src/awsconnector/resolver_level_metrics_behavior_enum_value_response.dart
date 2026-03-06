@@ -9,7 +9,7 @@ class ResolverLevelMetricsBehaviorEnumValueResponse {
 
   /// Creates a new [ResolverLevelMetricsBehaviorEnumValueResponse].
   /// [value] Property value
-  ResolverLevelMetricsBehaviorEnumValueResponse({
+  const ResolverLevelMetricsBehaviorEnumValueResponse({
     this.value,
   });
 

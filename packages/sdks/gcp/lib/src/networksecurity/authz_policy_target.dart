@@ -13,7 +13,7 @@ class AuthzPolicyTarget {
   /// Creates a new [AuthzPolicyTarget].
   /// [loadBalancingScheme] All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
   /// [resources] A list of references to the Forwarding Rules on which this policy will be applied.
-  AuthzPolicyTarget({
+  const AuthzPolicyTarget({
     required this.loadBalancingScheme,
     this.resources,
   });

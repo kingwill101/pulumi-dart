@@ -56,7 +56,7 @@ class GetSessionResult {
   /// [stateTime] The time when the session entered the current state.
   /// [user] Optional. The email address of the user who owns the session.
   /// [uuid] A session UUID (Unique Universal Identifier). The service generates this value when it creates the session.
-  GetSessionResult({
+  const GetSessionResult({
     required this.createTime,
     required this.creator,
     required this.environmentConfig,

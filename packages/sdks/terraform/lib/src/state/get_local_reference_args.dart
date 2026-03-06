@@ -15,7 +15,7 @@ class GetLocalReferenceArgs {
   /// Creates a new [GetLocalReferenceArgs].
   /// [path] The path to the tfstate file. This defaults to "terraform.tfstate" relative to the root module by default.
   /// [workspaceDir] The path to non-default workspaces.
-  GetLocalReferenceArgs({
+  const GetLocalReferenceArgs({
     this.path,
     this.workspaceDir,
   });

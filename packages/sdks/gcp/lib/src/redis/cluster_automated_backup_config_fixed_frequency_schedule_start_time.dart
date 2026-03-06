@@ -9,7 +9,7 @@ class ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime {
 
   /// Creates a new [ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime].
   /// [hours] Hours of day in 24 hour format. Should be from 0 to 23.
-  ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime({
+  const ClusterAutomatedBackupConfigFixedFrequencyScheduleStartTime({
     required this.hours,
   });
 

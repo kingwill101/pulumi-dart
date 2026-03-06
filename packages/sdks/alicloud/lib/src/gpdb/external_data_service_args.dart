@@ -21,7 +21,7 @@ class ExternalDataServiceArgs {
   /// [serviceDescription] Service Description
   /// [serviceName] Service Name
   /// [serviceSpec] Service Specifications
-  ExternalDataServiceArgs({
+  const ExternalDataServiceArgs({
     required this.dbInstanceId,
     this.serviceDescription,
     required this.serviceName,

@@ -13,7 +13,7 @@ class BoundingPoly {
   /// Creates a new [BoundingPoly].
   /// [label] A description of this polygon.
   /// [vertices] List of the vertices of this polygon.
-  BoundingPoly({
+  const BoundingPoly({
     this.label,
     this.vertices,
   });

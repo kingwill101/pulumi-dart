@@ -15,7 +15,7 @@ class GetEcsServiceArgs {
   /// Creates a new [GetEcsServiceArgs].
   /// [name] Name of EcsService
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEcsServiceArgs({
+  const GetEcsServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

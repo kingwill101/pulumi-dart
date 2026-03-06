@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse].
   /// [webhookOverrides] The list of webhooks to override for the agent environment. The webhook must exist in the agent. You can override fields in `generic_web_service` and `service_directory`.
-  GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse({
+  const GoogleCloudDialogflowCxV3EnvironmentWebhookConfigResponse({
     required this.webhookOverrides,
   });
 

@@ -15,7 +15,7 @@ class GetDebugTokenArgs {
   /// [appId] Required.
   /// [debugTokenId] Required.
   /// [project] Optional.
-  GetDebugTokenArgs({
+  const GetDebugTokenArgs({
     required this.appId,
     required this.debugTokenId,
     this.project,

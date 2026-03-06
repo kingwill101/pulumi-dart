@@ -11,7 +11,7 @@ class AutomationRuleActionFindingFieldsUpdateSeverity {
   /// Creates a new [AutomationRuleActionFindingFieldsUpdateSeverity].
   /// [label] The severity value of the finding. The allowed values are the following `INFORMATIONAL`, `LOW`, `MEDIUM`, `HIGH` and `CRITICAL`.
   /// [product] The native severity as defined by the AWS service or integrated partner product that generated the finding.
-  AutomationRuleActionFindingFieldsUpdateSeverity({
+  const AutomationRuleActionFindingFieldsUpdateSeverity({
     this.label,
     this.product,
   });

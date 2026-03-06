@@ -15,7 +15,7 @@ class DomainDevicesInterfaceSourceMcast {
   /// [address] Sets the multicast address for the network interface, defining the destination address for multicast packets.
   /// [local] Controls local UDP settings for the network interface, managing configurations for local UDP traffic.
   /// [port] Sets the multicast port number for the network interface, determining where multicast packets are sent and received.
-  DomainDevicesInterfaceSourceMcast({
+  const DomainDevicesInterfaceSourceMcast({
     this.address,
     this.local,
     this.port,

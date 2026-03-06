@@ -21,7 +21,7 @@ class GetVirtualMachineExtensionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmExtensionName] The name of the virtual machine extension.
   /// [vmName] The name of the virtual machine.
-  GetVirtualMachineExtensionArgs({
+  const GetVirtualMachineExtensionArgs({
     this.expand,
     required this.resourceGroupName,
     required this.vmExtensionName,

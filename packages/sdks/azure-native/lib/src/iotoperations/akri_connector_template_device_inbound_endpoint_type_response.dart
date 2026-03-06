@@ -19,7 +19,7 @@ class AkriConnectorTemplateDeviceInboundEndpointTypeResponse {
   /// [description] A description of the device inbound endpoint.
   /// [endpointType] The type of the device inbound endpoint.
   /// [version] The version of the device inbound endpoint.
-  AkriConnectorTemplateDeviceInboundEndpointTypeResponse({
+  const AkriConnectorTemplateDeviceInboundEndpointTypeResponse({
     this.configurationSchemaRefs,
     this.description,
     required this.endpointType,

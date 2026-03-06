@@ -28,7 +28,7 @@ class FolderCustomModuleArgs {
   /// [displayName] The display name of the Security Health Analytics custom module. This
   /// [enablementState] The enablement state of the custom module.
   /// [folder] Numerical ID of the parent folder.
-  FolderCustomModuleArgs({
+  const FolderCustomModuleArgs({
     required this.customConfig,
     required this.displayName,
     required this.enablementState,

@@ -33,7 +33,7 @@ class ApplicationGroupState {
   /// [resourceGroupName] The name of the resource group in which to create the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] Type of Virtual Desktop Application Group. Valid options are `RemoteApp` or `Desktop` application groups. Changing this forces a new resource to be created.
-  ApplicationGroupState({
+  const ApplicationGroupState({
     this.defaultDesktopDisplayName,
     this.description,
     this.friendlyName,

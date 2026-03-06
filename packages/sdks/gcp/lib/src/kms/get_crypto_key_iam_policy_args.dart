@@ -12,7 +12,7 @@ class GetCryptoKeyIamPolicyArgs {
 
   /// Creates a new [GetCryptoKeyIamPolicyArgs].
   /// [cryptoKeyId] The crypto key ID, in the form
-  GetCryptoKeyIamPolicyArgs({
+  const GetCryptoKeyIamPolicyArgs({
     required this.cryptoKeyId,
   });
 

@@ -17,7 +17,7 @@ class ApplicationFeatureTag {
   /// [enterprise] Whether this application represents an Enterprise Application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryIntegratedApp` tag. Defaults to `false`.
   /// [gallery] Whether this application represents a gallery application for linked service principals. Enabling this will assign the `WindowsAzureActiveDirectoryGalleryApplicationNonPrimaryV1` tag. Defaults to `false`.
   /// [hide] Whether this app is invisible to users in My Apps and Office 365 Launcher. Enabling this will assign the `HideApp` tag. Defaults to `false`.
-  ApplicationFeatureTag({
+  const ApplicationFeatureTag({
     this.customSingleSignOn,
     this.enterprise,
     this.gallery,

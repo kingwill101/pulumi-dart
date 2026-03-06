@@ -18,7 +18,7 @@ class ControlCondition {
   /// [activeTimeRanges] The time range when the condition is active.
   /// [queryRegex] The regular expression that the query must match for this condition to be met.
   /// [queryTerms] The query terms that must be present in the search request for this condition to be met.
-  ControlCondition({
+  const ControlCondition({
     this.activeTimeRanges,
     this.queryRegex,
     this.queryTerms,

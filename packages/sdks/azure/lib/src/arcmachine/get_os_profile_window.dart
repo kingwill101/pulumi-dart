@@ -9,7 +9,7 @@ class GetOsProfileWindow {
 
   /// Creates a new [GetOsProfileWindow].
   /// [patches] A `patch` block as defined above.
-  GetOsProfileWindow({
+  const GetOsProfileWindow({
     required this.patches,
   });
 

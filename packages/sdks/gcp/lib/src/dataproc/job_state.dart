@@ -84,7 +84,7 @@ class JobState {
   /// [sparkConfig] The config of the Spark job.
   /// [sparksqlConfig] The config of SparkSql job
   /// [statuses] The status of the job.
-  JobState({
+  const JobState({
     this.driverControlsFilesUri,
     this.driverOutputResourceUri,
     this.effectiveLabels,

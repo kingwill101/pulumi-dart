@@ -12,7 +12,7 @@ class ProjectProperties {
   /// Creates a new [ProjectProperties].
   /// [description] The description of the Cognitive Services Project.
   /// [displayName] The display name of the Cognitive Services Project.
-  ProjectProperties({
+  const ProjectProperties({
     this.description,
     this.displayName,
   });

@@ -10,7 +10,7 @@ class ProvisionedClustersCommonPropertiesResponseFeatures {
 
   /// Creates a new [ProvisionedClustersCommonPropertiesResponseFeatures].
   /// [arcAgentProfile] Arc agentry configuration for the provisioned cluster.
-  ProvisionedClustersCommonPropertiesResponseFeatures({
+  const ProvisionedClustersCommonPropertiesResponseFeatures({
     this.arcAgentProfile,
   });
 

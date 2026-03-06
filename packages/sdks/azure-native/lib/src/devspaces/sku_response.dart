@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [name] The name of the SKU for Azure Dev Spaces Controller.
   /// [tier] The tier of the SKU for Azure Dev Spaces Controller.
-  SkuResponse({
+  const SkuResponse({
     required this.name,
     this.tier,
   });

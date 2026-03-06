@@ -51,7 +51,7 @@ class SynchronizationInstanceArgs {
   /// [sourceEndpointEngineName] The type of source endpoint engine. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`. For the correspondence between the supported source and target libraries, see [Supported Databases, Synchronization Initialization Types and Synchronization Topologies](https://help.aliyun.com/document_detail/130744.html), [Supported Databases and Migration Types](https://help.aliyun.com/document_detail/26618.html).
   /// [sourceEndpointRegion] The region of source instance.
   /// [syncArchitecture] The sync architecture. Valid values: `oneway`, `bidirectional`.
-  SynchronizationInstanceArgs({
+  const SynchronizationInstanceArgs({
     this.autoPay,
     this.autoStart,
     this.computeUnit,

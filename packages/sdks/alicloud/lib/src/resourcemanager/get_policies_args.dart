@@ -21,7 +21,7 @@ class GetPoliciesArgs {
   /// [nameRegex] A regex string to filter results by policy name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [policyType] The type of the policy. If you do not specify this parameter, the system lists all types of policies. Valid values: `Custom` and `System`.
-  GetPoliciesArgs({
+  const GetPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

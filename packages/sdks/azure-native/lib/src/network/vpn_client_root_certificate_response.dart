@@ -21,7 +21,7 @@ class VpnClientRootCertificateResponse {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the VPN client root certificate resource.
   /// [publicCertData] The certificate public data.
-  VpnClientRootCertificateResponse({
+  const VpnClientRootCertificateResponse({
     required this.etag,
     this.id,
     this.name,

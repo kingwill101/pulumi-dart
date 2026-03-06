@@ -35,7 +35,7 @@ class RegressionTrainingSettingsResponse {
   /// [enableVoteEnsemble] Enable voting ensemble run.
   /// [ensembleModelDownloadTimeout] During VotingEnsemble and StackEnsemble model generation, multiple fitted models from the previous child runs are downloaded.
   /// [stackEnsembleSettings] Stack ensemble settings for stack ensemble run.
-  RegressionTrainingSettingsResponse({
+  const RegressionTrainingSettingsResponse({
     this.allowedTrainingAlgorithms,
     this.blockedTrainingAlgorithms,
     this.enableDnnTraining,

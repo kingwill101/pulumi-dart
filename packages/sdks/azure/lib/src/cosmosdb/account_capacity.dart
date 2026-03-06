@@ -8,7 +8,7 @@ class AccountCapacity {
 
   /// Creates a new [AccountCapacity].
   /// [totalThroughputLimit] The total throughput limit imposed on this Cosmos DB account (RU/s). Possible values are at least `-1`. `-1` means no limit.
-  AccountCapacity({
+  const AccountCapacity({
     required this.totalThroughputLimit,
   });
 

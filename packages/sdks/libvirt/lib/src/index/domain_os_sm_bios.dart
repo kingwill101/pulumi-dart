@@ -8,7 +8,7 @@ class DomainOsSmBios {
 
   /// Creates a new [DomainOsSmBios].
   /// [mode] Sets the mode for the SMBIOS configuration.
-  DomainOsSmBios({
+  const DomainOsSmBios({
     required this.mode,
   });
 

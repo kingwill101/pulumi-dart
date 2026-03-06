@@ -18,7 +18,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilter {
   /// [collection] A collection of resources for this filter to apply to.
   /// [others] Match discovery resources not covered by any other filter.
   /// [singleResource] The resource to scan. Configs using this filter can only have one target (the target with this single resource reference).
-  PreventionDiscoveryConfigTargetOtherCloudTargetFilter({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetFilter({
     this.collection,
     this.others,
     this.singleResource,

@@ -11,7 +11,7 @@ class GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummaryS
   /// Creates a new [GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection].
   /// [section] Required. Name of the section.
   /// [summary] Required. Summary text for the section.
-  GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection({
+  const GeneratorSummarizationContextFewShotExampleOutputSummarySuggestionSummarySection({
     required this.section,
     required this.summary,
   });

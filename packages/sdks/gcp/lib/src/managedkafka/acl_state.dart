@@ -48,7 +48,7 @@ class AclState {
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceName] The acl resource name derived from the name. For cluster resource_type, this is always "kafka-cluster". Can be the wildcard literal "*".
   /// [resourceType] The acl resource type derived from the name. One of: CLUSTER, TOPIC, GROUP, TRANSACTIONAL_ID.
-  AclState({
+  const AclState({
     this.aclEntries,
     this.aclId,
     this.cluster,

@@ -18,7 +18,7 @@ class InsightsReportConfigObjectMetadataReportOptions {
   /// [metadataFields] The metadata fields included in an inventory report.
   /// [storageDestinationOptions] Options for where the inventory reports are stored.
   /// [storageFilters] A nested object resource.
-  InsightsReportConfigObjectMetadataReportOptions({
+  const InsightsReportConfigObjectMetadataReportOptions({
     required this.metadataFields,
     required this.storageDestinationOptions,
     this.storageFilters,

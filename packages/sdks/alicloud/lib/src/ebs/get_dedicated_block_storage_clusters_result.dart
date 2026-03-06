@@ -23,7 +23,7 @@ class GetDedicatedBlockStorageClustersResult {
   /// [nameRegex] Optional.
   /// [names] A list of name of Dedicated Block Storage Clusters.
   /// [outputFile] Optional.
-  GetDedicatedBlockStorageClustersResult({
+  const GetDedicatedBlockStorageClustersResult({
     required this.clusters,
     required this.id,
     required this.ids,

@@ -23,7 +23,7 @@ class ResourcePolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the DynamoDB resource to which the policy will be attached. The resources you can specify include tables and streams. You can control index permissions using the base table's policy. To specify the same permission level for your table and its indexes, you can provide both the table and index Amazon Resource Name (ARN)s in the Resource field of a given Statement in your policy document. Alternatively, to specify different permissions for your table, indexes, or both, you can define multiple Statement fields in your policy document.
   /// [revisionId] A unique string that represents the revision ID of the policy. If you are comparing revision IDs, make sure to always use string comparison logic.
-  ResourcePolicyState({
+  const ResourcePolicyState({
     this.confirmRemoveSelfResourceAccess,
     this.policy,
     this.region,

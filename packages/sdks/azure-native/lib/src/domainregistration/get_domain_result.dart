@@ -73,7 +73,7 @@ class GetDomainResult {
   /// [tags] Resource tags.
   /// [targetDnsType] Target DNS type (would be used for migration)
   /// [type] Resource type.
-  GetDomainResult({
+  const GetDomainResult({
     this.authCode,
     this.autoRenew,
     required this.azureApiVersion,

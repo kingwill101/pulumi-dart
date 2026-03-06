@@ -19,7 +19,7 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesResponse {
   /// [ipV4AddressesAndMasks] IP V4 Addresses and masks for the listener.
   /// [ipV6Addresses] IP V6 Addresses for the listener
   /// [port] Network port for the listener. Default is 1433.
-  SqlAvailabilityGroupStaticIPListenerPropertiesResponse({
+  const SqlAvailabilityGroupStaticIPListenerPropertiesResponse({
     this.dnsName,
     this.ipV4AddressesAndMasks,
     this.ipV6Addresses,

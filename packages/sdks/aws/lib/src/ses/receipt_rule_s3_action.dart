@@ -23,7 +23,7 @@ class ReceiptRuleS3Action {
   /// [objectKeyPrefix] The key prefix of the S3 bucket
   /// [position] The position of the action in the receipt rule
   /// [topicArn] The ARN of an SNS topic to notify
-  ReceiptRuleS3Action({
+  const ReceiptRuleS3Action({
     required this.bucketName,
     this.iamRoleArn,
     this.kmsKeyArn,

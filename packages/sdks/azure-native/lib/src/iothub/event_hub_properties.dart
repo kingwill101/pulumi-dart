@@ -12,7 +12,7 @@ class EventHubProperties {
   /// Creates a new [EventHubProperties].
   /// [partitionCount] The number of partitions for receiving device-to-cloud messages in the Event Hub-compatible endpoint. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages.
   /// [retentionTimeInDays] The retention time for device-to-cloud messages in days. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#device-to-cloud-messages
-  EventHubProperties({
+  const EventHubProperties({
     this.partitionCount,
     this.retentionTimeInDays,
   });

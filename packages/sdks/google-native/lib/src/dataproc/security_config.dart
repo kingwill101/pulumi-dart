@@ -14,7 +14,7 @@ class SecurityConfig {
   /// Creates a new [SecurityConfig].
   /// [identityConfig] Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfig({
+  const SecurityConfig({
     this.identityConfig,
     this.kerberosConfig,
   });

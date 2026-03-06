@@ -23,7 +23,7 @@ class GetResolverInboundEndpointResult {
   /// [name] Required.
   /// [privateDnsResolverId] Required.
   /// [tags] The tags assigned to the Private DNS Resolver Inbound Endpoint.
-  GetResolverInboundEndpointResult({
+  const GetResolverInboundEndpointResult({
     required this.id,
     required this.ipConfigurations,
     required this.location,

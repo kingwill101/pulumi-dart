@@ -48,7 +48,7 @@ class GetNasBackupPlansPlan {
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// [updatedTime] The update time of the backup plan. UNIX time in seconds.
   /// [vaultId] The ID of backup vault.
-  GetNasBackupPlansPlan({
+  const GetNasBackupPlansPlan({
     required this.backupType,
     required this.createTime,
     required this.createdTime,

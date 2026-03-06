@@ -81,7 +81,7 @@ class GetInternalNetworkResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vlanId] Vlan identifier. Example: 1001.
-  GetInternalNetworkResult({
+  const GetInternalNetworkResult({
     required this.administrativeState,
     this.annotation,
     required this.azureApiVersion,

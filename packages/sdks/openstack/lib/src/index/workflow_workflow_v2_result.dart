@@ -35,7 +35,7 @@ class WorkflowWorkflowV2Result {
   /// [region] See Argument Reference above.
   /// [scope] Scope (private or public).
   /// [tags] A set of string tags for the workflow.
-  WorkflowWorkflowV2Result({
+  const WorkflowWorkflowV2Result({
     required this.createdAt,
     required this.definition,
     required this.id,

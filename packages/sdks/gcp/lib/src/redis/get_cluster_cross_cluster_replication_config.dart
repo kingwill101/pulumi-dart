@@ -31,7 +31,7 @@ class GetClusterCrossClusterReplicationConfig {
   /// [primaryClusters] Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type 'SECONDARY'.
   /// [secondaryClusters] List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type 'PRIMARY'.
   /// [updateTime] The last time cross cluster replication config was updated.
-  GetClusterCrossClusterReplicationConfig({
+  const GetClusterCrossClusterReplicationConfig({
     required this.clusterRole,
     required this.memberships,
     required this.primaryClusters,

@@ -21,7 +21,7 @@ class MonitorLogResponse {
   /// [secondaryKey] Secondary Key value for Monitor
   /// [subscriptionId] Subscription Id
   /// [workspace] MonitorLog workspace
-  MonitorLogResponse({
+  const MonitorLogResponse({
     this.id,
     this.primaryKey,
     this.secondaryKey,

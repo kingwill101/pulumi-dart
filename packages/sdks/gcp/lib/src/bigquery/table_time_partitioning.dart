@@ -24,7 +24,7 @@ class TableTimePartitioning {
   /// [field] The field used to determine how to create a time-based
   /// [requirePartitionFilter] If set to true, queries over this table
   /// [type] The supported types are DAY, HOUR, MONTH, and YEAR,
-  TableTimePartitioning({
+  const TableTimePartitioning({
     this.expirationMs,
     this.field,
     this.requirePartitionFilter,

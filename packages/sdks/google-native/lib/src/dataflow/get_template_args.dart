@@ -17,7 +17,7 @@ class GetTemplateArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetTemplateArgs({
+  const GetTemplateArgs({
     required this.gcsPath,
     required this.location,
     this.project,

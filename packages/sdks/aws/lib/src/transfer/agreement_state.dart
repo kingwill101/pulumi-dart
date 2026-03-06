@@ -40,7 +40,7 @@ class AgreementState {
   /// [status] Optional.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
-  AgreementState({
+  const AgreementState({
     this.accessRole,
     this.agreementId,
     this.arn,

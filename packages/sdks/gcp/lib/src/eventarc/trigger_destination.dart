@@ -32,7 +32,7 @@ class TriggerDestination {
   /// [httpEndpoint] An HTTP endpoint destination described by an URI.
   /// [networkConfig] Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type.
   /// [workflow] The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the trigger. Format: `projects/{project}/locations/{location}/workflows/{workflow}`
-  TriggerDestination({
+  const TriggerDestination({
     this.cloudFunction,
     this.cloudRunService,
     this.gke,

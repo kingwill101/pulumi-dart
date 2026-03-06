@@ -11,7 +11,7 @@ class RecordingConfigurationThumbnailConfiguration {
   /// Creates a new [RecordingConfigurationThumbnailConfiguration].
   /// [recordingMode] Thumbnail recording mode. Valid values: `DISABLED`, `INTERVAL`.
   /// [targetIntervalSeconds] The targeted thumbnail-generation interval in seconds.
-  RecordingConfigurationThumbnailConfiguration({
+  const RecordingConfigurationThumbnailConfiguration({
     this.recordingMode,
     this.targetIntervalSeconds,
   });

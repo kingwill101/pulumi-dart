@@ -13,7 +13,7 @@ class SchedulerProperties {
   /// Creates a new [SchedulerProperties].
   /// [ipAllowlist] IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
   /// [sku] SKU of the durable task scheduler
-  SchedulerProperties({
+  const SchedulerProperties({
     required this.ipAllowlist,
     required this.sku,
   });

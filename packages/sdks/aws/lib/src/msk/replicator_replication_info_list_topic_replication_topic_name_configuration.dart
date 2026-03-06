@@ -8,7 +8,7 @@ class ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration {
 
   /// Creates a new [ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration].
   /// [type] The type of topic configuration name. Supports `PREFIXED_WITH_SOURCE_CLUSTER_ALIAS` and `IDENTICAL`.
-  ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration({
+  const ReplicatorReplicationInfoListTopicReplicationTopicNameConfiguration({
     this.type,
   });
 

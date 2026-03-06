@@ -30,7 +30,7 @@ class GetRegionSecurityPolicyRuleNetworkMatch {
   /// [srcPorts] Source port numbers for TCP/UDP/SCTP. Each element can be a 16-bit unsigned decimal number (e.g. "80") or range (e.g. "0-1023").
   /// [srcRegionCodes] Two-letter ISO 3166-1 alpha-2 country code associated with the source IP address.
   /// [userDefinedFields] User-defined fields. Each element names a defined field and lists the matching values for that field.
-  GetRegionSecurityPolicyRuleNetworkMatch({
+  const GetRegionSecurityPolicyRuleNetworkMatch({
     required this.destIpRanges,
     required this.destPorts,
     required this.ipProtocols,

@@ -61,7 +61,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceVhostUser {
   /// [udp] Configures UDP settings for the random number generator backend.
   /// [unix] Configures UNIX domain socket settings for the random number generator backend.
   /// [vc] Configures the VHostUser virtual channel settings for the source backing store.
-  DomainDevicesDiskMirrorBackingStoreSourceVhostUser({
+  const DomainDevicesDiskMirrorBackingStoreSourceVhostUser({
     this.dbus,
     this.dev,
     this.file,

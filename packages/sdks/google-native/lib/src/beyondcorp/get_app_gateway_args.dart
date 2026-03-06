@@ -15,7 +15,7 @@ class GetAppGatewayArgs {
   /// [appGatewayId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAppGatewayArgs({
+  const GetAppGatewayArgs({
     required this.appGatewayId,
     required this.location,
     this.project,

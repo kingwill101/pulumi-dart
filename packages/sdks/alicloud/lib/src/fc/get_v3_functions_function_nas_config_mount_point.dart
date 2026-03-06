@@ -14,7 +14,7 @@ class GetV3FunctionsFunctionNasConfigMountPoint {
   /// [enableTls] Use transport encryption to mount. Note: only general-purpose NAS supports transmission encryption.
   /// [mountDir] Mount Directory.
   /// [serverAddr] NAS server address.
-  GetV3FunctionsFunctionNasConfigMountPoint({
+  const GetV3FunctionsFunctionNasConfigMountPoint({
     required this.enableTls,
     required this.mountDir,
     required this.serverAddr,

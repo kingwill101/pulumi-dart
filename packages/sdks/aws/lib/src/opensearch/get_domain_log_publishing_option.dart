@@ -14,7 +14,7 @@ class GetDomainLogPublishingOption {
   /// [cloudwatchLogGroupArn] CloudWatch Log Group where the logs are published.
   /// [enabled] Enabled disabled toggle for off-peak update window
   /// [logType] Type of OpenSearch log being published.
-  GetDomainLogPublishingOption({
+  const GetDomainLogPublishingOption({
     required this.cloudwatchLogGroupArn,
     required this.enabled,
     required this.logType,

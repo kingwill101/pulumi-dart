@@ -40,7 +40,7 @@ class PhoenixObjectDatasetResponse {
   /// [table] The table name of the Phoenix. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  PhoenixObjectDatasetResponse({
+  const PhoenixObjectDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

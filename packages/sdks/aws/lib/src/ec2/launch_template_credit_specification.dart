@@ -11,7 +11,7 @@ class LaunchTemplateCreditSpecification {
 
   /// Creates a new [LaunchTemplateCreditSpecification].
   /// [cpuCredits] The credit option for CPU usage.
-  LaunchTemplateCreditSpecification({
+  const LaunchTemplateCreditSpecification({
     this.cpuCredits,
   });
 

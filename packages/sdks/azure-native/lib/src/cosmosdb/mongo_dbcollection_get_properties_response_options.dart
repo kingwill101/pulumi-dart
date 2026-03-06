@@ -12,7 +12,7 @@ class MongoDBCollectionGetPropertiesResponseOptions {
   /// Creates a new [MongoDBCollectionGetPropertiesResponseOptions].
   /// [autoscaleSettings] Specifies the Autoscale settings.
   /// [throughput] Value of the Cosmos DB resource throughput or autoscaleSettings. Use the ThroughputSetting resource when retrieving offer details.
-  MongoDBCollectionGetPropertiesResponseOptions({
+  const MongoDBCollectionGetPropertiesResponseOptions({
     this.autoscaleSettings,
     this.throughput,
   });

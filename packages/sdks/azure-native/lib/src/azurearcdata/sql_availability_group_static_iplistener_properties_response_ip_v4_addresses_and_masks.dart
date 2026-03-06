@@ -11,7 +11,7 @@ class SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMask
   /// Creates a new [SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks].
   /// [ipAddress] IPV4 address
   /// [mask] IPV4 netmask
-  SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks({
+  const SqlAvailabilityGroupStaticIPListenerPropertiesResponseIpV4AddressesAndMasks({
     this.ipAddress,
     this.mask,
   });

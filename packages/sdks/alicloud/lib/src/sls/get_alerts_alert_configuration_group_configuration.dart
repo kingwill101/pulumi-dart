@@ -11,7 +11,7 @@ class GetAlertsAlertConfigurationGroupConfiguration {
   /// Creates a new [GetAlertsAlertConfigurationGroupConfiguration].
   /// [fields] The field used for grouping evaluation.When type is set to custom, fields must be set.
   /// [type] Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows:Fixedate: checks query and analysis results at regular intervals.Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
-  GetAlertsAlertConfigurationGroupConfiguration({
+  const GetAlertsAlertConfigurationGroupConfiguration({
     required this.fields,
     required this.type,
   });

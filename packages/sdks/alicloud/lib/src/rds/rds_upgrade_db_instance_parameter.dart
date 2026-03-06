@@ -11,7 +11,7 @@ class RdsUpgradeDbInstanceParameter {
   /// Creates a new [RdsUpgradeDbInstanceParameter].
   /// [name] The parameter name.
   /// [value] The parameter value.
-  RdsUpgradeDbInstanceParameter({
+  const RdsUpgradeDbInstanceParameter({
     required this.name,
     required this.value,
   });

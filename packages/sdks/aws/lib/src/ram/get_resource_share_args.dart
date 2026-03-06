@@ -28,7 +28,7 @@ class GetResourceShareArgs {
   /// [resourceOwner] Owner of the resource share. Valid values are `SELF` or `OTHER-ACCOUNTS`.
   /// [resourceShareStatus] Specifies that you want to retrieve details of only those resource shares that have this status. Valid values are `PENDING`, `ACTIVE`, `FAILED`, `DELETING`, and `DELETED`.
   /// [tags] Tags attached to the resource share.
-  GetResourceShareArgs({
+  const GetResourceShareArgs({
     this.filters,
     this.name,
     this.region,

@@ -12,7 +12,7 @@ class GetPrivateLinkResourceArgs {
 
   /// Creates a new [GetPrivateLinkResourceArgs].
   /// [webPubsubId] The ID of an existing Web Pubsub Resource which Private Link Resource should be retrieved for.
-  GetPrivateLinkResourceArgs({
+  const GetPrivateLinkResourceArgs({
     required this.webPubsubId,
   });
 

@@ -17,7 +17,7 @@ class DatadogApiKeyResponse {
   /// [createdBy] The user that created the API key.
   /// [key] The value of the API key.
   /// [name] The name of the API key.
-  DatadogApiKeyResponse({
+  const DatadogApiKeyResponse({
     this.created,
     this.createdBy,
     required this.key,

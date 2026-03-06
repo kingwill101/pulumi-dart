@@ -12,7 +12,7 @@ class GetAccountAvailabilitiesArgs {
 
   /// Creates a new [GetAccountAvailabilitiesArgs].
   /// [filters] Optional.
-  GetAccountAvailabilitiesArgs({
+  const GetAccountAvailabilitiesArgs({
     this.filters,
   });
 

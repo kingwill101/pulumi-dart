@@ -19,7 +19,7 @@ class GetClusterArgs {
   /// [project] Optional.
   /// [projectId] Optional.
   /// [zone] Optional.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterId,
     required this.location,
     this.project,

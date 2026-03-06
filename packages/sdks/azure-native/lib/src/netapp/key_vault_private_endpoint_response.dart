@@ -12,7 +12,7 @@ class KeyVaultPrivateEndpointResponse {
   /// Creates a new [KeyVaultPrivateEndpointResponse].
   /// [privateEndpointId] Identifier of the private endpoint to reach the Azure Key Vault
   /// [virtualNetworkId] Identifier for the virtual network id
-  KeyVaultPrivateEndpointResponse({
+  const KeyVaultPrivateEndpointResponse({
     this.privateEndpointId,
     this.virtualNetworkId,
   });

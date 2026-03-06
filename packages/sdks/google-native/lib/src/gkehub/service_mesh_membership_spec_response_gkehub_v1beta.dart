@@ -12,7 +12,7 @@ class ServiceMeshMembershipSpecResponseGkehubV1beta {
   /// Creates a new [ServiceMeshMembershipSpecResponseGkehubV1beta].
   /// [controlPlane] Deprecated: use `management` instead Enables automatic control plane management.
   /// [management] Enables automatic Service Mesh management.
-  ServiceMeshMembershipSpecResponseGkehubV1beta({
+  const ServiceMeshMembershipSpecResponseGkehubV1beta({
     required this.controlPlane,
     required this.management,
   });

@@ -41,7 +41,7 @@ class ServiceQuotaState {
   /// [serviceName] Name of the service.
   /// [usageMetrics] Information about the measurement.
   /// [value] Float specifying the desired value for the service quota. If the desired value is higher than the current value, a quota increase request is submitted. When a known request is submitted and pending, the value reflects the desired value of the pending request.
-  ServiceQuotaState({
+  const ServiceQuotaState({
     this.adjustable,
     this.arn,
     this.defaultValue,

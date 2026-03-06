@@ -9,7 +9,7 @@ class VpcOriginVpcOriginEndpointConfigOriginSslProtocols {
   /// Creates a new [VpcOriginVpcOriginEndpointConfigOriginSslProtocols].
   /// [items] Required.
   /// [quantity] Required.
-  VpcOriginVpcOriginEndpointConfigOriginSslProtocols({
+  const VpcOriginVpcOriginEndpointConfigOriginSslProtocols({
     required this.items,
     required this.quantity,
   });

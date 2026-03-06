@@ -25,7 +25,7 @@ class GetAlertsResult {
   /// [names] A list of name of Alerts.
   /// [outputFile] Optional.
   /// [projectName] Required.
-  GetAlertsResult({
+  const GetAlertsResult({
     required this.alerts,
     required this.id,
     required this.ids,

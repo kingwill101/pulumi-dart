@@ -14,7 +14,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   /// [imageUrl] Optional.
   /// [subtitle] Optional.
   /// [title] Required.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariationImageResponseCard({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationContinueResponseMessageGroupVariationImageResponseCard({
     this.buttons,
     this.imageUrl,
     this.subtitle,

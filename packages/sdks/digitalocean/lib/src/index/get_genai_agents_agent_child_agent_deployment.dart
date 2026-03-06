@@ -26,7 +26,7 @@ class GetGenaiAgentsAgentChildAgentDeployment {
   /// [url] Url of the Deployment
   /// [uuid] API Key value
   /// [visibility] Visibility of the Deployment
-  GetGenaiAgentsAgentChildAgentDeployment({
+  const GetGenaiAgentsAgentChildAgentDeployment({
     required this.createdAt,
     this.name,
     this.status,

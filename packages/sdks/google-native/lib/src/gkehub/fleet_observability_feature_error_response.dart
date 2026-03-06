@@ -12,7 +12,7 @@ class FleetObservabilityFeatureErrorResponse {
   /// Creates a new [FleetObservabilityFeatureErrorResponse].
   /// [code] The code of the error.
   /// [description] A human-readable description of the current status.
-  FleetObservabilityFeatureErrorResponse({
+  const FleetObservabilityFeatureErrorResponse({
     required this.code,
     required this.description,
   });

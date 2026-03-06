@@ -14,7 +14,7 @@ class GetFailoverGroupPartnerServer {
   /// [id] The ID of the partner SQL server.
   /// [location] The location of the partner server.
   /// [role] The replication role of the partner server.
-  GetFailoverGroupPartnerServer({
+  const GetFailoverGroupPartnerServer({
     required this.id,
     required this.location,
     required this.role,

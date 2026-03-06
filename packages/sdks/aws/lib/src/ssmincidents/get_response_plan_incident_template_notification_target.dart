@@ -8,7 +8,7 @@ class GetResponsePlanIncidentTemplateNotificationTarget {
 
   /// Creates a new [GetResponsePlanIncidentTemplateNotificationTarget].
   /// [snsTopicArn] The ARN of the Amazon SNS topic.
-  GetResponsePlanIncidentTemplateNotificationTarget({
+  const GetResponsePlanIncidentTemplateNotificationTarget({
     required this.snsTopicArn,
   });
 

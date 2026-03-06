@@ -12,7 +12,7 @@ class BatchingConfiguration {
   /// Creates a new [BatchingConfiguration].
   /// [latencySeconds] Batching latency in seconds.
   /// [maxMessages] Maximum number of messages in a batch.
-  BatchingConfiguration({
+  const BatchingConfiguration({
     this.latencySeconds,
     this.maxMessages,
   });

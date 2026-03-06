@@ -10,7 +10,7 @@ class NpmRepository {
 
   /// Creates a new [NpmRepository].
   /// [publicRepository] One of the publicly available Npm repositories supported by Artifact Registry.
-  NpmRepository({
+  const NpmRepository({
     this.publicRepository,
   });
 

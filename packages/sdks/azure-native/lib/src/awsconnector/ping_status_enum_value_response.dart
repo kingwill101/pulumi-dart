@@ -9,7 +9,7 @@ class PingStatusEnumValueResponse {
 
   /// Creates a new [PingStatusEnumValueResponse].
   /// [value] Property value
-  PingStatusEnumValueResponse({
+  const PingStatusEnumValueResponse({
     this.value,
   });
 

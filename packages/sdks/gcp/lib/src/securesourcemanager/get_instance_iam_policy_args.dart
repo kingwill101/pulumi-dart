@@ -22,7 +22,7 @@ class GetInstanceIamPolicyArgs {
   /// [instanceId] Used to find the parent resource to bind the IAM policy to
   /// [location] The location for the Instance.
   /// [project] The ID of the project in which the resource belongs.
-  GetInstanceIamPolicyArgs({
+  const GetInstanceIamPolicyArgs({
     required this.instanceId,
     this.location,
     this.project,

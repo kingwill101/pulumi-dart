@@ -21,7 +21,7 @@ class AzureTrafficCollectorArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  AzureTrafficCollectorArgs({
+  const AzureTrafficCollectorArgs({
     this.azureTrafficCollectorName,
     this.location,
     required this.resourceGroupName,

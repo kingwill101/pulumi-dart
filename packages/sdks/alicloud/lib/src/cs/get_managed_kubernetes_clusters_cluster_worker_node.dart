@@ -14,7 +14,7 @@ class GetManagedKubernetesClustersClusterWorkerNode {
   /// [id] ID of the node.
   /// [name] Node name.
   /// [privateIp] The private IP address of node.
-  GetManagedKubernetesClustersClusterWorkerNode({
+  const GetManagedKubernetesClustersClusterWorkerNode({
     required this.id,
     required this.name,
     required this.privateIp,

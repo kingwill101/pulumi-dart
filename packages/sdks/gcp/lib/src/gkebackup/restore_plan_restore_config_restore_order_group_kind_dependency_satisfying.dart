@@ -14,7 +14,7 @@ class RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying {
   /// Creates a new [RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying].
   /// [resourceGroup] API Group of a Kubernetes resource, e.g.
   /// [resourceKind] Kind of a Kubernetes resource, e.g.
-  RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying({
+  const RestorePlanRestoreConfigRestoreOrderGroupKindDependencySatisfying({
     this.resourceGroup,
     this.resourceKind,
   });

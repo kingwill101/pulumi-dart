@@ -11,7 +11,7 @@ class FunctionAppFunctionFile {
   /// Creates a new [FunctionAppFunctionFile].
   /// [content] The content of the file. Changing this forces a new resource to be created.
   /// [name] The filename of the file to be uploaded. Changing this forces a new resource to be created.
-  FunctionAppFunctionFile({
+  const FunctionAppFunctionFile({
     required this.content,
     required this.name,
   });

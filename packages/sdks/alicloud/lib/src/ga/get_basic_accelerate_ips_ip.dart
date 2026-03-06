@@ -23,7 +23,7 @@ class GetBasicAccelerateIpsIp {
   /// [id] The id of the Basic Accelerate IP.
   /// [ipSetId] The ID of the Basic Ip Set.
   /// [status] The status of the Global Accelerator Basic Accelerate IP instance. Valid Value: `active`, `binding`, `bound`, `unbinding`, `deleting`.
-  GetBasicAccelerateIpsIp({
+  const GetBasicAccelerateIpsIp({
     required this.accelerateIpAddress,
     required this.accelerateIpId,
     required this.acceleratorId,

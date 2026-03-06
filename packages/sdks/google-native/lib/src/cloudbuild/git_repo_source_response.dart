@@ -24,7 +24,7 @@ class GitRepoSourceResponse {
   /// [repoType] See RepoType below.
   /// [repository] The connected repository resource name, in the format `projects/*/locations/*/connections/*/repositories/*`. Either `uri` or `repository` can be specified and is required.
   /// [uri] The URI of the repo (e.g. https://github.com/user/repo.git). Either `uri` or `repository` can be specified and is required.
-  GitRepoSourceResponse({
+  const GitRepoSourceResponse({
     required this.bitbucketServerConfig,
     required this.githubEnterpriseConfig,
     required this.ref,

@@ -13,7 +13,7 @@ class WorkflowVersionProperties {
   /// Creates a new [WorkflowVersionProperties].
   /// [specification] Execution specification
   /// [stageSpec] A list of stage specs
-  WorkflowVersionProperties({
+  const WorkflowVersionProperties({
     this.specification,
     required this.stageSpec,
   });

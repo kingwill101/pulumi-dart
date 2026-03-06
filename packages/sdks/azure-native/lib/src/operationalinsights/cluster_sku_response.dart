@@ -12,7 +12,7 @@ class ClusterSkuResponse {
   /// Creates a new [ClusterSkuResponse].
   /// [capacity] The capacity reservation level in Gigabytes for this cluster.
   /// [name] The SKU (tier) of a cluster.
-  ClusterSkuResponse({
+  const ClusterSkuResponse({
     this.capacity,
     this.name,
   });

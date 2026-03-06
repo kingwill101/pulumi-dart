@@ -11,7 +11,7 @@ class RepositoryVirtualRepositoryConfig {
 
   /// Creates a new [RepositoryVirtualRepositoryConfig].
   /// [upstreamPolicies] Policies that configure the upstream artifacts distributed by the Virtual
-  RepositoryVirtualRepositoryConfig({
+  const RepositoryVirtualRepositoryConfig({
     this.upstreamPolicies,
   });
 

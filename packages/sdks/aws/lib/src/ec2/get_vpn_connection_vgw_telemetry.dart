@@ -15,7 +15,7 @@ class GetVpnConnectionVgwTelemetry {
   /// [outsideIpAddress] Required.
   /// [status] Required.
   /// [statusMessage] Required.
-  GetVpnConnectionVgwTelemetry({
+  const GetVpnConnectionVgwTelemetry({
     required this.acceptedRouteCount,
     required this.lastStatusChange,
     required this.outsideIpAddress,

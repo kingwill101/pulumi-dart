@@ -15,7 +15,7 @@ class NodePoolInstanceMetadataOptions {
 
   /// Creates a new [NodePoolInstanceMetadataOptions].
   /// [httpTokens] ECS instance metadata access mode configuration. Value range:
-  NodePoolInstanceMetadataOptions({
+  const NodePoolInstanceMetadataOptions({
     this.httpTokens,
   });
 

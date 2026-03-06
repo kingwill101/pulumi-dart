@@ -18,7 +18,7 @@ class GetModelContainerArgs {
   /// [name] Container name. This is case-sensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetModelContainerArgs({
+  const GetModelContainerArgs({
     required this.name,
     required this.resourceGroupName,
     required this.workspaceName,

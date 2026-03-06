@@ -27,7 +27,7 @@ class MessageServerPropertiesResponse {
   /// [internalMsPort] message server internal MS port.
   /// [ipAddress] message server IP Address.
   /// [msPort] message server port.
-  MessageServerPropertiesResponse({
+  const MessageServerPropertiesResponse({
     required this.health,
     required this.hostname,
     required this.httpPort,

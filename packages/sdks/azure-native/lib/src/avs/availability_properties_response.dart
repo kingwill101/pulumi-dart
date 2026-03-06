@@ -15,7 +15,7 @@ class AvailabilityPropertiesResponse {
   /// [secondaryZone] The secondary availability zone for the private cloud
   /// [strategy] The availability strategy for the private cloud
   /// [zone] The primary availability zone for the private cloud
-  AvailabilityPropertiesResponse({
+  const AvailabilityPropertiesResponse({
     this.secondaryZone,
     this.strategy,
     this.zone,

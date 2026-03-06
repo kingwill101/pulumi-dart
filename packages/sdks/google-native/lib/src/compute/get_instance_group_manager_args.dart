@@ -15,7 +15,7 @@ class GetInstanceGroupManagerArgs {
   /// [instanceGroupManager] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceGroupManagerArgs({
+  const GetInstanceGroupManagerArgs({
     required this.instanceGroupManager,
     this.project,
     required this.zone,

@@ -13,7 +13,7 @@ class LandingZoneManagementGroupProperties {
   /// Creates a new [LandingZoneManagementGroupProperties].
   /// [name] Management group name.
   /// [policyInitiativesAssignmentProperties] Array of policy initiatives applied to the management group.
-  LandingZoneManagementGroupProperties({
+  const LandingZoneManagementGroupProperties({
     required this.name,
     required this.policyInitiativesAssignmentProperties,
   });

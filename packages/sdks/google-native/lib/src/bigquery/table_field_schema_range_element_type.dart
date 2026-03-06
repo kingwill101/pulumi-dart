@@ -9,7 +9,7 @@ class TableFieldSchemaRangeElementType {
 
   /// Creates a new [TableFieldSchemaRangeElementType].
   /// [type] The field element type of a RANGE
-  TableFieldSchemaRangeElementType({
+  const TableFieldSchemaRangeElementType({
     this.type,
   });
 

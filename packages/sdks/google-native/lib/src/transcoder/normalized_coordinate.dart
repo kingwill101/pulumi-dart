@@ -12,7 +12,7 @@ class NormalizedCoordinate {
   /// Creates a new [NormalizedCoordinate].
   /// [x] Normalized x coordinate.
   /// [y] Normalized y coordinate.
-  NormalizedCoordinate({
+  const NormalizedCoordinate({
     this.x,
     this.y,
   });

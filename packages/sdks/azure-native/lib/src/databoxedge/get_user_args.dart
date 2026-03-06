@@ -18,7 +18,7 @@ class GetUserArgs {
   /// [deviceName] The device name.
   /// [name] The user name.
   /// [resourceGroupName] The resource group name.
-  GetUserArgs({
+  const GetUserArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

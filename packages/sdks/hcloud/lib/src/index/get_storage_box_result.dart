@@ -43,7 +43,7 @@ class GetStorageBoxResult {
   /// [system] Host system of the Storage Box.
   /// [username] Primary username of the Storage Box.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/hetzner#label-selector).
-  GetStorageBoxResult({
+  const GetStorageBoxResult({
     required this.accessSettings,
     required this.deleteProtection,
     this.id,

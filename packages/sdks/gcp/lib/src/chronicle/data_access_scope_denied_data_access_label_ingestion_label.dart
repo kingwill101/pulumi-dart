@@ -13,7 +13,7 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabel {
   /// Creates a new [DataAccessScopeDeniedDataAccessLabelIngestionLabel].
   /// [ingestionLabelKey] Required. The key of the ingestion label. Always required.
   /// [ingestionLabelValue] Optional. The value of the ingestion label. Optional. An object
-  DataAccessScopeDeniedDataAccessLabelIngestionLabel({
+  const DataAccessScopeDeniedDataAccessLabelIngestionLabel({
     required this.ingestionLabelKey,
     this.ingestionLabelValue,
   });

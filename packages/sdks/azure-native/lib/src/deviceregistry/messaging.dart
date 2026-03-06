@@ -10,7 +10,7 @@ class Messaging {
 
   /// Creates a new [Messaging].
   /// [endpoints] Dictionary of messaging endpoints.
-  Messaging({
+  const Messaging({
     this.endpoints,
   });
 

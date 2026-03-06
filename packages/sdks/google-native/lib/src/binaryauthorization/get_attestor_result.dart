@@ -21,7 +21,7 @@ class GetAttestorResult {
   /// [name] The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   /// [updateTime] Time when the attestor was last updated.
   /// [userOwnedGrafeasNote] This specifies how an attestation will be read, and how it will be used during policy enforcement.
-  GetAttestorResult({
+  const GetAttestorResult({
     required this.description,
     required this.etag,
     required this.name,

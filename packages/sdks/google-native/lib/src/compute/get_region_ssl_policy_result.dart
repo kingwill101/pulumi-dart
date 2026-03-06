@@ -50,7 +50,7 @@ class GetRegionSslPolicyResult {
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [tlsSettings] Security settings for the proxy. This field is only applicable to a global backend service with the loadBalancingScheme set to INTERNAL_SELF_MANAGED.
   /// [warnings] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-  GetRegionSslPolicyResult({
+  const GetRegionSslPolicyResult({
     required this.creationTimestamp,
     required this.customFeatures,
     required this.description,

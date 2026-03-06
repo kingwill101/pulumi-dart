@@ -13,7 +13,7 @@ class GetWebIamPolicyArgs {
 
   /// Creates a new [GetWebIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
-  GetWebIamPolicyArgs({
+  const GetWebIamPolicyArgs({
     this.project,
   });
 

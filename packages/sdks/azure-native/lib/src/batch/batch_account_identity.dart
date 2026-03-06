@@ -13,7 +13,7 @@ class BatchAccountIdentity {
   /// Creates a new [BatchAccountIdentity].
   /// [type] The type of identity used for the Batch account.
   /// [userAssignedIdentities] The list of user identities associated with the Batch account.
-  BatchAccountIdentity({
+  const BatchAccountIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

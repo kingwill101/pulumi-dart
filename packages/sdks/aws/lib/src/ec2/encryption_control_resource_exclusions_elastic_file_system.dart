@@ -11,7 +11,7 @@ class EncryptionControlResourceExclusionsElasticFileSystem {
   /// Creates a new [EncryptionControlResourceExclusionsElasticFileSystem].
   /// [state] The current state of the VPC Encryption Control.
   /// [stateMessage] A message providing additional information about the state of the VPC Encryption Control.
-  EncryptionControlResourceExclusionsElasticFileSystem({
+  const EncryptionControlResourceExclusionsElasticFileSystem({
     required this.state,
     required this.stateMessage,
   });

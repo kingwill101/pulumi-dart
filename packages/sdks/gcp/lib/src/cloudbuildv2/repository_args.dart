@@ -30,7 +30,7 @@ class RepositoryArgs {
   /// [parentConnection] The connection for the resource
   /// [project] The ID of the project in which the resource belongs.
   /// [remoteUri] Required. Git Clone HTTPS URI.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.annotations,
     this.location,
     this.name,

@@ -18,7 +18,7 @@ class GetConnectivityTestsResult {
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] The ID of the project in which the resource belongs.
-  GetConnectivityTestsResult({
+  const GetConnectivityTestsResult({
     required this.connectivityTests,
     this.filter,
     required this.id,

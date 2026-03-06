@@ -23,7 +23,7 @@ class DomainDomainSettings {
   /// [rStudioServerProDomainSettings] A collection of settings that configure the RStudioServerPro Domain-level app. see `r_studio_server_pro_domain_settings` Block below.
   /// [securityGroupIds] The security groups for the Amazon Virtual Private Cloud that the Domain uses for communication between Domain-level apps and user apps.
   /// [trustedIdentityPropagationSettings] Configuration for trusted identity propagation. See the `trusted_identity_propagation_settings` Block below.
-  DomainDomainSettings({
+  const DomainDomainSettings({
     this.dockerSettings,
     this.executionRoleIdentityConfig,
     this.rStudioServerProDomainSettings,

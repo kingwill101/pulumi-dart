@@ -60,7 +60,7 @@ class TrailArgs {
   /// [status] The status of the trail. Default value: `Enable`. Valid values: `Enable`, `Disable`.
   /// [trailName] The name of the trail to be created.
   /// [trailRegion] The region of the trail.
-  TrailArgs({
+  const TrailArgs({
     this.dataEventTrailRegion,
     this.eventRw,
     this.eventSelectors,

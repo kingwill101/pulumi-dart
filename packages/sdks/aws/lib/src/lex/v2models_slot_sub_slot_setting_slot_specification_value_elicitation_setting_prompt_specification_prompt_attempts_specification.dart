@@ -18,7 +18,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSp
   /// [audioAndDtmfInputSpecification] Optional.
   /// [mapBlockKey] Required.
   /// [textInputSpecification] Optional.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingPromptSpecificationPromptAttemptsSpecification({
     this.allowInterrupt,
     this.allowedInputTypes,
     this.audioAndDtmfInputSpecification,

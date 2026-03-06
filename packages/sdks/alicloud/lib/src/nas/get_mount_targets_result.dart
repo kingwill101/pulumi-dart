@@ -41,7 +41,7 @@ class GetMountTargetsResult {
   /// [type] Field `type` has been deprecated from provider version 1.95.0. New field `network_type` replaces it.
   /// [vpcId] VpcId of The MountTarget.
   /// [vswitchId] VSwitchId of The MountTarget.
-  GetMountTargetsResult({
+  const GetMountTargetsResult({
     this.accessGroupName,
     required this.fileSystemId,
     required this.id,

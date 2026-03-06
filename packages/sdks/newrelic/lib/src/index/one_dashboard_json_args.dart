@@ -15,7 +15,7 @@ class OneDashboardJsonArgs {
   /// Creates a new [OneDashboardJsonArgs].
   /// [accountId] Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   /// [json] The JSON export of a dashboard. [The JSON can be exported from the UI](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/dashboards-charts-import-export-data/#dashboards)
-  OneDashboardJsonArgs({
+  const OneDashboardJsonArgs({
     this.accountId,
     required this.json,
   });

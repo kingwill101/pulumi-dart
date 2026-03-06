@@ -9,7 +9,7 @@ class CloudServiceVaultCertificateResponse {
 
   /// Creates a new [CloudServiceVaultCertificateResponse].
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a secret.
-  CloudServiceVaultCertificateResponse({
+  const CloudServiceVaultCertificateResponse({
     this.certificateUrl,
   });
 

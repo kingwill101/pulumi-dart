@@ -42,7 +42,7 @@ class IndexEndpointArgs {
   /// [privateServiceConnectConfig] Optional. Configuration for private service connect. network and private_service_connect_config are mutually exclusive.
   /// [project] Optional.
   /// [publicEndpointEnabled] Optional. If true, the deployed index will be accessible through public endpoint.
-  IndexEndpointArgs({
+  const IndexEndpointArgs({
     this.description,
     required this.displayName,
     this.enablePrivateServiceConnect,

@@ -21,7 +21,7 @@ class ProjectMetadataItemArgs {
   /// [key] The metadata key to set.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [value] The value to set for the given metadata key.
-  ProjectMetadataItemArgs({
+  const ProjectMetadataItemArgs({
     required this.key,
     this.project,
     required this.value,

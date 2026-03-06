@@ -12,7 +12,7 @@ class EntityCoordinatesResponse {
   /// Creates a new [EntityCoordinatesResponse].
   /// [x] X Coordinate
   /// [y] Y Coordinate
-  EntityCoordinatesResponse({
+  const EntityCoordinatesResponse({
     required this.x,
     required this.y,
   });

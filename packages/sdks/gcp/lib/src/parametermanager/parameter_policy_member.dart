@@ -19,7 +19,7 @@ class ParameterPolicyMember {
   /// Creates a new [ParameterPolicyMember].
   /// [iamPolicyNamePrincipal] (Output)
   /// [iamPolicyUidPrincipal] (Output)
-  ParameterPolicyMember({
+  const ParameterPolicyMember({
     this.iamPolicyNamePrincipal,
     this.iamPolicyUidPrincipal,
   });

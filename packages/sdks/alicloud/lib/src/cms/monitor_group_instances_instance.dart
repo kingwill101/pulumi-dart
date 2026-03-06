@@ -17,7 +17,7 @@ class MonitorGroupInstancesInstance {
   /// [instanceId] The id of instance.
   /// [instanceName] The name of instance.
   /// [regionId] The region id of instance.
-  MonitorGroupInstancesInstance({
+  const MonitorGroupInstancesInstance({
     required this.category,
     required this.instanceId,
     required this.instanceName,

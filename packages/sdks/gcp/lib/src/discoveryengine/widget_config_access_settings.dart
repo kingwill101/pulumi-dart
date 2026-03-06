@@ -22,7 +22,7 @@ class WidgetConfigAccessSettings {
   /// [enableWebApp] Whether web app access is enabled.
   /// [languageCode] Language code for user interface. Use language tags defined by
   /// [workforceIdentityPoolProvider] The workforce identity pool provider used to access the widget.
-  WidgetConfigAccessSettings({
+  const WidgetConfigAccessSettings({
     this.allowPublicAccess,
     this.allowlistedDomains,
     this.enableWebApp,

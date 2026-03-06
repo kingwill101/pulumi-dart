@@ -18,7 +18,7 @@ class GetRegisteredAsnArgs {
   /// [peeringName] The name of the peering.
   /// [registeredAsnName] The name of the registered ASN.
   /// [resourceGroupName] The name of the resource group.
-  GetRegisteredAsnArgs({
+  const GetRegisteredAsnArgs({
     required this.peeringName,
     required this.registeredAsnName,
     required this.resourceGroupName,

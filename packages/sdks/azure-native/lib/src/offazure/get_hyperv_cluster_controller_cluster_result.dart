@@ -50,7 +50,7 @@ class GetHypervClusterControllerClusterResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Gets the timestamp marking last updated on the Hyper-V cluster.
-  GetHypervClusterControllerClusterResult({
+  const GetHypervClusterControllerClusterResult({
     required this.azureApiVersion,
     required this.createdTimestamp,
     required this.errors,

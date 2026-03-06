@@ -8,7 +8,7 @@ class PipelineSourceTriggerPropertiesResponse {
 
   /// Creates a new [PipelineSourceTriggerPropertiesResponse].
   /// [status] The current status of the source trigger.
-  PipelineSourceTriggerPropertiesResponse({
+  const PipelineSourceTriggerPropertiesResponse({
     required this.status,
   });
 

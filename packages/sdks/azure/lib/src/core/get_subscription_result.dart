@@ -32,7 +32,7 @@ class GetSubscriptionResult {
   /// [subscriptionId] The subscription GUID.
   /// [tags] A mapping of tags assigned to the Subscription.
   /// [tenantId] The subscription tenant ID.
-  GetSubscriptionResult({
+  const GetSubscriptionResult({
     required this.displayName,
     required this.id,
     required this.locationPlacementId,

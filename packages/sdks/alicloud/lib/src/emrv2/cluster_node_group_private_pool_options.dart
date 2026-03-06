@@ -11,7 +11,7 @@ class ClusterNodeGroupPrivatePoolOptions {
   /// Creates a new [ClusterNodeGroupPrivatePoolOptions].
   /// [matchCriteria] The node group specific private pool resource match criteria. Valid values: `Open`, `Target`, `None`.
   /// [privatePoolIds] The node group specific private pool resource ids.
-  ClusterNodeGroupPrivatePoolOptions({
+  const ClusterNodeGroupPrivatePoolOptions({
     this.matchCriteria,
     this.privatePoolIds,
   });

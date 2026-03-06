@@ -15,7 +15,7 @@ class GetReportByResourceGroupNameArgs {
   /// Creates a new [GetReportByResourceGroupNameArgs].
   /// [reportName] Report Name.
   /// [resourceGroupName] Azure Resource Group Name.
-  GetReportByResourceGroupNameArgs({
+  const GetReportByResourceGroupNameArgs({
     required this.reportName,
     required this.resourceGroupName,
   });

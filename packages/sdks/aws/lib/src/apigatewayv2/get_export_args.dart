@@ -30,7 +30,7 @@ class GetExportArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [specification] Version of the API specification to use. `OAS30`, for OpenAPI 3.0, is the only supported value.
   /// [stageName] Name of the API stage to export. If you don't specify this property, a representation of the latest API configuration is exported.
-  GetExportArgs({
+  const GetExportArgs({
     required this.apiId,
     this.exportVersion,
     this.includeExtensions,

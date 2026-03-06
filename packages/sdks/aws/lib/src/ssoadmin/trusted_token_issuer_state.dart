@@ -36,7 +36,7 @@ class TrustedTokenIssuerState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [trustedTokenIssuerConfiguration] A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trusted_token_issuer_type`. Documented below.
   /// [trustedTokenIssuerType] Specifies the type of the trusted token issuer. Valid values are `OIDC_JWT`
-  TrustedTokenIssuerState({
+  const TrustedTokenIssuerState({
     this.arn,
     this.clientToken,
     this.instanceArn,

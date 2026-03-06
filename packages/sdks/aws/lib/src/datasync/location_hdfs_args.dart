@@ -59,7 +59,7 @@ class LocationHdfsArgs {
   /// [simpleUser] The user name used to identify the client on the host operating system. If `SIMPLE` is specified for `authentication_type`, this parameter is required.
   /// [subdirectory] A subdirectory in the HDFS cluster. This subdirectory is used to read data from or write data to the HDFS cluster. If the subdirectory isn't specified, it will default to /.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LocationHdfsArgs({
+  const LocationHdfsArgs({
     required this.agentArns,
     this.authenticationType,
     this.blockSize,

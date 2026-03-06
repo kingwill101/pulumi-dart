@@ -8,7 +8,7 @@ class GetGatewayRouteSpecGrpcRouteAction {
 
   /// Creates a new [GetGatewayRouteSpecGrpcRouteAction].
   /// [targets] Required.
-  GetGatewayRouteSpecGrpcRouteAction({
+  const GetGatewayRouteSpecGrpcRouteAction({
     required this.targets,
   });
 

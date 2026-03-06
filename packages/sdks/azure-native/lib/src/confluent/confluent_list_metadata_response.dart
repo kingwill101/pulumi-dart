@@ -21,7 +21,7 @@ class ConfluentListMetadataResponse {
   /// [next] Next page of the list
   /// [prev] Previous page of the list
   /// [totalSize] Total size of the list
-  ConfluentListMetadataResponse({
+  const ConfluentListMetadataResponse({
     this.first,
     this.last,
     this.next,

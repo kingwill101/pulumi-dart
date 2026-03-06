@@ -15,7 +15,7 @@ class ListQnAMakerEndpointKeyArgs {
   /// Creates a new [ListQnAMakerEndpointKeyArgs].
   /// [authkey] Subscription key which provides access to this API.
   /// [hostname] the host name of the QnA Maker endpoint
-  ListQnAMakerEndpointKeyArgs({
+  const ListQnAMakerEndpointKeyArgs({
     this.authkey,
     this.hostname,
   });

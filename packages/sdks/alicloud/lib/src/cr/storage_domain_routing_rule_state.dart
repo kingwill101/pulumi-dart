@@ -19,7 +19,7 @@ class StorageDomainRoutingRuleState {
   /// [instanceId] The ID of the Container Registry Instance.
   /// [routes] Domain name routing entry See `routes` below.
   /// [ruleId] The ID of the Rule.
-  StorageDomainRoutingRuleState({
+  const StorageDomainRoutingRuleState({
     this.createTime,
     this.instanceId,
     this.routes,

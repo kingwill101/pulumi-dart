@@ -27,7 +27,7 @@ class SharedflowDeploymentArgs {
   /// [revision] Revision of the Sharedflow to be deployed.
   /// [serviceAccount] The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be {ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com.
   /// [sharedflowId] Id of the Sharedflow to be deployed.
-  SharedflowDeploymentArgs({
+  const SharedflowDeploymentArgs({
     required this.environment,
     required this.orgId,
     required this.revision,

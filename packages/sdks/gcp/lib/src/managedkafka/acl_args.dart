@@ -31,7 +31,7 @@ class AclArgs {
   /// [cluster] The cluster name.
   /// [location] ID of the location of the Kafka resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [project] The ID of the project in which the resource belongs.
-  AclArgs({
+  const AclArgs({
     required this.aclEntries,
     required this.aclId,
     required this.cluster,

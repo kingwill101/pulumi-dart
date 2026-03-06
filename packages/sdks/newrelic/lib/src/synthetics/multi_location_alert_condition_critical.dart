@@ -8,7 +8,7 @@ class MultiLocationAlertConditionCritical {
 
   /// Creates a new [MultiLocationAlertConditionCritical].
   /// [threshold] The minimum number of monitor locations that must be concurrently failing before an incident is opened.
-  MultiLocationAlertConditionCritical({
+  const MultiLocationAlertConditionCritical({
     required this.threshold,
   });
 

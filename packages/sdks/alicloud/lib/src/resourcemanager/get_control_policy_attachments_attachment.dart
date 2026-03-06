@@ -23,7 +23,7 @@ class GetControlPolicyAttachmentsAttachment {
   /// [policyId] The ID of policy.
   /// [policyName] The name of policy.
   /// [policyType] The type of policy.
-  GetControlPolicyAttachmentsAttachment({
+  const GetControlPolicyAttachmentsAttachment({
     required this.attachDate,
     required this.description,
     required this.id,

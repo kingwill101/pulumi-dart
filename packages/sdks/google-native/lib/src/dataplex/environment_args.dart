@@ -35,7 +35,7 @@ class EnvironmentArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [sessionSpec] Optional. Configuration for sessions created for this environment.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.description,
     this.displayName,
     required this.environmentId,

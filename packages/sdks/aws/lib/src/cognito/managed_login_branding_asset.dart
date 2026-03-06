@@ -19,7 +19,7 @@ class ManagedLoginBrandingAsset {
   /// [colorMode] Display-mode target of the asset. Valid values: `LIGHT`, `DARK`, `DYNAMIC`.
   /// [extension] Required.
   /// [resourceId] Asset ID.
-  ManagedLoginBrandingAsset({
+  const ManagedLoginBrandingAsset({
     this.bytes,
     required this.category,
     required this.colorMode,

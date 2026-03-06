@@ -45,7 +45,7 @@ class ProjectEnvironmentTypeArgs {
   /// [status] Defines whether this Environment Type can be used in this Project.
   /// [tags] Resource tags.
   /// [userRoleAssignments] Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
-  ProjectEnvironmentTypeArgs({
+  const ProjectEnvironmentTypeArgs({
     this.creatorRoleAssignment,
     this.deploymentTargetId,
     this.displayName,

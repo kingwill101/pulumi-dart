@@ -50,7 +50,7 @@ class Smsvoicev2PhoneNumberArgs {
   /// [twoWayChannelArn] Configuration for two-way SMS. Specify an ARN to receive incoming SMS messages, or `connect.[region].amazonaws.com` (with `[region]` replaced by the AWS Region of the Amazon Connect instance) to set Amazon Connect as the inbound destination.
   /// [twoWayChannelEnabled] By default this is set to `false`. When set to `true` you can receive incoming text messages from your end recipients.
   /// [twoWayChannelRole] IAM Role ARN for a service to assume, to be able to post inbound SMS messages.
-  Smsvoicev2PhoneNumberArgs({
+  const Smsvoicev2PhoneNumberArgs({
     this.deletionProtectionEnabled,
     required this.isoCountryCode,
     required this.messageType,

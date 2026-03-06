@@ -15,7 +15,7 @@ class AppIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of managed identity to assign. Possible values are `SystemAssigned`, `UserAssigned`, and `SystemAssigned, UserAssigned` (to enable both).
-  AppIdentity({
+  const AppIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

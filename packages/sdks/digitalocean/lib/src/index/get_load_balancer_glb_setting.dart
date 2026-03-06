@@ -21,7 +21,7 @@ class GetLoadBalancerGlbSetting {
   /// [regionPriorities] region priority map
   /// [targetPort] target port rules
   /// [targetProtocol] target protocol rules
-  GetLoadBalancerGlbSetting({
+  const GetLoadBalancerGlbSetting({
     required this.cdns,
     required this.failoverThreshold,
     required this.regionPriorities,

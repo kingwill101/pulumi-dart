@@ -11,7 +11,7 @@ class GetRegionsRegionPlacementGroupLimit {
   /// Creates a new [GetRegionsRegionPlacementGroupLimit].
   /// [maximumLinodesPerPg] The maximum number of Linodes allowed to be assigned to a placement group in this region.
   /// [maximumPgsPerCustomer] The maximum number of placement groups allowed for the current user in this region.
-  GetRegionsRegionPlacementGroupLimit({
+  const GetRegionsRegionPlacementGroupLimit({
     required this.maximumLinodesPerPg,
     required this.maximumPgsPerCustomer,
   });

@@ -26,7 +26,7 @@ class GetLifecyclePoliciesPolicy {
   /// [lifecycleRuleName] The rules in the lifecycle management policy.
   /// [paths] The list of absolute paths for multiple directories. In this case, you can associate a lifecycle management policy with each directory.
   /// [storageType] The storage type of the data that is dumped to the IA storage medium.
-  GetLifecyclePoliciesPolicy({
+  const GetLifecyclePoliciesPolicy({
     required this.createTime,
     required this.fileSystemId,
     required this.id,

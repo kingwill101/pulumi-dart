@@ -12,7 +12,7 @@ class ConfigurationReferencePropertiesResponse {
   /// Creates a new [ConfigurationReferencePropertiesResponse].
   /// [configurationResourceId] ArmId of Configuration resource
   /// [provisioningState] The status of the last operation.
-  ConfigurationReferencePropertiesResponse({
+  const ConfigurationReferencePropertiesResponse({
     this.configurationResourceId,
     required this.provisioningState,
   });

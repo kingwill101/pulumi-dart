@@ -11,7 +11,7 @@ class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGke
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget].
   /// [clusterNamespace] A namespace within the GKE cluster to deploy into.
   /// [targetGkeCluster] The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget({
+  const WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget({
     this.clusterNamespace,
     this.targetGkeCluster,
   });

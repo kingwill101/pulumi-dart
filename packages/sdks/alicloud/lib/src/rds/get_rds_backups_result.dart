@@ -26,7 +26,7 @@ class GetRdsBackupsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [startTime] Optional.
-  GetRdsBackupsResult({
+  const GetRdsBackupsResult({
     this.backupMode,
     this.backupStatus,
     required this.backups,

@@ -27,7 +27,7 @@ class EncryptionProtectorArgs {
   /// [serverKeyName] The name of the server key.
   /// [serverKeyType] The encryption protector type like 'ServiceManaged', 'AzureKeyVault'.
   /// [serverName] The name of the server.
-  EncryptionProtectorArgs({
+  const EncryptionProtectorArgs({
     this.autoRotationEnabled,
     this.encryptionProtectorName,
     required this.resourceGroupName,

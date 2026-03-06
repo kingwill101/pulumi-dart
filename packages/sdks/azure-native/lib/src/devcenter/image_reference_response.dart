@@ -12,7 +12,7 @@ class ImageReferenceResponse {
   /// Creates a new [ImageReferenceResponse].
   /// [exactVersion] The actual version of the image after use. When id references a gallery image latest version, this will indicate the actual version in use.
   /// [id] Image ID, or Image version ID. When Image ID is provided, its latest version will be used.
-  ImageReferenceResponse({
+  const ImageReferenceResponse({
     required this.exactVersion,
     this.id,
   });

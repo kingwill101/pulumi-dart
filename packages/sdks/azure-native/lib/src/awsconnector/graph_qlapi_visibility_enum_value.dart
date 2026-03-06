@@ -9,7 +9,7 @@ class GraphQLApiVisibilityEnumValue {
 
   /// Creates a new [GraphQLApiVisibilityEnumValue].
   /// [value] Property value
-  GraphQLApiVisibilityEnumValue({
+  const GraphQLApiVisibilityEnumValue({
     this.value,
   });
 

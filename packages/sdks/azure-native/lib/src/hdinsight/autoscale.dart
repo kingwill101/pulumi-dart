@@ -14,7 +14,7 @@ class Autoscale {
   /// Creates a new [Autoscale].
   /// [capacity] Parameters for load-based autoscale
   /// [recurrence] Parameters for schedule-based autoscale
-  Autoscale({
+  const Autoscale({
     this.capacity,
     this.recurrence,
   });

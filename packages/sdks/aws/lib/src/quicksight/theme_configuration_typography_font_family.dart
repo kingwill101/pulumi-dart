@@ -8,7 +8,7 @@ class ThemeConfigurationTypographyFontFamily {
 
   /// Creates a new [ThemeConfigurationTypographyFontFamily].
   /// [fontFamily] Font family name.
-  ThemeConfigurationTypographyFontFamily({
+  const ThemeConfigurationTypographyFontFamily({
     this.fontFamily,
   });
 

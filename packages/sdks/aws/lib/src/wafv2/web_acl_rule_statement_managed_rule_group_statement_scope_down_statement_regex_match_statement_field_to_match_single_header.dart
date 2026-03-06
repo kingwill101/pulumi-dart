@@ -8,7 +8,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchSt
 
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementRegexMatchStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

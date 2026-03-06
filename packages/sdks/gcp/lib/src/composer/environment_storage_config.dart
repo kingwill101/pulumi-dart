@@ -8,7 +8,7 @@ class EnvironmentStorageConfig {
 
   /// Creates a new [EnvironmentStorageConfig].
   /// [bucket] Optional. Name of an existing Cloud Storage bucket to be used by the environment.
-  EnvironmentStorageConfig({
+  const EnvironmentStorageConfig({
     required this.bucket,
   });
 

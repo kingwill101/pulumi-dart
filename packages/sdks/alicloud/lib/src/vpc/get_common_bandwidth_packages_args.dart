@@ -33,7 +33,7 @@ class GetCommonBandwidthPackagesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The Id of resource group which the common bandwidth package belongs.
   /// [status] The status of bandwidth package. Valid values: `Available` and `Pending`.
-  GetCommonBandwidthPackagesArgs({
+  const GetCommonBandwidthPackagesArgs({
     this.bandwidthPackageName,
     this.dryRun,
     this.ids,

@@ -32,7 +32,7 @@ class GetApplicationTemplateResult {
   /// [supportedProvisioningTypes] List of provisioning modes supported by this templated application.
   /// [supportedSingleSignOnModes] List of single sign on modes supported by this templated application.
   /// [templateId] The ID of the templated application.
-  GetApplicationTemplateResult({
+  const GetApplicationTemplateResult({
     required this.categories,
     required this.displayName,
     required this.homepageUrl,

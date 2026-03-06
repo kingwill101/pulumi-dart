@@ -49,7 +49,7 @@ class TargetSSLProxyArgs {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to
   /// [sslCertificates] A list of SslCertificate resources that are used to authenticate
   /// [sslPolicy] A reference to the SslPolicy resource that will be associated with
-  TargetSSLProxyArgs({
+  const TargetSSLProxyArgs({
     required this.backendService,
     this.certificateMap,
     this.description,

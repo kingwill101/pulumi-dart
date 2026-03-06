@@ -34,7 +34,7 @@ class ReleaseConfigArgs {
   /// [releaseConfigId] Required. The ID to use for the release config, which will become the final component of the release config's resource name.
   /// [repositoryId] Required.
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  ReleaseConfigArgs({
+  const ReleaseConfigArgs({
     this.codeCompilationConfig,
     this.cronSchedule,
     required this.gitCommitish,

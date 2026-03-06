@@ -28,7 +28,7 @@ class ACSSBackupConnectionArgs {
   /// [location] The geo-location where the resource lives
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ACSSBackupConnectionArgs({
+  const ACSSBackupConnectionArgs({
     this.backupData,
     this.backupName,
     required this.connectorName,

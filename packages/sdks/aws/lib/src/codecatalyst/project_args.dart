@@ -23,7 +23,7 @@ class ProjectArgs {
   /// [displayName] The friendly name of the project that will be displayed to users.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [spaceName] The name of the space.
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     required this.displayName,
     this.region,

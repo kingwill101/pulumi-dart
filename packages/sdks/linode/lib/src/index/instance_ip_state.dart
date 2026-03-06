@@ -40,7 +40,7 @@ class InstanceIpState {
   /// [subnetMask] The mask that separates host bits from network bits for this address.
   /// [type] The type of IP address. (`ipv4`, `ipv6`, `ipv6/pool`, `ipv6/range`)
   /// [vpcNat11s] Contains information about the NAT 1:1 mapping of a public IP address to a VPC subnet.
-  InstanceIpState({
+  const InstanceIpState({
     this.address,
     this.applyImmediately,
     this.gateway,

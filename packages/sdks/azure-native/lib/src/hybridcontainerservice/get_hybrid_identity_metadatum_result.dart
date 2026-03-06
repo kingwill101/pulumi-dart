@@ -34,7 +34,7 @@ class GetHybridIdentityMetadatumResult {
   /// [resourceUid] Unique id of the parent provisioned cluster resource.
   /// [systemData] The system data.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHybridIdentityMetadatumResult({
+  const GetHybridIdentityMetadatumResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

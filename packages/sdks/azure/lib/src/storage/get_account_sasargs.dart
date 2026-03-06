@@ -41,7 +41,7 @@ class GetAccountSASArgs {
   /// [services] A `services` block as defined below.
   /// [signedVersion] Specifies the signed storage service version to use to authorize requests made with this account SAS. Defaults to `2022-11-02`.
   /// [start] The starting time and date of validity of this SAS. Must be a valid ISO-8601 format time/date string.
-  GetAccountSASArgs({
+  const GetAccountSASArgs({
     required this.connectionString,
     required this.expiry,
     this.httpsOnly,

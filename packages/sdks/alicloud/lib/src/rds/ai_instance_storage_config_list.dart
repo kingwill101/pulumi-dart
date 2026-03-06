@@ -11,7 +11,7 @@ class AiInstanceStorageConfigList {
   /// Creates a new [AiInstanceStorageConfigList].
   /// [name] The configuration item name. For more information, see [How to use it](https://www.alibabacloud.com/help/en/rds/apsaradb-rds-for-postgresql/storage).
   /// [value] The value of the configuration item.
-  AiInstanceStorageConfigList({
+  const AiInstanceStorageConfigList({
     this.name,
     this.value,
   });

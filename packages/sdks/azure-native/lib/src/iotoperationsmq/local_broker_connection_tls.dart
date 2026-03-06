@@ -12,7 +12,7 @@ class LocalBrokerConnectionTls {
   /// Creates a new [LocalBrokerConnectionTls].
   /// [tlsEnabled] Tls Enabled on Local Broker Connection.
   /// [trustedCaCertificateConfigMap] Trusted CA certificate config map name for Local Broker.
-  LocalBrokerConnectionTls({
+  const LocalBrokerConnectionTls({
     this.tlsEnabled,
     this.trustedCaCertificateConfigMap,
   });

@@ -27,7 +27,7 @@ class GetServerlessKubernetesClustersResult {
   /// [nameRegex] Optional.
   /// [names] A list of matched Kubernetes clusters' names.
   /// [outputFile] Optional.
-  GetServerlessKubernetesClustersResult({
+  const GetServerlessKubernetesClustersResult({
     required this.clusters,
     this.enableDetails,
     required this.id,

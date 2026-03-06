@@ -9,7 +9,7 @@ class GroupByVariable {
 
   /// Creates a new [GroupByVariable].
   /// [variableName] Describes the supported variable for group by
-  GroupByVariable({
+  const GroupByVariable({
     required this.variableName,
   });
 

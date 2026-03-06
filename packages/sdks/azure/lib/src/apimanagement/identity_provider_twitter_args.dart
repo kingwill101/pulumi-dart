@@ -21,7 +21,7 @@ class IdentityProviderTwitterArgs {
   /// [apiManagementName] The Name of the API Management Service where this Twitter Identity Provider should be created. Changing this forces a new resource to be created.
   /// [apiSecretKey] App Consumer API secret key for Twitter.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  IdentityProviderTwitterArgs({
+  const IdentityProviderTwitterArgs({
     required this.apiKey,
     required this.apiManagementName,
     required this.apiSecretKey,

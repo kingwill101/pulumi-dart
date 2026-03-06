@@ -21,7 +21,7 @@ class GetIndustrialPidOrganizationsArgs {
   /// [nameRegex] A regex string to filter results by Pid Organization name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [parentOrganizationId] The parent organization id.
-  GetIndustrialPidOrganizationsArgs({
+  const GetIndustrialPidOrganizationsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

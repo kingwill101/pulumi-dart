@@ -62,7 +62,7 @@ class AnomalySecurityMLAnalyticsSettingsArgs {
   /// [tactics] The tactics of the SecurityMLAnalyticsSettings
   /// [techniques] The techniques of the SecurityMLAnalyticsSettings
   /// [workspaceName] The name of the workspace.
-  AnomalySecurityMLAnalyticsSettingsArgs({
+  const AnomalySecurityMLAnalyticsSettingsArgs({
     this.anomalySettingsVersion,
     required this.anomalyVersion,
     this.customizableObservations,

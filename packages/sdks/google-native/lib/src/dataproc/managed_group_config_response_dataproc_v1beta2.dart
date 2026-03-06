@@ -12,7 +12,7 @@ class ManagedGroupConfigResponseDataprocV1beta2 {
   /// Creates a new [ManagedGroupConfigResponseDataprocV1beta2].
   /// [instanceGroupManagerName] The name of the Instance Group Manager for this group.
   /// [instanceTemplateName] The name of the Instance Template used for the Managed Instance Group.
-  ManagedGroupConfigResponseDataprocV1beta2({
+  const ManagedGroupConfigResponseDataprocV1beta2({
     required this.instanceGroupManagerName,
     required this.instanceTemplateName,
   });

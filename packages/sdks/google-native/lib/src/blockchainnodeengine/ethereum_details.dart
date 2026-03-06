@@ -35,7 +35,7 @@ class EthereumDetails {
   /// [gethDetails] Details for the Geth execution client.
   /// [network] Immutable. The Ethereum environment being accessed.
   /// [nodeType] Immutable. The type of Ethereum node.
-  EthereumDetails({
+  const EthereumDetails({
     this.apiEnableAdmin,
     this.apiEnableDebug,
     this.beaconFeeRecipient,

@@ -12,7 +12,7 @@ class ApplicationGatewayClientAuthConfiguration {
   /// Creates a new [ApplicationGatewayClientAuthConfiguration].
   /// [verifyClientCertIssuerDN] Verify client certificate issuer name on the application gateway.
   /// [verifyClientRevocation] Verify client certificate revocation status.
-  ApplicationGatewayClientAuthConfiguration({
+  const ApplicationGatewayClientAuthConfiguration({
     this.verifyClientCertIssuerDN,
     this.verifyClientRevocation,
   });

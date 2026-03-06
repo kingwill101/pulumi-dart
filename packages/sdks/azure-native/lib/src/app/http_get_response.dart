@@ -15,7 +15,7 @@ class HttpGetResponse {
   /// [fileName] Name of the file that the request should be saved to.
   /// [headers] List of headers to send with the request.
   /// [url] URL to make HTTP GET request against.
-  HttpGetResponse({
+  const HttpGetResponse({
     this.fileName,
     this.headers,
     required this.url,

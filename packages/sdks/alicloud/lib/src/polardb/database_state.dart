@@ -34,7 +34,7 @@ class DatabaseState {
   /// [dbDescription] The description of the database. The description must meet the following requirements:
   /// [dbName] The name of the database. It may consist of lower case letters, numbers, and underlines, and must start with a letterand have no more than 64 characters.
   /// [status] (Available since v1.265.0) The state of the database.
-  DatabaseState({
+  const DatabaseState({
     this.accountName,
     this.characterSetName,
     this.collate,

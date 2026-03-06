@@ -52,7 +52,7 @@ class GetAlidnsRecordsResult {
   /// [typeKeyWord] Optional.
   /// [valueKeyWord] Optional.
   /// [valueRegex] Optional.
-  GetAlidnsRecordsResult({
+  const GetAlidnsRecordsResult({
     this.direction,
     required this.domainName,
     this.groupId,

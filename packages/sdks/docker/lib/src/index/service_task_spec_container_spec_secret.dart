@@ -23,7 +23,7 @@ class ServiceTaskSpecContainerSpecSecret {
   /// [fileUid] Represents the file UID. Defaults to `0`
   /// [secretId] ID of the specific secret that we're referencing
   /// [secretName] Name of the secret that this references, but this is just provided for lookup/display purposes. The config in the reference will be identified by its ID
-  ServiceTaskSpecContainerSpecSecret({
+  const ServiceTaskSpecContainerSpecSecret({
     this.fileGid,
     this.fileMode,
     required this.fileName,

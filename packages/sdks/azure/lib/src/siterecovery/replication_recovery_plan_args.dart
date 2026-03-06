@@ -37,7 +37,7 @@ class ReplicationRecoveryPlanArgs {
   /// [shutdownRecoveryGroup] One `shutdown_recovery_group` block as defined below.
   /// [sourceRecoveryFabricId] ID of source fabric to be recovered from. Changing this forces a new Replication Plan to be created.
   /// [targetRecoveryFabricId] ID of target fabric to recover. Changing this forces a new Replication Plan to be created.
-  ReplicationRecoveryPlanArgs({
+  const ReplicationRecoveryPlanArgs({
     this.azureToAzureSettings,
     required this.bootRecoveryGroups,
     required this.failoverRecoveryGroup,

@@ -8,7 +8,7 @@ class V2modelsSlotValueElicitationSettingSampleUtterance {
 
   /// Creates a new [V2modelsSlotValueElicitationSettingSampleUtterance].
   /// [utterance] The sample utterance that Amazon Lex uses to build its machine-learning model to recognize intents.
-  V2modelsSlotValueElicitationSettingSampleUtterance({
+  const V2modelsSlotValueElicitationSettingSampleUtterance({
     required this.utterance,
   });
 

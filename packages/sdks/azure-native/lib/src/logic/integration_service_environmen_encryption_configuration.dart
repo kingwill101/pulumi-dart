@@ -10,7 +10,7 @@ class IntegrationServiceEnvironmenEncryptionConfiguration {
 
   /// Creates a new [IntegrationServiceEnvironmenEncryptionConfiguration].
   /// [encryptionKeyReference] The encryption key reference.
-  IntegrationServiceEnvironmenEncryptionConfiguration({
+  const IntegrationServiceEnvironmenEncryptionConfiguration({
     this.encryptionKeyReference,
   });
 

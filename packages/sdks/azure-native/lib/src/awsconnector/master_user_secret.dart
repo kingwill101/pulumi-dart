@@ -12,7 +12,7 @@ class MasterUserSecret {
   /// Creates a new [MasterUserSecret].
   /// [kmsKeyId] The AWS KMS key identifier that is used to encrypt the secret.
   /// [secretArn] The Amazon Resource Name (ARN) of the secret.
-  MasterUserSecret({
+  const MasterUserSecret({
     this.kmsKeyId,
     this.secretArn,
   });

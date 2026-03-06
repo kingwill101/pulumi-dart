@@ -8,7 +8,7 @@ class VMwareClusterUpgradePolicy {
 
   /// Creates a new [VMwareClusterUpgradePolicy].
   /// [controlPlaneOnly] Controls whether the upgrade applies to the control plane only.
-  VMwareClusterUpgradePolicy({
+  const VMwareClusterUpgradePolicy({
     this.controlPlaneOnly,
   });
 

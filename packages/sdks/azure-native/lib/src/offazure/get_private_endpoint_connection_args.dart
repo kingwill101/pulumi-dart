@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [peConnectionName] Private link resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.peConnectionName,
     required this.resourceGroupName,
     required this.siteName,

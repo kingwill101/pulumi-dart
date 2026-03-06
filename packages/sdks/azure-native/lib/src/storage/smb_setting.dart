@@ -22,7 +22,7 @@ class SmbSetting {
   /// [kerberosTicketEncryption] Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256. Should be passed as a string with delimiter ';'
   /// [multichannel] Multichannel setting. Applies to Premium FileStorage only.
   /// [versions] SMB protocol versions supported by server. Valid values are SMB2.1, SMB3.0, SMB3.1.1. Should be passed as a string with delimiter ';'.
-  SmbSetting({
+  const SmbSetting({
     this.authenticationMethods,
     this.channelEncryption,
     this.kerberosTicketEncryption,

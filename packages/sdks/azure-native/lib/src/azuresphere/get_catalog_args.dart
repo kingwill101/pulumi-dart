@@ -15,7 +15,7 @@ class GetCatalogArgs {
   /// Creates a new [GetCatalogArgs].
   /// [catalogName] Name of catalog
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCatalogArgs({
+  const GetCatalogArgs({
     required this.catalogName,
     required this.resourceGroupName,
   });

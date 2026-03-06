@@ -18,7 +18,7 @@ class EnterpriseLogicDatabaseArgs {
   /// [alias] Logical Library alias.
   /// [databaseIds] Sub-Database ID
   /// [logicDatabaseId] The ID of the logical Library.
-  EnterpriseLogicDatabaseArgs({
+  const EnterpriseLogicDatabaseArgs({
     required this.alias,
     required this.databaseIds,
     this.logicDatabaseId,

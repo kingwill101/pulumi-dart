@@ -30,7 +30,7 @@ class GetResourceGroupResult {
   /// [properties] The resource group properties.
   /// [tags] The tags attached to the resource group.
   /// [type] The type of the resource group.
-  GetResourceGroupResult({
+  const GetResourceGroupResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

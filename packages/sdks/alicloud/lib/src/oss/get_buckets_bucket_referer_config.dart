@@ -11,7 +11,7 @@ class GetBucketsBucketRefererConfig {
   /// Creates a new [GetBucketsBucketRefererConfig].
   /// [allowEmpty] Indicate whether the access request referer field can be empty.
   /// [referers] Referer access whitelist.
-  GetBucketsBucketRefererConfig({
+  const GetBucketsBucketRefererConfig({
     required this.allowEmpty,
     required this.referers,
   });

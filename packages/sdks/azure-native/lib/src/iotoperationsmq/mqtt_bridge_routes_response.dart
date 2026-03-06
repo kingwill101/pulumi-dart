@@ -25,7 +25,7 @@ class MqttBridgeRoutesResponse {
   /// [sharedSubscription] Shared subscription topic details.
   /// [source] Source topic of the route.
   /// [target] Target topic of the route. Ignore if same as source
-  MqttBridgeRoutesResponse({
+  const MqttBridgeRoutesResponse({
     required this.direction,
     required this.name,
     this.qos,

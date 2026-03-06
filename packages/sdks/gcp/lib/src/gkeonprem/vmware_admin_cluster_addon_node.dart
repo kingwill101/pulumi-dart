@@ -10,7 +10,7 @@ class VmwareAdminClusterAddonNode {
 
   /// Creates a new [VmwareAdminClusterAddonNode].
   /// [autoResizeConfig] Specifies auto resize config.
-  VmwareAdminClusterAddonNode({
+  const VmwareAdminClusterAddonNode({
     this.autoResizeConfig,
   });
 

@@ -22,7 +22,7 @@ class RoutingPropertiesResponse {
   /// [enrichments] The list of user-provided enrichments that the IoT hub applies to messages to be delivered to built-in and custom endpoints. See: https://aka.ms/telemetryoneventgrid
   /// [fallbackRoute] The properties of the route that is used as a fall-back route when none of the conditions specified in the 'routes' section are met. This is an optional parameter. When this property is not present in the template, the fallback route is disabled by default.
   /// [routes] The list of user-provided routing rules that the IoT hub uses to route messages to built-in and custom endpoints. A maximum of 100 routing rules are allowed for paid hubs and a maximum of 5 routing rules are allowed for free hubs.
-  RoutingPropertiesResponse({
+  const RoutingPropertiesResponse({
     this.endpoints,
     this.enrichments,
     this.fallbackRoute,

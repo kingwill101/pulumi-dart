@@ -35,7 +35,7 @@ class GetVirtualNodesArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNodeName] The name of the virtual node.
   /// [vswitchId] Optional.
-  GetVirtualNodesArgs({
+  const GetVirtualNodesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

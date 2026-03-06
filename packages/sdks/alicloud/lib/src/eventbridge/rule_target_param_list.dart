@@ -31,7 +31,7 @@ class RuleTargetParamList {
   /// [resourceKey] The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
   /// [template] The template of the event target parameter.
   /// [value] The value of the event target parameter.
-  RuleTargetParamList({
+  const RuleTargetParamList({
     required this.form,
     required this.resourceKey,
     this.template,

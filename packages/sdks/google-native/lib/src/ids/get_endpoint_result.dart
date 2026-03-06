@@ -41,7 +41,7 @@ class GetEndpointResult {
   /// [threatExceptions] List of threat IDs to be excepted from generating alerts.
   /// [trafficLogs] Whether the endpoint should report traffic logs in addition to threat logs.
   /// [updateTime] The update time timestamp.
-  GetEndpointResult({
+  const GetEndpointResult({
     required this.createTime,
     required this.description,
     required this.endpointForwardingRule,

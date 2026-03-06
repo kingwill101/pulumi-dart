@@ -10,7 +10,7 @@ class LatencyDistributionResponseNetworkmanagementV1beta1 {
 
   /// Creates a new [LatencyDistributionResponseNetworkmanagementV1beta1].
   /// [latencyPercentiles] Representative latency percentiles.
-  LatencyDistributionResponseNetworkmanagementV1beta1({
+  const LatencyDistributionResponseNetworkmanagementV1beta1({
     required this.latencyPercentiles,
   });
 

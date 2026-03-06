@@ -14,7 +14,7 @@ class DashboardPartsResponse {
   /// Creates a new [DashboardPartsResponse].
   /// [metadata] The dashboard's part metadata.
   /// [position] The dashboard's part position.
-  DashboardPartsResponse({
+  const DashboardPartsResponse({
     this.metadata,
     required this.position,
   });

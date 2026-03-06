@@ -28,7 +28,7 @@ class GetResourceGroupsResult {
   /// [names] A list of resource group identifiers.
   /// [outputFile] Optional.
   /// [status] The status of the regional resource group.
-  GetResourceGroupsResult({
+  const GetResourceGroupsResult({
     this.enableDetails,
     required this.groups,
     required this.id,

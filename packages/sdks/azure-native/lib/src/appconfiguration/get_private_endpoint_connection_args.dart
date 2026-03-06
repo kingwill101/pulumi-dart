@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [configStoreName] The name of the configuration store.
   /// [privateEndpointConnectionName] Private endpoint connection name
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.configStoreName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

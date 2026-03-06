@@ -11,7 +11,7 @@ class ClusterNodePoolNodeConfigSandboxConfig {
 
   /// Creates a new [ClusterNodePoolNodeConfigSandboxConfig].
   /// [sandboxType] Which sandbox to use for pods in the node pool.
-  ClusterNodePoolNodeConfigSandboxConfig({
+  const ClusterNodePoolNodeConfigSandboxConfig({
     required this.sandboxType,
   });
 

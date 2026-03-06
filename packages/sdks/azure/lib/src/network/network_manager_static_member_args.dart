@@ -20,7 +20,7 @@ class NetworkManagerStaticMemberArgs {
   /// [name] Specifies the name which should be used for this Network Manager Static Member. Changing this forces a new Network Manager Static Member to be created.
   /// [networkGroupId] Specifies the ID of the Network Manager Group. Changing this forces a new Network Manager Static Member to be created.
   /// [targetVirtualNetworkId] Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
-  NetworkManagerStaticMemberArgs({
+  const NetworkManagerStaticMemberArgs({
     this.name,
     required this.networkGroupId,
     required this.targetVirtualNetworkId,

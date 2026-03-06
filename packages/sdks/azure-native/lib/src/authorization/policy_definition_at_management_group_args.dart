@@ -43,7 +43,7 @@ class PolicyDefinitionAtManagementGroupArgs {
   /// [policyType] The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   /// [version] The policy definition version in #.#.# format.
   /// [versions] A list of available versions for this policy definition.
-  PolicyDefinitionAtManagementGroupArgs({
+  const PolicyDefinitionAtManagementGroupArgs({
     this.description,
     this.displayName,
     required this.managementGroupId,

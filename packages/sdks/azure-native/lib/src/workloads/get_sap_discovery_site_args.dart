@@ -15,7 +15,7 @@ class GetSapDiscoverySiteArgs {
   /// Creates a new [GetSapDiscoverySiteArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapDiscoverySiteName] The name of the discovery site resource for SAP Migration.
-  GetSapDiscoverySiteArgs({
+  const GetSapDiscoverySiteArgs({
     required this.resourceGroupName,
     required this.sapDiscoverySiteName,
   });

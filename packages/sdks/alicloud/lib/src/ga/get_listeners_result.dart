@@ -27,7 +27,7 @@ class GetListenersResult {
   /// [names] A list of Listener names.
   /// [outputFile] Optional.
   /// [status] The status of the listener.
-  GetListenersResult({
+  const GetListenersResult({
     required this.acceleratorId,
     required this.id,
     required this.ids,

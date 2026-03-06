@@ -77,7 +77,7 @@ class GetImageResult {
   /// [tags] The tags list of the image.
   /// [updatedAt] The date the image was last updated.
   /// [visibility] Optional.
-  GetImageResult({
+  const GetImageResult({
     required this.checksum,
     this.containerFormat,
     required this.createdAt,

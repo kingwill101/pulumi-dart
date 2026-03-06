@@ -9,7 +9,7 @@ class ShieldedNodesContainerV1beta1 {
 
   /// Creates a new [ShieldedNodesContainerV1beta1].
   /// [enabled] Whether Shielded Nodes features are enabled on all nodes in this cluster.
-  ShieldedNodesContainerV1beta1({
+  const ShieldedNodesContainerV1beta1({
     this.enabled,
   });
 

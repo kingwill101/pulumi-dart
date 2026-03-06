@@ -13,7 +13,7 @@ class ProjectSecondarySourceAuth {
   /// Creates a new [ProjectSecondarySourceAuth].
   /// [resource] The ARN of the resource to use for authentication. For type `CODECONNECTIONS` this should be
   /// [type] The type of authentication AWS CodeBuild should perform. Valid values are `CODECONNECTIONS` and
-  ProjectSecondarySourceAuth({
+  const ProjectSecondarySourceAuth({
     required this.resource,
     required this.type,
   });

@@ -16,7 +16,7 @@ class GetJobTemplateTemplateContainerStartupProbeHttpGet {
   /// [httpHeaders] Custom headers to set in the request. HTTP allows repeated headers.
   /// [path] Path to access on the HTTP server. If set, it should not be empty string.
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
-  GetJobTemplateTemplateContainerStartupProbeHttpGet({
+  const GetJobTemplateTemplateContainerStartupProbeHttpGet({
     required this.httpHeaders,
     required this.path,
     required this.port,

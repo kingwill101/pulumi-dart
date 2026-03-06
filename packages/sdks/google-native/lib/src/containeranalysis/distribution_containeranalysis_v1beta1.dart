@@ -26,7 +26,7 @@ class DistributionContaineranalysisV1beta1 {
   /// [latestVersion] The latest available version of this package in this distribution channel.
   /// [maintainer] A freeform string denoting the maintainer of this package.
   /// [url] The distribution channel-specific homepage for this package.
-  DistributionContaineranalysisV1beta1({
+  const DistributionContaineranalysisV1beta1({
     this.architecture,
     required this.cpeUri,
     this.description,

@@ -31,7 +31,7 @@ class VirtualApplianceSiteArgs {
   /// [o365Policy] Office 365 Policy.
   /// [resourceGroupName] The name of the resource group.
   /// [siteName] The name of the site.
-  VirtualApplianceSiteArgs({
+  const VirtualApplianceSiteArgs({
     this.addressPrefix,
     this.id,
     this.name,

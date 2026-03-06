@@ -9,7 +9,7 @@ class VirtualNodeSpecLoggingAccessLog {
 
   /// Creates a new [VirtualNodeSpecLoggingAccessLog].
   /// [file] File object to send virtual node access logs to.
-  VirtualNodeSpecLoggingAccessLog({
+  const VirtualNodeSpecLoggingAccessLog({
     this.file,
   });
 

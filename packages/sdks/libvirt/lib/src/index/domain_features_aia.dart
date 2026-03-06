@@ -8,7 +8,7 @@ class DomainFeaturesAia {
 
   /// Creates a new [DomainFeaturesAia].
   /// [value] Sets the value for AIA support, which may define its operational state or level of functionality.
-  DomainFeaturesAia({
+  const DomainFeaturesAia({
     required this.value,
   });
 

@@ -14,7 +14,7 @@ class GetKMSKeyRingResult {
   /// [location] Required.
   /// [name] Required.
   /// [project] Optional.
-  GetKMSKeyRingResult({
+  const GetKMSKeyRingResult({
     required this.id,
     required this.location,
     required this.name,

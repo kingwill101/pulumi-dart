@@ -14,7 +14,7 @@ class GetDatabaseInstancesInstanceSettingLocationPreference {
   /// [followGaeApplication] A Google App Engine application whose zone to remain in. Must be in the same region as this instance.
   /// [secondaryZone] The preferred Compute Engine zone for the secondary/failover
   /// [zone] To filter out the Cloud SQL instances which are located in the specified zone. This zone refers to the Compute Engine zone that the instance is currently serving from.
-  GetDatabaseInstancesInstanceSettingLocationPreference({
+  const GetDatabaseInstancesInstanceSettingLocationPreference({
     required this.followGaeApplication,
     required this.secondaryZone,
     required this.zone,

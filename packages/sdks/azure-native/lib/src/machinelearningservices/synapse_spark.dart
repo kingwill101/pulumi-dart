@@ -25,7 +25,7 @@ class SynapseSpark {
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [properties] Optional.
   /// [resourceId] ARM resource id of the underlying compute
-  SynapseSpark({
+  const SynapseSpark({
     this.computeLocation,
     required this.computeType,
     this.description,

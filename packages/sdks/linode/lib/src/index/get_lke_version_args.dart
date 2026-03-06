@@ -15,7 +15,7 @@ class GetLkeVersionArgs {
   /// Creates a new [GetLkeVersionArgs].
   /// [id] The unique ID of this Linode LKE Version.
   /// [tier] The tier (`standard` or `enterprise`) of Linode LKE Version to fetch.
-  GetLkeVersionArgs({
+  const GetLkeVersionArgs({
     required this.id,
     this.tier,
   });

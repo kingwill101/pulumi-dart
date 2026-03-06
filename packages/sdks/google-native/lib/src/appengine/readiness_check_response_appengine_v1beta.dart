@@ -27,7 +27,7 @@ class ReadinessCheckResponseAppengineV1beta {
   /// [path] The request path.
   /// [successThreshold] Number of consecutive successful checks required before receiving traffic.
   /// [timeout] Time before the check is considered failed.
-  ReadinessCheckResponseAppengineV1beta({
+  const ReadinessCheckResponseAppengineV1beta({
     required this.appStartTimeout,
     required this.checkInterval,
     required this.failureThreshold,

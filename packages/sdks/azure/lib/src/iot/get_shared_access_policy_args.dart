@@ -18,7 +18,7 @@ class GetSharedAccessPolicyArgs {
   /// [iothubName] The name of the IoTHub to which this Shared Access Policy belongs.
   /// [name] Specifies the name of the IotHub Shared Access Policy resource.
   /// [resourceGroupName] The name of the resource group under which the IotHub Shared Access Policy resource has to be created.
-  GetSharedAccessPolicyArgs({
+  const GetSharedAccessPolicyArgs({
     required this.iothubName,
     required this.name,
     required this.resourceGroupName,

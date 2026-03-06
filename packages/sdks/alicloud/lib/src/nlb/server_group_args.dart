@@ -72,7 +72,7 @@ class ServerGroupArgs {
   /// [serverGroupType] The type of server group. Valid values:
   /// [tags] Label.
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the server group belongs.
-  ServerGroupArgs({
+  const ServerGroupArgs({
     this.addressIpVersion,
     this.anyPortEnabled,
     this.connectionDrain,

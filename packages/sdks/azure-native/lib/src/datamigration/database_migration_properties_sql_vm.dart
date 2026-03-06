@@ -39,7 +39,7 @@ class DatabaseMigrationPropertiesSqlVm {
   /// [sourceDatabaseName] Name of the source database.
   /// [sourceSqlConnection] Source SQL Server connection details.
   /// [targetDatabaseCollation] Database collation to be used for the target database.
-  DatabaseMigrationPropertiesSqlVm({
+  const DatabaseMigrationPropertiesSqlVm({
     this.backupConfiguration,
     required this.kind,
     this.migrationOperationId,

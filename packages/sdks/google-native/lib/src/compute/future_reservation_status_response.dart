@@ -28,7 +28,7 @@ class FutureReservationStatusResponse {
   /// [lockTime] Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time.
   /// [procurementStatus] Current state of this Future Reservation
   /// [specificSkuProperties] Required.
-  FutureReservationStatusResponse({
+  const FutureReservationStatusResponse({
     required this.amendmentStatus,
     required this.autoCreatedReservations,
     required this.fulfilledCount,

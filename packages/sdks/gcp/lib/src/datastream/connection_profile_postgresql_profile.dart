@@ -29,7 +29,7 @@ class ConnectionProfilePostgresqlProfile {
   /// [secretManagerStoredPassword] A reference to a Secret Manager resource name storing the user's password.
   /// [sslConfig] SSL configuration for the PostgreSQL connection.
   /// [username] Username for the PostgreSQL connection.
-  ConnectionProfilePostgresqlProfile({
+  const ConnectionProfilePostgresqlProfile({
     required this.database,
     required this.hostname,
     this.password,

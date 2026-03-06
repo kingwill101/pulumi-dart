@@ -16,7 +16,7 @@ class ClassificationExportConfigurationS3Destination {
   /// [bucketName] The Amazon S3 bucket name in which Amazon Macie exports the data classification results.
   /// [keyPrefix] The object key for the bucket in which Amazon Macie exports the data classification results.
   /// [kmsKeyArn] Amazon Resource Name (ARN) of the KMS key to be used to encrypt the data.
-  ClassificationExportConfigurationS3Destination({
+  const ClassificationExportConfigurationS3Destination({
     required this.bucketName,
     this.keyPrefix,
     required this.kmsKeyArn,

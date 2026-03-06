@@ -16,7 +16,7 @@ class AWSAuthModel {
   /// [externalId] AWS STS assume role external ID. This is used to prevent the confused deputy problem: 'https://docs.aws.amazon.com/IAM/latest/UserGuide/confused-deputy.html'
   /// [roleArn] AWS STS assume role ARN
   /// [type] Type of paging
-  AWSAuthModel({
+  const AWSAuthModel({
     this.externalId,
     required this.roleArn,
     required this.type,

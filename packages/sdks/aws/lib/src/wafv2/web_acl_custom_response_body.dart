@@ -14,7 +14,7 @@ class WebAclCustomResponseBody {
   /// [content] Payload of the custom response.
   /// [contentType] Type of content in the payload that you are defining in the `content` argument. Valid values are `TEXT_PLAIN`, `TEXT_HTML`, or `APPLICATION_JSON`.
   /// [key] Unique key identifying the custom response body. This is referenced by the `custom_response_body_key` argument in the `custom_response` block.
-  WebAclCustomResponseBody({
+  const WebAclCustomResponseBody({
     required this.content,
     required this.contentType,
     required this.key,

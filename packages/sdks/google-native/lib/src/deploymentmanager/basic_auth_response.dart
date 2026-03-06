@@ -10,7 +10,7 @@ class BasicAuthResponse {
   /// Creates a new [BasicAuthResponse].
   /// [password] Required.
   /// [user] Required.
-  BasicAuthResponse({
+  const BasicAuthResponse({
     required this.password,
     required this.user,
   });

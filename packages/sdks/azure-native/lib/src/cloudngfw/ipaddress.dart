@@ -12,7 +12,7 @@ class IPAddress {
   /// Creates a new [IPAddress].
   /// [address] Address value
   /// [resourceId] Resource Id
-  IPAddress({
+  const IPAddress({
     this.address,
     this.resourceId,
   });

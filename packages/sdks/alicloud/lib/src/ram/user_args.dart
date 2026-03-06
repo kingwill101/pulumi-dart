@@ -27,7 +27,7 @@ class UserArgs {
   /// [force] This parameter is used for resource destroy. Default value: `false`.
   /// [mobile] Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
   /// [name] Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin with a hyphen.
-  UserArgs({
+  const UserArgs({
     this.comments,
     this.displayName,
     this.email,

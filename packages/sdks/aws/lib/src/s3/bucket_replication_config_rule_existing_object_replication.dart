@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleExistingObjectReplication {
 
   /// Creates a new [BucketReplicationConfigRuleExistingObjectReplication].
   /// [status] Whether the existing objects should be replicated. Either `"Enabled"` or `"Disabled"`.
-  BucketReplicationConfigRuleExistingObjectReplication({
+  const BucketReplicationConfigRuleExistingObjectReplication({
     required this.status,
   });
 

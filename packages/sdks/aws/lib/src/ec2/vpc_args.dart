@@ -51,7 +51,7 @@ class VpcArgs {
   /// [ipv6NetmaskLength] Netmask length to request from IPAM Pool. Conflicts with `ipv6_cidr_block`. This can be omitted if IPAM pool as a `allocation_default_netmask_length` set. Valid values are from `44` to `60` in increments of 4.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  VpcArgs({
+  const VpcArgs({
     this.assignGeneratedIpv6CidrBlock,
     this.cidrBlock,
     this.enableDnsHostnames,

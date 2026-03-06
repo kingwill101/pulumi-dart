@@ -18,7 +18,7 @@ class RegexMatchSetRegexMatchTuple {
   /// [fieldToMatch] The part of a web request that you want to search, such as a specified header or a query string.
   /// [regexPatternSetId] The ID of a Regex Pattern Set.
   /// [textTransformation] Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  RegexMatchSetRegexMatchTuple({
+  const RegexMatchSetRegexMatchTuple({
     required this.fieldToMatch,
     required this.regexPatternSetId,
     required this.textTransformation,

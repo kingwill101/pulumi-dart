@@ -23,7 +23,7 @@ class GetSslVpnClientCertsCert {
   /// [name] The name of the SSL-VPN client certificate.
   /// [sslVpnServerId] Use the SSL-VPN server ID as the search key.
   /// [status] The status of the client certificate. valid value:expiring-soon, normal, expired.
-  GetSslVpnClientCertsCert({
+  const GetSslVpnClientCertsCert({
     required this.createTime,
     required this.endTime,
     required this.id,

@@ -13,7 +13,7 @@ class ManagedDiskEncryptionSettings {
   /// Creates a new [ManagedDiskEncryptionSettings].
   /// [diskEncryptionKey] A `disk_encryption_key` block as defined above.
   /// [keyEncryptionKey] A `key_encryption_key` block as defined below.
-  ManagedDiskEncryptionSettings({
+  const ManagedDiskEncryptionSettings({
     required this.diskEncryptionKey,
     this.keyEncryptionKey,
   });

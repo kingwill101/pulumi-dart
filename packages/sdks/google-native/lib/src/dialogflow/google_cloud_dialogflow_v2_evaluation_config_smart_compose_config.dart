@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig {
   /// Creates a new [GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig].
   /// [allowlistDocument] The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart compose model.
   /// [maxResultCount] The model to be evaluated can return multiple results with confidence score on each query. These results will be sorted by the descending order of the scores and we only keep the first max_result_count results as the final results to evaluate.
-  GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig({
+  const GoogleCloudDialogflowV2EvaluationConfigSmartComposeConfig({
     this.allowlistDocument,
     required this.maxResultCount,
   });

@@ -24,7 +24,7 @@ class GetImagesResult {
   /// [region] Required.
   /// [registryId] AWS account ID associated with the public registry.
   /// [repositoryName] Name of the repository.
-  GetImagesResult({
+  const GetImagesResult({
     required this.id,
     this.imageIds,
     required this.images,

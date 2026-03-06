@@ -39,7 +39,7 @@ class ConsentStoreIamMemberArgs {
   /// [dataset] Identifies the dataset addressed by this request. Must be in the format
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  ConsentStoreIamMemberArgs({
+  const ConsentStoreIamMemberArgs({
     this.condition,
     required this.consentStoreId,
     required this.dataset,

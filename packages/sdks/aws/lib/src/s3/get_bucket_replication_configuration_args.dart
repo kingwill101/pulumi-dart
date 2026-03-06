@@ -15,7 +15,7 @@ class GetBucketReplicationConfigurationArgs {
   /// Creates a new [GetBucketReplicationConfigurationArgs].
   /// [bucket] The name of the bucket to get the replication configuration for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBucketReplicationConfigurationArgs({
+  const GetBucketReplicationConfigurationArgs({
     required this.bucket,
     this.region,
   });

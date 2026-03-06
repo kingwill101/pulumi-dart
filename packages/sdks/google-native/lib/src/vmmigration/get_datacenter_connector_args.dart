@@ -17,7 +17,7 @@ class GetDatacenterConnectorArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetDatacenterConnectorArgs({
+  const GetDatacenterConnectorArgs({
     required this.datacenterConnectorId,
     required this.location,
     this.project,

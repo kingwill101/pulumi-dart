@@ -17,7 +17,7 @@ class GetNetworksResult {
   /// [networks] The list of networks in the specified project.
   /// [project] The project name being queried.
   /// [selfLink] The URI of the resource.
-  GetNetworksResult({
+  const GetNetworksResult({
     required this.id,
     required this.networks,
     this.project,

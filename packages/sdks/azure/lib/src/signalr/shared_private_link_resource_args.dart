@@ -26,7 +26,7 @@ class SharedPrivateLinkResourceArgs {
   /// [signalrServiceId] The id of the Signalr Service. Changing this forces a new resource to be created.
   /// [subResourceName] The sub resource name which the Signalr Private Endpoint can connect to. Possible values are `sites`, `vault`. Changing this forces a new resource to be created.
   /// [targetResourceId] The ID of the Shared Private Link Enabled Remote Resource which this Signalr Private Endpoint should be connected to. Changing this forces a new resource to be created.
-  SharedPrivateLinkResourceArgs({
+  const SharedPrivateLinkResourceArgs({
     this.name,
     this.requestMessage,
     required this.signalrServiceId,

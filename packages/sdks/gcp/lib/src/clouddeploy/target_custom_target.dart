@@ -8,7 +8,7 @@ class TargetCustomTarget {
 
   /// Creates a new [TargetCustomTarget].
   /// [customTargetType] Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`.
-  TargetCustomTarget({
+  const TargetCustomTarget({
     required this.customTargetType,
   });
 

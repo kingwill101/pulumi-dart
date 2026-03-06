@@ -36,7 +36,7 @@ class DomainDevicesControllerDriver {
   /// [packed] Enables or disables the packing of requests for the controller driver to improve efficiency.
   /// [pagePerVq] Configures whether to allocate a separate page for each Virtqueue (VQ) in the controller driver.
   /// [queues] Sets the number of queues that can be used by the controller driver.
-  DomainDevicesControllerDriver({
+  const DomainDevicesControllerDriver({
     this.ats,
     this.cmdPerLun,
     this.ioEventFd,

@@ -53,7 +53,7 @@ class GatewayArgs {
   /// [vswitch] The virtual switch associated with the Gateway. See `vswitch` below.
   /// [zoneConfig] Availability Zone Configuration See `zone_config` below.
   /// [zones] The List of zones associated with the Gateway. See `zones` below.
-  GatewayArgs({
+  const GatewayArgs({
     this.gatewayName,
     this.gatewayType,
     this.logConfig,

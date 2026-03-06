@@ -21,7 +21,7 @@ class GetRamDirectoriesArgs {
   /// [nameRegex] A regex string to filter results by Ram Directory name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
-  GetRamDirectoriesArgs({
+  const GetRamDirectoriesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

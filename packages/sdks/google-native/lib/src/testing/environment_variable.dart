@@ -12,7 +12,7 @@ class EnvironmentVariable {
   /// Creates a new [EnvironmentVariable].
   /// [key] Key for the environment variable.
   /// [value] Value for the environment variable.
-  EnvironmentVariable({
+  const EnvironmentVariable({
     this.key,
     this.value,
   });

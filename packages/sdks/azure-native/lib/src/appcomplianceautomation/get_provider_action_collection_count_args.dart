@@ -12,7 +12,7 @@ class GetProviderActionCollectionCountArgs {
 
   /// Creates a new [GetProviderActionCollectionCountArgs].
   /// [type] The resource type.
-  GetProviderActionCollectionCountArgs({
+  const GetProviderActionCollectionCountArgs({
     this.type,
   });
 

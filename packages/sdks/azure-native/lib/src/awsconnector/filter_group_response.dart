@@ -10,7 +10,7 @@ class FilterGroupResponse {
 
   /// Creates a new [FilterGroupResponse].
   /// [webhookFilter] Property webhookFilter
-  FilterGroupResponse({
+  const FilterGroupResponse({
     this.webhookFilter,
   });
 

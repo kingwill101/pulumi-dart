@@ -11,7 +11,7 @@ class ThreeTierVirtualInstanceIdentity {
   /// Creates a new [ThreeTierVirtualInstanceIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this SAP Three Tier Virtual Instance.
   /// [type] The type of Managed Service Identity that should be configured on this SAP Three Tier Virtual Instance. Only possible value is `UserAssigned`.
-  ThreeTierVirtualInstanceIdentity({
+  const ThreeTierVirtualInstanceIdentity({
     required this.identityIds,
     required this.type,
   });

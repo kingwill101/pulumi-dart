@@ -57,7 +57,7 @@ class EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse {
   /// [triggerName] Optional. Name of the trigger This is added to identify the type of trigger. This is avoid the logic on triggerId to identify the trigger_type and push the same to monitoring.
   /// [triggerNumber] A number to uniquely identify each trigger config within the workflow on UI.
   /// [triggerType] Required.
-  EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse({
+  const EnterpriseCrmFrontendsEventbusProtoTriggerConfigResponse({
     required this.alertConfig,
     required this.cloudSchedulerConfig,
     required this.description,

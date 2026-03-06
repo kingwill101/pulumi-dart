@@ -24,7 +24,7 @@ class PortBinding {
   /// [vifDetails] A map of JSON strings containing additional
   /// [vifType] The VNIC type of the port binding.
   /// [vnicType] VNIC type for the port. Can either be `direct`,
-  PortBinding({
+  const PortBinding({
     this.hostId,
     this.profile,
     this.vifDetails,

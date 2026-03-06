@@ -14,7 +14,7 @@ class MessagingEndpoints {
   /// Creates a new [MessagingEndpoints].
   /// [inbound] Set of endpoints to connect to the device.
   /// [outbound] Set of endpoints a device can connect to.
-  MessagingEndpoints({
+  const MessagingEndpoints({
     this.inbound,
     this.outbound,
   });

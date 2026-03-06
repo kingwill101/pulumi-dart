@@ -27,7 +27,7 @@ class HealthAlertResponse {
   /// [raised] Health Alert Raised DateTime
   /// [resolutionUri] Health Alert TSG Link
   /// [severity] Health Alert Severity
-  HealthAlertResponse({
+  const HealthAlertResponse({
     required this.id,
     required this.issue,
     required this.lastDetected,

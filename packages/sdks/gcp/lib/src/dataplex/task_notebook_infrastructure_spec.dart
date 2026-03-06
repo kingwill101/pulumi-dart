@@ -20,7 +20,7 @@ class TaskNotebookInfrastructureSpec {
   /// [batch] Compute resources needed for a Task when using Dataproc Serverless.
   /// [containerImage] Container Image Runtime Configuration.
   /// [vpcNetwork] Vpc network.
-  TaskNotebookInfrastructureSpec({
+  const TaskNotebookInfrastructureSpec({
     this.batch,
     this.containerImage,
     this.vpcNetwork,

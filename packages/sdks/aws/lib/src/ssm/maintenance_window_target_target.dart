@@ -9,7 +9,7 @@ class MaintenanceWindowTargetTarget {
   /// Creates a new [MaintenanceWindowTargetTarget].
   /// [key] Required.
   /// [values] Required.
-  MaintenanceWindowTargetTarget({
+  const MaintenanceWindowTargetTarget({
     required this.key,
     required this.values,
   });

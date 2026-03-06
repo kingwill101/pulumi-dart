@@ -12,7 +12,7 @@ class BusinessProcessReferenceResponse {
   /// Creates a new [BusinessProcessReferenceResponse].
   /// [name] The business process name.
   /// [version] The business process version.
-  BusinessProcessReferenceResponse({
+  const BusinessProcessReferenceResponse({
     this.name,
     this.version,
   });

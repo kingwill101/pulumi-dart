@@ -23,7 +23,7 @@ class GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode {
   /// [statusCodeRange] The status code or range for this rule.
   /// [subStatus] The Request Sub Status of the Status Code.
   /// [win32StatusCode] The Win32 Status Code of the Request.
-  GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode({
+  const GetLinuxWebAppSiteConfigAutoHealSettingTriggerStatusCode({
     required this.count,
     required this.interval,
     required this.path,

@@ -11,7 +11,7 @@ class ReadOnlyInstanceParameter {
   /// Creates a new [ReadOnlyInstanceParameter].
   /// [name] The parameter name.
   /// [value] The parameter value.
-  ReadOnlyInstanceParameter({
+  const ReadOnlyInstanceParameter({
     required this.name,
     required this.value,
   });

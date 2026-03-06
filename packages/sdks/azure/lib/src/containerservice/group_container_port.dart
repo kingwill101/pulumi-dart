@@ -13,7 +13,7 @@ class GroupContainerPort {
   /// Creates a new [GroupContainerPort].
   /// [port] The port number the container will expose. Changing this forces a new resource to be created.
   /// [protocol] The network protocol associated with port. Possible values are `TCP` & `UDP`. Changing this forces a new resource to be created. Defaults to `TCP`.
-  GroupContainerPort({
+  const GroupContainerPort({
     this.port,
     this.protocol,
   });

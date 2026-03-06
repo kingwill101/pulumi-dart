@@ -13,7 +13,7 @@ class PublicKeyCertificate {
   /// Creates a new [PublicKeyCertificate].
   /// [certificate] The certificate data.
   /// [format] The certificate format.
-  PublicKeyCertificate({
+  const PublicKeyCertificate({
     this.certificate,
     this.format,
   });

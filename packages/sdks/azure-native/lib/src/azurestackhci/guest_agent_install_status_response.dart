@@ -22,7 +22,7 @@ class GuestAgentInstallStatusResponse {
   /// [lastStatusChange] The time of the last status change.
   /// [status] The installation status of the hybrid machine agent installation.
   /// [vmUuid] Specifies the VM's unique SMBIOS ID.
-  GuestAgentInstallStatusResponse({
+  const GuestAgentInstallStatusResponse({
     required this.agentVersion,
     required this.errorDetails,
     required this.lastStatusChange,

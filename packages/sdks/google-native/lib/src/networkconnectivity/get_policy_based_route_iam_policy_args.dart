@@ -15,7 +15,7 @@ class GetPolicyBasedRouteIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [policyBasedRouteId] Required.
   /// [project] Optional.
-  GetPolicyBasedRouteIamPolicyArgs({
+  const GetPolicyBasedRouteIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     required this.policyBasedRouteId,
     this.project,

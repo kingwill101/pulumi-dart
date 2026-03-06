@@ -25,7 +25,7 @@ class GetBackupJobsResult {
   /// [sortDirection] Optional.
   /// [sourceType] Required.
   /// [status] Optional.
-  GetBackupJobsResult({
+  const GetBackupJobsResult({
     this.filters,
     required this.id,
     required this.ids,

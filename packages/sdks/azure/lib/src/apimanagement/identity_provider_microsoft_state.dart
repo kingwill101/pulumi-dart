@@ -18,7 +18,7 @@ class IdentityProviderMicrosoftState {
   /// [clientId] Client Id of the Azure AD Application.
   /// [clientSecret] Client secret of the Azure AD Application.
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
-  IdentityProviderMicrosoftState({
+  const IdentityProviderMicrosoftState({
     this.apiManagementName,
     this.clientId,
     this.clientSecret,

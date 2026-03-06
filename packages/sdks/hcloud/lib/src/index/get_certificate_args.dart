@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [id] ID of the certificate.
   /// [name] Name of the certificate.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetCertificateArgs({
+  const GetCertificateArgs({
     this.id,
     this.name,
     this.withSelector,

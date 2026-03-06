@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsEc2InstanceSubnetId {
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceSubnetId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsEc2InstanceSubnetId({
+  const InsightFiltersResourceAwsEc2InstanceSubnetId({
     required this.comparison,
     required this.value,
   });

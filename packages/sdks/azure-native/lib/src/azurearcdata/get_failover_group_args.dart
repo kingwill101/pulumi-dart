@@ -18,7 +18,7 @@ class GetFailoverGroupArgs {
   /// [failoverGroupName] The name of the Failover Group
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlManagedInstanceName] Name of SQL Managed Instance
-  GetFailoverGroupArgs({
+  const GetFailoverGroupArgs({
     required this.failoverGroupName,
     required this.resourceGroupName,
     required this.sqlManagedInstanceName,

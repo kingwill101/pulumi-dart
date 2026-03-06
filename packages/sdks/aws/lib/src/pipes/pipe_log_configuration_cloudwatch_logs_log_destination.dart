@@ -8,7 +8,7 @@ class PipeLogConfigurationCloudwatchLogsLogDestination {
 
   /// Creates a new [PipeLogConfigurationCloudwatchLogsLogDestination].
   /// [logGroupArn] Amazon Web Services Resource Name (ARN) for the CloudWatch log group to which EventBridge sends the log records.
-  PipeLogConfigurationCloudwatchLogsLogDestination({
+  const PipeLogConfigurationCloudwatchLogsLogDestination({
     required this.logGroupArn,
   });
 

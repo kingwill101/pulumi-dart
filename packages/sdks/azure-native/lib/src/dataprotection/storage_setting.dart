@@ -12,7 +12,7 @@ class StorageSetting {
   /// Creates a new [StorageSetting].
   /// [datastoreType] Gets or sets the type of the datastore.
   /// [type] Gets or sets the type.
-  StorageSetting({
+  const StorageSetting({
     this.datastoreType,
     this.type,
   });

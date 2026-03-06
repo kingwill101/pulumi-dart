@@ -15,7 +15,7 @@ class GetEntitlementPrivilegedAccessGcpIamAccess {
   /// [resource] Name of the resource.
   /// [resourceType] The type of this resource.
   /// [roleBindings] Role bindings to be created on successful grant.
-  GetEntitlementPrivilegedAccessGcpIamAccess({
+  const GetEntitlementPrivilegedAccessGcpIamAccess({
     required this.resource,
     required this.resourceType,
     required this.roleBindings,

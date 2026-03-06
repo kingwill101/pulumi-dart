@@ -30,7 +30,7 @@ class ConnectorVersionInfraConfigResponse {
   /// [resourceLimits] System resource limits.
   /// [resourceRequests] System resource requests.
   /// [sharedDeployment] The name of shared connector deployment.
-  ConnectorVersionInfraConfigResponse({
+  const ConnectorVersionInfraConfigResponse({
     required this.connectionRatelimitWindowSeconds,
     required this.hpaConfig,
     required this.internalclientRatelimitThreshold,

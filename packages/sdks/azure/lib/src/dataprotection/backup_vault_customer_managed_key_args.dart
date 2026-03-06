@@ -15,7 +15,7 @@ class BackupVaultCustomerManagedKeyArgs {
   /// Creates a new [BackupVaultCustomerManagedKeyArgs].
   /// [dataProtectionBackupVaultId] The ID of the Backup Vault. Changing this forces a new resource to be created.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Backup Vault.
-  BackupVaultCustomerManagedKeyArgs({
+  const BackupVaultCustomerManagedKeyArgs({
     required this.dataProtectionBackupVaultId,
     required this.keyVaultKeyId,
   });

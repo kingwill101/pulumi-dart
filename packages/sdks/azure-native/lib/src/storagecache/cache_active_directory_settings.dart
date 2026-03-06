@@ -25,7 +25,7 @@ class CacheActiveDirectorySettings {
   /// [domainNetBiosName] The Active Directory domain's NetBIOS name.
   /// [primaryDnsIpAddress] Primary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
   /// [secondaryDnsIpAddress] Secondary DNS IP address used to resolve the Active Directory domain controller's fully qualified domain name.
-  CacheActiveDirectorySettings({
+  const CacheActiveDirectorySettings({
     required this.cacheNetBiosName,
     this.credentials,
     required this.domainName,

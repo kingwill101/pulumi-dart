@@ -21,7 +21,7 @@ class PrivateLocationArgs {
   /// [description] The private location description.
   /// [name] The name of the private location.
   /// [verifiedScriptExecution] The private location requires a password to edit if value is true. Defaults to `false`
-  PrivateLocationArgs({
+  const PrivateLocationArgs({
     this.accountId,
     required this.description,
     this.name,

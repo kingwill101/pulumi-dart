@@ -85,7 +85,7 @@ class RestorePlanRestoreConfig {
   /// [transformationRules] A list of transformation rules to be applied against Kubernetes
   /// [volumeDataRestorePolicy] Specifies the mechanism to be used to restore volume data.
   /// [volumeDataRestorePolicyBindings] A table that binds volumes by their scope to a restore policy. Bindings
-  RestorePlanRestoreConfig({
+  const RestorePlanRestoreConfig({
     this.allNamespaces,
     this.clusterResourceConflictPolicy,
     this.clusterResourceRestoreScope,

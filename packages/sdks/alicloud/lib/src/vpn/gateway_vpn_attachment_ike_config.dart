@@ -34,7 +34,7 @@ class GatewayVpnAttachmentIkeConfig {
   /// [localId] The identifier on the Alibaba Cloud side of the IPsec connection. The length is limited to 100 characters. The default value is leftId-not-exist
   /// [psk] A pre-shared key for authentication between the VPN gateway and the local data center. The key length is 1~100 characters.
   /// [remoteId] The identifier of the IPsec connection to the local data center. The length is limited to 100 characters. The default value is the IP address of the user gateway.
-  GatewayVpnAttachmentIkeConfig({
+  const GatewayVpnAttachmentIkeConfig({
     this.ikeAuthAlg,
     this.ikeEncAlg,
     this.ikeLifetime,

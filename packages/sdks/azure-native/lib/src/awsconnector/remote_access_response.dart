@@ -12,7 +12,7 @@ class RemoteAccessResponse {
   /// Creates a new [RemoteAccessResponse].
   /// [ec2SshKey] Property ec2SshKey
   /// [sourceSecurityGroups] Property sourceSecurityGroups
-  RemoteAccessResponse({
+  const RemoteAccessResponse({
     this.ec2SshKey,
     this.sourceSecurityGroups,
   });

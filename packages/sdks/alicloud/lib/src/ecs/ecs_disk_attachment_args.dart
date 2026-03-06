@@ -27,7 +27,7 @@ class EcsDiskAttachmentArgs {
   /// [instanceId] ID of the Instance to attach to.
   /// [keyPairName] The name of key pair
   /// [password] When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
-  EcsDiskAttachmentArgs({
+  const EcsDiskAttachmentArgs({
     this.bootable,
     this.deleteWithInstance,
     required this.diskId,

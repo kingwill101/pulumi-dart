@@ -11,7 +11,7 @@ class GetBudgetResourceGroupTimePeriod {
   /// Creates a new [GetBudgetResourceGroupTimePeriod].
   /// [endDate] The end date for the budget.
   /// [startDate] The start date for the budget.
-  GetBudgetResourceGroupTimePeriod({
+  const GetBudgetResourceGroupTimePeriod({
     required this.endDate,
     required this.startDate,
   });

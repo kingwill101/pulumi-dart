@@ -30,7 +30,7 @@ class WorkflowTemplateJobHadoopJob {
   /// [mainClass] The name of the driver's main class. The jar file containing the class must be in the default CLASSPATH or specified in `jar_file_uris`.
   /// [mainJarFileUri] The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar'
   /// [properties] A mapping of property names to values, used to configure Hadoop. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/hadoop/conf/*-site and classes in user code.
-  WorkflowTemplateJobHadoopJob({
+  const WorkflowTemplateJobHadoopJob({
     this.archiveUris,
     this.args,
     this.fileUris,

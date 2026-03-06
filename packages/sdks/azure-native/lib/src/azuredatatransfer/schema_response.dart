@@ -30,7 +30,7 @@ class SchemaResponse {
   /// [schemaType] The Schema Type
   /// [schemaUri] Uri containing SAS token for the zipped schema
   /// [status] Status of the schema
-  SchemaResponse({
+  const SchemaResponse({
     this.connectionId,
     this.content,
     this.direction,

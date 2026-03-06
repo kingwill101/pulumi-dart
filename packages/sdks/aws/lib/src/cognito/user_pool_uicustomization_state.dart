@@ -33,7 +33,7 @@ class UserPoolUICustomizationState {
   /// [lastModifiedDate] The last-modified date in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) for the UI customization.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID for the user pool.
-  UserPoolUICustomizationState({
+  const UserPoolUICustomizationState({
     this.clientId,
     this.creationDate,
     this.css,

@@ -13,7 +13,7 @@ class SubscriptionList {
   /// Creates a new [SubscriptionList].
   /// [monitoredSubscriptionList] List of subscriptions and the state of the monitoring.
   /// [operation] The operation for the patch on the resource.
-  SubscriptionList({
+  const SubscriptionList({
     this.monitoredSubscriptionList,
     this.operation,
   });

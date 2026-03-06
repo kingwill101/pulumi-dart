@@ -16,7 +16,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadO
   /// [items] Optional.
   /// [properties] Optional.
   /// [type] Required.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayloadOutputSchema({
     this.description,
     this.items,
     this.properties,

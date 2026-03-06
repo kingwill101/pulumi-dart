@@ -13,7 +13,7 @@ class PodExtendedResourceClaimStatus {
   /// Creates a new [PodExtendedResourceClaimStatus].
   /// [requestMappings] RequestMappings identifies the mapping of &lt;container, extended resource backed by DRA&gt; to  device request in the generated ResourceClaim.
   /// [resourceClaimName] ResourceClaimName is the name of the ResourceClaim that was generated for the Pod in the namespace of the Pod.
-  PodExtendedResourceClaimStatus({
+  const PodExtendedResourceClaimStatus({
     required this.requestMappings,
     required this.resourceClaimName,
   });

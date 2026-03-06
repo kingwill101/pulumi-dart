@@ -36,7 +36,7 @@ class GetPostRuleCountersResult {
   /// [ruleName] rule name
   /// [ruleStackName] rule Stack Name
   /// [timestamp] timestamp of response
-  GetPostRuleCountersResult({
+  const GetPostRuleCountersResult({
     this.appSeen,
     this.firewallName,
     this.hitCount,

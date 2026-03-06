@@ -21,7 +21,7 @@ class SkuResponse {
   /// [name] Name of SKU is RS0 (Recovery Services 0th version) and the tier is standard tier. They do not have affect on backend storage redundancy or any other vault settings. To manage storage redundancy, use the backupstorageconfig
   /// [size] The sku size
   /// [tier] The Sku tier.
-  SkuResponse({
+  const SkuResponse({
     this.capacity,
     this.family,
     required this.name,

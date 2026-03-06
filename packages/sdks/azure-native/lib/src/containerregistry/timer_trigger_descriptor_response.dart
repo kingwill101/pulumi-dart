@@ -11,7 +11,7 @@ class TimerTriggerDescriptorResponse {
   /// Creates a new [TimerTriggerDescriptorResponse].
   /// [scheduleOccurrence] The occurrence that triggered the run.
   /// [timerTriggerName] The timer trigger name that caused the run.
-  TimerTriggerDescriptorResponse({
+  const TimerTriggerDescriptorResponse({
     this.scheduleOccurrence,
     this.timerTriggerName,
   });

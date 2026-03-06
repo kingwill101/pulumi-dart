@@ -12,7 +12,7 @@ class EncryptionPropertiesIdentity {
   /// Creates a new [EncryptionPropertiesIdentity].
   /// [resourceId] User assigned identity to use for accessing key encryption key Url. Ex: /subscriptions/a0a0a0a0-bbbb-cccd-dddd-e1e1e1e1e1e1/resourceGroups/&lt;resource group&gt;/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myId.
   /// [type] Managed identity type to use for accessing encryption key Url.
-  EncryptionPropertiesIdentity({
+  const EncryptionPropertiesIdentity({
     this.resourceId,
     this.type,
   });

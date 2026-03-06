@@ -17,7 +17,7 @@ class ServicePrincipalFeature {
   /// [enterpriseApplication] Whether this service principal represents an Enterprise Application
   /// [galleryApplication] Whether this service principal represents a gallery application
   /// [visibleToUsers] Whether this app is visible to users in My Apps and Office 365 Launcher
-  ServicePrincipalFeature({
+  const ServicePrincipalFeature({
     this.customSingleSignOnApp,
     this.enterpriseApplication,
     this.galleryApplication,

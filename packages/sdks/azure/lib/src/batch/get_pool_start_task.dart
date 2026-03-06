@@ -29,7 +29,7 @@ class GetPoolStartTask {
   /// [taskRetryMaximum] The number of retry count
   /// [userIdentities] A `user_identity` block that describes the user identity under which the start task runs.
   /// [waitForSuccess] A flag that indicates if the Batch pool should wait for the start task to be completed.
-  GetPoolStartTask({
+  const GetPoolStartTask({
     required this.commandLine,
     this.commonEnvironmentProperties,
     required this.containers,

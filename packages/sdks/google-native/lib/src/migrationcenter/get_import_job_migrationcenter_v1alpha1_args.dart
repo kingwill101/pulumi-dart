@@ -17,7 +17,7 @@ class GetImportJobMigrationcenterV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetImportJobMigrationcenterV1alpha1Args({
+  const GetImportJobMigrationcenterV1alpha1Args({
     required this.importJobId,
     required this.location,
     this.project,

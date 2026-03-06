@@ -32,7 +32,7 @@ class ConstraintArgs {
   /// [productId] Product identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `RESOURCE_UPDATE`, `STACKSET`, and `TEMPLATE`.
-  ConstraintArgs({
+  const ConstraintArgs({
     this.acceptLanguage,
     this.description,
     required this.parameters,

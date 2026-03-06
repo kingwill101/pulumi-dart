@@ -12,7 +12,7 @@ class JobScheduleAction {
   /// Creates a new [JobScheduleAction].
   /// [actionType] Expected value is 'CreateJob'.
   /// [jobBaseProperties] [Required] Defines Schedule action definition details.
-  JobScheduleAction({
+  const JobScheduleAction({
     required this.actionType,
     required this.jobBaseProperties,
   });

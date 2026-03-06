@@ -12,7 +12,7 @@ class StorageContainerStatusProvisioningStatusResponse {
   /// Creates a new [StorageContainerStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the storage container
   /// [status] The status of the operation performed on the storage container [Succeeded, Failed, InProgress]
-  StorageContainerStatusProvisioningStatusResponse({
+  const StorageContainerStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

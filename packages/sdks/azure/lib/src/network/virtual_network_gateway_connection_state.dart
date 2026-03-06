@@ -91,7 +91,7 @@ class VirtualNetworkGatewayConnectionState {
   /// [type] The type of connection. Valid options are `IPsec` (Site-to-Site), `ExpressRoute` (ExpressRoute), and `Vnet2Vnet` (VNet-to-VNet). Each connection type requires different mandatory arguments (refer to the examples above). Changing this forces a new resource to be created.
   /// [usePolicyBasedTrafficSelectors] If `true`, policy-based traffic selectors are enabled for this connection. Enabling policy-based traffic selectors requires an `ipsec_policy` block. Defaults to `false`.
   /// [virtualNetworkGatewayId] The ID of the Virtual Network Gateway in which the connection will be created. Changing this forces a new resource to be created.
-  VirtualNetworkGatewayConnectionState({
+  const VirtualNetworkGatewayConnectionState({
     this.authorizationKey,
     this.connectionMode,
     this.connectionProtocol,

@@ -38,7 +38,7 @@ class GetActivationsActivation {
   /// [ipAddressRange] The IP address of the host that allows the activation code to be used.
   /// [registeredCount] The number of instances that were registered.
   /// [timeToLiveInHours] The validity period of the activation code. Unit: hours.
-  GetActivationsActivation({
+  const GetActivationsActivation({
     required this.activationId,
     required this.createTime,
     required this.deregisteredCount,

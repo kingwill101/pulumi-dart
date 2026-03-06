@@ -11,7 +11,7 @@ class K8sActiveDirectoryConnector {
   /// Creates a new [K8sActiveDirectoryConnector].
   /// [name] Name of the connector
   /// [namespace] Name space of the connector
-  K8sActiveDirectoryConnector({
+  const K8sActiveDirectoryConnector({
     this.name,
     this.namespace,
   });

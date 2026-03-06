@@ -15,7 +15,7 @@ class GlobalDatabaseNetworkState {
   /// [dbClusterId] The ID of the primary cluster.
   /// [description] The description of the Global Database Network.
   /// [status] The status of the Global Database Network.
-  GlobalDatabaseNetworkState({
+  const GlobalDatabaseNetworkState({
     this.dbClusterId,
     this.description,
     this.status,

@@ -30,7 +30,7 @@ class DeviceInsightResponse {
   /// [eventCount] Event count
   /// [eventType] Event type
   /// [startTimestampUtc] Event start timestamp
-  DeviceInsightResponse({
+  const DeviceInsightResponse({
     required this.description,
     required this.deviceId,
     required this.endTimestampUtc,

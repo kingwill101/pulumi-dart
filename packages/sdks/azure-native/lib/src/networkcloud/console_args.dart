@@ -38,7 +38,7 @@ class ConsoleArgs {
   /// [sshPublicKey] The SSH public key that will be provisioned for user access. The user is expected to have the corresponding SSH private key for logging in.
   /// [tags] Resource tags.
   /// [virtualMachineName] The name of the virtual machine.
-  ConsoleArgs({
+  const ConsoleArgs({
     this.consoleName,
     required this.enabled,
     this.expiration,

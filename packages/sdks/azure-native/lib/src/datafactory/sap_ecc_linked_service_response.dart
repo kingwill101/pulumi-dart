@@ -40,7 +40,7 @@ class SapEccLinkedServiceResponse {
   /// [url] The URL of SAP ECC OData API. For example, '[https://hostname:port/sap/opu/odata/sap/servicename/]'. Type: string (or Expression with resultType string).
   /// [username] The username for Basic authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SapEccLinkedServiceResponse({
+  const SapEccLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

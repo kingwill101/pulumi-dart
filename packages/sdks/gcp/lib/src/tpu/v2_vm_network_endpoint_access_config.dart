@@ -9,7 +9,7 @@ class V2VmNetworkEndpointAccessConfig {
 
   /// Creates a new [V2VmNetworkEndpointAccessConfig].
   /// [externalIp] (Output)
-  V2VmNetworkEndpointAccessConfig({
+  const V2VmNetworkEndpointAccessConfig({
     this.externalIp,
   });
 

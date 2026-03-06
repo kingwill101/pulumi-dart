@@ -19,7 +19,7 @@ class CostCategoryRule {
   /// [rule] Configuration block for the `Expression` object used to categorize costs. See below.
   /// [type] You can define the CostCategoryRule rule type as either `REGULAR` or `INHERITED_VALUE`.
   /// [value] Default value for the cost category.
-  CostCategoryRule({
+  const CostCategoryRule({
     this.inheritedValue,
     this.rule,
     this.type,

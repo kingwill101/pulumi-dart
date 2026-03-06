@@ -43,7 +43,7 @@ class BgpGroupArgs {
   /// [peerAsn] The ASN of the gateway device in the data center.
   /// [routeLimit] The maximum number of routes supported by a BGP peer. Default value: 110.
   /// [routerId] The ID of the virtual border router (VBR) that is associated with the BGP group.
-  BgpGroupArgs({
+  const BgpGroupArgs({
     this.authKey,
     this.bgpGroupName,
     this.clearAuthKey,

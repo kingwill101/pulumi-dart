@@ -15,7 +15,7 @@ class StaticWebAppIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The Type of Managed Identity assigned to this Static Web App resource. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  StaticWebAppIdentity({
+  const StaticWebAppIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

@@ -18,7 +18,7 @@ class PublicNetworkArgs {
   /// [enablePublicNetwork] Open or close the public connection. Value:
   /// [engineType] Engine type, value:
   /// [instanceId] Instance ID
-  PublicNetworkArgs({
+  const PublicNetworkArgs({
     this.enablePublicNetwork,
     required this.engineType,
     required this.instanceId,

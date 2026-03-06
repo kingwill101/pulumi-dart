@@ -66,7 +66,7 @@ class ClientUserDefineRuleArgs {
   /// [registryContent] The registry value. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   /// [registryKey] The registry key. When the value of the Type attribute is 5, the RegistryKey attribute is required.
   /// [type] The rule type. Value:
-  ClientUserDefineRuleArgs({
+  const ClientUserDefineRuleArgs({
     required this.actionType,
     required this.clientUserDefineRuleName,
     this.cmdline,

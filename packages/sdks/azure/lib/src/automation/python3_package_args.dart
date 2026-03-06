@@ -33,7 +33,7 @@ class Python3PackageArgs {
   /// [name] The name which should be used for this Automation Python3 Package. Changing this forces a new Automation Python3 Package to be created.
   /// [resourceGroupName] The name of the resource group in which the Python3 Package is created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Automation Python3 Package.
-  Python3PackageArgs({
+  const Python3PackageArgs({
     required this.automationAccountName,
     required this.contentUri,
     this.contentVersion,

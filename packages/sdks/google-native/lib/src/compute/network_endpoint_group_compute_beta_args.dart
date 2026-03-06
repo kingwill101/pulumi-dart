@@ -63,7 +63,7 @@ class NetworkEndpointGroupComputeBetaArgs {
   /// [serverlessDeployment] Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   /// [zone] Optional.
-  NetworkEndpointGroupComputeBetaArgs({
+  const NetworkEndpointGroupComputeBetaArgs({
     this.annotations,
     this.appEngine,
     this.cloudFunction,

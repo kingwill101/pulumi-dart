@@ -10,7 +10,7 @@ class ReportSummaryChartDataResponseMigrationcenterV1alpha1 {
 
   /// Creates a new [ReportSummaryChartDataResponseMigrationcenterV1alpha1].
   /// [dataPoints] Each data point in the chart is represented as a name-value pair with the name being the x-axis label, and the value being the y-axis value.
-  ReportSummaryChartDataResponseMigrationcenterV1alpha1({
+  const ReportSummaryChartDataResponseMigrationcenterV1alpha1({
     required this.dataPoints,
   });
 

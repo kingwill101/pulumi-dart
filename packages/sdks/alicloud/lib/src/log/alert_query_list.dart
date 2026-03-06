@@ -44,7 +44,7 @@ class AlertQueryList {
   /// [store] Query store for new alert.
   /// [storeType] Query store type for new alert, including log,metric,meta.
   /// [timeSpanType] default Custom. No need to configure this parameter.
-  AlertQueryList({
+  const AlertQueryList({
     this.chartTitle,
     this.dashboardId,
     required this.end,

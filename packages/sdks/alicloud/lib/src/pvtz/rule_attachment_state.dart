@@ -13,7 +13,7 @@ class RuleAttachmentState {
   /// Creates a new [RuleAttachmentState].
   /// [ruleId] The ID of the rule.
   /// [vpcs] The List of the VPC. See `vpcs` below.
-  RuleAttachmentState({
+  const RuleAttachmentState({
     this.ruleId,
     this.vpcs,
   });

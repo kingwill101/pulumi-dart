@@ -17,7 +17,7 @@ class GetDomainCognitoOption {
   /// [identityPoolId] The Cognito Identity pool used by the domain.
   /// [roleArn] The IAM Role with the AmazonESCognitoAccess policy attached.
   /// [userPoolId] The Cognito User pool used by the domain.
-  GetDomainCognitoOption({
+  const GetDomainCognitoOption({
     required this.enabled,
     required this.identityPoolId,
     required this.roleArn,

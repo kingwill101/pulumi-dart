@@ -20,7 +20,7 @@ class OrganizationConfigurationAutoEnable {
   /// [ecr] Whether Amazon ECR scans are automatically enabled for new members of your Amazon Inspector organization.
   /// [lambda] Whether Lambda Function scans are automatically enabled for new members of your Amazon Inspector organization.
   /// [lambdaCode] Whether AWS Lambda code scans are automatically enabled for new members of your Amazon Inspector organization. **Note:** Lambda code scanning requires Lambda standard scanning to be activated. Consequently, if you are setting this argument to `true`, you must also set the `lambda` argument to `true`. See [Scanning AWS Lambda functions with Amazon Inspector](https://docs.aws.amazon.com/inspector/latest/user/scanning-lambda.html#lambda-code-scans) for more information.
-  OrganizationConfigurationAutoEnable({
+  const OrganizationConfigurationAutoEnable({
     this.codeRepository,
     required this.ec2,
     required this.ecr,

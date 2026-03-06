@@ -21,7 +21,7 @@ class SecretVolumeSourcePatch {
   /// [items] items If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified which is not present in the Secret, the volume setup will error unless it is marked optional. Paths must be relative and may not contain the '..' path or start with '..'.
   /// [optional] optional field specify whether the Secret or its keys must be defined
   /// [secretName] secretName is the name of the secret in the pod's namespace to use. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  SecretVolumeSourcePatch({
+  const SecretVolumeSourcePatch({
     this.defaultMode,
     this.items,
     this.optional,

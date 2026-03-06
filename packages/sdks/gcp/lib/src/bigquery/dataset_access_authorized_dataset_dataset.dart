@@ -11,7 +11,7 @@ class DatasetAccessAuthorizedDatasetDataset {
   /// Creates a new [DatasetAccessAuthorizedDatasetDataset].
   /// [datasetId] The ID of the dataset containing this table.
   /// [projectId] The ID of the project containing this table.
-  DatasetAccessAuthorizedDatasetDataset({
+  const DatasetAccessAuthorizedDatasetDataset({
     required this.datasetId,
     required this.projectId,
   });

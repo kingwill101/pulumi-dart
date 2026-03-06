@@ -15,7 +15,7 @@ class DependsOnProfileResponse {
   /// [installDependsOn] Application installation operation dependency.
   /// [uninstallDependsOn] Application deletion operation dependency.
   /// [updateDependsOn] Application update operation dependency.
-  DependsOnProfileResponse({
+  const DependsOnProfileResponse({
     this.installDependsOn,
     this.uninstallDependsOn,
     this.updateDependsOn,

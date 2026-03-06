@@ -15,7 +15,7 @@ class GetManagementLockAtResourceGroupLevelArgs {
   /// Creates a new [GetManagementLockAtResourceGroupLevelArgs].
   /// [lockName] The name of the lock to get.
   /// [resourceGroupName] The name of the locked resource group.
-  GetManagementLockAtResourceGroupLevelArgs({
+  const GetManagementLockAtResourceGroupLevelArgs({
     required this.lockName,
     required this.resourceGroupName,
   });

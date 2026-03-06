@@ -57,7 +57,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatement {
   /// [sizeConstraintStatement] Rule statement that compares a number of bytes against the size of a request component, using a comparison operator, such as greater than (&gt;) or less than (&lt;). See `size_constraint_statement` below for more details.
   /// [sqliMatchStatement] An SQL injection match condition identifies the part of web requests, such as the URI or the query string, that you want AWS WAF to inspect. See `sqli_match_statement` below for details.
   /// [xssMatchStatement] Rule statement that defines a cross-site scripting (XSS) match search for AWS WAF to apply to web requests. See `xss_match_statement` below for details.
-  WebAclRuleStatementRateBasedStatementScopeDownStatement({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatement({
     this.andStatement,
     this.asnMatchStatement,
     this.byteMatchStatement,

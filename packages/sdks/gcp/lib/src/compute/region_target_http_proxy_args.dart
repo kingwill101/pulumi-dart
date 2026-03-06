@@ -40,7 +40,7 @@ class RegionTargetHttpProxyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created target https proxy should reside.
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
-  RegionTargetHttpProxyArgs({
+  const RegionTargetHttpProxyArgs({
     this.description,
     this.httpKeepAliveTimeoutSec,
     this.name,

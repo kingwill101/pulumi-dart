@@ -10,7 +10,7 @@ class DiscoveredOutboundEndpoints {
 
   /// Creates a new [DiscoveredOutboundEndpoints].
   /// [assigned] Endpoints the device can connect to.
-  DiscoveredOutboundEndpoints({
+  const DiscoveredOutboundEndpoints({
     required this.assigned,
   });
 

@@ -37,7 +37,7 @@ class ShareNetworkArgs {
   /// [neutronSubnetId] The UUID of the neutron subnet when setting up or
   /// [region] The region in which to obtain the V2 Shared File System client.
   /// [securityServiceIds] The list of security service IDs to associate with
-  ShareNetworkArgs({
+  const ShareNetworkArgs({
     this.description,
     this.name,
     required this.neutronNetId,

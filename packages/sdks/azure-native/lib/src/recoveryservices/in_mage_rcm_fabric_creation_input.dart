@@ -20,7 +20,7 @@ class InMageRcmFabricCreationInput {
   /// [physicalSiteId] The ARM Id of the physical site.
   /// [sourceAgentIdentity] The identity provider input for source agent authentication.
   /// [vmwareSiteId] The ARM Id of the VMware site.
-  InMageRcmFabricCreationInput({
+  const InMageRcmFabricCreationInput({
     required this.instanceType,
     required this.physicalSiteId,
     required this.sourceAgentIdentity,

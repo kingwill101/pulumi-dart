@@ -40,7 +40,7 @@ class ProductResponse {
   /// [fulfilledBy] The entity responsible for fulfillment of the item at the given hierarchy level.
   /// [hierarchyInformation] Hierarchy information of a product.
   /// [imageInformation] Image information for the product system.
-  ProductResponse({
+  const ProductResponse({
     required this.availabilityInformation,
     required this.configurations,
     required this.costInformation,

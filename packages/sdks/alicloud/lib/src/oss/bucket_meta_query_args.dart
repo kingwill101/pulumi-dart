@@ -12,7 +12,7 @@ class BucketMetaQueryArgs {
 
   /// Creates a new [BucketMetaQueryArgs].
   /// [bucket] The name of the bucket.
-  BucketMetaQueryArgs({
+  const BucketMetaQueryArgs({
     required this.bucket,
   });
 

@@ -41,7 +41,7 @@ class PimRoleEligibilityScheduleArgs {
   /// [targetRoleEligibilityScheduleId] The resultant role eligibility schedule id or the role eligibility schedule id being updated
   /// [targetRoleEligibilityScheduleInstanceId] The role eligibility schedule instance id being updated
   /// [ticketInfo] Ticket Info of the role eligibility
-  PimRoleEligibilityScheduleArgs({
+  const PimRoleEligibilityScheduleArgs({
     this.condition,
     this.conditionVersion,
     this.justification,

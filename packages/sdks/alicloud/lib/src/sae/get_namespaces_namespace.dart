@@ -17,7 +17,7 @@ class GetNamespacesNamespace {
   /// [namespaceDescription] The Description of Namespace.
   /// [namespaceId] The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
   /// [namespaceName] The Name of Namespace.
-  GetNamespacesNamespace({
+  const GetNamespacesNamespace({
     required this.id,
     required this.namespaceDescription,
     required this.namespaceId,

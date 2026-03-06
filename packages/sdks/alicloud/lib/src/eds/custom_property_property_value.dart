@@ -11,7 +11,7 @@ class CustomPropertyPropertyValue {
   /// Creates a new [CustomPropertyPropertyValue].
   /// [propertyValue] The value of an attribute.
   /// [propertyValueId] The value of an attribute id.
-  CustomPropertyPropertyValue({
+  const CustomPropertyPropertyValue({
     this.propertyValue,
     this.propertyValueId,
   });

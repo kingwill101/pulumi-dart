@@ -18,7 +18,7 @@ class DiskAsyncReplicationArgs {
   /// Creates a new [DiskAsyncReplicationArgs].
   /// [primaryDisk] The primary disk (source of replication).
   /// [secondaryDisk] The secondary disk (target of replication). You can specify only one value. Structure is documented below.
-  DiskAsyncReplicationArgs({
+  const DiskAsyncReplicationArgs({
     required this.primaryDisk,
     required this.secondaryDisk,
   });

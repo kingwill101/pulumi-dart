@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1RoutineSpecArgumentResponse {
   /// [mode] Specifies whether the argument is input or output.
   /// [name] The name of the argument. A return argument of a function might not have a name.
   /// [type] Type of the argument. The exact value depends on the source system and the language.
-  GoogleCloudDatacatalogV1RoutineSpecArgumentResponse({
+  const GoogleCloudDatacatalogV1RoutineSpecArgumentResponse({
     required this.mode,
     required this.name,
     required this.type,

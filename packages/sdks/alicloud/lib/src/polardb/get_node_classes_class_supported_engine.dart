@@ -12,7 +12,7 @@ class GetNodeClassesClassSupportedEngine {
   /// Creates a new [GetNodeClassesClassSupportedEngine].
   /// [availableResources] A list of PolarDB node available classes.
   /// [engine] In the zone, the database type supports classes in the following available_resources.
-  GetNodeClassesClassSupportedEngine({
+  const GetNodeClassesClassSupportedEngine({
     required this.availableResources,
     required this.engine,
   });

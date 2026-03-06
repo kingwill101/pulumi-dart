@@ -14,7 +14,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit {
   /// [hardLimit] The hard limit for the ulimit type.
   /// [name] The name of the job definition to register. It can be up to 128 letters long. It can contain uppercase and lowercase letters, numbers, hyphens (-), and underscores (_).
   /// [softLimit] The soft limit for the ulimit type.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerUlimit({
     required this.hardLimit,
     required this.name,
     required this.softLimit,

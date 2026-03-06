@@ -8,7 +8,7 @@ class ResourceStatusLastInstanceTerminationDetailsResponse {
 
   /// Creates a new [ResourceStatusLastInstanceTerminationDetailsResponse].
   /// [terminationReason] Reason for termination
-  ResourceStatusLastInstanceTerminationDetailsResponse({
+  const ResourceStatusLastInstanceTerminationDetailsResponse({
     required this.terminationReason,
   });
 

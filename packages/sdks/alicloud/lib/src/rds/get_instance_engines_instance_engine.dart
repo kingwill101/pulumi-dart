@@ -18,7 +18,7 @@ class GetInstanceEnginesInstanceEngine {
   /// [engine] Database type. Valid values: "MySQL", "SQLServer", "PostgreSQL", "MariaDB". If not set, it will match all of engines.
   /// [engineVersion] Database version required by the user. Value options can refer to the latest docs [detail info](https://www.alibabacloud.com/help/doc-detail/26228.htm) `EngineVersion`.
   /// [zoneIds] A list of Zone to launch the DB instance.
-  GetInstanceEnginesInstanceEngine({
+  const GetInstanceEnginesInstanceEngine({
     required this.category,
     required this.engine,
     required this.engineVersion,

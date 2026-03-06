@@ -13,7 +13,7 @@ class ReservationResourceStatusSpecificSkuAllocation {
   /// Creates a new [ReservationResourceStatusSpecificSkuAllocation].
   /// [sourceInstanceTemplateId] (Output)
   /// [utilizations] (Output)
-  ReservationResourceStatusSpecificSkuAllocation({
+  const ReservationResourceStatusSpecificSkuAllocation({
     this.sourceInstanceTemplateId,
     this.utilizations,
   });

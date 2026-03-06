@@ -14,7 +14,7 @@ class ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse {
   /// [actionsRequired] The private link service connection description.
   /// [description] The private link service connection description.
   /// [status] The private link service connection status.
-  ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse({
+  const ManagedInstancePrivateLinkServiceConnectionStatePropertyResponse({
     required this.actionsRequired,
     required this.description,
     required this.status,

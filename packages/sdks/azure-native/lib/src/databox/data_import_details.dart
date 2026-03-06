@@ -13,7 +13,7 @@ class DataImportDetails {
   /// Creates a new [DataImportDetails].
   /// [accountDetails] Account details of the data to be transferred
   /// [logCollectionLevel] Level of the logs to be collected.
-  DataImportDetails({
+  const DataImportDetails({
     required this.accountDetails,
     this.logCollectionLevel,
   });

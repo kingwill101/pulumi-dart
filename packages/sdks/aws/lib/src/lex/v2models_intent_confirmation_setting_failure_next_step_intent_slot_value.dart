@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue {
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue].
   /// [interpretedValue] Value that Amazon Lex determines for the slot. The actual value depends on the setting of the value selection strategy for the bot. You can choose to use the value entered by the user, or you can have Amazon Lex choose the first value in the resolvedValues list.
-  V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue({
+  const V2modelsIntentConfirmationSettingFailureNextStepIntentSlotValue({
     this.interpretedValue,
   });
 

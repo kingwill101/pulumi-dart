@@ -11,7 +11,7 @@ class GetTagKeyArgs {
 
   /// Creates a new [GetTagKeyArgs].
   /// [tagKeyId] Required.
-  GetTagKeyArgs({
+  const GetTagKeyArgs({
     required this.tagKeyId,
   });
 

@@ -9,7 +9,7 @@ class PasswordResponse {
   /// Creates a new [PasswordResponse].
   /// [name] Required.
   /// [value] Required.
-  PasswordResponse({
+  const PasswordResponse({
     required this.name,
     required this.value,
   });

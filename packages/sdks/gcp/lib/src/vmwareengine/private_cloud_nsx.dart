@@ -18,7 +18,7 @@ class PrivateCloudNsx {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] State of the appliance.
   /// [version] Version of the appliance.
-  PrivateCloudNsx({
+  const PrivateCloudNsx({
     this.fqdn,
     this.internalIp,
     this.state,

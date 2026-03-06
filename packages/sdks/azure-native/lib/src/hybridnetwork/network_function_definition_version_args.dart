@@ -31,7 +31,7 @@ class NetworkFunctionDefinitionVersionArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkFunctionDefinitionVersionArgs({
+  const NetworkFunctionDefinitionVersionArgs({
     this.location,
     required this.networkFunctionDefinitionGroupName,
     this.networkFunctionDefinitionVersionName,

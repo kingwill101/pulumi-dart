@@ -18,7 +18,7 @@ class GetTrackerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the tracker.
   /// [trackerName] Name of the tracker resource.
-  GetTrackerArgs({
+  const GetTrackerArgs({
     this.region,
     this.tags,
     required this.trackerName,

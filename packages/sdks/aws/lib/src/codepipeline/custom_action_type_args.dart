@@ -34,7 +34,7 @@ class CustomActionTypeArgs {
   /// [settings] Optional.
   /// [tags] Optional.
   /// [version] Required.
-  CustomActionTypeArgs({
+  const CustomActionTypeArgs({
     required this.category,
     this.configurationProperties,
     required this.inputArtifactDetails,

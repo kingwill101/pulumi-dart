@@ -27,7 +27,7 @@ class PodConditionPatch {
   /// [reason] Unique, one-word, CamelCase reason for the condition's last transition.
   /// [status] Status is the status of the condition. Can be True, False, Unknown. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
   /// [type] Type is the type of the condition. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#pod-conditions
-  PodConditionPatch({
+  const PodConditionPatch({
     this.lastProbeTime,
     this.lastTransitionTime,
     this.message,

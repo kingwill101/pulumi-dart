@@ -21,7 +21,7 @@ class GetVirtualMachineScaleSetVMArgs {
   /// [instanceId] The instance ID of the virtual machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmScaleSetName] The name of the VM scale set.
-  GetVirtualMachineScaleSetVMArgs({
+  const GetVirtualMachineScaleSetVMArgs({
     this.expand,
     required this.instanceId,
     required this.resourceGroupName,

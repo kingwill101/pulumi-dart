@@ -9,7 +9,7 @@ class WorkloadStatusConfigAutomaticRemainingEntitiesRule {
 
   /// Creates a new [WorkloadStatusConfigAutomaticRemainingEntitiesRule].
   /// [remainingEntitiesRuleRollup] The input object used to represent a rollup strategy.
-  WorkloadStatusConfigAutomaticRemainingEntitiesRule({
+  const WorkloadStatusConfigAutomaticRemainingEntitiesRule({
     required this.remainingEntitiesRuleRollup,
   });
 

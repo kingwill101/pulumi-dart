@@ -11,7 +11,7 @@ class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList {
   /// Creates a new [FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList].
   /// [destinationCidr] The target network segment of the VPC.
   /// [nextHopInstanceId] The ID of the next hop instance in the VPC.
-  FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList({
+  const FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList({
     this.destinationCidr,
     this.nextHopInstanceId,
   });

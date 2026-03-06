@@ -12,7 +12,7 @@ class UserIdentityResponse {
   /// Creates a new [UserIdentityResponse].
   /// [clientId] Identifier of the client of the service principal associated to the user assigned managed identity.
   /// [principalId] Identifier of the object of the service principal associated to the user assigned managed identity.
-  UserIdentityResponse({
+  const UserIdentityResponse({
     this.clientId,
     this.principalId,
   });

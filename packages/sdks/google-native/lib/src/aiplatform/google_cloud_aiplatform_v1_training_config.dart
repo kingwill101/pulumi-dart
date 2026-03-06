@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1TrainingConfig {
 
   /// Creates a new [GoogleCloudAiplatformV1TrainingConfig].
   /// [timeoutTrainingMilliHours] The timeout hours for the CMLE training job, expressed in milli hours i.e. 1,000 value in this field means 1 hour.
-  GoogleCloudAiplatformV1TrainingConfig({
+  const GoogleCloudAiplatformV1TrainingConfig({
     this.timeoutTrainingMilliHours,
   });
 

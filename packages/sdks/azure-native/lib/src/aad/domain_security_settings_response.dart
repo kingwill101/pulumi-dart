@@ -33,7 +33,7 @@ class DomainSecuritySettingsResponse {
   /// [syncNtlmPasswords] A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
   /// [syncOnPremPasswords] A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
   /// [tlsV1] A flag to determine whether or not TlsV1 is enabled or disabled.
-  DomainSecuritySettingsResponse({
+  const DomainSecuritySettingsResponse({
     this.channelBinding,
     this.kerberosArmoring,
     this.kerberosRc4Encryption,

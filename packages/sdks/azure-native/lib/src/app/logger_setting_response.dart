@@ -12,7 +12,7 @@ class LoggerSettingResponse {
   /// Creates a new [LoggerSettingResponse].
   /// [level] The specified logger's log level.
   /// [logger] Logger name.
-  LoggerSettingResponse({
+  const LoggerSettingResponse({
     required this.level,
     required this.logger,
   });

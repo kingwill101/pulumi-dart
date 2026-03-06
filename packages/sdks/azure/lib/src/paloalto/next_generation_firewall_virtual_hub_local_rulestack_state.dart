@@ -38,7 +38,7 @@ class NextGenerationFirewallVirtualHubLocalRulestackState {
   /// [resourceGroupName] The name of the Resource Group where the Palo Alto Next Generation Firewall VHub Local Rulestack should exist. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
   /// [rulestackId] The ID of the Local Rulestack to be used for this Next Generation Firewall.
   /// [tags] A mapping of tags which should be assigned to the Palo Alto Next Generation Firewall VHub Local Rulestack.
-  NextGenerationFirewallVirtualHubLocalRulestackState({
+  const NextGenerationFirewallVirtualHubLocalRulestackState({
     this.destinationNats,
     this.dnsSettings,
     this.marketplaceOfferId,

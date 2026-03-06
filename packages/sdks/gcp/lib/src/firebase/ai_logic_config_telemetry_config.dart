@@ -16,7 +16,7 @@ class AiLogicConfigTelemetryConfig {
   /// Creates a new [AiLogicConfigTelemetryConfig].
   /// [mode] The current monitoring mode used for this project.
   /// [samplingRate] The percentage of requests to be sampled, expressed as a fraction
-  AiLogicConfigTelemetryConfig({
+  const AiLogicConfigTelemetryConfig({
     this.mode,
     this.samplingRate,
   });

@@ -54,7 +54,7 @@ class DraftPackageIntuneAppMetadataItem {
   /// [status] Extract status.
   /// [uninstallCommand] Uninstall command.
   /// [version] Intune app version.
-  DraftPackageIntuneAppMetadataItem({
+  const DraftPackageIntuneAppMetadataItem({
     this.appId,
     this.appName,
     this.createDate,

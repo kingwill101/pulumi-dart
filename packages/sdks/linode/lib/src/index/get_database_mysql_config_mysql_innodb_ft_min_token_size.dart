@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize({
+  const GetDatabaseMysqlConfigMysqlInnodbFtMinTokenSize({
     required this.description,
     required this.example,
     required this.maximum,

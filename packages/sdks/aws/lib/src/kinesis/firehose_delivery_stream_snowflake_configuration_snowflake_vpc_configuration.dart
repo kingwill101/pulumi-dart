@@ -8,7 +8,7 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration {
 
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration].
   /// [privateLinkVpceId] The VPCE ID for Firehose to privately connect with Snowflake.
-  FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration({
+  const FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeVpcConfiguration({
     required this.privateLinkVpceId,
   });
 

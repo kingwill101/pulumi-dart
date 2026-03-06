@@ -15,7 +15,7 @@ class GetDeploymentResourcePoolAiplatformV1beta1Result {
   /// [createTime] Timestamp when this DeploymentResourcePool was created.
   /// [dedicatedResources] The underlying DedicatedResources that the DeploymentResourcePool uses.
   /// [name] Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
-  GetDeploymentResourcePoolAiplatformV1beta1Result({
+  const GetDeploymentResourcePoolAiplatformV1beta1Result({
     required this.createTime,
     required this.dedicatedResources,
     required this.name,

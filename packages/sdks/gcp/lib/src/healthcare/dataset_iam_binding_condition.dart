@@ -11,7 +11,7 @@ class DatasetIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DatasetIamBindingCondition({
+  const DatasetIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

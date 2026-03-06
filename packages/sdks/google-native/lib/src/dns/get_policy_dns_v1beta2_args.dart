@@ -15,7 +15,7 @@ class GetPolicyDnsV1beta2Args {
   /// [clientOperationId] Optional.
   /// [policy] Required.
   /// [project] Optional.
-  GetPolicyDnsV1beta2Args({
+  const GetPolicyDnsV1beta2Args({
     this.clientOperationId,
     required this.policy,
     this.project,

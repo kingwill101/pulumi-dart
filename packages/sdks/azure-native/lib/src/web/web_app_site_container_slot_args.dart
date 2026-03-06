@@ -57,7 +57,7 @@ class WebAppSiteContainerSlotArgs {
   /// [userManagedIdentityClientId] UserManagedIdentity ClientId
   /// [userName] User Name
   /// [volumeMounts] List of volume mounts
-  WebAppSiteContainerSlotArgs({
+  const WebAppSiteContainerSlotArgs({
     this.authType,
     this.containerName,
     this.environmentVariables,

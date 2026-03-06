@@ -12,7 +12,7 @@ class OracleSslConfigResponse {
   /// Creates a new [OracleSslConfigResponse].
   /// [caCertificate] Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
   /// [caCertificateSet] Indicates whether the ca_certificate field has been set for this Connection-Profile.
-  OracleSslConfigResponse({
+  const OracleSslConfigResponse({
     required this.caCertificate,
     required this.caCertificateSet,
   });

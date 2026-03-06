@@ -13,7 +13,7 @@ class GroupWithoutMembersDynamicMembership {
   /// Creates a new [GroupWithoutMembersDynamicMembership].
   /// [enabled] Whether rule processing is "On" (true) or "Paused" (false).
   /// [rule] The rule that determines membership of this group. For more information, see official documentation on [membership rules syntax](https://docs.microsoft.com/en-gb/azure/active-directory/enterprise-users/groups-dynamic-membership).
-  GroupWithoutMembersDynamicMembership({
+  const GroupWithoutMembersDynamicMembership({
     required this.enabled,
     required this.rule,
   });

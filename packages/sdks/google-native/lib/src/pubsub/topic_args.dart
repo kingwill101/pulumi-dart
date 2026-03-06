@@ -36,7 +36,7 @@ class TopicArgs {
   /// [satisfiesPzs] Optional. Reserved for future use. This field is set only in responses from the server; it is ignored if it is set in any requests.
   /// [schemaSettings] Optional. Settings for validating messages published against a schema.
   /// [topicId] Required.
-  TopicArgs({
+  const TopicArgs({
     this.kmsKeyName,
     this.labels,
     this.messageRetentionDuration,

@@ -83,7 +83,7 @@ class GetEcsSnapshotsSnapshot {
   /// [tags] A mapping of tags to assign to the snapshot.
   /// [type] The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
   /// [usage] A resource type that has a reference relationship. Valid Values: `image`, `disk`, `image_disk` and `none`.
-  GetEcsSnapshotsSnapshot({
+  const GetEcsSnapshotsSnapshot({
     required this.category,
     required this.creationTime,
     required this.description,

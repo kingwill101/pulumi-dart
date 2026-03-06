@@ -11,7 +11,7 @@ class BatchOperationsJobPutObjectHold {
   /// Creates a new [BatchOperationsJobPutObjectHold].
   /// [eventBasedHold] set/unset to update event based hold for objects.
   /// [temporaryHold] set/unset to update temporary based hold for objects.
-  BatchOperationsJobPutObjectHold({
+  const BatchOperationsJobPutObjectHold({
     this.eventBasedHold,
     this.temporaryHold,
   });

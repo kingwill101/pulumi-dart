@@ -11,7 +11,7 @@ class DomainDevicesChannelTargetXen {
   /// Creates a new [DomainDevicesChannelTargetXen].
   /// [name] This field sets the name for the Xen channel target.
   /// [state] This field configures the state of the Xen channel target.
-  DomainDevicesChannelTargetXen({
+  const DomainDevicesChannelTargetXen({
     this.name,
     this.state,
   });

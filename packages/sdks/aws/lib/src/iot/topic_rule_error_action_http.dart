@@ -15,7 +15,7 @@ class TopicRuleErrorActionHttp {
   /// [confirmationUrl] The HTTPS URL used to verify ownership of `url`.
   /// [httpHeaders] Custom HTTP header IoT Core should send. It is possible to define more than one custom header.
   /// [url] The HTTPS URL.
-  TopicRuleErrorActionHttp({
+  const TopicRuleErrorActionHttp({
     this.confirmationUrl,
     this.httpHeaders,
     required this.url,

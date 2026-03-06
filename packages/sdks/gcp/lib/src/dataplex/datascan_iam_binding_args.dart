@@ -44,7 +44,7 @@ class DatascanIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  DatascanIamBindingArgs({
+  const DatascanIamBindingArgs({
     this.condition,
     required this.dataScanId,
     this.location,

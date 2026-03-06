@@ -13,7 +13,7 @@ class PlanStageTarget {
   /// Creates a new [PlanStageTarget].
   /// [channelTargetInfo] A configuration block for specifying information about the contact channel that Incident Manager engages. See Channel Target Info for more details.
   /// [contactTargetInfo] A configuration block for specifying information about the contact that Incident Manager engages. See Contact Target Info for more details.
-  PlanStageTarget({
+  const PlanStageTarget({
     this.channelTargetInfo,
     this.contactTargetInfo,
   });

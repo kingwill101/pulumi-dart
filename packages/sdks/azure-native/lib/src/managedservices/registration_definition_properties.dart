@@ -23,7 +23,7 @@ class RegistrationDefinitionProperties {
   /// [eligibleAuthorizations] The collection of eligible authorization objects describing the just-in-time access Azure Active Directory principals in the managedBy tenant will receive on the delegated resource in the managed tenant.
   /// [managedByTenantId] The identifier of the managedBy tenant.
   /// [registrationDefinitionName] The name of the registration definition.
-  RegistrationDefinitionProperties({
+  const RegistrationDefinitionProperties({
     required this.authorizations,
     this.description,
     this.eligibleAuthorizations,

@@ -15,7 +15,7 @@ class GetAttachedNetworkArgs {
   /// Creates a new [GetAttachedNetworkArgs].
   /// [devCenterId] The ID of the associated Dev Center.
   /// [name] The name of this Dev Center Attached Network.
-  GetAttachedNetworkArgs({
+  const GetAttachedNetworkArgs({
     required this.devCenterId,
     required this.name,
   });

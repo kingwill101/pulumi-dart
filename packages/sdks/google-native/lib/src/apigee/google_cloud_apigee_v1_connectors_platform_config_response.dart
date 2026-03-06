@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1ConnectorsPlatformConfigResponse {
   /// Creates a new [GoogleCloudApigeeV1ConnectorsPlatformConfigResponse].
   /// [enabled] Flag that specifies whether the Connectors Platform add-on is enabled.
   /// [expiresAt] Time at which the Connectors Platform add-on expires in milliseconds since epoch. If unspecified, the add-on will never expire.
-  GoogleCloudApigeeV1ConnectorsPlatformConfigResponse({
+  const GoogleCloudApigeeV1ConnectorsPlatformConfigResponse({
     required this.enabled,
     required this.expiresAt,
   });

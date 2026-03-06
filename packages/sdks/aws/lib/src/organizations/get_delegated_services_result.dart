@@ -15,7 +15,7 @@ class GetDelegatedServicesResult {
   /// [accountId] Required.
   /// [delegatedServices] Services for which the account is a delegated administrator, which have the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetDelegatedServicesResult({
+  const GetDelegatedServicesResult({
     required this.accountId,
     required this.delegatedServices,
     required this.id,

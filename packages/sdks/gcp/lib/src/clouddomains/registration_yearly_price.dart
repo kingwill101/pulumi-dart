@@ -11,7 +11,7 @@ class RegistrationYearlyPrice {
   /// Creates a new [RegistrationYearlyPrice].
   /// [currencyCode] The three-letter currency code defined in ISO 4217.
   /// [units] The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
-  RegistrationYearlyPrice({
+  const RegistrationYearlyPrice({
     this.currencyCode,
     this.units,
   });

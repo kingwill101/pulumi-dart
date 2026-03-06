@@ -46,7 +46,7 @@ class AiDatasetState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the dataset. eg us-central1
   /// [updateTime] The timestamp of when the dataset was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-  AiDatasetState({
+  const AiDatasetState({
     this.createTime,
     this.displayName,
     this.effectiveLabels,

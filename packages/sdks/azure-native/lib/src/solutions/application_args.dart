@@ -52,7 +52,7 @@ class ApplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU of the resource.
   /// [tags] Resource tags
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationDefinitionId,
     this.applicationName,
     this.identity,

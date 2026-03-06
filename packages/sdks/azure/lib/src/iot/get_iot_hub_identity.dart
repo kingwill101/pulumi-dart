@@ -17,7 +17,7 @@ class GetIotHubIdentity {
   /// [principalId] The ID of the System Managed Service Principal assigned to the Virtual Machine.
   /// [tenantId] The ID of the Tenant of the System Managed Service Principal assigned to the Virtual Machine.
   /// [type] The identity type of the Managed Identity assigned to the Virtual Machine.
-  GetIotHubIdentity({
+  const GetIotHubIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

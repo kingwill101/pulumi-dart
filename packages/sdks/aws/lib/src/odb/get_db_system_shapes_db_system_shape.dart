@@ -71,7 +71,7 @@ class GetDbSystemShapesDbSystemShape {
   /// [runtimeMinimumCoreCount] The runtime minimum number of CPU cores that can be enabled for the shape.
   /// [shapeFamily] The family of the shape.
   /// [shapeType] The shape type, determined by the CPU hardware.
-  GetDbSystemShapesDbSystemShape({
+  const GetDbSystemShapesDbSystemShape({
     required this.availableCoreCount,
     required this.availableCoreCountPerNode,
     required this.availableDataStorageInTbs,

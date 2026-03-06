@@ -15,7 +15,7 @@ class GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag({
+  const GetDatabasePostgresqlConfigPglookoutMaxFailoverReplicationTimeLag({
     required this.description,
     required this.maximum,
     required this.minimum,

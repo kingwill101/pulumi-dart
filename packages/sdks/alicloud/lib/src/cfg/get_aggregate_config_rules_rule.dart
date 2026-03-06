@@ -78,7 +78,7 @@ class GetAggregateConfigRulesRule {
   /// [status] The state of the config rule, valid values: `ACTIVE`, `DELETING`, `EVALUATING` and `INACTIVE`.
   /// [tagKeyScope] The scope of tay key.
   /// [tagValueScope] The scope of tay value.
-  GetAggregateConfigRulesRule({
+  const GetAggregateConfigRulesRule({
     required this.accountId,
     required this.aggregateConfigRuleName,
     required this.aggregatorId,

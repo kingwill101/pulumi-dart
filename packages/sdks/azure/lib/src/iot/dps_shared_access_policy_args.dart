@@ -41,7 +41,7 @@ class DpsSharedAccessPolicyArgs {
   /// [registrationWrite] Adds `RegistrationStatusWrite` permission to this Shared Access Account. It allows write access to device registrations.
   /// [resourceGroupName] The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   /// [serviceConfig] Adds `ServiceConfig` permission to this Shared Access Account. It allows configuration of the Device Provisioning Service.
-  DpsSharedAccessPolicyArgs({
+  const DpsSharedAccessPolicyArgs({
     this.enrollmentRead,
     this.enrollmentWrite,
     required this.iothubDpsName,

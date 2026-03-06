@@ -15,7 +15,7 @@ class SecurityPostureReference {
   /// [excludeExtensions] The list of virtual machine extension names to exclude when applying the security posture.
   /// [id] The security posture reference id in the form of /CommunityGalleries/{communityGalleryName}/securityPostures/{securityPostureName}/versions/{major.minor.patch}|latest
   /// [isOverridable] Whether the security posture can be overridden by the user.
-  SecurityPostureReference({
+  const SecurityPostureReference({
     this.excludeExtensions,
     required this.id,
     this.isOverridable,

@@ -11,7 +11,7 @@ class GetInterfacePublicIpv4Address {
   /// Creates a new [GetInterfacePublicIpv4Address].
   /// [address] The IPv4 address.
   /// [primary] Whether this is the primary IPv4 address.
-  GetInterfacePublicIpv4Address({
+  const GetInterfacePublicIpv4Address({
     required this.address,
     required this.primary,
   });

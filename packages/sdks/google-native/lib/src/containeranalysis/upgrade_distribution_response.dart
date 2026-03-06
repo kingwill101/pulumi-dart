@@ -18,7 +18,7 @@ class UpgradeDistributionResponse {
   /// [cpeUri] Required - The specific operating system this metadata applies to. See https://cpe.mitre.org/specification/.
   /// [cve] The cve tied to this Upgrade.
   /// [severity] The severity as specified by the upstream operating system.
-  UpgradeDistributionResponse({
+  const UpgradeDistributionResponse({
     required this.classification,
     required this.cpeUri,
     required this.cve,

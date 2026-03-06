@@ -9,7 +9,7 @@ class GoogleCloudDatalabelingV1beta1ClassificationMetadata {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1ClassificationMetadata].
   /// [isMultiLabel] Whether the classification task is multi-label or not.
-  GoogleCloudDatalabelingV1beta1ClassificationMetadata({
+  const GoogleCloudDatalabelingV1beta1ClassificationMetadata({
     this.isMultiLabel,
   });
 

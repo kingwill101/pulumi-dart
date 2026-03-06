@@ -11,7 +11,7 @@ class SparkClusterRolesWorkerNodeAutoscaleCapacity {
   /// Creates a new [SparkClusterRolesWorkerNodeAutoscaleCapacity].
   /// [maxInstanceCount] The maximum number of worker nodes to autoscale to based on the cluster's activity.
   /// [minInstanceCount] The minimum number of worker nodes to autoscale to based on the cluster's activity.
-  SparkClusterRolesWorkerNodeAutoscaleCapacity({
+  const SparkClusterRolesWorkerNodeAutoscaleCapacity({
     required this.maxInstanceCount,
     required this.minInstanceCount,
   });

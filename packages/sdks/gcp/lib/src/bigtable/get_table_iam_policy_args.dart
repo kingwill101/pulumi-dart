@@ -16,7 +16,7 @@ class GetTableIamPolicyArgs {
   /// [instanceName] Required.
   /// [project] Optional.
   /// [table] The name or relative resource id of the table to manage IAM policies for.
-  GetTableIamPolicyArgs({
+  const GetTableIamPolicyArgs({
     required this.instanceName,
     this.project,
     required this.table,

@@ -9,7 +9,7 @@ class PoolOption {
 
   /// Creates a new [PoolOption].
   /// [name] The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
-  PoolOption({
+  const PoolOption({
     this.name,
   });
 

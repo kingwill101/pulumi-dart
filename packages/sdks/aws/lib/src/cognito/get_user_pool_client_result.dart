@@ -82,7 +82,7 @@ class GetUserPoolClientResult {
   /// [tokenValidityUnits] (Optional) Configuration block for units in which the validity times are represented in. Detailed below.
   /// [userPoolId] Required.
   /// [writeAttributes] (Optional) List of user pool attributes the application client can write to.
-  GetUserPoolClientResult({
+  const GetUserPoolClientResult({
     required this.accessTokenValidity,
     required this.allowedOauthFlows,
     required this.allowedOauthFlowsUserPoolClient,

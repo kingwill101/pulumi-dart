@@ -13,7 +13,7 @@ class GoogleIamV1AuditConfigResponse {
   /// Creates a new [GoogleIamV1AuditConfigResponse].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  GoogleIamV1AuditConfigResponse({
+  const GoogleIamV1AuditConfigResponse({
     required this.auditLogConfigs,
     required this.service,
   });

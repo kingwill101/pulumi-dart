@@ -30,7 +30,7 @@ class SecondaryIndexArgs {
   /// [instanceName] The name of the OTS instance in which table will located.
   /// [primaryKeys] A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   /// [tableName] The name of the OTS table. If changed, a new table would be created.
-  SecondaryIndexArgs({
+  const SecondaryIndexArgs({
     this.definedColumns,
     required this.includeBaseData,
     required this.indexName,

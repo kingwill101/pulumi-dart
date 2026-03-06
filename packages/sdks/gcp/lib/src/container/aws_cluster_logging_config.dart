@@ -9,7 +9,7 @@ class AwsClusterLoggingConfig {
 
   /// Creates a new [AwsClusterLoggingConfig].
   /// [componentConfig] Configuration of the logging components.
-  AwsClusterLoggingConfig({
+  const AwsClusterLoggingConfig({
     this.componentConfig,
   });
 

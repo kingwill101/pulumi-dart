@@ -17,7 +17,7 @@ class AlertProcessingRuleSuppressionScheduleRecurrence {
   /// [dailies] One or more `daily` blocks as defined above.
   /// [monthlies] One or more `monthly` blocks as defined above.
   /// [weeklies] One or more `weekly` blocks as defined below.
-  AlertProcessingRuleSuppressionScheduleRecurrence({
+  const AlertProcessingRuleSuppressionScheduleRecurrence({
     this.dailies,
     this.monthlies,
     this.weeklies,

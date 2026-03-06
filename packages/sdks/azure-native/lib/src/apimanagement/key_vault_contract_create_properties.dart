@@ -12,7 +12,7 @@ class KeyVaultContractCreateProperties {
   /// Creates a new [KeyVaultContractCreateProperties].
   /// [identityClientId] Null for SystemAssignedIdentity or Client Id for UserAssignedIdentity , which will be used to access key vault secret.
   /// [secretIdentifier] Key vault secret identifier for fetching secret. Providing a versioned secret will prevent auto-refresh. This requires API Management service to be configured with aka.ms/apimmsi
-  KeyVaultContractCreateProperties({
+  const KeyVaultContractCreateProperties({
     this.identityClientId,
     this.secretIdentifier,
   });

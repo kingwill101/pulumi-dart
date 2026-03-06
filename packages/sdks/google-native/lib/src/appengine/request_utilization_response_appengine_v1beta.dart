@@ -12,7 +12,7 @@ class RequestUtilizationResponseAppengineV1beta {
   /// Creates a new [RequestUtilizationResponseAppengineV1beta].
   /// [targetConcurrentRequests] Target number of concurrent requests.
   /// [targetRequestCountPerSecond] Target requests per second.
-  RequestUtilizationResponseAppengineV1beta({
+  const RequestUtilizationResponseAppengineV1beta({
     required this.targetConcurrentRequests,
     required this.targetRequestCountPerSecond,
   });

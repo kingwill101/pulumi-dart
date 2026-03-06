@@ -31,7 +31,7 @@ class SynapseSparkState {
   /// [name] The name which should be used for this Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
   /// [synapseSparkPoolId] The ID of the linked Synapse Spark Pool. Changing this forces a new Machine Learning Synapse Spark to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning Synapse Spark. Changing this forces a new Machine Learning Synapse Spark to be created.
-  SynapseSparkState({
+  const SynapseSparkState({
     this.description,
     this.identity,
     this.localAuthEnabled,

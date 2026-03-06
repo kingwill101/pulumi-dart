@@ -9,7 +9,7 @@ class GroupByVariableResponse {
 
   /// Creates a new [GroupByVariableResponse].
   /// [variableName] User Session clause variable.
-  GroupByVariableResponse({
+  const GroupByVariableResponse({
     required this.variableName,
   });
 

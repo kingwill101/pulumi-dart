@@ -8,7 +8,7 @@ class GetApiManagementServiceDomainOwnershipIdentifierResult {
 
   /// Creates a new [GetApiManagementServiceDomainOwnershipIdentifierResult].
   /// [domainOwnershipIdentifier] The domain ownership identifier value.
-  GetApiManagementServiceDomainOwnershipIdentifierResult({
+  const GetApiManagementServiceDomainOwnershipIdentifierResult({
     required this.domainOwnershipIdentifier,
   });
 

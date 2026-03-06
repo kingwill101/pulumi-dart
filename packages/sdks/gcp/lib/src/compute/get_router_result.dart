@@ -36,7 +36,7 @@ class GetRouterResult {
   /// [project] Optional.
   /// [region] Optional.
   /// [selfLink] Required.
-  GetRouterResult({
+  const GetRouterResult({
     required this.bgps,
     required this.creationTimestamp,
     required this.description,

@@ -36,7 +36,7 @@ class PatchSettingsResponse {
   /// [automaticByPlatformSettings] Specifies additional settings for patch mode AutomaticByPlatform in VM Guest
   /// [enableHotpatching] Enables customers to patch their Azure VMs without requiring a reboot. For
   /// [patchMode] Specifies the mode of VM Guest Patching to IaaS virtual machine or virtual
-  PatchSettingsResponse({
+  const PatchSettingsResponse({
     this.assessmentMode,
     this.automaticByPlatformSettings,
     this.enableHotpatching,

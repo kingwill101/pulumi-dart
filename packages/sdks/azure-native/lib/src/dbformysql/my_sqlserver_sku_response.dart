@@ -12,7 +12,7 @@ class MySQLServerSkuResponse {
   /// Creates a new [MySQLServerSkuResponse].
   /// [name] The name of the sku, e.g. Standard_D32s_v3.
   /// [tier] The tier of the particular SKU, e.g. GeneralPurpose.
-  MySQLServerSkuResponse({
+  const MySQLServerSkuResponse({
     required this.name,
     required this.tier,
   });

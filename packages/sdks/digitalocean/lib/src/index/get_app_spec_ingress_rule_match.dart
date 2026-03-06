@@ -12,7 +12,7 @@ class GetAppSpecIngressRuleMatch {
   /// Creates a new [GetAppSpecIngressRuleMatch].
   /// [authority] Required.
   /// [path] Paths must start with `/` and must be unique within the app.
-  GetAppSpecIngressRuleMatch({
+  const GetAppSpecIngressRuleMatch({
     required this.authority,
     required this.path,
   });

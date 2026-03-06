@@ -22,7 +22,7 @@ class AssessmentArgs {
   /// [assessmentPolicyId] The ID of the security Assessment policy to apply to this resource. Changing this forces a new security Assessment to be created.
   /// [status] A `status` block as defined below.
   /// [targetResourceId] The ID of the target resource. Changing this forces a new security Assessment to be created.
-  AssessmentArgs({
+  const AssessmentArgs({
     this.additionalData,
     required this.assessmentPolicyId,
     required this.status,

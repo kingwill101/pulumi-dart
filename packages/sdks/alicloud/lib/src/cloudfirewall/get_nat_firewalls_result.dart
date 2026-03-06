@@ -43,7 +43,7 @@ class GetNatFirewallsResult {
   /// [regionNo] Optional.
   /// [status] Optional.
   /// [vpcId] The ID of the VPC instance.
-  GetNatFirewallsResult({
+  const GetNatFirewallsResult({
     required this.firewalls,
     required this.id,
     required this.ids,

@@ -19,7 +19,7 @@ class ArchiveRuleState {
   /// [filters] Filter criteria for the archive rule. See Filter for more details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [ruleName] Rule name.
-  ArchiveRuleState({
+  const ArchiveRuleState({
     this.analyzerName,
     this.filters,
     this.region,

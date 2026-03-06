@@ -16,7 +16,7 @@ class SQuotaAdjusterSettingsArgs {
   /// Creates a new [SQuotaAdjusterSettingsArgs].
   /// [enablement] Required. The configured value of the enablement at the given resource.
   /// [parent] The parent of the quota preference. Allowed parent format is "projects/[project-id / number]".
-  SQuotaAdjusterSettingsArgs({
+  const SQuotaAdjusterSettingsArgs({
     required this.enablement,
     this.parent,
   });

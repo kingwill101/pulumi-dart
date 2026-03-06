@@ -9,7 +9,7 @@ class GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference {
   /// Creates a new [GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference].
   /// [priority] Required.
   /// [resourceArn] Required.
-  GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference({
+  const GetFirewallPolicyFirewallPolicyStatelessRuleGroupReference({
     required this.priority,
     required this.resourceArn,
   });

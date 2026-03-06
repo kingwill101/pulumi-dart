@@ -41,7 +41,7 @@ class TransitRouterState {
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterName] The name of the Enterprise Edition transit router.
   /// [type] The edition of the transit router.
-  TransitRouterState({
+  const TransitRouterState({
     this.cenId,
     this.createTime,
     this.dryRun,

@@ -36,7 +36,7 @@ class TransportLayerApplicationRule {
   /// [source] Specific value of the origin, which needs to match the origin type.
   /// [sourcePort] Source Port
   /// [sourceType] Origin type, supporting:
-  TransportLayerApplicationRule({
+  const TransportLayerApplicationRule({
     required this.clientIpPassThroughMode,
     this.comment,
     required this.edgePort,

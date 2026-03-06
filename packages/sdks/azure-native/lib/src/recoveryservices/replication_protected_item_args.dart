@@ -28,7 +28,7 @@ class ReplicationProtectedItemArgs {
   /// [replicatedProtectedItemName] A name for the replication protected item.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationProtectedItemArgs({
+  const ReplicationProtectedItemArgs({
     required this.fabricName,
     this.properties,
     required this.protectionContainerName,

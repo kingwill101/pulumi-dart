@@ -34,7 +34,7 @@ class SubscriptionIAMBindingState {
   /// [project] The project in which the resource belongs. If it
   /// [role] The role that should be applied. Only one
   /// [subscription] The subscription name or id to bind to attach IAM policy to.
-  SubscriptionIAMBindingState({
+  const SubscriptionIAMBindingState({
     this.condition,
     this.etag,
     this.members,

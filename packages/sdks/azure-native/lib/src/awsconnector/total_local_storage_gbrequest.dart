@@ -12,7 +12,7 @@ class TotalLocalStorageGBRequest {
   /// Creates a new [TotalLocalStorageGBRequest].
   /// [max] The storage maximum in GB.
   /// [min] The storage minimum in GB.
-  TotalLocalStorageGBRequest({
+  const TotalLocalStorageGBRequest({
     this.max,
     this.min,
   });

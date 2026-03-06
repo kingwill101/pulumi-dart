@@ -12,7 +12,7 @@ class SqlActiveDirectoryConfig {
   /// Creates a new [SqlActiveDirectoryConfig].
   /// [domain] The name of the domain (e.g., mydomain.com).
   /// [kind] This is always sql#activeDirectoryConfig.
-  SqlActiveDirectoryConfig({
+  const SqlActiveDirectoryConfig({
     this.domain,
     this.kind,
   });

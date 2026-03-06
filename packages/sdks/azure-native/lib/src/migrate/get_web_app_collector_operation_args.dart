@@ -18,7 +18,7 @@ class GetWebAppCollectorOperationArgs {
   /// [collectorName] Web app collector ARM name.
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWebAppCollectorOperationArgs({
+  const GetWebAppCollectorOperationArgs({
     required this.collectorName,
     required this.projectName,
     required this.resourceGroupName,

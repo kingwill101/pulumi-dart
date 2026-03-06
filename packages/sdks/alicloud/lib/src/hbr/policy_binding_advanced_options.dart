@@ -9,7 +9,7 @@ class PolicyBindingAdvancedOptions {
 
   /// Creates a new [PolicyBindingAdvancedOptions].
   /// [udmDetail] ECS Backup Advanced options See `udm_detail` below.
-  PolicyBindingAdvancedOptions({
+  const PolicyBindingAdvancedOptions({
     this.udmDetail,
   });
 

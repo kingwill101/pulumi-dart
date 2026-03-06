@@ -17,7 +17,7 @@ class HttpRouteRule {
   /// Creates a new [HttpRouteRule].
   /// [action] The detailed rule defining how to route matched traffic.
   /// [matches] A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied.
-  HttpRouteRule({
+  const HttpRouteRule({
     this.action,
     this.matches,
   });

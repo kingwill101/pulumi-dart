@@ -20,7 +20,7 @@ class DomainEbsOptions {
   /// [throughput] Specifies the throughput (in MiB/s) of the EBS volumes attached to data nodes. Applicable only for the gp3 volume type.
   /// [volumeSize] Size of EBS volumes attached to data nodes (in GiB).
   /// [volumeType] Type of EBS volumes attached to data nodes.
-  DomainEbsOptions({
+  const DomainEbsOptions({
     required this.ebsEnabled,
     this.iops,
     this.throughput,

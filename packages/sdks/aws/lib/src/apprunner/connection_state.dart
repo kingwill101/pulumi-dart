@@ -27,7 +27,7 @@ class ConnectionState {
   /// [status] Current state of the App Runner connection. When the state is `AVAILABLE`, you can use the connection to create an `aws.apprunner.Service` resource.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ConnectionState({
+  const ConnectionState({
     this.arn,
     this.connectionName,
     this.providerType,

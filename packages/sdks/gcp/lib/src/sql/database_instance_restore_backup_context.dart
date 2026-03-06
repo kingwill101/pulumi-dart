@@ -15,7 +15,7 @@ class DatabaseInstanceRestoreBackupContext {
   /// [backupRunId] The ID of the backup run to restore from.
   /// [instanceId] The ID of the instance that the backup was taken from. If left empty,
   /// [project] The full project ID of the source instance.`
-  DatabaseInstanceRestoreBackupContext({
+  const DatabaseInstanceRestoreBackupContext({
     required this.backupRunId,
     this.instanceId,
     this.project,

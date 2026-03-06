@@ -15,7 +15,7 @@ class TagState {
   /// [key] Tag name.
   /// [resourceId] Id of the Organizations resource to tag.
   /// [value] Tag value.
-  TagState({
+  const TagState({
     this.key,
     this.resourceId,
     this.value,

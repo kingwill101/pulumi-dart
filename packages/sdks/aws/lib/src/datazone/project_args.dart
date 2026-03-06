@@ -32,7 +32,7 @@ class ProjectArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipDeletionCheck] Optional flag to delete all child entities within the project.
   /// [timeouts] Optional.
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     required this.domainIdentifier,
     this.glossaryTerms,

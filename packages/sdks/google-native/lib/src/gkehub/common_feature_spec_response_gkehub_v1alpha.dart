@@ -37,7 +37,7 @@ class CommonFeatureSpecResponseGkehubV1alpha {
   /// [multiclusteringress] Multicluster Ingress-specific spec.
   /// [namespaceactuation] Namespace Actuation feature spec
   /// [workloadcertificate] Workload Certificate spec.
-  CommonFeatureSpecResponseGkehubV1alpha({
+  const CommonFeatureSpecResponseGkehubV1alpha({
     required this.anthosobservability,
     required this.appdevexperience,
     required this.cloudauditlogging,

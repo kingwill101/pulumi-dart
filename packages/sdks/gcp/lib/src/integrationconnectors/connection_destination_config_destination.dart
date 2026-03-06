@@ -14,7 +14,7 @@ class ConnectionDestinationConfigDestination {
   /// [host] Host
   /// [port] port number
   /// [serviceAttachment] Service Attachment
-  ConnectionDestinationConfigDestination({
+  const ConnectionDestinationConfigDestination({
     this.host,
     this.port,
     this.serviceAttachment,

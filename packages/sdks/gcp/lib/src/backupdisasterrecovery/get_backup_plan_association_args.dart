@@ -19,7 +19,7 @@ class GetBackupPlanAssociationArgs {
   /// [backupPlanAssociationId] The id of Backupplan association resource.
   /// [location] The location in which the Backupplan association resource belongs.
   /// [project] Optional.
-  GetBackupPlanAssociationArgs({
+  const GetBackupPlanAssociationArgs({
     required this.backupPlanAssociationId,
     required this.location,
     this.project,

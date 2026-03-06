@@ -33,7 +33,7 @@ class AgentAgentAliasArgs {
   /// [routingConfigurations] Details about the routing configuration of the alias. See `routing_configuration` Block for details.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  AgentAgentAliasArgs({
+  const AgentAgentAliasArgs({
     required this.agentAliasName,
     required this.agentId,
     this.description,

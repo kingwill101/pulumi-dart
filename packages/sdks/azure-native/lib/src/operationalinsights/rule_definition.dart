@@ -24,7 +24,7 @@ class RuleDefinition {
   /// [destinationTable] The destination table used for the Summary rule results.
   /// [query] Summary rule query.
   /// [timeSelector] The time cursor used in Summary rules bins processing, e.g. TimeGenerated.
-  RuleDefinition({
+  const RuleDefinition({
     this.binDelay,
     this.binSize,
     this.binStartTime,

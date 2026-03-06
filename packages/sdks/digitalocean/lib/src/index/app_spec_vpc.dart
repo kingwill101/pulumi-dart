@@ -8,7 +8,7 @@ class AppSpecVpc {
 
   /// Creates a new [AppSpecVpc].
   /// [id] The ID of the VPC.
-  AppSpecVpc({
+  const AppSpecVpc({
     required this.id,
   });
 

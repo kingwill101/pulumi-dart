@@ -15,7 +15,7 @@ class BlockchainNodesConnectionInfo {
   /// Creates a new [BlockchainNodesConnectionInfo].
   /// [endpointInfos] (Output)
   /// [serviceAttachment] (Output)
-  BlockchainNodesConnectionInfo({
+  const BlockchainNodesConnectionInfo({
     this.endpointInfos,
     this.serviceAttachment,
   });

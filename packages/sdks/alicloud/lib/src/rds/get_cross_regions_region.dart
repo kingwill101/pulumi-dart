@@ -8,7 +8,7 @@ class GetCrossRegionsRegion {
 
   /// Creates a new [GetCrossRegionsRegion].
   /// [id] ID of the region.
-  GetCrossRegionsRegion({
+  const GetCrossRegionsRegion({
     required this.id,
   });
 

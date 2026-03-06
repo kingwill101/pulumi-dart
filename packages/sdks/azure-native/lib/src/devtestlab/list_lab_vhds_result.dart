@@ -13,7 +13,7 @@ class ListLabVhdsResult {
   /// Creates a new [ListLabVhdsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The LabVhd items on this page
-  ListLabVhdsResult({
+  const ListLabVhdsResult({
     this.nextLink,
     required this.value,
   });

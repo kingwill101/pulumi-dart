@@ -75,7 +75,7 @@ class RuleDeploymentState {
   /// [project] The ID of the project in which the resource belongs.
   /// [rule] The Rule ID of the rule.
   /// [runFrequency] The run frequency of the rule deployment.
-  RuleDeploymentState({
+  const RuleDeploymentState({
     this.alerting,
     this.archiveTime,
     this.archived,

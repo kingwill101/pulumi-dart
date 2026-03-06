@@ -26,7 +26,7 @@ class GetStaticAccountsAccount {
   /// [masterUid] The ID of the user's primary account.
   /// [password] Static password.
   /// [userName] Static username.
-  GetStaticAccountsAccount({
+  const GetStaticAccountsAccount({
     required this.accessKey,
     required this.createTime,
     required this.id,

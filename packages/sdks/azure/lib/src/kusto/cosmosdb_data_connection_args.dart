@@ -33,7 +33,7 @@ class CosmosdbDataConnectionArgs {
   /// [name] The name of the data connection. Changing this forces a new Kusto Cosmos DB Connection to be created.
   /// [retrievalStartDate] If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date. Changing this forces a new Kusto Cosmos DB Connection to be created.
   /// [tableName] The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table. Changing this forces a new Kusto Cosmos DB Connection to be created.
-  CosmosdbDataConnectionArgs({
+  const CosmosdbDataConnectionArgs({
     required this.cosmosdbContainerId,
     required this.kustoDatabaseId,
     this.location,

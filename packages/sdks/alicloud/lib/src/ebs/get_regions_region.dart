@@ -12,7 +12,7 @@ class GetRegionsRegion {
   /// Creates a new [GetRegionsRegion].
   /// [regionId] The ID of the region.
   /// [zones] A list of Ebs Zones.
-  GetRegionsRegion({
+  const GetRegionsRegion({
     required this.regionId,
     required this.zones,
   });

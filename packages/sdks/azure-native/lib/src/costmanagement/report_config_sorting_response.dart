@@ -12,7 +12,7 @@ class ReportConfigSortingResponse {
   /// Creates a new [ReportConfigSortingResponse].
   /// [direction] Direction of sort.
   /// [name] The name of the column to sort.
-  ReportConfigSortingResponse({
+  const ReportConfigSortingResponse({
     this.direction,
     required this.name,
   });

@@ -11,7 +11,7 @@ class DomainCpuTuneCacheTuneMonitor {
   /// Creates a new [DomainCpuTuneCacheTuneMonitor].
   /// [level] Configures the monitoring level for cache tuning, controlling the granularity of the monitored cache behavior.
   /// [vcpus] Sets the number of virtual CPUs to monitor for cache tuning, allowing targeted performance observations.
-  DomainCpuTuneCacheTuneMonitor({
+  const DomainCpuTuneCacheTuneMonitor({
     this.level,
     this.vcpus,
   });

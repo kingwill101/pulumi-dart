@@ -14,7 +14,7 @@ class DomainLogPublishingOption {
   /// [cloudwatchLogGroupArn] ARN of the Cloudwatch log group to which log needs to be published.
   /// [enabled] Whether given log publishing option is enabled or not.
   /// [logType] Type of OpenSearch log. Valid values: `INDEX_SLOW_LOGS`, `SEARCH_SLOW_LOGS`, `ES_APPLICATION_LOGS`, `AUDIT_LOGS`.
-  DomainLogPublishingOption({
+  const DomainLogPublishingOption({
     required this.cloudwatchLogGroupArn,
     this.enabled,
     required this.logType,

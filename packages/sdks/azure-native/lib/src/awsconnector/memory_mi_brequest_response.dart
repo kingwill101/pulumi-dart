@@ -12,7 +12,7 @@ class MemoryMiBRequestResponse {
   /// Creates a new [MemoryMiBRequestResponse].
   /// [max] The memory maximum in MiB.
   /// [min] The memory minimum in MiB.
-  MemoryMiBRequestResponse({
+  const MemoryMiBRequestResponse({
     this.max,
     this.min,
   });

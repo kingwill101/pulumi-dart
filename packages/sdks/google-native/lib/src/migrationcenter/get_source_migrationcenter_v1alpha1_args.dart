@@ -15,7 +15,7 @@ class GetSourceMigrationcenterV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetSourceMigrationcenterV1alpha1Args({
+  const GetSourceMigrationcenterV1alpha1Args({
     required this.location,
     this.project,
     required this.sourceId,

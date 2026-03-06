@@ -15,7 +15,7 @@ class GetServiceDnsConfig {
   /// [dnsRecords] An array that contains one DnsRecord object for each resource record set. See `dns_records` Block for details.
   /// [namespaceId] ID of the namespace that the service belongs to.
   /// [routingPolicy] Routing policy that you want to apply to all records that Route 53 creates when you register an instance and specify the service. Valid Values: MULTIVALUE, WEIGHTED
-  GetServiceDnsConfig({
+  const GetServiceDnsConfig({
     required this.dnsRecords,
     required this.namespaceId,
     required this.routingPolicy,

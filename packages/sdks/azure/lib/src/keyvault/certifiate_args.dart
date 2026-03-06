@@ -28,7 +28,7 @@ class CertifiateArgs {
   /// [keyVaultId] The ID of the Key Vault where the Certificate should be created. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Key Vault Certificate. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  CertifiateArgs({
+  const CertifiateArgs({
     this.certificate,
     this.certificatePolicy,
     required this.keyVaultId,

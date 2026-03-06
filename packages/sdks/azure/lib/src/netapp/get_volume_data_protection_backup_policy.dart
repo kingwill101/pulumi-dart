@@ -14,7 +14,7 @@ class GetVolumeDataProtectionBackupPolicy {
   /// [backupPolicyId] The Resource ID of the backup policy.
   /// [backupVaultId] The Resource ID of the backup backup vault.
   /// [policyEnabled] Backup policy is enabled or not.
-  GetVolumeDataProtectionBackupPolicy({
+  const GetVolumeDataProtectionBackupPolicy({
     required this.backupPolicyId,
     required this.backupVaultId,
     required this.policyEnabled,

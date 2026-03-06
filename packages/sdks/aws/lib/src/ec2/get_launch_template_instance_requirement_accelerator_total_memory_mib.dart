@@ -9,7 +9,7 @@ class GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib {
   /// Creates a new [GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib].
   /// [max] Required.
   /// [min] Required.
-  GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib({
+  const GetLaunchTemplateInstanceRequirementAcceleratorTotalMemoryMib({
     required this.max,
     required this.min,
   });

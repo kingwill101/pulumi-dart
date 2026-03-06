@@ -12,7 +12,7 @@ class SamlSpConfigResponseCloudidentityV1beta1 {
   /// Creates a new [SamlSpConfigResponseCloudidentityV1beta1].
   /// [assertionConsumerServiceUri] The SAML **Assertion Consumer Service (ACS) URL** to be used for the IDP-initiated login. Assumed to accept response messages via the `HTTP-POST` binding.
   /// [entityId] The SAML **Entity ID** for this service provider.
-  SamlSpConfigResponseCloudidentityV1beta1({
+  const SamlSpConfigResponseCloudidentityV1beta1({
     required this.assertionConsumerServiceUri,
     required this.entityId,
   });

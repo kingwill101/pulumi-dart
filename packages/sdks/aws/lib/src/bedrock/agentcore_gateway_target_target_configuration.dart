@@ -9,7 +9,7 @@ class AgentcoreGatewayTargetTargetConfiguration {
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfiguration].
   /// [mcp] Model Context Protocol (MCP) configuration. See `mcp` below.
-  AgentcoreGatewayTargetTargetConfiguration({
+  const AgentcoreGatewayTargetTargetConfiguration({
     this.mcp,
   });
 

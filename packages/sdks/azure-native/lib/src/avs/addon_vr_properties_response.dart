@@ -16,7 +16,7 @@ class AddonVrPropertiesResponse {
   /// [addonType] Addon type
   /// [provisioningState] The state of the addon provisioning
   /// [vrsCount] The vSphere Replication Server (VRS) count
-  AddonVrPropertiesResponse({
+  const AddonVrPropertiesResponse({
     required this.addonType,
     required this.provisioningState,
     required this.vrsCount,

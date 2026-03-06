@@ -11,7 +11,7 @@ class FloorsettingFilterConfigMaliciousUriFilterSettings {
 
   /// Creates a new [FloorsettingFilterConfigMaliciousUriFilterSettings].
   /// [filterEnforcement] Tells whether the Malicious URI filter is enabled or disabled.
-  FloorsettingFilterConfigMaliciousUriFilterSettings({
+  const FloorsettingFilterConfigMaliciousUriFilterSettings({
     this.filterEnforcement,
   });
 

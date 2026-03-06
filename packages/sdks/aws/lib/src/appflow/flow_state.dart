@@ -50,7 +50,7 @@ class FlowState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tasks] A Task that Amazon AppFlow performs while transferring the data in the flow run.
   /// [triggerConfig] A Trigger that determine how and when the flow runs.
-  FlowState({
+  const FlowState({
     this.arn,
     this.description,
     this.destinationFlowConfigs,

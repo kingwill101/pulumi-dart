@@ -17,7 +17,7 @@ class GetAlidnsDomainsDomainRecordLine {
   /// [lineCode] Sub-line Code.
   /// [lineDisplayName] Parent line display name.
   /// [lineName] Sub-line display name.
-  GetAlidnsDomainsDomainRecordLine({
+  const GetAlidnsDomainsDomainRecordLine({
     required this.fatherCode,
     required this.lineCode,
     required this.lineDisplayName,

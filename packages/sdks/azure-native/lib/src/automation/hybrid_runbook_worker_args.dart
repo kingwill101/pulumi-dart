@@ -27,7 +27,7 @@ class HybridRunbookWorkerArgs {
   /// [name] Gets or sets the name of the resource.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [vmResourceId] Azure Resource Manager Id for a virtual machine.
-  HybridRunbookWorkerArgs({
+  const HybridRunbookWorkerArgs({
     required this.automationAccountName,
     required this.hybridRunbookWorkerGroupName,
     this.hybridRunbookWorkerId,

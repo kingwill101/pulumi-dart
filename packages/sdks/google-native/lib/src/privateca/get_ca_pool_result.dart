@@ -22,7 +22,7 @@ class GetCaPoolResult {
   /// [name] The resource name for this CaPool in the format `projects/*/locations/*/caPools/*`.
   /// [publishingOptions] Optional. The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// [tier] Immutable. The Tier of this CaPool.
-  GetCaPoolResult({
+  const GetCaPoolResult({
     required this.issuancePolicy,
     required this.labels,
     required this.name,

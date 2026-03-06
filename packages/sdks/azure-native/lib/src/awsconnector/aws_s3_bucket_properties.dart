@@ -98,7 +98,7 @@ class AwsS3BucketProperties {
   /// [versioningConfiguration] Enables multiple versions of all objects in this bucket. You might enable versioning to prevent objects from being deleted or overwritten by mistake or to archive objects so that you can retrieve previous versions of them. Describes the versioning state of an Amazon S3 bucket. For more information, see [PUT Bucket versioning](https://docs.aws.amazon.com/AmazonS3/latest/API/RESTBucketPUTVersioningStatus.html) in the *Amazon S3 API Reference*.
   /// [websiteConfiguration] Information used to configure the bucket as a static website. For more information, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/WebsiteHosting.html). Specifies website configuration parameters for an Amazon S3 bucket.
   /// [websiteURL] Property websiteURL
-  AwsS3BucketProperties({
+  const AwsS3BucketProperties({
     this.accelerateConfiguration,
     this.accessControl,
     this.analyticsConfigurations,

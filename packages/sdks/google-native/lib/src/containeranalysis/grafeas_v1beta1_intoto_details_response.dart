@@ -12,7 +12,7 @@ class GrafeasV1beta1IntotoDetailsResponse {
   /// Creates a new [GrafeasV1beta1IntotoDetailsResponse].
   /// [signatures] Required.
   /// [signed] Required.
-  GrafeasV1beta1IntotoDetailsResponse({
+  const GrafeasV1beta1IntotoDetailsResponse({
     required this.signatures,
     required this.signed,
   });

@@ -115,7 +115,7 @@ class ServerState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] URL of the service endpoint used to authenticate users with an `identity_provider_type` of `API_GATEWAY`.
   /// [workflowDetails] Specifies the workflow details. See `workflow_details` Block below for details.
-  ServerState({
+  const ServerState({
     this.arn,
     this.certificate,
     this.directoryId,

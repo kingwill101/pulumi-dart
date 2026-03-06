@@ -7,7 +7,7 @@ class ListenerRuleConditionHttpRequestMethod {
 
   /// Creates a new [ListenerRuleConditionHttpRequestMethod].
   /// [values] Required.
-  ListenerRuleConditionHttpRequestMethod({
+  const ListenerRuleConditionHttpRequestMethod({
     required this.values,
   });
 

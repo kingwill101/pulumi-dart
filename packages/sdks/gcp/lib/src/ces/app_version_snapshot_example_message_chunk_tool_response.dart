@@ -28,7 +28,7 @@ class AppVersionSnapshotExampleMessageChunkToolResponse {
   /// [response] (Output)
   /// [tool] (Output)
   /// [toolsetTools] (Output)
-  AppVersionSnapshotExampleMessageChunkToolResponse({
+  const AppVersionSnapshotExampleMessageChunkToolResponse({
     this.displayName,
     this.id,
     this.response,

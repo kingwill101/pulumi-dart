@@ -13,7 +13,7 @@ class Apk {
   /// Creates a new [Apk].
   /// [location] The path to an APK to be installed on the device before the test begins.
   /// [packageName] The java package for the APK to be installed. Value is determined by examining the application's manifest.
-  Apk({
+  const Apk({
     this.location,
     this.packageName,
   });

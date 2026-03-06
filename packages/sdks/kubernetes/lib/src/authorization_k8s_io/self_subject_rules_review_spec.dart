@@ -9,7 +9,7 @@ class SelfSubjectRulesReviewSpec {
 
   /// Creates a new [SelfSubjectRulesReviewSpec].
   /// [namespace] Namespace to evaluate rules for. Required.
-  SelfSubjectRulesReviewSpec({
+  const SelfSubjectRulesReviewSpec({
     this.namespace,
   });
 

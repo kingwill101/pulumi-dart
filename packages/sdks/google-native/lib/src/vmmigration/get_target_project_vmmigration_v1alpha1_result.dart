@@ -20,7 +20,7 @@ class GetTargetProjectVmmigrationV1alpha1Result {
   /// [name] The name of the target project.
   /// [project] The target project ID (number) or project name.
   /// [updateTime] The last time the target project resource was updated.
-  GetTargetProjectVmmigrationV1alpha1Result({
+  const GetTargetProjectVmmigrationV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.name,

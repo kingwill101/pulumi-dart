@@ -14,7 +14,7 @@ class GetUserLinodeGrant {
   /// [id] The ID of entity this grant applies to.
   /// [label] The current label of the entity this grant applies to, for display purposes.
   /// [permissions] The level of access this User has to this entity. If null, this User has no access. (`read_only`, `read_write`)
-  GetUserLinodeGrant({
+  const GetUserLinodeGrant({
     required this.id,
     required this.label,
     required this.permissions,

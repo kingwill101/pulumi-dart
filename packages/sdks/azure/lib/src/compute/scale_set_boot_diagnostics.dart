@@ -11,7 +11,7 @@ class ScaleSetBootDiagnostics {
   /// Creates a new [ScaleSetBootDiagnostics].
   /// [enabled] Whether to enable boot diagnostics for the virtual machine. Defaults to `true`.
   /// [storageUri] Blob endpoint for the storage account to hold the virtual machine's diagnostic files. This must be the root of a storage account, and not a storage container.
-  ScaleSetBootDiagnostics({
+  const ScaleSetBootDiagnostics({
     this.enabled,
     required this.storageUri,
   });

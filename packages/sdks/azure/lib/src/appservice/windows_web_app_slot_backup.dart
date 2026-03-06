@@ -18,7 +18,7 @@ class WindowsWebAppSlotBackup {
   /// [name] The name which should be used for this Backup.
   /// [schedule] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to the container.
-  WindowsWebAppSlotBackup({
+  const WindowsWebAppSlotBackup({
     this.enabled,
     required this.name,
     required this.schedule,

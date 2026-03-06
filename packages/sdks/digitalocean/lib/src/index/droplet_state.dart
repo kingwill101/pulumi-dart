@@ -115,7 +115,7 @@ class DropletState {
   /// [vcpus] The number of the instance's virtual CPUs
   /// [volumeIds] A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
   /// [vpcUuid] The ID of the VPC where the Droplet will be located.
-  DropletState({
+  const DropletState({
     this.backupPolicy,
     this.backups,
     this.createdAt,

@@ -63,7 +63,7 @@ class UnitKindArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [saas] A reference to the Saas that defines the product (managed service) that
   /// [unitKindId] The ID value for the new unit kind.
-  UnitKindArgs({
+  const UnitKindArgs({
     this.annotations,
     this.defaultRelease,
     this.dependencies,

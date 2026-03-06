@@ -20,7 +20,7 @@ class GetRouteTableAssociation {
   /// [routeTableAssociationId] Association ID.
   /// [routeTableId] ID of the specific Route Table to retrieve.
   /// [subnetId] ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
-  GetRouteTableAssociation({
+  const GetRouteTableAssociation({
     required this.gatewayId,
     required this.main,
     required this.routeTableAssociationId,

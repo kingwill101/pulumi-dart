@@ -9,7 +9,7 @@ class AnthosClusterResponse {
 
   /// Creates a new [AnthosClusterResponse].
   /// [membership] Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
-  AnthosClusterResponse({
+  const AnthosClusterResponse({
     required this.membership,
   });
 

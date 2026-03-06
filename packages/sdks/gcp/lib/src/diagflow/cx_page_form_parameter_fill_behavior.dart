@@ -25,7 +25,7 @@ class CxPageFormParameterFillBehavior {
   /// Creates a new [CxPageFormParameterFillBehavior].
   /// [initialPromptFulfillment] The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
   /// [repromptEventHandlers] The handlers for parameter-level events, used to provide reprompt for the parameter or transition to a different page/flow. The supported events are:
-  CxPageFormParameterFillBehavior({
+  const CxPageFormParameterFillBehavior({
     this.initialPromptFulfillment,
     this.repromptEventHandlers,
   });

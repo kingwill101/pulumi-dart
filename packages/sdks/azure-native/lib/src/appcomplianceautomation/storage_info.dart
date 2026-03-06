@@ -18,7 +18,7 @@ class StorageInfo {
   /// [location] The region of 'bring your own storage' account
   /// [resourceGroup] The resourceGroup which 'bring your own storage' account belongs to
   /// [subscriptionId] The subscription id which 'bring your own storage' account belongs to
-  StorageInfo({
+  const StorageInfo({
     this.accountName,
     this.location,
     this.resourceGroup,

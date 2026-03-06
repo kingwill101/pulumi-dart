@@ -33,7 +33,7 @@ class GetTriggerGitFileSource {
   /// [repository] The fully qualified resource name of the Repo API repository. The fully qualified resource name of the Repo API repository.
   /// [revision] The branch, tag, arbitrary ref, or SHA version of the repo to use when resolving the
   /// [uri] The URI of the repo (optional). If unspecified, the repo from which the trigger
-  GetTriggerGitFileSource({
+  const GetTriggerGitFileSource({
     required this.bitbucketServerConfig,
     required this.githubEnterpriseConfig,
     required this.path,

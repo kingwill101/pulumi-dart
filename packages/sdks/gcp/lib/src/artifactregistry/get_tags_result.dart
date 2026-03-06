@@ -23,7 +23,7 @@ class GetTagsResult {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [tags] A list of all retrieved Artifact Registry tags. Structure is defined below.
-  GetTagsResult({
+  const GetTagsResult({
     this.filter,
     required this.id,
     required this.location,

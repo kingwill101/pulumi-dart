@@ -42,7 +42,7 @@ class PluginInstanceAction {
   /// [scheduleCronExpression] The schedule for this plugin instance action. This can only be set if the
   /// [scheduleTimeZone] The time zone for the schedule cron expression. If not provided, UTC will
   /// [state] (Output)
-  PluginInstanceAction({
+  const PluginInstanceAction({
     required this.actionId,
     this.curationConfig,
     this.hubInstanceActions,

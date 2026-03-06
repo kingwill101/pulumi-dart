@@ -15,7 +15,7 @@ class GetReportByBillingAccountArgs {
   /// Creates a new [GetReportByBillingAccountArgs].
   /// [billingAccountId] BillingAccount ID
   /// [reportName] Report Name.
-  GetReportByBillingAccountArgs({
+  const GetReportByBillingAccountArgs({
     required this.billingAccountId,
     required this.reportName,
   });

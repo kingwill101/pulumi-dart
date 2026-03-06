@@ -10,7 +10,7 @@ class MetricRulesResponse {
 
   /// Creates a new [MetricRulesResponse].
   /// [filteringTags] List of filtering tags to be used for capturing metrics. If empty, all resources will be captured. If only Exclude action is specified, the rules will apply to the list of all available resources. If Include actions are specified, the rules will only include resources with the associated tags.
-  MetricRulesResponse({
+  const MetricRulesResponse({
     this.filteringTags,
   });
 

@@ -27,7 +27,7 @@ class StaticSiteLinkedBackendArgs {
   /// [name] Name of the static site
   /// [region] The region of the backend linked to the static site
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  StaticSiteLinkedBackendArgs({
+  const StaticSiteLinkedBackendArgs({
     this.backendResourceId,
     this.kind,
     this.linkedBackendName,

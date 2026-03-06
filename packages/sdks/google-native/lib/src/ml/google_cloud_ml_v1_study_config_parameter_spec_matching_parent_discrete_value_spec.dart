@@ -9,7 +9,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec].
   /// [values] Matches values of the parent parameter with type 'DISCRETE'. All values must exist in `discrete_value_spec` of parent parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec({
+  const GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec({
     this.values,
   });
 

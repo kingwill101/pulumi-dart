@@ -27,7 +27,7 @@ class BucketRefererArgs {
   /// [refererBlacklists] The container that holds the Referer blacklist.
   /// [refererLists] The container that holds the Referer whitelist.
   /// [truncatePath] Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
-  BucketRefererArgs({
+  const BucketRefererArgs({
     required this.allowEmptyReferer,
     this.allowTruncateQueryString,
     required this.bucket,

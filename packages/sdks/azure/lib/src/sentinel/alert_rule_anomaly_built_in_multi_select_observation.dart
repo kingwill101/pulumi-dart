@@ -17,7 +17,7 @@ class AlertRuleAnomalyBuiltInMultiSelectObservation {
   /// [name] The Name of the built-in Anomaly Alert Rule.
   /// [supportedValues] A list of supported values of the single select observation.
   /// [values] A list of values of the single select observation.
-  AlertRuleAnomalyBuiltInMultiSelectObservation({
+  const AlertRuleAnomalyBuiltInMultiSelectObservation({
     this.description,
     this.name,
     this.supportedValues,

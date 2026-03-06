@@ -32,7 +32,7 @@ class GetBlobContainerImmutabilityPolicyResult {
   /// [name] The name of the resource
   /// [state] The ImmutabilityPolicy state of a blob container, possible values include: Locked and Unlocked.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetBlobContainerImmutabilityPolicyResult({
+  const GetBlobContainerImmutabilityPolicyResult({
     this.allowProtectedAppendWrites,
     this.allowProtectedAppendWritesAll,
     required this.azureApiVersion,

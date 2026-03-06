@@ -54,7 +54,7 @@ class WorkflowTemplateState {
   /// [pulumiLabels] The combination of labels configured directly on the resource and default labels configured on the provider.
   /// [updateTime] Output only. The time template was last updated.
   /// [version] Output only. The current version of this workflow template.
-  WorkflowTemplateState({
+  const WorkflowTemplateState({
     this.createTime,
     this.dagTimeout,
     this.effectiveLabels,

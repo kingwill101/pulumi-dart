@@ -55,7 +55,7 @@ class SourceInstancePropertiesResponseComputeV1 {
   /// [scheduling] Specifies the scheduling options for the instances that are created from this machine image.
   /// [serviceAccounts] A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from this machine image. Use metadata queries to obtain the access tokens for these instances.
   /// [tags] A list of tags to apply to the instances that are created from this machine image. The tags identify valid sources or targets for network firewalls. The setTags method can modify this list of tags. Each tag within the list must comply with RFC1035.
-  SourceInstancePropertiesResponseComputeV1({
+  const SourceInstancePropertiesResponseComputeV1({
     required this.canIpForward,
     required this.deletionProtection,
     required this.description,

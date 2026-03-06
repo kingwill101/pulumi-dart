@@ -18,7 +18,7 @@ class GetSecurityGroupRulesResult {
   /// [ids] List of all the security group rule IDs found.
   /// [region] Required.
   /// [tags] Optional.
-  GetSecurityGroupRulesResult({
+  const GetSecurityGroupRulesResult({
     this.filters,
     required this.id,
     required this.ids,

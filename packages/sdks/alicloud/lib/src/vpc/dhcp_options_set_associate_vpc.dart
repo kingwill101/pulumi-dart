@@ -11,7 +11,7 @@ class DhcpOptionsSetAssociateVpc {
   /// Creates a new [DhcpOptionsSetAssociateVpc].
   /// [associateStatus] The status of the VPC associated with the DHCP option set.
   /// [vpcId] The ID of the VPC network that is associated with the DHCP options set.
-  DhcpOptionsSetAssociateVpc({
+  const DhcpOptionsSetAssociateVpc({
     this.associateStatus,
     required this.vpcId,
   });

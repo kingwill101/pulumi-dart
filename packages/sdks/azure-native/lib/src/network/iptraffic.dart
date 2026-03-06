@@ -20,7 +20,7 @@ class IPTraffic {
   /// [protocols] Required.
   /// [sourceIps] List of source IP addresses of the traffic..
   /// [sourcePorts] The source ports of the traffic.
-  IPTraffic({
+  const IPTraffic({
     required this.destinationIps,
     required this.destinationPorts,
     required this.protocols,

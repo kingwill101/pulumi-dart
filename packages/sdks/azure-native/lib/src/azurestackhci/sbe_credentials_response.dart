@@ -15,7 +15,7 @@ class SbeCredentialsResponse {
   /// [eceSecretName] secret name expected for Enterprise Cloud Engine (ECE).
   /// [secretLocation] secret URI stored in keyvault.
   /// [secretName] secret name stored in keyvault.
-  SbeCredentialsResponse({
+  const SbeCredentialsResponse({
     this.eceSecretName,
     this.secretLocation,
     this.secretName,

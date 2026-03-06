@@ -26,7 +26,7 @@ class PhaseConfig {
   /// [predeploy] Optional. Configuration for the predeploy job of this phase. If this is not configured, there will be no predeploy job for this phase.
   /// [profiles] Skaffold profiles to use when rendering the manifest for this phase. These are in addition to the profiles list specified in the `DeliveryPipeline` stage.
   /// [verify] Whether to run verify tests after the deployment.
-  PhaseConfig({
+  const PhaseConfig({
     required this.percentage,
     required this.phaseId,
     this.postdeploy,

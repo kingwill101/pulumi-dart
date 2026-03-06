@@ -40,7 +40,7 @@ class SqlServerTableDatasetResponse {
   /// [table] The table name of the SQL Server dataset. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  SqlServerTableDatasetResponse({
+  const SqlServerTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

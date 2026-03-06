@@ -12,7 +12,7 @@ class GetLkeTypesTypeRegionPrice {
   /// [hourly] Required.
   /// [id] The ID representing the Kubernetes type.
   /// [monthly] Required.
-  GetLkeTypesTypeRegionPrice({
+  const GetLkeTypesTypeRegionPrice({
     required this.hourly,
     required this.id,
     required this.monthly,

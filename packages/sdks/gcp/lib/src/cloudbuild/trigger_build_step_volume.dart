@@ -15,7 +15,7 @@ class TriggerBuildStepVolume {
   /// Creates a new [TriggerBuildStepVolume].
   /// [name] Name of the volume to mount.
   /// [path] Path at which to mount the volume.
-  TriggerBuildStepVolume({
+  const TriggerBuildStepVolume({
     required this.name,
     required this.path,
   });

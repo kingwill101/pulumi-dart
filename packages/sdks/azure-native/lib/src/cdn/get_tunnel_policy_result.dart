@@ -38,7 +38,7 @@ class GetTunnelPolicyResult {
   /// [targetGroups] Target Groups referenced by this tunnel policy.
   /// [tunnelType] Protocol this tunnel will use for allowing traffic to backends.
   /// [type] Resource type.
-  GetTunnelPolicyResult({
+  const GetTunnelPolicyResult({
     required this.azureApiVersion,
     required this.deploymentStatus,
     required this.domains,

@@ -9,7 +9,7 @@ class CloudProviderProfileResponseInfraNetworkProfile {
 
   /// Creates a new [CloudProviderProfileResponseInfraNetworkProfile].
   /// [vnetSubnetIds] Array of references to azure resource corresponding to the new HybridAKSNetwork object e.g. /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridContainerService/virtualNetworks/{virtualNetworkName}
-  CloudProviderProfileResponseInfraNetworkProfile({
+  const CloudProviderProfileResponseInfraNetworkProfile({
     this.vnetSubnetIds,
   });
 

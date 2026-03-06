@@ -23,7 +23,7 @@ class InterconnectApplicationAwareInterconnect {
   /// [profileDescription] A description for the AAI profile on this interconnect.
   /// [shapeAveragePercentages] Optional field to specify a list of shape average percentages to be
   /// [strictPriorityPolicy] Specify configuration for StrictPriorityPolicy.
-  InterconnectApplicationAwareInterconnect({
+  const InterconnectApplicationAwareInterconnect({
     this.bandwidthPercentagePolicy,
     this.profileDescription,
     this.shapeAveragePercentages,

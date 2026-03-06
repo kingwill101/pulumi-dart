@@ -29,7 +29,7 @@ class EventHubNamespaceAuthorizationRuleArgs {
   /// [namespaceName] Specifies the name of the EventHub Namespace. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
   /// [send] Grants send access to this this Authorization Rule. Defaults to `false`.
-  EventHubNamespaceAuthorizationRuleArgs({
+  const EventHubNamespaceAuthorizationRuleArgs({
     this.listen,
     this.manage,
     this.name,

@@ -21,7 +21,7 @@ class MaintenanceWindowTaskTaskInvocationParameters {
   /// [lambdaParameters] The parameters for a LAMBDA task type. Documented below.
   /// [runCommandParameters] The parameters for a RUN_COMMAND task type. Documented below.
   /// [stepFunctionsParameters] The parameters for a STEP_FUNCTIONS task type. Documented below.
-  MaintenanceWindowTaskTaskInvocationParameters({
+  const MaintenanceWindowTaskTaskInvocationParameters({
     this.automationParameters,
     this.lambdaParameters,
     this.runCommandParameters,

@@ -39,7 +39,7 @@ class GatewayArgs {
   /// [sourceNetwork] Network the gateway should listen on for requests.
   /// [tags] Resource tags.
   /// [tcp] Configuration for tcp connectivity for this gateway.
-  GatewayArgs({
+  const GatewayArgs({
     this.description,
     required this.destinationNetwork,
     this.gatewayResourceName,

@@ -15,7 +15,7 @@ class GetCustomLocationArgs {
   /// Creates a new [GetCustomLocationArgs].
   /// [name] The name of the Custom Location.
   /// [resourceGroupName] The name of the Resource Group where the Custom Location exists.
-  GetCustomLocationArgs({
+  const GetCustomLocationArgs({
     required this.name,
     required this.resourceGroupName,
   });

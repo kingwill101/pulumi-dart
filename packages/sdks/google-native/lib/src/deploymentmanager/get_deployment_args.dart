@@ -13,7 +13,7 @@ class GetDeploymentArgs {
   /// Creates a new [GetDeploymentArgs].
   /// [deployment] Required.
   /// [project] Optional.
-  GetDeploymentArgs({
+  const GetDeploymentArgs({
     required this.deployment,
     this.project,
   });

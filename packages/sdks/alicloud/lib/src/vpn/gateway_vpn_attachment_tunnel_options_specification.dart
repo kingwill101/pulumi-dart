@@ -52,7 +52,7 @@ class GatewayVpnAttachmentTunnelOptionsSpecification {
   /// [tunnelIndex] The order in which the tunnel was created.
   /// [tunnelIpsecConfig] Configuration information for the second-stage negotiation. See `tunnel_ipsec_config` below.
   /// [zoneNo] The zoneNo of tunnel.
-  GatewayVpnAttachmentTunnelOptionsSpecification({
+  const GatewayVpnAttachmentTunnelOptionsSpecification({
     required this.customerGatewayId,
     this.enableDpd,
     this.enableNatTraversal,

@@ -12,7 +12,7 @@ class InstanceSelectionResultResponse {
   /// Creates a new [InstanceSelectionResultResponse].
   /// [machineType] Full machine-type names, e.g. "n1-standard-16".
   /// [vmCount] Number of VM provisioned with the machine_type.
-  InstanceSelectionResultResponse({
+  const InstanceSelectionResultResponse({
     required this.machineType,
     required this.vmCount,
   });

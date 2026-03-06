@@ -11,7 +11,7 @@ class AzureNodePoolAutoscaling {
   /// Creates a new [AzureNodePoolAutoscaling].
   /// [maxNodeCount] Maximum number of nodes in the node pool. Must be &gt;= min_node_count.
   /// [minNodeCount] Minimum number of nodes in the node pool. Must be &gt;= 1 and &lt;= max_node_count.
-  AzureNodePoolAutoscaling({
+  const AzureNodePoolAutoscaling({
     required this.maxNodeCount,
     required this.minNodeCount,
   });

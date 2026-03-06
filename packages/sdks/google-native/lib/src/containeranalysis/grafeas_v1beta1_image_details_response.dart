@@ -10,7 +10,7 @@ class GrafeasV1beta1ImageDetailsResponse {
 
   /// Creates a new [GrafeasV1beta1ImageDetailsResponse].
   /// [derivedImage] Immutable. The child image derived from the base image.
-  GrafeasV1beta1ImageDetailsResponse({
+  const GrafeasV1beta1ImageDetailsResponse({
     required this.derivedImage,
   });
 

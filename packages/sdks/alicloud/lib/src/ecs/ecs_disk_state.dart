@@ -114,7 +114,7 @@ class EcsDiskState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
   /// [zoneId] ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
-  EcsDiskState({
+  const EcsDiskState({
     this.advancedFeatures,
     this.availabilityZone,
     this.burstingEnabled,

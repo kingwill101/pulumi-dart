@@ -27,7 +27,7 @@ class EntryGcsFilesetSpec {
   /// Creates a new [EntryGcsFilesetSpec].
   /// [filePatterns] Patterns to identify a set of files in Google Cloud Storage.
   /// [sampleGcsFileSpecs] (Output)
-  EntryGcsFilesetSpec({
+  const EntryGcsFilesetSpec({
     required this.filePatterns,
     this.sampleGcsFileSpecs,
   });

@@ -19,7 +19,7 @@ class GetVmwareClusterVmwareNodePoolIamPolicyArgs {
   /// [project] Optional.
   /// [vmwareClusterId] Required.
   /// [vmwareNodePoolId] Required.
-  GetVmwareClusterVmwareNodePoolIamPolicyArgs({
+  const GetVmwareClusterVmwareNodePoolIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

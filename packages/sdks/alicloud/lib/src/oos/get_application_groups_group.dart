@@ -35,7 +35,7 @@ class GetApplicationGroupsGroup {
   /// [importTagKey] Label key.
   /// [importTagValue] Label value.
   /// [updateTime] The Update time of the resource.
-  GetApplicationGroupsGroup({
+  const GetApplicationGroupsGroup({
     required this.applicationGroupName,
     required this.applicationName,
     required this.cmsGroupId,

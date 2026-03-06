@@ -33,7 +33,7 @@ class ComputeInstanceDataMountResponse {
   /// [mountedOn] The time when the disk mounted.
   /// [source] Source of the ComputeInstance data mount.
   /// [sourceType] Data source type.
-  ComputeInstanceDataMountResponse({
+  const ComputeInstanceDataMountResponse({
     this.createdBy,
     this.error,
     this.mountAction,

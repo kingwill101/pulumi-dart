@@ -9,7 +9,7 @@ class Certificate {
 
   /// Creates a new [Certificate].
   /// [rawDer] The raw certificate bytes in DER format.
-  Certificate({
+  const Certificate({
     required this.rawDer,
   });
 

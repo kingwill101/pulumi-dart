@@ -33,7 +33,7 @@ class CapacityPoolBackupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [useExistingSnapshot] Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   /// [volumeName] The name of the volume
-  CapacityPoolBackupArgs({
+  const CapacityPoolBackupArgs({
     required this.accountName,
     this.backupName,
     this.label,

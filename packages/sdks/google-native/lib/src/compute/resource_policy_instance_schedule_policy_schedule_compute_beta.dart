@@ -9,7 +9,7 @@ class ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta({
+  const ResourcePolicyInstanceSchedulePolicyScheduleComputeBeta({
     this.schedule,
   });
 

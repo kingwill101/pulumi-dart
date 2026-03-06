@@ -47,7 +47,7 @@ class SloWindowsBasedSli {
   /// [metricMeanInRange] Criterion that describes a window as good if the metric's value
   /// [metricSumInRange] Criterion that describes a window as good if the metric's value
   /// [windowPeriod] Duration over which window quality is evaluated, given as a
-  SloWindowsBasedSli({
+  const SloWindowsBasedSli({
     this.goodBadMetricFilter,
     this.goodTotalRatioThreshold,
     this.metricMeanInRange,

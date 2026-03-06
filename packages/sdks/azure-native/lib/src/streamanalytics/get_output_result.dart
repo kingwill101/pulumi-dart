@@ -38,7 +38,7 @@ class GetOutputResult {
   /// [sizeWindow] The size window to constrain a Stream Analytics output to.
   /// [timeWindow] The time frame for filtering Stream Analytics job outputs.
   /// [type] Resource type
-  GetOutputResult({
+  const GetOutputResult({
     required this.azureApiVersion,
     this.datasource,
     required this.diagnostics,

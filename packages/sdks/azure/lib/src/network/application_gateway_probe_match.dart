@@ -11,7 +11,7 @@ class ApplicationGatewayProbeMatch {
   /// Creates a new [ApplicationGatewayProbeMatch].
   /// [body] A snippet from the Response Body which must be present in the Response.
   /// [statusCodes] A list of allowed status codes for this Health Probe.
-  ApplicationGatewayProbeMatch({
+  const ApplicationGatewayProbeMatch({
     this.body,
     required this.statusCodes,
   });

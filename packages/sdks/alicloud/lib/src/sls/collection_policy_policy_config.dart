@@ -19,7 +19,7 @@ class CollectionPolicyPolicyConfig {
   /// [regions] The set of regions to which instances belong. This parameter is valid only when resourceMode is set to attributeMode and supports wildcards. If the region set filter is an empty array, no region-based filtering is applied, and all instances satisfy the region condition. Otherwise, only instances whose region attribute is included in this region set are collected. The region set and resource tags work together. An instance is collected only if it satisfies both conditions.
   /// [resourceMode] Resource collection mode. If set to all, all instances under the account are collected into the default Logstore. If set to attributeMode, instances are filtered based on their region attributes and resource tags. If set to instanceMode, instances are filtered by their instance IDs.
   /// [resourceTags] Resource tags. This parameter is valid only when resourceMode is set to attributeMode.
-  CollectionPolicyPolicyConfig({
+  const CollectionPolicyPolicyConfig({
     this.instanceIds,
     this.regions,
     required this.resourceMode,

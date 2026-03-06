@@ -18,7 +18,7 @@ class GetConfigurationProfilesVersionArgs {
   /// [configurationProfileName] The configuration profile name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The configuration profile version name.
-  GetConfigurationProfilesVersionArgs({
+  const GetConfigurationProfilesVersionArgs({
     required this.configurationProfileName,
     required this.resourceGroupName,
     required this.versionName,

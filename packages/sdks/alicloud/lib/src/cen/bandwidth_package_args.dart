@@ -47,7 +47,7 @@ class BandwidthPackageArgs {
   /// [name] Field `name` has been deprecated from version 1.97.0. Use `cen_bandwidth_package_name` and instead.
   /// [paymentType] The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
   /// [period] The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
-  BandwidthPackageArgs({
+  const BandwidthPackageArgs({
     this.autoRenew,
     required this.bandwidth,
     this.cenBandwidthPackageName,

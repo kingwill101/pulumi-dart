@@ -11,7 +11,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCha
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader].
   /// [name] Name of the header to insert.
   /// [value] Value of the header to insert.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallengeCustomRequestHandlingInsertHeader({
     required this.name,
     required this.value,
   });

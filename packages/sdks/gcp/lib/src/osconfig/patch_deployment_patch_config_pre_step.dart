@@ -15,7 +15,7 @@ class PatchDeploymentPatchConfigPreStep {
   /// Creates a new [PatchDeploymentPatchConfigPreStep].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   /// [windowsExecStepConfig] The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  PatchDeploymentPatchConfigPreStep({
+  const PatchDeploymentPatchConfigPreStep({
     this.linuxExecStepConfig,
     this.windowsExecStepConfig,
   });

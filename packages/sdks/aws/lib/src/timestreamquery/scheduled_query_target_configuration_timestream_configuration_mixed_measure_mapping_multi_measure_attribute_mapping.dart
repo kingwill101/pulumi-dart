@@ -14,7 +14,7 @@ class ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappin
   /// [measureValueType] Type of the attribute to be read from the source column. Valid values are `BIGINT`, `BOOLEAN`, `DOUBLE`, `VARCHAR`, `TIMESTAMP`.
   /// [sourceColumn] Source column from where the attribute value is to be read.
   /// [targetMultiMeasureAttributeName] Custom name to be used for attribute name in derived table. If not provided, `source_column` is used.
-  ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping({
+  const ScheduledQueryTargetConfigurationTimestreamConfigurationMixedMeasureMappingMultiMeasureAttributeMapping({
     required this.measureValueType,
     required this.sourceColumn,
     this.targetMultiMeasureAttributeName,

@@ -13,7 +13,7 @@ class ConnectionGithubConfigAuthorizerCredential {
   /// Creates a new [ConnectionGithubConfigAuthorizerCredential].
   /// [oauthTokenSecretVersion] Required. A SecretManager resource containing the OAuth token that authorizes
   /// [username] (Output)
-  ConnectionGithubConfigAuthorizerCredential({
+  const ConnectionGithubConfigAuthorizerCredential({
     required this.oauthTokenSecretVersion,
     this.username,
   });

@@ -25,7 +25,7 @@ class ProjectCapabilityHostArgs {
   /// [projectCapabilityHostProperties] [Required] Additional attributes of the entity.
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ProjectCapabilityHostArgs({
+  const ProjectCapabilityHostArgs({
     required this.accountName,
     this.capabilityHostName,
     required this.projectCapabilityHostProperties,

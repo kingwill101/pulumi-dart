@@ -17,7 +17,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoo
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment].
   /// [fixedLikelihood] Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
   /// [relativeLikelihood] Increase or decrease the likelihood by the specified number of levels. For example,
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment({
     this.fixedLikelihood,
     this.relativeLikelihood,
   });

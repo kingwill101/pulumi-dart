@@ -11,7 +11,7 @@ class FlowletDataFlowSinkDataset {
   /// Creates a new [FlowletDataFlowSinkDataset].
   /// [name] The name for the Data Factory Dataset.
   /// [parameters] A map of parameters to associate with the Data Factory dataset.
-  FlowletDataFlowSinkDataset({
+  const FlowletDataFlowSinkDataset({
     required this.name,
     this.parameters,
   });

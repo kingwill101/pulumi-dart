@@ -11,7 +11,7 @@ class UnitKindDependency {
   /// Creates a new [UnitKindDependency].
   /// [alias] An alias for the dependency. Used for input variable mapping.
   /// [unitKind] The unit kind of the dependency.
-  UnitKindDependency({
+  const UnitKindDependency({
     required this.alias,
     required this.unitKind,
   });

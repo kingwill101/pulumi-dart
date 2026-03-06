@@ -17,7 +17,7 @@ class StatefulRuleResponse {
   /// [action] Property action
   /// [header] Property header
   /// [ruleOptions] Property ruleOptions
-  StatefulRuleResponse({
+  const StatefulRuleResponse({
     this.action,
     this.header,
     this.ruleOptions,

@@ -22,7 +22,7 @@ class ApplicationPlan {
   /// [promotionCode] Specifies the promotion code to use with the plan. Changing this forces a new resource to be created.
   /// [publisher] Specifies the publisher of the plan. Changing this forces a new resource to be created.
   /// [version] Specifies the version of the plan from the marketplace. Changing this forces a new resource to be created.
-  ApplicationPlan({
+  const ApplicationPlan({
     required this.name,
     required this.product,
     this.promotionCode,

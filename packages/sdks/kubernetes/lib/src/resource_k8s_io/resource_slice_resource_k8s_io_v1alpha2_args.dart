@@ -31,7 +31,7 @@ class ResourceSliceResourceK8sIoV1alpha2Args {
   /// [metadata] Standard object metadata
   /// [namedResources] NamedResources describes available resources using the named resources model.
   /// [nodeName] NodeName identifies the node which provides the resources if they are local to a node.
-  ResourceSliceResourceK8sIoV1alpha2Args({
+  const ResourceSliceResourceK8sIoV1alpha2Args({
     this.apiVersion,
     required this.driverName,
     this.kind,

@@ -9,7 +9,7 @@ class GetFeatureState {
 
   /// Creates a new [GetFeatureState].
   /// [states] Output only. The "running state" of the Feature in this Hub.
-  GetFeatureState({
+  const GetFeatureState({
     required this.states,
   });
 

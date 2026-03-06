@@ -13,7 +13,7 @@ class ClusterRemoteNetworkConfig {
   /// Creates a new [ClusterRemoteNetworkConfig].
   /// [remoteNodeNetworks] Configuration block with remote node network configuration for EKS Hybrid Nodes. Detailed below.
   /// [remotePodNetworks] Configuration block with remote pod network configuration for EKS Hybrid Nodes. Detailed below.
-  ClusterRemoteNetworkConfig({
+  const ClusterRemoteNetworkConfig({
     required this.remoteNodeNetworks,
     this.remotePodNetworks,
   });

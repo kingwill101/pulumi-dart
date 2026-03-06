@@ -7,7 +7,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatem
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexMatchStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

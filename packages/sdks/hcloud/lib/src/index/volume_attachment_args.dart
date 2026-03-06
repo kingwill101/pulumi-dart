@@ -18,7 +18,7 @@ class VolumeAttachmentArgs {
   /// [automount] Automount the volume upon attaching it.
   /// [serverId] Server to attach the Volume to.
   /// [volumeId] ID of the Volume.
-  VolumeAttachmentArgs({
+  const VolumeAttachmentArgs({
     this.automount,
     required this.serverId,
     required this.volumeId,

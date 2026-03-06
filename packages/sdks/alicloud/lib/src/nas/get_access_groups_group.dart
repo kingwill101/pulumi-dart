@@ -26,7 +26,7 @@ class GetAccessGroupsGroup {
   /// [mountTargetCount] MountTargetCount block of the AccessGroup
   /// [ruleCount] RuleCount of the AccessGroup.
   /// [type] Field `type` has been deprecated from version 1.95.0. Use `access_group_type` instead.
-  GetAccessGroupsGroup({
+  const GetAccessGroupsGroup({
     required this.accessGroupName,
     required this.accessGroupType,
     required this.description,

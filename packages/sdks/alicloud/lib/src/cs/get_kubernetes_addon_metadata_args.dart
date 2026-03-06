@@ -18,7 +18,7 @@ class GetKubernetesAddonMetadataArgs {
   /// [clusterId] The id of kubernetes cluster.
   /// [name] The name of the cluster addon. You can get a list of available addons that the cluster can install by using data source `alicloud.cs.getKubernetesAddons`.
   /// [version] The version of the cluster addon.
-  GetKubernetesAddonMetadataArgs({
+  const GetKubernetesAddonMetadataArgs({
     required this.clusterId,
     required this.name,
     required this.version,

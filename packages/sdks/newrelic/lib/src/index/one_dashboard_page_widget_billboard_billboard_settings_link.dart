@@ -14,7 +14,7 @@ class OneDashboardPageWidgetBillboardBillboardSettingsLink {
   /// [newTab] (Optional) Boolean value indicating whether the link should open in a new tab. Defaults to `false`.
   /// [title] (Optional) A human-friendly display string for this value.
   /// [url] (Optional) The URL to navigate to when the billboard is clicked.
-  OneDashboardPageWidgetBillboardBillboardSettingsLink({
+  const OneDashboardPageWidgetBillboardBillboardSettingsLink({
     this.newTab,
     this.title,
     this.url,

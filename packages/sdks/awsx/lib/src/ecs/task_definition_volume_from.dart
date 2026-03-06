@@ -9,7 +9,7 @@ class TaskDefinitionVolumeFrom {
   /// Creates a new [TaskDefinitionVolumeFrom].
   /// [readOnly] Optional.
   /// [sourceContainer] Optional.
-  TaskDefinitionVolumeFrom({
+  const TaskDefinitionVolumeFrom({
     this.readOnly,
     this.sourceContainer,
   });

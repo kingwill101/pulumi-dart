@@ -18,7 +18,7 @@ class VpnGatewayRoutePropagationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] The id of the `aws.ec2.RouteTable` to propagate routes into.
   /// [vpnGatewayId] The id of the `aws.ec2.VpnGateway` to propagate routes from.
-  VpnGatewayRoutePropagationArgs({
+  const VpnGatewayRoutePropagationArgs({
     this.region,
     required this.routeTableId,
     required this.vpnGatewayId,

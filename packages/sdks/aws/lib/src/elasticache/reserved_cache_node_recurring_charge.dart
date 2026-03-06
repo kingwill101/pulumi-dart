@@ -9,7 +9,7 @@ class ReservedCacheNodeRecurringCharge {
   /// Creates a new [ReservedCacheNodeRecurringCharge].
   /// [recurringChargeAmount] Required.
   /// [recurringChargeFrequency] Required.
-  ReservedCacheNodeRecurringCharge({
+  const ReservedCacheNodeRecurringCharge({
     required this.recurringChargeAmount,
     required this.recurringChargeFrequency,
   });

@@ -83,7 +83,7 @@ class BrokerArgs {
   /// [subnetIds] List of subnet IDs in which to launch the broker. A `SINGLE_INSTANCE` deployment requires one subnet. An `ACTIVE_STANDBY_MULTI_AZ` deployment requires multiple subnets.
   /// [tags] Map of tags to assign to the broker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [users] Configuration block for broker users. For `engine_type` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
-  BrokerArgs({
+  const BrokerArgs({
     this.applyImmediately,
     this.authenticationStrategy,
     this.autoMinorVersionUpgrade,

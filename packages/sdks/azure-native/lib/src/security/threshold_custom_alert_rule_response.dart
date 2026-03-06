@@ -25,7 +25,7 @@ class ThresholdCustomAlertRuleResponse {
   /// [maxThreshold] The maximum threshold.
   /// [minThreshold] The minimum threshold.
   /// [ruleType] The type of the custom alert rule.
-  ThresholdCustomAlertRuleResponse({
+  const ThresholdCustomAlertRuleResponse({
     required this.description,
     required this.displayName,
     required this.isEnabled,

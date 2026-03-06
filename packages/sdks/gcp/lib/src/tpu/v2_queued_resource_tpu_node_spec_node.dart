@@ -19,7 +19,7 @@ class V2QueuedResourceTpuNodeSpecNode {
   /// [description] Text description of the TPU.
   /// [networkConfig] Network configurations for the TPU node.
   /// [runtimeVersion] Runtime version for the TPU.
-  V2QueuedResourceTpuNodeSpecNode({
+  const V2QueuedResourceTpuNodeSpecNode({
     this.acceleratorType,
     this.description,
     this.networkConfig,

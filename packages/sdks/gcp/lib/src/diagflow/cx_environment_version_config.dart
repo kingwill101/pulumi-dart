@@ -8,7 +8,7 @@ class CxEnvironmentVersionConfig {
 
   /// Creates a new [CxEnvironmentVersionConfig].
   /// [version] Format: projects/{{project}}/locations/{{location}}/agents/{{agent}}/flows/{{flow}}/versions/{{version}}.
-  CxEnvironmentVersionConfig({
+  const CxEnvironmentVersionConfig({
     required this.version,
   });
 

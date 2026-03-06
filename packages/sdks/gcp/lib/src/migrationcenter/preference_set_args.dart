@@ -30,7 +30,7 @@ class PreferenceSetArgs {
   /// [preferenceSetId] Required. User specified ID for the preference set. It will become the last component of the preference set name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression `a-z?`.
   /// [project] The ID of the project in which the resource belongs.
   /// [virtualMachinePreferences] VirtualMachinePreferences enables you to create sets of assumptions, for example, a geographical location and pricing track, for your migrated virtual machines. The set of preferences influence recommendations for migrating virtual machine assets.
-  PreferenceSetArgs({
+  const PreferenceSetArgs({
     this.description,
     this.displayName,
     required this.location,

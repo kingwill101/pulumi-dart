@@ -33,7 +33,7 @@ class CertificateResponse {
   /// [sha256Fingerprint] The SHA-256 certificate fingerprint as a hex string. Only present if parsed is true.
   /// [subject] The subject distinguished name in RFC 2253 format. Only present if parsed is true.
   /// [subjectAlternativeDnsNames] The subject Alternative DNS names. Only present if parsed is true.
-  CertificateResponse({
+  const CertificateResponse({
     required this.issuer,
     required this.notAfterTime,
     required this.notBeforeTime,

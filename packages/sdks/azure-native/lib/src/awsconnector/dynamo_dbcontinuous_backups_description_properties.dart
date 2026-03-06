@@ -31,7 +31,7 @@ class DynamoDBContinuousBackupsDescriptionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DynamoDBContinuousBackupsDescriptionProperties({
+  const DynamoDBContinuousBackupsDescriptionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

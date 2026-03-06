@@ -13,7 +13,7 @@ class StatefulSetUpdateStrategyPatchAppsV1beta1 {
   /// Creates a new [StatefulSetUpdateStrategyPatchAppsV1beta1].
   /// [rollingUpdate] RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
   /// [type] Type indicates the type of the StatefulSetUpdateStrategy.
-  StatefulSetUpdateStrategyPatchAppsV1beta1({
+  const StatefulSetUpdateStrategyPatchAppsV1beta1({
     this.rollingUpdate,
     this.type,
   });

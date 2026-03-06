@@ -14,7 +14,7 @@ class NamespaceCustomerManagedKey {
   /// [identityId] The ID of the User Assigned Identity that has access to the key.
   /// [infrastructureEncryptionEnabled] Used to specify whether enable Infrastructure Encryption (Double Encryption). Changing this forces a new resource to be created.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
-  NamespaceCustomerManagedKey({
+  const NamespaceCustomerManagedKey({
     required this.identityId,
     this.infrastructureEncryptionEnabled,
     required this.keyVaultKeyId,

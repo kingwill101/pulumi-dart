@@ -26,7 +26,7 @@ class AppEngineVersionIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [service] Service id of the App Engine application Used to find the parent resource to bind the IAM policy to
   /// [versionId] Used to find the parent resource to bind the IAM policy to
-  AppEngineVersionIamPolicyArgs({
+  const AppEngineVersionIamPolicyArgs({
     required this.appId,
     required this.policyData,
     this.project,

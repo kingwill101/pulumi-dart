@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplat
   /// [messages] A list of messages in the chat for the prompt. See Message for more information.
   /// [systems] A list of system prompts to provide context to the model or to describe how it should behave. See System for more information.
   /// [toolConfiguration] Configuration information for the tools that the model can use when generating a response. See Tool Configuration for more information.
-  AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat({
+  const AgentFlowDefinitionNodeConfigurationPromptSourceConfigurationInlineTemplateConfigurationChat({
     this.inputVariables,
     required this.messages,
     this.systems,

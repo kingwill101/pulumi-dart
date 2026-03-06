@@ -14,7 +14,7 @@ class LifecyclePolicyPolicyDetailsExclusions {
   /// [excludeBootVolumes] Indicates whether to exclude volumes that are attached to instances as the boot volume. To exclude boot volumes, specify `true`.
   /// [excludeTags] Map specifies whether to exclude volumes that have specific tags.
   /// [excludeVolumeTypes] List specifies the volume types to exclude.
-  LifecyclePolicyPolicyDetailsExclusions({
+  const LifecyclePolicyPolicyDetailsExclusions({
     this.excludeBootVolumes,
     this.excludeTags,
     this.excludeVolumeTypes,

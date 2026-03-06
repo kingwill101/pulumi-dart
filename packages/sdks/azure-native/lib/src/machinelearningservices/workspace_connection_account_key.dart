@@ -7,7 +7,7 @@ class WorkspaceConnectionAccountKey {
 
   /// Creates a new [WorkspaceConnectionAccountKey].
   /// [key] Optional.
-  WorkspaceConnectionAccountKey({
+  const WorkspaceConnectionAccountKey({
     this.key,
   });
 

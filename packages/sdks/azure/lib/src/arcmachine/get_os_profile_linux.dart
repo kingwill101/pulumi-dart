@@ -9,7 +9,7 @@ class GetOsProfileLinux {
 
   /// Creates a new [GetOsProfileLinux].
   /// [patches] A `patch` block as defined above.
-  GetOsProfileLinux({
+  const GetOsProfileLinux({
     required this.patches,
   });
 

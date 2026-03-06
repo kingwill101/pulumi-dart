@@ -24,7 +24,7 @@ class MccIssueResponse {
   /// [issueStartDate] Mcc cache node issue start date.
   /// [mccIssueType] Mcc cache node issue type.
   /// [toastString] Mcc cache node issues toastString.
-  MccIssueResponse({
+  const MccIssueResponse({
     required this.detailString,
     required this.helpLink,
     required this.issueEndDate,

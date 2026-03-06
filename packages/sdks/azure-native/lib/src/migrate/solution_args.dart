@@ -22,7 +22,7 @@ class SolutionArgs {
   /// [properties] Gets or sets the properties of the solution.
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
   /// [solutionName] Unique name of a migration solution within a migrate project.
-  SolutionArgs({
+  const SolutionArgs({
     required this.migrateProjectName,
     this.properties,
     required this.resourceGroupName,

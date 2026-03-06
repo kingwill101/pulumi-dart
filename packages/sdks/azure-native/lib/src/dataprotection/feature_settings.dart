@@ -13,7 +13,7 @@ class FeatureSettings {
   /// Creates a new [FeatureSettings].
   /// [crossRegionRestoreSettings] Optional.
   /// [crossSubscriptionRestoreSettings] CrossSubscriptionRestore Settings
-  FeatureSettings({
+  const FeatureSettings({
     this.crossRegionRestoreSettings,
     this.crossSubscriptionRestoreSettings,
   });

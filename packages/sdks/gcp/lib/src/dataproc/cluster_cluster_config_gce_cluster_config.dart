@@ -72,7 +72,7 @@ class ClusterClusterConfigGceClusterConfig {
   /// [subnetwork] The name or self_link of the Google Compute Engine
   /// [tags] The list of instance tags applied to instances in the cluster.
   /// [zone] The GCP zone where your data is stored and used (i.e. where
-  ClusterClusterConfigGceClusterConfig({
+  const ClusterClusterConfigGceClusterConfig({
     this.confidentialInstanceConfig,
     this.internalIpOnly,
     this.metadata,

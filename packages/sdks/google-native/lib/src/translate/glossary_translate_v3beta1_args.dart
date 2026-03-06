@@ -28,7 +28,7 @@ class GlossaryTranslateV3beta1Args {
   /// [location] Optional.
   /// [name] The resource name of the glossary. Glossary names have the form `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}`.
   /// [project] Optional.
-  GlossaryTranslateV3beta1Args({
+  const GlossaryTranslateV3beta1Args({
     required this.inputConfig,
     this.languageCodesSet,
     this.languagePair,

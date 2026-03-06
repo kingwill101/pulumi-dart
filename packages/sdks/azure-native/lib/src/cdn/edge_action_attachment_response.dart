@@ -12,7 +12,7 @@ class EdgeActionAttachmentResponse {
   /// Creates a new [EdgeActionAttachmentResponse].
   /// [attachedResourceId] The attached resource Id
   /// [id] The edge action attachment id
-  EdgeActionAttachmentResponse({
+  const EdgeActionAttachmentResponse({
     required this.attachedResourceId,
     required this.id,
   });

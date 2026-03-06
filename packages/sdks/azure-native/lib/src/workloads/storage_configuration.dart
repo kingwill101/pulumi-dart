@@ -10,7 +10,7 @@ class StorageConfiguration {
 
   /// Creates a new [StorageConfiguration].
   /// [transportFileShareConfiguration] The properties of the transport directory attached to the VIS. The default for transportFileShareConfiguration is the createAndMount flow if storage configuration is missing.
-  StorageConfiguration({
+  const StorageConfiguration({
     this.transportFileShareConfiguration,
   });
 

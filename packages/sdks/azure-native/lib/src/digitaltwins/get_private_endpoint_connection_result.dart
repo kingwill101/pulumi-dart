@@ -25,7 +25,7 @@ class GetPrivateEndpointConnectionResult {
   /// [properties] The connection properties.
   /// [systemData] Metadata pertaining to creation and last modification of the private endpoint connection.
   /// [type] The resource type.
-  GetPrivateEndpointConnectionResult({
+  const GetPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

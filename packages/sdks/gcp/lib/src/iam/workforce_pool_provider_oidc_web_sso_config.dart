@@ -24,7 +24,7 @@ class WorkforcePoolProviderOidcWebSsoConfig {
   /// [additionalScopes] Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested.
   /// [assertionClaimsBehavior] The behavior for how OIDC Claims are included in the `assertion` object used for attribute mapping and attribute condition.
   /// [responseType] The Response Type to request for in the OIDC Authorization Request for web sign-in.
-  WorkforcePoolProviderOidcWebSsoConfig({
+  const WorkforcePoolProviderOidcWebSsoConfig({
     this.additionalScopes,
     required this.assertionClaimsBehavior,
     required this.responseType,

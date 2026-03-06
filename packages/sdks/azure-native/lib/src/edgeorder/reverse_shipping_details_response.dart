@@ -21,7 +21,7 @@ class ReverseShippingDetailsResponse {
   /// [sasKeyForLabel] SAS key to download the reverse shipment label of the package.
   /// [trackingId] TrackingId of the package.
   /// [trackingUrl] TrackingUrl of the package.
-  ReverseShippingDetailsResponse({
+  const ReverseShippingDetailsResponse({
     required this.carrierDisplayName,
     required this.carrierName,
     required this.sasKeyForLabel,

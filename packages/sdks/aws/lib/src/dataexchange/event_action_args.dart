@@ -22,7 +22,7 @@ class EventActionArgs {
   /// [action] Describes the action to take.
   /// [event] Describes the event that triggers the `action`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EventActionArgs({
+  const EventActionArgs({
     required this.action,
     required this.event,
     this.region,

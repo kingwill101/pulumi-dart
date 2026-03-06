@@ -28,7 +28,7 @@ class Disk {
   /// [sizeGb] The size of the disk. Defaults to 500 (GB). This field is not applicable for local SSD.
   /// [source] The full or partial URL of the persistent disk to attach. See https://cloud.google.com/compute/docs/reference/latest/instances#resource and https://cloud.google.com/compute/docs/disks/persistent-disks#snapshots for more details.
   /// [type] The type of the disk to create.
-  Disk({
+  const Disk({
     this.autoDelete,
     this.mountPoint,
     required this.name,

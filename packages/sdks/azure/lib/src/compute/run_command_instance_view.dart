@@ -19,7 +19,7 @@ class RunCommandInstanceView {
   /// [exitCode] Optional.
   /// [output] Optional.
   /// [startTime] Optional.
-  RunCommandInstanceView({
+  const RunCommandInstanceView({
     this.endTime,
     this.errorMessage,
     this.executionMessage,

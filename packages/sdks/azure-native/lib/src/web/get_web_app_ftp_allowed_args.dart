@@ -15,7 +15,7 @@ class GetWebAppFtpAllowedArgs {
   /// Creates a new [GetWebAppFtpAllowedArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppFtpAllowedArgs({
+  const GetWebAppFtpAllowedArgs({
     required this.name,
     required this.resourceGroupName,
   });

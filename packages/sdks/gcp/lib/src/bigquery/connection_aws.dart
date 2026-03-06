@@ -10,7 +10,7 @@ class ConnectionAws {
 
   /// Creates a new [ConnectionAws].
   /// [accessRole] Authentication using Google owned service account to assume into customer's AWS IAM Role.
-  ConnectionAws({
+  const ConnectionAws({
     required this.accessRole,
   });
 

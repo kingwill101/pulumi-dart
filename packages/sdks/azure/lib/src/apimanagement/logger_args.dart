@@ -35,7 +35,7 @@ class LoggerArgs {
   /// [name] The name of this Logger, which must be unique within the API Management Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [resourceId] The target resource id which will be linked in the API-Management portal page. Changing this forces a new resource to be created.
-  LoggerArgs({
+  const LoggerArgs({
     required this.apiManagementName,
     this.applicationInsights,
     this.buffered,

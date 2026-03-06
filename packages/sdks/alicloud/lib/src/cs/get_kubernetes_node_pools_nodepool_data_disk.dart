@@ -47,7 +47,7 @@ class GetKubernetesNodePoolsNodepoolDataDisk {
   /// [provisionedIops] The read/write IOPS preconfigured for the data disk, which is configured when the disk type is cloud_auto.
   /// [size] The size of a data disk, Its valid value range [40~32768] in GB. Default to `40`.
   /// [snapshotId] The ID of the snapshot that you want to use to create data disk N. Valid values of N: 1 to 16. If you specify this parameter, DataDisk.N.Size is ignored. The size of the disk is the same as the size of the specified snapshot. If you specify a snapshot that is created on or before July 15, 2013, the operation fails and InvalidSnapshot.TooOld is returned.
-  GetKubernetesNodePoolsNodepoolDataDisk({
+  const GetKubernetesNodePoolsNodepoolDataDisk({
     required this.autoFormat,
     required this.autoSnapshotPolicyId,
     required this.burstingEnabled,

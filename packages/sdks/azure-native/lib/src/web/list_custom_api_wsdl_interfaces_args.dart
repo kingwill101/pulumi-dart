@@ -28,7 +28,7 @@ class ListCustomApiWsdlInterfacesArgs {
   /// [service] The service with name and endpoint names
   /// [subscriptionId] Subscription Id
   /// [url] The WSDL URL
-  ListCustomApiWsdlInterfacesArgs({
+  const ListCustomApiWsdlInterfacesArgs({
     this.content,
     this.importMethod,
     required this.location,

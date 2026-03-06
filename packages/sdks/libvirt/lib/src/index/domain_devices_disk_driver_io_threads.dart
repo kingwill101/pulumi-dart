@@ -9,7 +9,7 @@ class DomainDevicesDiskDriverIoThreads {
 
   /// Creates a new [DomainDevicesDiskDriverIoThreads].
   /// [ioThreads] Defines individual I/O thread settings for the disk.
-  DomainDevicesDiskDriverIoThreads({
+  const DomainDevicesDiskDriverIoThreads({
     this.ioThreads,
   });
 

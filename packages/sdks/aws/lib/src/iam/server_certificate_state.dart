@@ -48,7 +48,7 @@ class ServerCertificateState {
   /// [tags] Map of resource tags for the server certificate. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uploadDate] Date and time in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8) when the server certificate was uploaded.
-  ServerCertificateState({
+  const ServerCertificateState({
     this.arn,
     this.certificateBody,
     this.certificateChain,

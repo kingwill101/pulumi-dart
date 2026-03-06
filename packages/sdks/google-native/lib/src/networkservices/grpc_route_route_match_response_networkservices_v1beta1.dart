@@ -14,7 +14,7 @@ class GrpcRouteRouteMatchResponseNetworkservicesV1beta1 {
   /// Creates a new [GrpcRouteRouteMatchResponseNetworkservicesV1beta1].
   /// [headers] Optional. Specifies a collection of headers to match.
   /// [method] Optional. A gRPC method to match against. If this field is empty or omitted, will match all methods.
-  GrpcRouteRouteMatchResponseNetworkservicesV1beta1({
+  const GrpcRouteRouteMatchResponseNetworkservicesV1beta1({
     required this.headers,
     required this.method,
   });

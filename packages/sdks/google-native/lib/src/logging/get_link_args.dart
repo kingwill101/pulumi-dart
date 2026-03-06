@@ -17,7 +17,7 @@ class GetLinkArgs {
   /// [linkId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetLinkArgs({
+  const GetLinkArgs({
     required this.bucketId,
     required this.linkId,
     required this.location,

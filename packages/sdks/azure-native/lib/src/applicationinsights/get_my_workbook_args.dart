@@ -15,7 +15,7 @@ class GetMyWorkbookArgs {
   /// Creates a new [GetMyWorkbookArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  GetMyWorkbookArgs({
+  const GetMyWorkbookArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

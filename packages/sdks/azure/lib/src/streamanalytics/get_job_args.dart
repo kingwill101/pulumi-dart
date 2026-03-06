@@ -15,7 +15,7 @@ class GetJobArgs {
   /// Creates a new [GetJobArgs].
   /// [name] Specifies the name of the Stream Analytics Job.
   /// [resourceGroupName] Specifies the name of the resource group the Stream Analytics Job is located in.
-  GetJobArgs({
+  const GetJobArgs({
     required this.name,
     required this.resourceGroupName,
   });

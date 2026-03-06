@@ -16,7 +16,7 @@ class ListGlobalRulestackCountriesArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [skip] Optional.
   /// [top] Optional.
-  ListGlobalRulestackCountriesArgs({
+  const ListGlobalRulestackCountriesArgs({
     required this.globalRulestackName,
     this.skip,
     this.top,

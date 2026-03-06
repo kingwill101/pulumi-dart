@@ -16,7 +16,7 @@ class GetSynonymSetResult {
   /// [context] This is a freeform field. Example contexts can be "sales," "engineering," "real estate," "accounting," etc. The context can be supplied during search requests.
   /// [name] The resource name of the SynonymSet This is mandatory for google.api.resource. Format: projects/{project_number}/locations/{location}/synonymSets/{context}.
   /// [synonyms] List of Synonyms for the context.
-  GetSynonymSetResult({
+  const GetSynonymSetResult({
     required this.context,
     required this.name,
     required this.synonyms,

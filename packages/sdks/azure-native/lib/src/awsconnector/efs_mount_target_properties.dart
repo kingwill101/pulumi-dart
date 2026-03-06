@@ -31,7 +31,7 @@ class EfsMountTargetProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EfsMountTargetProperties({
+  const EfsMountTargetProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

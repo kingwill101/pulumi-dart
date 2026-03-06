@@ -8,7 +8,7 @@ class WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The ID of the Client to use to authenticate with Azure Static Web App Authentication.
-  WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2({
+  const WindowsFunctionAppSlotAuthSettingsV2AzureStaticWebAppV2({
     required this.clientId,
   });
 

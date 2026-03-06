@@ -21,7 +21,7 @@ class EnrollmentStatusState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [status] The enrollment status of the account. Valid values: `Active`, `Inactive`.
   /// [timeouts] Optional.
-  EnrollmentStatusState({
+  const EnrollmentStatusState({
     this.includeMemberAccounts,
     this.numberOfMemberAccountsOptedIn,
     this.region,

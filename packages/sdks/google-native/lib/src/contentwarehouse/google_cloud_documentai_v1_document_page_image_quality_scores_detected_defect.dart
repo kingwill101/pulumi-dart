@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect].
   /// [confidence] Confidence of detected defect. Range `[0, 1]` where `1` indicates strong confidence that the defect exists.
   /// [type] Name of the defect type. Supported values are: - `quality/defect_blurry` - `quality/defect_noisy` - `quality/defect_dark` - `quality/defect_faint` - `quality/defect_text_too_small` - `quality/defect_document_cutoff` - `quality/defect_text_cutoff` - `quality/defect_glare`
-  GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect({
+  const GoogleCloudDocumentaiV1DocumentPageImageQualityScoresDetectedDefect({
     this.confidence,
     this.type,
   });

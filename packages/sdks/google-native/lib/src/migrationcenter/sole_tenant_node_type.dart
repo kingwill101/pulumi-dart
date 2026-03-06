@@ -9,7 +9,7 @@ class SoleTenantNodeType {
 
   /// Creates a new [SoleTenantNodeType].
   /// [nodeName] Name of the Sole Tenant node. Consult https://cloud.google.com/compute/docs/nodes/sole-tenant-nodes
-  SoleTenantNodeType({
+  const SoleTenantNodeType({
     this.nodeName,
   });
 

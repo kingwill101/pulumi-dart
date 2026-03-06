@@ -13,7 +13,7 @@ class FaqS3Path {
   /// Creates a new [FaqS3Path].
   /// [bucket] The name of the S3 bucket that contains the file.
   /// [key] The name of the file.
-  FaqS3Path({
+  const FaqS3Path({
     required this.bucket,
     required this.key,
   });

@@ -21,7 +21,7 @@ class FlexibleServerIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Flexible Server. Possible values are `UserAssigned`, `SystemAssigned` and `SystemAssigned, UserAssigned`.
-  FlexibleServerIdentity({
+  const FlexibleServerIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

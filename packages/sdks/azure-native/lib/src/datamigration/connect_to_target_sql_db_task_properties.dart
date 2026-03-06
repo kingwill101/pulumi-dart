@@ -20,7 +20,7 @@ class ConnectToTargetSqlDbTaskProperties {
   /// [createdOn] DateTime in UTC when the task was created
   /// [input] Task input
   /// [taskType] Task type.
-  ConnectToTargetSqlDbTaskProperties({
+  const ConnectToTargetSqlDbTaskProperties({
     this.clientData,
     this.createdOn,
     this.input,

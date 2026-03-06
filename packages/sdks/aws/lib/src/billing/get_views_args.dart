@@ -12,7 +12,7 @@ class GetViewsArgs {
 
   /// Creates a new [GetViewsArgs].
   /// [billingViewTypes] List of billing view types to retrieve. Valid values are `PRIMARY`, `BILLING_GROUP`, `CUSTOM`.
-  GetViewsArgs({
+  const GetViewsArgs({
     this.billingViewTypes,
   });
 

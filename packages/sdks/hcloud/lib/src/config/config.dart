@@ -58,5 +58,5 @@ class HcloudConfig {
 
 }
 
-final config = HcloudConfig();
+const config = HcloudConfig();
 

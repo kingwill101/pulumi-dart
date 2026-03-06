@@ -11,7 +11,7 @@ class GetLoadBalancerFirewall {
   /// Creates a new [GetLoadBalancerFirewall].
   /// [allows] the rules for ALLOWING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
   /// [denies] the rules for DENYING traffic to the LB (strings in the form: 'ip:1.2.3.4' or 'cidr:1.2.0.0/16')
-  GetLoadBalancerFirewall({
+  const GetLoadBalancerFirewall({
     required this.allows,
     required this.denies,
   });

@@ -17,7 +17,7 @@ class ServiceIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this signalR. Possible values are `SystemAssigned`, `UserAssigned`.
-  ServiceIdentity({
+  const ServiceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

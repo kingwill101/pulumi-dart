@@ -21,7 +21,7 @@ class GetWebAppRelayServiceConnectionSlotArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will get a hybrid connection for the production slot.
-  GetWebAppRelayServiceConnectionSlotArgs({
+  const GetWebAppRelayServiceConnectionSlotArgs({
     required this.entityName,
     required this.name,
     required this.resourceGroupName,

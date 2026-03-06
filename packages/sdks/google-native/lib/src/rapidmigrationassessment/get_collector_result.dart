@@ -52,7 +52,7 @@ class GetCollectorResult {
   /// [state] State of the Collector.
   /// [updateTime] Update time stamp.
   /// [vsphereScan] Reference to MC Source vsphere_scan.
-  GetCollectorResult({
+  const GetCollectorResult({
     required this.bucket,
     required this.clientVersion,
     required this.collectionDays,

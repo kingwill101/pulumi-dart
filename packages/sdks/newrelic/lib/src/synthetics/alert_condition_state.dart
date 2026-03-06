@@ -28,7 +28,7 @@ class AlertConditionState {
   /// [name] The title of this condition.
   /// [policyId] The ID of the policy where this condition should be used.
   /// [runbookUrl] Runbook URL to display in notifications.
-  AlertConditionState({
+  const AlertConditionState({
     this.enabled,
     this.entityGuid,
     this.monitorId,

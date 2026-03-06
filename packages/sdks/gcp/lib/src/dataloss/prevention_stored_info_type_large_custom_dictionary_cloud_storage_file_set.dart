@@ -8,7 +8,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet {
 
   /// Creates a new [PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet].
   /// [url] The url, in the format `gs://&lt;bucket&gt;/&lt;path&gt;`. Trailing wildcard in the path is allowed.
-  PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet({
+  const PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet({
     required this.url,
   });
 

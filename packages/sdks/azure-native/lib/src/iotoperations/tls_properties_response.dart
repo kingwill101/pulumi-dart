@@ -12,7 +12,7 @@ class TlsPropertiesResponse {
   /// Creates a new [TlsPropertiesResponse].
   /// [mode] Mode for TLS.
   /// [trustedCaCertificateConfigMapRef] Trusted CA certificate config map.
-  TlsPropertiesResponse({
+  const TlsPropertiesResponse({
     this.mode,
     this.trustedCaCertificateConfigMapRef,
   });

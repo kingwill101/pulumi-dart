@@ -21,7 +21,7 @@ class WorkspaceServiceAccountState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceAccountId] Identifier of the service account in the given Grafana workspace
   /// [workspaceId] The Grafana workspace with which the service account is associated.
-  WorkspaceServiceAccountState({
+  const WorkspaceServiceAccountState({
     this.grafanaRole,
     this.name,
     this.region,

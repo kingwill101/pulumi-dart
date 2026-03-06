@@ -12,7 +12,7 @@ class DnsSecurityRuleAction {
   /// Creates a new [DnsSecurityRuleAction].
   /// [actionType] The type of action to take.
   /// [blockResponseCode] The response code for block actions.
-  DnsSecurityRuleAction({
+  const DnsSecurityRuleAction({
     this.actionType,
     this.blockResponseCode,
   });

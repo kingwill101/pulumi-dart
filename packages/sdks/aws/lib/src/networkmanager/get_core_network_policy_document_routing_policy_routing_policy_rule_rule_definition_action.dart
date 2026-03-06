@@ -11,7 +11,7 @@ class GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAc
   /// Creates a new [GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAction].
   /// [type] Type of action to perform. Valid values: `drop`, `allow`, `summarize`, `prepend-asn-list`, `remove-asn-list`, `replace-asn-list`, `add-community`, `remove-community`, `set-med`, `set-local-preference`.
   /// [value] Value for the action, required for certain action types.
-  GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAction({
+  const GetCoreNetworkPolicyDocumentRoutingPolicyRoutingPolicyRuleRuleDefinitionAction({
     required this.type,
     this.value,
   });

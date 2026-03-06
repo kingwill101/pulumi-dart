@@ -51,7 +51,7 @@ class GetEcsInvocationsInvocation {
   /// [repeatMode] Indicates the execution mode of the command.
   /// [timed] Indicates whether the commands are to be automatically run.
   /// [username] The username that was used to run the command on the instance.
-  GetEcsInvocationsInvocation({
+  const GetEcsInvocationsInvocation({
     required this.commandContent,
     required this.commandId,
     required this.commandName,

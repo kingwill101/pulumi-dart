@@ -15,7 +15,7 @@ class GetInstanceGroupComputeV1Args {
   /// [instanceGroup] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceGroupComputeV1Args({
+  const GetInstanceGroupComputeV1Args({
     required this.instanceGroup,
     this.project,
     required this.zone,

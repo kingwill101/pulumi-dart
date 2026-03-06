@@ -17,7 +17,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// [queryEngineConfiguration] Configurations for an Amazon Redshift query engine. See `query_engine_configuration` block for details.
   /// [queryGenerationConfiguration] Configurations for generating queries. See `query_generation_configuration` block for details.
   /// [storageConfiguration] Configurations for Amazon Redshift database storage. See `storage_configuration` block for details.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfiguration({
     required this.queryEngineConfiguration,
     this.queryGenerationConfiguration,
     required this.storageConfiguration,

@@ -15,7 +15,7 @@ class GetNamespaceArgs {
   /// Creates a new [GetNamespaceArgs].
   /// [namespaceName] The name of the namespace.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNamespaceArgs({
+  const GetNamespaceArgs({
     required this.namespaceName,
     this.region,
   });

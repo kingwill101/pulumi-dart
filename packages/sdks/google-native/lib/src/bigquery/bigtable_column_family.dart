@@ -21,7 +21,7 @@ class BigtableColumnFamily {
   /// [familyId] Identifier of the column family.
   /// [onlyReadLatest] [Optional] If this is set only the latest version of value are exposed for all columns in this column family. This can be overridden for a specific column by listing that column in 'columns' and specifying a different setting for that column.
   /// [type] [Optional] The type to convert the value in cells of this column family. The values are expected to be encoded using HBase Bytes.toBytes function when using the BINARY encoding value. Following BigQuery types are allowed (case-sensitive) - BYTES STRING INTEGER FLOAT BOOLEAN Default type is BYTES. This can be overridden for a specific column by listing that column in 'columns' and specifying a type for it.
-  BigtableColumnFamily({
+  const BigtableColumnFamily({
     this.columns,
     this.encoding,
     this.familyId,

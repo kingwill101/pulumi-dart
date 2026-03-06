@@ -9,7 +9,7 @@ class DataConnectorDataTypeCommon {
 
   /// Creates a new [DataConnectorDataTypeCommon].
   /// [state] Describe whether this data type connection is enabled or not.
-  DataConnectorDataTypeCommon({
+  const DataConnectorDataTypeCommon({
     required this.state,
   });
 

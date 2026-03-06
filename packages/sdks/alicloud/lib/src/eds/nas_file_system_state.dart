@@ -27,7 +27,7 @@ class NasFileSystemState {
   /// [officeSiteId] The ID of office site.
   /// [reset] The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
   /// [status] The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
-  NasFileSystemState({
+  const NasFileSystemState({
     this.description,
     this.fileSystemId,
     this.mountTargetDomain,

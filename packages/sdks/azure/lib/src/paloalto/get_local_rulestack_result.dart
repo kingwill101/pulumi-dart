@@ -42,7 +42,7 @@ class GetLocalRulestackResult {
   /// [resourceGroupName] Required.
   /// [urlFilteringProfile] The URL Filtering Profile used by the Palo Alto Networks Rulestack.
   /// [vulnerabilityProfile] The Vulnerability Profile used by the Palo Alto Networks Rulestack.
-  GetLocalRulestackResult({
+  const GetLocalRulestackResult({
     required this.antiSpywareProfile,
     required this.antiVirusProfile,
     required this.description,

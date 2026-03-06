@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputPa
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism].
   /// [count] The number of in-application streams to create.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputParallelism({
     this.count,
   });
 

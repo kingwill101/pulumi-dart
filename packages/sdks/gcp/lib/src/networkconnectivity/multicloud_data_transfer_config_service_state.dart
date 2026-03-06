@@ -11,7 +11,7 @@ class MulticloudDataTransferConfigServiceState {
   /// Creates a new [MulticloudDataTransferConfigServiceState].
   /// [effectiveTime] The time when the state becomes effective
   /// [state] The state of the resource.
-  MulticloudDataTransferConfigServiceState({
+  const MulticloudDataTransferConfigServiceState({
     this.effectiveTime,
     this.state,
   });

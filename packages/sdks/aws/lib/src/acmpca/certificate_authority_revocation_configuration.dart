@@ -14,7 +14,7 @@ class CertificateAuthorityRevocationConfiguration {
   /// Creates a new [CertificateAuthorityRevocationConfiguration].
   /// [crlConfiguration] Nested argument containing configuration of the certificate revocation list (CRL), if any, maintained by the certificate authority. Defined below.
   /// [ocspConfiguration] Nested argument containing configuration of
-  CertificateAuthorityRevocationConfiguration({
+  const CertificateAuthorityRevocationConfiguration({
     this.crlConfiguration,
     this.ocspConfiguration,
   });

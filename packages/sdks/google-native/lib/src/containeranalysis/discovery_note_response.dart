@@ -9,7 +9,7 @@ class DiscoveryNoteResponse {
 
   /// Creates a new [DiscoveryNoteResponse].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryNoteResponse({
+  const DiscoveryNoteResponse({
     required this.analysisKind,
   });
 

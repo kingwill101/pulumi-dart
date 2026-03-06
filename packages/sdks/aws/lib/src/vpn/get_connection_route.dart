@@ -12,7 +12,7 @@ class GetConnectionRoute {
   /// [destinationCidrBlock] Required.
   /// [source] Required.
   /// [state] Current state of the VPN connection.
-  GetConnectionRoute({
+  const GetConnectionRoute({
     required this.destinationCidrBlock,
     required this.source,
     required this.state,

@@ -92,7 +92,7 @@ class VirtualServerState {
   /// [translatePort] Enables or disables port translation. Turn port translation off for a virtual server if you want to use the virtual server to load balance connections to any service
   /// [vlans] The virtual server is enabled/disabled on this set of VLANs,enable/disabled will be desided by attribute `vlan_enabled`
   /// [vlansEnabled] Enables the virtual server on the VLANs specified by the `vlans` option.
-  VirtualServerState({
+  const VirtualServerState({
     this.clientProfiles,
     this.connectionLimit,
     this.defaultPersistenceProfile,

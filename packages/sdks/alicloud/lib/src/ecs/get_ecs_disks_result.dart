@@ -98,7 +98,7 @@ class GetEcsDisksResult {
   /// [totalCount] Required.
   /// [type] The type of the disk.
   /// [zoneId] The zone id.
-  GetEcsDisksResult({
+  const GetEcsDisksResult({
     this.additionalAttributes,
     this.autoSnapshotPolicyId,
     this.availabilityZone,

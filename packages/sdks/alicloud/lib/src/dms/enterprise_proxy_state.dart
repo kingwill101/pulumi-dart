@@ -18,7 +18,7 @@ class EnterpriseProxyState {
   /// [password] The password of the database account.
   /// [tid] The ID of the tenant.
   /// [username] The username of the database account.
-  EnterpriseProxyState({
+  const EnterpriseProxyState({
     this.instanceId,
     this.password,
     this.tid,

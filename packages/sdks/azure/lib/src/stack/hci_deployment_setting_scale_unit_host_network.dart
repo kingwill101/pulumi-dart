@@ -19,7 +19,7 @@ class HciDeploymentSettingScaleUnitHostNetwork {
   /// [storageAutoIpEnabled] Whether allows users to specify IPs and Mask for Storage NICs when Network ATC is not assigning the IPs for storage automatically. Optional parameter required only for [3 nodes switchless deployments](https://learn.microsoft.com/azure-stack/hci/concepts/physical-network-requirements?tabs=overview%2C23H2reqs#using-switchless). Possible values are `true` and `false`. Defaults to `true`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [storageConnectivitySwitchlessEnabled] Defines how the storage adapters between nodes are connected either switch or switch less. Possible values are `true` and `false`. Defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [storageNetworks] One or more `storage_network` blocks as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitHostNetwork({
+  const HciDeploymentSettingScaleUnitHostNetwork({
     required this.intents,
     this.storageAutoIpEnabled,
     this.storageConnectivitySwitchlessEnabled,

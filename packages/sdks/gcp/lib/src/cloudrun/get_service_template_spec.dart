@@ -38,7 +38,7 @@ class GetServiceTemplateSpec {
   /// [servingState] ServingState holds a value describing the state the resources
   /// [timeoutSeconds] TimeoutSeconds holds the max duration the instance is allowed for responding to a request.
   /// [volumes] Volume represents a named volume in a container.
-  GetServiceTemplateSpec({
+  const GetServiceTemplateSpec({
     required this.containerConcurrency,
     required this.containers,
     required this.nodeSelector,

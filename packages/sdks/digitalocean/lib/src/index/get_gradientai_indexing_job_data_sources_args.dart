@@ -11,7 +11,7 @@ class GetGradientaiIndexingJobDataSourcesArgs {
 
   /// Creates a new [GetGradientaiIndexingJobDataSourcesArgs].
   /// [indexingJobUuid] Required.
-  GetGradientaiIndexingJobDataSourcesArgs({
+  const GetGradientaiIndexingJobDataSourcesArgs({
     required this.indexingJobUuid,
   });
 

@@ -14,7 +14,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecO
   /// [columnDepth] The height of the FEC protection matrix.
   /// [includeFec] Enables column only or column and row based FEC.
   /// [rowLength] The width of the FEC protection matrix.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsFecOutputSettings({
     this.columnDepth,
     this.includeFec,
     this.rowLength,

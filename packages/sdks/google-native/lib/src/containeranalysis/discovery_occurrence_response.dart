@@ -35,7 +35,7 @@ class DiscoveryOccurrenceResponse {
   /// [cpe] The CPE of the resource being scanned.
   /// [lastScanTime] The last time this resource was scanned.
   /// [sbomStatus] The status of an SBOM generation.
-  DiscoveryOccurrenceResponse({
+  const DiscoveryOccurrenceResponse({
     required this.analysisCompleted,
     required this.analysisError,
     required this.analysisStatus,

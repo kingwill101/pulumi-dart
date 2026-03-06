@@ -29,7 +29,7 @@ class RestorePointSourceVMDataDiskResponse {
   /// [managedDisk] Contains the managed disk details.
   /// [name] Gets the disk name.
   /// [writeAcceleratorEnabled] Shows true if the disk is write-accelerator enabled.
-  RestorePointSourceVMDataDiskResponse({
+  const RestorePointSourceVMDataDiskResponse({
     required this.caching,
     this.diskRestorePoint,
     required this.diskSizeGB,

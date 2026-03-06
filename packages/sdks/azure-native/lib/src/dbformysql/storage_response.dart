@@ -27,7 +27,7 @@ class StorageResponse {
   /// [storageRedundancy] The redundant type of the server storage. The parameter is used for server creation.
   /// [storageSizeGB] Max storage size allowed for a server.
   /// [storageSku] The sku name of the server storage.
-  StorageResponse({
+  const StorageResponse({
     this.autoGrow,
     this.autoIoScaling,
     this.iops,

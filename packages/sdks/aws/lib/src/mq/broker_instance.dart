@@ -22,7 +22,7 @@ class BrokerInstance {
   /// [consoleUrl] URL of the [ActiveMQ Web Console](http://activemq.apache.org/web-console.html) or the [RabbitMQ Management UI](https://www.rabbitmq.com/management.html#external-monitoring) depending on `engine_type`.
   /// [endpoints] Broker's wire-level protocol endpoints in the following order & format referenceable e.g., as `instances.0.endpoints.0` (SSL):
   /// [ipAddress] IP Address of the broker.
-  BrokerInstance({
+  const BrokerInstance({
     this.consoleUrl,
     this.endpoints,
     this.ipAddress,

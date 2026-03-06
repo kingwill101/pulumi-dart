@@ -11,7 +11,7 @@ class ConnectionProperty {
   /// Creates a new [ConnectionProperty].
   /// [key] [Required] Name of the connection property to set.
   /// [value] [Required] Value of the connection property.
-  ConnectionProperty({
+  const ConnectionProperty({
     this.key,
     this.value,
   });

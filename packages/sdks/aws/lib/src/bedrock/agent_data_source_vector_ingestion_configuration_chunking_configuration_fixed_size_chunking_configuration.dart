@@ -11,7 +11,7 @@ class AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeC
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration].
   /// [maxTokens] Maximum number of tokens to include in a chunk.
   /// [overlapPercentage] Percentage of overlap between adjacent chunks of a data source.
-  AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationChunkingConfigurationFixedSizeChunkingConfiguration({
     required this.maxTokens,
     required this.overlapPercentage,
   });

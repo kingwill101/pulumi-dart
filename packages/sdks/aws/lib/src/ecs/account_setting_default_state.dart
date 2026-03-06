@@ -17,7 +17,7 @@ class AccountSettingDefaultState {
   /// [principalArn] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] State of the setting.
-  AccountSettingDefaultState({
+  const AccountSettingDefaultState({
     this.name,
     this.principalArn,
     this.region,

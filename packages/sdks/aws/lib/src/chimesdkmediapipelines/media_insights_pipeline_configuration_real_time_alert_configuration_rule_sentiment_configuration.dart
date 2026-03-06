@@ -14,7 +14,7 @@ class MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentC
   /// [ruleName] Rule name.
   /// [sentimentType] Sentiment type to match.
   /// [timePeriod] Analysis interval.
-  MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration({
+  const MediaInsightsPipelineConfigurationRealTimeAlertConfigurationRuleSentimentConfiguration({
     required this.ruleName,
     required this.sentimentType,
     required this.timePeriod,

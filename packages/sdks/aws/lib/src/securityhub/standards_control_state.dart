@@ -39,7 +39,7 @@ class StandardsControlState {
   /// [severityRating] The severity of findings generated from this security standard control.
   /// [standardsControlArn] The standards control ARN. See the AWS documentation for how to list existing controls using [`get-enabled-standards`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/securityhub/get-enabled-standards.html) and [`describe-standards-controls`](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/securityhub/describe-standards-controls.html).
   /// [title] The standard control title.
-  StandardsControlState({
+  const StandardsControlState({
     this.controlId,
     this.controlStatus,
     this.controlStatusUpdatedAt,

@@ -13,7 +13,7 @@ class InstalledSolutionMapResponse {
   /// Creates a new [InstalledSolutionMapResponse].
   /// [key] The key representing the installed solution.
   /// [value] The installed solution value.
-  InstalledSolutionMapResponse({
+  const InstalledSolutionMapResponse({
     required this.key,
     required this.value,
   });

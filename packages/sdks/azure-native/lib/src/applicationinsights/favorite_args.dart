@@ -43,7 +43,7 @@ class FavoriteArgs {
   /// [sourceType] The source of the favorite definition.
   /// [tags] A list of 0 or more tags that are associated with this favorite definition
   /// [version] This instance's version of the data model. This can change as new features are added that can be marked favorite. Current examples include MetricsExplorer (ME) and Search.
-  FavoriteArgs({
+  const FavoriteArgs({
     this.category,
     this.config,
     this.favoriteId,

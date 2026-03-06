@@ -20,7 +20,7 @@ class GetAdditionalCertificatesCertificate {
   /// [domain] The domain name specified by the certificate.
   /// [id] The ID of the Additional Certificate. The value formats as `&lt;accelerator_id&gt;:&lt;listener_id&gt;:&lt;domain&gt;`.
   /// [listenerId] The ID of the listener. Only HTTPS listeners support this parameter.
-  GetAdditionalCertificatesCertificate({
+  const GetAdditionalCertificatesCertificate({
     required this.acceleratorId,
     required this.certificateId,
     required this.domain,

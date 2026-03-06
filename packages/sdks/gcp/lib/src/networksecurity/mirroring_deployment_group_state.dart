@@ -76,7 +76,7 @@ class MirroringDeploymentGroupState {
   /// [reconciling] The current state of the resource does not match the user's intended state,
   /// [state] (Output)
   /// [updateTime] The timestamp when the resource was most recently updated.
-  MirroringDeploymentGroupState({
+  const MirroringDeploymentGroupState({
     this.connectedEndpointGroups,
     this.createTime,
     this.description,

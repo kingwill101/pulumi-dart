@@ -30,7 +30,7 @@ class CustomRoutingEndpointGroupDestinationState {
   /// [protocols] The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
   /// [status] The status of the Custom Routing Endpoint Group Destination.
   /// [toPort] The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
-  CustomRoutingEndpointGroupDestinationState({
+  const CustomRoutingEndpointGroupDestinationState({
     this.acceleratorId,
     this.customRoutingEndpointGroupDestinationId,
     this.endpointGroupId,

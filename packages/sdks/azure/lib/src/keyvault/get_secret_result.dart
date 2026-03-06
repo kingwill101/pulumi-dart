@@ -38,7 +38,7 @@ class GetSecretResult {
   /// [value] The value of the Key Vault Secret.
   /// [version] Optional.
   /// [versionlessId] The Versionless ID of the Key Vault Secret. This can be used to always get latest secret value, and enable fetching automatically rotating secrets.
-  GetSecretResult({
+  const GetSecretResult({
     required this.contentType,
     required this.expirationDate,
     required this.id,

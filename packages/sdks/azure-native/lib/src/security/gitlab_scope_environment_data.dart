@@ -10,7 +10,7 @@ class GitlabScopeEnvironmentData {
 
   /// Creates a new [GitlabScopeEnvironmentData].
   /// [environmentType] The type of the environment data.
-  GitlabScopeEnvironmentData({
+  const GitlabScopeEnvironmentData({
     required this.environmentType,
   });
 

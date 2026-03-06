@@ -8,7 +8,7 @@ class LandingZoneDriftStatus {
 
   /// Creates a new [LandingZoneDriftStatus].
   /// [status] The drift status of the landing zone.
-  LandingZoneDriftStatus({
+  const LandingZoneDriftStatus({
     this.status,
   });
 

@@ -37,7 +37,7 @@ class GetEntityArgs {
   /// [name] The name of the entity in New Relic One.  The first entity matching this name for the given search parameters will be returned.
   /// [tags] A tag applied to the entity. See Nested tag blocks below for details.
   /// [type] The entity's type. Valid values are APPLICATION, DASHBOARD, HOST, MONITOR, WORKLOAD, AWSLAMBDAFUNCTION, SERVICE_LEVEL, and KEY_TRANSACTION. Note: Other entity types may also be queryable as the list of entity types may fluctuate over time.
-  GetEntityArgs({
+  const GetEntityArgs({
     this.accountId,
     this.domain,
     this.entityTags,

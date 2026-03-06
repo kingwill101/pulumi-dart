@@ -27,7 +27,7 @@ class ConnectionSslConfigAdditionalVariable {
   /// [key] Key for the configVariable
   /// [secretValue] Secret value of configVariable
   /// [stringValue] String Value of configVariabley.
-  ConnectionSslConfigAdditionalVariable({
+  const ConnectionSslConfigAdditionalVariable({
     this.booleanValue,
     this.encryptionKeyValue,
     this.integerValue,

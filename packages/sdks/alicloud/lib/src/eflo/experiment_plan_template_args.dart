@@ -24,7 +24,7 @@ class ExperimentPlanTemplateArgs {
   /// [templateDescription] Describe the purpose of this template.
   /// [templateName] Help users identify and select specific templates.
   /// [templatePipelines] Representative Template Pipeline. See `template_pipeline` below.
-  ExperimentPlanTemplateArgs({
+  const ExperimentPlanTemplateArgs({
     required this.privacyLevel,
     this.templateDescription,
     required this.templateName,

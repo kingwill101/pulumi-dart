@@ -60,7 +60,7 @@ class GetNotificationHubPnsCredentialsResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [wnsCredential] Description of a NotificationHub WnsCredential.
   /// [xiaomiCredential] Description of a NotificationHub XiaomiCredential.
-  GetNotificationHubPnsCredentialsResult({
+  const GetNotificationHubPnsCredentialsResult({
     this.admCredential,
     this.apnsCredential,
     this.baiduCredential,

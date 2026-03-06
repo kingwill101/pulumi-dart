@@ -22,7 +22,7 @@ class TaskArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [taskName] Task ARM name
-  TaskArgs({
+  const TaskArgs({
     required this.projectName,
     this.properties,
     required this.resourceGroupName,

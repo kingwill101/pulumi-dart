@@ -18,7 +18,7 @@ class ServiceTaskSpecContainerSpecMountVolumeOptions {
   /// [driverOptions] key/value map of driver specific options
   /// [labels] User-defined key/value metadata
   /// [noCopy] Populate volume with data from the target
-  ServiceTaskSpecContainerSpecMountVolumeOptions({
+  const ServiceTaskSpecContainerSpecMountVolumeOptions({
     this.driverName,
     this.driverOptions,
     this.labels,

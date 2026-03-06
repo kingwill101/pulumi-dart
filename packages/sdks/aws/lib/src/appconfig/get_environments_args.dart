@@ -15,7 +15,7 @@ class GetEnvironmentsArgs {
   /// Creates a new [GetEnvironmentsArgs].
   /// [applicationId] ID of the AppConfig Application.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEnvironmentsArgs({
+  const GetEnvironmentsArgs({
     required this.applicationId,
     this.region,
   });

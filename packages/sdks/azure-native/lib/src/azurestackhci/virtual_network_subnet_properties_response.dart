@@ -32,7 +32,7 @@ class VirtualNetworkSubnetPropertiesResponse {
   /// [provisioningState] The provisioning state of the virtual network subnet resource.
   /// [routeTable] RouteTable defining custom routes for the subnet.
   /// [status] The observed status of the virtual network subnet resource.
-  VirtualNetworkSubnetPropertiesResponse({
+  const VirtualNetworkSubnetPropertiesResponse({
     required this.addressPrefix,
     required this.ipConfigurations,
     this.natGateway,

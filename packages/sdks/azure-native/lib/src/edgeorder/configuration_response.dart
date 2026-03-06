@@ -57,7 +57,7 @@ class ConfigurationResponse {
   /// [provisioningSupport] Determining nature of provisioning that the configuration supports.
   /// [specifications] Specifications of the configuration.
   /// [supportedTermCommitmentDurations] The Term Commitment Durations that are supported for a configuration.
-  ConfigurationResponse({
+  const ConfigurationResponse({
     required this.availabilityInformation,
     required this.childConfigurationTypes,
     required this.costInformation,

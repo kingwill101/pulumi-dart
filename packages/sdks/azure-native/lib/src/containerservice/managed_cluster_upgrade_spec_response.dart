@@ -12,7 +12,7 @@ class ManagedClusterUpgradeSpecResponse {
   /// Creates a new [ManagedClusterUpgradeSpecResponse].
   /// [kubernetesVersion] The Kubernetes version to upgrade the member clusters to.
   /// [type] ManagedClusterUpgradeType is the type of upgrade to be applied.
-  ManagedClusterUpgradeSpecResponse({
+  const ManagedClusterUpgradeSpecResponse({
     this.kubernetesVersion,
     required this.type,
   });

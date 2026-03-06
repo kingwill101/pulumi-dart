@@ -16,7 +16,7 @@ class SpaceSpaceSettingsKernelGatewayAppSettings {
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a KernelGateway app. See `custom_image` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. See `default_resource_spec` Block below.
   /// [lifecycleConfigArns] The Amazon Resource Name (ARN) of the Lifecycle Configurations.
-  SpaceSpaceSettingsKernelGatewayAppSettings({
+  const SpaceSpaceSettingsKernelGatewayAppSettings({
     this.customImages,
     required this.defaultResourceSpec,
     this.lifecycleConfigArns,

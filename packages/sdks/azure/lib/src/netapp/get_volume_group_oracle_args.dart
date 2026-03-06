@@ -18,7 +18,7 @@ class GetVolumeGroupOracleArgs {
   /// [accountName] Name of the account where the application volume group belong to.
   /// [name] The name of this Application Volume Group for Oracle application.
   /// [resourceGroupName] The name of the Resource Group where the Application Volume Group exists.
-  GetVolumeGroupOracleArgs({
+  const GetVolumeGroupOracleArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

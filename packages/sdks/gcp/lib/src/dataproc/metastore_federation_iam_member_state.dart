@@ -44,7 +44,7 @@ class MetastoreFederationIamMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  MetastoreFederationIamMemberState({
+  const MetastoreFederationIamMemberState({
     this.condition,
     this.etag,
     this.federationId,

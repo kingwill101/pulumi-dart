@@ -8,7 +8,7 @@ class DomainDevicesInterfaceModel {
 
   /// Creates a new [DomainDevicesInterfaceModel].
   /// [type] Sets the specific type of the network interface model.
-  DomainDevicesInterfaceModel({
+  const DomainDevicesInterfaceModel({
     required this.type,
   });
 

@@ -39,7 +39,7 @@ class SpacesBucketState {
   /// [name] The name of the bucket
   /// [region] The region where the bucket resides (Defaults to `nyc3`)
   /// [versioning] A state of versioning (documented below)
-  SpacesBucketState({
+  const SpacesBucketState({
     this.acl,
     this.bucketDomainName,
     this.bucketUrn,

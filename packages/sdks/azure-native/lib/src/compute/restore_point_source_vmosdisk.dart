@@ -14,7 +14,7 @@ class RestorePointSourceVMOSDisk {
   /// Creates a new [RestorePointSourceVMOSDisk].
   /// [diskRestorePoint] Contains Disk Restore Point properties.
   /// [managedDisk] Gets the managed disk details
-  RestorePointSourceVMOSDisk({
+  const RestorePointSourceVMOSDisk({
     this.diskRestorePoint,
     this.managedDisk,
   });

@@ -38,7 +38,7 @@ class GetEcsImageComponentsComponent {
   /// [resourceGroupId] The ID of the resource group.
   /// [systemType] The operating system type supported by the image component.
   /// [tags] List of label key-value pairs.
-  GetEcsImageComponentsComponent({
+  const GetEcsImageComponentsComponent({
     required this.componentType,
     required this.content,
     required this.createTime,

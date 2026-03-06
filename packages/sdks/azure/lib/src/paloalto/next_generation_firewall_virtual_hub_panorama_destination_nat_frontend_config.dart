@@ -11,7 +11,7 @@ class NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig {
   /// Creates a new [NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig].
   /// [port] The port on which traffic will be receiveed.
   /// [publicIpAddressId] The ID of the Public IP Address resource the traffic will be received on.
-  NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig({
+  const NextGenerationFirewallVirtualHubPanoramaDestinationNatFrontendConfig({
     required this.port,
     required this.publicIpAddressId,
   });

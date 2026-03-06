@@ -60,7 +60,7 @@ class ClusterInstanceArgs {
   /// [promotionTier] Failover Priority setting on instance level. Default `0`. The reader who has lower tier has higher priority to get promoter to writer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the instance. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ClusterInstanceArgs({
+  const ClusterInstanceArgs({
     this.applyImmediately,
     this.autoMinorVersionUpgrade,
     this.availabilityZone,

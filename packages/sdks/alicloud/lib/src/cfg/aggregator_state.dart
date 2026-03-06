@@ -32,7 +32,7 @@ class AggregatorState {
   /// [description] The description of the account group.
   /// [folderId] The ID of the attached folder. You can specify multiple folder IDs. Separate the IDs with commas (,). **NOTE:** If `aggregator_type` is set to `FOLDER`, `folder_id` is required.
   /// [status] The status of the account group.
-  AggregatorState({
+  const AggregatorState({
     this.aggregatorAccounts,
     this.aggregatorName,
     this.aggregatorType,

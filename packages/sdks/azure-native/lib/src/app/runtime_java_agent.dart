@@ -13,7 +13,7 @@ class RuntimeJavaAgent {
   /// Creates a new [RuntimeJavaAgent].
   /// [enabled] Enable java agent injection for the java app.
   /// [logging] Capabilities on the java logging scenario.
-  RuntimeJavaAgent({
+  const RuntimeJavaAgent({
     this.enabled,
     this.logging,
   });

@@ -13,7 +13,7 @@ class AlertPrometheusRuleGroupRuleAction {
   /// Creates a new [AlertPrometheusRuleGroupRuleAction].
   /// [actionGroupId] Specifies the resource id of the monitor action group.
   /// [actionProperties] Specifies the properties of an action group object.
-  AlertPrometheusRuleGroupRuleAction({
+  const AlertPrometheusRuleGroupRuleAction({
     required this.actionGroupId,
     this.actionProperties,
   });

@@ -41,7 +41,7 @@ class SecretSyncArgs {
   /// [secretSyncName] The name of the SecretSync
   /// [serviceAccountName] ServiceAccountName specifies the name of the service account used to access the cloud provider secret store. The audience field in the service account token must be passed as parameter in the controller configuration. The audience is used when requesting a token from the API server for the service account; the supported audiences are defined by each provider.
   /// [tags] Resource tags.
-  SecretSyncArgs({
+  const SecretSyncArgs({
     this.extendedLocation,
     this.forceSynchronization,
     required this.kubernetesSecretType,

@@ -15,7 +15,7 @@ class GetPartnerRegistrationArgs {
   /// Creates a new [GetPartnerRegistrationArgs].
   /// [partnerRegistrationName] Name of the partner registration.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerRegistrationArgs({
+  const GetPartnerRegistrationArgs({
     required this.partnerRegistrationName,
     required this.resourceGroupName,
   });

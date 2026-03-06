@@ -185,7 +185,7 @@ class GetAvsAssessmentsOperationResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedTimestamp] Date and Time when assessment was last updated.
   /// [vcpuOversubscription] VCPU over subscription.
-  GetAvsAssessmentsOperationResult({
+  const GetAvsAssessmentsOperationResult({
     required this.assessmentErrorSummary,
     required this.assessmentType,
     this.avsAssessmentScenario,

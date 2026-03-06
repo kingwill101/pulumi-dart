@@ -22,7 +22,7 @@ class GetRoleAssignmentsResult {
   /// [roleAssignments] A `role_assignments` block as defined below.
   /// [scope] Required.
   /// [tenantId] Optional.
-  GetRoleAssignmentsResult({
+  const GetRoleAssignmentsResult({
     required this.id,
     this.limitAtScope,
     this.principalId,

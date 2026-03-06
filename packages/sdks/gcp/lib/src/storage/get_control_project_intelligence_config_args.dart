@@ -12,7 +12,7 @@ class GetControlProjectIntelligenceConfigArgs {
 
   /// Creates a new [GetControlProjectIntelligenceConfigArgs].
   /// [name] The name or number of the GCP project.
-  GetControlProjectIntelligenceConfigArgs({
+  const GetControlProjectIntelligenceConfigArgs({
     required this.name,
   });
 

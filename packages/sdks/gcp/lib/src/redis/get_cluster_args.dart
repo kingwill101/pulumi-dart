@@ -19,7 +19,7 @@ class GetClusterArgs {
   /// [name] The name of the Redis cluster.
   /// [project] (optional)
   /// [region] The region of the Redis cluster.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.name,
     this.project,
     this.region,

@@ -12,7 +12,7 @@ class ValidationErrorResponse {
   /// Creates a new [ValidationErrorResponse].
   /// [errorMessages] A list of descriptions of the error.
   /// [recordIndex] The number of the record that has the error.
-  ValidationErrorResponse({
+  const ValidationErrorResponse({
     required this.errorMessages,
     this.recordIndex,
   });

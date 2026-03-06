@@ -27,7 +27,7 @@ class GetTransitRouterRouteEntriesEntry {
   /// [transitRouterRouteEntryNextHopId] ID of the next hop.
   /// [transitRouterRouteEntryNextHopType] Type of the next hop.
   /// [transitRouterRouteEntryType] Type of the route entry.
-  GetTransitRouterRouteEntriesEntry({
+  const GetTransitRouterRouteEntriesEntry({
     required this.id,
     required this.status,
     required this.transitRouterRouteEntryDescription,

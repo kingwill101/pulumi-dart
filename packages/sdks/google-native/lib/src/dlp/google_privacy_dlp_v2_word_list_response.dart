@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2WordListResponse {
 
   /// Creates a new [GooglePrivacyDlpV2WordListResponse].
   /// [words] Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required]
-  GooglePrivacyDlpV2WordListResponse({
+  const GooglePrivacyDlpV2WordListResponse({
     required this.words,
   });
 

@@ -16,7 +16,7 @@ class GetDatabasesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instance] Required.
   /// [project] Optional.
-  GetDatabasesResult({
+  const GetDatabasesResult({
     required this.databases,
     required this.id,
     required this.instance,

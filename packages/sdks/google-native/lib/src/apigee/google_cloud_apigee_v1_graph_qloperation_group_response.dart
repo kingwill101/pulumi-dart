@@ -13,7 +13,7 @@ class GoogleCloudApigeeV1GraphQLOperationGroupResponse {
   /// Creates a new [GoogleCloudApigeeV1GraphQLOperationGroupResponse].
   /// [operationConfigType] Flag that specifies whether the configuration is for Apigee API proxy or a remote service. Valid values include `proxy` or `remoteservice`. Defaults to `proxy`. Set to `proxy` when Apigee API proxies are associated with the API product. Set to `remoteservice` when non-Apigee proxies like Istio-Envoy are associated with the API product.
   /// [operationConfigs] List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product.
-  GoogleCloudApigeeV1GraphQLOperationGroupResponse({
+  const GoogleCloudApigeeV1GraphQLOperationGroupResponse({
     required this.operationConfigType,
     required this.operationConfigs,
   });

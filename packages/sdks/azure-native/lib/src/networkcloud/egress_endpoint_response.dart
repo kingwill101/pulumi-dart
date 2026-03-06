@@ -12,7 +12,7 @@ class EgressEndpointResponse {
   /// Creates a new [EgressEndpointResponse].
   /// [category] The descriptive category name of endpoints accessible by the AKS agent node. For example, azure-resource-management, API server, etc. The platform egress endpoints provided by default will use the category 'default'.
   /// [endpoints] The list of endpoint dependencies.
-  EgressEndpointResponse({
+  const EgressEndpointResponse({
     required this.category,
     required this.endpoints,
   });

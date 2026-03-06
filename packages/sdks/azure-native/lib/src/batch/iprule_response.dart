@@ -12,7 +12,7 @@ class IPRuleResponse {
   /// Creates a new [IPRuleResponse].
   /// [action] Action when client IP address is matched.
   /// [value] IPv4 address, or IPv4 address range in CIDR format.
-  IPRuleResponse({
+  const IPRuleResponse({
     required this.action,
     required this.value,
   });

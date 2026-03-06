@@ -18,7 +18,7 @@ class GetElasticBackupPolicyArgs {
   /// [accountName] The name of the ElasticAccount
   /// [backupPolicyName] The name of the ElasticBackupPolicy
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticBackupPolicyArgs({
+  const GetElasticBackupPolicyArgs({
     required this.accountName,
     required this.backupPolicyName,
     required this.resourceGroupName,

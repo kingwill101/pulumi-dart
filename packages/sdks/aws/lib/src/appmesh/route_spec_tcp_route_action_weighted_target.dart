@@ -14,7 +14,7 @@ class RouteSpecTcpRouteActionWeightedTarget {
   /// [port] The targeted port of the weighted object.
   /// [virtualNode] Virtual node to associate with the weighted target. Must be between 1 and 255 characters in length.
   /// [weight] Relative weight of the weighted target. An integer between 0 and 100.
-  RouteSpecTcpRouteActionWeightedTarget({
+  const RouteSpecTcpRouteActionWeightedTarget({
     this.port,
     required this.virtualNode,
     required this.weight,

@@ -24,7 +24,7 @@ class ContentItemArgs {
   /// [properties] Properties of the content item.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  ContentItemArgs({
+  const ContentItemArgs({
     this.contentItemId,
     required this.contentTypeId,
     this.properties,

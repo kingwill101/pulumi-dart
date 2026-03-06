@@ -15,7 +15,7 @@ class V3FunctionNasConfig {
   /// [groupId] Group ID
   /// [mountPoints] Mount point list See `mount_points` below.
   /// [userId] Account ID
-  V3FunctionNasConfig({
+  const V3FunctionNasConfig({
     this.groupId,
     this.mountPoints,
     this.userId,

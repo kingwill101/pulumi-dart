@@ -21,7 +21,7 @@ class ElasticTrafficFilterRuleResponse {
   /// [description] Description of the elastic filter rule
   /// [id] Id of the elastic filter rule
   /// [source] IP of the elastic filter rule
-  ElasticTrafficFilterRuleResponse({
+  const ElasticTrafficFilterRuleResponse({
     this.azureEndpointGuid,
     this.azureEndpointName,
     this.description,

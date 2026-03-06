@@ -19,7 +19,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification {
   /// [startResponse] Configuration block for the message sent to users when the fulfillment Lambda functions starts running.
   /// [timeoutInSeconds] Length of time that the fulfillment Lambda function should run before it times out.
   /// [updateResponse] Configuration block for messages sent periodically to the user while the fulfillment Lambda function is running.
-  V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification({
+  const V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecification({
     required this.active,
     this.startResponse,
     this.timeoutInSeconds,

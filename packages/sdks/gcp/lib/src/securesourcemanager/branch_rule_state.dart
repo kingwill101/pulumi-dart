@@ -55,7 +55,7 @@ class BranchRuleState {
   /// [requirePullRequest] Determines if the branch rule requires a pull request or not.
   /// [uid] Unique identifier of the BranchRule.
   /// [updateTime] Time the BranchRule was updated in UTC.
-  BranchRuleState({
+  const BranchRuleState({
     this.allowStaleReviews,
     this.branchRuleId,
     this.createTime,

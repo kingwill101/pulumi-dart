@@ -9,7 +9,7 @@ class LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule {
   /// Creates a new [LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule].
   /// [interval] Required.
   /// [intervalUnit] Required.
-  LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule({
+  const LifecyclePolicyPolicyDetailsActionCrossRegionCopyRetainRule({
     required this.interval,
     required this.intervalUnit,
   });

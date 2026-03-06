@@ -14,7 +14,7 @@ class InstanceAddOn {
   /// [snapshotTime] Daily time when an automatic snapshot will be created. Must be in HH:00 format, and in an hourly increment and specified in Coordinated Universal Time (UTC). The snapshot will be automatically created between the time specified and up to 45 minutes after.
   /// [status] Status of the add-on. Valid values: `Enabled`, `Disabled`.
   /// [type] Add-on type. There is currently only one valid type `AutoSnapshot`.
-  InstanceAddOn({
+  const InstanceAddOn({
     required this.snapshotTime,
     required this.status,
     required this.type,

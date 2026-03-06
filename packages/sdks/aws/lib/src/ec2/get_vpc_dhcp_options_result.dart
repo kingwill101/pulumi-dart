@@ -44,7 +44,7 @@ class GetVpcDhcpOptionsResult {
   /// [ownerId] ID of the AWS account that owns the DHCP options set.
   /// [region] Required.
   /// [tags] Map of tags assigned to the resource.
-  GetVpcDhcpOptionsResult({
+  const GetVpcDhcpOptionsResult({
     required this.arn,
     required this.dhcpOptionsId,
     required this.domainName,

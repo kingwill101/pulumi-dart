@@ -92,7 +92,7 @@ class GetRouteResult {
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [tags] A list of instance tags to which this route applies.
   /// [warnings] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  GetRouteResult({
+  const GetRouteResult({
     required this.allowConflictingSubnetworks,
     required this.asPaths,
     required this.creationTimestamp,

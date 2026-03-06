@@ -31,7 +31,7 @@ class ValidateMigrationInputSqlServerSqlMITaskInputResponse {
   /// [selectedLogins] Logins to migrate
   /// [sourceConnectionInfo] Information for connecting to source
   /// [targetConnectionInfo] Information for connecting to target
-  ValidateMigrationInputSqlServerSqlMITaskInputResponse({
+  const ValidateMigrationInputSqlServerSqlMITaskInputResponse({
     required this.backupBlobShare,
     this.backupFileShare,
     this.backupMode,

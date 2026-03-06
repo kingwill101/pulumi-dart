@@ -15,7 +15,7 @@ class ResourceIdentityResponse {
   /// [principalId] The Azure Active Directory principal id.
   /// [tenantId] The Azure Active Directory tenant id.
   /// [type] The identity type. Set this to 'SystemAssigned' in order to automatically create and assign an Azure Active Directory principal for the resource.
-  ResourceIdentityResponse({
+  const ResourceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

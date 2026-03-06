@@ -16,7 +16,7 @@ class HealthModelPropertiesResponse {
   /// [discovery] Configure to automatically discover entities from a given scope, such as a Service Group. The discovered entities will be linked to the root entity of the health model.
   /// [provisioningState] The status of the last operation.
   /// [queryEndpoint] The data plane endpoint for querying health data
-  HealthModelPropertiesResponse({
+  const HealthModelPropertiesResponse({
     this.discovery,
     required this.provisioningState,
     required this.queryEndpoint,

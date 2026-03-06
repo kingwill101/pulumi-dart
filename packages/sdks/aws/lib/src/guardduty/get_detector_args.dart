@@ -18,7 +18,7 @@ class GetDetectorArgs {
   /// [id] ID of the detector.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags for the resource.
-  GetDetectorArgs({
+  const GetDetectorArgs({
     this.id,
     this.region,
     this.tags,

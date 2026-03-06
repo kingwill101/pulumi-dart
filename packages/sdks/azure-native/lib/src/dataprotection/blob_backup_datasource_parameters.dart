@@ -13,7 +13,7 @@ class BlobBackupDatasourceParameters {
   /// Creates a new [BlobBackupDatasourceParameters].
   /// [containersList] List of containers to be backed up during configuration of backup of blobs
   /// [objectType] Type of the specific object - used for deserializing
-  BlobBackupDatasourceParameters({
+  const BlobBackupDatasourceParameters({
     required this.containersList,
     required this.objectType,
   });

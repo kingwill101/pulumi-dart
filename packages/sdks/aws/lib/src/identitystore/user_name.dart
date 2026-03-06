@@ -25,7 +25,7 @@ class UserName {
   /// [honorificPrefix] The honorific prefix of the user.
   /// [honorificSuffix] The honorific suffix of the user.
   /// [middleName] The middle name of the user.
-  UserName({
+  const UserName({
     required this.familyName,
     this.formatted,
     required this.givenName,

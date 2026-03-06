@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig {
   /// Creates a new [GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig].
   /// [deployedModelId] The DeployedModel ID of the objective config.
   /// [objectiveConfig] The objective config of for the modelmonitoring job of this deployed model.
-  GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig({
+  const GoogleCloudAiplatformV1beta1ModelDeploymentMonitoringObjectiveConfig({
     this.deployedModelId,
     this.objectiveConfig,
   });

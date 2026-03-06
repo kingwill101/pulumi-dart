@@ -17,7 +17,7 @@ class GetUserAlloydbV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [userId] Required.
-  GetUserAlloydbV1betaArgs({
+  const GetUserAlloydbV1betaArgs({
     required this.clusterId,
     required this.location,
     this.project,

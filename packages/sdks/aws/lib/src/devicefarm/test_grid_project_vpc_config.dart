@@ -14,7 +14,7 @@ class TestGridProjectVpcConfig {
   /// [securityGroupIds] A list of VPC security group IDs in your Amazon VPC.
   /// [subnetIds] A list of VPC subnet IDs in your Amazon VPC.
   /// [vpcId] The ID of the Amazon VPC.
-  TestGridProjectVpcConfig({
+  const TestGridProjectVpcConfig({
     required this.securityGroupIds,
     required this.subnetIds,
     required this.vpcId,

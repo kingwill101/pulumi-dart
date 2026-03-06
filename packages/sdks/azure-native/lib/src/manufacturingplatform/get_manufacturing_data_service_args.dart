@@ -15,7 +15,7 @@ class GetManufacturingDataServiceArgs {
   /// Creates a new [GetManufacturingDataServiceArgs].
   /// [mdsResourceName] Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManufacturingDataServiceArgs({
+  const GetManufacturingDataServiceArgs({
     required this.mdsResourceName,
     required this.resourceGroupName,
   });

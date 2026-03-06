@@ -9,7 +9,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionAct
 
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction].
   /// [dimensions] Set of configuration blocks containing the dimension settings to use for Amazon CloudWatch custom metrics. See Dimension below for details.
-  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction({
+  const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsCustomActionActionDefinitionPublishMetricAction({
     required this.dimensions,
   });
 

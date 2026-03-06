@@ -26,7 +26,7 @@ class GetSaslAclsResult {
   /// [instanceId] Required.
   /// [outputFile] Optional.
   /// [username] The username of the sasl acl.
-  GetSaslAclsResult({
+  const GetSaslAclsResult({
     required this.aclResourceName,
     required this.aclResourceType,
     required this.acls,

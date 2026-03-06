@@ -13,7 +13,7 @@ class EncryptionResponse {
   /// Creates a new [EncryptionResponse].
   /// [keyVaultProperties] The key vault where the encryption key is stored
   /// [status] Status of customer managed encryption key
-  EncryptionResponse({
+  const EncryptionResponse({
     this.keyVaultProperties,
     this.status,
   });

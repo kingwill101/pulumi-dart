@@ -13,7 +13,7 @@ class OntapFileSystemEndpoint {
   /// Creates a new [OntapFileSystemEndpoint].
   /// [interclusters] An endpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See Endpoint.
   /// [managements] An endpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See Endpoint.
-  OntapFileSystemEndpoint({
+  const OntapFileSystemEndpoint({
     this.interclusters,
     this.managements,
   });

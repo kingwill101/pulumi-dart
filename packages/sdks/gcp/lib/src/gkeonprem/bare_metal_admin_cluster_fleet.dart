@@ -11,7 +11,7 @@ class BareMetalAdminClusterFleet {
 
   /// Creates a new [BareMetalAdminClusterFleet].
   /// [membership] (Output)
-  BareMetalAdminClusterFleet({
+  const BareMetalAdminClusterFleet({
     this.membership,
   });
 

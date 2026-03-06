@@ -31,7 +31,7 @@ class Ec2FlowLogProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2FlowLogProperties({
+  const Ec2FlowLogProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

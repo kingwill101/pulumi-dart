@@ -11,7 +11,7 @@ class GetTransitRouterVpcAttachmentsAttachmentZoneMapping {
   /// Creates a new [GetTransitRouterVpcAttachmentsAttachmentZoneMapping].
   /// [vswitchId] The ID of the vSwitch.
   /// [zoneId] The ID of the zone.
-  GetTransitRouterVpcAttachmentsAttachmentZoneMapping({
+  const GetTransitRouterVpcAttachmentsAttachmentZoneMapping({
     required this.vswitchId,
     required this.zoneId,
   });

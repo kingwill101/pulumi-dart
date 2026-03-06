@@ -15,7 +15,7 @@ class GetFirewallEndpointAssociationArgs {
   /// [firewallEndpointAssociationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFirewallEndpointAssociationArgs({
+  const GetFirewallEndpointAssociationArgs({
     required this.firewallEndpointAssociationId,
     required this.location,
     this.project,

@@ -42,7 +42,7 @@ class ConnectionAuthConfig {
   /// [oauth2JwtBearer] OAuth2 JWT Bearer for Authentication.
   /// [sshPublicKey] SSH Public Key for Authentication.
   /// [userPassword] User password for Authentication.
-  ConnectionAuthConfig({
+  const ConnectionAuthConfig({
     this.additionalVariables,
     this.authKey,
     required this.authType,

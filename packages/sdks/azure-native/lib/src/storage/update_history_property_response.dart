@@ -30,7 +30,7 @@ class UpdateHistoryPropertyResponse {
   /// [timestamp] Returns the date and time the ImmutabilityPolicy was updated.
   /// [update] The ImmutabilityPolicy update type of a blob container, possible values include: put, lock and extend.
   /// [upn] Returns the User Principal Name of the user who updated the ImmutabilityPolicy.
-  UpdateHistoryPropertyResponse({
+  const UpdateHistoryPropertyResponse({
     this.allowProtectedAppendWrites,
     this.allowProtectedAppendWritesAll,
     required this.immutabilityPeriodSinceCreationInDays,

@@ -16,7 +16,7 @@ class NetworkingConfigurationResponse {
   /// [externalNetworkingMode] External networking mode.
   /// [host] The address exposed on the cluster. Example: azuremonitorpipeline.contoso.com.
   /// [routes] Networking routes configuration.
-  NetworkingConfigurationResponse({
+  const NetworkingConfigurationResponse({
     required this.externalNetworkingMode,
     this.host,
     required this.routes,

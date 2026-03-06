@@ -12,7 +12,7 @@ class GetDataSetLogicalTableMapSource {
   /// [dataSetArn] Required.
   /// [joinInstructions] Required.
   /// [physicalTableId] Required.
-  GetDataSetLogicalTableMapSource({
+  const GetDataSetLogicalTableMapSource({
     required this.dataSetArn,
     required this.joinInstructions,
     required this.physicalTableId,

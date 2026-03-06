@@ -13,7 +13,7 @@ class DebugOptions {
   /// Creates a new [DebugOptions].
   /// [dataSampling] Configuration options for sampling elements from a running pipeline.
   /// [enableHotKeyLogging] When true, enables the logging of the literal hot key to the user's Cloud Logging.
-  DebugOptions({
+  const DebugOptions({
     this.dataSampling,
     this.enableHotKeyLogging,
   });

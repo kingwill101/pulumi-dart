@@ -28,7 +28,7 @@ class GetOpenApiPricingModulesResult {
   /// [productCode] Required.
   /// [productType] Optional.
   /// [subscriptionType] Required.
-  GetOpenApiPricingModulesResult({
+  const GetOpenApiPricingModulesResult({
     required this.id,
     required this.ids,
     required this.modules,

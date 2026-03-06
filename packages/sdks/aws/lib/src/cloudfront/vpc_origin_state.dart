@@ -27,7 +27,7 @@ class VpcOriginState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcOriginEndpointConfig] The VPC origin endpoint configuration.
-  VpcOriginState({
+  const VpcOriginState({
     this.arn,
     this.etag,
     this.tags,

@@ -18,7 +18,7 @@ class GetManagedCertificateArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [managedCertificateName] Name of the Managed Certificate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedCertificateArgs({
+  const GetManagedCertificateArgs({
     required this.environmentName,
     required this.managedCertificateName,
     required this.resourceGroupName,

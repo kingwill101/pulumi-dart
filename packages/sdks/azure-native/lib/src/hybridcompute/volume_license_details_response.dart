@@ -11,7 +11,7 @@ class VolumeLicenseDetailsResponse {
   /// Creates a new [VolumeLicenseDetailsResponse].
   /// [invoiceId] The invoice id for the volume license.
   /// [programYear] Describes the program year the volume license is for.
-  VolumeLicenseDetailsResponse({
+  const VolumeLicenseDetailsResponse({
     this.invoiceId,
     this.programYear,
   });

@@ -46,7 +46,7 @@ class AzureFileStorageReadSettings {
   /// [type] The read setting type.
   /// [wildcardFileName] Azure File Storage wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Azure File Storage wildcardFolderPath. Type: string (or Expression with resultType string).
-  AzureFileStorageReadSettings({
+  const AzureFileStorageReadSettings({
     this.deleteFilesAfterCompletion,
     this.disableMetricsCollection,
     this.enablePartitionDiscovery,

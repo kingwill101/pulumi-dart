@@ -39,7 +39,7 @@ class GetTrafficMirrorSessionsArgs {
   /// [trafficMirrorSessionName] The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
   /// [trafficMirrorSourceId] The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
   /// [trafficMirrorTargetId] The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
-  GetTrafficMirrorSessionsArgs({
+  const GetTrafficMirrorSessionsArgs({
     this.enabled,
     this.ids,
     this.nameRegex,

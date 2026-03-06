@@ -13,7 +13,7 @@ class RulesEngineRuleAction {
   /// Creates a new [RulesEngineRuleAction].
   /// [requestHeaders] A `request_header` block as defined below.
   /// [responseHeaders] A `response_header` block as defined below.
-  RulesEngineRuleAction({
+  const RulesEngineRuleAction({
     this.requestHeaders,
     this.responseHeaders,
   });

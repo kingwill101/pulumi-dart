@@ -11,7 +11,7 @@ class IpSetIpSetDescriptor {
   /// Creates a new [IpSetIpSetDescriptor].
   /// [type] The string like IPV4 or IPV6.
   /// [value] The CIDR notation.
-  IpSetIpSetDescriptor({
+  const IpSetIpSetDescriptor({
     required this.type,
     required this.value,
   });

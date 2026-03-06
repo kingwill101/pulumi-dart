@@ -12,7 +12,7 @@ class DomainDevicesInterfaceFilterRef {
   /// Creates a new [DomainDevicesInterfaceFilterRef].
   /// [filter] Defines the specific filter to apply to the network interface.
   /// [parameters] Configures parameters for the referenced filter.
-  DomainDevicesInterfaceFilterRef({
+  const DomainDevicesInterfaceFilterRef({
     required this.filter,
     this.parameters,
   });

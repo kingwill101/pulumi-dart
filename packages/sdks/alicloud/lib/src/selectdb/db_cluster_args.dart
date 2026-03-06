@@ -31,7 +31,7 @@ class DbClusterArgs {
   /// [desiredParams] The modified parameter in DBCluster. See `desired_params` below.
   /// [desiredStatus] The desired status for the resource. Valid values: `ACTIVATION`,`STOPPED`,`STARTING`,`RESTART`.
   /// [paymentType] The payment type of the resource. Valid values: `PayAsYouGo`,`Subscription`.
-  DbClusterArgs({
+  const DbClusterArgs({
     required this.cacheSize,
     required this.dbClusterClass,
     required this.dbClusterDescription,

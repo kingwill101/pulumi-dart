@@ -14,7 +14,7 @@ class HttpRouteFaultInjectionPolicyResponse {
   /// Creates a new [HttpRouteFaultInjectionPolicyResponse].
   /// [abort] The specification for aborting to client requests.
   /// [delay] The specification for injecting delay to client requests.
-  HttpRouteFaultInjectionPolicyResponse({
+  const HttpRouteFaultInjectionPolicyResponse({
     required this.abort,
     required this.delay,
   });

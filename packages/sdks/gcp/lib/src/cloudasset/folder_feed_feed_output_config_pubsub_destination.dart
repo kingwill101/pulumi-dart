@@ -8,7 +8,7 @@ class FolderFeedFeedOutputConfigPubsubDestination {
 
   /// Creates a new [FolderFeedFeedOutputConfigPubsubDestination].
   /// [topic] Destination on Cloud Pubsub topic.
-  FolderFeedFeedOutputConfigPubsubDestination({
+  const FolderFeedFeedOutputConfigPubsubDestination({
     required this.topic,
   });
 

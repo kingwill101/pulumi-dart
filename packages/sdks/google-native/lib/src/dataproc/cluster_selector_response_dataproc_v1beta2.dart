@@ -12,7 +12,7 @@ class ClusterSelectorResponseDataprocV1beta2 {
   /// Creates a new [ClusterSelectorResponseDataprocV1beta2].
   /// [clusterLabels] The cluster labels. Cluster must have all labels to match.
   /// [zone] Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used.
-  ClusterSelectorResponseDataprocV1beta2({
+  const ClusterSelectorResponseDataprocV1beta2({
     required this.clusterLabels,
     required this.zone,
   });

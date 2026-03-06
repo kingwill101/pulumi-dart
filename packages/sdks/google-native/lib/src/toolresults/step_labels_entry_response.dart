@@ -9,7 +9,7 @@ class StepLabelsEntryResponse {
   /// Creates a new [StepLabelsEntryResponse].
   /// [key] Required.
   /// [value] Required.
-  StepLabelsEntryResponse({
+  const StepLabelsEntryResponse({
     required this.key,
     required this.value,
   });

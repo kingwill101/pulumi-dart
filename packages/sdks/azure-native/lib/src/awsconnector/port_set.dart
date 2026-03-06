@@ -9,7 +9,7 @@ class PortSet {
 
   /// Creates a new [PortSet].
   /// [definition] Property definition
-  PortSet({
+  const PortSet({
     this.definition,
   });
 

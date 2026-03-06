@@ -15,7 +15,7 @@ class IntentSlotValueElicitationPromptMessage {
   /// [content] The text of the message. Must be less than or equal to 1000 characters in length.
   /// [contentType] The content type of the message string.
   /// [groupNumber] Identifies the message group that the message belongs to. When a group
-  IntentSlotValueElicitationPromptMessage({
+  const IntentSlotValueElicitationPromptMessage({
     required this.content,
     required this.contentType,
     this.groupNumber,

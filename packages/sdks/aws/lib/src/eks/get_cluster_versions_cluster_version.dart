@@ -34,7 +34,7 @@ class GetClusterVersionsClusterVersion {
   /// [kubernetesPatchVersion] Kubernetes patch version for the cluster version.
   /// [releaseDate] Release date of the cluster version.
   /// [versionStatus] Status of the EKS cluster versions to list.
-  GetClusterVersionsClusterVersion({
+  const GetClusterVersionsClusterVersion({
     required this.clusterType,
     required this.clusterVersion,
     required this.defaultPlatformVersion,

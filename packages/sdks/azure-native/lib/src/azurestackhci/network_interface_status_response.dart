@@ -16,7 +16,7 @@ class NetworkInterfaceStatusResponse {
   /// [errorCode] NetworkInterface provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] Network interface provisioning status
-  NetworkInterfaceStatusResponse({
+  const NetworkInterfaceStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

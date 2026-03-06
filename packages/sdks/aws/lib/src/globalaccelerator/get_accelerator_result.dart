@@ -30,7 +30,7 @@ class GetAcceleratorResult {
   /// [ipSets] Required.
   /// [name] Required.
   /// [tags] Required.
-  GetAcceleratorResult({
+  const GetAcceleratorResult({
     required this.arn,
     required this.attributes,
     required this.dnsName,

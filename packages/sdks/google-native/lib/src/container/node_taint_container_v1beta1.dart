@@ -16,7 +16,7 @@ class NodeTaintContainerV1beta1 {
   /// [effect] Effect for taint.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  NodeTaintContainerV1beta1({
+  const NodeTaintContainerV1beta1({
     this.effect,
     this.key,
     this.value,

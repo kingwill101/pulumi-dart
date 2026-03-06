@@ -15,7 +15,7 @@ class BiEngineStatisticsResponse {
   /// [accelerationMode] Specifies which mode of BI Engine acceleration was performed (if any).
   /// [biEngineMode] Specifies which mode of BI Engine acceleration was performed (if any).
   /// [biEngineReasons] In case of DISABLED or PARTIAL bi_engine_mode, these contain the explanatory reasons as to why BI Engine could not accelerate. In case the full query was accelerated, this field is not populated.
-  BiEngineStatisticsResponse({
+  const BiEngineStatisticsResponse({
     required this.accelerationMode,
     required this.biEngineMode,
     required this.biEngineReasons,

@@ -112,7 +112,7 @@ class ServerlessKubernetesState {
   /// [vpcId] The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC will be built.
   /// [vswitchIds] The vswitches where new kubernetes cluster will be located.
   /// [zoneId] When creating a cluster using automatic VPC creation, you need to specify the zone where the VPC is located. Only works for **Create** Operation.
-  ServerlessKubernetesState({
+  const ServerlessKubernetesState({
     this.addons,
     this.clientCert,
     this.clientKey,

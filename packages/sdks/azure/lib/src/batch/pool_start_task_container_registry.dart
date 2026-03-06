@@ -15,7 +15,7 @@ class PoolStartTaskContainerRegistry {
   /// [registryServer] The container registry URL. Changing this forces a new resource to be created.
   /// [userAssignedIdentityId] The User Assigned Identity to use for Container Registry access.
   /// [userName] Optional.
-  PoolStartTaskContainerRegistry({
+  const PoolStartTaskContainerRegistry({
     this.password,
     required this.registryServer,
     this.userAssignedIdentityId,

@@ -40,7 +40,7 @@ class OracleTableDatasetResponse {
   /// [table] The table name of the on-premises Oracle database. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  OracleTableDatasetResponse({
+  const OracleTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

@@ -18,7 +18,7 @@ class PipelineArtifactStore {
   /// [location] The location where AWS CodePipeline stores artifacts for a pipeline; currently only `S3` is supported.
   /// [region] The region where the artifact store is located. Required for a cross-region CodePipeline, do not provide for a single-region CodePipeline.
   /// [type] The type of the artifact store, such as Amazon S3
-  PipelineArtifactStore({
+  const PipelineArtifactStore({
     this.encryptionKey,
     required this.location,
     this.region,

@@ -16,7 +16,7 @@ class ExchangeConnection {
   /// [bgpSession] The BGP session associated with the connection.
   /// [connectionIdentifier] The unique identifier (GUID) for the connection.
   /// [peeringDBFacilityId] The PeeringDB.com ID of the facility at which the connection has to be set up.
-  ExchangeConnection({
+  const ExchangeConnection({
     this.bgpSession,
     this.connectionIdentifier,
     this.peeringDBFacilityId,

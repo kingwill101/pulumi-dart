@@ -15,7 +15,7 @@ class GetEnvironmentV3Args {
   /// Creates a new [GetEnvironmentV3Args].
   /// [name] The name of this v3 App Service Environment.
   /// [resourceGroupName] The name of the Resource Group where the v3 App Service Environment exists.
-  GetEnvironmentV3Args({
+  const GetEnvironmentV3Args({
     required this.name,
     required this.resourceGroupName,
   });

@@ -185,7 +185,7 @@ class ManagedClusterAgentPoolProfileResponse {
   /// [vnetSubnetID] The ID of the subnet which agent pool nodes and optionally pods will join on startup. If this is not specified, a VNET and subnet will be generated and used. If no podSubnetID is specified, this applies to nodes and pods, otherwise it applies to just nodes. This is of the form: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}
   /// [windowsProfile] The Windows agent pool's specific profile.
   /// [workloadRuntime] Determines the type of workload a node can run.
-  ManagedClusterAgentPoolProfileResponse({
+  const ManagedClusterAgentPoolProfileResponse({
     this.availabilityZones,
     this.capacityReservationGroupID,
     this.count,

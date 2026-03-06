@@ -72,7 +72,7 @@ class GetEndpointResult {
   /// [sslMode] Required.
   /// [tags] Required.
   /// [username] Required.
-  GetEndpointResult({
+  const GetEndpointResult({
     required this.certificateArn,
     required this.databaseName,
     required this.elasticsearchSettings,

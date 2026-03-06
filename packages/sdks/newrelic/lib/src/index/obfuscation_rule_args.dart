@@ -28,7 +28,7 @@ class ObfuscationRuleArgs {
   /// [enabled] Whether the rule should be applied or not to incoming data.
   /// [filter] NRQL for determining whether a given log record should have obfuscation actions applied.
   /// [name] Name of rule.
-  ObfuscationRuleArgs({
+  const ObfuscationRuleArgs({
     this.accountId,
     required this.actions,
     this.description,

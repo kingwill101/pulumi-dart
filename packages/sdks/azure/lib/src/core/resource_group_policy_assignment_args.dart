@@ -57,7 +57,7 @@ class ResourceGroupPolicyAssignmentArgs {
   /// [policyDefinitionId] The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   /// [resourceGroupId] The ID of the Resource Group where this Policy Assignment should be created. Changing this forces a new Policy Assignment to be created.
   /// [resourceSelectors] One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
-  ResourceGroupPolicyAssignmentArgs({
+  const ResourceGroupPolicyAssignmentArgs({
     this.description,
     this.displayName,
     this.enforce,

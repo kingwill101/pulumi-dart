@@ -9,7 +9,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecif
   /// Creates a new [V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification].
   /// [endTimeoutMs] Required.
   /// [maxLengthMs] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecificationAudioSpecification({
     required this.endTimeoutMs,
     required this.maxLengthMs,
   });

@@ -25,7 +25,7 @@ class PlacementPolicyArgs {
   /// [privateCloudName] Name of the private cloud
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PlacementPolicyArgs({
+  const PlacementPolicyArgs({
     required this.clusterName,
     this.placementPolicyName,
     required this.privateCloudName,

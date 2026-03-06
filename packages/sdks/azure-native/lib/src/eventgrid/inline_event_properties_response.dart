@@ -18,7 +18,7 @@ class InlineEventPropertiesResponse {
   /// [description] The description for the inline event.
   /// [displayName] The displayName for the inline event.
   /// [documentationUrl] The documentationUrl for the inline event.
-  InlineEventPropertiesResponse({
+  const InlineEventPropertiesResponse({
     this.dataSchemaUrl,
     this.description,
     this.displayName,

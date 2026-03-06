@@ -18,7 +18,7 @@ class KubernetesClusterWindowsProfile {
   /// [adminUsername] The Admin Username for Windows VMs. Changing this forces a new resource to be created.
   /// [gmsa] A `gmsa` block as defined below.
   /// [license] Specifies the type of on-premise license which should be used for Node Pool Windows Virtual Machine. At this time the only possible value is `Windows_Server`.
-  KubernetesClusterWindowsProfile({
+  const KubernetesClusterWindowsProfile({
     required this.adminPassword,
     required this.adminUsername,
     this.gmsa,

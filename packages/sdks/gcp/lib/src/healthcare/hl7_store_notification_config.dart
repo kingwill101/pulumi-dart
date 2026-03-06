@@ -13,7 +13,7 @@ class Hl7StoreNotificationConfig {
 
   /// Creates a new [Hl7StoreNotificationConfig].
   /// [pubsubTopic] The Cloud Pub/Sub topic that notifications of changes are published on. Supplied by the client.
-  Hl7StoreNotificationConfig({
+  const Hl7StoreNotificationConfig({
     required this.pubsubTopic,
   });
 

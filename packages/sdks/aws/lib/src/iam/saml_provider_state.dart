@@ -27,7 +27,7 @@ class SamlProviderState {
   /// [tags] Map of resource tags for the IAM SAML provider. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [validUntil] The expiration date and time for the SAML provider in RFC1123 format, e.g., `Mon, 02 Jan 2006 15:04:05 MST`.
-  SamlProviderState({
+  const SamlProviderState({
     this.arn,
     this.name,
     this.samlMetadataDocument,

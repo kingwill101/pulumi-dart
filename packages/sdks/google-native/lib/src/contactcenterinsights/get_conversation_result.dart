@@ -72,7 +72,7 @@ class GetConversationResult {
   /// [ttl] Input only. The TTL for this resource. If specified, then this TTL will be used to calculate the expire time.
   /// [turnCount] The number of turns in the conversation.
   /// [updateTime] The most recent time at which the conversation was updated.
-  GetConversationResult({
+  const GetConversationResult({
     required this.agentId,
     required this.callMetadata,
     required this.createTime,

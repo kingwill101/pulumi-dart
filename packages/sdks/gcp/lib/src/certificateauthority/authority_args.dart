@@ -93,7 +93,7 @@ class AuthorityArgs {
   /// [subordinateConfig] If this is a subordinate CertificateAuthority, this field will be set
   /// [type] The Type of this CertificateAuthority.
   /// [userDefinedAccessUrls] Custom URLs for accessing content published by this CA, such as the CA certificate and CRLs,
-  AuthorityArgs({
+  const AuthorityArgs({
     required this.certificateAuthorityId,
     required this.config,
     this.deletionProtection,

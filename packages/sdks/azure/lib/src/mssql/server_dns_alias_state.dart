@@ -15,7 +15,7 @@ class ServerDnsAliasState {
   /// [dnsRecord] The fully qualified DNS record for alias.
   /// [mssqlServerId] The ID of the mssql server. Changing this forces a new MSSQL Server DNS Alias to be created.
   /// [name] The name which should be used for this MSSQL Server DNS Alias. Changing this forces a new MSSQL Server DNS Alias to be created.
-  ServerDnsAliasState({
+  const ServerDnsAliasState({
     this.dnsRecord,
     this.mssqlServerId,
     this.name,

@@ -25,7 +25,7 @@ class GatewayArgs {
   /// [locationData] Gateway location.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GatewayArgs({
+  const GatewayArgs({
     this.description,
     this.gatewayId,
     this.locationData,

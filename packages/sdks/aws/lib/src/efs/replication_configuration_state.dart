@@ -30,7 +30,7 @@ class ReplicationConfigurationState {
   /// [sourceFileSystemArn] The Amazon Resource Name (ARN) of the current source file system in the replication configuration.
   /// [sourceFileSystemId] The ID of the file system that is to be replicated.
   /// [sourceFileSystemRegion] The AWS Region in which the source Amazon EFS file system is located.
-  ReplicationConfigurationState({
+  const ReplicationConfigurationState({
     this.creationTime,
     this.destination,
     this.originalSourceFileSystemArn,

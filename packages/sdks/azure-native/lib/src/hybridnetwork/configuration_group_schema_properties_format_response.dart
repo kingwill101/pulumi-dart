@@ -18,7 +18,7 @@ class ConfigurationGroupSchemaPropertiesFormatResponse {
   /// [provisioningState] The provisioning state of the Configuration group schema resource.
   /// [schemaDefinition] Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
   /// [versionState] The configuration group schema version state.
-  ConfigurationGroupSchemaPropertiesFormatResponse({
+  const ConfigurationGroupSchemaPropertiesFormatResponse({
     this.description,
     required this.provisioningState,
     this.schemaDefinition,

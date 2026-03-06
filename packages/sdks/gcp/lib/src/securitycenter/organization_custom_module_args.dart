@@ -28,7 +28,7 @@ class OrganizationCustomModuleArgs {
   /// [displayName] The display name of the Security Health Analytics custom module. This
   /// [enablementState] The enablement state of the custom module.
   /// [organization] Numerical ID of the parent organization.
-  OrganizationCustomModuleArgs({
+  const OrganizationCustomModuleArgs({
     required this.customConfig,
     required this.displayName,
     required this.enablementState,

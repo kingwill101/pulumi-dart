@@ -15,7 +15,7 @@ class ListFleetCredentialsArgs {
   /// Creates a new [ListFleetCredentialsArgs].
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListFleetCredentialsArgs({
+  const ListFleetCredentialsArgs({
     required this.fleetName,
     required this.resourceGroupName,
   });

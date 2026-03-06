@@ -18,7 +18,7 @@ class GetHypervHostControllerArgs {
   /// [hostName] Host name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] Site name
-  GetHypervHostControllerArgs({
+  const GetHypervHostControllerArgs({
     required this.hostName,
     required this.resourceGroupName,
     required this.siteName,

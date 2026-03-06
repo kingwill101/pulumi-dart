@@ -8,7 +8,7 @@ class DomainMetadata {
 
   /// Creates a new [DomainMetadata].
   /// [xml] Contains XML formatted metadata specific to the domain, enabling custom data storage within the domain.
-  DomainMetadata({
+  const DomainMetadata({
     required this.xml,
   });
 

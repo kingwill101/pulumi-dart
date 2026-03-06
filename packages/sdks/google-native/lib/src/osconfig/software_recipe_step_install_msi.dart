@@ -15,7 +15,7 @@ class SoftwareRecipeStepInstallMsi {
   /// [allowedExitCodes] Return codes that indicate that the software installed or updated successfully. Behaviour defaults to [0]
   /// [artifactId] The id of the relevant artifact in the recipe.
   /// [flags] The flags to use when installing the MSI defaults to ["/i"] (i.e. the install flag).
-  SoftwareRecipeStepInstallMsi({
+  const SoftwareRecipeStepInstallMsi({
     this.allowedExitCodes,
     required this.artifactId,
     this.flags,

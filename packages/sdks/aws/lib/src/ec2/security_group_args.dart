@@ -38,7 +38,7 @@ class SecurityGroupArgs {
   /// [revokeRulesOnDelete] Instruct the provider to revoke all of the Security Groups attached ingress and egress rules before deleting the rule itself. This is normally not needed, however certain AWS services such as Elastic Map Reduce may automatically add required rules to security groups used with the service, and those rules may contain a cyclic dependency that prevent the security groups from being destroyed without removing the dependency first. Default `false`.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] VPC ID. Defaults to the region's default VPC.
-  SecurityGroupArgs({
+  const SecurityGroupArgs({
     this.description,
     this.egress,
     this.ingress,

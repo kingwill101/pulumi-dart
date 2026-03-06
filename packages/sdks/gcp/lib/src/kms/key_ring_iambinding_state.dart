@@ -35,7 +35,7 @@ class KeyRingIAMBindingState {
   /// [keyRingId] The key ring ID, in the form
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  KeyRingIAMBindingState({
+  const KeyRingIAMBindingState({
     this.condition,
     this.etag,
     this.keyRingId,

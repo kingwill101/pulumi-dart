@@ -23,7 +23,7 @@ class WebAppScmAllowedSlotArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Required.
-  WebAppScmAllowedSlotArgs({
+  const WebAppScmAllowedSlotArgs({
     required this.allow,
     this.kind,
     required this.name,

@@ -18,7 +18,7 @@ class ApplicationVersionResponse {
   /// [isLatest] Is Latest
   /// [isPreview] Is Preview
   /// [version] Application Version
-  ApplicationVersionResponse({
+  const ApplicationVersionResponse({
     required this.isDeprecated,
     required this.isLatest,
     required this.isPreview,

@@ -17,7 +17,7 @@ class WafRuleCondition {
   /// [opValue] The logical symbol.
   /// [subKey] The match subfield.
   /// [values] The match content. Separate multiple values with commas (,).
-  WafRuleCondition({
+  const WafRuleCondition({
     required this.key,
     required this.opValue,
     this.subKey,

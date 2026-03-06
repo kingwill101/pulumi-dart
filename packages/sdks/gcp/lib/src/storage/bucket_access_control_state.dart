@@ -36,7 +36,7 @@ class BucketAccessControlState {
   /// [email] The email address associated with the entity.
   /// [entity] The entity holding the permission, in one of the following forms:
   /// [role] The access permission for the entity.
-  BucketAccessControlState({
+  const BucketAccessControlState({
     this.bucket,
     this.domain,
     this.email,

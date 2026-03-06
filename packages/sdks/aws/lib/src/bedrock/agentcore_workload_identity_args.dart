@@ -20,7 +20,7 @@ class AgentcoreWorkloadIdentityArgs {
   /// [allowedResourceOauth2ReturnUrls] Set of allowed OAuth2 return URLs for resources associated with this workload identity. These URLs are used as valid redirect targets during OAuth2 authentication flows.
   /// [name] Name of the workload identity. Must be 3-255 characters and contain only alphanumeric characters, hyphens, periods, and underscores.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AgentcoreWorkloadIdentityArgs({
+  const AgentcoreWorkloadIdentityArgs({
     this.allowedResourceOauth2ReturnUrls,
     this.name,
     this.region,

@@ -25,7 +25,7 @@ class OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [name] Immutable. The resource name of the custom module. Its format is "organizations/{organization}/securityHealthAnalyticsSettings/customModules/{customModule}", or "folders/{folder}/securityHealthAnalyticsSettings/customModules/{customModule}", or "projects/{project}/securityHealthAnalyticsSettings/customModules/{customModule}" The id {customModule} is server-generated and is not user settable. It will be a numeric id containing 1-20 digits.
   /// [organizationId] Required.
-  OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs({
+  const OrganizationSecurityHealthAnalyticsSettingCustomModuleArgs({
     this.customConfig,
     this.displayName,
     this.enablementState,

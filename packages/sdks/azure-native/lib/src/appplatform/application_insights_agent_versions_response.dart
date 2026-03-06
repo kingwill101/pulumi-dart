@@ -9,7 +9,7 @@ class ApplicationInsightsAgentVersionsResponse {
 
   /// Creates a new [ApplicationInsightsAgentVersionsResponse].
   /// [java] Indicates the version of application insight java agent
-  ApplicationInsightsAgentVersionsResponse({
+  const ApplicationInsightsAgentVersionsResponse({
     required this.java,
   });
 

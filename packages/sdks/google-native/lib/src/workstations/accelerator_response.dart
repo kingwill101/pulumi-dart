@@ -12,7 +12,7 @@ class AcceleratorResponse {
   /// Creates a new [AcceleratorResponse].
   /// [count] Optional. Number of accelerator cards exposed to the instance.
   /// [type] Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`.
-  AcceleratorResponse({
+  const AcceleratorResponse({
     required this.count,
     required this.type,
   });

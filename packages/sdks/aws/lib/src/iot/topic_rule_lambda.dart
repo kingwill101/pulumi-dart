@@ -8,7 +8,7 @@ class TopicRuleLambda {
 
   /// Creates a new [TopicRuleLambda].
   /// [functionArn] The ARN of the Lambda function.
-  TopicRuleLambda({
+  const TopicRuleLambda({
     required this.functionArn,
   });
 

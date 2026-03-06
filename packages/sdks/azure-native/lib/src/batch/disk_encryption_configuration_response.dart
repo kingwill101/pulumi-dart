@@ -9,7 +9,7 @@ class DiskEncryptionConfigurationResponse {
 
   /// Creates a new [DiskEncryptionConfigurationResponse].
   /// [targets] On Linux pool, only "TemporaryDisk" is supported; on Windows pool, "OsDisk" and "TemporaryDisk" must be specified.
-  DiskEncryptionConfigurationResponse({
+  const DiskEncryptionConfigurationResponse({
     this.targets,
   });
 

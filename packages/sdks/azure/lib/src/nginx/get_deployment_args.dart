@@ -15,7 +15,7 @@ class GetDeploymentArgs {
   /// Creates a new [GetDeploymentArgs].
   /// [name] The name of this NGINX Deployment.
   /// [resourceGroupName] The name of the Resource Group where the NGINX Deployment exists.
-  GetDeploymentArgs({
+  const GetDeploymentArgs({
     required this.name,
     required this.resourceGroupName,
   });

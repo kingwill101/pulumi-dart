@@ -17,7 +17,7 @@ class KeyPairAttachmentState {
   /// [instanceIds] The list of ECS instance's IDs.
   /// [keyName] The name of key pair used to bind.
   /// [keyPairName] Optional.
-  KeyPairAttachmentState({
+  const KeyPairAttachmentState({
     this.force,
     this.instanceIds,
     this.keyName,

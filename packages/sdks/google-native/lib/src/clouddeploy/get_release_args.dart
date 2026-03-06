@@ -17,7 +17,7 @@ class GetReleaseArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [releaseId] Required.
-  GetReleaseArgs({
+  const GetReleaseArgs({
     required this.deliveryPipelineId,
     required this.location,
     this.project,

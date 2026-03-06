@@ -39,7 +39,7 @@ class GetUsersArgs {
   /// [sourceUserId] Specify the Newly Created User Is Uniquely Identified. Indicates That the Parameter Is a Bastion Host Corresponding to the User with the Ram User's Unique Identifier. The Newly Created User Source Grant Permission to a RAM User (That Is, Source Used as a Ram), this Parameter Is Required. You Can Call Access Control of Listusers Interface from the Return Data Userid to Obtain the Parameters.
   /// [status] The status of the resource. Valid values: `Frozen`, `Normal`.
   /// [userName] Specify the New User Name. This Parameter Is Only by Letters, Lowercase Letters, Numbers, and Underscores (_), Supports up to 128 Characters.
-  GetUsersArgs({
+  const GetUsersArgs({
     this.displayName,
     this.ids,
     required this.instanceId,

@@ -29,7 +29,7 @@ class GetIamCustomRolesRole {
   /// [roleId] The camel case role id used for this role.
   /// [stage] The current launch stage of the role. List of possible stages is [here](https://cloud.google.com/iam/reference/rest/v1/organizations.roles#Role.RoleLaunchStage).
   /// [title] A human-readable title for the role.
-  GetIamCustomRolesRole({
+  const GetIamCustomRolesRole({
     required this.deleted,
     required this.description,
     required this.id,

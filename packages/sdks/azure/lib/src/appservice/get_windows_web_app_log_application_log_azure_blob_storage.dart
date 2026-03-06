@@ -14,7 +14,7 @@ class GetWindowsWebAppLogApplicationLogAzureBlobStorage {
   /// [level] The level at which to log. Possible values include `Error`, `Warning`, `Information`, `Verbose` and `Off`. **NOTE:** this field is not available for `http_logs`
   /// [retentionInDays] The retention period in days.
   /// [sasUrl] The SAS url to the Azure Blob container.
-  GetWindowsWebAppLogApplicationLogAzureBlobStorage({
+  const GetWindowsWebAppLogApplicationLogAzureBlobStorage({
     required this.level,
     required this.retentionInDays,
     required this.sasUrl,

@@ -12,7 +12,7 @@ class DataflowGraphGraphNodeConfigurationResponse {
   /// Creates a new [DataflowGraphGraphNodeConfigurationResponse].
   /// [key] Key of the configuration.
   /// [value] Value of the configuration.
-  DataflowGraphGraphNodeConfigurationResponse({
+  const DataflowGraphGraphNodeConfigurationResponse({
     required this.key,
     required this.value,
   });

@@ -11,7 +11,7 @@ class SettingsAccessSettingsAllowedDomainsSettings {
   /// Creates a new [SettingsAccessSettingsAllowedDomainsSettings].
   /// [domains] List of trusted domains.
   /// [enable] Configuration for customers to opt in for the feature.
-  SettingsAccessSettingsAllowedDomainsSettings({
+  const SettingsAccessSettingsAllowedDomainsSettings({
     this.domains,
     this.enable,
   });

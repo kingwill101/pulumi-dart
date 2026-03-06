@@ -11,7 +11,7 @@ class EndpointGroupPortOverrides {
   /// Creates a new [EndpointGroupPortOverrides].
   /// [endpointPort] Forwarding port.
   /// [listenerPort] Listener port.
-  EndpointGroupPortOverrides({
+  const EndpointGroupPortOverrides({
     this.endpointPort,
     this.listenerPort,
   });

@@ -18,7 +18,7 @@ class FirewallDeviceArgs {
   /// [entityId] The unique ID of the entity to attach.
   /// [entityType] The type of the entity to attach. (default: `linode`)
   /// [firewallId] The unique ID of the target Firewall.
-  FirewallDeviceArgs({
+  const FirewallDeviceArgs({
     required this.entityId,
     this.entityType,
     required this.firewallId,

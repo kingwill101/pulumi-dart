@@ -12,7 +12,7 @@ class ExtendedLocation {
   /// Creates a new [ExtendedLocation].
   /// [name] ARM Id of the extended location.
   /// [type] The extended location type. Allowed value: 'CustomLocation'
-  ExtendedLocation({
+  const ExtendedLocation({
     this.name,
     this.type,
   });

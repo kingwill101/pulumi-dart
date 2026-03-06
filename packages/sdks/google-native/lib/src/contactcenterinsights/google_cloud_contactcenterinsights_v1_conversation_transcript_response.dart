@@ -10,7 +10,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse {
 
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse].
   /// [transcriptSegments] A list of sequential transcript segments that comprise the conversation.
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationTranscriptResponse({
     required this.transcriptSegments,
   });
 

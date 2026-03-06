@@ -8,7 +8,7 @@ class GetVpcsVpcIpv6 {
 
   /// Creates a new [GetVpcsVpcIpv6].
   /// [range] The IPv6 range assigned to this VPC.
-  GetVpcsVpcIpv6({
+  const GetVpcsVpcIpv6({
     required this.range,
   });
 

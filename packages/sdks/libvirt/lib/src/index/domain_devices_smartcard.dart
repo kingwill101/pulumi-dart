@@ -34,7 +34,7 @@ class DomainDevicesSmartcard {
   /// [hostCerts] Defines the path to the host certificates used for the smartcard.
   /// [passthrough] Defines the source settings for the EGD backend.
   /// [protocol] Sets the protocol type for the EGD backend.
-  DomainDevicesSmartcard({
+  const DomainDevicesSmartcard({
     this.acpi,
     this.address,
     this.alias,

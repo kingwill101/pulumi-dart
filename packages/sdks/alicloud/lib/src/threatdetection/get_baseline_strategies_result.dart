@@ -29,7 +29,7 @@ class GetBaselineStrategiesResult {
   /// [outputFile] Optional.
   /// [strategies] Required.
   /// [strategyIds] Optional.
-  GetBaselineStrategiesResult({
+  const GetBaselineStrategiesResult({
     this.customType,
     required this.id,
     required this.ids,

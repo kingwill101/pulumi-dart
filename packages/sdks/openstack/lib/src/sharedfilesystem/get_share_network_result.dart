@@ -45,7 +45,7 @@ class GetShareNetworkResult {
   /// [securityServiceId] See Argument Reference above.
   /// [securityServiceIds] The list of security service IDs associated with
   /// [segmentationId] See Argument Reference above.
-  GetShareNetworkResult({
+  const GetShareNetworkResult({
     required this.cidr,
     required this.description,
     required this.id,

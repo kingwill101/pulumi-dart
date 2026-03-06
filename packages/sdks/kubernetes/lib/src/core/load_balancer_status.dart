@@ -10,7 +10,7 @@ class LoadBalancerStatus {
 
   /// Creates a new [LoadBalancerStatus].
   /// [ingress] Ingress is a list containing ingress points for the load-balancer. Traffic intended for the service should be sent to these ingress points.
-  LoadBalancerStatus({
+  const LoadBalancerStatus({
     this.ingress,
   });
 

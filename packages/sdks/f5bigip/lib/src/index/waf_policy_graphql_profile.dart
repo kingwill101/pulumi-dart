@@ -18,7 +18,7 @@ class WafPolicyGraphqlProfile {
   /// [defenseAttributes] defense_attributes settings for policy
   /// [metacharElementcheck] Specifies when checked (enabled) that the system enforces the security policy settings of a meta character for the GraphQL profile. After you enable this setting, the system displays a list of meta characters. The default is enabled
   /// [name] The unique user-given name of the policy. Policy names cannot contain spaces or special characters. Allowed characters are a-z, A-Z, 0-9, dot, dash (-), colon (:) and underscore (_).
-  WafPolicyGraphqlProfile({
+  const WafPolicyGraphqlProfile({
     this.attackSignaturesCheck,
     this.defenseAttributes,
     this.metacharElementcheck,

@@ -21,7 +21,7 @@ class VirtualMachineScaleSetNetworkProfileResponse {
   /// [healthProbe] A reference to a load balancer probe used to determine the health of an
   /// [networkApiVersion] specifies the Microsoft.Network API version used when creating networking
   /// [networkInterfaceConfigurations] The list of network configurations.
-  VirtualMachineScaleSetNetworkProfileResponse({
+  const VirtualMachineScaleSetNetworkProfileResponse({
     this.healthProbe,
     this.networkApiVersion,
     this.networkInterfaceConfigurations,

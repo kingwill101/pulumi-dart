@@ -29,7 +29,7 @@ class GetElasticityAssurancesResult {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
   /// [tags] A mapping of tags to assign to the Capacity Reservation.
-  GetElasticityAssurancesResult({
+  const GetElasticityAssurancesResult({
     required this.assurances,
     required this.id,
     required this.ids,

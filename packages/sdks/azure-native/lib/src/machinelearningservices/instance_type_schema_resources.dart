@@ -12,7 +12,7 @@ class InstanceTypeSchemaResources {
   /// Creates a new [InstanceTypeSchemaResources].
   /// [limits] Resource limits for this instance type
   /// [requests] Resource requests for this instance type
-  InstanceTypeSchemaResources({
+  const InstanceTypeSchemaResources({
     this.limits,
     this.requests,
   });

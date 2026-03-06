@@ -27,7 +27,7 @@ class WebAppSwiftVirtualNetworkConnectionSlotArgs {
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will add or update connections for the production slot.
   /// [subnetResourceId] The Virtual Network subnet's resource ID. This is the subnet that this Web App will join. This subnet must have a delegation to Microsoft.Web/serverFarms defined first.
   /// [swiftSupported] A flag that specifies if the scale unit this Web App is on supports Swift integration.
-  WebAppSwiftVirtualNetworkConnectionSlotArgs({
+  const WebAppSwiftVirtualNetworkConnectionSlotArgs({
     this.kind,
     required this.name,
     required this.resourceGroupName,

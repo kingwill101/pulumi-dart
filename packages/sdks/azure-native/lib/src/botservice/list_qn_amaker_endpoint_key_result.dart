@@ -17,7 +17,7 @@ class ListQnAMakerEndpointKeyResult {
   /// [lastStableVersion] Latest version of runtime.
   /// [primaryEndpointKey] Primary Access Key.
   /// [secondaryEndpointKey] Secondary Access Key.
-  ListQnAMakerEndpointKeyResult({
+  const ListQnAMakerEndpointKeyResult({
     this.installedVersion,
     this.lastStableVersion,
     this.primaryEndpointKey,

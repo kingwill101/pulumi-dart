@@ -14,7 +14,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake {
   /// [errorHandlingConfig] Optional.
   /// [intermediateBucketName] Required.
   /// [object_] Required.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesSnowflake({
     this.bucketPrefix,
     this.errorHandlingConfig,
     required this.intermediateBucketName,

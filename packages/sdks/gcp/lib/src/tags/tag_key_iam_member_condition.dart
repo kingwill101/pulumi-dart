@@ -11,7 +11,7 @@ class TagKeyIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TagKeyIamMemberCondition({
+  const TagKeyIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

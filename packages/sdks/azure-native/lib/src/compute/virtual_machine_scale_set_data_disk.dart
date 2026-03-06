@@ -38,7 +38,7 @@ class VirtualMachineScaleSetDataDisk {
   /// [managedDisk] The managed disk parameters.
   /// [name] The disk name.
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  VirtualMachineScaleSetDataDisk({
+  const VirtualMachineScaleSetDataDisk({
     this.caching,
     required this.createOption,
     this.deleteOption,

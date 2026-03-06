@@ -33,7 +33,7 @@ class GetSenderUsernameResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [username] A sender senderUsername to be used when sending emails.
-  GetSenderUsernameResult({
+  const GetSenderUsernameResult({
     required this.azureApiVersion,
     required this.dataLocation,
     this.displayName,

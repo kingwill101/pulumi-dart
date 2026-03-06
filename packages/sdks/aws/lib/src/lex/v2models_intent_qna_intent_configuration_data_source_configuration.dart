@@ -17,7 +17,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfiguration {
   /// [bedrockKnowledgeStoreConfiguration] Configuration block for Amazon Bedrock Knowledge Base as a data source. See `bedrock_knowledge_store_configuration`.
   /// [kendraConfiguration] Configuration block for Amazon Kendra as a data source. See `kendra_configuration`.
   /// [opensearchConfiguration] Configuration block for OpenSearch as a data source. See `opensearch_configuration`.
-  V2modelsIntentQnaIntentConfigurationDataSourceConfiguration({
+  const V2modelsIntentQnaIntentConfigurationDataSourceConfiguration({
     this.bedrockKnowledgeStoreConfiguration,
     this.kendraConfiguration,
     this.opensearchConfiguration,

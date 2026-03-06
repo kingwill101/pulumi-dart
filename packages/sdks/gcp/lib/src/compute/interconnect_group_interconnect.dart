@@ -11,7 +11,7 @@ class InterconnectGroupInterconnect {
   /// Creates a new [InterconnectGroupInterconnect].
   /// [interconnect] The URL of an Interconnect in this group. All Interconnects in the group are unique.
   /// [name] The identifier for this object. Format specified above.
-  InterconnectGroupInterconnect({
+  const InterconnectGroupInterconnect({
     this.interconnect,
     required this.name,
   });

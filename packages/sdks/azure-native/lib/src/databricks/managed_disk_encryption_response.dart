@@ -16,7 +16,7 @@ class ManagedDiskEncryptionResponse {
   /// [keySource] The encryption keySource (provider). Possible values (case-insensitive):  Microsoft.Keyvault
   /// [keyVaultProperties] Key Vault input properties for encryption.
   /// [rotationToLatestKeyVersionEnabled] Indicate whether the latest key version should be automatically used for Managed Disk Encryption.
-  ManagedDiskEncryptionResponse({
+  const ManagedDiskEncryptionResponse({
     required this.keySource,
     required this.keyVaultProperties,
     this.rotationToLatestKeyVersionEnabled,

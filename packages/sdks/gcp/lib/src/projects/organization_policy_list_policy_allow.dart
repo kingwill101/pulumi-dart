@@ -11,7 +11,7 @@ class OrganizationPolicyListPolicyAllow {
   /// Creates a new [OrganizationPolicyListPolicyAllow].
   /// [all] The policy allows or denies all values.
   /// [values] The policy can define specific values that are allowed or denied.
-  OrganizationPolicyListPolicyAllow({
+  const OrganizationPolicyListPolicyAllow({
     this.all,
     this.values,
   });

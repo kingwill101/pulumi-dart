@@ -18,7 +18,7 @@ class GetApplicationTypeArgs {
   /// [applicationTypeName] The name of the application type name resource.
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApplicationTypeArgs({
+  const GetApplicationTypeArgs({
     required this.applicationTypeName,
     required this.clusterName,
     required this.resourceGroupName,

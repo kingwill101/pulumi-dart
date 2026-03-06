@@ -15,7 +15,7 @@ class GetPrivateLinkResourceResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sharedPrivateLinkResourceTypes] A `shared_private_link_resource_types` block as defined below.
   /// [webPubsubId] Required.
-  GetPrivateLinkResourceResult({
+  const GetPrivateLinkResourceResult({
     required this.id,
     required this.sharedPrivateLinkResourceTypes,
     required this.webPubsubId,

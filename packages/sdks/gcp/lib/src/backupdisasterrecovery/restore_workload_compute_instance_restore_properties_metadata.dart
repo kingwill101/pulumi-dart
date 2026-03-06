@@ -9,7 +9,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadata {
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesMetadata].
   /// [items] Structure is documented below.
-  RestoreWorkloadComputeInstanceRestorePropertiesMetadata({
+  const RestoreWorkloadComputeInstanceRestorePropertiesMetadata({
     this.items,
   });
 

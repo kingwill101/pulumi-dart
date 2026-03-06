@@ -23,7 +23,7 @@ class FirewallPolicyExplicitProxy {
   /// [httpsPort] The port number for explicit proxy https protocol.
   /// [pacFile] Specifies a SAS URL for PAC file.
   /// [pacFilePort] Specifies a port number for firewall to serve PAC file.
-  FirewallPolicyExplicitProxy({
+  const FirewallPolicyExplicitProxy({
     this.enablePacFile,
     this.enabled,
     this.httpPort,

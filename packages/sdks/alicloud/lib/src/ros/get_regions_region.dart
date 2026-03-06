@@ -14,7 +14,7 @@ class GetRegionsRegion {
   /// [localName] The name of the region.
   /// [regionEndpoint] The endpoint of the region.
   /// [regionId] The ID of the region.
-  GetRegionsRegion({
+  const GetRegionsRegion({
     required this.localName,
     required this.regionEndpoint,
     required this.regionId,

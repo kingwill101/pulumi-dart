@@ -13,7 +13,7 @@ class GetBudgetArgs {
   /// Creates a new [GetBudgetArgs].
   /// [billingAccountId] Required.
   /// [budgetId] Required.
-  GetBudgetArgs({
+  const GetBudgetArgs({
     required this.billingAccountId,
     required this.budgetId,
   });

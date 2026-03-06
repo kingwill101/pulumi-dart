@@ -8,7 +8,7 @@ class PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool {
 
   /// Creates a new [PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool].
   /// [addressPrefixes] A list of CIDR Ranges which should be used as Address Prefixes.
-  PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool({
+  const PointToPointVpnGatewayConnectionConfigurationVpnClientAddressPool({
     required this.addressPrefixes,
   });
 

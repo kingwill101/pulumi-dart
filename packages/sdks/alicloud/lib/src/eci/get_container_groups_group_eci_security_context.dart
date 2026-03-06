@@ -9,7 +9,7 @@ class GetContainerGroupsGroupEciSecurityContext {
 
   /// Creates a new [GetContainerGroupsGroupEciSecurityContext].
   /// [sysctls] The system information.
-  GetContainerGroupsGroupEciSecurityContext({
+  const GetContainerGroupsGroupEciSecurityContext({
     required this.sysctls,
   });
 

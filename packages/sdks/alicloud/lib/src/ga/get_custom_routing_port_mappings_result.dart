@@ -31,7 +31,7 @@ class GetCustomRoutingPortMappingsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The access policy of traffic for the backend instance.
-  GetCustomRoutingPortMappingsResult({
+  const GetCustomRoutingPortMappingsResult({
     required this.acceleratorId,
     required this.customRoutingPortMappings,
     this.endpointGroupId,

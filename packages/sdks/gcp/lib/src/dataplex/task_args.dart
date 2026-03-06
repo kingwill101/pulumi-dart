@@ -54,7 +54,7 @@ class TaskArgs {
   /// [spark] A service with manual scaling runs continuously, allowing you to perform complex initialization and rely on the state of its memory over time.
   /// [taskId] The task Id of the task.
   /// [triggerSpec] Configuration for the cluster
-  TaskArgs({
+  const TaskArgs({
     this.description,
     this.displayName,
     required this.executionSpec,

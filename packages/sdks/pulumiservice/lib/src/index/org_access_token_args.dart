@@ -21,7 +21,7 @@ class OrgAccessTokenArgs {
   /// [description] Optional. Team description.
   /// [name] The name for the token.
   /// [organizationName] The organization's name.
-  OrgAccessTokenArgs({
+  const OrgAccessTokenArgs({
     this.admin,
     this.description,
     required this.name,

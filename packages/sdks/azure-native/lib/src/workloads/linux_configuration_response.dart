@@ -21,7 +21,7 @@ class LinuxConfigurationResponse {
   /// [osType] The OS Type
   /// [ssh] Specifies the ssh key configuration for a Linux OS. (This property is deprecated, please use 'sshKeyPair' instead)
   /// [sshKeyPair] The SSH Key-pair used to authenticate with the VM's.
-  LinuxConfigurationResponse({
+  const LinuxConfigurationResponse({
     this.disablePasswordAuthentication,
     required this.osType,
     this.ssh,

@@ -10,7 +10,7 @@ class MigrationJobDumpFlags {
 
   /// Creates a new [MigrationJobDumpFlags].
   /// [dumpFlags] A list of dump flags
-  MigrationJobDumpFlags({
+  const MigrationJobDumpFlags({
     this.dumpFlags,
   });
 

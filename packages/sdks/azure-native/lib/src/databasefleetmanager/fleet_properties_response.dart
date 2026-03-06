@@ -12,7 +12,7 @@ class FleetPropertiesResponse {
   /// Creates a new [FleetPropertiesResponse].
   /// [description] Fleet description.
   /// [provisioningState] Provisioning state.
-  FleetPropertiesResponse({
+  const FleetPropertiesResponse({
     this.description,
     required this.provisioningState,
   });

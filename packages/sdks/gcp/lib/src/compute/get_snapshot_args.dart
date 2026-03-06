@@ -27,7 +27,7 @@ class GetSnapshotArgs {
   /// [mostRecent] If `filter` is provided, ensures the most recent snapshot is returned when multiple compute snapshot match.
   /// [name] The name of the compute snapshot. One of `name` or `filter` must be provided.
   /// [project] The ID of the project in which the resource belongs.
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     this.filter,
     this.mostRecent,
     this.name,

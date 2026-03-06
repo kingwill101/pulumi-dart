@@ -13,7 +13,7 @@ class ServicePlacementInvalidDomainPolicyResponse {
   /// Creates a new [ServicePlacementInvalidDomainPolicyResponse].
   /// [domainName] The name of the domain that should not be used for placement.
   /// [type] The type of placement policy for a service fabric service. Following are the possible values.
-  ServicePlacementInvalidDomainPolicyResponse({
+  const ServicePlacementInvalidDomainPolicyResponse({
     required this.domainName,
     required this.type,
   });

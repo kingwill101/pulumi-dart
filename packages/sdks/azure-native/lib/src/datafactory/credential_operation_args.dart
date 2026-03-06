@@ -22,7 +22,7 @@ class CredentialOperationArgs {
   /// [factoryName] The factory name.
   /// [properties] Properties of credentials.
   /// [resourceGroupName] The resource group name.
-  CredentialOperationArgs({
+  const CredentialOperationArgs({
     this.credentialName,
     required this.factoryName,
     required this.properties,

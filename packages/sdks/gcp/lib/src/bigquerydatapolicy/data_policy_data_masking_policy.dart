@@ -12,7 +12,7 @@ class DataPolicyDataMaskingPolicy {
   /// Creates a new [DataPolicyDataMaskingPolicy].
   /// [predefinedExpression] The available masking rules. Learn more here: https://cloud.google.com/bigquery/docs/column-data-masking-intro#masking_options.
   /// [routine] The name of the BigQuery routine that contains the custom masking routine, in the format of projects/{projectNumber}/datasets/{dataset_id}/routines/{routine_id}.
-  DataPolicyDataMaskingPolicy({
+  const DataPolicyDataMaskingPolicy({
     this.predefinedExpression,
     this.routine,
   });

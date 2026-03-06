@@ -17,7 +17,7 @@ class GetApplicationFeatureTag {
   /// [enterprise] Whether this application represents an Enterprise Application for linked service principals.
   /// [gallery] Whether this application represents a gallery application for linked service principals.
   /// [hide] Whether this app is visible to users in My Apps and Office 365 Launcher.
-  GetApplicationFeatureTag({
+  const GetApplicationFeatureTag({
     this.customSingleSignOn,
     this.enterprise,
     this.gallery,

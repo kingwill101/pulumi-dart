@@ -17,7 +17,7 @@ class CertificateOrderCertificate {
   /// [keyVaultId] Key Vault resource Id.
   /// [keyVaultSecretName] Key Vault secret name.
   /// [provisioningState] Status of the Key Vault secret.
-  CertificateOrderCertificate({
+  const CertificateOrderCertificate({
     this.certificateName,
     this.keyVaultId,
     this.keyVaultSecretName,

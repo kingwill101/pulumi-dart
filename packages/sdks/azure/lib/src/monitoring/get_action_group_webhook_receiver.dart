@@ -17,7 +17,7 @@ class GetActionGroupWebhookReceiver {
   /// [name] Specifies the name of the Action Group.
   /// [serviceUri] The URI where webhooks should be sent.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  GetActionGroupWebhookReceiver({
+  const GetActionGroupWebhookReceiver({
     required this.aadAuths,
     required this.name,
     required this.serviceUri,

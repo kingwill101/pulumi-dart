@@ -9,7 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2RequestLogging {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2RequestLogging].
   /// [enabled] Whether logging is enabled for this project or not.
-  GoogleCloudIdentitytoolkitAdminV2RequestLogging({
+  const GoogleCloudIdentitytoolkitAdminV2RequestLogging({
     this.enabled,
   });
 

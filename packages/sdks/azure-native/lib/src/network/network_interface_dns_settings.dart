@@ -12,7 +12,7 @@ class NetworkInterfaceDnsSettings {
   /// Creates a new [NetworkInterfaceDnsSettings].
   /// [dnsServers] List of DNS servers IP addresses. Use 'AzureProvidedDNS' to switch to azure provided DNS resolution. 'AzureProvidedDNS' value cannot be combined with other IPs, it must be the only value in dnsServers collection.
   /// [internalDnsNameLabel] Relative DNS name for this NIC used for internal communications between VMs in the same virtual network.
-  NetworkInterfaceDnsSettings({
+  const NetworkInterfaceDnsSettings({
     this.dnsServers,
     this.internalDnsNameLabel,
   });

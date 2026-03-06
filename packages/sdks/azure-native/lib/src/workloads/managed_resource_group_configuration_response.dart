@@ -9,7 +9,7 @@ class ManagedResourceGroupConfigurationResponse {
 
   /// Creates a new [ManagedResourceGroupConfigurationResponse].
   /// [name] Managed resource group name
-  ManagedResourceGroupConfigurationResponse({
+  const ManagedResourceGroupConfigurationResponse({
     this.name,
   });
 

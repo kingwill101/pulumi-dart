@@ -11,7 +11,7 @@ class ZoneVpc {
   /// Creates a new [ZoneVpc].
   /// [vpcId] ID of the VPC to associate.
   /// [vpcRegion] Region of the VPC to associate. Defaults to AWS provider region.
-  ZoneVpc({
+  const ZoneVpc({
     required this.vpcId,
     this.vpcRegion,
   });

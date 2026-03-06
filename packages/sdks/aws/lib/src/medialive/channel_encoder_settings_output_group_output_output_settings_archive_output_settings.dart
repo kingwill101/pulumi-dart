@@ -15,7 +15,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings
   /// [containerSettings] Settings specific to the container type of the file. See Container Settings for more details.
   /// [extension] Output file extension.
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsArchiveOutputSettings({
     this.containerSettings,
     this.extension,
     this.nameModifier,

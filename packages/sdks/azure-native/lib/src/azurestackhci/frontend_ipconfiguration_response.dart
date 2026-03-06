@@ -13,7 +13,7 @@ class FrontendIPConfigurationResponse {
   /// Creates a new [FrontendIPConfigurationResponse].
   /// [name] name for the frontend IP configuration.
   /// [properties] properties for this frontendIPConfiguration
-  FrontendIPConfigurationResponse({
+  const FrontendIPConfigurationResponse({
     required this.name,
     required this.properties,
   });

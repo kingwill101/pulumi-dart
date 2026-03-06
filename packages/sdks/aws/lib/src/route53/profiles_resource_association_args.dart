@@ -27,7 +27,7 @@ class ProfilesResourceAssociationArgs {
   /// [resourceArn] Resource ID of the resource to be associated with the profile.
   /// [resourceProperties] Resource properties for the resource to be associated with the profile.
   /// [timeouts] Optional.
-  ProfilesResourceAssociationArgs({
+  const ProfilesResourceAssociationArgs({
     this.name,
     required this.profileId,
     this.region,

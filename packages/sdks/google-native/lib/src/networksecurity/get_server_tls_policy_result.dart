@@ -31,7 +31,7 @@ class GetServerTlsPolicyResult {
   /// [name] Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}`
   /// [serverCertificate] Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
   /// [updateTime] The timestamp when the resource was updated.
-  GetServerTlsPolicyResult({
+  const GetServerTlsPolicyResult({
     required this.allowOpen,
     required this.createTime,
     required this.description,

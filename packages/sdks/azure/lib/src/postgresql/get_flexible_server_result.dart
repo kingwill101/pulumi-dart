@@ -53,7 +53,7 @@ class GetFlexibleServerResult {
   /// [tags] A mapping of tags assigned to the PostgreSQL Flexible Server.
   /// [version] The version of PostgreSQL Flexible Server to use.
   /// [zone] The Availability Zones where this PostgreSQL Flexible Server is located.
-  GetFlexibleServerResult({
+  const GetFlexibleServerResult({
     required this.administratorLogin,
     required this.autoGrowEnabled,
     required this.backupRetentionDays,

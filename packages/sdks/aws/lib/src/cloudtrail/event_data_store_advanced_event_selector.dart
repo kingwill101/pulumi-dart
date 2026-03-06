@@ -12,7 +12,7 @@ class EventDataStoreAdvancedEventSelector {
   /// Creates a new [EventDataStoreAdvancedEventSelector].
   /// [fieldSelectors] Specifies the selector statements in an advanced event selector. Fields documented below.
   /// [name] Specifies the name of the advanced event selector.
-  EventDataStoreAdvancedEventSelector({
+  const EventDataStoreAdvancedEventSelector({
     this.fieldSelectors,
     this.name,
   });

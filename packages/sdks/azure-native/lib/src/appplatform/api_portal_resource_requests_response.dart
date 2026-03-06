@@ -12,7 +12,7 @@ class ApiPortalResourceRequestsResponse {
   /// Creates a new [ApiPortalResourceRequestsResponse].
   /// [cpu] Cpu allocated to each API portal instance
   /// [memory] Memory allocated to each API portal instance
-  ApiPortalResourceRequestsResponse({
+  const ApiPortalResourceRequestsResponse({
     required this.cpu,
     required this.memory,
   });

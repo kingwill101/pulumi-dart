@@ -15,7 +15,7 @@ class GetTargetProjectVmmigrationV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [targetProjectId] Required.
-  GetTargetProjectVmmigrationV1alpha1Args({
+  const GetTargetProjectVmmigrationV1alpha1Args({
     required this.location,
     this.project,
     required this.targetProjectId,

@@ -12,7 +12,7 @@ class VirtualMachineFamilyCoreQuotaResponse {
   /// Creates a new [VirtualMachineFamilyCoreQuotaResponse].
   /// [coreQuota] The core quota for the VM family for the Batch account.
   /// [name] The Virtual Machine family name.
-  VirtualMachineFamilyCoreQuotaResponse({
+  const VirtualMachineFamilyCoreQuotaResponse({
     required this.coreQuota,
     required this.name,
   });

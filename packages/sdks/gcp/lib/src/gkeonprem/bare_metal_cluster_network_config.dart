@@ -26,7 +26,7 @@ class BareMetalClusterNetworkConfig {
   /// [islandModeCidr] A nested object resource.
   /// [multipleNetworkInterfacesConfig] Configuration for multiple network interfaces.
   /// [srIovConfig] Configuration for SR-IOV.
-  BareMetalClusterNetworkConfig({
+  const BareMetalClusterNetworkConfig({
     this.advancedNetworking,
     this.islandModeCidr,
     this.multipleNetworkInterfacesConfig,

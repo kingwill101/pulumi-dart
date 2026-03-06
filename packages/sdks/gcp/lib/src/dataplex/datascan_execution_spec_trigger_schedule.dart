@@ -8,7 +8,7 @@ class DatascanExecutionSpecTriggerSchedule {
 
   /// Creates a new [DatascanExecutionSpecTriggerSchedule].
   /// [cron] Cron schedule for running scans periodically. This field is required for Schedule scans.
-  DatascanExecutionSpecTriggerSchedule({
+  const DatascanExecutionSpecTriggerSchedule({
     required this.cron,
   });
 

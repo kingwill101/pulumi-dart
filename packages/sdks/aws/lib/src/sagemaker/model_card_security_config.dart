@@ -8,7 +8,7 @@ class ModelCardSecurityConfig {
 
   /// Creates a new [ModelCardSecurityConfig].
   /// [kmsKeyId] KMS key ARN.
-  ModelCardSecurityConfig({
+  const ModelCardSecurityConfig({
     required this.kmsKeyId,
   });
 

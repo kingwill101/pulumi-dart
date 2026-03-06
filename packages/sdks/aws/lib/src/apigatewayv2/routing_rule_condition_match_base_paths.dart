@@ -8,7 +8,7 @@ class RoutingRuleConditionMatchBasePaths {
 
   /// Creates a new [RoutingRuleConditionMatchBasePaths].
   /// [anyOfs] List of strings of the case sensitive base path to be matched.
-  RoutingRuleConditionMatchBasePaths({
+  const RoutingRuleConditionMatchBasePaths({
     required this.anyOfs,
   });
 

@@ -31,7 +31,7 @@ class GroupRoleManagementPolicyArgs {
   /// [groupId] The ID of the Azure AD group for which the policy applies.
   /// [notificationRules] A `notification_rules` block as defined below.
   /// [roleId] The type of assignment this policy coveres. Can be either `member` or `owner`.
-  GroupRoleManagementPolicyArgs({
+  const GroupRoleManagementPolicyArgs({
     this.activationRules,
     this.activeAssignmentRules,
     this.eligibleAssignmentRules,

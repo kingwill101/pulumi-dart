@@ -21,7 +21,7 @@ class GetBrokerListenerArgs {
   /// [instanceName] Name of instance.
   /// [listenerName] Name of Instance broker listener resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBrokerListenerArgs({
+  const GetBrokerListenerArgs({
     required this.brokerName,
     required this.instanceName,
     required this.listenerName,

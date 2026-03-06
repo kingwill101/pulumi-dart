@@ -26,7 +26,7 @@ class AlertRuleScheduledIncidentGrouping {
   /// [entityMatchingMethod] The method used to group incidents. Possible values are `AnyAlert`, `Selected` and `AllEntities`. Defaults to `AnyAlert`.
   /// [lookbackDuration] Limit the group to alerts created within the lookback duration (in ISO 8601 duration format). Defaults to `PT5M`.
   /// [reopenClosedIncidents] Whether to re-open closed matching incidents? Defaults to `false`.
-  AlertRuleScheduledIncidentGrouping({
+  const AlertRuleScheduledIncidentGrouping({
     this.byAlertDetails,
     this.byCustomDetails,
     this.byEntities,

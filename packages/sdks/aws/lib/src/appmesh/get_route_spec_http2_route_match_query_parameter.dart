@@ -11,7 +11,7 @@ class GetRouteSpecHttp2RouteMatchQueryParameter {
   /// Creates a new [GetRouteSpecHttp2RouteMatchQueryParameter].
   /// [matches] Required.
   /// [name] Name of the route.
-  GetRouteSpecHttp2RouteMatchQueryParameter({
+  const GetRouteSpecHttp2RouteMatchQueryParameter({
     required this.matches,
     required this.name,
   });

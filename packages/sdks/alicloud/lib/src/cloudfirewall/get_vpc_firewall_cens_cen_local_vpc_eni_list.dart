@@ -9,7 +9,7 @@ class GetVpcFirewallCensCenLocalVpcEniList {
   /// Creates a new [GetVpcFirewallCensCenLocalVpcEniList].
   /// [eniId] Required.
   /// [eniPrivateIpAddress] Required.
-  GetVpcFirewallCensCenLocalVpcEniList({
+  const GetVpcFirewallCensCenLocalVpcEniList({
     required this.eniId,
     required this.eniPrivateIpAddress,
   });

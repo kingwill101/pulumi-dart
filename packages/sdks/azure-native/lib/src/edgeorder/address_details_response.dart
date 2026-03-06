@@ -13,7 +13,7 @@ class AddressDetailsResponse {
   /// Creates a new [AddressDetailsResponse].
   /// [forwardAddress] Customer address and contact details.
   /// [returnAddress] Return shipping address.
-  AddressDetailsResponse({
+  const AddressDetailsResponse({
     required this.forwardAddress,
     required this.returnAddress,
   });

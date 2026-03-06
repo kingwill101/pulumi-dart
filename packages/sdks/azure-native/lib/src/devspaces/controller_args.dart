@@ -31,7 +31,7 @@ class ControllerArgs {
   /// [tags] Tags for the Azure resource.
   /// [targetContainerHostCredentialsBase64] Credentials of the target container host (base64).
   /// [targetContainerHostResourceId] Resource ID of the target container host
-  ControllerArgs({
+  const ControllerArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

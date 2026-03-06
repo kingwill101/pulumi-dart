@@ -18,7 +18,7 @@ class ListRunLogSasUrlArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [runId] The run ID.
-  ListRunLogSasUrlArgs({
+  const ListRunLogSasUrlArgs({
     required this.registryName,
     required this.resourceGroupName,
     required this.runId,

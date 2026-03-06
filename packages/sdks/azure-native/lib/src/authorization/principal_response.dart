@@ -18,7 +18,7 @@ class PrincipalResponse {
   /// [email] Email of principal
   /// [id] The id of the principal made changes
   /// [type] Type of principal such as user , group etc
-  PrincipalResponse({
+  const PrincipalResponse({
     this.displayName,
     this.email,
     this.id,

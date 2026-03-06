@@ -16,7 +16,7 @@ class DeviceAllocationResultResourceK8sIoV1beta2 {
   /// Creates a new [DeviceAllocationResultResourceK8sIoV1beta2].
   /// [config] This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
   /// [results] Results lists all allocated devices.
-  DeviceAllocationResultResourceK8sIoV1beta2({
+  const DeviceAllocationResultResourceK8sIoV1beta2({
     this.config,
     this.results,
   });

@@ -13,7 +13,7 @@ class AccountAliasArgs {
 
   /// Creates a new [AccountAliasArgs].
   /// [accountAlias] The alias of the account.
-  AccountAliasArgs({
+  const AccountAliasArgs({
     required this.accountAlias,
   });
 

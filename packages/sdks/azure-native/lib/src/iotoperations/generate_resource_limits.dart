@@ -9,7 +9,7 @@ class GenerateResourceLimits {
 
   /// Creates a new [GenerateResourceLimits].
   /// [cpu] The toggle to enable/disable cpu resource limits.
-  GenerateResourceLimits({
+  const GenerateResourceLimits({
     this.cpu,
   });
 

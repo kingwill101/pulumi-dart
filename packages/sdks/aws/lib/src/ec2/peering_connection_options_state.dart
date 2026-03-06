@@ -20,7 +20,7 @@ class PeeringConnectionOptionsState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [requester] A optional configuration block that allows for [VPC Peering Connection](https://docs.aws.amazon.com/vpc/latest/peering/what-is-vpc-peering.html) options to be set for the VPC that requests the peering connection (a maximum of one).
   /// [vpcPeeringConnectionId] The ID of the requester VPC peering connection.
-  PeeringConnectionOptionsState({
+  const PeeringConnectionOptionsState({
     this.accepter,
     this.region,
     this.requester,

@@ -15,7 +15,7 @@ class ConfigurationServiceResourceRequestsResponse {
   /// [cpu] Cpu allocated to each Application Configuration Service instance
   /// [instanceCount] Instance count of the Application Configuration Service
   /// [memory] Memory allocated to each Application Configuration Service instance
-  ConfigurationServiceResourceRequestsResponse({
+  const ConfigurationServiceResourceRequestsResponse({
     required this.cpu,
     required this.instanceCount,
     required this.memory,

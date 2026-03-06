@@ -11,7 +11,7 @@ class VoiceConnectorTerminationCredentialsCredential {
   /// Creates a new [VoiceConnectorTerminationCredentialsCredential].
   /// [password] RFC2617 compliant password associated with the SIP credentials.
   /// [username] RFC2617 compliant username associated with the SIP credentials.
-  VoiceConnectorTerminationCredentialsCredential({
+  const VoiceConnectorTerminationCredentialsCredential({
     required this.password,
     required this.username,
   });

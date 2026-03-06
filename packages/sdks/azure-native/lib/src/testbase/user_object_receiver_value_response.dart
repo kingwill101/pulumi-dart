@@ -9,7 +9,7 @@ class UserObjectReceiverValueResponse {
 
   /// Creates a new [UserObjectReceiverValueResponse].
   /// [userObjectIds] user object ids.
-  UserObjectReceiverValueResponse({
+  const UserObjectReceiverValueResponse({
     this.userObjectIds,
   });
 

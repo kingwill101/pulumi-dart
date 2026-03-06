@@ -13,7 +13,7 @@ class GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey {
   /// [example] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey({
+  const GetDatabaseMysqlConfigMysqlSqlRequirePrimaryKey({
     required this.description,
     required this.example,
     required this.requiresRestart,

@@ -40,7 +40,7 @@ class SecGroupArgs {
   /// [stateful] Indicates if the security group is stateful or
   /// [tags] A set of string tags for the security group.
   /// [tenantId] The owner of the security group. Required if admin
-  SecGroupArgs({
+  const SecGroupArgs({
     this.deleteDefaultRules,
     this.description,
     this.name,

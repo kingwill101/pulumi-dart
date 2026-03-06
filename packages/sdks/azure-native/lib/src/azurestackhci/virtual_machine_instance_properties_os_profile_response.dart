@@ -20,7 +20,7 @@ class VirtualMachineInstancePropertiesOsProfileResponse {
   /// [computerName] ComputerName - name of the compute
   /// [linuxConfiguration] LinuxConfiguration - linux specific configuration values for the virtual machine instance
   /// [windowsConfiguration] Windows Configuration for the virtual machine instance
-  VirtualMachineInstancePropertiesOsProfileResponse({
+  const VirtualMachineInstancePropertiesOsProfileResponse({
     this.adminUsername,
     this.computerName,
     this.linuxConfiguration,

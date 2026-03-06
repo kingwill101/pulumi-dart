@@ -9,7 +9,7 @@ class ChangeStreamConfig {
 
   /// Creates a new [ChangeStreamConfig].
   /// [retentionPeriod] How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity.
-  ChangeStreamConfig({
+  const ChangeStreamConfig({
     this.retentionPeriod,
   });
 

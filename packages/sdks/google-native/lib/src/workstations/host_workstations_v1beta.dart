@@ -10,7 +10,7 @@ class HostWorkstationsV1beta {
 
   /// Creates a new [HostWorkstationsV1beta].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  HostWorkstationsV1beta({
+  const HostWorkstationsV1beta({
     this.gceInstance,
   });
 

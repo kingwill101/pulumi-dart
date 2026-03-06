@@ -13,7 +13,7 @@ class ListBotConnectionServiceProvidersResult {
   /// Creates a new [ListBotConnectionServiceProvidersResult].
   /// [nextLink] The link used to get the next page of bot service providers.
   /// [value] Gets the list of bot service providers and their properties.
-  ListBotConnectionServiceProvidersResult({
+  const ListBotConnectionServiceProvidersResult({
     this.nextLink,
     required this.value,
   });

@@ -17,7 +17,7 @@ class GetWorkspaceArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [workspaceId] Required.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.location,
     this.project,
     required this.repositoryId,

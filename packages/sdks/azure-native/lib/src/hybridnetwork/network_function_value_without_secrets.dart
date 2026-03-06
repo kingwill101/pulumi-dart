@@ -44,7 +44,7 @@ class NetworkFunctionValueWithoutSecrets {
   /// [publisherName] The publisher name for the network function.
   /// [publisherScope] The scope of the publisher.
   /// [roleOverrideValues] The role configuration override values from the user.
-  NetworkFunctionValueWithoutSecrets({
+  const NetworkFunctionValueWithoutSecrets({
     this.allowSoftwareUpdate,
     required this.configurationType,
     this.deploymentValues,

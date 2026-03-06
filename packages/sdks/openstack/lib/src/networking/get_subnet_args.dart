@@ -62,7 +62,7 @@ class GetSubnetArgs {
   /// [subnetpoolId] The ID of the subnetpool associated with the subnet.
   /// [tags] The list of subnet tags to filter.
   /// [tenantId] The owner of the subnet.
-  GetSubnetArgs({
+  const GetSubnetArgs({
     this.cidr,
     this.description,
     this.dhcpEnabled,

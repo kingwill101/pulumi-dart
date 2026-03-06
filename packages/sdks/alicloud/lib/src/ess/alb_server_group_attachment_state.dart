@@ -22,7 +22,7 @@ class AlbServerGroupAttachmentState {
   /// [port] The port will be used for Alb Server Group backend server.
   /// [scalingGroupId] ID of the scaling group.
   /// [weight] The weight of an ECS instance attached to the Alb Server Group.
-  AlbServerGroupAttachmentState({
+  const AlbServerGroupAttachmentState({
     this.albServerGroupId,
     this.forceAttach,
     this.port,

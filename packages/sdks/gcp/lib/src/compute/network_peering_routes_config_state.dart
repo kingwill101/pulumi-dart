@@ -32,7 +32,7 @@ class NetworkPeeringRoutesConfigState {
   /// [network] The name of the primary network for the peering.
   /// [peering] Name of the peering.
   /// [project] The ID of the project in which the resource belongs.
-  NetworkPeeringRoutesConfigState({
+  const NetworkPeeringRoutesConfigState({
     this.exportCustomRoutes,
     this.exportSubnetRoutesWithPublicIp,
     this.importCustomRoutes,

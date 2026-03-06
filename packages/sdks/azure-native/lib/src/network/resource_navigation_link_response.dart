@@ -27,7 +27,7 @@ class ResourceNavigationLinkResponse {
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the resource navigation link resource.
   /// [type] Resource type.
-  ResourceNavigationLinkResponse({
+  const ResourceNavigationLinkResponse({
     required this.etag,
     required this.id,
     this.link,

@@ -10,7 +10,7 @@ class ProjectFeedFeedOutputConfig {
 
   /// Creates a new [ProjectFeedFeedOutputConfig].
   /// [pubsubDestination] Destination on Cloud Pubsub.
-  ProjectFeedFeedOutputConfig({
+  const ProjectFeedFeedOutputConfig({
     required this.pubsubDestination,
   });
 

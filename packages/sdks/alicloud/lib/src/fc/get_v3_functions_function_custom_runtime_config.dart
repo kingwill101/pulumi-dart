@@ -18,7 +18,7 @@ class GetV3FunctionsFunctionCustomRuntimeConfig {
   /// [commands] Lifecycle Initialization Phase Callback Instructions.
   /// [healthCheckConfig] Function custom health check configuration.
   /// [port] The listening port of the HTTP Server.
-  GetV3FunctionsFunctionCustomRuntimeConfig({
+  const GetV3FunctionsFunctionCustomRuntimeConfig({
     required this.args,
     required this.commands,
     required this.healthCheckConfig,

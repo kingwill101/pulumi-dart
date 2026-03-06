@@ -23,7 +23,7 @@ class GetPolicyRestrictionResult {
   /// [requireBase] Indicates if base policy should be enforced for the policy document.
   /// [scope] Path to the policy document.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPolicyRestrictionResult({
+  const GetPolicyRestrictionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

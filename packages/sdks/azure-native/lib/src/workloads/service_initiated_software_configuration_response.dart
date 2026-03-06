@@ -29,7 +29,7 @@ class ServiceInitiatedSoftwareConfigurationResponse {
   /// [softwareInstallationType] The SAP software installation Type.
   /// [softwareVersion] The software version to install.
   /// [sshPrivateKey] The SSH private key.
-  ServiceInitiatedSoftwareConfigurationResponse({
+  const ServiceInitiatedSoftwareConfigurationResponse({
     required this.bomUrl,
     this.highAvailabilitySoftwareConfiguration,
     required this.sapBitsStorageAccountId,

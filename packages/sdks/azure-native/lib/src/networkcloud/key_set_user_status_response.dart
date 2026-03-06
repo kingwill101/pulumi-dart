@@ -14,7 +14,7 @@ class KeySetUserStatusResponse {
   /// [azureUserName] The user name that will be used for access.
   /// [status] The indicator of whether the user is currently deployed for access.
   /// [statusMessage] The additional information describing the current status of this user, if any available.
-  KeySetUserStatusResponse({
+  const KeySetUserStatusResponse({
     required this.azureUserName,
     required this.status,
     required this.statusMessage,

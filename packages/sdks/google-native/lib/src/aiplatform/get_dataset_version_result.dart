@@ -20,7 +20,7 @@ class GetDatasetVersionResult {
   /// [etag] Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   /// [name] The resource name of the DatasetVersion.
   /// [updateTime] Timestamp when this DatasetVersion was last updated.
-  GetDatasetVersionResult({
+  const GetDatasetVersionResult({
     required this.bigQueryDatasetName,
     required this.createTime,
     required this.etag,

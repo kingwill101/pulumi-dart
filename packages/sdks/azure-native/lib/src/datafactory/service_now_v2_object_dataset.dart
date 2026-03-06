@@ -40,7 +40,7 @@ class ServiceNowV2ObjectDataset {
   /// [tableName] The table name. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
   /// [valueType] Type of value copied from source.
-  ServiceNowV2ObjectDataset({
+  const ServiceNowV2ObjectDataset({
     this.annotations,
     this.description,
     this.folder,

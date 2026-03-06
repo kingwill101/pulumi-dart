@@ -21,7 +21,7 @@ class RouteSpecHttp2Route {
   /// [match] Criteria for determining an HTTP request match.
   /// [retryPolicy] Retry policy.
   /// [timeout] Types of timeouts.
-  RouteSpecHttp2Route({
+  const RouteSpecHttp2Route({
     required this.action,
     required this.match,
     this.retryPolicy,

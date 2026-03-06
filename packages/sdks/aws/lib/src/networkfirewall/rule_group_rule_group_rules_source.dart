@@ -20,7 +20,7 @@ class RuleGroupRuleGroupRulesSource {
   /// [rulesString] Stateful inspection criteria, provided in Suricata compatible rules. These rules contain the inspection criteria and the action to take for traffic that matches the criteria, so this type of rule group doesn’t have a separate action setting.
   /// [statefulRules] Set of configuration blocks containing **stateful** inspection criteria for 5-tuple rules to be used together in a rule group. See Stateful Rule below for details.
   /// [statelessRulesAndCustomActions] A configuration block containing **stateless** inspection criteria for a stateless rule group. See Stateless Rules and Custom Actions below for details.
-  RuleGroupRuleGroupRulesSource({
+  const RuleGroupRuleGroupRulesSource({
     this.rulesSourceList,
     this.rulesString,
     this.statefulRules,

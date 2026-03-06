@@ -15,7 +15,7 @@ class GetAppSpecIngressRuleRedirect {
   /// [redirectCode] Optional.
   /// [scheme] Optional.
   /// [uri] Optional.
-  GetAppSpecIngressRuleRedirect({
+  const GetAppSpecIngressRuleRedirect({
     this.authority,
     this.port,
     this.redirectCode,

@@ -10,7 +10,7 @@ class CspmMonitorDockerHubOffering {
 
   /// Creates a new [CspmMonitorDockerHubOffering].
   /// [offeringType] The type of the security offering.
-  CspmMonitorDockerHubOffering({
+  const CspmMonitorDockerHubOffering({
     required this.offeringType,
   });
 

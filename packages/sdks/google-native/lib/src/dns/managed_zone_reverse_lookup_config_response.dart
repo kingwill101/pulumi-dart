@@ -7,7 +7,7 @@ class ManagedZoneReverseLookupConfigResponse {
 
   /// Creates a new [ManagedZoneReverseLookupConfigResponse].
   /// [kind] Required.
-  ManagedZoneReverseLookupConfigResponse({
+  const ManagedZoneReverseLookupConfigResponse({
     required this.kind,
   });
 

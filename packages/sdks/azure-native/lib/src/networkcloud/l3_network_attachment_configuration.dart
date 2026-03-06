@@ -14,7 +14,7 @@ class L3NetworkAttachmentConfiguration {
   /// [ipamEnabled] The indication of whether this network will or will not perform IP address management and allocate IP addresses when attached.
   /// [networkId] The resource ID of the network that is being configured for attachment.
   /// [pluginType] The indicator of how this network will be utilized by the Kubernetes cluster.
-  L3NetworkAttachmentConfiguration({
+  const L3NetworkAttachmentConfiguration({
     this.ipamEnabled,
     required this.networkId,
     this.pluginType,

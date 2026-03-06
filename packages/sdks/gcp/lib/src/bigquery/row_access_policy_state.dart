@@ -63,7 +63,7 @@ class RowAccessPolicyState {
   /// [policyId] The ID of the row access policy. The ID must contain only
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] The ID of the table containing this row access policy.
-  RowAccessPolicyState({
+  const RowAccessPolicyState({
     this.creationTime,
     this.datasetId,
     this.filterPredicate,

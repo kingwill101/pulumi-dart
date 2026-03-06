@@ -11,7 +11,7 @@ class RepositoryAssociationKmsKeyDetails {
   /// Creates a new [RepositoryAssociationKmsKeyDetails].
   /// [encryptionOption] The encryption option for a repository association. It is either owned by AWS Key Management Service (KMS) (`AWS_OWNED_CMK`) or customer managed (`CUSTOMER_MANAGED_CMK`).
   /// [kmsKeyId] The ID of the AWS KMS key that is associated with a repository association.
-  RepositoryAssociationKmsKeyDetails({
+  const RepositoryAssociationKmsKeyDetails({
     this.encryptionOption,
     this.kmsKeyId,
   });

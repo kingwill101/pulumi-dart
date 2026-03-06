@@ -9,7 +9,7 @@ class StorageProfile {
 
   /// Creates a new [StorageProfile].
   /// [fileShares] Optional.
-  StorageProfile({
+  const StorageProfile({
     this.fileShares,
   });
 

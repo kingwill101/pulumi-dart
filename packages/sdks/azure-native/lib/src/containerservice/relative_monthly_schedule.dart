@@ -15,7 +15,7 @@ class RelativeMonthlySchedule {
   /// [dayOfWeek] Specifies on which day of the week the maintenance occurs.
   /// [intervalMonths] Specifies the number of months between each set of occurrences.
   /// [weekIndex] The week index. Specifies on which week of the month the dayOfWeek applies.
-  RelativeMonthlySchedule({
+  const RelativeMonthlySchedule({
     required this.dayOfWeek,
     required this.intervalMonths,
     required this.weekIndex,

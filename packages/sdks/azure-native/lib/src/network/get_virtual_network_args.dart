@@ -18,7 +18,7 @@ class GetVirtualNetworkArgs {
   /// [expand] Expands referenced resources.
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkName] The name of the virtual network.
-  GetVirtualNetworkArgs({
+  const GetVirtualNetworkArgs({
     this.expand,
     required this.resourceGroupName,
     required this.virtualNetworkName,

@@ -21,7 +21,7 @@ class ReplicationResponse {
   /// [remoteVolumeResourceId] The resource ID of the remote volume.
   /// [replicationId] UUID v4 used to identify the replication.
   /// [replicationSchedule] Schedule
-  ReplicationResponse({
+  const ReplicationResponse({
     this.endpointType,
     this.remoteVolumeRegion,
     required this.remoteVolumeResourceId,

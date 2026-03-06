@@ -18,7 +18,7 @@ class GetDiscoveredWorkloadArgs {
   /// [location] The location of the discovered workload.
   /// [project] The host project of the discovered workload.
   /// [workloadUri] The uri of the workload (instance group managed by the Instance Group Manager). Example: "//compute.googleapis.com/projects/1/regions/us-east1/instanceGroups/id1"
-  GetDiscoveredWorkloadArgs({
+  const GetDiscoveredWorkloadArgs({
     required this.location,
     this.project,
     required this.workloadUri,

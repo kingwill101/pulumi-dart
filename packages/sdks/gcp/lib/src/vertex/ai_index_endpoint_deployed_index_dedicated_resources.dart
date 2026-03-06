@@ -16,7 +16,7 @@ class AiIndexEndpointDeployedIndexDedicatedResources {
   /// [machineSpec] The minimum number of replicas this DeployedModel will be always deployed on.
   /// [maxReplicaCount] The maximum number of replicas this DeployedModel may be deployed on when the traffic against it increases. If maxReplicaCount is not set, the default value is minReplicaCount
   /// [minReplicaCount] The minimum number of machine replicas this DeployedModel will be always deployed on. This value must be greater than or equal to 1.
-  AiIndexEndpointDeployedIndexDedicatedResources({
+  const AiIndexEndpointDeployedIndexDedicatedResources({
     required this.machineSpec,
     this.maxReplicaCount,
     required this.minReplicaCount,

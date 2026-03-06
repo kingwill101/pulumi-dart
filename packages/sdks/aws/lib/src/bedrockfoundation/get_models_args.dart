@@ -24,7 +24,7 @@ class GetModelsArgs {
   /// [byOutputModality] Output modality to filter on. Valid values are `TEXT`, `IMAGE`, and `EMBEDDING`.
   /// [byProvider] Model provider to filter on.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetModelsArgs({
+  const GetModelsArgs({
     this.byCustomizationType,
     this.byInferenceType,
     this.byOutputModality,

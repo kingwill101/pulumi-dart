@@ -12,7 +12,7 @@ class ManagedZoneForwardingConfig {
 
   /// Creates a new [ManagedZoneForwardingConfig].
   /// [targetNameServers] List of target name servers to forward to. Cloud DNS will
-  ManagedZoneForwardingConfig({
+  const ManagedZoneForwardingConfig({
     required this.targetNameServers,
   });
 

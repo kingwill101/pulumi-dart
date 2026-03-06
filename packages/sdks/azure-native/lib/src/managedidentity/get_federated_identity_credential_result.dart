@@ -30,7 +30,7 @@ class GetFederatedIdentityCredentialResult {
   /// [subject] The identifier of the external identity.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFederatedIdentityCredentialResult({
+  const GetFederatedIdentityCredentialResult({
     required this.audiences,
     required this.azureApiVersion,
     required this.id,

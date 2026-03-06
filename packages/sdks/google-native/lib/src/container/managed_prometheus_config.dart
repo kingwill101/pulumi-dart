@@ -9,7 +9,7 @@ class ManagedPrometheusConfig {
 
   /// Creates a new [ManagedPrometheusConfig].
   /// [enabled] Enable Managed Collection.
-  ManagedPrometheusConfig({
+  const ManagedPrometheusConfig({
     this.enabled,
   });
 

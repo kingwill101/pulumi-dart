@@ -31,7 +31,7 @@ class RRSetRoutingPolicyLoadBalancerTargetDnsV1beta2 {
   /// [port] The configured port of the load balancer.
   /// [project] The project ID in which the load balancer is located.
   /// [region] The region in which the load balancer is located.
-  RRSetRoutingPolicyLoadBalancerTargetDnsV1beta2({
+  const RRSetRoutingPolicyLoadBalancerTargetDnsV1beta2({
     this.ipAddress,
     this.ipProtocol,
     this.kind,

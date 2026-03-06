@@ -20,7 +20,7 @@ class AwsLinkAccountState {
   /// [arn] The Amazon Resource Name (ARN) of the IAM role.
   /// [metricCollectionMode] How metrics will be collected. Use `PUSH` for a metric stream or `PULL` to integrate with individual services.
   /// [name] The linked account name
-  AwsLinkAccountState({
+  const AwsLinkAccountState({
     this.accountId,
     this.arn,
     this.metricCollectionMode,

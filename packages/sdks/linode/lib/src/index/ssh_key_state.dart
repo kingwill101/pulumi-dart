@@ -15,7 +15,7 @@ class SshKeyState {
   /// [created] The date this SSH Key was created.
   /// [label] A label for the SSH Key.
   /// [sshKey] The public SSH Key, which is used to authenticate to the root user of the Linodes you deploy.
-  SshKeyState({
+  const SshKeyState({
     this.created,
     this.label,
     this.sshKey,

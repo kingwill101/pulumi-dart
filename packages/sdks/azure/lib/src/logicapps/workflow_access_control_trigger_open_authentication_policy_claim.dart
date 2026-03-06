@@ -11,7 +11,7 @@ class WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim {
   /// Creates a new [WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim].
   /// [name] The name of the OAuth policy claim for the Logic App Workflow.
   /// [value] The value of the OAuth policy claim for the Logic App Workflow.
-  WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim({
+  const WorkflowAccessControlTriggerOpenAuthenticationPolicyClaim({
     required this.name,
     required this.value,
   });

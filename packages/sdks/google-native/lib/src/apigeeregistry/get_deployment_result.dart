@@ -47,7 +47,7 @@ class GetDeploymentResult {
   /// [revisionCreateTime] Revision creation timestamp; when the represented revision was created.
   /// [revisionId] Immutable. The revision ID of the deployment. A new revision is committed whenever the deployment contents are changed. The format is an 8-character hexadecimal string.
   /// [revisionUpdateTime] Last update timestamp: when the represented revision was last modified.
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.accessGuidance,
     required this.annotations,
     required this.apiSpecRevision,

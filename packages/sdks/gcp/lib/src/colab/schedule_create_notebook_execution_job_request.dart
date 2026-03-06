@@ -10,7 +10,7 @@ class ScheduleCreateNotebookExecutionJobRequest {
 
   /// Creates a new [ScheduleCreateNotebookExecutionJobRequest].
   /// [notebookExecutionJob] The NotebookExecutionJob to create.
-  ScheduleCreateNotebookExecutionJobRequest({
+  const ScheduleCreateNotebookExecutionJobRequest({
     required this.notebookExecutionJob,
   });
 

@@ -9,7 +9,7 @@ class NodeInfoResponseRedisV1beta1 {
 
   /// Creates a new [NodeInfoResponseRedisV1beta1].
   /// [zone] Location of the node.
-  NodeInfoResponseRedisV1beta1({
+  const NodeInfoResponseRedisV1beta1({
     required this.zone,
   });
 

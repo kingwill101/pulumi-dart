@@ -54,7 +54,7 @@ class GetLinkerResult {
   /// [targetService] The target service properties
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vNetSolution] The VNet solution.
-  GetLinkerResult({
+  const GetLinkerResult({
     this.authInfo,
     required this.azureApiVersion,
     this.clientType,

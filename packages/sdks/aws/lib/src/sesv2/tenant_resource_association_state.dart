@@ -17,7 +17,7 @@ class TenantResourceAssociationState {
   /// [region] AWS region for SESv2 operations. If not specified, the default provider region is used.
   /// [resourceArn] ARN of the SES resource to associate with the tenant.
   /// [tenantName] Name of SES Tenant.
-  TenantResourceAssociationState({
+  const TenantResourceAssociationState({
     this.region,
     this.resourceArn,
     this.tenantName,

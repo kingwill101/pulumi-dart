@@ -32,7 +32,7 @@ class GetFirewallArgs {
   /// [name] Name of the firewall.
   /// [rules] (string) Configuration of a Rule from this Firewall.
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetFirewallArgs({
+  const GetFirewallArgs({
     this.applyTos,
     this.id,
     this.labels,

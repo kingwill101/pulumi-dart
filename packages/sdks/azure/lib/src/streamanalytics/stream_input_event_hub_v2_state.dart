@@ -37,7 +37,7 @@ class StreamInputEventHubV2State {
   /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy.
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc.
   /// [streamAnalyticsJobId] The name of the Stream Analytics Job. Changing this forces a new resource to be created.
-  StreamInputEventHubV2State({
+  const StreamInputEventHubV2State({
     this.authenticationMode,
     this.eventhubConsumerGroupName,
     this.eventhubName,

@@ -14,7 +14,7 @@ class InstanceBackup {
   /// [available] Whether this Backup is available for restoration.
   /// [enabled] If this Linode has the Backup service enabled.
   /// [schedules] Optional.
-  InstanceBackup({
+  const InstanceBackup({
     this.available,
     this.enabled,
     this.schedules,

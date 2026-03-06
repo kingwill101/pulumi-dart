@@ -8,7 +8,7 @@ class PipeSourceParametersDynamodbStreamParametersDeadLetterConfig {
 
   /// Creates a new [PipeSourceParametersDynamodbStreamParametersDeadLetterConfig].
   /// [arn] ARN of this pipe.
-  PipeSourceParametersDynamodbStreamParametersDeadLetterConfig({
+  const PipeSourceParametersDynamodbStreamParametersDeadLetterConfig({
     this.arn,
   });
 

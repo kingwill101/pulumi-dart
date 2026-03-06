@@ -24,7 +24,7 @@ class HostingCustomDomainCert {
   /// [state] The state of the certificate. Only the `CERT_ACTIVE` and
   /// [type] The record's type, which determines what data the record contains.
   /// [verification] A set of ACME challenges you can add to your DNS records or existing,
-  HostingCustomDomainCert({
+  const HostingCustomDomainCert({
     this.state,
     this.type,
     this.verification,

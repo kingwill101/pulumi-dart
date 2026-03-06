@@ -13,7 +13,7 @@ class AuditLogConfigGkehubV1beta {
   /// Creates a new [AuditLogConfigGkehubV1beta].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigGkehubV1beta({
+  const AuditLogConfigGkehubV1beta({
     this.exemptedMembers,
     this.logType,
   });

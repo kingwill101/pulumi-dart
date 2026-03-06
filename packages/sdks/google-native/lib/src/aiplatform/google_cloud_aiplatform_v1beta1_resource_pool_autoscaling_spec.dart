@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec {
   /// Creates a new [GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec].
   /// [maxReplicaCount] Optional. max replicas in the node pool, must be ≥ replica_count and &gt; min_replica_count or will throw error
   /// [minReplicaCount] Optional. min replicas in the node pool, must be ≤ replica_count and &lt; max_replica_count or will throw error
-  GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec({
+  const GoogleCloudAiplatformV1beta1ResourcePoolAutoscalingSpec({
     this.maxReplicaCount,
     this.minReplicaCount,
   });

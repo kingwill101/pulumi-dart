@@ -15,7 +15,7 @@ class GetBrowserDlpRuleArgs {
   /// [browserDlpRuleId] Required.
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
-  GetBrowserDlpRuleArgs({
+  const GetBrowserDlpRuleArgs({
     required this.browserDlpRuleId,
     required this.organizationId,
     required this.partnerTenantId,

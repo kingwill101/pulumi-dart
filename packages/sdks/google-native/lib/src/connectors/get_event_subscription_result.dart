@@ -35,7 +35,7 @@ class GetEventSubscriptionResult {
   /// [subscriber] Optional. name of the Subscriber for the current EventSubscription.
   /// [subscriberLink] Optional. Link for Subscriber of the current EventSubscription.
   /// [updateTime] Updated time.
-  GetEventSubscriptionResult({
+  const GetEventSubscriptionResult({
     required this.createTime,
     required this.destinations,
     required this.eventTypeId,

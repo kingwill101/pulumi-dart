@@ -22,7 +22,7 @@ class AnomaliesArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [settingsName] The setting name. Supports - Anomalies, EyesOn, EntityAnalytics, Ueba
   /// [workspaceName] The name of the workspace.
-  AnomaliesArgs({
+  const AnomaliesArgs({
     required this.kind,
     required this.resourceGroupName,
     this.settingsName,

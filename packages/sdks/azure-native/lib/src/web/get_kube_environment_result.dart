@@ -66,7 +66,7 @@ class GetKubeEnvironmentResult {
   /// [staticIp] Static IP of the KubeEnvironment
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetKubeEnvironmentResult({
+  const GetKubeEnvironmentResult({
     this.aksResourceID,
     this.appLogsConfiguration,
     this.arcConfiguration,

@@ -30,7 +30,7 @@ class BackupInstanceDiskState {
   /// [snapshotResourceGroupName] The name of the Resource Group where snapshots are stored. Changing this forces a new Backup Instance Disk to be created.
   /// [snapshotSubscriptionId] The subscription ID of the Resource Group where snapshots are stored. The default value is the subscription ID of the Backup Vault. Changing this forces a new Backup Instance Disk to be created.
   /// [vaultId] The ID of the Backup Vault within which the Backup Instance Disk should exist. Changing this forces a new Backup Instance Disk to be created.
-  BackupInstanceDiskState({
+  const BackupInstanceDiskState({
     this.backupPolicyId,
     this.diskId,
     this.location,

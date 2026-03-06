@@ -14,7 +14,7 @@ class ExtensionsInstanceRuntimeDataProcessingState {
   /// Creates a new [ExtensionsInstanceRuntimeDataProcessingState].
   /// [detailMessage] Details about the processing. e.g. This could include the type of
   /// [state] The processing state of the extension instance.
-  ExtensionsInstanceRuntimeDataProcessingState({
+  const ExtensionsInstanceRuntimeDataProcessingState({
     this.detailMessage,
     this.state,
   });

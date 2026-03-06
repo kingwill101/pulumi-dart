@@ -46,7 +46,7 @@ class GetGlobalPublicDelegatedPrefixComputeV1Result {
   /// [region] URL of the region where the public delegated prefix resides. This field applies only to the region resource. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
   /// [status] The status of the public delegated prefix, which can be one of following values: - `INITIALIZING` The public delegated prefix is being initialized and addresses cannot be created yet. - `READY_TO_ANNOUNCE` The public delegated prefix is a live migration prefix and is active. - `ANNOUNCED` The public delegated prefix is active. - `DELETING` The public delegated prefix is being deprovsioned.
-  GetGlobalPublicDelegatedPrefixComputeV1Result({
+  const GetGlobalPublicDelegatedPrefixComputeV1Result({
     required this.byoipApiVersion,
     required this.creationTimestamp,
     required this.description,

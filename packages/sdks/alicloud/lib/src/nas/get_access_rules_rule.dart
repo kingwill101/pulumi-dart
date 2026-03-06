@@ -20,7 +20,7 @@ class GetAccessRulesRule {
   /// [rwAccess] Filter results by a specific RWAccess.
   /// [sourceCidrIp] Filter results by a specific SourceCidrIp.
   /// [userAccess] Filter results by a specific UserAccess.
-  GetAccessRulesRule({
+  const GetAccessRulesRule({
     required this.accessRuleId,
     required this.priority,
     required this.rwAccess,

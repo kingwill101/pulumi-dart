@@ -66,7 +66,7 @@ class IISWebApplication {
   /// [virtualApplications] Gets or sets the list of application units for the web site.
   /// [webServerId] Gets or sets the web server id.
   /// [webServerName] Gets or sets the web server name.
-  IISWebApplication({
+  const IISWebApplication({
     this.applicationId,
     this.applicationName,
     this.applicationScratchPath,

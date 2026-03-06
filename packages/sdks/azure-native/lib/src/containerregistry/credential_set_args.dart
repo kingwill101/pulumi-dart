@@ -30,7 +30,7 @@ class CredentialSetArgs {
   /// [loginServer] The credentials are stored for this upstream or login server.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CredentialSetArgs({
+  const CredentialSetArgs({
     this.authCredentials,
     this.credentialSetName,
     this.identity,

@@ -19,7 +19,7 @@ class EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration {
   /// [linearStepSize] Batch size for each step to turn on traffic on the new endpoint fleet. Value must be 10-50% of the variant's total instance count. See Linear Step Size.
   /// [type] Traffic routing strategy type. Valid values are: `ALL_AT_ONCE`, `CANARY`, and `LINEAR`.
   /// [waitIntervalInSeconds] The waiting time (in seconds) between incremental steps to turn on traffic on the new endpoint fleet. Valid values are between `0` and `3600`.
-  EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration({
+  const EndpointDeploymentConfigBlueGreenUpdatePolicyTrafficRoutingConfiguration({
     this.canarySize,
     this.linearStepSize,
     required this.type,

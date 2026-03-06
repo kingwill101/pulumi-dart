@@ -25,7 +25,7 @@ class InstanceNetworkInterfaces {
   /// [queuePairNumber] The number of queues supported by the ERI.
   /// [securityGroupIds] The ID of security group N to which to assign Secondary ENI N.
   /// [vswitchId] The ID of the vSwitch to which to connect Secondary ENI N.
-  InstanceNetworkInterfaces({
+  const InstanceNetworkInterfaces({
     this.networkCardIndex,
     this.networkInterfaceId,
     this.networkInterfaceTrafficMode,

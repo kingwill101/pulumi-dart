@@ -19,7 +19,7 @@ class GetEndpointServicedirectoryV1beta1Args {
   /// [namespaceId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetEndpointServicedirectoryV1beta1Args({
+  const GetEndpointServicedirectoryV1beta1Args({
     required this.endpointId,
     required this.location,
     required this.namespaceId,

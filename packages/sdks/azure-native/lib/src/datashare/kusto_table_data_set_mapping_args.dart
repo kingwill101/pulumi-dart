@@ -31,7 +31,7 @@ class KustoTableDataSetMappingArgs {
   /// [kustoClusterResourceId] Resource id of the sink kusto cluster.
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the share subscription which will hold the data set sink.
-  KustoTableDataSetMappingArgs({
+  const KustoTableDataSetMappingArgs({
     required this.accountName,
     required this.dataSetId,
     this.dataSetMappingName,

@@ -42,7 +42,7 @@ class BackupPlanBackupConfig {
   /// [selectedApplications] A list of namespaced Kubernetes Resources.
   /// [selectedNamespaceLabels] If set, include just the resources in the listed namespace Labels.
   /// [selectedNamespaces] If set, include just the resources in the listed namespaces.
-  BackupPlanBackupConfig({
+  const BackupPlanBackupConfig({
     this.allNamespaces,
     this.encryptionKey,
     this.includeSecrets,

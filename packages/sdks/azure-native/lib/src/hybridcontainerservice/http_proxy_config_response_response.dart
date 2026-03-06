@@ -21,7 +21,7 @@ class HttpProxyConfigResponseResponse {
   /// [noProxy] The endpoints that should not go through proxy.
   /// [trustedCa] Alternative CA cert to use for connecting to proxy servers.
   /// [username] Username to use for connecting to proxy server
-  HttpProxyConfigResponseResponse({
+  const HttpProxyConfigResponseResponse({
     this.httpProxy,
     this.httpsProxy,
     this.noProxy,

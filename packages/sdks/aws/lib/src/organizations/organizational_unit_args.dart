@@ -18,7 +18,7 @@ class OrganizationalUnitArgs {
   /// [name] The name for the organizational unit
   /// [parentId] ID of the parent organizational unit, which may be the root
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  OrganizationalUnitArgs({
+  const OrganizationalUnitArgs({
     this.name,
     required this.parentId,
     this.tags,

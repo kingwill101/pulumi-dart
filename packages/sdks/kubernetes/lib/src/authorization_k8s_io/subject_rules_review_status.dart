@@ -20,7 +20,7 @@ class SubjectRulesReviewStatus {
   /// [incomplete] Incomplete is true when the rules returned by this call are incomplete. This is most commonly encountered when an authorizer, such as an external authorizer, doesn't support rules evaluation.
   /// [nonResourceRules] NonResourceRules is the list of actions the subject is allowed to perform on non-resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.
   /// [resourceRules] ResourceRules is the list of actions the subject is allowed to perform on resources. The list ordering isn't significant, may contain duplicates, and possibly be incomplete.
-  SubjectRulesReviewStatus({
+  const SubjectRulesReviewStatus({
     this.evaluationError,
     required this.incomplete,
     required this.nonResourceRules,

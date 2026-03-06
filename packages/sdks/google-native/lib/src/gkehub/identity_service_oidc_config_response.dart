@@ -48,7 +48,7 @@ class IdentityServiceOidcConfigResponse {
   /// [scopes] Comma-separated list of identifiers.
   /// [userClaim] Claim in OIDC ID token that holds username.
   /// [userPrefix] Prefix to prepend to user name.
-  IdentityServiceOidcConfigResponse({
+  const IdentityServiceOidcConfigResponse({
     required this.certificateAuthorityData,
     required this.clientId,
     required this.clientSecret,

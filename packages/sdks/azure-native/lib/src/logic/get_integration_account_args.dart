@@ -15,7 +15,7 @@ class GetIntegrationAccountArgs {
   /// Creates a new [GetIntegrationAccountArgs].
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountArgs({
+  const GetIntegrationAccountArgs({
     required this.integrationAccountName,
     required this.resourceGroupName,
   });

@@ -9,7 +9,7 @@ class ImageStateEnumValue {
 
   /// Creates a new [ImageStateEnumValue].
   /// [value] Property value
-  ImageStateEnumValue({
+  const ImageStateEnumValue({
     this.value,
   });
 

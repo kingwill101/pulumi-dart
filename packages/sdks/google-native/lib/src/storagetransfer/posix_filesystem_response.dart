@@ -9,7 +9,7 @@ class PosixFilesystemResponse {
 
   /// Creates a new [PosixFilesystemResponse].
   /// [rootDirectory] Root directory path to the filesystem.
-  PosixFilesystemResponse({
+  const PosixFilesystemResponse({
     required this.rootDirectory,
   });
 

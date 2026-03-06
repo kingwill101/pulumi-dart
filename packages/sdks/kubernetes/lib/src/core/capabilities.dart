@@ -12,7 +12,7 @@ class Capabilities {
   /// Creates a new [Capabilities].
   /// [add] Added capabilities
   /// [drop] Removed capabilities
-  Capabilities({
+  const Capabilities({
     this.add,
     this.drop,
   });

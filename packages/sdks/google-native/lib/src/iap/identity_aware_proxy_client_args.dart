@@ -16,7 +16,7 @@ class IdentityAwareProxyClientArgs {
   /// [brandId] Required.
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [project] Optional.
-  IdentityAwareProxyClientArgs({
+  const IdentityAwareProxyClientArgs({
     required this.brandId,
     this.displayName,
     this.project,

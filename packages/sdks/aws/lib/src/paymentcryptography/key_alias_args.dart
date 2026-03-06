@@ -20,7 +20,7 @@ class KeyAliasArgs {
   /// [aliasName] Name of the Key Alias.
   /// [keyArn] ARN of the key.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  KeyAliasArgs({
+  const KeyAliasArgs({
     required this.aliasName,
     this.keyArn,
     this.region,

@@ -15,7 +15,7 @@ class GetDedicatedHsmArgs {
   /// Creates a new [GetDedicatedHsmArgs].
   /// [name] Name of the dedicated Hsm
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDedicatedHsmArgs({
+  const GetDedicatedHsmArgs({
     required this.name,
     required this.resourceGroupName,
   });

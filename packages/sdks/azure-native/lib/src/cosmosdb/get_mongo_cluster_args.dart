@@ -15,7 +15,7 @@ class GetMongoClusterArgs {
   /// Creates a new [GetMongoClusterArgs].
   /// [mongoClusterName] The name of the mongo cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMongoClusterArgs({
+  const GetMongoClusterArgs({
     required this.mongoClusterName,
     required this.resourceGroupName,
   });

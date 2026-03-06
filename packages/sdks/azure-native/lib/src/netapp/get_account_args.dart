@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [accountName] The name of the NetApp account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.accountName,
     required this.resourceGroupName,
   });

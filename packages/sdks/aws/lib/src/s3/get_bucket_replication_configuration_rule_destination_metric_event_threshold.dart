@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold {
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold].
   /// [minutes] Required.
-  GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold({
+  const GetBucketReplicationConfigurationRuleDestinationMetricEventThreshold({
     required this.minutes,
   });
 

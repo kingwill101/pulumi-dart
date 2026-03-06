@@ -34,7 +34,7 @@ class LiteTopicState {
   /// [reservationConfig] The settings for this topic's Reservation usage.
   /// [retentionConfig] The settings for a topic's message retention.
   /// [zone] The zone of the pubsub lite topic.
-  LiteTopicState({
+  const LiteTopicState({
     this.name,
     this.partitionConfig,
     this.project,

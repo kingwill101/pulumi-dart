@@ -29,7 +29,7 @@ class ImageRecipeBlockDeviceMappingEbs {
   /// [throughput] For GP3 volumes only. The throughput in MiB/s that the volume supports.
   /// [volumeSize] Size of the volume, in GiB.
   /// [volumeType] Type of the volume. For example, `gp2` or `io2`.
-  ImageRecipeBlockDeviceMappingEbs({
+  const ImageRecipeBlockDeviceMappingEbs({
     this.deleteOnTermination,
     this.encrypted,
     this.iops,

@@ -43,7 +43,7 @@ class DicomServiceArgs {
   /// [storageConfiguration] The configuration of external storage account
   /// [tags] Resource tags.
   /// [workspaceName] The name of workspace resource.
-  DicomServiceArgs({
+  const DicomServiceArgs({
     this.corsConfiguration,
     this.dicomServiceName,
     this.enableDataPartitions,

@@ -45,7 +45,7 @@ class VpnConnectionArgs {
   /// [router] The VPN connection Cloud Router name.
   /// [vpc] The network ID of VPC to connect to.
   /// [vpcProject] Project detail of the VPC network. Required if VPC is in a different project than the cluster project.
-  VpnConnectionArgs({
+  const VpnConnectionArgs({
     required this.cluster,
     this.enableHighAvailability,
     this.labels,

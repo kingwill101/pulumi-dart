@@ -12,7 +12,7 @@ class StackAccessEndpoint {
   /// Creates a new [StackAccessEndpoint].
   /// [endpointType] Type of the interface endpoint.
   /// [vpceId] ID of the VPC in which the interface endpoint is used.
-  StackAccessEndpoint({
+  const StackAccessEndpoint({
     required this.endpointType,
     this.vpceId,
   });

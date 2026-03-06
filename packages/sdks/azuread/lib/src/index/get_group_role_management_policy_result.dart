@@ -18,7 +18,7 @@ class GetGroupRoleManagementPolicyResult {
   /// [groupId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [roleId] Required.
-  GetGroupRoleManagementPolicyResult({
+  const GetGroupRoleManagementPolicyResult({
     required this.description,
     required this.displayName,
     required this.groupId,

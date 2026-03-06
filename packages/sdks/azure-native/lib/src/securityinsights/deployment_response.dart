@@ -21,7 +21,7 @@ class DeploymentResponse {
   /// [deploymentResult] The outcome of the deployment.
   /// [deploymentState] Current status of the deployment.
   /// [deploymentTime] The time when the deployment finished.
-  DeploymentResponse({
+  const DeploymentResponse({
     this.deploymentId,
     this.deploymentLogsUrl,
     this.deploymentResult,

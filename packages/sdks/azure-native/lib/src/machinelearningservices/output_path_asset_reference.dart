@@ -16,7 +16,7 @@ class OutputPathAssetReference {
   /// [jobId] ARM resource ID of the job.
   /// [path] The path of the file/directory in the job output.
   /// [referenceType] Enum to determine which reference method to use for an asset.
-  OutputPathAssetReference({
+  const OutputPathAssetReference({
     this.jobId,
     this.path,
     required this.referenceType,

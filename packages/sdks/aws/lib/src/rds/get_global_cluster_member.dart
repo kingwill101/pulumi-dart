@@ -11,7 +11,7 @@ class GetGlobalClusterMember {
   /// Creates a new [GetGlobalClusterMember].
   /// [dbClusterArn] Amazon Resource Name (ARN) of member DB Cluster
   /// [isWriter] Whether the member is the primary DB Cluster
-  GetGlobalClusterMember({
+  const GetGlobalClusterMember({
     required this.dbClusterArn,
     required this.isWriter,
   });

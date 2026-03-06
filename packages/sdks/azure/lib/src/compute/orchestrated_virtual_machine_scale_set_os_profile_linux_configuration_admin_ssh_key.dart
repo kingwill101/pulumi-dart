@@ -13,7 +13,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey {
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey].
   /// [publicKey] The Public Key which should be used for authentication, which needs to be in `ssh-rsa` format with at least 2048-bit or in `ssh-ed25519` format.
   /// [username] The Username for which this Public SSH Key should be configured.
-  OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey({
+  const OrchestratedVirtualMachineScaleSetOsProfileLinuxConfigurationAdminSshKey({
     required this.publicKey,
     required this.username,
   });

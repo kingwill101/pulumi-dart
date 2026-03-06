@@ -30,7 +30,7 @@ class SecurityServicesResponse {
   /// [outboundUnTrustCertificate] Untrusted Egress Decryption profile data
   /// [urlFilteringProfile] URL filtering profile data
   /// [vulnerabilityProfile] IPs Vulnerability Profile Data
-  SecurityServicesResponse({
+  const SecurityServicesResponse({
     this.antiSpywareProfile,
     this.antiVirusProfile,
     this.dnsSubscription,

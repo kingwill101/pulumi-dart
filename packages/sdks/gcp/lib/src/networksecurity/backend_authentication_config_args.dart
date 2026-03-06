@@ -42,7 +42,7 @@ class BackendAuthenticationConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [trustConfig] Reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace.
   /// [wellKnownRoots] Well known roots to use for server certificate validation. If set to NONE, the BackendService will only validate server certificates against roots specified in TrustConfig.
-  BackendAuthenticationConfigArgs({
+  const BackendAuthenticationConfigArgs({
     this.clientCertificate,
     this.description,
     this.labels,

@@ -27,7 +27,7 @@ class GetEngineVersionsArgs {
   /// [location] The location (region or zone) to list versions for.
   /// [project] ID of the project to list available cluster versions for. Should match the project the cluster will be deployed to.
   /// [versionPrefix] If provided, the provider will only return versions
-  GetEngineVersionsArgs({
+  const GetEngineVersionsArgs({
     this.location,
     this.project,
     this.versionPrefix,

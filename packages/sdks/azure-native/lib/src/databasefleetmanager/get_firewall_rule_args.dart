@@ -21,7 +21,7 @@ class GetFirewallRuleArgs {
   /// [fleetName] Name of the database fleet.
   /// [fleetspaceName] Name of the fleetspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFirewallRuleArgs({
+  const GetFirewallRuleArgs({
     required this.firewallRuleName,
     required this.fleetName,
     required this.fleetspaceName,

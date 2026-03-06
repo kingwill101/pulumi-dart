@@ -21,7 +21,7 @@ class AmlFilesystemRootSquashSettingsResponse {
   /// [squashGID] Group ID to squash to.
   /// [squashUID] User ID to squash to.
   /// [status] AML file system squash status.
-  AmlFilesystemRootSquashSettingsResponse({
+  const AmlFilesystemRootSquashSettingsResponse({
     this.mode,
     this.noSquashNidLists,
     this.squashGID,

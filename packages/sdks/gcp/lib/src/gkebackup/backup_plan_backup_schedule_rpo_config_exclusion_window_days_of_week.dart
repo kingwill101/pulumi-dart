@@ -9,7 +9,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek {
 
   /// Creates a new [BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek].
   /// [daysOfWeeks] A list of days of week.
-  BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek({
+  const BackupPlanBackupScheduleRpoConfigExclusionWindowDaysOfWeek({
     this.daysOfWeeks,
   });
 

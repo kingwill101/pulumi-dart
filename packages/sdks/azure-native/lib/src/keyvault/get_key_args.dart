@@ -18,7 +18,7 @@ class GetKeyArgs {
   /// [keyName] The name of the key to be retrieved.
   /// [resourceGroupName] The name of the resource group which contains the specified key vault.
   /// [vaultName] The name of the vault which contains the key to be retrieved.
-  GetKeyArgs({
+  const GetKeyArgs({
     required this.keyName,
     required this.resourceGroupName,
     required this.vaultName,

@@ -88,7 +88,7 @@ class WorkstationClusterState {
   /// [tags] Resource manager tags bound to this resource.
   /// [uid] The system-generated UID of the resource.
   /// [workstationClusterId] ID to use for the workstation cluster.
-  WorkstationClusterState({
+  const WorkstationClusterState({
     this.annotations,
     this.conditions,
     this.controlPlaneIp,

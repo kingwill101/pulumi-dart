@@ -33,7 +33,7 @@ class VMExtension {
   /// [settings] JSON formatted public settings for the extension.
   /// [type] The type of the extensions.
   /// [typeHandlerVersion] The version of script handler.
-  VMExtension({
+  const VMExtension({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     required this.name,

@@ -12,7 +12,7 @@ class ReplicaPairDrillArgs {
 
   /// Creates a new [ReplicaPairDrillArgs].
   /// [pairId] Copy the ID of the pair. You can call DescribeDiskReplicaPairs to query the list of asynchronous replication pairs to obtain the replication pair ID.
-  ReplicaPairDrillArgs({
+  const ReplicaPairDrillArgs({
     required this.pairId,
   });
 

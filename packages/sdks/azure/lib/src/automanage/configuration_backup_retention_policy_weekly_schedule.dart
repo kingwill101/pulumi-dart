@@ -12,7 +12,7 @@ class ConfigurationBackupRetentionPolicyWeeklySchedule {
   /// Creates a new [ConfigurationBackupRetentionPolicyWeeklySchedule].
   /// [retentionDuration] A `retention_duration` block as defined below.
   /// [retentionTimes] The retention times of the backup policy.
-  ConfigurationBackupRetentionPolicyWeeklySchedule({
+  const ConfigurationBackupRetentionPolicyWeeklySchedule({
     this.retentionDuration,
     this.retentionTimes,
   });

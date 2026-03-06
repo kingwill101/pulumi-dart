@@ -23,7 +23,7 @@ class MonitorTagRuleArgs {
   /// [logs] A `log` block as defined below.
   /// [metrics] A `metric` block as defined below.
   /// [name] The name of the Tag Rules configuration. The allowed value is `default`. Defaults to `default`.
-  MonitorTagRuleArgs({
+  const MonitorTagRuleArgs({
     required this.datadogMonitorId,
     this.logs,
     this.metrics,

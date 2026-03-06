@@ -21,7 +21,7 @@ class ListDisasterRecoveryConfigKeysArgs {
   /// [authorizationRuleName] The authorization rule name.
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  ListDisasterRecoveryConfigKeysArgs({
+  const ListDisasterRecoveryConfigKeysArgs({
     required this.alias,
     required this.authorizationRuleName,
     required this.namespaceName,

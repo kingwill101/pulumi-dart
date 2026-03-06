@@ -21,7 +21,7 @@ class WorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the Workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.location,
     required this.resourceGroupName,
     this.tags,

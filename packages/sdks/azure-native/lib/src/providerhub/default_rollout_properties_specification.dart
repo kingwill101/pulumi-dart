@@ -46,7 +46,7 @@ class DefaultRolloutPropertiesSpecification {
   /// [resourceTypeRegistrations] The resource type registrations.
   /// [restOfTheWorldGroupOne] The rest of the world group one region configuration.
   /// [restOfTheWorldGroupTwo] The rest of the world group two region configuration.
-  DefaultRolloutPropertiesSpecification({
+  const DefaultRolloutPropertiesSpecification({
     this.autoProvisionConfig,
     this.canary,
     this.expeditedRollout,

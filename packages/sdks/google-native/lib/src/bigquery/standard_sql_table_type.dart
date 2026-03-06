@@ -10,7 +10,7 @@ class StandardSqlTableType {
 
   /// Creates a new [StandardSqlTableType].
   /// [columns] The columns in this table type
-  StandardSqlTableType({
+  const StandardSqlTableType({
     this.columns,
   });
 

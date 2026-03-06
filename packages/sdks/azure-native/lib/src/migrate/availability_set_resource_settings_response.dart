@@ -25,7 +25,7 @@ class AvailabilitySetResourceSettingsResponse {
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [updateDomain] Gets or sets the target update domain.
-  AvailabilitySetResourceSettingsResponse({
+  const AvailabilitySetResourceSettingsResponse({
     this.faultDomain,
     required this.resourceType,
     this.tags,

@@ -26,7 +26,7 @@ class VirtualMachineAutoBackup {
   /// [storageAccountAccessKey] Access key for the storage account where backups will be kept.
   /// [storageBlobEndpoint] Blob endpoint for the storage account where backups will be kept.
   /// [systemDatabasesBackupEnabled] Include or exclude system databases from auto backup.
-  VirtualMachineAutoBackup({
+  const VirtualMachineAutoBackup({
     this.encryptionEnabled,
     this.encryptionPassword,
     this.manualSchedule,

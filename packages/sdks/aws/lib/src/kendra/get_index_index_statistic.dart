@@ -13,7 +13,7 @@ class GetIndexIndexStatistic {
   /// Creates a new [GetIndexIndexStatistic].
   /// [faqStatistics] Block that specifies the number of question and answer topics in the index. Documented below.
   /// [textDocumentStatistics] A block that specifies the number of text documents indexed.
-  GetIndexIndexStatistic({
+  const GetIndexIndexStatistic({
     required this.faqStatistics,
     required this.textDocumentStatistics,
   });

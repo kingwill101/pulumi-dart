@@ -11,7 +11,7 @@ class RuntimeTemplateDataPersistentDiskSpec {
   /// Creates a new [RuntimeTemplateDataPersistentDiskSpec].
   /// [diskSizeGb] The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
   /// [diskType] The type of the persistent disk.
-  RuntimeTemplateDataPersistentDiskSpec({
+  const RuntimeTemplateDataPersistentDiskSpec({
     this.diskSizeGb,
     this.diskType,
   });

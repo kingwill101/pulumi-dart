@@ -13,7 +13,7 @@ class WorkspaceEncryptionParameterResponse {
   /// Creates a new [WorkspaceEncryptionParameterResponse].
   /// [type] The type of variable that this is
   /// [value] The value which should be used for this field.
-  WorkspaceEncryptionParameterResponse({
+  const WorkspaceEncryptionParameterResponse({
     required this.type,
     this.value,
   });

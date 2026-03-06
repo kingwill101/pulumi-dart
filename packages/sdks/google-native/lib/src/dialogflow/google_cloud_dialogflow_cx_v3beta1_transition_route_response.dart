@@ -28,7 +28,7 @@ class GoogleCloudDialogflowCxV3beta1TransitionRouteResponse {
   /// [targetFlow] The target flow to transition to. Format: `projects//locations//agents//flows/`.
   /// [targetPage] The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   /// [triggerFulfillment] The fulfillment to call when the condition is satisfied. At least one of `trigger_fulfillment` and `target` must be specified. When both are defined, `trigger_fulfillment` is executed first.
-  GoogleCloudDialogflowCxV3beta1TransitionRouteResponse({
+  const GoogleCloudDialogflowCxV3beta1TransitionRouteResponse({
     required this.condition,
     required this.description,
     required this.intent,

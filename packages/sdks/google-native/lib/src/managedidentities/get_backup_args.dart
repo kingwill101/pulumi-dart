@@ -15,7 +15,7 @@ class GetBackupArgs {
   /// [backupId] Required.
   /// [domainId] Required.
   /// [project] Optional.
-  GetBackupArgs({
+  const GetBackupArgs({
     required this.backupId,
     required this.domainId,
     this.project,

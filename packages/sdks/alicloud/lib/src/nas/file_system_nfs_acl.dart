@@ -8,7 +8,7 @@ class FileSystemNfsAcl {
 
   /// Creates a new [FileSystemNfsAcl].
   /// [enabled] Whether the NFS ACL function is enabled.
-  FileSystemNfsAcl({
+  const FileSystemNfsAcl({
     this.enabled,
   });
 

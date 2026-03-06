@@ -136,7 +136,7 @@ class GetSecurityGroupsGroup {
   /// [securityGroupType] The type of the security group.
   /// [tags] A map of tags assigned to the ECS instances. It must be in the format:
   /// [vpcId] Used to retrieve security groups that belong to the specified VPC ID.
-  GetSecurityGroupsGroup({
+  const GetSecurityGroupsGroup({
     required this.creationTime,
     required this.description,
     required this.id,

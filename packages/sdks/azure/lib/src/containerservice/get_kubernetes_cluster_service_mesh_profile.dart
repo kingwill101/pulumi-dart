@@ -21,7 +21,7 @@ class GetKubernetesClusterServiceMeshProfile {
   /// [internalIngressGatewayEnabled] Is Istio Internal Ingress Gateway enabled?
   /// [mode] The mode of the service mesh.
   /// [revisions] List of revisions of the Istio control plane. When an upgrade is not in progress, this holds one value. When canary upgrade is in progress, this can only hold two consecutive values. Learn More.
-  GetKubernetesClusterServiceMeshProfile({
+  const GetKubernetesClusterServiceMeshProfile({
     required this.certificateAuthorities,
     required this.externalIngressGatewayEnabled,
     required this.internalIngressGatewayEnabled,

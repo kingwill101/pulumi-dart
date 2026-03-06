@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec {
 
   /// Creates a new [GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec].
   /// [useElapsedDuration] True if Measurement.elapsed_duration is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.step_count will be used as the x-axis.
-  GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec({
+  const GoogleCloudAiplatformV1StudySpecDecayCurveAutomatedStoppingSpec({
     this.useElapsedDuration,
   });
 

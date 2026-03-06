@@ -18,7 +18,7 @@ class GetTableEntityArgs {
   /// [partitionKey] The key for the partition where the entity will be retrieved.
   /// [rowKey] The key for the row where the entity will be retrieved.
   /// [storageTableId] The Storage Table ID where the entity exists.
-  GetTableEntityArgs({
+  const GetTableEntityArgs({
     required this.partitionKey,
     required this.rowKey,
     required this.storageTableId,

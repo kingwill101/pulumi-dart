@@ -9,7 +9,7 @@ class Subnet {
 
   /// Creates a new [Subnet].
   /// [id] Specifies ARM resource id of the subnet.
-  Subnet({
+  const Subnet({
     required this.id,
   });
 

@@ -13,7 +13,7 @@ class StreamProcessorSettings {
   /// Creates a new [StreamProcessorSettings].
   /// [connectedHome] Label detection settings to use on a streaming video. See `connected_home`.
   /// [faceSearch] Input face recognition parameters for an Amazon Rekognition stream processor. See `face_search`.
-  StreamProcessorSettings({
+  const StreamProcessorSettings({
     this.connectedHome,
     this.faceSearch,
   });

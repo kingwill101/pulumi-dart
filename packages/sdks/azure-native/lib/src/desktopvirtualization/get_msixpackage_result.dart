@@ -57,7 +57,7 @@ class GetMSIXPackageResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Package version found in the appxmanifest.xml.
-  GetMSIXPackageResult({
+  const GetMSIXPackageResult({
     required this.azureApiVersion,
     this.displayName,
     required this.id,

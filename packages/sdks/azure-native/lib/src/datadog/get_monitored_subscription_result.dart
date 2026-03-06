@@ -21,7 +21,7 @@ class GetMonitoredSubscriptionResult {
   /// [name] Name of the monitored subscription resource.
   /// [properties] The request to update subscriptions needed to be monitored by the Datadog monitor resource.
   /// [type] The type of the monitored subscription resource.
-  GetMonitoredSubscriptionResult({
+  const GetMonitoredSubscriptionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

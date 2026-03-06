@@ -9,7 +9,7 @@ class GetLogDataProtectionPolicyDocumentConfiguration {
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentConfiguration].
   /// [customDataIdentifiers] Configures custom regular expressions to detect sensitive data. Read more in [Custom data identifiers](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL-custom-data-identifiers.html).
-  GetLogDataProtectionPolicyDocumentConfiguration({
+  const GetLogDataProtectionPolicyDocumentConfiguration({
     this.customDataIdentifiers,
   });
 

@@ -12,7 +12,7 @@ class NodeConfigResponseMemcacheV1beta2 {
   /// Creates a new [NodeConfigResponseMemcacheV1beta2].
   /// [cpuCount] Number of cpus per Memcached node.
   /// [memorySizeMb] Memory size in MiB for each Memcached node.
-  NodeConfigResponseMemcacheV1beta2({
+  const NodeConfigResponseMemcacheV1beta2({
     required this.cpuCount,
     required this.memorySizeMb,
   });

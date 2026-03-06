@@ -11,7 +11,7 @@ class JobStatistics5Response {
   /// Creates a new [JobStatistics5Response].
   /// [copiedLogicalBytes] Number of logical bytes copied to the destination table.
   /// [copiedRows] Number of rows copied to the destination table.
-  JobStatistics5Response({
+  const JobStatistics5Response({
     required this.copiedLogicalBytes,
     required this.copiedRows,
   });

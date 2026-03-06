@@ -17,7 +17,7 @@ class GetIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on the Managed Redis instance.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on the Managed Redis instance.
   /// [type] The type of Managed Service Identity configured on the Managed Redis instance.
-  GetIdentity({
+  const GetIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

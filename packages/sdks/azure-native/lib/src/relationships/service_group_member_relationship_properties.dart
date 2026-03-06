@@ -12,7 +12,7 @@ class ServiceGroupMemberRelationshipProperties {
   /// Creates a new [ServiceGroupMemberRelationshipProperties].
   /// [targetId] The relationship target resource id.
   /// [targetTenant] The relationship target tenant id.
-  ServiceGroupMemberRelationshipProperties({
+  const ServiceGroupMemberRelationshipProperties({
     required this.targetId,
     this.targetTenant,
   });

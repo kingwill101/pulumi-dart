@@ -8,7 +8,7 @@ class FirewallPolicyRuleSecureTag {
 
   /// Creates a new [FirewallPolicyRuleSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
-  FirewallPolicyRuleSecureTag({
+  const FirewallPolicyRuleSecureTag({
     this.name,
   });
 

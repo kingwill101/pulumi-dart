@@ -18,7 +18,7 @@ class WebAclRuleGroupAssociationManagedRuleGroup {
   /// [ruleActionOverrides] Override actions for specific rules within the rule group. See below.
   /// [vendorName] Name of the managed rule group vendor. For AWS managed rule groups, this is `AWS`.
   /// [version] Version of the managed rule group. If not specified, the default version is used.
-  WebAclRuleGroupAssociationManagedRuleGroup({
+  const WebAclRuleGroupAssociationManagedRuleGroup({
     required this.name,
     this.ruleActionOverrides,
     required this.vendorName,

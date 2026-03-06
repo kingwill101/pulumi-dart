@@ -8,7 +8,7 @@ class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings 
 
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings].
   /// [idleTimeoutInMinutes] The time that SageMaker AI waits after the application becomes idle before shutting it down. Valid values are between `60` and `525600`.
-  SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings({
+  const SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagementIdleSettings({
     this.idleTimeoutInMinutes,
   });
 

@@ -12,7 +12,7 @@ class VirtualDirectory {
   /// Creates a new [VirtualDirectory].
   /// [physicalPath] Physical path.
   /// [virtualPath] Path to virtual application.
-  VirtualDirectory({
+  const VirtualDirectory({
     this.physicalPath,
     this.virtualPath,
   });

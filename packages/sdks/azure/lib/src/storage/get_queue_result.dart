@@ -23,7 +23,7 @@ class GetQueueResult {
   /// [storageAccountId] Optional.
   /// [storageAccountName] Optional.
   /// [url] The data plane URL of the Storage Queue in the format of `&lt;storage queue endpoint&gt;/&lt;queue name&gt;`. E.g. `https://example.queue.core.windows.net/queue1`.
-  GetQueueResult({
+  const GetQueueResult({
     required this.id,
     required this.metadata,
     required this.name,

@@ -24,7 +24,7 @@ class EdgeCacheServiceRoutingHostRule {
   /// [description] A human-readable description of the hostRule.
   /// [hosts] The list of host patterns to match.
   /// [pathMatcher] The name of the pathMatcher associated with this hostRule.
-  EdgeCacheServiceRoutingHostRule({
+  const EdgeCacheServiceRoutingHostRule({
     this.description,
     required this.hosts,
     required this.pathMatcher,

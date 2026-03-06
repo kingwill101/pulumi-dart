@@ -11,7 +11,7 @@ class GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader {
   /// Creates a new [GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader].
   /// [name] The name of the Cloud Run Service.
   /// [value] The header field value.
-  GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader({
+  const GetServiceTemplateSpecContainerLivenessProbeHttpGetHttpHeader({
     required this.name,
     required this.value,
   });

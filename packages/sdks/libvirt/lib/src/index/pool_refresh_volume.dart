@@ -8,7 +8,7 @@ class PoolRefreshVolume {
 
   /// Creates a new [PoolRefreshVolume].
   /// [allocation] Defines how allocation amounts are calculated during the refresh operation for the volume.
-  PoolRefreshVolume({
+  const PoolRefreshVolume({
     required this.allocation,
   });
 

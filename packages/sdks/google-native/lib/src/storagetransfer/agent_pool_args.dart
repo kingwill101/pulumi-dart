@@ -24,7 +24,7 @@ class AgentPoolArgs {
   /// [displayName] Specifies the client-specified AgentPool description.
   /// [name] Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}`
   /// [project] Optional.
-  AgentPoolArgs({
+  const AgentPoolArgs({
     required this.agentPoolId,
     this.bandwidthLimit,
     this.displayName,

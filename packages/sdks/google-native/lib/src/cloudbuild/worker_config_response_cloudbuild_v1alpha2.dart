@@ -12,7 +12,7 @@ class WorkerConfigResponseCloudbuildV1alpha2 {
   /// Creates a new [WorkerConfigResponseCloudbuildV1alpha2].
   /// [diskSizeGb] Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size.
   /// [machineType] Machine Type of the worker, such as n1-standard-1. See https://cloud.google.com/compute/docs/machine-types. If left blank, Cloud Build will use a standard unspecified machine to create the worker pool.
-  WorkerConfigResponseCloudbuildV1alpha2({
+  const WorkerConfigResponseCloudbuildV1alpha2({
     required this.diskSizeGb,
     required this.machineType,
   });

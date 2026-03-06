@@ -15,7 +15,7 @@ class GetDeviceArgs {
   /// Creates a new [GetDeviceArgs].
   /// [deviceName] The name of the device resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     required this.deviceName,
     required this.resourceGroupName,
   });

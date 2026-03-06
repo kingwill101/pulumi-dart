@@ -124,7 +124,7 @@ class GetListenersSlbListener {
   /// [xForwardedForSlbId] Indicate whether the HTTP header field "X-Forwarded-For_SLBID" is added or not; it allows the backend server to know about the SLB ID. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
   /// [xForwardedForSlbIp] Indicate whether the HTTP header field "X-Forwarded-For_SLBIP" is added or not; it allows the backend server to know about the SLB IP address. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
   /// [xForwardedForSlbProto] Indicate whether the HTTP header field "X-Forwarded-For_proto" is added or not; it allows the backend server to know about the user's protocol. Possible values are `on` and `off`. Only available when the protocol is `http` or `https`.
-  GetListenersSlbListener({
+  const GetListenersSlbListener({
     required this.backendPort,
     required this.bandwidth,
     required this.caCertificateId,

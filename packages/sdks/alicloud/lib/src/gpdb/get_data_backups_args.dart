@@ -42,7 +42,7 @@ class GetDataBackupsArgs {
   /// [pageSize] Number of records per page.
   /// [startTime] The query start time. Format: yyyy-MM-ddTHH:mmZ(UTC time).
   /// [status] Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
-  GetDataBackupsArgs({
+  const GetDataBackupsArgs({
     this.backupMode,
     this.dataBackupId,
     this.dataType,

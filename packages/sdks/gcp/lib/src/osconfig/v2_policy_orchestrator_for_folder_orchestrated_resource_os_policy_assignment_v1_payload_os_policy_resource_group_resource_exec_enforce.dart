@@ -29,7 +29,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// [interpreter] The script interpreter to use.
   /// [outputFilePath] Only recorded for enforce Exec.
   /// [script] An inline script.
-  V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce({
+  const V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceExecEnforce({
     this.args,
     this.file,
     required this.interpreter,

@@ -17,7 +17,7 @@ class GetFirewallManagementIpConfiguration {
   /// [privateIpAddress] The private IP address associated with the Azure Firewall.
   /// [publicIpAddressId] The ID of the Public IP address of the Azure Firewall.
   /// [subnetId] The ID of the Subnet where the Azure Firewall is deployed.
-  GetFirewallManagementIpConfiguration({
+  const GetFirewallManagementIpConfiguration({
     required this.name,
     required this.privateIpAddress,
     required this.publicIpAddressId,

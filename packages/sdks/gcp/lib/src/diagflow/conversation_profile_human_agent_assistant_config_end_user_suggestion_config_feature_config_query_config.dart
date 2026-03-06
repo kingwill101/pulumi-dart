@@ -40,7 +40,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   /// [knowledgeBaseQuerySource] Query from knowledgebase.
   /// [maxResults] Maximum number of results to return.
   /// [sections] he customized sections chosen to return when requesting a summary of a conversation.
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigQueryConfig({
     this.confidenceThreshold,
     this.contextFilterSettings,
     this.dialogflowQuerySource,

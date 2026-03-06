@@ -24,7 +24,7 @@ class SystemDataResponse {
   /// [lastModifiedAt] The timestamp of resource last modification (UTC)
   /// [lastModifiedBy] A string identifier for the identity that last modified the resource
   /// [lastModifiedByType] The type of identity that last modified the resource: user, application, managedIdentity
-  SystemDataResponse({
+  const SystemDataResponse({
     required this.createdAt,
     required this.createdBy,
     required this.createdByType,

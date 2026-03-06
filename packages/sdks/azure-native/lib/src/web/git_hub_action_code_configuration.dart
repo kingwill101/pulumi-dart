@@ -12,7 +12,7 @@ class GitHubActionCodeConfiguration {
   /// Creates a new [GitHubActionCodeConfiguration].
   /// [runtimeStack] Runtime stack is used to determine the workflow file content for code base apps.
   /// [runtimeVersion] Runtime version is used to determine what build version to set in the workflow file.
-  GitHubActionCodeConfiguration({
+  const GitHubActionCodeConfiguration({
     this.runtimeStack,
     this.runtimeVersion,
   });

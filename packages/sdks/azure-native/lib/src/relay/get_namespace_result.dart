@@ -57,7 +57,7 @@ class GetNamespaceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updatedAt] The time the namespace was updated.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.azureApiVersion,
     required this.createdAt,
     required this.id,

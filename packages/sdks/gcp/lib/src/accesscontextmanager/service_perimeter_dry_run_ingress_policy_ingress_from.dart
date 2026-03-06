@@ -23,7 +23,7 @@ class ServicePerimeterDryRunIngressPolicyIngressFrom {
   /// [identities] Identities can be an individual user, service account, Google group,
   /// [identityType] Specifies the type of identities that are allowed access from outside the
   /// [sources] Sources that this `IngressPolicy` authorizes access from.
-  ServicePerimeterDryRunIngressPolicyIngressFrom({
+  const ServicePerimeterDryRunIngressPolicyIngressFrom({
     this.identities,
     this.identityType,
     this.sources,

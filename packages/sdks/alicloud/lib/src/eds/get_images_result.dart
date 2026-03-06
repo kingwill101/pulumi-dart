@@ -28,7 +28,7 @@ class GetImagesResult {
   /// [osType] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     this.desktopInstanceType,
     required this.id,
     required this.ids,

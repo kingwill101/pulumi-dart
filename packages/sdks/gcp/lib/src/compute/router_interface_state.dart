@@ -55,7 +55,7 @@ class RouterInterfaceState {
   /// [router] The name of the router this interface will be attached to.
   /// [subnetwork] The URI of the subnetwork resource that this interface
   /// [vpnTunnel] The name or resource link to the VPN tunnel this
-  RouterInterfaceState({
+  const RouterInterfaceState({
     this.interconnectAttachment,
     this.ipRange,
     this.ipVersion,

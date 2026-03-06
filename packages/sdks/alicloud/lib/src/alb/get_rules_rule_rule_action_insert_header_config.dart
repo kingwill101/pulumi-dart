@@ -14,7 +14,7 @@ class GetRulesRuleRuleActionInsertHeaderConfig {
   /// [key] The key of the query string.
   /// [value] The value of the query string.
   /// [valueType] The value type of the inserted header field.
-  GetRulesRuleRuleActionInsertHeaderConfig({
+  const GetRulesRuleRuleActionInsertHeaderConfig({
     required this.key,
     required this.value,
     required this.valueType,

@@ -16,7 +16,7 @@ class JobCollectionPropertiesResponse {
   /// [quota] Gets or sets the job collection quota.
   /// [sku] Gets or sets the SKU.
   /// [state] Gets or sets the state.
-  JobCollectionPropertiesResponse({
+  const JobCollectionPropertiesResponse({
     this.quota,
     this.sku,
     this.state,

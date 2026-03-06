@@ -9,7 +9,7 @@ class InsightFiltersFindingProviderFieldsSeverityOriginal {
   /// Creates a new [InsightFiltersFindingProviderFieldsSeverityOriginal].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersFindingProviderFieldsSeverityOriginal({
+  const InsightFiltersFindingProviderFieldsSeverityOriginal({
     required this.comparison,
     required this.value,
   });

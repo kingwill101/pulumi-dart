@@ -18,7 +18,7 @@ class GetMachineRunCommandArgs {
   /// [machineName] The name of the hybrid machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [runCommandName] The name of the run command.
-  GetMachineRunCommandArgs({
+  const GetMachineRunCommandArgs({
     required this.machineName,
     required this.resourceGroupName,
     required this.runCommandName,

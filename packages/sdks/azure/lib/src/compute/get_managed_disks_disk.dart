@@ -61,7 +61,7 @@ class GetManagedDisksDisk {
   /// [storageAccountType] The storage account type for the Managed Disk.
   /// [tags] A mapping of tags assigned to the resource.
   /// [zones] A list of Availability Zones where the Managed Disk exists.
-  GetManagedDisksDisk({
+  const GetManagedDisksDisk({
     required this.createOption,
     required this.diskAccessId,
     required this.diskEncryptionSetId,

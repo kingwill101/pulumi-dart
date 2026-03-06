@@ -53,7 +53,7 @@ class ApplicationCredentialState {
   /// [roles] A collection of one or more role names, which this
   /// [secret] The secret for the application credential. If omitted,
   /// [unrestricted] A flag indicating whether the application
-  ApplicationCredentialState({
+  const ApplicationCredentialState({
     this.accessRules,
     this.description,
     this.expiresAt,

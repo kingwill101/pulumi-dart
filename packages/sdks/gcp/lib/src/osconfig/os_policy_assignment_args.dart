@@ -42,7 +42,7 @@ class OsPolicyAssignmentArgs {
   /// [project] The project for the resource
   /// [rollout] Rollout to deploy the OS policy assignment. A rollout
   /// [skipAwaitRollout] Set to true to skip awaiting rollout during resource creation and update.
-  OsPolicyAssignmentArgs({
+  const OsPolicyAssignmentArgs({
     this.description,
     required this.instanceFilter,
     required this.location,

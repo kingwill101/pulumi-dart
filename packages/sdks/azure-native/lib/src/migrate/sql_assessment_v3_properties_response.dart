@@ -24,7 +24,7 @@ class SqlAssessmentV3PropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  SqlAssessmentV3PropertiesResponse({
+  const SqlAssessmentV3PropertiesResponse({
     this.details,
     this.fallbackMachineAssessmentArmId,
     required this.provisioningState,

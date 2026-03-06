@@ -21,7 +21,7 @@ class AzureFileShareConfiguration {
   /// [azureFileUrl] This is of the form 'https://{account}.file.core.windows.net/'.
   /// [mountOptions] These are 'net use' options in Windows and 'mount' options in Linux.
   /// [relativeMountPath] All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
-  AzureFileShareConfiguration({
+  const AzureFileShareConfiguration({
     required this.accountKey,
     required this.accountName,
     required this.azureFileUrl,

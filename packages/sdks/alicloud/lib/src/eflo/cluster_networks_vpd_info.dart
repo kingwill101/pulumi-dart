@@ -11,7 +11,7 @@ class ClusterNetworksVpdInfo {
   /// Creates a new [ClusterNetworksVpdInfo].
   /// [vpdId] VPC ID
   /// [vpdSubnets] List of cluster subnet ID
-  ClusterNetworksVpdInfo({
+  const ClusterNetworksVpdInfo({
     this.vpdId,
     this.vpdSubnets,
   });

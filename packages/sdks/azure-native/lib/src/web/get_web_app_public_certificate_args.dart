@@ -18,7 +18,7 @@ class GetWebAppPublicCertificateArgs {
   /// [name] Name of the app.
   /// [publicCertificateName] Public certificate name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppPublicCertificateArgs({
+  const GetWebAppPublicCertificateArgs({
     required this.name,
     required this.publicCertificateName,
     required this.resourceGroupName,

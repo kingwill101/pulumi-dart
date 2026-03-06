@@ -15,7 +15,7 @@ class GetSubscriptionArgs {
   /// Creates a new [GetSubscriptionArgs].
   /// [apiManagementId] The ID of the API Management Service in which this Subscription exists.
   /// [subscriptionId] The Identifier for the API Management Subscription.
-  GetSubscriptionArgs({
+  const GetSubscriptionArgs({
     required this.apiManagementId,
     required this.subscriptionId,
   });

@@ -18,7 +18,7 @@ class GoogleCloudRetailV2alphaInterval {
   /// [exclusiveMinimum] Exclusive lower bound.
   /// [maximum] Inclusive upper bound.
   /// [minimum] Inclusive lower bound.
-  GoogleCloudRetailV2alphaInterval({
+  const GoogleCloudRetailV2alphaInterval({
     this.exclusiveMaximum,
     this.exclusiveMinimum,
     this.maximum,

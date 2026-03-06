@@ -18,7 +18,7 @@ class X12SecuritySettings {
   /// [authorizationValue] The authorization value.
   /// [passwordValue] The password value.
   /// [securityQualifier] The security qualifier.
-  X12SecuritySettings({
+  const X12SecuritySettings({
     required this.authorizationQualifier,
     this.authorizationValue,
     this.passwordValue,

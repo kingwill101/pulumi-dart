@@ -37,7 +37,7 @@ class QueryArgs {
   /// [related] The related metadata items for the function.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Tags associated with the query.
-  QueryArgs({
+  const QueryArgs({
     required this.body,
     this.description,
     required this.displayName,

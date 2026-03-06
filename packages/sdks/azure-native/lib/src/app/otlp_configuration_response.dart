@@ -19,7 +19,7 @@ class OtlpConfigurationResponse {
   /// [headers] Headers of otlp configurations
   /// [insecure] Boolean indicating if otlp configuration is insecure
   /// [name] The name of otlp configuration
-  OtlpConfigurationResponse({
+  const OtlpConfigurationResponse({
     this.endpoint,
     this.headers,
     this.insecure,

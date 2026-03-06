@@ -12,7 +12,7 @@ class VolumeDataProtectionSnapshotPolicy {
 
   /// Creates a new [VolumeDataProtectionSnapshotPolicy].
   /// [snapshotPolicyId] Resource ID of the snapshot policy to apply to the volume.
-  VolumeDataProtectionSnapshotPolicy({
+  const VolumeDataProtectionSnapshotPolicy({
     required this.snapshotPolicyId,
   });
 

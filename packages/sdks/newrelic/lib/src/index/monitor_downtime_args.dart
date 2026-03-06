@@ -41,7 +41,7 @@ class MonitorDowntimeArgs {
   /// [name] A name to identify the Monitor Downtime to be created.
   /// [startTime] A datetime stamp signifying the start of the Monitor Downtime.
   /// [timeZone] The timezone that applies to the Monitor Downtime schedule.
-  MonitorDowntimeArgs({
+  const MonitorDowntimeArgs({
     this.accountId,
     this.endRepeat,
     required this.endTime,

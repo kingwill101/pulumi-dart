@@ -25,7 +25,7 @@ class IntegrationAccountCertificateState {
   /// [name] The name which should be used for this Logic App Integration Account Certificate. Changing this forces a new Logic App Integration Account Certificate to be created.
   /// [publicCertificate] The public certificate for the Logic App Integration Account Certificate.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Certificate should exist. Changing this forces a new Logic App Integration Account Certificate to be created.
-  IntegrationAccountCertificateState({
+  const IntegrationAccountCertificateState({
     this.integrationAccountName,
     this.keyVaultKey,
     this.metadata,

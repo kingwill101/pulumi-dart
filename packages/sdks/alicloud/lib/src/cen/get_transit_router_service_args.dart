@@ -14,7 +14,7 @@ class GetTransitRouterServiceArgs {
 
   /// Creates a new [GetTransitRouterServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
-  GetTransitRouterServiceArgs({
+  const GetTransitRouterServiceArgs({
     this.enable,
   });
 

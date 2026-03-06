@@ -10,7 +10,7 @@ class IdentityBindingProperties {
 
   /// Creates a new [IdentityBindingProperties].
   /// [managedIdentity] Managed identity profile for the identity binding.
-  IdentityBindingProperties({
+  const IdentityBindingProperties({
     required this.managedIdentity,
   });
 

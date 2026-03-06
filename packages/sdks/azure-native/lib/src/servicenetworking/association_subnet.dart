@@ -9,7 +9,7 @@ class AssociationSubnet {
 
   /// Creates a new [AssociationSubnet].
   /// [id] Association ID.
-  AssociationSubnet({
+  const AssociationSubnet({
     required this.id,
   });
 

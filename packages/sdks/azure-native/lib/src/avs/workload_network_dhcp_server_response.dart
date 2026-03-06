@@ -28,7 +28,7 @@ class WorkloadNetworkDhcpServerResponse {
   /// [revision] NSX revision number.
   /// [segments] NSX Segments consuming DHCP.
   /// [serverAddress] DHCP Server Address.
-  WorkloadNetworkDhcpServerResponse({
+  const WorkloadNetworkDhcpServerResponse({
     required this.dhcpType,
     this.displayName,
     this.leaseTime,

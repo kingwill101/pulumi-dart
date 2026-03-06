@@ -45,7 +45,7 @@ class ServerEndpointCloudTieringStatusResponse {
   /// [lowDiskMode] Information regarding the low disk mode state
   /// [spaceSavings] Information regarding how much local space cloud tiering is saving.
   /// [volumeFreeSpacePolicyStatus] Status of the volume free space policy
-  ServerEndpointCloudTieringStatusResponse({
+  const ServerEndpointCloudTieringStatusResponse({
     required this.cachePerformance,
     required this.datePolicyStatus,
     required this.filesNotTiering,

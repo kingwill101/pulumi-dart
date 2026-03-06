@@ -24,7 +24,7 @@ class GetServerCertificatesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The Id of resource group which the slb server certificates belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetServerCertificatesArgs({
+  const GetServerCertificatesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

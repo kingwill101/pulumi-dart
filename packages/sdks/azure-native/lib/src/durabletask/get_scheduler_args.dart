@@ -15,7 +15,7 @@ class GetSchedulerArgs {
   /// Creates a new [GetSchedulerArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schedulerName] The name of the Scheduler
-  GetSchedulerArgs({
+  const GetSchedulerArgs({
     required this.resourceGroupName,
     required this.schedulerName,
   });

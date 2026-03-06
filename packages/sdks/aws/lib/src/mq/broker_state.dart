@@ -93,7 +93,7 @@ class BrokerState {
   /// [tags] Map of tags to assign to the broker. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [users] Configuration block for broker users. For `engine_type` of `RabbitMQ`, Amazon MQ does not return broker users preventing this resource from making user updates and drift detection. Detailed below.
-  BrokerState({
+  const BrokerState({
     this.applyImmediately,
     this.arn,
     this.authenticationStrategy,

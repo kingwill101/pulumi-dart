@@ -20,7 +20,7 @@ class GetClusterNodePoolUpgradeSetting {
   /// [maxUnavailable] The maximum number or percentage of nodes which can be unavailable during the upgrade.
   /// [nodeSoakDurationInMinutes] The amount of time in minutes to wait after draining a node and before reimaging it and moving on to next node.
   /// [undrainableNodeBehavior] The action when a node is undrainable during upgrade. Possible values are `Cordon` and `Schedule`.
-  GetClusterNodePoolUpgradeSetting({
+  const GetClusterNodePoolUpgradeSetting({
     required this.drainTimeoutInMinutes,
     required this.maxSurge,
     required this.maxUnavailable,

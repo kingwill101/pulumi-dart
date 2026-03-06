@@ -12,7 +12,7 @@ class StorageAccountConfigurationResponse {
   /// Creates a new [StorageAccountConfigurationResponse].
   /// [storageAccountKey] The storage account access key.
   /// [storageAccountName] The storage account name.
-  StorageAccountConfigurationResponse({
+  const StorageAccountConfigurationResponse({
     this.storageAccountKey,
     this.storageAccountName,
   });

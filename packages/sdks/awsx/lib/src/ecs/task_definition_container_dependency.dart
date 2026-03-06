@@ -9,7 +9,7 @@ class TaskDefinitionContainerDependency {
   /// Creates a new [TaskDefinitionContainerDependency].
   /// [condition] Optional.
   /// [containerName] Optional.
-  TaskDefinitionContainerDependency({
+  const TaskDefinitionContainerDependency({
     this.condition,
     this.containerName,
   });

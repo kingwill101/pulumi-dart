@@ -12,7 +12,7 @@ class UserAccessRight {
   /// Creates a new [UserAccessRight].
   /// [accessType] Type of access to be allowed for the user.
   /// [userId] User ID (already existing in the device).
-  UserAccessRight({
+  const UserAccessRight({
     required this.accessType,
     required this.userId,
   });

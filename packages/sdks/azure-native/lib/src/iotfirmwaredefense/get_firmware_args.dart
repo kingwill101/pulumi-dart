@@ -18,7 +18,7 @@ class GetFirmwareArgs {
   /// [firmwareId] The id of the firmware.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the firmware analysis workspace.
-  GetFirmwareArgs({
+  const GetFirmwareArgs({
     required this.firmwareId,
     required this.resourceGroupName,
     required this.workspaceName,

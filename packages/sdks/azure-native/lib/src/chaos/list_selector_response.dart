@@ -21,7 +21,7 @@ class ListSelectorResponse {
   /// [id] String of the selector ID.
   /// [targets] List of Target references.
   /// [type] Enum of the selector type.
-  ListSelectorResponse({
+  const ListSelectorResponse({
     this.filter,
     required this.id,
     required this.targets,

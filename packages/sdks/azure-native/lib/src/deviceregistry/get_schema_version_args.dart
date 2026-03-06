@@ -21,7 +21,7 @@ class GetSchemaVersionArgs {
   /// [schemaName] Schema name parameter.
   /// [schemaRegistryName] Schema registry name parameter.
   /// [schemaVersionName] Schema version name parameter.
-  GetSchemaVersionArgs({
+  const GetSchemaVersionArgs({
     required this.resourceGroupName,
     required this.schemaName,
     required this.schemaRegistryName,

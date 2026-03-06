@@ -413,7 +413,7 @@ class ProviderArgs {
   /// [workflowsCustomEndpoint] Optional.
   /// [workstationsCustomEndpoint] Optional.
   /// [zone] Optional.
-  ProviderArgs({
+  const ProviderArgs({
     this.accessApprovalCustomEndpoint,
     this.accessContextManagerCustomEndpoint,
     this.accessToken,

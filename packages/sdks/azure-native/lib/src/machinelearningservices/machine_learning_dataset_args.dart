@@ -33,7 +33,7 @@ class MachineLearningDatasetArgs {
   /// [skipValidation] Skip validation that ensures data can be loaded from the dataset before registration.
   /// [timeSeries] Optional.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  MachineLearningDatasetArgs({
+  const MachineLearningDatasetArgs({
     this.datasetName,
     required this.datasetType,
     required this.parameters,

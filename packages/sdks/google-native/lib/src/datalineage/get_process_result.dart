@@ -18,7 +18,7 @@ class GetProcessResult {
   /// [displayName] Optional. A human-readable name you can set to display in a user interface. Must be not longer than 200 characters and only contain UTF-8 letters or numbers, spaces or characters like `_-:&.`
   /// [name] Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.`
   /// [origin] Optional. The origin of this process and its runs and lineage events.
-  GetProcessResult({
+  const GetProcessResult({
     required this.attributes,
     required this.displayName,
     required this.name,

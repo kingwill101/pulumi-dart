@@ -14,7 +14,7 @@ class KafkaClusterRolesZookeeperNodeScriptAction {
   /// [name] The name of the script action.
   /// [parameters] The parameters for the script provided.
   /// [uri] The URI to the script.
-  KafkaClusterRolesZookeeperNodeScriptAction({
+  const KafkaClusterRolesZookeeperNodeScriptAction({
     required this.name,
     this.parameters,
     required this.uri,

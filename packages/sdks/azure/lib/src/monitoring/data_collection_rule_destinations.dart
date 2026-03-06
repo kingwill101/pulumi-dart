@@ -41,7 +41,7 @@ class DataCollectionRuleDestinations {
   /// [storageBlobDirects] One or more `storage_blob_direct` blocks as defined below.
   /// [storageBlobs] One or more `storage_blob` blocks as defined below.
   /// [storageTableDirects] One or more `storage_table_direct` blocks as defined below.
-  DataCollectionRuleDestinations({
+  const DataCollectionRuleDestinations({
     this.azureMonitorMetrics,
     this.eventHub,
     this.eventHubDirect,

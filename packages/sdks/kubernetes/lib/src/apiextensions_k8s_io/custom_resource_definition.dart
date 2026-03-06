@@ -24,7 +24,7 @@ class CustomResourceDefinition {
   /// [metadata] Standard object's metadata More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec describes how the user wants the resources to appear
   /// [status] status indicates the actual state of the CustomResourceDefinition
-  CustomResourceDefinition({
+  const CustomResourceDefinition({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -21,7 +21,7 @@ class NotificationRecipientUserArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [userId] User identifier. Must be unique in the current API Management service instance.
-  NotificationRecipientUserArgs({
+  const NotificationRecipientUserArgs({
     required this.notificationName,
     required this.resourceGroupName,
     required this.serviceName,

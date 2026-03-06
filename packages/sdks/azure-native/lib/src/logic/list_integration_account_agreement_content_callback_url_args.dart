@@ -24,7 +24,7 @@ class ListIntegrationAccountAgreementContentCallbackUrlArgs {
   /// [keyType] The key type.
   /// [notAfter] The expiry time.
   /// [resourceGroupName] The resource group name.
-  ListIntegrationAccountAgreementContentCallbackUrlArgs({
+  const ListIntegrationAccountAgreementContentCallbackUrlArgs({
     required this.agreementName,
     required this.integrationAccountName,
     this.keyType,

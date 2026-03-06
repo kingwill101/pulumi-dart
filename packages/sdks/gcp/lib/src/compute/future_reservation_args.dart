@@ -86,7 +86,7 @@ class FutureReservationArgs {
   /// [specificReservationRequired] Indicates whether the auto-created reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from the delivered reservation.
   /// [specificSkuProperties] Future Reservation configuration to indicate instance properties and total count.
   /// [timeWindow] Time window for this Future Reservation.
-  FutureReservationArgs({
+  const FutureReservationArgs({
     this.aggregateReservation,
     this.autoCreatedReservationsDeleteTime,
     this.autoCreatedReservationsDuration,

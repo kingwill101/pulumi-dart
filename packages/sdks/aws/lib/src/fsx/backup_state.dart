@@ -35,7 +35,7 @@ class BackupState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of the file system backup.
   /// [volumeId] The ID of the volume to back up. Required if backing up a ONTAP Volume.
-  BackupState({
+  const BackupState({
     this.arn,
     this.fileSystemId,
     this.kmsKeyId,

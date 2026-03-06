@@ -15,7 +15,7 @@ class GetDeploymentStacksWhatIfResultsAtManagementGroupArgs {
   /// Creates a new [GetDeploymentStacksWhatIfResultsAtManagementGroupArgs].
   /// [deploymentStacksWhatIfResultName] Name of the deployment stack what-if result.
   /// [managementGroupId] The name of the management group. The name is case insensitive.
-  GetDeploymentStacksWhatIfResultsAtManagementGroupArgs({
+  const GetDeploymentStacksWhatIfResultsAtManagementGroupArgs({
     required this.deploymentStacksWhatIfResultName,
     required this.managementGroupId,
   });

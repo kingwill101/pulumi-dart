@@ -19,7 +19,7 @@ class EventNameFilterResponse {
   /// [systemEvents] Gets or sets a list of system events. Supported events: "connected" and "disconnected". Blocking event "connect" is not supported because it requires a response.
   /// [type] Expected value is 'EventName'.
   /// [userEventPattern] Gets or sets a matching pattern for event names.
-  EventNameFilterResponse({
+  const EventNameFilterResponse({
     this.systemEvents,
     required this.type,
     this.userEventPattern,

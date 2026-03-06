@@ -61,7 +61,7 @@ class ConnectivityTestArgs {
   /// [relatedProjects] Other projects that may be relevant for reachability analysis.
   /// [roundTrip] Whether run analysis for the return path from destination to source.
   /// [source] Required. Source specification of the Connectivity Test.
-  ConnectivityTestArgs({
+  const ConnectivityTestArgs({
     this.bypassFirewallChecks,
     this.description,
     required this.destination,

@@ -18,7 +18,7 @@ class GetApplicationArgs {
   /// [applicationName] The constant value for the application name.
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.applicationName,
     required this.clusterName,
     required this.resourceGroupName,

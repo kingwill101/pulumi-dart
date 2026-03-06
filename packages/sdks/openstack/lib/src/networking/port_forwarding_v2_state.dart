@@ -39,7 +39,7 @@ class PortForwardingV2State {
   /// [internalPortId] The ID of the Neutron port associated with the port forwarding. Changing
   /// [protocol] The IP protocol used in the port forwarding. Changing this updates the `protocol`
   /// [region] The region in which to obtain the V2 networking client.
-  PortForwardingV2State({
+  const PortForwardingV2State({
     this.description,
     this.externalPort,
     this.floatingipId,

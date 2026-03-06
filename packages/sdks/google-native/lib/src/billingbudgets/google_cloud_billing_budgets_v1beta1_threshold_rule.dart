@@ -13,7 +13,7 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
   /// Creates a new [GoogleCloudBillingBudgetsV1beta1ThresholdRule].
   /// [spendBasis] Optional. The type of basis used to determine if spend has passed the threshold. Behavior defaults to CURRENT_SPEND if not set.
   /// [thresholdPercent] Send an alert when this threshold is exceeded. This is a 1.0-based percentage, so 0.5 = 50%. Validation: non-negative number.
-  GoogleCloudBillingBudgetsV1beta1ThresholdRule({
+  const GoogleCloudBillingBudgetsV1beta1ThresholdRule({
     this.spendBasis,
     required this.thresholdPercent,
   });

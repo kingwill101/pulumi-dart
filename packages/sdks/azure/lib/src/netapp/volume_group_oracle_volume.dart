@@ -77,7 +77,7 @@ class VolumeGroupOracleVolume {
   /// [volumePath] A unique file path for the volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [volumeSpecName] Volume specification name. Possible values are `ora-data1`, `ora-data2`, `ora-data3`, `ora-data4`, `ora-data5`, `ora-data6`, `ora-data7`, `ora-data8`, `ora-log`, `ora-log-mirror`, `ora-binary` and `ora-backup`. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [zone] Specifies the Availability Zone in which the Volume should be located. Possible values are `1`, `2` and `3`, depending on the Azure region. Changing this forces a new resource to be created. This feature is currently in preview, for more information on how to enable it, please refer to [Manage availability zone volume placement for Azure NetApp Files](https://learn.microsoft.com/en-us/azure/azure-netapp-files/manage-availability-zone-volume-placement). Note that this cannot be used together with `proximity_placement_group_id`.
-  VolumeGroupOracleVolume({
+  const VolumeGroupOracleVolume({
     required this.capacityPoolId,
     this.dataProtectionReplication,
     this.dataProtectionSnapshotPolicy,

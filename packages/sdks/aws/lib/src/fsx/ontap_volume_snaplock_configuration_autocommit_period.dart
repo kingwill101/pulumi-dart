@@ -11,7 +11,7 @@ class OntapVolumeSnaplockConfigurationAutocommitPeriod {
   /// Creates a new [OntapVolumeSnaplockConfigurationAutocommitPeriod].
   /// [type] The type of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume. Setting this value to `NONE` disables autocommit. Valid values: `MINUTES`, `HOURS`, `DAYS`, `MONTHS`, `YEARS`, `NONE`.
   /// [value] The amount of time for the autocommit period of a file in an FSx for ONTAP SnapLock volume.
-  OntapVolumeSnaplockConfigurationAutocommitPeriod({
+  const OntapVolumeSnaplockConfigurationAutocommitPeriod({
     this.type,
     this.value,
   });

@@ -10,7 +10,7 @@ class EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual {
   /// Creates a new [EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
   /// [value] Required.
-  EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual({
+  const EventSubscriptionAdvancedFilterNumberGreaterThanOrEqual({
     required this.key,
     required this.value,
   });

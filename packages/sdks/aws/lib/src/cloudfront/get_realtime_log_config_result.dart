@@ -24,7 +24,7 @@ class GetRealtimeLogConfigResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [samplingRate] (Required) Sampling rate for this real-time log configuration. The sampling rate determines the percentage of viewer requests that are represented in the real-time log data. An integer between `1` and `100`, inclusive.
-  GetRealtimeLogConfigResult({
+  const GetRealtimeLogConfigResult({
     required this.arn,
     required this.endpoints,
     required this.fields,

@@ -13,7 +13,7 @@ class LustreFileSystemMetadataConfiguration {
   /// Creates a new [LustreFileSystemMetadataConfiguration].
   /// [iops] Amount of IOPS provisioned for metadata. This parameter should only be used when the mode is set to `USER_PROVISIONED`. Valid Values are `1500`,`3000`,`6000` and `12000` through `192000` in increments of `12000`. Valid values for `INTELLIGENT_TIERING` storage type are `6000` or `12000`.
   /// [mode] Mode for the metadata configuration of the file system. Valid values are `AUTOMATIC`, and `USER_PROVISIONED`. Must be set to `USER_PROVISIONED` for `INTELLIGENT_TIERING` storage type.
-  LustreFileSystemMetadataConfiguration({
+  const LustreFileSystemMetadataConfiguration({
     this.iops,
     this.mode,
   });

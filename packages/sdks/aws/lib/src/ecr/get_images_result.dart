@@ -19,7 +19,7 @@ class GetImagesResult {
   /// [region] Required.
   /// [registryId] Optional.
   /// [repositoryName] Required.
-  GetImagesResult({
+  const GetImagesResult({
     required this.id,
     required this.imageIds,
     required this.region,

@@ -15,7 +15,7 @@ class GetProfilesProfilesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [profiles] List of Profiles.
   /// [region] Required.
-  GetProfilesProfilesResult({
+  const GetProfilesProfilesResult({
     required this.id,
     required this.profiles,
     required this.region,

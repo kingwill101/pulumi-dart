@@ -15,7 +15,7 @@ class GetVaultArgs {
   /// Creates a new [GetVaultArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the recovery services vault.
-  GetVaultArgs({
+  const GetVaultArgs({
     required this.resourceGroupName,
     required this.vaultName,
   });

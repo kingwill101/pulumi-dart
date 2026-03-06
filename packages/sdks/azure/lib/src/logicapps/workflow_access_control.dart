@@ -21,7 +21,7 @@ class WorkflowAccessControl {
   /// [content] A `content` block as defined below.
   /// [trigger] A `trigger` block as defined below.
   /// [workflowManagement] A `workflow_management` block as defined below.
-  WorkflowAccessControl({
+  const WorkflowAccessControl({
     this.action,
     this.content,
     this.trigger,

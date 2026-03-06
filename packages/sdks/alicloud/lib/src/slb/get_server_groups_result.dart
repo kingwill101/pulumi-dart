@@ -25,7 +25,7 @@ class GetServerGroupsResult {
   /// [names] A list of SLB VServer groups names.
   /// [outputFile] Optional.
   /// [slbServerGroups] A list of SLB VServer groups. Each element contains the following attributes:
-  GetServerGroupsResult({
+  const GetServerGroupsResult({
     required this.id,
     required this.ids,
     required this.loadBalancerId,

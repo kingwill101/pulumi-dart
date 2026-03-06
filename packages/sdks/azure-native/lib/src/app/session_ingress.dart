@@ -9,7 +9,7 @@ class SessionIngress {
 
   /// Creates a new [SessionIngress].
   /// [targetPort] Target port in containers for traffic from ingress
-  SessionIngress({
+  const SessionIngress({
     this.targetPort,
   });
 

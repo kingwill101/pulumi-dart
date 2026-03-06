@@ -22,7 +22,7 @@ class EnterpriseCrmLoggingGwsFieldLimits {
   /// [maxArraySize] maximum array size. If the array exceds this size, the field (list) is truncated.
   /// [maxStringLength] maximum string length. If the field exceeds this amount the field is shortened.
   /// [shortenerType] Optional.
-  EnterpriseCrmLoggingGwsFieldLimits({
+  const EnterpriseCrmLoggingGwsFieldLimits({
     this.logAction,
     this.logType,
     this.maxArraySize,

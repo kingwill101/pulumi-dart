@@ -15,7 +15,7 @@ class ConsoleWithLocationArgs {
   /// Creates a new [ConsoleWithLocationArgs].
   /// [consoleName] The name of the console
   /// [location] The provider location
-  ConsoleWithLocationArgs({
+  const ConsoleWithLocationArgs({
     this.consoleName,
     required this.location,
   });

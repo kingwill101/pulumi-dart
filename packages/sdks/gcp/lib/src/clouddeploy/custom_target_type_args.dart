@@ -37,7 +37,7 @@ class CustomTargetTypeArgs {
   /// [location] The location of the source.
   /// [name] Name of the `CustomTargetType`.
   /// [project] The ID of the project in which the resource belongs.
-  CustomTargetTypeArgs({
+  const CustomTargetTypeArgs({
     this.annotations,
     this.customActions,
     this.description,

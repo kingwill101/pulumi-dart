@@ -12,7 +12,7 @@ class DataflowDestinationOperationSettings {
   /// Creates a new [DataflowDestinationOperationSettings].
   /// [dataDestination] Destination location, can be a topic or table name. Supports dynamic values with $topic, $systemProperties, $userProperties, $payload, $context, and $subscription.
   /// [endpointRef] Reference to the Endpoint CR. Can be of Broker, Kafka, Fabric, ADLS, ADX type.
-  DataflowDestinationOperationSettings({
+  const DataflowDestinationOperationSettings({
     required this.dataDestination,
     required this.endpointRef,
   });

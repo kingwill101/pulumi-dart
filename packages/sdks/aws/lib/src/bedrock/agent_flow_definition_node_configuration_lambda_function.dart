@@ -8,7 +8,7 @@ class AgentFlowDefinitionNodeConfigurationLambdaFunction {
 
   /// Creates a new [AgentFlowDefinitionNodeConfigurationLambdaFunction].
   /// [lambdaArn] The Amazon Resource Name (ARN) of the Lambda function to invoke.
-  AgentFlowDefinitionNodeConfigurationLambdaFunction({
+  const AgentFlowDefinitionNodeConfigurationLambdaFunction({
     required this.lambdaArn,
   });
 

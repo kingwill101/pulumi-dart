@@ -16,7 +16,7 @@ class PubsubConfig {
   /// [serviceAccountEmail] Service account that will make the push request.
   /// [state] Potential issues with the underlying Pub/Sub subscription configuration. Only populated on get requests.
   /// [topic] The name of the topic from which this subscription is receiving messages. Format is `projects/{project}/topics/{topic}`.
-  PubsubConfig({
+  const PubsubConfig({
     this.serviceAccountEmail,
     this.state,
     this.topic,

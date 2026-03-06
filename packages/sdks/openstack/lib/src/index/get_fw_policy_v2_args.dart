@@ -37,7 +37,7 @@ class GetFwPolicyV2Args {
   /// [region] The region in which to obtain the V2 Neutron client.
   /// [shared] Whether this policy is shared across all projects.
   /// [tenantId] This argument conflicts and is interchangeable
-  GetFwPolicyV2Args({
+  const GetFwPolicyV2Args({
     this.audited,
     this.description,
     this.name,

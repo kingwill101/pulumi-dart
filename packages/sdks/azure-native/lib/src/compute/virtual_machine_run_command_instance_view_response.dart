@@ -31,7 +31,7 @@ class VirtualMachineRunCommandInstanceViewResponse {
   /// [output] Script output stream.
   /// [startTime] Script start time.
   /// [statuses] The resource status information.
-  VirtualMachineRunCommandInstanceViewResponse({
+  const VirtualMachineRunCommandInstanceViewResponse({
     this.endTime,
     this.error,
     this.executionMessage,

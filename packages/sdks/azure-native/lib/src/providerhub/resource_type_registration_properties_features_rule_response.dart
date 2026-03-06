@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesFeaturesRuleResponse {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesFeaturesRuleResponse].
   /// [requiredFeaturesPolicy] The required feature policy.
-  ResourceTypeRegistrationPropertiesFeaturesRuleResponse({
+  const ResourceTypeRegistrationPropertiesFeaturesRuleResponse({
     required this.requiredFeaturesPolicy,
   });
 

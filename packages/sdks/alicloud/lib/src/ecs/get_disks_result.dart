@@ -85,7 +85,7 @@ class GetDisksResult {
   /// [totalCount] Required.
   /// [type] Disk type. Possible values: `system` and `data`.
   /// [zoneId] Optional.
-  GetDisksResult({
+  const GetDisksResult({
     this.additionalAttributes,
     this.autoSnapshotPolicyId,
     this.availabilityZone,

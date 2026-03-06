@@ -19,7 +19,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterVa
   /// [numberValue] Represents a double value.
   /// [stringListValue] A list of strings.
   /// [stringValue] Represents a string value.
-  CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue({
+  const CloudControlParameterSpecValidationAllowedValuesValueOneofValueParameterValue({
     this.boolValue,
     this.numberValue,
     this.stringListValue,

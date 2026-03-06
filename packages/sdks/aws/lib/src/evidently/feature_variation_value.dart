@@ -17,7 +17,7 @@ class FeatureVariationValue {
   /// [doubleValue] If this feature uses the double integer variation type, this field contains the double integer value of this variation.
   /// [longValue] If this feature uses the long variation type, this field contains the long value of this variation. Minimum value of `-9007199254740991`. Maximum value of `9007199254740991`.
   /// [stringValue] If this feature uses the string variation type, this field contains the string value of this variation. Minimum length of `0`. Maximum length of `512`.
-  FeatureVariationValue({
+  const FeatureVariationValue({
     this.boolValue,
     this.doubleValue,
     this.longValue,

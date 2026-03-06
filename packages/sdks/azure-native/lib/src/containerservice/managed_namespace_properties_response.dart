@@ -20,7 +20,7 @@ class ManagedNamespacePropertiesResponse {
   /// [defaultNetworkPolicy] The default network policy for the fleet managed namespace.
   /// [defaultResourceQuota] The default resource quota for the fleet managed namespace.
   /// [labels] The labels for the fleet managed namespace.
-  ManagedNamespacePropertiesResponse({
+  const ManagedNamespacePropertiesResponse({
     this.annotations,
     this.defaultNetworkPolicy,
     this.defaultResourceQuota,

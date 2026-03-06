@@ -11,7 +11,7 @@ class GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemor
   /// Creates a new [GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus].
   /// [max] Maximum.
   /// [min] Minimum.
-  GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus({
+  const GetGroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementMemoryGibPerVcpus({
     required this.max,
     required this.min,
   });

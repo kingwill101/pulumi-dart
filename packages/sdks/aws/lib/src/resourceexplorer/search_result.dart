@@ -24,7 +24,7 @@ class SearchResult {
   /// [resourceCounts] Number of resources that match the query. See `resource_count` below.
   /// [resources] List of structures that describe the resources that match the query. See `resources` below.
   /// [viewArn] Required.
-  SearchResult({
+  const SearchResult({
     required this.id,
     required this.queryString,
     required this.region,

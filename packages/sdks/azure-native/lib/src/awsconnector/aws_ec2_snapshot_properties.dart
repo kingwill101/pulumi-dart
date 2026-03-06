@@ -64,7 +64,7 @@ class AwsEc2SnapshotProperties {
   /// [tags] &lt;p&gt;Any tags assigned to the snapshot.&lt;/p&gt;
   /// [volumeId] &lt;p&gt;The ID of the volume that was used to create the snapshot. Snapshots created by the &lt;a&gt;CopySnapshot&lt;/a&gt; action have an arbitrary volume ID that should not be used for any purpose.&lt;/p&gt;
   /// [volumeSize] &lt;p&gt;The size of the volume, in GiB.&lt;/p&gt;
-  AwsEc2SnapshotProperties({
+  const AwsEc2SnapshotProperties({
     this.dataEncryptionKeyId,
     this.description,
     this.encrypted,

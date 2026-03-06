@@ -13,7 +13,7 @@ class ClusterGcpConfig {
   /// Creates a new [ClusterGcpConfig].
   /// [accessConfig] The configuration of access to the Kafka cluster.
   /// [kmsKey] The Cloud KMS Key name to use for encryption. The key must be located in the same region as the cluster and cannot be changed. Must be in the format `projects/PROJECT_ID/locations/LOCATION/keyRings/KEY_RING/cryptoKeys/KEY`.
-  ClusterGcpConfig({
+  const ClusterGcpConfig({
     required this.accessConfig,
     this.kmsKey,
   });

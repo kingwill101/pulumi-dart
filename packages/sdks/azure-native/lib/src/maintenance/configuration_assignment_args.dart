@@ -37,7 +37,7 @@ class ConfigurationAssignmentArgs {
   /// [resourceId] The unique resourceId
   /// [resourceName] Resource parent name
   /// [resourceType] Resource parent type
-  ConfigurationAssignmentArgs({
+  const ConfigurationAssignmentArgs({
     this.configurationAssignmentName,
     this.filter,
     this.location,

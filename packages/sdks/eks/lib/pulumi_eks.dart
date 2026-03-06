@@ -3,11 +3,11 @@
 import 'package:pulumi_eks/index.dart' as module_index;
 import 'package:pulumi_eks/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final AccessEntry = module_index.AccessEntry.new;
   final AccessEntryArgs = module_index.AccessEntry.new;
   final AccessEntryType = module_index.AccessEntryType.values;
@@ -77,6 +77,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Eks = module_providers.ProviderProvider.new;
 }

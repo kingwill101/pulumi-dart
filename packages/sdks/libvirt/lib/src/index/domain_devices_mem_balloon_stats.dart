@@ -8,7 +8,7 @@ class DomainDevicesMemBalloonStats {
 
   /// Creates a new [DomainDevicesMemBalloonStats].
   /// [period] Specifies the period for gathering statistics from the memory balloon device.
-  DomainDevicesMemBalloonStats({
+  const DomainDevicesMemBalloonStats({
     required this.period,
   });
 

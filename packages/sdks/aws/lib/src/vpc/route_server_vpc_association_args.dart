@@ -23,7 +23,7 @@ class RouteServerVpcAssociationArgs {
   /// [routeServerId] The unique identifier for the route server to be associated.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC to associate with the route server.
-  RouteServerVpcAssociationArgs({
+  const RouteServerVpcAssociationArgs({
     this.region,
     required this.routeServerId,
     this.timeouts,

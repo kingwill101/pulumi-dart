@@ -11,7 +11,7 @@ class GetClustersClusterOperationPolicyClusterAutoUpgrade {
   /// Creates a new [GetClustersClusterOperationPolicyClusterAutoUpgrade].
   /// [channel] Cluster automatic upgrade frequency.
   /// [enabled] Whether to enable cluster automatic upgrade.
-  GetClustersClusterOperationPolicyClusterAutoUpgrade({
+  const GetClustersClusterOperationPolicyClusterAutoUpgrade({
     required this.channel,
     required this.enabled,
   });

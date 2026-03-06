@@ -15,7 +15,7 @@ class GetConfigurationAssignmentsForResourceGroupArgs {
   /// Creates a new [GetConfigurationAssignmentsForResourceGroupArgs].
   /// [configurationAssignmentName] The name of the ConfigurationAssignment
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigurationAssignmentsForResourceGroupArgs({
+  const GetConfigurationAssignmentsForResourceGroupArgs({
     required this.configurationAssignmentName,
     required this.resourceGroupName,
   });

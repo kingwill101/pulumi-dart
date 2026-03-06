@@ -20,7 +20,7 @@ class GetGradientaiRegionsRegion {
   /// [servesBatch] Indicates if the model serves batch requests
   /// [servesInference] Indicates if the model serves inference requests
   /// [streamInferenceUrl] Streaming inference URL for the model
-  GetGradientaiRegionsRegion({
+  const GetGradientaiRegionsRegion({
     required this.inferenceUrl,
     required this.region,
     required this.servesBatch,

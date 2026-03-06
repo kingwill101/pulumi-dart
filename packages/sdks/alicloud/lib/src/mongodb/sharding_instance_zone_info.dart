@@ -21,7 +21,7 @@ class ShardingInstanceZoneInfo {
   /// [roleId] The role ID.
   /// [roleType] The role of the node.
   /// [zoneId] The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
-  ShardingInstanceZoneInfo({
+  const ShardingInstanceZoneInfo({
     this.insName,
     this.nodeType,
     this.roleId,

@@ -38,7 +38,7 @@ class ApprovalArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [stateChangedAt] Approval request state change time, time at which approval request state changed from pending to approved or rejected.
   /// [ticketId] Ticket ID for the approval request
-  ApprovalArgs({
+  const ApprovalArgs({
     this.approvalName,
     this.approvers,
     this.createdAt,

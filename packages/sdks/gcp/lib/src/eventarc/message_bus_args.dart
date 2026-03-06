@@ -45,7 +45,7 @@ class MessageBusArgs {
   /// [loggingConfig] The configuration for Platform Telemetry logging for Eventarc Advanced
   /// [messageBusId] Required. The user-provided ID to be assigned to the MessageBus. It should match the
   /// [project] The ID of the project in which the resource belongs.
-  MessageBusArgs({
+  const MessageBusArgs({
     this.annotations,
     this.cryptoKeyName,
     this.displayName,

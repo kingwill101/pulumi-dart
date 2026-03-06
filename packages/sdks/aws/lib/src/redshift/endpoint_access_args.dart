@@ -27,7 +27,7 @@ class EndpointAccessArgs {
   /// [resourceOwner] The Amazon Web Services account ID of the owner of the cluster. This is only required if the cluster is in another Amazon Web Services account.
   /// [subnetGroupName] The subnet group from which Amazon Redshift chooses the subnet to deploy the endpoint.
   /// [vpcSecurityGroupIds] The security group that defines the ports, protocols, and sources for inbound traffic that you are authorizing into your endpoint.
-  EndpointAccessArgs({
+  const EndpointAccessArgs({
     required this.clusterIdentifier,
     required this.endpointName,
     this.region,

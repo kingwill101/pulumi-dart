@@ -9,7 +9,7 @@ class IdentityConfigResponse {
 
   /// Creates a new [IdentityConfigResponse].
   /// [userServiceAccountMapping] Map of user to service account.
-  IdentityConfigResponse({
+  const IdentityConfigResponse({
     required this.userServiceAccountMapping,
   });
 

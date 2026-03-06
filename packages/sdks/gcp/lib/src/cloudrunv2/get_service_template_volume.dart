@@ -28,7 +28,7 @@ class GetServiceTemplateVolume {
   /// [name] The name of the Cloud Run v2 Service.
   /// [nfs] Represents an NFS mount.
   /// [secrets] Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  GetServiceTemplateVolume({
+  const GetServiceTemplateVolume({
     required this.cloudSqlInstances,
     required this.emptyDirs,
     required this.gcs,

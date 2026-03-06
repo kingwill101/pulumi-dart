@@ -20,7 +20,7 @@ class GetEbsVolumesResult {
   /// [ids] Set of all the EBS Volume IDs found. This data source will fail if
   /// [region] Required.
   /// [tags] Optional.
-  GetEbsVolumesResult({
+  const GetEbsVolumesResult({
     this.filters,
     required this.id,
     required this.ids,

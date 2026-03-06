@@ -18,7 +18,7 @@ class GetChannelArgs {
   /// [channelName] Name of the channel.
   /// [partnerNamespaceName] Name of the partner namespace.
   /// [resourceGroupName] The name of the resource group within the partners subscription.
-  GetChannelArgs({
+  const GetChannelArgs({
     required this.channelName,
     required this.partnerNamespaceName,
     required this.resourceGroupName,

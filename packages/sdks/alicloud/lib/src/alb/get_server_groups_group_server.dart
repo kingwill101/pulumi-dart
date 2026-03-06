@@ -26,7 +26,7 @@ class GetServerGroupsGroupServer {
   /// [serverType] The type of the server. The type of the server.
   /// [status] The status of the Server Group. Valid values: `Available`, `Configuring`, `Provisioning`.
   /// [weight] The weight of the server.
-  GetServerGroupsGroupServer({
+  const GetServerGroupsGroupServer({
     required this.description,
     required this.port,
     required this.serverId,

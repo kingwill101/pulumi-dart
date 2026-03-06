@@ -17,7 +17,7 @@ class FunctionAppSiteConfigIpRestrictionHeaders {
   /// [xFdHealthProbe] A list to allow the Azure FrontDoor health probe header. Only allowed value is "1".
   /// [xForwardedFors] A list of allowed 'X-Forwarded-For' IPs in CIDR notation with a maximum of 8
   /// [xForwardedHosts] A list of allowed 'X-Forwarded-Host' domains with a maximum of 8.
-  FunctionAppSiteConfigIpRestrictionHeaders({
+  const FunctionAppSiteConfigIpRestrictionHeaders({
     this.xAzureFdids,
     this.xFdHealthProbe,
     this.xForwardedFors,

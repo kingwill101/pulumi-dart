@@ -17,7 +17,7 @@ class GetDbSystemShapesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [zone] Optional.
-  GetDbSystemShapesResult({
+  const GetDbSystemShapesResult({
     required this.dbSystemShapes,
     required this.id,
     required this.location,

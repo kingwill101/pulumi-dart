@@ -22,7 +22,7 @@ class Repository {
   /// [displayUrl] Display url of repository.
   /// [pathMapping] Dictionary of source control content type and path mapping.
   /// [url] Url of repository.
-  Repository({
+  const Repository({
     this.branch,
     this.deploymentLogsUrl,
     this.displayUrl,

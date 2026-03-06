@@ -14,7 +14,7 @@ class PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule {
   /// [action] Describes the override action to be applied when rule matches. Possible values are `Allow`, `AnomalyScoring`, `Block`, `JSChallenge` and `Log`. `JSChallenge` is only valid for rulesets of type `Microsoft_BotManagerRuleSet`.
   /// [enabled] Describes if the managed rule is in enabled state or disabled state. Defaults to `false`.
   /// [id] Identifier for the managed rule.
-  PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule({
+  const PolicyManagedRulesManagedRuleSetRuleGroupOverrideRule({
     this.action,
     this.enabled,
     required this.id,

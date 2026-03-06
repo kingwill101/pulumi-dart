@@ -15,7 +15,7 @@ class GetLoadTestArgs {
   /// Creates a new [GetLoadTestArgs].
   /// [loadTestName] Load Test name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLoadTestArgs({
+  const GetLoadTestArgs({
     required this.loadTestName,
     required this.resourceGroupName,
   });

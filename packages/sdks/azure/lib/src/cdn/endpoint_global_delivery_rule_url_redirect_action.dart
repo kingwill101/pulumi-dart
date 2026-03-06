@@ -23,7 +23,7 @@ class EndpointGlobalDeliveryRuleUrlRedirectAction {
   /// [protocol] Specifies the protocol part of the URL. Valid values are `MatchRequest`, `Http` and `Https`. Defaults to `MatchRequest`.
   /// [queryString] Specifies the query string part of the URL. This value must not start with a `?` or `&` and must be in `&lt;key&gt;=&lt;value&gt;` format separated by `&`.
   /// [redirectType] Type of the redirect. Valid values are `Found`, `Moved`, `PermanentRedirect` and `TemporaryRedirect`.
-  EndpointGlobalDeliveryRuleUrlRedirectAction({
+  const EndpointGlobalDeliveryRuleUrlRedirectAction({
     this.fragment,
     this.hostname,
     this.path,

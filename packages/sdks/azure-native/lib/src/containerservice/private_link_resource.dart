@@ -21,7 +21,7 @@ class PrivateLinkResource {
   /// [name] The name of the private link resource.
   /// [requiredMembers] The RequiredMembers of the resource
   /// [type] The resource type.
-  PrivateLinkResource({
+  const PrivateLinkResource({
     this.groupId,
     this.id,
     this.name,

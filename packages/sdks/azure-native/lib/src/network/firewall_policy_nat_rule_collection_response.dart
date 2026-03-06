@@ -24,7 +24,7 @@ class FirewallPolicyNatRuleCollectionResponse {
   /// [priority] Priority of the Firewall Policy Rule Collection resource.
   /// [ruleCollectionType] The type of the rule collection.
   /// [rules] List of rules included in a rule collection.
-  FirewallPolicyNatRuleCollectionResponse({
+  const FirewallPolicyNatRuleCollectionResponse({
     this.action,
     this.name,
     this.priority,

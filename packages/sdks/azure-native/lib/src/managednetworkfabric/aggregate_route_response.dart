@@ -9,7 +9,7 @@ class AggregateRouteResponse {
 
   /// Creates a new [AggregateRouteResponse].
   /// [prefix] IPv4 Prefix of the aggregate Ipv4Route.
-  AggregateRouteResponse({
+  const AggregateRouteResponse({
     required this.prefix,
   });
 

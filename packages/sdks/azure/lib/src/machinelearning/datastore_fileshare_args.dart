@@ -33,7 +33,7 @@ class DatastoreFileshareArgs {
   /// [storageFileshareId] The ID of the Storage Account File Share. Changing this forces a new Machine Learning DataStore to be created.
   /// [tags] A mapping of tags which should be assigned to the Machine Learning DataStore. Changing this forces a new Machine Learning DataStore to be created.
   /// [workspaceId] The ID of the Machine Learning Workspace. Changing this forces a new Machine Learning DataStore to be created.
-  DatastoreFileshareArgs({
+  const DatastoreFileshareArgs({
     this.accountKey,
     this.description,
     this.name,

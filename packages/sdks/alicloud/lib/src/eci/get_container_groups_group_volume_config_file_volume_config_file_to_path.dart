@@ -11,7 +11,7 @@ class GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath {
   /// Creates a new [GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath].
   /// [content] The content of the configuration file. Maximum size: 32 KB.
   /// [path] The relative file path.
-  GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath({
+  const GetContainerGroupsGroupVolumeConfigFileVolumeConfigFileToPath({
     required this.content,
     required this.path,
   });

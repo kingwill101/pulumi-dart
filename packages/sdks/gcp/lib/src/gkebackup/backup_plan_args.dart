@@ -54,7 +54,7 @@ class BackupPlanArgs {
   /// [name] The full name of the BackupPlan Resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [retentionPolicy] RetentionPolicy governs lifecycle of Backups created under this plan.
-  BackupPlanArgs({
+  const BackupPlanArgs({
     this.backupConfig,
     this.backupSchedule,
     required this.cluster,

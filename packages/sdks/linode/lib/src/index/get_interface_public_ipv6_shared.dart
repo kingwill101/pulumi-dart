@@ -11,7 +11,7 @@ class GetInterfacePublicIpv6Shared {
   /// Creates a new [GetInterfacePublicIpv6Shared].
   /// [range] The IPv6 range.
   /// [routeTarget] The route target for this IPv6 range.
-  GetInterfacePublicIpv6Shared({
+  const GetInterfacePublicIpv6Shared({
     required this.range,
     required this.routeTarget,
   });

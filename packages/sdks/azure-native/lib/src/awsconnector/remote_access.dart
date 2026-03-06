@@ -12,7 +12,7 @@ class RemoteAccess {
   /// Creates a new [RemoteAccess].
   /// [ec2SshKey] Property ec2SshKey
   /// [sourceSecurityGroups] Property sourceSecurityGroups
-  RemoteAccess({
+  const RemoteAccess({
     this.ec2SshKey,
     this.sourceSecurityGroups,
   });

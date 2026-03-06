@@ -21,7 +21,7 @@ class GetNetworkAttachmentArgs {
   /// [name] The name of the network attachment to retrieve.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region in which the network attachment resides.
-  GetNetworkAttachmentArgs({
+  const GetNetworkAttachmentArgs({
     required this.name,
     this.project,
     required this.region,

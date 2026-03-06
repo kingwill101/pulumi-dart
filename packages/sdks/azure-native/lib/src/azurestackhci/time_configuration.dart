@@ -15,7 +15,7 @@ class TimeConfiguration {
   /// [primaryTimeServer] Primary NTP server.
   /// [secondaryTimeServer] Secondary NTP server.
   /// [timeZone] Time zone.
-  TimeConfiguration({
+  const TimeConfiguration({
     this.primaryTimeServer,
     this.secondaryTimeServer,
     this.timeZone,

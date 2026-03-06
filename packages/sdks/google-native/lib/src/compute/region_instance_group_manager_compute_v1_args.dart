@@ -66,7 +66,7 @@ class RegionInstanceGroupManagerComputeV1Args {
   /// [targetSize] The target number of running instances for this managed instance group. You can reduce this number by using the instanceGroupManager deleteInstances or abandonInstances methods. Resizing the group also changes this number.
   /// [updatePolicy] The update policy for this managed instance group.
   /// [versions] Specifies the instance templates used by this managed instance group to create instances. Each version is defined by an instanceTemplate and a name. Every version can appear at most once per instance group. This field overrides the top-level instanceTemplate field. Read more about the relationships between these fields. Exactly one version must leave the targetSize field unset. That version will be applied to all remaining instances. For more information, read about canary updates.
-  RegionInstanceGroupManagerComputeV1Args({
+  const RegionInstanceGroupManagerComputeV1Args({
     this.autoHealingPolicies,
     this.baseInstanceName,
     this.description,

@@ -23,7 +23,7 @@ class SecurityDeviceGroupArgs {
   /// [iothubId] The ID of the IoT Hub which to link the Security Device Group to. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Device Security Group. Changing this forces a new resource to be created.
   /// [rangeRules] One or more `range_rule` blocks as defined below.
-  SecurityDeviceGroupArgs({
+  const SecurityDeviceGroupArgs({
     this.allowRule,
     required this.iothubId,
     this.name,

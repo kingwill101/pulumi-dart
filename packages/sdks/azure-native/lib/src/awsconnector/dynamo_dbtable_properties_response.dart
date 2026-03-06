@@ -34,7 +34,7 @@ class DynamoDBTablePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DynamoDBTablePropertiesResponse({
+  const DynamoDBTablePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

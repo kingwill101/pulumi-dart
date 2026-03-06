@@ -18,7 +18,7 @@ class VpcAccessState {
   /// [name] The name of the authorization. The name must be unique.
   /// [port] The port number that corresponds to the instance.
   /// [vpcId] The ID of the VPC. The VPC must be an available one that belongs to the same account as the API.
-  VpcAccessState({
+  const VpcAccessState({
     this.instanceId,
     this.name,
     this.port,

@@ -15,7 +15,7 @@ class InquiryInfo {
   /// Creates a new [InquiryInfo].
   /// [inquiryDetails] Inquiry Details which will have workload specific details.
   /// [status] Inquiry Status for this container such as
-  InquiryInfo({
+  const InquiryInfo({
     this.inquiryDetails,
     this.status,
   });

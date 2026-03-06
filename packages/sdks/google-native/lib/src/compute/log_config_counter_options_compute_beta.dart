@@ -16,7 +16,7 @@ class LogConfigCounterOptionsComputeBeta {
   /// [customFields] This is deprecated and has no effect. Do not use.
   /// [field] This is deprecated and has no effect. Do not use.
   /// [metric] This is deprecated and has no effect. Do not use.
-  LogConfigCounterOptionsComputeBeta({
+  const LogConfigCounterOptionsComputeBeta({
     this.customFields,
     this.field,
     this.metric,

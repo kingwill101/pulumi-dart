@@ -30,7 +30,7 @@ class SharedPrivateLinkResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sharedPrivateLinkResourceName] The Shared Private Link resource name.
   /// [watcherName] The database watcher name.
-  SharedPrivateLinkResourceArgs({
+  const SharedPrivateLinkResourceArgs({
     this.dnsZone,
     required this.groupId,
     required this.privateLinkResourceId,

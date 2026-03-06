@@ -12,7 +12,7 @@ class GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction {
   /// Creates a new [GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction].
   /// [parameter] Display name of the parameter.
   /// [value] The new value of the parameter. A null value clears the parameter.
-  GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction({
+  const GoogleCloudDialogflowCxV3beta1FulfillmentSetParameterAction({
     this.parameter,
     this.value,
   });

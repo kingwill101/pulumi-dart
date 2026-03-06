@@ -12,7 +12,7 @@ class GlossaryTermResponse {
   /// Creates a new [GlossaryTermResponse].
   /// [languageCode] The language for this glossary term.
   /// [text] The text for the glossary term.
-  GlossaryTermResponse({
+  const GlossaryTermResponse({
     required this.languageCode,
     required this.text,
   });

@@ -15,7 +15,7 @@ class GetVolumeQuotaRuleArgs {
   /// Creates a new [GetVolumeQuotaRuleArgs].
   /// [name] The name of this Volume Quota Rule.
   /// [volumeId] The NetApp volume ID where the Volume Quota Rule is assigned to.
-  GetVolumeQuotaRuleArgs({
+  const GetVolumeQuotaRuleArgs({
     required this.name,
     required this.volumeId,
   });

@@ -27,7 +27,7 @@ class SearchResource {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceType] Type of the resource.
   /// [service] Amazon Web Service that owns the resource and is responsible for creating and updating it.
-  SearchResource({
+  const SearchResource({
     required this.arn,
     required this.lastReportedAt,
     required this.owningAccountId,

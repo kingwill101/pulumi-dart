@@ -18,7 +18,7 @@ class ApprovalRuleTemplateAssociationArgs {
   /// [approvalRuleTemplateName] The name for the approval rule template.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryName] The name of the repository that you want to associate with the template.
-  ApprovalRuleTemplateAssociationArgs({
+  const ApprovalRuleTemplateAssociationArgs({
     required this.approvalRuleTemplateName,
     this.region,
     required this.repositoryName,

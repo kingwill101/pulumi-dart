@@ -25,7 +25,7 @@ class GetImagesImage {
   /// [osDisks] An `os_disk` block as defined below.
   /// [tags] A mapping of tags assigned to the Image.
   /// [zoneResilient] Is zone resiliency enabled?
-  GetImagesImage({
+  const GetImagesImage({
     required this.dataDisks,
     required this.location,
     required this.name,

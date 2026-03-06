@@ -14,7 +14,7 @@ class GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse {
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse].
   /// [allowByDefault] A policy of allowing SMS to every region by default and adding disallowed regions to a disallow list.
   /// [allowlistOnly] A policy of only allowing regions by explicitly adding them to an allowlist.
-  GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse({
+  const GoogleCloudIdentitytoolkitAdminV2SmsRegionConfigResponse({
     required this.allowByDefault,
     required this.allowlistOnly,
   });

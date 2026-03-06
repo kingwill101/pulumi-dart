@@ -28,7 +28,7 @@ class GetServiceTaskResult {
   /// [properties] Custom task properties
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Resource type.
-  GetServiceTaskResult({
+  const GetServiceTaskResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

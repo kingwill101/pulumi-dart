@@ -26,7 +26,7 @@ class GetUserArgs {
   /// [mailNickname] The email alias of the user.
   /// [objectId] The object ID of the user.
   /// [userPrincipalName] The user principal name (UPN) of the user.
-  GetUserArgs({
+  const GetUserArgs({
     this.employeeId,
     this.mail,
     this.mailNickname,

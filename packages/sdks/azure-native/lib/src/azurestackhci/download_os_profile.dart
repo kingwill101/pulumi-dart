@@ -27,7 +27,7 @@ class DownloadOsProfile {
   /// [osType] Type of the operating system.
   /// [osVersion] Version of the operating system.
   /// [vsrVersion] Validated Solution Recipe version to be used for the job
-  DownloadOsProfile({
+  const DownloadOsProfile({
     this.gpgPubKey,
     this.imageHash,
     this.osImageLocation,

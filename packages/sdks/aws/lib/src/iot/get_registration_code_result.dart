@@ -13,7 +13,7 @@ class GetRegistrationCodeResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [registrationCode] The CA certificate registration code.
-  GetRegistrationCodeResult({
+  const GetRegistrationCodeResult({
     required this.id,
     required this.region,
     required this.registrationCode,

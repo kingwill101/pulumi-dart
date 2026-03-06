@@ -17,7 +17,7 @@ class DataSourceConfiguration {
   /// [s3Configuration] A block that provides the configuration information to connect to an Amazon S3 bucket as your data source. Detailed below.
   /// [templateConfiguration] A block that provides the configuration information required for Amazon Kendra Web Crawler. Detailed below.
   /// [webCrawlerConfiguration] A block that provides the configuration information required for Amazon Kendra Web Crawler. Detailed below.
-  DataSourceConfiguration({
+  const DataSourceConfiguration({
     this.s3Configuration,
     this.templateConfiguration,
     this.webCrawlerConfiguration,

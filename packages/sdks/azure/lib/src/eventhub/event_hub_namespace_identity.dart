@@ -21,7 +21,7 @@ class EventHubNamespaceIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Event Hub Namespace. Possible values are `SystemAssigned` or `UserAssigned`.
-  EventHubNamespaceIdentity({
+  const EventHubNamespaceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

@@ -12,7 +12,7 @@ class EndpointPropertiesResponse {
   /// Creates a new [EndpointPropertiesResponse].
   /// [name] The name of the endpoint.
   /// [port] Port used by the container.
-  EndpointPropertiesResponse({
+  const EndpointPropertiesResponse({
     required this.name,
     this.port,
   });

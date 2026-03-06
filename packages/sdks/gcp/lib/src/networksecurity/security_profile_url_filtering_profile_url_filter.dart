@@ -18,7 +18,7 @@ class SecurityProfileUrlFilteringProfileUrlFilter {
   /// [filteringAction] The action to take when the filter is applied.
   /// [priority] The priority of the filter within the URL filtering profile.
   /// [urls] A list of domain matcher strings that a domain name gets compared with to determine if the filter is applicable.
-  SecurityProfileUrlFilteringProfileUrlFilter({
+  const SecurityProfileUrlFilteringProfileUrlFilter({
     required this.filteringAction,
     required this.priority,
     this.urls,

@@ -14,7 +14,7 @@ class GetTrackerAssociationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [trackerName] Required.
-  GetTrackerAssociationResult({
+  const GetTrackerAssociationResult({
     required this.consumerArn,
     required this.id,
     required this.region,

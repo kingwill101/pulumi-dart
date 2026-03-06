@@ -8,7 +8,7 @@ class DbSystemPropertiesTimeZone {
 
   /// Creates a new [DbSystemPropertiesTimeZone].
   /// [id] IANA Time Zone Database time zone. For example "America/New_York".
-  DbSystemPropertiesTimeZone({
+  const DbSystemPropertiesTimeZone({
     this.id,
   });
 

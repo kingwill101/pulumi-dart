@@ -18,7 +18,7 @@ class GetUserSshKeyArgs {
   /// [encoding] Specifies the public key encoding format to use in the response. To retrieve the public key in ssh-rsa format, use `SSH`. To retrieve the public key in PEM format, use `PEM`.
   /// [sshPublicKeyId] Unique identifier for the SSH public key.
   /// [username] Name of the IAM user associated with the SSH public key.
-  GetUserSshKeyArgs({
+  const GetUserSshKeyArgs({
     required this.encoding,
     required this.sshPublicKeyId,
     required this.username,

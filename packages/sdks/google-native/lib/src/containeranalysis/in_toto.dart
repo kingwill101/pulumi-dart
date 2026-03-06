@@ -25,7 +25,7 @@ class InToto {
   /// [signingKeys] This field contains the public keys that can be used to verify the signatures on the step metadata.
   /// [stepName] This field identifies the name of the step in the supply chain.
   /// [threshold] This field contains a value that indicates the minimum number of keys that need to be used to sign the step's in-toto link.
-  InToto({
+  const InToto({
     this.expectedCommand,
     this.expectedMaterials,
     this.expectedProducts,

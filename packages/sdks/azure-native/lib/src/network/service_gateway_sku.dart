@@ -12,7 +12,7 @@ class ServiceGatewaySku {
   /// Creates a new [ServiceGatewaySku].
   /// [name] Name of a service gateway SKU.
   /// [tier] Tier of a service gateway SKU.
-  ServiceGatewaySku({
+  const ServiceGatewaySku({
     this.name,
     this.tier,
   });

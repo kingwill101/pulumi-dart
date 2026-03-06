@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetR
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

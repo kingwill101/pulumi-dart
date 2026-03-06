@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse].
   /// [header] Column heading.
   /// [horizontalAlignment] Optional. Defines text alignment for all cells in this column.
-  GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesResponse({
     required this.header,
     required this.horizontalAlignment,
   });

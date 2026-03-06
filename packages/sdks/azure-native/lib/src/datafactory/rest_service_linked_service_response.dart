@@ -92,7 +92,7 @@ class RestServiceLinkedServiceResponse {
   /// [url] The base URL of the REST service. Type: string (or Expression with resultType string).
   /// [userName] The user name used in Basic authentication type. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  RestServiceLinkedServiceResponse({
+  const RestServiceLinkedServiceResponse({
     this.aadResourceId,
     this.annotations,
     this.authHeaders,

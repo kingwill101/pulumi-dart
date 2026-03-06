@@ -42,7 +42,7 @@ class PrivateCloudArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [sendDeletionDelayHoursIfZero] While set true, deletion_delay_hours value will be sent in the request even for zero value of the field. This field is only useful for setting 0 value to the deletion_delay_hours field. It can be used both alone and together with deletion_delay_hours.
   /// [type] Initial type of the private cloud.
-  PrivateCloudArgs({
+  const PrivateCloudArgs({
     this.deletionDelayHours,
     this.description,
     required this.location,

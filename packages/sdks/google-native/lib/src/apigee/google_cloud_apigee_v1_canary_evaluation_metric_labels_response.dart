@@ -15,7 +15,7 @@ class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse {
   /// [env] The environment ID associated with the metrics.
   /// [instanceId] The instance ID associated with the metrics. In Apigee Hybrid, the value is configured during installation.
   /// [location] The location associated with the metrics.
-  GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse({
+  const GoogleCloudApigeeV1CanaryEvaluationMetricLabelsResponse({
     required this.env,
     required this.instanceId,
     required this.location,

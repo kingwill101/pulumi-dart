@@ -10,7 +10,7 @@ class RuleVariablesModelResponse {
 
   /// Creates a new [RuleVariablesModelResponse].
   /// [ruleVariables] Property ruleVariables
-  RuleVariablesModelResponse({
+  const RuleVariablesModelResponse({
     this.ruleVariables,
   });
 

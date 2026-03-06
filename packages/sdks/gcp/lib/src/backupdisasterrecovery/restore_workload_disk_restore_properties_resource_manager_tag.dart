@@ -11,7 +11,7 @@ class RestoreWorkloadDiskRestorePropertiesResourceManagerTag {
   /// Creates a new [RestoreWorkloadDiskRestorePropertiesResourceManagerTag].
   /// [key] The identifier for this object. Format specified above.
   /// [value] (Optional)
-  RestoreWorkloadDiskRestorePropertiesResourceManagerTag({
+  const RestoreWorkloadDiskRestorePropertiesResourceManagerTag({
     required this.key,
     this.value,
   });

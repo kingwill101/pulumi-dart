@@ -13,7 +13,7 @@ class DataLakeServiceStorageAuthenticationResponse {
   /// Creates a new [DataLakeServiceStorageAuthenticationResponse].
   /// [accessTokenSecretName] Access token secret name.
   /// [systemAssignedManagedIdentity] Configuration for managed identity authentication.
-  DataLakeServiceStorageAuthenticationResponse({
+  const DataLakeServiceStorageAuthenticationResponse({
     this.accessTokenSecretName,
     this.systemAssignedManagedIdentity,
   });

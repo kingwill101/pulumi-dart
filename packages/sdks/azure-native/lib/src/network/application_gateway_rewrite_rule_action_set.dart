@@ -17,7 +17,7 @@ class ApplicationGatewayRewriteRuleActionSet {
   /// [requestHeaderConfigurations] Request Header Actions in the Action Set.
   /// [responseHeaderConfigurations] Response Header Actions in the Action Set.
   /// [urlConfiguration] Url Configuration Action in the Action Set.
-  ApplicationGatewayRewriteRuleActionSet({
+  const ApplicationGatewayRewriteRuleActionSet({
     this.requestHeaderConfigurations,
     this.responseHeaderConfigurations,
     this.urlConfiguration,

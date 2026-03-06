@@ -29,7 +29,7 @@ class ReportConfigDataset {
   /// [granularity] The granularity of rows in the report.
   /// [grouping] Array of group by expression to use in the report. Report can have up to 2 group by clauses.
   /// [sorting] Array of order by expression to use in the report.
-  ReportConfigDataset({
+  const ReportConfigDataset({
     this.aggregation,
     this.configuration,
     this.filter,

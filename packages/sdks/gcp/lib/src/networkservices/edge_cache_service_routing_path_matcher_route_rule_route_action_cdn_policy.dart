@@ -89,7 +89,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy {
   /// [signedRequestMaximumExpirationTtl] Limit how far into the future the expiration time of a signed request may be.
   /// [signedRequestMode] Whether to enforce signed requests. The default value is DISABLED, which means all content is public, and does not authorize access.
   /// [signedTokenOptions] Additional options for signed tokens.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy({
     this.addSignatures,
     this.cacheKeyPolicy,
     this.cacheMode,

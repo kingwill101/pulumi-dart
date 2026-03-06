@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2OrConditionsResponse {
   /// Creates a new [GooglePrivacyDlpV2OrConditionsResponse].
   /// [minAge] Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater.
   /// [minRowCount] Minimum number of rows that should be present before Cloud DLP profiles a table
-  GooglePrivacyDlpV2OrConditionsResponse({
+  const GooglePrivacyDlpV2OrConditionsResponse({
     required this.minAge,
     required this.minRowCount,
   });

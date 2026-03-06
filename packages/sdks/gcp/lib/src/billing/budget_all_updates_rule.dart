@@ -34,7 +34,7 @@ class BudgetAllUpdatesRule {
   /// [monitoringNotificationChannels] The full resource name of a monitoring notification
   /// [pubsubTopic] The name of the Cloud Pub/Sub topic where budget related
   /// [schemaVersion] The schema version of the notification. Only "1.0" is
-  BudgetAllUpdatesRule({
+  const BudgetAllUpdatesRule({
     this.disableDefaultIamRecipients,
     this.enableProjectLevelRecipients,
     this.monitoringNotificationChannels,

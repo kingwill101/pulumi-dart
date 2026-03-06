@@ -43,7 +43,7 @@ class CapabilityState {
   /// [timeouts] Optional.
   /// [type] Type of the capability. Valid values: `ACK`, `KRO`, `ARGOCD`.
   /// [version] Version of the capability.
-  CapabilityState({
+  const CapabilityState({
     this.arn,
     this.capabilityName,
     this.clusterName,

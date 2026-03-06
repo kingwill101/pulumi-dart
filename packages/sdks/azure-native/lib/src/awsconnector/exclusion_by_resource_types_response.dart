@@ -9,7 +9,7 @@ class ExclusionByResourceTypesResponse {
 
   /// Creates a new [ExclusionByResourceTypesResponse].
   /// [resourceTypes] &lt;p&gt;A comma-separated list of resource types to exclude from recording by the configuration recorder.&lt;/p&gt;
-  ExclusionByResourceTypesResponse({
+  const ExclusionByResourceTypesResponse({
     this.resourceTypes,
   });
 

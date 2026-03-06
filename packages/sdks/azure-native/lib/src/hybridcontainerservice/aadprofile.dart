@@ -27,7 +27,7 @@ class AADProfile {
   /// [serverAppID] The server AAD application ID.
   /// [serverAppSecret] The server AAD application secret.
   /// [tenantID] The AAD tenant ID to use for authentication. If not specified, will use the tenant of the deployment subscription.
-  AADProfile({
+  const AADProfile({
     this.adminGroupObjectIDs,
     this.clientAppID,
     this.enableAzureRbac,

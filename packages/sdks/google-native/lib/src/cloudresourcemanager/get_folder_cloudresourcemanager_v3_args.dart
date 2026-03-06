@@ -11,7 +11,7 @@ class GetFolderCloudresourcemanagerV3Args {
 
   /// Creates a new [GetFolderCloudresourcemanagerV3Args].
   /// [folderId] Required.
-  GetFolderCloudresourcemanagerV3Args({
+  const GetFolderCloudresourcemanagerV3Args({
     required this.folderId,
   });
 

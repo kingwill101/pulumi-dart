@@ -12,7 +12,7 @@ class WindowsVirtualMachineSecret {
   /// Creates a new [WindowsVirtualMachineSecret].
   /// [certificates] One or more `certificate` blocks as defined above.
   /// [keyVaultId] The ID of the Key Vault from which all Secrets should be sourced.
-  WindowsVirtualMachineSecret({
+  const WindowsVirtualMachineSecret({
     required this.certificates,
     required this.keyVaultId,
   });

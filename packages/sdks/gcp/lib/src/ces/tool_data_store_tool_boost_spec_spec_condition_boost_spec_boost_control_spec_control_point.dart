@@ -17,7 +17,7 @@ class ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoi
   /// Creates a new [ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint].
   /// [attributeValue] Can be one of:
   /// [boostAmount] The value between -1 to 1 by which to boost the score if the
-  ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint({
+  const ToolDataStoreToolBoostSpecSpecConditionBoostSpecBoostControlSpecControlPoint({
     this.attributeValue,
     this.boostAmount,
   });

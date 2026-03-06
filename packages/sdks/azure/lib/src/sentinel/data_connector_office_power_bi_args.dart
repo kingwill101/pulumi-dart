@@ -20,7 +20,7 @@ class DataConnectorOfficePowerBiArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Office Power BI Data Connector resides in. Changing this forces a new Office Power BI Data Connector to be created.
   /// [name] The name which should be used for this Office Power BI Data Connector. Changing this forces a new Office Power BI Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Office Power BI Data Connector connects to. Changing this forces a new Office Power BI Data Connector to be created.
-  DataConnectorOfficePowerBiArgs({
+  const DataConnectorOfficePowerBiArgs({
     required this.logAnalyticsWorkspaceId,
     this.name,
     this.tenantId,

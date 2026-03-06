@@ -57,7 +57,7 @@ class DeviceRequestAllocationResultPatchResourceK8sIoV1beta1 {
   /// [request] Request is the name of the request in the claim which caused this device to be allocated. If it references a subrequest in the firstAvailable list on a DeviceRequest, this field must include both the name of the main request and the subrequest using the format &lt;main request&gt;/&lt;subrequest&gt;.
   /// [shareID] ShareID uniquely identifies an individual allocation share of the device, used when the device supports multiple simultaneous allocations. It serves as an additional map key to differentiate concurrent shares of the same device.
   /// [tolerations] A copy of all tolerations specified in the request at the time when the device got allocated.
-  DeviceRequestAllocationResultPatchResourceK8sIoV1beta1({
+  const DeviceRequestAllocationResultPatchResourceK8sIoV1beta1({
     this.adminAccess,
     this.bindingConditions,
     this.bindingFailureConditions,

@@ -13,7 +13,7 @@ class ContainerGroupIdentity {
   /// Creates a new [ContainerGroupIdentity].
   /// [type] The type of identity used for the container group. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the container group.
   /// [userAssignedIdentities] The list of user identities associated with the container group.
-  ContainerGroupIdentity({
+  const ContainerGroupIdentity({
     this.type,
     this.userAssignedIdentities,
   });

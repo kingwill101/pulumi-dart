@@ -23,7 +23,7 @@ class ProjectLogsConfigS3Logs {
   /// [encryptionDisabled] Whether to disable encrypting S3 logs. Defaults to `false`.
   /// [location] Name of the S3 bucket and the path prefix for S3 logs. Must be set if status is `ENABLED`,
   /// [status] Current status of logs in S3 for a build project. Valid values: `ENABLED`, `DISABLED`. Defaults
-  ProjectLogsConfigS3Logs({
+  const ProjectLogsConfigS3Logs({
     this.bucketOwnerAccess,
     this.encryptionDisabled,
     this.location,

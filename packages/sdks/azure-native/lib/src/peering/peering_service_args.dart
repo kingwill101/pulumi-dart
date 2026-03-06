@@ -37,7 +37,7 @@ class PeeringServiceArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [sku] The SKU that defines the type of the peering service.
   /// [tags] The resource tags.
-  PeeringServiceArgs({
+  const PeeringServiceArgs({
     this.location,
     this.peeringServiceLocation,
     this.peeringServiceName,

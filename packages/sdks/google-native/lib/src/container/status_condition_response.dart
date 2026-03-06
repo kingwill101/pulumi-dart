@@ -15,7 +15,7 @@ class StatusConditionResponse {
   /// [canonicalCode] Canonical code of the condition.
   /// [code] Machine-friendly representation of the condition Deprecated. Use canonical_code instead.
   /// [message] Human-friendly representation of the condition
-  StatusConditionResponse({
+  const StatusConditionResponse({
     required this.canonicalCode,
     required this.code,
     required this.message,

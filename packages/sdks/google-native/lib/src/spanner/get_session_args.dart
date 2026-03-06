@@ -17,7 +17,7 @@ class GetSessionArgs {
   /// [instanceId] Required.
   /// [project] Optional.
   /// [sessionId] Required.
-  GetSessionArgs({
+  const GetSessionArgs({
     required this.databaseId,
     required this.instanceId,
     this.project,

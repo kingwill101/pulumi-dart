@@ -9,7 +9,7 @@ class DnsCacheConfigResponse {
 
   /// Creates a new [DnsCacheConfigResponse].
   /// [enabled] Whether NodeLocal DNSCache is enabled for this cluster.
-  DnsCacheConfigResponse({
+  const DnsCacheConfigResponse({
     required this.enabled,
   });
 

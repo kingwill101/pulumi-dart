@@ -41,7 +41,7 @@ class IpsecServerArgs {
   /// [psk] The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
   /// [pskEnabled] Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
   /// [vpnGatewayId] The ID of the VPN gateway.
-  IpsecServerArgs({
+  const IpsecServerArgs({
     required this.clientIpPool,
     this.dryRun,
     this.effectImmediately,

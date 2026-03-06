@@ -16,7 +16,7 @@ class MccCacheNodeIssueHistoryPropertiesResponse {
   /// [cacheNodeId] Mcc cache node resource Id.
   /// [customerId] Mcc customer resource Id.
   /// [mccIssueHistory] Cache node resource issue details history.
-  MccCacheNodeIssueHistoryPropertiesResponse({
+  const MccCacheNodeIssueHistoryPropertiesResponse({
     required this.cacheNodeId,
     required this.customerId,
     this.mccIssueHistory,

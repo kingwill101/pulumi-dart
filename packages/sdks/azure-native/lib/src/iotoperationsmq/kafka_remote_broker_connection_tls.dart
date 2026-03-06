@@ -12,7 +12,7 @@ class KafkaRemoteBrokerConnectionTls {
   /// Creates a new [KafkaRemoteBrokerConnectionTls].
   /// [tlsEnabled] Tls Enabled on Remote Broker Connection.
   /// [trustedCaCertificateConfigMap] Trusted CA certificate name for Remote Broker.
-  KafkaRemoteBrokerConnectionTls({
+  const KafkaRemoteBrokerConnectionTls({
     required this.tlsEnabled,
     this.trustedCaCertificateConfigMap,
   });

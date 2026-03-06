@@ -18,7 +18,7 @@ class GetRegistryComponentContainerArgs {
   /// [componentName] Container name.
   /// [registryName] Name of Azure Machine Learning registry. This is case-insensitive
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRegistryComponentContainerArgs({
+  const GetRegistryComponentContainerArgs({
     required this.componentName,
     required this.registryName,
     required this.resourceGroupName,

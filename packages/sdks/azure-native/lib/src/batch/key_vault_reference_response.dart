@@ -12,7 +12,7 @@ class KeyVaultReferenceResponse {
   /// Creates a new [KeyVaultReferenceResponse].
   /// [id] The resource ID of the Azure key vault associated with the Batch account.
   /// [url] The URL of the Azure key vault associated with the Batch account.
-  KeyVaultReferenceResponse({
+  const KeyVaultReferenceResponse({
     required this.id,
     required this.url,
   });

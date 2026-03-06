@@ -15,7 +15,7 @@ class WorkspaceCappingResponse {
   /// [dailyQuotaGb] The workspace daily quota for ingestion.
   /// [dataIngestionStatus] The status of data ingestion for this workspace.
   /// [quotaNextResetTime] The time when the quota will be rest.
-  WorkspaceCappingResponse({
+  const WorkspaceCappingResponse({
     this.dailyQuotaGb,
     required this.dataIngestionStatus,
     required this.quotaNextResetTime,

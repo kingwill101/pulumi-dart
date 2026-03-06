@@ -17,7 +17,7 @@ class GetAlertRuleAnomalySingleSelectObservation {
   /// [name] The guid of this Sentinel Alert Rule Template. Either `display_name` or `name` have to be specified.
   /// [supportedValues] A list of supported values of the single select observation.
   /// [value] The value of the threshold observation.
-  GetAlertRuleAnomalySingleSelectObservation({
+  const GetAlertRuleAnomalySingleSelectObservation({
     required this.description,
     required this.name,
     required this.supportedValues,

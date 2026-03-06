@@ -17,7 +17,7 @@ class PipelineWorkload {
   /// Creates a new [PipelineWorkload].
   /// [dataflowFlexTemplateRequest] Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
   /// [dataflowLaunchTemplateRequest] Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-  PipelineWorkload({
+  const PipelineWorkload({
     this.dataflowFlexTemplateRequest,
     this.dataflowLaunchTemplateRequest,
   });

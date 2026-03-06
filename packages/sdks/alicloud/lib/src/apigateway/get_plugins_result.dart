@@ -30,7 +30,7 @@ class GetPluginsResult {
   /// [pluginType] Optional.
   /// [plugins] Required.
   /// [tags] Optional.
-  GetPluginsResult({
+  const GetPluginsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

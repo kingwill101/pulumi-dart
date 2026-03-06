@@ -33,7 +33,7 @@ class GetEtlsEtl {
   /// [lastModifiedTime] The time when the task was last modified. Example value: 1718787681
   /// [scheduleId] The task ID. Example values:
   /// [status] Task Status
-  GetEtlsEtl({
+  const GetEtlsEtl({
     required this.configuration,
     required this.createTime,
     required this.description,

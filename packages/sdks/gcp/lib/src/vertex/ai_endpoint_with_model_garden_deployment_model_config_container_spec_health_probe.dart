@@ -51,7 +51,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe {
   /// [successThreshold] Number of consecutive successes before the probe is considered successful.
   /// [tcpSocket] TcpSocketAction probes the health of a container by opening a TCP socket
   /// [timeoutSeconds] Number of seconds after which the probe times out. Defaults to 1 second.
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbe({
     this.exec,
     this.failureThreshold,
     this.grpc,

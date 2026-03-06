@@ -8,7 +8,7 @@ class GetInstanceClientConnectionConfigSslConfig {
 
   /// Creates a new [GetInstanceClientConnectionConfigSslConfig].
   /// [sslMode] SSL mode. Specifies client-server SSL/TLS connection behavior. Possible values: ["ENCRYPTED_ONLY", "ALLOW_UNENCRYPTED_AND_ENCRYPTED"]
-  GetInstanceClientConnectionConfigSslConfig({
+  const GetInstanceClientConnectionConfigSslConfig({
     required this.sslMode,
   });
 

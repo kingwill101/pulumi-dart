@@ -15,7 +15,7 @@ class GetWorkspaceArgs {
   /// Creates a new [GetWorkspaceArgs].
   /// [name] The name of this Virtual Desktop Workspace to retrieve.
   /// [resourceGroupName] The name of the Resource Group where the Virtual Desktop Workspace exists.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

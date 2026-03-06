@@ -32,7 +32,7 @@ class GetZoneArgs {
   /// [tags] A map of tags, each pair of which must exactly match a pair on the desired Hosted Zone.
   /// [vpcId] Filter to private Hosted Zones associated with the specified `vpc_id`.
   /// [zoneId] and `name` are mutually exclusive.
-  GetZoneArgs({
+  const GetZoneArgs({
     this.enableAcceleratedRecovery,
     this.name,
     this.privateZone,

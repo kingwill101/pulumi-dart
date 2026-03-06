@@ -12,7 +12,7 @@ class ManagementGroupSubscriptionArgs {
 
   /// Creates a new [ManagementGroupSubscriptionArgs].
   /// [groupId] Management Group ID.
-  ManagementGroupSubscriptionArgs({
+  const ManagementGroupSubscriptionArgs({
     required this.groupId,
   });
 

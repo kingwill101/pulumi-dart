@@ -44,7 +44,7 @@ class GetRouterInterfacesResult {
   /// [routerType] Router type in the local region. Possible values: `VRouter` and `VBR`.
   /// [specification] Router interface specification. Possible values: `Small.1`, `Middle.1`, `Large.2`, ...etc.
   /// [status] Router interface status. Possible values: `Active`, `Inactive` and `Idle`.
-  GetRouterInterfacesResult({
+  const GetRouterInterfacesResult({
     required this.id,
     required this.ids,
     required this.interfaces,

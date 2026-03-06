@@ -64,7 +64,7 @@ class GetLoadBalancersBalancer {
   /// [tags] The tag of the resource.
   /// [vpcId] The ID of the VPC where the NLB instance is deployed.
   /// [zoneMappings] The zones and the vSwitches in the zones. An NLB instance can be deployed across 2 to 10 zones.
-  GetLoadBalancersBalancer({
+  const GetLoadBalancersBalancer({
     required this.addressIpVersion,
     required this.addressType,
     required this.bandwidthPackageId,

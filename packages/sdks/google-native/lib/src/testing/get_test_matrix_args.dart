@@ -13,7 +13,7 @@ class GetTestMatrixArgs {
   /// Creates a new [GetTestMatrixArgs].
   /// [project] Optional.
   /// [testMatrixId] Required.
-  GetTestMatrixArgs({
+  const GetTestMatrixArgs({
     this.project,
     required this.testMatrixId,
   });

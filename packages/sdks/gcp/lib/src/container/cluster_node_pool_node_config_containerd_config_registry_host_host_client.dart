@@ -13,7 +13,7 @@ class ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient {
   /// Creates a new [ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient].
   /// [cert] Configures the client certificate.
   /// [key] Configures the client private key.
-  ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient({
+  const ClusterNodePoolNodeConfigContainerdConfigRegistryHostHostClient({
     required this.cert,
     this.key,
   });

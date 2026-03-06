@@ -15,7 +15,7 @@ class GetTlsInspectionPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tlsInspectionPolicyId] Required.
-  GetTlsInspectionPolicyArgs({
+  const GetTlsInspectionPolicyArgs({
     required this.location,
     this.project,
     required this.tlsInspectionPolicyId,

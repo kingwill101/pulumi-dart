@@ -9,7 +9,7 @@ class VMwareClusterNetworkConfigControlPlaneV2Config {
 
   /// Creates a new [VMwareClusterNetworkConfigControlPlaneV2Config].
   /// [controlPlaneIpBlock] Static IP addresses for the control plane nodes.
-  VMwareClusterNetworkConfigControlPlaneV2Config({
+  const VMwareClusterNetworkConfigControlPlaneV2Config({
     this.controlPlaneIpBlock,
   });
 

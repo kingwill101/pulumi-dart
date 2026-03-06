@@ -32,7 +32,7 @@ class ValidateOracleAzureDbForPostgreSqlSyncTaskPropertiesResponse {
   /// [output] An array containing a single validation error response object
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  ValidateOracleAzureDbForPostgreSqlSyncTaskPropertiesResponse({
+  const ValidateOracleAzureDbForPostgreSqlSyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

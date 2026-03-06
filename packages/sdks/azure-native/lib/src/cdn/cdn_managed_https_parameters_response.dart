@@ -20,7 +20,7 @@ class CdnManagedHttpsParametersResponse {
   /// [certificateSourceParameters] Defines the certificate source parameters using CDN managed certificate for enabling SSL.
   /// [minimumTlsVersion] TLS protocol version that will be used for Https
   /// [protocolType] Defines the TLS extension protocol that is used for secure delivery.
-  CdnManagedHttpsParametersResponse({
+  const CdnManagedHttpsParametersResponse({
     required this.certificateSource,
     required this.certificateSourceParameters,
     this.minimumTlsVersion,

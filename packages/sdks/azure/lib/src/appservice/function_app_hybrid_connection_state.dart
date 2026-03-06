@@ -36,7 +36,7 @@ class FunctionAppHybridConnectionState {
   /// [sendKeyValue] The Primary Access Key for the `send_key_name`
   /// [serviceBusNamespace] The Service Bus Namespace.
   /// [serviceBusSuffix] The suffix for the endpoint.
-  FunctionAppHybridConnectionState({
+  const FunctionAppHybridConnectionState({
     this.functionAppId,
     this.hostname,
     this.namespaceName,

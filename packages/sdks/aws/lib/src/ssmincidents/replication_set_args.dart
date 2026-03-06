@@ -31,7 +31,7 @@ class ReplicationSetArgs {
   /// [region] The replication set's Regions. Use `regions` instead.
   /// [regions] The replication set's Regions.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ReplicationSetArgs({
+  const ReplicationSetArgs({
     this.region,
     this.regions,
     this.tags,

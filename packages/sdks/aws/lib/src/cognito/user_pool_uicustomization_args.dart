@@ -24,7 +24,7 @@ class UserPoolUICustomizationArgs {
   /// [imageFile] The uploaded logo image for the UI customization, provided as a base64-encoded String. Drift detection is not possible for this argument. At least one of `css` or `image_file` is required.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID for the user pool.
-  UserPoolUICustomizationArgs({
+  const UserPoolUICustomizationArgs({
     this.clientId,
     this.css,
     this.imageFile,

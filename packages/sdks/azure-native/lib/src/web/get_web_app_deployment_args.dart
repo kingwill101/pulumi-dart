@@ -18,7 +18,7 @@ class GetWebAppDeploymentArgs {
   /// [id] Deployment ID.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppDeploymentArgs({
+  const GetWebAppDeploymentArgs({
     required this.id,
     required this.name,
     required this.resourceGroupName,

@@ -21,7 +21,7 @@ class GetDbInstancePlansPlanPlanConfig {
   /// [resumes] Resume instance plan config.
   /// [scaleIns] Scale In instance plan config.
   /// [scaleOuts] Scale out instance plan config.
-  GetDbInstancePlansPlanPlanConfig({
+  const GetDbInstancePlansPlanPlanConfig({
     required this.pauses,
     required this.resumes,
     required this.scaleIns,

@@ -20,7 +20,7 @@ class ApplicationApiAccessState {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [roleIds] A set of role IDs to be granted to the application, as published by the API.
   /// [scopeIds] A set of scope IDs to be granted to the application, as published by the API.
-  ApplicationApiAccessState({
+  const ApplicationApiAccessState({
     this.apiClientId,
     this.applicationId,
     this.roleIds,

@@ -11,7 +11,7 @@ class GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification {
   /// [tcpEstablishedTimeout] Required.
   /// [udpStreamTimeout] Required.
   /// [udpTimeout] Required.
-  GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification({
+  const GetLaunchTemplateNetworkInterfaceConnectionTrackingSpecification({
     required this.tcpEstablishedTimeout,
     required this.udpStreamTimeout,
     required this.udpTimeout,

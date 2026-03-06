@@ -11,7 +11,7 @@ class JobTemplateContainerLivenessProbeHeader {
   /// Creates a new [JobTemplateContainerLivenessProbeHeader].
   /// [name] The HTTP Header Name.
   /// [value] The HTTP Header value.
-  JobTemplateContainerLivenessProbeHeader({
+  const JobTemplateContainerLivenessProbeHeader({
     required this.name,
     required this.value,
   });

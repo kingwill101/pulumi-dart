@@ -24,7 +24,7 @@ class DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData {
   /// [lastModifiedAt] The timestamp of resource last modification (UTC)
   /// [lastModifiedBy] The identity that last modified the resource.
   /// [lastModifiedByType] The type of identity that last modified the resource.
-  DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData({
+  const DataCollectionRuleAssociationProxyOnlyResourceResponseSystemData({
     this.createdAt,
     this.createdBy,
     this.createdByType,

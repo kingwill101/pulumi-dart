@@ -29,7 +29,7 @@ class GetWebAppPublicCertificateResult {
   /// [publicCertificateLocation] Public Certificate Location
   /// [thumbprint] Certificate Thumbprint
   /// [type] Resource type.
-  GetWebAppPublicCertificateResult({
+  const GetWebAppPublicCertificateResult({
     required this.azureApiVersion,
     this.blob,
     required this.id,

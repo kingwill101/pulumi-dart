@@ -39,7 +39,7 @@ class VersionArgs {
   /// [primarySpec] The primary spec for this version. Format: projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}
   /// [project] Optional.
   /// [state] A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
-  VersionArgs({
+  const VersionArgs({
     this.annotations,
     required this.apiId,
     required this.apiVersionId,

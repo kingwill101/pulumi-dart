@@ -28,7 +28,7 @@ class DnsAuthorizationArgs {
   /// [location] Optional.
   /// [name] A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`.
   /// [project] Optional.
-  DnsAuthorizationArgs({
+  const DnsAuthorizationArgs({
     this.description,
     required this.dnsAuthorizationId,
     required this.domain,

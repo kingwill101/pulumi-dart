@@ -22,7 +22,7 @@ class IndexArgs {
   /// [kind] The entity kind to which this index applies.
   /// [project] Optional.
   /// [properties] An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
-  IndexArgs({
+  const IndexArgs({
     required this.ancestor,
     required this.kind,
     this.project,

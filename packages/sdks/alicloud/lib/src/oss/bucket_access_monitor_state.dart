@@ -12,7 +12,7 @@ class BucketAccessMonitorState {
   /// Creates a new [BucketAccessMonitorState].
   /// [bucket] The name of the bucket.
   /// [status] Specifies whether to enable access tracking for the bucket. Valid values: Enabled: enables access tracking. Disabled: disables access tracking.
-  BucketAccessMonitorState({
+  const BucketAccessMonitorState({
     this.bucket,
     this.status,
   });

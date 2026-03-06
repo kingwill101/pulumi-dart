@@ -9,7 +9,7 @@ class EffectiveOutboundIPResponse {
 
   /// Creates a new [EffectiveOutboundIPResponse].
   /// [id] The fully qualified Azure resource id of an IP address resource.
-  EffectiveOutboundIPResponse({
+  const EffectiveOutboundIPResponse({
     this.id,
   });
 

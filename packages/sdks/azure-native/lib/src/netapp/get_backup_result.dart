@@ -54,7 +54,7 @@ class GetBackupResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useExistingSnapshot] Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   /// [volumeResourceId] ResourceId used to identify the Volume
-  GetBackupResult({
+  const GetBackupResult({
     required this.azureApiVersion,
     required this.backupId,
     required this.backupPolicyResourceId,

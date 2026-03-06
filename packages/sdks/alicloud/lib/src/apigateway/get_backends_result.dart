@@ -24,7 +24,7 @@ class GetBackendsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetBackendsResult({
+  const GetBackendsResult({
     required this.backends,
     required this.id,
     required this.ids,

@@ -60,7 +60,7 @@ class GetExecutionsArgs {
   /// [status] The Status of OOS Execution. Valid: `Cancelled`, `Failed`, `Queued`, `Running`, `Started`, `Success`, `Waiting`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [templateName] The name of execution template.
-  GetExecutionsArgs({
+  const GetExecutionsArgs({
     this.category,
     this.endDate,
     this.endDateAfter,

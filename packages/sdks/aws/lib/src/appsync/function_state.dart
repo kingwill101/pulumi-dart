@@ -50,7 +50,7 @@ class FunctionState {
   /// [responseMappingTemplate] Function response mapping template.
   /// [runtime] Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See `runtime` Block for details.
   /// [syncConfig] Describes a Sync configuration for a resolver. See `sync_config` Block for details.
-  FunctionState({
+  const FunctionState({
     this.apiId,
     this.arn,
     this.code,

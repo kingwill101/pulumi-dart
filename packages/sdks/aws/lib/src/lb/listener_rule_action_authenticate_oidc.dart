@@ -38,7 +38,7 @@ class ListenerRuleActionAuthenticateOidc {
   /// [sessionTimeout] The maximum duration of the authentication session, in seconds.
   /// [tokenEndpoint] The token endpoint of the IdP.
   /// [userInfoEndpoint] The user info endpoint of the IdP.
-  ListenerRuleActionAuthenticateOidc({
+  const ListenerRuleActionAuthenticateOidc({
     this.authenticationRequestExtraParams,
     required this.authorizationEndpoint,
     required this.clientId,

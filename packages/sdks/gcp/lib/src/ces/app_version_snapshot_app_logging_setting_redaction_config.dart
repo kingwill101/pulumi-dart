@@ -24,7 +24,7 @@ class AppVersionSnapshotAppLoggingSettingRedactionConfig {
   /// [deidentifyTemplate] (Output)
   /// [enableRedaction] (Output)
   /// [inspectTemplate] (Output)
-  AppVersionSnapshotAppLoggingSettingRedactionConfig({
+  const AppVersionSnapshotAppLoggingSettingRedactionConfig({
     this.deidentifyTemplate,
     this.enableRedaction,
     this.inspectTemplate,

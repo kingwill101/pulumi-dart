@@ -12,7 +12,7 @@ class WebhookThrottleConfig {
   /// Creates a new [WebhookThrottleConfig].
   /// [burst] ThrottleBurst is the maximum number of events sent at the same moment default 15 QPS
   /// [qps] ThrottleQPS maximum number of batches per second default 10 QPS
-  WebhookThrottleConfig({
+  const WebhookThrottleConfig({
     this.burst,
     this.qps,
   });

@@ -24,7 +24,7 @@ class OptionGroupOption {
   /// [port] Port number when connecting to the option (e.g., 11211). Leaving out or removing `port` from your configuration does not remove or clear a port from the option in AWS. AWS may assign a default port. Not including `port` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any port changes.
   /// [version] Version of the option (e.g., 13.1.0.0). Leaving out or removing `version` from your configuration does not remove or clear a version from the option in AWS. AWS may assign a default version. Not including `version` in your configuration means that the AWS provider will ignore a previously set value, a value set by AWS, and any version changes.
   /// [vpcSecurityGroupMemberships] List of VPC Security Groups for which the option is enabled.
-  OptionGroupOption({
+  const OptionGroupOption({
     this.dbSecurityGroupMemberships,
     required this.optionName,
     this.optionSettings,

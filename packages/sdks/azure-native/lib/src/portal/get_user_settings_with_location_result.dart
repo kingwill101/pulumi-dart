@@ -12,7 +12,7 @@ class GetUserSettingsWithLocationResult {
   /// Creates a new [GetUserSettingsWithLocationResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [properties] The cloud shell user settings properties.
-  GetUserSettingsWithLocationResult({
+  const GetUserSettingsWithLocationResult({
     required this.azureApiVersion,
     required this.properties,
   });

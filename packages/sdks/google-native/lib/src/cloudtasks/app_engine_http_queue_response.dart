@@ -10,7 +10,7 @@ class AppEngineHttpQueueResponse {
 
   /// Creates a new [AppEngineHttpQueueResponse].
   /// [appEngineRoutingOverride] Overrides for the task-level app_engine_routing. If set, `app_engine_routing_override` is used for all tasks in the queue, no matter what the setting is for the task-level app_engine_routing.
-  AppEngineHttpQueueResponse({
+  const AppEngineHttpQueueResponse({
     required this.appEngineRoutingOverride,
   });
 

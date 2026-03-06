@@ -74,7 +74,7 @@ class GetSubnetResult {
   /// [state] Required.
   /// [tags] Required.
   /// [vpcId] Required.
-  GetSubnetResult({
+  const GetSubnetResult({
     required this.arn,
     required this.assignIpv6AddressOnCreation,
     required this.availabilityZone,

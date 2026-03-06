@@ -13,7 +13,7 @@ class NotificationsSourceAttackPathResponse {
   /// Creates a new [NotificationsSourceAttackPathResponse].
   /// [minimalRiskLevel] Defines the minimal attach path risk level which will be sent as email notifications
   /// [sourceType] The source type that will trigger the notification
-  NotificationsSourceAttackPathResponse({
+  const NotificationsSourceAttackPathResponse({
     this.minimalRiskLevel,
     required this.sourceType,
   });

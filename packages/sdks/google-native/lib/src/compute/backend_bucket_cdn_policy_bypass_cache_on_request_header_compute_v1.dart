@@ -9,7 +9,7 @@ class BackendBucketCdnPolicyBypassCacheOnRequestHeaderComputeV1 {
 
   /// Creates a new [BackendBucketCdnPolicyBypassCacheOnRequestHeaderComputeV1].
   /// [headerName] The header field name to match on when bypassing cache. Values are case-insensitive.
-  BackendBucketCdnPolicyBypassCacheOnRequestHeaderComputeV1({
+  const BackendBucketCdnPolicyBypassCacheOnRequestHeaderComputeV1({
     this.headerName,
   });
 

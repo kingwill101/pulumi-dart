@@ -10,7 +10,7 @@ class GetAppTemplateTcpScaleRuleAuthentication {
   /// Creates a new [GetAppTemplateTcpScaleRuleAuthentication].
   /// [secretName] The name of the secret that contains the value for this environment variable.
   /// [triggerParameter] Required.
-  GetAppTemplateTcpScaleRuleAuthentication({
+  const GetAppTemplateTcpScaleRuleAuthentication({
     required this.secretName,
     required this.triggerParameter,
   });

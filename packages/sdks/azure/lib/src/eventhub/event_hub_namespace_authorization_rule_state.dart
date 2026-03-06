@@ -44,7 +44,7 @@ class EventHubNamespaceAuthorizationRuleState {
   /// [secondaryConnectionStringAlias] The alias of the Secondary Connection String for the Authorization Rule, which is generated when disaster recovery is enabled.
   /// [secondaryKey] The Secondary Key for the Authorization Rule.
   /// [send] Grants send access to this this Authorization Rule. Defaults to `false`.
-  EventHubNamespaceAuthorizationRuleState({
+  const EventHubNamespaceAuthorizationRuleState({
     this.listen,
     this.manage,
     this.name,

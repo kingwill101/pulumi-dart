@@ -13,7 +13,7 @@ class Oauth2ClientCredentialsResponse {
   /// Creates a new [Oauth2ClientCredentialsResponse].
   /// [clientId] The client identifier.
   /// [clientSecret] Secret version reference containing the client secret.
-  Oauth2ClientCredentialsResponse({
+  const Oauth2ClientCredentialsResponse({
     required this.clientId,
     required this.clientSecret,
   });

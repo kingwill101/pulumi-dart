@@ -14,7 +14,7 @@ class GetSecretArgs {
   /// Creates a new [GetSecretArgs].
   /// [region] Optional.
   /// [secrets] Required.
-  GetSecretArgs({
+  const GetSecretArgs({
     this.region,
     required this.secrets,
   });

@@ -19,7 +19,7 @@ class GetAccountJwtResult {
   /// [jwt] The signed JWT containing the JWT Claims Set from the `payload`.
   /// [payload] Required.
   /// [targetServiceAccount] Required.
-  GetAccountJwtResult({
+  const GetAccountJwtResult({
     this.delegates,
     this.expiresIn,
     required this.id,

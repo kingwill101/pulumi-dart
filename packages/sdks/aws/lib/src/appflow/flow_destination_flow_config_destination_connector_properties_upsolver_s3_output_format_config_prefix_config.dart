@@ -14,7 +14,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFor
   /// [prefixFormat] Determines the level of granularity that's included in the prefix. Valid values are `YEAR`, `MONTH`, `DAY`, `HOUR`, and `MINUTE`.
   /// [prefixHierarchies] Determines whether the destination file path includes either or both of the selected elements. Valid values are `EXECUTION_ID` and `SCHEMA_VERSION`
   /// [prefixType] Determines the format of the prefix, and whether it applies to the file name, file path, or both. Valid values are `FILENAME`, `PATH`, and `PATH_AND_FILENAME`.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigPrefixConfig({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesUpsolverS3OutputFormatConfigPrefixConfig({
     this.prefixFormat,
     this.prefixHierarchies,
     required this.prefixType,

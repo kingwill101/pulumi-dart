@@ -8,7 +8,7 @@ class ListAgentPoolQueueStatusResult {
 
   /// Creates a new [ListAgentPoolQueueStatusResult].
   /// [count] The number of pending runs in the queue
-  ListAgentPoolQueueStatusResult({
+  const ListAgentPoolQueueStatusResult({
     this.count,
   });
 

@@ -15,7 +15,7 @@ class SelectorResponse {
   /// [in_] The list of values to filter in.
   /// [kind] The selector kind.
   /// [notIn] The list of values to filter out.
-  SelectorResponse({
+  const SelectorResponse({
     this.in_,
     this.kind,
     this.notIn,

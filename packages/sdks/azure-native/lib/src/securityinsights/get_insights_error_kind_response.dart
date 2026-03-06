@@ -15,7 +15,7 @@ class GetInsightsErrorKindResponse {
   /// [errorMessage] the error message
   /// [kind] the query kind
   /// [queryId] the query id
-  GetInsightsErrorKindResponse({
+  const GetInsightsErrorKindResponse({
     required this.errorMessage,
     required this.kind,
     this.queryId,

@@ -37,7 +37,7 @@ class HubState {
   /// [namespaceName] The name of the Notification Hub Namespace in which to create this Notification Hub. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the Notification Hub Namespace exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  HubState({
+  const HubState({
     this.apnsCredential,
     this.browserCredential,
     this.gcmCredential,

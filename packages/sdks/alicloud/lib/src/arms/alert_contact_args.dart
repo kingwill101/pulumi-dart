@@ -24,7 +24,7 @@ class AlertContactArgs {
   /// [email] The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
   /// [phoneNum] The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
   /// [systemNoc] Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
-  AlertContactArgs({
+  const AlertContactArgs({
     this.alertContactName,
     this.dingRobotWebhookUrl,
     this.email,

@@ -9,7 +9,7 @@ class VirtualHardDiskArmReferenceResponse {
 
   /// Creates a new [VirtualHardDiskArmReferenceResponse].
   /// [id] The Azure Resource ID for a Virtual Hard Disk.
-  VirtualHardDiskArmReferenceResponse({
+  const VirtualHardDiskArmReferenceResponse({
     this.id,
   });
 

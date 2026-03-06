@@ -19,7 +19,7 @@ class MetricConfiguration {
   /// [mdmAccount] The MDM account to which the counters should be pushed.
   /// [metricNameSpace] The MDM namespace to which the counters should be pushed. This is required if MDMAccount is specified
   /// [resourceId] The Resource ID on which the metrics should be pushed.
-  MetricConfiguration({
+  const MetricConfiguration({
     required this.counterSets,
     this.mdmAccount,
     this.metricNameSpace,

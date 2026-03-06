@@ -28,7 +28,7 @@ class ConnectionArgs {
   /// [reservedPeeringRanges] Named IP address range(s) of PEERING type reserved for
   /// [service] Provider peering service that is managing peering connectivity for a
   /// [updateOnCreationFail] When set to true, enforce an update of the reserved peering ranges on the existing service networking connection in case of a new connection creation failure.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.deletionPolicy,
     required this.network,
     required this.reservedPeeringRanges,

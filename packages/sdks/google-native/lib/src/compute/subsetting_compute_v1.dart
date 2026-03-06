@@ -9,7 +9,7 @@ class SubsettingComputeV1 {
 
   /// Creates a new [SubsettingComputeV1].
   /// [policy] Optional.
-  SubsettingComputeV1({
+  const SubsettingComputeV1({
     this.policy,
   });
 

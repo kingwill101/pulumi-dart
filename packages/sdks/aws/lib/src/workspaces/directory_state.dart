@@ -89,7 +89,7 @@ class DirectoryState {
   /// [workspaceDirectoryName] The name of the WorkSpaces directory when `workspace_type` is set to `POOLS`.
   /// [workspaceSecurityGroupId] The identifier of the security group that is assigned to new WorkSpaces.
   /// [workspaceType] Specifies the type of WorkSpaces directory. Valid values are `PERSONAL` and `POOLS`. Default is `PERSONAL`.
-  DirectoryState({
+  const DirectoryState({
     this.activeDirectoryConfig,
     this.alias,
     this.certificateBasedAuthProperties,

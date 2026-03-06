@@ -38,7 +38,7 @@ class AlidnsDomainState {
   /// [remark] Remarks information for your domain name.
   /// [resourceGroupId] The Id of resource group which the dns domain belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  AlidnsDomainState({
+  const AlidnsDomainState({
     this.dnsServers,
     this.domainId,
     this.domainName,

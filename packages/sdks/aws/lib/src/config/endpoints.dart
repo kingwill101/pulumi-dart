@@ -932,7 +932,7 @@ class Endpoints {
   /// [workspaces] Use this to override the default service endpoint URL
   /// [workspacesweb] Use this to override the default service endpoint URL
   /// [xray] Use this to override the default service endpoint URL
-  Endpoints({
+  const Endpoints({
     this.accessanalyzer,
     this.account,
     this.acm,

@@ -13,7 +13,7 @@ class RoutingRuleCondition {
   /// Creates a new [RoutingRuleCondition].
   /// [matchBasePaths] The base path to be matched. See below.
   /// [matchHeaders] The headers to be matched. See below.
-  RoutingRuleCondition({
+  const RoutingRuleCondition({
     this.matchBasePaths,
     this.matchHeaders,
   });

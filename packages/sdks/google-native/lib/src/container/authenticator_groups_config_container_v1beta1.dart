@@ -12,7 +12,7 @@ class AuthenticatorGroupsConfigContainerV1beta1 {
   /// Creates a new [AuthenticatorGroupsConfigContainerV1beta1].
   /// [enabled] Whether this cluster should return group membership lookups during authentication using a group of security groups.
   /// [securityGroup] The name of the security group-of-groups to be used. Only relevant if enabled = true.
-  AuthenticatorGroupsConfigContainerV1beta1({
+  const AuthenticatorGroupsConfigContainerV1beta1({
     this.enabled,
     this.securityGroup,
   });

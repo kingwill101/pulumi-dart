@@ -11,7 +11,7 @@ class GetAutonomousDatabasePropertyApexDetail {
   /// Creates a new [GetAutonomousDatabasePropertyApexDetail].
   /// [apexVersion] The Oracle APEX Application Development version.
   /// [ordsVersion] The Oracle REST Data Services (ORDS) version.
-  GetAutonomousDatabasePropertyApexDetail({
+  const GetAutonomousDatabasePropertyApexDetail({
     required this.apexVersion,
     required this.ordsVersion,
   });

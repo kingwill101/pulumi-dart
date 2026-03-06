@@ -26,7 +26,7 @@ class VirtualGatewaySpecListenerHealthCheck {
   /// [protocol] Protocol for the health check request. Valid values are `http`, `http2`, and `grpc`.
   /// [timeoutMillis] Amount of time to wait when receiving a response from the health check, in milliseconds.
   /// [unhealthyThreshold] Number of consecutive failed health checks that must occur before declaring a virtual gateway unhealthy.
-  VirtualGatewaySpecListenerHealthCheck({
+  const VirtualGatewaySpecListenerHealthCheck({
     required this.healthyThreshold,
     required this.intervalMillis,
     this.path,

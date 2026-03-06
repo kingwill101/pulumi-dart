@@ -18,7 +18,7 @@ class InstanceDiscoveryEndpoint {
   /// [address] (Output)
   /// [network] (Output)
   /// [port] (Output)
-  InstanceDiscoveryEndpoint({
+  const InstanceDiscoveryEndpoint({
     this.address,
     this.network,
     this.port,

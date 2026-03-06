@@ -22,7 +22,7 @@ class SiteReferenceArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteReferenceName] The name of the SiteReference
-  SiteReferenceArgs({
+  const SiteReferenceArgs({
     required this.contextName,
     this.properties,
     required this.resourceGroupName,

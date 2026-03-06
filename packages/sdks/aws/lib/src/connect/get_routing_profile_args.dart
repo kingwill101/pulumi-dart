@@ -26,7 +26,7 @@ class GetRoutingProfileArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingProfileId] Returns information on a specific Routing Profile by Routing Profile id
   /// [tags] Map of tags to assign to the Routing Profile.
-  GetRoutingProfileArgs({
+  const GetRoutingProfileArgs({
     required this.instanceId,
     this.name,
     this.region,

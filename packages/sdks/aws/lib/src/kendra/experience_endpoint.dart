@@ -11,7 +11,7 @@ class ExperienceEndpoint {
   /// Creates a new [ExperienceEndpoint].
   /// [endpoint] The endpoint of your Amazon Kendra experience.
   /// [endpointType] The type of endpoint for your Amazon Kendra experience.
-  ExperienceEndpoint({
+  const ExperienceEndpoint({
     this.endpoint,
     this.endpointType,
   });

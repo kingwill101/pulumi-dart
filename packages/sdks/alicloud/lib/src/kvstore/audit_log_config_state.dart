@@ -27,7 +27,7 @@ class AuditLogConfigState {
   /// [instanceId] Instance ID, Call the Describeinstances Get.
   /// [retention] Audit Log Retention Period Value: 1~365.
   /// [status] The status of the resource.
-  AuditLogConfigState({
+  const AuditLogConfigState({
     this.createTime,
     this.dbAudit,
     this.instanceId,

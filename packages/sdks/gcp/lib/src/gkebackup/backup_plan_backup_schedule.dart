@@ -22,7 +22,7 @@ class BackupPlanBackupSchedule {
   /// [cronSchedule] A standard cron string that defines a repeating schedule for
   /// [paused] This flag denotes whether automatic Backup creation is paused for this BackupPlan.
   /// [rpoConfig] Defines the RPO schedule configuration for this BackupPlan. This is mutually
-  BackupPlanBackupSchedule({
+  const BackupPlanBackupSchedule({
     this.cronSchedule,
     this.paused,
     this.rpoConfig,

@@ -26,7 +26,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaPanorama {
   /// [panoramaServer2] The name of the Second Panorana server.
   /// [templateName] The name of the Panorama Template applied to this Firewall Resource.
   /// [virtualMachineSshKey] The SSH Key to connect to the Firewall Resource.
-  NextGenerationFirewallVirtualNetworkPanoramaPanorama({
+  const NextGenerationFirewallVirtualNetworkPanoramaPanorama({
     this.deviceGroupName,
     this.hostName,
     this.name,

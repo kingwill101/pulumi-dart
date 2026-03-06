@@ -34,7 +34,7 @@ class CustomKeyStoreState {
   /// [xksProxyUriEndpoint] Optional.
   /// [xksProxyUriPath] Optional.
   /// [xksProxyVpcEndpointServiceName] Optional.
-  CustomKeyStoreState({
+  const CustomKeyStoreState({
     this.cloudHsmClusterId,
     this.customKeyStoreName,
     this.customKeyStoreType,

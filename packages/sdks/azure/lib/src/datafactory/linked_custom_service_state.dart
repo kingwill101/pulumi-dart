@@ -35,7 +35,7 @@ class LinkedCustomServiceState {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [type] The type of data stores that will be connected to Data Factory. For full list of supported data stores, please refer to [Azure Data Factory connector](https://docs.microsoft.com/azure/data-factory/connector-overview). Please refer to Microsoft.DataFactory factories/linkedservices for the type values syntax. Changing this forces a new resource to be created.
   /// [typePropertiesJson] A JSON object that contains the properties of the Data Factory Linked Service. Refer to
-  LinkedCustomServiceState({
+  const LinkedCustomServiceState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

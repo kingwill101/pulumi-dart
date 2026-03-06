@@ -15,7 +15,7 @@ class GetManagedClusterSnapshotArgs {
   /// Creates a new [GetManagedClusterSnapshotArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetManagedClusterSnapshotArgs({
+  const GetManagedClusterSnapshotArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -8,7 +8,7 @@ class GetAlertsAlertConfigurationSinkCms {
 
   /// Creates a new [GetAlertsAlertConfigurationSinkCms].
   /// [enabled] Open.
-  GetAlertsAlertConfigurationSinkCms({
+  const GetAlertsAlertConfigurationSinkCms({
     required this.enabled,
   });
 

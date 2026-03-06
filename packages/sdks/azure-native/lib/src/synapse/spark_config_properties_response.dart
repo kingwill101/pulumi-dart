@@ -18,7 +18,7 @@ class SparkConfigPropertiesResponse {
   /// [content] The spark config properties.
   /// [filename] The filename of the spark config properties file.
   /// [time] The last update time of the spark config properties file.
-  SparkConfigPropertiesResponse({
+  const SparkConfigPropertiesResponse({
     this.configurationType,
     this.content,
     this.filename,

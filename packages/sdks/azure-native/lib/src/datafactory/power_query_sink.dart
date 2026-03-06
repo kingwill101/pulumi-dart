@@ -33,7 +33,7 @@ class PowerQuerySink {
   /// [rejectedDataLinkedService] Rejected data linked service reference.
   /// [schemaLinkedService] Schema linked service reference.
   /// [script] sink script.
-  PowerQuerySink({
+  const PowerQuerySink({
     this.dataset,
     this.description,
     this.flowlet,

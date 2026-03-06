@@ -11,7 +11,7 @@ class ListFluidRelayServerKeysResult {
   /// Creates a new [ListFluidRelayServerKeysResult].
   /// [key1] The primary key for this server
   /// [key2] The secondary key for this server
-  ListFluidRelayServerKeysResult({
+  const ListFluidRelayServerKeysResult({
     required this.key1,
     required this.key2,
   });

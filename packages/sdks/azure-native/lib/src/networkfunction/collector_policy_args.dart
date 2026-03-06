@@ -32,7 +32,7 @@ class CollectorPolicyArgs {
   /// [location] Resource location.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  CollectorPolicyArgs({
+  const CollectorPolicyArgs({
     required this.azureTrafficCollectorName,
     this.collectorPolicyName,
     this.emissionPolicies,

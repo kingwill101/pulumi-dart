@@ -38,7 +38,7 @@ class JobCopy {
   /// [destinationTable] The destination table.
   /// [sourceTables] Source tables to copy.
   /// [writeDisposition] Specifies the action that occurs if the destination table already exists. The following values are supported:
-  JobCopy({
+  const JobCopy({
     this.createDisposition,
     this.destinationEncryptionConfiguration,
     this.destinationTable,

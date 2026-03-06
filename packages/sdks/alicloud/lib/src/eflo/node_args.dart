@@ -121,7 +121,7 @@ class NodeArgs {
   /// [vpcId] VPC ID
   /// [vswitchId] Switch ID
   /// [zone] Availability Zone
-  NodeArgs({
+  const NodeArgs({
     this.billingCycle,
     this.classify,
     this.clusterId,

@@ -27,7 +27,7 @@ class LivenessCheckResponse {
   /// [path] The request path.
   /// [successThreshold] Number of consecutive successful checks required before considering the VM healthy.
   /// [timeout] Time before the check is considered failed.
-  LivenessCheckResponse({
+  const LivenessCheckResponse({
     required this.checkInterval,
     required this.failureThreshold,
     required this.host,

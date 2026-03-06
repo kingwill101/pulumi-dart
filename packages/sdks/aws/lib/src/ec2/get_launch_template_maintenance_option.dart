@@ -7,7 +7,7 @@ class GetLaunchTemplateMaintenanceOption {
 
   /// Creates a new [GetLaunchTemplateMaintenanceOption].
   /// [autoRecovery] Required.
-  GetLaunchTemplateMaintenanceOption({
+  const GetLaunchTemplateMaintenanceOption({
     required this.autoRecovery,
   });
 

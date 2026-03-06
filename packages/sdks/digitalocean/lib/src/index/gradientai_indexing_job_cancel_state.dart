@@ -51,7 +51,7 @@ class GradientaiIndexingJobCancelState {
   /// [totalItemsSkipped] Total number of items that were skipped during indexing.
   /// [updatedAt] When the indexing job was last updated.
   /// [uuid] The UUID of the indexing job to cancel.
-  GradientaiIndexingJobCancelState({
+  const GradientaiIndexingJobCancelState({
     this.completedDatasources,
     this.createdAt,
     this.dataSourceUuids,

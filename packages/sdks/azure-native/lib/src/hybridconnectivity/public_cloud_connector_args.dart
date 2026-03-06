@@ -28,7 +28,7 @@ class PublicCloudConnectorArgs {
   /// [publicCloudConnector] Represent public cloud connectors resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PublicCloudConnectorArgs({
+  const PublicCloudConnectorArgs({
     required this.awsCloudProfile,
     required this.hostType,
     this.location,

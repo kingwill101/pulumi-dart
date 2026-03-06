@@ -27,7 +27,7 @@ class NetworkSecurityGroupArgs {
   /// [resourceGroupName] The name of the resource group in which to create the network security group. Changing this forces a new resource to be created.
   /// [securityRules] A list of objects representing security rules, as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  NetworkSecurityGroupArgs({
+  const NetworkSecurityGroupArgs({
     this.location,
     this.name,
     required this.resourceGroupName,

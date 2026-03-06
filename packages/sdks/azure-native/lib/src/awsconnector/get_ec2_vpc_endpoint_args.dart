@@ -15,7 +15,7 @@ class GetEc2VpcEndpointArgs {
   /// Creates a new [GetEc2VpcEndpointArgs].
   /// [name] Name of Ec2VPCEndpoint
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2VpcEndpointArgs({
+  const GetEc2VpcEndpointArgs({
     required this.name,
     required this.resourceGroupName,
   });

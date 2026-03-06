@@ -18,7 +18,7 @@ class GetWafDomainsDomain {
   /// [defenseScenes] Protection policy type.
   /// [domainName] The accelerated domain name.
   /// [id] The ID of the Waf Domain.
-  GetWafDomainsDomain({
+  const GetWafDomainsDomain({
     required this.clientIpTag,
     required this.defenseScenes,
     required this.domainName,

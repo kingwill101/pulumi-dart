@@ -24,7 +24,7 @@ class GuestUsageArgs {
   /// [resourceName] The initial domain name of the Azure AD B2C tenant.
   /// [tags] Key-value pairs of additional resource provisioning properties.
   /// [tenantId] An identifier for the tenant for which the resource is being created
-  GuestUsageArgs({
+  const GuestUsageArgs({
     this.location,
     required this.resourceGroupName,
     this.resourceName,

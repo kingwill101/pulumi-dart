@@ -45,7 +45,7 @@ class BuildProvenanceResponseContaineranalysisV1alpha1 {
   /// [sourceProvenance] Details of the Source input to the build.
   /// [startTime] Time at which execution of the build was started.
   /// [triggerId] Trigger identifier if the build was triggered automatically; empty if not.
-  BuildProvenanceResponseContaineranalysisV1alpha1({
+  const BuildProvenanceResponseContaineranalysisV1alpha1({
     required this.buildOptions,
     required this.builderVersion,
     required this.builtArtifacts,

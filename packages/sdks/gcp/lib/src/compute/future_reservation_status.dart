@@ -32,7 +32,7 @@ class FutureReservationStatus {
   /// [lockTime] The lock time of the FutureReservation before an amendment was requested.
   /// [procurementStatus] The status of the last known good state for the Future Reservation
   /// [specificSkuProperties] Future Reservation configuration to indicate instance properties and total count.
-  FutureReservationStatus({
+  const FutureReservationStatus({
     this.amendmentStatus,
     this.autoCreatedReservations,
     this.fulfilledCount,

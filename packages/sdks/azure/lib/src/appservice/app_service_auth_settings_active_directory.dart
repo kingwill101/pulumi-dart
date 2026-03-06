@@ -14,7 +14,7 @@ class AppServiceAuthSettingsActiveDirectory {
   /// [allowedAudiences] Allowed audience values to consider when validating JWTs issued by Azure Active Directory.
   /// [clientId] The Client ID of this relying party application. Enables OpenIDConnection authentication with Azure Active Directory.
   /// [clientSecret] The Client Secret of this relying party application. If no secret is provided, implicit flow will be used.
-  AppServiceAuthSettingsActiveDirectory({
+  const AppServiceAuthSettingsActiveDirectory({
     this.allowedAudiences,
     required this.clientId,
     this.clientSecret,

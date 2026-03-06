@@ -15,7 +15,7 @@ class AdministrativeUnitRoleMemberState {
   /// [administrativeUnitObjectId] The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
   /// [memberObjectId] The object ID of the user, group or service principal you want to add as a member of the administrative unit. Changing this forces a new resource to be created.
   /// [roleObjectId] The object ID of the directory role you want to assign. Changing this forces a new resource to be created.
-  AdministrativeUnitRoleMemberState({
+  const AdministrativeUnitRoleMemberState({
     this.administrativeUnitObjectId,
     this.memberObjectId,
     this.roleObjectId,

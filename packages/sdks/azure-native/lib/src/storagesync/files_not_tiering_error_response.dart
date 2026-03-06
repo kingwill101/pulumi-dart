@@ -12,7 +12,7 @@ class FilesNotTieringErrorResponse {
   /// Creates a new [FilesNotTieringErrorResponse].
   /// [errorCode] Error code (HResult)
   /// [fileCount] Count of files with this error
-  FilesNotTieringErrorResponse({
+  const FilesNotTieringErrorResponse({
     required this.errorCode,
     required this.fileCount,
   });

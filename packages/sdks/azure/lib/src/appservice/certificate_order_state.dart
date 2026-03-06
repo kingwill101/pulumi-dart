@@ -66,7 +66,7 @@ class CertificateOrderState {
   /// [status] Current order status.
   /// [tags] (Optional) A mapping of tags to assign to the resource.
   /// [validityInYears] Duration in years (must be between `1` and `3`). Defaults to `1`.
-  CertificateOrderState({
+  const CertificateOrderState({
     this.appServiceCertificateNotRenewableReasons,
     this.autoRenew,
     this.certificates,

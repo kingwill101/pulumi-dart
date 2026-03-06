@@ -18,7 +18,7 @@ class NodeTypeFaultSimulationResponse {
   /// [operationId] Current or latest asynchronous operation identifier on the node type.
   /// [operationStatus] Current or latest asynchronous operation status on the node type
   /// [status] Fault simulation status
-  NodeTypeFaultSimulationResponse({
+  const NodeTypeFaultSimulationResponse({
     this.nodeTypeName,
     this.operationId,
     required this.operationStatus,

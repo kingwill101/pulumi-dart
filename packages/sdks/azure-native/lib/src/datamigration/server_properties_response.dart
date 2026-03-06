@@ -24,7 +24,7 @@ class ServerPropertiesResponse {
   /// [serverOperatingSystemVersion] Version of the operating system
   /// [serverPlatform] Name of the server platform
   /// [serverVersion] Version of the database server
-  ServerPropertiesResponse({
+  const ServerPropertiesResponse({
     required this.serverDatabaseCount,
     required this.serverEdition,
     required this.serverName,

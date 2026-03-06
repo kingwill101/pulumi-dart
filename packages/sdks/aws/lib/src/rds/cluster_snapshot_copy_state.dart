@@ -67,7 +67,7 @@ class ClusterSnapshotCopyState {
   /// [targetDbClusterSnapshotIdentifier] Identifier for the snapshot.
   /// [timeouts] Optional.
   /// [vpcId] Provides the VPC ID associated with the DB cluster snapshot.
-  ClusterSnapshotCopyState({
+  const ClusterSnapshotCopyState({
     this.allocatedStorage,
     this.copyTags,
     this.dbClusterSnapshotArn,

@@ -44,7 +44,7 @@ class GetAppGroupAppResult {
   /// [name] Immutable. Name of the AppGroup app whose resource name format is of syntax (organizations/*/appgroups/*/apps/*).
   /// [scopes] Scopes to apply to the AppGroup app. The specified scopes must already exist for the API product that you associate with the AppGroup app.
   /// [status] Status of the App. Valid values include `approved` or `revoked`.
-  GetAppGroupAppResult({
+  const GetAppGroupAppResult({
     required this.apiProducts,
     required this.appGroup,
     required this.appId,

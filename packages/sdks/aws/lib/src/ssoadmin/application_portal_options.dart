@@ -12,7 +12,7 @@ class ApplicationPortalOptions {
   /// Creates a new [ApplicationPortalOptions].
   /// [signInOptions] Sign-in options for the access portal. See `sign_in_options` below.
   /// [visibility] Indicates whether this application is visible in the access portal. Valid values are `ENABLED` and `DISABLED`.
-  ApplicationPortalOptions({
+  const ApplicationPortalOptions({
     this.signInOptions,
     this.visibility,
   });

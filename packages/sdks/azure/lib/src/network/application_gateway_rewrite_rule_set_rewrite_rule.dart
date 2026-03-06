@@ -27,7 +27,7 @@ class ApplicationGatewayRewriteRuleSetRewriteRule {
   /// [responseHeaderConfigurations] One or more `response_header_configuration` blocks as defined above.
   /// [ruleSequence] Rule sequence of the rewrite rule that determines the order of execution in a set.
   /// [url] One `url` block as defined below
-  ApplicationGatewayRewriteRuleSetRewriteRule({
+  const ApplicationGatewayRewriteRuleSetRewriteRule({
     this.conditions,
     required this.name,
     this.requestHeaderConfigurations,

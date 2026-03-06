@@ -46,7 +46,7 @@ class GetPhraseSetResult {
   /// [reconciling] Whether or not this PhraseSet is in the process of being updated. This field is not used.
   /// [state] The CustomClass lifecycle state. This field is not used.
   /// [uid] System-assigned unique identifier for the PhraseSet. This field is not used.
-  GetPhraseSetResult({
+  const GetPhraseSetResult({
     required this.annotations,
     required this.boost,
     required this.deleteTime,

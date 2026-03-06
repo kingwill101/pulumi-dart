@@ -11,7 +11,7 @@ class RdsDbProxyReadOnlyInstanceWeight {
   /// Creates a new [RdsDbProxyReadOnlyInstanceWeight].
   /// [instanceId] The Id of the instance and its read-only instances that can run database.
   /// [weight] Weight of instances that can run the database and their read-only instances. Read weights increase in increments of 100, and the maximum read weight is 10000.
-  RdsDbProxyReadOnlyInstanceWeight({
+  const RdsDbProxyReadOnlyInstanceWeight({
     required this.instanceId,
     required this.weight,
   });

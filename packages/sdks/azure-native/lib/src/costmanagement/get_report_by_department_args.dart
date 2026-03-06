@@ -15,7 +15,7 @@ class GetReportByDepartmentArgs {
   /// Creates a new [GetReportByDepartmentArgs].
   /// [departmentId] Department ID
   /// [reportName] Report Name.
-  GetReportByDepartmentArgs({
+  const GetReportByDepartmentArgs({
     required this.departmentId,
     required this.reportName,
   });

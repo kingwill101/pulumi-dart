@@ -13,7 +13,7 @@ class AssetTypeFormsInput {
   /// [required] Optional.
   /// [typeIdentifier] Required.
   /// [typeRevision] Required.
-  AssetTypeFormsInput({
+  const AssetTypeFormsInput({
     required this.mapBlockKey,
     this.required,
     required this.typeIdentifier,

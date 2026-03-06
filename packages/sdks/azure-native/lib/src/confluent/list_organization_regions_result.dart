@@ -10,7 +10,7 @@ class ListOrganizationRegionsResult {
 
   /// Creates a new [ListOrganizationRegionsResult].
   /// [data] List of regions supported by confluent
-  ListOrganizationRegionsResult({
+  const ListOrganizationRegionsResult({
     this.data,
   });
 

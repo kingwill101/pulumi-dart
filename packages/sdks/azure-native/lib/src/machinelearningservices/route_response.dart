@@ -11,7 +11,7 @@ class RouteResponse {
   /// Creates a new [RouteResponse].
   /// [path] [Required] The path for the route.
   /// [port] [Required] The port for the route.
-  RouteResponse({
+  const RouteResponse({
     required this.path,
     required this.port,
   });

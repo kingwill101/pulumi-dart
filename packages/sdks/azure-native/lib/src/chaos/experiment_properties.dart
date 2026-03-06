@@ -18,7 +18,7 @@ class ExperimentProperties {
   /// [customerDataStorage] Optional customer-managed Storage account where Experiment schema will be stored.
   /// [selectors] List of selectors.
   /// [steps] List of steps.
-  ExperimentProperties({
+  const ExperimentProperties({
     this.customerDataStorage,
     required this.selectors,
     required this.steps,

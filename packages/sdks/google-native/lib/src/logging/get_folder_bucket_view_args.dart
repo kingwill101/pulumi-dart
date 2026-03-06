@@ -17,7 +17,7 @@ class GetFolderBucketViewArgs {
   /// [folderId] Required.
   /// [location] Required.
   /// [viewId] Required.
-  GetFolderBucketViewArgs({
+  const GetFolderBucketViewArgs({
     required this.bucketId,
     required this.folderId,
     required this.location,

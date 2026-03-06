@@ -15,7 +15,7 @@ class ListAzureDevOpsOrgAvailableArgs {
   /// Creates a new [ListAzureDevOpsOrgAvailableArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  ListAzureDevOpsOrgAvailableArgs({
+  const ListAzureDevOpsOrgAvailableArgs({
     required this.resourceGroupName,
     required this.securityConnectorName,
   });

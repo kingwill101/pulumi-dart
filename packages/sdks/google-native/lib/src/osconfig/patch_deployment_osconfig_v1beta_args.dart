@@ -43,7 +43,7 @@ class PatchDeploymentOsconfigV1betaArgs {
   /// [project] Optional.
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Optional. Rollout strategy of the patch job.
-  PatchDeploymentOsconfigV1betaArgs({
+  const PatchDeploymentOsconfigV1betaArgs({
     this.description,
     this.duration,
     required this.instanceFilter,

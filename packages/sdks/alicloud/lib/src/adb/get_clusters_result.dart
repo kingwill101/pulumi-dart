@@ -41,7 +41,7 @@ class GetClustersResult {
   /// [status] Status of the cluster.
   /// [tags] Optional.
   /// [totalCount] Required.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusters,
     this.description,
     this.descriptionRegex,

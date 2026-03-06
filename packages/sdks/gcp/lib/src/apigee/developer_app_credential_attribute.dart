@@ -11,7 +11,7 @@ class DeveloperAppCredentialAttribute {
   /// Creates a new [DeveloperAppCredentialAttribute].
   /// [name] Key of the attribute
   /// [value] Value of the attribute
-  DeveloperAppCredentialAttribute({
+  const DeveloperAppCredentialAttribute({
     this.name,
     this.value,
   });

@@ -21,7 +21,7 @@ class DataConnectorCredentialsResponse {
   /// [keyVaultUri] Uri of the key vault
   /// [keyVersion] Version of the key vault key.
   /// [kind] Type of credential.
-  DataConnectorCredentialsResponse({
+  const DataConnectorCredentialsResponse({
     this.clientId,
     this.keyName,
     this.keyVaultUri,

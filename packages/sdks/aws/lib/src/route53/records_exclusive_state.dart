@@ -19,7 +19,7 @@ class RecordsExclusiveState {
   /// [resourceRecordSets] A list of all resource record sets associated with the hosted zone.
   /// [timeouts] Optional.
   /// [zoneId] ID of the hosted zone containing the resource record sets.
-  RecordsExclusiveState({
+  const RecordsExclusiveState({
     this.resourceRecordSets,
     this.timeouts,
     this.zoneId,

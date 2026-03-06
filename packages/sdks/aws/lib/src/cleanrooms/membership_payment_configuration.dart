@@ -8,7 +8,7 @@ class MembershipPaymentConfiguration {
 
   /// Creates a new [MembershipPaymentConfiguration].
   /// [queryCompute] Required.
-  MembershipPaymentConfiguration({
+  const MembershipPaymentConfiguration({
     required this.queryCompute,
   });
 

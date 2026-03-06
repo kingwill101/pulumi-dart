@@ -18,7 +18,7 @@ class GetCnameRecordArgs {
   /// [name] The name of the DNS CNAME Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetCnameRecordArgs({
+  const GetCnameRecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

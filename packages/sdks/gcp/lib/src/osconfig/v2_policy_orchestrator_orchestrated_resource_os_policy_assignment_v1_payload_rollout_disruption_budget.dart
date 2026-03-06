@@ -12,7 +12,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRollout
   /// Creates a new [V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget].
   /// [fixed] Specifies a fixed value.
   /// [percent] Specifies the relative value defined as a percentage, which will be
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadRolloutDisruptionBudget({
     this.fixed,
     this.percent,
   });

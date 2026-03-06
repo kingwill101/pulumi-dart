@@ -7,7 +7,7 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchBody {
 
   /// Creates a new [RuleGroupRuleStatementXssMatchStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementXssMatchStatementFieldToMatchBody({
+  const RuleGroupRuleStatementXssMatchStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

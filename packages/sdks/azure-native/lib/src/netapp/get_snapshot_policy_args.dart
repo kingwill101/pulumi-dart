@@ -18,7 +18,7 @@ class GetSnapshotPolicyArgs {
   /// [accountName] The name of the NetApp account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotPolicyName] The name of the snapshot policy
-  GetSnapshotPolicyArgs({
+  const GetSnapshotPolicyArgs({
     required this.accountName,
     required this.resourceGroupName,
     required this.snapshotPolicyName,

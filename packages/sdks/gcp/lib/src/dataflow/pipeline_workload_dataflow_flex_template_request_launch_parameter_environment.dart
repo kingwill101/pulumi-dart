@@ -59,7 +59,7 @@ class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment {
   /// [workerRegion] The Compute Engine region (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1". Mutually exclusive with workerZone. If neither workerRegion nor workerZone is specified, default to the control plane's region.
   /// [workerZone] The Compute Engine zone (https://cloud.google.com/compute/docs/regions-zones/regions-zones) in which worker processing should occur, e.g. "us-west1-a". Mutually exclusive with workerRegion. If neither workerRegion nor workerZone is specified, a zone in the control plane's region is chosen based on available capacity. If both workerZone and zone are set, workerZone takes precedence.
   /// [zone] The Compute Engine availability zone for launching worker instances to run your pipeline. In the future, workerZone will take precedence.
-  PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment({
+  const PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment({
     this.additionalExperiments,
     this.additionalUserLabels,
     this.enableStreamingEngine,

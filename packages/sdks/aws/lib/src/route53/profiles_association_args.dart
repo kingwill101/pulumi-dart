@@ -27,7 +27,7 @@ class ProfilesAssociationArgs {
   /// [resourceId] Resource ID of the VPC the profile to be associated with.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ProfilesAssociationArgs({
+  const ProfilesAssociationArgs({
     this.name,
     required this.profileId,
     this.region,

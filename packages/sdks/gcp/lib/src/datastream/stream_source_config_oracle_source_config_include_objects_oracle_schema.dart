@@ -13,7 +13,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema {
   /// Creates a new [StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema].
   /// [oracleTables] Tables in the database.
   /// [schema] Schema name.
-  StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema({
+  const StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema({
     this.oracleTables,
     required this.schema,
   });

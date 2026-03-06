@@ -11,7 +11,7 @@ class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel {
   /// Creates a new [EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel].
   /// [labelName] Required. Label name presented as key in xDS Node Metadata.
   /// [labelValue] Required. Label value presented as value corresponding to the above key, in xDS Node Metadata.
-  EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel({
+  const EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel({
     required this.labelName,
     required this.labelValue,
   });

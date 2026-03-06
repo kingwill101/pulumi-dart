@@ -26,7 +26,7 @@ class GetSecurityConnectorApplicationResult {
   /// [name] Resource name
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
   /// [type] Resource type
-  GetSecurityConnectorApplicationResult({
+  const GetSecurityConnectorApplicationResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

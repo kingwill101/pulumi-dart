@@ -12,7 +12,7 @@ class CloudRunConfigResponse {
   /// Creates a new [CloudRunConfigResponse].
   /// [disabled] Whether Cloud Run addon is enabled for this cluster.
   /// [loadBalancerType] Which load balancer type is installed for Cloud Run.
-  CloudRunConfigResponse({
+  const CloudRunConfigResponse({
     required this.disabled,
     required this.loadBalancerType,
   });

@@ -9,7 +9,7 @@ class SecretResponse {
 
   /// Creates a new [SecretResponse].
   /// [secretVersion] The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
-  SecretResponse({
+  const SecretResponse({
     required this.secretVersion,
   });
 

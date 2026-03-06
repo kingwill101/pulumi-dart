@@ -12,7 +12,7 @@ class ResourceGuardOperationResponse {
   /// Creates a new [ResourceGuardOperationResponse].
   /// [requestResourceType] Type of resource request.
   /// [vaultCriticalOperation] Name of the critical operation.
-  ResourceGuardOperationResponse({
+  const ResourceGuardOperationResponse({
     required this.requestResourceType,
     required this.vaultCriticalOperation,
   });

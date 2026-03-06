@@ -13,7 +13,7 @@ class GetAuthorityAccessUrl {
   /// Creates a new [GetAuthorityAccessUrl].
   /// [caCertificateAccessUrl] The URL where this CertificateAuthority's CA certificate is published. This will only be
   /// [crlAccessUrls] The URL where this CertificateAuthority's CRLs are published. This will only be set for
-  GetAuthorityAccessUrl({
+  const GetAuthorityAccessUrl({
     required this.caCertificateAccessUrl,
     required this.crlAccessUrls,
   });

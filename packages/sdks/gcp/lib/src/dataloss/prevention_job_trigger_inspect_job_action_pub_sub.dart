@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobActionPubSub {
 
   /// Creates a new [PreventionJobTriggerInspectJobActionPubSub].
   /// [topic] Cloud Pub/Sub topic to send notifications to.
-  PreventionJobTriggerInspectJobActionPubSub({
+  const PreventionJobTriggerInspectJobActionPubSub({
     required this.topic,
   });
 

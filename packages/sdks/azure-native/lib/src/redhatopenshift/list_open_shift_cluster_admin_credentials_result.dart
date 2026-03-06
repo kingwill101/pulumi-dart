@@ -8,7 +8,7 @@ class ListOpenShiftClusterAdminCredentialsResult {
 
   /// Creates a new [ListOpenShiftClusterAdminCredentialsResult].
   /// [kubeconfig] The base64-encoded kubeconfig file.
-  ListOpenShiftClusterAdminCredentialsResult({
+  const ListOpenShiftClusterAdminCredentialsResult({
     this.kubeconfig,
   });
 

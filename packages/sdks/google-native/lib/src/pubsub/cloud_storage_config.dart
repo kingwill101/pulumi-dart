@@ -28,7 +28,7 @@ class CloudStorageConfig {
   /// [maxBytes] Optional. The maximum bytes that can be written to a Cloud Storage file before a new file is created. Min 1 KB, max 10 GiB. The max_bytes limit may be exceeded in cases where messages are larger than the limit.
   /// [maxDuration] Optional. The maximum duration that can elapse before a new Cloud Storage file is created. Min 1 minute, max 10 minutes, default 5 minutes. May not exceed the subscription's acknowledgement deadline.
   /// [textConfig] Optional. If set, message data will be written to Cloud Storage in text format.
-  CloudStorageConfig({
+  const CloudStorageConfig({
     this.avroConfig,
     required this.bucket,
     this.filenamePrefix,

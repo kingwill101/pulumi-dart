@@ -40,7 +40,7 @@ class AutomationArgs {
   /// [scopes] A list of scopes on which the automation logic is applied, at least one is required. Supported scopes are a subscription (in this format `/subscriptions/00000000-0000-0000-0000-000000000000`) or a resource group under that subscription (in the format `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/example`). The automation will only apply on defined scopes.
   /// [sources] One or more `source` blocks as defined below. A `source` defines what data types will be processed and a set of rules to filter that data.
   /// [tags] A mapping of tags assigned to the resource.
-  AutomationArgs({
+  const AutomationArgs({
     required this.actions,
     this.description,
     this.enabled,

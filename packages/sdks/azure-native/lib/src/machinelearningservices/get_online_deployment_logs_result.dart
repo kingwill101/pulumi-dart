@@ -8,7 +8,7 @@ class GetOnlineDeploymentLogsResult {
 
   /// Creates a new [GetOnlineDeploymentLogsResult].
   /// [content] The retrieved online deployment logs.
-  GetOnlineDeploymentLogsResult({
+  const GetOnlineDeploymentLogsResult({
     this.content,
   });
 

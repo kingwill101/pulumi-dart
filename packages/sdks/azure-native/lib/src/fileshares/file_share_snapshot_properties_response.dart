@@ -15,7 +15,7 @@ class FileShareSnapshotPropertiesResponse {
   /// [initiatorId] The initiator of the FileShareSnapshot. This is a user-defined value.
   /// [metadata] The metadata
   /// [snapshotTime] The FileShareSnapshot time in UTC in string representation
-  FileShareSnapshotPropertiesResponse({
+  const FileShareSnapshotPropertiesResponse({
     required this.initiatorId,
     this.metadata,
     required this.snapshotTime,

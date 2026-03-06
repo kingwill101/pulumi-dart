@@ -100,7 +100,7 @@ class GetVirtualHubResult {
   /// [virtualRouterIps] VirtualRouter IPs.
   /// [virtualWan] The VirtualWAN to which the VirtualHub belongs.
   /// [vpnGateway] The VpnGateway associated with this VirtualHub.
-  GetVirtualHubResult({
+  const GetVirtualHubResult({
     this.addressPrefix,
     this.allowBranchToBranchTraffic,
     required this.azureApiVersion,

@@ -14,7 +14,7 @@ class NamedLocationCountry {
   /// [countriesAndRegions] List of countries and/or regions in two-letter format specified by ISO 3166-2.
   /// [countryLookupMethod] Method of detecting country the user is located in. Possible values are `clientIpAddress` for IP-based location and `authenticatorAppGps` for Authenticator app GPS-based location.  Defaults to `clientIpAddress`.
   /// [includeUnknownCountriesAndRegions] Whether IP addresses that don't map to a country or region should be included in the named location. Defaults to `false`.
-  NamedLocationCountry({
+  const NamedLocationCountry({
     required this.countriesAndRegions,
     this.countryLookupMethod,
     this.includeUnknownCountriesAndRegions,

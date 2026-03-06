@@ -14,7 +14,7 @@ class AppHostingDomainServeRedirect {
   /// Creates a new [AppHostingDomainServeRedirect].
   /// [status] The status code to use in a redirect response. Must be a valid HTTP 3XX
   /// [uri] The URI of the redirect's intended destination. This URI will be
-  AppHostingDomainServeRedirect({
+  const AppHostingDomainServeRedirect({
     this.status,
     required this.uri,
   });

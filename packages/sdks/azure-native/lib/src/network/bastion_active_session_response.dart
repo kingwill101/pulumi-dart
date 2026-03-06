@@ -39,7 +39,7 @@ class BastionActiveSessionResponse {
   /// [targetResourceId] The resource id of the target.
   /// [targetSubscriptionId] The subscription id for the target virtual machine.
   /// [userName] The user name who is active on this session.
-  BastionActiveSessionResponse({
+  const BastionActiveSessionResponse({
     required this.protocol,
     required this.resourceType,
     required this.sessionDurationInMins,

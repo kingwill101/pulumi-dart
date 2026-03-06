@@ -22,7 +22,7 @@ class NodeGroupAutoscalingPolicy {
   /// [maxNodes] Maximum size of the node group. Set to a value less than or equal
   /// [minNodes] Minimum size of the node group. Must be less
   /// [mode] The autoscaling mode. Set to one of the following:
-  NodeGroupAutoscalingPolicy({
+  const NodeGroupAutoscalingPolicy({
     this.maxNodes,
     this.minNodes,
     this.mode,

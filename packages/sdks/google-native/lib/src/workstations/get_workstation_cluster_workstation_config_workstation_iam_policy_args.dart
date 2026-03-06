@@ -21,7 +21,7 @@ class GetWorkstationClusterWorkstationConfigWorkstationIamPolicyArgs {
   /// [workstationClusterId] Required.
   /// [workstationConfigId] Required.
   /// [workstationId] Required.
-  GetWorkstationClusterWorkstationConfigWorkstationIamPolicyArgs({
+  const GetWorkstationClusterWorkstationConfigWorkstationIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

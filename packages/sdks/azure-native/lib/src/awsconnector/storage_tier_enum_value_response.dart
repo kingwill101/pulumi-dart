@@ -9,7 +9,7 @@ class StorageTierEnumValueResponse {
 
   /// Creates a new [StorageTierEnumValueResponse].
   /// [value] Property value
-  StorageTierEnumValueResponse({
+  const StorageTierEnumValueResponse({
     this.value,
   });
 

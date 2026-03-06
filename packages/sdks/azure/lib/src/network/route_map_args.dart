@@ -19,7 +19,7 @@ class RouteMapArgs {
   /// [name] The name which should be used for this Route Map. Changing this forces a new resource to be created.
   /// [rules] A `rule` block as defined below.
   /// [virtualHubId] The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
-  RouteMapArgs({
+  const RouteMapArgs({
     this.name,
     this.rules,
     required this.virtualHubId,

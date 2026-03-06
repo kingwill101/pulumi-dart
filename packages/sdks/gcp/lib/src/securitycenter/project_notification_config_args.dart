@@ -28,7 +28,7 @@ class ProjectNotificationConfigArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  ProjectNotificationConfigArgs({
+  const ProjectNotificationConfigArgs({
     required this.configId,
     this.description,
     this.project,

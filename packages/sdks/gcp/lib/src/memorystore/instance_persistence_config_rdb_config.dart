@@ -18,7 +18,7 @@ class InstancePersistenceConfigRdbConfig {
   /// Creates a new [InstancePersistenceConfigRdbConfig].
   /// [rdbSnapshotPeriod] Optional. Period between RDB snapshots.
   /// [rdbSnapshotStartTime] Optional. Time that the first snapshot was/will be attempted, and to which future
-  InstancePersistenceConfigRdbConfig({
+  const InstancePersistenceConfigRdbConfig({
     this.rdbSnapshotPeriod,
     this.rdbSnapshotStartTime,
   });

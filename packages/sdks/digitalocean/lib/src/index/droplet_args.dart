@@ -87,7 +87,7 @@ class DropletArgs {
   /// [userData] A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
   /// [volumeIds] A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
   /// [vpcUuid] The ID of the VPC where the Droplet will be located.
-  DropletArgs({
+  const DropletArgs({
     this.backupPolicy,
     this.backups,
     this.dropletAgent,

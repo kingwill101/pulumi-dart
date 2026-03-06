@@ -35,7 +35,7 @@ class TaskGroupResponse {
   /// [taskCountPerNode] Max number of tasks that can be run on a VM at the same time. If not specified, the system will decide a value based on available compute resources on a VM and task requirements.
   /// [taskEnvironments] An array of environment variable mappings, which are passed to Tasks with matching indices. If task_environments is used then task_count should not be specified in the request (and will be ignored). Task count will be the length of task_environments. Tasks get a BATCH_TASK_INDEX and BATCH_TASK_COUNT environment variable, in addition to any environment variables set in task_environments, specifying the number of Tasks in the Task's parent TaskGroup, and the specific Task's index in the TaskGroup (0 through BATCH_TASK_COUNT - 1).
   /// [taskSpec] Tasks in the group share the same task spec.
-  TaskGroupResponse({
+  const TaskGroupResponse({
     required this.name,
     required this.parallelism,
     required this.permissiveSsh,

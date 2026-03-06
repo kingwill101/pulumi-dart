@@ -12,7 +12,7 @@ class StandbyVirtualMachinePoolElasticityProfileResponse {
   /// Creates a new [StandbyVirtualMachinePoolElasticityProfileResponse].
   /// [maxReadyCapacity] Specifies the maximum number of virtual machines in the standby virtual machine pool.
   /// [minReadyCapacity] Specifies the desired minimum number of virtual machines in the standby virtual machine pool. MinReadyCapacity cannot exceed MaxReadyCapacity.
-  StandbyVirtualMachinePoolElasticityProfileResponse({
+  const StandbyVirtualMachinePoolElasticityProfileResponse({
     required this.maxReadyCapacity,
     this.minReadyCapacity,
   });

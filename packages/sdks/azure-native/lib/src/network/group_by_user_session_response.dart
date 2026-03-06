@@ -10,7 +10,7 @@ class GroupByUserSessionResponse {
 
   /// Creates a new [GroupByUserSessionResponse].
   /// [groupByVariables] List of group by clause variables.
-  GroupByUserSessionResponse({
+  const GroupByUserSessionResponse({
     required this.groupByVariables,
   });
 

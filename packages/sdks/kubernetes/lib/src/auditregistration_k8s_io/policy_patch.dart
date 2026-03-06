@@ -12,7 +12,7 @@ class PolicyPatch {
   /// Creates a new [PolicyPatch].
   /// [level] The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
   /// [stages] Stages is a list of stages for which events are created.
-  PolicyPatch({
+  const PolicyPatch({
     this.level,
     this.stages,
   });

@@ -36,7 +36,7 @@ class GetGatewaysArgs {
   /// [sslVpn] Indicates whether the SSL-VPN feature is enabled. Valid value is `enable`, `disable`.
   /// [status] Limit search to specific status - valid value is "Init", "Provisioning", "Active", "Updating", "Deleting".
   /// [vpcId] Use the VPC ID as the search key.
-  GetGatewaysArgs({
+  const GetGatewaysArgs({
     this.businessStatus,
     this.enableIpsec,
     this.ids,

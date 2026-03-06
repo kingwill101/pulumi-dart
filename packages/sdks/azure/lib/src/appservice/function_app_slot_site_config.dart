@@ -78,7 +78,7 @@ class FunctionAppSlotSiteConfig {
   /// [use32BitWorkerProcess] Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
   /// [vnetRouteAllEnabled] Optional.
   /// [websocketsEnabled] Should WebSockets be enabled?
-  FunctionAppSlotSiteConfig({
+  const FunctionAppSlotSiteConfig({
     this.alwaysOn,
     this.appScaleLimit,
     this.autoSwapSlotName,

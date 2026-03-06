@@ -24,7 +24,7 @@ class ApiKeyResponse {
   /// [name] A name for the key describing its usage.
   /// [readOnly] Whether this key can only be used for read operations.
   /// [value] The value of the key that is used for authentication purposes.
-  ApiKeyResponse({
+  const ApiKeyResponse({
     required this.connectionString,
     required this.id,
     required this.lastModified,

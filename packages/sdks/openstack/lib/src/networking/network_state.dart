@@ -89,7 +89,7 @@ class NetworkState {
   /// [tenantId] The owner of the network. Required if admin wants to
   /// [transparentVlan] Specifies whether the network resource has the
   /// [valueSpecs] Map of additional options.
-  NetworkState({
+  const NetworkState({
     this.adminStateUp,
     this.allTags,
     this.availabilityZoneHints,

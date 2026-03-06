@@ -32,7 +32,7 @@ class SkuDescription {
   /// [size] Size specifier of the resource SKU.
   /// [skuCapacity] Min, max, and default scale values of the SKU.
   /// [tier] Service tier of the resource SKU.
-  SkuDescription({
+  const SkuDescription({
     this.capabilities,
     this.capacity,
     this.family,

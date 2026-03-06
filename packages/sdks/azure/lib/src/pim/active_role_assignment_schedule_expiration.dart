@@ -16,7 +16,7 @@ class ActiveRoleAssignmentScheduleExpiration {
   /// [durationDays] The duration of the role assignment in days. Changing this forces a new resource to be created.
   /// [durationHours] The duration of the role assignment in hours. Changing this forces a new resource to be created.
   /// [endDateTime] The end date/time of the role assignment. Changing this forces a new resource to be created.
-  ActiveRoleAssignmentScheduleExpiration({
+  const ActiveRoleAssignmentScheduleExpiration({
     this.durationDays,
     this.durationHours,
     this.endDateTime,

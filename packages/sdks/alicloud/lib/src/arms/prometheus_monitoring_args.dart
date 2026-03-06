@@ -21,7 +21,7 @@ class PrometheusMonitoringArgs {
   /// [configYaml] Yaml configuration for monitoring.
   /// [status] Valid values: `stop`, `run`.
   /// [type] Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
-  PrometheusMonitoringArgs({
+  const PrometheusMonitoringArgs({
     required this.clusterId,
     required this.configYaml,
     this.status,

@@ -19,7 +19,7 @@ class GetNetworksNetwork {
   /// [id] ID of the CCN instance.
   /// [isDefault] IsDefault of the CCN instance.
   /// [name] Name of the CCN instance.
-  GetNetworksNetwork({
+  const GetNetworksNetwork({
     required this.cidrBlock,
     required this.description,
     required this.id,

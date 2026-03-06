@@ -9,7 +9,7 @@ class BareMetalClusterUpgradePolicyResponse {
 
   /// Creates a new [BareMetalClusterUpgradePolicyResponse].
   /// [policy] Specifies which upgrade policy to use.
-  BareMetalClusterUpgradePolicyResponse({
+  const BareMetalClusterUpgradePolicyResponse({
     required this.policy,
   });
 

@@ -56,7 +56,7 @@ class WebHookActivityResponse {
   /// [type] Type of activity.
   /// [url] WebHook activity target endpoint and path. Type: string (or Expression with resultType string).
   /// [userProperties] Activity user properties.
-  WebHookActivityResponse({
+  const WebHookActivityResponse({
     this.authentication,
     this.body,
     this.dependsOn,

@@ -36,7 +36,7 @@ class GetGradientaiKnowledgeBaseResult {
   /// [updatedAt] Required.
   /// [userId] Optional.
   /// [uuid] Optional.
-  GetGradientaiKnowledgeBaseResult({
+  const GetGradientaiKnowledgeBaseResult({
     this.addedToAgentAt,
     required this.createdAt,
     this.databaseId,

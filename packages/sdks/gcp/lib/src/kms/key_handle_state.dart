@@ -26,7 +26,7 @@ class KeyHandleState {
   /// [name] The resource name for the KeyHandle.
   /// [project] The ID of the project in which the resource belongs.
   /// [resourceTypeSelector] Selector of the resource type where we want to protect resources.
-  KeyHandleState({
+  const KeyHandleState({
     this.kmsKey,
     this.location,
     this.name,

@@ -12,7 +12,7 @@ class RequestsBasedTrigger {
   /// Creates a new [RequestsBasedTrigger].
   /// [count] Request Count.
   /// [timeInterval] Time interval.
-  RequestsBasedTrigger({
+  const RequestsBasedTrigger({
     this.count,
     this.timeInterval,
   });

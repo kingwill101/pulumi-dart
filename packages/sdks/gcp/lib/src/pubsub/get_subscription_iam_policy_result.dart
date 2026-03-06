@@ -18,7 +18,7 @@ class GetSubscriptionIamPolicyResult {
   /// [policyData] (Computed) The policy data
   /// [project] Required.
   /// [subscription] Required.
-  GetSubscriptionIamPolicyResult({
+  const GetSubscriptionIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

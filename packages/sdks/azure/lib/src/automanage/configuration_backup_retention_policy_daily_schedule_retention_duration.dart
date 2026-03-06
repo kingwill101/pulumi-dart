@@ -11,7 +11,7 @@ class ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration {
   /// Creates a new [ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration].
   /// [count] The count of the retention duration of the backup policy. Valid value inside `daily_schedule` is `7` to `9999` and inside `weekly_schedule` is `1` to `5163`.
   /// [durationType] The duration type of the retention duration of the backup policy. Valid value inside `daily_schedule` is `Days` and inside `weekly_schedule` is `Weeks`. Defaults to `Days`.
-  ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration({
+  const ConfigurationBackupRetentionPolicyDailyScheduleRetentionDuration({
     this.count,
     this.durationType,
   });

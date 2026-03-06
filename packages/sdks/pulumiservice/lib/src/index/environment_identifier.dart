@@ -14,7 +14,7 @@ class EnvironmentIdentifier {
   /// [name] The environment name.
   /// [organization] The organization name.
   /// [project] The project name.
-  EnvironmentIdentifier({
+  const EnvironmentIdentifier({
     required this.name,
     required this.organization,
     required this.project,

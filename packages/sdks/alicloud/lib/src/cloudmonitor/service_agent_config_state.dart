@@ -11,7 +11,7 @@ class ServiceAgentConfigState {
 
   /// Creates a new [ServiceAgentConfigState].
   /// [enableInstallAgentNewEcs] Whether the cloud monitoring plug-in is automatically installed on the newly purchased ECS host. Value:
-  ServiceAgentConfigState({
+  const ServiceAgentConfigState({
     this.enableInstallAgentNewEcs,
   });
 

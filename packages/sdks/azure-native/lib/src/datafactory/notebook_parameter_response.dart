@@ -12,7 +12,7 @@ class NotebookParameterResponse {
   /// Creates a new [NotebookParameterResponse].
   /// [type] Notebook parameter type.
   /// [value] Notebook parameter value. Type: string (or Expression with resultType string).
-  NotebookParameterResponse({
+  const NotebookParameterResponse({
     this.type,
     this.value,
   });

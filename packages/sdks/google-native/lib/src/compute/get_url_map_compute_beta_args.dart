@@ -13,7 +13,7 @@ class GetUrlMapComputeBetaArgs {
   /// Creates a new [GetUrlMapComputeBetaArgs].
   /// [project] Optional.
   /// [urlMap] Required.
-  GetUrlMapComputeBetaArgs({
+  const GetUrlMapComputeBetaArgs({
     this.project,
     required this.urlMap,
   });

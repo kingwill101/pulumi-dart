@@ -50,7 +50,7 @@ class GetPackageResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Gets or sets the version of the Package.
-  GetPackageResult({
+  const GetPackageResult({
     required this.allOf,
     required this.azureApiVersion,
     this.contentLink,

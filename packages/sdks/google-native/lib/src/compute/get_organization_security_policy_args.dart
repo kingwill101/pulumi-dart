@@ -11,7 +11,7 @@ class GetOrganizationSecurityPolicyArgs {
 
   /// Creates a new [GetOrganizationSecurityPolicyArgs].
   /// [securityPolicy] Required.
-  GetOrganizationSecurityPolicyArgs({
+  const GetOrganizationSecurityPolicyArgs({
     required this.securityPolicy,
   });
 

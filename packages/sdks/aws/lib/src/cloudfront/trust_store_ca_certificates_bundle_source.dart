@@ -9,7 +9,7 @@ class TrustStoreCaCertificatesBundleSource {
 
   /// Creates a new [TrustStoreCaCertificatesBundleSource].
   /// [caCertificatesBundleS3Location] Configuration block for the S3 location of the CA certificates bundle. See `ca_certificates_bundle_s3_location` below.
-  TrustStoreCaCertificatesBundleSource({
+  const TrustStoreCaCertificatesBundleSource({
     required this.caCertificatesBundleS3Location,
   });
 

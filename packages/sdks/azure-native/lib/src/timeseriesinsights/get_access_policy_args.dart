@@ -18,7 +18,7 @@ class GetAccessPolicyArgs {
   /// [accessPolicyName] The name of the Time Series Insights access policy associated with the specified environment.
   /// [environmentName] The name of the Time Series Insights environment associated with the specified resource group.
   /// [resourceGroupName] Name of an Azure Resource group.
-  GetAccessPolicyArgs({
+  const GetAccessPolicyArgs({
     required this.accessPolicyName,
     required this.environmentName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class ClusterByokEntityResponse {
   /// [id] ID of the referred resource
   /// [related] API URL for accessing or modifying the referred object
   /// [resourceName] CRN reference to the referred resource
-  ClusterByokEntityResponse({
+  const ClusterByokEntityResponse({
     this.id,
     this.related,
     this.resourceName,

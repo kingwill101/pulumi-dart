@@ -76,7 +76,7 @@ class AlarmState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [targets] Adds or modifies the push channels of an alert rule. See `targets` below.
   /// [webhook] The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
-  AlarmState({
+  const AlarmState({
     this.compositeExpression,
     this.contactGroups,
     this.dimensions,

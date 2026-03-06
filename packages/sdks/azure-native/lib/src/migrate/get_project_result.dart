@@ -30,7 +30,7 @@ class GetProjectResult {
   /// [properties] Properties of the project.
   /// [tags] Tags provided by Azure Tagging service.
   /// [type] Type of the object = [Microsoft.Migrate/assessmentProjects].
-  GetProjectResult({
+  const GetProjectResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

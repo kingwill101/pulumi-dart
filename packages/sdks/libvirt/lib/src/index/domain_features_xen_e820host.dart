@@ -8,7 +8,7 @@ class DomainFeaturesXenE820host {
 
   /// Creates a new [DomainFeaturesXenE820host].
   /// [state] Sets the state of the e820 host feature, indicating whether it is active or not.
-  DomainFeaturesXenE820host({
+  const DomainFeaturesXenE820host({
     required this.state,
   });
 

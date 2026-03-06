@@ -34,7 +34,7 @@ class GetBasicAcceleratorsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The status of the Global Accelerator Basic Accelerator instance. Valid Value: `init`, `active`, `configuring`, `binding`, `unbinding`, `deleting`, `finacialLocked`.
-  GetBasicAcceleratorsArgs({
+  const GetBasicAcceleratorsArgs({
     this.acceleratorId,
     this.bandwidthBillingType,
     this.ids,

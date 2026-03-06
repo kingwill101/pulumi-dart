@@ -15,7 +15,7 @@ class ListDelegationSettingSecretsArgs {
   /// Creates a new [ListDelegationSettingSecretsArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the API Management service.
-  ListDelegationSettingSecretsArgs({
+  const ListDelegationSettingSecretsArgs({
     required this.resourceGroupName,
     required this.serviceName,
   });

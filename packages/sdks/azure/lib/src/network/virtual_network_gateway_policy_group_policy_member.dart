@@ -14,7 +14,7 @@ class VirtualNetworkGatewayPolicyGroupPolicyMember {
   /// [name] The name of the Virtual Network Gateway Policy Group Member.
   /// [type] The VPN Policy Member attribute type. Possible values are `AADGroupId`, `CertificateGroupId` and `RadiusAzureGroupId`.
   /// [value] The value of attribute that is used for this Virtual Network Gateway Policy Group Member.
-  VirtualNetworkGatewayPolicyGroupPolicyMember({
+  const VirtualNetworkGatewayPolicyGroupPolicyMember({
     required this.name,
     required this.type,
     required this.value,

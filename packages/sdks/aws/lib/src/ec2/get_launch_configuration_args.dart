@@ -15,7 +15,7 @@ class GetLaunchConfigurationArgs {
   /// Creates a new [GetLaunchConfigurationArgs].
   /// [name] Name of the launch configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLaunchConfigurationArgs({
+  const GetLaunchConfigurationArgs({
     required this.name,
     this.region,
   });

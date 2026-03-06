@@ -8,7 +8,7 @@ class BucketV2LifecycleRuleNoncurrentVersionExpiration {
 
   /// Creates a new [BucketV2LifecycleRuleNoncurrentVersionExpiration].
   /// [days] Specifies the number of days noncurrent object versions expire.
-  BucketV2LifecycleRuleNoncurrentVersionExpiration({
+  const BucketV2LifecycleRuleNoncurrentVersionExpiration({
     this.days,
   });
 

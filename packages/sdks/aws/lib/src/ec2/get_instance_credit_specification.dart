@@ -7,7 +7,7 @@ class GetInstanceCreditSpecification {
 
   /// Creates a new [GetInstanceCreditSpecification].
   /// [cpuCredits] Required.
-  GetInstanceCreditSpecification({
+  const GetInstanceCreditSpecification({
     required this.cpuCredits,
   });
 

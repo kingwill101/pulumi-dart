@@ -13,7 +13,7 @@ class ListenerDefaultActionForwardStickiness {
   /// Creates a new [ListenerDefaultActionForwardStickiness].
   /// [duration] Time period, in seconds, during which requests from a client should be routed to the same target group. The range is 1-604800 seconds (7 days).
   /// [enabled] Whether target group stickiness is enabled. Default is `false`.
-  ListenerDefaultActionForwardStickiness({
+  const ListenerDefaultActionForwardStickiness({
     required this.duration,
     this.enabled,
   });

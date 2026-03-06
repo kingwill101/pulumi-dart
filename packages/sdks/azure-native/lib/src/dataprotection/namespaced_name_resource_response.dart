@@ -12,7 +12,7 @@ class NamespacedNameResourceResponse {
   /// Creates a new [NamespacedNameResourceResponse].
   /// [name] Name of the resource
   /// [namespace] Namespace in which the resource exists
-  NamespacedNameResourceResponse({
+  const NamespacedNameResourceResponse({
     this.name,
     this.namespace,
   });

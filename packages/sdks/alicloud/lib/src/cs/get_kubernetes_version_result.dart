@@ -19,7 +19,7 @@ class GetKubernetesVersionResult {
   /// [kubernetesVersion] Optional.
   /// [metadatas] A list of metadata of kubernetes version.
   /// [profile] Optional.
-  GetKubernetesVersionResult({
+  const GetKubernetesVersionResult({
     required this.clusterType,
     required this.id,
     this.kubernetesVersion,

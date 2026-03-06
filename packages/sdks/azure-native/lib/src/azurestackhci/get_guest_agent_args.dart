@@ -12,7 +12,7 @@ class GetGuestAgentArgs {
 
   /// Creates a new [GetGuestAgentArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetGuestAgentArgs({
+  const GetGuestAgentArgs({
     required this.resourceUri,
   });
 

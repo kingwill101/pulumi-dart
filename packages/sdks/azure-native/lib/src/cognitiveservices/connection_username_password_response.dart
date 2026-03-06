@@ -12,7 +12,7 @@ class ConnectionUsernamePasswordResponse {
   /// [password] Optional.
   /// [securityToken] Optional, required by connections like SalesForce for extra security in addition to UsernamePassword
   /// [username] Optional.
-  ConnectionUsernamePasswordResponse({
+  const ConnectionUsernamePasswordResponse({
     this.password,
     this.securityToken,
     this.username,

@@ -17,7 +17,7 @@ class VolumeGroupSapHanaVolumeDataProtectionReplication {
   /// [remoteVolumeLocation] Location of the primary volume.
   /// [remoteVolumeResourceId] Resource ID of the primary volume. Changing this forces a new Application Volume Group to be created and data will be lost.
   /// [replicationFrequency] eplication frequency. Possible values are `10minutes`, `daily` and `hourly`. Changing this forces a new Application Volume Group to be created and data will be lost.
-  VolumeGroupSapHanaVolumeDataProtectionReplication({
+  const VolumeGroupSapHanaVolumeDataProtectionReplication({
     this.endpointType,
     required this.remoteVolumeLocation,
     required this.remoteVolumeResourceId,
