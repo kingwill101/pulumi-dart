@@ -1,6 +1,49 @@
 version: 2.1
 
 jobs:
+  cancel-previous-runs:
+    docker:
+      - image: cimg/base:stable
+    working_directory: ~/project
+    steps:
+      - run:
+          name: Cancel previous workflows on this branch
+          command: |
+            set -euo pipefail
+            if [ -z "${CIRCLECI_API_TOKEN:-}" ]; then
+              echo "CIRCLECI_API_TOKEN is not set; skipping workflow cancellation."
+              exit 0
+            fi
+
+            sudo apt-get update
+            sudo apt-get install -y jq
+
+            PROJECT_SLUG="gh/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}"
+            CURRENT_PIPELINE_ID="${CIRCLE_PIPELINE_ID}"
+            CURRENT_WORKFLOW_ID="${CIRCLE_WORKFLOW_ID}"
+            BRANCH="${CIRCLE_BRANCH:-}"
+
+            if [ -z "${BRANCH}" ]; then
+              echo "No branch context available; skipping workflow cancellation."
+              exit 0
+            fi
+
+            auth_header="Circle-Token: ${CIRCLECI_API_TOKEN}"
+            pipelines_json="$(curl -fsSL -H "$auth_header"               "https://circleci.com/api/v2/project/${PROJECT_SLUG}/pipeline?branch=${BRANCH}")"
+
+            echo "$pipelines_json" | jq -r '.items[].id' | while read -r pipeline_id; do
+              [ -n "$pipeline_id" ] || continue
+              [ "$pipeline_id" = "$CURRENT_PIPELINE_ID" ] && continue
+
+              workflows_json="$(curl -fsSL -H "$auth_header"                 "https://circleci.com/api/v2/pipeline/${pipeline_id}/workflow")"
+
+              echo "$workflows_json" | jq -r '.items[] | select(.status | IN("running", "on_hold", "failing", "not_run")) | .id' | while read -r workflow_id; do
+                [ -n "$workflow_id" ] || continue
+                [ "$workflow_id" = "$CURRENT_WORKFLOW_ID" ] && continue
+                echo "Canceling workflow ${workflow_id} from pipeline ${pipeline_id}"
+                curl -fsSL -X POST -H "$auth_header"                   "https://circleci.com/api/v2/workflow/${workflow_id}/cancel" >/dev/null || true
+              done
+            done
   go-test:
     docker:
       - image: cimg/go:1.25
@@ -234,11 +277,19 @@ jobs:
 workflows:
   ci:
     jobs:
+      - cancel-previous-runs:
+          filters:
+            tags:
+              only: /.*/
       - go-test:
+          requires:
+            - cancel-previous-runs
           filters:
             tags:
               only: /.*/
       - dart-core:
+          requires:
+            - cancel-previous-runs
           filters:
             tags:
               only: /.*/
