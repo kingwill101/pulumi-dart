@@ -66,7 +66,7 @@ func generatedPackageRootLibrary(packageName string, spec *packageSchema, module
 			continue
 		}
 		namespaceClass := "_" + toDartClassName(moduleObjectName) + "ModuleNamespace"
-		fmt.Fprintf(&b, "final %s = %s();\n", moduleObjectName, namespaceClass)
+		fmt.Fprintf(&b, "final %s = const %s();\n", moduleObjectName, namespaceClass)
 	}
 
 	b.WriteString("\n")
@@ -85,7 +85,7 @@ func generatedPackageRootLibrary(packageName string, spec *packageSchema, module
 		namespaceClass := "_" + toDartClassName(moduleObjectName) + "ModuleNamespace"
 		modulePrefix := moduleImportPrefix(moduleName)
 		fmt.Fprintf(&b, "class %s {\n", namespaceClass)
-		fmt.Fprintf(&b, "  %s();\n", namespaceClass)
+		fmt.Fprintf(&b, "  const %s();\n", namespaceClass)
 
 		symbols := moduleSymbols[modulePath]
 		enumNames := enumSymbolsByModule[modulePath]

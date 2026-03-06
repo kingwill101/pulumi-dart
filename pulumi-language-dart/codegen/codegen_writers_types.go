@@ -50,7 +50,7 @@ func writeGeneratedConfigClass(b *strings.Builder, configSpec packageConfigSpec)
 	}
 
 	b.WriteString("}\n\n")
-	b.WriteString(fmt.Sprintf("final config = %s();\n\n", configSpec.ClassName))
+	b.WriteString(fmt.Sprintf("const config = %s();\n\n", configSpec.ClassName))
 }
 
 // writeGeneratedEnumClass emits a generated enum type with wire-value mapping
@@ -104,7 +104,7 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 	}
 
 	if len(objectClass.Properties) == 0 {
-		fmt.Fprintf(b, "\n  %s();\n\n", objectClass.ClassName)
+		fmt.Fprintf(b, "\n  const %s();\n\n", objectClass.ClassName)
 	} else {
 		fmt.Fprintf(b, "\n  /// Creates a new [%s].\n", objectClass.ClassName)
 		for _, property := range objectClass.Properties {
@@ -115,7 +115,7 @@ func writeGeneratedObjectClass(b *strings.Builder, objectClass packageObjectClas
 				constructorParameterDoc(property),
 			)
 		}
-		fmt.Fprintf(b, "  %s({\n", objectClass.ClassName)
+		fmt.Fprintf(b, "  const %s({\n", objectClass.ClassName)
 		for _, property := range objectClass.Properties {
 			if property.Required {
 				fmt.Fprintf(b, "    required this.%s,\n", property.FieldName)

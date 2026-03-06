@@ -30,7 +30,7 @@ func TestGeneratedPackageRootLibrary_EmitsModuleNamespaces(t *testing.T) {
 
 	assert.NotContains(t, content, "library pulumi_sample;")
 	assert.Contains(t, content, "import 'package:pulumi_sample/index.dart' as module_index;")
-	assert.Contains(t, content, "final index = _IndexModuleNamespace();")
+	assert.Contains(t, content, "final index = const _IndexModuleNamespace();")
 	assert.Contains(t, content, "final Widget = module_index.Widget.new;")
 	assert.Contains(t, content, "final WidgetMode = module_index.WidgetMode.values;")
 	assert.Contains(t, content, "final getWidget = module_index.getWidget;")
