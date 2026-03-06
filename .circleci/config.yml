@@ -84,7 +84,7 @@ jobs:
           name: Install Pulumi CLI
           command: |
             set -euo pipefail
-            curl -fsSL https://get.pulumi.com | sh -s -- --version v3.225.1
+            curl -fsSL https://get.pulumi.com | sh -s -- --version 3.225.1
             echo 'export PATH="$HOME/.pulumi/bin:$PATH"' >> "${BASH_ENV}"
             . "${BASH_ENV}"
             pulumi version
@@ -103,6 +103,12 @@ jobs:
             cd pulumi-language-dart && go mod download
             cd ../integration_tests && go mod download
       - run:
+          name: Install gotestsum
+          command: |
+            set -euo pipefail
+            go install gotest.tools/gotestsum@latest
+            echo 'export PATH="$(go env GOPATH)/bin:$PATH"' >> "${BASH_ENV}"
+      - run:
           name: Resolve Dart workspace dependencies
           command: dart pub get
       - save_cache:
@@ -119,9 +125,10 @@ jobs:
           command: cd pulumi-language-dart && go build -o pulumi-language-dart .
       - run:
           name: Run integration tests
+          no_output_timeout: 60m
           command: |
             . "${BASH_ENV}"
-            cd integration_tests && go test ./...
+            cd integration_tests && go test -json ./... | gotestsum --format testname
 
   build-language-host:
     parameters:
