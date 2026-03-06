@@ -104,7 +104,6 @@ void validateGcpDartFunctionArgs(GcpDartFunctionArgs args) {
   }
 }
 
-pulumi.Input<List<gcp.cloudrunv2.ServiceTemplateContainerEnv>>?
 _containerEnvsFromMap(
   pulumi.Input<Map<String, String>>? environment,
 ) {
@@ -112,7 +111,7 @@ _containerEnvsFromMap(
     return null;
   }
 
-  return environment.toOutput().apply<List<gcp.cloudrunv2.ServiceTemplateContainerEnv>>((values) {
+  return environment.toOutput().apply((values) {
     return values.entries
         .map(
           (entry) => gcp.cloudrunv2.ServiceTemplateContainerEnv(

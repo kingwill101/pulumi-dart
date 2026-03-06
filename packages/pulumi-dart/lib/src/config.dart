@@ -50,14 +50,9 @@ extension ConfigStringParsing on String? {
   /// Accepted values are `true`, `false`, `1`, and `0` (case-insensitive).
   bool? toBool() {
     return switch (this?.toLowerCase()) {
-      case 'true':
-      case '1':
-        true,
-      case 'false':
-      case '0':
-        false,
-      default:
-        null,
+      'true' || '1' => true,
+      'false' || '0' => false,
+      _ => null,
     };
   }
 }
