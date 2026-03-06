@@ -2825,7 +2825,7 @@ func TestGeneratePackageEmitsConfigClass(t *testing.T) {
 	assert.NotContains(t, rootContent, "sdk.dart")
 
 	assert.Contains(t, content, "class SampleConfig")
-	assert.Contains(t, content, "final config = SampleConfig();")
+	assert.Contains(t, content, "const config = SampleConfig();")
 	assert.Contains(t, content, "String? get region")
 	assert.Contains(t, content, "String requireRegion()")
 	assert.Contains(t, content, "int? get replicas")

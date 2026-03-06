@@ -73,7 +73,7 @@ class SampleConfig {
 
 }
 
-final config = SampleConfig();
+const config = SampleConfig();
 
 
 // FILE: index.dart
@@ -119,7 +119,7 @@ class GetWidgetDetailsArgs {
 
   /// Creates a new [GetWidgetDetailsArgs].
   /// [id] Required.
-  GetWidgetDetailsArgs({
+  const GetWidgetDetailsArgs({
     required this.id,
   });
 
@@ -151,7 +151,7 @@ class GetWidgetDetailsResult {
   /// Creates a new [GetWidgetDetailsResult].
   /// [metadata] Required.
   /// [mode] Required.
-  GetWidgetDetailsResult({
+  const GetWidgetDetailsResult({
     required this.metadata,
     required this.mode,
   });
@@ -218,7 +218,7 @@ class WidgetArgs {
   /// Creates a new [WidgetArgs].
   /// [metadata] Optional.
   /// [mode] Required.
-  WidgetArgs({
+  const WidgetArgs({
     this.metadata,
     required this.mode,
   });
@@ -252,7 +252,7 @@ class WidgetMetadata {
   /// Creates a new [WidgetMetadata].
   /// [mode] Required.
   /// [owner] Required.
-  WidgetMetadata({
+  const WidgetMetadata({
     required this.mode,
     required this.owner,
   });
