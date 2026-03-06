@@ -44,3 +44,16 @@ func TestNormalizeCompilationContext_BinDirectoryAlreadyQualifiedEntrypoint(t *t
 	assert.Equal(t, root, programDirectory)
 	assert.Equal(t, filepath.ToSlash(filepath.Join("bin", "custom_entrypoint.dart")), entryPoint)
 }
+
+func TestResolveProgramEntryPoint_BinDirectoryFallsBackToPackageEntrypoint(t *testing.T) {
+	t.Parallel()
+
+	root := t.TempDir()
+	require.NoError(t, os.WriteFile(filepath.Join(root, "pubspec.yaml"), []byte("name: sample_app\n"), 0o600))
+	require.NoError(t, os.MkdirAll(filepath.Join(root, "bin"), 0o700))
+	require.NoError(t, os.WriteFile(filepath.Join(root, "bin", "sample_app.dart"), []byte("void main() {}\n"), 0o600))
+
+	entryPoint := resolveProgramEntryPoint(nil, ".", filepath.Join(root, "bin"))
+
+	assert.Equal(t, filepath.ToSlash(filepath.Join("bin", "sample_app.dart")), entryPoint)
+}

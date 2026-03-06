@@ -309,22 +309,29 @@ func shouldResolveToBinDartEntryPoint(entryPoint string) bool {
 //   - entryPoint "infra" + existing bin/infra.dart => "bin/infra.dart"
 //   - fallback "." + existing bin/main.dart => "bin/main.dart"
 func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, programDirectory string) string {
+	lookupDirectory := strings.TrimSpace(programDirectory)
+	if lookupDirectory != "" {
+		if normalizedDirectory, _ := normalizeProgramDirectoryAndEntryPoint(lookupDirectory, "", lookupDirectory); strings.TrimSpace(normalizedDirectory) != "" {
+			lookupDirectory = normalizedDirectory
+		}
+	}
+
 	if info != nil && strings.TrimSpace(info.GetEntryPoint()) != "" && strings.TrimSpace(info.GetEntryPoint()) != "." {
 		entryPoint := strings.TrimSpace(info.GetEntryPoint())
 		if shouldResolveToBinDartEntryPoint(entryPoint) {
-			if programDirectory != "" {
+			if lookupDirectory != "" {
 				candidate := filepath.Join("bin", entryPoint+".dart")
-				if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
+				if _, err := os.Stat(filepath.Join(lookupDirectory, candidate)); err == nil {
 					return filepath.ToSlash(candidate)
 				}
 			}
 		}
 		if filepath.Ext(entryPoint) == ".dart" && !strings.ContainsAny(entryPoint, `/\\`) {
-			if programDirectory != "" {
-				absoluteEntry := filepath.Join(programDirectory, entryPoint)
+			if lookupDirectory != "" {
+				absoluteEntry := filepath.Join(lookupDirectory, entryPoint)
 				if _, err := os.Stat(absoluteEntry); err != nil {
 					candidate := filepath.Join("bin", entryPoint)
-					if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
+					if _, err := os.Stat(filepath.Join(lookupDirectory, candidate)); err == nil {
 						return filepath.ToSlash(candidate)
 					}
 				}
@@ -340,16 +347,16 @@ func resolveProgramEntryPoint(info *pulumirpc.ProgramInfo, fallback string, prog
 		fallback = "."
 	}
 	if fallback == "." {
-		if programDirectory != "" {
-			if _, err := os.Stat(filepath.Join(programDirectory, "bin", "main.dart")); err == nil {
+		if lookupDirectory != "" {
+			if _, err := os.Stat(filepath.Join(lookupDirectory, "bin", "main.dart")); err == nil {
 				return filepath.ToSlash(filepath.Join("bin", "main.dart"))
 			}
 
-			if pubspecPath, err := codegen.FindPubspecYaml(programDirectory); err == nil {
+			if pubspecPath, err := codegen.FindPubspecYaml(lookupDirectory); err == nil {
 				pubspec, err := codegen.ReadAndParsePubspec(pubspecPath)
 				if err == nil && strings.TrimSpace(pubspec.Name) != "" {
 					candidate := filepath.Join("bin", strings.TrimSpace(pubspec.Name)+".dart")
-					if _, err := os.Stat(filepath.Join(programDirectory, candidate)); err == nil {
+					if _, err := os.Stat(filepath.Join(lookupDirectory, candidate)); err == nil {
 						return filepath.ToSlash(candidate)
 					}
 				}

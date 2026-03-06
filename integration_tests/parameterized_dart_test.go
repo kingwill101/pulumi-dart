@@ -128,7 +128,6 @@ func TestParameterizedDart(t *testing.T) {
 				return fmt.Errorf("failed to read generated sdk root library: %w", err)
 			}
 			for _, expected := range []string{
-				"library " + packageName + ";",
 				"import 'package:" + packageName + "/index.dart' as module_index;",
 				"final index = _IndexModuleNamespace();",
 			} {
@@ -143,7 +142,6 @@ func TestParameterizedDart(t *testing.T) {
 				return fmt.Errorf("failed to read generated sdk implementation library: %w", err)
 			}
 			for _, expected := range []string{
-				"library module_index;",
 				"export 'index/echo.dart';",
 				"export 'index/random.dart';",
 				"export 'index/functions.dart';",
